@@ -32,7 +32,7 @@ click **Learn more** to view it.
 <div class="card-list">
 <div class="card outlined-card" id="abi_specific_integer_invalid">
 <div class="card-header">
-<header class="card-title" id="abi_specific_integer_invalid">{{"abi_specific_integer_invalid" | underscoreBreaker}}</header>
+<header class="card-title" id="abi_specific_integer_invalid">abi_<wbr>specific_<wbr>integer_<wbr>invalid</header>
 </div>
 <div class="card-content">
 
@@ -51,7 +51,7 @@ no other members, and no type parameters._
 </div>
 <div class="card outlined-card" id="abi_specific_integer_mapping_extra">
 <div class="card-header">
-<header class="card-title" id="abi_specific_integer_mapping_extra">{{"abi_specific_integer_mapping_extra" | underscoreBreaker}}</header>
+<header class="card-title" id="abi_specific_integer_mapping_extra">abi_<wbr>specific_<wbr>integer_<wbr>mapping_<wbr>extra</header>
 </div>
 <div class="card-content">
 
@@ -70,7 +70,7 @@ _Classes extending 'AbiSpecificInteger' must have exactly one
 </div>
 <div class="card outlined-card" id="abi_specific_integer_mapping_missing">
 <div class="card-header">
-<header class="card-title" id="abi_specific_integer_mapping_missing">{{"abi_specific_integer_mapping_missing" | underscoreBreaker}}</header>
+<header class="card-title" id="abi_specific_integer_mapping_missing">abi_<wbr>specific_<wbr>integer_<wbr>mapping_<wbr>missing</header>
 </div>
 <div class="card-content">
 
@@ -89,7 +89,7 @@ _Classes extending 'AbiSpecificInteger' must have exactly one
 </div>
 <div class="card outlined-card" id="abi_specific_integer_mapping_unsupported">
 <div class="card-header">
-<header class="card-title" id="abi_specific_integer_mapping_unsupported">{{"abi_specific_integer_mapping_unsupported" | underscoreBreaker}}</header>
+<header class="card-title" id="abi_specific_integer_mapping_unsupported">abi_<wbr>specific_<wbr>integer_<wbr>mapping_<wbr>unsupported</header>
 </div>
 <div class="card-content">
 
@@ -108,7 +108,7 @@ _Invalid mapping to '{0}'; only mappings to 'Int8', 'Int16', 'Int32', 'Int64',
 </div>
 <div class="card outlined-card" id="abstract_class_member">
 <div class="card-header">
-<header class="card-title" id="abstract_class_member">{{"abstract_class_member" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_class_member">abstract_<wbr>class_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -125,7 +125,7 @@ _Members of classes can't be declared to be 'abstract'._
 </div>
 <div class="card outlined-card" id="abstract_external_field">
 <div class="card-header">
-<header class="card-title" id="abstract_external_field">{{"abstract_external_field" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_external_field">abstract_<wbr>external_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -142,7 +142,7 @@ _Fields can't be declared both 'abstract' and 'external'._
 </div>
 <div class="card outlined-card" id="abstract_field_initializer">
 <div class="card-header">
-<header class="card-title" id="abstract_field_initializer">{{"abstract_field_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_field_initializer">abstract_<wbr>field_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -160,7 +160,7 @@ _Abstract fields can't have initializers._
 </div>
 <div class="card outlined-card" id="abstract_final_base_class">
 <div class="card-header">
-<header class="card-title" id="abstract_final_base_class">{{"abstract_final_base_class" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_final_base_class">abstract_<wbr>final_<wbr>base_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -177,7 +177,7 @@ _An 'abstract' class can't be declared as both 'final' and 'base'._
 </div>
 <div class="card outlined-card" id="abstract_final_interface_class">
 <div class="card-header">
-<header class="card-title" id="abstract_final_interface_class">{{"abstract_final_interface_class" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_final_interface_class">abstract_<wbr>final_<wbr>interface_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -194,7 +194,7 @@ _An 'abstract' class can't be declared as both 'final' and 'interface'._
 </div>
 <div class="card outlined-card" id="abstract_late_field">
 <div class="card-header">
-<header class="card-title" id="abstract_late_field">{{"abstract_late_field" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_late_field">abstract_<wbr>late_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -211,7 +211,7 @@ _Abstract fields cannot be late._
 </div>
 <div class="card outlined-card" id="abstract_sealed_class">
 <div class="card-header">
-<header class="card-title" id="abstract_sealed_class">{{"abstract_sealed_class" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_sealed_class">abstract_<wbr>sealed_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -230,7 +230,7 @@ abstract._
 </div>
 <div class="card outlined-card" id="abstract_static_field">
 <div class="card-header">
-<header class="card-title" id="abstract_static_field">{{"abstract_static_field" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_static_field">abstract_<wbr>static_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -247,7 +247,7 @@ _Static fields can't be declared 'abstract'._
 </div>
 <div class="card outlined-card" id="abstract_static_method">
 <div class="card-header">
-<header class="card-title" id="abstract_static_method">{{"abstract_static_method" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_static_method">abstract_<wbr>static_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -264,7 +264,7 @@ _Static methods can't be declared to be 'abstract'._
 </div>
 <div class="card outlined-card" id="abstract_super_member_reference">
 <div class="card-header">
-<header class="card-title" id="abstract_super_member_reference">{{"abstract_super_member_reference" | underscoreBreaker}}</header>
+<header class="card-title" id="abstract_super_member_reference">abstract_<wbr>super_<wbr>member_<wbr>reference</header>
 </div>
 <div class="card-content">
 
@@ -282,7 +282,7 @@ _The {0} '{1}' is always abstract in the supertype._
 </div>
 <div class="card outlined-card" id="address_position">
 <div class="card-header">
-<header class="card-title" id="address_position">{{"address_position" | underscoreBreaker}}</header>
+<header class="card-title" id="address_position">address_<wbr>position</header>
 </div>
 <div class="card-content">
 
@@ -301,7 +301,7 @@ external call._
 </div>
 <div class="card outlined-card" id="address_receiver">
 <div class="card-header">
-<header class="card-title" id="address_receiver">{{"address_receiver" | underscoreBreaker}}</header>
+<header class="card-title" id="address_receiver">address_<wbr>receiver</header>
 </div>
 <div class="card-content">
 
@@ -320,7 +320,7 @@ _The receiver of '.address' must be a concrete 'TypedData', a concrete
 </div>
 <div class="card outlined-card" id="ambiguous_export">
 <div class="card-header">
-<header class="card-title" id="ambiguous_export">{{"ambiguous_export" | underscoreBreaker}}</header>
+<header class="card-title" id="ambiguous_export">ambiguous_<wbr>export</header>
 </div>
 <div class="card-content">
 
@@ -338,7 +338,7 @@ _The name '{0}' is defined in the libraries '{1}' and '{2}'._
 </div>
 <div class="card outlined-card" id="ambiguous_extension_member_access">
 <div class="card-header">
-<header class="card-title" id="ambiguous_extension_member_access">{{"ambiguous_extension_member_access" | underscoreBreaker}}</header>
+<header class="card-title" id="ambiguous_extension_member_access">ambiguous_<wbr>extension_<wbr>member_<wbr>access</header>
 </div>
 <div class="card-content">
 
@@ -359,7 +359,7 @@ _A member named '{0}' is defined in {1}, and none are more specific._
 </div>
 <div class="card outlined-card" id="ambiguous_import">
 <div class="card-header">
-<header class="card-title" id="ambiguous_import">{{"ambiguous_import" | underscoreBreaker}}</header>
+<header class="card-title" id="ambiguous_import">ambiguous_<wbr>import</header>
 </div>
 <div class="card-content">
 
@@ -377,7 +377,7 @@ _The name '{0}' is defined in the libraries {1}._
 </div>
 <div class="card outlined-card" id="ambiguous_set_or_map_literal_both">
 <div class="card-header">
-<header class="card-title" id="ambiguous_set_or_map_literal_both">{{"ambiguous_set_or_map_literal_both" | underscoreBreaker}}</header>
+<header class="card-title" id="ambiguous_set_or_map_literal_both">ambiguous_<wbr>set_<wbr>or_<wbr>map_<wbr>literal_<wbr>both</header>
 </div>
 <div class="card-content">
 
@@ -396,7 +396,7 @@ literal map entry or a spread operator spreading a 'Map', and at least one eleme
 </div>
 <div class="card outlined-card" id="ambiguous_set_or_map_literal_either">
 <div class="card-header">
-<header class="card-title" id="ambiguous_set_or_map_literal_either">{{"ambiguous_set_or_map_literal_either" | underscoreBreaker}}</header>
+<header class="card-title" id="ambiguous_set_or_map_literal_either">ambiguous_<wbr>set_<wbr>or_<wbr>map_<wbr>literal_<wbr>either</header>
 </div>
 <div class="card-content">
 
@@ -415,7 +415,7 @@ information for type inference to work._
 </div>
 <div class="card outlined-card" id="analysis_option_deprecated">
 <div class="card-header">
-<header class="card-title" id="analysis_option_deprecated">{{"analysis_option_deprecated" | underscoreBreaker}}</header>
+<header class="card-title" id="analysis_option_deprecated">analysis_<wbr>option_<wbr>deprecated</header>
 </div>
 <div class="card-content">
 
@@ -432,7 +432,7 @@ _The option '{0}' is no longer supported._
 </div>
 <div class="card outlined-card" id="annotation_on_pointer_field">
 <div class="card-header">
-<header class="card-title" id="annotation_on_pointer_field">{{"annotation_on_pointer_field" | underscoreBreaker}}</header>
+<header class="card-title" id="annotation_on_pointer_field">annotation_<wbr>on_<wbr>pointer_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -451,7 +451,7 @@ annotations._
 </div>
 <div class="card outlined-card" id="annotation_on_type_argument">
 <div class="card-header">
-<header class="card-title" id="annotation_on_type_argument">{{"annotation_on_type_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="annotation_on_type_argument">annotation_<wbr>on_<wbr>type_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -468,7 +468,7 @@ _Type arguments can't have annotations because they aren't declarations._
 </div>
 <div class="card outlined-card" id="annotation_space_before_parenthesis">
 <div class="card-header">
-<header class="card-title" id="annotation_space_before_parenthesis">{{"annotation_space_before_parenthesis" | underscoreBreaker}}</header>
+<header class="card-title" id="annotation_space_before_parenthesis">annotation_<wbr>space_<wbr>before_<wbr>parenthesis</header>
 </div>
 <div class="card-content">
 
@@ -485,7 +485,7 @@ _Annotations can't have spaces or comments before the parenthesis._
 </div>
 <div class="card outlined-card" id="annotation_with_type_arguments">
 <div class="card-header">
-<header class="card-title" id="annotation_with_type_arguments">{{"annotation_with_type_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="annotation_with_type_arguments">annotation_<wbr>with_<wbr>type_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -502,7 +502,7 @@ _An annotation can't use type arguments._
 </div>
 <div class="card outlined-card" id="annotation_with_type_arguments_uninstantiated">
 <div class="card-header">
-<header class="card-title" id="annotation_with_type_arguments_uninstantiated">{{"annotation_with_type_arguments_uninstantiated" | underscoreBreaker}}</header>
+<header class="card-title" id="annotation_with_type_arguments_uninstantiated">annotation_<wbr>with_<wbr>type_<wbr>arguments_<wbr>uninstantiated</header>
 </div>
 <div class="card-content">
 
@@ -519,7 +519,7 @@ _An annotation with type arguments must be followed by an argument list._
 </div>
 <div class="card outlined-card" id="argument_must_be_a_constant">
 <div class="card-header">
-<header class="card-title" id="argument_must_be_a_constant">{{"argument_must_be_a_constant" | underscoreBreaker}}</header>
+<header class="card-title" id="argument_must_be_a_constant">argument_<wbr>must_<wbr>be_<wbr>a_<wbr>constant</header>
 </div>
 <div class="card-content">
 
@@ -537,7 +537,7 @@ _Argument '{0}' must be a constant._
 </div>
 <div class="card outlined-card" id="argument_must_be_native">
 <div class="card-header">
-<header class="card-title" id="argument_must_be_native">{{"argument_must_be_native" | underscoreBreaker}}</header>
+<header class="card-title" id="argument_must_be_native">argument_<wbr>must_<wbr>be_<wbr>native</header>
 </div>
 <div class="card-content">
 
@@ -555,7 +555,7 @@ _Argument to 'Native.addressOf' must be annotated with @Native_
 </div>
 <div class="card outlined-card" id="argument_type_not_assignable">
 <div class="card-header">
-<header class="card-title" id="argument_type_not_assignable">{{"argument_type_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="argument_type_not_assignable">argument_<wbr>type_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -573,7 +573,7 @@ _The argument type '{0}' can't be assigned to the parameter type '{1}'. {2}_
 </div>
 <div class="card outlined-card" id="argument_type_not_assignable_to_error_handler">
 <div class="card-header">
-<header class="card-title" id="argument_type_not_assignable_to_error_handler">{{"argument_type_not_assignable_to_error_handler" | underscoreBreaker}}</header>
+<header class="card-title" id="argument_type_not_assignable_to_error_handler">argument_<wbr>type_<wbr>not_<wbr>assignable_<wbr>to_<wbr>error_<wbr>handler</header>
 </div>
 <div class="card-content">
 
@@ -592,7 +592,7 @@ Function(Object)' or '{1} Function(Object, StackTrace)'._
 </div>
 <div class="card outlined-card" id="assert_in_redirecting_constructor">
 <div class="card-header">
-<header class="card-title" id="assert_in_redirecting_constructor">{{"assert_in_redirecting_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="assert_in_redirecting_constructor">assert_<wbr>in_<wbr>redirecting_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -610,7 +610,7 @@ _A redirecting constructor can't have an 'assert' initializer._
 </div>
 <div class="card outlined-card" id="asset_directory_does_not_exist">
 <div class="card-header">
-<header class="card-title" id="asset_directory_does_not_exist">{{"asset_directory_does_not_exist" | underscoreBreaker}}</header>
+<header class="card-title" id="asset_directory_does_not_exist">asset_<wbr>directory_<wbr>does_<wbr>not_<wbr>exist</header>
 </div>
 <div class="card-content">
 
@@ -628,7 +628,7 @@ _The asset directory '{0}' doesn't exist._
 </div>
 <div class="card outlined-card" id="asset_does_not_exist">
 <div class="card-header">
-<header class="card-title" id="asset_does_not_exist">{{"asset_does_not_exist" | underscoreBreaker}}</header>
+<header class="card-title" id="asset_does_not_exist">asset_<wbr>does_<wbr>not_<wbr>exist</header>
 </div>
 <div class="card-content">
 
@@ -646,7 +646,7 @@ _The asset file '{0}' doesn't exist._
 </div>
 <div class="card outlined-card" id="asset_field_not_list">
 <div class="card-header">
-<header class="card-title" id="asset_field_not_list">{{"asset_field_not_list" | underscoreBreaker}}</header>
+<header class="card-title" id="asset_field_not_list">asset_<wbr>field_<wbr>not_<wbr>list</header>
 </div>
 <div class="card-content">
 
@@ -665,7 +665,7 @@ paths._
 </div>
 <div class="card outlined-card" id="asset_missing_path">
 <div class="card-header">
-<header class="card-title" id="asset_missing_path">{{"asset_missing_path" | underscoreBreaker}}</header>
+<header class="card-title" id="asset_missing_path">asset_<wbr>missing_<wbr>path</header>
 </div>
 <div class="card-content">
 
@@ -683,7 +683,7 @@ _Asset map entry must contain a 'path' field._
 </div>
 <div class="card outlined-card" id="asset_not_string">
 <div class="card-header">
-<header class="card-title" id="asset_not_string">{{"asset_not_string" | underscoreBreaker}}</header>
+<header class="card-title" id="asset_not_string">asset_<wbr>not_<wbr>string</header>
 </div>
 <div class="card-content">
 
@@ -701,7 +701,7 @@ _Assets are required to be file paths (strings)._
 </div>
 <div class="card outlined-card" id="asset_not_string_or_map">
 <div class="card-header">
-<header class="card-title" id="asset_not_string_or_map">{{"asset_not_string_or_map" | underscoreBreaker}}</header>
+<header class="card-title" id="asset_not_string_or_map">asset_<wbr>not_<wbr>string_<wbr>or_<wbr>map</header>
 </div>
 <div class="card-content">
 
@@ -719,7 +719,7 @@ _An asset value is required to be a file path (string) or map._
 </div>
 <div class="card outlined-card" id="asset_path_not_string">
 <div class="card-header">
-<header class="card-title" id="asset_path_not_string">{{"asset_path_not_string" | underscoreBreaker}}</header>
+<header class="card-title" id="asset_path_not_string">asset_<wbr>path_<wbr>not_<wbr>string</header>
 </div>
 <div class="card-content">
 
@@ -737,7 +737,7 @@ _Asset paths are required to be file paths (strings)._
 </div>
 <div class="card outlined-card" id="assignment_of_do_not_store">
 <div class="card-header">
-<header class="card-title" id="assignment_of_do_not_store">{{"assignment_of_do_not_store" | underscoreBreaker}}</header>
+<header class="card-title" id="assignment_of_do_not_store">assignment_<wbr>of_<wbr>do_<wbr>not_<wbr>store</header>
 </div>
 <div class="card-content">
 
@@ -756,7 +756,7 @@ variable._
 </div>
 <div class="card outlined-card" id="assignment_to_const">
 <div class="card-header">
-<header class="card-title" id="assignment_to_const">{{"assignment_to_const" | underscoreBreaker}}</header>
+<header class="card-title" id="assignment_to_const">assignment_<wbr>to_<wbr>const</header>
 </div>
 <div class="card-content">
 
@@ -774,7 +774,7 @@ _Constant variables can't be assigned a value after initialization._
 </div>
 <div class="card outlined-card" id="assignment_to_final">
 <div class="card-header">
-<header class="card-title" id="assignment_to_final">{{"assignment_to_final" | underscoreBreaker}}</header>
+<header class="card-title" id="assignment_to_final">assignment_<wbr>to_<wbr>final</header>
 </div>
 <div class="card-content">
 
@@ -792,7 +792,7 @@ _'{0}' can't be used as a setter because it's final._
 </div>
 <div class="card outlined-card" id="assignment_to_final_local">
 <div class="card-header">
-<header class="card-title" id="assignment_to_final_local">{{"assignment_to_final_local" | underscoreBreaker}}</header>
+<header class="card-title" id="assignment_to_final_local">assignment_<wbr>to_<wbr>final_<wbr>local</header>
 </div>
 <div class="card-content">
 
@@ -810,7 +810,7 @@ _The final variable '{0}' can only be set once._
 </div>
 <div class="card outlined-card" id="assignment_to_final_no_setter">
 <div class="card-header">
-<header class="card-title" id="assignment_to_final_no_setter">{{"assignment_to_final_no_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="assignment_to_final_no_setter">assignment_<wbr>to_<wbr>final_<wbr>no_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -828,7 +828,7 @@ _There isn't a setter named '{0}' in class '{1}'._
 </div>
 <div class="card outlined-card" id="assignment_to_function">
 <div class="card-header">
-<header class="card-title" id="assignment_to_function">{{"assignment_to_function" | underscoreBreaker}}</header>
+<header class="card-title" id="assignment_to_function">assignment_<wbr>to_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -846,7 +846,7 @@ _Functions can't be assigned a value._
 </div>
 <div class="card outlined-card" id="assignment_to_method">
 <div class="card-header">
-<header class="card-title" id="assignment_to_method">{{"assignment_to_method" | underscoreBreaker}}</header>
+<header class="card-title" id="assignment_to_method">assignment_<wbr>to_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -864,7 +864,7 @@ _Methods can't be assigned a value._
 </div>
 <div class="card outlined-card" id="assignment_to_type">
 <div class="card-header">
-<header class="card-title" id="assignment_to_type">{{"assignment_to_type" | underscoreBreaker}}</header>
+<header class="card-title" id="assignment_to_type">assignment_<wbr>to_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -882,7 +882,7 @@ _Types can't be assigned a value._
 </div>
 <div class="card outlined-card" id="async_for_in_wrong_context">
 <div class="card-header">
-<header class="card-title" id="async_for_in_wrong_context">{{"async_for_in_wrong_context" | underscoreBreaker}}</header>
+<header class="card-title" id="async_for_in_wrong_context">async_<wbr>for_<wbr>in_<wbr>wrong_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -900,7 +900,7 @@ _The async for-in loop can only be used in an async function._
 </div>
 <div class="card outlined-card" id="async_keyword_used_as_identifier">
 <div class="card-header">
-<header class="card-title" id="async_keyword_used_as_identifier">{{"async_keyword_used_as_identifier" | underscoreBreaker}}</header>
+<header class="card-title" id="async_keyword_used_as_identifier">async_<wbr>keyword_<wbr>used_<wbr>as_<wbr>identifier</header>
 </div>
 <div class="card-content">
 
@@ -918,7 +918,7 @@ asynchronous or generator function._
 </div>
 <div class="card outlined-card" id="augmentation_extends_clause_already_present">
 <div class="card-header">
-<header class="card-title" id="augmentation_extends_clause_already_present">{{"augmentation_extends_clause_already_present" | underscoreBreaker}}</header>
+<header class="card-title" id="augmentation_extends_clause_already_present">augmentation_<wbr>extends_<wbr>clause_<wbr>already_<wbr>present</header>
 </div>
 <div class="card-content">
 
@@ -936,7 +936,7 @@ includes an 'extends' clause and it isn't allowed to be repeated or changed._
 </div>
 <div class="card outlined-card" id="augmentation_modifier_extra">
 <div class="card-header">
-<header class="card-title" id="augmentation_modifier_extra">{{"augmentation_modifier_extra" | underscoreBreaker}}</header>
+<header class="card-title" id="augmentation_modifier_extra">augmentation_<wbr>modifier_<wbr>extra</header>
 </div>
 <div class="card-content">
 
@@ -953,7 +953,7 @@ _The augmentation has the '{0}' modifier that the declaration doesn't have._
 </div>
 <div class="card outlined-card" id="augmentation_modifier_missing">
 <div class="card-header">
-<header class="card-title" id="augmentation_modifier_missing">{{"augmentation_modifier_missing" | underscoreBreaker}}</header>
+<header class="card-title" id="augmentation_modifier_missing">augmentation_<wbr>modifier_<wbr>missing</header>
 </div>
 <div class="card-content">
 
@@ -970,7 +970,7 @@ _The augmentation is missing the '{0}' modifier that the declaration has._
 </div>
 <div class="card outlined-card" id="augmentation_of_different_declaration_kind">
 <div class="card-header">
-<header class="card-title" id="augmentation_of_different_declaration_kind">{{"augmentation_of_different_declaration_kind" | underscoreBreaker}}</header>
+<header class="card-title" id="augmentation_of_different_declaration_kind">augmentation_<wbr>of_<wbr>different_<wbr>declaration_<wbr>kind</header>
 </div>
 <div class="card-content">
 
@@ -987,7 +987,7 @@ _Can't augment a {0} with a {1}._
 </div>
 <div class="card outlined-card" id="augmentation_type_parameter_bound">
 <div class="card-header">
-<header class="card-title" id="augmentation_type_parameter_bound">{{"augmentation_type_parameter_bound" | underscoreBreaker}}</header>
+<header class="card-title" id="augmentation_type_parameter_bound">augmentation_<wbr>type_<wbr>parameter_<wbr>bound</header>
 </div>
 <div class="card-content">
 
@@ -1005,7 +1005,7 @@ type parameter of the declaration._
 </div>
 <div class="card outlined-card" id="augmentation_type_parameter_count">
 <div class="card-header">
-<header class="card-title" id="augmentation_type_parameter_count">{{"augmentation_type_parameter_count" | underscoreBreaker}}</header>
+<header class="card-title" id="augmentation_type_parameter_count">augmentation_<wbr>type_<wbr>parameter_<wbr>count</header>
 </div>
 <div class="card-content">
 
@@ -1023,7 +1023,7 @@ declaration._
 </div>
 <div class="card outlined-card" id="augmentation_type_parameter_name">
 <div class="card-header">
-<header class="card-title" id="augmentation_type_parameter_name">{{"augmentation_type_parameter_name" | underscoreBreaker}}</header>
+<header class="card-title" id="augmentation_type_parameter_name">augmentation_<wbr>type_<wbr>parameter_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -1041,7 +1041,7 @@ type parameter of the declaration._
 </div>
 <div class="card outlined-card" id="augmentation_without_declaration">
 <div class="card-header">
-<header class="card-title" id="augmentation_without_declaration">{{"augmentation_without_declaration" | underscoreBreaker}}</header>
+<header class="card-title" id="augmentation_without_declaration">augmentation_<wbr>without_<wbr>declaration</header>
 </div>
 <div class="card-content">
 
@@ -1058,7 +1058,7 @@ _The declaration being augmented doesn't exist._
 </div>
 <div class="card outlined-card" id="augmented_expression_is_not_setter">
 <div class="card-header">
-<header class="card-title" id="augmented_expression_is_not_setter">{{"augmented_expression_is_not_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="augmented_expression_is_not_setter">augmented_<wbr>expression_<wbr>is_<wbr>not_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -1075,7 +1075,7 @@ _The augmented declaration is not a setter, it can't be used to write a value._
 </div>
 <div class="card outlined-card" id="augmented_expression_is_setter">
 <div class="card-header">
-<header class="card-title" id="augmented_expression_is_setter">{{"augmented_expression_is_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="augmented_expression_is_setter">augmented_<wbr>expression_<wbr>is_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -1092,7 +1092,7 @@ _The augmented declaration is a setter, it can't be used to read a value._
 </div>
 <div class="card outlined-card" id="augmented_expression_not_operator">
 <div class="card-header">
-<header class="card-title" id="augmented_expression_not_operator">{{"augmented_expression_not_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="augmented_expression_not_operator">augmented_<wbr>expression_<wbr>not_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -1109,7 +1109,7 @@ _The enclosing augmentation doesn't augment the operator '{0}'._
 </div>
 <div class="card outlined-card" id="await_in_late_local_variable_initializer">
 <div class="card-header">
-<header class="card-title" id="await_in_late_local_variable_initializer">{{"await_in_late_local_variable_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="await_in_late_local_variable_initializer">await_<wbr>in_<wbr>late_<wbr>local_<wbr>variable_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -1127,7 +1127,7 @@ _The 'await' expression can't be used in a 'late' local variable's initializer._
 </div>
 <div class="card outlined-card" id="await_in_wrong_context">
 <div class="card-header">
-<header class="card-title" id="await_in_wrong_context">{{"await_in_wrong_context" | underscoreBreaker}}</header>
+<header class="card-title" id="await_in_wrong_context">await_<wbr>in_<wbr>wrong_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -1144,7 +1144,7 @@ _The await expression can only be used in an async function._
 </div>
 <div class="card outlined-card" id="await_of_incompatible_type">
 <div class="card-header">
-<header class="card-title" id="await_of_incompatible_type">{{"await_of_incompatible_type" | underscoreBreaker}}</header>
+<header class="card-title" id="await_of_incompatible_type">await_<wbr>of_<wbr>incompatible_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -1163,7 +1163,7 @@ that is not a subtype of 'Future'._
 </div>
 <div class="card outlined-card" id="base_enum">
 <div class="card-header">
-<header class="card-title" id="base_enum">{{"base_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="base_enum">base_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -1180,7 +1180,7 @@ _Enums can't be declared to be 'base'._
 </div>
 <div class="card outlined-card" id="binary_operator_written_out">
 <div class="card-header">
-<header class="card-title" id="binary_operator_written_out">{{"binary_operator_written_out" | underscoreBreaker}}</header>
+<header class="card-title" id="binary_operator_written_out">binary_<wbr>operator_<wbr>written_<wbr>out</header>
 </div>
 <div class="card-content">
 
@@ -1197,7 +1197,7 @@ _Binary operator '{0}' is written as '{1}' instead of the written out word._
 </div>
 <div class="card outlined-card" id="body_might_complete_normally">
 <div class="card-header">
-<header class="card-title" id="body_might_complete_normally">{{"body_might_complete_normally" | underscoreBreaker}}</header>
+<header class="card-title" id="body_might_complete_normally">body_<wbr>might_<wbr>complete_<wbr>normally</header>
 </div>
 <div class="card-content">
 
@@ -1216,7 +1216,7 @@ type, '{0}', is a potentially non-nullable type._
 </div>
 <div class="card outlined-card" id="body_might_complete_normally_catch_error">
 <div class="card-header">
-<header class="card-title" id="body_might_complete_normally_catch_error">{{"body_might_complete_normally_catch_error" | underscoreBreaker}}</header>
+<header class="card-title" id="body_might_complete_normally_catch_error">body_<wbr>might_<wbr>complete_<wbr>normally_<wbr>catch_<wbr>error</header>
 </div>
 <div class="card-content">
 
@@ -1235,7 +1235,7 @@ without returning a value._
 </div>
 <div class="card outlined-card" id="body_might_complete_normally_nullable">
 <div class="card-header">
-<header class="card-title" id="body_might_complete_normally_nullable">{{"body_might_complete_normally_nullable" | underscoreBreaker}}</header>
+<header class="card-title" id="body_might_complete_normally_nullable">body_<wbr>might_<wbr>complete_<wbr>normally_<wbr>nullable</header>
 </div>
 <div class="card-content">
 
@@ -1254,7 +1254,7 @@ value._
 </div>
 <div class="card outlined-card" id="break_label_on_switch_member">
 <div class="card-header">
-<header class="card-title" id="break_label_on_switch_member">{{"break_label_on_switch_member" | underscoreBreaker}}</header>
+<header class="card-title" id="break_label_on_switch_member">break_<wbr>label_<wbr>on_<wbr>switch_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -1272,7 +1272,7 @@ _A break label resolves to the 'case' or 'default' statement._
 </div>
 <div class="card outlined-card" id="break_outside_of_loop">
 <div class="card-header">
-<header class="card-title" id="break_outside_of_loop">{{"break_outside_of_loop" | underscoreBreaker}}</header>
+<header class="card-title" id="break_outside_of_loop">break_<wbr>outside_<wbr>of_<wbr>loop</header>
 </div>
 <div class="card-content">
 
@@ -1289,7 +1289,7 @@ _A break statement can't be used outside of a loop or switch statement._
 </div>
 <div class="card outlined-card" id="built_in_identifier_as_type">
 <div class="card-header">
-<header class="card-title" id="built_in_identifier_as_type">{{"built_in_identifier_as_type" | underscoreBreaker}}</header>
+<header class="card-title" id="built_in_identifier_as_type">built_<wbr>in_<wbr>identifier_<wbr>as_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -1307,7 +1307,7 @@ _The built-in identifier '{0}' can't be used as a type._
 </div>
 <div class="card outlined-card" id="built_in_identifier_in_declaration">
 <div class="card-header">
-<header class="card-title" id="built_in_identifier_in_declaration">{{"built_in_identifier_in_declaration" | underscoreBreaker}}</header>
+<header class="card-title" id="built_in_identifier_in_declaration">built_<wbr>in_<wbr>identifier_<wbr>in_<wbr>declaration</header>
 </div>
 <div class="card-content">
 
@@ -1335,7 +1335,7 @@ _The built-in identifier '{0}' can't be used as an extension type name._
 </div>
 <div class="card outlined-card" id="camera_permissions_incompatible">
 <div class="card-header">
-<header class="card-title" id="camera_permissions_incompatible">{{"camera_permissions_incompatible" | underscoreBreaker}}</header>
+<header class="card-title" id="camera_permissions_incompatible">camera_<wbr>permissions_<wbr>incompatible</header>
 </div>
 <div class="card-content">
 
@@ -1353,7 +1353,7 @@ optional features "android.hardware.camera" and "android.hardware.camera.autofoc
 </div>
 <div class="card outlined-card" id="case_block_not_terminated">
 <div class="card-header">
-<header class="card-title" id="case_block_not_terminated">{{"case_block_not_terminated" | underscoreBreaker}}</header>
+<header class="card-title" id="case_block_not_terminated">case_<wbr>block_<wbr>not_<wbr>terminated</header>
 </div>
 <div class="card-content">
 
@@ -1372,7 +1372,7 @@ _The last statement of the 'case' should be 'break', 'continue', 'rethrow',
 </div>
 <div class="card outlined-card" id="case_expression_type_implements_equals">
 <div class="card-header">
-<header class="card-title" id="case_expression_type_implements_equals">{{"case_expression_type_implements_equals" | underscoreBreaker}}</header>
+<header class="card-title" id="case_expression_type_implements_equals">case_<wbr>expression_<wbr>type_<wbr>implements_<wbr>equals</header>
 </div>
 <div class="card-content">
 
@@ -1390,7 +1390,7 @@ _The switch case expression type '{0}' can't override the '==' operator._
 </div>
 <div class="card outlined-card" id="case_expression_type_is_not_switch_expression_subtype">
 <div class="card-header">
-<header class="card-title" id="case_expression_type_is_not_switch_expression_subtype">{{"case_expression_type_is_not_switch_expression_subtype" | underscoreBreaker}}</header>
+<header class="card-title" id="case_expression_type_is_not_switch_expression_subtype">case_<wbr>expression_<wbr>type_<wbr>is_<wbr>not_<wbr>switch_<wbr>expression_<wbr>subtype</header>
 </div>
 <div class="card-content">
 
@@ -1409,7 +1409,7 @@ expression type '{1}'._
 </div>
 <div class="card outlined-card" id="cast_from_nullable_always_fails">
 <div class="card-header">
-<header class="card-title" id="cast_from_nullable_always_fails">{{"cast_from_nullable_always_fails" | underscoreBreaker}}</header>
+<header class="card-title" id="cast_from_nullable_always_fails">cast_<wbr>from_<wbr>nullable_<wbr>always_<wbr>fails</header>
 </div>
 <div class="card-content">
 
@@ -1428,7 +1428,7 @@ _This cast will always throw an exception because the nullable local variable
 </div>
 <div class="card outlined-card" id="cast_from_null_always_fails">
 <div class="card-header">
-<header class="card-title" id="cast_from_null_always_fails">{{"cast_from_null_always_fails" | underscoreBreaker}}</header>
+<header class="card-title" id="cast_from_null_always_fails">cast_<wbr>from_<wbr>null_<wbr>always_<wbr>fails</header>
 </div>
 <div class="card-content">
 
@@ -1447,7 +1447,7 @@ _This cast always throws an exception because the expression always evaluates to
 </div>
 <div class="card outlined-card" id="cast_to_non_type">
 <div class="card-header">
-<header class="card-title" id="cast_to_non_type">{{"cast_to_non_type" | underscoreBreaker}}</header>
+<header class="card-title" id="cast_to_non_type">cast_<wbr>to_<wbr>non_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -1465,7 +1465,7 @@ _The name '{0}' isn't a type, so it can't be used in an 'as' expression._
 </div>
 <div class="card outlined-card" id="catch_syntax">
 <div class="card-header">
-<header class="card-title" id="catch_syntax">{{"catch_syntax" | underscoreBreaker}}</header>
+<header class="card-title" id="catch_syntax">catch_<wbr>syntax</header>
 </div>
 <div class="card-content">
 
@@ -1482,7 +1482,7 @@ _'catch' must be followed by '(identifier)' or '(identifier, identifier)'._
 </div>
 <div class="card outlined-card" id="catch_syntax_extra_parameters">
 <div class="card-header">
-<header class="card-title" id="catch_syntax_extra_parameters">{{"catch_syntax_extra_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="catch_syntax_extra_parameters">catch_<wbr>syntax_<wbr>extra_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -1499,7 +1499,7 @@ _'catch' must be followed by '(identifier)' or '(identifier, identifier)'._
 </div>
 <div class="card outlined-card" id="class_instantiation_access_to_member">
 <div class="card-header">
-<header class="card-title" id="class_instantiation_access_to_member">{{"class_instantiation_access_to_member" | underscoreBreaker}}</header>
+<header class="card-title" id="class_instantiation_access_to_member">class_<wbr>instantiation_<wbr>access_<wbr>to_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -1520,7 +1520,7 @@ _The static member '{0}' can't be accessed on a class instantiation._
 </div>
 <div class="card outlined-card" id="class_in_class">
 <div class="card-header">
-<header class="card-title" id="class_in_class">{{"class_in_class" | underscoreBreaker}}</header>
+<header class="card-title" id="class_in_class">class_<wbr>in_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -1537,7 +1537,7 @@ _Classes can't be declared inside other classes._
 </div>
 <div class="card outlined-card" id="class_used_as_mixin">
 <div class="card-header">
-<header class="card-title" id="class_used_as_mixin">{{"class_used_as_mixin" | underscoreBreaker}}</header>
+<header class="card-title" id="class_used_as_mixin">class_<wbr>used_<wbr>as_<wbr>mixin</header>
 </div>
 <div class="card-content">
 
@@ -1556,7 +1556,7 @@ a mixin._
 </div>
 <div class="card outlined-card" id="collection_element_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="collection_element_from_deferred_library">{{"collection_element_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="collection_element_from_deferred_library">collection_<wbr>element_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -1587,7 +1587,7 @@ set literal._
 </div>
 <div class="card outlined-card" id="colon_in_place_of_in">
 <div class="card-header">
-<header class="card-title" id="colon_in_place_of_in">{{"colon_in_place_of_in" | underscoreBreaker}}</header>
+<header class="card-title" id="colon_in_place_of_in">colon_<wbr>in_<wbr>place_<wbr>of_<wbr>in</header>
 </div>
 <div class="card-content">
 
@@ -1604,7 +1604,7 @@ _For-in loops use 'in' rather than a colon._
 </div>
 <div class="card outlined-card" id="compound_implements_finalizable">
 <div class="card-header">
-<header class="card-title" id="compound_implements_finalizable">{{"compound_implements_finalizable" | underscoreBreaker}}</header>
+<header class="card-title" id="compound_implements_finalizable">compound_<wbr>implements_<wbr>finalizable</header>
 </div>
 <div class="card-content">
 
@@ -1622,7 +1622,7 @@ _The class '{0}' can't implement Finalizable._
 </div>
 <div class="card outlined-card" id="concrete_class_has_enum_superinterface">
 <div class="card-header">
-<header class="card-title" id="concrete_class_has_enum_superinterface">{{"concrete_class_has_enum_superinterface" | underscoreBreaker}}</header>
+<header class="card-title" id="concrete_class_has_enum_superinterface">concrete_<wbr>class_<wbr>has_<wbr>enum_<wbr>superinterface</header>
 </div>
 <div class="card-content">
 
@@ -1640,7 +1640,7 @@ _Concrete classes can't have 'Enum' as a superinterface._
 </div>
 <div class="card outlined-card" id="concrete_class_with_abstract_member">
 <div class="card-header">
-<header class="card-title" id="concrete_class_with_abstract_member">{{"concrete_class_with_abstract_member" | underscoreBreaker}}</header>
+<header class="card-title" id="concrete_class_with_abstract_member">concrete_<wbr>class_<wbr>with_<wbr>abstract_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -1658,7 +1658,7 @@ _'{0}' must have a method body because '{1}' isn't abstract._
 </div>
 <div class="card outlined-card" id="conflicting_constructor_and_static_member">
 <div class="card-header">
-<header class="card-title" id="conflicting_constructor_and_static_member">{{"conflicting_constructor_and_static_member" | underscoreBreaker}}</header>
+<header class="card-title" id="conflicting_constructor_and_static_member">conflicting_<wbr>constructor_<wbr>and_<wbr>static_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -1686,7 +1686,7 @@ class._
 </div>
 <div class="card outlined-card" id="conflicting_field_and_method">
 <div class="card-header">
-<header class="card-title" id="conflicting_field_and_method">{{"conflicting_field_and_method" | underscoreBreaker}}</header>
+<header class="card-title" id="conflicting_field_and_method">conflicting_<wbr>field_<wbr>and_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -1704,7 +1704,7 @@ name._
 </div>
 <div class="card outlined-card" id="conflicting_generic_interfaces">
 <div class="card-header">
-<header class="card-title" id="conflicting_generic_interfaces">{{"conflicting_generic_interfaces" | underscoreBreaker}}</header>
+<header class="card-title" id="conflicting_generic_interfaces">conflicting_<wbr>generic_<wbr>interfaces</header>
 </div>
 <div class="card-content">
 
@@ -1723,7 +1723,7 @@ are different._
 </div>
 <div class="card outlined-card" id="conflicting_inherited_method_and_setter">
 <div class="card-header">
-<header class="card-title" id="conflicting_inherited_method_and_setter">{{"conflicting_inherited_method_and_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="conflicting_inherited_method_and_setter">conflicting_<wbr>inherited_<wbr>method_<wbr>and_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -1740,7 +1740,7 @@ _The {0} '{1}' can't inherit both a method and a setter named '{2}'._
 </div>
 <div class="card outlined-card" id="conflicting_method_and_field">
 <div class="card-header">
-<header class="card-title" id="conflicting_method_and_field">{{"conflicting_method_and_field" | underscoreBreaker}}</header>
+<header class="card-title" id="conflicting_method_and_field">conflicting_<wbr>method_<wbr>and_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -1758,7 +1758,7 @@ name._
 </div>
 <div class="card outlined-card" id="conflicting_modifiers">
 <div class="card-header">
-<header class="card-title" id="conflicting_modifiers">{{"conflicting_modifiers" | underscoreBreaker}}</header>
+<header class="card-title" id="conflicting_modifiers">conflicting_<wbr>modifiers</header>
 </div>
 <div class="card-content">
 
@@ -1775,7 +1775,7 @@ _Members can't be declared to be both '{0}' and '{1}'._
 </div>
 <div class="card outlined-card" id="conflicting_static_and_instance">
 <div class="card-header">
-<header class="card-title" id="conflicting_static_and_instance">{{"conflicting_static_and_instance" | underscoreBreaker}}</header>
+<header class="card-title" id="conflicting_static_and_instance">conflicting_<wbr>static_<wbr>and_<wbr>instance</header>
 </div>
 <div class="card-content">
 
@@ -1793,7 +1793,7 @@ with the same name._
 </div>
 <div class="card outlined-card" id="conflicting_type_variable_and_container">
 <div class="card-header">
-<header class="card-title" id="conflicting_type_variable_and_container">{{"conflicting_type_variable_and_container" | underscoreBreaker}}</header>
+<header class="card-title" id="conflicting_type_variable_and_container">conflicting_<wbr>type_<wbr>variable_<wbr>and_<wbr>container</header>
 </div>
 <div class="card-content">
 
@@ -1824,7 +1824,7 @@ type parameter is defined._
 </div>
 <div class="card outlined-card" id="conflicting_type_variable_and_member">
 <div class="card-header">
-<header class="card-title" id="conflicting_type_variable_and_member">{{"conflicting_type_variable_and_member" | underscoreBreaker}}</header>
+<header class="card-title" id="conflicting_type_variable_and_member">conflicting_<wbr>type_<wbr>variable_<wbr>and_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -1852,7 +1852,7 @@ _'{0}' can't be used to name both a type parameter and a member in this mixin._
 </div>
 <div class="card outlined-card" id="constant_pattern_never_matches_value_type">
 <div class="card-header">
-<header class="card-title" id="constant_pattern_never_matches_value_type">{{"constant_pattern_never_matches_value_type" | underscoreBreaker}}</header>
+<header class="card-title" id="constant_pattern_never_matches_value_type">constant_<wbr>pattern_<wbr>never_<wbr>matches_<wbr>value_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -1871,7 +1871,7 @@ _The matched value type '{0}' can never be equal to this constant of type
 </div>
 <div class="card outlined-card" id="constant_pattern_with_non_constant_expression">
 <div class="card-header">
-<header class="card-title" id="constant_pattern_with_non_constant_expression">{{"constant_pattern_with_non_constant_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="constant_pattern_with_non_constant_expression">constant_<wbr>pattern_<wbr>with_<wbr>non_<wbr>constant_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -1889,7 +1889,7 @@ _The expression of a constant pattern must be a valid constant._
 </div>
 <div class="card outlined-card" id="constructor_with_return_type">
 <div class="card-header">
-<header class="card-title" id="constructor_with_return_type">{{"constructor_with_return_type" | underscoreBreaker}}</header>
+<header class="card-title" id="constructor_with_return_type">constructor_<wbr>with_<wbr>return_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -1906,7 +1906,7 @@ _Constructors can't have a return type._
 </div>
 <div class="card outlined-card" id="constructor_with_type_arguments">
 <div class="card-header">
-<header class="card-title" id="constructor_with_type_arguments">{{"constructor_with_type_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="constructor_with_type_arguments">constructor_<wbr>with_<wbr>type_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -1923,7 +1923,7 @@ _A constructor invocation can't have type arguments after the constructor name._
 </div>
 <div class="card outlined-card" id="const_and_final">
 <div class="card-header">
-<header class="card-title" id="const_and_final">{{"const_and_final" | underscoreBreaker}}</header>
+<header class="card-title" id="const_and_final">const_<wbr>and_<wbr>final</header>
 </div>
 <div class="card-content">
 
@@ -1940,7 +1940,7 @@ _Members can't be declared to be both 'const' and 'final'._
 </div>
 <div class="card outlined-card" id="const_class">
 <div class="card-header">
-<header class="card-title" id="const_class">{{"const_class" | underscoreBreaker}}</header>
+<header class="card-title" id="const_class">const_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -1957,7 +1957,7 @@ _Classes can't be declared to be 'const'._
 </div>
 <div class="card outlined-card" id="const_constructor_field_type_mismatch">
 <div class="card-header">
-<header class="card-title" id="const_constructor_field_type_mismatch">{{"const_constructor_field_type_mismatch" | underscoreBreaker}}</header>
+<header class="card-title" id="const_constructor_field_type_mismatch">const_<wbr>constructor_<wbr>field_<wbr>type_<wbr>mismatch</header>
 </div>
 <div class="card-content">
 
@@ -1975,7 +1975,7 @@ _In a const constructor, a value of type '{0}' can't be assigned to the field
 </div>
 <div class="card outlined-card" id="const_constructor_param_type_mismatch">
 <div class="card-header">
-<header class="card-title" id="const_constructor_param_type_mismatch">{{"const_constructor_param_type_mismatch" | underscoreBreaker}}</header>
+<header class="card-title" id="const_constructor_param_type_mismatch">const_<wbr>constructor_<wbr>param_<wbr>type_<wbr>mismatch</header>
 </div>
 <div class="card-content">
 
@@ -1994,7 +1994,7 @@ constructor._
 </div>
 <div class="card outlined-card" id="const_constructor_throws_exception">
 <div class="card-header">
-<header class="card-title" id="const_constructor_throws_exception">{{"const_constructor_throws_exception" | underscoreBreaker}}</header>
+<header class="card-title" id="const_constructor_throws_exception">const_<wbr>constructor_<wbr>throws_<wbr>exception</header>
 </div>
 <div class="card-content">
 
@@ -2011,7 +2011,7 @@ _Const constructors can't throw exceptions._
 </div>
 <div class="card outlined-card" id="const_constructor_with_body">
 <div class="card-header">
-<header class="card-title" id="const_constructor_with_body">{{"const_constructor_with_body" | underscoreBreaker}}</header>
+<header class="card-title" id="const_constructor_with_body">const_<wbr>constructor_<wbr>with_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -2028,7 +2028,7 @@ _Const constructors can't have a body._
 </div>
 <div class="card outlined-card" id="const_constructor_with_field_initialized_by_non_const">
 <div class="card-header">
-<header class="card-title" id="const_constructor_with_field_initialized_by_non_const">{{"const_constructor_with_field_initialized_by_non_const" | underscoreBreaker}}</header>
+<header class="card-title" id="const_constructor_with_field_initialized_by_non_const">const_<wbr>constructor_<wbr>with_<wbr>field_<wbr>initialized_<wbr>by_<wbr>non_<wbr>const</header>
 </div>
 <div class="card-content">
 
@@ -2047,7 +2047,7 @@ with a non-constant value._
 </div>
 <div class="card outlined-card" id="const_constructor_with_mixin_with_field">
 <div class="card-header">
-<header class="card-title" id="const_constructor_with_mixin_with_field">{{"const_constructor_with_mixin_with_field" | underscoreBreaker}}</header>
+<header class="card-title" id="const_constructor_with_mixin_with_field">const_<wbr>constructor_<wbr>with_<wbr>mixin_<wbr>with_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -2068,7 +2068,7 @@ fields: {0}._
 </div>
 <div class="card outlined-card" id="const_constructor_with_non_const_super">
 <div class="card-header">
-<header class="card-title" id="const_constructor_with_non_const_super">{{"const_constructor_with_non_const_super" | underscoreBreaker}}</header>
+<header class="card-title" id="const_constructor_with_non_const_super">const_<wbr>constructor_<wbr>with_<wbr>non_<wbr>const_<wbr>super</header>
 </div>
 <div class="card-content">
 
@@ -2086,7 +2086,7 @@ _A constant constructor can't call a non-constant super constructor of '{0}'._
 </div>
 <div class="card outlined-card" id="const_constructor_with_non_final_field">
 <div class="card-header">
-<header class="card-title" id="const_constructor_with_non_final_field">{{"const_constructor_with_non_final_field" | underscoreBreaker}}</header>
+<header class="card-title" id="const_constructor_with_non_final_field">const_<wbr>constructor_<wbr>with_<wbr>non_<wbr>final_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -2104,7 +2104,7 @@ _Can't define a const constructor for a class with non-final fields._
 </div>
 <div class="card outlined-card" id="const_deferred_class">
 <div class="card-header">
-<header class="card-title" id="const_deferred_class">{{"const_deferred_class" | underscoreBreaker}}</header>
+<header class="card-title" id="const_deferred_class">const_<wbr>deferred_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -2122,7 +2122,7 @@ _Deferred classes can't be created with 'const'._
 </div>
 <div class="card outlined-card" id="const_eval_assertion_failure">
 <div class="card-header">
-<header class="card-title" id="const_eval_assertion_failure">{{"const_eval_assertion_failure" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_assertion_failure">const_<wbr>eval_<wbr>assertion_<wbr>failure</header>
 </div>
 <div class="card-content">
 
@@ -2139,7 +2139,7 @@ _The assertion in this constant expression failed._
 </div>
 <div class="card outlined-card" id="const_eval_assertion_failure_with_message">
 <div class="card-header">
-<header class="card-title" id="const_eval_assertion_failure_with_message">{{"const_eval_assertion_failure_with_message" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_assertion_failure_with_message">const_<wbr>eval_<wbr>assertion_<wbr>failure_<wbr>with_<wbr>message</header>
 </div>
 <div class="card-content">
 
@@ -2156,7 +2156,7 @@ _An assertion failed with message '{0}'._
 </div>
 <div class="card outlined-card" id="const_eval_extension_method">
 <div class="card-header">
-<header class="card-title" id="const_eval_extension_method">{{"const_eval_extension_method" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_extension_method">const_<wbr>eval_<wbr>extension_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -2173,7 +2173,7 @@ _Extension methods can't be used in constant expressions._
 </div>
 <div class="card outlined-card" id="const_eval_extension_type_method">
 <div class="card-header">
-<header class="card-title" id="const_eval_extension_type_method">{{"const_eval_extension_type_method" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_extension_type_method">const_<wbr>eval_<wbr>extension_<wbr>type_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -2190,7 +2190,7 @@ _Extension type methods can't be used in constant expressions._
 </div>
 <div class="card outlined-card" id="const_eval_for_element">
 <div class="card-header">
-<header class="card-title" id="const_eval_for_element">{{"const_eval_for_element" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_for_element">const_<wbr>eval_<wbr>for_<wbr>element</header>
 </div>
 <div class="card-content">
 
@@ -2207,7 +2207,7 @@ _Constant expressions don't support 'for' elements._
 </div>
 <div class="card outlined-card" id="const_eval_method_invocation">
 <div class="card-header">
-<header class="card-title" id="const_eval_method_invocation">{{"const_eval_method_invocation" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_method_invocation">const_<wbr>eval_<wbr>method_<wbr>invocation</header>
 </div>
 <div class="card-content">
 
@@ -2224,7 +2224,7 @@ _Methods can't be invoked in constant expressions._
 </div>
 <div class="card outlined-card" id="const_eval_primitive_equality">
 <div class="card-header">
-<header class="card-title" id="const_eval_primitive_equality">{{"const_eval_primitive_equality" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_primitive_equality">const_<wbr>eval_<wbr>primitive_<wbr>equality</header>
 </div>
 <div class="card-content">
 
@@ -2242,7 +2242,7 @@ equality._
 </div>
 <div class="card outlined-card" id="const_eval_property_access">
 <div class="card-header">
-<header class="card-title" id="const_eval_property_access">{{"const_eval_property_access" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_property_access">const_<wbr>eval_<wbr>property_<wbr>access</header>
 </div>
 <div class="card-content">
 
@@ -2260,7 +2260,7 @@ expression._
 </div>
 <div class="card outlined-card" id="const_eval_throws_exception">
 <div class="card-header">
-<header class="card-title" id="const_eval_throws_exception">{{"const_eval_throws_exception" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_throws_exception">const_<wbr>eval_<wbr>throws_<wbr>exception</header>
 </div>
 <div class="card-content">
 
@@ -2277,7 +2277,7 @@ _Evaluation of this constant expression throws an exception._
 </div>
 <div class="card outlined-card" id="const_eval_throws_idbze">
 <div class="card-header">
-<header class="card-title" id="const_eval_throws_idbze">{{"const_eval_throws_idbze" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_throws_idbze">const_<wbr>eval_<wbr>throws_<wbr>idbze</header>
 </div>
 <div class="card-content">
 
@@ -2295,7 +2295,7 @@ IntegerDivisionByZeroException._
 </div>
 <div class="card outlined-card" id="const_eval_type_bool">
 <div class="card-header">
-<header class="card-title" id="const_eval_type_bool">{{"const_eval_type_bool" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_type_bool">const_<wbr>eval_<wbr>type_<wbr>bool</header>
 </div>
 <div class="card-content">
 
@@ -2312,7 +2312,7 @@ _In constant expressions, operands of this operator must be of type 'bool'._
 </div>
 <div class="card outlined-card" id="const_eval_type_bool_int">
 <div class="card-header">
-<header class="card-title" id="const_eval_type_bool_int">{{"const_eval_type_bool_int" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_type_bool_int">const_<wbr>eval_<wbr>type_<wbr>bool_<wbr>int</header>
 </div>
 <div class="card-content">
 
@@ -2330,7 +2330,7 @@ _In constant expressions, operands of this operator must be of type 'bool' or
 </div>
 <div class="card outlined-card" id="const_eval_type_bool_num_string">
 <div class="card-header">
-<header class="card-title" id="const_eval_type_bool_num_string">{{"const_eval_type_bool_num_string" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_type_bool_num_string">const_<wbr>eval_<wbr>type_<wbr>bool_<wbr>num_<wbr>string</header>
 </div>
 <div class="card-content">
 
@@ -2348,7 +2348,7 @@ _In constant expressions, operands of this operator must be of type 'bool',
 </div>
 <div class="card outlined-card" id="const_eval_type_int">
 <div class="card-header">
-<header class="card-title" id="const_eval_type_int">{{"const_eval_type_int" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_type_int">const_<wbr>eval_<wbr>type_<wbr>int</header>
 </div>
 <div class="card-content">
 
@@ -2365,7 +2365,7 @@ _In constant expressions, operands of this operator must be of type 'int'._
 </div>
 <div class="card outlined-card" id="const_eval_type_num">
 <div class="card-header">
-<header class="card-title" id="const_eval_type_num">{{"const_eval_type_num" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_type_num">const_<wbr>eval_<wbr>type_<wbr>num</header>
 </div>
 <div class="card-content">
 
@@ -2382,7 +2382,7 @@ _In constant expressions, operands of this operator must be of type 'num'._
 </div>
 <div class="card outlined-card" id="const_eval_type_num_string">
 <div class="card-header">
-<header class="card-title" id="const_eval_type_num_string">{{"const_eval_type_num_string" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_type_num_string">const_<wbr>eval_<wbr>type_<wbr>num_<wbr>string</header>
 </div>
 <div class="card-content">
 
@@ -2400,7 +2400,7 @@ _In constant expressions, operands of this operator must be of type 'num' or
 </div>
 <div class="card outlined-card" id="const_eval_type_string">
 <div class="card-header">
-<header class="card-title" id="const_eval_type_string">{{"const_eval_type_string" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_type_string">const_<wbr>eval_<wbr>type_<wbr>string</header>
 </div>
 <div class="card-content">
 
@@ -2417,7 +2417,7 @@ _In constant expressions, operands of this operator must be of type 'String'._
 </div>
 <div class="card outlined-card" id="const_eval_type_type">
 <div class="card-header">
-<header class="card-title" id="const_eval_type_type">{{"const_eval_type_type" | underscoreBreaker}}</header>
+<header class="card-title" id="const_eval_type_type">const_<wbr>eval_<wbr>type_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -2434,7 +2434,7 @@ _In constant expressions, operands of this operator must be of type 'Type'._
 </div>
 <div class="card outlined-card" id="const_factory">
 <div class="card-header">
-<header class="card-title" id="const_factory">{{"const_factory" | underscoreBreaker}}</header>
+<header class="card-title" id="const_factory">const_<wbr>factory</header>
 </div>
 <div class="card-content">
 
@@ -2451,7 +2451,7 @@ _Only redirecting factory constructors can be declared to be 'const'._
 </div>
 <div class="card outlined-card" id="const_initialized_with_non_constant_value">
 <div class="card-header">
-<header class="card-title" id="const_initialized_with_non_constant_value">{{"const_initialized_with_non_constant_value" | underscoreBreaker}}</header>
+<header class="card-title" id="const_initialized_with_non_constant_value">const_<wbr>initialized_<wbr>with_<wbr>non_<wbr>constant_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -2469,7 +2469,7 @@ _Const variables must be initialized with a constant value._
 </div>
 <div class="card outlined-card" id="const_initialized_with_non_constant_value_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="const_initialized_with_non_constant_value_from_deferred_library">{{"const_initialized_with_non_constant_value_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="const_initialized_with_non_constant_value_from_deferred_library">const_<wbr>initialized_<wbr>with_<wbr>non_<wbr>constant_<wbr>value_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -2488,7 +2488,7 @@ variable._
 </div>
 <div class="card outlined-card" id="const_instance_field">
 <div class="card-header">
-<header class="card-title" id="const_instance_field">{{"const_instance_field" | underscoreBreaker}}</header>
+<header class="card-title" id="const_instance_field">const_<wbr>instance_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -2506,7 +2506,7 @@ _Only static fields can be declared as const._
 </div>
 <div class="card outlined-card" id="const_map_key_not_primitive_equality">
 <div class="card-header">
-<header class="card-title" id="const_map_key_not_primitive_equality">{{"const_map_key_not_primitive_equality" | underscoreBreaker}}</header>
+<header class="card-title" id="const_map_key_not_primitive_equality">const_<wbr>map_<wbr>key_<wbr>not_<wbr>primitive_<wbr>equality</header>
 </div>
 <div class="card-content">
 
@@ -2525,7 +2525,7 @@ _The type of a key in a constant map can't override the '==' operator, or
 </div>
 <div class="card outlined-card" id="const_method">
 <div class="card-header">
-<header class="card-title" id="const_method">{{"const_method" | underscoreBreaker}}</header>
+<header class="card-title" id="const_method">const_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -2542,7 +2542,7 @@ _Getters, setters and methods can't be declared to be 'const'._
 </div>
 <div class="card outlined-card" id="const_not_initialized">
 <div class="card-header">
-<header class="card-title" id="const_not_initialized">{{"const_not_initialized" | underscoreBreaker}}</header>
+<header class="card-title" id="const_not_initialized">const_<wbr>not_<wbr>initialized</header>
 </div>
 <div class="card-content">
 
@@ -2561,7 +2561,7 @@ _The constant '{0}' must be initialized._
 <div class="card outlined-card" id="const_set_element_not_primitive_equality">
 <a id="const_set_element_type_implements_equals" aria-hidden="true"></a>
 <div class="card-header">
-<header class="card-title" id="const_set_element_not_primitive_equality">{{"const_set_element_not_primitive_equality" | underscoreBreaker}}</header>
+<header class="card-title" id="const_set_element_not_primitive_equality">const_<wbr>set_<wbr>element_<wbr>not_<wbr>primitive_<wbr>equality</header>
 </div>
 <div class="card-content">
 
@@ -2580,7 +2580,7 @@ but the type '{0}' does._
 </div>
 <div class="card outlined-card" id="const_spread_expected_list_or_set">
 <div class="card-header">
-<header class="card-title" id="const_spread_expected_list_or_set">{{"const_spread_expected_list_or_set" | underscoreBreaker}}</header>
+<header class="card-title" id="const_spread_expected_list_or_set">const_<wbr>spread_<wbr>expected_<wbr>list_<wbr>or_<wbr>set</header>
 </div>
 <div class="card-content">
 
@@ -2598,7 +2598,7 @@ _A list or a set is expected in this spread._
 </div>
 <div class="card outlined-card" id="const_spread_expected_map">
 <div class="card-header">
-<header class="card-title" id="const_spread_expected_map">{{"const_spread_expected_map" | underscoreBreaker}}</header>
+<header class="card-title" id="const_spread_expected_map">const_<wbr>spread_<wbr>expected_<wbr>map</header>
 </div>
 <div class="card-content">
 
@@ -2616,7 +2616,7 @@ _A map is expected in this spread._
 </div>
 <div class="card outlined-card" id="const_type_parameter">
 <div class="card-header">
-<header class="card-title" id="const_type_parameter">{{"const_type_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="const_type_parameter">const_<wbr>type_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -2633,7 +2633,7 @@ _Type parameters can't be used in a constant expression._
 </div>
 <div class="card outlined-card" id="const_with_non_const">
 <div class="card-header">
-<header class="card-title" id="const_with_non_const">{{"const_with_non_const" | underscoreBreaker}}</header>
+<header class="card-title" id="const_with_non_const">const_<wbr>with_<wbr>non_<wbr>const</header>
 </div>
 <div class="card-content">
 
@@ -2651,7 +2651,7 @@ _The constructor being called isn't a const constructor._
 </div>
 <div class="card outlined-card" id="const_with_non_constant_argument">
 <div class="card-header">
-<header class="card-title" id="const_with_non_constant_argument">{{"const_with_non_constant_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="const_with_non_constant_argument">const_<wbr>with_<wbr>non_<wbr>constant_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -2669,7 +2669,7 @@ _Arguments of a constant creation must be constant expressions._
 </div>
 <div class="card outlined-card" id="const_with_type_parameters">
 <div class="card-header">
-<header class="card-title" id="const_with_type_parameters">{{"const_with_type_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="const_with_type_parameters">const_<wbr>with_<wbr>type_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -2691,7 +2691,7 @@ _A constant function tearoff can't use a type parameter as a type argument._
 </div>
 <div class="card outlined-card" id="const_with_undefined_constructor">
 <div class="card-header">
-<header class="card-title" id="const_with_undefined_constructor">{{"const_with_undefined_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="const_with_undefined_constructor">const_<wbr>with_<wbr>undefined_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -2708,7 +2708,7 @@ _The class '{0}' doesn't have a constant constructor '{1}'._
 </div>
 <div class="card outlined-card" id="const_with_undefined_constructor_default">
 <div class="card-header">
-<header class="card-title" id="const_with_undefined_constructor_default">{{"const_with_undefined_constructor_default" | underscoreBreaker}}</header>
+<header class="card-title" id="const_with_undefined_constructor_default">const_<wbr>with_<wbr>undefined_<wbr>constructor_<wbr>default</header>
 </div>
 <div class="card-content">
 
@@ -2726,7 +2726,7 @@ _The class '{0}' doesn't have an unnamed constant constructor._
 <div class="card outlined-card" id="continue_label_invalid">
 <a id="continue_label_on_switch" aria-hidden="true"></a>
 <div class="card-header">
-<header class="card-title" id="continue_label_invalid">{{"continue_label_invalid" | underscoreBreaker}}</header>
+<header class="card-title" id="continue_label_invalid">continue_<wbr>label_<wbr>invalid</header>
 </div>
 <div class="card-content">
 
@@ -2745,7 +2745,7 @@ switch member._
 </div>
 <div class="card outlined-card" id="continue_outside_of_loop">
 <div class="card-header">
-<header class="card-title" id="continue_outside_of_loop">{{"continue_outside_of_loop" | underscoreBreaker}}</header>
+<header class="card-title" id="continue_outside_of_loop">continue_<wbr>outside_<wbr>of_<wbr>loop</header>
 </div>
 <div class="card-content">
 
@@ -2762,7 +2762,7 @@ _A continue statement can't be used outside of a loop or switch statement._
 </div>
 <div class="card outlined-card" id="continue_without_label_in_case">
 <div class="card-header">
-<header class="card-title" id="continue_without_label_in_case">{{"continue_without_label_in_case" | underscoreBreaker}}</header>
+<header class="card-title" id="continue_without_label_in_case">continue_<wbr>without_<wbr>label_<wbr>in_<wbr>case</header>
 </div>
 <div class="card-content">
 
@@ -2779,7 +2779,7 @@ _A continue statement in a switch statement must have a label as a target._
 </div>
 <div class="card outlined-card" id="could_not_infer">
 <div class="card-header">
-<header class="card-title" id="could_not_infer">{{"could_not_infer" | underscoreBreaker}}</header>
+<header class="card-title" id="could_not_infer">could_<wbr>not_<wbr>infer</header>
 </div>
 <div class="card-content">
 
@@ -2796,7 +2796,7 @@ _Couldn't infer type parameter '{0}'.{1}_
 </div>
 <div class="card outlined-card" id="covariant_and_static">
 <div class="card-header">
-<header class="card-title" id="covariant_and_static">{{"covariant_and_static" | underscoreBreaker}}</header>
+<header class="card-title" id="covariant_and_static">covariant_<wbr>and_<wbr>static</header>
 </div>
 <div class="card-content">
 
@@ -2813,7 +2813,7 @@ _Members can't be declared to be both 'covariant' and 'static'._
 </div>
 <div class="card outlined-card" id="covariant_constructor">
 <div class="card-header">
-<header class="card-title" id="covariant_constructor">{{"covariant_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="covariant_constructor">covariant_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -2830,7 +2830,7 @@ _A constructor can't be declared to be 'covariant'._
 </div>
 <div class="card outlined-card" id="covariant_member">
 <div class="card-header">
-<header class="card-title" id="covariant_member">{{"covariant_member" | underscoreBreaker}}</header>
+<header class="card-title" id="covariant_member">covariant_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -2847,7 +2847,7 @@ _Getters, setters and methods can't be declared to be 'covariant'._
 </div>
 <div class="card outlined-card" id="creation_of_struct_or_union">
 <div class="card-header">
-<header class="card-title" id="creation_of_struct_or_union">{{"creation_of_struct_or_union" | underscoreBreaker}}</header>
+<header class="card-title" id="creation_of_struct_or_union">creation_<wbr>of_<wbr>struct_<wbr>or_<wbr>union</header>
 </div>
 <div class="card-content">
 
@@ -2866,7 +2866,7 @@ instantiated by a generative constructor._
 </div>
 <div class="card outlined-card" id="creation_with_non_type">
 <div class="card-header">
-<header class="card-title" id="creation_with_non_type">{{"creation_with_non_type" | underscoreBreaker}}</header>
+<header class="card-title" id="creation_with_non_type">creation_<wbr>with_<wbr>non_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -2884,7 +2884,7 @@ _The name '{0}' isn't a class._
 </div>
 <div class="card outlined-card" id="dead_code">
 <div class="card-header">
-<header class="card-title" id="dead_code">{{"dead_code" | underscoreBreaker}}</header>
+<header class="card-title" id="dead_code">dead_<wbr>code</header>
 </div>
 <div class="card-content">
 
@@ -2905,7 +2905,7 @@ referenced so this initializer will never be evaluated._
 </div>
 <div class="card outlined-card" id="dead_code_catch_following_catch">
 <div class="card-header">
-<header class="card-title" id="dead_code_catch_following_catch">{{"dead_code_catch_following_catch" | underscoreBreaker}}</header>
+<header class="card-title" id="dead_code_catch_following_catch">dead_<wbr>code_<wbr>catch_<wbr>following_<wbr>catch</header>
 </div>
 <div class="card-content">
 
@@ -2924,7 +2924,7 @@ never reached._
 </div>
 <div class="card outlined-card" id="dead_code_on_catch_subtype">
 <div class="card-header">
-<header class="card-title" id="dead_code_on_catch_subtype">{{"dead_code_on_catch_subtype" | underscoreBreaker}}</header>
+<header class="card-title" id="dead_code_on_catch_subtype">dead_<wbr>code_<wbr>on_<wbr>catch_<wbr>subtype</header>
 </div>
 <div class="card-content">
 
@@ -2943,7 +2943,7 @@ _Dead code: This on-catch block won't be executed because '{0}' is a subtype of
 </div>
 <div class="card outlined-card" id="dead_null_aware_expression">
 <div class="card-header">
-<header class="card-title" id="dead_null_aware_expression">{{"dead_null_aware_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="dead_null_aware_expression">dead_<wbr>null_<wbr>aware_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -2959,27 +2959,9 @@ _The left operand can't be null, so the right operand is never executed._
 </div>
 </div>
 </div>
-<div class="card outlined-card" id="declaration_named_augmented_inside_augmentation">
-<div class="card-header">
-<header class="card-title" id="declaration_named_augmented_inside_augmentation">{{"declaration_named_augmented_inside_augmentation" | underscoreBreaker}}</header>
-</div>
-<div class="card-content">
-
-_The identifier 'augmented' has a special meaning inside augmenting
-declarations._
-
-</div>
-<div class="card-actions">
-<div class="leading">
-</div>
-<div class="trailing">
-  <button class="copy-button filled-button hidden" data-copy="declaration_named_augmented_inside_augmentation" title="Copy declaration_named_augmented_inside_augmentation to your clipboard.">Copy name</button>
-</div>
-</div>
-</div>
 <div class="card outlined-card" id="default_in_switch_expression">
 <div class="card-header">
-<header class="card-title" id="default_in_switch_expression">{{"default_in_switch_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="default_in_switch_expression">default_<wbr>in_<wbr>switch_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -2996,7 +2978,7 @@ _A switch expression may not use the `default` keyword._
 </div>
 <div class="card outlined-card" id="default_list_constructor">
 <div class="card-header">
-<header class="card-title" id="default_list_constructor">{{"default_list_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="default_list_constructor">default_<wbr>list_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -3014,7 +2996,7 @@ _The default 'List' constructor isn't available when null safety is enabled._
 </div>
 <div class="card outlined-card" id="default_value_in_function_type">
 <div class="card-header">
-<header class="card-title" id="default_value_in_function_type">{{"default_value_in_function_type" | underscoreBreaker}}</header>
+<header class="card-title" id="default_value_in_function_type">default_<wbr>value_<wbr>in_<wbr>function_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -3032,7 +3014,7 @@ _Parameters in a function type can't have default values._
 </div>
 <div class="card outlined-card" id="default_value_in_redirecting_factory_constructor">
 <div class="card-header">
-<header class="card-title" id="default_value_in_redirecting_factory_constructor">{{"default_value_in_redirecting_factory_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="default_value_in_redirecting_factory_constructor">default_<wbr>value_<wbr>in_<wbr>redirecting_<wbr>factory_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -3051,7 +3033,7 @@ constructor._
 </div>
 <div class="card outlined-card" id="default_value_on_required_parameter">
 <div class="card-header">
-<header class="card-title" id="default_value_on_required_parameter">{{"default_value_on_required_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="default_value_on_required_parameter">default_<wbr>value_<wbr>on_<wbr>required_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -3069,7 +3051,7 @@ _Required named parameters can't have a default value._
 </div>
 <div class="card outlined-card" id="deferred_after_prefix">
 <div class="card-header">
-<header class="card-title" id="deferred_after_prefix">{{"deferred_after_prefix" | underscoreBreaker}}</header>
+<header class="card-title" id="deferred_after_prefix">deferred_<wbr>after_<wbr>prefix</header>
 </div>
 <div class="card-content">
 
@@ -3086,7 +3068,7 @@ _The deferred keyword should come immediately before the prefix ('as' clause)._
 </div>
 <div class="card outlined-card" id="deferred_import_of_extension">
 <div class="card-header">
-<header class="card-title" id="deferred_import_of_extension">{{"deferred_import_of_extension" | underscoreBreaker}}</header>
+<header class="card-title" id="deferred_import_of_extension">deferred_<wbr>import_<wbr>of_<wbr>extension</header>
 </div>
 <div class="card-content">
 
@@ -3104,7 +3086,7 @@ _Imports of deferred libraries must hide all extensions._
 </div>
 <div class="card outlined-card" id="definitely_unassigned_late_local_variable">
 <div class="card-header">
-<header class="card-title" id="definitely_unassigned_late_local_variable">{{"definitely_unassigned_late_local_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="definitely_unassigned_late_local_variable">definitely_<wbr>unassigned_<wbr>late_<wbr>local_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -3122,7 +3104,7 @@ _The late local variable '{0}' is definitely unassigned at this point._
 </div>
 <div class="card outlined-card" id="dependencies_field_not_map">
 <div class="card-header">
-<header class="card-title" id="dependencies_field_not_map">{{"dependencies_field_not_map" | underscoreBreaker}}</header>
+<header class="card-title" id="dependencies_field_not_map">dependencies_<wbr>field_<wbr>not_<wbr>map</header>
 </div>
 <div class="card-content">
 
@@ -3140,7 +3122,7 @@ _The value of the '{0}' field is expected to be a map._
 </div>
 <div class="card outlined-card" id="deprecated_colon_for_default_value">
 <div class="card-header">
-<header class="card-title" id="deprecated_colon_for_default_value">{{"deprecated_colon_for_default_value" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_colon_for_default_value">deprecated_<wbr>colon_<wbr>for_<wbr>default_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -3159,7 +3141,7 @@ not be supported in language version 3.0 and later._
 </div>
 <div class="card outlined-card" id="deprecated_export_use">
 <div class="card-header">
-<header class="card-title" id="deprecated_export_use">{{"deprecated_export_use" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_export_use">deprecated_<wbr>export_<wbr>use</header>
 </div>
 <div class="card-content">
 
@@ -3177,7 +3159,7 @@ _The ability to import '{0}' indirectly is deprecated._
 </div>
 <div class="card outlined-card" id="deprecated_field">
 <div class="card-header">
-<header class="card-title" id="deprecated_field">{{"deprecated_field" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_field">deprecated_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -3195,7 +3177,7 @@ _The '{0}' field is no longer used and can be removed._
 </div>
 <div class="card outlined-card" id="deprecated_lint">
 <div class="card-header">
-<header class="card-title" id="deprecated_lint">{{"deprecated_lint" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_lint">deprecated_<wbr>lint</header>
 </div>
 <div class="card-content">
 
@@ -3212,7 +3194,7 @@ _'{0}' is a deprecated lint rule and should not be used._
 </div>
 <div class="card outlined-card" id="deprecated_lint_with_replacement">
 <div class="card-header">
-<header class="card-title" id="deprecated_lint_with_replacement">{{"deprecated_lint_with_replacement" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_lint_with_replacement">deprecated_<wbr>lint_<wbr>with_<wbr>replacement</header>
 </div>
 <div class="card-content">
 
@@ -3229,7 +3211,7 @@ _'{0}' is deprecated and should be replaced by '{1}'._
 </div>
 <div class="card outlined-card" id="deprecated_member_use">
 <div class="card-header">
-<header class="card-title" id="deprecated_member_use">{{"deprecated_member_use" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_member_use">deprecated_<wbr>member_<wbr>use</header>
 </div>
 <div class="card-content">
 
@@ -3249,7 +3231,7 @@ _'{0}' is deprecated and shouldn't be used. {1}_
 </div>
 <div class="card outlined-card" id="deprecated_member_use_from_same_package">
 <div class="card-header">
-<header class="card-title" id="deprecated_member_use_from_same_package">{{"deprecated_member_use_from_same_package" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_member_use_from_same_package">deprecated_<wbr>member_<wbr>use_<wbr>from_<wbr>same_<wbr>package</header>
 </div>
 <div class="card-content">
 
@@ -3269,7 +3251,7 @@ _'{0}' is deprecated and shouldn't be used. {1}_
 </div>
 <div class="card outlined-card" id="deprecated_new_in_comment_reference">
 <div class="card-header">
-<header class="card-title" id="deprecated_new_in_comment_reference">{{"deprecated_new_in_comment_reference" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_new_in_comment_reference">deprecated_<wbr>new_<wbr>in_<wbr>comment_<wbr>reference</header>
 </div>
 <div class="card-content">
 
@@ -3287,7 +3269,7 @@ _Using the 'new' keyword in a comment reference is deprecated._
 </div>
 <div class="card outlined-card" id="deprecated_subtype_of_function">
 <div class="card-header">
-<header class="card-title" id="deprecated_subtype_of_function">{{"deprecated_subtype_of_function" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_subtype_of_function">deprecated_<wbr>subtype_<wbr>of_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -3309,7 +3291,7 @@ _Mixing in 'Function' is deprecated._
 </div>
 <div class="card outlined-card" id="directive_after_declaration">
 <div class="card-header">
-<header class="card-title" id="directive_after_declaration">{{"directive_after_declaration" | underscoreBreaker}}</header>
+<header class="card-title" id="directive_after_declaration">directive_<wbr>after_<wbr>declaration</header>
 </div>
 <div class="card-content">
 
@@ -3326,7 +3308,7 @@ _Directives must appear before any declarations._
 </div>
 <div class="card outlined-card" id="disallowed_type_instantiation_expression">
 <div class="card-header">
-<header class="card-title" id="disallowed_type_instantiation_expression">{{"disallowed_type_instantiation_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="disallowed_type_instantiation_expression">disallowed_<wbr>type_<wbr>instantiation_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -3345,7 +3327,7 @@ constructor can have type arguments._
 </div>
 <div class="card outlined-card" id="division_optimization">
 <div class="card-header">
-<header class="card-title" id="division_optimization">{{"division_optimization" | underscoreBreaker}}</header>
+<header class="card-title" id="division_optimization">division_<wbr>optimization</header>
 </div>
 <div class="card-content">
 
@@ -3363,7 +3345,7 @@ _The operator x ~/ y is more efficient than (x / y).toInt()._
 </div>
 <div class="card outlined-card" id="doc_directive_argument_wrong_format">
 <div class="card-header">
-<header class="card-title" id="doc_directive_argument_wrong_format">{{"doc_directive_argument_wrong_format" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_directive_argument_wrong_format">doc_<wbr>directive_<wbr>argument_<wbr>wrong_<wbr>format</header>
 </div>
 <div class="card-content">
 
@@ -3380,7 +3362,7 @@ _The '{0}' argument must be formatted as {1}._
 </div>
 <div class="card outlined-card" id="doc_directive_has_extra_arguments">
 <div class="card-header">
-<header class="card-title" id="doc_directive_has_extra_arguments">{{"doc_directive_has_extra_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_directive_has_extra_arguments">doc_<wbr>directive_<wbr>has_<wbr>extra_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -3397,7 +3379,7 @@ _The '{0}' directive has '{1}' arguments, but only '{2}' are expected._
 </div>
 <div class="card outlined-card" id="doc_directive_has_unexpected_named_argument">
 <div class="card-header">
-<header class="card-title" id="doc_directive_has_unexpected_named_argument">{{"doc_directive_has_unexpected_named_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_directive_has_unexpected_named_argument">doc_<wbr>directive_<wbr>has_<wbr>unexpected_<wbr>named_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -3414,7 +3396,7 @@ _The '{0}' directive has an unexpected named argument, '{1}'._
 </div>
 <div class="card outlined-card" id="doc_directive_missing_argument">
 <div class="card-header">
-<header class="card-title" id="doc_directive_missing_argument">{{"doc_directive_missing_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_directive_missing_argument">doc_<wbr>directive_<wbr>missing_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -3435,7 +3417,7 @@ _The '{0}' directive is missing a '{1}', a '{2}', and a '{3}' argument._
 </div>
 <div class="card outlined-card" id="doc_directive_missing_closing_brace">
 <div class="card-header">
-<header class="card-title" id="doc_directive_missing_closing_brace">{{"doc_directive_missing_closing_brace" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_directive_missing_closing_brace">doc_<wbr>directive_<wbr>missing_<wbr>closing_<wbr>brace</header>
 </div>
 <div class="card-content">
 
@@ -3452,7 +3434,7 @@ _Doc directive is missing a closing curly brace ('}')._
 </div>
 <div class="card outlined-card" id="doc_directive_missing_closing_tag">
 <div class="card-header">
-<header class="card-title" id="doc_directive_missing_closing_tag">{{"doc_directive_missing_closing_tag" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_directive_missing_closing_tag">doc_<wbr>directive_<wbr>missing_<wbr>closing_<wbr>tag</header>
 </div>
 <div class="card-content">
 
@@ -3469,7 +3451,7 @@ _Doc directive is missing a closing tag._
 </div>
 <div class="card outlined-card" id="doc_directive_missing_opening_tag">
 <div class="card-header">
-<header class="card-title" id="doc_directive_missing_opening_tag">{{"doc_directive_missing_opening_tag" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_directive_missing_opening_tag">doc_<wbr>directive_<wbr>missing_<wbr>opening_<wbr>tag</header>
 </div>
 <div class="card-content">
 
@@ -3486,7 +3468,7 @@ _Doc directive is missing an opening tag._
 </div>
 <div class="card outlined-card" id="doc_directive_unknown">
 <div class="card-header">
-<header class="card-title" id="doc_directive_unknown">{{"doc_directive_unknown" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_directive_unknown">doc_<wbr>directive_<wbr>unknown</header>
 </div>
 <div class="card-content">
 
@@ -3503,7 +3485,7 @@ _Doc directive '{0}' is unknown._
 </div>
 <div class="card outlined-card" id="doc_import_cannot_be_deferred">
 <div class="card-header">
-<header class="card-title" id="doc_import_cannot_be_deferred">{{"doc_import_cannot_be_deferred" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_import_cannot_be_deferred">doc_<wbr>import_<wbr>cannot_<wbr>be_<wbr>deferred</header>
 </div>
 <div class="card-content">
 
@@ -3521,7 +3503,7 @@ _Doc imports can't be deferred._
 </div>
 <div class="card outlined-card" id="doc_import_cannot_have_combinators">
 <div class="card-header">
-<header class="card-title" id="doc_import_cannot_have_combinators">{{"doc_import_cannot_have_combinators" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_import_cannot_have_combinators">doc_<wbr>import_<wbr>cannot_<wbr>have_<wbr>combinators</header>
 </div>
 <div class="card-content">
 
@@ -3539,7 +3521,7 @@ _Doc imports can't have show or hide combinators._
 </div>
 <div class="card outlined-card" id="doc_import_cannot_have_configurations">
 <div class="card-header">
-<header class="card-title" id="doc_import_cannot_have_configurations">{{"doc_import_cannot_have_configurations" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_import_cannot_have_configurations">doc_<wbr>import_<wbr>cannot_<wbr>have_<wbr>configurations</header>
 </div>
 <div class="card-content">
 
@@ -3557,7 +3539,7 @@ _Doc imports can't have configurations._
 </div>
 <div class="card outlined-card" id="doc_import_cannot_have_prefix">
 <div class="card-header">
-<header class="card-title" id="doc_import_cannot_have_prefix">{{"doc_import_cannot_have_prefix" | underscoreBreaker}}</header>
+<header class="card-title" id="doc_import_cannot_have_prefix">doc_<wbr>import_<wbr>cannot_<wbr>have_<wbr>prefix</header>
 </div>
 <div class="card-content">
 
@@ -3575,7 +3557,7 @@ _Doc imports can't have prefixes._
 </div>
 <div class="card outlined-card" id="dot_shorthand_missing_context">
 <div class="card-header">
-<header class="card-title" id="dot_shorthand_missing_context">{{"dot_shorthand_missing_context" | underscoreBreaker}}</header>
+<header class="card-title" id="dot_shorthand_missing_context">dot_<wbr>shorthand_<wbr>missing_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -3593,7 +3575,7 @@ _A dot shorthand can't be used where there is no context type._
 </div>
 <div class="card outlined-card" id="dot_shorthand_undefined_member">
 <div class="card-header">
-<header class="card-title" id="dot_shorthand_undefined_member">{{"dot_shorthand_undefined_member" | underscoreBreaker}}</header>
+<header class="card-title" id="dot_shorthand_undefined_member">dot_<wbr>shorthand_<wbr>undefined_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -3614,7 +3596,7 @@ _The static method or constructor '{0}' isn't defined for the context type
 </div>
 <div class="card outlined-card" id="duplicated_modifier">
 <div class="card-header">
-<header class="card-title" id="duplicated_modifier">{{"duplicated_modifier" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicated_modifier">duplicated_<wbr>modifier</header>
 </div>
 <div class="card-content">
 
@@ -3631,7 +3613,7 @@ _The modifier '{0}' was already specified._
 </div>
 <div class="card outlined-card" id="duplicate_constructor">
 <div class="card-header">
-<header class="card-title" id="duplicate_constructor">{{"duplicate_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_constructor">duplicate_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -3651,7 +3633,7 @@ _The unnamed constructor is already defined._
 </div>
 <div class="card outlined-card" id="duplicate_deferred">
 <div class="card-header">
-<header class="card-title" id="duplicate_deferred">{{"duplicate_deferred" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_deferred">duplicate_<wbr>deferred</header>
 </div>
 <div class="card-content">
 
@@ -3668,7 +3650,7 @@ _An import directive can only have one 'deferred' keyword._
 </div>
 <div class="card outlined-card" id="duplicate_definition">
 <div class="card-header">
-<header class="card-title" id="duplicate_definition">{{"duplicate_definition" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_definition">duplicate_<wbr>definition</header>
 </div>
 <div class="card-content">
 
@@ -3686,7 +3668,7 @@ _The name '{0}' is already defined._
 </div>
 <div class="card outlined-card" id="duplicate_export">
 <div class="card-header">
-<header class="card-title" id="duplicate_export">{{"duplicate_export" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_export">duplicate_<wbr>export</header>
 </div>
 <div class="card-content">
 
@@ -3704,7 +3686,7 @@ _Duplicate export._
 </div>
 <div class="card outlined-card" id="duplicate_field_formal_parameter">
 <div class="card-header">
-<header class="card-title" id="duplicate_field_formal_parameter">{{"duplicate_field_formal_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_field_formal_parameter">duplicate_<wbr>field_<wbr>formal_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -3723,7 +3705,7 @@ constructor._
 </div>
 <div class="card outlined-card" id="duplicate_field_name">
 <div class="card-header">
-<header class="card-title" id="duplicate_field_name">{{"duplicate_field_name" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_field_name">duplicate_<wbr>field_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -3741,7 +3723,7 @@ _The field name '{0}' is already used in this record._
 </div>
 <div class="card outlined-card" id="duplicate_hidden_name">
 <div class="card-header">
-<header class="card-title" id="duplicate_hidden_name">{{"duplicate_hidden_name" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_hidden_name">duplicate_<wbr>hidden_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -3759,7 +3741,7 @@ _Duplicate hidden name._
 </div>
 <div class="card outlined-card" id="duplicate_ignore">
 <div class="card-header">
-<header class="card-title" id="duplicate_ignore">{{"duplicate_ignore" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_ignore">duplicate_<wbr>ignore</header>
 </div>
 <div class="card-content">
 
@@ -3778,7 +3760,7 @@ ignored._
 </div>
 <div class="card outlined-card" id="duplicate_import">
 <div class="card-header">
-<header class="card-title" id="duplicate_import">{{"duplicate_import" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_import">duplicate_<wbr>import</header>
 </div>
 <div class="card-content">
 
@@ -3796,7 +3778,7 @@ _Duplicate import._
 </div>
 <div class="card outlined-card" id="duplicate_label_in_switch_statement">
 <div class="card-header">
-<header class="card-title" id="duplicate_label_in_switch_statement">{{"duplicate_label_in_switch_statement" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_label_in_switch_statement">duplicate_<wbr>label_<wbr>in_<wbr>switch_<wbr>statement</header>
 </div>
 <div class="card-content">
 
@@ -3813,7 +3795,7 @@ _The label '{0}' was already used in this switch statement._
 </div>
 <div class="card outlined-card" id="duplicate_named_argument">
 <div class="card-header">
-<header class="card-title" id="duplicate_named_argument">{{"duplicate_named_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_named_argument">duplicate_<wbr>named_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -3831,7 +3813,7 @@ _The argument for the named parameter '{0}' was already specified._
 </div>
 <div class="card outlined-card" id="duplicate_part">
 <div class="card-header">
-<header class="card-title" id="duplicate_part">{{"duplicate_part" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_part">duplicate_<wbr>part</header>
 </div>
 <div class="card-content">
 
@@ -3849,7 +3831,7 @@ _The library already contains a part with the URI '{0}'._
 </div>
 <div class="card outlined-card" id="duplicate_pattern_assignment_variable">
 <div class="card-header">
-<header class="card-title" id="duplicate_pattern_assignment_variable">{{"duplicate_pattern_assignment_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_pattern_assignment_variable">duplicate_<wbr>pattern_<wbr>assignment_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -3867,7 +3849,7 @@ _The variable '{0}' is already assigned in this pattern._
 </div>
 <div class="card outlined-card" id="duplicate_pattern_field">
 <div class="card-header">
-<header class="card-title" id="duplicate_pattern_field">{{"duplicate_pattern_field" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_pattern_field">duplicate_<wbr>pattern_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -3885,7 +3867,7 @@ _The field '{0}' is already matched in this pattern._
 </div>
 <div class="card outlined-card" id="duplicate_prefix">
 <div class="card-header">
-<header class="card-title" id="duplicate_prefix">{{"duplicate_prefix" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_prefix">duplicate_<wbr>prefix</header>
 </div>
 <div class="card-content">
 
@@ -3902,7 +3884,7 @@ _An import directive can only have one prefix ('as' clause)._
 </div>
 <div class="card outlined-card" id="duplicate_rest_element_in_pattern">
 <div class="card-header">
-<header class="card-title" id="duplicate_rest_element_in_pattern">{{"duplicate_rest_element_in_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_rest_element_in_pattern">duplicate_<wbr>rest_<wbr>element_<wbr>in_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -3920,7 +3902,7 @@ _At most one rest element is allowed in a list or map pattern._
 </div>
 <div class="card outlined-card" id="duplicate_rule">
 <div class="card-header">
-<header class="card-title" id="duplicate_rule">{{"duplicate_rule" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_rule">duplicate_<wbr>rule</header>
 </div>
 <div class="card-content">
 
@@ -3937,7 +3919,7 @@ _The rule {0} is already specified and doesn't need to be specified again._
 </div>
 <div class="card outlined-card" id="duplicate_shown_name">
 <div class="card-header">
-<header class="card-title" id="duplicate_shown_name">{{"duplicate_shown_name" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_shown_name">duplicate_<wbr>shown_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -3955,7 +3937,7 @@ _Duplicate shown name._
 </div>
 <div class="card outlined-card" id="duplicate_variable_pattern">
 <div class="card-header">
-<header class="card-title" id="duplicate_variable_pattern">{{"duplicate_variable_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="duplicate_variable_pattern">duplicate_<wbr>variable_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -3973,7 +3955,7 @@ _The variable '{0}' is already defined in this pattern._
 </div>
 <div class="card outlined-card" id="empty_enum_body">
 <div class="card-header">
-<header class="card-title" id="empty_enum_body">{{"empty_enum_body" | underscoreBreaker}}</header>
+<header class="card-title" id="empty_enum_body">empty_<wbr>enum_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -3990,7 +3972,7 @@ _An enum must declare at least one constant name._
 </div>
 <div class="card outlined-card" id="empty_map_pattern">
 <div class="card-header">
-<header class="card-title" id="empty_map_pattern">{{"empty_map_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="empty_map_pattern">empty_<wbr>map_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -4008,7 +3990,7 @@ _A map pattern must have at least one entry._
 </div>
 <div class="card outlined-card" id="empty_record_literal_with_comma">
 <div class="card-header">
-<header class="card-title" id="empty_record_literal_with_comma">{{"empty_record_literal_with_comma" | underscoreBreaker}}</header>
+<header class="card-title" id="empty_record_literal_with_comma">empty_<wbr>record_<wbr>literal_<wbr>with_<wbr>comma</header>
 </div>
 <div class="card-content">
 
@@ -4026,7 +4008,7 @@ _A record literal without fields can't have a trailing comma._
 </div>
 <div class="card outlined-card" id="empty_record_type_named_fields_list">
 <div class="card-header">
-<header class="card-title" id="empty_record_type_named_fields_list">{{"empty_record_type_named_fields_list" | underscoreBreaker}}</header>
+<header class="card-title" id="empty_record_type_named_fields_list">empty_<wbr>record_<wbr>type_<wbr>named_<wbr>fields_<wbr>list</header>
 </div>
 <div class="card-content">
 
@@ -4044,7 +4026,7 @@ _The list of named fields in a record type can't be empty._
 </div>
 <div class="card outlined-card" id="empty_record_type_with_comma">
 <div class="card-header">
-<header class="card-title" id="empty_record_type_with_comma">{{"empty_record_type_with_comma" | underscoreBreaker}}</header>
+<header class="card-title" id="empty_record_type_with_comma">empty_<wbr>record_<wbr>type_<wbr>with_<wbr>comma</header>
 </div>
 <div class="card-content">
 
@@ -4062,7 +4044,7 @@ _A record type without fields can't have a trailing comma._
 </div>
 <div class="card outlined-card" id="empty_struct">
 <div class="card-header">
-<header class="card-title" id="empty_struct">{{"empty_struct" | underscoreBreaker}}</header>
+<header class="card-title" id="empty_struct">empty_<wbr>struct</header>
 </div>
 <div class="card-content">
 
@@ -4080,7 +4062,7 @@ _The class '{0}' can't be empty because it's a subclass of '{1}'._
 </div>
 <div class="card outlined-card" id="enum_constant_invokes_factory_constructor">
 <div class="card-header">
-<header class="card-title" id="enum_constant_invokes_factory_constructor">{{"enum_constant_invokes_factory_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="enum_constant_invokes_factory_constructor">enum_<wbr>constant_<wbr>invokes_<wbr>factory_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -4097,7 +4079,7 @@ _An enum value can't invoke a factory constructor._
 </div>
 <div class="card outlined-card" id="enum_constant_same_name_as_enclosing">
 <div class="card-header">
-<header class="card-title" id="enum_constant_same_name_as_enclosing">{{"enum_constant_same_name_as_enclosing" | underscoreBreaker}}</header>
+<header class="card-title" id="enum_constant_same_name_as_enclosing">enum_<wbr>constant_<wbr>same_<wbr>name_<wbr>as_<wbr>enclosing</header>
 </div>
 <div class="card-content">
 
@@ -4115,7 +4097,7 @@ _The name of the enum value can't be the same as the enum's name._
 </div>
 <div class="card outlined-card" id="enum_constant_with_non_const_constructor">
 <div class="card-header">
-<header class="card-title" id="enum_constant_with_non_const_constructor">{{"enum_constant_with_non_const_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="enum_constant_with_non_const_constructor">enum_<wbr>constant_<wbr>with_<wbr>non_<wbr>const_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -4133,7 +4115,7 @@ _The invoked constructor isn't a 'const' constructor._
 </div>
 <div class="card outlined-card" id="enum_instantiated_to_bounds_is_not_well_bounded">
 <div class="card-header">
-<header class="card-title" id="enum_instantiated_to_bounds_is_not_well_bounded">{{"enum_instantiated_to_bounds_is_not_well_bounded" | underscoreBreaker}}</header>
+<header class="card-title" id="enum_instantiated_to_bounds_is_not_well_bounded">enum_<wbr>instantiated_<wbr>to_<wbr>bounds_<wbr>is_<wbr>not_<wbr>well_<wbr>bounded</header>
 </div>
 <div class="card-content">
 
@@ -4150,7 +4132,7 @@ _The result of instantiating the enum to bounds is not well-bounded._
 </div>
 <div class="card outlined-card" id="enum_in_class">
 <div class="card-header">
-<header class="card-title" id="enum_in_class">{{"enum_in_class" | underscoreBreaker}}</header>
+<header class="card-title" id="enum_in_class">enum_<wbr>in_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -4167,7 +4149,7 @@ _Enums can't be declared inside classes._
 </div>
 <div class="card outlined-card" id="enum_mixin_with_instance_variable">
 <div class="card-header">
-<header class="card-title" id="enum_mixin_with_instance_variable">{{"enum_mixin_with_instance_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="enum_mixin_with_instance_variable">enum_<wbr>mixin_<wbr>with_<wbr>instance_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -4185,7 +4167,7 @@ _Mixins applied to enums can't have instance variables._
 </div>
 <div class="card outlined-card" id="enum_without_constants">
 <div class="card-header">
-<header class="card-title" id="enum_without_constants">{{"enum_without_constants" | underscoreBreaker}}</header>
+<header class="card-title" id="enum_without_constants">enum_<wbr>without_<wbr>constants</header>
 </div>
 <div class="card-content">
 
@@ -4202,7 +4184,7 @@ _The enum must have at least one enum constant._
 </div>
 <div class="card outlined-card" id="enum_with_abstract_member">
 <div class="card-header">
-<header class="card-title" id="enum_with_abstract_member">{{"enum_with_abstract_member" | underscoreBreaker}}</header>
+<header class="card-title" id="enum_with_abstract_member">enum_<wbr>with_<wbr>abstract_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -4220,7 +4202,7 @@ _'{0}' must have a method body because '{1}' is an enum._
 </div>
 <div class="card outlined-card" id="enum_with_name_values">
 <div class="card-header">
-<header class="card-title" id="enum_with_name_values">{{"enum_with_name_values" | underscoreBreaker}}</header>
+<header class="card-title" id="enum_with_name_values">enum_<wbr>with_<wbr>name_<wbr>values</header>
 </div>
 <div class="card-content">
 
@@ -4238,7 +4220,7 @@ _The name 'values' is not a valid name for an enum._
 </div>
 <div class="card outlined-card" id="equality_cannot_be_equality_operand">
 <div class="card-header">
-<header class="card-title" id="equality_cannot_be_equality_operand">{{"equality_cannot_be_equality_operand" | underscoreBreaker}}</header>
+<header class="card-title" id="equality_cannot_be_equality_operand">equality_<wbr>cannot_<wbr>be_<wbr>equality_<wbr>operand</header>
 </div>
 <div class="card-content">
 
@@ -4255,7 +4237,7 @@ _A comparison expression can't be an operand of another comparison expression._
 </div>
 <div class="card outlined-card" id="equal_elements_in_const_set">
 <div class="card-header">
-<header class="card-title" id="equal_elements_in_const_set">{{"equal_elements_in_const_set" | underscoreBreaker}}</header>
+<header class="card-title" id="equal_elements_in_const_set">equal_<wbr>elements_<wbr>in_<wbr>const_<wbr>set</header>
 </div>
 <div class="card-content">
 
@@ -4273,7 +4255,7 @@ _Two elements in a constant set literal can't be equal._
 </div>
 <div class="card outlined-card" id="equal_elements_in_set">
 <div class="card-header">
-<header class="card-title" id="equal_elements_in_set">{{"equal_elements_in_set" | underscoreBreaker}}</header>
+<header class="card-title" id="equal_elements_in_set">equal_<wbr>elements_<wbr>in_<wbr>set</header>
 </div>
 <div class="card-content">
 
@@ -4291,7 +4273,7 @@ _Two elements in a set literal shouldn't be equal._
 </div>
 <div class="card outlined-card" id="equal_keys_in_const_map">
 <div class="card-header">
-<header class="card-title" id="equal_keys_in_const_map">{{"equal_keys_in_const_map" | underscoreBreaker}}</header>
+<header class="card-title" id="equal_keys_in_const_map">equal_<wbr>keys_<wbr>in_<wbr>const_<wbr>map</header>
 </div>
 <div class="card-content">
 
@@ -4309,7 +4291,7 @@ _Two keys in a constant map literal can't be equal._
 </div>
 <div class="card outlined-card" id="equal_keys_in_map">
 <div class="card-header">
-<header class="card-title" id="equal_keys_in_map">{{"equal_keys_in_map" | underscoreBreaker}}</header>
+<header class="card-title" id="equal_keys_in_map">equal_<wbr>keys_<wbr>in_<wbr>map</header>
 </div>
 <div class="card-content">
 
@@ -4327,7 +4309,7 @@ _Two keys in a map literal shouldn't be equal._
 </div>
 <div class="card outlined-card" id="equal_keys_in_map_pattern">
 <div class="card-header">
-<header class="card-title" id="equal_keys_in_map_pattern">{{"equal_keys_in_map_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="equal_keys_in_map_pattern">equal_<wbr>keys_<wbr>in_<wbr>map_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -4345,7 +4327,7 @@ _Two keys in a map pattern can't be equal._
 </div>
 <div class="card outlined-card" id="expected_body">
 <div class="card-header">
-<header class="card-title" id="expected_body">{{"expected_body" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_body">expected_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -4378,7 +4360,7 @@ _An extension type declaration must have a body, even if it is empty._
 </div>
 <div class="card outlined-card" id="expected_case_or_default">
 <div class="card-header">
-<header class="card-title" id="expected_case_or_default">{{"expected_case_or_default" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_case_or_default">expected_<wbr>case_<wbr>or_<wbr>default</header>
 </div>
 <div class="card-content">
 
@@ -4395,7 +4377,7 @@ _Expected 'case' or 'default'._
 </div>
 <div class="card outlined-card" id="expected_class_member">
 <div class="card-header">
-<header class="card-title" id="expected_class_member">{{"expected_class_member" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_class_member">expected_<wbr>class_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -4412,7 +4394,7 @@ _Expected a class member._
 </div>
 <div class="card outlined-card" id="expected_else_or_comma">
 <div class="card-header">
-<header class="card-title" id="expected_else_or_comma">{{"expected_else_or_comma" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_else_or_comma">expected_<wbr>else_<wbr>or_<wbr>comma</header>
 </div>
 <div class="card-content">
 
@@ -4429,7 +4411,7 @@ _Expected 'else' or comma._
 </div>
 <div class="card outlined-card" id="expected_executable">
 <div class="card-header">
-<header class="card-title" id="expected_executable">{{"expected_executable" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_executable">expected_<wbr>executable</header>
 </div>
 <div class="card-content">
 
@@ -4446,7 +4428,7 @@ _Expected a method, getter, setter or operator declaration._
 </div>
 <div class="card outlined-card" id="expected_identifier_but_got_keyword">
 <div class="card-header">
-<header class="card-title" id="expected_identifier_but_got_keyword">{{"expected_identifier_but_got_keyword" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_identifier_but_got_keyword">expected_<wbr>identifier_<wbr>but_<wbr>got_<wbr>keyword</header>
 </div>
 <div class="card-content">
 
@@ -4463,7 +4445,7 @@ _'{0}' can't be used as an identifier because it's a keyword._
 </div>
 <div class="card outlined-card" id="expected_instead">
 <div class="card-header">
-<header class="card-title" id="expected_instead">{{"expected_instead" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_instead">expected_<wbr>instead</header>
 </div>
 <div class="card-content">
 
@@ -4480,7 +4462,7 @@ _Expected '{0}' instead of this._
 </div>
 <div class="card outlined-card" id="expected_list_or_map_literal">
 <div class="card-header">
-<header class="card-title" id="expected_list_or_map_literal">{{"expected_list_or_map_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_list_or_map_literal">expected_<wbr>list_<wbr>or_<wbr>map_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -4497,7 +4479,7 @@ _Expected a list or map literal._
 </div>
 <div class="card outlined-card" id="expected_named_type">
 <div class="card-header">
-<header class="card-title" id="expected_named_type">{{"expected_named_type" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_named_type">expected_<wbr>named_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -4518,7 +4500,7 @@ _Expected the name of a class or mixin._
 </div>
 <div class="card outlined-card" id="expected_one_list_pattern_type_arguments">
 <div class="card-header">
-<header class="card-title" id="expected_one_list_pattern_type_arguments">{{"expected_one_list_pattern_type_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_one_list_pattern_type_arguments">expected_<wbr>one_<wbr>list_<wbr>pattern_<wbr>type_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -4536,7 +4518,7 @@ _List patterns require one type argument or none, but {0} found._
 </div>
 <div class="card outlined-card" id="expected_one_list_type_arguments">
 <div class="card-header">
-<header class="card-title" id="expected_one_list_type_arguments">{{"expected_one_list_type_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_one_list_type_arguments">expected_<wbr>one_<wbr>list_<wbr>type_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -4554,7 +4536,7 @@ _List literals require one type argument or none, but {0} found._
 </div>
 <div class="card outlined-card" id="expected_one_set_type_arguments">
 <div class="card-header">
-<header class="card-title" id="expected_one_set_type_arguments">{{"expected_one_set_type_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_one_set_type_arguments">expected_<wbr>one_<wbr>set_<wbr>type_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -4572,7 +4554,7 @@ _Set literals require one type argument or none, but {0} were found._
 </div>
 <div class="card outlined-card" id="expected_representation_field">
 <div class="card-header">
-<header class="card-title" id="expected_representation_field">{{"expected_representation_field" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_representation_field">expected_<wbr>representation_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -4589,7 +4571,7 @@ _Expected a representation field._
 </div>
 <div class="card outlined-card" id="expected_representation_type">
 <div class="card-header">
-<header class="card-title" id="expected_representation_type">{{"expected_representation_type" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_representation_type">expected_<wbr>representation_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -4606,7 +4588,7 @@ _Expected a representation type._
 </div>
 <div class="card outlined-card" id="expected_string_literal">
 <div class="card-header">
-<header class="card-title" id="expected_string_literal">{{"expected_string_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_string_literal">expected_<wbr>string_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -4623,7 +4605,7 @@ _Expected a string literal._
 </div>
 <div class="card outlined-card" id="expected_token">
 <div class="card-header">
-<header class="card-title" id="expected_token">{{"expected_token" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_token">expected_<wbr>token</header>
 </div>
 <div class="card-content">
 
@@ -4640,7 +4622,7 @@ _Expected to find '{0}'._
 </div>
 <div class="card outlined-card" id="expected_two_map_pattern_type_arguments">
 <div class="card-header">
-<header class="card-title" id="expected_two_map_pattern_type_arguments">{{"expected_two_map_pattern_type_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_two_map_pattern_type_arguments">expected_<wbr>two_<wbr>map_<wbr>pattern_<wbr>type_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -4658,7 +4640,7 @@ _Map patterns require two type arguments or none, but {0} found._
 </div>
 <div class="card outlined-card" id="expected_two_map_type_arguments">
 <div class="card-header">
-<header class="card-title" id="expected_two_map_type_arguments">{{"expected_two_map_type_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_two_map_type_arguments">expected_<wbr>two_<wbr>map_<wbr>type_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -4676,7 +4658,7 @@ _Map literals require two type arguments or none, but {0} found._
 </div>
 <div class="card outlined-card" id="expected_type_name">
 <div class="card-header">
-<header class="card-title" id="expected_type_name">{{"expected_type_name" | underscoreBreaker}}</header>
+<header class="card-title" id="expected_type_name">expected_<wbr>type_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -4693,7 +4675,7 @@ _Expected a type name._
 </div>
 <div class="card outlined-card" id="experiment_not_enabled">
 <div class="card-header">
-<header class="card-title" id="experiment_not_enabled">{{"experiment_not_enabled" | underscoreBreaker}}</header>
+<header class="card-title" id="experiment_not_enabled">experiment_<wbr>not_<wbr>enabled</header>
 </div>
 <div class="card-content">
 
@@ -4710,7 +4692,7 @@ _This requires the '{0}' language feature to be enabled._
 </div>
 <div class="card outlined-card" id="experiment_not_enabled_off_by_default">
 <div class="card-header">
-<header class="card-title" id="experiment_not_enabled_off_by_default">{{"experiment_not_enabled_off_by_default" | underscoreBreaker}}</header>
+<header class="card-title" id="experiment_not_enabled_off_by_default">experiment_<wbr>not_<wbr>enabled_<wbr>off_<wbr>by_<wbr>default</header>
 </div>
 <div class="card-content">
 
@@ -4727,7 +4709,7 @@ _This requires the experimental '{0}' language feature to be enabled._
 </div>
 <div class="card outlined-card" id="export_directive_after_part_directive">
 <div class="card-header">
-<header class="card-title" id="export_directive_after_part_directive">{{"export_directive_after_part_directive" | underscoreBreaker}}</header>
+<header class="card-title" id="export_directive_after_part_directive">export_<wbr>directive_<wbr>after_<wbr>part_<wbr>directive</header>
 </div>
 <div class="card-content">
 
@@ -4744,7 +4726,7 @@ _Export directives must precede part directives._
 </div>
 <div class="card outlined-card" id="export_internal_library">
 <div class="card-header">
-<header class="card-title" id="export_internal_library">{{"export_internal_library" | underscoreBreaker}}</header>
+<header class="card-title" id="export_internal_library">export_<wbr>internal_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -4762,7 +4744,7 @@ _The library '{0}' is internal and can't be exported._
 </div>
 <div class="card outlined-card" id="export_legacy_symbol">
 <div class="card-header">
-<header class="card-title" id="export_legacy_symbol">{{"export_legacy_symbol" | underscoreBreaker}}</header>
+<header class="card-title" id="export_legacy_symbol">export_<wbr>legacy_<wbr>symbol</header>
 </div>
 <div class="card-content">
 
@@ -4781,7 +4763,7 @@ a library with null safety enabled._
 </div>
 <div class="card outlined-card" id="export_of_non_library">
 <div class="card-header">
-<header class="card-title" id="export_of_non_library">{{"export_of_non_library" | underscoreBreaker}}</header>
+<header class="card-title" id="export_of_non_library">export_<wbr>of_<wbr>non_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -4799,7 +4781,7 @@ _The exported library '{0}' can't have a part-of directive._
 </div>
 <div class="card outlined-card" id="expression_in_map">
 <div class="card-header">
-<header class="card-title" id="expression_in_map">{{"expression_in_map" | underscoreBreaker}}</header>
+<header class="card-title" id="expression_in_map">expression_<wbr>in_<wbr>map</header>
 </div>
 <div class="card-content">
 
@@ -4817,7 +4799,7 @@ _Expressions can't be used in a map literal._
 </div>
 <div class="card outlined-card" id="extends_non_class">
 <div class="card-header">
-<header class="card-title" id="extends_non_class">{{"extends_non_class" | underscoreBreaker}}</header>
+<header class="card-title" id="extends_non_class">extends_<wbr>non_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -4835,7 +4817,7 @@ _Classes can only extend other classes._
 </div>
 <div class="card outlined-card" id="extension_as_expression">
 <div class="card-header">
-<header class="card-title" id="extension_as_expression">{{"extension_as_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_as_expression">extension_<wbr>as_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -4853,7 +4835,7 @@ _Extension '{0}' can't be used as an expression._
 </div>
 <div class="card outlined-card" id="extension_augmentation_has_on_clause">
 <div class="card-header">
-<header class="card-title" id="extension_augmentation_has_on_clause">{{"extension_augmentation_has_on_clause" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_augmentation_has_on_clause">extension_<wbr>augmentation_<wbr>has_<wbr>on_<wbr>clause</header>
 </div>
 <div class="card-content">
 
@@ -4870,7 +4852,7 @@ _Extension augmentations can't have 'on' clauses._
 </div>
 <div class="card outlined-card" id="extension_conflicting_static_and_instance">
 <div class="card-header">
-<header class="card-title" id="extension_conflicting_static_and_instance">{{"extension_conflicting_static_and_instance" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_conflicting_static_and_instance">extension_<wbr>conflicting_<wbr>static_<wbr>and_<wbr>instance</header>
 </div>
 <div class="card-content">
 
@@ -4889,7 +4871,7 @@ same name._
 </div>
 <div class="card outlined-card" id="extension_declares_abstract_member">
 <div class="card-header">
-<header class="card-title" id="extension_declares_abstract_member">{{"extension_declares_abstract_member" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_declares_abstract_member">extension_<wbr>declares_<wbr>abstract_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -4907,7 +4889,7 @@ _Extensions can't declare abstract members._
 </div>
 <div class="card outlined-card" id="extension_declares_constructor">
 <div class="card-header">
-<header class="card-title" id="extension_declares_constructor">{{"extension_declares_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_declares_constructor">extension_<wbr>declares_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -4925,7 +4907,7 @@ _Extensions can't declare constructors._
 </div>
 <div class="card outlined-card" id="extension_declares_instance_field">
 <div class="card-header">
-<header class="card-title" id="extension_declares_instance_field">{{"extension_declares_instance_field" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_declares_instance_field">extension_<wbr>declares_<wbr>instance_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -4943,7 +4925,7 @@ _Extensions can't declare instance fields._
 </div>
 <div class="card outlined-card" id="extension_declares_member_of_object">
 <div class="card-header">
-<header class="card-title" id="extension_declares_member_of_object">{{"extension_declares_member_of_object" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_declares_member_of_object">extension_<wbr>declares_<wbr>member_<wbr>of_<wbr>object</header>
 </div>
 <div class="card-content">
 
@@ -4962,7 +4944,7 @@ _Extensions can't declare members with the same name as a member declared by
 </div>
 <div class="card outlined-card" id="extension_override_access_to_static_member">
 <div class="card-header">
-<header class="card-title" id="extension_override_access_to_static_member">{{"extension_override_access_to_static_member" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_override_access_to_static_member">extension_<wbr>override_<wbr>access_<wbr>to_<wbr>static_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -4981,7 +4963,7 @@ extension._
 </div>
 <div class="card outlined-card" id="extension_override_argument_not_assignable">
 <div class="card-header">
-<header class="card-title" id="extension_override_argument_not_assignable">{{"extension_override_argument_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_override_argument_not_assignable">extension_<wbr>override_<wbr>argument_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -5000,7 +4982,7 @@ the extended type '{1}'._
 </div>
 <div class="card outlined-card" id="extension_override_without_access">
 <div class="card-header">
-<header class="card-title" id="extension_override_without_access">{{"extension_override_without_access" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_override_without_access">extension_<wbr>override_<wbr>without_<wbr>access</header>
 </div>
 <div class="card-content">
 
@@ -5018,7 +5000,7 @@ _An extension override can only be used to access instance members._
 </div>
 <div class="card outlined-card" id="extension_override_with_cascade">
 <div class="card-header">
-<header class="card-title" id="extension_override_with_cascade">{{"extension_override_with_cascade" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_override_with_cascade">extension_<wbr>override_<wbr>with_<wbr>cascade</header>
 </div>
 <div class="card-content">
 
@@ -5037,7 +5019,7 @@ cascade expression._
 </div>
 <div class="card outlined-card" id="extension_type_constructor_with_super_formal_parameter">
 <div class="card-header">
-<header class="card-title" id="extension_type_constructor_with_super_formal_parameter">{{"extension_type_constructor_with_super_formal_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_constructor_with_super_formal_parameter">extension_<wbr>type_<wbr>constructor_<wbr>with_<wbr>super_<wbr>formal_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -5055,7 +5037,7 @@ _Extension type constructors can't declare super formal parameters._
 </div>
 <div class="card outlined-card" id="extension_type_constructor_with_super_invocation">
 <div class="card-header">
-<header class="card-title" id="extension_type_constructor_with_super_invocation">{{"extension_type_constructor_with_super_invocation" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_constructor_with_super_invocation">extension_<wbr>type_<wbr>constructor_<wbr>with_<wbr>super_<wbr>invocation</header>
 </div>
 <div class="card-content">
 
@@ -5073,7 +5055,7 @@ _Extension type constructors can't include super initializers._
 </div>
 <div class="card outlined-card" id="extension_type_declares_instance_field">
 <div class="card-header">
-<header class="card-title" id="extension_type_declares_instance_field">{{"extension_type_declares_instance_field" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_declares_instance_field">extension_<wbr>type_<wbr>declares_<wbr>instance_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -5091,7 +5073,7 @@ _Extension types can't declare instance fields._
 </div>
 <div class="card outlined-card" id="extension_type_declares_member_of_object">
 <div class="card-header">
-<header class="card-title" id="extension_type_declares_member_of_object">{{"extension_type_declares_member_of_object" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_declares_member_of_object">extension_<wbr>type_<wbr>declares_<wbr>member_<wbr>of_<wbr>object</header>
 </div>
 <div class="card-content">
 
@@ -5110,7 +5092,7 @@ by 'Object'._
 </div>
 <div class="card outlined-card" id="extension_type_extends">
 <div class="card-header">
-<header class="card-title" id="extension_type_extends">{{"extension_type_extends" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_extends">extension_<wbr>type_<wbr>extends</header>
 </div>
 <div class="card-content">
 
@@ -5127,7 +5109,7 @@ _An extension type declaration can't have an 'extends' clause._
 </div>
 <div class="card outlined-card" id="extension_type_implements_disallowed_type">
 <div class="card-header">
-<header class="card-title" id="extension_type_implements_disallowed_type">{{"extension_type_implements_disallowed_type" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_implements_disallowed_type">extension_<wbr>type_<wbr>implements_<wbr>disallowed_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -5145,7 +5127,7 @@ _Extension types can't implement '{0}'._
 </div>
 <div class="card outlined-card" id="extension_type_implements_itself">
 <div class="card-header">
-<header class="card-title" id="extension_type_implements_itself">{{"extension_type_implements_itself" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_implements_itself">extension_<wbr>type_<wbr>implements_<wbr>itself</header>
 </div>
 <div class="card-content">
 
@@ -5163,7 +5145,7 @@ _The extension type can't implement itself._
 </div>
 <div class="card outlined-card" id="extension_type_implements_not_supertype">
 <div class="card-header">
-<header class="card-title" id="extension_type_implements_not_supertype">{{"extension_type_implements_not_supertype" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_implements_not_supertype">extension_<wbr>type_<wbr>implements_<wbr>not_<wbr>supertype</header>
 </div>
 <div class="card-content">
 
@@ -5181,7 +5163,7 @@ _'{0}' is not a supertype of '{1}', the representation type._
 </div>
 <div class="card outlined-card" id="extension_type_implements_representation_not_supertype">
 <div class="card-header">
-<header class="card-title" id="extension_type_implements_representation_not_supertype">{{"extension_type_implements_representation_not_supertype" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_implements_representation_not_supertype">extension_<wbr>type_<wbr>implements_<wbr>representation_<wbr>not_<wbr>supertype</header>
 </div>
 <div class="card-content">
 
@@ -5200,7 +5182,7 @@ representation type of '{3}'._
 </div>
 <div class="card outlined-card" id="extension_type_inherited_member_conflict">
 <div class="card-header">
-<header class="card-title" id="extension_type_inherited_member_conflict">{{"extension_type_inherited_member_conflict" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_inherited_member_conflict">extension_<wbr>type_<wbr>inherited_<wbr>member_<wbr>conflict</header>
 </div>
 <div class="card-content">
 
@@ -5219,7 +5201,7 @@ implemented types._
 </div>
 <div class="card outlined-card" id="extension_type_representation_depends_on_itself">
 <div class="card-header">
-<header class="card-title" id="extension_type_representation_depends_on_itself">{{"extension_type_representation_depends_on_itself" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_representation_depends_on_itself">extension_<wbr>type_<wbr>representation_<wbr>depends_<wbr>on_<wbr>itself</header>
 </div>
 <div class="card-content">
 
@@ -5237,7 +5219,7 @@ _The extension type representation can't depend on itself._
 </div>
 <div class="card outlined-card" id="extension_type_representation_type_bottom">
 <div class="card-header">
-<header class="card-title" id="extension_type_representation_type_bottom">{{"extension_type_representation_type_bottom" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_representation_type_bottom">extension_<wbr>type_<wbr>representation_<wbr>type_<wbr>bottom</header>
 </div>
 <div class="card-content">
 
@@ -5255,7 +5237,7 @@ _The representation type can't be a bottom type._
 </div>
 <div class="card outlined-card" id="extension_type_with">
 <div class="card-header">
-<header class="card-title" id="extension_type_with">{{"extension_type_with" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_with">extension_<wbr>type_<wbr>with</header>
 </div>
 <div class="card-content">
 
@@ -5272,7 +5254,7 @@ _An extension type declaration can't have a 'with' clause._
 </div>
 <div class="card outlined-card" id="extension_type_with_abstract_member">
 <div class="card-header">
-<header class="card-title" id="extension_type_with_abstract_member">{{"extension_type_with_abstract_member" | underscoreBreaker}}</header>
+<header class="card-title" id="extension_type_with_abstract_member">extension_<wbr>type_<wbr>with_<wbr>abstract_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -5290,7 +5272,7 @@ _'{0}' must have a method body because '{1}' is an extension type._
 </div>
 <div class="card outlined-card" id="external_class">
 <div class="card-header">
-<header class="card-title" id="external_class">{{"external_class" | underscoreBreaker}}</header>
+<header class="card-title" id="external_class">external_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -5307,7 +5289,7 @@ _Classes can't be declared to be 'external'._
 </div>
 <div class="card outlined-card" id="external_constructor_with_body">
 <div class="card-header">
-<header class="card-title" id="external_constructor_with_body">{{"external_constructor_with_body" | underscoreBreaker}}</header>
+<header class="card-title" id="external_constructor_with_body">external_<wbr>constructor_<wbr>with_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -5324,7 +5306,7 @@ _External constructors can't have a body._
 </div>
 <div class="card outlined-card" id="external_constructor_with_field_initializers">
 <div class="card-header">
-<header class="card-title" id="external_constructor_with_field_initializers">{{"external_constructor_with_field_initializers" | underscoreBreaker}}</header>
+<header class="card-title" id="external_constructor_with_field_initializers">external_<wbr>constructor_<wbr>with_<wbr>field_<wbr>initializers</header>
 </div>
 <div class="card-content">
 
@@ -5341,7 +5323,7 @@ _An external constructor can't initialize fields._
 </div>
 <div class="card outlined-card" id="external_constructor_with_initializer">
 <div class="card-header">
-<header class="card-title" id="external_constructor_with_initializer">{{"external_constructor_with_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="external_constructor_with_initializer">external_<wbr>constructor_<wbr>with_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -5358,7 +5340,7 @@ _An external constructor can't have any initializers._
 </div>
 <div class="card outlined-card" id="external_enum">
 <div class="card-header">
-<header class="card-title" id="external_enum">{{"external_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="external_enum">external_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -5375,7 +5357,7 @@ _Enums can't be declared to be 'external'._
 </div>
 <div class="card outlined-card" id="external_factory_redirection">
 <div class="card-header">
-<header class="card-title" id="external_factory_redirection">{{"external_factory_redirection" | underscoreBreaker}}</header>
+<header class="card-title" id="external_factory_redirection">external_<wbr>factory_<wbr>redirection</header>
 </div>
 <div class="card-content">
 
@@ -5392,7 +5374,7 @@ _A redirecting factory can't be external._
 </div>
 <div class="card outlined-card" id="external_factory_with_body">
 <div class="card-header">
-<header class="card-title" id="external_factory_with_body">{{"external_factory_with_body" | underscoreBreaker}}</header>
+<header class="card-title" id="external_factory_with_body">external_<wbr>factory_<wbr>with_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -5409,7 +5391,7 @@ _External factories can't have a body._
 </div>
 <div class="card outlined-card" id="external_field">
 <div class="card-header">
-<header class="card-title" id="external_field">{{"external_field" | underscoreBreaker}}</header>
+<header class="card-title" id="external_field">external_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -5426,7 +5408,7 @@ _Fields can't be declared to be 'external'._
 </div>
 <div class="card outlined-card" id="external_getter_with_body">
 <div class="card-header">
-<header class="card-title" id="external_getter_with_body">{{"external_getter_with_body" | underscoreBreaker}}</header>
+<header class="card-title" id="external_getter_with_body">external_<wbr>getter_<wbr>with_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -5443,7 +5425,7 @@ _External getters can't have a body._
 </div>
 <div class="card outlined-card" id="external_late_field">
 <div class="card-header">
-<header class="card-title" id="external_late_field">{{"external_late_field" | underscoreBreaker}}</header>
+<header class="card-title" id="external_late_field">external_<wbr>late_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -5460,7 +5442,7 @@ _External fields cannot be late._
 </div>
 <div class="card outlined-card" id="external_method_with_body">
 <div class="card-header">
-<header class="card-title" id="external_method_with_body">{{"external_method_with_body" | underscoreBreaker}}</header>
+<header class="card-title" id="external_method_with_body">external_<wbr>method_<wbr>with_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -5477,7 +5459,7 @@ _An external or native method can't have a body._
 </div>
 <div class="card outlined-card" id="external_operator_with_body">
 <div class="card-header">
-<header class="card-title" id="external_operator_with_body">{{"external_operator_with_body" | underscoreBreaker}}</header>
+<header class="card-title" id="external_operator_with_body">external_<wbr>operator_<wbr>with_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -5494,7 +5476,7 @@ _External operators can't have a body._
 </div>
 <div class="card outlined-card" id="external_setter_with_body">
 <div class="card-header">
-<header class="card-title" id="external_setter_with_body">{{"external_setter_with_body" | underscoreBreaker}}</header>
+<header class="card-title" id="external_setter_with_body">external_<wbr>setter_<wbr>with_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -5511,7 +5493,7 @@ _External setters can't have a body._
 </div>
 <div class="card outlined-card" id="external_typedef">
 <div class="card-header">
-<header class="card-title" id="external_typedef">{{"external_typedef" | underscoreBreaker}}</header>
+<header class="card-title" id="external_typedef">external_<wbr>typedef</header>
 </div>
 <div class="card-content">
 
@@ -5528,7 +5510,7 @@ _Typedefs can't be declared to be 'external'._
 </div>
 <div class="card outlined-card" id="external_with_initializer">
 <div class="card-header">
-<header class="card-title" id="external_with_initializer">{{"external_with_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="external_with_initializer">external_<wbr>with_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -5548,7 +5530,7 @@ _External variables can't have initializers._
 </div>
 <div class="card outlined-card" id="extraneous_modifier">
 <div class="card-header">
-<header class="card-title" id="extraneous_modifier">{{"extraneous_modifier" | underscoreBreaker}}</header>
+<header class="card-title" id="extraneous_modifier">extraneous_<wbr>modifier</header>
 </div>
 <div class="card-content">
 
@@ -5565,7 +5547,7 @@ _Can't have modifier '{0}' here._
 </div>
 <div class="card outlined-card" id="extraneous_modifier_in_extension_type">
 <div class="card-header">
-<header class="card-title" id="extraneous_modifier_in_extension_type">{{"extraneous_modifier_in_extension_type" | underscoreBreaker}}</header>
+<header class="card-title" id="extraneous_modifier_in_extension_type">extraneous_<wbr>modifier_<wbr>in_<wbr>extension_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -5582,7 +5564,7 @@ _Can't have modifier '{0}' in an extension type._
 </div>
 <div class="card outlined-card" id="extraneous_modifier_in_primary_constructor">
 <div class="card-header">
-<header class="card-title" id="extraneous_modifier_in_primary_constructor">{{"extraneous_modifier_in_primary_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="extraneous_modifier_in_primary_constructor">extraneous_<wbr>modifier_<wbr>in_<wbr>primary_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -5599,7 +5581,7 @@ _Can't have modifier '{0}' in a primary constructor._
 </div>
 <div class="card outlined-card" id="extra_annotation_on_struct_field">
 <div class="card-header">
-<header class="card-title" id="extra_annotation_on_struct_field">{{"extra_annotation_on_struct_field" | underscoreBreaker}}</header>
+<header class="card-title" id="extra_annotation_on_struct_field">extra_<wbr>annotation_<wbr>on_<wbr>struct_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -5618,7 +5600,7 @@ type._
 </div>
 <div class="card outlined-card" id="extra_positional_arguments">
 <div class="card-header">
-<header class="card-title" id="extra_positional_arguments">{{"extra_positional_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="extra_positional_arguments">extra_<wbr>positional_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -5636,7 +5618,7 @@ _Too many positional arguments: {0} expected, but {1} found._
 </div>
 <div class="card outlined-card" id="extra_positional_arguments_could_be_named">
 <div class="card-header">
-<header class="card-title" id="extra_positional_arguments_could_be_named">{{"extra_positional_arguments_could_be_named" | underscoreBreaker}}</header>
+<header class="card-title" id="extra_positional_arguments_could_be_named">extra_<wbr>positional_<wbr>arguments_<wbr>could_<wbr>be_<wbr>named</header>
 </div>
 <div class="card-content">
 
@@ -5654,7 +5636,7 @@ _Too many positional arguments: {0} expected, but {1} found._
 </div>
 <div class="card outlined-card" id="extra_size_annotation_carray">
 <div class="card-header">
-<header class="card-title" id="extra_size_annotation_carray">{{"extra_size_annotation_carray" | underscoreBreaker}}</header>
+<header class="card-title" id="extra_size_annotation_carray">extra_<wbr>size_<wbr>annotation_<wbr>carray</header>
 </div>
 <div class="card-content">
 
@@ -5672,7 +5654,7 @@ _'Array's must have exactly one 'Array' annotation._
 </div>
 <div class="card outlined-card" id="factory_top_level_declaration">
 <div class="card-header">
-<header class="card-title" id="factory_top_level_declaration">{{"factory_top_level_declaration" | underscoreBreaker}}</header>
+<header class="card-title" id="factory_top_level_declaration">factory_<wbr>top_<wbr>level_<wbr>declaration</header>
 </div>
 <div class="card-content">
 
@@ -5689,7 +5671,7 @@ _Top-level declarations can't be declared to be 'factory'._
 </div>
 <div class="card outlined-card" id="factory_without_body">
 <div class="card-header">
-<header class="card-title" id="factory_without_body">{{"factory_without_body" | underscoreBreaker}}</header>
+<header class="card-title" id="factory_without_body">factory_<wbr>without_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -5706,7 +5688,7 @@ _A non-redirecting 'factory' constructor must have a body._
 </div>
 <div class="card outlined-card" id="factory_with_initializers">
 <div class="card-header">
-<header class="card-title" id="factory_with_initializers">{{"factory_with_initializers" | underscoreBreaker}}</header>
+<header class="card-title" id="factory_with_initializers">factory_<wbr>with_<wbr>initializers</header>
 </div>
 <div class="card-content">
 
@@ -5723,7 +5705,7 @@ _A 'factory' constructor can't have initializers._
 </div>
 <div class="card outlined-card" id="ffi_native_invalid_duplicate_default_asset">
 <div class="card-header">
-<header class="card-title" id="ffi_native_invalid_duplicate_default_asset">{{"ffi_native_invalid_duplicate_default_asset" | underscoreBreaker}}</header>
+<header class="card-title" id="ffi_native_invalid_duplicate_default_asset">ffi_<wbr>native_<wbr>invalid_<wbr>duplicate_<wbr>default_<wbr>asset</header>
 </div>
 <div class="card-content">
 
@@ -5741,7 +5723,7 @@ _There may be at most one @DefaultAsset annotation on a library._
 </div>
 <div class="card outlined-card" id="ffi_native_invalid_multiple_annotations">
 <div class="card-header">
-<header class="card-title" id="ffi_native_invalid_multiple_annotations">{{"ffi_native_invalid_multiple_annotations" | underscoreBreaker}}</header>
+<header class="card-title" id="ffi_native_invalid_multiple_annotations">ffi_<wbr>native_<wbr>invalid_<wbr>multiple_<wbr>annotations</header>
 </div>
 <div class="card-content">
 
@@ -5759,7 +5741,7 @@ _Native functions and fields must have exactly one `@Native` annotation._
 </div>
 <div class="card outlined-card" id="ffi_native_must_be_external">
 <div class="card-header">
-<header class="card-title" id="ffi_native_must_be_external">{{"ffi_native_must_be_external" | underscoreBreaker}}</header>
+<header class="card-title" id="ffi_native_must_be_external">ffi_<wbr>native_<wbr>must_<wbr>be_<wbr>external</header>
 </div>
 <div class="card-content">
 
@@ -5777,7 +5759,7 @@ _Native functions must be declared external._
 </div>
 <div class="card outlined-card" id="ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer">
 <div class="card-header">
-<header class="card-title" id="ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer">{{"ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer" | underscoreBreaker}}</header>
+<header class="card-title" id="ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer">ffi_<wbr>native_<wbr>only_<wbr>classes_<wbr>extending_<wbr>nativefieldwrapperclass1_<wbr>can_<wbr>be_<wbr>pointer</header>
 </div>
 <div class="card-content">
 
@@ -5795,7 +5777,7 @@ _Only classes extending NativeFieldWrapperClass1 can be passed as Pointer._
 </div>
 <div class="card outlined-card" id="ffi_native_unexpected_number_of_parameters">
 <div class="card-header">
-<header class="card-title" id="ffi_native_unexpected_number_of_parameters">{{"ffi_native_unexpected_number_of_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="ffi_native_unexpected_number_of_parameters">ffi_<wbr>native_<wbr>unexpected_<wbr>number_<wbr>of_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -5813,7 +5795,7 @@ _Unexpected number of Native annotation parameters. Expected {0} but has {1}._
 </div>
 <div class="card outlined-card" id="ffi_native_unexpected_number_of_parameters_with_receiver">
 <div class="card-header">
-<header class="card-title" id="ffi_native_unexpected_number_of_parameters_with_receiver">{{"ffi_native_unexpected_number_of_parameters_with_receiver" | underscoreBreaker}}</header>
+<header class="card-title" id="ffi_native_unexpected_number_of_parameters_with_receiver">ffi_<wbr>native_<wbr>unexpected_<wbr>number_<wbr>of_<wbr>parameters_<wbr>with_<wbr>receiver</header>
 </div>
 <div class="card-content">
 
@@ -5832,7 +5814,7 @@ Native instance method annotation must have receiver as first argument._
 </div>
 <div class="card outlined-card" id="field_initialized_by_multiple_initializers">
 <div class="card-header">
-<header class="card-title" id="field_initialized_by_multiple_initializers">{{"field_initialized_by_multiple_initializers" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initialized_by_multiple_initializers">field_<wbr>initialized_<wbr>by_<wbr>multiple_<wbr>initializers</header>
 </div>
 <div class="card-content">
 
@@ -5850,7 +5832,7 @@ _The field '{0}' can't be initialized twice in the same constructor._
 </div>
 <div class="card outlined-card" id="field_initialized_in_initializer_and_declaration">
 <div class="card-header">
-<header class="card-title" id="field_initialized_in_initializer_and_declaration">{{"field_initialized_in_initializer_and_declaration" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initialized_in_initializer_and_declaration">field_<wbr>initialized_<wbr>in_<wbr>initializer_<wbr>and_<wbr>declaration</header>
 </div>
 <div class="card-content">
 
@@ -5869,7 +5851,7 @@ already initialized at their declaration._
 </div>
 <div class="card outlined-card" id="field_initialized_in_parameter_and_initializer">
 <div class="card-header">
-<header class="card-title" id="field_initialized_in_parameter_and_initializer">{{"field_initialized_in_parameter_and_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initialized_in_parameter_and_initializer">field_<wbr>initialized_<wbr>in_<wbr>parameter_<wbr>and_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -5887,7 +5869,7 @@ _Fields can't be initialized in both the parameter list and the initializers._
 </div>
 <div class="card outlined-card" id="field_initialized_outside_declaring_class">
 <div class="card-header">
-<header class="card-title" id="field_initialized_outside_declaring_class">{{"field_initialized_outside_declaring_class" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initialized_outside_declaring_class">field_<wbr>initialized_<wbr>outside_<wbr>declaring_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -5904,7 +5886,7 @@ _A field can only be initialized in its declaring class_
 </div>
 <div class="card outlined-card" id="field_initializer_factory_constructor">
 <div class="card-header">
-<header class="card-title" id="field_initializer_factory_constructor">{{"field_initializer_factory_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initializer_factory_constructor">field_<wbr>initializer_<wbr>factory_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -5922,7 +5904,7 @@ _Initializing formal parameters can't be used in factory constructors._
 </div>
 <div class="card outlined-card" id="field_initializer_in_struct">
 <div class="card-header">
-<header class="card-title" id="field_initializer_in_struct">{{"field_initializer_in_struct" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initializer_in_struct">field_<wbr>initializer_<wbr>in_<wbr>struct</header>
 </div>
 <div class="card-content">
 
@@ -5941,7 +5923,7 @@ initializers._
 </div>
 <div class="card outlined-card" id="field_initializer_not_assignable">
 <div class="card-header">
-<header class="card-title" id="field_initializer_not_assignable">{{"field_initializer_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initializer_not_assignable">field_<wbr>initializer_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -5962,7 +5944,7 @@ _The initializer type '{0}' can't be assigned to the field type '{1}'._
 </div>
 <div class="card outlined-card" id="field_initializer_outside_constructor">
 <div class="card-header">
-<header class="card-title" id="field_initializer_outside_constructor">{{"field_initializer_outside_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initializer_outside_constructor">field_<wbr>initializer_<wbr>outside_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -5982,7 +5964,7 @@ _Initializing formal parameters can only be used in constructors._
 </div>
 <div class="card outlined-card" id="field_initializer_redirecting_constructor">
 <div class="card-header">
-<header class="card-title" id="field_initializer_redirecting_constructor">{{"field_initializer_redirecting_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initializer_redirecting_constructor">field_<wbr>initializer_<wbr>redirecting_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -6000,7 +5982,7 @@ _The redirecting constructor can't have a field initializer._
 </div>
 <div class="card outlined-card" id="field_initializing_formal_not_assignable">
 <div class="card-header">
-<header class="card-title" id="field_initializing_formal_not_assignable">{{"field_initializing_formal_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="field_initializing_formal_not_assignable">field_<wbr>initializing_<wbr>formal_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -6018,7 +6000,7 @@ _The parameter type '{0}' is incompatible with the field type '{1}'._
 </div>
 <div class="card outlined-card" id="field_in_struct_with_initializer">
 <div class="card-header">
-<header class="card-title" id="field_in_struct_with_initializer">{{"field_in_struct_with_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="field_in_struct_with_initializer">field_<wbr>in_<wbr>struct_<wbr>with_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -6036,7 +6018,7 @@ _Fields in subclasses of 'Struct' and 'Union' can't have initializers._
 </div>
 <div class="card outlined-card" id="field_must_be_external_in_struct">
 <div class="card-header">
-<header class="card-title" id="field_must_be_external_in_struct">{{"field_must_be_external_in_struct" | underscoreBreaker}}</header>
+<header class="card-title" id="field_must_be_external_in_struct">field_<wbr>must_<wbr>be_<wbr>external_<wbr>in_<wbr>struct</header>
 </div>
 <div class="card-content">
 
@@ -6054,7 +6036,7 @@ _Fields of 'Struct' and 'Union' subclasses must be marked external._
 </div>
 <div class="card outlined-card" id="final_and_covariant">
 <div class="card-header">
-<header class="card-title" id="final_and_covariant">{{"final_and_covariant" | underscoreBreaker}}</header>
+<header class="card-title" id="final_and_covariant">final_<wbr>and_<wbr>covariant</header>
 </div>
 <div class="card-content">
 
@@ -6071,7 +6053,7 @@ _Members can't be declared to be both 'final' and 'covariant'._
 </div>
 <div class="card outlined-card" id="final_and_covariant_late_with_initializer">
 <div class="card-header">
-<header class="card-title" id="final_and_covariant_late_with_initializer">{{"final_and_covariant_late_with_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="final_and_covariant_late_with_initializer">final_<wbr>and_<wbr>covariant_<wbr>late_<wbr>with_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -6089,7 +6071,7 @@ and 'covariant'._
 </div>
 <div class="card outlined-card" id="final_and_var">
 <div class="card-header">
-<header class="card-title" id="final_and_var">{{"final_and_var" | underscoreBreaker}}</header>
+<header class="card-title" id="final_and_var">final_<wbr>and_<wbr>var</header>
 </div>
 <div class="card-content">
 
@@ -6106,7 +6088,7 @@ _Members can't be declared to be both 'final' and 'var'._
 </div>
 <div class="card outlined-card" id="final_constructor">
 <div class="card-header">
-<header class="card-title" id="final_constructor">{{"final_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="final_constructor">final_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -6123,7 +6105,7 @@ _A constructor can't be declared to be 'final'._
 </div>
 <div class="card outlined-card" id="final_enum">
 <div class="card-header">
-<header class="card-title" id="final_enum">{{"final_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="final_enum">final_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -6140,7 +6122,7 @@ _Enums can't be declared to be 'final'._
 </div>
 <div class="card outlined-card" id="final_initialized_in_declaration_and_constructor">
 <div class="card-header">
-<header class="card-title" id="final_initialized_in_declaration_and_constructor">{{"final_initialized_in_declaration_and_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="final_initialized_in_declaration_and_constructor">final_<wbr>initialized_<wbr>in_<wbr>declaration_<wbr>and_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -6159,7 +6141,7 @@ to a new value._
 </div>
 <div class="card outlined-card" id="final_method">
 <div class="card-header">
-<header class="card-title" id="final_method">{{"final_method" | underscoreBreaker}}</header>
+<header class="card-title" id="final_method">final_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -6176,7 +6158,7 @@ _Getters, setters and methods can't be declared to be 'final'._
 </div>
 <div class="card outlined-card" id="final_mixin">
 <div class="card-header">
-<header class="card-title" id="final_mixin">{{"final_mixin" | underscoreBreaker}}</header>
+<header class="card-title" id="final_mixin">final_<wbr>mixin</header>
 </div>
 <div class="card-content">
 
@@ -6193,7 +6175,7 @@ _A mixin can't be declared 'final'._
 </div>
 <div class="card outlined-card" id="final_mixin_class">
 <div class="card-header">
-<header class="card-title" id="final_mixin_class">{{"final_mixin_class" | underscoreBreaker}}</header>
+<header class="card-title" id="final_mixin_class">final_<wbr>mixin_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -6210,7 +6192,7 @@ _A mixin class can't be declared 'final'._
 </div>
 <div class="card outlined-card" id="final_not_initialized">
 <div class="card-header">
-<header class="card-title" id="final_not_initialized">{{"final_not_initialized" | underscoreBreaker}}</header>
+<header class="card-title" id="final_not_initialized">final_<wbr>not_<wbr>initialized</header>
 </div>
 <div class="card-content">
 
@@ -6228,7 +6210,7 @@ _The final variable '{0}' must be initialized._
 </div>
 <div class="card outlined-card" id="final_not_initialized_constructor">
 <div class="card-header">
-<header class="card-title" id="final_not_initialized_constructor">{{"final_not_initialized_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="final_not_initialized_constructor">final_<wbr>not_<wbr>initialized_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -6251,7 +6233,7 @@ aren't._
 </div>
 <div class="card outlined-card" id="flutter_field_not_map">
 <div class="card-header">
-<header class="card-title" id="flutter_field_not_map">{{"flutter_field_not_map" | underscoreBreaker}}</header>
+<header class="card-title" id="flutter_field_not_map">flutter_<wbr>field_<wbr>not_<wbr>map</header>
 </div>
 <div class="card-content">
 
@@ -6269,7 +6251,7 @@ _The value of the 'flutter' field is expected to be a map._
 </div>
 <div class="card outlined-card" id="for_in_of_invalid_element_type">
 <div class="card-header">
-<header class="card-title" id="for_in_of_invalid_element_type">{{"for_in_of_invalid_element_type" | underscoreBreaker}}</header>
+<header class="card-title" id="for_in_of_invalid_element_type">for_<wbr>in_<wbr>of_<wbr>invalid_<wbr>element_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -6288,7 +6270,7 @@ that can be assigned to '{2}'._
 </div>
 <div class="card outlined-card" id="for_in_of_invalid_type">
 <div class="card-header">
-<header class="card-title" id="for_in_of_invalid_type">{{"for_in_of_invalid_type" | underscoreBreaker}}</header>
+<header class="card-title" id="for_in_of_invalid_type">for_<wbr>in_<wbr>of_<wbr>invalid_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -6306,7 +6288,7 @@ _The type '{0}' used in the 'for' loop must implement '{1}'._
 </div>
 <div class="card outlined-card" id="for_in_with_const_variable">
 <div class="card-header">
-<header class="card-title" id="for_in_with_const_variable">{{"for_in_with_const_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="for_in_with_const_variable">for_<wbr>in_<wbr>with_<wbr>const_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -6324,7 +6306,7 @@ _A for-in loop variable can't be a 'const'._
 </div>
 <div class="card outlined-card" id="function_typed_parameter_var">
 <div class="card-header">
-<header class="card-title" id="function_typed_parameter_var">{{"function_typed_parameter_var" | underscoreBreaker}}</header>
+<header class="card-title" id="function_typed_parameter_var">function_<wbr>typed_<wbr>parameter_<wbr>var</header>
 </div>
 <div class="card-content">
 
@@ -6342,7 +6324,7 @@ return type._
 </div>
 <div class="card outlined-card" id="generic_function_type_cannot_be_bound">
 <div class="card-header">
-<header class="card-title" id="generic_function_type_cannot_be_bound">{{"generic_function_type_cannot_be_bound" | underscoreBreaker}}</header>
+<header class="card-title" id="generic_function_type_cannot_be_bound">generic_<wbr>function_<wbr>type_<wbr>cannot_<wbr>be_<wbr>bound</header>
 </div>
 <div class="card-content">
 
@@ -6359,7 +6341,7 @@ _Generic function types can't be used as type parameter bounds._
 </div>
 <div class="card outlined-card" id="generic_function_type_cannot_be_type_argument">
 <div class="card-header">
-<header class="card-title" id="generic_function_type_cannot_be_type_argument">{{"generic_function_type_cannot_be_type_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="generic_function_type_cannot_be_type_argument">generic_<wbr>function_<wbr>type_<wbr>cannot_<wbr>be_<wbr>type_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -6376,7 +6358,7 @@ _A generic function type can't be a type argument._
 </div>
 <div class="card outlined-card" id="generic_method_type_instantiation_on_dynamic">
 <div class="card-header">
-<header class="card-title" id="generic_method_type_instantiation_on_dynamic">{{"generic_method_type_instantiation_on_dynamic" | underscoreBreaker}}</header>
+<header class="card-title" id="generic_method_type_instantiation_on_dynamic">generic_<wbr>method_<wbr>type_<wbr>instantiation_<wbr>on_<wbr>dynamic</header>
 </div>
 <div class="card-content">
 
@@ -6395,7 +6377,7 @@ arguments._
 </div>
 <div class="card outlined-card" id="generic_struct_subclass">
 <div class="card-header">
-<header class="card-title" id="generic_struct_subclass">{{"generic_struct_subclass" | underscoreBreaker}}</header>
+<header class="card-title" id="generic_struct_subclass">generic_<wbr>struct_<wbr>subclass</header>
 </div>
 <div class="card-content">
 
@@ -6413,7 +6395,7 @@ _The class '{0}' can't extend 'Struct' or 'Union' because '{0}' is generic._
 </div>
 <div class="card outlined-card" id="getter_constructor">
 <div class="card-header">
-<header class="card-title" id="getter_constructor">{{"getter_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="getter_constructor">getter_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -6430,7 +6412,7 @@ _Constructors can't be a getter._
 </div>
 <div class="card outlined-card" id="getter_in_function">
 <div class="card-header">
-<header class="card-title" id="getter_in_function">{{"getter_in_function" | underscoreBreaker}}</header>
+<header class="card-title" id="getter_in_function">getter_<wbr>in_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -6447,7 +6429,7 @@ _Getters can't be defined within methods or functions._
 </div>
 <div class="card outlined-card" id="getter_not_assignable_setter_types">
 <div class="card-header">
-<header class="card-title" id="getter_not_assignable_setter_types">{{"getter_not_assignable_setter_types" | underscoreBreaker}}</header>
+<header class="card-title" id="getter_not_assignable_setter_types">getter_<wbr>not_<wbr>assignable_<wbr>setter_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -6465,7 +6447,7 @@ _The return type of getter '{0}' is '{1}' which isn't assignable to the type
 </div>
 <div class="card outlined-card" id="getter_not_subtype_setter_types">
 <div class="card-header">
-<header class="card-title" id="getter_not_subtype_setter_types">{{"getter_not_subtype_setter_types" | underscoreBreaker}}</header>
+<header class="card-title" id="getter_not_subtype_setter_types">getter_<wbr>not_<wbr>subtype_<wbr>setter_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -6484,7 +6466,7 @@ _The return type of getter '{0}' is '{1}' which isn't a subtype of the type
 </div>
 <div class="card outlined-card" id="getter_with_parameters">
 <div class="card-header">
-<header class="card-title" id="getter_with_parameters">{{"getter_with_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="getter_with_parameters">getter_<wbr>with_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -6501,7 +6483,7 @@ _Getters must be declared without a parameter list._
 </div>
 <div class="card outlined-card" id="if_element_condition_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="if_element_condition_from_deferred_library">{{"if_element_condition_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="if_element_condition_from_deferred_library">if_<wbr>element_<wbr>condition_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -6519,7 +6501,7 @@ condition inside a const collection literal._
 </div>
 <div class="card outlined-card" id="illegal_assignment_to_non_assignable">
 <div class="card-header">
-<header class="card-title" id="illegal_assignment_to_non_assignable">{{"illegal_assignment_to_non_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_assignment_to_non_assignable">illegal_<wbr>assignment_<wbr>to_<wbr>non_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -6536,7 +6518,7 @@ _Illegal assignment to non-assignable expression._
 </div>
 <div class="card outlined-card" id="illegal_async_generator_return_type">
 <div class="card-header">
-<header class="card-title" id="illegal_async_generator_return_type">{{"illegal_async_generator_return_type" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_async_generator_return_type">illegal_<wbr>async_<wbr>generator_<wbr>return_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -6555,7 +6537,7 @@ _Functions marked 'async*' must have a return type that is a supertype of
 </div>
 <div class="card outlined-card" id="illegal_async_return_type">
 <div class="card-header">
-<header class="card-title" id="illegal_async_return_type">{{"illegal_async_return_type" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_async_return_type">illegal_<wbr>async_<wbr>return_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -6572,9 +6554,26 @@ _Functions marked 'async' must have a return type which is a supertype of
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="illegal_character">
+<div class="card-header">
+<header class="card-title" id="illegal_character">illegal_<wbr>character</header>
+</div>
+<div class="card-content">
+
+_Illegal character '{0}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="illegal_character" title="Copy illegal_character to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="illegal_concrete_enum_member">
 <div class="card-header">
-<header class="card-title" id="illegal_concrete_enum_member">{{"illegal_concrete_enum_member" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_concrete_enum_member">illegal_<wbr>concrete_<wbr>enum_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -6596,7 +6595,7 @@ that implements 'Enum'._
 </div>
 <div class="card outlined-card" id="illegal_enum_values">
 <div class="card-header">
-<header class="card-title" id="illegal_enum_values">{{"illegal_enum_values" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_enum_values">illegal_<wbr>enum_<wbr>values</header>
 </div>
 <div class="card-content">
 
@@ -6618,7 +6617,7 @@ implements 'Enum'._
 </div>
 <div class="card outlined-card" id="illegal_language_version_override">
 <div class="card-header">
-<header class="card-title" id="illegal_language_version_override">{{"illegal_language_version_override" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_language_version_override">illegal_<wbr>language_<wbr>version_<wbr>override</header>
 </div>
 <div class="card-content">
 
@@ -6635,7 +6634,7 @@ _The language version must be {0}._
 </div>
 <div class="card outlined-card" id="illegal_pattern_assignment_variable_name">
 <div class="card-header">
-<header class="card-title" id="illegal_pattern_assignment_variable_name">{{"illegal_pattern_assignment_variable_name" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_pattern_assignment_variable_name">illegal_<wbr>pattern_<wbr>assignment_<wbr>variable_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -6652,7 +6651,7 @@ _A variable assigned by a pattern assignment can't be named '{0}'._
 </div>
 <div class="card outlined-card" id="illegal_pattern_identifier_name">
 <div class="card-header">
-<header class="card-title" id="illegal_pattern_identifier_name">{{"illegal_pattern_identifier_name" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_pattern_identifier_name">illegal_<wbr>pattern_<wbr>identifier_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -6669,7 +6668,7 @@ _A pattern can't refer to an identifier named '{0}'._
 </div>
 <div class="card outlined-card" id="illegal_pattern_variable_name">
 <div class="card-header">
-<header class="card-title" id="illegal_pattern_variable_name">{{"illegal_pattern_variable_name" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_pattern_variable_name">illegal_<wbr>pattern_<wbr>variable_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -6686,7 +6685,7 @@ _The variable declared by a variable pattern can't be named '{0}'._
 </div>
 <div class="card outlined-card" id="illegal_sync_generator_return_type">
 <div class="card-header">
-<header class="card-title" id="illegal_sync_generator_return_type">{{"illegal_sync_generator_return_type" | underscoreBreaker}}</header>
+<header class="card-title" id="illegal_sync_generator_return_type">illegal_<wbr>sync_<wbr>generator_<wbr>return_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -6705,7 +6704,7 @@ _Functions marked 'sync*' must have a return type that is a supertype of
 </div>
 <div class="card outlined-card" id="implements_before_extends">
 <div class="card-header">
-<header class="card-title" id="implements_before_extends">{{"implements_before_extends" | underscoreBreaker}}</header>
+<header class="card-title" id="implements_before_extends">implements_<wbr>before_<wbr>extends</header>
 </div>
 <div class="card-content">
 
@@ -6722,7 +6721,7 @@ _The extends clause must be before the implements clause._
 </div>
 <div class="card outlined-card" id="implements_before_on">
 <div class="card-header">
-<header class="card-title" id="implements_before_on">{{"implements_before_on" | underscoreBreaker}}</header>
+<header class="card-title" id="implements_before_on">implements_<wbr>before_<wbr>on</header>
 </div>
 <div class="card-content">
 
@@ -6739,7 +6738,7 @@ _The on clause must be before the implements clause._
 </div>
 <div class="card outlined-card" id="implements_before_with">
 <div class="card-header">
-<header class="card-title" id="implements_before_with">{{"implements_before_with" | underscoreBreaker}}</header>
+<header class="card-title" id="implements_before_with">implements_<wbr>before_<wbr>with</header>
 </div>
 <div class="card-content">
 
@@ -6756,7 +6755,7 @@ _The with clause must be before the implements clause._
 </div>
 <div class="card outlined-card" id="implements_non_class">
 <div class="card-header">
-<header class="card-title" id="implements_non_class">{{"implements_non_class" | underscoreBreaker}}</header>
+<header class="card-title" id="implements_non_class">implements_<wbr>non_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -6774,7 +6773,7 @@ _Classes and mixins can only implement other classes and mixins._
 </div>
 <div class="card outlined-card" id="implements_repeated">
 <div class="card-header">
-<header class="card-title" id="implements_repeated">{{"implements_repeated" | underscoreBreaker}}</header>
+<header class="card-title" id="implements_repeated">implements_<wbr>repeated</header>
 </div>
 <div class="card-content">
 
@@ -6792,7 +6791,7 @@ _'{0}' can only be implemented once._
 </div>
 <div class="card outlined-card" id="implements_super_class">
 <div class="card-header">
-<header class="card-title" id="implements_super_class">{{"implements_super_class" | underscoreBreaker}}</header>
+<header class="card-title" id="implements_super_class">implements_<wbr>super_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -6812,7 +6811,7 @@ _'{0}' can't be used in both the 'extends' and 'with' clauses._
 </div>
 <div class="card outlined-card" id="implicit_super_initializer_missing_arguments">
 <div class="card-header">
-<header class="card-title" id="implicit_super_initializer_missing_arguments">{{"implicit_super_initializer_missing_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="implicit_super_initializer_missing_arguments">implicit_<wbr>super_<wbr>initializer_<wbr>missing_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -6830,7 +6829,7 @@ _The implicitly invoked unnamed constructor from '{0}' has required parameters._
 </div>
 <div class="card outlined-card" id="implicit_this_reference_in_initializer">
 <div class="card-header">
-<header class="card-title" id="implicit_this_reference_in_initializer">{{"implicit_this_reference_in_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="implicit_this_reference_in_initializer">implicit_<wbr>this_<wbr>reference_<wbr>in_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -6848,7 +6847,7 @@ _The instance member '{0}' can't be accessed in an initializer._
 </div>
 <div class="card outlined-card" id="import_deferred_library_with_load_function">
 <div class="card-header">
-<header class="card-title" id="import_deferred_library_with_load_function">{{"import_deferred_library_with_load_function" | underscoreBreaker}}</header>
+<header class="card-title" id="import_deferred_library_with_load_function">import_<wbr>deferred_<wbr>library_<wbr>with_<wbr>load_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -6867,7 +6866,7 @@ hidden by deferring this library._
 </div>
 <div class="card outlined-card" id="import_directive_after_part_directive">
 <div class="card-header">
-<header class="card-title" id="import_directive_after_part_directive">{{"import_directive_after_part_directive" | underscoreBreaker}}</header>
+<header class="card-title" id="import_directive_after_part_directive">import_<wbr>directive_<wbr>after_<wbr>part_<wbr>directive</header>
 </div>
 <div class="card-content">
 
@@ -6884,7 +6883,7 @@ _Import directives must precede part directives._
 </div>
 <div class="card outlined-card" id="import_internal_library">
 <div class="card-header">
-<header class="card-title" id="import_internal_library">{{"import_internal_library" | underscoreBreaker}}</header>
+<header class="card-title" id="import_internal_library">import_<wbr>internal_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -6902,7 +6901,7 @@ _The library '{0}' is internal and can't be imported._
 </div>
 <div class="card outlined-card" id="import_of_legacy_library_into_null_safe">
 <div class="card-header">
-<header class="card-title" id="import_of_legacy_library_into_null_safe">{{"import_of_legacy_library_into_null_safe" | underscoreBreaker}}</header>
+<header class="card-title" id="import_of_legacy_library_into_null_safe">import_<wbr>of_<wbr>legacy_<wbr>library_<wbr>into_<wbr>null_<wbr>safe</header>
 </div>
 <div class="card-content">
 
@@ -6921,7 +6920,7 @@ library._
 </div>
 <div class="card outlined-card" id="import_of_non_library">
 <div class="card-header">
-<header class="card-title" id="import_of_non_library">{{"import_of_non_library" | underscoreBreaker}}</header>
+<header class="card-title" id="import_of_non_library">import_<wbr>of_<wbr>non_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -6939,7 +6938,7 @@ _The imported library '{0}' can't have a part-of directive._
 </div>
 <div class="card outlined-card" id="included_file_parse_error">
 <div class="card-header">
-<header class="card-title" id="included_file_parse_error">{{"included_file_parse_error" | underscoreBreaker}}</header>
+<header class="card-title" id="included_file_parse_error">included_<wbr>file_<wbr>parse_<wbr>error</header>
 </div>
 <div class="card-content">
 
@@ -6956,7 +6955,7 @@ _{3} in {0}({1}..{2})_
 </div>
 <div class="card outlined-card" id="included_file_warning">
 <div class="card-header">
-<header class="card-title" id="included_file_warning">{{"included_file_warning" | underscoreBreaker}}</header>
+<header class="card-title" id="included_file_warning">included_<wbr>file_<wbr>warning</header>
 </div>
 <div class="card-content">
 
@@ -6973,7 +6972,7 @@ _Warning in the included options file {0}({1}..{2}): {3}_
 </div>
 <div class="card outlined-card" id="include_file_not_found">
 <div class="card-header">
-<header class="card-title" id="include_file_not_found">{{"include_file_not_found" | underscoreBreaker}}</header>
+<header class="card-title" id="include_file_not_found">include_<wbr>file_<wbr>not_<wbr>found</header>
 </div>
 <div class="card-content">
 
@@ -6990,7 +6989,7 @@ _The include file '{0}' in '{1}' can't be found when analyzing '{2}'._
 </div>
 <div class="card outlined-card" id="incompatible_lint">
 <div class="card-header">
-<header class="card-title" id="incompatible_lint">{{"incompatible_lint" | underscoreBreaker}}</header>
+<header class="card-title" id="incompatible_lint">incompatible_<wbr>lint</header>
 </div>
 <div class="card-content">
 
@@ -7007,7 +7006,7 @@ _The rule '{0}' is incompatible with the rule '{1}'._
 </div>
 <div class="card outlined-card" id="inconsistent_case_expression_types">
 <div class="card-header">
-<header class="card-title" id="inconsistent_case_expression_types">{{"inconsistent_case_expression_types" | underscoreBreaker}}</header>
+<header class="card-title" id="inconsistent_case_expression_types">inconsistent_<wbr>case_<wbr>expression_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -7024,7 +7023,7 @@ _Case expressions must have the same types, '{0}' isn't a '{1}'._
 </div>
 <div class="card outlined-card" id="inconsistent_inheritance">
 <div class="card-header">
-<header class="card-title" id="inconsistent_inheritance">{{"inconsistent_inheritance" | underscoreBreaker}}</header>
+<header class="card-title" id="inconsistent_inheritance">inconsistent_<wbr>inheritance</header>
 </div>
 <div class="card-content">
 
@@ -7042,7 +7041,7 @@ _Superinterfaces don't have a valid override for '{0}': {1}._
 </div>
 <div class="card outlined-card" id="inconsistent_inheritance_getter_and_method">
 <div class="card-header">
-<header class="card-title" id="inconsistent_inheritance_getter_and_method">{{"inconsistent_inheritance_getter_and_method" | underscoreBreaker}}</header>
+<header class="card-title" id="inconsistent_inheritance_getter_and_method">inconsistent_<wbr>inheritance_<wbr>getter_<wbr>and_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -7059,7 +7058,7 @@ _'{0}' is inherited as a getter (from '{1}') and also a method (from '{2}')._
 </div>
 <div class="card outlined-card" id="inconsistent_language_version_override">
 <div class="card-header">
-<header class="card-title" id="inconsistent_language_version_override">{{"inconsistent_language_version_override" | underscoreBreaker}}</header>
+<header class="card-title" id="inconsistent_language_version_override">inconsistent_<wbr>language_<wbr>version_<wbr>override</header>
 </div>
 <div class="card-content">
 
@@ -7077,7 +7076,7 @@ _Parts must have exactly the same language version override as the library._
 </div>
 <div class="card outlined-card" id="inconsistent_pattern_variable_logical_or">
 <div class="card-header">
-<header class="card-title" id="inconsistent_pattern_variable_logical_or">{{"inconsistent_pattern_variable_logical_or" | underscoreBreaker}}</header>
+<header class="card-title" id="inconsistent_pattern_variable_logical_or">inconsistent_<wbr>pattern_<wbr>variable_<wbr>logical_<wbr>or</header>
 </div>
 <div class="card-content">
 
@@ -7096,7 +7095,7 @@ logical-or pattern._
 </div>
 <div class="card outlined-card" id="inference_failure_on_collection_literal">
 <div class="card-header">
-<header class="card-title" id="inference_failure_on_collection_literal">{{"inference_failure_on_collection_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="inference_failure_on_collection_literal">inference_<wbr>failure_<wbr>on_<wbr>collection_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -7113,7 +7112,7 @@ _The type argument(s) of '{0}' can't be inferred._
 </div>
 <div class="card outlined-card" id="inference_failure_on_function_invocation">
 <div class="card-header">
-<header class="card-title" id="inference_failure_on_function_invocation">{{"inference_failure_on_function_invocation" | underscoreBreaker}}</header>
+<header class="card-title" id="inference_failure_on_function_invocation">inference_<wbr>failure_<wbr>on_<wbr>function_<wbr>invocation</header>
 </div>
 <div class="card-content">
 
@@ -7130,7 +7129,7 @@ _The type argument(s) of the function '{0}' can't be inferred._
 </div>
 <div class="card outlined-card" id="inference_failure_on_function_return_type">
 <div class="card-header">
-<header class="card-title" id="inference_failure_on_function_return_type">{{"inference_failure_on_function_return_type" | underscoreBreaker}}</header>
+<header class="card-title" id="inference_failure_on_function_return_type">inference_<wbr>failure_<wbr>on_<wbr>function_<wbr>return_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -7147,7 +7146,7 @@ _The return type of '{0}' cannot be inferred._
 </div>
 <div class="card outlined-card" id="inference_failure_on_generic_invocation">
 <div class="card-header">
-<header class="card-title" id="inference_failure_on_generic_invocation">{{"inference_failure_on_generic_invocation" | underscoreBreaker}}</header>
+<header class="card-title" id="inference_failure_on_generic_invocation">inference_<wbr>failure_<wbr>on_<wbr>generic_<wbr>invocation</header>
 </div>
 <div class="card-content">
 
@@ -7164,7 +7163,7 @@ _The type argument(s) of the generic function type '{0}' can't be inferred._
 </div>
 <div class="card outlined-card" id="inference_failure_on_instance_creation">
 <div class="card-header">
-<header class="card-title" id="inference_failure_on_instance_creation">{{"inference_failure_on_instance_creation" | underscoreBreaker}}</header>
+<header class="card-title" id="inference_failure_on_instance_creation">inference_<wbr>failure_<wbr>on_<wbr>instance_<wbr>creation</header>
 </div>
 <div class="card-content">
 
@@ -7181,7 +7180,7 @@ _The type argument(s) of the constructor '{0}' can't be inferred._
 </div>
 <div class="card outlined-card" id="inference_failure_on_uninitialized_variable">
 <div class="card-header">
-<header class="card-title" id="inference_failure_on_uninitialized_variable">{{"inference_failure_on_uninitialized_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="inference_failure_on_uninitialized_variable">inference_<wbr>failure_<wbr>on_<wbr>uninitialized_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -7198,7 +7197,7 @@ _The type of {0} can't be inferred without either a type or initializer._
 </div>
 <div class="card outlined-card" id="inference_failure_on_untyped_parameter">
 <div class="card-header">
-<header class="card-title" id="inference_failure_on_untyped_parameter">{{"inference_failure_on_untyped_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="inference_failure_on_untyped_parameter">inference_<wbr>failure_<wbr>on_<wbr>untyped_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -7215,7 +7214,7 @@ _The type of {0} can't be inferred; a type must be explicitly provided._
 </div>
 <div class="card outlined-card" id="initialized_variable_in_for_each">
 <div class="card-header">
-<header class="card-title" id="initialized_variable_in_for_each">{{"initialized_variable_in_for_each" | underscoreBreaker}}</header>
+<header class="card-title" id="initialized_variable_in_for_each">initialized_<wbr>variable_<wbr>in_<wbr>for_<wbr>each</header>
 </div>
 <div class="card-content">
 
@@ -7232,7 +7231,7 @@ _The loop variable in a for-each loop can't be initialized._
 </div>
 <div class="card outlined-card" id="initializer_for_non_existent_field">
 <div class="card-header">
-<header class="card-title" id="initializer_for_non_existent_field">{{"initializer_for_non_existent_field" | underscoreBreaker}}</header>
+<header class="card-title" id="initializer_for_non_existent_field">initializer_<wbr>for_<wbr>non_<wbr>existent_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -7250,7 +7249,7 @@ _'{0}' isn't a field in the enclosing class._
 </div>
 <div class="card outlined-card" id="initializer_for_static_field">
 <div class="card-header">
-<header class="card-title" id="initializer_for_static_field">{{"initializer_for_static_field" | underscoreBreaker}}</header>
+<header class="card-title" id="initializer_for_static_field">initializer_<wbr>for_<wbr>static_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -7269,7 +7268,7 @@ constructor can't be static._
 </div>
 <div class="card outlined-card" id="initializing_formal_for_non_existent_field">
 <div class="card-header">
-<header class="card-title" id="initializing_formal_for_non_existent_field">{{"initializing_formal_for_non_existent_field" | underscoreBreaker}}</header>
+<header class="card-title" id="initializing_formal_for_non_existent_field">initializing_<wbr>formal_<wbr>for_<wbr>non_<wbr>existent_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -7287,7 +7286,7 @@ _'{0}' isn't a field in the enclosing class._
 </div>
 <div class="card outlined-card" id="instance_access_to_static_member">
 <div class="card-header">
-<header class="card-title" id="instance_access_to_static_member">{{"instance_access_to_static_member" | underscoreBreaker}}</header>
+<header class="card-title" id="instance_access_to_static_member">instance_<wbr>access_<wbr>to_<wbr>static_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -7305,7 +7304,7 @@ _The static {1} '{0}' can't be accessed through an instance._
 </div>
 <div class="card outlined-card" id="instance_member_access_from_factory">
 <div class="card-header">
-<header class="card-title" id="instance_member_access_from_factory">{{"instance_member_access_from_factory" | underscoreBreaker}}</header>
+<header class="card-title" id="instance_member_access_from_factory">instance_<wbr>member_<wbr>access_<wbr>from_<wbr>factory</header>
 </div>
 <div class="card-content">
 
@@ -7323,7 +7322,7 @@ _Instance members can't be accessed from a factory constructor._
 </div>
 <div class="card outlined-card" id="instance_member_access_from_static">
 <div class="card-header">
-<header class="card-title" id="instance_member_access_from_static">{{"instance_member_access_from_static" | underscoreBreaker}}</header>
+<header class="card-title" id="instance_member_access_from_static">instance_<wbr>member_<wbr>access_<wbr>from_<wbr>static</header>
 </div>
 <div class="card-content">
 
@@ -7341,7 +7340,7 @@ _Instance members can't be accessed from a static method._
 </div>
 <div class="card outlined-card" id="instantiate_abstract_class">
 <div class="card-header">
-<header class="card-title" id="instantiate_abstract_class">{{"instantiate_abstract_class" | underscoreBreaker}}</header>
+<header class="card-title" id="instantiate_abstract_class">instantiate_<wbr>abstract_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -7359,7 +7358,7 @@ _Abstract classes can't be instantiated._
 </div>
 <div class="card outlined-card" id="instantiate_enum">
 <div class="card-header">
-<header class="card-title" id="instantiate_enum">{{"instantiate_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="instantiate_enum">instantiate_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -7377,7 +7376,7 @@ _Enums can't be instantiated._
 </div>
 <div class="card outlined-card" id="instantiate_type_alias_expands_to_type_parameter">
 <div class="card-header">
-<header class="card-title" id="instantiate_type_alias_expands_to_type_parameter">{{"instantiate_type_alias_expands_to_type_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="instantiate_type_alias_expands_to_type_parameter">instantiate_<wbr>type_<wbr>alias_<wbr>expands_<wbr>to_<wbr>type_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -7395,7 +7394,7 @@ _Type aliases that expand to a type parameter can't be instantiated._
 </div>
 <div class="card outlined-card" id="integer_literal_imprecise_as_double">
 <div class="card-header">
-<header class="card-title" id="integer_literal_imprecise_as_double">{{"integer_literal_imprecise_as_double" | underscoreBreaker}}</header>
+<header class="card-title" id="integer_literal_imprecise_as_double">integer_<wbr>literal_<wbr>imprecise_<wbr>as_<wbr>double</header>
 </div>
 <div class="card-content">
 
@@ -7414,7 +7413,7 @@ _The integer literal is being used as a double, but can't be represented as a
 </div>
 <div class="card outlined-card" id="integer_literal_out_of_range">
 <div class="card-header">
-<header class="card-title" id="integer_literal_out_of_range">{{"integer_literal_out_of_range" | underscoreBreaker}}</header>
+<header class="card-title" id="integer_literal_out_of_range">integer_<wbr>literal_<wbr>out_<wbr>of_<wbr>range</header>
 </div>
 <div class="card-content">
 
@@ -7432,7 +7431,7 @@ _The integer literal {0} can't be represented in 64 bits._
 </div>
 <div class="card outlined-card" id="interface_enum">
 <div class="card-header">
-<header class="card-title" id="interface_enum">{{"interface_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="interface_enum">interface_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -7449,7 +7448,7 @@ _Enums can't be declared to be 'interface'._
 </div>
 <div class="card outlined-card" id="interface_mixin">
 <div class="card-header">
-<header class="card-title" id="interface_mixin">{{"interface_mixin" | underscoreBreaker}}</header>
+<header class="card-title" id="interface_mixin">interface_<wbr>mixin</header>
 </div>
 <div class="card-content">
 
@@ -7466,7 +7465,7 @@ _A mixin can't be declared 'interface'._
 </div>
 <div class="card outlined-card" id="interface_mixin_class">
 <div class="card-header">
-<header class="card-title" id="interface_mixin_class">{{"interface_mixin_class" | underscoreBreaker}}</header>
+<header class="card-title" id="interface_mixin_class">interface_<wbr>mixin_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -7483,7 +7482,7 @@ _A mixin class can't be declared 'interface'._
 </div>
 <div class="card outlined-card" id="invalid_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_annotation">{{"invalid_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_annotation">invalid_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -7502,7 +7501,7 @@ invocation._
 </div>
 <div class="card outlined-card" id="invalid_annotation_constant_value_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="invalid_annotation_constant_value_from_deferred_library">{{"invalid_annotation_constant_value_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_annotation_constant_value_from_deferred_library">invalid_<wbr>annotation_<wbr>constant_<wbr>value_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -7520,7 +7519,7 @@ _Constant values from a deferred library can't be used in annotations._
 </div>
 <div class="card outlined-card" id="invalid_annotation_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="invalid_annotation_from_deferred_library">{{"invalid_annotation_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_annotation_from_deferred_library">invalid_<wbr>annotation_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -7538,7 +7537,7 @@ _Constant values from a deferred library can't be used as annotations._
 </div>
 <div class="card outlined-card" id="invalid_annotation_target">
 <div class="card-header">
-<header class="card-title" id="invalid_annotation_target">{{"invalid_annotation_target" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_annotation_target">invalid_<wbr>annotation_<wbr>target</header>
 </div>
 <div class="card-content">
 
@@ -7556,7 +7555,7 @@ _The annotation '{0}' can only be used on {1}._
 </div>
 <div class="card outlined-card" id="invalid_assignment">
 <div class="card-header">
-<header class="card-title" id="invalid_assignment">{{"invalid_assignment" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_assignment">invalid_<wbr>assignment</header>
 </div>
 <div class="card-content">
 
@@ -7574,7 +7573,7 @@ _A value of type '{0}' can't be assigned to a variable of type '{1}'._
 </div>
 <div class="card outlined-card" id="invalid_await_in_for">
 <div class="card-header">
-<header class="card-title" id="invalid_await_in_for">{{"invalid_await_in_for" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_await_in_for">invalid_<wbr>await_<wbr>in_<wbr>for</header>
 </div>
 <div class="card-content">
 
@@ -7591,7 +7590,7 @@ _The keyword 'await' isn't allowed for a normal 'for' statement._
 </div>
 <div class="card outlined-card" id="invalid_await_not_required_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_await_not_required_annotation">{{"invalid_await_not_required_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_await_not_required_annotation">invalid_<wbr>await_<wbr>not_<wbr>required_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -7610,7 +7609,7 @@ function, or a Future-typed field._
 </div>
 <div class="card outlined-card" id="invalid_cast_function">
 <div class="card-header">
-<header class="card-title" id="invalid_cast_function">{{"invalid_cast_function" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_cast_function">invalid_<wbr>cast_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -7628,7 +7627,7 @@ its parameter or return type doesn't match what is expected._
 </div>
 <div class="card outlined-card" id="invalid_cast_function_expr">
 <div class="card-header">
-<header class="card-title" id="invalid_cast_function_expr">{{"invalid_cast_function_expr" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_cast_function_expr">invalid_<wbr>cast_<wbr>function_<wbr>expr</header>
 </div>
 <div class="card-content">
 
@@ -7646,7 +7645,7 @@ parameter or return type doesn't match what is expected. Consider changing param
 </div>
 <div class="card outlined-card" id="invalid_cast_literal">
 <div class="card-header">
-<header class="card-title" id="invalid_cast_literal">{{"invalid_cast_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_cast_literal">invalid_<wbr>cast_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -7663,7 +7662,7 @@ _The literal '{0}' with type '{1}' isn't of expected type '{2}'._
 </div>
 <div class="card outlined-card" id="invalid_cast_literal_list">
 <div class="card-header">
-<header class="card-title" id="invalid_cast_literal_list">{{"invalid_cast_literal_list" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_cast_literal_list">invalid_<wbr>cast_<wbr>literal_<wbr>list</header>
 </div>
 <div class="card-content">
 
@@ -7681,7 +7680,7 @@ be changed with an explicit generic type argument or by changing the element typ
 </div>
 <div class="card outlined-card" id="invalid_cast_literal_map">
 <div class="card-header">
-<header class="card-title" id="invalid_cast_literal_map">{{"invalid_cast_literal_map" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_cast_literal_map">invalid_<wbr>cast_<wbr>literal_<wbr>map</header>
 </div>
 <div class="card-content">
 
@@ -7699,7 +7698,7 @@ changed with an explicit generic type arguments or by changing the key and value
 </div>
 <div class="card outlined-card" id="invalid_cast_literal_set">
 <div class="card-header">
-<header class="card-title" id="invalid_cast_literal_set">{{"invalid_cast_literal_set" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_cast_literal_set">invalid_<wbr>cast_<wbr>literal_<wbr>set</header>
 </div>
 <div class="card-content">
 
@@ -7717,7 +7716,7 @@ changed with an explicit generic type argument or by changing the element types.
 </div>
 <div class="card outlined-card" id="invalid_cast_method">
 <div class="card-header">
-<header class="card-title" id="invalid_cast_method">{{"invalid_cast_method" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_cast_method">invalid_<wbr>cast_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -7735,7 +7734,7 @@ This means its parameter or return type doesn't match what is expected._
 </div>
 <div class="card outlined-card" id="invalid_cast_new_expr">
 <div class="card-header">
-<header class="card-title" id="invalid_cast_new_expr">{{"invalid_cast_new_expr" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_cast_new_expr">invalid_<wbr>cast_<wbr>new_<wbr>expr</header>
 </div>
 <div class="card-content">
 
@@ -7752,7 +7751,7 @@ _The constructor returns type '{0}' that isn't of expected type '{1}'._
 </div>
 <div class="card outlined-card" id="invalid_code_point">
 <div class="card-header">
-<header class="card-title" id="invalid_code_point">{{"invalid_code_point" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_code_point">invalid_<wbr>code_<wbr>point</header>
 </div>
 <div class="card-content">
 
@@ -7769,7 +7768,7 @@ _The escape sequence '{0}' isn't a valid code point._
 </div>
 <div class="card outlined-card" id="invalid_comment_reference">
 <div class="card-header">
-<header class="card-title" id="invalid_comment_reference">{{"invalid_comment_reference" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_comment_reference">invalid_<wbr>comment_<wbr>reference</header>
 </div>
 <div class="card-content">
 
@@ -7787,7 +7786,7 @@ with 'new', but shouldn't contain anything else._
 </div>
 <div class="card outlined-card" id="invalid_constant">
 <div class="card-header">
-<header class="card-title" id="invalid_constant">{{"invalid_constant" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_constant">invalid_<wbr>constant</header>
 </div>
 <div class="card-content">
 
@@ -7804,7 +7803,7 @@ _Invalid constant value._
 </div>
 <div class="card outlined-card" id="invalid_constant_const_prefix">
 <div class="card-header">
-<header class="card-title" id="invalid_constant_const_prefix">{{"invalid_constant_const_prefix" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_constant_const_prefix">invalid_<wbr>constant_<wbr>const_<wbr>prefix</header>
 </div>
 <div class="card-content">
 
@@ -7821,7 +7820,7 @@ _The expression can't be prefixed by 'const' to form a constant pattern._
 </div>
 <div class="card outlined-card" id="invalid_constant_pattern_binary">
 <div class="card-header">
-<header class="card-title" id="invalid_constant_pattern_binary">{{"invalid_constant_pattern_binary" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_constant_pattern_binary">invalid_<wbr>constant_<wbr>pattern_<wbr>binary</header>
 </div>
 <div class="card-content">
 
@@ -7838,7 +7837,7 @@ _The binary operator {0} is not supported as a constant pattern._
 </div>
 <div class="card outlined-card" id="invalid_constant_pattern_duplicate_const">
 <div class="card-header">
-<header class="card-title" id="invalid_constant_pattern_duplicate_const">{{"invalid_constant_pattern_duplicate_const" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_constant_pattern_duplicate_const">invalid_<wbr>constant_<wbr>pattern_<wbr>duplicate_<wbr>const</header>
 </div>
 <div class="card-content">
 
@@ -7855,7 +7854,7 @@ _Duplicate 'const' keyword in constant expression._
 </div>
 <div class="card outlined-card" id="invalid_constant_pattern_empty_record_literal">
 <div class="card-header">
-<header class="card-title" id="invalid_constant_pattern_empty_record_literal">{{"invalid_constant_pattern_empty_record_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_constant_pattern_empty_record_literal">invalid_<wbr>constant_<wbr>pattern_<wbr>empty_<wbr>record_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -7872,7 +7871,7 @@ _The empty record literal is not supported as a constant pattern._
 </div>
 <div class="card outlined-card" id="invalid_constant_pattern_generic">
 <div class="card-header">
-<header class="card-title" id="invalid_constant_pattern_generic">{{"invalid_constant_pattern_generic" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_constant_pattern_generic">invalid_<wbr>constant_<wbr>pattern_<wbr>generic</header>
 </div>
 <div class="card-content">
 
@@ -7889,7 +7888,7 @@ _This expression is not supported as a constant pattern._
 </div>
 <div class="card outlined-card" id="invalid_constant_pattern_negation">
 <div class="card-header">
-<header class="card-title" id="invalid_constant_pattern_negation">{{"invalid_constant_pattern_negation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_constant_pattern_negation">invalid_<wbr>constant_<wbr>pattern_<wbr>negation</header>
 </div>
 <div class="card-content">
 
@@ -7906,7 +7905,7 @@ _Only negation of a numeric literal is supported as a constant pattern._
 </div>
 <div class="card outlined-card" id="invalid_constant_pattern_unary">
 <div class="card-header">
-<header class="card-title" id="invalid_constant_pattern_unary">{{"invalid_constant_pattern_unary" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_constant_pattern_unary">invalid_<wbr>constant_<wbr>pattern_<wbr>unary</header>
 </div>
 <div class="card-content">
 
@@ -7923,7 +7922,7 @@ _The unary operator {0} is not supported as a constant pattern._
 </div>
 <div class="card outlined-card" id="invalid_constructor_name">
 <div class="card-header">
-<header class="card-title" id="invalid_constructor_name">{{"invalid_constructor_name" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_constructor_name">invalid_<wbr>constructor_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -7940,7 +7939,7 @@ _The name of a constructor must match the name of the enclosing class._
 </div>
 <div class="card outlined-card" id="invalid_dependency">
 <div class="card-header">
-<header class="card-title" id="invalid_dependency">{{"invalid_dependency" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_dependency">invalid_<wbr>dependency</header>
 </div>
 <div class="card-content">
 
@@ -7958,7 +7957,7 @@ _Publishable packages can't have '{0}' dependencies._
 </div>
 <div class="card outlined-card" id="invalid_exception_value">
 <div class="card-header">
-<header class="card-title" id="invalid_exception_value">{{"invalid_exception_value" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_exception_value">invalid_<wbr>exception_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -7977,7 +7976,7 @@ when the return type of the function is either 'void', 'Handle' or 'Pointer'._
 </div>
 <div class="card outlined-card" id="invalid_export_of_internal_element">
 <div class="card-header">
-<header class="card-title" id="invalid_export_of_internal_element">{{"invalid_export_of_internal_element" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_export_of_internal_element">invalid_<wbr>export_<wbr>of_<wbr>internal_<wbr>element</header>
 </div>
 <div class="card-content">
 
@@ -7995,7 +7994,7 @@ _The member '{0}' can't be exported as a part of a package's public API._
 </div>
 <div class="card outlined-card" id="invalid_export_of_internal_element_indirectly">
 <div class="card-header">
-<header class="card-title" id="invalid_export_of_internal_element_indirectly">{{"invalid_export_of_internal_element_indirectly" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_export_of_internal_element_indirectly">invalid_<wbr>export_<wbr>of_<wbr>internal_<wbr>element_<wbr>indirectly</header>
 </div>
 <div class="card-content">
 
@@ -8014,7 +8013,7 @@ indirectly exported as part of the signature of '{1}'._
 </div>
 <div class="card outlined-card" id="invalid_extension_argument_count">
 <div class="card-header">
-<header class="card-title" id="invalid_extension_argument_count">{{"invalid_extension_argument_count" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_extension_argument_count">invalid_<wbr>extension_<wbr>argument_<wbr>count</header>
 </div>
 <div class="card-content">
 
@@ -8033,7 +8032,7 @@ extension method._
 </div>
 <div class="card outlined-card" id="invalid_factory_method_decl">
 <div class="card-header">
-<header class="card-title" id="invalid_factory_method_decl">{{"invalid_factory_method_decl" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_factory_method_decl">invalid_<wbr>factory_<wbr>method_<wbr>decl</header>
 </div>
 <div class="card-content">
 
@@ -8051,7 +8050,7 @@ _Factory method '{0}' must have a return type._
 </div>
 <div class="card outlined-card" id="invalid_factory_method_impl">
 <div class="card-header">
-<header class="card-title" id="invalid_factory_method_impl">{{"invalid_factory_method_impl" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_factory_method_impl">invalid_<wbr>factory_<wbr>method_<wbr>impl</header>
 </div>
 <div class="card-content">
 
@@ -8069,7 +8068,7 @@ _Factory method '{0}' doesn't return a newly allocated object._
 </div>
 <div class="card outlined-card" id="invalid_factory_name_not_a_class">
 <div class="card-header">
-<header class="card-title" id="invalid_factory_name_not_a_class">{{"invalid_factory_name_not_a_class" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_factory_name_not_a_class">invalid_<wbr>factory_<wbr>name_<wbr>not_<wbr>a_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -8088,7 +8087,7 @@ immediately enclosing class._
 </div>
 <div class="card outlined-card" id="invalid_field_name">
 <div class="card-header">
-<header class="card-title" id="invalid_field_name">{{"invalid_field_name" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_field_name">invalid_<wbr>field_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -8111,7 +8110,7 @@ _Record field names can't be the same as a member from 'Object'._
 </div>
 <div class="card outlined-card" id="invalid_field_type_in_struct">
 <div class="card-header">
-<header class="card-title" id="invalid_field_type_in_struct">{{"invalid_field_type_in_struct" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_field_type_in_struct">invalid_<wbr>field_<wbr>type_<wbr>in_<wbr>struct</header>
 </div>
 <div class="card-content">
 
@@ -8130,7 +8129,7 @@ as 'int', 'double', 'Array', 'Pointer', or subtype of 'Struct' or 'Union'._
 </div>
 <div class="card outlined-card" id="invalid_generic_function_type">
 <div class="card-header">
-<header class="card-title" id="invalid_generic_function_type">{{"invalid_generic_function_type" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_generic_function_type">invalid_<wbr>generic_<wbr>function_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -8147,7 +8146,7 @@ _Invalid generic function type._
 </div>
 <div class="card outlined-card" id="invalid_hex_escape">
 <div class="card-header">
-<header class="card-title" id="invalid_hex_escape">{{"invalid_hex_escape" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_hex_escape">invalid_<wbr>hex_<wbr>escape</header>
 </div>
 <div class="card-content">
 
@@ -8165,7 +8164,7 @@ digits._
 </div>
 <div class="card outlined-card" id="invalid_implementation_override">
 <div class="card-header">
-<header class="card-title" id="invalid_implementation_override">{{"invalid_implementation_override" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_implementation_override">invalid_<wbr>implementation_<wbr>override</header>
 </div>
 <div class="card-content">
 
@@ -8186,7 +8185,7 @@ _The setter '{1}.{0}' ('{2}') isn't a valid concrete implementation of '{3}.{0}'
 </div>
 <div class="card outlined-card" id="invalid_initializer">
 <div class="card-header">
-<header class="card-title" id="invalid_initializer">{{"invalid_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_initializer">invalid_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -8203,7 +8202,7 @@ _Not a valid initializer._
 </div>
 <div class="card outlined-card" id="invalid_inline_function_type">
 <div class="card-header">
-<header class="card-title" id="invalid_inline_function_type">{{"invalid_inline_function_type" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_inline_function_type">invalid_<wbr>inline_<wbr>function_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -8221,7 +8220,7 @@ _Inline function types can't be used for parameters in a generic function type._
 </div>
 <div class="card outlined-card" id="invalid_inside_unary_pattern">
 <div class="card-header">
-<header class="card-title" id="invalid_inside_unary_pattern">{{"invalid_inside_unary_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_inside_unary_pattern">invalid_<wbr>inside_<wbr>unary_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -8239,7 +8238,7 @@ pattern, or null assert pattern) without parentheses._
 </div>
 <div class="card outlined-card" id="invalid_internal_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_internal_annotation">{{"invalid_internal_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_internal_annotation">invalid_<wbr>internal_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -8258,7 +8257,7 @@ internal._
 </div>
 <div class="card outlined-card" id="invalid_language_version_override">
 <div class="card-header">
-<header class="card-title" id="invalid_language_version_override">{{"invalid_language_version_override" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_language_version_override">invalid_<wbr>language_<wbr>version_<wbr>override</header>
 </div>
 <div class="card-content">
 
@@ -8299,7 +8298,7 @@ directive._
 </div>
 <div class="card outlined-card" id="invalid_literal_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_literal_annotation">{{"invalid_literal_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_literal_annotation">invalid_<wbr>literal_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -8317,7 +8316,7 @@ _Only const constructors can have the `@literal` annotation._
 </div>
 <div class="card outlined-card" id="invalid_literal_in_configuration">
 <div class="card-header">
-<header class="card-title" id="invalid_literal_in_configuration">{{"invalid_literal_in_configuration" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_literal_in_configuration">invalid_<wbr>literal_<wbr>in_<wbr>configuration</header>
 </div>
 <div class="card-content">
 
@@ -8334,7 +8333,7 @@ _The literal in a configuration can't contain interpolation._
 </div>
 <div class="card outlined-card" id="invalid_modifier_on_constructor">
 <div class="card-header">
-<header class="card-title" id="invalid_modifier_on_constructor">{{"invalid_modifier_on_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_modifier_on_constructor">invalid_<wbr>modifier_<wbr>on_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -8352,7 +8351,7 @@ _The modifier '{0}' can't be applied to the body of a constructor._
 </div>
 <div class="card outlined-card" id="invalid_modifier_on_setter">
 <div class="card-header">
-<header class="card-title" id="invalid_modifier_on_setter">{{"invalid_modifier_on_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_modifier_on_setter">invalid_<wbr>modifier_<wbr>on_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -8370,7 +8369,7 @@ _Setters can't use 'async', 'async*', or 'sync*'._
 </div>
 <div class="card outlined-card" id="invalid_non_virtual_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_non_virtual_annotation">{{"invalid_non_virtual_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_non_virtual_annotation">invalid_<wbr>non_<wbr>virtual_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -8389,7 +8388,7 @@ member._
 </div>
 <div class="card outlined-card" id="invalid_null_aware_operator">
 <div class="card-header">
-<header class="card-title" id="invalid_null_aware_operator">{{"invalid_null_aware_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_null_aware_operator">invalid_<wbr>null_<wbr>aware_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -8418,7 +8417,7 @@ _The receiver can't be null, so the null-aware operator '{0}' is unnecessary._
 </div>
 <div class="card outlined-card" id="invalid_operator">
 <div class="card-header">
-<header class="card-title" id="invalid_operator">{{"invalid_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_operator">invalid_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -8435,7 +8434,7 @@ _The string '{0}' isn't a user-definable operator._
 </div>
 <div class="card outlined-card" id="invalid_operator_for_super">
 <div class="card-header">
-<header class="card-title" id="invalid_operator_for_super">{{"invalid_operator_for_super" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_operator_for_super">invalid_<wbr>operator_<wbr>for_<wbr>super</header>
 </div>
 <div class="card-content">
 
@@ -8452,7 +8451,7 @@ _The operator '{0}' can't be used with 'super'._
 </div>
 <div class="card outlined-card" id="invalid_operator_questionmark_period_for_super">
 <div class="card-header">
-<header class="card-title" id="invalid_operator_questionmark_period_for_super">{{"invalid_operator_questionmark_period_for_super" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_operator_questionmark_period_for_super">invalid_<wbr>operator_<wbr>questionmark_<wbr>period_<wbr>for_<wbr>super</header>
 </div>
 <div class="card-content">
 
@@ -8469,7 +8468,7 @@ _The operator '?.' cannot be used with 'super' because 'super' cannot be null._
 </div>
 <div class="card outlined-card" id="invalid_option">
 <div class="card-header">
-<header class="card-title" id="invalid_option">{{"invalid_option" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_option">invalid_<wbr>option</header>
 </div>
 <div class="card-content">
 
@@ -8486,7 +8485,7 @@ _Invalid option specified for '{0}': {1}_
 </div>
 <div class="card outlined-card" id="invalid_override">
 <div class="card-header">
-<header class="card-title" id="invalid_override">{{"invalid_override" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_override">invalid_<wbr>override</header>
 </div>
 <div class="card-content">
 
@@ -8506,7 +8505,7 @@ _The setter '{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._
 </div>
 <div class="card outlined-card" id="invalid_override_of_non_virtual_member">
 <div class="card-header">
-<header class="card-title" id="invalid_override_of_non_virtual_member">{{"invalid_override_of_non_virtual_member" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_override_of_non_virtual_member">invalid_<wbr>override_<wbr>of_<wbr>non_<wbr>virtual_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -8525,7 +8524,7 @@ subclasses._
 </div>
 <div class="card outlined-card" id="invalid_pattern_variable_in_shared_case_scope">
 <div class="card-header">
-<header class="card-title" id="invalid_pattern_variable_in_shared_case_scope">{{"invalid_pattern_variable_in_shared_case_scope" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_pattern_variable_in_shared_case_scope">invalid_<wbr>pattern_<wbr>variable_<wbr>in_<wbr>shared_<wbr>case_<wbr>scope</header>
 </div>
 <div class="card-content">
 
@@ -8550,7 +8549,7 @@ case._
 </div>
 <div class="card outlined-card" id="invalid_platforms_field">
 <div class="card-header">
-<header class="card-title" id="invalid_platforms_field">{{"invalid_platforms_field" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_platforms_field">invalid_<wbr>platforms_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -8568,7 +8567,7 @@ _The 'platforms' field must be a map with platforms as keys._
 </div>
 <div class="card outlined-card" id="invalid_reference_to_generative_enum_constructor">
 <div class="card-header">
-<header class="card-title" id="invalid_reference_to_generative_enum_constructor">{{"invalid_reference_to_generative_enum_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_reference_to_generative_enum_constructor">invalid_<wbr>reference_<wbr>to_<wbr>generative_<wbr>enum_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -8586,7 +8585,7 @@ _Generative enum constructors can only be used as targets of redirection._
 </div>
 <div class="card outlined-card" id="invalid_reference_to_this">
 <div class="card-header">
-<header class="card-title" id="invalid_reference_to_this">{{"invalid_reference_to_this" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_reference_to_this">invalid_<wbr>reference_<wbr>to_<wbr>this</header>
 </div>
 <div class="card-content">
 
@@ -8604,7 +8603,7 @@ _Invalid reference to 'this' expression._
 </div>
 <div class="card outlined-card" id="invalid_reopen_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_reopen_annotation">{{"invalid_reopen_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_reopen_annotation">invalid_<wbr>reopen_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -8623,7 +8622,7 @@ that the supertype intentionally disallows._
 </div>
 <div class="card outlined-card" id="invalid_required_named_param">
 <div class="card-header">
-<header class="card-title" id="invalid_required_named_param">{{"invalid_required_named_param" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_required_named_param">invalid_<wbr>required_<wbr>named_<wbr>param</header>
 </div>
 <div class="card-content">
 
@@ -8641,7 +8640,7 @@ without a default value can be annotated with it._
 </div>
 <div class="card outlined-card" id="invalid_required_optional_positional_param">
 <div class="card-header">
-<header class="card-title" id="invalid_required_optional_positional_param">{{"invalid_required_optional_positional_param" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_required_optional_positional_param">invalid_<wbr>required_<wbr>optional_<wbr>positional_<wbr>param</header>
 </div>
 <div class="card-content">
 
@@ -8659,7 +8658,7 @@ _Incorrect use of the annotation @required on the optional positional parameter
 </div>
 <div class="card outlined-card" id="invalid_required_positional_param">
 <div class="card-header">
-<header class="card-title" id="invalid_required_positional_param">{{"invalid_required_positional_param" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_required_positional_param">invalid_<wbr>required_<wbr>positional_<wbr>param</header>
 </div>
 <div class="card-content">
 
@@ -8677,7 +8676,7 @@ _Redundant use of the annotation @required on the required positional parameter
 </div>
 <div class="card outlined-card" id="invalid_return_type_for_catch_error">
 <div class="card-header">
-<header class="card-title" id="invalid_return_type_for_catch_error">{{"invalid_return_type_for_catch_error" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_return_type_for_catch_error">invalid_<wbr>return_<wbr>type_<wbr>for_<wbr>catch_<wbr>error</header>
 </div>
 <div class="card-content">
 
@@ -8699,7 +8698,7 @@ _The return type '{0}' isn't assignable to '{1}', as required by
 </div>
 <div class="card outlined-card" id="invalid_sealed_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_sealed_annotation">{{"invalid_sealed_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_sealed_annotation">invalid_<wbr>sealed_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -8717,7 +8716,7 @@ _The annotation '@sealed' can only be applied to classes._
 </div>
 <div class="card outlined-card" id="invalid_section_format">
 <div class="card-header">
-<header class="card-title" id="invalid_section_format">{{"invalid_section_format" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_section_format">invalid_<wbr>section_<wbr>format</header>
 </div>
 <div class="card-content">
 
@@ -8734,7 +8733,7 @@ _Invalid format for the '{0}' section._
 </div>
 <div class="card outlined-card" id="invalid_star_after_async">
 <div class="card-header">
-<header class="card-title" id="invalid_star_after_async">{{"invalid_star_after_async" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_star_after_async">invalid_<wbr>star_<wbr>after_<wbr>async</header>
 </div>
 <div class="card-content">
 
@@ -8751,7 +8750,7 @@ _The modifier 'async*' isn't allowed for an expression function body._
 </div>
 <div class="card outlined-card" id="invalid_super_formal_parameter_location">
 <div class="card-header">
-<header class="card-title" id="invalid_super_formal_parameter_location">{{"invalid_super_formal_parameter_location" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_super_formal_parameter_location">invalid_<wbr>super_<wbr>formal_<wbr>parameter_<wbr>location</header>
 </div>
 <div class="card-content">
 
@@ -8769,7 +8768,7 @@ _Super parameters can only be used in non-redirecting generative constructors._
 </div>
 <div class="card outlined-card" id="invalid_super_in_initializer">
 <div class="card-header">
-<header class="card-title" id="invalid_super_in_initializer">{{"invalid_super_in_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_super_in_initializer">invalid_<wbr>super_<wbr>in_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -8787,7 +8786,7 @@ _Can only use 'super' in an initializer for calling the superclass constructor
 </div>
 <div class="card outlined-card" id="invalid_sync">
 <div class="card-header">
-<header class="card-title" id="invalid_sync">{{"invalid_sync" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_sync">invalid_<wbr>sync</header>
 </div>
 <div class="card-content">
 
@@ -8804,7 +8803,7 @@ _The modifier 'sync' isn't allowed for an expression function body._
 </div>
 <div class="card outlined-card" id="invalid_this_in_initializer">
 <div class="card-header">
-<header class="card-title" id="invalid_this_in_initializer">{{"invalid_this_in_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_this_in_initializer">invalid_<wbr>this_<wbr>in_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -8822,7 +8821,7 @@ something') and constructor redirection (e.g. 'this()' or 'this.namedConstructor
 </div>
 <div class="card outlined-card" id="invalid_type_argument_in_const_literal">
 <div class="card-header">
-<header class="card-title" id="invalid_type_argument_in_const_literal">{{"invalid_type_argument_in_const_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_type_argument_in_const_literal">invalid_<wbr>type_<wbr>argument_<wbr>in_<wbr>const_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -8847,7 +8846,7 @@ _Constant set literals can't use a type parameter in a type argument, such as
 </div>
 <div class="card outlined-card" id="invalid_unicode_escape_started">
 <div class="card-header">
-<header class="card-title" id="invalid_unicode_escape_started">{{"invalid_unicode_escape_started" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_unicode_escape_started">invalid_<wbr>unicode_<wbr>escape_<wbr>started</header>
 </div>
 <div class="card-content">
 
@@ -8864,7 +8863,7 @@ _The string '\' can't stand alone._
 </div>
 <div class="card outlined-card" id="invalid_unicode_escape_u_bracket">
 <div class="card-header">
-<header class="card-title" id="invalid_unicode_escape_u_bracket">{{"invalid_unicode_escape_u_bracket" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_unicode_escape_u_bracket">invalid_<wbr>unicode_<wbr>escape_<wbr>u_<wbr>bracket</header>
 </div>
 <div class="card-content">
 
@@ -8882,7 +8881,7 @@ digits followed by a '}'._
 </div>
 <div class="card outlined-card" id="invalid_unicode_escape_u_no_bracket">
 <div class="card-header">
-<header class="card-title" id="invalid_unicode_escape_u_no_bracket">{{"invalid_unicode_escape_u_no_bracket" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_unicode_escape_u_no_bracket">invalid_<wbr>unicode_<wbr>escape_<wbr>u_<wbr>no_<wbr>bracket</header>
 </div>
 <div class="card-content">
 
@@ -8900,7 +8899,7 @@ digits._
 </div>
 <div class="card outlined-card" id="invalid_unicode_escape_u_started">
 <div class="card-header">
-<header class="card-title" id="invalid_unicode_escape_u_started">{{"invalid_unicode_escape_u_started" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_unicode_escape_u_started">invalid_<wbr>unicode_<wbr>escape_<wbr>u_<wbr>started</header>
 </div>
 <div class="card-content">
 
@@ -8918,7 +8917,7 @@ or from 1 to 6 digits between '{' and '}'._
 </div>
 <div class="card outlined-card" id="invalid_uri">
 <div class="card-header">
-<header class="card-title" id="invalid_uri">{{"invalid_uri" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_uri">invalid_<wbr>uri</header>
 </div>
 <div class="card-content">
 
@@ -8936,7 +8935,7 @@ _Invalid URI syntax: '{0}'._
 </div>
 <div class="card outlined-card" id="invalid_use_of_covariant">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_covariant">{{"invalid_use_of_covariant" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_covariant">invalid_<wbr>use_<wbr>of_<wbr>covariant</header>
 </div>
 <div class="card-content">
 
@@ -8954,7 +8953,7 @@ before non-final instance fields._
 </div>
 <div class="card outlined-card" id="invalid_use_of_covariant_in_extension">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_covariant_in_extension">{{"invalid_use_of_covariant_in_extension" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_covariant_in_extension">invalid_<wbr>use_<wbr>of_<wbr>covariant_<wbr>in_<wbr>extension</header>
 </div>
 <div class="card-content">
 
@@ -8972,7 +8971,7 @@ _Can't have modifier '{0}' in an extension._
 </div>
 <div class="card outlined-card" id="invalid_use_of_do_not_submit_member">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_do_not_submit_member">{{"invalid_use_of_do_not_submit_member" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_do_not_submit_member">invalid_<wbr>use_<wbr>of_<wbr>do_<wbr>not_<wbr>submit_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -8990,7 +8989,7 @@ _Uses of '{0}' should not be submitted to source control._
 </div>
 <div class="card outlined-card" id="invalid_use_of_identifier_augmented">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_identifier_augmented">{{"invalid_use_of_identifier_augmented" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_identifier_augmented">invalid_<wbr>use_<wbr>of_<wbr>identifier_<wbr>augmented</header>
 </div>
 <div class="card-content">
 
@@ -9008,7 +9007,7 @@ declaration inside an augmentation._
 </div>
 <div class="card outlined-card" id="invalid_use_of_internal_member">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_internal_member">{{"invalid_use_of_internal_member" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_internal_member">invalid_<wbr>use_<wbr>of_<wbr>internal_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -9026,7 +9025,7 @@ _The member '{0}' can only be used within its package._
 </div>
 <div class="card outlined-card" id="invalid_use_of_null_value">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_null_value">{{"invalid_use_of_null_value" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_null_value">invalid_<wbr>use_<wbr>of_<wbr>null_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -9044,7 +9043,7 @@ _An expression whose value is always 'null' can't be dereferenced._
 </div>
 <div class="card outlined-card" id="invalid_use_of_protected_member">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_protected_member">{{"invalid_use_of_protected_member" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_protected_member">invalid_<wbr>use_<wbr>of_<wbr>protected_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -9063,7 +9062,7 @@ _The member '{0}' can only be used within instance members of subclasses of
 </div>
 <div class="card outlined-card" id="invalid_use_of_type_outside_library">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_type_outside_library">{{"invalid_use_of_type_outside_library" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_type_outside_library">invalid_<wbr>use_<wbr>of_<wbr>type_<wbr>outside_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -9100,7 +9099,7 @@ mixin._
 </div>
 <div class="card outlined-card" id="invalid_use_of_visible_for_overriding_member">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_visible_for_overriding_member">{{"invalid_use_of_visible_for_overriding_member" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_visible_for_overriding_member">invalid_<wbr>use_<wbr>of_<wbr>visible_<wbr>for_<wbr>overriding_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -9118,7 +9117,7 @@ _The member '{0}' can only be used for overriding._
 </div>
 <div class="card outlined-card" id="invalid_use_of_visible_for_template_member">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_visible_for_template_member">{{"invalid_use_of_visible_for_template_member" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_visible_for_template_member">invalid_<wbr>use_<wbr>of_<wbr>visible_<wbr>for_<wbr>template_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -9135,7 +9134,7 @@ _The member '{0}' can only be used within '{1}' or a template library._
 </div>
 <div class="card outlined-card" id="invalid_use_of_visible_for_testing_member">
 <div class="card-header">
-<header class="card-title" id="invalid_use_of_visible_for_testing_member">{{"invalid_use_of_visible_for_testing_member" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_use_of_visible_for_testing_member">invalid_<wbr>use_<wbr>of_<wbr>visible_<wbr>for_<wbr>testing_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -9153,7 +9152,7 @@ _The member '{0}' can only be used within '{1}' or a test._
 </div>
 <div class="card outlined-card" id="invalid_visibility_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_visibility_annotation">{{"invalid_visibility_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_visibility_annotation">invalid_<wbr>visibility_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -9172,7 +9171,7 @@ meaningful on declarations of public members._
 </div>
 <div class="card outlined-card" id="invalid_visible_for_overriding_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_visible_for_overriding_annotation">{{"invalid_visible_for_overriding_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_visible_for_overriding_annotation">invalid_<wbr>visible_<wbr>for_<wbr>overriding_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -9191,7 +9190,7 @@ member that can be overridden._
 </div>
 <div class="card outlined-card" id="invalid_visible_outside_template_annotation">
 <div class="card-header">
-<header class="card-title" id="invalid_visible_outside_template_annotation">{{"invalid_visible_outside_template_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_visible_outside_template_annotation">invalid_<wbr>visible_<wbr>outside_<wbr>template_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -9210,7 +9209,7 @@ class, enum, or mixin that is annotated with 'visibleForTemplate'._
 </div>
 <div class="card outlined-card" id="invalid_widget_preview_application">
 <div class="card-header">
-<header class="card-title" id="invalid_widget_preview_application">{{"invalid_widget_preview_application" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_widget_preview_application">invalid_<wbr>widget_<wbr>preview_<wbr>application</header>
 </div>
 <div class="card-content">
 
@@ -9229,7 +9228,7 @@ accessible constructors and functions._
 </div>
 <div class="card outlined-card" id="invalid_widget_preview_private_argument">
 <div class="card-header">
-<header class="card-title" id="invalid_widget_preview_private_argument">{{"invalid_widget_preview_private_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_widget_preview_private_argument">invalid_<wbr>widget_<wbr>preview_<wbr>private_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -9248,7 +9247,7 @@ symbols._
 </div>
 <div class="card outlined-card" id="invocation_of_extension_without_call">
 <div class="card-header">
-<header class="card-title" id="invocation_of_extension_without_call">{{"invocation_of_extension_without_call" | underscoreBreaker}}</header>
+<header class="card-title" id="invocation_of_extension_without_call">invocation_<wbr>of_<wbr>extension_<wbr>without_<wbr>call</header>
 </div>
 <div class="card-content">
 
@@ -9267,7 +9266,7 @@ used in an invocation._
 </div>
 <div class="card outlined-card" id="invocation_of_non_function">
 <div class="card-header">
-<header class="card-title" id="invocation_of_non_function">{{"invocation_of_non_function" | underscoreBreaker}}</header>
+<header class="card-title" id="invocation_of_non_function">invocation_<wbr>of_<wbr>non_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -9285,7 +9284,7 @@ _'{0}' isn't a function._
 </div>
 <div class="card outlined-card" id="invocation_of_non_function_expression">
 <div class="card-header">
-<header class="card-title" id="invocation_of_non_function_expression">{{"invocation_of_non_function_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="invocation_of_non_function_expression">invocation_<wbr>of_<wbr>non_<wbr>function_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -9303,7 +9302,7 @@ _The expression doesn't evaluate to a function, so it can't be invoked._
 </div>
 <div class="card outlined-card" id="label_in_outer_scope">
 <div class="card-header">
-<header class="card-title" id="label_in_outer_scope">{{"label_in_outer_scope" | underscoreBreaker}}</header>
+<header class="card-title" id="label_in_outer_scope">label_<wbr>in_<wbr>outer_<wbr>scope</header>
 </div>
 <div class="card-content">
 
@@ -9321,7 +9320,7 @@ _Can't reference label '{0}' declared in an outer method._
 </div>
 <div class="card outlined-card" id="label_undefined">
 <div class="card-header">
-<header class="card-title" id="label_undefined">{{"label_undefined" | underscoreBreaker}}</header>
+<header class="card-title" id="label_undefined">label_<wbr>undefined</header>
 </div>
 <div class="card-content">
 
@@ -9339,7 +9338,7 @@ _Can't reference an undefined label '{0}'._
 </div>
 <div class="card outlined-card" id="late_final_field_with_const_constructor">
 <div class="card-header">
-<header class="card-title" id="late_final_field_with_const_constructor">{{"late_final_field_with_const_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="late_final_field_with_const_constructor">late_<wbr>final_<wbr>field_<wbr>with_<wbr>const_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -9357,7 +9356,7 @@ _Can't have a late final field in a class with a generative const constructor._
 </div>
 <div class="card outlined-card" id="late_final_local_already_assigned">
 <div class="card-header">
-<header class="card-title" id="late_final_local_already_assigned">{{"late_final_local_already_assigned" | underscoreBreaker}}</header>
+<header class="card-title" id="late_final_local_already_assigned">late_<wbr>final_<wbr>local_<wbr>already_<wbr>assigned</header>
 </div>
 <div class="card-content">
 
@@ -9375,7 +9374,7 @@ _The late final local variable is already assigned._
 </div>
 <div class="card outlined-card" id="late_pattern_variable_declaration">
 <div class="card-header">
-<header class="card-title" id="late_pattern_variable_declaration">{{"late_pattern_variable_declaration" | underscoreBreaker}}</header>
+<header class="card-title" id="late_pattern_variable_declaration">late_<wbr>pattern_<wbr>variable_<wbr>declaration</header>
 </div>
 <div class="card-content">
 
@@ -9392,7 +9391,7 @@ _A pattern variable declaration may not use the `late` keyword._
 </div>
 <div class="card outlined-card" id="leaf_call_must_not_return_handle">
 <div class="card-header">
-<header class="card-title" id="leaf_call_must_not_return_handle">{{"leaf_call_must_not_return_handle" | underscoreBreaker}}</header>
+<header class="card-title" id="leaf_call_must_not_return_handle">leaf_<wbr>call_<wbr>must_<wbr>not_<wbr>return_<wbr>handle</header>
 </div>
 <div class="card-content">
 
@@ -9410,7 +9409,7 @@ _FFI leaf call can't return a 'Handle'._
 </div>
 <div class="card outlined-card" id="leaf_call_must_not_take_handle">
 <div class="card-header">
-<header class="card-title" id="leaf_call_must_not_take_handle">{{"leaf_call_must_not_take_handle" | underscoreBreaker}}</header>
+<header class="card-title" id="leaf_call_must_not_take_handle">leaf_<wbr>call_<wbr>must_<wbr>not_<wbr>take_<wbr>handle</header>
 </div>
 <div class="card-content">
 
@@ -9428,7 +9427,7 @@ _FFI leaf call can't take arguments of type 'Handle'._
 </div>
 <div class="card outlined-card" id="library_directive_not_first">
 <div class="card-header">
-<header class="card-title" id="library_directive_not_first">{{"library_directive_not_first" | underscoreBreaker}}</header>
+<header class="card-title" id="library_directive_not_first">library_<wbr>directive_<wbr>not_<wbr>first</header>
 </div>
 <div class="card-content">
 
@@ -9445,7 +9444,7 @@ _The library directive must appear before all other directives._
 </div>
 <div class="card outlined-card" id="list_element_type_not_assignable">
 <div class="card-header">
-<header class="card-title" id="list_element_type_not_assignable">{{"list_element_type_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="list_element_type_not_assignable">list_<wbr>element_<wbr>type_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -9463,7 +9462,7 @@ _The element type '{0}' can't be assigned to the list type '{1}'._
 </div>
 <div class="card outlined-card" id="literal_with_class">
 <div class="card-header">
-<header class="card-title" id="literal_with_class">{{"literal_with_class" | underscoreBreaker}}</header>
+<header class="card-title" id="literal_with_class">literal_<wbr>with_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -9480,7 +9479,7 @@ _A {0} literal can't be prefixed by '{1}'._
 </div>
 <div class="card outlined-card" id="literal_with_class_and_new">
 <div class="card-header">
-<header class="card-title" id="literal_with_class_and_new">{{"literal_with_class_and_new" | underscoreBreaker}}</header>
+<header class="card-title" id="literal_with_class_and_new">literal_<wbr>with_<wbr>class_<wbr>and_<wbr>new</header>
 </div>
 <div class="card-content">
 
@@ -9497,7 +9496,7 @@ _A {0} literal can't be prefixed by 'new {1}'._
 </div>
 <div class="card outlined-card" id="literal_with_new">
 <div class="card-header">
-<header class="card-title" id="literal_with_new">{{"literal_with_new" | underscoreBreaker}}</header>
+<header class="card-title" id="literal_with_new">literal_<wbr>with_<wbr>new</header>
 </div>
 <div class="card-content">
 
@@ -9514,7 +9513,7 @@ _A literal can't be prefixed by 'new'._
 </div>
 <div class="card outlined-card" id="local_function_declaration_modifier">
 <div class="card-header">
-<header class="card-title" id="local_function_declaration_modifier">{{"local_function_declaration_modifier" | underscoreBreaker}}</header>
+<header class="card-title" id="local_function_declaration_modifier">local_<wbr>function_<wbr>declaration_<wbr>modifier</header>
 </div>
 <div class="card-content">
 
@@ -9531,7 +9530,7 @@ _Local function declarations can't specify any modifiers._
 </div>
 <div class="card outlined-card" id="main_first_positional_parameter_type">
 <div class="card-header">
-<header class="card-title" id="main_first_positional_parameter_type">{{"main_first_positional_parameter_type" | underscoreBreaker}}</header>
+<header class="card-title" id="main_first_positional_parameter_type">main_<wbr>first_<wbr>positional_<wbr>parameter_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -9550,7 +9549,7 @@ supertype of 'List<String>'._
 </div>
 <div class="card outlined-card" id="main_has_required_named_parameters">
 <div class="card-header">
-<header class="card-title" id="main_has_required_named_parameters">{{"main_has_required_named_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="main_has_required_named_parameters">main_<wbr>has_<wbr>required_<wbr>named_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -9568,7 +9567,7 @@ _The function 'main' can't have any required named parameters._
 </div>
 <div class="card outlined-card" id="main_has_too_many_required_positional_parameters">
 <div class="card-header">
-<header class="card-title" id="main_has_too_many_required_positional_parameters">{{"main_has_too_many_required_positional_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="main_has_too_many_required_positional_parameters">main_<wbr>has_<wbr>too_<wbr>many_<wbr>required_<wbr>positional_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -9586,7 +9585,7 @@ _The function 'main' can't have more than two required positional parameters._
 </div>
 <div class="card outlined-card" id="main_is_not_function">
 <div class="card-header">
-<header class="card-title" id="main_is_not_function">{{"main_is_not_function" | underscoreBreaker}}</header>
+<header class="card-title" id="main_is_not_function">main_<wbr>is_<wbr>not_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -9604,7 +9603,7 @@ _The declaration named 'main' must be a function._
 </div>
 <div class="card outlined-card" id="map_entry_not_in_map">
 <div class="card-header">
-<header class="card-title" id="map_entry_not_in_map">{{"map_entry_not_in_map" | underscoreBreaker}}</header>
+<header class="card-title" id="map_entry_not_in_map">map_<wbr>entry_<wbr>not_<wbr>in_<wbr>map</header>
 </div>
 <div class="card-content">
 
@@ -9622,7 +9621,7 @@ _Map entries can only be used in a map literal._
 </div>
 <div class="card outlined-card" id="map_key_type_not_assignable">
 <div class="card-header">
-<header class="card-title" id="map_key_type_not_assignable">{{"map_key_type_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="map_key_type_not_assignable">map_<wbr>key_<wbr>type_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -9640,7 +9639,7 @@ _The element type '{0}' can't be assigned to the map key type '{1}'._
 </div>
 <div class="card outlined-card" id="map_value_type_not_assignable">
 <div class="card-header">
-<header class="card-title" id="map_value_type_not_assignable">{{"map_value_type_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="map_value_type_not_assignable">map_<wbr>value_<wbr>type_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -9658,7 +9657,7 @@ _The element type '{0}' can't be assigned to the map value type '{1}'._
 </div>
 <div class="card outlined-card" id="member_with_class_name">
 <div class="card-header">
-<header class="card-title" id="member_with_class_name">{{"member_with_class_name" | underscoreBreaker}}</header>
+<header class="card-title" id="member_with_class_name">member_<wbr>with_<wbr>class_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -9675,7 +9674,7 @@ _A class member can't have the same name as the enclosing class._
 </div>
 <div class="card outlined-card" id="mismatched_annotation_on_struct_field">
 <div class="card-header">
-<header class="card-title" id="mismatched_annotation_on_struct_field">{{"mismatched_annotation_on_struct_field" | underscoreBreaker}}</header>
+<header class="card-title" id="mismatched_annotation_on_struct_field">mismatched_<wbr>annotation_<wbr>on_<wbr>struct_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -9693,7 +9692,7 @@ _The annotation doesn't match the declared type of the field._
 </div>
 <div class="card outlined-card" id="missing_annotation_on_struct_field">
 <div class="card-header">
-<header class="card-title" id="missing_annotation_on_struct_field">{{"missing_annotation_on_struct_field" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_annotation_on_struct_field">missing_<wbr>annotation_<wbr>on_<wbr>struct_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -9712,7 +9711,7 @@ the native type._
 </div>
 <div class="card outlined-card" id="missing_assignable_selector">
 <div class="card-header">
-<header class="card-title" id="missing_assignable_selector">{{"missing_assignable_selector" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_assignable_selector">missing_<wbr>assignable_<wbr>selector</header>
 </div>
 <div class="card-content">
 
@@ -9729,7 +9728,7 @@ _Missing selector such as '.identifier' or '[0]'._
 </div>
 <div class="card outlined-card" id="missing_assignment_in_initializer">
 <div class="card-header">
-<header class="card-title" id="missing_assignment_in_initializer">{{"missing_assignment_in_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_assignment_in_initializer">missing_<wbr>assignment_<wbr>in_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -9746,7 +9745,7 @@ _Expected an assignment after the field name._
 </div>
 <div class="card outlined-card" id="missing_catch_or_finally">
 <div class="card-header">
-<header class="card-title" id="missing_catch_or_finally">{{"missing_catch_or_finally" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_catch_or_finally">missing_<wbr>catch_<wbr>or_<wbr>finally</header>
 </div>
 <div class="card-content">
 
@@ -9763,7 +9762,7 @@ _A try block must be followed by an 'on', 'catch', or 'finally' clause._
 </div>
 <div class="card outlined-card" id="missing_closing_parenthesis">
 <div class="card-header">
-<header class="card-title" id="missing_closing_parenthesis">{{"missing_closing_parenthesis" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_closing_parenthesis">missing_<wbr>closing_<wbr>parenthesis</header>
 </div>
 <div class="card-content">
 
@@ -9780,7 +9779,7 @@ _The closing parenthesis is missing._
 </div>
 <div class="card outlined-card" id="missing_const_final_var_or_type">
 <div class="card-header">
-<header class="card-title" id="missing_const_final_var_or_type">{{"missing_const_final_var_or_type" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_const_final_var_or_type">missing_<wbr>const_<wbr>final_<wbr>var_<wbr>or_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -9798,7 +9797,7 @@ name._
 </div>
 <div class="card outlined-card" id="missing_const_in_list_literal">
 <div class="card-header">
-<header class="card-title" id="missing_const_in_list_literal">{{"missing_const_in_list_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_const_in_list_literal">missing_<wbr>const_<wbr>in_<wbr>list_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -9815,7 +9814,7 @@ _Seeing this message constitutes a bug. Please report it._
 </div>
 <div class="card outlined-card" id="missing_const_in_map_literal">
 <div class="card-header">
-<header class="card-title" id="missing_const_in_map_literal">{{"missing_const_in_map_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_const_in_map_literal">missing_<wbr>const_<wbr>in_<wbr>map_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -9832,7 +9831,7 @@ _Seeing this message constitutes a bug. Please report it._
 </div>
 <div class="card outlined-card" id="missing_const_in_set_literal">
 <div class="card-header">
-<header class="card-title" id="missing_const_in_set_literal">{{"missing_const_in_set_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_const_in_set_literal">missing_<wbr>const_<wbr>in_<wbr>set_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -9849,7 +9848,7 @@ _Seeing this message constitutes a bug. Please report it._
 </div>
 <div class="card outlined-card" id="missing_dart_library">
 <div class="card-header">
-<header class="card-title" id="missing_dart_library">{{"missing_dart_library" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_dart_library">missing_<wbr>dart_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -9867,7 +9866,7 @@ _Required library '{0}' is missing._
 </div>
 <div class="card outlined-card" id="missing_default_value_for_parameter">
 <div class="card-header">
-<header class="card-title" id="missing_default_value_for_parameter">{{"missing_default_value_for_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_default_value_for_parameter">missing_<wbr>default_<wbr>value_<wbr>for_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -9888,7 +9887,7 @@ _With null safety, use the 'required' keyword, not the '@required' annotation._
 </div>
 <div class="card outlined-card" id="missing_dependency">
 <div class="card-header">
-<header class="card-title" id="missing_dependency">{{"missing_dependency" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_dependency">missing_<wbr>dependency</header>
 </div>
 <div class="card-content">
 
@@ -9904,9 +9903,26 @@ _Missing a dependency on imported package '{0}'._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="missing_digit">
+<div class="card-header">
+<header class="card-title" id="missing_digit">missing_<wbr>digit</header>
+</div>
+<div class="card-content">
+
+_Decimal digit expected._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_digit" title="Copy missing_digit to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="missing_enum_body">
 <div class="card-header">
-<header class="card-title" id="missing_enum_body">{{"missing_enum_body" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_enum_body">missing_<wbr>enum_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -9923,7 +9939,7 @@ _An enum definition must have a body with at least one constant name._
 </div>
 <div class="card outlined-card" id="missing_enum_constant_in_switch">
 <div class="card-header">
-<header class="card-title" id="missing_enum_constant_in_switch">{{"missing_enum_constant_in_switch" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_enum_constant_in_switch">missing_<wbr>enum_<wbr>constant_<wbr>in_<wbr>switch</header>
 </div>
 <div class="card-content">
 
@@ -9941,7 +9957,7 @@ _Missing case clause for '{0}'._
 </div>
 <div class="card outlined-card" id="missing_exception_value">
 <div class="card-header">
-<header class="card-title" id="missing_exception_value">{{"missing_exception_value" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_exception_value">missing_<wbr>exception_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -9960,7 +9976,7 @@ the return type of the function is neither 'void', 'Handle', nor 'Pointer'._
 </div>
 <div class="card outlined-card" id="missing_expression_in_initializer">
 <div class="card-header">
-<header class="card-title" id="missing_expression_in_initializer">{{"missing_expression_in_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_expression_in_initializer">missing_<wbr>expression_<wbr>in_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -9977,7 +9993,7 @@ _Expected an expression after the assignment operator._
 </div>
 <div class="card outlined-card" id="missing_expression_in_throw">
 <div class="card-header">
-<header class="card-title" id="missing_expression_in_throw">{{"missing_expression_in_throw" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_expression_in_throw">missing_<wbr>expression_<wbr>in_<wbr>throw</header>
 </div>
 <div class="card-content">
 
@@ -9994,7 +10010,7 @@ _Missing expression after 'throw'._
 </div>
 <div class="card outlined-card" id="missing_field_type_in_struct">
 <div class="card-header">
-<header class="card-title" id="missing_field_type_in_struct">{{"missing_field_type_in_struct" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_field_type_in_struct">missing_<wbr>field_<wbr>type_<wbr>in_<wbr>struct</header>
 </div>
 <div class="card-content">
 
@@ -10013,7 +10029,7 @@ _Fields in struct classes must have an explicitly declared type of 'int',
 </div>
 <div class="card outlined-card" id="missing_function_body">
 <div class="card-header">
-<header class="card-title" id="missing_function_body">{{"missing_function_body" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_function_body">missing_<wbr>function_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -10030,7 +10046,7 @@ _A function body must be provided._
 </div>
 <div class="card outlined-card" id="missing_function_keyword">
 <div class="card-header">
-<header class="card-title" id="missing_function_keyword">{{"missing_function_keyword" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_function_keyword">missing_<wbr>function_<wbr>keyword</header>
 </div>
 <div class="card-content">
 
@@ -10047,7 +10063,7 @@ _Function types must have the keyword 'Function' before the parameter list._
 </div>
 <div class="card outlined-card" id="missing_function_parameters">
 <div class="card-header">
-<header class="card-title" id="missing_function_parameters">{{"missing_function_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_function_parameters">missing_<wbr>function_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -10064,7 +10080,7 @@ _Functions must have an explicit list of parameters._
 </div>
 <div class="card outlined-card" id="missing_get">
 <div class="card-header">
-<header class="card-title" id="missing_get">{{"missing_get" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_get">missing_<wbr>get</header>
 </div>
 <div class="card-content">
 
@@ -10079,9 +10095,26 @@ _Getters must have the keyword 'get' before the getter name._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="missing_hex_digit">
+<div class="card-header">
+<header class="card-title" id="missing_hex_digit">missing_<wbr>hex_<wbr>digit</header>
+</div>
+<div class="card-content">
+
+_Hexadecimal digit expected._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_hex_digit" title="Copy missing_hex_digit to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="missing_identifier">
 <div class="card-header">
-<header class="card-title" id="missing_identifier">{{"missing_identifier" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_identifier">missing_<wbr>identifier</header>
 </div>
 <div class="card-content">
 
@@ -10098,7 +10131,7 @@ _Expected an identifier._
 </div>
 <div class="card outlined-card" id="missing_initializer">
 <div class="card-header">
-<header class="card-title" id="missing_initializer">{{"missing_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_initializer">missing_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -10115,7 +10148,7 @@ _Expected an initializer._
 </div>
 <div class="card outlined-card" id="missing_keyword_operator">
 <div class="card-header">
-<header class="card-title" id="missing_keyword_operator">{{"missing_keyword_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_keyword_operator">missing_<wbr>keyword_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -10132,7 +10165,7 @@ _Operator declarations must be preceded by the keyword 'operator'._
 </div>
 <div class="card outlined-card" id="missing_method_parameters">
 <div class="card-header">
-<header class="card-title" id="missing_method_parameters">{{"missing_method_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_method_parameters">missing_<wbr>method_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -10149,7 +10182,7 @@ _Methods must have an explicit list of parameters._
 </div>
 <div class="card outlined-card" id="missing_name">
 <div class="card-header">
-<header class="card-title" id="missing_name">{{"missing_name" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_name">missing_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -10167,7 +10200,7 @@ _The 'name' field is required but missing._
 </div>
 <div class="card outlined-card" id="missing_named_pattern_field_name">
 <div class="card-header">
-<header class="card-title" id="missing_named_pattern_field_name">{{"missing_named_pattern_field_name" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_named_pattern_field_name">missing_<wbr>named_<wbr>pattern_<wbr>field_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -10186,7 +10219,7 @@ variable._
 </div>
 <div class="card outlined-card" id="missing_name_for_named_parameter">
 <div class="card-header">
-<header class="card-title" id="missing_name_for_named_parameter">{{"missing_name_for_named_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_name_for_named_parameter">missing_<wbr>name_<wbr>for_<wbr>named_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -10203,7 +10236,7 @@ _Named parameters in a function type must have a name_
 </div>
 <div class="card outlined-card" id="missing_name_in_library_directive">
 <div class="card-header">
-<header class="card-title" id="missing_name_in_library_directive">{{"missing_name_in_library_directive" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_name_in_library_directive">missing_<wbr>name_<wbr>in_<wbr>library_<wbr>directive</header>
 </div>
 <div class="card-content">
 
@@ -10220,7 +10253,7 @@ _Library directives must include a library name._
 </div>
 <div class="card outlined-card" id="missing_name_in_part_of_directive">
 <div class="card-header">
-<header class="card-title" id="missing_name_in_part_of_directive">{{"missing_name_in_part_of_directive" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_name_in_part_of_directive">missing_<wbr>name_<wbr>in_<wbr>part_<wbr>of_<wbr>directive</header>
 </div>
 <div class="card-content">
 
@@ -10237,7 +10270,7 @@ _Part-of directives must include a library name._
 </div>
 <div class="card outlined-card" id="missing_override_of_must_be_overridden">
 <div class="card-header">
-<header class="card-title" id="missing_override_of_must_be_overridden">{{"missing_override_of_must_be_overridden" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_override_of_must_be_overridden">missing_<wbr>override_<wbr>of_<wbr>must_<wbr>be_<wbr>overridden</header>
 </div>
 <div class="card-content">
 
@@ -10259,7 +10292,7 @@ _Missing concrete implementations of '{0}', '{1}', and {2} more._
 </div>
 <div class="card outlined-card" id="missing_prefix_in_deferred_import">
 <div class="card-header">
-<header class="card-title" id="missing_prefix_in_deferred_import">{{"missing_prefix_in_deferred_import" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_prefix_in_deferred_import">missing_<wbr>prefix_<wbr>in_<wbr>deferred_<wbr>import</header>
 </div>
 <div class="card-content">
 
@@ -10276,7 +10309,7 @@ _Deferred imports should have a prefix._
 </div>
 <div class="card outlined-card" id="missing_primary_constructor">
 <div class="card-header">
-<header class="card-title" id="missing_primary_constructor">{{"missing_primary_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_primary_constructor">missing_<wbr>primary_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -10293,7 +10326,7 @@ _An extension type declaration must have a primary constructor declaration._
 </div>
 <div class="card outlined-card" id="missing_primary_constructor_parameters">
 <div class="card-header">
-<header class="card-title" id="missing_primary_constructor_parameters">{{"missing_primary_constructor_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_primary_constructor_parameters">missing_<wbr>primary_<wbr>constructor_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -10308,9 +10341,26 @@ _A primary constructor declaration must have formal parameters._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="missing_quote">
+<div class="card-header">
+<header class="card-title" id="missing_quote">missing_<wbr>quote</header>
+</div>
+<div class="card-content">
+
+_Expected quote (' or ")._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_quote" title="Copy missing_quote to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="missing_required_argument">
 <div class="card-header">
-<header class="card-title" id="missing_required_argument">{{"missing_required_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_required_argument">missing_<wbr>required_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -10328,7 +10378,7 @@ _The named parameter '{0}' is required, but there's no corresponding argument._
 </div>
 <div class="card outlined-card" id="missing_required_param">
 <div class="card-header">
-<header class="card-title" id="missing_required_param">{{"missing_required_param" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_required_param">missing_<wbr>required_<wbr>param</header>
 </div>
 <div class="card-content">
 
@@ -10348,7 +10398,7 @@ _The parameter '{0}' is required. {1}._
 </div>
 <div class="card outlined-card" id="missing_return">
 <div class="card-header">
-<header class="card-title" id="missing_return">{{"missing_return" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_return">missing_<wbr>return</header>
 </div>
 <div class="card-content">
 
@@ -10367,7 +10417,7 @@ statement._
 </div>
 <div class="card outlined-card" id="missing_size_annotation_carray">
 <div class="card-header">
-<header class="card-title" id="missing_size_annotation_carray">{{"missing_size_annotation_carray" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_size_annotation_carray">missing_<wbr>size_<wbr>annotation_<wbr>carray</header>
 </div>
 <div class="card-content">
 
@@ -10385,7 +10435,7 @@ _Fields of type 'Array' must have exactly one 'Array' annotation._
 </div>
 <div class="card outlined-card" id="missing_star_after_sync">
 <div class="card-header">
-<header class="card-title" id="missing_star_after_sync">{{"missing_star_after_sync" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_star_after_sync">missing_<wbr>star_<wbr>after_<wbr>sync</header>
 </div>
 <div class="card-content">
 
@@ -10402,7 +10452,7 @@ _The modifier 'sync' must be followed by a star ('*')._
 </div>
 <div class="card outlined-card" id="missing_statement">
 <div class="card-header">
-<header class="card-title" id="missing_statement">{{"missing_statement" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_statement">missing_<wbr>statement</header>
 </div>
 <div class="card-content">
 
@@ -10419,7 +10469,7 @@ _Expected a statement._
 </div>
 <div class="card outlined-card" id="missing_terminator_for_parameter_group">
 <div class="card-header">
-<header class="card-title" id="missing_terminator_for_parameter_group">{{"missing_terminator_for_parameter_group" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_terminator_for_parameter_group">missing_<wbr>terminator_<wbr>for_<wbr>parameter_<wbr>group</header>
 </div>
 <div class="card-content">
 
@@ -10436,7 +10486,7 @@ _There is no '{0}' to close the parameter group._
 </div>
 <div class="card outlined-card" id="missing_typedef_parameters">
 <div class="card-header">
-<header class="card-title" id="missing_typedef_parameters">{{"missing_typedef_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_typedef_parameters">missing_<wbr>typedef_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -10453,7 +10503,7 @@ _Typedefs must have an explicit list of parameters._
 </div>
 <div class="card outlined-card" id="missing_variable_in_for_each">
 <div class="card-header">
-<header class="card-title" id="missing_variable_in_for_each">{{"missing_variable_in_for_each" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_variable_in_for_each">missing_<wbr>variable_<wbr>in_<wbr>for_<wbr>each</header>
 </div>
 <div class="card-content">
 
@@ -10471,7 +10521,7 @@ was found._
 </div>
 <div class="card outlined-card" id="missing_variable_pattern">
 <div class="card-header">
-<header class="card-title" id="missing_variable_pattern">{{"missing_variable_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_variable_pattern">missing_<wbr>variable_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -10489,7 +10539,7 @@ _Variable pattern '{0}' is missing in this branch of the logical-or pattern._
 </div>
 <div class="card outlined-card" id="mixed_parameter_groups">
 <div class="card-header">
-<header class="card-title" id="mixed_parameter_groups">{{"mixed_parameter_groups" | underscoreBreaker}}</header>
+<header class="card-title" id="mixed_parameter_groups">mixed_<wbr>parameter_<wbr>groups</header>
 </div>
 <div class="card-content">
 
@@ -10506,7 +10556,7 @@ _Can't have both positional and named parameters in a single parameter list._
 </div>
 <div class="card outlined-card" id="mixin_application_concrete_super_invoked_member_type">
 <div class="card-header">
-<header class="card-title" id="mixin_application_concrete_super_invoked_member_type">{{"mixin_application_concrete_super_invoked_member_type" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_application_concrete_super_invoked_member_type">mixin_<wbr>application_<wbr>concrete_<wbr>super_<wbr>invoked_<wbr>member_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -10525,7 +10575,7 @@ the class has the type '{2}'._
 </div>
 <div class="card outlined-card" id="mixin_application_not_implemented_interface">
 <div class="card-header">
-<header class="card-title" id="mixin_application_not_implemented_interface">{{"mixin_application_not_implemented_interface" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_application_not_implemented_interface">mixin_<wbr>application_<wbr>not_<wbr>implemented_<wbr>interface</header>
 </div>
 <div class="card-content">
 
@@ -10543,7 +10593,7 @@ _'{0}' can't be mixed onto '{1}' because '{1}' doesn't implement '{2}'._
 </div>
 <div class="card outlined-card" id="mixin_application_no_concrete_super_invoked_member">
 <div class="card-header">
-<header class="card-title" id="mixin_application_no_concrete_super_invoked_member">{{"mixin_application_no_concrete_super_invoked_member" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_application_no_concrete_super_invoked_member">mixin_<wbr>application_<wbr>no_<wbr>concrete_<wbr>super_<wbr>invoked_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -10565,7 +10615,7 @@ _The class doesn't have a concrete implementation of the super-invoked setter
 </div>
 <div class="card outlined-card" id="mixin_class_declaration_extends_not_object">
 <div class="card-header">
-<header class="card-title" id="mixin_class_declaration_extends_not_object">{{"mixin_class_declaration_extends_not_object" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_class_declaration_extends_not_object">mixin_<wbr>class_<wbr>declaration_<wbr>extends_<wbr>not_<wbr>object</header>
 </div>
 <div class="card-content">
 
@@ -10584,7 +10634,7 @@ _The class '{0}' can't be declared a mixin because it extends a class other than
 </div>
 <div class="card outlined-card" id="mixin_class_declares_constructor">
 <div class="card-header">
-<header class="card-title" id="mixin_class_declares_constructor">{{"mixin_class_declares_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_class_declares_constructor">mixin_<wbr>class_<wbr>declares_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -10602,7 +10652,7 @@ _The class '{0}' can't be used as a mixin because it declares a constructor._
 </div>
 <div class="card outlined-card" id="mixin_declares_constructor">
 <div class="card-header">
-<header class="card-title" id="mixin_declares_constructor">{{"mixin_declares_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_declares_constructor">mixin_<wbr>declares_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -10619,7 +10669,7 @@ _Mixins can't declare constructors._
 </div>
 <div class="card outlined-card" id="mixin_inherits_from_not_object">
 <div class="card-header">
-<header class="card-title" id="mixin_inherits_from_not_object">{{"mixin_inherits_from_not_object" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_inherits_from_not_object">mixin_<wbr>inherits_<wbr>from_<wbr>not_<wbr>object</header>
 </div>
 <div class="card-content">
 
@@ -10638,7 +10688,7 @@ _The class '{0}' can't be used as a mixin because it extends a class other than
 </div>
 <div class="card outlined-card" id="mixin_instantiate">
 <div class="card-header">
-<header class="card-title" id="mixin_instantiate">{{"mixin_instantiate" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_instantiate">mixin_<wbr>instantiate</header>
 </div>
 <div class="card-content">
 
@@ -10656,7 +10706,7 @@ _Mixins can't be instantiated._
 </div>
 <div class="card outlined-card" id="mixin_of_non_class">
 <div class="card-header">
-<header class="card-title" id="mixin_of_non_class">{{"mixin_of_non_class" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_of_non_class">mixin_<wbr>of_<wbr>non_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -10674,7 +10724,7 @@ _Classes can only mix in mixins and classes._
 </div>
 <div class="card outlined-card" id="mixin_on_sealed_class">
 <div class="card-header">
-<header class="card-title" id="mixin_on_sealed_class">{{"mixin_on_sealed_class" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_on_sealed_class">mixin_<wbr>on_<wbr>sealed_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -10693,7 +10743,7 @@ and any class mixing in this mixin must have '{0}' as a superclass._
 </div>
 <div class="card outlined-card" id="mixin_super_class_constraint_deferred_class">
 <div class="card-header">
-<header class="card-title" id="mixin_super_class_constraint_deferred_class">{{"mixin_super_class_constraint_deferred_class" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_super_class_constraint_deferred_class">mixin_<wbr>super_<wbr>class_<wbr>constraint_<wbr>deferred_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -10711,7 +10761,7 @@ _Deferred classes can't be used as superclass constraints._
 </div>
 <div class="card outlined-card" id="mixin_super_class_constraint_non_interface">
 <div class="card-header">
-<header class="card-title" id="mixin_super_class_constraint_non_interface">{{"mixin_super_class_constraint_non_interface" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_super_class_constraint_non_interface">mixin_<wbr>super_<wbr>class_<wbr>constraint_<wbr>non_<wbr>interface</header>
 </div>
 <div class="card-content">
 
@@ -10729,7 +10779,7 @@ _Only classes and mixins can be used as superclass constraints._
 </div>
 <div class="card outlined-card" id="mixin_with_clause">
 <div class="card-header">
-<header class="card-title" id="mixin_with_clause">{{"mixin_with_clause" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_with_clause">mixin_<wbr>with_<wbr>clause</header>
 </div>
 <div class="card-content">
 
@@ -10746,7 +10796,7 @@ _A mixin can't have a with clause._
 </div>
 <div class="card outlined-card" id="mixin_with_non_class_superclass">
 <div class="card-header">
-<header class="card-title" id="mixin_with_non_class_superclass">{{"mixin_with_non_class_superclass" | underscoreBreaker}}</header>
+<header class="card-title" id="mixin_with_non_class_superclass">mixin_<wbr>with_<wbr>non_<wbr>class_<wbr>superclass</header>
 </div>
 <div class="card-content">
 
@@ -10763,7 +10813,7 @@ _Mixin can only be applied to class._
 </div>
 <div class="card outlined-card" id="modifier_out_of_order">
 <div class="card-header">
-<header class="card-title" id="modifier_out_of_order">{{"modifier_out_of_order" | underscoreBreaker}}</header>
+<header class="card-title" id="modifier_out_of_order">modifier_<wbr>out_<wbr>of_<wbr>order</header>
 </div>
 <div class="card-content">
 
@@ -10780,7 +10830,7 @@ _The modifier '{0}' should be before the modifier '{1}'._
 </div>
 <div class="card outlined-card" id="multiple_clauses">
 <div class="card-header">
-<header class="card-title" id="multiple_clauses">{{"multiple_clauses" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_clauses">multiple_<wbr>clauses</header>
 </div>
 <div class="card-content">
 
@@ -10797,7 +10847,7 @@ _Each '{0}' definition can have at most one '{1}' clause._
 </div>
 <div class="card outlined-card" id="multiple_combinators">
 <div class="card-header">
-<header class="card-title" id="multiple_combinators">{{"multiple_combinators" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_combinators">multiple_<wbr>combinators</header>
 </div>
 <div class="card-content">
 
@@ -10816,7 +10866,7 @@ produces surprising results._
 </div>
 <div class="card outlined-card" id="multiple_extends_clauses">
 <div class="card-header">
-<header class="card-title" id="multiple_extends_clauses">{{"multiple_extends_clauses" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_extends_clauses">multiple_<wbr>extends_<wbr>clauses</header>
 </div>
 <div class="card-content">
 
@@ -10833,7 +10883,7 @@ _Each class definition can have at most one extends clause._
 </div>
 <div class="card outlined-card" id="multiple_implements_clauses">
 <div class="card-header">
-<header class="card-title" id="multiple_implements_clauses">{{"multiple_implements_clauses" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_implements_clauses">multiple_<wbr>implements_<wbr>clauses</header>
 </div>
 <div class="card-content">
 
@@ -10850,7 +10900,7 @@ _Each class or mixin definition can have at most one implements clause._
 </div>
 <div class="card outlined-card" id="multiple_library_directives">
 <div class="card-header">
-<header class="card-title" id="multiple_library_directives">{{"multiple_library_directives" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_library_directives">multiple_<wbr>library_<wbr>directives</header>
 </div>
 <div class="card-content">
 
@@ -10867,7 +10917,7 @@ _Only one library directive may be declared in a file._
 </div>
 <div class="card outlined-card" id="multiple_named_parameter_groups">
 <div class="card-header">
-<header class="card-title" id="multiple_named_parameter_groups">{{"multiple_named_parameter_groups" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_named_parameter_groups">multiple_<wbr>named_<wbr>parameter_<wbr>groups</header>
 </div>
 <div class="card-content">
 
@@ -10884,7 +10934,7 @@ _Can't have multiple groups of named parameters in a single parameter list._
 </div>
 <div class="card outlined-card" id="multiple_on_clauses">
 <div class="card-header">
-<header class="card-title" id="multiple_on_clauses">{{"multiple_on_clauses" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_on_clauses">multiple_<wbr>on_<wbr>clauses</header>
 </div>
 <div class="card-content">
 
@@ -10901,7 +10951,7 @@ _Each mixin definition can have at most one on clause._
 </div>
 <div class="card outlined-card" id="multiple_part_of_directives">
 <div class="card-header">
-<header class="card-title" id="multiple_part_of_directives">{{"multiple_part_of_directives" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_part_of_directives">multiple_<wbr>part_<wbr>of_<wbr>directives</header>
 </div>
 <div class="card-content">
 
@@ -10918,7 +10968,7 @@ _Only one part-of directive may be declared in a file._
 </div>
 <div class="card outlined-card" id="multiple_plugins">
 <div class="card-header">
-<header class="card-title" id="multiple_plugins">{{"multiple_plugins" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_plugins">multiple_<wbr>plugins</header>
 </div>
 <div class="card-content">
 
@@ -10935,7 +10985,7 @@ _Multiple plugins can't be enabled._
 </div>
 <div class="card outlined-card" id="multiple_positional_parameter_groups">
 <div class="card-header">
-<header class="card-title" id="multiple_positional_parameter_groups">{{"multiple_positional_parameter_groups" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_positional_parameter_groups">multiple_<wbr>positional_<wbr>parameter_<wbr>groups</header>
 </div>
 <div class="card-content">
 
@@ -10953,7 +11003,7 @@ list._
 </div>
 <div class="card outlined-card" id="multiple_redirecting_constructor_invocations">
 <div class="card-header">
-<header class="card-title" id="multiple_redirecting_constructor_invocations">{{"multiple_redirecting_constructor_invocations" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_redirecting_constructor_invocations">multiple_<wbr>redirecting_<wbr>constructor_<wbr>invocations</header>
 </div>
 <div class="card-content">
 
@@ -10971,7 +11021,7 @@ _Constructors can have only one 'this' redirection, at most._
 </div>
 <div class="card outlined-card" id="multiple_representation_fields">
 <div class="card-header">
-<header class="card-title" id="multiple_representation_fields">{{"multiple_representation_fields" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_representation_fields">multiple_<wbr>representation_<wbr>fields</header>
 </div>
 <div class="card-content">
 
@@ -10988,7 +11038,7 @@ _Each extension type should have exactly one representation field._
 </div>
 <div class="card outlined-card" id="multiple_super_initializers">
 <div class="card-header">
-<header class="card-title" id="multiple_super_initializers">{{"multiple_super_initializers" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_super_initializers">multiple_<wbr>super_<wbr>initializers</header>
 </div>
 <div class="card-content">
 
@@ -11006,7 +11056,7 @@ _A constructor can have at most one 'super' initializer._
 </div>
 <div class="card outlined-card" id="multiple_variables_in_for_each">
 <div class="card-header">
-<header class="card-title" id="multiple_variables_in_for_each">{{"multiple_variables_in_for_each" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_variables_in_for_each">multiple_<wbr>variables_<wbr>in_<wbr>for_<wbr>each</header>
 </div>
 <div class="card-content">
 
@@ -11024,7 +11074,7 @@ _A single loop variable must be declared in a for-each loop before the 'in', but
 </div>
 <div class="card outlined-card" id="multiple_variance_modifiers">
 <div class="card-header">
-<header class="card-title" id="multiple_variance_modifiers">{{"multiple_variance_modifiers" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_variance_modifiers">multiple_<wbr>variance_<wbr>modifiers</header>
 </div>
 <div class="card-content">
 
@@ -11041,7 +11091,7 @@ _Each type parameter can have at most one variance modifier._
 </div>
 <div class="card outlined-card" id="multiple_with_clauses">
 <div class="card-header">
-<header class="card-title" id="multiple_with_clauses">{{"multiple_with_clauses" | underscoreBreaker}}</header>
+<header class="card-title" id="multiple_with_clauses">multiple_<wbr>with_<wbr>clauses</header>
 </div>
 <div class="card-content">
 
@@ -11058,7 +11108,7 @@ _Each class definition can have at most one with clause._
 </div>
 <div class="card outlined-card" id="must_be_a_native_function_type">
 <div class="card-header">
-<header class="card-title" id="must_be_a_native_function_type">{{"must_be_a_native_function_type" | underscoreBreaker}}</header>
+<header class="card-title" id="must_be_a_native_function_type">must_<wbr>be_<wbr>a_<wbr>native_<wbr>function_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -11076,7 +11126,7 @@ _The type '{0}' given to '{1}' must be a valid 'dart:ffi' native function type._
 </div>
 <div class="card outlined-card" id="must_be_a_subtype">
 <div class="card-header">
-<header class="card-title" id="must_be_a_subtype">{{"must_be_a_subtype" | underscoreBreaker}}</header>
+<header class="card-title" id="must_be_a_subtype">must_<wbr>be_<wbr>a_<wbr>subtype</header>
 </div>
 <div class="card-content">
 
@@ -11094,7 +11144,7 @@ _The type '{0}' must be a subtype of '{1}' for '{2}'._
 </div>
 <div class="card outlined-card" id="must_be_immutable">
 <div class="card-header">
-<header class="card-title" id="must_be_immutable">{{"must_be_immutable" | underscoreBreaker}}</header>
+<header class="card-title" id="must_be_immutable">must_<wbr>be_<wbr>immutable</header>
 </div>
 <div class="card-content">
 
@@ -11113,7 +11163,7 @@ _This class (or a class that this class inherits from) is marked as
 </div>
 <div class="card outlined-card" id="must_call_super">
 <div class="card-header">
-<header class="card-title" id="must_call_super">{{"must_call_super" | underscoreBreaker}}</header>
+<header class="card-title" id="must_call_super">must_<wbr>call_<wbr>super</header>
 </div>
 <div class="card-content">
 
@@ -11132,7 +11182,7 @@ doesn't invoke the overridden method._
 </div>
 <div class="card outlined-card" id="must_return_void">
 <div class="card-header">
-<header class="card-title" id="must_return_void">{{"must_return_void" | underscoreBreaker}}</header>
+<header class="card-title" id="must_return_void">must_<wbr>return_<wbr>void</header>
 </div>
 <div class="card-content">
 
@@ -11151,7 +11201,7 @@ _The return type of the function passed to 'NativeCallable.listener' must be
 </div>
 <div class="card outlined-card" id="named_function_expression">
 <div class="card-header">
-<header class="card-title" id="named_function_expression">{{"named_function_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="named_function_expression">named_<wbr>function_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -11168,7 +11218,7 @@ _Function expressions can't be named._
 </div>
 <div class="card outlined-card" id="named_function_type">
 <div class="card-header">
-<header class="card-title" id="named_function_type">{{"named_function_type" | underscoreBreaker}}</header>
+<header class="card-title" id="named_function_type">named_<wbr>function_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -11185,7 +11235,7 @@ _Function types can't be named._
 </div>
 <div class="card outlined-card" id="named_parameter_outside_group">
 <div class="card-header">
-<header class="card-title" id="named_parameter_outside_group">{{"named_parameter_outside_group" | underscoreBreaker}}</header>
+<header class="card-title" id="named_parameter_outside_group">named_<wbr>parameter_<wbr>outside_<wbr>group</header>
 </div>
 <div class="card-content">
 
@@ -11202,7 +11252,7 @@ _Named parameters must be enclosed in curly braces ('{' and '}')._
 </div>
 <div class="card outlined-card" id="name_not_string">
 <div class="card-header">
-<header class="card-title" id="name_not_string">{{"name_not_string" | underscoreBreaker}}</header>
+<header class="card-title" id="name_not_string">name_<wbr>not_<wbr>string</header>
 </div>
 <div class="card-content">
 
@@ -11220,7 +11270,7 @@ _The value of the 'name' field is required to be a string._
 </div>
 <div class="card outlined-card" id="native_clause_in_non_sdk_code">
 <div class="card-header">
-<header class="card-title" id="native_clause_in_non_sdk_code">{{"native_clause_in_non_sdk_code" | underscoreBreaker}}</header>
+<header class="card-title" id="native_clause_in_non_sdk_code">native_<wbr>clause_<wbr>in_<wbr>non_<wbr>sdk_<wbr>code</header>
 </div>
 <div class="card-content">
 
@@ -11238,7 +11288,7 @@ native extensions._
 </div>
 <div class="card outlined-card" id="native_clause_should_be_annotation">
 <div class="card-header">
-<header class="card-title" id="native_clause_should_be_annotation">{{"native_clause_should_be_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="native_clause_should_be_annotation">native_<wbr>clause_<wbr>should_<wbr>be_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -11255,7 +11305,7 @@ _Native clause in this form is deprecated._
 </div>
 <div class="card outlined-card" id="native_field_invalid_type">
 <div class="card-header">
-<header class="card-title" id="native_field_invalid_type">{{"native_field_invalid_type" | underscoreBreaker}}</header>
+<header class="card-title" id="native_field_invalid_type">native_<wbr>field_<wbr>invalid_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -11274,7 +11324,7 @@ pointers, arrays or numeric and compound types._
 </div>
 <div class="card outlined-card" id="native_field_missing_type">
 <div class="card-header">
-<header class="card-title" id="native_field_missing_type">{{"native_field_missing_type" | underscoreBreaker}}</header>
+<header class="card-title" id="native_field_missing_type">native_<wbr>field_<wbr>missing_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -11293,7 +11343,7 @@ the annotation._
 </div>
 <div class="card outlined-card" id="native_field_not_static">
 <div class="card-header">
-<header class="card-title" id="native_field_not_static">{{"native_field_not_static" | underscoreBreaker}}</header>
+<header class="card-title" id="native_field_not_static">native_<wbr>field_<wbr>not_<wbr>static</header>
 </div>
 <div class="card-content">
 
@@ -11311,7 +11361,7 @@ _Native fields must be static._
 </div>
 <div class="card outlined-card" id="native_function_body_in_non_sdk_code">
 <div class="card-header">
-<header class="card-title" id="native_function_body_in_non_sdk_code">{{"native_function_body_in_non_sdk_code" | underscoreBreaker}}</header>
+<header class="card-title" id="native_function_body_in_non_sdk_code">native_<wbr>function_<wbr>body_<wbr>in_<wbr>non_<wbr>sdk_<wbr>code</header>
 </div>
 <div class="card-content">
 
@@ -11329,7 +11379,7 @@ through native extensions._
 </div>
 <div class="card outlined-card" id="native_function_missing_type">
 <div class="card-header">
-<header class="card-title" id="native_function_missing_type">{{"native_function_missing_type" | underscoreBreaker}}</header>
+<header class="card-title" id="native_function_missing_type">native_<wbr>function_<wbr>missing_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -11348,7 +11398,7 @@ in the annotation._
 </div>
 <div class="card outlined-card" id="negative_variable_dimension">
 <div class="card-header">
-<header class="card-title" id="negative_variable_dimension">{{"negative_variable_dimension" | underscoreBreaker}}</header>
+<header class="card-title" id="negative_variable_dimension">negative_<wbr>variable_<wbr>dimension</header>
 </div>
 <div class="card-content">
 
@@ -11366,7 +11416,7 @@ _The variable dimension of a variable-length array must be non-negative._
 </div>
 <div class="card outlined-card" id="new_with_undefined_constructor">
 <div class="card-header">
-<header class="card-title" id="new_with_undefined_constructor">{{"new_with_undefined_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="new_with_undefined_constructor">new_<wbr>with_<wbr>undefined_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -11383,7 +11433,7 @@ _The class '{0}' doesn't have a constructor named '{1}'._
 </div>
 <div class="card outlined-card" id="new_with_undefined_constructor_default">
 <div class="card-header">
-<header class="card-title" id="new_with_undefined_constructor_default">{{"new_with_undefined_constructor_default" | underscoreBreaker}}</header>
+<header class="card-title" id="new_with_undefined_constructor_default">new_<wbr>with_<wbr>undefined_<wbr>constructor_<wbr>default</header>
 </div>
 <div class="card-content">
 
@@ -11401,7 +11451,7 @@ _The class '{0}' doesn't have an unnamed constructor._
 </div>
 <div class="card outlined-card" id="non_abstract_class_inherits_abstract_member">
 <div class="card-header">
-<header class="card-title" id="non_abstract_class_inherits_abstract_member">{{"non_abstract_class_inherits_abstract_member" | underscoreBreaker}}</header>
+<header class="card-title" id="non_abstract_class_inherits_abstract_member">non_<wbr>abstract_<wbr>class_<wbr>inherits_<wbr>abstract_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -11427,7 +11477,7 @@ _Missing concrete implementations of '{0}', '{1}', and '{2}'._
 </div>
 <div class="card outlined-card" id="non_bool_condition">
 <div class="card-header">
-<header class="card-title" id="non_bool_condition">{{"non_bool_condition" | underscoreBreaker}}</header>
+<header class="card-title" id="non_bool_condition">non_<wbr>bool_<wbr>condition</header>
 </div>
 <div class="card-content">
 
@@ -11445,7 +11495,7 @@ _Conditions must have a static type of 'bool'._
 </div>
 <div class="card outlined-card" id="non_bool_expression">
 <div class="card-header">
-<header class="card-title" id="non_bool_expression">{{"non_bool_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="non_bool_expression">non_<wbr>bool_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -11463,7 +11513,7 @@ _The expression in an assert must be of type 'bool'._
 </div>
 <div class="card outlined-card" id="non_bool_negation_expression">
 <div class="card-header">
-<header class="card-title" id="non_bool_negation_expression">{{"non_bool_negation_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="non_bool_negation_expression">non_<wbr>bool_<wbr>negation_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -11481,7 +11531,7 @@ _A negation operand must have a static type of 'bool'._
 </div>
 <div class="card outlined-card" id="non_bool_operand">
 <div class="card-header">
-<header class="card-title" id="non_bool_operand">{{"non_bool_operand" | underscoreBreaker}}</header>
+<header class="card-title" id="non_bool_operand">non_<wbr>bool_<wbr>operand</header>
 </div>
 <div class="card-content">
 
@@ -11499,7 +11549,7 @@ _The operands of the operator '{0}' must be assignable to 'bool'._
 </div>
 <div class="card outlined-card" id="non_constant_annotation_constructor">
 <div class="card-header">
-<header class="card-title" id="non_constant_annotation_constructor">{{"non_constant_annotation_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_annotation_constructor">non_<wbr>constant_<wbr>annotation_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -11517,7 +11567,7 @@ _Annotation creation can only call a const constructor._
 </div>
 <div class="card outlined-card" id="non_constant_case_expression">
 <div class="card-header">
-<header class="card-title" id="non_constant_case_expression">{{"non_constant_case_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_case_expression">non_<wbr>constant_<wbr>case_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -11535,7 +11585,7 @@ _Case expressions must be constant._
 </div>
 <div class="card outlined-card" id="non_constant_case_expression_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="non_constant_case_expression_from_deferred_library">{{"non_constant_case_expression_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_case_expression_from_deferred_library">non_<wbr>constant_<wbr>case_<wbr>expression_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -11553,7 +11603,7 @@ _Constant values from a deferred library can't be used as a case expression._
 </div>
 <div class="card outlined-card" id="non_constant_default_value">
 <div class="card-header">
-<header class="card-title" id="non_constant_default_value">{{"non_constant_default_value" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_default_value">non_<wbr>constant_<wbr>default_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -11571,7 +11621,7 @@ _The default value of an optional parameter must be constant._
 </div>
 <div class="card outlined-card" id="non_constant_default_value_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="non_constant_default_value_from_deferred_library">{{"non_constant_default_value_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_default_value_from_deferred_library">non_<wbr>constant_<wbr>default_<wbr>value_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -11590,7 +11640,7 @@ value._
 </div>
 <div class="card outlined-card" id="non_constant_list_element">
 <div class="card-header">
-<header class="card-title" id="non_constant_list_element">{{"non_constant_list_element" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_list_element">non_<wbr>constant_<wbr>list_<wbr>element</header>
 </div>
 <div class="card-content">
 
@@ -11608,7 +11658,7 @@ _The values in a const list literal must be constants._
 </div>
 <div class="card outlined-card" id="non_constant_map_element">
 <div class="card-header">
-<header class="card-title" id="non_constant_map_element">{{"non_constant_map_element" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_map_element">non_<wbr>constant_<wbr>map_<wbr>element</header>
 </div>
 <div class="card-content">
 
@@ -11626,7 +11676,7 @@ _The elements in a const map literal must be constant._
 </div>
 <div class="card outlined-card" id="non_constant_map_key">
 <div class="card-header">
-<header class="card-title" id="non_constant_map_key">{{"non_constant_map_key" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_map_key">non_<wbr>constant_<wbr>map_<wbr>key</header>
 </div>
 <div class="card-content">
 
@@ -11644,7 +11694,7 @@ _The keys in a const map literal must be constant._
 </div>
 <div class="card outlined-card" id="non_constant_map_pattern_key">
 <div class="card-header">
-<header class="card-title" id="non_constant_map_pattern_key">{{"non_constant_map_pattern_key" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_map_pattern_key">non_<wbr>constant_<wbr>map_<wbr>pattern_<wbr>key</header>
 </div>
 <div class="card-content">
 
@@ -11662,7 +11712,7 @@ _Key expressions in map patterns must be constants._
 </div>
 <div class="card outlined-card" id="non_constant_map_value">
 <div class="card-header">
-<header class="card-title" id="non_constant_map_value">{{"non_constant_map_value" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_map_value">non_<wbr>constant_<wbr>map_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -11680,7 +11730,7 @@ _The values in a const map literal must be constant._
 </div>
 <div class="card outlined-card" id="non_constant_record_field">
 <div class="card-header">
-<header class="card-title" id="non_constant_record_field">{{"non_constant_record_field" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_record_field">non_<wbr>constant_<wbr>record_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -11697,7 +11747,7 @@ _The fields in a const record literal must be constants._
 </div>
 <div class="card outlined-card" id="non_constant_record_field_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="non_constant_record_field_from_deferred_library">{{"non_constant_record_field_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_record_field_from_deferred_library">non_<wbr>constant_<wbr>record_<wbr>field_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -11715,7 +11765,7 @@ record literal._
 </div>
 <div class="card outlined-card" id="non_constant_relational_pattern_expression">
 <div class="card-header">
-<header class="card-title" id="non_constant_relational_pattern_expression">{{"non_constant_relational_pattern_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_relational_pattern_expression">non_<wbr>constant_<wbr>relational_<wbr>pattern_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -11733,7 +11783,7 @@ _The relational pattern expression must be a constant._
 </div>
 <div class="card outlined-card" id="non_constant_set_element">
 <div class="card-header">
-<header class="card-title" id="non_constant_set_element">{{"non_constant_set_element" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_set_element">non_<wbr>constant_<wbr>set_<wbr>element</header>
 </div>
 <div class="card-content">
 
@@ -11751,7 +11801,7 @@ _The values in a const set literal must be constants._
 </div>
 <div class="card outlined-card" id="non_constant_type_argument">
 <div class="card-header">
-<header class="card-title" id="non_constant_type_argument">{{"non_constant_type_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_type_argument">non_<wbr>constant_<wbr>type_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -11770,7 +11820,7 @@ type parameters._
 </div>
 <div class="card outlined-card" id="non_constructor_factory">
 <div class="card-header">
-<header class="card-title" id="non_constructor_factory">{{"non_constructor_factory" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constructor_factory">non_<wbr>constructor_<wbr>factory</header>
 </div>
 <div class="card-content">
 
@@ -11787,7 +11837,7 @@ _Only a constructor can be declared to be a factory._
 </div>
 <div class="card outlined-card" id="non_const_argument_for_const_parameter">
 <div class="card-header">
-<header class="card-title" id="non_const_argument_for_const_parameter">{{"non_const_argument_for_const_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="non_const_argument_for_const_parameter">non_<wbr>const_<wbr>argument_<wbr>for_<wbr>const_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -11805,7 +11855,7 @@ _Argument '{0}' must be a constant._
 </div>
 <div class="card outlined-card" id="non_const_call_to_literal_constructor">
 <div class="card-header">
-<header class="card-title" id="non_const_call_to_literal_constructor">{{"non_const_call_to_literal_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="non_const_call_to_literal_constructor">non_<wbr>const_<wbr>call_<wbr>to_<wbr>literal_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -11824,7 +11874,7 @@ as '@literal'._
 </div>
 <div class="card outlined-card" id="non_const_generative_enum_constructor">
 <div class="card-header">
-<header class="card-title" id="non_const_generative_enum_constructor">{{"non_const_generative_enum_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="non_const_generative_enum_constructor">non_<wbr>const_<wbr>generative_<wbr>enum_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -11842,7 +11892,7 @@ _Generative enum constructors must be 'const'._
 </div>
 <div class="card outlined-card" id="non_const_map_as_expression_statement">
 <div class="card-header">
-<header class="card-title" id="non_const_map_as_expression_statement">{{"non_const_map_as_expression_statement" | underscoreBreaker}}</header>
+<header class="card-title" id="non_const_map_as_expression_statement">non_<wbr>const_<wbr>map_<wbr>as_<wbr>expression_<wbr>statement</header>
 </div>
 <div class="card-content">
 
@@ -11860,7 +11910,7 @@ expression statement._
 </div>
 <div class="card outlined-card" id="non_covariant_type_parameter_position_in_representation_type">
 <div class="card-header">
-<header class="card-title" id="non_covariant_type_parameter_position_in_representation_type">{{"non_covariant_type_parameter_position_in_representation_type" | underscoreBreaker}}</header>
+<header class="card-title" id="non_covariant_type_parameter_position_in_representation_type">non_<wbr>covariant_<wbr>type_<wbr>parameter_<wbr>position_<wbr>in_<wbr>representation_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -11879,7 +11929,7 @@ representation type._
 </div>
 <div class="card outlined-card" id="non_exhaustive_switch_expression">
 <div class="card-header">
-<header class="card-title" id="non_exhaustive_switch_expression">{{"non_exhaustive_switch_expression" | underscoreBreaker}}</header>
+<header class="card-title" id="non_exhaustive_switch_expression">non_<wbr>exhaustive_<wbr>switch_<wbr>expression</header>
 </div>
 <div class="card-content">
 
@@ -11898,7 +11948,7 @@ match the pattern '{1}'._
 </div>
 <div class="card outlined-card" id="non_exhaustive_switch_statement">
 <div class="card-header">
-<header class="card-title" id="non_exhaustive_switch_statement">{{"non_exhaustive_switch_statement" | underscoreBreaker}}</header>
+<header class="card-title" id="non_exhaustive_switch_statement">non_<wbr>exhaustive_<wbr>switch_<wbr>statement</header>
 </div>
 <div class="card-content">
 
@@ -11917,7 +11967,7 @@ match the pattern '{1}'._
 </div>
 <div class="card outlined-card" id="non_final_field_in_enum">
 <div class="card-header">
-<header class="card-title" id="non_final_field_in_enum">{{"non_final_field_in_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="non_final_field_in_enum">non_<wbr>final_<wbr>field_<wbr>in_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -11935,7 +11985,7 @@ _Enums can only declare final fields._
 </div>
 <div class="card outlined-card" id="non_generative_constructor">
 <div class="card-header">
-<header class="card-title" id="non_generative_constructor">{{"non_generative_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="non_generative_constructor">non_<wbr>generative_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -11953,7 +12003,7 @@ _The generative constructor '{0}' is expected, but a factory was found._
 </div>
 <div class="card outlined-card" id="non_generative_implicit_constructor">
 <div class="card-header">
-<header class="card-title" id="non_generative_implicit_constructor">{{"non_generative_implicit_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="non_generative_implicit_constructor">non_<wbr>generative_<wbr>implicit_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -11972,7 +12022,7 @@ of '{1}') must be a generative constructor, but factory found._
 </div>
 <div class="card outlined-card" id="non_identifier_library_name">
 <div class="card-header">
-<header class="card-title" id="non_identifier_library_name">{{"non_identifier_library_name" | underscoreBreaker}}</header>
+<header class="card-title" id="non_identifier_library_name">non_<wbr>identifier_<wbr>library_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -11989,7 +12039,7 @@ _The name of a library must be an identifier._
 </div>
 <div class="card outlined-card" id="non_native_function_type_argument_to_pointer">
 <div class="card-header">
-<header class="card-title" id="non_native_function_type_argument_to_pointer">{{"non_native_function_type_argument_to_pointer" | underscoreBreaker}}</header>
+<header class="card-title" id="non_native_function_type_argument_to_pointer">non_<wbr>native_<wbr>function_<wbr>type_<wbr>argument_<wbr>to_<wbr>pointer</header>
 </div>
 <div class="card-content">
 
@@ -12008,7 +12058,7 @@ isn't a valid C function signature._
 </div>
 <div class="card outlined-card" id="non_nullable_equals_parameter">
 <div class="card-header">
-<header class="card-title" id="non_nullable_equals_parameter">{{"non_nullable_equals_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="non_nullable_equals_parameter">non_<wbr>nullable_<wbr>equals_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -12026,7 +12076,7 @@ _The parameter type of '==' operators should be non-nullable._
 </div>
 <div class="card outlined-card" id="non_part_of_directive_in_part">
 <div class="card-header">
-<header class="card-title" id="non_part_of_directive_in_part">{{"non_part_of_directive_in_part" | underscoreBreaker}}</header>
+<header class="card-title" id="non_part_of_directive_in_part">non_<wbr>part_<wbr>of_<wbr>directive_<wbr>in_<wbr>part</header>
 </div>
 <div class="card-content">
 
@@ -12043,7 +12093,7 @@ _The part-of directive must be the only directive in a part._
 </div>
 <div class="card outlined-card" id="non_positive_array_dimension">
 <div class="card-header">
-<header class="card-title" id="non_positive_array_dimension">{{"non_positive_array_dimension" | underscoreBreaker}}</header>
+<header class="card-title" id="non_positive_array_dimension">non_<wbr>positive_<wbr>array_<wbr>dimension</header>
 </div>
 <div class="card-content">
 
@@ -12061,7 +12111,7 @@ _Array dimensions must be positive numbers._
 </div>
 <div class="card outlined-card" id="non_resizable_activity">
 <div class="card-header">
-<header class="card-title" id="non_resizable_activity">{{"non_resizable_activity" | underscoreBreaker}}</header>
+<header class="card-title" id="non_resizable_activity">non_<wbr>resizable_<wbr>activity</header>
 </div>
 <div class="card-content">
 
@@ -12079,7 +12129,7 @@ advantage of the multi-window environment on Chrome OS_
 </div>
 <div class="card outlined-card" id="non_sized_type_argument">
 <div class="card-header">
-<header class="card-title" id="non_sized_type_argument">{{"non_sized_type_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="non_sized_type_argument">non_<wbr>sized_<wbr>type_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -12098,7 +12148,7 @@ a native integer, 'Float', 'Double', 'Pointer', or subtype of 'Struct', 'Union',
 </div>
 <div class="card outlined-card" id="non_string_literal_as_uri">
 <div class="card-header">
-<header class="card-title" id="non_string_literal_as_uri">{{"non_string_literal_as_uri" | underscoreBreaker}}</header>
+<header class="card-title" id="non_string_literal_as_uri">non_<wbr>string_<wbr>literal_<wbr>as_<wbr>uri</header>
 </div>
 <div class="card-content">
 
@@ -12115,7 +12165,7 @@ _The URI must be a string literal._
 </div>
 <div class="card outlined-card" id="non_sync_factory">
 <div class="card-header">
-<header class="card-title" id="non_sync_factory">{{"non_sync_factory" | underscoreBreaker}}</header>
+<header class="card-title" id="non_sync_factory">non_<wbr>sync_<wbr>factory</header>
 </div>
 <div class="card-content">
 
@@ -12133,7 +12183,7 @@ _Factory bodies can't use 'async', 'async*', or 'sync*'._
 </div>
 <div class="card outlined-card" id="non_type_as_type_argument">
 <div class="card-header">
-<header class="card-title" id="non_type_as_type_argument">{{"non_type_as_type_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="non_type_as_type_argument">non_<wbr>type_<wbr>as_<wbr>type_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -12151,7 +12201,7 @@ _The name '{0}' isn't a type, so it can't be used as a type argument._
 </div>
 <div class="card outlined-card" id="non_type_in_catch_clause">
 <div class="card-header">
-<header class="card-title" id="non_type_in_catch_clause">{{"non_type_in_catch_clause" | underscoreBreaker}}</header>
+<header class="card-title" id="non_type_in_catch_clause">non_<wbr>type_<wbr>in_<wbr>catch_<wbr>clause</header>
 </div>
 <div class="card-content">
 
@@ -12169,7 +12219,7 @@ _The name '{0}' isn't a type and can't be used in an on-catch clause._
 </div>
 <div class="card outlined-card" id="non_user_definable_operator">
 <div class="card-header">
-<header class="card-title" id="non_user_definable_operator">{{"non_user_definable_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="non_user_definable_operator">non_<wbr>user_<wbr>definable_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -12186,7 +12236,7 @@ _The operator '{0}' isn't user definable._
 </div>
 <div class="card outlined-card" id="non_void_return_for_operator">
 <div class="card-header">
-<header class="card-title" id="non_void_return_for_operator">{{"non_void_return_for_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="non_void_return_for_operator">non_<wbr>void_<wbr>return_<wbr>for_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -12204,7 +12254,7 @@ _The return type of the operator []= must be 'void'._
 </div>
 <div class="card outlined-card" id="non_void_return_for_setter">
 <div class="card-header">
-<header class="card-title" id="non_void_return_for_setter">{{"non_void_return_for_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="non_void_return_for_setter">non_<wbr>void_<wbr>return_<wbr>for_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -12222,7 +12272,7 @@ _The return type of the setter must be 'void' or absent._
 </div>
 <div class="card outlined-card" id="normal_before_optional_parameters">
 <div class="card-header">
-<header class="card-title" id="normal_before_optional_parameters">{{"normal_before_optional_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="normal_before_optional_parameters">normal_<wbr>before_<wbr>optional_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -12239,7 +12289,7 @@ _Normal parameters must occur before optional parameters._
 </div>
 <div class="card outlined-card" id="not_assigned_potentially_non_nullable_local_variable">
 <div class="card-header">
-<header class="card-title" id="not_assigned_potentially_non_nullable_local_variable">{{"not_assigned_potentially_non_nullable_local_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="not_assigned_potentially_non_nullable_local_variable">not_<wbr>assigned_<wbr>potentially_<wbr>non_<wbr>nullable_<wbr>local_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -12257,7 +12307,7 @@ _The non-nullable local variable '{0}' must be assigned before it can be used._
 </div>
 <div class="card outlined-card" id="not_a_type">
 <div class="card-header">
-<header class="card-title" id="not_a_type">{{"not_a_type" | underscoreBreaker}}</header>
+<header class="card-title" id="not_a_type">not_<wbr>a_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -12275,7 +12325,7 @@ _{0} isn't a type._
 </div>
 <div class="card outlined-card" id="not_binary_operator">
 <div class="card-header">
-<header class="card-title" id="not_binary_operator">{{"not_binary_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="not_binary_operator">not_<wbr>binary_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -12293,7 +12343,7 @@ _'{0}' isn't a binary operator._
 </div>
 <div class="card outlined-card" id="not_enough_positional_arguments">
 <div class="card-header">
-<header class="card-title" id="not_enough_positional_arguments">{{"not_enough_positional_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="not_enough_positional_arguments">not_<wbr>enough_<wbr>positional_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -12317,7 +12367,7 @@ _{0} positional arguments expected, but {1} found._
 </div>
 <div class="card outlined-card" id="not_initialized_non_nullable_instance_field">
 <div class="card-header">
-<header class="card-title" id="not_initialized_non_nullable_instance_field">{{"not_initialized_non_nullable_instance_field" | underscoreBreaker}}</header>
+<header class="card-title" id="not_initialized_non_nullable_instance_field">not_<wbr>initialized_<wbr>non_<wbr>nullable_<wbr>instance_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -12335,7 +12385,7 @@ _Non-nullable instance field '{0}' must be initialized._
 </div>
 <div class="card outlined-card" id="not_initialized_non_nullable_variable">
 <div class="card-header">
-<header class="card-title" id="not_initialized_non_nullable_variable">{{"not_initialized_non_nullable_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="not_initialized_non_nullable_variable">not_<wbr>initialized_<wbr>non_<wbr>nullable_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -12353,7 +12403,7 @@ _The non-nullable variable '{0}' must be initialized._
 </div>
 <div class="card outlined-card" id="not_instantiated_bound">
 <div class="card-header">
-<header class="card-title" id="not_instantiated_bound">{{"not_instantiated_bound" | underscoreBreaker}}</header>
+<header class="card-title" id="not_instantiated_bound">not_<wbr>instantiated_<wbr>bound</header>
 </div>
 <div class="card-content">
 
@@ -12370,7 +12420,7 @@ _Type parameter bound types must be instantiated._
 </div>
 <div class="card outlined-card" id="not_iterable_spread">
 <div class="card-header">
-<header class="card-title" id="not_iterable_spread">{{"not_iterable_spread" | underscoreBreaker}}</header>
+<header class="card-title" id="not_iterable_spread">not_<wbr>iterable_<wbr>spread</header>
 </div>
 <div class="card-content">
 
@@ -12388,7 +12438,7 @@ _Spread elements in list or set literals must implement 'Iterable'._
 </div>
 <div class="card outlined-card" id="not_map_spread">
 <div class="card-header">
-<header class="card-title" id="not_map_spread">{{"not_map_spread" | underscoreBreaker}}</header>
+<header class="card-title" id="not_map_spread">not_<wbr>map_<wbr>spread</header>
 </div>
 <div class="card-content">
 
@@ -12406,7 +12456,7 @@ _Spread elements in map literals must implement 'Map'._
 </div>
 <div class="card outlined-card" id="not_null_aware_null_spread">
 <div class="card-header">
-<header class="card-title" id="not_null_aware_null_spread">{{"not_null_aware_null_spread" | underscoreBreaker}}</header>
+<header class="card-title" id="not_null_aware_null_spread">not_<wbr>null_<wbr>aware_<wbr>null_<wbr>spread</header>
 </div>
 <div class="card-content">
 
@@ -12423,7 +12473,7 @@ _The Null-typed expression can't be used with a non-null-aware spread._
 </div>
 <div class="card outlined-card" id="no_annotation_constructor_arguments">
 <div class="card-header">
-<header class="card-title" id="no_annotation_constructor_arguments">{{"no_annotation_constructor_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="no_annotation_constructor_arguments">no_<wbr>annotation_<wbr>constructor_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -12441,7 +12491,7 @@ _Annotation creation must have arguments._
 </div>
 <div class="card outlined-card" id="no_combined_super_signature">
 <div class="card-header">
-<header class="card-title" id="no_combined_super_signature">{{"no_combined_super_signature" | underscoreBreaker}}</header>
+<header class="card-title" id="no_combined_super_signature">no_<wbr>combined_<wbr>super_<wbr>signature</header>
 </div>
 <div class="card-content">
 
@@ -12459,7 +12509,7 @@ _Can't infer missing types in '{0}' from overridden methods: {1}._
 </div>
 <div class="card outlined-card" id="no_default_super_constructor">
 <div class="card-header">
-<header class="card-title" id="no_default_super_constructor">{{"no_default_super_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="no_default_super_constructor">no_<wbr>default_<wbr>super_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -12476,7 +12526,7 @@ _The superclass '{0}' doesn't have a zero argument constructor._
 </div>
 <div class="card outlined-card" id="no_generative_constructors_in_superclass">
 <div class="card-header">
-<header class="card-title" id="no_generative_constructors_in_superclass">{{"no_generative_constructors_in_superclass" | underscoreBreaker}}</header>
+<header class="card-title" id="no_generative_constructors_in_superclass">no_<wbr>generative_<wbr>constructors_<wbr>in_<wbr>superclass</header>
 </div>
 <div class="card-content">
 
@@ -12495,7 +12545,7 @@ _The class '{0}' can't extend '{1}' because '{1}' only has factory constructors
 </div>
 <div class="card outlined-card" id="no_touchscreen_feature">
 <div class="card-header">
-<header class="card-title" id="no_touchscreen_feature">{{"no_touchscreen_feature" | underscoreBreaker}}</header>
+<header class="card-title" id="no_touchscreen_feature">no_<wbr>touchscreen_<wbr>feature</header>
 </div>
 <div class="card-content">
 
@@ -12512,7 +12562,7 @@ _The default "android.hardware.touchscreen" needs to be optional for Chrome OS._
 </div>
 <div class="card outlined-card" id="nullable_type_in_catch_clause">
 <div class="card-header">
-<header class="card-title" id="nullable_type_in_catch_clause">{{"nullable_type_in_catch_clause" | underscoreBreaker}}</header>
+<header class="card-title" id="nullable_type_in_catch_clause">nullable_<wbr>type_<wbr>in_<wbr>catch_<wbr>clause</header>
 </div>
 <div class="card-content">
 
@@ -12531,7 +12581,7 @@ valid to throw a nullable expression._
 </div>
 <div class="card outlined-card" id="nullable_type_in_extends_clause">
 <div class="card-header">
-<header class="card-title" id="nullable_type_in_extends_clause">{{"nullable_type_in_extends_clause" | underscoreBreaker}}</header>
+<header class="card-title" id="nullable_type_in_extends_clause">nullable_<wbr>type_<wbr>in_<wbr>extends_<wbr>clause</header>
 </div>
 <div class="card-content">
 
@@ -12549,7 +12599,7 @@ _A class can't extend a nullable type._
 </div>
 <div class="card outlined-card" id="nullable_type_in_implements_clause">
 <div class="card-header">
-<header class="card-title" id="nullable_type_in_implements_clause">{{"nullable_type_in_implements_clause" | underscoreBreaker}}</header>
+<header class="card-title" id="nullable_type_in_implements_clause">nullable_<wbr>type_<wbr>in_<wbr>implements_<wbr>clause</header>
 </div>
 <div class="card-content">
 
@@ -12567,7 +12617,7 @@ _A class, mixin, or extension type can't implement a nullable type._
 </div>
 <div class="card outlined-card" id="nullable_type_in_on_clause">
 <div class="card-header">
-<header class="card-title" id="nullable_type_in_on_clause">{{"nullable_type_in_on_clause" | underscoreBreaker}}</header>
+<header class="card-title" id="nullable_type_in_on_clause">nullable_<wbr>type_<wbr>in_<wbr>on_<wbr>clause</header>
 </div>
 <div class="card-content">
 
@@ -12585,7 +12635,7 @@ _A mixin can't have a nullable type as a superclass constraint._
 </div>
 <div class="card outlined-card" id="nullable_type_in_with_clause">
 <div class="card-header">
-<header class="card-title" id="nullable_type_in_with_clause">{{"nullable_type_in_with_clause" | underscoreBreaker}}</header>
+<header class="card-title" id="nullable_type_in_with_clause">nullable_<wbr>type_<wbr>in_<wbr>with_<wbr>clause</header>
 </div>
 <div class="card-content">
 
@@ -12603,7 +12653,7 @@ _A class or mixin can't mix in a nullable type._
 </div>
 <div class="card outlined-card" id="null_argument_to_non_null_type">
 <div class="card-header">
-<header class="card-title" id="null_argument_to_non_null_type">{{"null_argument_to_non_null_type" | underscoreBreaker}}</header>
+<header class="card-title" id="null_argument_to_non_null_type">null_<wbr>argument_<wbr>to_<wbr>non_<wbr>null_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -12622,7 +12672,7 @@ argument '{1}'._
 </div>
 <div class="card outlined-card" id="null_aware_cascade_out_of_order">
 <div class="card-header">
-<header class="card-title" id="null_aware_cascade_out_of_order">{{"null_aware_cascade_out_of_order" | underscoreBreaker}}</header>
+<header class="card-title" id="null_aware_cascade_out_of_order">null_<wbr>aware_<wbr>cascade_<wbr>out_<wbr>of_<wbr>order</header>
 </div>
 <div class="card-content">
 
@@ -12639,7 +12689,7 @@ _The '?..' cascade operator must be first in the cascade sequence._
 </div>
 <div class="card outlined-card" id="null_check_always_fails">
 <div class="card-header">
-<header class="card-title" id="null_check_always_fails">{{"null_check_always_fails" | underscoreBreaker}}</header>
+<header class="card-title" id="null_check_always_fails">null_<wbr>check_<wbr>always_<wbr>fails</header>
 </div>
 <div class="card-content">
 
@@ -12658,7 +12708,7 @@ always evaluate to 'null'._
 </div>
 <div class="card outlined-card" id="object_cannot_extend_another_class">
 <div class="card-header">
-<header class="card-title" id="object_cannot_extend_another_class">{{"object_cannot_extend_another_class" | underscoreBreaker}}</header>
+<header class="card-title" id="object_cannot_extend_another_class">object_<wbr>cannot_<wbr>extend_<wbr>another_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -12675,7 +12725,7 @@ _The class 'Object' can't extend any other class._
 </div>
 <div class="card outlined-card" id="obsolete_colon_for_default_value">
 <div class="card-header">
-<header class="card-title" id="obsolete_colon_for_default_value">{{"obsolete_colon_for_default_value" | underscoreBreaker}}</header>
+<header class="card-title" id="obsolete_colon_for_default_value">obsolete_<wbr>colon_<wbr>for_<wbr>default_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -12693,7 +12743,7 @@ _Using a colon as the separator before a default value is no longer supported._
 </div>
 <div class="card outlined-card" id="on_repeated">
 <div class="card-header">
-<header class="card-title" id="on_repeated">{{"on_repeated" | underscoreBreaker}}</header>
+<header class="card-title" id="on_repeated">on_<wbr>repeated</header>
 </div>
 <div class="card-content">
 
@@ -12711,7 +12761,7 @@ _The type '{0}' can be included in the superclass constraints only once._
 </div>
 <div class="card outlined-card" id="optional_parameter_in_operator">
 <div class="card-header">
-<header class="card-title" id="optional_parameter_in_operator">{{"optional_parameter_in_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="optional_parameter_in_operator">optional_<wbr>parameter_<wbr>in_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -12729,7 +12779,7 @@ _Optional parameters aren't allowed when defining an operator._
 </div>
 <div class="card outlined-card" id="out_of_order_clauses">
 <div class="card-header">
-<header class="card-title" id="out_of_order_clauses">{{"out_of_order_clauses" | underscoreBreaker}}</header>
+<header class="card-title" id="out_of_order_clauses">out_<wbr>of_<wbr>order_<wbr>clauses</header>
 </div>
 <div class="card-content">
 
@@ -12746,7 +12796,7 @@ _The '{0}' clause must come before the '{1}' clause._
 </div>
 <div class="card outlined-card" id="override_on_non_overriding_member">
 <div class="card-header">
-<header class="card-title" id="override_on_non_overriding_member">{{"override_on_non_overriding_member" | underscoreBreaker}}</header>
+<header class="card-title" id="override_on_non_overriding_member">override_<wbr>on_<wbr>non_<wbr>overriding_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -12770,7 +12820,7 @@ _The setter doesn't override an inherited setter._
 </div>
 <div class="card outlined-card" id="packed_annotation">
 <div class="card-header">
-<header class="card-title" id="packed_annotation">{{"packed_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="packed_annotation">packed_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -12788,7 +12838,7 @@ _Structs must have at most one 'Packed' annotation._
 </div>
 <div class="card outlined-card" id="packed_annotation_alignment">
 <div class="card-header">
-<header class="card-title" id="packed_annotation_alignment">{{"packed_annotation_alignment" | underscoreBreaker}}</header>
+<header class="card-title" id="packed_annotation_alignment">packed_<wbr>annotation_<wbr>alignment</header>
 </div>
 <div class="card-content">
 
@@ -12806,7 +12856,7 @@ _Only packing to 1, 2, 4, 8, and 16 bytes is supported._
 </div>
 <div class="card outlined-card" id="parse_error">
 <div class="card-header">
-<header class="card-title" id="parse_error">{{"parse_error" | underscoreBreaker}}</header>
+<header class="card-title" id="parse_error">parse_<wbr>error</header>
 </div>
 <div class="card-content">
 
@@ -12823,7 +12873,7 @@ _{0}_
 </div>
 <div class="card outlined-card" id="part_of_different_library">
 <div class="card-header">
-<header class="card-title" id="part_of_different_library">{{"part_of_different_library" | underscoreBreaker}}</header>
+<header class="card-title" id="part_of_different_library">part_<wbr>of_<wbr>different_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -12841,7 +12891,7 @@ _Expected this library to be part of '{0}', not '{1}'._
 </div>
 <div class="card outlined-card" id="part_of_name">
 <div class="card-header">
-<header class="card-title" id="part_of_name">{{"part_of_name" | underscoreBreaker}}</header>
+<header class="card-title" id="part_of_name">part_<wbr>of_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -12858,7 +12908,7 @@ _The 'part of' directive can't use a name with the enhanced-parts feature._
 </div>
 <div class="card outlined-card" id="part_of_non_part">
 <div class="card-header">
-<header class="card-title" id="part_of_non_part">{{"part_of_non_part" | underscoreBreaker}}</header>
+<header class="card-title" id="part_of_non_part">part_<wbr>of_<wbr>non_<wbr>part</header>
 </div>
 <div class="card-content">
 
@@ -12876,7 +12926,7 @@ _The included part '{0}' must have a part-of directive._
 </div>
 <div class="card outlined-card" id="part_of_unnamed_library">
 <div class="card-header">
-<header class="card-title" id="part_of_unnamed_library">{{"part_of_unnamed_library" | underscoreBreaker}}</header>
+<header class="card-title" id="part_of_unnamed_library">part_<wbr>of_<wbr>unnamed_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -12895,7 +12945,7 @@ part-of directive._
 </div>
 <div class="card outlined-card" id="path_does_not_exist">
 <div class="card-header">
-<header class="card-title" id="path_does_not_exist">{{"path_does_not_exist" | underscoreBreaker}}</header>
+<header class="card-title" id="path_does_not_exist">path_<wbr>does_<wbr>not_<wbr>exist</header>
 </div>
 <div class="card-content">
 
@@ -12913,7 +12963,7 @@ _The path '{0}' doesn't exist._
 </div>
 <div class="card outlined-card" id="path_not_posix">
 <div class="card-header">
-<header class="card-title" id="path_not_posix">{{"path_not_posix" | underscoreBreaker}}</header>
+<header class="card-title" id="path_not_posix">path_<wbr>not_<wbr>posix</header>
 </div>
 <div class="card-content">
 
@@ -12931,7 +12981,7 @@ _The path '{0}' isn't a POSIX-style path._
 </div>
 <div class="card outlined-card" id="path_pubspec_does_not_exist">
 <div class="card-header">
-<header class="card-title" id="path_pubspec_does_not_exist">{{"path_pubspec_does_not_exist" | underscoreBreaker}}</header>
+<header class="card-title" id="path_pubspec_does_not_exist">path_<wbr>pubspec_<wbr>does_<wbr>not_<wbr>exist</header>
 </div>
 <div class="card-content">
 
@@ -12949,7 +12999,7 @@ _The directory '{0}' doesn't contain a pubspec._
 </div>
 <div class="card outlined-card" id="pattern_assignment_declares_variable">
 <div class="card-header">
-<header class="card-title" id="pattern_assignment_declares_variable">{{"pattern_assignment_declares_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="pattern_assignment_declares_variable">pattern_<wbr>assignment_<wbr>declares_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -12966,7 +13016,7 @@ _Variable '{0}' can't be declared in a pattern assignment._
 </div>
 <div class="card outlined-card" id="pattern_assignment_not_local_variable">
 <div class="card-header">
-<header class="card-title" id="pattern_assignment_not_local_variable">{{"pattern_assignment_not_local_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="pattern_assignment_not_local_variable">pattern_<wbr>assignment_<wbr>not_<wbr>local_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -12984,7 +13034,7 @@ _Only local variables can be assigned in pattern assignments._
 </div>
 <div class="card outlined-card" id="pattern_constant_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="pattern_constant_from_deferred_library">{{"pattern_constant_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="pattern_constant_from_deferred_library">pattern_<wbr>constant_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -13002,7 +13052,7 @@ _Constant values from a deferred library can't be used in patterns._
 </div>
 <div class="card outlined-card" id="pattern_never_matches_value_type">
 <div class="card-header">
-<header class="card-title" id="pattern_never_matches_value_type">{{"pattern_never_matches_value_type" | underscoreBreaker}}</header>
+<header class="card-title" id="pattern_never_matches_value_type">pattern_<wbr>never_<wbr>matches_<wbr>value_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -13019,7 +13069,7 @@ _The matched value type '{0}' can never match the required type '{1}'._
 </div>
 <div class="card outlined-card" id="pattern_type_mismatch_in_irrefutable_context">
 <div class="card-header">
-<header class="card-title" id="pattern_type_mismatch_in_irrefutable_context">{{"pattern_type_mismatch_in_irrefutable_context" | underscoreBreaker}}</header>
+<header class="card-title" id="pattern_type_mismatch_in_irrefutable_context">pattern_<wbr>type_<wbr>mismatch_<wbr>in_<wbr>irrefutable_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -13037,7 +13087,7 @@ _The matched value of type '{0}' isn't assignable to the required type '{1}'._
 </div>
 <div class="card outlined-card" id="pattern_variable_assignment_inside_guard">
 <div class="card-header">
-<header class="card-title" id="pattern_variable_assignment_inside_guard">{{"pattern_variable_assignment_inside_guard" | underscoreBreaker}}</header>
+<header class="card-title" id="pattern_variable_assignment_inside_guard">pattern_<wbr>variable_<wbr>assignment_<wbr>inside_<wbr>guard</header>
 </div>
 <div class="card-content">
 
@@ -13056,7 +13106,7 @@ pattern._
 </div>
 <div class="card outlined-card" id="pattern_variable_declaration_outside_function_or_method">
 <div class="card-header">
-<header class="card-title" id="pattern_variable_declaration_outside_function_or_method">{{"pattern_variable_declaration_outside_function_or_method" | underscoreBreaker}}</header>
+<header class="card-title" id="pattern_variable_declaration_outside_function_or_method">pattern_<wbr>variable_<wbr>declaration_<wbr>outside_<wbr>function_<wbr>or_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -13073,7 +13123,7 @@ _A pattern variable declaration may not appear outside a function or method._
 </div>
 <div class="card outlined-card" id="permission_implies_unsupported_hardware">
 <div class="card-header">
-<header class="card-title" id="permission_implies_unsupported_hardware">{{"permission_implies_unsupported_hardware" | underscoreBreaker}}</header>
+<header class="card-title" id="permission_implies_unsupported_hardware">permission_<wbr>implies_<wbr>unsupported_<wbr>hardware</header>
 </div>
 <div class="card-content">
 
@@ -13091,7 +13141,7 @@ feature tag,_
 </div>
 <div class="card outlined-card" id="platform_value_disallowed">
 <div class="card-header">
-<header class="card-title" id="platform_value_disallowed">{{"platform_value_disallowed" | underscoreBreaker}}</header>
+<header class="card-title" id="platform_value_disallowed">platform_<wbr>value_<wbr>disallowed</header>
 </div>
 <div class="card-content">
 
@@ -13109,7 +13159,7 @@ _Keys in the `platforms` field can't have values._
 </div>
 <div class="card outlined-card" id="positional_after_named_argument">
 <div class="card-header">
-<header class="card-title" id="positional_after_named_argument">{{"positional_after_named_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="positional_after_named_argument">positional_<wbr>after_<wbr>named_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -13126,7 +13176,7 @@ _Positional arguments must occur before named arguments._
 </div>
 <div class="card outlined-card" id="positional_field_in_object_pattern">
 <div class="card-header">
-<header class="card-title" id="positional_field_in_object_pattern">{{"positional_field_in_object_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="positional_field_in_object_pattern">positional_<wbr>field_<wbr>in_<wbr>object_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -13144,7 +13194,7 @@ _Object patterns can only use named fields._
 </div>
 <div class="card outlined-card" id="positional_parameter_outside_group">
 <div class="card-header">
-<header class="card-title" id="positional_parameter_outside_group">{{"positional_parameter_outside_group" | underscoreBreaker}}</header>
+<header class="card-title" id="positional_parameter_outside_group">positional_<wbr>parameter_<wbr>outside_<wbr>group</header>
 </div>
 <div class="card-content">
 
@@ -13161,7 +13211,7 @@ _Positional parameters must be enclosed in square brackets ('[' and ']')._
 </div>
 <div class="card outlined-card" id="positional_super_formal_parameter_with_positional_argument">
 <div class="card-header">
-<header class="card-title" id="positional_super_formal_parameter_with_positional_argument">{{"positional_super_formal_parameter_with_positional_argument" | underscoreBreaker}}</header>
+<header class="card-title" id="positional_super_formal_parameter_with_positional_argument">positional_<wbr>super_<wbr>formal_<wbr>parameter_<wbr>with_<wbr>positional_<wbr>argument</header>
 </div>
 <div class="card-content">
 
@@ -13180,7 +13230,7 @@ has a positional argument._
 </div>
 <div class="card outlined-card" id="prefix_after_combinator">
 <div class="card-header">
-<header class="card-title" id="prefix_after_combinator">{{"prefix_after_combinator" | underscoreBreaker}}</header>
+<header class="card-title" id="prefix_after_combinator">prefix_<wbr>after_<wbr>combinator</header>
 </div>
 <div class="card-content">
 
@@ -13197,7 +13247,7 @@ _The prefix ('as' clause) should come before any show/hide combinators._
 </div>
 <div class="card outlined-card" id="prefix_collides_with_top_level_member">
 <div class="card-header">
-<header class="card-title" id="prefix_collides_with_top_level_member">{{"prefix_collides_with_top_level_member" | underscoreBreaker}}</header>
+<header class="card-title" id="prefix_collides_with_top_level_member">prefix_<wbr>collides_<wbr>with_<wbr>top_<wbr>level_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -13216,7 +13266,7 @@ top-level element._
 </div>
 <div class="card outlined-card" id="prefix_identifier_not_followed_by_dot">
 <div class="card-header">
-<header class="card-title" id="prefix_identifier_not_followed_by_dot">{{"prefix_identifier_not_followed_by_dot" | underscoreBreaker}}</header>
+<header class="card-title" id="prefix_identifier_not_followed_by_dot">prefix_<wbr>identifier_<wbr>not_<wbr>followed_<wbr>by_<wbr>dot</header>
 </div>
 <div class="card-content">
 
@@ -13234,7 +13284,7 @@ _The name '{0}' refers to an import prefix, so it must be followed by '.'._
 </div>
 <div class="card outlined-card" id="prefix_shadowed_by_local_declaration">
 <div class="card-header">
-<header class="card-title" id="prefix_shadowed_by_local_declaration">{{"prefix_shadowed_by_local_declaration" | underscoreBreaker}}</header>
+<header class="card-title" id="prefix_shadowed_by_local_declaration">prefix_<wbr>shadowed_<wbr>by_<wbr>local_<wbr>declaration</header>
 </div>
 <div class="card-content">
 
@@ -13253,7 +13303,7 @@ declaration._
 </div>
 <div class="card outlined-card" id="private_collision_in_mixin_application">
 <div class="card-header">
-<header class="card-title" id="private_collision_in_mixin_application">{{"private_collision_in_mixin_application" | underscoreBreaker}}</header>
+<header class="card-title" id="private_collision_in_mixin_application">private_<wbr>collision_<wbr>in_<wbr>mixin_<wbr>application</header>
 </div>
 <div class="card-content">
 
@@ -13272,7 +13322,7 @@ by '{2}'._
 </div>
 <div class="card outlined-card" id="private_optional_parameter">
 <div class="card-header">
-<header class="card-title" id="private_optional_parameter">{{"private_optional_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="private_optional_parameter">private_<wbr>optional_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -13290,7 +13340,7 @@ _Named parameters can't start with an underscore._
 </div>
 <div class="card outlined-card" id="private_setter">
 <div class="card-header">
-<header class="card-title" id="private_setter">{{"private_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="private_setter">private_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -13309,7 +13359,7 @@ declares it._
 </div>
 <div class="card outlined-card" id="read_potentially_unassigned_final">
 <div class="card-header">
-<header class="card-title" id="read_potentially_unassigned_final">{{"read_potentially_unassigned_final" | underscoreBreaker}}</header>
+<header class="card-title" id="read_potentially_unassigned_final">read_<wbr>potentially_<wbr>unassigned_<wbr>final</header>
 </div>
 <div class="card-content">
 
@@ -13328,7 +13378,7 @@ this point._
 </div>
 <div class="card outlined-card" id="receiver_of_type_never">
 <div class="card-header">
-<header class="card-title" id="receiver_of_type_never">{{"receiver_of_type_never" | underscoreBreaker}}</header>
+<header class="card-title" id="receiver_of_type_never">receiver_<wbr>of_<wbr>type_<wbr>never</header>
 </div>
 <div class="card-content">
 
@@ -13345,7 +13395,7 @@ _The receiver is of type 'Never', and will never complete with a value._
 </div>
 <div class="card outlined-card" id="record_literal_one_positional_no_trailing_comma">
 <div class="card-header">
-<header class="card-title" id="record_literal_one_positional_no_trailing_comma">{{"record_literal_one_positional_no_trailing_comma" | underscoreBreaker}}</header>
+<header class="card-title" id="record_literal_one_positional_no_trailing_comma">record_<wbr>literal_<wbr>one_<wbr>positional_<wbr>no_<wbr>trailing_<wbr>comma</header>
 </div>
 <div class="card-content">
 
@@ -13363,7 +13413,7 @@ _A record literal with exactly one positional field requires a trailing comma._
 </div>
 <div class="card outlined-card" id="record_type_one_positional_no_trailing_comma">
 <div class="card-header">
-<header class="card-title" id="record_type_one_positional_no_trailing_comma">{{"record_type_one_positional_no_trailing_comma" | underscoreBreaker}}</header>
+<header class="card-title" id="record_type_one_positional_no_trailing_comma">record_<wbr>type_<wbr>one_<wbr>positional_<wbr>no_<wbr>trailing_<wbr>comma</header>
 </div>
 <div class="card-content">
 
@@ -13381,7 +13431,7 @@ _A record type with exactly one positional field requires a trailing comma._
 </div>
 <div class="card outlined-card" id="recursive_compile_time_constant">
 <div class="card-header">
-<header class="card-title" id="recursive_compile_time_constant">{{"recursive_compile_time_constant" | underscoreBreaker}}</header>
+<header class="card-title" id="recursive_compile_time_constant">recursive_<wbr>compile_<wbr>time_<wbr>constant</header>
 </div>
 <div class="card-content">
 
@@ -13399,7 +13449,7 @@ _The compile-time constant expression depends on itself._
 </div>
 <div class="card outlined-card" id="recursive_constant_constructor">
 <div class="card-header">
-<header class="card-title" id="recursive_constant_constructor">{{"recursive_constant_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="recursive_constant_constructor">recursive_<wbr>constant_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -13416,7 +13466,7 @@ _The constant constructor depends on itself._
 </div>
 <div class="card outlined-card" id="recursive_constructor_redirect">
 <div class="card-header">
-<header class="card-title" id="recursive_constructor_redirect">{{"recursive_constructor_redirect" | underscoreBreaker}}</header>
+<header class="card-title" id="recursive_constructor_redirect">recursive_<wbr>constructor_<wbr>redirect</header>
 </div>
 <div class="card-content">
 
@@ -13434,7 +13484,7 @@ _Constructors can't redirect to themselves either directly or indirectly._
 </div>
 <div class="card outlined-card" id="recursive_include_file">
 <div class="card-header">
-<header class="card-title" id="recursive_include_file">{{"recursive_include_file" | underscoreBreaker}}</header>
+<header class="card-title" id="recursive_include_file">recursive_<wbr>include_<wbr>file</header>
 </div>
 <div class="card-content">
 
@@ -13451,7 +13501,7 @@ _The include file '{0}' in '{1}' includes itself recursively._
 </div>
 <div class="card outlined-card" id="recursive_interface_inheritance">
 <div class="card-header">
-<header class="card-title" id="recursive_interface_inheritance">{{"recursive_interface_inheritance" | underscoreBreaker}}</header>
+<header class="card-title" id="recursive_interface_inheritance">recursive_<wbr>interface_<wbr>inheritance</header>
 </div>
 <div class="card-content">
 
@@ -13477,7 +13527,7 @@ _'{0}' can't use itself as a superclass constraint._
 </div>
 <div class="card outlined-card" id="redeclare_on_non_redeclaring_member">
 <div class="card-header">
-<header class="card-title" id="redeclare_on_non_redeclaring_member">{{"redeclare_on_non_redeclaring_member" | underscoreBreaker}}</header>
+<header class="card-title" id="redeclare_on_non_redeclaring_member">redeclare_<wbr>on_<wbr>non_<wbr>redeclaring_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -13495,7 +13545,7 @@ _The {0} doesn't redeclare a {0} declared in a superinterface._
 </div>
 <div class="card outlined-card" id="redirecting_constructor_with_body">
 <div class="card-header">
-<header class="card-title" id="redirecting_constructor_with_body">{{"redirecting_constructor_with_body" | underscoreBreaker}}</header>
+<header class="card-title" id="redirecting_constructor_with_body">redirecting_<wbr>constructor_<wbr>with_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -13512,7 +13562,7 @@ _Redirecting constructors can't have a body._
 </div>
 <div class="card outlined-card" id="redirection_in_non_factory_constructor">
 <div class="card-header">
-<header class="card-title" id="redirection_in_non_factory_constructor">{{"redirection_in_non_factory_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="redirection_in_non_factory_constructor">redirection_<wbr>in_<wbr>non_<wbr>factory_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -13529,7 +13579,7 @@ _Only factory constructor can specify '=' redirection._
 </div>
 <div class="card outlined-card" id="redirect_generative_to_missing_constructor">
 <div class="card-header">
-<header class="card-title" id="redirect_generative_to_missing_constructor">{{"redirect_generative_to_missing_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="redirect_generative_to_missing_constructor">redirect_<wbr>generative_<wbr>to_<wbr>missing_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -13547,7 +13597,7 @@ _The constructor '{0}' couldn't be found in '{1}'._
 </div>
 <div class="card outlined-card" id="redirect_generative_to_non_generative_constructor">
 <div class="card-header">
-<header class="card-title" id="redirect_generative_to_non_generative_constructor">{{"redirect_generative_to_non_generative_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="redirect_generative_to_non_generative_constructor">redirect_<wbr>generative_<wbr>to_<wbr>non_<wbr>generative_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -13565,7 +13615,7 @@ _Generative constructors can't redirect to a factory constructor._
 </div>
 <div class="card outlined-card" id="redirect_to_abstract_class_constructor">
 <div class="card-header">
-<header class="card-title" id="redirect_to_abstract_class_constructor">{{"redirect_to_abstract_class_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="redirect_to_abstract_class_constructor">redirect_<wbr>to_<wbr>abstract_<wbr>class_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -13584,7 +13634,7 @@ abstract class '{1}'._
 </div>
 <div class="card outlined-card" id="redirect_to_invalid_function_type">
 <div class="card-header">
-<header class="card-title" id="redirect_to_invalid_function_type">{{"redirect_to_invalid_function_type" | underscoreBreaker}}</header>
+<header class="card-title" id="redirect_to_invalid_function_type">redirect_<wbr>to_<wbr>invalid_<wbr>function_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -13602,7 +13652,7 @@ _The redirected constructor '{0}' has incompatible parameters with '{1}'._
 </div>
 <div class="card outlined-card" id="redirect_to_invalid_return_type">
 <div class="card-header">
-<header class="card-title" id="redirect_to_invalid_return_type">{{"redirect_to_invalid_return_type" | underscoreBreaker}}</header>
+<header class="card-title" id="redirect_to_invalid_return_type">redirect_<wbr>to_<wbr>invalid_<wbr>return_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -13620,7 +13670,7 @@ _The return type '{0}' of the redirected constructor isn't a subtype of '{1}'._
 </div>
 <div class="card outlined-card" id="redirect_to_missing_constructor">
 <div class="card-header">
-<header class="card-title" id="redirect_to_missing_constructor">{{"redirect_to_missing_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="redirect_to_missing_constructor">redirect_<wbr>to_<wbr>missing_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -13638,7 +13688,7 @@ _The constructor '{0}' couldn't be found in '{1}'._
 </div>
 <div class="card outlined-card" id="redirect_to_non_class">
 <div class="card-header">
-<header class="card-title" id="redirect_to_non_class">{{"redirect_to_non_class" | underscoreBreaker}}</header>
+<header class="card-title" id="redirect_to_non_class">redirect_<wbr>to_<wbr>non_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -13656,7 +13706,7 @@ _The name '{0}' isn't a type and can't be used in a redirected constructor._
 </div>
 <div class="card outlined-card" id="redirect_to_non_const_constructor">
 <div class="card-header">
-<header class="card-title" id="redirect_to_non_const_constructor">{{"redirect_to_non_const_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="redirect_to_non_const_constructor">redirect_<wbr>to_<wbr>non_<wbr>const_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -13675,7 +13725,7 @@ constructor._
 </div>
 <div class="card outlined-card" id="redirect_to_type_alias_expands_to_type_parameter">
 <div class="card-header">
-<header class="card-title" id="redirect_to_type_alias_expands_to_type_parameter">{{"redirect_to_type_alias_expands_to_type_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="redirect_to_type_alias_expands_to_type_parameter">redirect_<wbr>to_<wbr>type_<wbr>alias_<wbr>expands_<wbr>to_<wbr>type_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -13694,7 +13744,7 @@ parameter._
 </div>
 <div class="card outlined-card" id="referenced_before_declaration">
 <div class="card-header">
-<header class="card-title" id="referenced_before_declaration">{{"referenced_before_declaration" | underscoreBreaker}}</header>
+<header class="card-title" id="referenced_before_declaration">referenced_<wbr>before_<wbr>declaration</header>
 </div>
 <div class="card-content">
 
@@ -13712,7 +13762,7 @@ _Local variable '{0}' can't be referenced before it is declared._
 </div>
 <div class="card outlined-card" id="refutable_pattern_in_irrefutable_context">
 <div class="card-header">
-<header class="card-title" id="refutable_pattern_in_irrefutable_context">{{"refutable_pattern_in_irrefutable_context" | underscoreBreaker}}</header>
+<header class="card-title" id="refutable_pattern_in_irrefutable_context">refutable_<wbr>pattern_<wbr>in_<wbr>irrefutable_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -13730,7 +13780,7 @@ _Refutable patterns can't be used in an irrefutable context._
 </div>
 <div class="card outlined-card" id="relational_pattern_operand_type_not_assignable">
 <div class="card-header">
-<header class="card-title" id="relational_pattern_operand_type_not_assignable">{{"relational_pattern_operand_type_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="relational_pattern_operand_type_not_assignable">relational_<wbr>pattern_<wbr>operand_<wbr>type_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -13749,7 +13799,7 @@ _The constant expression type '{0}' is not assignable to the parameter type
 </div>
 <div class="card outlined-card" id="relational_pattern_operator_return_type_not_assignable_to_bool">
 <div class="card-header">
-<header class="card-title" id="relational_pattern_operator_return_type_not_assignable_to_bool">{{"relational_pattern_operator_return_type_not_assignable_to_bool" | underscoreBreaker}}</header>
+<header class="card-title" id="relational_pattern_operator_return_type_not_assignable_to_bool">relational_<wbr>pattern_<wbr>operator_<wbr>return_<wbr>type_<wbr>not_<wbr>assignable_<wbr>to_<wbr>bool</header>
 </div>
 <div class="card-content">
 
@@ -13768,7 +13818,7 @@ _The return type of operators used in relational patterns must be assignable to
 </div>
 <div class="card outlined-card" id="removed_lint">
 <div class="card-header">
-<header class="card-title" id="removed_lint">{{"removed_lint" | underscoreBreaker}}</header>
+<header class="card-title" id="removed_lint">removed_<wbr>lint</header>
 </div>
 <div class="card-content">
 
@@ -13785,7 +13835,7 @@ _'{0}' was removed in Dart '{1}'_
 </div>
 <div class="card outlined-card" id="removed_lint_use">
 <div class="card-header">
-<header class="card-title" id="removed_lint_use">{{"removed_lint_use" | underscoreBreaker}}</header>
+<header class="card-title" id="removed_lint_use">removed_<wbr>lint_<wbr>use</header>
 </div>
 <div class="card-content">
 
@@ -13802,7 +13852,7 @@ _'{0}' was removed in Dart '{1}'_
 </div>
 <div class="card outlined-card" id="replaced_lint">
 <div class="card-header">
-<header class="card-title" id="replaced_lint">{{"replaced_lint" | underscoreBreaker}}</header>
+<header class="card-title" id="replaced_lint">replaced_<wbr>lint</header>
 </div>
 <div class="card-content">
 
@@ -13819,7 +13869,7 @@ _'{0}' was replaced by '{2}' in Dart '{1}'._
 </div>
 <div class="card outlined-card" id="replaced_lint_use">
 <div class="card-header">
-<header class="card-title" id="replaced_lint_use">{{"replaced_lint_use" | underscoreBreaker}}</header>
+<header class="card-title" id="replaced_lint_use">replaced_<wbr>lint_<wbr>use</header>
 </div>
 <div class="card-content">
 
@@ -13836,7 +13886,7 @@ _'{0}' was replaced by '{2}' in Dart '{1}'._
 </div>
 <div class="card outlined-card" id="representation_field_modifier">
 <div class="card-header">
-<header class="card-title" id="representation_field_modifier">{{"representation_field_modifier" | underscoreBreaker}}</header>
+<header class="card-title" id="representation_field_modifier">representation_<wbr>field_<wbr>modifier</header>
 </div>
 <div class="card-content">
 
@@ -13853,7 +13903,7 @@ _Representation fields can't have modifiers._
 </div>
 <div class="card outlined-card" id="representation_field_trailing_comma">
 <div class="card-header">
-<header class="card-title" id="representation_field_trailing_comma">{{"representation_field_trailing_comma" | underscoreBreaker}}</header>
+<header class="card-title" id="representation_field_trailing_comma">representation_<wbr>field_<wbr>trailing_<wbr>comma</header>
 </div>
 <div class="card-content">
 
@@ -13870,7 +13920,7 @@ _The representation field can't have a trailing comma._
 </div>
 <div class="card outlined-card" id="rest_element_in_map_pattern">
 <div class="card-header">
-<header class="card-title" id="rest_element_in_map_pattern">{{"rest_element_in_map_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="rest_element_in_map_pattern">rest_<wbr>element_<wbr>in_<wbr>map_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -13888,7 +13938,7 @@ _A map pattern can't contain a rest pattern._
 </div>
 <div class="card outlined-card" id="rethrow_outside_catch">
 <div class="card-header">
-<header class="card-title" id="rethrow_outside_catch">{{"rethrow_outside_catch" | underscoreBreaker}}</header>
+<header class="card-title" id="rethrow_outside_catch">rethrow_<wbr>outside_<wbr>catch</header>
 </div>
 <div class="card-content">
 
@@ -13906,7 +13956,7 @@ _A rethrow must be inside of a catch clause._
 </div>
 <div class="card outlined-card" id="return_in_generative_constructor">
 <div class="card-header">
-<header class="card-title" id="return_in_generative_constructor">{{"return_in_generative_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="return_in_generative_constructor">return_<wbr>in_<wbr>generative_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -13924,7 +13974,7 @@ _Constructors can't return values._
 </div>
 <div class="card outlined-card" id="return_in_generator">
 <div class="card-header">
-<header class="card-title" id="return_in_generator">{{"return_in_generator" | underscoreBreaker}}</header>
+<header class="card-title" id="return_in_generator">return_<wbr>in_<wbr>generator</header>
 </div>
 <div class="card-content">
 
@@ -13943,7 +13993,7 @@ _Can't return a value from a generator function that uses the 'async*' or
 </div>
 <div class="card outlined-card" id="return_of_do_not_store">
 <div class="card-header">
-<header class="card-title" id="return_of_do_not_store">{{"return_of_do_not_store" | underscoreBreaker}}</header>
+<header class="card-title" id="return_of_do_not_store">return_<wbr>of_<wbr>do_<wbr>not_<wbr>store</header>
 </div>
 <div class="card-content">
 
@@ -13962,7 +14012,7 @@ also annotated._
 </div>
 <div class="card outlined-card" id="return_of_invalid_type">
 <div class="card-header">
-<header class="card-title" id="return_of_invalid_type">{{"return_of_invalid_type" | underscoreBreaker}}</header>
+<header class="card-title" id="return_of_invalid_type">return_<wbr>of_<wbr>invalid_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -13987,7 +14037,7 @@ return type of '{1}'._
 </div>
 <div class="card outlined-card" id="return_of_invalid_type_from_closure">
 <div class="card-header">
-<header class="card-title" id="return_of_invalid_type_from_closure">{{"return_of_invalid_type_from_closure" | underscoreBreaker}}</header>
+<header class="card-title" id="return_of_invalid_type_from_closure">return_<wbr>of_<wbr>invalid_<wbr>type_<wbr>from_<wbr>closure</header>
 </div>
 <div class="card-content">
 
@@ -14006,7 +14056,7 @@ the closure's context._
 </div>
 <div class="card outlined-card" id="return_without_value">
 <div class="card-header">
-<header class="card-title" id="return_without_value">{{"return_without_value" | underscoreBreaker}}</header>
+<header class="card-title" id="return_without_value">return_<wbr>without_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -14024,7 +14074,7 @@ _The return value is missing after 'return'._
 </div>
 <div class="card outlined-card" id="sdk_version_async_exported_from_core">
 <div class="card-header">
-<header class="card-title" id="sdk_version_async_exported_from_core">{{"sdk_version_async_exported_from_core" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_async_exported_from_core">sdk_<wbr>version_<wbr>async_<wbr>exported_<wbr>from_<wbr>core</header>
 </div>
 <div class="card-content">
 
@@ -14043,7 +14093,7 @@ code is required to be able to run on earlier versions._
 </div>
 <div class="card outlined-card" id="sdk_version_as_expression_in_const_context">
 <div class="card-header">
-<header class="card-title" id="sdk_version_as_expression_in_const_context">{{"sdk_version_as_expression_in_const_context" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_as_expression_in_const_context">sdk_<wbr>version_<wbr>as_<wbr>expression_<wbr>in_<wbr>const_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -14062,7 +14112,7 @@ version 2.3.2, but this code is required to be able to run on earlier versions._
 </div>
 <div class="card outlined-card" id="sdk_version_bool_operator_in_const_context">
 <div class="card-header">
-<header class="card-title" id="sdk_version_bool_operator_in_const_context">{{"sdk_version_bool_operator_in_const_context" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_bool_operator_in_const_context">sdk_<wbr>version_<wbr>bool_<wbr>operator_<wbr>in_<wbr>const_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -14081,7 +14131,7 @@ supported until version 2.3.2, but this code is required to be able to run on ea
 </div>
 <div class="card outlined-card" id="sdk_version_constructor_tearoffs">
 <div class="card-header">
-<header class="card-title" id="sdk_version_constructor_tearoffs">{{"sdk_version_constructor_tearoffs" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_constructor_tearoffs">sdk_<wbr>version_<wbr>constructor_<wbr>tearoffs</header>
 </div>
 <div class="card-content">
 
@@ -14100,7 +14150,7 @@ feature._
 </div>
 <div class="card outlined-card" id="sdk_version_eq_eq_operator_in_const_context">
 <div class="card-header">
-<header class="card-title" id="sdk_version_eq_eq_operator_in_const_context">{{"sdk_version_eq_eq_operator_in_const_context" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_eq_eq_operator_in_const_context">sdk_<wbr>version_<wbr>eq_<wbr>eq_<wbr>operator_<wbr>in_<wbr>const_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -14119,7 +14169,7 @@ _Using the operator '==' for non-primitive types wasn't supported until version
 </div>
 <div class="card outlined-card" id="sdk_version_extension_methods">
 <div class="card-header">
-<header class="card-title" id="sdk_version_extension_methods">{{"sdk_version_extension_methods" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_extension_methods">sdk_<wbr>version_<wbr>extension_<wbr>methods</header>
 </div>
 <div class="card-content">
 
@@ -14138,7 +14188,7 @@ required to be able to run on earlier versions._
 </div>
 <div class="card outlined-card" id="sdk_version_gt_gt_gt_operator">
 <div class="card-header">
-<header class="card-title" id="sdk_version_gt_gt_gt_operator">{{"sdk_version_gt_gt_gt_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_gt_gt_gt_operator">sdk_<wbr>version_<wbr>gt_<wbr>gt_<wbr>gt_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -14157,7 +14207,7 @@ required to be able to run on earlier versions._
 </div>
 <div class="card outlined-card" id="sdk_version_is_expression_in_const_context">
 <div class="card-header">
-<header class="card-title" id="sdk_version_is_expression_in_const_context">{{"sdk_version_is_expression_in_const_context" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_is_expression_in_const_context">sdk_<wbr>version_<wbr>is_<wbr>expression_<wbr>in_<wbr>const_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -14176,7 +14226,7 @@ version 2.3.2, but this code is required to be able to run on earlier versions._
 </div>
 <div class="card outlined-card" id="sdk_version_never">
 <div class="card-header">
-<header class="card-title" id="sdk_version_never">{{"sdk_version_never" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_never">sdk_<wbr>version_<wbr>never</header>
 </div>
 <div class="card-content">
 
@@ -14195,7 +14245,7 @@ required to be able to run on earlier versions._
 </div>
 <div class="card outlined-card" id="sdk_version_set_literal">
 <div class="card-header">
-<header class="card-title" id="sdk_version_set_literal">{{"sdk_version_set_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_set_literal">sdk_<wbr>version_<wbr>set_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -14214,7 +14264,7 @@ be able to run on earlier versions._
 </div>
 <div class="card outlined-card" id="sdk_version_since">
 <div class="card-header">
-<header class="card-title" id="sdk_version_since">{{"sdk_version_since" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_since">sdk_<wbr>version_<wbr>since</header>
 </div>
 <div class="card-content">
 
@@ -14231,7 +14281,7 @@ _This API is available since SDK {0}, but constraints '{1}' don't guarantee it._
 </div>
 <div class="card outlined-card" id="sdk_version_ui_as_code">
 <div class="card-header">
-<header class="card-title" id="sdk_version_ui_as_code">{{"sdk_version_ui_as_code" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_ui_as_code">sdk_<wbr>version_<wbr>ui_<wbr>as_<wbr>code</header>
 </div>
 <div class="card-content">
 
@@ -14250,7 +14300,7 @@ this code is required to be able to run on earlier versions._
 </div>
 <div class="card outlined-card" id="sdk_version_ui_as_code_in_const_context">
 <div class="card-header">
-<header class="card-title" id="sdk_version_ui_as_code_in_const_context">{{"sdk_version_ui_as_code_in_const_context" | underscoreBreaker}}</header>
+<header class="card-title" id="sdk_version_ui_as_code_in_const_context">sdk_<wbr>version_<wbr>ui_<wbr>as_<wbr>code_<wbr>in_<wbr>const_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -14269,7 +14319,7 @@ version 2.5.0, but this code is required to be able to run on earlier versions._
 </div>
 <div class="card outlined-card" id="sealed_enum">
 <div class="card-header">
-<header class="card-title" id="sealed_enum">{{"sealed_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="sealed_enum">sealed_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -14286,7 +14336,7 @@ _Enums can't be declared to be 'sealed'._
 </div>
 <div class="card outlined-card" id="sealed_mixin">
 <div class="card-header">
-<header class="card-title" id="sealed_mixin">{{"sealed_mixin" | underscoreBreaker}}</header>
+<header class="card-title" id="sealed_mixin">sealed_<wbr>mixin</header>
 </div>
 <div class="card-content">
 
@@ -14303,7 +14353,7 @@ _A mixin can't be declared 'sealed'._
 </div>
 <div class="card outlined-card" id="sealed_mixin_class">
 <div class="card-header">
-<header class="card-title" id="sealed_mixin_class">{{"sealed_mixin_class" | underscoreBreaker}}</header>
+<header class="card-title" id="sealed_mixin_class">sealed_<wbr>mixin_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -14320,7 +14370,7 @@ _A mixin class can't be declared 'sealed'._
 </div>
 <div class="card outlined-card" id="setter_constructor">
 <div class="card-header">
-<header class="card-title" id="setter_constructor">{{"setter_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="setter_constructor">setter_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -14337,7 +14387,7 @@ _Constructors can't be a setter._
 </div>
 <div class="card outlined-card" id="setter_in_function">
 <div class="card-header">
-<header class="card-title" id="setter_in_function">{{"setter_in_function" | underscoreBreaker}}</header>
+<header class="card-title" id="setter_in_function">setter_<wbr>in_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -14354,7 +14404,7 @@ _Setters can't be defined within methods or functions._
 </div>
 <div class="card outlined-card" id="setting_orientation_on_activity">
 <div class="card-header">
-<header class="card-title" id="setting_orientation_on_activity">{{"setting_orientation_on_activity" | underscoreBreaker}}</header>
+<header class="card-title" id="setting_orientation_on_activity">setting_<wbr>orientation_<wbr>on_<wbr>activity</header>
 </div>
 <div class="card-content">
 
@@ -14372,7 +14422,7 @@ can take advantage of the multi-window environments and larger screens on Chrome
 </div>
 <div class="card outlined-card" id="set_element_type_not_assignable">
 <div class="card-header">
-<header class="card-title" id="set_element_type_not_assignable">{{"set_element_type_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="set_element_type_not_assignable">set_<wbr>element_<wbr>type_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -14390,7 +14440,7 @@ _The element type '{0}' can't be assigned to the set type '{1}'._
 </div>
 <div class="card outlined-card" id="shared_deferred_prefix">
 <div class="card-header">
-<header class="card-title" id="shared_deferred_prefix">{{"shared_deferred_prefix" | underscoreBreaker}}</header>
+<header class="card-title" id="shared_deferred_prefix">shared_<wbr>deferred_<wbr>prefix</header>
 </div>
 <div class="card-content">
 
@@ -14408,7 +14458,7 @@ _The prefix of a deferred import can't be used in other import directives._
 </div>
 <div class="card outlined-card" id="size_annotation_dimensions">
 <div class="card-header">
-<header class="card-title" id="size_annotation_dimensions">{{"size_annotation_dimensions" | underscoreBreaker}}</header>
+<header class="card-title" id="size_annotation_dimensions">size_<wbr>annotation_<wbr>dimensions</header>
 </div>
 <div class="card-content">
 
@@ -14426,7 +14476,7 @@ _'Array's must have an 'Array' annotation that matches the dimensions._
 </div>
 <div class="card outlined-card" id="spread_expression_from_deferred_library">
 <div class="card-header">
-<header class="card-title" id="spread_expression_from_deferred_library">{{"spread_expression_from_deferred_library" | underscoreBreaker}}</header>
+<header class="card-title" id="spread_expression_from_deferred_library">spread_<wbr>expression_<wbr>from_<wbr>deferred_<wbr>library</header>
 </div>
 <div class="card-content">
 
@@ -14443,7 +14493,7 @@ _Constant values from a deferred library can't be spread into a const literal._
 </div>
 <div class="card outlined-card" id="stack_overflow">
 <div class="card-header">
-<header class="card-title" id="stack_overflow">{{"stack_overflow" | underscoreBreaker}}</header>
+<header class="card-title" id="stack_overflow">stack_<wbr>overflow</header>
 </div>
 <div class="card-content">
 
@@ -14460,7 +14510,7 @@ _The file has too many nested expressions or statements._
 </div>
 <div class="card outlined-card" id="static_access_to_instance_member">
 <div class="card-header">
-<header class="card-title" id="static_access_to_instance_member">{{"static_access_to_instance_member" | underscoreBreaker}}</header>
+<header class="card-title" id="static_access_to_instance_member">static_<wbr>access_<wbr>to_<wbr>instance_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -14478,7 +14528,7 @@ _Instance member '{0}' can't be accessed using static access._
 </div>
 <div class="card outlined-card" id="static_constructor">
 <div class="card-header">
-<header class="card-title" id="static_constructor">{{"static_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="static_constructor">static_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -14495,7 +14545,7 @@ _Constructors can't be static._
 </div>
 <div class="card outlined-card" id="static_getter_without_body">
 <div class="card-header">
-<header class="card-title" id="static_getter_without_body">{{"static_getter_without_body" | underscoreBreaker}}</header>
+<header class="card-title" id="static_getter_without_body">static_<wbr>getter_<wbr>without_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -14512,7 +14562,7 @@ _A 'static' getter must have a body._
 </div>
 <div class="card outlined-card" id="static_operator">
 <div class="card-header">
-<header class="card-title" id="static_operator">{{"static_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="static_operator">static_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -14529,7 +14579,7 @@ _Operators can't be static._
 </div>
 <div class="card outlined-card" id="static_setter_without_body">
 <div class="card-header">
-<header class="card-title" id="static_setter_without_body">{{"static_setter_without_body" | underscoreBreaker}}</header>
+<header class="card-title" id="static_setter_without_body">static_<wbr>setter_<wbr>without_<wbr>body</header>
 </div>
 <div class="card-content">
 
@@ -14546,7 +14596,7 @@ _A 'static' setter must have a body._
 </div>
 <div class="card outlined-card" id="strict_raw_type">
 <div class="card-header">
-<header class="card-title" id="strict_raw_type">{{"strict_raw_type" | underscoreBreaker}}</header>
+<header class="card-title" id="strict_raw_type">strict_<wbr>raw_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -14563,7 +14613,7 @@ _The generic type '{0}' should have explicit type arguments but doesn't._
 </div>
 <div class="card outlined-card" id="subtype_of_base_or_final_is_not_base_final_or_sealed">
 <div class="card-header">
-<header class="card-title" id="subtype_of_base_or_final_is_not_base_final_or_sealed">{{"subtype_of_base_or_final_is_not_base_final_or_sealed" | underscoreBreaker}}</header>
+<header class="card-title" id="subtype_of_base_or_final_is_not_base_final_or_sealed">subtype_<wbr>of_<wbr>base_<wbr>or_<wbr>final_<wbr>is_<wbr>not_<wbr>base_<wbr>final_<wbr>or_<wbr>sealed</header>
 </div>
 <div class="card-content">
 
@@ -14589,7 +14639,7 @@ is 'final'._
 </div>
 <div class="card outlined-card" id="subtype_of_deferred_class">
 <div class="card-header">
-<header class="card-title" id="subtype_of_deferred_class">{{"subtype_of_deferred_class" | underscoreBreaker}}</header>
+<header class="card-title" id="subtype_of_deferred_class">subtype_<wbr>of_<wbr>deferred_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -14611,7 +14661,7 @@ _Classes can't mixin deferred classes._
 </div>
 <div class="card outlined-card" id="subtype_of_disallowed_type">
 <div class="card-header">
-<header class="card-title" id="subtype_of_disallowed_type">{{"subtype_of_disallowed_type" | underscoreBreaker}}</header>
+<header class="card-title" id="subtype_of_disallowed_type">subtype_<wbr>of_<wbr>disallowed_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -14635,7 +14685,7 @@ _Classes can't mixin '{0}'._
 </div>
 <div class="card outlined-card" id="subtype_of_ffi_class">
 <div class="card-header">
-<header class="card-title" id="subtype_of_ffi_class">{{"subtype_of_ffi_class" | underscoreBreaker}}</header>
+<header class="card-title" id="subtype_of_ffi_class">subtype_<wbr>of_<wbr>ffi_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -14657,7 +14707,7 @@ _The class '{0}' can't mix in '{1}'._
 </div>
 <div class="card outlined-card" id="subtype_of_sealed_class">
 <div class="card-header">
-<header class="card-title" id="subtype_of_sealed_class">{{"subtype_of_sealed_class" | underscoreBreaker}}</header>
+<header class="card-title" id="subtype_of_sealed_class">subtype_<wbr>of_<wbr>sealed_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -14676,7 +14726,7 @@ sealed._
 </div>
 <div class="card outlined-card" id="subtype_of_struct_class">
 <div class="card-header">
-<header class="card-title" id="subtype_of_struct_class">{{"subtype_of_struct_class" | underscoreBreaker}}</header>
+<header class="card-title" id="subtype_of_struct_class">subtype_<wbr>of_<wbr>struct_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -14701,7 +14751,7 @@ _The class '{0}' can't mix in '{1}' because '{1}' is a subtype of 'Struct',
 </div>
 <div class="card outlined-card" id="supertype_expands_to_type_parameter">
 <div class="card-header">
-<header class="card-title" id="supertype_expands_to_type_parameter">{{"supertype_expands_to_type_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="supertype_expands_to_type_parameter">supertype_<wbr>expands_<wbr>to_<wbr>type_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -14726,7 +14776,7 @@ _A type alias that expands to a type parameter can't be used as a superclass._
 </div>
 <div class="card outlined-card" id="super_formal_parameter_type_is_not_subtype_of_associated">
 <div class="card-header">
-<header class="card-title" id="super_formal_parameter_type_is_not_subtype_of_associated">{{"super_formal_parameter_type_is_not_subtype_of_associated" | underscoreBreaker}}</header>
+<header class="card-title" id="super_formal_parameter_type_is_not_subtype_of_associated">super_<wbr>formal_<wbr>parameter_<wbr>type_<wbr>is_<wbr>not_<wbr>subtype_<wbr>of_<wbr>associated</header>
 </div>
 <div class="card-content">
 
@@ -14745,7 +14795,7 @@ associated super constructor parameter._
 </div>
 <div class="card outlined-card" id="super_formal_parameter_without_associated_named">
 <div class="card-header">
-<header class="card-title" id="super_formal_parameter_without_associated_named">{{"super_formal_parameter_without_associated_named" | underscoreBreaker}}</header>
+<header class="card-title" id="super_formal_parameter_without_associated_named">super_<wbr>formal_<wbr>parameter_<wbr>without_<wbr>associated_<wbr>named</header>
 </div>
 <div class="card-content">
 
@@ -14763,7 +14813,7 @@ _No associated named super constructor parameter._
 </div>
 <div class="card outlined-card" id="super_formal_parameter_without_associated_positional">
 <div class="card-header">
-<header class="card-title" id="super_formal_parameter_without_associated_positional">{{"super_formal_parameter_without_associated_positional" | underscoreBreaker}}</header>
+<header class="card-title" id="super_formal_parameter_without_associated_positional">super_<wbr>formal_<wbr>parameter_<wbr>without_<wbr>associated_<wbr>positional</header>
 </div>
 <div class="card-content">
 
@@ -14781,7 +14831,7 @@ _No associated positional super constructor parameter._
 </div>
 <div class="card outlined-card" id="super_initializer_in_object">
 <div class="card-header">
-<header class="card-title" id="super_initializer_in_object">{{"super_initializer_in_object" | underscoreBreaker}}</header>
+<header class="card-title" id="super_initializer_in_object">super_<wbr>initializer_<wbr>in_<wbr>object</header>
 </div>
 <div class="card-content">
 
@@ -14799,7 +14849,7 @@ _The class 'Object' can't invoke a constructor from a superclass._
 <div class="card outlined-card" id="super_invocation_not_last">
 <a id="invalid_super_invocation" aria-hidden="true"></a>
 <div class="card-header">
-<header class="card-title" id="super_invocation_not_last">{{"super_invocation_not_last" | underscoreBreaker}}</header>
+<header class="card-title" id="super_invocation_not_last">super_<wbr>invocation_<wbr>not_<wbr>last</header>
 </div>
 <div class="card-content">
 
@@ -14817,7 +14867,7 @@ _The superconstructor call must be last in an initializer list: '{0}'._
 </div>
 <div class="card outlined-card" id="super_in_enum_constructor">
 <div class="card-header">
-<header class="card-title" id="super_in_enum_constructor">{{"super_in_enum_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="super_in_enum_constructor">super_<wbr>in_<wbr>enum_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -14835,7 +14885,7 @@ _The enum constructor can't have a 'super' initializer._
 </div>
 <div class="card outlined-card" id="super_in_extension">
 <div class="card-header">
-<header class="card-title" id="super_in_extension">{{"super_in_extension" | underscoreBreaker}}</header>
+<header class="card-title" id="super_in_extension">super_<wbr>in_<wbr>extension</header>
 </div>
 <div class="card-content">
 
@@ -14854,7 +14904,7 @@ have a superclass._
 </div>
 <div class="card outlined-card" id="super_in_extension_type">
 <div class="card-header">
-<header class="card-title" id="super_in_extension_type">{{"super_in_extension_type" | underscoreBreaker}}</header>
+<header class="card-title" id="super_in_extension_type">super_<wbr>in_<wbr>extension_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -14873,7 +14923,7 @@ type doesn't have a superclass._
 </div>
 <div class="card outlined-card" id="super_in_invalid_context">
 <div class="card-header">
-<header class="card-title" id="super_in_invalid_context">{{"super_in_invalid_context" | underscoreBreaker}}</header>
+<header class="card-title" id="super_in_invalid_context">super_<wbr>in_<wbr>invalid_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -14891,7 +14941,7 @@ _Invalid context for 'super' invocation._
 </div>
 <div class="card outlined-card" id="super_in_redirecting_constructor">
 <div class="card-header">
-<header class="card-title" id="super_in_redirecting_constructor">{{"super_in_redirecting_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="super_in_redirecting_constructor">super_<wbr>in_<wbr>redirecting_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -14909,7 +14959,7 @@ _The redirecting constructor can't have a 'super' initializer._
 </div>
 <div class="card outlined-card" id="switch_case_completes_normally">
 <div class="card-header">
-<header class="card-title" id="switch_case_completes_normally">{{"switch_case_completes_normally" | underscoreBreaker}}</header>
+<header class="card-title" id="switch_case_completes_normally">switch_<wbr>case_<wbr>completes_<wbr>normally</header>
 </div>
 <div class="card-content">
 
@@ -14927,7 +14977,7 @@ _The 'case' shouldn't complete normally._
 </div>
 <div class="card outlined-card" id="switch_expression_not_assignable">
 <div class="card-header">
-<header class="card-title" id="switch_expression_not_assignable">{{"switch_expression_not_assignable" | underscoreBreaker}}</header>
+<header class="card-title" id="switch_expression_not_assignable">switch_<wbr>expression_<wbr>not_<wbr>assignable</header>
 </div>
 <div class="card-content">
 
@@ -14946,7 +14996,7 @@ expressions._
 </div>
 <div class="card outlined-card" id="switch_has_case_after_default_case">
 <div class="card-header">
-<header class="card-title" id="switch_has_case_after_default_case">{{"switch_has_case_after_default_case" | underscoreBreaker}}</header>
+<header class="card-title" id="switch_has_case_after_default_case">switch_<wbr>has_<wbr>case_<wbr>after_<wbr>default_<wbr>case</header>
 </div>
 <div class="card-content">
 
@@ -14963,7 +15013,7 @@ _The default case should be the last case in a switch statement._
 </div>
 <div class="card outlined-card" id="switch_has_multiple_default_cases">
 <div class="card-header">
-<header class="card-title" id="switch_has_multiple_default_cases">{{"switch_has_multiple_default_cases" | underscoreBreaker}}</header>
+<header class="card-title" id="switch_has_multiple_default_cases">switch_<wbr>has_<wbr>multiple_<wbr>default_<wbr>cases</header>
 </div>
 <div class="card-content">
 
@@ -14980,7 +15030,7 @@ _The 'default' case can only be declared once._
 </div>
 <div class="card outlined-card" id="tearoff_of_generative_constructor_of_abstract_class">
 <div class="card-header">
-<header class="card-title" id="tearoff_of_generative_constructor_of_abstract_class">{{"tearoff_of_generative_constructor_of_abstract_class" | underscoreBreaker}}</header>
+<header class="card-title" id="tearoff_of_generative_constructor_of_abstract_class">tearoff_<wbr>of_<wbr>generative_<wbr>constructor_<wbr>of_<wbr>abstract_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -14998,7 +15048,7 @@ _A generative constructor of an abstract class can't be torn off._
 </div>
 <div class="card outlined-card" id="text_direction_code_point_in_comment">
 <div class="card-header">
-<header class="card-title" id="text_direction_code_point_in_comment">{{"text_direction_code_point_in_comment" | underscoreBreaker}}</header>
+<header class="card-title" id="text_direction_code_point_in_comment">text_<wbr>direction_<wbr>code_<wbr>point_<wbr>in_<wbr>comment</header>
 </div>
 <div class="card-content">
 
@@ -15017,7 +15067,7 @@ interpreted by the compiler._
 </div>
 <div class="card outlined-card" id="text_direction_code_point_in_literal">
 <div class="card-header">
-<header class="card-title" id="text_direction_code_point_in_literal">{{"text_direction_code_point_in_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="text_direction_code_point_in_literal">text_<wbr>direction_<wbr>code_<wbr>point_<wbr>in_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -15036,7 +15086,7 @@ interpreted by the compiler._
 </div>
 <div class="card outlined-card" id="throw_of_invalid_type">
 <div class="card-header">
-<header class="card-title" id="throw_of_invalid_type">{{"throw_of_invalid_type" | underscoreBreaker}}</header>
+<header class="card-title" id="throw_of_invalid_type">throw_<wbr>of_<wbr>invalid_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -15054,7 +15104,7 @@ _The type '{0}' of the thrown expression must be assignable to 'Object'._
 </div>
 <div class="card outlined-card" id="top_level_cycle">
 <div class="card-header">
-<header class="card-title" id="top_level_cycle">{{"top_level_cycle" | underscoreBreaker}}</header>
+<header class="card-title" id="top_level_cycle">top_<wbr>level_<wbr>cycle</header>
 </div>
 <div class="card-content">
 
@@ -15073,7 +15123,7 @@ cycle: {1}._
 </div>
 <div class="card outlined-card" id="top_level_operator">
 <div class="card-header">
-<header class="card-title" id="top_level_operator">{{"top_level_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="top_level_operator">top_<wbr>level_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -15090,7 +15140,7 @@ _Operators must be declared within a class._
 </div>
 <div class="card outlined-card" id="typedef_in_class">
 <div class="card-header">
-<header class="card-title" id="typedef_in_class">{{"typedef_in_class" | underscoreBreaker}}</header>
+<header class="card-title" id="typedef_in_class">typedef_<wbr>in_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -15107,7 +15157,7 @@ _Typedefs can't be declared inside classes._
 </div>
 <div class="card outlined-card" id="type_alias_cannot_reference_itself">
 <div class="card-header">
-<header class="card-title" id="type_alias_cannot_reference_itself">{{"type_alias_cannot_reference_itself" | underscoreBreaker}}</header>
+<header class="card-title" id="type_alias_cannot_reference_itself">type_<wbr>alias_<wbr>cannot_<wbr>reference_<wbr>itself</header>
 </div>
 <div class="card-content">
 
@@ -15126,7 +15176,7 @@ typedef._
 </div>
 <div class="card outlined-card" id="type_annotation_deferred_class">
 <div class="card-header">
-<header class="card-title" id="type_annotation_deferred_class">{{"type_annotation_deferred_class" | underscoreBreaker}}</header>
+<header class="card-title" id="type_annotation_deferred_class">type_<wbr>annotation_<wbr>deferred_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -15144,7 +15194,7 @@ _The deferred type '{0}' can't be used in a declaration, cast, or type test._
 </div>
 <div class="card outlined-card" id="type_arguments_on_type_variable">
 <div class="card-header">
-<header class="card-title" id="type_arguments_on_type_variable">{{"type_arguments_on_type_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="type_arguments_on_type_variable">type_<wbr>arguments_<wbr>on_<wbr>type_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -15161,7 +15211,7 @@ _Can't use type arguments with type variable '{0}'._
 </div>
 <div class="card outlined-card" id="type_argument_not_matching_bounds">
 <div class="card-header">
-<header class="card-title" id="type_argument_not_matching_bounds">{{"type_argument_not_matching_bounds" | underscoreBreaker}}</header>
+<header class="card-title" id="type_argument_not_matching_bounds">type_<wbr>argument_<wbr>not_<wbr>matching_<wbr>bounds</header>
 </div>
 <div class="card-content">
 
@@ -15179,7 +15229,7 @@ _'{0}' doesn't conform to the bound '{2}' of the type parameter '{1}'._
 </div>
 <div class="card outlined-card" id="type_before_factory">
 <div class="card-header">
-<header class="card-title" id="type_before_factory">{{"type_before_factory" | underscoreBreaker}}</header>
+<header class="card-title" id="type_before_factory">type_<wbr>before_<wbr>factory</header>
 </div>
 <div class="card-content">
 
@@ -15196,7 +15246,7 @@ _Factory constructors cannot have a return type._
 </div>
 <div class="card outlined-card" id="type_check_with_null">
 <div class="card-header">
-<header class="card-title" id="type_check_with_null">{{"type_check_with_null" | underscoreBreaker}}</header>
+<header class="card-title" id="type_check_with_null">type_<wbr>check_<wbr>with_<wbr>null</header>
 </div>
 <div class="card-content">
 
@@ -15216,7 +15266,7 @@ _Tests for null should be done with '== null'._
 </div>
 <div class="card outlined-card" id="type_parameter_on_constructor">
 <div class="card-header">
-<header class="card-title" id="type_parameter_on_constructor">{{"type_parameter_on_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="type_parameter_on_constructor">type_<wbr>parameter_<wbr>on_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -15233,7 +15283,7 @@ _Constructors can't have type parameters._
 </div>
 <div class="card outlined-card" id="type_parameter_on_operator">
 <div class="card-header">
-<header class="card-title" id="type_parameter_on_operator">{{"type_parameter_on_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="type_parameter_on_operator">type_<wbr>parameter_<wbr>on_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -15250,7 +15300,7 @@ _Types parameters aren't allowed when defining an operator._
 </div>
 <div class="card outlined-card" id="type_parameter_referenced_by_static">
 <div class="card-header">
-<header class="card-title" id="type_parameter_referenced_by_static">{{"type_parameter_referenced_by_static" | underscoreBreaker}}</header>
+<header class="card-title" id="type_parameter_referenced_by_static">type_<wbr>parameter_<wbr>referenced_<wbr>by_<wbr>static</header>
 </div>
 <div class="card-content">
 
@@ -15268,7 +15318,7 @@ _Static members can't reference type parameters of the class._
 </div>
 <div class="card outlined-card" id="type_parameter_supertype_of_its_bound">
 <div class="card-header">
-<header class="card-title" id="type_parameter_supertype_of_its_bound">{{"type_parameter_supertype_of_its_bound" | underscoreBreaker}}</header>
+<header class="card-title" id="type_parameter_supertype_of_its_bound">type_<wbr>parameter_<wbr>supertype_<wbr>of_<wbr>its_<wbr>bound</header>
 </div>
 <div class="card-content">
 
@@ -15286,7 +15336,7 @@ _'{0}' can't be a supertype of its upper bound._
 </div>
 <div class="card outlined-card" id="type_test_with_non_type">
 <div class="card-header">
-<header class="card-title" id="type_test_with_non_type">{{"type_test_with_non_type" | underscoreBreaker}}</header>
+<header class="card-title" id="type_test_with_non_type">type_<wbr>test_<wbr>with_<wbr>non_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -15304,7 +15354,7 @@ _The name '{0}' isn't a type and can't be used in an 'is' expression._
 </div>
 <div class="card outlined-card" id="type_test_with_undefined_name">
 <div class="card-header">
-<header class="card-title" id="type_test_with_undefined_name">{{"type_test_with_undefined_name" | underscoreBreaker}}</header>
+<header class="card-title" id="type_test_with_undefined_name">type_<wbr>test_<wbr>with_<wbr>undefined_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -15320,9 +15370,26 @@ _The name '{0}' isn't defined, so it can't be used in an 'is' expression._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="unable_get_content">
+<div class="card-header">
+<header class="card-title" id="unable_get_content">unable_<wbr>get_<wbr>content</header>
+</div>
+<div class="card-content">
+
+_Unable to get content of '{0}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unable_get_content" title="Copy unable_get_content to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="unchecked_use_of_nullable_value">
 <div class="card-header">
-<header class="card-title" id="unchecked_use_of_nullable_value">{{"unchecked_use_of_nullable_value" | underscoreBreaker}}</header>
+<header class="card-title" id="unchecked_use_of_nullable_value">unchecked_<wbr>use_<wbr>of_<wbr>nullable_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -15357,7 +15424,7 @@ be 'null'._
 </div>
 <div class="card outlined-card" id="undefined_annotation">
 <div class="card-header">
-<header class="card-title" id="undefined_annotation">{{"undefined_annotation" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_annotation">undefined_<wbr>annotation</header>
 </div>
 <div class="card-content">
 
@@ -15375,7 +15442,7 @@ _Undefined name '{0}' used as an annotation._
 </div>
 <div class="card outlined-card" id="undefined_class">
 <div class="card-header">
-<header class="card-title" id="undefined_class">{{"undefined_class" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_class">undefined_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -15393,7 +15460,7 @@ _Undefined class '{0}'._
 </div>
 <div class="card outlined-card" id="undefined_constructor_in_initializer">
 <div class="card-header">
-<header class="card-title" id="undefined_constructor_in_initializer">{{"undefined_constructor_in_initializer" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_constructor_in_initializer">undefined_<wbr>constructor_<wbr>in_<wbr>initializer</header>
 </div>
 <div class="card-content">
 
@@ -15413,7 +15480,7 @@ _The class '{0}' doesn't have an unnamed constructor._
 </div>
 <div class="card outlined-card" id="undefined_enum_constant">
 <div class="card-header">
-<header class="card-title" id="undefined_enum_constant">{{"undefined_enum_constant" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_enum_constant">undefined_<wbr>enum_<wbr>constant</header>
 </div>
 <div class="card-content">
 
@@ -15431,7 +15498,7 @@ _There's no constant named '{0}' in '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_enum_constructor">
 <div class="card-header">
-<header class="card-title" id="undefined_enum_constructor">{{"undefined_enum_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_enum_constructor">undefined_<wbr>enum_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -15451,7 +15518,7 @@ _The enum doesn't have an unnamed constructor._
 </div>
 <div class="card outlined-card" id="undefined_extension_getter">
 <div class="card-header">
-<header class="card-title" id="undefined_extension_getter">{{"undefined_extension_getter" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_extension_getter">undefined_<wbr>extension_<wbr>getter</header>
 </div>
 <div class="card-content">
 
@@ -15469,7 +15536,7 @@ _The getter '{0}' isn't defined for the extension '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_extension_method">
 <div class="card-header">
-<header class="card-title" id="undefined_extension_method">{{"undefined_extension_method" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_extension_method">undefined_<wbr>extension_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -15487,7 +15554,7 @@ _The method '{0}' isn't defined for the extension '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_extension_operator">
 <div class="card-header">
-<header class="card-title" id="undefined_extension_operator">{{"undefined_extension_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_extension_operator">undefined_<wbr>extension_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -15505,7 +15572,7 @@ _The operator '{0}' isn't defined for the extension '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_extension_setter">
 <div class="card-header">
-<header class="card-title" id="undefined_extension_setter">{{"undefined_extension_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_extension_setter">undefined_<wbr>extension_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -15523,7 +15590,7 @@ _The setter '{0}' isn't defined for the extension '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_function">
 <div class="card-header">
-<header class="card-title" id="undefined_function">{{"undefined_function" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_function">undefined_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -15541,7 +15608,7 @@ _The function '{0}' isn't defined._
 </div>
 <div class="card outlined-card" id="undefined_getter">
 <div class="card-header">
-<header class="card-title" id="undefined_getter">{{"undefined_getter" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_getter">undefined_<wbr>getter</header>
 </div>
 <div class="card-content">
 
@@ -15561,7 +15628,7 @@ _The getter '{0}' isn't defined for the type '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_hidden_name">
 <div class="card-header">
-<header class="card-title" id="undefined_hidden_name">{{"undefined_hidden_name" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_hidden_name">undefined_<wbr>hidden_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -15579,7 +15646,7 @@ _The library '{0}' doesn't export a member with the hidden name '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_identifier">
 <div class="card-header">
-<header class="card-title" id="undefined_identifier">{{"undefined_identifier" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_identifier">undefined_<wbr>identifier</header>
 </div>
 <div class="card-content">
 
@@ -15597,7 +15664,7 @@ _Undefined name '{0}'._
 </div>
 <div class="card outlined-card" id="undefined_identifier_await">
 <div class="card-header">
-<header class="card-title" id="undefined_identifier_await">{{"undefined_identifier_await" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_identifier_await">undefined_<wbr>identifier_<wbr>await</header>
 </div>
 <div class="card-content">
 
@@ -15615,7 +15682,7 @@ _Undefined name 'await' in function body not marked with 'async'._
 </div>
 <div class="card outlined-card" id="undefined_lint">
 <div class="card-header">
-<header class="card-title" id="undefined_lint">{{"undefined_lint" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_lint">undefined_<wbr>lint</header>
 </div>
 <div class="card-content">
 
@@ -15632,7 +15699,7 @@ _'{0}' is not a recognized lint rule._
 </div>
 <div class="card outlined-card" id="undefined_method">
 <div class="card-header">
-<header class="card-title" id="undefined_method">{{"undefined_method" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_method">undefined_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -15652,7 +15719,7 @@ _The method '{0}' isn't defined for the type '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_named_parameter">
 <div class="card-header">
-<header class="card-title" id="undefined_named_parameter">{{"undefined_named_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_named_parameter">undefined_<wbr>named_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -15670,7 +15737,7 @@ _The named parameter '{0}' isn't defined._
 </div>
 <div class="card outlined-card" id="undefined_operator">
 <div class="card-header">
-<header class="card-title" id="undefined_operator">{{"undefined_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_operator">undefined_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -15688,7 +15755,7 @@ _The operator '{0}' isn't defined for the type '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_prefixed_name">
 <div class="card-header">
-<header class="card-title" id="undefined_prefixed_name">{{"undefined_prefixed_name" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_prefixed_name">undefined_<wbr>prefixed_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -15707,7 +15774,7 @@ defined in any of the libraries imported using that prefix._
 </div>
 <div class="card outlined-card" id="undefined_referenced_parameter">
 <div class="card-header">
-<header class="card-title" id="undefined_referenced_parameter">{{"undefined_referenced_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_referenced_parameter">undefined_<wbr>referenced_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -15725,7 +15792,7 @@ _The parameter '{0}' isn't defined by '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_setter">
 <div class="card-header">
-<header class="card-title" id="undefined_setter">{{"undefined_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_setter">undefined_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -15745,7 +15812,7 @@ _The setter '{0}' isn't defined for the type '{1}'._
 </div>
 <div class="card outlined-card" id="undefined_shown_name">
 <div class="card-header">
-<header class="card-title" id="undefined_shown_name">{{"undefined_shown_name" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_shown_name">undefined_<wbr>shown_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -15764,7 +15831,7 @@ _The library '{0}' doesn't export a member with the shown name '{1}'._
 <div class="card outlined-card" id="undefined_super_member">
 <a id="undefined_super_method" aria-hidden="true"></a>
 <div class="card-header">
-<header class="card-title" id="undefined_super_member">{{"undefined_super_member" | underscoreBreaker}}</header>
+<header class="card-title" id="undefined_super_member">undefined_<wbr>super_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -15786,9 +15853,45 @@ _The setter '{0}' isn't defined in a superclass of '{1}'._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="unexpected_dollar_in_string">
+<div class="card-header">
+<header class="card-title" id="unexpected_dollar_in_string">unexpected_<wbr>dollar_<wbr>in_<wbr>string</header>
+</div>
+<div class="card-content">
+
+_A '$' has special meaning inside a string, and must be followed by an
+identifier or an expression in curly braces ({})._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unexpected_dollar_in_string" title="Copy unexpected_dollar_in_string to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unexpected_separator_in_number">
+<div class="card-header">
+<header class="card-title" id="unexpected_separator_in_number">unexpected_<wbr>separator_<wbr>in_<wbr>number</header>
+</div>
+<div class="card-content">
+
+_Digit separators ('\_') in a number literal can only be placed between two
+digits._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unexpected_separator_in_number" title="Copy unexpected_separator_in_number to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="unexpected_terminator_for_parameter_group">
 <div class="card-header">
-<header class="card-title" id="unexpected_terminator_for_parameter_group">{{"unexpected_terminator_for_parameter_group" | underscoreBreaker}}</header>
+<header class="card-title" id="unexpected_terminator_for_parameter_group">unexpected_<wbr>terminator_<wbr>for_<wbr>parameter_<wbr>group</header>
 </div>
 <div class="card-content">
 
@@ -15805,7 +15908,7 @@ _There is no '{0}' to open a parameter group._
 </div>
 <div class="card outlined-card" id="unexpected_token">
 <div class="card-header">
-<header class="card-title" id="unexpected_token">{{"unexpected_token" | underscoreBreaker}}</header>
+<header class="card-title" id="unexpected_token">unexpected_<wbr>token</header>
 </div>
 <div class="card-content">
 
@@ -15822,7 +15925,7 @@ _Unexpected text '{0}'._
 </div>
 <div class="card outlined-card" id="unexpected_tokens">
 <div class="card-header">
-<header class="card-title" id="unexpected_tokens">{{"unexpected_tokens" | underscoreBreaker}}</header>
+<header class="card-title" id="unexpected_tokens">unexpected_<wbr>tokens</header>
 </div>
 <div class="card-content">
 
@@ -15839,7 +15942,7 @@ _Unexpected tokens._
 </div>
 <div class="card outlined-card" id="unignorable_ignore">
 <div class="card-header">
-<header class="card-title" id="unignorable_ignore">{{"unignorable_ignore" | underscoreBreaker}}</header>
+<header class="card-title" id="unignorable_ignore">unignorable_<wbr>ignore</header>
 </div>
 <div class="card-content">
 
@@ -15856,7 +15959,7 @@ _The diagnostic '{0}' can't be ignored._
 </div>
 <div class="card outlined-card" id="unknown_platform">
 <div class="card-header">
-<header class="card-title" id="unknown_platform">{{"unknown_platform" | underscoreBreaker}}</header>
+<header class="card-title" id="unknown_platform">unknown_<wbr>platform</header>
 </div>
 <div class="card-content">
 
@@ -15874,7 +15977,7 @@ _The platform '{0}' is not a recognized platform._
 </div>
 <div class="card outlined-card" id="unnecessary_cast">
 <div class="card-header">
-<header class="card-title" id="unnecessary_cast">{{"unnecessary_cast" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_cast">unnecessary_<wbr>cast</header>
 </div>
 <div class="card-content">
 
@@ -15892,7 +15995,7 @@ _Unnecessary cast._
 </div>
 <div class="card outlined-card" id="unnecessary_cast_pattern">
 <div class="card-header">
-<header class="card-title" id="unnecessary_cast_pattern">{{"unnecessary_cast_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_cast_pattern">unnecessary_<wbr>cast_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -15909,7 +16012,7 @@ _Unnecessary cast pattern._
 </div>
 <div class="card outlined-card" id="unnecessary_dev_dependency">
 <div class="card-header">
-<header class="card-title" id="unnecessary_dev_dependency">{{"unnecessary_dev_dependency" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_dev_dependency">unnecessary_<wbr>dev_<wbr>dependency</header>
 </div>
 <div class="card-content">
 
@@ -15928,7 +16031,7 @@ dependency on that package._
 </div>
 <div class="card outlined-card" id="unnecessary_final">
 <div class="card-header">
-<header class="card-title" id="unnecessary_final">{{"unnecessary_final" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_final">unnecessary_<wbr>final</header>
 </div>
 <div class="card-content">
 
@@ -15947,7 +16050,7 @@ _The keyword 'final' isn't necessary because the parameter is implicitly
 </div>
 <div class="card outlined-card" id="unnecessary_import">
 <div class="card-header">
-<header class="card-title" id="unnecessary_import">{{"unnecessary_import" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_import">unnecessary_<wbr>import</header>
 </div>
 <div class="card-content">
 
@@ -15966,7 +16069,7 @@ provided by the import of '{1}'._
 </div>
 <div class="card outlined-card" id="unnecessary_nan_comparison">
 <div class="card-header">
-<header class="card-title" id="unnecessary_nan_comparison">{{"unnecessary_nan_comparison" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_nan_comparison">unnecessary_<wbr>nan_<wbr>comparison</header>
 </div>
 <div class="card-content">
 
@@ -15986,7 +16089,7 @@ _A double can't equal 'double.nan', so the condition is always 'true'._
 </div>
 <div class="card outlined-card" id="unnecessary_non_null_assertion">
 <div class="card-header">
-<header class="card-title" id="unnecessary_non_null_assertion">{{"unnecessary_non_null_assertion" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_non_null_assertion">unnecessary_<wbr>non_<wbr>null_<wbr>assertion</header>
 </div>
 <div class="card-content">
 
@@ -16004,7 +16107,7 @@ _The '!' will have no effect because the receiver can't be null._
 </div>
 <div class="card outlined-card" id="unnecessary_no_such_method">
 <div class="card-header">
-<header class="card-title" id="unnecessary_no_such_method">{{"unnecessary_no_such_method" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_no_such_method">unnecessary_<wbr>no_<wbr>such_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -16022,7 +16125,7 @@ _Unnecessary 'noSuchMethod' declaration._
 </div>
 <div class="card outlined-card" id="unnecessary_null_assert_pattern">
 <div class="card-header">
-<header class="card-title" id="unnecessary_null_assert_pattern">{{"unnecessary_null_assert_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_null_assert_pattern">unnecessary_<wbr>null_<wbr>assert_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -16041,7 +16144,7 @@ nullable._
 </div>
 <div class="card outlined-card" id="unnecessary_null_check_pattern">
 <div class="card-header">
-<header class="card-title" id="unnecessary_null_check_pattern">{{"unnecessary_null_check_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_null_check_pattern">unnecessary_<wbr>null_<wbr>check_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -16060,7 +16163,7 @@ nullable._
 </div>
 <div class="card outlined-card" id="unnecessary_null_comparison">
 <div class="card-header">
-<header class="card-title" id="unnecessary_null_comparison">{{"unnecessary_null_comparison" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_null_comparison">unnecessary_<wbr>null_<wbr>comparison</header>
 </div>
 <div class="card-content">
 
@@ -16084,7 +16187,7 @@ _The operand must be 'null', so the condition is always 'true'._
 </div>
 <div class="card outlined-card" id="unnecessary_question_mark">
 <div class="card-header">
-<header class="card-title" id="unnecessary_question_mark">{{"unnecessary_question_mark" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_question_mark">unnecessary_<wbr>question_<wbr>mark</header>
 </div>
 <div class="card-content">
 
@@ -16102,7 +16205,7 @@ _The '?' is unnecessary because '{0}' is nullable without it._
 </div>
 <div class="card outlined-card" id="unnecessary_set_literal">
 <div class="card-header">
-<header class="card-title" id="unnecessary_set_literal">{{"unnecessary_set_literal" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_set_literal">unnecessary_<wbr>set_<wbr>literal</header>
 </div>
 <div class="card-content">
 
@@ -16120,7 +16223,7 @@ _Braces unnecessarily wrap this expression in a set literal._
 </div>
 <div class="card outlined-card" id="unnecessary_type_check">
 <div class="card-header">
-<header class="card-title" id="unnecessary_type_check">{{"unnecessary_type_check" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_type_check">unnecessary_<wbr>type_<wbr>check</header>
 </div>
 <div class="card-content">
 
@@ -16140,7 +16243,7 @@ _Unnecessary type check; the result is always 'true'._
 </div>
 <div class="card outlined-card" id="unnecessary_wildcard_pattern">
 <div class="card-header">
-<header class="card-title" id="unnecessary_wildcard_pattern">{{"unnecessary_wildcard_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_wildcard_pattern">unnecessary_<wbr>wildcard_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -16158,7 +16261,7 @@ _Unnecessary wildcard pattern._
 </div>
 <div class="card outlined-card" id="unqualified_reference_to_non_local_static_member">
 <div class="card-header">
-<header class="card-title" id="unqualified_reference_to_non_local_static_member">{{"unqualified_reference_to_non_local_static_member" | underscoreBreaker}}</header>
+<header class="card-title" id="unqualified_reference_to_non_local_static_member">unqualified_<wbr>reference_<wbr>to_<wbr>non_<wbr>local_<wbr>static_<wbr>member</header>
 </div>
 <div class="card-content">
 
@@ -16177,7 +16280,7 @@ type._
 </div>
 <div class="card outlined-card" id="unqualified_reference_to_static_member_of_extended_type">
 <div class="card-header">
-<header class="card-title" id="unqualified_reference_to_static_member_of_extended_type">{{"unqualified_reference_to_static_member_of_extended_type" | underscoreBreaker}}</header>
+<header class="card-title" id="unqualified_reference_to_static_member_of_extended_type">unqualified_<wbr>reference_<wbr>to_<wbr>static_<wbr>member_<wbr>of_<wbr>extended_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -16196,7 +16299,7 @@ qualified by the name of the defining type._
 </div>
 <div class="card outlined-card" id="unreachable_switch_case">
 <div class="card-header">
-<header class="card-title" id="unreachable_switch_case">{{"unreachable_switch_case" | underscoreBreaker}}</header>
+<header class="card-title" id="unreachable_switch_case">unreachable_<wbr>switch_<wbr>case</header>
 </div>
 <div class="card-content">
 
@@ -16214,7 +16317,7 @@ _This case is covered by the previous cases._
 </div>
 <div class="card outlined-card" id="unreachable_switch_default">
 <div class="card-header">
-<header class="card-title" id="unreachable_switch_default">{{"unreachable_switch_default" | underscoreBreaker}}</header>
+<header class="card-title" id="unreachable_switch_default">unreachable_<wbr>switch_<wbr>default</header>
 </div>
 <div class="card-content">
 
@@ -16232,7 +16335,7 @@ _This default clause is covered by the previous cases._
 </div>
 <div class="card outlined-card" id="unrecognized_error_code">
 <div class="card-header">
-<header class="card-title" id="unrecognized_error_code">{{"unrecognized_error_code" | underscoreBreaker}}</header>
+<header class="card-title" id="unrecognized_error_code">unrecognized_<wbr>error_<wbr>code</header>
 </div>
 <div class="card-content">
 
@@ -16249,7 +16352,7 @@ _'{0}' isn't a recognized error code._
 </div>
 <div class="card outlined-card" id="unsupported_chrome_os_feature">
 <div class="card-header">
-<header class="card-title" id="unsupported_chrome_os_feature">{{"unsupported_chrome_os_feature" | underscoreBreaker}}</header>
+<header class="card-title" id="unsupported_chrome_os_feature">unsupported_<wbr>chrome_<wbr>os_<wbr>feature</header>
 </div>
 <div class="card-content">
 
@@ -16266,7 +16369,7 @@ _The feature {0} isn't supported on Chrome OS, consider making it optional._
 </div>
 <div class="card outlined-card" id="unsupported_chrome_os_hardware">
 <div class="card-header">
-<header class="card-title" id="unsupported_chrome_os_hardware">{{"unsupported_chrome_os_hardware" | underscoreBreaker}}</header>
+<header class="card-title" id="unsupported_chrome_os_hardware">unsupported_<wbr>chrome_<wbr>os_<wbr>hardware</header>
 </div>
 <div class="card-content">
 
@@ -16281,9 +16384,26 @@ _The feature {0} isn't supported on Chrome OS, consider making it optional._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="unsupported_operator">
+<div class="card-header">
+<header class="card-title" id="unsupported_operator">unsupported_<wbr>operator</header>
+</div>
+<div class="card-content">
+
+_The '{0}' operator is not supported._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unsupported_operator" title="Copy unsupported_operator to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="unsupported_option_without_values">
 <div class="card-header">
-<header class="card-title" id="unsupported_option_without_values">{{"unsupported_option_without_values" | underscoreBreaker}}</header>
+<header class="card-title" id="unsupported_option_without_values">unsupported_<wbr>option_<wbr>without_<wbr>values</header>
 </div>
 <div class="card-content">
 
@@ -16300,7 +16420,7 @@ _The option '{1}' isn't supported by '{0}'._
 </div>
 <div class="card outlined-card" id="unsupported_option_with_legal_value">
 <div class="card-header">
-<header class="card-title" id="unsupported_option_with_legal_value">{{"unsupported_option_with_legal_value" | underscoreBreaker}}</header>
+<header class="card-title" id="unsupported_option_with_legal_value">unsupported_<wbr>option_<wbr>with_<wbr>legal_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -16318,7 +16438,7 @@ _The option '{1}' isn't supported by '{0}'. Try using the only supported option:
 </div>
 <div class="card outlined-card" id="unsupported_option_with_legal_values">
 <div class="card-header">
-<header class="card-title" id="unsupported_option_with_legal_values">{{"unsupported_option_with_legal_values" | underscoreBreaker}}</header>
+<header class="card-title" id="unsupported_option_with_legal_values">unsupported_<wbr>option_<wbr>with_<wbr>legal_<wbr>values</header>
 </div>
 <div class="card-content">
 
@@ -16335,7 +16455,7 @@ _The option '{1}' isn't supported by '{0}'._
 </div>
 <div class="card outlined-card" id="unsupported_value">
 <div class="card-header">
-<header class="card-title" id="unsupported_value">{{"unsupported_value" | underscoreBreaker}}</header>
+<header class="card-title" id="unsupported_value">unsupported_<wbr>value</header>
 </div>
 <div class="card-content">
 
@@ -16350,9 +16470,43 @@ _The value '{1}' isn't supported by '{0}'._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="unterminated_multi_line_comment">
+<div class="card-header">
+<header class="card-title" id="unterminated_multi_line_comment">unterminated_<wbr>multi_<wbr>line_<wbr>comment</header>
+</div>
+<div class="card-content">
+
+_Unterminated multi-line comment._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unterminated_multi_line_comment" title="Copy unterminated_multi_line_comment to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unterminated_string_literal">
+<div class="card-header">
+<header class="card-title" id="unterminated_string_literal">unterminated_<wbr>string_<wbr>literal</header>
+</div>
+<div class="card-content">
+
+_Unterminated string literal._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unterminated_string_literal" title="Copy unterminated_string_literal to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="unused_catch_clause">
 <div class="card-header">
-<header class="card-title" id="unused_catch_clause">{{"unused_catch_clause" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_catch_clause">unused_<wbr>catch_<wbr>clause</header>
 </div>
 <div class="card-content">
 
@@ -16370,7 +16524,7 @@ _The exception variable '{0}' isn't used, so the 'catch' clause can be removed._
 </div>
 <div class="card outlined-card" id="unused_catch_stack">
 <div class="card-header">
-<header class="card-title" id="unused_catch_stack">{{"unused_catch_stack" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_catch_stack">unused_<wbr>catch_<wbr>stack</header>
 </div>
 <div class="card-content">
 
@@ -16388,7 +16542,7 @@ _The stack trace variable '{0}' isn't used and can be removed._
 </div>
 <div class="card outlined-card" id="unused_element">
 <div class="card-header">
-<header class="card-title" id="unused_element">{{"unused_element" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_element">unused_<wbr>element</header>
 </div>
 <div class="card-content">
 
@@ -16406,7 +16560,7 @@ _The declaration '{0}' isn't referenced._
 </div>
 <div class="card outlined-card" id="unused_element_parameter">
 <div class="card-header">
-<header class="card-title" id="unused_element_parameter">{{"unused_element_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_element_parameter">unused_<wbr>element_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -16424,7 +16578,7 @@ _A value for optional parameter '{0}' isn't ever given._
 </div>
 <div class="card outlined-card" id="unused_field">
 <div class="card-header">
-<header class="card-title" id="unused_field">{{"unused_field" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_field">unused_<wbr>field</header>
 </div>
 <div class="card-content">
 
@@ -16442,7 +16596,7 @@ _The value of the field '{0}' isn't used._
 </div>
 <div class="card outlined-card" id="unused_import">
 <div class="card-header">
-<header class="card-title" id="unused_import">{{"unused_import" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_import">unused_<wbr>import</header>
 </div>
 <div class="card-content">
 
@@ -16460,7 +16614,7 @@ _Unused import: '{0}'._
 </div>
 <div class="card outlined-card" id="unused_label">
 <div class="card-header">
-<header class="card-title" id="unused_label">{{"unused_label" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_label">unused_<wbr>label</header>
 </div>
 <div class="card-content">
 
@@ -16478,7 +16632,7 @@ _The label '{0}' isn't used._
 </div>
 <div class="card outlined-card" id="unused_local_variable">
 <div class="card-header">
-<header class="card-title" id="unused_local_variable">{{"unused_local_variable" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_local_variable">unused_<wbr>local_<wbr>variable</header>
 </div>
 <div class="card-content">
 
@@ -16496,7 +16650,7 @@ _The value of the local variable '{0}' isn't used._
 </div>
 <div class="card outlined-card" id="unused_result">
 <div class="card-header">
-<header class="card-title" id="unused_result">{{"unused_result" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_result">unused_<wbr>result</header>
 </div>
 <div class="card-content">
 
@@ -16516,7 +16670,7 @@ _The value of '{0}' should be used._
 </div>
 <div class="card outlined-card" id="unused_shown_name">
 <div class="card-header">
-<header class="card-title" id="unused_shown_name">{{"unused_shown_name" | underscoreBreaker}}</header>
+<header class="card-title" id="unused_shown_name">unused_<wbr>shown_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -16534,7 +16688,7 @@ _The name {0} is shown, but isn't used._
 </div>
 <div class="card outlined-card" id="uri_does_not_exist">
 <div class="card-header">
-<header class="card-title" id="uri_does_not_exist">{{"uri_does_not_exist" | underscoreBreaker}}</header>
+<header class="card-title" id="uri_does_not_exist">uri_<wbr>does_<wbr>not_<wbr>exist</header>
 </div>
 <div class="card-content">
 
@@ -16552,7 +16706,7 @@ _Target of URI doesn't exist: '{0}'._
 </div>
 <div class="card outlined-card" id="uri_does_not_exist_in_doc_import">
 <div class="card-header">
-<header class="card-title" id="uri_does_not_exist_in_doc_import">{{"uri_does_not_exist_in_doc_import" | underscoreBreaker}}</header>
+<header class="card-title" id="uri_does_not_exist_in_doc_import">uri_<wbr>does_<wbr>not_<wbr>exist_<wbr>in_<wbr>doc_<wbr>import</header>
 </div>
 <div class="card-content">
 
@@ -16570,7 +16724,7 @@ _Target of URI doesn't exist: '{0}'._
 </div>
 <div class="card outlined-card" id="uri_has_not_been_generated">
 <div class="card-header">
-<header class="card-title" id="uri_has_not_been_generated">{{"uri_has_not_been_generated" | underscoreBreaker}}</header>
+<header class="card-title" id="uri_has_not_been_generated">uri_<wbr>has_<wbr>not_<wbr>been_<wbr>generated</header>
 </div>
 <div class="card-content">
 
@@ -16588,7 +16742,7 @@ _Target of URI hasn't been generated: '{0}'._
 </div>
 <div class="card outlined-card" id="uri_with_interpolation">
 <div class="card-header">
-<header class="card-title" id="uri_with_interpolation">{{"uri_with_interpolation" | underscoreBreaker}}</header>
+<header class="card-title" id="uri_with_interpolation">uri_<wbr>with_<wbr>interpolation</header>
 </div>
 <div class="card-content">
 
@@ -16606,7 +16760,7 @@ _URIs can't use string interpolation._
 </div>
 <div class="card outlined-card" id="use_of_native_extension">
 <div class="card-header">
-<header class="card-title" id="use_of_native_extension">{{"use_of_native_extension" | underscoreBreaker}}</header>
+<header class="card-title" id="use_of_native_extension">use_<wbr>of_<wbr>native_<wbr>extension</header>
 </div>
 <div class="card-content">
 
@@ -16624,7 +16778,7 @@ _Dart native extensions are deprecated and aren't available in Dart 2.15._
 </div>
 <div class="card outlined-card" id="use_of_void_result">
 <div class="card-header">
-<header class="card-title" id="use_of_void_result">{{"use_of_void_result" | underscoreBreaker}}</header>
+<header class="card-title" id="use_of_void_result">use_<wbr>of_<wbr>void_<wbr>result</header>
 </div>
 <div class="card-content">
 
@@ -16642,7 +16796,7 @@ _This expression has a type of 'void' so its value can't be used._
 </div>
 <div class="card outlined-card" id="values_declaration_in_enum">
 <div class="card-header">
-<header class="card-title" id="values_declaration_in_enum">{{"values_declaration_in_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="values_declaration_in_enum">values_<wbr>declaration_<wbr>in_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -16660,7 +16814,7 @@ _A member named 'values' can't be declared in an enum._
 </div>
 <div class="card outlined-card" id="variable_length_array_not_last">
 <div class="card-header">
-<header class="card-title" id="variable_length_array_not_last">{{"variable_length_array_not_last" | underscoreBreaker}}</header>
+<header class="card-title" id="variable_length_array_not_last">variable_<wbr>length_<wbr>array_<wbr>not_<wbr>last</header>
 </div>
 <div class="card-content">
 
@@ -16678,7 +16832,7 @@ _Variable length 'Array's must only occur as the last field of Structs._
 </div>
 <div class="card outlined-card" id="variable_pattern_keyword_in_declaration_context">
 <div class="card-header">
-<header class="card-title" id="variable_pattern_keyword_in_declaration_context">{{"variable_pattern_keyword_in_declaration_context" | underscoreBreaker}}</header>
+<header class="card-title" id="variable_pattern_keyword_in_declaration_context">variable_<wbr>pattern_<wbr>keyword_<wbr>in_<wbr>declaration_<wbr>context</header>
 </div>
 <div class="card-content">
 
@@ -16697,7 +16851,7 @@ keyword._
 </div>
 <div class="card outlined-card" id="variable_type_mismatch">
 <div class="card-header">
-<header class="card-title" id="variable_type_mismatch">{{"variable_type_mismatch" | underscoreBreaker}}</header>
+<header class="card-title" id="variable_type_mismatch">variable_<wbr>type_<wbr>mismatch</header>
 </div>
 <div class="card-content">
 
@@ -16715,7 +16869,7 @@ _A value of type '{0}' can't be assigned to a const variable of type '{1}'._
 </div>
 <div class="card outlined-card" id="var_and_type">
 <div class="card-header">
-<header class="card-title" id="var_and_type">{{"var_and_type" | underscoreBreaker}}</header>
+<header class="card-title" id="var_and_type">var_<wbr>and_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -16732,7 +16886,7 @@ _Variables can't be declared using both 'var' and a type name._
 </div>
 <div class="card outlined-card" id="var_as_type_name">
 <div class="card-header">
-<header class="card-title" id="var_as_type_name">{{"var_as_type_name" | underscoreBreaker}}</header>
+<header class="card-title" id="var_as_type_name">var_<wbr>as_<wbr>type_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -16749,7 +16903,7 @@ _The keyword 'var' can't be used as a type name._
 </div>
 <div class="card outlined-card" id="var_class">
 <div class="card-header">
-<header class="card-title" id="var_class">{{"var_class" | underscoreBreaker}}</header>
+<header class="card-title" id="var_class">var_<wbr>class</header>
 </div>
 <div class="card-content">
 
@@ -16766,7 +16920,7 @@ _Classes can't be declared to be 'var'._
 </div>
 <div class="card outlined-card" id="var_enum">
 <div class="card-header">
-<header class="card-title" id="var_enum">{{"var_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="var_enum">var_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -16783,7 +16937,7 @@ _Enums can't be declared to be 'var'._
 </div>
 <div class="card outlined-card" id="var_return_type">
 <div class="card-header">
-<header class="card-title" id="var_return_type">{{"var_return_type" | underscoreBreaker}}</header>
+<header class="card-title" id="var_return_type">var_<wbr>return_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -16800,7 +16954,7 @@ _The return type can't be 'var'._
 </div>
 <div class="card outlined-card" id="var_typedef">
 <div class="card-header">
-<header class="card-title" id="var_typedef">{{"var_typedef" | underscoreBreaker}}</header>
+<header class="card-title" id="var_typedef">var_<wbr>typedef</header>
 </div>
 <div class="card-content">
 
@@ -16817,7 +16971,7 @@ _Typedefs can't be declared to be 'var'._
 </div>
 <div class="card outlined-card" id="void_with_type_arguments">
 <div class="card-header">
-<header class="card-title" id="void_with_type_arguments">{{"void_with_type_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="void_with_type_arguments">void_<wbr>with_<wbr>type_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -16834,7 +16988,7 @@ _Type 'void' can't have type arguments._
 </div>
 <div class="card outlined-card" id="with_before_extends">
 <div class="card-header">
-<header class="card-title" id="with_before_extends">{{"with_before_extends" | underscoreBreaker}}</header>
+<header class="card-title" id="with_before_extends">with_<wbr>before_<wbr>extends</header>
 </div>
 <div class="card-content">
 
@@ -16851,7 +17005,7 @@ _The extends clause must be before the with clause._
 </div>
 <div class="card outlined-card" id="workspace_field_not_list">
 <div class="card-header">
-<header class="card-title" id="workspace_field_not_list">{{"workspace_field_not_list" | underscoreBreaker}}</header>
+<header class="card-title" id="workspace_field_not_list">workspace_<wbr>field_<wbr>not_<wbr>list</header>
 </div>
 <div class="card-content">
 
@@ -16870,7 +17024,7 @@ paths._
 </div>
 <div class="card outlined-card" id="workspace_value_not_string">
 <div class="card-header">
-<header class="card-title" id="workspace_value_not_string">{{"workspace_value_not_string" | underscoreBreaker}}</header>
+<header class="card-title" id="workspace_value_not_string">workspace_<wbr>value_<wbr>not_<wbr>string</header>
 </div>
 <div class="card-content">
 
@@ -16888,7 +17042,7 @@ _Workspace entries are required to be directory paths (strings)._
 </div>
 <div class="card outlined-card" id="workspace_value_not_subdirectory">
 <div class="card-header">
-<header class="card-title" id="workspace_value_not_subdirectory">{{"workspace_value_not_subdirectory" | underscoreBreaker}}</header>
+<header class="card-title" id="workspace_value_not_subdirectory">workspace_<wbr>value_<wbr>not_<wbr>subdirectory</header>
 </div>
 <div class="card-content">
 
@@ -16906,7 +17060,7 @@ _Workspace values must be a relative path of a subdirectory of '{0}'._
 </div>
 <div class="card outlined-card" id="wrong_explicit_type_parameter_variance_in_superinterface">
 <div class="card-header">
-<header class="card-title" id="wrong_explicit_type_parameter_variance_in_superinterface">{{"wrong_explicit_type_parameter_variance_in_superinterface" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_explicit_type_parameter_variance_in_superinterface">wrong_<wbr>explicit_<wbr>type_<wbr>parameter_<wbr>variance_<wbr>in_<wbr>superinterface</header>
 </div>
 <div class="card-content">
 
@@ -16924,7 +17078,7 @@ _'{0}' is an '{1}' type parameter and can't be used in an '{2}' position in
 </div>
 <div class="card outlined-card" id="wrong_number_of_parameters_for_operator">
 <div class="card-header">
-<header class="card-title" id="wrong_number_of_parameters_for_operator">{{"wrong_number_of_parameters_for_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_number_of_parameters_for_operator">wrong_<wbr>number_<wbr>of_<wbr>parameters_<wbr>for_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -16944,7 +17098,7 @@ _Operator '{0}' should declare exactly {1} parameters, but {2} found._
 </div>
 <div class="card outlined-card" id="wrong_number_of_parameters_for_setter">
 <div class="card-header">
-<header class="card-title" id="wrong_number_of_parameters_for_setter">{{"wrong_number_of_parameters_for_setter" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_number_of_parameters_for_setter">wrong_<wbr>number_<wbr>of_<wbr>parameters_<wbr>for_<wbr>setter</header>
 </div>
 <div class="card-content">
 
@@ -16962,7 +17116,7 @@ _Setters must declare exactly one required positional parameter._
 </div>
 <div class="card outlined-card" id="wrong_number_of_type_arguments">
 <div class="card-header">
-<header class="card-title" id="wrong_number_of_type_arguments">{{"wrong_number_of_type_arguments" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_number_of_type_arguments">wrong_<wbr>number_<wbr>of_<wbr>type_<wbr>arguments</header>
 </div>
 <div class="card-content">
 
@@ -16981,7 +17135,7 @@ were given._
 </div>
 <div class="card outlined-card" id="wrong_number_of_type_arguments_constructor">
 <div class="card-header">
-<header class="card-title" id="wrong_number_of_type_arguments_constructor">{{"wrong_number_of_type_arguments_constructor" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_number_of_type_arguments_constructor">wrong_<wbr>number_<wbr>of_<wbr>type_<wbr>arguments_<wbr>constructor</header>
 </div>
 <div class="card-content">
 
@@ -17001,7 +17155,7 @@ _The constructor '{0}.{1}` doesn't have type parameters._
 </div>
 <div class="card outlined-card" id="wrong_number_of_type_arguments_enum">
 <div class="card-header">
-<header class="card-title" id="wrong_number_of_type_arguments_enum">{{"wrong_number_of_type_arguments_enum" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_number_of_type_arguments_enum">wrong_<wbr>number_<wbr>of_<wbr>type_<wbr>arguments_<wbr>enum</header>
 </div>
 <div class="card-content">
 
@@ -17020,7 +17174,7 @@ given._
 </div>
 <div class="card outlined-card" id="wrong_number_of_type_arguments_extension">
 <div class="card-header">
-<header class="card-title" id="wrong_number_of_type_arguments_extension">{{"wrong_number_of_type_arguments_extension" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_number_of_type_arguments_extension">wrong_<wbr>number_<wbr>of_<wbr>type_<wbr>arguments_<wbr>extension</header>
 </div>
 <div class="card-content">
 
@@ -17039,7 +17193,7 @@ arguments were given._
 </div>
 <div class="card outlined-card" id="wrong_number_of_type_arguments_function">
 <div class="card-header">
-<header class="card-title" id="wrong_number_of_type_arguments_function">{{"wrong_number_of_type_arguments_function" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_number_of_type_arguments_function">wrong_<wbr>number_<wbr>of_<wbr>type_<wbr>arguments_<wbr>function</header>
 </div>
 <div class="card-content">
 
@@ -17060,7 +17214,7 @@ given._
 </div>
 <div class="card outlined-card" id="wrong_number_of_type_arguments_method">
 <div class="card-header">
-<header class="card-title" id="wrong_number_of_type_arguments_method">{{"wrong_number_of_type_arguments_method" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_number_of_type_arguments_method">wrong_<wbr>number_<wbr>of_<wbr>type_<wbr>arguments_<wbr>method</header>
 </div>
 <div class="card-content">
 
@@ -17079,7 +17233,7 @@ are given._
 </div>
 <div class="card outlined-card" id="wrong_separator_for_positional_parameter">
 <div class="card-header">
-<header class="card-title" id="wrong_separator_for_positional_parameter">{{"wrong_separator_for_positional_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_separator_for_positional_parameter">wrong_<wbr>separator_<wbr>for_<wbr>positional_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -17096,7 +17250,7 @@ _The default value of a positional parameter should be preceded by '='._
 </div>
 <div class="card outlined-card" id="wrong_terminator_for_parameter_group">
 <div class="card-header">
-<header class="card-title" id="wrong_terminator_for_parameter_group">{{"wrong_terminator_for_parameter_group" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_terminator_for_parameter_group">wrong_<wbr>terminator_<wbr>for_<wbr>parameter_<wbr>group</header>
 </div>
 <div class="card-content">
 
@@ -17113,7 +17267,7 @@ _Expected '{0}' to close parameter group._
 </div>
 <div class="card outlined-card" id="wrong_type_parameter_variance_in_superinterface">
 <div class="card-header">
-<header class="card-title" id="wrong_type_parameter_variance_in_superinterface">{{"wrong_type_parameter_variance_in_superinterface" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_type_parameter_variance_in_superinterface">wrong_<wbr>type_<wbr>parameter_<wbr>variance_<wbr>in_<wbr>superinterface</header>
 </div>
 <div class="card-content">
 
@@ -17130,7 +17284,7 @@ _'{0}' can't be used contravariantly or invariantly in '{1}'._
 </div>
 <div class="card outlined-card" id="wrong_type_parameter_variance_position">
 <div class="card-header">
-<header class="card-title" id="wrong_type_parameter_variance_position">{{"wrong_type_parameter_variance_position" | underscoreBreaker}}</header>
+<header class="card-title" id="wrong_type_parameter_variance_position">wrong_<wbr>type_<wbr>parameter_<wbr>variance_<wbr>position</header>
 </div>
 <div class="card-content">
 
@@ -17147,7 +17301,7 @@ _The '{0}' type parameter '{1}' can't be used in an '{2}' position._
 </div>
 <div class="card outlined-card" id="yield_in_non_generator">
 <div class="card-header">
-<header class="card-title" id="yield_in_non_generator">{{"yield_in_non_generator" | underscoreBreaker}}</header>
+<header class="card-title" id="yield_in_non_generator">yield_<wbr>in_<wbr>non_<wbr>generator</header>
 </div>
 <div class="card-content">
 
@@ -17169,7 +17323,7 @@ _Yield-each statements must be in a generator function (one marked with either
 </div>
 <div class="card outlined-card" id="yield_of_invalid_type">
 <div class="card-header">
-<header class="card-title" id="yield_of_invalid_type">{{"yield_of_invalid_type" | underscoreBreaker}}</header>
+<header class="card-title" id="yield_of_invalid_type">yield_<wbr>of_<wbr>invalid_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -17189,7 +17343,7 @@ _The type '{0}' implied by the 'yield*' expression must be assignable to '{1}'._
 </div>
 <div class="card outlined-card" id="always_declare_return_types">
 <div class="card-header">
-<header class="card-title" id="always_declare_return_types">{{"always_declare_return_types" | underscoreBreaker}}</header>
+<header class="card-title" id="always_declare_return_types">always_<wbr>declare_<wbr>return_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -17210,7 +17364,7 @@ _The method '{0}' should have a return type but doesn't._
 </div>
 <div class="card outlined-card" id="always_put_control_body_on_new_line">
 <div class="card-header">
-<header class="card-title" id="always_put_control_body_on_new_line">{{"always_put_control_body_on_new_line" | underscoreBreaker}}</header>
+<header class="card-title" id="always_put_control_body_on_new_line">always_<wbr>put_<wbr>control_<wbr>body_<wbr>on_<wbr>new_<wbr>line</header>
 </div>
 <div class="card-content">
 
@@ -17229,7 +17383,7 @@ _Statement should be on a separate line._
 </div>
 <div class="card outlined-card" id="always_put_required_named_parameters_first">
 <div class="card-header">
-<header class="card-title" id="always_put_required_named_parameters_first">{{"always_put_required_named_parameters_first" | underscoreBreaker}}</header>
+<header class="card-title" id="always_put_required_named_parameters_first">always_<wbr>put_<wbr>required_<wbr>named_<wbr>parameters_<wbr>first</header>
 </div>
 <div class="card-content">
 
@@ -17248,7 +17402,7 @@ _Required named parameters should be before optional named parameters._
 </div>
 <div class="card outlined-card" id="always_require_non_null_named_parameters">
 <div class="card-header">
-<header class="card-title" id="always_require_non_null_named_parameters">{{"always_require_non_null_named_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="always_require_non_null_named_parameters">always_<wbr>require_<wbr>non_<wbr>null_<wbr>named_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -17264,7 +17418,7 @@ _Required named parameters should be before optional named parameters._
 </div>
 <div class="card outlined-card" id="always_specify_types">
 <div class="card-header">
-<header class="card-title" id="always_specify_types">{{"always_specify_types" | underscoreBreaker}}</header>
+<header class="card-title" id="always_specify_types">always_<wbr>specify_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -17282,7 +17436,7 @@ _Missing type annotation._
 </div>
 <div class="card outlined-card" id="always_use_package_imports">
 <div class="card-header">
-<header class="card-title" id="always_use_package_imports">{{"always_use_package_imports" | underscoreBreaker}}</header>
+<header class="card-title" id="always_use_package_imports">always_<wbr>use_<wbr>package_<wbr>imports</header>
 </div>
 <div class="card-content">
 
@@ -17301,7 +17455,7 @@ _Use 'package:' imports for files in the 'lib' directory._
 </div>
 <div class="card outlined-card" id="annotate_overrides">
 <div class="card-header">
-<header class="card-title" id="annotate_overrides">{{"annotate_overrides" | underscoreBreaker}}</header>
+<header class="card-title" id="annotate_overrides">annotate_<wbr>overrides</header>
 </div>
 <div class="card-content">
 
@@ -17321,7 +17475,7 @@ _The member '{0}' overrides an inherited member but isn't annotated with
 </div>
 <div class="card outlined-card" id="annotate_redeclares">
 <div class="card-header">
-<header class="card-title" id="annotate_redeclares">{{"annotate_redeclares" | underscoreBreaker}}</header>
+<header class="card-title" id="annotate_redeclares">annotate_<wbr>redeclares</header>
 </div>
 <div class="card-content">
 
@@ -17339,7 +17493,7 @@ _The member '{0}' is redeclaring but isn't annotated with '@redeclare'._
 </div>
 <div class="card outlined-card" id="avoid_annotating_with_dynamic">
 <div class="card-header">
-<header class="card-title" id="avoid_annotating_with_dynamic">{{"avoid_annotating_with_dynamic" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_annotating_with_dynamic">avoid_<wbr>annotating_<wbr>with_<wbr>dynamic</header>
 </div>
 <div class="card-content">
 
@@ -17357,7 +17511,7 @@ _Unnecessary 'dynamic' type annotation._
 </div>
 <div class="card outlined-card" id="avoid_as">
 <div class="card-header">
-<header class="card-title" id="avoid_as">{{"avoid_as" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_as">avoid_<wbr>as</header>
 </div>
 <div class="card-content">
 
@@ -17373,7 +17527,7 @@ _Unnecessary 'dynamic' type annotation._
 </div>
 <div class="card outlined-card" id="avoid_bool_literals_in_conditional_expressions">
 <div class="card-header">
-<header class="card-title" id="avoid_bool_literals_in_conditional_expressions">{{"avoid_bool_literals_in_conditional_expressions" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_bool_literals_in_conditional_expressions">avoid_<wbr>bool_<wbr>literals_<wbr>in_<wbr>conditional_<wbr>expressions</header>
 </div>
 <div class="card-content">
 
@@ -17391,7 +17545,7 @@ _Conditional expressions with a 'bool' literal can be simplified._
 </div>
 <div class="card outlined-card" id="avoid_catches_without_on_clauses">
 <div class="card-header">
-<header class="card-title" id="avoid_catches_without_on_clauses">{{"avoid_catches_without_on_clauses" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_catches_without_on_clauses">avoid_<wbr>catches_<wbr>without_<wbr>on_<wbr>clauses</header>
 </div>
 <div class="card-content">
 
@@ -17409,7 +17563,7 @@ _Catch clause should use 'on' to specify the type of exception being caught._
 </div>
 <div class="card outlined-card" id="avoid_catching_errors">
 <div class="card-header">
-<header class="card-title" id="avoid_catching_errors">{{"avoid_catching_errors" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_catching_errors">avoid_<wbr>catching_<wbr>errors</header>
 </div>
 <div class="card-content">
 
@@ -17429,7 +17583,7 @@ _The type '{0}' should not be caught because it is a subclass of 'Error'._
 </div>
 <div class="card outlined-card" id="avoid_classes_with_only_static_members">
 <div class="card-header">
-<header class="card-title" id="avoid_classes_with_only_static_members">{{"avoid_classes_with_only_static_members" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_classes_with_only_static_members">avoid_<wbr>classes_<wbr>with_<wbr>only_<wbr>static_<wbr>members</header>
 </div>
 <div class="card-content">
 
@@ -17447,7 +17601,7 @@ _Classes should define instance members._
 </div>
 <div class="card outlined-card" id="avoid_double_and_int_checks">
 <div class="card-header">
-<header class="card-title" id="avoid_double_and_int_checks">{{"avoid_double_and_int_checks" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_double_and_int_checks">avoid_<wbr>double_<wbr>and_<wbr>int_<wbr>checks</header>
 </div>
 <div class="card-content">
 
@@ -17465,7 +17619,7 @@ _Explicit check for double or int._
 </div>
 <div class="card outlined-card" id="avoid_dynamic_calls">
 <div class="card-header">
-<header class="card-title" id="avoid_dynamic_calls">{{"avoid_dynamic_calls" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_dynamic_calls">avoid_<wbr>dynamic_<wbr>calls</header>
 </div>
 <div class="card-content">
 
@@ -17484,7 +17638,7 @@ _Method invocation or property access on a 'dynamic' target._
 </div>
 <div class="card outlined-card" id="avoid_empty_else">
 <div class="card-header">
-<header class="card-title" id="avoid_empty_else">{{"avoid_empty_else" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_empty_else">avoid_<wbr>empty_<wbr>else</header>
 </div>
 <div class="card-content">
 
@@ -17503,7 +17657,7 @@ _Empty statements are not allowed in an 'else' clause._
 </div>
 <div class="card outlined-card" id="avoid_equals_and_hash_code_on_mutable_classes">
 <div class="card-header">
-<header class="card-title" id="avoid_equals_and_hash_code_on_mutable_classes">{{"avoid_equals_and_hash_code_on_mutable_classes" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_equals_and_hash_code_on_mutable_classes">avoid_<wbr>equals_<wbr>and_<wbr>hash_<wbr>code_<wbr>on_<wbr>mutable_<wbr>classes</header>
 </div>
 <div class="card-content">
 
@@ -17522,7 +17676,7 @@ _The method '{0}' should not be overridden in classes not annotated with
 </div>
 <div class="card outlined-card" id="avoid_escaping_inner_quotes">
 <div class="card-header">
-<header class="card-title" id="avoid_escaping_inner_quotes">{{"avoid_escaping_inner_quotes" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_escaping_inner_quotes">avoid_<wbr>escaping_<wbr>inner_<wbr>quotes</header>
 </div>
 <div class="card-content">
 
@@ -17540,7 +17694,7 @@ _Unnecessary escape of '{0}'._
 </div>
 <div class="card outlined-card" id="avoid_field_initializers_in_const_classes">
 <div class="card-header">
-<header class="card-title" id="avoid_field_initializers_in_const_classes">{{"avoid_field_initializers_in_const_classes" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_field_initializers_in_const_classes">avoid_<wbr>field_<wbr>initializers_<wbr>in_<wbr>const_<wbr>classes</header>
 </div>
 <div class="card-content">
 
@@ -17558,7 +17712,7 @@ _Fields in 'const' classes should not have initializers._
 </div>
 <div class="card outlined-card" id="avoid_final_parameters">
 <div class="card-header">
-<header class="card-title" id="avoid_final_parameters">{{"avoid_final_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_final_parameters">avoid_<wbr>final_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -17576,7 +17730,7 @@ _Parameters should not be marked as 'final'._
 </div>
 <div class="card outlined-card" id="avoid_function_literals_in_foreach_calls">
 <div class="card-header">
-<header class="card-title" id="avoid_function_literals_in_foreach_calls">{{"avoid_function_literals_in_foreach_calls" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_function_literals_in_foreach_calls">avoid_<wbr>function_<wbr>literals_<wbr>in_<wbr>foreach_<wbr>calls</header>
 </div>
 <div class="card-content">
 
@@ -17595,7 +17749,7 @@ _Function literals shouldn't be passed to 'forEach'._
 </div>
 <div class="card outlined-card" id="avoid_futureor_void">
 <div class="card-header">
-<header class="card-title" id="avoid_futureor_void">{{"avoid_futureor_void" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_futureor_void">avoid_<wbr>futureor_<wbr>void</header>
 </div>
 <div class="card-content">
 
@@ -17614,7 +17768,7 @@ _Don't use the type 'FutureOr<void>'._
 </div>
 <div class="card outlined-card" id="avoid_implementing_value_types">
 <div class="card-header">
-<header class="card-title" id="avoid_implementing_value_types">{{"avoid_implementing_value_types" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_implementing_value_types">avoid_<wbr>implementing_<wbr>value_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -17632,7 +17786,7 @@ _Classes that override '==' should not be implemented._
 </div>
 <div class="card outlined-card" id="avoid_init_to_null">
 <div class="card-header">
-<header class="card-title" id="avoid_init_to_null">{{"avoid_init_to_null" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_init_to_null">avoid_<wbr>init_<wbr>to_<wbr>null</header>
 </div>
 <div class="card-content">
 
@@ -17651,7 +17805,7 @@ _Redundant initialization to 'null'._
 </div>
 <div class="card outlined-card" id="avoid_js_rounded_ints">
 <div class="card-header">
-<header class="card-title" id="avoid_js_rounded_ints">{{"avoid_js_rounded_ints" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_js_rounded_ints">avoid_<wbr>js_<wbr>rounded_<wbr>ints</header>
 </div>
 <div class="card-content">
 
@@ -17669,7 +17823,7 @@ _Integer literal can't be represented exactly when compiled to JavaScript._
 </div>
 <div class="card outlined-card" id="avoid_multiple_declarations_per_line">
 <div class="card-header">
-<header class="card-title" id="avoid_multiple_declarations_per_line">{{"avoid_multiple_declarations_per_line" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_multiple_declarations_per_line">avoid_<wbr>multiple_<wbr>declarations_<wbr>per_<wbr>line</header>
 </div>
 <div class="card-content">
 
@@ -17687,7 +17841,7 @@ _Multiple variables declared on a single line._
 </div>
 <div class="card outlined-card" id="avoid_null_checks_in_equality_operators">
 <div class="card-header">
-<header class="card-title" id="avoid_null_checks_in_equality_operators">{{"avoid_null_checks_in_equality_operators" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_null_checks_in_equality_operators">avoid_<wbr>null_<wbr>checks_<wbr>in_<wbr>equality_<wbr>operators</header>
 </div>
 <div class="card-content">
 
@@ -17705,7 +17859,7 @@ _Unnecessary null comparison in implementation of '=='._
 </div>
 <div class="card outlined-card" id="avoid_positional_boolean_parameters">
 <div class="card-header">
-<header class="card-title" id="avoid_positional_boolean_parameters">{{"avoid_positional_boolean_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_positional_boolean_parameters">avoid_<wbr>positional_<wbr>boolean_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -17723,7 +17877,7 @@ _'bool' parameters should be named parameters._
 </div>
 <div class="card outlined-card" id="avoid_print">
 <div class="card-header">
-<header class="card-title" id="avoid_print">{{"avoid_print" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_print">avoid_<wbr>print</header>
 </div>
 <div class="card-content">
 
@@ -17742,7 +17896,7 @@ _Don't invoke 'print' in production code._
 </div>
 <div class="card outlined-card" id="avoid_private_typedef_functions">
 <div class="card-header">
-<header class="card-title" id="avoid_private_typedef_functions">{{"avoid_private_typedef_functions" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_private_typedef_functions">avoid_<wbr>private_<wbr>typedef_<wbr>functions</header>
 </div>
 <div class="card-content">
 
@@ -17760,7 +17914,7 @@ _The typedef is unnecessary because it is only used in one place._
 </div>
 <div class="card outlined-card" id="avoid_redundant_argument_values">
 <div class="card-header">
-<header class="card-title" id="avoid_redundant_argument_values">{{"avoid_redundant_argument_values" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_redundant_argument_values">avoid_<wbr>redundant_<wbr>argument_<wbr>values</header>
 </div>
 <div class="card-content">
 
@@ -17778,7 +17932,7 @@ _The value of the argument is redundant because it matches the default value._
 </div>
 <div class="card outlined-card" id="avoid_relative_lib_imports">
 <div class="card-header">
-<header class="card-title" id="avoid_relative_lib_imports">{{"avoid_relative_lib_imports" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_relative_lib_imports">avoid_<wbr>relative_<wbr>lib_<wbr>imports</header>
 </div>
 <div class="card-content">
 
@@ -17797,7 +17951,7 @@ _Can't use a relative path to import a library in 'lib'._
 </div>
 <div class="card outlined-card" id="avoid_renaming_method_parameters">
 <div class="card-header">
-<header class="card-title" id="avoid_renaming_method_parameters">{{"avoid_renaming_method_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_renaming_method_parameters">avoid_<wbr>renaming_<wbr>method_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -17817,7 +17971,7 @@ method._
 </div>
 <div class="card outlined-card" id="avoid_return_types_on_setters">
 <div class="card-header">
-<header class="card-title" id="avoid_return_types_on_setters">{{"avoid_return_types_on_setters" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_return_types_on_setters">avoid_<wbr>return_<wbr>types_<wbr>on_<wbr>setters</header>
 </div>
 <div class="card-content">
 
@@ -17836,7 +17990,7 @@ _Unnecessary return type on a setter._
 </div>
 <div class="card outlined-card" id="avoid_returning_null">
 <div class="card-header">
-<header class="card-title" id="avoid_returning_null">{{"avoid_returning_null" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_returning_null">avoid_<wbr>returning_<wbr>null</header>
 </div>
 <div class="card-content">
 
@@ -17852,7 +18006,7 @@ _Unnecessary return type on a setter._
 </div>
 <div class="card outlined-card" id="avoid_returning_null_for_future">
 <div class="card-header">
-<header class="card-title" id="avoid_returning_null_for_future">{{"avoid_returning_null_for_future" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_returning_null_for_future">avoid_<wbr>returning_<wbr>null_<wbr>for_<wbr>future</header>
 </div>
 <div class="card-content">
 
@@ -17868,7 +18022,7 @@ _Unnecessary return type on a setter._
 </div>
 <div class="card outlined-card" id="avoid_returning_null_for_void">
 <div class="card-header">
-<header class="card-title" id="avoid_returning_null_for_void">{{"avoid_returning_null_for_void" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_returning_null_for_void">avoid_<wbr>returning_<wbr>null_<wbr>for_<wbr>void</header>
 </div>
 <div class="card-content">
 
@@ -17889,7 +18043,7 @@ _Don't return 'null' from a method with a return type of 'void'._
 </div>
 <div class="card outlined-card" id="avoid_returning_this">
 <div class="card-header">
-<header class="card-title" id="avoid_returning_this">{{"avoid_returning_this" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_returning_this">avoid_<wbr>returning_<wbr>this</header>
 </div>
 <div class="card-content">
 
@@ -17907,7 +18061,7 @@ _Don't return 'this' from a method._
 </div>
 <div class="card outlined-card" id="avoid_setters_without_getters">
 <div class="card-header">
-<header class="card-title" id="avoid_setters_without_getters">{{"avoid_setters_without_getters" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_setters_without_getters">avoid_<wbr>setters_<wbr>without_<wbr>getters</header>
 </div>
 <div class="card-content">
 
@@ -17925,7 +18079,7 @@ _Setter has no corresponding getter._
 </div>
 <div class="card outlined-card" id="avoid_shadowing_type_parameters">
 <div class="card-header">
-<header class="card-title" id="avoid_shadowing_type_parameters">{{"avoid_shadowing_type_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_shadowing_type_parameters">avoid_<wbr>shadowing_<wbr>type_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -17944,7 +18098,7 @@ _The type parameter '{0}' shadows a type parameter from the enclosing {1}._
 </div>
 <div class="card outlined-card" id="avoid_single_cascade_in_expression_statements">
 <div class="card-header">
-<header class="card-title" id="avoid_single_cascade_in_expression_statements">{{"avoid_single_cascade_in_expression_statements" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_single_cascade_in_expression_statements">avoid_<wbr>single_<wbr>cascade_<wbr>in_<wbr>expression_<wbr>statements</header>
 </div>
 <div class="card-content">
 
@@ -17963,7 +18117,7 @@ _Unnecessary cascade expression._
 </div>
 <div class="card outlined-card" id="avoid_slow_async_io">
 <div class="card-header">
-<header class="card-title" id="avoid_slow_async_io">{{"avoid_slow_async_io" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_slow_async_io">avoid_<wbr>slow_<wbr>async_<wbr>io</header>
 </div>
 <div class="card-content">
 
@@ -17982,7 +18136,7 @@ _Use of an async 'dart:io' method._
 </div>
 <div class="card outlined-card" id="avoid_type_to_string">
 <div class="card-header">
-<header class="card-title" id="avoid_type_to_string">{{"avoid_type_to_string" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_type_to_string">avoid_<wbr>type_<wbr>to_<wbr>string</header>
 </div>
 <div class="card-content">
 
@@ -18001,7 +18155,7 @@ _Using 'toString' on a 'Type' is not safe in production code._
 </div>
 <div class="card outlined-card" id="avoid_types_as_parameter_names">
 <div class="card-header">
-<header class="card-title" id="avoid_types_as_parameter_names">{{"avoid_types_as_parameter_names" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_types_as_parameter_names">avoid_<wbr>types_<wbr>as_<wbr>parameter_<wbr>names</header>
 </div>
 <div class="card-content">
 
@@ -18022,7 +18176,7 @@ _The type parameter name '{0}' matches a visible type name._
 </div>
 <div class="card outlined-card" id="avoid_types_on_closure_parameters">
 <div class="card-header">
-<header class="card-title" id="avoid_types_on_closure_parameters">{{"avoid_types_on_closure_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_types_on_closure_parameters">avoid_<wbr>types_<wbr>on_<wbr>closure_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -18040,7 +18194,7 @@ _Unnecessary type annotation on a function expression parameter._
 </div>
 <div class="card outlined-card" id="avoid_unnecessary_containers">
 <div class="card-header">
-<header class="card-title" id="avoid_unnecessary_containers">{{"avoid_unnecessary_containers" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_unnecessary_containers">avoid_<wbr>unnecessary_<wbr>containers</header>
 </div>
 <div class="card-content">
 
@@ -18059,7 +18213,7 @@ _Unnecessary instance of 'Container'._
 </div>
 <div class="card outlined-card" id="avoid_unstable_final_fields">
 <div class="card-header">
-<header class="card-title" id="avoid_unstable_final_fields">{{"avoid_unstable_final_fields" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_unstable_final_fields">avoid_<wbr>unstable_<wbr>final_<wbr>fields</header>
 </div>
 <div class="card-content">
 
@@ -18075,7 +18229,7 @@ _Unnecessary instance of 'Container'._
 </div>
 <div class="card outlined-card" id="avoid_unused_constructor_parameters">
 <div class="card-header">
-<header class="card-title" id="avoid_unused_constructor_parameters">{{"avoid_unused_constructor_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_unused_constructor_parameters">avoid_<wbr>unused_<wbr>constructor_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -18093,7 +18247,7 @@ _The parameter '{0}' is not used in the constructor._
 </div>
 <div class="card outlined-card" id="avoid_void_async">
 <div class="card-header">
-<header class="card-title" id="avoid_void_async">{{"avoid_void_async" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_void_async">avoid_<wbr>void_<wbr>async</header>
 </div>
 <div class="card-content">
 
@@ -18112,7 +18266,7 @@ value._
 </div>
 <div class="card outlined-card" id="avoid_web_libraries_in_flutter">
 <div class="card-header">
-<header class="card-title" id="avoid_web_libraries_in_flutter">{{"avoid_web_libraries_in_flutter" | underscoreBreaker}}</header>
+<header class="card-title" id="avoid_web_libraries_in_flutter">avoid_<wbr>web_<wbr>libraries_<wbr>in_<wbr>flutter</header>
 </div>
 <div class="card-content">
 
@@ -18131,7 +18285,7 @@ _Don't use web-only libraries outside Flutter web plugins._
 </div>
 <div class="card outlined-card" id="await_only_futures">
 <div class="card-header">
-<header class="card-title" id="await_only_futures">{{"await_only_futures" | underscoreBreaker}}</header>
+<header class="card-title" id="await_only_futures">await_<wbr>only_<wbr>futures</header>
 </div>
 <div class="card-content">
 
@@ -18150,7 +18304,7 @@ _Uses 'await' on an instance of '{0}', which is not a subtype of 'Future'._
 </div>
 <div class="card outlined-card" id="camel_case_extensions">
 <div class="card-header">
-<header class="card-title" id="camel_case_extensions">{{"camel_case_extensions" | underscoreBreaker}}</header>
+<header class="card-title" id="camel_case_extensions">camel_<wbr>case_<wbr>extensions</header>
 </div>
 <div class="card-content">
 
@@ -18169,7 +18323,7 @@ _The extension name '{0}' isn't an UpperCamelCase identifier._
 </div>
 <div class="card outlined-card" id="camel_case_types">
 <div class="card-header">
-<header class="card-title" id="camel_case_types">{{"camel_case_types" | underscoreBreaker}}</header>
+<header class="card-title" id="camel_case_types">camel_<wbr>case_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -18188,7 +18342,7 @@ _The type name '{0}' isn't an UpperCamelCase identifier._
 </div>
 <div class="card outlined-card" id="cancel_subscriptions">
 <div class="card-header">
-<header class="card-title" id="cancel_subscriptions">{{"cancel_subscriptions" | underscoreBreaker}}</header>
+<header class="card-title" id="cancel_subscriptions">cancel_<wbr>subscriptions</header>
 </div>
 <div class="card-content">
 
@@ -18207,7 +18361,7 @@ _Uncancelled instance of 'StreamSubscription'._
 </div>
 <div class="card outlined-card" id="cascade_invocations">
 <div class="card-header">
-<header class="card-title" id="cascade_invocations">{{"cascade_invocations" | underscoreBreaker}}</header>
+<header class="card-title" id="cascade_invocations">cascade_<wbr>invocations</header>
 </div>
 <div class="card-content">
 
@@ -18225,7 +18379,7 @@ _Unnecessary duplication of receiver._
 </div>
 <div class="card outlined-card" id="cast_nullable_to_non_nullable">
 <div class="card-header">
-<header class="card-title" id="cast_nullable_to_non_nullable">{{"cast_nullable_to_non_nullable" | underscoreBreaker}}</header>
+<header class="card-title" id="cast_nullable_to_non_nullable">cast_<wbr>nullable_<wbr>to_<wbr>non_<wbr>nullable</header>
 </div>
 <div class="card-content">
 
@@ -18243,7 +18397,7 @@ _Don't cast a nullable value to a non-nullable type._
 </div>
 <div class="card outlined-card" id="close_sinks">
 <div class="card-header">
-<header class="card-title" id="close_sinks">{{"close_sinks" | underscoreBreaker}}</header>
+<header class="card-title" id="close_sinks">close_<wbr>sinks</header>
 </div>
 <div class="card-content">
 
@@ -18262,7 +18416,7 @@ _Unclosed instance of 'Sink'._
 </div>
 <div class="card outlined-card" id="collection_methods_unrelated_type">
 <div class="card-header">
-<header class="card-title" id="collection_methods_unrelated_type">{{"collection_methods_unrelated_type" | underscoreBreaker}}</header>
+<header class="card-title" id="collection_methods_unrelated_type">collection_<wbr>methods_<wbr>unrelated_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -18281,7 +18435,7 @@ _The argument type '{0}' isn't related to '{1}'._
 </div>
 <div class="card outlined-card" id="combinators_ordering">
 <div class="card-header">
-<header class="card-title" id="combinators_ordering">{{"combinators_ordering" | underscoreBreaker}}</header>
+<header class="card-title" id="combinators_ordering">combinators_<wbr>ordering</header>
 </div>
 <div class="card-content">
 
@@ -18299,7 +18453,7 @@ _Sort combinator names alphabetically._
 </div>
 <div class="card outlined-card" id="comment_references">
 <div class="card-header">
-<header class="card-title" id="comment_references">{{"comment_references" | underscoreBreaker}}</header>
+<header class="card-title" id="comment_references">comment_<wbr>references</header>
 </div>
 <div class="card-content">
 
@@ -18317,7 +18471,7 @@ _The referenced name isn't visible in scope._
 </div>
 <div class="card outlined-card" id="conditional_uri_does_not_exist">
 <div class="card-header">
-<header class="card-title" id="conditional_uri_does_not_exist">{{"conditional_uri_does_not_exist" | underscoreBreaker}}</header>
+<header class="card-title" id="conditional_uri_does_not_exist">conditional_<wbr>uri_<wbr>does_<wbr>not_<wbr>exist</header>
 </div>
 <div class="card-content">
 
@@ -18335,7 +18489,7 @@ _The target of the conditional URI '{0}' doesn't exist._
 </div>
 <div class="card outlined-card" id="constant_identifier_names">
 <div class="card-header">
-<header class="card-title" id="constant_identifier_names">{{"constant_identifier_names" | underscoreBreaker}}</header>
+<header class="card-title" id="constant_identifier_names">constant_<wbr>identifier_<wbr>names</header>
 </div>
 <div class="card-content">
 
@@ -18354,7 +18508,7 @@ _The constant name '{0}' isn't a lowerCamelCase identifier._
 </div>
 <div class="card outlined-card" id="control_flow_in_finally">
 <div class="card-header">
-<header class="card-title" id="control_flow_in_finally">{{"control_flow_in_finally" | underscoreBreaker}}</header>
+<header class="card-title" id="control_flow_in_finally">control_<wbr>flow_<wbr>in_<wbr>finally</header>
 </div>
 <div class="card-content">
 
@@ -18373,7 +18527,7 @@ _Use of '{0}' in a 'finally' clause._
 </div>
 <div class="card outlined-card" id="curly_braces_in_flow_control_structures">
 <div class="card-header">
-<header class="card-title" id="curly_braces_in_flow_control_structures">{{"curly_braces_in_flow_control_structures" | underscoreBreaker}}</header>
+<header class="card-title" id="curly_braces_in_flow_control_structures">curly_<wbr>braces_<wbr>in_<wbr>flow_<wbr>control_<wbr>structures</header>
 </div>
 <div class="card-content">
 
@@ -18392,7 +18546,7 @@ _Statements in {0} should be enclosed in a block._
 </div>
 <div class="card outlined-card" id="dangling_library_doc_comments">
 <div class="card-header">
-<header class="card-title" id="dangling_library_doc_comments">{{"dangling_library_doc_comments" | underscoreBreaker}}</header>
+<header class="card-title" id="dangling_library_doc_comments">dangling_<wbr>library_<wbr>doc_<wbr>comments</header>
 </div>
 <div class="card-content">
 
@@ -18411,7 +18565,7 @@ _Dangling library doc comment._
 </div>
 <div class="card outlined-card" id="depend_on_referenced_packages">
 <div class="card-header">
-<header class="card-title" id="depend_on_referenced_packages">{{"depend_on_referenced_packages" | underscoreBreaker}}</header>
+<header class="card-title" id="depend_on_referenced_packages">depend_<wbr>on_<wbr>referenced_<wbr>packages</header>
 </div>
 <div class="card-content">
 
@@ -18430,7 +18584,7 @@ _The imported package '{0}' isn't a dependency of the importing package._
 </div>
 <div class="card outlined-card" id="deprecated_consistency">
 <div class="card-header">
-<header class="card-title" id="deprecated_consistency">{{"deprecated_consistency" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_consistency">deprecated_<wbr>consistency</header>
 </div>
 <div class="card-content">
 
@@ -18452,7 +18606,7 @@ _Parameters that initialize a deprecated field should be deprecated._
 </div>
 <div class="card outlined-card" id="deprecated_member_use_from_same_package">
 <div class="card-header">
-<header class="card-title" id="deprecated_member_use_from_same_package">{{"deprecated_member_use_from_same_package" | underscoreBreaker}}</header>
+<header class="card-title" id="deprecated_member_use_from_same_package">deprecated_<wbr>member_<wbr>use_<wbr>from_<wbr>same_<wbr>package</header>
 </div>
 <div class="card-content">
 
@@ -18472,7 +18626,7 @@ _'{0}' is deprecated and shouldn't be used. {1}_
 </div>
 <div class="card outlined-card" id="diagnostic_describe_all_properties">
 <div class="card-header">
-<header class="card-title" id="diagnostic_describe_all_properties">{{"diagnostic_describe_all_properties" | underscoreBreaker}}</header>
+<header class="card-title" id="diagnostic_describe_all_properties">diagnostic_<wbr>describe_<wbr>all_<wbr>properties</header>
 </div>
 <div class="card-content">
 
@@ -18492,7 +18646,7 @@ _The public property isn't described by either 'debugFillProperties' or
 </div>
 <div class="card outlined-card" id="directives_ordering">
 <div class="card-header">
-<header class="card-title" id="directives_ordering">{{"directives_ordering" | underscoreBreaker}}</header>
+<header class="card-title" id="directives_ordering">directives_<wbr>ordering</header>
 </div>
 <div class="card-content">
 
@@ -18516,7 +18670,7 @@ _Specify exports in a separate section after all imports._
 </div>
 <div class="card outlined-card" id="discarded_futures">
 <div class="card-header">
-<header class="card-title" id="discarded_futures">{{"discarded_futures" | underscoreBreaker}}</header>
+<header class="card-title" id="discarded_futures">discarded_<wbr>futures</header>
 </div>
 <div class="card-content">
 
@@ -18534,7 +18688,7 @@ _'Future'-returning calls in a non-'async' function._
 </div>
 <div class="card outlined-card" id="do_not_use_environment">
 <div class="card-header">
-<header class="card-title" id="do_not_use_environment">{{"do_not_use_environment" | underscoreBreaker}}</header>
+<header class="card-title" id="do_not_use_environment">do_<wbr>not_<wbr>use_<wbr>environment</header>
 </div>
 <div class="card-content">
 
@@ -18552,7 +18706,7 @@ _Invalid use of an environment declaration._
 </div>
 <div class="card outlined-card" id="document_ignores">
 <div class="card-header">
-<header class="card-title" id="document_ignores">{{"document_ignores" | underscoreBreaker}}</header>
+<header class="card-title" id="document_ignores">document_<wbr>ignores</header>
 </div>
 <div class="card-content">
 
@@ -18570,7 +18724,7 @@ _Missing documentation explaining why the diagnostic is ignored._
 </div>
 <div class="card outlined-card" id="empty_catches">
 <div class="card-header">
-<header class="card-title" id="empty_catches">{{"empty_catches" | underscoreBreaker}}</header>
+<header class="card-title" id="empty_catches">empty_<wbr>catches</header>
 </div>
 <div class="card-content">
 
@@ -18589,7 +18743,7 @@ _Empty catch block._
 </div>
 <div class="card outlined-card" id="empty_constructor_bodies">
 <div class="card-header">
-<header class="card-title" id="empty_constructor_bodies">{{"empty_constructor_bodies" | underscoreBreaker}}</header>
+<header class="card-title" id="empty_constructor_bodies">empty_<wbr>constructor_<wbr>bodies</header>
 </div>
 <div class="card-content">
 
@@ -18608,7 +18762,7 @@ _Empty constructor bodies should be written using a ';' rather than '{}'._
 </div>
 <div class="card outlined-card" id="empty_statements">
 <div class="card-header">
-<header class="card-title" id="empty_statements">{{"empty_statements" | underscoreBreaker}}</header>
+<header class="card-title" id="empty_statements">empty_<wbr>statements</header>
 </div>
 <div class="card-content">
 
@@ -18627,7 +18781,7 @@ _Unnecessary empty statement._
 </div>
 <div class="card outlined-card" id="enable_null_safety">
 <div class="card-header">
-<header class="card-title" id="enable_null_safety">{{"enable_null_safety" | underscoreBreaker}}</header>
+<header class="card-title" id="enable_null_safety">enable_<wbr>null_<wbr>safety</header>
 </div>
 <div class="card-content">
 
@@ -18643,7 +18797,7 @@ _Unnecessary empty statement._
 </div>
 <div class="card outlined-card" id="eol_at_end_of_file">
 <div class="card-header">
-<header class="card-title" id="eol_at_end_of_file">{{"eol_at_end_of_file" | underscoreBreaker}}</header>
+<header class="card-title" id="eol_at_end_of_file">eol_<wbr>at_<wbr>end_<wbr>of_<wbr>file</header>
 </div>
 <div class="card-content">
 
@@ -18661,7 +18815,7 @@ _Missing a newline at the end of the file._
 </div>
 <div class="card outlined-card" id="erase_dart_type_extension_types">
 <div class="card-header">
-<header class="card-title" id="erase_dart_type_extension_types">{{"erase_dart_type_extension_types" | underscoreBreaker}}</header>
+<header class="card-title" id="erase_dart_type_extension_types">erase_<wbr>dart_<wbr>type_<wbr>extension_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -18678,7 +18832,7 @@ _Unsafe use of 'DartType' in an 'is' check._
 </div>
 <div class="card outlined-card" id="exhaustive_cases">
 <div class="card-header">
-<header class="card-title" id="exhaustive_cases">{{"exhaustive_cases" | underscoreBreaker}}</header>
+<header class="card-title" id="exhaustive_cases">exhaustive_<wbr>cases</header>
 </div>
 <div class="card-content">
 
@@ -18696,7 +18850,7 @@ _Missing case clauses for some constants in '{0}'._
 </div>
 <div class="card outlined-card" id="file_names">
 <div class="card-header">
-<header class="card-title" id="file_names">{{"file_names" | underscoreBreaker}}</header>
+<header class="card-title" id="file_names">file_<wbr>names</header>
 </div>
 <div class="card-content">
 
@@ -18715,7 +18869,7 @@ _The file name '{0}' isn't a lower\_case\_with\_underscores identifier._
 </div>
 <div class="card outlined-card" id="flutter_style_todos">
 <div class="card-header">
-<header class="card-title" id="flutter_style_todos">{{"flutter_style_todos" | underscoreBreaker}}</header>
+<header class="card-title" id="flutter_style_todos">flutter_<wbr>style_<wbr>todos</header>
 </div>
 <div class="card-content">
 
@@ -18733,7 +18887,7 @@ _To-do comment doesn't follow the Flutter style._
 </div>
 <div class="card outlined-card" id="hash_and_equals">
 <div class="card-header">
-<header class="card-title" id="hash_and_equals">{{"hash_and_equals" | underscoreBreaker}}</header>
+<header class="card-title" id="hash_and_equals">hash_<wbr>and_<wbr>equals</header>
 </div>
 <div class="card-content">
 
@@ -18752,7 +18906,7 @@ _Missing a corresponding override of '{0}'._
 </div>
 <div class="card outlined-card" id="implementation_imports">
 <div class="card-header">
-<header class="card-title" id="implementation_imports">{{"implementation_imports" | underscoreBreaker}}</header>
+<header class="card-title" id="implementation_imports">implementation_<wbr>imports</header>
 </div>
 <div class="card-content">
 
@@ -18771,7 +18925,7 @@ _Import of a library in the 'lib/src' directory of another package._
 </div>
 <div class="card outlined-card" id="implicit_call_tearoffs">
 <div class="card-header">
-<header class="card-title" id="implicit_call_tearoffs">{{"implicit_call_tearoffs" | underscoreBreaker}}</header>
+<header class="card-title" id="implicit_call_tearoffs">implicit_<wbr>call_<wbr>tearoffs</header>
 </div>
 <div class="card-content">
 
@@ -18790,7 +18944,7 @@ _Implicit tear-off of the 'call' method._
 </div>
 <div class="card outlined-card" id="implicit_reopen">
 <div class="card-header">
-<header class="card-title" id="implicit_reopen">{{"implicit_reopen" | underscoreBreaker}}</header>
+<header class="card-title" id="implicit_reopen">implicit_<wbr>reopen</header>
 </div>
 <div class="card-content">
 
@@ -18808,7 +18962,7 @@ _The {0} '{1}' reopens '{2}' because it is not marked '{3}'._
 </div>
 <div class="card outlined-card" id="invalid_case_patterns">
 <div class="card-header">
-<header class="card-title" id="invalid_case_patterns">{{"invalid_case_patterns" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_case_patterns">invalid_<wbr>case_<wbr>patterns</header>
 </div>
 <div class="card-content">
 
@@ -18826,7 +18980,7 @@ _This expression is not valid in a 'case' clause in Dart 3.0._
 </div>
 <div class="card outlined-card" id="invalid_runtime_check_with_js_interop_types">
 <div class="card-header">
-<header class="card-title" id="invalid_runtime_check_with_js_interop_types">{{"invalid_runtime_check_with_js_interop_types" | underscoreBreaker}}</header>
+<header class="card-title" id="invalid_runtime_check_with_js_interop_types">invalid_<wbr>runtime_<wbr>check_<wbr>with_<wbr>js_<wbr>interop_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -18864,7 +19018,7 @@ interop value and an unrelated JS interop type that will always be true and won'
 </div>
 <div class="card outlined-card" id="invariant_booleans">
 <div class="card-header">
-<header class="card-title" id="invariant_booleans">{{"invariant_booleans" | underscoreBreaker}}</header>
+<header class="card-title" id="invariant_booleans">invariant_<wbr>booleans</header>
 </div>
 <div class="card-content">
 
@@ -18880,7 +19034,7 @@ interop value and an unrelated JS interop type that will always be true and won'
 </div>
 <div class="card outlined-card" id="iterable_contains_unrelated_type">
 <div class="card-header">
-<header class="card-title" id="iterable_contains_unrelated_type">{{"iterable_contains_unrelated_type" | underscoreBreaker}}</header>
+<header class="card-title" id="iterable_contains_unrelated_type">iterable_<wbr>contains_<wbr>unrelated_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -18896,7 +19050,7 @@ interop value and an unrelated JS interop type that will always be true and won'
 </div>
 <div class="card outlined-card" id="join_return_with_assignment">
 <div class="card-header">
-<header class="card-title" id="join_return_with_assignment">{{"join_return_with_assignment" | underscoreBreaker}}</header>
+<header class="card-title" id="join_return_with_assignment">join_<wbr>return_<wbr>with_<wbr>assignment</header>
 </div>
 <div class="card-content">
 
@@ -18914,7 +19068,7 @@ _Assignment could be inlined in 'return' statement._
 </div>
 <div class="card outlined-card" id="leading_newlines_in_multiline_strings">
 <div class="card-header">
-<header class="card-title" id="leading_newlines_in_multiline_strings">{{"leading_newlines_in_multiline_strings" | underscoreBreaker}}</header>
+<header class="card-title" id="leading_newlines_in_multiline_strings">leading_<wbr>newlines_<wbr>in_<wbr>multiline_<wbr>strings</header>
 </div>
 <div class="card-content">
 
@@ -18932,7 +19086,7 @@ _Missing a newline at the beginning of a multiline string._
 </div>
 <div class="card outlined-card" id="library_annotations">
 <div class="card-header">
-<header class="card-title" id="library_annotations">{{"library_annotations" | underscoreBreaker}}</header>
+<header class="card-title" id="library_annotations">library_<wbr>annotations</header>
 </div>
 <div class="card-content">
 
@@ -18951,7 +19105,7 @@ _This annotation should be attached to a library directive._
 </div>
 <div class="card outlined-card" id="library_names">
 <div class="card-header">
-<header class="card-title" id="library_names">{{"library_names" | underscoreBreaker}}</header>
+<header class="card-title" id="library_names">library_<wbr>names</header>
 </div>
 <div class="card-content">
 
@@ -18970,7 +19124,7 @@ _The library name '{0}' isn't a lower\_case\_with\_underscores identifier._
 </div>
 <div class="card outlined-card" id="library_prefixes">
 <div class="card-header">
-<header class="card-title" id="library_prefixes">{{"library_prefixes" | underscoreBreaker}}</header>
+<header class="card-title" id="library_prefixes">library_<wbr>prefixes</header>
 </div>
 <div class="card-content">
 
@@ -18989,7 +19143,7 @@ _The prefix '{0}' isn't a lower\_case\_with\_underscores identifier._
 </div>
 <div class="card outlined-card" id="library_private_types_in_public_api">
 <div class="card-header">
-<header class="card-title" id="library_private_types_in_public_api">{{"library_private_types_in_public_api" | underscoreBreaker}}</header>
+<header class="card-title" id="library_private_types_in_public_api">library_<wbr>private_<wbr>types_<wbr>in_<wbr>public_<wbr>api</header>
 </div>
 <div class="card-content">
 
@@ -19008,7 +19162,7 @@ _Invalid use of a private type in a public API._
 </div>
 <div class="card outlined-card" id="lines_longer_than_80_chars">
 <div class="card-header">
-<header class="card-title" id="lines_longer_than_80_chars">{{"lines_longer_than_80_chars" | underscoreBreaker}}</header>
+<header class="card-title" id="lines_longer_than_80_chars">lines_<wbr>longer_<wbr>than_<wbr>80_<wbr>chars</header>
 </div>
 <div class="card-content">
 
@@ -19026,7 +19180,7 @@ _The line length exceeds the 80-character limit._
 </div>
 <div class="card outlined-card" id="list_remove_unrelated_type">
 <div class="card-header">
-<header class="card-title" id="list_remove_unrelated_type">{{"list_remove_unrelated_type" | underscoreBreaker}}</header>
+<header class="card-title" id="list_remove_unrelated_type">list_<wbr>remove_<wbr>unrelated_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -19042,7 +19196,7 @@ _The line length exceeds the 80-character limit._
 </div>
 <div class="card outlined-card" id="literal_only_boolean_expressions">
 <div class="card-header">
-<header class="card-title" id="literal_only_boolean_expressions">{{"literal_only_boolean_expressions" | underscoreBreaker}}</header>
+<header class="card-title" id="literal_only_boolean_expressions">literal_<wbr>only_<wbr>boolean_<wbr>expressions</header>
 </div>
 <div class="card-content">
 
@@ -19061,7 +19215,7 @@ _The Boolean expression has a constant value._
 </div>
 <div class="card outlined-card" id="matching_super_parameters">
 <div class="card-header">
-<header class="card-title" id="matching_super_parameters">{{"matching_super_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="matching_super_parameters">matching_<wbr>super_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -19080,7 +19234,7 @@ corresponding parameter in the super constructor, '{1}'._
 </div>
 <div class="card outlined-card" id="missing_code_block_language_in_doc_comment">
 <div class="card-header">
-<header class="card-title" id="missing_code_block_language_in_doc_comment">{{"missing_code_block_language_in_doc_comment" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_code_block_language_in_doc_comment">missing_<wbr>code_<wbr>block_<wbr>language_<wbr>in_<wbr>doc_<wbr>comment</header>
 </div>
 <div class="card-content">
 
@@ -19098,7 +19252,7 @@ _The code block is missing a specified language._
 </div>
 <div class="card outlined-card" id="missing_whitespace_between_adjacent_strings">
 <div class="card-header">
-<header class="card-title" id="missing_whitespace_between_adjacent_strings">{{"missing_whitespace_between_adjacent_strings" | underscoreBreaker}}</header>
+<header class="card-title" id="missing_whitespace_between_adjacent_strings">missing_<wbr>whitespace_<wbr>between_<wbr>adjacent_<wbr>strings</header>
 </div>
 <div class="card-content">
 
@@ -19117,7 +19271,7 @@ _Missing whitespace between adjacent strings._
 </div>
 <div class="card outlined-card" id="no_adjacent_strings_in_list">
 <div class="card-header">
-<header class="card-title" id="no_adjacent_strings_in_list">{{"no_adjacent_strings_in_list" | underscoreBreaker}}</header>
+<header class="card-title" id="no_adjacent_strings_in_list">no_<wbr>adjacent_<wbr>strings_<wbr>in_<wbr>list</header>
 </div>
 <div class="card-content">
 
@@ -19136,7 +19290,7 @@ _Don't use adjacent strings in a list literal._
 </div>
 <div class="card outlined-card" id="no_default_cases">
 <div class="card-header">
-<header class="card-title" id="no_default_cases">{{"no_default_cases" | underscoreBreaker}}</header>
+<header class="card-title" id="no_default_cases">no_<wbr>default_<wbr>cases</header>
 </div>
 <div class="card-content">
 
@@ -19154,7 +19308,7 @@ _Invalid use of 'default' member in a switch._
 </div>
 <div class="card outlined-card" id="no_duplicate_case_values">
 <div class="card-header">
-<header class="card-title" id="no_duplicate_case_values">{{"no_duplicate_case_values" | underscoreBreaker}}</header>
+<header class="card-title" id="no_duplicate_case_values">no_<wbr>duplicate_<wbr>case_<wbr>values</header>
 </div>
 <div class="card-content">
 
@@ -19174,7 +19328,7 @@ clause ('{1}')._
 </div>
 <div class="card outlined-card" id="no_leading_underscores_for_library_prefixes">
 <div class="card-header">
-<header class="card-title" id="no_leading_underscores_for_library_prefixes">{{"no_leading_underscores_for_library_prefixes" | underscoreBreaker}}</header>
+<header class="card-title" id="no_leading_underscores_for_library_prefixes">no_<wbr>leading_<wbr>underscores_<wbr>for_<wbr>library_<wbr>prefixes</header>
 </div>
 <div class="card-content">
 
@@ -19193,7 +19347,7 @@ _The library prefix '{0}' starts with an underscore._
 </div>
 <div class="card outlined-card" id="no_leading_underscores_for_local_identifiers">
 <div class="card-header">
-<header class="card-title" id="no_leading_underscores_for_local_identifiers">{{"no_leading_underscores_for_local_identifiers" | underscoreBreaker}}</header>
+<header class="card-title" id="no_leading_underscores_for_local_identifiers">no_<wbr>leading_<wbr>underscores_<wbr>for_<wbr>local_<wbr>identifiers</header>
 </div>
 <div class="card-content">
 
@@ -19212,7 +19366,7 @@ _The local variable '{0}' starts with an underscore._
 </div>
 <div class="card outlined-card" id="no_literal_bool_comparisons">
 <div class="card-header">
-<header class="card-title" id="no_literal_bool_comparisons">{{"no_literal_bool_comparisons" | underscoreBreaker}}</header>
+<header class="card-title" id="no_literal_bool_comparisons">no_<wbr>literal_<wbr>bool_<wbr>comparisons</header>
 </div>
 <div class="card-content">
 
@@ -19230,7 +19384,7 @@ _Unnecessary comparison to a boolean literal._
 </div>
 <div class="card outlined-card" id="no_logic_in_create_state">
 <div class="card-header">
-<header class="card-title" id="no_logic_in_create_state">{{"no_logic_in_create_state" | underscoreBreaker}}</header>
+<header class="card-title" id="no_logic_in_create_state">no_<wbr>logic_<wbr>in_<wbr>create_<wbr>state</header>
 </div>
 <div class="card-content">
 
@@ -19249,7 +19403,7 @@ _Don't put any logic in 'createState'._
 </div>
 <div class="card outlined-card" id="no_runtimetype_tostring">
 <div class="card-header">
-<header class="card-title" id="no_runtimetype_tostring">{{"no_runtimetype_tostring" | underscoreBreaker}}</header>
+<header class="card-title" id="no_runtimetype_tostring">no_<wbr>runtimetype_<wbr>tostring</header>
 </div>
 <div class="card-content">
 
@@ -19267,7 +19421,7 @@ _Using 'toString' on a 'Type' is not safe in production code._
 </div>
 <div class="card outlined-card" id="no_self_assignments">
 <div class="card-header">
-<header class="card-title" id="no_self_assignments">{{"no_self_assignments" | underscoreBreaker}}</header>
+<header class="card-title" id="no_self_assignments">no_<wbr>self_<wbr>assignments</header>
 </div>
 <div class="card-content">
 
@@ -19285,7 +19439,7 @@ _The variable or property is being assigned to itself._
 </div>
 <div class="card outlined-card" id="no_wildcard_variable_uses">
 <div class="card-header">
-<header class="card-title" id="no_wildcard_variable_uses">{{"no_wildcard_variable_uses" | underscoreBreaker}}</header>
+<header class="card-title" id="no_wildcard_variable_uses">no_<wbr>wildcard_<wbr>variable_<wbr>uses</header>
 </div>
 <div class="card-content">
 
@@ -19304,7 +19458,7 @@ _The referenced identifier is a wildcard._
 </div>
 <div class="card outlined-card" id="non_constant_identifier_names">
 <div class="card-header">
-<header class="card-title" id="non_constant_identifier_names">{{"non_constant_identifier_names" | underscoreBreaker}}</header>
+<header class="card-title" id="non_constant_identifier_names">non_<wbr>constant_<wbr>identifier_<wbr>names</header>
 </div>
 <div class="card-content">
 
@@ -19323,7 +19477,7 @@ _The variable name '{0}' isn't a lowerCamelCase identifier._
 </div>
 <div class="card outlined-card" id="noop_primitive_operations">
 <div class="card-header">
-<header class="card-title" id="noop_primitive_operations">{{"noop_primitive_operations" | underscoreBreaker}}</header>
+<header class="card-title" id="noop_primitive_operations">noop_<wbr>primitive_<wbr>operations</header>
 </div>
 <div class="card-content">
 
@@ -19341,7 +19495,7 @@ _The expression has no effect and can be removed._
 </div>
 <div class="card outlined-card" id="null_check_on_nullable_type_parameter">
 <div class="card-header">
-<header class="card-title" id="null_check_on_nullable_type_parameter">{{"null_check_on_nullable_type_parameter" | underscoreBreaker}}</header>
+<header class="card-title" id="null_check_on_nullable_type_parameter">null_<wbr>check_<wbr>on_<wbr>nullable_<wbr>type_<wbr>parameter</header>
 </div>
 <div class="card-content">
 
@@ -19361,7 +19515,7 @@ potentially nullable type parameter._
 </div>
 <div class="card outlined-card" id="null_closures">
 <div class="card-header">
-<header class="card-title" id="null_closures">{{"null_closures" | underscoreBreaker}}</header>
+<header class="card-title" id="null_closures">null_<wbr>closures</header>
 </div>
 <div class="card-content">
 
@@ -19379,7 +19533,7 @@ _Closure can't be 'null' because it might be invoked._
 </div>
 <div class="card outlined-card" id="omit_local_variable_types">
 <div class="card-header">
-<header class="card-title" id="omit_local_variable_types">{{"omit_local_variable_types" | underscoreBreaker}}</header>
+<header class="card-title" id="omit_local_variable_types">omit_<wbr>local_<wbr>variable_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -19397,7 +19551,7 @@ _Unnecessary type annotation on a local variable._
 </div>
 <div class="card outlined-card" id="omit_obvious_local_variable_types">
 <div class="card-header">
-<header class="card-title" id="omit_obvious_local_variable_types">{{"omit_obvious_local_variable_types" | underscoreBreaker}}</header>
+<header class="card-title" id="omit_obvious_local_variable_types">omit_<wbr>obvious_<wbr>local_<wbr>variable_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -19415,7 +19569,7 @@ _Omit the type annotation on a local variable when the type is obvious._
 </div>
 <div class="card outlined-card" id="omit_obvious_property_types">
 <div class="card-header">
-<header class="card-title" id="omit_obvious_property_types">{{"omit_obvious_property_types" | underscoreBreaker}}</header>
+<header class="card-title" id="omit_obvious_property_types">omit_<wbr>obvious_<wbr>property_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -19433,7 +19587,7 @@ _The type annotation isn't needed because it is obvious._
 </div>
 <div class="card outlined-card" id="one_member_abstracts">
 <div class="card-header">
-<header class="card-title" id="one_member_abstracts">{{"one_member_abstracts" | underscoreBreaker}}</header>
+<header class="card-title" id="one_member_abstracts">one_<wbr>member_<wbr>abstracts</header>
 </div>
 <div class="card-content">
 
@@ -19451,7 +19605,7 @@ _Unnecessary use of an abstract class._
 </div>
 <div class="card outlined-card" id="only_throw_errors">
 <div class="card-header">
-<header class="card-title" id="only_throw_errors">{{"only_throw_errors" | underscoreBreaker}}</header>
+<header class="card-title" id="only_throw_errors">only_<wbr>throw_<wbr>errors</header>
 </div>
 <div class="card-content">
 
@@ -19471,7 +19625,7 @@ _Don't throw instances of classes that don't extend either 'Exception' or
 </div>
 <div class="card outlined-card" id="overridden_fields">
 <div class="card-header">
-<header class="card-title" id="overridden_fields">{{"overridden_fields" | underscoreBreaker}}</header>
+<header class="card-title" id="overridden_fields">overridden_<wbr>fields</header>
 </div>
 <div class="card-content">
 
@@ -19490,7 +19644,7 @@ _Field overrides a field inherited from '{0}'._
 </div>
 <div class="card outlined-card" id="package_api_docs">
 <div class="card-header">
-<header class="card-title" id="package_api_docs">{{"package_api_docs" | underscoreBreaker}}</header>
+<header class="card-title" id="package_api_docs">package_<wbr>api_<wbr>docs</header>
 </div>
 <div class="card-content">
 
@@ -19508,7 +19662,7 @@ _Missing documentation for public API._
 </div>
 <div class="card outlined-card" id="package_names">
 <div class="card-header">
-<header class="card-title" id="package_names">{{"package_names" | underscoreBreaker}}</header>
+<header class="card-title" id="package_names">package_<wbr>names</header>
 </div>
 <div class="card-content">
 
@@ -19527,7 +19681,7 @@ _The package name '{0}' isn't a lower\_case\_with\_underscores identifier._
 </div>
 <div class="card outlined-card" id="package_prefixed_library_names">
 <div class="card-header">
-<header class="card-title" id="package_prefixed_library_names">{{"package_prefixed_library_names" | underscoreBreaker}}</header>
+<header class="card-title" id="package_prefixed_library_names">package_<wbr>prefixed_<wbr>library_<wbr>names</header>
 </div>
 <div class="card-content">
 
@@ -19546,7 +19700,7 @@ _The library name is not a dot-separated path prefixed by the package name._
 </div>
 <div class="card outlined-card" id="parameter_assignments">
 <div class="card-header">
-<header class="card-title" id="parameter_assignments">{{"parameter_assignments" | underscoreBreaker}}</header>
+<header class="card-title" id="parameter_assignments">parameter_<wbr>assignments</header>
 </div>
 <div class="card-content">
 
@@ -19564,7 +19718,7 @@ _Invalid assignment to the parameter '{0}'._
 </div>
 <div class="card outlined-card" id="prefer_adjacent_string_concatenation">
 <div class="card-header">
-<header class="card-title" id="prefer_adjacent_string_concatenation">{{"prefer_adjacent_string_concatenation" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_adjacent_string_concatenation">prefer_<wbr>adjacent_<wbr>string_<wbr>concatenation</header>
 </div>
 <div class="card-content">
 
@@ -19583,7 +19737,7 @@ _String literals shouldn't be concatenated by the '+' operator._
 </div>
 <div class="card outlined-card" id="prefer_asserts_in_initializer_lists">
 <div class="card-header">
-<header class="card-title" id="prefer_asserts_in_initializer_lists">{{"prefer_asserts_in_initializer_lists" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_asserts_in_initializer_lists">prefer_<wbr>asserts_<wbr>in_<wbr>initializer_<wbr>lists</header>
 </div>
 <div class="card-content">
 
@@ -19602,7 +19756,7 @@ _Assert should be in the initializer list._
 </div>
 <div class="card outlined-card" id="prefer_asserts_with_message">
 <div class="card-header">
-<header class="card-title" id="prefer_asserts_with_message">{{"prefer_asserts_with_message" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_asserts_with_message">prefer_<wbr>asserts_<wbr>with_<wbr>message</header>
 </div>
 <div class="card-content">
 
@@ -19621,7 +19775,7 @@ _Missing a message in an assert._
 </div>
 <div class="card outlined-card" id="prefer_bool_in_asserts">
 <div class="card-header">
-<header class="card-title" id="prefer_bool_in_asserts">{{"prefer_bool_in_asserts" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_bool_in_asserts">prefer_<wbr>bool_<wbr>in_<wbr>asserts</header>
 </div>
 <div class="card-content">
 
@@ -19637,7 +19791,7 @@ _Missing a message in an assert._
 </div>
 <div class="card outlined-card" id="prefer_collection_literals">
 <div class="card-header">
-<header class="card-title" id="prefer_collection_literals">{{"prefer_collection_literals" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_collection_literals">prefer_<wbr>collection_<wbr>literals</header>
 </div>
 <div class="card-content">
 
@@ -19656,7 +19810,7 @@ _Unnecessary constructor invocation._
 </div>
 <div class="card outlined-card" id="prefer_conditional_assignment">
 <div class="card-header">
-<header class="card-title" id="prefer_conditional_assignment">{{"prefer_conditional_assignment" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_conditional_assignment">prefer_<wbr>conditional_<wbr>assignment</header>
 </div>
 <div class="card-content">
 
@@ -19675,7 +19829,7 @@ _The 'if' statement could be replaced by a null-aware assignment._
 </div>
 <div class="card outlined-card" id="prefer_const_constructors">
 <div class="card-header">
-<header class="card-title" id="prefer_const_constructors">{{"prefer_const_constructors" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_const_constructors">prefer_<wbr>const_<wbr>constructors</header>
 </div>
 <div class="card-content">
 
@@ -19694,7 +19848,7 @@ _Use 'const' with the constructor to improve performance._
 </div>
 <div class="card outlined-card" id="prefer_const_constructors_in_immutables">
 <div class="card-header">
-<header class="card-title" id="prefer_const_constructors_in_immutables">{{"prefer_const_constructors_in_immutables" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_const_constructors_in_immutables">prefer_<wbr>const_<wbr>constructors_<wbr>in_<wbr>immutables</header>
 </div>
 <div class="card-content">
 
@@ -19713,7 +19867,7 @@ _Constructors in '@immutable' classes should be declared as 'const'._
 </div>
 <div class="card outlined-card" id="prefer_const_declarations">
 <div class="card-header">
-<header class="card-title" id="prefer_const_declarations">{{"prefer_const_declarations" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_const_declarations">prefer_<wbr>const_<wbr>declarations</header>
 </div>
 <div class="card-content">
 
@@ -19732,7 +19886,7 @@ _Use 'const' for final variables initialized to a constant value._
 </div>
 <div class="card outlined-card" id="prefer_const_literals_to_create_immutables">
 <div class="card-header">
-<header class="card-title" id="prefer_const_literals_to_create_immutables">{{"prefer_const_literals_to_create_immutables" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_const_literals_to_create_immutables">prefer_<wbr>const_<wbr>literals_<wbr>to_<wbr>create_<wbr>immutables</header>
 </div>
 <div class="card-content">
 
@@ -19751,7 +19905,7 @@ _Use 'const' literals as arguments to constructors of '@immutable' classes._
 </div>
 <div class="card outlined-card" id="prefer_constructors_over_static_methods">
 <div class="card-header">
-<header class="card-title" id="prefer_constructors_over_static_methods">{{"prefer_constructors_over_static_methods" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_constructors_over_static_methods">prefer_<wbr>constructors_<wbr>over_<wbr>static_<wbr>methods</header>
 </div>
 <div class="card-content">
 
@@ -19770,7 +19924,7 @@ _Static method should be a constructor._
 </div>
 <div class="card outlined-card" id="prefer_contains">
 <div class="card-header">
-<header class="card-title" id="prefer_contains">{{"prefer_contains" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_contains">prefer_<wbr>contains</header>
 </div>
 <div class="card-content">
 
@@ -19793,7 +19947,7 @@ _Unnecessary use of 'indexOf' to test for containment._
 </div>
 <div class="card outlined-card" id="prefer_double_quotes">
 <div class="card-header">
-<header class="card-title" id="prefer_double_quotes">{{"prefer_double_quotes" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_double_quotes">prefer_<wbr>double_<wbr>quotes</header>
 </div>
 <div class="card-content">
 
@@ -19812,7 +19966,7 @@ _Unnecessary use of single quotes._
 </div>
 <div class="card outlined-card" id="prefer_equal_for_default_values">
 <div class="card-header">
-<header class="card-title" id="prefer_equal_for_default_values">{{"prefer_equal_for_default_values" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_equal_for_default_values">prefer_<wbr>equal_<wbr>for_<wbr>default_<wbr>values</header>
 </div>
 <div class="card-content">
 
@@ -19828,7 +19982,7 @@ _Unnecessary use of single quotes._
 </div>
 <div class="card outlined-card" id="prefer_expression_function_bodies">
 <div class="card-header">
-<header class="card-title" id="prefer_expression_function_bodies">{{"prefer_expression_function_bodies" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_expression_function_bodies">prefer_<wbr>expression_<wbr>function_<wbr>bodies</header>
 </div>
 <div class="card-content">
 
@@ -19847,7 +20001,7 @@ _Unnecessary use of a block function body._
 </div>
 <div class="card outlined-card" id="prefer_final_fields">
 <div class="card-header">
-<header class="card-title" id="prefer_final_fields">{{"prefer_final_fields" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_final_fields">prefer_<wbr>final_<wbr>fields</header>
 </div>
 <div class="card-content">
 
@@ -19866,7 +20020,7 @@ _The private field {0} could be 'final'._
 </div>
 <div class="card outlined-card" id="prefer_final_in_for_each">
 <div class="card-header">
-<header class="card-title" id="prefer_final_in_for_each">{{"prefer_final_in_for_each" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_final_in_for_each">prefer_<wbr>final_<wbr>in_<wbr>for_<wbr>each</header>
 </div>
 <div class="card-content">
 
@@ -19887,7 +20041,7 @@ _The variable '{0}' should be final._
 </div>
 <div class="card outlined-card" id="prefer_final_locals">
 <div class="card-header">
-<header class="card-title" id="prefer_final_locals">{{"prefer_final_locals" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_final_locals">prefer_<wbr>final_<wbr>locals</header>
 </div>
 <div class="card-content">
 
@@ -19906,7 +20060,7 @@ _Local variables should be final._
 </div>
 <div class="card outlined-card" id="prefer_final_parameters">
 <div class="card-header">
-<header class="card-title" id="prefer_final_parameters">{{"prefer_final_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_final_parameters">prefer_<wbr>final_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -19925,7 +20079,7 @@ _The parameter '{0}' should be final._
 </div>
 <div class="card outlined-card" id="prefer_for_elements_to_map_fromiterable">
 <div class="card-header">
-<header class="card-title" id="prefer_for_elements_to_map_fromiterable">{{"prefer_for_elements_to_map_fromiterable" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_for_elements_to_map_fromiterable">prefer_<wbr>for_<wbr>elements_<wbr>to_<wbr>map_<wbr>fromiterable</header>
 </div>
 <div class="card-content">
 
@@ -19944,7 +20098,7 @@ _Use 'for' elements when building maps from iterables._
 </div>
 <div class="card outlined-card" id="prefer_foreach">
 <div class="card-header">
-<header class="card-title" id="prefer_foreach">{{"prefer_foreach" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_foreach">prefer_<wbr>foreach</header>
 </div>
 <div class="card-content">
 
@@ -19964,7 +20118,7 @@ every element._
 </div>
 <div class="card outlined-card" id="prefer_function_declarations_over_variables">
 <div class="card-header">
-<header class="card-title" id="prefer_function_declarations_over_variables">{{"prefer_function_declarations_over_variables" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_function_declarations_over_variables">prefer_<wbr>function_<wbr>declarations_<wbr>over_<wbr>variables</header>
 </div>
 <div class="card-content">
 
@@ -19984,7 +20138,7 @@ to a name._
 </div>
 <div class="card outlined-card" id="prefer_generic_function_type_aliases">
 <div class="card-header">
-<header class="card-title" id="prefer_generic_function_type_aliases">{{"prefer_generic_function_type_aliases" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_generic_function_type_aliases">prefer_<wbr>generic_<wbr>function_<wbr>type_<wbr>aliases</header>
 </div>
 <div class="card-content">
 
@@ -20003,7 +20157,7 @@ _Use the generic function type syntax in 'typedef's._
 </div>
 <div class="card outlined-card" id="prefer_if_elements_to_conditional_expressions">
 <div class="card-header">
-<header class="card-title" id="prefer_if_elements_to_conditional_expressions">{{"prefer_if_elements_to_conditional_expressions" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_if_elements_to_conditional_expressions">prefer_<wbr>if_<wbr>elements_<wbr>to_<wbr>conditional_<wbr>expressions</header>
 </div>
 <div class="card-content">
 
@@ -20021,7 +20175,7 @@ _Use an 'if' element to conditionally add elements._
 </div>
 <div class="card outlined-card" id="prefer_if_null_operators">
 <div class="card-header">
-<header class="card-title" id="prefer_if_null_operators">{{"prefer_if_null_operators" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_if_null_operators">prefer_<wbr>if_<wbr>null_<wbr>operators</header>
 </div>
 <div class="card-content">
 
@@ -20040,7 +20194,7 @@ _Use the '??' operator rather than '?:' when testing for 'null'._
 </div>
 <div class="card outlined-card" id="prefer_initializing_formals">
 <div class="card-header">
-<header class="card-title" id="prefer_initializing_formals">{{"prefer_initializing_formals" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_initializing_formals">prefer_<wbr>initializing_<wbr>formals</header>
 </div>
 <div class="card-content">
 
@@ -20059,7 +20213,7 @@ _Use an initializing formal to assign a parameter to a field._
 </div>
 <div class="card outlined-card" id="prefer_inlined_adds">
 <div class="card-header">
-<header class="card-title" id="prefer_inlined_adds">{{"prefer_inlined_adds" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_inlined_adds">prefer_<wbr>inlined_<wbr>adds</header>
 </div>
 <div class="card-content">
 
@@ -20080,7 +20234,7 @@ _The addition of multiple list items could be inlined._
 </div>
 <div class="card outlined-card" id="prefer_int_literals">
 <div class="card-header">
-<header class="card-title" id="prefer_int_literals">{{"prefer_int_literals" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_int_literals">prefer_<wbr>int_<wbr>literals</header>
 </div>
 <div class="card-content">
 
@@ -20098,7 +20252,7 @@ _Unnecessary use of a 'double' literal._
 </div>
 <div class="card outlined-card" id="prefer_interpolation_to_compose_strings">
 <div class="card-header">
-<header class="card-title" id="prefer_interpolation_to_compose_strings">{{"prefer_interpolation_to_compose_strings" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_interpolation_to_compose_strings">prefer_<wbr>interpolation_<wbr>to_<wbr>compose_<wbr>strings</header>
 </div>
 <div class="card-content">
 
@@ -20117,7 +20271,7 @@ _Use interpolation to compose strings and values._
 </div>
 <div class="card outlined-card" id="prefer_is_empty">
 <div class="card-header">
-<header class="card-title" id="prefer_is_empty">{{"prefer_is_empty" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_is_empty">prefer_<wbr>is_<wbr>empty</header>
 </div>
 <div class="card-content">
 
@@ -20144,7 +20298,7 @@ _Use 'isNotEmpty' instead of 'length' to test whether the collection is empty._
 </div>
 <div class="card outlined-card" id="prefer_is_not_empty">
 <div class="card-header">
-<header class="card-title" id="prefer_is_not_empty">{{"prefer_is_not_empty" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_is_not_empty">prefer_<wbr>is_<wbr>not_<wbr>empty</header>
 </div>
 <div class="card-content">
 
@@ -20163,7 +20317,7 @@ _Use 'isNotEmpty' rather than negating the result of 'isEmpty'._
 </div>
 <div class="card outlined-card" id="prefer_is_not_operator">
 <div class="card-header">
-<header class="card-title" id="prefer_is_not_operator">{{"prefer_is_not_operator" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_is_not_operator">prefer_<wbr>is_<wbr>not_<wbr>operator</header>
 </div>
 <div class="card-content">
 
@@ -20182,7 +20336,7 @@ _Use the 'is!' operator rather than negating the value of the 'is' operator._
 </div>
 <div class="card outlined-card" id="prefer_iterable_wheretype">
 <div class="card-header">
-<header class="card-title" id="prefer_iterable_wheretype">{{"prefer_iterable_wheretype" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_iterable_wheretype">prefer_<wbr>iterable_<wbr>wheretype</header>
 </div>
 <div class="card-content">
 
@@ -20201,7 +20355,7 @@ _Use 'whereType' to select elements of a given type._
 </div>
 <div class="card outlined-card" id="prefer_mixin">
 <div class="card-header">
-<header class="card-title" id="prefer_mixin">{{"prefer_mixin" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_mixin">prefer_<wbr>mixin</header>
 </div>
 <div class="card-content">
 
@@ -20219,7 +20373,7 @@ _Only mixins should be mixed in._
 </div>
 <div class="card outlined-card" id="prefer_null_aware_method_calls">
 <div class="card-header">
-<header class="card-title" id="prefer_null_aware_method_calls">{{"prefer_null_aware_method_calls" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_null_aware_method_calls">prefer_<wbr>null_<wbr>aware_<wbr>method_<wbr>calls</header>
 </div>
 <div class="card-content">
 
@@ -20238,7 +20392,7 @@ for 'null'._
 </div>
 <div class="card outlined-card" id="prefer_null_aware_operators">
 <div class="card-header">
-<header class="card-title" id="prefer_null_aware_operators">{{"prefer_null_aware_operators" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_null_aware_operators">prefer_<wbr>null_<wbr>aware_<wbr>operators</header>
 </div>
 <div class="card-content">
 
@@ -20257,7 +20411,7 @@ _Use the null-aware operator '?.' rather than an explicit 'null' comparison._
 </div>
 <div class="card outlined-card" id="prefer_relative_imports">
 <div class="card-header">
-<header class="card-title" id="prefer_relative_imports">{{"prefer_relative_imports" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_relative_imports">prefer_<wbr>relative_<wbr>imports</header>
 </div>
 <div class="card-content">
 
@@ -20276,7 +20430,7 @@ _Use relative imports for files in the 'lib' directory._
 </div>
 <div class="card outlined-card" id="prefer_single_quotes">
 <div class="card-header">
-<header class="card-title" id="prefer_single_quotes">{{"prefer_single_quotes" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_single_quotes">prefer_<wbr>single_<wbr>quotes</header>
 </div>
 <div class="card-content">
 
@@ -20295,7 +20449,7 @@ _Unnecessary use of double quotes._
 </div>
 <div class="card outlined-card" id="prefer_spread_collections">
 <div class="card-header">
-<header class="card-title" id="prefer_spread_collections">{{"prefer_spread_collections" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_spread_collections">prefer_<wbr>spread_<wbr>collections</header>
 </div>
 <div class="card-content">
 
@@ -20313,7 +20467,7 @@ _The addition of multiple elements could be inlined._
 </div>
 <div class="card outlined-card" id="prefer_typing_uninitialized_variables">
 <div class="card-header">
-<header class="card-title" id="prefer_typing_uninitialized_variables">{{"prefer_typing_uninitialized_variables" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_typing_uninitialized_variables">prefer_<wbr>typing_<wbr>uninitialized_<wbr>variables</header>
 </div>
 <div class="card-content">
 
@@ -20334,7 +20488,7 @@ _An uninitialized variable should have an explicit type annotation._
 </div>
 <div class="card outlined-card" id="prefer_void_to_null">
 <div class="card-header">
-<header class="card-title" id="prefer_void_to_null">{{"prefer_void_to_null" | underscoreBreaker}}</header>
+<header class="card-title" id="prefer_void_to_null">prefer_<wbr>void_<wbr>to_<wbr>null</header>
 </div>
 <div class="card-content">
 
@@ -20353,7 +20507,7 @@ _Unnecessary use of the type 'Null'._
 </div>
 <div class="card outlined-card" id="provide_deprecation_message">
 <div class="card-header">
-<header class="card-title" id="provide_deprecation_message">{{"provide_deprecation_message" | underscoreBreaker}}</header>
+<header class="card-title" id="provide_deprecation_message">provide_<wbr>deprecation_<wbr>message</header>
 </div>
 <div class="card-content">
 
@@ -20372,7 +20526,7 @@ _Missing a deprecation message._
 </div>
 <div class="card outlined-card" id="public_member_api_docs">
 <div class="card-header">
-<header class="card-title" id="public_member_api_docs">{{"public_member_api_docs" | underscoreBreaker}}</header>
+<header class="card-title" id="public_member_api_docs">public_<wbr>member_<wbr>api_<wbr>docs</header>
 </div>
 <div class="card-content">
 
@@ -20391,7 +20545,7 @@ _Missing documentation for a public member._
 </div>
 <div class="card outlined-card" id="recursive_getters">
 <div class="card-header">
-<header class="card-title" id="recursive_getters">{{"recursive_getters" | underscoreBreaker}}</header>
+<header class="card-title" id="recursive_getters">recursive_<wbr>getters</header>
 </div>
 <div class="card-content">
 
@@ -20410,7 +20564,7 @@ _The getter '{0}' recursively returns itself._
 </div>
 <div class="card outlined-card" id="require_trailing_commas">
 <div class="card-header">
-<header class="card-title" id="require_trailing_commas">{{"require_trailing_commas" | underscoreBreaker}}</header>
+<header class="card-title" id="require_trailing_commas">require_<wbr>trailing_<wbr>commas</header>
 </div>
 <div class="card-content">
 
@@ -20428,7 +20582,7 @@ _Missing a required trailing comma._
 </div>
 <div class="card outlined-card" id="secure_pubspec_urls">
 <div class="card-header">
-<header class="card-title" id="secure_pubspec_urls">{{"secure_pubspec_urls" | underscoreBreaker}}</header>
+<header class="card-title" id="secure_pubspec_urls">secure_<wbr>pubspec_<wbr>urls</header>
 </div>
 <div class="card-content">
 
@@ -20447,7 +20601,7 @@ _The '{0}' protocol shouldn't be used because it isn't secure._
 </div>
 <div class="card outlined-card" id="sized_box_for_whitespace">
 <div class="card-header">
-<header class="card-title" id="sized_box_for_whitespace">{{"sized_box_for_whitespace" | underscoreBreaker}}</header>
+<header class="card-title" id="sized_box_for_whitespace">sized_<wbr>box_<wbr>for_<wbr>whitespace</header>
 </div>
 <div class="card-content">
 
@@ -20466,7 +20620,7 @@ _Use a 'SizedBox' to add whitespace to a layout._
 </div>
 <div class="card outlined-card" id="sized_box_shrink_expand">
 <div class="card-header">
-<header class="card-title" id="sized_box_shrink_expand">{{"sized_box_shrink_expand" | underscoreBreaker}}</header>
+<header class="card-title" id="sized_box_shrink_expand">sized_<wbr>box_<wbr>shrink_<wbr>expand</header>
 </div>
 <div class="card-content">
 
@@ -20485,7 +20639,7 @@ _Use 'SizedBox.{0}' to avoid needing to specify the 'height' and 'width'._
 </div>
 <div class="card outlined-card" id="slash_for_doc_comments">
 <div class="card-header">
-<header class="card-title" id="slash_for_doc_comments">{{"slash_for_doc_comments" | underscoreBreaker}}</header>
+<header class="card-title" id="slash_for_doc_comments">slash_<wbr>for_<wbr>doc_<wbr>comments</header>
 </div>
 <div class="card-content">
 
@@ -20504,7 +20658,7 @@ _Use the end-of-line form ('///') for doc comments._
 </div>
 <div class="card outlined-card" id="sort_child_properties_last">
 <div class="card-header">
-<header class="card-title" id="sort_child_properties_last">{{"sort_child_properties_last" | underscoreBreaker}}</header>
+<header class="card-title" id="sort_child_properties_last">sort_<wbr>child_<wbr>properties_<wbr>last</header>
 </div>
 <div class="card-content">
 
@@ -20523,7 +20677,7 @@ _The '{0}' argument should be last in widget constructor invocations._
 </div>
 <div class="card outlined-card" id="sort_constructors_first">
 <div class="card-header">
-<header class="card-title" id="sort_constructors_first">{{"sort_constructors_first" | underscoreBreaker}}</header>
+<header class="card-title" id="sort_constructors_first">sort_<wbr>constructors_<wbr>first</header>
 </div>
 <div class="card-content">
 
@@ -20542,7 +20696,7 @@ _Constructor declarations should be before non-constructor declarations._
 </div>
 <div class="card outlined-card" id="sort_pub_dependencies">
 <div class="card-header">
-<header class="card-title" id="sort_pub_dependencies">{{"sort_pub_dependencies" | underscoreBreaker}}</header>
+<header class="card-title" id="sort_pub_dependencies">sort_<wbr>pub_<wbr>dependencies</header>
 </div>
 <div class="card-content">
 
@@ -20561,7 +20715,7 @@ _Dependencies not sorted alphabetically._
 </div>
 <div class="card outlined-card" id="sort_unnamed_constructors_first">
 <div class="card-header">
-<header class="card-title" id="sort_unnamed_constructors_first">{{"sort_unnamed_constructors_first" | underscoreBreaker}}</header>
+<header class="card-title" id="sort_unnamed_constructors_first">sort_<wbr>unnamed_<wbr>constructors_<wbr>first</header>
 </div>
 <div class="card-content">
 
@@ -20580,7 +20734,7 @@ _Invalid location for the unnamed constructor._
 </div>
 <div class="card outlined-card" id="specify_nonobvious_local_variable_types">
 <div class="card-header">
-<header class="card-title" id="specify_nonobvious_local_variable_types">{{"specify_nonobvious_local_variable_types" | underscoreBreaker}}</header>
+<header class="card-title" id="specify_nonobvious_local_variable_types">specify_<wbr>nonobvious_<wbr>local_<wbr>variable_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -20598,7 +20752,7 @@ _Specify the type of a local variable when the type is non-obvious._
 </div>
 <div class="card outlined-card" id="specify_nonobvious_property_types">
 <div class="card-header">
-<header class="card-title" id="specify_nonobvious_property_types">{{"specify_nonobvious_property_types" | underscoreBreaker}}</header>
+<header class="card-title" id="specify_nonobvious_property_types">specify_<wbr>nonobvious_<wbr>property_<wbr>types</header>
 </div>
 <div class="card-content">
 
@@ -20616,7 +20770,7 @@ _A type annotation is needed because it isn't obvious._
 </div>
 <div class="card outlined-card" id="strict_top_level_inference">
 <div class="card-header">
-<header class="card-title" id="strict_top_level_inference">{{"strict_top_level_inference" | underscoreBreaker}}</header>
+<header class="card-title" id="strict_top_level_inference">strict_<wbr>top_<wbr>level_<wbr>inference</header>
 </div>
 <div class="card-content">
 
@@ -20634,7 +20788,7 @@ _Missing type annotation._
 </div>
 <div class="card outlined-card" id="super_goes_last">
 <div class="card-header">
-<header class="card-title" id="super_goes_last">{{"super_goes_last" | underscoreBreaker}}</header>
+<header class="card-title" id="super_goes_last">super_<wbr>goes_<wbr>last</header>
 </div>
 <div class="card-content">
 
@@ -20650,7 +20804,7 @@ _Missing type annotation._
 </div>
 <div class="card outlined-card" id="switch_on_type">
 <div class="card-header">
-<header class="card-title" id="switch_on_type">{{"switch_on_type" | underscoreBreaker}}</header>
+<header class="card-title" id="switch_on_type">switch_<wbr>on_<wbr>type</header>
 </div>
 <div class="card-content">
 
@@ -20669,7 +20823,7 @@ _Avoid switch statements on a 'Type'._
 </div>
 <div class="card outlined-card" id="test_types_in_equals">
 <div class="card-header">
-<header class="card-title" id="test_types_in_equals">{{"test_types_in_equals" | underscoreBreaker}}</header>
+<header class="card-title" id="test_types_in_equals">test_<wbr>types_<wbr>in_<wbr>equals</header>
 </div>
 <div class="card-content">
 
@@ -20688,7 +20842,7 @@ _Missing type test for '{0}' in '=='._
 </div>
 <div class="card outlined-card" id="throw_in_finally">
 <div class="card-header">
-<header class="card-title" id="throw_in_finally">{{"throw_in_finally" | underscoreBreaker}}</header>
+<header class="card-title" id="throw_in_finally">throw_<wbr>in_<wbr>finally</header>
 </div>
 <div class="card-content">
 
@@ -20707,7 +20861,7 @@ _Use of '{0}' in 'finally' block._
 </div>
 <div class="card outlined-card" id="tighten_type_of_initializing_formals">
 <div class="card-header">
-<header class="card-title" id="tighten_type_of_initializing_formals">{{"tighten_type_of_initializing_formals" | underscoreBreaker}}</header>
+<header class="card-title" id="tighten_type_of_initializing_formals">tighten_<wbr>type_<wbr>of_<wbr>initializing_<wbr>formals</header>
 </div>
 <div class="card-content">
 
@@ -20726,7 +20880,7 @@ _Use a type annotation rather than 'assert' to enforce non-nullability._
 </div>
 <div class="card outlined-card" id="type_annotate_public_apis">
 <div class="card-header">
-<header class="card-title" id="type_annotate_public_apis">{{"type_annotate_public_apis" | underscoreBreaker}}</header>
+<header class="card-title" id="type_annotate_public_apis">type_<wbr>annotate_<wbr>public_<wbr>apis</header>
 </div>
 <div class="card-content">
 
@@ -20745,7 +20899,7 @@ _Missing type annotation on a public API._
 </div>
 <div class="card outlined-card" id="type_init_formals">
 <div class="card-header">
-<header class="card-title" id="type_init_formals">{{"type_init_formals" | underscoreBreaker}}</header>
+<header class="card-title" id="type_init_formals">type_<wbr>init_<wbr>formals</header>
 </div>
 <div class="card-content">
 
@@ -20764,7 +20918,7 @@ _Don't needlessly type annotate initializing formals._
 </div>
 <div class="card outlined-card" id="type_literal_in_constant_pattern">
 <div class="card-header">
-<header class="card-title" id="type_literal_in_constant_pattern">{{"type_literal_in_constant_pattern" | underscoreBreaker}}</header>
+<header class="card-title" id="type_literal_in_constant_pattern">type_<wbr>literal_<wbr>in_<wbr>constant_<wbr>pattern</header>
 </div>
 <div class="card-content">
 
@@ -20783,7 +20937,7 @@ _Use 'TypeName \_' instead of a type literal._
 </div>
 <div class="card outlined-card" id="unawaited_futures">
 <div class="card-header">
-<header class="card-title" id="unawaited_futures">{{"unawaited_futures" | underscoreBreaker}}</header>
+<header class="card-title" id="unawaited_futures">unawaited_<wbr>futures</header>
 </div>
 <div class="card-content">
 
@@ -20802,7 +20956,7 @@ _Missing an 'await' for the 'Future' computed by this expression._
 </div>
 <div class="card outlined-card" id="unintended_html_in_doc_comment">
 <div class="card-header">
-<header class="card-title" id="unintended_html_in_doc_comment">{{"unintended_html_in_doc_comment" | underscoreBreaker}}</header>
+<header class="card-title" id="unintended_html_in_doc_comment">unintended_<wbr>html_<wbr>in_<wbr>doc_<wbr>comment</header>
 </div>
 <div class="card-content">
 
@@ -20821,7 +20975,7 @@ _Angle brackets will be interpreted as HTML._
 </div>
 <div class="card outlined-card" id="unnecessary_async">
 <div class="card-header">
-<header class="card-title" id="unnecessary_async">{{"unnecessary_async" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_async">unnecessary_<wbr>async</header>
 </div>
 <div class="card-content">
 
@@ -20839,7 +20993,7 @@ _Don't make a function 'async' if it doesn't use 'await'._
 </div>
 <div class="card outlined-card" id="unnecessary_await_in_return">
 <div class="card-header">
-<header class="card-title" id="unnecessary_await_in_return">{{"unnecessary_await_in_return" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_await_in_return">unnecessary_<wbr>await_<wbr>in_<wbr>return</header>
 </div>
 <div class="card-content">
 
@@ -20857,7 +21011,7 @@ _Unnecessary 'await'._
 </div>
 <div class="card outlined-card" id="unnecessary_brace_in_string_interps">
 <div class="card-header">
-<header class="card-title" id="unnecessary_brace_in_string_interps">{{"unnecessary_brace_in_string_interps" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_brace_in_string_interps">unnecessary_<wbr>brace_<wbr>in_<wbr>string_<wbr>interps</header>
 </div>
 <div class="card-content">
 
@@ -20876,7 +21030,7 @@ _Unnecessary braces in a string interpolation._
 </div>
 <div class="card outlined-card" id="unnecessary_breaks">
 <div class="card-header">
-<header class="card-title" id="unnecessary_breaks">{{"unnecessary_breaks" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_breaks">unnecessary_<wbr>breaks</header>
 </div>
 <div class="card-content">
 
@@ -20894,7 +21048,7 @@ _Unnecessary 'break' statement._
 </div>
 <div class="card outlined-card" id="unnecessary_const">
 <div class="card-header">
-<header class="card-title" id="unnecessary_const">{{"unnecessary_const" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_const">unnecessary_<wbr>const</header>
 </div>
 <div class="card-content">
 
@@ -20913,7 +21067,7 @@ _Unnecessary 'const' keyword._
 </div>
 <div class="card outlined-card" id="unnecessary_constructor_name">
 <div class="card-header">
-<header class="card-title" id="unnecessary_constructor_name">{{"unnecessary_constructor_name" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_constructor_name">unnecessary_<wbr>constructor_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -20932,7 +21086,7 @@ _Unnecessary '.new' constructor name._
 </div>
 <div class="card outlined-card" id="unnecessary_final">
 <div class="card-header">
-<header class="card-title" id="unnecessary_final">{{"unnecessary_final" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_final">unnecessary_<wbr>final</header>
 </div>
 <div class="card-content">
 
@@ -20951,7 +21105,7 @@ _Local variables should not be marked as 'final'._
 </div>
 <div class="card outlined-card" id="unnecessary_getters_setters">
 <div class="card-header">
-<header class="card-title" id="unnecessary_getters_setters">{{"unnecessary_getters_setters" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_getters_setters">unnecessary_<wbr>getters_<wbr>setters</header>
 </div>
 <div class="card-content">
 
@@ -20970,7 +21124,7 @@ _Unnecessary use of getter and setter to wrap a field._
 </div>
 <div class="card outlined-card" id="unnecessary_ignore">
 <div class="card-header">
-<header class="card-title" id="unnecessary_ignore">{{"unnecessary_ignore" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_ignore">unnecessary_<wbr>ignore</header>
 </div>
 <div class="card-content">
 
@@ -20993,7 +21147,7 @@ ignored._
 </div>
 <div class="card outlined-card" id="unnecessary_lambdas">
 <div class="card-header">
-<header class="card-title" id="unnecessary_lambdas">{{"unnecessary_lambdas" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_lambdas">unnecessary_<wbr>lambdas</header>
 </div>
 <div class="card-content">
 
@@ -21012,7 +21166,7 @@ _Closure should be a tearoff._
 </div>
 <div class="card outlined-card" id="unnecessary_late">
 <div class="card-header">
-<header class="card-title" id="unnecessary_late">{{"unnecessary_late" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_late">unnecessary_<wbr>late</header>
 </div>
 <div class="card-content">
 
@@ -21031,7 +21185,7 @@ _Unnecessary 'late' modifier._
 </div>
 <div class="card outlined-card" id="unnecessary_library_directive">
 <div class="card-header">
-<header class="card-title" id="unnecessary_library_directive">{{"unnecessary_library_directive" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_library_directive">unnecessary_<wbr>library_<wbr>directive</header>
 </div>
 <div class="card-content">
 
@@ -21049,7 +21203,7 @@ _Library directives without comments or annotations should be avoided._
 </div>
 <div class="card outlined-card" id="unnecessary_library_name">
 <div class="card-header">
-<header class="card-title" id="unnecessary_library_name">{{"unnecessary_library_name" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_library_name">unnecessary_<wbr>library_<wbr>name</header>
 </div>
 <div class="card-content">
 
@@ -21068,7 +21222,7 @@ _Library names are not necessary._
 </div>
 <div class="card outlined-card" id="unnecessary_new">
 <div class="card-header">
-<header class="card-title" id="unnecessary_new">{{"unnecessary_new" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_new">unnecessary_<wbr>new</header>
 </div>
 <div class="card-content">
 
@@ -21087,7 +21241,7 @@ _Unnecessary 'new' keyword._
 </div>
 <div class="card outlined-card" id="unnecessary_null_aware_assignments">
 <div class="card-header">
-<header class="card-title" id="unnecessary_null_aware_assignments">{{"unnecessary_null_aware_assignments" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_null_aware_assignments">unnecessary_<wbr>null_<wbr>aware_<wbr>assignments</header>
 </div>
 <div class="card-content">
 
@@ -21106,7 +21260,7 @@ _Unnecessary assignment of 'null'._
 </div>
 <div class="card outlined-card" id="unnecessary_null_aware_operator_on_extension_on_nullable">
 <div class="card-header">
-<header class="card-title" id="unnecessary_null_aware_operator_on_extension_on_nullable">{{"unnecessary_null_aware_operator_on_extension_on_nullable" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_null_aware_operator_on_extension_on_nullable">unnecessary_<wbr>null_<wbr>aware_<wbr>operator_<wbr>on_<wbr>extension_<wbr>on_<wbr>nullable</header>
 </div>
 <div class="card-content">
 
@@ -21126,7 +21280,7 @@ nullable type._
 </div>
 <div class="card outlined-card" id="unnecessary_null_checks">
 <div class="card-header">
-<header class="card-title" id="unnecessary_null_checks">{{"unnecessary_null_checks" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_null_checks">unnecessary_<wbr>null_<wbr>checks</header>
 </div>
 <div class="card-content">
 
@@ -21145,7 +21299,7 @@ _Unnecessary use of a null check ('!')._
 </div>
 <div class="card outlined-card" id="unnecessary_null_in_if_null_operators">
 <div class="card-header">
-<header class="card-title" id="unnecessary_null_in_if_null_operators">{{"unnecessary_null_in_if_null_operators" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_null_in_if_null_operators">unnecessary_<wbr>null_<wbr>in_<wbr>if_<wbr>null_<wbr>operators</header>
 </div>
 <div class="card-content">
 
@@ -21164,7 +21318,7 @@ _Unnecessary use of '??' with 'null'._
 </div>
 <div class="card outlined-card" id="unnecessary_nullable_for_final_variable_declarations">
 <div class="card-header">
-<header class="card-title" id="unnecessary_nullable_for_final_variable_declarations">{{"unnecessary_nullable_for_final_variable_declarations" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_nullable_for_final_variable_declarations">unnecessary_<wbr>nullable_<wbr>for_<wbr>final_<wbr>variable_<wbr>declarations</header>
 </div>
 <div class="card-content">
 
@@ -21183,7 +21337,7 @@ _Type could be non-nullable._
 </div>
 <div class="card outlined-card" id="unnecessary_overrides">
 <div class="card-header">
-<header class="card-title" id="unnecessary_overrides">{{"unnecessary_overrides" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_overrides">unnecessary_<wbr>overrides</header>
 </div>
 <div class="card-content">
 
@@ -21202,7 +21356,7 @@ _Unnecessary override._
 </div>
 <div class="card outlined-card" id="unnecessary_parenthesis">
 <div class="card-header">
-<header class="card-title" id="unnecessary_parenthesis">{{"unnecessary_parenthesis" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_parenthesis">unnecessary_<wbr>parenthesis</header>
 </div>
 <div class="card-content">
 
@@ -21221,7 +21375,7 @@ _Unnecessary use of parentheses._
 </div>
 <div class="card outlined-card" id="unnecessary_raw_strings">
 <div class="card-header">
-<header class="card-title" id="unnecessary_raw_strings">{{"unnecessary_raw_strings" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_raw_strings">unnecessary_<wbr>raw_<wbr>strings</header>
 </div>
 <div class="card-content">
 
@@ -21240,7 +21394,7 @@ _Unnecessary use of a raw string._
 </div>
 <div class="card outlined-card" id="unnecessary_statements">
 <div class="card-header">
-<header class="card-title" id="unnecessary_statements">{{"unnecessary_statements" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_statements">unnecessary_<wbr>statements</header>
 </div>
 <div class="card-content">
 
@@ -21259,7 +21413,7 @@ _Unnecessary statement._
 </div>
 <div class="card outlined-card" id="unnecessary_string_escapes">
 <div class="card-header">
-<header class="card-title" id="unnecessary_string_escapes">{{"unnecessary_string_escapes" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_string_escapes">unnecessary_<wbr>string_<wbr>escapes</header>
 </div>
 <div class="card-content">
 
@@ -21278,7 +21432,7 @@ _Unnecessary escape in string literal._
 </div>
 <div class="card outlined-card" id="unnecessary_string_interpolations">
 <div class="card-header">
-<header class="card-title" id="unnecessary_string_interpolations">{{"unnecessary_string_interpolations" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_string_interpolations">unnecessary_<wbr>string_<wbr>interpolations</header>
 </div>
 <div class="card-content">
 
@@ -21297,7 +21451,7 @@ _Unnecessary use of string interpolation._
 </div>
 <div class="card outlined-card" id="unnecessary_this">
 <div class="card-header">
-<header class="card-title" id="unnecessary_this">{{"unnecessary_this" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_this">unnecessary_<wbr>this</header>
 </div>
 <div class="card-content">
 
@@ -21316,7 +21470,7 @@ _Unnecessary 'this.' qualifier._
 </div>
 <div class="card outlined-card" id="unnecessary_to_list_in_spreads">
 <div class="card-header">
-<header class="card-title" id="unnecessary_to_list_in_spreads">{{"unnecessary_to_list_in_spreads" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_to_list_in_spreads">unnecessary_<wbr>to_<wbr>list_<wbr>in_<wbr>spreads</header>
 </div>
 <div class="card-content">
 
@@ -21335,7 +21489,7 @@ _Unnecessary use of 'toList' in a spread._
 </div>
 <div class="card outlined-card" id="unnecessary_unawaited">
 <div class="card-header">
-<header class="card-title" id="unnecessary_unawaited">{{"unnecessary_unawaited" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_unawaited">unnecessary_<wbr>unawaited</header>
 </div>
 <div class="card-content">
 
@@ -21354,7 +21508,7 @@ _Unnecessary use of 'unawaited'._
 </div>
 <div class="card outlined-card" id="unnecessary_underscores">
 <div class="card-header">
-<header class="card-title" id="unnecessary_underscores">{{"unnecessary_underscores" | underscoreBreaker}}</header>
+<header class="card-title" id="unnecessary_underscores">unnecessary_<wbr>underscores</header>
 </div>
 <div class="card-content">
 
@@ -21373,7 +21527,7 @@ _Unnecessary use of multiple underscores._
 </div>
 <div class="card outlined-card" id="unreachable_from_main">
 <div class="card-header">
-<header class="card-title" id="unreachable_from_main">{{"unreachable_from_main" | underscoreBreaker}}</header>
+<header class="card-title" id="unreachable_from_main">unreachable_<wbr>from_<wbr>main</header>
 </div>
 <div class="card-content">
 
@@ -21391,7 +21545,7 @@ _Unreachable member '{0}' in an executable library._
 </div>
 <div class="card outlined-card" id="unrelated_type_equality_checks">
 <div class="card-header">
-<header class="card-title" id="unrelated_type_equality_checks">{{"unrelated_type_equality_checks" | underscoreBreaker}}</header>
+<header class="card-title" id="unrelated_type_equality_checks">unrelated_<wbr>type_<wbr>equality_<wbr>checks</header>
 </div>
 <div class="card-content">
 
@@ -21414,7 +21568,7 @@ left operand ('{1}')._
 </div>
 <div class="card outlined-card" id="unsafe_html">
 <div class="card-header">
-<header class="card-title" id="unsafe_html">{{"unsafe_html" | underscoreBreaker}}</header>
+<header class="card-title" id="unsafe_html">unsafe_<wbr>html</header>
 </div>
 <div class="card-content">
 
@@ -21436,7 +21590,7 @@ _Invoking the method '{0}' is unsafe._
 </div>
 <div class="card outlined-card" id="unsafe_variance">
 <div class="card-header">
-<header class="card-title" id="unsafe_variance">{{"unsafe_variance" | underscoreBreaker}}</header>
+<header class="card-title" id="unsafe_variance">unsafe_<wbr>variance</header>
 </div>
 <div class="card-content">
 
@@ -21455,7 +21609,7 @@ _This type is unsafe: a type parameter occurs in a non-covariant position._
 </div>
 <div class="card outlined-card" id="use_build_context_synchronously">
 <div class="card-header">
-<header class="card-title" id="use_build_context_synchronously">{{"use_build_context_synchronously" | underscoreBreaker}}</header>
+<header class="card-title" id="use_build_context_synchronously">use_<wbr>build_<wbr>context_<wbr>synchronously</header>
 </div>
 <div class="card-content">
 
@@ -21477,7 +21631,7 @@ _Don't use 'BuildContext's across async gaps._
 </div>
 <div class="card outlined-card" id="use_colored_box">
 <div class="card-header">
-<header class="card-title" id="use_colored_box">{{"use_colored_box" | underscoreBreaker}}</header>
+<header class="card-title" id="use_colored_box">use_<wbr>colored_<wbr>box</header>
 </div>
 <div class="card-content">
 
@@ -21496,7 +21650,7 @@ _Use a 'ColoredBox' rather than a 'Container' with only a 'Color'._
 </div>
 <div class="card outlined-card" id="use_decorated_box">
 <div class="card-header">
-<header class="card-title" id="use_decorated_box">{{"use_decorated_box" | underscoreBreaker}}</header>
+<header class="card-title" id="use_decorated_box">use_<wbr>decorated_<wbr>box</header>
 </div>
 <div class="card-content">
 
@@ -21515,7 +21669,7 @@ _Use 'DecoratedBox' rather than a 'Container' with only a 'Decoration'._
 </div>
 <div class="card outlined-card" id="use_enums">
 <div class="card-header">
-<header class="card-title" id="use_enums">{{"use_enums" | underscoreBreaker}}</header>
+<header class="card-title" id="use_enums">use_<wbr>enums</header>
 </div>
 <div class="card-content">
 
@@ -21533,7 +21687,7 @@ _Class should be an enum._
 </div>
 <div class="card outlined-card" id="use_full_hex_values_for_flutter_colors">
 <div class="card-header">
-<header class="card-title" id="use_full_hex_values_for_flutter_colors">{{"use_full_hex_values_for_flutter_colors" | underscoreBreaker}}</header>
+<header class="card-title" id="use_full_hex_values_for_flutter_colors">use_<wbr>full_<wbr>hex_<wbr>values_<wbr>for_<wbr>flutter_<wbr>colors</header>
 </div>
 <div class="card-content">
 
@@ -21553,7 +21707,7 @@ _Instances of 'Color' should be created using an 8-digit hexadecimal integer
 </div>
 <div class="card outlined-card" id="use_function_type_syntax_for_parameters">
 <div class="card-header">
-<header class="card-title" id="use_function_type_syntax_for_parameters">{{"use_function_type_syntax_for_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="use_function_type_syntax_for_parameters">use_<wbr>function_<wbr>type_<wbr>syntax_<wbr>for_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -21572,7 +21726,7 @@ _Use the generic function type syntax to declare the parameter '{0}'._
 </div>
 <div class="card outlined-card" id="use_if_null_to_convert_nulls_to_bools">
 <div class="card-header">
-<header class="card-title" id="use_if_null_to_convert_nulls_to_bools">{{"use_if_null_to_convert_nulls_to_bools" | underscoreBreaker}}</header>
+<header class="card-title" id="use_if_null_to_convert_nulls_to_bools">use_<wbr>if_<wbr>null_<wbr>to_<wbr>convert_<wbr>nulls_<wbr>to_<wbr>bools</header>
 </div>
 <div class="card-content">
 
@@ -21591,7 +21745,7 @@ _Use an if-null operator to convert a 'null' to a 'bool'._
 </div>
 <div class="card outlined-card" id="use_is_even_rather_than_modulo">
 <div class="card-header">
-<header class="card-title" id="use_is_even_rather_than_modulo">{{"use_is_even_rather_than_modulo" | underscoreBreaker}}</header>
+<header class="card-title" id="use_is_even_rather_than_modulo">use_<wbr>is_<wbr>even_<wbr>rather_<wbr>than_<wbr>modulo</header>
 </div>
 <div class="card-content">
 
@@ -21609,7 +21763,7 @@ _Use '{0}' rather than '% 2'._
 </div>
 <div class="card outlined-card" id="use_key_in_widget_constructors">
 <div class="card-header">
-<header class="card-title" id="use_key_in_widget_constructors">{{"use_key_in_widget_constructors" | underscoreBreaker}}</header>
+<header class="card-title" id="use_key_in_widget_constructors">use_<wbr>key_<wbr>in_<wbr>widget_<wbr>constructors</header>
 </div>
 <div class="card-content">
 
@@ -21628,7 +21782,7 @@ _Constructors for public widgets should have a named 'key' parameter._
 </div>
 <div class="card outlined-card" id="use_late_for_private_fields_and_variables">
 <div class="card-header">
-<header class="card-title" id="use_late_for_private_fields_and_variables">{{"use_late_for_private_fields_and_variables" | underscoreBreaker}}</header>
+<header class="card-title" id="use_late_for_private_fields_and_variables">use_<wbr>late_<wbr>for_<wbr>private_<wbr>fields_<wbr>and_<wbr>variables</header>
 </div>
 <div class="card-content">
 
@@ -21647,7 +21801,7 @@ _Use 'late' for private members with a non-nullable type._
 </div>
 <div class="card outlined-card" id="use_named_constants">
 <div class="card-header">
-<header class="card-title" id="use_named_constants">{{"use_named_constants" | underscoreBreaker}}</header>
+<header class="card-title" id="use_named_constants">use_<wbr>named_<wbr>constants</header>
 </div>
 <div class="card-content">
 
@@ -21666,7 +21820,7 @@ _Use the constant '{0}' rather than a constructor returning the same object._
 </div>
 <div class="card outlined-card" id="use_null_aware_elements">
 <div class="card-header">
-<header class="card-title" id="use_null_aware_elements">{{"use_null_aware_elements" | underscoreBreaker}}</header>
+<header class="card-title" id="use_null_aware_elements">use_<wbr>null_<wbr>aware_<wbr>elements</header>
 </div>
 <div class="card-content">
 
@@ -21685,7 +21839,7 @@ _Use the null-aware marker '?' rather than a null check via an 'if'._
 </div>
 <div class="card outlined-card" id="use_raw_strings">
 <div class="card-header">
-<header class="card-title" id="use_raw_strings">{{"use_raw_strings" | underscoreBreaker}}</header>
+<header class="card-title" id="use_raw_strings">use_<wbr>raw_<wbr>strings</header>
 </div>
 <div class="card-content">
 
@@ -21704,7 +21858,7 @@ _Use a raw string to avoid using escapes._
 </div>
 <div class="card outlined-card" id="use_rethrow_when_possible">
 <div class="card-header">
-<header class="card-title" id="use_rethrow_when_possible">{{"use_rethrow_when_possible" | underscoreBreaker}}</header>
+<header class="card-title" id="use_rethrow_when_possible">use_<wbr>rethrow_<wbr>when_<wbr>possible</header>
 </div>
 <div class="card-content">
 
@@ -21723,7 +21877,7 @@ _Use 'rethrow' to rethrow a caught exception._
 </div>
 <div class="card outlined-card" id="use_setters_to_change_properties">
 <div class="card-header">
-<header class="card-title" id="use_setters_to_change_properties">{{"use_setters_to_change_properties" | underscoreBreaker}}</header>
+<header class="card-title" id="use_setters_to_change_properties">use_<wbr>setters_<wbr>to_<wbr>change_<wbr>properties</header>
 </div>
 <div class="card-content">
 
@@ -21742,7 +21896,7 @@ _The method is used to change a property._
 </div>
 <div class="card outlined-card" id="use_string_buffers">
 <div class="card-header">
-<header class="card-title" id="use_string_buffers">{{"use_string_buffers" | underscoreBreaker}}</header>
+<header class="card-title" id="use_string_buffers">use_<wbr>string_<wbr>buffers</header>
 </div>
 <div class="card-content">
 
@@ -21761,7 +21915,7 @@ _Use a string buffer rather than '+' to compose strings._
 </div>
 <div class="card outlined-card" id="use_string_in_part_of_directives">
 <div class="card-header">
-<header class="card-title" id="use_string_in_part_of_directives">{{"use_string_in_part_of_directives" | underscoreBreaker}}</header>
+<header class="card-title" id="use_string_in_part_of_directives">use_<wbr>string_<wbr>in_<wbr>part_<wbr>of_<wbr>directives</header>
 </div>
 <div class="card-content">
 
@@ -21780,7 +21934,7 @@ _The part-of directive uses a library name._
 </div>
 <div class="card outlined-card" id="use_super_parameters">
 <div class="card-header">
-<header class="card-title" id="use_super_parameters">{{"use_super_parameters" | underscoreBreaker}}</header>
+<header class="card-title" id="use_super_parameters">use_<wbr>super_<wbr>parameters</header>
 </div>
 <div class="card-content">
 
@@ -21801,7 +21955,7 @@ _Parameters '{0}' could be super parameters._
 </div>
 <div class="card outlined-card" id="use_test_throws_matchers">
 <div class="card-header">
-<header class="card-title" id="use_test_throws_matchers">{{"use_test_throws_matchers" | underscoreBreaker}}</header>
+<header class="card-title" id="use_test_throws_matchers">use_<wbr>test_<wbr>throws_<wbr>matchers</header>
 </div>
 <div class="card-content">
 
@@ -21820,7 +21974,7 @@ thrown._
 </div>
 <div class="card outlined-card" id="use_to_and_as_if_applicable">
 <div class="card-header">
-<header class="card-title" id="use_to_and_as_if_applicable">{{"use_to_and_as_if_applicable" | underscoreBreaker}}</header>
+<header class="card-title" id="use_to_and_as_if_applicable">use_<wbr>to_<wbr>and_<wbr>as_<wbr>if_<wbr>applicable</header>
 </div>
 <div class="card-content">
 
@@ -21838,7 +21992,7 @@ _Start the name of the method with 'to' or 'as'._
 </div>
 <div class="card outlined-card" id="use_truncating_division">
 <div class="card-header">
-<header class="card-title" id="use_truncating_division">{{"use_truncating_division" | underscoreBreaker}}</header>
+<header class="card-title" id="use_truncating_division">use_<wbr>truncating_<wbr>division</header>
 </div>
 <div class="card-content">
 
@@ -21857,7 +22011,7 @@ _Use truncating division._
 </div>
 <div class="card outlined-card" id="valid_regexps">
 <div class="card-header">
-<header class="card-title" id="valid_regexps">{{"valid_regexps" | underscoreBreaker}}</header>
+<header class="card-title" id="valid_regexps">valid_<wbr>regexps</header>
 </div>
 <div class="card-content">
 
@@ -21876,7 +22030,7 @@ _Invalid regular expression syntax._
 </div>
 <div class="card outlined-card" id="void_checks">
 <div class="card-header">
-<header class="card-title" id="void_checks">{{"void_checks" | underscoreBreaker}}</header>
+<header class="card-title" id="void_checks">void_<wbr>checks</header>
 </div>
 <div class="card-content">
 

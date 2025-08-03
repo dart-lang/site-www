@@ -351,7 +351,7 @@ click **Learn more** to view it.
 
       sink.writeln('''
 <div class="card-header">
-<header class="card-title" id="$formattedDiagnostic">{{"$formattedDiagnostic" | underscoreBreaker}}</header>
+<header class="card-title" id="$formattedDiagnostic">${formattedDiagnostic.replaceAll('_', '_<wbr>')}</header>
 </div>''');
 
       sink.writeln('<div class="card-content">');

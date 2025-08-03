@@ -20,7 +20,7 @@ class in which it is declared.
 
 ## Example
 
-Given a file `a.dart` that contains
+Given a file `a.dart` that contains the following:
 
 ```dart
 import 'package:meta/meta.dart';

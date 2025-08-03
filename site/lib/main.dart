@@ -23,12 +23,6 @@ void main() {
 
   // TODO(parlough): Eventually migrate away from
   //   the remaining Liquid filter usages.
-  FilterRegistry.register('underscoreBreaker', (value, _, _) {
-    if (value is! String) return value;
-
-    return value.replaceAll('_', '_<wbr>');
-  });
-
   FilterRegistry.register('slugify', (value, _, _) {
     if (value is! String) return value;
 
