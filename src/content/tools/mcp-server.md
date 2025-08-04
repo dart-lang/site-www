@@ -131,13 +131,11 @@ Firebase Studio, see [Customize your Firebase Studio workspace][].
 
 ### Gemini Code Assist in VS Code
 
-:::note
-This requires the "Insiders" channel of Gemini Code Assist.
-Follow the [instructions][] to enable this build.
-:::
-
 [Gemini Code Assist][]'s [Agent mode][] integrates the
 Gemini CLI to provide a powerful AI agent directly in your IDE.
+If you haven't set up Gemini Code Assist or its agent mode yet,
+follow its [Before you begin instructions][gca-setup] to get started.
+
 To configure Gemini Code Assist to use the Dart MCP server,
 follow the instructions to [configure the Gemini CLI][].
 
@@ -147,7 +145,7 @@ properly by typing `/mcp` in the chat window in Agent mode.
 For more information see the official Gemini Code Assist
 documentation for [using agent mode][].
 
-[instructions]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer#before-you-begin
+[gca-setup]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer#before-you-begin
 [Gemini Code Assist]: https://codeassist.google/
 [Agent mode]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer
 [configure the Gemini CLI]: #gemini-cli
