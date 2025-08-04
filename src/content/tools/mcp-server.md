@@ -126,7 +126,7 @@ For more information about MCP server configuration in
 Firebase Studio, see [Customize your Firebase Studio workspace][].
 
 [Firebase Studio]: https://firebase.studio/
-[flutter-channels]: /install/upgrade#switching-flutter-channels
+[flutter-channels]: {{site.flutter-docs}}/install/upgrade#switching-flutter-channels
 [Customize your Firebase Studio workspace]: https://firebase.google.com/docs/studio/customize-workspace
 
 ### Gemini Code Assist in VS Code
