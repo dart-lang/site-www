@@ -8,7 +8,8 @@ Support for build hooks is in **preview** and
 can be used on the `main` and `beta` channels.
 :::
 
-This guide explains what hooks are and how to use them.
+This guide explains what hooks are and how to use them
+with a package.
 
 ## Introduction
 
@@ -195,7 +196,7 @@ specified with [`BuildInput.sharedOutputDirectory`][].
 Assets are the files that hooks create in the
 `build/` directory. Once an asset has been created,
 you can reference it in your code and at runtime with it's
-asset ID (`[assetId][]`).
+asset ID ([`assetId`][]).
 
 The following example illustrates how to call a native
 C function `add` from `native_add_library.c`:
