@@ -61,12 +61,13 @@ class _DiagnosticCard extends StatelessComponent {
             ),
         ],
         trailing: [
-          Button.text(
-            href: '/tools/diagnostics/$diagnosticId',
-            style: ButtonStyle.outlined,
-            title: 'Learn more about this diagnostic and how to resolve it.',
-            content: 'Learn more',
-          ),
+          if (diagnostic.hasDocumentation)
+            Button.text(
+              href: '/tools/diagnostics/$diagnosticId',
+              style: ButtonStyle.outlined,
+              title: 'Learn more about this diagnostic and how to resolve it.',
+              content: 'Learn more',
+            ),
           Button.text(
             style: ButtonStyle.filled,
             classes: ['copy-button', 'hidden'],

@@ -26,7 +26,7 @@ import 'package:dart_dev_site/archive/archive_table.dart' as prefix0;
 JasprOptions get defaultJasprOptions => JasprOptions(
   clients: {
     prefix0.ArchiveTable: ClientTarget<prefix0.ArchiveTable>(
-      'archive/components/archive_table',
+      'archive/archive_table',
       params: _prefix0ArchiveTable,
     ),
   },
