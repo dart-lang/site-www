@@ -87,7 +87,7 @@
       // print(Random()); // Error: Random is not imported.
     }
     ```
-
+    
     Example using `hide`:
 
     ```dart
@@ -98,13 +98,7 @@
       print(Random()); // Accessible
     }
     ```
-
-    Combinators can also be chained:
-
-    ```dart
-    import 'dart:math' show pi, Random hide sqrt;
-    ```
-
+    
   related_links:
     - text: "Imports and Libraries"
       link: "/language/libraries#importing-libraries"
