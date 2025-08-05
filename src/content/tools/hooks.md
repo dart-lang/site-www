@@ -86,13 +86,12 @@ A code asset can be used with build and link hooks.
 
 [`CodeAsset`]: {{site.pub-api}}/code_assets/latest/code_assets/CodeAsset-class.html
 
-## Use a hook
+## Use a hook {: #use-hooks-assets }
 
-To setup a hook, use a hook to generate assets, and use
-those assets in your Dart project, see the steps in the
-following sections.
+To add assets to your project, use a hook. For details,
+see the following sections.
 
-### Add dependencies
+### Add dependencies {: #add-dependencies-hooks-assets }
 
 Open your package in a code editor, navigate to its
 `pubspec.yaml`, and then add the following dependencies as
@@ -133,7 +132,7 @@ dev_dependencies:
   ffigen: ^18.0.0
  ```
 
-### Create a build hook script
+### Create a build hook script {: #create-hook }
 
 If you want to use a build hook, first create the native
 library that you want to use, and then follow these steps to
@@ -181,14 +180,17 @@ connect a build hook to that library in a Dart script:
 [`BuildInput`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput-class.html
 [`BuildOutputBuilder`]: {{site.pub-api}}/hooks/latest/hooks/BuildOutputBuilder-class.html
 
-### Generate assets
+### Generate or download assets {: #generate-assets }
 
-Assets are generated when you invoke the Dart hooks in
-the `hook/` directory. Your Dart hooks are invoked when when
-you use the `run`, `build`, or `test` command on your
-package.
+Assets are generated and/or downloaded when you invoke your
+Dart hooks. Your Dart hooks are invoked when you use the
+`run`, `build`, or `test` command on your package.
+The resulting assets are stored in the directory that you
+specified with [`BuildInput.sharedOutputDirectory`][]. 
 
-### Reference assets
+[`BuildInput.sharedOutputDirectory`]: {{site.pub-api}}/hooks/latest/hooks/HookInput/outputDirectoryShared.html
+
+### Reference assets {: #reference-assets }
 
 Assets are the files that hooks create in the
 `build/` directory. Once an asset has been created,
@@ -216,7 +218,7 @@ external int add(int a, int b);
 
 [`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
 
-### Test assets
+### Test assets {: #test-assets }
 
 After you've generated an asset and referenced it in
 your Dart code, consider creating a test for the generated
@@ -235,7 +237,7 @@ void main() {
 }
 ```
 
-## Example project
+## Example projects
 
 There are several example projects to help you get started
 with hooks:
