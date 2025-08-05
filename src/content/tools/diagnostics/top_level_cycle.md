@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type of '{0}' can't be inferred because it depends on itself through the
-cycle: {1}._
+_The type of '{0}' can't be inferred because it depends on itself through the cycle: {1}._
 
 ## Description
 

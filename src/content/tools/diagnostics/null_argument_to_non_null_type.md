@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' shouldn't be called with a 'null' argument for the non-nullable type
-argument '{1}'._
+_'{0}' shouldn't be called with a 'null' argument for the non-nullable type argument '{1}'._
 
 ## Description
 

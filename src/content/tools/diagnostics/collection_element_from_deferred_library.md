@@ -8,20 +8,11 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Constant values from a deferred library can't be used as keys in a 'const' map
-literal._
-
-_Constant values from a deferred library can't be used as values in a 'const'
-constructor._
-
-_Constant values from a deferred library can't be used as values in a 'const'
-list literal._
-
-_Constant values from a deferred library can't be used as values in a 'const'
-map literal._
-
-_Constant values from a deferred library can't be used as values in a 'const'
-set literal._
+_Constant values from a deferred library can't be used as keys in a 'const' map literal._
+_Constant values from a deferred library can't be used as values in a 'const' constructor._
+_Constant values from a deferred library can't be used as values in a 'const' list literal._
+_Constant values from a deferred library can't be used as values in a 'const' map literal._
+_Constant values from a deferred library can't be used as values in a 'const' set literal._
 
 ## Description
 

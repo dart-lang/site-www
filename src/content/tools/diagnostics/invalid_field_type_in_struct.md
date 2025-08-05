@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Fields in struct classes can't have the type '{0}'. They can only be declared
-as 'int', 'double', 'Array', 'Pointer', or subtype of 'Struct' or 'Union'._
+_Fields in struct classes can't have the type '{0}'. They can only be declared as 'int', 'double', 'Array', 'Pointer', or subtype of 'Struct' or 'Union'._
 
 ## Description
 

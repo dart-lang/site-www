@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The null-check pattern will have no effect because the matched type isn't
-nullable._
+_The null-check pattern will have no effect because the matched type isn't nullable._
 
 ## Description
 

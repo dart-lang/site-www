@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is annotated with 'doNotStore' and shouldn't be returned unless '{1}' is
-also annotated._
+_'{0}' is annotated with 'doNotStore' and shouldn't be returned unless '{1}' is also annotated._
 
 ## Description
 

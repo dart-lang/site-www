@@ -8,11 +8,8 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_A value of type '{0}' can't be returned by the 'onError' handler because it
-must be assignable to '{1}'._
-
-_The return type '{0}' isn't assignable to '{1}', as required by
-'Future.catchError'._
+_A value of type '{0}' can't be returned by the 'onError' handler because it must be assignable to '{1}'._
+_The return type '{0}' isn't assignable to '{1}', as required by 'Future.catchError'._
 
 ## Description
 

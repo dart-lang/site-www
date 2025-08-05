@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _The parameter '{0}' is required._
-
 _The parameter '{0}' is required. {1}._
 
 ## Description

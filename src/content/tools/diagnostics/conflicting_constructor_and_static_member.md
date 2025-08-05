@@ -8,17 +8,10 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' can't be used to name both a constructor and a static field in this
-class._
-
-_'{0}' can't be used to name both a constructor and a static getter in this
-class._
-
-_'{0}' can't be used to name both a constructor and a static method in this
-class._
-
-_'{0}' can't be used to name both a constructor and a static setter in this
-class._
+_'{0}' can't be used to name both a constructor and a static field in this class._
+_'{0}' can't be used to name both a constructor and a static getter in this class._
+_'{0}' can't be used to name both a constructor and a static method in this class._
+_'{0}' can't be used to name both a constructor and a static setter in this class._
 
 ## Description
 

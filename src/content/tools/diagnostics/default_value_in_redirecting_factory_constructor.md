@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Default values aren't allowed in factory constructors that redirect to another
-constructor._
+_Default values aren't allowed in factory constructors that redirect to another constructor._
 
 ## Description
 

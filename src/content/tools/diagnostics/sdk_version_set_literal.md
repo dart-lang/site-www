@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Set literals weren't supported until version 2.2, but this code is required to
-be able to run on earlier versions._
+_Set literals weren't supported until version 2.2, but this code is required to be able to run on earlier versions._
 
 ## Description
 

@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extension overrides have no value so they can't be used as the receiver of a
-cascade expression._
+_Extension overrides have no value so they can't be used as the receiver of a cascade expression._
 
 ## Description
 

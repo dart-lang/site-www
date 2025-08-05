@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation 'visibleOutsideTemplate' can only be applied to a member of a
-class, enum, or mixin that is annotated with 'visibleForTemplate'._
+_The annotation 'visibleOutsideTemplate' can only be applied to a member of a class, enum, or mixin that is annotated with 'visibleForTemplate'._
 
 ## Description
 

@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Dead code: Catch clauses after a 'catch (e)' or an 'on Object catch (e)' are
-never reached._
+_Dead code: Catch clauses after a 'catch (e)' or an 'on Object catch (e)' are never reached._
 
 ## Description
 

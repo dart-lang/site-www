@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The symbol '{0}' is defined in a legacy library, and can't be re-exported from
-a library with null safety enabled._
+_The symbol '{0}' is defined in a legacy library, and can't be re-exported from a library with null safety enabled._
 
 ## Description
 

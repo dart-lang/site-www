@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_This function has a return type of '{0}', but doesn't end with a return
-statement._
+_This function has a return type of '{0}', but doesn't end with a return statement._
 
 ## Description
 

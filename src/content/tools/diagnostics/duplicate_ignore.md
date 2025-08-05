@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The diagnostic '{0}' doesn't need to be ignored here because it's already being
-ignored._
+_The diagnostic '{0}' doesn't need to be ignored here because it's already being ignored._
 
 ## Description
 

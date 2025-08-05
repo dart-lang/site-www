@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Can't return a value from a generator function that uses the 'async*' or
-'sync*' modifier._
+_Can't return a value from a generator function that uses the 'async*' or 'sync*' modifier._
 
 ## Description
 

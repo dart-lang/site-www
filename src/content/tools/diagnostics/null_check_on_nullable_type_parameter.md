@@ -19,8 +19,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The null check operator shouldn't be used on a variable whose type is a
-potentially nullable type parameter._
+_The null check operator shouldn't be used on a variable whose type is a potentially nullable type parameter._
 
 ## Description
 

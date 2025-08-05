@@ -9,11 +9,8 @@ bodyClass: highlight-diagnostics
 ---
 
 _The field doesn't override an inherited getter or setter._
-
 _The getter doesn't override an inherited getter._
-
 _The method doesn't override an inherited method._
-
 _The setter doesn't override an inherited setter._
 
 ## Description

@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _Unnecessary type check; the result is always 'false'._
-
 _Unnecessary type check; the result is always 'true'._
 
 ## Description

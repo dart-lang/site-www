@@ -9,14 +9,9 @@ bodyClass: highlight-diagnostics
 ---
 
 _The mixin '{0}' must be 'base' because the supertype '{1}' is 'base'._
-
 _The mixin '{0}' must be 'base' because the supertype '{1}' is 'final'._
-
-_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}'
-is 'base'._
-
-_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}'
-is 'final'._
+_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}' is 'base'._
+_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}' is 'final'._
 
 ## Description
 

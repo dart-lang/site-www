@@ -20,7 +20,6 @@ bodyClass: highlight-diagnostics
 </div>
 
 _The function '{0}' should have a return type but doesn't._
-
 _The method '{0}' should have a return type but doesn't._
 
 ## Description

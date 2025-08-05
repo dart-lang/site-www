@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't extend '{1}' because '{1}' only has factory constructors
-(no generative constructors), and '{0}' has at least one generative constructor._
+_The class '{0}' can't extend '{1}' because '{1}' only has factory constructors (no generative constructors), and '{0}' has at least one generative constructor._
 
 ## Description
 

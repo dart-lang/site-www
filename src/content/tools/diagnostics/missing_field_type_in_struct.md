@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Fields in struct classes must have an explicitly declared type of 'int',
-'double' or 'Pointer'._
+_Fields in struct classes must have an explicitly declared type of 'int', 'double' or 'Pointer'._
 
 ## Description
 

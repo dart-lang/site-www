@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Fields of type '{0}' in a subclass of '{1}' must have an annotation indicating
-the native type._
+_Fields of type '{0}' in a subclass of '{1}' must have an annotation indicating the native type._
 
 ## Description
 

@@ -8,11 +8,8 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class doesn't have a concrete implementation of the super-invoked member
-'{0}'._
-
-_The class doesn't have a concrete implementation of the super-invoked setter
-'{0}'._
+_The class doesn't have a concrete implementation of the super-invoked member '{0}'._
+_The class doesn't have a concrete implementation of the super-invoked setter '{0}'._
 
 ## Description
 

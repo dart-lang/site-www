@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The value of the 'assets' field is expected to be a list of relative file
-paths._
+_The value of the 'assets' field is expected to be a list of relative file paths._
 
 ## Description
 

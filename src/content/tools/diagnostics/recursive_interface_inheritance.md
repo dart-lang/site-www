@@ -9,13 +9,9 @@ bodyClass: highlight-diagnostics
 ---
 
 _'{0}' can't be a superinterface of itself: {1}._
-
 _'{0}' can't extend itself._
-
 _'{0}' can't implement itself._
-
 _'{0}' can't use itself as a mixin._
-
 _'{0}' can't use itself as a superclass constraint._
 
 ## Description

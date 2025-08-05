@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Typedefs can't reference themselves directly or recursively via another
-typedef._
+_Typedefs can't reference themselves directly or recursively via another typedef._
 
 ## Description
 

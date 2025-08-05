@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type 'Never' wasn't supported until version 2.12.0, but this code is
-required to be able to run on earlier versions._
+_The type 'Never' wasn't supported until version 2.12.0, but this code is required to be able to run on earlier versions._
 
 ## Description
 

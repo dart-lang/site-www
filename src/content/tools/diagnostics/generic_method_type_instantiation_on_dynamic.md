@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_A method tear-off on a receiver whose type is 'dynamic' can't have type
-arguments._
+_A method tear-off on a receiver whose type is 'dynamic' can't have type arguments._
 
 ## Description
 

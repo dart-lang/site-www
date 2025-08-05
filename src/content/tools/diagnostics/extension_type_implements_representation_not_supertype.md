@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}', the representation type of '{1}', is not a supertype of '{2}', the
-representation type of '{3}'._
+_'{0}', the representation type of '{1}', is not a supertype of '{2}', the representation type of '{3}'._
 
 ## Description
 

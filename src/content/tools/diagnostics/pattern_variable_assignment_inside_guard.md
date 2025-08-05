@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Pattern variables can't be assigned inside the guard of the enclosing guarded
-pattern._
+_Pattern variables can't be assigned inside the guard of the enclosing guarded pattern._
 
 ## Description
 

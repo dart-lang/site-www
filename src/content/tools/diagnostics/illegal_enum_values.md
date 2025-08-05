@@ -8,11 +8,8 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_An instance member named 'values' can't be declared in a class that implements
-'Enum'._
-
-_An instance member named 'values' can't be inherited from '{0}' in a class that
-implements 'Enum'._
+_An instance member named 'values' can't be declared in a class that implements 'Enum'._
+_An instance member named 'values' can't be inherited from '{0}' in a class that implements 'Enum'._
 
 ## Description
 

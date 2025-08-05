@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_This function has a nullable return type of '{0}', but ends without returning a
-value._
+_This function has a nullable return type of '{0}', but ends without returning a value._
 
 ## Description
 

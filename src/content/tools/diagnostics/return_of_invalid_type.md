@@ -8,14 +8,9 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_A value of type '{0}' can't be returned from the constructor '{2}' because it
-has a return type of '{1}'._
-
-_A value of type '{0}' can't be returned from the function '{2}' because it has
-a return type of '{1}'._
-
-_A value of type '{0}' can't be returned from the method '{2}' because it has a
-return type of '{1}'._
+_A value of type '{0}' can't be returned from the constructor '{2}' because it has a return type of '{1}'._
+_A value of type '{0}' can't be returned from the function '{2}' because it has a return type of '{1}'._
+_A value of type '{0}' can't be returned from the method '{2}' because it has a return type of '{1}'._
 
 ## Description
 

@@ -8,11 +8,8 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_A concrete instance member named '{0}' can't be declared in a class that
-implements 'Enum'._
-
-_A concrete instance member named '{0}' can't be inherited from '{1}' in a class
-that implements 'Enum'._
+_A concrete instance member named '{0}' can't be declared in a class that implements 'Enum'._
+_A concrete instance member named '{0}' can't be inherited from '{1}' in a class that implements 'Enum'._
 
 ## Description
 

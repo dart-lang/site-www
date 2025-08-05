@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is a static field in the enclosing class. Fields initialized in a
-constructor can't be static._
+_'{0}' is a static field in the enclosing class. Fields initialized in a constructor can't be static._
 
 ## Description
 

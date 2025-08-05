@@ -9,13 +9,9 @@ bodyClass: highlight-diagnostics
 ---
 
 _Missing concrete implementation of '{0}'._
-
 _Missing concrete implementations of '{0}' and '{1}'._
-
 _Missing concrete implementations of '{0}', '{1}', '{2}', '{3}', and {4} more._
-
 _Missing concrete implementations of '{0}', '{1}', '{2}', and '{3}'._
-
 _Missing concrete implementations of '{0}', '{1}', and '{2}'._
 
 ## Description

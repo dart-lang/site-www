@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type of a key in a constant map can't override the '==' operator, or
-'hashCode', but the class '{0}' does._
+_The type of a key in a constant map can't override the '==' operator, or 'hashCode', but the class '{0}' does._
 
 ## Description
 

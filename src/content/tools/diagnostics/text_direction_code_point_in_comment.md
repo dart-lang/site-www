@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The Unicode code point 'U+{0}' changes the appearance of text from how it's
-interpreted by the compiler._
+_The Unicode code point 'U+{0}' changes the appearance of text from how it's interpreted by the compiler._
 
 ## Description
 

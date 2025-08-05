@@ -8,11 +8,8 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Record field names can't be a dollar sign followed by an integer when the
-integer is the index of a positional field._
-
+_Record field names can't be a dollar sign followed by an integer when the integer is the index of a positional field._
 _Record field names can't be private._
-
 _Record field names can't be the same as a member from 'Object'._
 
 ## Description

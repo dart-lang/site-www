@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _External fields can't have initializers._
-
 _External variables can't have initializers._
 
 ## Description

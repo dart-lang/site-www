@@ -8,9 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_A member named '{0}' is defined in '{1}' and '{2}', and neither is more
-specific._
-
+_A member named '{0}' is defined in '{1}' and '{2}', and neither is more specific._
 _A member named '{0}' is defined in {1}, and none are more specific._
 
 ## Description

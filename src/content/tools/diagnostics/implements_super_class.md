@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _'{0}' can't be used in both the 'extends' and 'implements' clauses._
-
 _'{0}' can't be used in both the 'extends' and 'with' clauses._
 
 ## Description

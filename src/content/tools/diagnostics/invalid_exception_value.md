@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The method {0} can't have an exceptional return value (the second argument)
-when the return type of the function is either 'void', 'Handle' or 'Pointer'._
+_The method {0} can't have an exceptional return value (the second argument) when the return type of the function is either 'void', 'Handle' or 'Pointer'._
 
 ## Description
 

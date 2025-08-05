@@ -8,11 +8,8 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Yield statements must be in a generator function (one marked with either
-'async*' or 'sync*')._
-
-_Yield-each statements must be in a generator function (one marked with either
-'async*' or 'sync*')._
+_Yield statements must be in a generator function (one marked with either 'async*' or 'sync*')._
+_Yield-each statements must be in a generator function (one marked with either 'async*' or 'sync*')._
 
 ## Description
 

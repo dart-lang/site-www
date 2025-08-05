@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _'{0}' should be used. {1}._
-
 _The value of '{0}' should be used._
 
 ## Description

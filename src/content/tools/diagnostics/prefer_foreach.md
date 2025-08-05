@@ -19,8 +19,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use 'forEach' and a tear-off rather than a 'for' loop to apply a function to
-every element._
+_Use 'forEach' and a tear-off rather than a 'for' loop to apply a function to every element._
 
 ## Description
 

@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Classes extending 'AbiSpecificInteger' must have exactly one const constructor,
-no other members, and no type parameters._
+_Classes extending 'AbiSpecificInteger' must have exactly one const constructor, no other members, and no type parameters._
 
 ## Description
 

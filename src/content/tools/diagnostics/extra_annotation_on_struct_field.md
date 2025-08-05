@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Fields in a struct class must have exactly one annotation indicating the native
-type._
+_Fields in a struct class must have exactly one annotation indicating the native type._
 
 ## Description
 

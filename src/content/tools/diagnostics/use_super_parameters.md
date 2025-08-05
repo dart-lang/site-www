@@ -20,7 +20,6 @@ bodyClass: highlight-diagnostics
 </div>
 
 _Parameter '{0}' could be a super parameter._
-
 _Parameters '{0}' could be super parameters._
 
 ## Description

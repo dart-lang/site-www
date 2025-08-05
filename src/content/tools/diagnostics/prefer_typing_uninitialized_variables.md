@@ -20,7 +20,6 @@ bodyClass: highlight-diagnostics
 </div>
 
 _An uninitialized field should have an explicit type annotation._
-
 _An uninitialized variable should have an explicit type annotation._
 
 ## Description

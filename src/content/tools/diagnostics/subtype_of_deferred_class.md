@@ -9,9 +9,7 @@ bodyClass: highlight-diagnostics
 ---
 
 _Classes and mixins can't implement deferred classes._
-
 _Classes can't extend deferred classes._
-
 _Classes can't mixin deferred classes._
 
 ## Description

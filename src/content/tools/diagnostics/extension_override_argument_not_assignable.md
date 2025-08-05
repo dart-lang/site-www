@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type of the argument to the extension override '{0}' isn't assignable to
-the extended type '{1}'._
+_The type of the argument to the extension override '{0}' isn't assignable to the extended type '{1}'._
 
 ## Description
 

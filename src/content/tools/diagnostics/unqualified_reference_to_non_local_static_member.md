@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Static members from supertypes must be qualified by the name of the defining
-type._
+_Static members from supertypes must be qualified by the name of the defining type._
 
 ## Description
 

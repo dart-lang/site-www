@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Type '{0}' of the switch expression isn't assignable to the type '{1}' of case
-expressions._
+_Type '{0}' of the switch expression isn't assignable to the type '{1}' of case expressions._
 
 ## Description
 

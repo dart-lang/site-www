@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The setter '{0}' is private and can't be accessed outside the library that
-declares it._
+_The setter '{0}' is private and can't be accessed outside the library that declares it._
 
 ## Description
 

@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The last statement of the 'case' should be 'break', 'continue', 'rethrow',
-'return', or 'throw'._
+_The last statement of the 'case' should be 'break', 'continue', 'rethrow', 'return', or 'throw'._
 
 ## Description
 

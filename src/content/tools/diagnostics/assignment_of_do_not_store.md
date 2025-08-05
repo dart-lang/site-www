@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is marked 'doNotStore' and shouldn't be assigned to a field or top-level
-variable._
+_'{0}' is marked 'doNotStore' and shouldn't be assigned to a field or top-level variable._
 
 ## Description
 

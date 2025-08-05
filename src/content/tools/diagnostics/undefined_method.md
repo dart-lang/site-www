@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _The method '{0}' isn't defined for the '{1}' function type._
-
 _The method '{0}' isn't defined for the type '{1}'._
 
 ## Description

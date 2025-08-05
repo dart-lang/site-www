@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' is declared with {1} type parameters, but {2} type arguments
-were given._
+_The type '{0}' is declared with {1} type parameters, but {2} type arguments were given._
 
 ## Description
 

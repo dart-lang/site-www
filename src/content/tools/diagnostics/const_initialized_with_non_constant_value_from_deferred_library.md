@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Constant values from a deferred library can't be used to initialize a 'const'
-variable._
+_Constant values from a deferred library can't be used to initialize a 'const' variable._
 
 ## Description
 

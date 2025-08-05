@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Functions marked 'sync*' must have a return type that is a supertype of
-'Iterable<T>' for some type 'T'._
+_Functions marked 'sync*' must have a return type that is a supertype of 'Iterable<T>' for some type 'T'._
 
 ## Description
 

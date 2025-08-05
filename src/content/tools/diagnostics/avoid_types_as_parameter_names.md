@@ -20,7 +20,6 @@ bodyClass: highlight-diagnostics
 </div>
 
 _The parameter name '{0}' matches a visible type name._
-
 _The type parameter name '{0}' matches a visible type name._
 
 ## Description

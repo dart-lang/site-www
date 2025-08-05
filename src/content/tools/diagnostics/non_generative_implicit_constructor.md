@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The unnamed constructor of superclass '{0}' (called by the default constructor
-of '{1}') must be a generative constructor, but factory found._
+_The unnamed constructor of superclass '{0}' (called by the default constructor of '{1}') must be a generative constructor, but factory found._
 
 ## Description
 

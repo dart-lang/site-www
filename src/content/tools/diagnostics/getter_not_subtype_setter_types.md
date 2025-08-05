@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The return type of getter '{0}' is '{1}' which isn't a subtype of the type
-'{2}' of its setter '{3}'._
+_The return type of getter '{0}' is '{1}' which isn't a subtype of the type '{2}' of its setter '{3}'._
 
 ## Description
 

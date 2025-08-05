@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' of this parameter isn't a subtype of the type '{1}' of the
-associated super constructor parameter._
+_The type '{0}' of this parameter isn't a subtype of the type '{1}' of the associated super constructor parameter._
 
 ## Description
 

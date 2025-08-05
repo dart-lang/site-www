@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' doesn't have a constructor named '{1}'._
-
 _The class '{0}' doesn't have an unnamed constructor._
 
 ## Description

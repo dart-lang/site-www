@@ -19,9 +19,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted'
-check._
-
+_Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check._
 _Don't use 'BuildContext's across async gaps._
 
 ## Description

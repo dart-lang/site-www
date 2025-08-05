@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The member '{0}' is declared non-virtual in '{1}' and can't be overridden in
-subclasses._
+_The member '{0}' is declared non-virtual in '{1}' and can't be overridden in subclasses._
 
 ## Description
 

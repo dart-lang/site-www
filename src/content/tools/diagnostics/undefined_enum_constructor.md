@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _The enum doesn't have a constructor named '{0}'._
-
 _The enum doesn't have an unnamed constructor._
 
 ## Description

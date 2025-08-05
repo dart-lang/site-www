@@ -9,9 +9,7 @@ bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' can't extend '{1}'._
-
 _The class '{0}' can't implement '{1}'._
-
 _The class '{0}' can't mix in '{1}'._
 
 ## Description

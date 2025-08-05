@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_An extension can't define static member '{0}' and an instance member with the
-same name._
+_An extension can't define static member '{0}' and an instance member with the same name._
 
 ## Description
 

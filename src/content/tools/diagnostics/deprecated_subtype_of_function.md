@@ -9,9 +9,7 @@ bodyClass: highlight-diagnostics
 ---
 
 _Extending 'Function' is deprecated._
-
 _Implementing 'Function' has no effect._
-
 _Mixing in 'Function' is deprecated._
 
 ## Description

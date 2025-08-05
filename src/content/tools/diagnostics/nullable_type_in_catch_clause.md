@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_A potentially nullable type can't be used in an 'on' clause because it isn't
-valid to throw a nullable expression._
+_A potentially nullable type can't be used in an 'on' clause because it isn't valid to throw a nullable expression._
 
 ## Description
 

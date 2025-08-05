@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _'{0}' is deprecated and shouldn't be used._
-
 _'{0}' is deprecated and shouldn't be used. {1}_
 
 ## Description

@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The native type of this function couldn't be inferred so it must be specified
-in the annotation._
+_The native type of this function couldn't be inferred so it must be specified in the annotation._
 
 ## Description
 

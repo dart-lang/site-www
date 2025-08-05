@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The return type of operators used in relational patterns must be assignable to
-'bool'._
+_The return type of operators used in relational patterns must be assignable to 'bool'._
 
 ## Description
 

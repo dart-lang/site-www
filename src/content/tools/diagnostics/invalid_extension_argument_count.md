@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extension overrides must have exactly one argument: the value of 'this' in the
-extension method._
+_Extension overrides must have exactly one argument: the value of 'this' in the extension method._
 
 ## Description
 

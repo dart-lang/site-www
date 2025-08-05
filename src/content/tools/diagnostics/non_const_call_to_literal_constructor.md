@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_This instance creation must be 'const', because the {0} constructor is marked
-as '@literal'._
+_This instance creation must be 'const', because the {0} constructor is marked as '@literal'._
 
 ## Description
 

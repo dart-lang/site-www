@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' shouldn't be extended, mixed in, or implemented because it's
-sealed._
+_The class '{0}' shouldn't be extended, mixed in, or implemented because it's sealed._
 
 ## Description
 

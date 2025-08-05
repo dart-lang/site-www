@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The member '{0}' can't be exported as a part of a package's public API, but is
-indirectly exported as part of the signature of '{1}'._
+_The member '{0}' can't be exported as a part of a package's public API, but is indirectly exported as part of the signature of '{1}'._
 
 ## Description
 

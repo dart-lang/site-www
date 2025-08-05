@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation 'visibleForOverriding' can only be applied to a public instance
-member that can be overridden._
+_The annotation 'visibleForOverriding' can only be applied to a public instance member that can be overridden._
 
 ## Description
 

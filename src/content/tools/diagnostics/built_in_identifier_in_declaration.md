@@ -9,15 +9,10 @@ bodyClass: highlight-diagnostics
 ---
 
 _The built-in identifier '{0}' can't be used as a prefix name._
-
 _The built-in identifier '{0}' can't be used as a type name._
-
 _The built-in identifier '{0}' can't be used as a type parameter name._
-
 _The built-in identifier '{0}' can't be used as a typedef name._
-
 _The built-in identifier '{0}' can't be used as an extension name._
-
 _The built-in identifier '{0}' can't be used as an extension type name._
 
 ## Description

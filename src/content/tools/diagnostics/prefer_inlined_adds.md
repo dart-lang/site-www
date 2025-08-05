@@ -20,7 +20,6 @@ bodyClass: highlight-diagnostics
 </div>
 
 _The addition of a list item could be inlined._
-
 _The addition of multiple list items could be inlined._
 
 ## Description

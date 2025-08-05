@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The name of a factory constructor must be the same as the name of the
-immediately enclosing class._
+_The name of a factory constructor must be the same as the name of the immediately enclosing class._
 
 ## Description
 

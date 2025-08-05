@@ -20,7 +20,6 @@ bodyClass: highlight-diagnostics
 </div>
 
 _The pattern should be final._
-
 _The variable '{0}' should be final._
 
 ## Description

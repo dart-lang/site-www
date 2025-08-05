@@ -9,9 +9,7 @@ bodyClass: highlight-diagnostics
 ---
 
 _The static getter '{0}' isn't defined for the context type '{1}'._
-
-_The static method or constructor '{0}' isn't defined for the context type
-'{1}'._
+_The static method or constructor '{0}' isn't defined for the context type '{1}'._
 
 ## Description
 

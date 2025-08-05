@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _The constructor with name '{0}' is already defined._
-
 _The unnamed constructor is already defined._
 
 ## Description

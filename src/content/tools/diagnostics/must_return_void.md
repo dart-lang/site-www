@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The return type of the function passed to 'NativeCallable.listener' must be
-'void' rather than '{0}'._
+_The return type of the function passed to 'NativeCallable.listener' must be 'void' rather than '{0}'._
 
 ## Description
 

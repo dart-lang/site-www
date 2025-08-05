@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_A redirecting constructor can't redirect to a type alias that expands to a type
-parameter._
+_A redirecting constructor can't redirect to a type alias that expands to a type parameter._
 
 ## Description
 

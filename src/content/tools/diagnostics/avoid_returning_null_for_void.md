@@ -20,7 +20,6 @@ bodyClass: highlight-diagnostics
 </div>
 
 _Don't return 'null' from a function with a return type of 'void'._
-
 _Don't return 'null' from a method with a return type of 'void'._
 
 ## Description

@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The enum is declared with {0} type parameters, but {1} type arguments were
-given._
+_The enum is declared with {0} type parameters, but {1} type arguments were given._
 
 ## Description
 

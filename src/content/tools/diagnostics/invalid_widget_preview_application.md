@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The '@Preview(...)' annotation can only be applied to public, statically
-accessible constructors and functions._
+_The '@Preview(...)' annotation can only be applied to public, statically accessible constructors and functions._
 
 ## Description
 

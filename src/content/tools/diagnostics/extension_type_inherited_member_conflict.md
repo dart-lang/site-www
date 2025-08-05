@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The extension type '{0}' has more than one distinct member named '{1}' from
-implemented types._
+_The extension type '{0}' has more than one distinct member named '{1}' from implemented types._
 
 ## Description
 

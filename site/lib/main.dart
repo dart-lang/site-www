@@ -13,6 +13,7 @@ import 'layouts/homepage_layout.dart';
 import 'loaders/data_processor.dart';
 import 'markdown/markdown_parser.dart';
 import 'pages/custom_pages.dart';
+import 'pages/diagnostic_index.dart';
 import 'pages/lint_index.dart';
 import 'pages/robots_txt.dart';
 import 'util.dart';
@@ -90,6 +91,12 @@ void main() {
             pattern: RegExp('LintRuleIndex', caseSensitive: false),
             builder: (name, attributes, child) {
               return const LintRuleIndex();
+            },
+          ),
+          CustomComponent(
+            pattern: RegExp('DiagnosticIndex', caseSensitive: false),
+            builder: (name, attributes, child) {
+              return const DiagnosticIndex();
             },
           ),
           CustomComponent(

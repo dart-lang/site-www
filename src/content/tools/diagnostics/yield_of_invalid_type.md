@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _A yielded value of type '{0}' must be assignable to '{1}'._
-
 _The type '{0}' implied by the 'yield*' expression must be assignable to '{1}'._
 
 ## Description

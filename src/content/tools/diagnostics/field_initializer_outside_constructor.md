@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _Field formal parameters can only be used in a constructor._
-
 _Initializing formal parameters can only be used in constructors._
 
 ## Description

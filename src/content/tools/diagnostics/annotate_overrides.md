@@ -19,8 +19,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The member '{0}' overrides an inherited member but isn't annotated with
-'@override'._
+_The member '{0}' overrides an inherited member but isn't annotated with '@override'._
 
 ## Description
 

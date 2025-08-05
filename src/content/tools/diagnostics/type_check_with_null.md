@@ -9,7 +9,6 @@ bodyClass: highlight-diagnostics
 ---
 
 _Tests for non-null should be done with '!= null'._
-
 _Tests for null should be done with '== null'._
 
 ## Description

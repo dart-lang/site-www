@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The library is unnamed. A URI is expected, not a library name '{0}', in the
-part-of directive._
+_The library is unnamed. A URI is expected, not a library name '{0}', in the part-of directive._
 
 ## Description
 

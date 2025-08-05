@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_Annotation must be either a const variable reference or const constructor
-invocation._
+_Annotation must be either a const variable reference or const constructor invocation._
 
 ## Description
 

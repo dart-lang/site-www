@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_This cast always throws an exception because the expression always evaluates to
-'null'._
+_This cast always throws an exception because the expression always evaluates to 'null'._
 
 ## Description
 

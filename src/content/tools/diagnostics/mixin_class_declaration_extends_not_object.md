@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't be declared a mixin because it extends a class other than
-'Object'._
+_The class '{0}' can't be declared a mixin because it extends a class other than 'Object'._
 
 ## Description
 

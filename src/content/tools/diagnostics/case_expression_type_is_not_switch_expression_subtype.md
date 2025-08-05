@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The switch case expression type '{0}' must be a subtype of the switch
-expression type '{1}'._
+_The switch case expression type '{0}' must be a subtype of the switch expression type '{1}'._
 
 ## Description
 

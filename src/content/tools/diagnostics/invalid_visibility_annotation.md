@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The member '{0}' is annotated with '{1}', but this annotation is only
-meaningful on declarations of public members._
+_The member '{0}' is annotated with '{1}', but this annotation is only meaningful on declarations of public members._
 
 ## Description
 

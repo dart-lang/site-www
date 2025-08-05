@@ -8,8 +8,7 @@ show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
-_The use of an is expression in a constant context wasn't supported until
-version 2.3.2, but this code is required to be able to run on earlier versions._
+_The use of an is expression in a constant context wasn't supported until version 2.3.2, but this code is required to be able to run on earlier versions._
 
 ## Description
 
