@@ -71,7 +71,6 @@ class DartDownloads {
 
         versionMaps.add(ver);
       } catch (e) {
-        // TODO: some kind of log?
         print('Error with $path - $e');
       }
     });

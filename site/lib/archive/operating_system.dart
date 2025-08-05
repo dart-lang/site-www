@@ -1,4 +1,4 @@
-import 'package:web/web.dart';
+import 'package:web/web.dart' as web;
 
 import 'util.dart';
 
@@ -7,7 +7,7 @@ final class OperatingSystem {
       ? _linux
       : [_chrome, _mac, _windows, _linux, _unix].firstWhere(
           (system) =>
-              window.navigator.appVersion.contains(system._navigatorName),
+              web.window.navigator.appVersion.contains(system._navigatorName),
           orElse: () => const OperatingSystem('Unknown', 'Unknown'),
         );
 

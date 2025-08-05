@@ -4,6 +4,7 @@ import 'package:jaspr_content/theme.dart';
 import 'package:liquify/liquify.dart' show FilterRegistry;
 import 'package:path/path.dart' as path;
 
+import 'archive/archive_table.dart';
 import 'components/card.dart';
 import 'components/tabs.dart';
 import 'extensions/registry.dart';
@@ -87,6 +88,13 @@ void main() {
         extensions: allNodeProcessingExtensions,
         components: [
           const DashTabs(),
+          CustomComponent(
+            pattern: RegExp('ArchiveTable', caseSensitive: false),
+            builder: (name, attributes, child) {
+              final channel = attributes['channel']!;
+              return ArchiveTable(channel: channel);
+            },
+          ),
           CustomComponent(
             pattern: RegExp('LintRuleIndex', caseSensitive: false),
             builder: (name, attributes, child) {

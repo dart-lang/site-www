@@ -145,7 +145,11 @@ class DashMarkdownParser implements PageParser {
               token.kind == html.TokenKind.spaceCharacters) {
             currentNodes.add(TextNode((token as html.StringToken).data));
           } else if (token.kind == html.TokenKind.comment) {
-            // Drop HTML comments from the output.
+            var data = (token as html.CommentToken).data;
+            if (data.startsWith('?') && data.endsWith('?')) {
+              data = data.substring(1, data.length - 1);
+            }
+            currentNodes.add(TextNode('<!--$data-->', raw: true));
           } else if (token.kind == html.TokenKind.doctype) {
             // Ignore doctype tokens.
             continue;

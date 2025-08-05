@@ -9,7 +9,6 @@ workspace:
   - examples
   - site
   - tool/dart_site
-  - tool/get-dart
 
 dev_dependencies:
   dart_site:

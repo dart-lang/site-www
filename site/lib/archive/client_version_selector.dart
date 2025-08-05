@@ -1,20 +1,24 @@
 import 'dart:async';
 
+import 'package:http/browser_client.dart' show BrowserClient;
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/intl_browser.dart';
-import 'package:jaspr/jaspr.dart';
 import 'package:pub_semver/pub_semver.dart';
-import 'package:sdk_builds/sdk_builds.dart';
 
-import 'components/archive_table.dart';
+import 'archive_table.dart';
+import 'dart_downloads.dart';
 import 'operating_system.dart';
 import 'util.dart';
+import 'version_info.dart';
+import 'version_selector.dart' as server_version;
 
 const _storageBase = '${storageBaseUrl}dart-archive';
 
-class VersionSelector with ChangeNotifier {
-  VersionSelector({required this.channel, required this.client}) {
+final class VersionSelector extends server_version.VersionSelector {
+  static final DartDownloads _client = DartDownloads(client: BrowserClient());
+
+  VersionSelector(super.channel) {
     if (OperatingSystem.current.isMac) {
       _selectedOs = 'macos';
     } else if (OperatingSystem.current.isLinux ||
@@ -27,50 +31,46 @@ class VersionSelector with ChangeNotifier {
     unawaited(loadVersions());
   }
 
-  final String channel;
-  final DartDownloads client;
-
   String? _selectedVersion;
 
+  @override
   String? get selectedVersion => _selectedVersion;
+  @override
   set selectedVersion(String? value) {
     _selectedVersion = value;
     notifyListeners();
-    unawaited(loadVersionInfo());
+    unawaited(_loadVersionInfo());
   }
 
   String? _selectedOs;
+  @override
   String? get selectedOs => _selectedOs;
+  @override
   set selectedOs(String? value) {
     _selectedOs = value;
     notifyListeners();
   }
 
   VersionInfo? _versionInfo;
+  @override
   VersionInfo? get versionInfo => _versionInfo;
 
   Iterable<Version>? _versions;
+  @override
   Iterable<Version>? get versions => _versions;
 
+  @override
   Iterable<VersionRow> get versionRows {
     if (_versionInfo case final versionInfo?) {
-      return buildVersionRows(versionInfo);
+      return _buildVersionRows(versionInfo);
     } else {
-      return [ArchivesTable.templateRow(channel)];
-    }
-  }
-
-  bool isVersionVisible(VersionRow version) {
-    if (selectedOs case null || 'all') {
-      return true;
-    } else {
-      return version.os.toLowerCase() == selectedOs || version.os == '---';
+      return [ArchiveTable.templateRow(channel)];
     }
   }
 
   Future<void> loadVersions() async {
     final versions =
-        (await fetchSdkVersions(channel, client)
+        (await fetchSdkVersions(channel, _client)
               ..sort())
             .reversed;
 
@@ -83,7 +83,7 @@ class VersionSelector with ChangeNotifier {
     }
     await initializeDateFormatting(Intl.systemLocale);
 
-    await loadVersionInfo();
+    await _loadVersionInfo();
   }
 
   static int? _svnRevision(VersionInfo versionInfo) {
@@ -119,12 +119,12 @@ class VersionSelector with ChangeNotifier {
     }
   }
 
-  Future<void> loadVersionInfo() async {
+  Future<void> _loadVersionInfo() async {
     final version = _selectedVersion;
     if (version == null) return;
 
     final svnRevision = svnRevisionForVersion(version);
-    final versionInfo = await client.fetchVersion(
+    final versionInfo = await _client.fetchVersion(
       channel,
       svnRevision ?? version,
     );
@@ -133,7 +133,7 @@ class VersionSelector with ChangeNotifier {
     notifyListeners();
   }
 
-  Iterable<VersionRow> buildVersionRows(VersionInfo versionInfo) sync* {
+  Iterable<VersionRow> _buildVersionRows(VersionInfo versionInfo) sync* {
     for (final name in platforms.keys) {
       final platformVariants = platforms[name] ?? const [];
       for (final platformVariant in platformVariants) {

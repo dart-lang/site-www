@@ -1,16 +1,13 @@
 import 'package:path/path.dart' as path;
 import 'package:pub_semver/pub_semver.dart';
-import 'package:sdk_builds/sdk_builds.dart';
 
+import 'dart_downloads.dart';
 import 'svn_versions.dart';
 
-final _downloader = DartDownloads();
-
 Future<List<Version>> fetchSdkVersions(
-  String channel, [
-  DartDownloads? downloader,
-]) async {
-  downloader ??= _downloader;
+  String channel,
+  DartDownloads downloader,
+) async {
   final versionPaths = await downloader.fetchVersionPaths(channel).toList();
   final versions = <Version>[];
   for (final versionPath in versionPaths) {
