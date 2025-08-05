@@ -268,6 +268,6 @@ See the following for more information about hooks:
 * [Hooks library reference][]
 * [Build and bundle native code][]
 
-[Hooks package]: https://pub.dev/packages/hooks
-[Hooks library reference]: https://pub.dev/documentation/hooks/latest/hooks/
+[Hooks package]: {{site.pub-pkg}}/hooks
+[Hooks library reference]: {{site.pub-api}}/hooks/latest/hooks/
 [Build and bundle native code]: https://dart.dev/interop/c-interop#build-hooks
