@@ -5,15 +5,12 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The operand can't be 'null', so the condition is always 'false'._
-
 _The operand can't be 'null', so the condition is always 'true'._
-
 _The operand must be 'null', so the condition is always 'false'._
-
 _The operand must be 'null', so the condition is always 'true'._
 
 ## Description

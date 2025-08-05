@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The variable '{0}' has a different type and/or finality in this branch of the
-logical-or pattern._
+_The variable '{0}' has a different type and/or finality in this branch of the logical-or pattern._
 
 ## Description
 

@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Static members from the extended type or one of its superclasses must be
-qualified by the name of the defining type._
+_Static members from the extended type or one of its superclasses must be qualified by the name of the defining type._
 
 ## Description
 

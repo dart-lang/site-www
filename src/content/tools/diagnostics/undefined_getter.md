@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The getter '{0}' isn't defined for the '{1}' function type._
-
 _The getter '{0}' isn't defined for the type '{1}'._
 
 ## Description

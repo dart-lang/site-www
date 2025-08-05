@@ -5,13 +5,11 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Extending 'Function' is deprecated._
-
 _Implementing 'Function' has no effect._
-
 _Mixing in 'Function' is deprecated._
 
 ## Description

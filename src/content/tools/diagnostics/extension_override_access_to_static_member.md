@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_An extension override can't be used to access a static member from an
-extension._
+_An extension override can't be used to access a static member from an extension._
 
 ## Description
 

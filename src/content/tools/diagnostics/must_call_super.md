@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_This method overrides a method annotated as '@mustCallSuper' in '{0}', but
-doesn't invoke the overridden method._
+_This method overrides a method annotated as '@mustCallSuper' in '{0}', but doesn't invoke the overridden method._
 
 ## Description
 

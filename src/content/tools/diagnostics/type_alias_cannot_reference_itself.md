@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Typedefs can't reference themselves directly or recursively via another
-typedef._
+_Typedefs can't reference themselves directly or recursively via another typedef._
 
 ## Description
 

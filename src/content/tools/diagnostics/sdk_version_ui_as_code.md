@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The for, if, and spread elements weren't supported until version 2.3.0, but
-this code is required to be able to run on earlier versions._
+_The for, if, and spread elements weren't supported until version 2.3.0, but this code is required to be able to run on earlier versions._
 
 ## Description
 

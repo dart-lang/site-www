@@ -5,7 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -20,7 +20,6 @@ body_class: highlight-diagnostics
 </div>
 
 _The pattern should be final._
-
 _The variable '{0}' should be final._
 
 ## Description

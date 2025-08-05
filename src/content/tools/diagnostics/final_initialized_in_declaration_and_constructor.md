@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is final and was given a value when it was declared, so it can't be set
-to a new value._
+_'{0}' is final and was given a value when it was declared, so it can't be set to a new value._
 
 ## Description
 

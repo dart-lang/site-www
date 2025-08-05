@@ -5,7 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -20,7 +20,6 @@ body_class: highlight-diagnostics
 </div>
 
 _Parameter '{0}' could be a super parameter._
-
 _Parameters '{0}' could be super parameters._
 
 ## Description

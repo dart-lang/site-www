@@ -5,13 +5,11 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Classes and mixins can't implement deferred classes._
-
 _Classes can't extend deferred classes._
-
 _Classes can't mixin deferred classes._
 
 ## Description

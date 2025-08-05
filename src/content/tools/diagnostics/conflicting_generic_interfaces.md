@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The {0} '{1}' can't implement both '{2}' and '{3}' because the type arguments
-are different._
+_The {0} '{1}' can't implement both '{2}' and '{3}' because the type arguments are different._
 
 ## Description
 

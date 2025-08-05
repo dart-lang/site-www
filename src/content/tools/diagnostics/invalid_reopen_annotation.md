@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@reopen' can only be applied to a class that opens capabilities
-that the supertype intentionally disallows._
+_The annotation '@reopen' can only be applied to a class that opens capabilities that the supertype intentionally disallows._
 
 ## Description
 

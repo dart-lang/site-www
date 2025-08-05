@@ -5,7 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,11 +19,8 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_The type of the operand ('{0}') isn't a subtype or a supertype of the value
-being matched ('{1}')._
-
-_The type of the right operand ('{0}') isn't a subtype or a supertype of the
-left operand ('{1}')._
+_The type of the operand ('{0}') isn't a subtype or a supertype of the value being matched ('{1}')._
+_The type of the right operand ('{0}') isn't a subtype or a supertype of the left operand ('{1}')._
 
 ## Description
 

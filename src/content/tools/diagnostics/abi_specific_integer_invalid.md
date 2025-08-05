@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Classes extending 'AbiSpecificInteger' must have exactly one const constructor,
-no other members, and no type parameters._
+_Classes extending 'AbiSpecificInteger' must have exactly one const constructor, no other members, and no type parameters._
 
 ## Description
 

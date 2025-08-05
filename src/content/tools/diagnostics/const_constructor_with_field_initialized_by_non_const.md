@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Can't define the 'const' constructor because the field '{0}' is initialized
-with a non-constant value._
+_Can't define the 'const' constructor because the field '{0}' is initialized with a non-constant value._
 
 ## Description
 

@@ -5,13 +5,11 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Missing concrete implementation of '{0}'._
-
 _Missing concrete implementations of '{0}' and '{1}'._
-
 _Missing concrete implementations of '{0}', '{1}', and {2} more._
 
 ## Description

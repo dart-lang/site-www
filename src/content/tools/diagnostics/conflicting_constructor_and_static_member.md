@@ -5,20 +5,13 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_'{0}' can't be used to name both a constructor and a static field in this
-class._
-
-_'{0}' can't be used to name both a constructor and a static getter in this
-class._
-
-_'{0}' can't be used to name both a constructor and a static method in this
-class._
-
-_'{0}' can't be used to name both a constructor and a static setter in this
-class._
+_'{0}' can't be used to name both a constructor and a static field in this class._
+_'{0}' can't be used to name both a constructor and a static getter in this class._
+_'{0}' can't be used to name both a constructor and a static method in this class._
+_'{0}' can't be used to name both a constructor and a static setter in this class._
 
 ## Description
 

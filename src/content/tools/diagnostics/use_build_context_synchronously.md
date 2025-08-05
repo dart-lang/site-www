@@ -5,7 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,9 +19,7 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted'
-check._
-
+_Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check._
 _Don't use 'BuildContext's across async gaps._
 
 ## Description

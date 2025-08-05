@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Extension types can't declare members with the same name as a member declared
-by 'Object'._
+_Extension types can't declare members with the same name as a member declared by 'Object'._
 
 ## Description
 

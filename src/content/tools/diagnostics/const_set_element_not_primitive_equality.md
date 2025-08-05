@@ -5,13 +5,12 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `const_set_element_type_implements_equals`)_
 
-_An element in a constant set can't override the '==' operator, or 'hashCode',
-but the type '{0}' does._
+_An element in a constant set can't override the '==' operator, or 'hashCode', but the type '{0}' does._
 
 ## Description
 

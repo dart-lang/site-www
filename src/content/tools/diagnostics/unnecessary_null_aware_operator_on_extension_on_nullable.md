@@ -5,7 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,8 +19,7 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary use of a null-aware operator to invoke an extension method on a
-nullable type._
+_Unnecessary use of a null-aware operator to invoke an extension method on a nullable type._
 
 ## Description
 

@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Constant values from a deferred library can't be used as a default parameter
-value._
+_Constant values from a deferred library can't be used as a default parameter value._
 
 ## Description
 

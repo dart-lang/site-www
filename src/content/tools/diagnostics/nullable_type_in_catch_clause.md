@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_A potentially nullable type can't be used in an 'on' clause because it isn't
-valid to throw a nullable expression._
+_A potentially nullable type can't be used in an 'on' clause because it isn't valid to throw a nullable expression._
 
 ## Description
 

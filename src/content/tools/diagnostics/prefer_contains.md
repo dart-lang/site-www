@@ -5,7 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -20,9 +20,7 @@ body_class: highlight-diagnostics
 </div>
 
 _Always 'false' because 'indexOf' is always greater than or equal to -1._
-
 _Always 'true' because 'indexOf' is always greater than or equal to -1._
-
 _Unnecessary use of 'indexOf' to test for containment._
 
 ## Description

@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The dev dependency on {0} is unnecessary because there is also a normal
-dependency on that package._
+_The dev dependency on {0} is unnecessary because there is also a normal dependency on that package._
 
 ## Description
 

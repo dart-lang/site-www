@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The getter name is not specified explicitly, and the pattern is not a
-variable._
+_The getter name is not specified explicitly, and the pattern is not a variable._
 
 ## Description
 

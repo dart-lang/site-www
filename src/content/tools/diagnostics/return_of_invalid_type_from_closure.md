@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The returned type '{0}' isn't returnable from a '{1}' function, as required by
-the closure's context._
+_The returned type '{0}' isn't returnable from a '{1}' function, as required by the closure's context._
 
 ## Description
 

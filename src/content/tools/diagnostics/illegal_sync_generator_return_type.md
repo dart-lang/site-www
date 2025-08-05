@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Functions marked 'sync*' must have a return type that is a supertype of
-'Iterable<T>' for some type 'T'._
+_Functions marked 'sync*' must have a return type that is a supertype of 'Iterable<T>' for some type 'T'._
 
 ## Description
 

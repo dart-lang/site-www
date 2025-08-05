@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_This instance creation must be 'const', because the {0} constructor is marked
-as '@literal'._
+_This instance creation must be 'const', because the {0} constructor is marked as '@literal'._
 
 ## Description
 

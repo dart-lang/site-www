@@ -5,13 +5,11 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Dead code._
-
-_Dead code: The assigned-to wildcard variable is marked late and can never be
-referenced so this initializer will never be evaluated._
+_Dead code: The assigned-to wildcard variable is marked late and can never be referenced so this initializer will never be evaluated._
 
 ## Description
 

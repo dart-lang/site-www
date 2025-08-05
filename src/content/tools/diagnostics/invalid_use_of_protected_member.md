@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The member '{0}' can only be used within instance members of subclasses of
-'{1}'._
+_The member '{0}' can only be used within instance members of subclasses of '{1}'._
 
 ## Description
 
@@ -20,7 +19,7 @@ class in which it is declared.
 
 ## Example
 
-Given a file `a.dart` that contains
+Given a file `a.dart` that contains the following:
 
 ```dart
 import 'package:meta/meta.dart';

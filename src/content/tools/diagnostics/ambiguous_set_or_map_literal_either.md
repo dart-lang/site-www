@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_This literal must be either a map or a set, but the elements don't have enough
-information for type inference to work._
+_This literal must be either a map or a set, but the elements don't have enough information for type inference to work._
 
 ## Description
 

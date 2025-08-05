@@ -5,12 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_A member named '{0}' is defined in '{1}' and '{2}', and neither is more
-specific._
-
+_A member named '{0}' is defined in '{1}' and '{2}', and neither is more specific._
 _A member named '{0}' is defined in {1}, and none are more specific._
 
 ## Description

@@ -5,7 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,8 +19,7 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_The member '{0}' overrides an inherited member but isn't annotated with
-'@override'._
+_The member '{0}' overrides an inherited member but isn't annotated with '@override'._
 
 ## Description
 

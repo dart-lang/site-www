@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The 'await' expression can't be used for an expression with an extension type
-that is not a subtype of 'Future'._
+_The 'await' expression can't be used for an expression with an extension type that is not a subtype of 'Future'._
 
 ## Description
 

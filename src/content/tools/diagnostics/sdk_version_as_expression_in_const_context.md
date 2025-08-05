@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The use of an as expression in a constant expression wasn't supported until
-version 2.3.2, but this code is required to be able to run on earlier versions._
+_The use of an as expression in a constant expression wasn't supported until version 2.3.2, but this code is required to be able to run on earlier versions._
 
 ## Description
 

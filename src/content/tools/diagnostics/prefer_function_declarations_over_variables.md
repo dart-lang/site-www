@@ -5,7 +5,7 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,8 +19,7 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_Use a function declaration rather than a variable assignment to bind a function
-to a name._
+_Use a function declaration rather than a variable assignment to bind a function to a name._
 
 ## Description
 

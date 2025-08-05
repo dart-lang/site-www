@@ -5,11 +5,10 @@ description: >-
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
 show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The matched value type '{0}' can never be equal to this constant of type
-'{1}'._
+_The matched value type '{0}' can never be equal to this constant of type '{1}'._
 
 ## Description
 
