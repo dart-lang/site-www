@@ -212,12 +212,12 @@ external int add(int a, int b);
 ```
 
 :::note
-*   The asset ID is constructed in the build hook as
-    `package:$packageName/$packageName.dart` (for example,
+*   The asset ID is constructed in the build hook in the example above as
+    `package:$packageName/$packageName.dart` (which is
     `package:native_add_library/native_add_library.dart`).
 *   The asset ID in `@Native` is optional and defaults to
-    the library uri (for example,
-    `package:native_add_library/native_add_library.dart`).
+    the library uri (which also is
+    `package:native_add_library/native_add_library.dart` in the example above).
 :::
 
 [`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
