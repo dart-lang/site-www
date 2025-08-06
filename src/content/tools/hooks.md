@@ -197,8 +197,7 @@ specified with [`BuildInput.sharedOutputDirectory`][].
 
 ### Reference assets {: #reference-assets }
 
-Assets are the files that hooks create in the
-`build/` directory. Once an asset has been created,
+Assets are the files that hooks create. Once an asset has been created,
 you can reference it in your code and at runtime with it's
 asset ID ([`assetId`][]).
 
