@@ -25,10 +25,6 @@ Example project:
 
 ```plaintext
 📁  example_project                   // project with hooks
-    📁  build                         // assets could be generated here
-        📄 asset
-        📄 asset
-        ...
     📁  hook                          // add hook scripts here
         📄 build.dart
     📁  lib                           // reference your assets here
@@ -243,14 +239,14 @@ void main() {
 There are several example projects to help you get started
 with hooks:
 
-| **Project** | **Description** |
-| ------------| --------------- |
-| [`native_add_library`][] | Native code that should be bundled with Dart and Flutter applications. |
-| [`native_add_app`][] | Invocation of native code bundled with the native assets feature. |
-| [`download_asset`][] | Library depending on prebuilt assets which are downloaded in the build hook. |
+| **Project**                  | **Description**                                                                   |
+| ---------------------------- | --------------------------------------------------------------------------------- |
+| [`native_add_library`][]     | Native code that should be bundled with Dart and Flutter applications.            |
+| [`native_add_app`][]         | Invocation of native code bundled with the native assets feature.                 |
+| [`download_asset`][]         | Library depending on prebuilt assets which are downloaded in the build hook.      |
 | [`native_dynamic_linking`][] | Builds three native libraries, two of which are dynamically linked to each other. |
-| [`system_library`][] | A Dart library using a native system library. |
-| [`use_dart_api`][] | Project that uses the C API of the Dart VM. |
+| [`system_library`][]         | A Dart library using a native system library.                                     |
+| [`use_dart_api`][]           | Project that uses the C API of the Dart VM.                                       |
  
 {: .table .table-striped }
 
