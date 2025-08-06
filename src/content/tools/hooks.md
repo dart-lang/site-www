@@ -59,10 +59,18 @@ input with [`BuildInput`] and write the hook output with
 [`BuildOutputBuilder`]. The hook should place downloaded and
 generated assets in [`BuildInput.sharedOutputDirectory`][].
 
+The build hooks are run in parallel with Dart compilation and may do longer
+running operations such as downloading or calling a native compiler. The assets
+produced in a build hook of a package may depend on [`assets`][] or
+[`metadata`][] produced by build hooks of direct dependencies of the package.
+Therefore, build hooks are run in the order of dependencies.
+
+[`assets`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput/assets.html
 [`build`]: {{site.pub-api}}/hooks/latest/hooks/build.html
 [`BuildInput`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput-class.html
 [`BuildOutputBuilder`]: {{site.pub-api}}/hooks/latest/hooks/BuildOutputBuilder-class.html
 [`BuildInput.sharedOutputDirectory`]: {{site.pub-api}}/hooks/latest/hooks/HookInput/outputDirectoryShared.html
+[`metadata`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput/metadata.html
 
 ## Assets
 
