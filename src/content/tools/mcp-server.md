@@ -124,11 +124,6 @@ documentation for [setting up MCP servers][].
 
 ### Gemini Code Assist in VS Code
 
-:::note
-This requires the "Insiders" channel of Gemini Code Assist.
-Follow the [instructions][] to enable this build.
-:::
-
 [Gemini Code Assist][]'s [Agent mode][] integrates the
 Gemini CLI to provide a powerful AI agent directly in your IDE.
 To configure Gemini Code Assist to use the Dart MCP server,
