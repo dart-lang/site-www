@@ -14,7 +14,7 @@ with a package.
 ## Introduction
 
 You can currently use hooks to do things
-like compile or download native assets (code written in
+such as compile or download native assets (code written in
 other languages that are compiled into machine code), and
 then call these assets from the Dart code of a package.
 
@@ -48,8 +48,8 @@ planned. To learn more, see the following.
 
 ### Build hooks {:.no_toc}
 
-With build hooks, a package can do things like transparently
-compile or download native assets like C or Rust libraries.
+With build hooks, a package can do things such as
+compile or download native assets such as C or Rust libraries.
 Afterwards, these assets can be called from the Dart code of
 a package.
 
@@ -82,7 +82,7 @@ build hooks are run in the order of dependencies.
 Assets are the files that are produced by a hook and then
 bundled in a Dart application. Assets can be accessed
 at runtime from the Dart code. Currently, the Dart SDK can
-use the `CodeAsset` type, but more are planned.
+use the `CodeAsset` type, but more asset types are planned.
 To learn more, see the following.
 
 ### CodeAsset type {:.no_toc}
@@ -149,7 +149,7 @@ dev_dependencies:
 ### Create a build hook to generate native assets {: #create-hook }
 
 If you want to use a build hook to transparently compile
-native assets (like C or Rust libraries), which are then
+native assets (such as C or Rust libraries), which are then
 made available to be called from the Dart code of a package,
 create a `build.dart` script similar to the following:
 
