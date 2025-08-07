@@ -152,7 +152,7 @@ we made the following changes to this site:
 * Added the new language feature [wildcard variables][] to the Variables page.
 * Moved [covariant explanation][] to the better-suited Type system page.
 * Changed references to [legacy JS interop][] libraries explicitly to "deprecated". 
-* Removed the [experimental macros page][], since the team [indefinitely paused][]
+* Removed the experimental macros page, since the team [indefinitely paused][]
   work on the feature.
 * Added a [warning][map-warn] that destructuring a Map pattern by a non-existent key will
   throw a `StateError`.
@@ -171,7 +171,6 @@ we made the following changes to this site:
 [wildcard variables]: /language/variables#wildcard-variables
 [covariant explanation]: /language/type-system#covariant-keyword
 [legacy JS interop]: /interop/js-interop/past-js-interop
-[experimental macros page]: /language/macros
 [indefinitely paused]: https://medium.com/dartlang/an-update-on-dart-macros-data-serialization-06d3037d4f12
 [map-warn]: /language/pattern-types#map
 
@@ -317,7 +316,7 @@ we made the following changes to this site:
 * Updated the site for new [linter rules][] and [diagnostic messages][],
   for example adding docs for the new [`@mustBeConst`][] annotation diagnostic.
 
-[Macros]: /language/macros
+[Macros]: https://medium.com/dartlang/an-update-on-dart-macros-data-serialization-06d3037d4f12
 [Wasm]: /web/wasm
 [Constructors]: /language/constructors/
 [Renames]: /interop/js-interop/package-web/#renames
