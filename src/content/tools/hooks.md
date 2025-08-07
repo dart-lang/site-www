@@ -66,8 +66,8 @@ downloaded and generated assets in
 [`BuildInput.sharedOutputDirectory`][].
 
 The assets produced for your package might depend on
-[`assets`][] or [`metadata`][] produced by other build hooks
-that directly depend on your package. Therefore,
+[`assets`][] or [`metadata`][] produced by the build hooks
+from the packages in your direct dependencies. Therefore,
 build hooks are run in the order of dependencies.
 
 [`assets`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput/assets.html
