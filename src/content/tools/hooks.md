@@ -210,28 +210,26 @@ specified in your hooks script.
 
 Assets are the files that hooks create. Once an asset is
 created, you can reference it in your code and at runtime
-with its asset ID ([`assetId`][]).
+with its asset ID ([`assetId`][]). Asset IDs are structured as
+`package:<package-name>/<asset-name>`. Build hooks may only output assets in
+their own package. The `CBuilder` in the build hook in the example above outputs
+an asset ID of `package:native_add_library/native_add_library.dart` based on the
+`package` and `assetName` parameters.
 
-The following example illustrates how to call a native
+The following example illustrates how to call the native
 C function `add` from `native_add_library.c`:
 
 ```dart title="my_package/lib/my_package.dart"
-import 'dart:ffi' as ffi;
+import 'dart:ffi';
 
-@ffi.Native<ffi.Int32 Function(ffi.Int32, ffi.Int32)>()
+@Native<Int32 Function(Int32, Int32)>()
 external int add(int a, int b);
 ```
 
-:::note
-*   The asset ID is constructed in the build hook in the
-    previous example as
-    `package:$packageName/$packageName.dart` (which is
-    `package:native_add_library/native_add_library.dart`).
-*   The asset ID in `@Native` is optional and defaults to
-    the library uri (which also is
-    `package:native_add_library/native_add_library.dart` in
-    the previous example).
-:::
+The asset ID in `@Native` is optional and defaults to the library uri. In this
+example this is `package:native_add_library/native_add_library.dart`, which is
+the same asset ID as output from the build hook. This enables Dart to connect
+asset referenced at runtime to the one provided by the hook during the build.
 
 [`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
 
