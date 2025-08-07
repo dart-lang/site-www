@@ -4,7 +4,6 @@ description: >-
   Details about the argument_type_not_assignable_to_error_handler
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

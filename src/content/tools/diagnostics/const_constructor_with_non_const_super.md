@@ -4,7 +4,6 @@ description: >-
   Details about the const_constructor_with_non_const_super
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

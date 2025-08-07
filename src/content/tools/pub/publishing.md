@@ -1,5 +1,6 @@
 ---
 title: Publishing packages
+breadcrumb: Publishing
 description: Learn how to publish a Dart package to pub.dev.
 ---
 

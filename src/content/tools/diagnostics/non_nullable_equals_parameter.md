@@ -4,7 +4,6 @@ description: >-
   Details about the non_nullable_equals_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

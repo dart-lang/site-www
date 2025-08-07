@@ -4,7 +4,6 @@ description: >-
   Details about the compound_implements_finalizable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

@@ -4,7 +4,6 @@ description: >-
   Details about the always_put_control_body_on_new_line
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

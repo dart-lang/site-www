@@ -1,6 +1,8 @@
 ---
 title: Custom package repositories
-description: "How Dart's package management tool, pub, works with custom package repositories."
+description: >-
+  How Dart's package management tool, pub,
+  works with custom package repositories.
 ---
 
 The `dart pub` tool supports third-party package repositories.

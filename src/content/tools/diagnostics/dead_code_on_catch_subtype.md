@@ -4,7 +4,6 @@ description: >-
   Details about the dead_code_on_catch_subtype
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

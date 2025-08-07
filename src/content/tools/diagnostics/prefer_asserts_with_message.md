@@ -4,7 +4,6 @@ description: >-
   Details about the prefer_asserts_with_message
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

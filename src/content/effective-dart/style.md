@@ -1,5 +1,6 @@
 ---
 title: "Effective Dart: Style"
+breadcrumb: Style
 description: Formatting and naming rules for consistent, readable code.
 nextpage:
   url: /effective-dart/documentation

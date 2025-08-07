@@ -1,5 +1,6 @@
 ---
 title: JS types
+breadcrumb: Types
 description: Usage information about the core types in JS interop.
 prevpage:
   url: /interop/js-interop/usage

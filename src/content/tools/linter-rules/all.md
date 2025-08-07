@@ -2,7 +2,6 @@
 title: All linter rules
 description: Auto-generated configuration enabling all linter rules.
 toc: false
-show_breadcrumbs: true
 ---
 
 The following is an auto-generated list of all linter rules

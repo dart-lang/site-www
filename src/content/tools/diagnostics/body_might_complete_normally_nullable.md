@@ -4,7 +4,6 @@ description: >-
   Details about the body_might_complete_normally_nullable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

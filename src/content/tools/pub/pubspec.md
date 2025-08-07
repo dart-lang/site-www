@@ -1,5 +1,6 @@
 ---
 title: The pubspec file
+short-title: Pubspec file
 description: Reference guide for the fields in pubspec.yaml.
 ---
 

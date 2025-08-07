@@ -4,7 +4,6 @@ description: >-
   Details about the cast_from_nullable_always_fails
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

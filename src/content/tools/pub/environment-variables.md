@@ -1,7 +1,8 @@
 ---
 title: Configuring pub environment variables
 short-title: Pub environment variables
-description: How to configure your environment for Dart's package management tool, pub.
+description: >-
+  How to configure your environment for Dart's package management tool, pub.
 toc: false
 ---
 

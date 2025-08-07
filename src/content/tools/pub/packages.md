@@ -1,6 +1,7 @@
 ---
 title: How to use packages
 short-title: Packages
+breadcrumb: Overview
 description: Learn more about pub, Dart's tool for managing packages.
 ---
 

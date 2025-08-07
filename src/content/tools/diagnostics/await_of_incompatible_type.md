@@ -4,7 +4,6 @@ description: >-
   Details about the await_of_incompatible_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

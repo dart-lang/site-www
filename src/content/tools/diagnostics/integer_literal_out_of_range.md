@@ -4,7 +4,6 @@ description: >-
   Details about the integer_literal_out_of_range
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

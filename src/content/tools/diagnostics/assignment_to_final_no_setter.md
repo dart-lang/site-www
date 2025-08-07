@@ -4,7 +4,6 @@ description: >-
   Details about the assignment_to_final_no_setter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

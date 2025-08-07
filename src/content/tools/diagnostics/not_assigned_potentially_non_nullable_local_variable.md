@@ -4,7 +4,6 @@ description: >-
   Details about the not_assigned_potentially_non_nullable_local_variable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 
