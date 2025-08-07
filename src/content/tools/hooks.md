@@ -206,15 +206,16 @@ Assets are added indirectly when you use the `run`,
 The resulting assets are stored in the directory that you
 specified in your hooks script. 
 
-### Reference assets {: #reference-assets }
+### Use assets {: #reference-assets }
 
 Assets are the files that hooks create. Once an asset is
 created, you can reference it in your code and at runtime
-with its asset ID ([`assetId`][]). Asset IDs are structured as
-`package:<package-name>/<asset-name>`. Build hooks may only output assets in
-their own package. The `CBuilder` in the build hook in the example above outputs
-an asset ID of `package:native_add_library/native_add_library.dart` based on the
-`package` and `assetName` parameters.
+with its asset ID ([`assetId`][]). Asset IDs are structured
+as `package:<package-name>/<asset-name>`. Build hooks may
+only output assets in their own package. `CBuilder` in
+the build hook in the previous example outputs the asset ID
+`package:native_add_library/native_add_library.dart`, and is
+based on the `package` and `assetName` parameters.
 
 The following example illustrates how to call the native
 C function `add` from `native_add_library.c`:
@@ -226,10 +227,12 @@ import 'dart:ffi';
 external int add(int a, int b);
 ```
 
-The asset ID in `@Native` is optional and defaults to the library uri. In this
-example this is `package:native_add_library/native_add_library.dart`, which is
-the same asset ID as output from the build hook. This enables Dart to connect
-asset referenced at runtime to the one provided by the hook during the build.
+The asset ID in `@Native` is optional and defaults to the
+library URI. In the previous example, this is
+`package:native_add_library/native_add_library.dart`, which
+is the same asset ID as output from the build hook. This
+enables Dart to connect an asset referenced at runtime to
+the one provided by the hook during the build process.
 
 [`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
 
