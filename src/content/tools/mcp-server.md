@@ -7,7 +7,7 @@ description: >-
   AI-assistant clients and agents.
 ---
 
-The Dart MCP server exposes Dart and Flutter
+The Dart MCP server exposes Dart (and Flutter)
 development tool actions to compatible AI-assistant clients.
 
 ## Overview
@@ -30,10 +30,7 @@ Here is an overview of a few things it can do:
 *  Analyze and fix diagnostics in your project's code.
 *  Resolve symbols to elements to ensure their existence and
    fetch documentation and signature information for them.
-*  Introspect and interact with your running application,
-   such as fetching runtime errors.
-   For Flutter apps, it can trigger a hot reload, get a selected widget,
-   inspect the widget tree, take screenshots, and more.
+*  Introspect and interact with your running application.
 *  Search the [pub.dev site]({{site.pub}}) for the best package for a use case.
 *  Manage package dependencies in your `pubspec.yaml` file.
 *  Run tests and analyze the results.
@@ -158,7 +155,7 @@ Support for the Dart MCP server in VS Code required
 v3.116 or later of the [Dart Code extension][].
 :::
 
-By default, the Dart-Code extension uses the
+By default, the Dart extension uses the
 [VS Code MCP API][] to register the Dart MCP server, as well
 as a tool to provide the URI for the active Dart Tooling Daemon.
 This automatically enables it for any tool or extension that
@@ -182,7 +179,7 @@ If you'd like this setting to apply only to a specific workspace,
 add the entry to your workspace settings:
 
 1.  In VS Code, click **View > Command Palette** and then
-    search for **Preferences: Open User Settings (JSON)**.
+    search for **Preferences: Open Workspace Settings (JSON)**.
 
 1.  Add the following setting:
 
