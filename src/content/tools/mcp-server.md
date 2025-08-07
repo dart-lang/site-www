@@ -27,7 +27,7 @@ The Dart MCP server provides a growing list of tools that
 grant AI assistants deep insights into your project.
 Here is an overview of a few things it can do:
 
-*  Analyze and fix diagnostics in your project's code.
+*  Analyze and fix errors in your project's code.
 *  Resolve symbols to elements to ensure their existence and
    fetch documentation and signature information for them.
 *  Introspect and interact with your running application.
@@ -113,8 +113,6 @@ follow these steps:
     ```
 
 1.  Ensure your environment is running Dart SDK 3.9/Flutter 3.35 or later.
-    1.  If not, [switch to the beta channel][flutter-channels] and
-        run the `flutter upgrade` command.
 1.  Rebuild your workspace to complete the setup.
     *   Open the Command Palette (**Shift+Ctrl+P**).
     *   Enter **Firebase Studio: Rebuild Environment**.
@@ -123,7 +121,6 @@ For more information about MCP server configuration in
 Firebase Studio, see [Customize your Firebase Studio workspace][].
 
 [Firebase Studio]: https://firebase.studio/
-[flutter-channels]: {{site.flutter-docs}}/install/upgrade#switching-flutter-channels
 [Customize your Firebase Studio workspace]: https://firebase.google.com/docs/studio/customize-workspace
 
 ### Gemini Code Assist in VS Code
@@ -158,8 +155,6 @@ v3.116 or later of the [Dart Code extension][].
 By default, the Dart extension uses the
 [VS Code MCP API][] to register the Dart MCP server, as well
 as a tool to provide the URI for the active Dart Tooling Daemon.
-This automatically enables it for any tool or extension that
-uses these APIs for MCP configuration, such as GitHub Copilot.
 
 Explicitly enable or disable the Dart MCP server by
 configuring the `dart.mcpServer` setting in your VS Code settings.
