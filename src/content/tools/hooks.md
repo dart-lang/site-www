@@ -191,7 +191,7 @@ create a `build.dart` script similar to the following:
       target OS, target architecture, output directory, and
       more). For details, see the [`BuildInput`][] class.
 
-    * `output`: The output for the hook. After the
+    * `output`: (writeonly) The output for the hook. After the
       build hook reads the input, it produces an asset and
       then provides what it produced as the output.
       For details, see the [`BuildOutputBuilder`][] class.
