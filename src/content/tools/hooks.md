@@ -92,7 +92,6 @@ a dynamic library compiled from a language other than
 Dart, such as C, C++, Rust, or Go. `CodeAsset` is part of
 the `code_asset` package and are called with `dart:ffi` from
 the Dart code at runtime using the `@Native` annotation.
-A code asset can be used with build hooks.
 
 [`CodeAsset`]: {{site.pub-api}}/code_assets/latest/code_assets/CodeAsset-class.html
 
