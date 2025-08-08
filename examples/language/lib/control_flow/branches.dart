@@ -1,5 +1,9 @@
 // ignore_for_file: unused_local_variable, dead_code, unreachable_switch_case
 
+import 'dart:math' as math show Random;
+
+import 'package:charcode/ascii.dart';
+
 class Point {
   final int x;
   final int y;
@@ -89,20 +93,20 @@ dynamic miscDeclAnalyzedButNotTested() {
   }
 
   {
-    dynamic charCode;
-    const slash = '/';
-    const star = '*';
-    const plus = '+';
-    const minus = '-';
-    const comma = ',';
-    const semicolon = ',';
+    int charCode = math.Random().nextInt(255);
+    const slash = $slash;
+    const star = $asterisk; // '*'
+    const plus = $plus; // '+'
+    const minus = $minus; // '-
+    const comma = $comma; // ','
+    const semicolon = $semicolon; // ','
     const int digit0 = 0;
     const int digit9 = 9;
     Object? token;
 
-    dynamic operator(dynamic x) {}
-    dynamic punctuation(dynamic x) {}
-    dynamic number() {}
+    int? operator(int x) => null;
+    int? punctuation(int x) => null;
+    int? number() => null;
 
     // #docregion switch-stmt
     // Where slash, star, comma, semicolon, etc., are constant variables...
