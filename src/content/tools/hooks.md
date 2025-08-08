@@ -215,7 +215,7 @@ as `package:<package-name>/<asset-name>`. Build hooks may
 only output assets in their own package. `CBuilder` in
 the build hook in the previous example outputs the asset ID
 `package:native_add_library/native_add_library.dart`, and is
-based on the `package` and `assetName` parameters.
+based on the `packageName` and `assetName`.
 
 The following example illustrates how to call the native
 C function `add` from `native_add_library.c`:
