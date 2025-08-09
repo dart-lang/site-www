@@ -39,7 +39,7 @@ Server-side frameworks written in Dart include:
 : A scalable app server that supports code generation,
   authentication, real-time communication, databases, and caching.
 
-[Dart Frog](https://dartfrog.vgv.dev/)
+[Dart Frog](https://dart-frog.dev/)
 : A fast, minimalistic backend framework for Dart.
 
 More tools
