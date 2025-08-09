@@ -4,7 +4,6 @@ description: >-
   Details about the avoid_web_libraries_in_flutter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

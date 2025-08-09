@@ -1,6 +1,7 @@
 ---
 title: Sound null safety
-description: Information about Dart's null safety feature
+breadcrumb: Null safety
+description: Information about Dart's null safety feature.
 ---
 
 The Dart language enforces sound null safety.

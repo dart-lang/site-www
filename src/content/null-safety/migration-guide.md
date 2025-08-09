@@ -1,6 +1,7 @@
 ---
 title: Migrating to null safety
-description: How to move your existing Dart code to the world of null safety
+breadcrumb: Migrating
+description: How to move your existing Dart code to the world of null safety.
 ---
 
 :::version-note

@@ -4,7 +4,6 @@ description: >-
   Details about the non_constant_case_expression_from_deferred_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

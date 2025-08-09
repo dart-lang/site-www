@@ -28,23 +28,26 @@ grant AI assistants deep insights into your project.
 Here is an overview of a few things it can do:
 
 *  Analyze and fix errors in your project's code.
-*  Introspect and interact with your running application
-   (such as trigger a hot reload, get the selected widget,
-   fetch runtime errors).
+*  Resolve symbols to elements to ensure their existence and
+   fetch documentation and signature information for them.
+*  Introspect and interact with your running application.
 *  Search the [pub.dev site]({{site.pub}}) for the best package for a use case.
-*  Manage package dependencies in your `pubspec.yaml`.
+*  Manage package dependencies in your `pubspec.yaml` file.
 *  Run tests and analyze the results.
+*  Format code with the same formatter and config as
+   [`dart format`][] and the Dart analysis server.
 
 :::note Experimental
 This tool is still experimental and is likely to evolve quickly.
 The following setup and usage instructions
-require Dart `3.9.0-163.0.dev` or later.
+require Dart 3.9 or later.
 :::
 
 [Tools]: https://modelcontextprotocol.io/docs/concepts/tools
 [Resources]: https://modelcontextprotocol.io/docs/concepts/resources
 [Roots]: https://modelcontextprotocol.io/docs/concepts/roots
 [Dart MCP server]: {{site.repo.dart.org}}/ai/blob/main/pkgs/dart_mcp_server
+[`dart format`]: /tools/dart-format
 
 ## Set up your MCP client
 
@@ -55,6 +58,35 @@ This section provides instructions for setting up the
 Dart MCP server with popular tools like Firebase Studio,
 Gemini CLI, Gemini Code Assist, Cursor, and GitHub Copilot.
 
+### Gemini CLI
+
+To configure the [Gemini CLI][] to use the Dart MCP server,
+add a Dart entry to the `mcpServers` section of the Gemini config.
+
+-  To enable server for all projects on your device,
+   edit the `~/.gemini/settings.json` file in your home directory.
+-  To enable the server for a specific project,
+   edit the `.gemini/settings.json` file in the project's root directory.
+
+```json title=".gemini/settings.json"
+{
+  "mcpServers": {
+    "dart": {
+      "command": "dart",
+      "args": [
+        "mcp-server"
+      ]
+    }
+  }
+}
+```
+
+For more information, check out the official Gemini CLI
+documentation for [setting up MCP servers][].
+
+[Gemini CLI]: https://github.com/google-gemini/gemini-cli
+[setting up MCP servers]: https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md#how-to-set-up-your-mcp-server
+
 ### Firebase Studio
 
 If you wish to use the Dart MCP Server in [Firebase Studio][],
@@ -64,7 +96,7 @@ follow these steps:
 
 1.  In your Firebase Studio app project, create a
     `.idx/mcp.json` file in your project if it
-    doesn’t exist already and add the following
+    doesn't exist already and add the following
     Dart MCP Server configuration to the file:
 
     ```json title=".idx/mcp.json"
@@ -80,10 +112,7 @@ follow these steps:
     }
     ```
 
-1.  Ensure your environment is running Dart SDK 3.9/Flutter 3.35 beta
-    or later.
-1.  Switch channels and use the `flutter upgrade` command if
-    needed.
+1.  Ensure your environment is running Dart SDK 3.9/Flutter 3.35 or later.
 1.  Rebuild your workspace to complete the setup.
     *   Open the Command Palette (**Shift+Ctrl+P**).
     *   Enter **Firebase Studio: Rebuild Environment**.
@@ -94,43 +123,13 @@ Firebase Studio, see [Customize your Firebase Studio workspace][].
 [Firebase Studio]: https://firebase.studio/
 [Customize your Firebase Studio workspace]: https://firebase.google.com/docs/studio/customize-workspace
 
-### Gemini CLI
-
-To configure the [Gemini CLI][] to use
-the Dart MCP server, edit the `.gemini/settings.json`
-file in your local project (configuration will only apply
-to this project) or edit the global
-`~/.gemini/settings.json` file in your home directory
-(configuration will apply for all projects).
-
-```json title=".gemini/settings.json"
-{
-  "mcpServers": {
-    "dart": {
-      "command": "dart",
-      "args": [
-        "mcp-server"
-      ]
-    }
-  }
-}
-```
-
-For more information, see the official Gemini CLI
-documentation for [setting up MCP servers][].
-
-[Gemini CLI]: https://github.com/google-gemini/gemini-cli
-[setting up MCP servers]: https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md#how-to-set-up-your-mcp-server
-
 ### Gemini Code Assist in VS Code
-
-:::note
-This requires the "Insiders" channel of Gemini Code Assist.
-Follow the [instructions][] to enable this build.
-:::
 
 [Gemini Code Assist][]'s [Agent mode][] integrates the
 Gemini CLI to provide a powerful AI agent directly in your IDE.
+If you haven't set up Gemini Code Assist or its agent mode yet,
+follow its [Before you begin instructions][gca-setup] to get started.
+
 To configure Gemini Code Assist to use the Dart MCP server,
 follow the instructions to [configure the Gemini CLI][].
 
@@ -140,18 +139,63 @@ properly by typing `/mcp` in the chat window in Agent mode.
 For more information see the official Gemini Code Assist
 documentation for [using agent mode][].
 
-[instructions]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer#before-you-begin
+[gca-setup]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer#before-you-begin
 [Gemini Code Assist]: https://codeassist.google/
 [Agent mode]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer
 [configure the Gemini CLI]: #gemini-cli
 [using agent mode]: https://developers.google.com/gemini-code-assist/docs/use-agentic-chat-pair-programmer#before-you-begin
+
+### GitHub Copilot in VS Code
+
+:::note
+Support for the Dart MCP server in VS Code required
+v3.116 or later of the [Dart Code extension][].
+:::
+
+By default, the Dart extension uses the
+[VS Code MCP API][] to register the Dart MCP server, as well
+as a tool to provide the URI for the active Dart Tooling Daemon.
+
+Explicitly enable or disable the Dart MCP server by
+configuring the `dart.mcpServer` setting in your VS Code settings.
+
+To change this globally, update your user settings:
+
+1.  In VS Code, click **View > Command Palette** and then
+    search for **Preferences: Open User Settings (JSON)**.
+
+1.  Add the following setting:
+
+    ```json
+    "dart.mcpServer": true
+    ```
+
+If you'd like this setting to apply only to a specific workspace,
+add the entry to your workspace settings:
+
+1.  In VS Code, click **View > Command Palette** and then
+    search for **Preferences: Open Workspace Settings (JSON)**.
+
+1.  Add the following setting:
+
+    ```json
+    "dart.mcpServer": true
+    ```
+
+For more information, see the official VS Code
+documentation for [enabling MCP support][].
+
+[Dart Code extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code
+[VS Code MCP API]: https://code.visualstudio.com/api/extension-guides/mcp
+[enabling MCP support]: https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_enable-mcp-support-in-vs-code
 
 ### Cursor
 
 The easiest way to configure the Dart MCP server with
 Cursor is by clicking the **Add to Cursor** button:
 
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=dart&config=eyJ0eXBlIjoic3RkaW8iLCJjb21tYW5kIjoiZGFydCBtY3Atc2VydmVyIC0tZXhwZXJpbWVudGFsLW1jcC1zZXJ2ZXIgLS1mb3JjZS1yb290cy1mYWxsYmFjayJ9)
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=dart&config=eyJ0eXBlIjoic3RkaW8iLCJjb21tYW5kIjoiZGFydCBtY3Atc2VydmVyIC0tZXhwZXJpbWVudGFsLW1jcC1zZXJ2ZXIgLS1mb3JjZS1yb290cy1mYWxsYmFjayJ9){:.light-mode-visible}
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/install-mcp?name=dart&config=eyJ0eXBlIjoic3RkaW8iLCJjb21tYW5kIjoiZGFydCBtY3Atc2VydmVyIC0tZXhwZXJpbWVudGFsLW1jcC1zZXJ2ZXIgLS1mb3JjZS1yb290cy1mYWxsYmFjayJ9){:.dark-mode-visible}
 
 Alternatively, you can configure the server manually:
 
@@ -183,71 +227,29 @@ documentation for [installing MCP servers][].
 
 [installing MCP servers]: https://docs.cursor.com/context/model-context-protocol#installing-mcp-servers
 
-### GitHub Copilot in VS Code
-
-:::note
-This requires v3.116 or later of the [Dart Code extension][] for VS Code.
-:::
-
-By default, the Dart-Code extension uses the
-[VS Code MCP API][] to register the Dart MCP server, as well
-as a tool to provide the URI for the active Dart Tooling
-Daemon. This automatically enables it for any tool (such as
-Copilot) which uses these APIs for MCP configuration.
-
-You explicitly enable or disable the Dart MCP server by
-configuring the `dart.mcpServer` setting in your VS Code settings.
-
-To change this globally, update your user settings:
-
-1. In VS Code, click **View > Command Palette** and then
-   search for **Preferences: Open User Settings (JSON)**.
-
-1. Add the following setting:
-
-    ```json
-    "dart.mcpServer": true
-    ```
-
-If you'd like this setting to apply only to a specific
-workspace, add the entry to your workspace settings:
-
-1. In VS Code, click **View > Command Palette** and then
-   search for **Preferences: Open User Settings (JSON)**.
-
-1. Add the following setting:
-
-    ```json
-    "dart.mcpServer": true
-    ```
-
-For more information, see the official VS Code
-documentation for [enabling MCP support][].
-
-[Dart Code extension]: https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code
-[VS Code MCP API]: https://code.visualstudio.com/api/extension-guides/mcp
-[enabling MCP support]: https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_enable-mcp-support-in-vs-code
-
 ## Use your MCP client
 
 Once you've set up the Dart MCP server with a client,
 the Dart MCP server enables the client to not only reason
 about your project's context but also to take action with tools.
-The Large Language Model (LLM) decides which tools to use and when,
+
+The [Large Language Model (LLM)][LLM] decides which tools to use and when,
 so you can focus on describing your goal in natural language.
 Let's see this in action with a couple of examples using
 GitHub Copilot's Agent mode in VS Code.
+
+[LLM]: https://developers.google.com/machine-learning/resources/intro-llms
 
 ### Fix a runtime layout error in a Flutter app
 
 We've all been there: you build a beautiful UI, run the app,
 and are greeted by the infamous yellow-and-black stripes of
-a RenderFlex overflow error. Instead of manually debugging the
-widget tree, you can now ask your AI assistant for help with a
-prompt similar to the following:
+a RenderFlex overflow error.
+Instead of manually debugging the widget tree, you can now
+ask your AI assistant for help with a prompt similar to the following:
 
-**Prompt**: *"Check for and fix static and runtime analysis issues.
-Check for and fix any layout issues."*
+> Check for and fix static and runtime analysis issues.
+> Check for and fix any layout issues.
 
 Behind the scenes, the AI agent uses the Dart MCP server's tools to:
 
@@ -267,16 +269,16 @@ Which package should you use? How do you add it and write the boilerplate?
 The Dart MCP server can streamline this entire process with
 a prompt similar to the following:
 
-**Prompt**: *"Find a suitable package to add a line chart that
-maps the number of button presses over time."*
+> Find a suitable package to add a line chart that
+> maps the number of button presses over time.
 
 The AI agent now acts as a true assistant:
 
 *  Find the right tool: It uses the `pub_dev_search` tool to
    find popular and highly-rated charting libraries.
-*  Manage dependencies: After you confirm its choice (for
-   example, `syncfusion_flutter_charts`), it uses a tool to
-   add the package to your `pubspec.yaml` file and runs `dart pub get`.
+*  Manage dependencies: After you confirm its choice,
+   such as [`package:fl_chart`]({{site.pub-pkg}}/fl_chart),
+   it uses a tool to add the package as a dependency.
 *  Generate the code: It generates the new widget code,
    complete with boilerplate for a line chart that it places in the UI.
    It even self-corrects syntax errors introduced during the process.

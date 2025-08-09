@@ -2,6 +2,7 @@
 title: Learning Dart as a JavaScript developer
 description: Leverage your JavaScript knowledge when learning Dart.
 body_class: highlight-languages
+showBreadcrumbs: false
 lastVerified: 2022-11-21
 ---
 

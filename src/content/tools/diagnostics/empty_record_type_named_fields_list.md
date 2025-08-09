@@ -4,7 +4,6 @@ description: >-
   Details about the empty_record_type_named_fields_list
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

@@ -1,5 +1,6 @@
 ---
-title: Videos
+title: Dart videos
+short-title: Videos
 description: Learn by watching! Here's a collection of videos about Dart.
 ---
 

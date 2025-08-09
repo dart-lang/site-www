@@ -3,6 +3,7 @@ title: Configuring apps with compilation environment declarations
 description: >-
   Learn about using compilation environment declarations 
   to customize application behavior.
+showBreadcrumbs: false
 lastVerified: 2023-02-23
 ---
 

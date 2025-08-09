@@ -4,7 +4,6 @@ description: >-
   Details about the subtype_of_base_or_final_is_not_base_final_or_sealed
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 
