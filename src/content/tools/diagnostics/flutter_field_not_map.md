@@ -4,7 +4,6 @@ description: >-
   Details about the flutter_field_not_map
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

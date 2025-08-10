@@ -4,7 +4,6 @@ description: >-
   Details about the invalid_use_of_internal_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

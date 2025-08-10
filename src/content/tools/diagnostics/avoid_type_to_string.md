@@ -4,7 +4,6 @@ description: >-
   Details about the avoid_type_to_string
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

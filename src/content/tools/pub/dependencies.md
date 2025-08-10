@@ -1,6 +1,9 @@
 ---
 title: Package dependencies
-description: Add other packages to your app. Specify package locations, version constraints, and more.
+breadcrumb: Dependencies
+description: >-
+  Add other packages to your app.
+  Specify package locations, version constraints, and more.
 ---
 
 Dependencies are one of the core concepts of the [pub package manager][].

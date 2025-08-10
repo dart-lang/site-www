@@ -4,7 +4,6 @@ description: >-
   Details about the avoid_single_cascade_in_expression_statements
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

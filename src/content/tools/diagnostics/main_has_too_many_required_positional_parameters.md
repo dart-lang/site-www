@@ -4,7 +4,6 @@ description: >-
   Details about the main_has_too_many_required_positional_parameters
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

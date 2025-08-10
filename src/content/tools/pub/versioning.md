@@ -1,6 +1,7 @@
 ---
 title: Package versioning
-description: "How Dart's package management tool, pub, handles versioning of packages."
+description: >-
+  How Dart's package management tool, pub, handles versioning of packages.
 ---
 
 The [pub package manager][pub] helps you work with versioning.

@@ -4,7 +4,6 @@ description: >-
   Details about the variable_pattern_keyword_in_declaration_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 body_class: highlight-diagnostics
 ---
 

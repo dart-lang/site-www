@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting DartPad
+breadcrumb: Troubleshooting
 description: Common problems with using DartPad
 ---
 
