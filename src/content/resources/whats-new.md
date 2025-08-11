@@ -20,9 +20,9 @@ and follow the [Dart blog][].
 
 ## 3.9 release
 
-August 13, 2025
+_Released on: August 13, 2025_
 
-This section lists notable changes made from May  20, 2025,
+This section lists notable changes made from May 20, 2025,
 through August 13, 2025 to [dart.dev](https://dart.dev/docs).
 For details about the 3.9 release of Dart,
 check out the [3.9 announcement][] and the
@@ -49,8 +49,8 @@ we made the following changes to docs on this site:
 [Dart MCP Server guide]: /tools/mcp-server
 [`dart create` page]: /tools/dart-create
 [metadata and annotations documentation]: /language/metadata
-["external resource type"]: https://github.com/dart-lang/site-www/pull/6762
-[Enabled breadcrumbs by default]: https://github.com/dart-lang/site-www/pull/6767
+["external resource type"]: {{site.repo.this}}/pull/6762
+[Enabled breadcrumbs by default]: {{site.repo.this}}/pull/6767
 [glossary]: /resources/glossary
 
 [3.9 announcement]: https://medium.com/dartlang/announcing-dart-3-9-ba49e8f38298
@@ -58,9 +58,9 @@ we made the following changes to docs on this site:
 
 ## 3.8 release
 
-May 20, 2025
+_Released on: May 20, 2025_
 
-This section lists notable changes made from February  13, 2025,
+This section lists notable changes made from February 13, 2025,
 through May 20, 2025 to [dart.dev](https://dart.dev/docs).
 For details about the 3.8 release of Dart,
 check out the [3.8 announcement][] and the
@@ -168,7 +168,7 @@ we made the following structural changes to this site:
 
 ## 3.7 release
 
-February 12, 2025
+_Released on: February 12, 2025_
 
 This section lists notable changes made from December 12, 2024,
 through February 12, 2025.
@@ -218,7 +218,7 @@ we made the following changes to this site:
 
 ## 3.6 release
 
-December 11, 2024
+_Released on: December 11, 2024_
 
 This section lists notable changes made from August 7, 2024,
 through December 11, 2024.
@@ -281,7 +281,7 @@ we made the following changes to this site:
 
 ## 3.5 release
 
-August 6, 2024
+_Released on: August 6, 2024_
 
 This section lists notable changes made from May 15, 2024,
 through August 6, 2024.
@@ -331,7 +331,7 @@ we made the following changes to this site:
 
 ## 3.4 release
 
-May 14, 2024
+_Released on: May 14, 2024_
 
 This section lists notable changes made from February 16, 2024,
 through May 14, 2024.
@@ -392,7 +392,7 @@ We published the following articles on the Dart blog:
 
 ## 3.3 release
 
-February 15, 2024
+_Released on: February 15, 2024_
 
 This section lists notable changes made from November 16, 2023,
 through February 15, 2024.
@@ -463,7 +463,7 @@ we made the following changes to this site:
 
 ## 3.2 release
 
-November 15, 2023
+_Released on: November 15, 2023_
 
 This section lists notable changes made from August 17, 2023,
 through November 15, 2023.
@@ -521,7 +521,7 @@ we made the following changes to this site:
 
 ## 3.1 release
 
-August 16, 2023
+_Released on: August 16, 2023_
 
 This section lists notable changes made from May 11, 2023,
 through August 16, 2023.
@@ -587,7 +587,7 @@ We published the following article on the Dart blog:
 
 ## 3.0 release
 
-May 10, 2023
+_Released on: May 10, 2023_
 
 This section lists notable changes made from January 26, 2023,
 through May 10, 2023.
@@ -695,7 +695,7 @@ During Google I/O 2023, we released the following videos:
 
 ## 2.19 + 3.0 alpha releases
 
-January 25, 2023
+_Released on: January 25, 2023_
 
 This section lists notable changes made from August 31, 2022,
 through January 25, 2023.
@@ -793,7 +793,7 @@ We published the following articles on the Dart blog:
 
 ## 2.18 release
 
-August 30, 2022
+_Released on: August 30, 2022_
 
 This section lists notable changes made from May 12, 2022,
 through August 30, 2022.
@@ -835,7 +835,7 @@ we made the following changes to this site:
 
 ## 2.17 release
 
-May 11, 2022
+_Released on: May 11, 2022_
 
 This section lists notable changes made from February 4, 2022,
 through May 11, 2022.
@@ -973,7 +973,7 @@ We published the following articles on the Dart blog:
 
 ## 2.16 release
 
-February 3, 2022
+_Released on: February 3, 2022_
 
 This section lists notable changes made from December 8, 2021,
 through February 3, 2022.
@@ -1018,7 +1018,7 @@ we made the following changes to this site:
 
 ## 2.15 release
 
-December 8, 2021
+_Released on: December 8, 2021_
 
 This section lists notable changes made from September 9, 2021,
 through December 8, 2021.
@@ -1067,7 +1067,7 @@ we made the following changes to this site:
 
 ## 2.14 release
 
-September 8, 2021
+_Released on: September 8, 2021_
 
 This section lists notable changes made from May 20, 2021,
 through September 8, 2021.
@@ -1129,7 +1129,7 @@ We published the following articles on the Dart blog:
 
 ## 2.13 release
 
-May 19, 2021
+_Released on: May 19, 2021_
 
 This section lists notable changes made from March 4, 2021,
 through May 19, 2021.
@@ -1208,7 +1208,7 @@ We published the following articles on the Dart blog:
 
 ## 2.12 release
 
-March 3, 2021
+_Released on: March 3, 2021_
 
 This section lists notable changes made from October 2, 2020,
 through March 3, 2021.
@@ -1287,7 +1287,7 @@ We published the following articles on the Dart blog:
 
 ## 2.10 release
 
-October 1, 2020
+_Released on: October 1, 2020_
 
 This section lists notable changes made from
 July 1 through October 1, 2020.
