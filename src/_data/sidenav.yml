@@ -261,7 +261,7 @@
     permalink: /tools
   - title: AI
     children:
-        - title: Dart MCP Server
+        - title: Dart and Flutter MCP Server
           permalink: /tools/mcp-server
   - title: Editors & debuggers
     children:
