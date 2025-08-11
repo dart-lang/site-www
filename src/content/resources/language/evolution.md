@@ -43,6 +43,27 @@ on the Dart language GitHub repo.
 
 ## Changes in each release
 
+### Dart 3.9
+_Released 13 August 2025_
+| [Dart 3.9 announcement](https://medium.com/dartlang/announcing-dart-3-9-ba49e8f38298)
+
+
+The following supporting features have been updated for
+Dart 3.9:
+
+*   Null safety: Dart now assumes null safety when
+    computing type promotion, reachability, and
+    definite assignment. To take advantage of these
+    improvements, set your package's SDK constraint
+    lower bound to 3.9 or greater (`sdk: '^3.9.0'`).
+    As a result of this change, more `dead_code` warnings
+    might be produced.
+
+For more information about these and additional changes, see
+the [Dart 3.9 changelog][].
+
+[Dart 3.9 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#390
+
 ### Dart 3.8
 _Released 20 May 2025_
 | [Dart 3.8 announcement](https://medium.com/dartlang/announcing-dart-3-8-724eaaec9f47)
