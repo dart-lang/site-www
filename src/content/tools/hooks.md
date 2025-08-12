@@ -214,14 +214,22 @@ the build hook in the previous example outputs the asset ID
 `package:native_add_library/native_add_library.dart`, and is
 based on the `packageName` and `assetName`.
 
-The following example illustrates how to call the native
-C function `add` from `native_add_library.c`:
+The following example illustrates how to bind to the native
+C function `add` from `native_add_library.c` and call it:
 
 ```dart title="my_package/lib/my_package.dart"
 import 'dart:ffi';
 
 @Native<Int32 Function(Int32, Int32)>()
 external int add(int a, int b);
+```
+
+```dart title="my_package/bin/my_package.dart"
+import 'package:my_package/my_package.dart';
+
+void main() {
+  print(add(24, 18));
+}
 ```
 
 The asset ID in `@Native` is optional and defaults to the
