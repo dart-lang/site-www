@@ -52,10 +52,7 @@ The following supporting features have been updated for
 Dart 3.9:
 
 *   Null safety: Dart now assumes null safety when
-    computing type promotion, reachability, and
-    definite assignment. To take advantage of these
-    improvements, set your package's SDK constraint
-    lower bound to 3.9 or greater (`sdk: '^3.9.0'`).
+    computing type promotion, reachability, and definite assignment.
     As a result of this change, more `dead_code` warnings
     might be produced.
 
