@@ -68,13 +68,17 @@
   short_description: |-
     A keyword clause that limits or modifies what's imported or exported.
   long_description: |-
-    In Dart, a **combinator** is a clause that follows an `import` or `export` directive to limit or modify the set of names brought into scope.
+    In Dart, a **combinator** is a clause that
+    follows an `import` or `export` directive to limit or modify
+    the set of names brought into scope.
 
-    Dart provides two combinators:
+    Dart supports two types of combinators:
+
     - `show` — explicitly includes specific names.
     - `hide` — excludes specific names.
 
-    Combinators help control namespace pollution and avoid conflicts when multiple libraries define symbols with the same name.
+    Combinators help control namespace pollution and
+    avoid conflicts when multiple libraries define symbols with the same name.
 
     Example using `show`:
 
@@ -87,7 +91,7 @@
       // print(Random()); // Error: Random is not imported.
     }
     ```
-    
+
     Example using `hide`:
 
     ```dart
@@ -98,13 +102,12 @@
       print(Random()); // Accessible
     }
     ```
-    
   related_links:
-    - text: "Imports and Libraries"
-      link: "/language/libraries#importing-libraries"
+    - text: "Libraries and imports"
+      link: "/language/libraries"
       type: "doc"
-    - text: "Exporting a library"
-      link: "/language/libraries#exporting-a-library"
+    - text: "Organizing a package"
+      link: "/tools/pub/create-packages#organizing-a-package"
       type: "doc"
   labels:
     - "language"
