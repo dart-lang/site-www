@@ -95,6 +95,7 @@ are accessed at run time through corresponding external Dart members annotated
 with the [`@Native`][] annotation from `dart:ffi`.
 
 [`CodeAsset`]: {{site.pub-api}}/code_assets/latest/code_assets/CodeAsset-class.html
+[`@Native`]: {{site.dart-api}}/dart-ffi/Native-class.html
 
 ## Use a hook {: #use-hooks-assets }
 
