@@ -148,7 +148,7 @@ documentation for [using agent mode][].
 ### GitHub Copilot in VS Code
 
 :::note
-Support for the Dart and Flutter MCP server in VS Code required
+Support for the Dart and Flutter MCP server in VS Code requires
 v3.116 or later of the [Dart Code extension][].
 :::
 
