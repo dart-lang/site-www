@@ -32,7 +32,7 @@ Example project with a build hook:
 📁  example_project                   // Project with hooks.
     📁  hook                          // Add hook scripts here.
         📄 build.dart
-    📁  lib                           // Us your assets here.
+    📁  lib                           // Use your assets here.
         📄 example.dart
     📁  src                           // Add native sources here.
         📄 example_native_library.c
