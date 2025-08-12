@@ -51,7 +51,7 @@ require Dart 3.9 or later.
 
 ## Set up your MCP client
 
-The server is run with the `Dart and Flutter MCP-server` command, which will
+The server is run with the `dart mcp-server` command, which will
 have to be configured in your preferred client.
 
 This section provides instructions for setting up the
