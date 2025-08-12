@@ -289,12 +289,12 @@ with hooks:
 
 ## More information
 
-See the following for more information about hooks:
+See the following links for more information:
 
 * [Hooks package][]
 * [Hooks library reference][]
-* [Build and bundle native code][]
+* [C interop][]
 
 [Hooks package]: {{site.pub-pkg}}/hooks
 [Hooks library reference]: {{site.pub-api}}/hooks/latest/hooks/
-[Build and bundle native code]: https://dart.dev/interop/c-interop#build-hooks
+[C interop]: /interop/c-interop
