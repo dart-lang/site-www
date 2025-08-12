@@ -11,14 +11,14 @@ This guide discusses the Dart and Flutter MCP server.
 
 ## Overview
 
-The Dart and Flutter MCP server
+The [Dart and Flutter MCP server][]
 exposes Dart (and Flutter) development tool actions to
 compatible AI-assistant clients. MCP (model context protocol)
 is a protocol that enables communication between development tools
 and AI assistants, allowing the assistants to understand the
 context of the code and perform actions on behalf of the developer.
 
-The [Dart and Flutter MCP server][] can work with any MCP client that
+The Dart and Flutter MCP server can work with any MCP client that
 supports standard I/O (stdio) as the transport medium.
 To access all the features of the Dart and Flutter MCP server,
 an MCP client must support [Tools][] and [Resources][].
