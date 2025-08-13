@@ -44,4 +44,4 @@ google_tag_manager_id: GTM-5VSZM5J
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
 
-sdkVersion: 3.8.1
+sdkVersion: 3.9.0
