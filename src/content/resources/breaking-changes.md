@@ -1,7 +1,6 @@
 ---
 title: Breaking changes and deprecations
 description: A list of breaking changes by release in Dart.
-lastVerified: 2024-08-04
 maxTocDepth: 1
 lastVerified: 2025-08-13
 ---
@@ -86,7 +85,7 @@ but the final list might change before then.
 To reduce the potential impact of these changes, consider
 accounting for them before the 3.10 release.
 
-### Libraries {:.no_toc}
+### Libraries
 
 #### `dart:io`
 
@@ -95,7 +94,7 @@ accounting for them before the 3.10 release.
 
 [56468]: {{site.repo.dart.sdk}}/issues/56468
 
-### SDK {:.no_toc}
+### SDK
 
 - The `dart` CLI and Dart VM are now separate executables,
   with the pure Dart VM executable and process called `dartvm`.
@@ -103,7 +102,7 @@ accounting for them before the 3.10 release.
 
 [`dart run`]: /tools/dart-run
 
-### Tools {:.no_toc}
+### Tools
 
 - Subcommands of the `dart` tool, such as `dart format` and `dart compile`
   now run AOT-compiled snapshots of the underlying tools.
@@ -126,7 +125,7 @@ accounting for them before the 3.10 release.
   cause new analyzer diagnostics to trigger on
   existing code that previously passed analysis.
 
-### Tools {:.no_toc}
+### Tools
 
 - Some subcommands of the `dart` tool, such as `dart analyze` and `dart fix`
   now run AOT-compiled snapshots of the underlying tools.
