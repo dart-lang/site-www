@@ -167,11 +167,11 @@ body {
     --site-alert-warning-color: #cea11f;
     --site-alert-error-color: #ff5d5d;
 
-    .shiki, .shiki span {
-      color: var(--shiki-dark) !important;
-      font-style: var(--shiki-dark-font-style) !important;
-      font-weight: var(--shiki-dark-font-weight) !important;
-      text-decoration: var(--shiki-dark-text-decoration) !important;
+    .opal, .opal span {
+      color: var(--opal-dark-color) !important;
+      font-style: var(--opal-dark-font-style) !important;
+      font-weight: var(--opal-dark-font-weight) !important;
+      text-decoration: var(--opal-dark-text-decoration) !important;
     }
 
     .light-mode-visible {

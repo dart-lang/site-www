@@ -1,12 +1,34 @@
 import 'dart:convert' show LineSplitter;
 
+import 'package:collection/collection.dart';
+import 'package:jaspr/jaspr.dart' as jaspr;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:meta/meta.dart';
+import 'package:opal/opal.dart' as opal;
 
 import '../components/dartpad_injector.dart';
 import '../components/wrapped_code_block.dart';
+import '../highlight/theme/dark.dart';
+import '../highlight/theme/light.dart';
+import '../highlight/token_renderer.dart' as highlighter;
 
 final class CodeBlockProcessor implements PageExtension {
+  static final opal.LanguageRegistry _languageRegistry =
+      opal.LanguageRegistry.of(
+        [
+          opal.BuiltInLanguages.dart,
+          opal.BuiltInLanguages.xml,
+          opal.BuiltInLanguages.html,
+          opal.BuiltInLanguages.kotlin,
+          opal.BuiltInLanguages.markdown,
+          opal.BuiltInLanguages.java,
+          opal.BuiltInLanguages.js,
+          opal.BuiltInLanguages.yaml,
+          opal.BuiltInLanguages.json,
+        ],
+        fallbackLanguageNames: {'md': 'markdown', 'yml': 'yaml'},
+      );
+
   const CodeBlockProcessor();
 
   @override
@@ -52,7 +74,6 @@ final class CodeBlockProcessor implements PageExtension {
           final tag = metadata['tag'];
 
           final rawHighlightLines = metadata['highlightLines'];
-          // ignore: unused_local_variable
           final skipSyntaxHighlighting = metadata.containsKey('noHighlight');
 
           var showLineNumbers = false;
@@ -67,9 +88,11 @@ final class CodeBlockProcessor implements PageExtension {
           }
 
           final codeLines = _removeHighlights(lines);
-          final processedContent = codeLines
-              .map((line) => line.content)
-              .toList(growable: false);
+          final processedContent = _highlightCode(
+            codeLines,
+            language: language,
+            skipSyntaxHighlighting: skipSyntaxHighlighting,
+          );
 
           return ComponentNode(
             WrappedCodeBlock(
@@ -91,6 +114,144 @@ final class CodeBlockProcessor implements PageExtension {
       node.tag,
       node.attributes,
       nodeChildren != null ? _processNodes(nodeChildren) : null,
+    );
+  }
+
+  List<List<jaspr.Component>> _highlightCode(
+    List<_CodeLine> codeLines, {
+    required String language,
+    bool skipSyntaxHighlighting = false,
+  }) {
+    final content = codeLines.map((line) => line.content).toList();
+    final languageHighlighter = switch (_languageRegistry[language]) {
+      final highlighter? when !skipSyntaxHighlighting => highlighter,
+      _ => opal.BuiltInLanguages.text,
+    };
+    final highlightedSpans = languageHighlighter.tokenize(content);
+    final renderedSpans = highlighter.ThemedTokenRenderer(
+      themeByName: {
+        'light': highlighter.Theme(dashLightTheme),
+        'dark': highlighter.Theme(dashDarkTheme),
+      },
+    ).render(highlightedSpans);
+
+    return [
+      for (var i = 0; i < renderedSpans.length; i++)
+        _processLine(renderedSpans[i], codeLines[i].highlights),
+    ];
+  }
+
+  List<jaspr.Component> _processLine(
+    List<highlighter.ThemedSpan> spans,
+    List<({int startColumn, int length})> highlights,
+  ) {
+    if (highlights.isEmpty) {
+      return spans.map(_createSpan).toList(growable: false);
+    }
+
+    final processedSpans = <jaspr.Component>[];
+    var currentColumn = 0;
+
+    for (final span in spans) {
+      final spanEnd = currentColumn + span.content.length;
+      final intersecting = _findIntersectingHighlights(
+        highlights,
+        currentColumn,
+        spanEnd,
+      );
+
+      if (intersecting.isEmpty) {
+        processedSpans.add(_createSpan(span));
+      } else {
+        processedSpans.addAll(
+          _splitSpanByHighlights(span, intersecting, currentColumn),
+        );
+      }
+      currentColumn = spanEnd;
+    }
+
+    return processedSpans;
+  }
+
+  List<({int startColumn, int length})> _findIntersectingHighlights(
+    List<({int startColumn, int length})> highlights,
+    int spanStart,
+    int spanEnd,
+  ) => highlights
+      .where((h) {
+        final highlightEnd = h.startColumn + h.length;
+        return !(spanStart >= highlightEnd || spanEnd <= h.startColumn);
+      })
+      .sorted((a, b) => a.startColumn.compareTo(b.startColumn));
+
+  List<jaspr.Component> _splitSpanByHighlights(
+    highlighter.ThemedSpan span,
+    List<({int startColumn, int length})> highlights,
+    int spanStart,
+  ) {
+    final result = <jaspr.Component>[];
+    final spanLength = span.content.length;
+    var processedStart = 0;
+
+    for (final highlight in highlights) {
+      final highlightEnd = highlight.startColumn + highlight.length;
+      final startInSpan = (highlight.startColumn - spanStart).clamp(
+        0,
+        spanLength,
+      );
+      final endInSpan = (highlightEnd - spanStart).clamp(0, spanLength);
+
+      // Add non-highlighted portion before the highlight.
+      if (processedStart < startInSpan) {
+        result.add(
+          _createSpan(
+            span,
+            content: span.content.substring(processedStart, startInSpan),
+          ),
+        );
+      }
+
+      // Add highlighted portion.
+      if (startInSpan < endInSpan) {
+        result.add(
+          jaspr.DomComponent(
+            tag: 'mark',
+            attributes: {'class': 'highlight'},
+            children: [
+              _createSpan(
+                span,
+                content: span.content.substring(startInSpan, endInSpan),
+              ),
+            ],
+          ),
+        );
+        processedStart = endInSpan;
+      }
+    }
+
+    // Add remaining non-highlighted portion.
+    if (processedStart < spanLength) {
+      result.add(
+        _createSpan(
+          span,
+          content: span.content.substring(processedStart),
+        ),
+      );
+    }
+
+    return result;
+  }
+
+  jaspr.Component _createSpan(
+    highlighter.ThemedSpan span, {
+    String? content,
+  }) {
+    return jaspr.span(
+      [jaspr.text(content ?? span.content)],
+      attributes: {
+        'style': ?span.toInlineStyle(defaultTheme: 'light'),
+        'data-tag': span.tag,
+      },
     );
   }
 
@@ -227,14 +388,6 @@ final class _CodeLine {
   const _CodeLine({required this.content, required this.highlights});
 }
 
-class CodeSpan {
-  final String text;
-  final bool? bold;
-  final String? color;
-
-  const CodeSpan({required this.text, this.bold, this.color});
-}
-
 /// Parses a comma-separated list of numbers and ranges into a set of numbers.
 ///
 /// Returns all unique numbers specified in the input.
@@ -286,4 +439,66 @@ Map<String, String?> _parseAttributes(String input) {
     for (final match in matches)
       match.group(1)!: match.group(2) ?? match.group(3),
   };
+}
+
+extension ThemedSpanToHtml on highlighter.ThemedSpan {
+  String? toInlineStyle({String? defaultTheme}) {
+    final buffer = StringBuffer();
+
+    for (final MapEntry(key: themeName, value: style) in styleByTheme.entries) {
+      final isDefault = themeName == defaultTheme;
+
+      if (style.foregroundColor case final fgColor?) {
+        if (isDefault) {
+          buffer.write('color: rgba(');
+          buffer.write((fgColor.red * 255).round());
+          buffer.write(', ');
+          buffer.write((fgColor.green * 255).round());
+          buffer.write(', ');
+          buffer.write((fgColor.blue * 255).round());
+          buffer.write(', ');
+          buffer.write(fgColor.alpha);
+          buffer.write('); ');
+        } else {
+          buffer.write('--opal-$themeName-color: rgba(');
+          buffer.write((fgColor.red * 255).round());
+          buffer.write(', ');
+          buffer.write((fgColor.green * 255).round());
+          buffer.write(', ');
+          buffer.write((fgColor.blue * 255).round());
+          buffer.write(', ');
+          buffer.write(fgColor.alpha);
+          buffer.write('); ');
+        }
+      }
+
+      if (style.fontStyle case final fontStyle?) {
+        final fontStyleValue = switch (fontStyle) {
+          highlighter.FontStyle.italic => 'italic',
+          highlighter.FontStyle.normal => 'normal',
+        };
+
+        if (isDefault) {
+          buffer.write('font-style: $fontStyleValue; ');
+        } else {
+          buffer.write('--opal-$themeName-font-style: $fontStyleValue; ');
+        }
+      }
+
+      if (style.fontWeight case final fontWeight?) {
+        if (isDefault) {
+          buffer.write('font-weight: ${fontWeight.weight}; ');
+        } else {
+          buffer.write('--opal-$themeName-font-weight: ${fontWeight.weight}; ');
+        }
+      }
+    }
+
+    final resultingStyle = buffer.toString().trimRight();
+    if (resultingStyle.isEmpty) {
+      return null;
+    }
+
+    return resultingStyle;
+  }
 }

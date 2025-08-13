@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 
 final class WrappedCodeBlock extends StatelessComponent {
-  const WrappedCodeBlock({
+  WrappedCodeBlock({
     super.key,
     required this.content,
     required this.language,
@@ -14,7 +14,7 @@ final class WrappedCodeBlock extends StatelessComponent {
     this.showCopyButton = true,
   });
 
-  final List<String> content;
+  final List<List<Component>> content;
 
   final String language;
   final String? title;
@@ -58,6 +58,7 @@ final class WrappedCodeBlock extends StatelessComponent {
               pre(
                 classes: [
                   if (showLineNumbers) 'show-line-numbers',
+                  'opal',
                 ].join(' '),
                 attributes: {'tabindex': '0'},
                 [
@@ -88,9 +89,9 @@ final class WrappedCodeBlock extends StatelessComponent {
                                 ),
                                 [text('\u200b')],
                               ),
-                              // TODO(parlough): This should be highlighted.
-                              final line => span([text(line)]),
+                              final lineSpans => span(lineSpans),
                             },
+                            text('\n'),
                           ],
                         ),
                     ],
