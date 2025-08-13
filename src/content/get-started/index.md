@@ -7,7 +7,6 @@ description: >-
 sitemap: false
 noindex: true
 showToc: false
-show_breadcrumbs: true
 nextpage:
   url: /get-started/hello-world
   title: Build your first app

@@ -6,7 +6,6 @@ description: >-
 sitemap: false
 noindex: true
 showToc: false
-show_breadcrumbs: true
 prevpage:
   url: /get-started/async
   title: Introduction to async and HTTP

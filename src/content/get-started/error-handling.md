@@ -7,7 +7,6 @@ description: >-
 sitemap: false
 noindex: true
 showToc: false
-show_breadcrumbs: true
 prevpage:
   url: /get-started/object-oriented
   title: Object-oriented Dart programming

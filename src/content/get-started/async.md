@@ -6,7 +6,6 @@ description: >-
 sitemap: false
 noindex: true
 showToc: false
-show_breadcrumbs: true
 prevpage:
   url: /get-started/add-commands
   title: Make your program interactive

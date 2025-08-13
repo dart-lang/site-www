@@ -7,7 +7,6 @@ description: >-
 sitemap: false
 noindex: true
 showToc: false
-show_breadcrumbs: true
 prevpage:
   url: /get-started/command-runner-polish
   title: Command runner polish

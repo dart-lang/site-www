@@ -28,7 +28,6 @@ List<MemoryPage> get _lintMemoryPages {
         initialData: {
           'page': <String, Object?>{
             'title': lint.name,
-            'show_breadcrumbs': true,
             'underscore_breaker_titles': true,
             'description': 'Learn about the ${lint.name} linter rule.',
             if (lint.state == 'removed') ...const {
@@ -168,7 +167,7 @@ MemoryPage get _glossaryPage => MemoryPage.builder(
   initialData: {
     'page': <String, Object?>{
       'title': 'Glossary',
-      'show_breadcrumbs': false,
+      'showBreadcrumbs': false,
       'description':
           'A glossary reference for terminology '
           'used across dart.dev.',

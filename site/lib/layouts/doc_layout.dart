@@ -39,7 +39,7 @@ class DocLayout extends DashLayout {
                   else
                     text(pageTitle),
                 ]),
-                if (pageData['show_breadcrumbs'] != false)
+                if (pageData['showBreadcrumbs'] != false)
                   const PageBreadcrumbs(),
               ]),
 
