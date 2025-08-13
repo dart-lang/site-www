@@ -57,8 +57,8 @@ Dart 3.9:
     might be produced.
 
 
-*  Upper bound is not respected: Starting from
-   language version 3.9 the flutter constraint upper bound
+*  Upper bound is now respected: Starting from
+   language version 3.9, the flutter constraint upper bound
    is now respected in your root package.
 
    For example:
@@ -70,8 +70,8 @@ Dart 3.9:
      flutter: 3.33.0
    ```
 
-   Results in dart pub get failing if invoked with a version of
-   the Flutter SDK different from 3.33.0. The upper bound of
+   Results in `dart pub get` fail if invoked with a version of
+   the Flutter SDK different from `3.33.0`. The upper bound of
    the `flutter` constraint is still ignored in
    packages used as dependencies.
    See [flutter/flutter#95472][] for details.
