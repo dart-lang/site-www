@@ -4,7 +4,6 @@ description: >-
   Details about the library_private_types_in_public_api
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

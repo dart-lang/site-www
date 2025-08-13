@@ -161,6 +161,8 @@
       permalink: /tools/pub/writing-package-pages
     - title: Workspaces (monorepo support)
       permalink: /tools/pub/workspaces
+    - title: Hooks
+      permalink: /tools/hooks
     - title: Package reference
       expanded: false
       children:
@@ -261,7 +263,7 @@
     permalink: /tools
   - title: AI
     children:
-        - title: Dart MCP Server
+        - title: Dart and Flutter MCP Server
           permalink: /tools/mcp-server
   - title: Editors & debuggers
     children:

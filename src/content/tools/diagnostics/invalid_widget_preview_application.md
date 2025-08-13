@@ -4,7 +4,6 @@ description: >-
   Details about the invalid_widget_preview_application
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

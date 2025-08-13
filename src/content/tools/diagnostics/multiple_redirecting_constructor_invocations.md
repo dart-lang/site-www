@@ -4,7 +4,6 @@ description: >-
   Details about the multiple_redirecting_constructor_invocations
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

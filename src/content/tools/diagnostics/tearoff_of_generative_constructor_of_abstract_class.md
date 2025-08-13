@@ -4,7 +4,6 @@ description: >-
   Details about the tearoff_of_generative_constructor_of_abstract_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

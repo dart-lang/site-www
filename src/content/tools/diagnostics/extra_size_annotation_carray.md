@@ -4,7 +4,6 @@ description: >-
   Details about the extra_size_annotation_carray
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

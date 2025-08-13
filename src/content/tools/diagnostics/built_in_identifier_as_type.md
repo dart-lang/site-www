@@ -4,7 +4,6 @@ description: >-
   Details about the built_in_identifier_as_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

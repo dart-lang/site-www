@@ -4,7 +4,6 @@ description: >-
   Details about the prefix_identifier_not_followed_by_dot
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

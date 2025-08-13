@@ -1,5 +1,6 @@
 ---
 title: Dart cheatsheet
+breadcrumb: Cheatsheet
 description: Interactively learn (or relearn) some of Dart's unique features.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---

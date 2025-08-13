@@ -4,7 +4,6 @@ description: >-
   Details about the sdk_version_gt_gt_gt_operator
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

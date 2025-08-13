@@ -1,5 +1,6 @@
 ---
 title: Package layout conventions
+breadcrumb: Package layout
 description: >-
   Learn more about the directory structure used by
   Dart's package management tool, pub.

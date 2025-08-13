@@ -4,7 +4,6 @@ description: >-
   Details about the ffi_native_must_be_external
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

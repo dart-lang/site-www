@@ -4,7 +4,6 @@ description: >-
   Details about the relational_pattern_operator_return_type_not_assignable_to_bool
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

@@ -4,7 +4,6 @@ description: >-
   Details about the relational_pattern_operand_type_not_assignable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

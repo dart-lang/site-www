@@ -4,7 +4,6 @@ description: >-
   Details about the extension_type_constructor_with_super_formal_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

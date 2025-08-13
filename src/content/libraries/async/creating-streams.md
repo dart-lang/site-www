@@ -1,5 +1,6 @@
 ---
 title: Creating streams in Dart
+short-title: Creating streams
 description: A stream is a sequence of results; learn how to create your own.
 original-date: 2013-04-08
 date: 2021-05-16

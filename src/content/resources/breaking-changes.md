@@ -3,6 +3,7 @@ title: Breaking changes and deprecations
 description: A list of breaking changes by release in Dart.
 lastVerified: 2024-08-04
 maxTocDepth: 1
+lastVerified: 2025-08-13
 ---
 
 {% assign versioned = '<span class="tag-label language-versioned-tag">Language versioned</span>' %}
@@ -77,6 +78,43 @@ don't include the section header.
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
 
+## 3.10.0
+
+**Tentative**<br>
+The following changes are expected to be included in the 3.10 stable release,
+but the final list might change before then.
+To reduce the potential impact of these changes, consider
+accounting for them before the 3.10 release.
+
+### Libraries {:.no_toc}
+
+#### `dart:io`
+
+- `IOOverrides` can [no longer be implemented][56468],
+  but can still be extended.
+
+[56468]: {{site.repo.dart.sdk}}/issues/56468
+
+### SDK {:.no_toc}
+
+- The `dart` CLI and Dart VM are now separate executables,
+  with the pure Dart VM executable and process called `dartvm`.
+  Dart programs should still be run with [`dart run`][].
+
+[`dart run`]: /tools/dart-run
+
+### Tools {:.no_toc}
+
+- Subcommands of the `dart` tool, such as `dart format` and `dart compile`
+  now run AOT-compiled snapshots of the underlying tools.
+  There should be no functional difference outside of performance improvements,
+  but if you come across incompatibilities, please [report them][sdk report].
+- {{removed}}
+  The `dart` tool is no longer available for IA32 platforms
+  as the Dart SDK no longer supports IA32.
+
+[sdk report]: {{site.repo.dart.sdk}}/issues/new/choose
+
 ## 3.9.0
 
 ### Language
@@ -87,6 +125,30 @@ don't include the section header.
   As a result, improved dead code analysis might
   cause new analyzer diagnostics to trigger on
   existing code that previously passed analysis.
+
+### Tools {:.no_toc}
+
+- Some subcommands of the `dart` tool, such as `dart analyze` and `dart fix`
+  now run AOT-compiled snapshots of the underlying tools.
+  There should be no functional difference outside of performance improvements,
+  but if you come across incompatibilities, please [report them][sdk report].
+
+[sdk report]: {{site.repo.dart.sdk}}/issues/new/choose
+
+#### Pub
+
+- {{versioned}}
+  The upper bound of the  `flutter` SDK constraint
+  in your workspace's root package is now respected.
+  If your current SDK doesn't meet the specified bound,
+  `dart pub get` and other actions that retrieve dependencies will fail.
+
+#### Dart build
+
+- {{experimental}}
+  Building a CLI app bundle with experimental native asset support now
+  requires using the `dart build cli` subcommand and
+  specifying the app entrypoint with a new `--target` option.
 
 ## 3.8.0
 

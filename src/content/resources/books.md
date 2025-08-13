@@ -1,5 +1,6 @@
 ---
 title: Books about Dart
+short-title: Books
 description: Read all about it! Here's a collection of books about Dart.
 showToc: false
 ---

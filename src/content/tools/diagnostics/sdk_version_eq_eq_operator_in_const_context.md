@@ -4,7 +4,6 @@ description: >-
   Details about the sdk_version_eq_eq_operator_in_const_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

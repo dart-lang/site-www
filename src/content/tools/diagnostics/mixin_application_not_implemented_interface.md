@@ -4,7 +4,6 @@ description: >-
   Details about the mixin_application_not_implemented_interface
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

@@ -4,7 +4,6 @@ description: >-
   Details about the implicit_this_reference_in_initializer
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

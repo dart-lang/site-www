@@ -1,5 +1,6 @@
 ---
 title: Getting started with JavaScript interop
+breadcrumb: Get started
 description: A basic example of using browser APIs and a bundled JS library.
 ---
 

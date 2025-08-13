@@ -4,7 +4,6 @@ description: >-
   Details about the prefer_adjacent_string_concatenation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

@@ -4,7 +4,6 @@ description: >-
   Details about the import_deferred_library_with_load_function
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

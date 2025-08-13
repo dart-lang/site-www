@@ -4,7 +4,6 @@ description: >-
   Details about the expected_two_map_type_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

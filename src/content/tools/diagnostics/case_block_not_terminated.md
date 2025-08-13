@@ -4,7 +4,6 @@ description: >-
   Details about the case_block_not_terminated
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

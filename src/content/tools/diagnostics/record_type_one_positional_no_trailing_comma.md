@@ -4,7 +4,6 @@ description: >-
   Details about the record_type_one_positional_no_trailing_comma
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

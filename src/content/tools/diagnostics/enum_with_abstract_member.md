@@ -4,7 +4,6 @@ description: >-
   Details about the enum_with_abstract_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

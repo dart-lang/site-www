@@ -4,7 +4,6 @@ description: >-
   Details about the text_direction_code_point_in_literal
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

@@ -4,7 +4,6 @@ description: >-
   Details about the non_native_function_type_argument_to_pointer
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

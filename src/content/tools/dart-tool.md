@@ -1,5 +1,6 @@
 ---
 title: "dart: The Dart command-line tool"
+short-title: Dart CLI
 description: "The reference page for using 'dart' in a terminal window."
 showToc: false
 ---

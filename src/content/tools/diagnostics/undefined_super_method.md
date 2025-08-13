@@ -4,7 +4,6 @@ description: >-
   Details about the undefined_super_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 canonical: https://dart.dev/tools/diagnostics/undefined_super_member
 redirectTo: /tools/diagnostics/undefined_super_member
 sitemap: false

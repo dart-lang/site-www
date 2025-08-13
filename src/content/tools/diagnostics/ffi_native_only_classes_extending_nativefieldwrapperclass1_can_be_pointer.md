@@ -4,7 +4,6 @@ description: >-
   Details about the ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

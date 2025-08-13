@@ -4,7 +4,6 @@ description: >-
   Details about the unnecessary_null_aware_operator_on_extension_on_nullable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 

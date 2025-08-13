@@ -4,7 +4,6 @@ description: >-
   Details about the return_of_invalid_type_from_closure
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 bodyClass: highlight-diagnostics
 ---
 
