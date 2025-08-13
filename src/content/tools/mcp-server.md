@@ -1,29 +1,35 @@
 ---
-title: Dart MCP server
+title: Dart and Flutter MCP server
 short-title: MCP server
 description: >-
-  Learn about the Dart MCP server tool that
+  Learn about the Dart and Flutter MCP server tool that
   exposes Dart and Flutter tools to compatible
   AI-assistant clients and agents.
 ---
 
-The Dart MCP server exposes Dart (and Flutter)
-development tool actions to compatible AI-assistant clients.
+This guide discusses the Dart and Flutter MCP server.
 
 ## Overview
 
-The [Dart MCP server][] can work with any MCP client that
+The [Dart and Flutter MCP server][]
+exposes Dart (and Flutter) development tool actions to
+compatible AI-assistant clients. MCP (model context protocol)
+is a protocol that enables communication between development tools
+and AI assistants, allowing the assistants to understand the
+context of the code and perform actions on behalf of the developer.
+
+The Dart and Flutter MCP server can work with any MCP client that
 supports standard I/O (stdio) as the transport medium.
-To access all the features of the Dart MCP server,
+To access all the features of the Dart and Flutter MCP server,
 an MCP client must support [Tools][] and [Resources][].
-For the best development experience with the Dart MCP server,
+For the best development experience with the Dart and Flutter MCP server,
 an MCP client should also support [Roots][].
 
 If you are using a client that claims it
 supports roots but doesn't actually set them,
 pass `--force-roots-fallback` to enable tools for managing the roots.
 
-The Dart MCP server provides a growing list of tools that
+The Dart and Flutter MCP server provides a growing list of tools that
 grant AI assistants deep insights into your project.
 Here is an overview of a few things it can do:
 
@@ -46,7 +52,7 @@ require Dart 3.9 or later.
 [Tools]: https://modelcontextprotocol.io/docs/concepts/tools
 [Resources]: https://modelcontextprotocol.io/docs/concepts/resources
 [Roots]: https://modelcontextprotocol.io/docs/concepts/roots
-[Dart MCP server]: {{site.repo.dart.org}}/ai/blob/main/pkgs/dart_mcp_server
+[Dart and Flutter MCP server]: {{site.repo.dart.org}}/ai/blob/main/pkgs/dart_mcp_server
 [`dart format`]: /tools/dart-format
 
 ## Set up your MCP client
@@ -55,12 +61,12 @@ The server is run with the `dart mcp-server` command, which will
 have to be configured in your preferred client.
 
 This section provides instructions for setting up the
-Dart MCP server with popular tools like Firebase Studio,
+Dart and Flutter MCP server with popular tools like Firebase Studio,
 Gemini CLI, Gemini Code Assist, Cursor, and GitHub Copilot.
 
 ### Gemini CLI
 
-To configure the [Gemini CLI][] to use the Dart MCP server,
+To configure the [Gemini CLI][] to use the Dart and Flutter MCP server,
 add a Dart entry to the `mcpServers` section of the Gemini config.
 
 -  To enable server for all projects on your device,
@@ -89,7 +95,7 @@ documentation for [setting up MCP servers][].
 
 ### Firebase Studio
 
-If you wish to use the Dart MCP Server in [Firebase Studio][],
+If you wish to use the Dart and Flutter MCP Server in [Firebase Studio][],
 an agentic cloud-based development environment that helps
 you build and ship production-quality full-stack AI apps,
 follow these steps:
@@ -97,7 +103,7 @@ follow these steps:
 1.  In your Firebase Studio app project, create a
     `.idx/mcp.json` file in your project if it
     doesn't exist already and add the following
-    Dart MCP Server configuration to the file:
+    Dart and Flutter MCP Server configuration to the file:
 
     ```json title=".idx/mcp.json"
     {
@@ -130,7 +136,7 @@ Gemini CLI to provide a powerful AI agent directly in your IDE.
 If you haven't set up Gemini Code Assist or its agent mode yet,
 follow its [Before you begin instructions][gca-setup] to get started.
 
-To configure Gemini Code Assist to use the Dart MCP server,
+To configure Gemini Code Assist to use the Dart and Flutter MCP server,
 follow the instructions to [configure the Gemini CLI][].
 
 You can verify the MCP server has been configured
@@ -148,15 +154,15 @@ documentation for [using agent mode][].
 ### GitHub Copilot in VS Code
 
 :::note
-Support for the Dart MCP server in VS Code required
+Support for the Dart and Flutter MCP server in VS Code requires
 v3.116 or later of the [Dart Code extension][].
 :::
 
 By default, the Dart extension uses the
-[VS Code MCP API][] to register the Dart MCP server, as well
+[VS Code MCP API][] to register the Dart and Flutter MCP server, as well
 as a tool to provide the URI for the active Dart Tooling Daemon.
 
-Explicitly enable or disable the Dart MCP server by
+Explicitly enable or disable the Dart and Flutter MCP server by
 configuring the `dart.mcpServer` setting in your VS Code settings.
 
 To change this globally, update your user settings:
@@ -191,7 +197,7 @@ documentation for [enabling MCP support][].
 
 ### Cursor
 
-The easiest way to configure the Dart MCP server with
+The easiest way to configure the Dart and Flutter MCP server with
 Cursor is by clicking the **Add to Cursor** button:
 
 [![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=dart&config=eyJ0eXBlIjoic3RkaW8iLCJjb21tYW5kIjoiZGFydCBtY3Atc2VydmVyIC0tZXhwZXJpbWVudGFsLW1jcC1zZXJ2ZXIgLS1mb3JjZS1yb290cy1mYWxsYmFjayJ9){:.light-mode-visible}
@@ -206,7 +212,7 @@ Alternatively, you can configure the server manually:
     (configuration will only apply to this project) or
     edit the global `~/.cursor/mcp.json` file in your home directory
     (configuration will apply for all projects) to
-    configure the Dart MCP server:
+    configure the Dart and Flutter MCP server:
 
     ```json title=".cursor/mcp.json"
     {
@@ -229,8 +235,8 @@ documentation for [installing MCP servers][].
 
 ## Use your MCP client
 
-Once you've set up the Dart MCP server with a client,
-the Dart MCP server enables the client to not only reason
+Once you've set up the Dart and Flutter MCP server with a client,
+the Dart and Flutter MCP server enables the client to not only reason
 about your project's context but also to take action with tools.
 
 The [Large Language Model (LLM)][LLM] decides which tools to use and when,
@@ -251,7 +257,7 @@ ask your AI assistant for help with a prompt similar to the following:
 > Check for and fix static and runtime analysis issues.
 > Check for and fix any layout issues.
 
-Behind the scenes, the AI agent uses the Dart MCP server's tools to:
+Behind the scenes, the AI agent uses the Dart and Flutter MCP server's tools to:
 
 *  See the error: It uses a tool to get the current runtime errors
    from the running application.
@@ -266,7 +272,7 @@ You can then keep or undo the code changes.
 
 Imagine you need to add a chart to your app.
 Which package should you use? How do you add it and write the boilerplate?
-The Dart MCP server can streamline this entire process with
+The Dart and Flutter MCP server can streamline this entire process with
 a prompt similar to the following:
 
 > Find a suitable package to add a line chart that
