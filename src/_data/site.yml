@@ -34,7 +34,7 @@ yt:
   watch: 'https://www.youtube.com/watch'
   playlist: 'https://www.youtube.com/playlist?list='
 
-showBanner: false
+showBanner: true
 
 google_analytics_id: UA-26406144-4
 google_tag_manager_id: GTM-5VSZM5J
