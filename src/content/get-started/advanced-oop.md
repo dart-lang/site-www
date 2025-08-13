@@ -5,6 +5,9 @@ description: >-
   Enhance your Dart skills by exploring advanced features like enhanced enums
   and extensions. Improve your application's output formatting and color,
   making it more user-friendly.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/error-handling
   title: Error handling
@@ -13,7 +16,7 @@ nextpage:
   title: command_runner polish
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll explore advanced Dart features that improve the user
 experience of your command-line application. You'll learn how to use enhanced

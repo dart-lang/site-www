@@ -4,7 +4,7 @@ description: >-
   Details about the extension_type_with_abstract_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' must have a method body because '{1}' is an extension type._

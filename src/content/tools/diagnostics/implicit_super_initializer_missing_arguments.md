@@ -4,7 +4,7 @@ description: >-
   Details about the implicit_super_initializer_missing_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The implicitly invoked unnamed constructor from '{0}' has required parameters._

@@ -4,7 +4,7 @@ description: >-
   Details about the prefix_identifier_not_followed_by_dot
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The name '{0}' refers to an import prefix, so it must be followed by '.'._

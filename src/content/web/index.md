@@ -2,7 +2,7 @@
 title: Web platform
 short-title: Web
 description: Resources for developing Dart web apps.
-toc: false
+showToc: false
 ---
 
 Dart supports the web as one of its core [platforms](/overview#platform).

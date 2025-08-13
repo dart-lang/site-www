@@ -4,7 +4,7 @@ description: >-
   Details about the label_undefined
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Can't reference an undefined label '{0}'._

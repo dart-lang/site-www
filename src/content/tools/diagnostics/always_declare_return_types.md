@@ -4,7 +4,7 @@ description: >-
   Details about the always_declare_return_types
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,7 +19,6 @@ body_class: highlight-diagnostics
 </div>
 
 _The function '{0}' should have a return type but doesn't._
-
 _The method '{0}' should have a return type but doesn't._
 
 ## Description

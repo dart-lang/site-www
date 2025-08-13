@@ -4,7 +4,7 @@ description: >-
   Details about the missing_dart_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Required library '{0}' is missing._

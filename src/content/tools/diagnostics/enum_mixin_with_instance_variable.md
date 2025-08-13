@@ -4,7 +4,7 @@ description: >-
   Details about the enum_mixin_with_instance_variable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Mixins applied to enums can't have instance variables._

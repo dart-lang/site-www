@@ -4,7 +4,7 @@ description: >-
   Details about the field_initializer_factory_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Initializing formal parameters can't be used in factory constructors._

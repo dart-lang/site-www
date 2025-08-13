@@ -4,13 +4,11 @@ description: >-
   Details about the invalid_implementation_override
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{1}.{0}' ('{2}') isn't a valid concrete implementation of '{3}.{0}' ('{4}')._
-
-_The setter '{1}.{0}' ('{2}') isn't a valid concrete implementation of '{3}.{0}'
-('{4}')._
+_The setter '{1}.{0}' ('{2}') isn't a valid concrete implementation of '{3}.{0}' ('{4}')._
 
 ## Description
 

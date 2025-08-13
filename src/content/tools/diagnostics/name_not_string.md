@@ -4,7 +4,7 @@ description: >-
   Details about the name_not_string
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The value of the 'name' field is required to be a string._

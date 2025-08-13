@@ -4,7 +4,7 @@ description: >-
   Details about the inconsistent_language_version_override
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Parts must have exactly the same language version override as the library._

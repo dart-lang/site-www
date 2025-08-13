@@ -4,7 +4,7 @@ description: >-
   Details about the assignment_to_function
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Functions can't be assigned a value._

@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_inline_function_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Inline function types can't be used for parameters in a generic function type._

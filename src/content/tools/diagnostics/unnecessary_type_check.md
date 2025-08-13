@@ -4,11 +4,10 @@ description: >-
   Details about the unnecessary_type_check
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Unnecessary type check; the result is always 'false'._
-
 _Unnecessary type check; the result is always 'true'._
 
 ## Description

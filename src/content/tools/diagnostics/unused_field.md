@@ -4,7 +4,7 @@ description: >-
   Details about the unused_field
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The value of the field '{0}' isn't used._

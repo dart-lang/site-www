@@ -4,7 +4,7 @@ description: >-
   Details about the deprecated_export_use
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The ability to import '{0}' indirectly is deprecated._

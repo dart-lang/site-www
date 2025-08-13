@@ -4,7 +4,7 @@ description: >-
   Details about the ffi_native_invalid_multiple_annotations
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Native functions and fields must have exactly one `@Native` annotation._

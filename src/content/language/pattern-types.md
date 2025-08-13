@@ -54,7 +54,7 @@ Subpatterns in a logical-or pattern can bind variables, but the branches must
 define the same set of variables, because only one branch will be evaluated when
 the pattern matches.
 
-## Logical-and	
+## Logical-and
 
 `subpattern1 && subpattern2`
 
@@ -122,7 +122,7 @@ Cast patterns will [throw][] if the value doesn't have the stated type.
 Like the [null-assert pattern](#null-assert), this lets you forcibly assert the
 expected type of some destructured value.
 
-## Null-check	
+## Null-check
 
 `subpattern?`
 
@@ -144,7 +144,7 @@ switch (maybeString) {
 
 To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
-## Null-assert	
+## Null-assert
 
 `subpattern!`
 
@@ -176,7 +176,7 @@ var (x!, y!) = position;
 
 To match when the value _is_ null, use the [constant pattern](#constant) `null`.
 
-## Constant	
+## Constant
 
 `123, null, 'string', math.pi, SomeClass.constant, const Thing(1, 2), const (1 + 2)`
 
@@ -244,7 +244,7 @@ switch ((1, 2)) {
 
 You can use a [wildcard pattern](#wildcard) as a variable pattern. 
 
-## Identifier	
+## Identifier
 
 `foo, _`
 

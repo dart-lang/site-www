@@ -4,11 +4,10 @@ description: >-
   Details about the invocation_of_extension_without_call
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The extension '{0}' doesn't define a 'call' method so the override can't be
-used in an invocation._
+_The extension '{0}' doesn't define a 'call' method so the override can't be used in an invocation._
 
 ## Description
 

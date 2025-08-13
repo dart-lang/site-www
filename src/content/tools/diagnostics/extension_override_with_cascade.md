@@ -4,11 +4,10 @@ description: >-
   Details about the extension_override_with_cascade
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Extension overrides have no value so they can't be used as the receiver of a
-cascade expression._
+_Extension overrides have no value so they can't be used as the receiver of a cascade expression._
 
 ## Description
 
