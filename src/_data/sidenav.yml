@@ -161,6 +161,8 @@
       permalink: /tools/pub/writing-package-pages
     - title: Workspaces (monorepo support)
       permalink: /tools/pub/workspaces
+    - title: Hooks
+      permalink: /tools/hooks
     - title: Package reference
       expanded: false
       children:
