@@ -42,3 +42,9 @@ showBanner: false
 og_image_vers: "?2"
 
 sdkVersion: 3.8.1
+
+# Settings for Jaspr.
+
+# Specify Jaspr as not setting a base href for each document,
+# so that links to fragments still work as expected.
+base: false

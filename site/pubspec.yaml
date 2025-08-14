@@ -17,8 +17,7 @@ dependencies:
   liquify: ^1.3.0
   markdown: ^7.3.0
   meta: ^1.17.0
-  opal:
-    path: /Users/parlough/Documents/dev/personal/opal
+  opal: ^0.0.1
   path: ^1.9.1
   pub_semver: ^2.2.0
   web: ^1.1.1
@@ -35,11 +34,17 @@ dev_dependencies:
   sass_builder: ^2.2.1
 
 dependency_overrides:
-  # Remove once build performance fixes have been published.
+  # Remove once build performance and base href fixes have been published.
   jaspr:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr
+      ref: fix/script-no-base
+  jaspr_content:
+    git:
+      url: https://github.com/schultek/jaspr.git
+      path: packages/jaspr_content
+      ref: fix/script-no-base
 
 jaspr:
   mode: static

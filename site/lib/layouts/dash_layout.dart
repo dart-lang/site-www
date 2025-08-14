@@ -21,11 +21,6 @@ abstract class DashLayout extends PageLayoutBase {
 
     yield* super.buildHead(page);
 
-    // TODO(parlough): Determine why this is necessary.
-    //   It seems the `base` element shouldn't be added if not specified,
-    //   but it is being added somewhere.
-    yield const DomComponent(tag: 'base');
-
     if (pageData['noindex'] case final noIndex?
         when noIndex == true || noIndex == 'true') {
       yield meta(name: 'robots', content: 'noindex');
