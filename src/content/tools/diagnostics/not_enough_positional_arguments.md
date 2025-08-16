@@ -11,7 +11,7 @@ _1 positional argument expected by '{0}', but 0 found._
 
 _1 positional argument expected, but 0 found._
 
-_{0} positional arguments expected by '{2}', but {1} found._
+_{0} positional arguments expected by '{1}', but {2} found._
 
 _{0} positional arguments expected, but {1} found._
 

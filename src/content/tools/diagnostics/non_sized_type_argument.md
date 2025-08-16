@@ -7,7 +7,7 @@ underscore_breaker_titles: true
 body_class: highlight-diagnostics
 ---
 
-_The type '{1}' isn't a valid type argument for '{0}'. The type argument must be
+_The type '{0}' isn't a valid type argument for '{1}'. The type argument must be
 a native integer, 'Float', 'Double', 'Pointer', or subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
 
 ## Description
