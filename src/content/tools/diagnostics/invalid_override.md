@@ -7,9 +7,9 @@ underscore_breaker_titles: true
 body_class: highlight-diagnostics
 ---
 
-_'{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._
+_'{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._
 
-_The setter '{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._
+_The setter '{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._
 
 ## Description
 

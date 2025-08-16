@@ -2958,24 +2958,6 @@ _The left operand can't be null, so the right operand is never executed._
 </div>
 </div>
 </div>
-<div class="card outlined-card" id="declaration_named_augmented_inside_augmentation">
-<div class="card-header">
-<header class="card-title" id="declaration_named_augmented_inside_augmentation">{{"declaration_named_augmented_inside_augmentation" | underscoreBreaker}}</header>
-</div>
-<div class="card-content">
-
-_The identifier 'augmented' has a special meaning inside augmenting
-declarations._
-
-</div>
-<div class="card-actions">
-<div class="leading">
-</div>
-<div class="trailing">
-  <button class="copy-button filled-button hidden" data-copy="declaration_named_augmented_inside_augmentation" title="Copy declaration_named_augmented_inside_augmentation to your clipboard.">Copy name</button>
-</div>
-</div>
-</div>
 <div class="card outlined-card" id="default_in_switch_expression">
 <div class="card-header">
 <header class="card-title" id="default_in_switch_expression">{{"default_in_switch_expression" | underscoreBreaker}}</header>
@@ -3174,6 +3156,24 @@ _The ability to import '{0}' indirectly is deprecated._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="deprecated_extend">
+<div class="card-header">
+<header class="card-title" id="deprecated_extend">{{"deprecated_extend" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Extending '{0}' is deprecated._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/deprecated_extend" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="deprecated_extend" title="Copy deprecated_extend to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="deprecated_field">
 <div class="card-header">
 <header class="card-title" id="deprecated_field">{{"deprecated_field" | underscoreBreaker}}</header>
@@ -3189,6 +3189,42 @@ _The '{0}' field is no longer used and can be removed._
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/deprecated_field" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="deprecated_field" title="Copy deprecated_field to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="deprecated_implement">
+<div class="card-header">
+<header class="card-title" id="deprecated_implement">{{"deprecated_implement" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Implementing '{0}' is deprecated._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/deprecated_implement" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="deprecated_implement" title="Copy deprecated_implement to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="deprecated_instantiate">
+<div class="card-header">
+<header class="card-title" id="deprecated_instantiate">{{"deprecated_instantiate" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Instantiating '{0}' is deprecated._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/deprecated_instantiate" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="deprecated_instantiate" title="Copy deprecated_instantiate to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -3281,6 +3317,24 @@ _Using the 'new' keyword in a comment reference is deprecated._
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/deprecated_new_in_comment_reference" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="deprecated_new_in_comment_reference" title="Copy deprecated_new_in_comment_reference to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="deprecated_subclass">
+<div class="card-header">
+<header class="card-title" id="deprecated_subclass">{{"deprecated_subclass" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Subclassing '{0}' is deprecated._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/deprecated_subclass" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="deprecated_subclass" title="Copy deprecated_subclass to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -5304,23 +5358,6 @@ _Classes can't be declared to be 'external'._
 </div>
 </div>
 </div>
-<div class="card outlined-card" id="external_constructor_with_body">
-<div class="card-header">
-<header class="card-title" id="external_constructor_with_body">{{"external_constructor_with_body" | underscoreBreaker}}</header>
-</div>
-<div class="card-content">
-
-_External constructors can't have a body._
-
-</div>
-<div class="card-actions">
-<div class="leading">
-</div>
-<div class="trailing">
-  <button class="copy-button filled-button hidden" data-copy="external_constructor_with_body" title="Copy external_constructor_with_body to your clipboard.">Copy name</button>
-</div>
-</div>
-</div>
 <div class="card outlined-card" id="external_constructor_with_field_initializers">
 <div class="card-header">
 <header class="card-title" id="external_constructor_with_field_initializers">{{"external_constructor_with_field_initializers" | underscoreBreaker}}</header>
@@ -5403,23 +5440,6 @@ _External factories can't have a body._
 </div>
 <div class="trailing">
   <button class="copy-button filled-button hidden" data-copy="external_factory_with_body" title="Copy external_factory_with_body to your clipboard.">Copy name</button>
-</div>
-</div>
-</div>
-<div class="card outlined-card" id="external_field">
-<div class="card-header">
-<header class="card-title" id="external_field">{{"external_field" | underscoreBreaker}}</header>
-</div>
-<div class="card-content">
-
-_Fields can't be declared to be 'external'._
-
-</div>
-<div class="card-actions">
-<div class="leading">
-</div>
-<div class="trailing">
-  <button class="copy-button filled-button hidden" data-copy="external_field" title="Copy external_field to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -6248,6 +6268,23 @@ aren't._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="fixme">
+<div class="card-header">
+<header class="card-title" id="fixme">{{"fixme" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_{0}_
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="fixme" title="Copy fixme to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="flutter_field_not_map">
 <div class="card-header">
 <header class="card-title" id="flutter_field_not_map">{{"flutter_field_not_map" | underscoreBreaker}}</header>
@@ -6498,6 +6535,23 @@ _Getters must be declared without a parameter list._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="hack">
+<div class="card-header">
+<header class="card-title" id="hack">{{"hack" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_{0}_
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="hack" title="Copy hack to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="if_element_condition_from_deferred_library">
 <div class="card-header">
 <header class="card-title" id="if_element_condition_from_deferred_library">{{"if_element_condition_from_deferred_library" | underscoreBreaker}}</header>
@@ -6568,6 +6622,23 @@ _Functions marked 'async' must have a return type which is a supertype of
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/illegal_async_return_type" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="illegal_async_return_type" title="Copy illegal_async_return_type to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="illegal_character">
+<div class="card-header">
+<header class="card-title" id="illegal_character">{{"illegal_character" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Illegal character '{0}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="illegal_character" title="Copy illegal_character to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -6942,7 +7013,7 @@ _The imported library '{0}' can't have a part-of directive._
 </div>
 <div class="card-content">
 
-_{3} in {0}({1}..{2})_
+_{0} in {1}({2}..{3})_
 
 </div>
 <div class="card-actions">
@@ -7290,7 +7361,7 @@ _'{0}' isn't a field in the enclosing class._
 </div>
 <div class="card-content">
 
-_The static {1} '{0}' can't be accessed through an instance._
+_The static {0} '{1}' can't be accessed through an instance._
 
 </div>
 <div class="card-actions">
@@ -7955,6 +8026,80 @@ _Publishable packages can't have '{0}' dependencies._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="invalid_deprecated_extend_annotation">
+<div class="card-header">
+<header class="card-title" id="invalid_deprecated_extend_annotation">{{"invalid_deprecated_extend_annotation" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The annotation '@Deprecated.extend' can only be applied to extendable classes._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/invalid_deprecated_extend_annotation" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="invalid_deprecated_extend_annotation" title="Copy invalid_deprecated_extend_annotation to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_deprecated_implement_annotation">
+<div class="card-header">
+<header class="card-title" id="invalid_deprecated_implement_annotation">{{"invalid_deprecated_implement_annotation" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The annotation '@Deprecated.implement' can only be applied to implementable
+classes._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/invalid_deprecated_implement_annotation" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="invalid_deprecated_implement_annotation" title="Copy invalid_deprecated_implement_annotation to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_deprecated_instantiate_annotation">
+<div class="card-header">
+<header class="card-title" id="invalid_deprecated_instantiate_annotation">{{"invalid_deprecated_instantiate_annotation" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The annotation '@Deprecated.instantiate' can only be applied to classes._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/invalid_deprecated_instantiate_annotation" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="invalid_deprecated_instantiate_annotation" title="Copy invalid_deprecated_instantiate_annotation to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_deprecated_subclass_annotation">
+<div class="card-header">
+<header class="card-title" id="invalid_deprecated_subclass_annotation">{{"invalid_deprecated_subclass_annotation" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The annotation '@Deprecated.subclass' can only be applied to subclassable
+classes and mixins._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/invalid_deprecated_subclass_annotation" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="invalid_deprecated_subclass_annotation" title="Copy invalid_deprecated_subclass_annotation to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="invalid_exception_value">
 <div class="card-header">
 <header class="card-title" id="invalid_exception_value">{{"invalid_exception_value" | underscoreBreaker}}</header>
@@ -8168,9 +8313,9 @@ digits._
 </div>
 <div class="card-content">
 
-_'{1}.{0}' ('{2}') isn't a valid concrete implementation of '{3}.{0}' ('{4}')._
+_'{0}.{1}' ('{2}') isn't a valid concrete implementation of '{3}.{1}' ('{4}')._
 
-_The setter '{1}.{0}' ('{2}') isn't a valid concrete implementation of '{3}.{0}'
+_The setter '{0}.{1}' ('{2}') isn't a valid concrete implementation of '{3}.{1}'
 ('{4}')._
 
 </div>
@@ -8489,9 +8634,9 @@ _Invalid option specified for '{0}': {1}_
 </div>
 <div class="card-content">
 
-_'{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._
+_'{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._
 
-_The setter '{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._
+_The setter '{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._
 
 </div>
 <div class="card-actions">
@@ -9903,6 +10048,23 @@ _Missing a dependency on imported package '{0}'._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="missing_digit">
+<div class="card-header">
+<header class="card-title" id="missing_digit">{{"missing_digit" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Decimal digit expected._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_digit" title="Copy missing_digit to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="missing_enum_body">
 <div class="card-header">
 <header class="card-title" id="missing_enum_body">{{"missing_enum_body" | underscoreBreaker}}</header>
@@ -10075,6 +10237,23 @@ _Getters must have the keyword 'get' before the getter name._
 </div>
 <div class="trailing">
   <button class="copy-button filled-button hidden" data-copy="missing_get" title="Copy missing_get to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="missing_hex_digit">
+<div class="card-header">
+<header class="card-title" id="missing_hex_digit">{{"missing_hex_digit" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Hexadecimal digit expected._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_hex_digit" title="Copy missing_hex_digit to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -10304,6 +10483,23 @@ _A primary constructor declaration must have formal parameters._
 </div>
 <div class="trailing">
   <button class="copy-button filled-button hidden" data-copy="missing_primary_constructor_parameters" title="Copy missing_primary_constructor_parameters to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="missing_quote">
+<div class="card-header">
+<header class="card-title" id="missing_quote">{{"missing_quote" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Expected quote (' or ")._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_quote" title="Copy missing_quote to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -12082,7 +12278,7 @@ advantage of the multi-window environment on Chrome OS_
 </div>
 <div class="card-content">
 
-_The type '{1}' isn't a valid type argument for '{0}'. The type argument must be
+_The type '{0}' isn't a valid type argument for '{1}'. The type argument must be
 a native integer, 'Float', 'Double', 'Pointer', or subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
 
 </div>
@@ -12300,7 +12496,7 @@ _1 positional argument expected by '{0}', but 0 found._
 
 _1 positional argument expected, but 0 found._
 
-_{0} positional arguments expected by '{2}', but {1} found._
+_{0} positional arguments expected by '{1}', but {2} found._
 
 _{0} positional arguments expected, but {1} found._
 
@@ -13805,7 +14001,7 @@ _'{0}' was removed in Dart '{1}'_
 </div>
 <div class="card-content">
 
-_'{0}' was replaced by '{2}' in Dart '{1}'._
+_'{0}' was replaced by '{1}' in Dart '{2}'._
 
 </div>
 <div class="card-actions">
@@ -13822,7 +14018,7 @@ _'{0}' was replaced by '{2}' in Dart '{1}'._
 </div>
 <div class="card-content">
 
-_'{0}' was replaced by '{2}' in Dart '{1}'._
+_'{0}' was replaced by '{1}' in Dart '{2}'._
 
 </div>
 <div class="card-actions">
@@ -13965,14 +14161,14 @@ also annotated._
 </div>
 <div class="card-content">
 
-_A value of type '{0}' can't be returned from the constructor '{2}' because it
-has a return type of '{1}'._
+_A value of type '{0}' can't be returned from the constructor '{1}' because it
+has a return type of '{2}'._
 
-_A value of type '{0}' can't be returned from the function '{2}' because it has
-a return type of '{1}'._
+_A value of type '{0}' can't be returned from the function '{1}' because it has
+a return type of '{2}'._
 
-_A value of type '{0}' can't be returned from the method '{2}' because it has a
-return type of '{1}'._
+_A value of type '{0}' can't be returned from the method '{1}' because it has a
+return type of '{2}'._
 
 </div>
 <div class="card-actions">
@@ -15051,6 +15247,23 @@ _The type '{0}' of the thrown expression must be assignable to 'Object'._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="todo">
+<div class="card-header">
+<header class="card-title" id="todo">{{"todo" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_{0}_
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="todo" title="Copy todo to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="top_level_cycle">
 <div class="card-header">
 <header class="card-title" id="top_level_cycle">{{"top_level_cycle" | underscoreBreaker}}</header>
@@ -15164,7 +15377,7 @@ _Can't use type arguments with type variable '{0}'._
 </div>
 <div class="card-content">
 
-_'{0}' doesn't conform to the bound '{2}' of the type parameter '{1}'._
+_'{0}' doesn't conform to the bound '{1}' of the type parameter '{2}'._
 
 </div>
 <div class="card-actions">
@@ -15316,6 +15529,23 @@ _The name '{0}' isn't defined, so it can't be used in an 'is' expression._
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/type_test_with_undefined_name" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="type_test_with_undefined_name" title="Copy type_test_with_undefined_name to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unable_get_content">
+<div class="card-header">
+<header class="card-title" id="unable_get_content">{{"unable_get_content" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Unable to get content of '{0}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unable_get_content" title="Copy unable_get_content to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -15782,6 +16012,59 @@ _The setter '{0}' isn't defined in a superclass of '{1}'._
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/undefined_super_member" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="undefined_super_member" title="Copy undefined_super_member to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="undone">
+<div class="card-header">
+<header class="card-title" id="undone">{{"undone" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_{0}_
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="undone" title="Copy undone to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unexpected_dollar_in_string">
+<div class="card-header">
+<header class="card-title" id="unexpected_dollar_in_string">{{"unexpected_dollar_in_string" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_A '$' has special meaning inside a string, and must be followed by an
+identifier or an expression in curly braces ({})._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unexpected_dollar_in_string" title="Copy unexpected_dollar_in_string to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unexpected_separator_in_number">
+<div class="card-header">
+<header class="card-title" id="unexpected_separator_in_number">{{"unexpected_separator_in_number" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Digit separators ('\_') in a number literal can only be placed between two
+digits._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unexpected_separator_in_number" title="Copy unexpected_separator_in_number to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -16280,13 +16563,30 @@ _The feature {0} isn't supported on Chrome OS, consider making it optional._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="unsupported_operator">
+<div class="card-header">
+<header class="card-title" id="unsupported_operator">{{"unsupported_operator" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The '{0}' operator is not supported._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unsupported_operator" title="Copy unsupported_operator to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="unsupported_option_without_values">
 <div class="card-header">
 <header class="card-title" id="unsupported_option_without_values">{{"unsupported_option_without_values" | underscoreBreaker}}</header>
 </div>
 <div class="card-content">
 
-_The option '{1}' isn't supported by '{0}'._
+_The option '{0}' isn't supported by '{1}'._
 
 </div>
 <div class="card-actions">
@@ -16303,7 +16603,7 @@ _The option '{1}' isn't supported by '{0}'._
 </div>
 <div class="card-content">
 
-_The option '{1}' isn't supported by '{0}'. Try using the only supported option:
+_The option '{0}' isn't supported by '{1}'. Try using the only supported option:
 '{2}'._
 
 </div>
@@ -16321,7 +16621,7 @@ _The option '{1}' isn't supported by '{0}'. Try using the only supported option:
 </div>
 <div class="card-content">
 
-_The option '{1}' isn't supported by '{0}'._
+_The option '{0}' isn't supported by '{1}'._
 
 </div>
 <div class="card-actions">
@@ -16338,7 +16638,7 @@ _The option '{1}' isn't supported by '{0}'._
 </div>
 <div class="card-content">
 
-_The value '{1}' isn't supported by '{0}'._
+_The value '{0}' isn't supported by '{1}'._
 
 </div>
 <div class="card-actions">
@@ -16346,6 +16646,40 @@ _The value '{1}' isn't supported by '{0}'._
 </div>
 <div class="trailing">
   <button class="copy-button filled-button hidden" data-copy="unsupported_value" title="Copy unsupported_value to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unterminated_multi_line_comment">
+<div class="card-header">
+<header class="card-title" id="unterminated_multi_line_comment">{{"unterminated_multi_line_comment" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Unterminated multi-line comment._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unterminated_multi_line_comment" title="Copy unterminated_multi_line_comment to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unterminated_string_literal">
+<div class="card-header">
+<header class="card-title" id="unterminated_string_literal">{{"unterminated_string_literal" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Unterminated string literal._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unterminated_string_literal" title="Copy unterminated_string_literal to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -17295,6 +17629,77 @@ _Use 'package:' imports for files in the 'lib' directory._
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/always_use_package_imports" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="always_use_package_imports" title="Copy always_use_package_imports to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="analyzer_public_api_bad_part_directive">
+<div class="card-header">
+<header class="card-title" id="analyzer_public_api_bad_part_directive">{{"analyzer_public_api_bad_part_directive" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Part directives in the analyzer public API should point to files in the
+analyzer public API._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="analyzer_public_api_bad_part_directive" title="Copy analyzer_public_api_bad_part_directive to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="analyzer_public_api_bad_type">
+<div class="card-header">
+<header class="card-title" id="analyzer_public_api_bad_type">{{"analyzer_public_api_bad_type" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Element makes use of type(s) which is not part of the analyzer public API:
+{0}._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="analyzer_public_api_bad_type" title="Copy analyzer_public_api_bad_type to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="analyzer_public_api_exports_non_public_name">
+<div class="card-header">
+<header class="card-title" id="analyzer_public_api_exports_non_public_name">{{"analyzer_public_api_exports_non_public_name" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Export directive exports element(s) that are not part of the analyzer public
+API: {0}._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="analyzer_public_api_exports_non_public_name" title="Copy analyzer_public_api_exports_non_public_name to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="analyzer_public_api_impl_in_public_api">
+<div class="card-header">
+<header class="card-title" id="analyzer_public_api_impl_in_public_api">{{"analyzer_public_api_impl_in_public_api" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Declarations in the analyzer public API should not end in "Impl"._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="analyzer_public_api_impl_in_public_api" title="Copy analyzer_public_api_impl_in_public_api to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -18332,6 +18737,23 @@ _The target of the conditional URI '{0}' doesn't exist._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="conflicting_key">
+<div class="card-header">
+<header class="card-title" id="conflicting_key">{{"conflicting_key" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The key '{0}' can't be used when '{1}' is also used._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="conflicting_key" title="Copy conflicting_key to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="constant_identifier_names">
 <div class="card-header">
 <header class="card-title" id="constant_identifier_names">{{"constant_identifier_names" | underscoreBreaker}}</header>
@@ -18495,9 +18917,9 @@ _The public property isn't described by either 'debugFillProperties' or
 </div>
 <div class="card-content">
 
-_Place 'dart:' {0}s before other {0}s._
+_Place 'dart:' {0} before other {0}._
 
-_Place 'package:' {0}s before relative {0}s._
+_Place 'package:' {0} before relative {0}._
 
 _Sort directive sections alphabetically._
 
@@ -18693,6 +19115,23 @@ _Missing case clauses for some constants in '{0}'._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="expected_primary">
+<div class="card-header">
+<header class="card-title" id="expected_primary">{{"expected_primary" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Expected either an identifier or a string literal._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="expected_primary" title="Copy expected_primary to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="file_names">
 <div class="card-header">
 <header class="card-title" id="file_names">{{"file_names" | underscoreBreaker}}</header>
@@ -18805,6 +19244,23 @@ _The {0} '{1}' reopens '{2}' because it is not marked '{3}'._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="incompatible_element_kind">
+<div class="card-header">
+<header class="card-title" id="incompatible_element_kind">{{"incompatible_element_kind" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_An element of kind '{0}' can't be replaced by an element of kind '{1}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="incompatible_element_kind" title="Copy incompatible_element_kind to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="invalid_case_patterns">
 <div class="card-header">
 <header class="card-title" id="invalid_case_patterns">{{"invalid_case_patterns" | underscoreBreaker}}</header>
@@ -18820,6 +19276,91 @@ _This expression is not valid in a 'case' clause in Dart 3.0._
 </div>
 <div class="trailing">
   <button class="copy-button filled-button hidden" data-copy="invalid_case_patterns" title="Copy invalid_case_patterns to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_change_for_kind">
+<div class="card-header">
+<header class="card-title" id="invalid_change_for_kind">{{"invalid_change_for_kind" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_A change of type '{0}' can't be used for an element of kind '{1}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="invalid_change_for_kind" title="Copy invalid_change_for_kind to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_character">
+<div class="card-header">
+<header class="card-title" id="invalid_character">{{"invalid_character" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Invalid character '{0}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="invalid_character" title="Copy invalid_character to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_key">
+<div class="card-header">
+<header class="card-title" id="invalid_key">{{"invalid_key" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Keys must be of type 'String' but found the type '{0}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="invalid_key" title="Copy invalid_key to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_parameter_style">
+<div class="card-header">
+<header class="card-title" id="invalid_parameter_style">{{"invalid_parameter_style" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The parameter style must be one of the following: {0}._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="invalid_parameter_style" title="Copy invalid_parameter_style to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_required_if">
+<div class="card-header">
+<header class="card-title" id="invalid_required_if">{{"invalid_required_if" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The key 'requiredIf' can only be used with optional named parameters._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="invalid_required_if" title="Copy invalid_required_if to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -18858,6 +19399,40 @@ interop value and an unrelated JS interop type that will always be true and won'
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/invalid_runtime_check_with_js_interop_types" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="invalid_runtime_check_with_js_interop_types" title="Copy invalid_runtime_check_with_js_interop_types to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_value">
+<div class="card-header">
+<header class="card-title" id="invalid_value">{{"invalid_value" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The value of '{0}' should be of type '{1}' but is of type '{2}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="invalid_value" title="Copy invalid_value to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="invalid_value_one_of">
+<div class="card-header">
+<header class="card-title" id="invalid_value_one_of">{{"invalid_value_one_of" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The value of '{0}' must be one of the following: '{1}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="invalid_value_one_of" title="Copy invalid_value_one_of to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -19095,6 +19670,91 @@ _The code block is missing a specified language._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="missing_key">
+<div class="card-header">
+<header class="card-title" id="missing_key">{{"missing_key" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Missing the required key '{0}'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_key" title="Copy missing_key to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="missing_one_of_multiple_keys">
+<div class="card-header">
+<header class="card-title" id="missing_one_of_multiple_keys">{{"missing_one_of_multiple_keys" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Exactly one of the following keys must be provided: {0}._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_one_of_multiple_keys" title="Copy missing_one_of_multiple_keys to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="missing_template_end">
+<div class="card-header">
+<header class="card-title" id="missing_template_end">{{"missing_template_end" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Missing the end brace for the template._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_template_end" title="Copy missing_template_end to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="missing_token">
+<div class="card-header">
+<header class="card-title" id="missing_token">{{"missing_token" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Expected to find {0}._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_token" title="Copy missing_token to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="missing_uri">
+<div class="card-header">
+<header class="card-title" id="missing_uri">{{"missing_uri" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_At least one URI must be provided._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="missing_uri" title="Copy missing_uri to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="missing_whitespace_between_adjacent_strings">
 <div class="card-header">
 <header class="card-title" id="missing_whitespace_between_adjacent_strings">{{"missing_whitespace_between_adjacent_strings" | underscoreBreaker}}</header>
@@ -19279,6 +19939,40 @@ _The variable or property is being assigned to itself._
 </div>
 <div class="trailing">
   <button class="copy-button filled-button hidden" data-copy="no_self_assignments" title="Copy no_self_assignments to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="no_solo_tests">
+<div class="card-header">
+<header class="card-title" id="no_solo_tests">{{"no_solo_tests" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Don't commit soloed tests._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="no_solo_tests" title="Copy no_solo_tests to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="no_trailing_spaces">
+<div class="card-header">
+<header class="card-title" id="no_trailing_spaces">{{"no_trailing_spaces" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Don't create string literals with trailing spaces in tests._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="no_trailing_spaces" title="Copy no_trailing_spaces to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -20799,6 +21493,40 @@ _Missing an 'await' for the 'Future' computed by this expression._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="undefined_variable">
+<div class="card-header">
+<header class="card-title" id="undefined_variable">{{"undefined_variable" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The variable '{0}' isn't defined._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="undefined_variable" title="Copy undefined_variable to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unexpected_token">
+<div class="card-header">
+<header class="card-title" id="unexpected_token">{{"unexpected_token" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Didn't expect to find {0}._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unexpected_token" title="Copy unexpected_token to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="unintended_html_in_doc_comment">
 <div class="card-header">
 <header class="card-title" id="unintended_html_in_doc_comment">{{"unintended_html_in_doc_comment" | underscoreBreaker}}</header>
@@ -20815,6 +21543,23 @@ _Angle brackets will be interpreted as HTML._
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/unintended_html_in_doc_comment" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="unintended_html_in_doc_comment" title="Copy unintended_html_in_doc_comment to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unknown_accessor">
+<div class="card-header">
+<header class="card-title" id="unknown_accessor">{{"unknown_accessor" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The accessor '{0}' is invalid._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unknown_accessor" title="Copy unknown_accessor to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -21452,6 +22197,58 @@ _This type is unsafe: a type parameter occurs in a non-covariant position._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="unsupported_key">
+<div class="card-header">
+<header class="card-title" id="unsupported_key">{{"unsupported_key" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The key '{0}' isn't supported._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unsupported_key" title="Copy unsupported_key to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unsupported_static">
+<div class="card-header">
+<header class="card-title" id="unsupported_static">{{"unsupported_static" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_The key 'static' is only supported for elements in a class, enum, extension, or
+mixin._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unsupported_static" title="Copy unsupported_static to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="unsupported_version">
+<div class="card-header">
+<header class="card-title" id="unsupported_version">{{"unsupported_version" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Only version '1' is supported at this time._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="unsupported_version" title="Copy unsupported_version to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="use_build_context_synchronously">
 <div class="card-header">
 <header class="card-title" id="use_build_context_synchronously">{{"use_build_context_synchronously" | underscoreBreaker}}</header>
@@ -21873,6 +22670,23 @@ _Invalid regular expression syntax._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="visit_registered_nodes">
+<div class="card-header">
+<header class="card-title" id="visit_registered_nodes">{{"visit_registered_nodes" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Declare 'visit' methods for all registered node types._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="visit_registered_nodes" title="Copy visit_registered_nodes to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="void_checks">
 <div class="card-header">
 <header class="card-title" id="void_checks">{{"void_checks" | underscoreBreaker}}</header>
@@ -21889,6 +22703,40 @@ _Assignment to a variable of type 'void'._
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/void_checks" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="void_checks" title="Copy void_checks to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="wrong_token">
+<div class="card-header">
+<header class="card-title" id="wrong_token">{{"wrong_token" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Expected to find {0}, but found {1}._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="wrong_token" title="Copy wrong_token to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="yaml_syntax_error">
+<div class="card-header">
+<header class="card-title" id="yaml_syntax_error">{{"yaml_syntax_error" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Parse error: {0}_
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="yaml_syntax_error" title="Copy yaml_syntax_error to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
