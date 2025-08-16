@@ -51,6 +51,14 @@ const Map<String, String> archiveMap = {
   'Dart SDK': 'dartsdk',
 };
 
+const Map<String, String> debianArchMap = {
+  'x64': 'amd64',
+  'ARM64': 'arm64',
+  'ARMv7': 'armhf',
+  'ARMv8 (ARM64)': 'arm64',
+  'RISC-V (RV64GC)': 'riscv64',
+};
+
 const Map<String, String> directoryMap = {
   'Dart SDK': 'sdk',
   'Debian package': 'linux_packages',
@@ -58,7 +66,7 @@ const Map<String, String> directoryMap = {
 
 const Map<String, String> suffixMap = {
   'Dart SDK': '-release.zip',
-  'Debian package': '-1_amd64.deb',
+  'Debian package': '.deb',
 };
 
 const Map<String, List<PlatformVariant>> platforms = {
@@ -70,9 +78,9 @@ const Map<String, List<PlatformVariant>> platforms = {
   'Linux': [
     PlatformVariant('x64', ['Dart SDK', 'Debian package']),
     PlatformVariant('IA32', ['Dart SDK']),
-    PlatformVariant('ARMv8 (ARM64)', ['Dart SDK']),
-    PlatformVariant('ARMv7', ['Dart SDK']),
-    PlatformVariant('RISC-V (RV64GC)', ['Dart SDK']),
+    PlatformVariant('ARMv8 (ARM64)', ['Dart SDK', 'Debian package']),
+    PlatformVariant('ARMv7', ['Dart SDK', 'Debian package']),
+    PlatformVariant('RISC-V (RV64GC)', ['Dart SDK', 'Debian package']),
   ],
   'Windows': [
     PlatformVariant('x64', ['Dart SDK']),
