@@ -546,6 +546,42 @@
     - "deferred initialization"
     - "late final"
 
+- term: "Native asset"
+  short_description: |-
+      A non-Dart resource, such as native code or data, that a Dart app can use.
+  long_description: |-
+      A **native asset** in Dart is any resource that isn't written in Dart code but
+      can be packaged and used by a Dart application.  
+
+      Examples include:
+      * Using compiled native code (such as a shared library in C, C++, or Rust).
+      * Using platform-specific binaries or object files.
+      * Using data files such as images, fonts, or configuration resources.
+
+      Native assets are useful for:
+      * Integrating with existing native libraries.
+      * Accessing system capabilities that aren't directly exposed in Dart.
+      * Packaging additional runtime resources along with your Dart app.
+
+      For example, a Dart application may include a native `.so` or `.dll` library
+      that exposes specific functions, and call those functions through the Dart FFI
+      (Foreign Function Interface).
+
+  related_links:
+      - text: "C interop using dart:ffi"
+        link: "/interop/c-interop/"
+        type: "doc"
+      - text: "Hooks"
+        link: "/tools/hooks"
+        type: "doc"
+  labels:
+      - "language"
+      - "interop"
+  alternate:
+      - "Native resource"
+      - "Non-Dart asset"
+      - "Hooks"
+
 - term: "Override inference"
   short_description: |-
     How missing types in a method declaration are inferred.
