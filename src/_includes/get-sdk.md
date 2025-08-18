@@ -39,6 +39,9 @@ C:\> choco install dart-sdk
     $ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
     ```
 
+    Substitute `amd64` with `armhf`, `arm64`, or `riscv64` as
+    needed for your system.
+
  2. Install the Dart SDK:
 
     ```console

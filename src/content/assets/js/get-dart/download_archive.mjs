@@ -87,7 +87,7 @@ class CompiledApp {
     const dart2wasm = {
             _4: (o, c) => o instanceof c,
       _7: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._7(f,arguments.length,x0) }),
-      _8: f => finalizeWrapper(f, function(x0) { return dartInstance.exports._8(f,arguments.length,x0) }),
+      _8: f => finalizeWrapper(f, function(x0,x1) { return dartInstance.exports._8(f,arguments.length,x0,x1) }),
       _37: x0 => new Array(x0),
       _39: x0 => x0.length,
       _41: (x0,x1) => x0[x1],
@@ -192,12 +192,13 @@ class CompiledApp {
       _180: Function.prototype.call.bind(DataView.prototype.setFloat64),
       _197: (c) =>
       queueMicrotask(() => dartInstance.exports.$invokeCallback(c)),
-      _204: (x0,x1,x2,x3,x4,x5) => ({method: x0,headers: x1,body: x2,credentials: x3,redirect: x4,signal: x5}),
-      _205: (x0,x1) => globalThis.fetch(x0,x1),
-      _206: (x0,x1) => x0.get(x1),
-      _207: f => finalizeWrapper(f, function(x0,x1,x2) { return dartInstance.exports._207(f,arguments.length,x0,x1,x2) }),
-      _208: (x0,x1) => x0.forEach(x1),
-      _210: () => new AbortController(),
+      _204: () => new AbortController(),
+      _205: x0 => x0.abort(),
+      _206: (x0,x1,x2,x3,x4,x5) => ({method: x0,headers: x1,body: x2,credentials: x3,redirect: x4,signal: x5}),
+      _207: (x0,x1) => globalThis.fetch(x0,x1),
+      _208: (x0,x1) => x0.get(x1),
+      _209: f => finalizeWrapper(f, function(x0,x1,x2) { return dartInstance.exports._209(f,arguments.length,x0,x1,x2) }),
+      _210: (x0,x1) => x0.forEach(x1),
       _211: x0 => x0.getReader(),
       _212: x0 => x0.read(),
       _213: x0 => x0.cancel(),
@@ -249,7 +250,7 @@ class CompiledApp {
       _292: (o, p, v) => o[p] = v,
       _293: (o, m, a) => o[m].apply(o, a),
       _295: o => String(o),
-      _296: (p, s, f) => p.then(s, f),
+      _296: (p, s, f) => p.then(s, (e) => f(e, e === undefined)),
       _297: o => {
         if (o === undefined) return 1;
         var type = typeof o;
@@ -270,7 +271,12 @@ class CompiledApp {
           if (o instanceof DataView) return 15;
         }
         if (o instanceof ArrayBuffer) return 16;
-        return 17;
+        // Feature check for `SharedArrayBuffer` before doing a type-check.
+        if (globalThis.SharedArrayBuffer !== undefined &&
+            o instanceof SharedArrayBuffer) {
+            return 17;
+        }
+        return 18;
       },
       _302: (jsArray, jsArrayOffset, wasmArray, wasmArrayOffset, length) => {
         const getValue = dartInstance.exports.$wasmI8ArrayGet;
@@ -341,6 +347,7 @@ class CompiledApp {
       _7307: x0 => x0.statusText,
       _7308: x0 => x0.headers,
       _7309: x0 => x0.body,
+      _10937: x0 => x0.name,
       _11657: () => globalThis.console,
       _11681: () => globalThis.Element,
       _11682: () => globalThis.HTMLInputElement,

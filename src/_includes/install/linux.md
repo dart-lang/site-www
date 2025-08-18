@@ -32,6 +32,9 @@ You need steps 1 to 3 only for the first install.
      | sudo tee /etc/apt/sources.list.d/dart_stable.list
    ```
 
+   Substitute `amd64` with `armhf`, `arm64`, or `riscv64` as
+   needed for your system.
+
 1. Use the following `sudo apt-get` commands.
 
    ```console
