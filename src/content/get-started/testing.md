@@ -106,9 +106,9 @@ it.
 
 ### Task 3: Create the test data files
 
-The tests you're about to write rely on local JSON files that mimic the
-responses from the Wikipedia API. You need to create a test_data directory and
-populate it with three files.
+The tests you need to write rely on local JSON files that mimic the
+responses from the Wikipedia API. You need to create a
+`test_data` directory and populate it with three files.
 
 1.  Navigate to the `wikipedia/test` directory.
 
@@ -228,7 +228,8 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
 
     The `group` function takes a description of the group and a callback
     function that contains the tests.
-2.  Create a test for the `Summary` model.
+
+1.  Create a test for the `Summary` model.
     Add the following `test` function inside the `group` function:
 
     ```dart
@@ -260,7 +261,8 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     assert that the value meets certain criteria. In this case, the
     `equals` matcher is used to assert that the value is equal to a specific
     string.
-3.  Create a test for the `Article` model. Add the following `test` function
+
+1.  Create a test for the `Article` model. Add the following `test` function
     inside the `group` function, after the previous test:
 
     ```dart
@@ -305,11 +307,12 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
 
     *   Reads the contents of the `cat_extract.json` file.
     *   Decodes the JSON string into a `List<Object?>`.
-    *   Creates a `Article` object from the list using the
+    *   Creates the `Article` object from the list using the
         `Article.listFromJson` constructor.
     *   Uses the `expect` function to assert that the `title` property of the
         first article is equal to `'cat'`.
-4.  Create a test for the `SearchResults` model.
+
+1.  Create a test for the `SearchResults` model.
     Add the following `test` function inside the `group` function, after the
     previous test:
 
@@ -375,7 +378,7 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
 Now that you've written the tests, you can run them to verify that they pass.
 
 1.  Open your terminal and navigate to the `wikipedia` directory.
-2.  Run the command `dart test`.
+1.  Run the command `dart test`.
 
     You should see output similar to this:
 
