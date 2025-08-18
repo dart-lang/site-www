@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:args/command_runner.dart';
 
+import '../utils.dart';
+
 final class ServeSiteCommand extends Command<int> {
   @override
   String get description => 'Serve the site locally.';
@@ -11,9 +13,18 @@ final class ServeSiteCommand extends Command<int> {
 
   @override
   Future<int> run() async {
+    installJasprCliIfNecessary();
+
     final process = await Process.start(
       Platform.resolvedExecutable,
-      ['run', 'jaspr_cli:jaspr', 'serve', '--dart-define=PRODUCTION=false'],
+      [
+        'pub',
+        'global',
+        'run',
+        'jaspr_cli:jaspr',
+        'serve',
+        '--dart-define=PRODUCTION=false',
+      ],
       workingDirectory: 'site',
       runInShell: true,
       mode: ProcessStartMode.inheritStdio,

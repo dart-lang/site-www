@@ -38,6 +38,33 @@ void groupEnd() {
   }
 }
 
+int installJasprCliIfNecessary() {
+  // TODO(parlough): Eventually replace this with
+  //  the hosted version and use dart install.
+  final activateOutput = Process.runSync(Platform.executable, const [
+    'pub',
+    'global',
+    'activate',
+    '--source',
+    'git',
+    'https://github.com/schultek/jaspr.git',
+    '--git-path=packages/jaspr_cli',
+    '--git-ref=main',
+  ]);
+
+  if (activateOutput.exitCode != 0) {
+    final normalOutput = activateOutput.stdout.toString();
+    final errorOutput = activateOutput.stderr.toString();
+
+    stderr.write(normalOutput);
+    stderr.write(errorOutput);
+    stderr.writeln('Error: Installing jaspr_cli failed.');
+    return 1;
+  }
+
+  return 0;
+}
+
 int runPubGetIfNecessary(String directory) {
   final pubGetOutput = Process.runSync(Platform.executable, const [
     'pub',

@@ -25,11 +25,15 @@ final class BuildSiteCommand extends Command<int> {
 
   @override
   Future<int> run() async {
+    installJasprCliIfNecessary();
+
     final productionRelease = argResults.get<bool>(_releaseFlag, false);
 
     final process = await Process.start(
       Platform.resolvedExecutable,
       [
+        'pub',
+        'global',
         'run',
         'jaspr_cli:jaspr',
         'build',
