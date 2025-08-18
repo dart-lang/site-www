@@ -43,6 +43,46 @@ on the Dart language GitHub repo.
 
 ## Changes in each release
 
+### Dart 3.9
+_Released 13 August 2025_
+| [Dart 3.9 announcement](https://medium.com/dartlang/announcing-dart-3-9-ba49e8f38298)
+
+
+The following supporting features have been updated for
+Dart 3.9:
+
+*   Null safety: Dart now assumes null safety when
+    computing type promotion, reachability, and definite assignment.
+    As a result of this change, more `dead_code` warnings
+    might be produced.
+
+
+*   Flutter upper version bound is now respected: Starting from
+    language version 3.9, the [flutter SDK constraint][] upper bound
+    is now respected in your root package.
+
+    For example, a `pubspec.yaml` file with the following constraints:
+
+    ```yaml
+    name: my_app
+    environment:
+      sdk: ^3.9.0
+      flutter: 3.33.0
+    ```
+
+    Results in `dart pub get` failing if invoked with a version of
+    the Flutter SDK different from `3.33.0`.
+    The upper bound of the `flutter` constraint is
+    still ignored in packages used as dependencies.
+    For more background on this change, see [flutter/flutter#95472][].
+
+For more information about these and additional changes, see
+the [Dart 3.9 changelog][].
+
+[Dart 3.9 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#390
+[flutter SDK constraint]: /tools/pub/pubspec#flutter-sdk-constraints
+[flutter/flutter#95472]: https://github.com/flutter/flutter/issues/95472
+
 ### Dart 3.8
 _Released 20 May 2025_
 | [Dart 3.8 announcement](https://medium.com/dartlang/announcing-dart-3-8-724eaaec9f47)

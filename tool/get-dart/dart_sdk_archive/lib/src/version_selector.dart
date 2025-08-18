@@ -225,12 +225,23 @@ class VersionSelector with ChangeNotifier {
                 '${archiveMap[platformVariant.architecture]}';
 
             if (pa == 'Debian package') {
-              // Debian packages start with 2.0.0
-              if (versionInfo.version < Version(2, 0, 0)) {
+              final debianArch = debianArchMap[platformVariant.architecture];
+              // x64 Debian packages start with 2.0.0.
+              if (debianArch == 'amd64' &&
+                  versionInfo.version < Version(2, 0, 0)) {
                 continue;
-              } else {
-                baseFileName = 'dart_${_versionString(versionInfo)}';
               }
+
+              // arm, arm64, riscv64 Debian packages start with 3.9.0.
+              if ((debianArch == 'armhf' ||
+                      debianArch == 'arm64' ||
+                      debianArch == 'riscv64') &&
+                  versionInfo.version < Version(3, 9, 0)) {
+                continue;
+              }
+
+              baseFileName =
+                  'dart_${_versionString(versionInfo)}-1_$debianArch';
             }
 
             final uri =

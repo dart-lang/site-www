@@ -64,6 +64,58 @@
   alternate:
     - "Never"
 
+- term: "Combinator"
+  short_description: |-
+    A keyword clause that limits or modifies what's imported or exported.
+  long_description: |-
+    In Dart, a **combinator** is a clause that
+    follows an `import` or `export` directive to limit or modify
+    the set of names brought into scope.
+
+    Dart supports two types of combinators:
+
+    - `show` — explicitly includes specific names.
+    - `hide` — excludes specific names.
+
+    Combinators help control namespace pollution and
+    avoid conflicts when multiple libraries define symbols with the same name.
+
+    Example using `show`:
+
+    ```dart
+    import 'dart:math' show pi, sqrt;
+
+    void main() {
+      print(pi);      // Accessible
+      print(sqrt(9)); // Accessible
+      // print(Random()); // Error: Random is not imported.
+    }
+    ```
+
+    Example using `hide`:
+
+    ```dart
+    import 'dart:math' hide pi;
+
+    void main() {
+      // print(pi); // Error: pi is hidden.
+      print(Random()); // Accessible
+    }
+    ```
+  related_links:
+    - text: "Libraries and imports"
+      link: "/language/libraries"
+      type: "doc"
+    - text: "Organizing a package"
+      link: "/tools/pub/create-packages#organizing-a-package"
+      type: "doc"
+  labels:
+    - "language"
+    - "import/export"
+  alternate:
+    - "import combinator"
+    - "show/hide combinator"
+
 - term: "Context type"
   short_description: |-
     The type that the surrounding code expects from an expression.
