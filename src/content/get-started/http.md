@@ -49,7 +49,9 @@ To make HTTP requests, you need to add the `http` package as a dependency to the
 `wikipedia` package.
 
 1.  Open the `wikipedia/pubspec.yaml` file within your project.
+
 1.  Locate the `dependencies` section.
+
 1.  Add `http: ^1.3.0` (or the latest stable version) under `dependencies`.
 
     ```yaml
@@ -58,6 +60,7 @@ To make HTTP requests, you need to add the `http` package as a dependency to the
     ```
 
 1.  Save the `pubspec.yaml` file.
+
 1.  Run `dart pub get` in your terminal from the `wikipedia` directory.
 
 ### Task 2: Implement Wikipedia API calls
@@ -199,7 +202,11 @@ create three files:
     }
     ```
 
-    This code defines the `search` function, which uses the `http` package to make a GET request to the Wikipedia API's opensearch endpoint and returns a `SearchResults` object. The `opensearch` endpoint is used to search for Wikipedia articles based on a search term.
+    This code defines the `search` function, which uses the
+    `http` package to make a GET request to the Wikipedia API's
+    `opensearch` endpoint and returns a `SearchResults` object.
+    The `opensearch` endpoint is used to search for
+    Wikipedia articles based on a search term.
 
 1.  Create the file `wikipedia/lib/src/api/get_article.dart`.
 
@@ -267,6 +274,7 @@ Now that you've created the API functions, you need to export them from the
 the existing models.
 
 1.  Open the `wikipedia/lib/wikipedia.dart` file.
+
 1.  Add the following `export` statements to the file:
 
     ```dart
@@ -288,25 +296,25 @@ the existing models.
 Now that you have implemented the API functions and updated the package
 dependencies, it's good practice to run the tests you created in the previous
 chapter. This will confirm that your changes have not broken the existing
-functionality of the wikipedia package.
+functionality of the `wikipedia` package.
 
-1.  Open your terminal and navigate to the wikipedia/test directory.
+1.  Open your terminal and navigate to the `wikipedia/test` directory.
 
-1.  Remove the default test file by running the command rm wikipedia_test.dart
-    (on macOS or Linux) or del wikipedia_test.dart (on Windows). This file was
+1.  Remove the default test file by running the command `rm wikipedia_test.dart`
+    (on macOS or Linux) or `del wikipedia_test.dart` (on Windows). This file was
     generated automatically but is not used in our project.
 
-1.  Open your terminal and navigate to the wikipedia directory.
+1.  Open your terminal and navigate to the `wikipedia` directory.
 
-1.  Run the command dart test.
+1.  Run the command `dart test`.
 
     You should see output similar to this, confirming all your existing tests
     still pass:
 
-```bash
-00:02 +3: All tests passed!
-This confirms that the wikipedia package is still working as expected.
-```
+    ```bash
+    00:02 +3: All tests passed!
+    This confirms that the wikipedia package is still working as expected.
+    ```
 
 ## Review
 
