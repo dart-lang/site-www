@@ -2829,7 +2829,7 @@
     "state": "experimental",
     "incompatible": [],
     "sets": [],
-    "fixStatus": "needsFix",
+    "fixStatus": "hasFix",
     "details": "Functions that don't do `await` don't have to be `async`.\n\nUsually such functions also don't have to return a `Future`, which allows\nan invoker to avoid `await` in its code, etc. Synchronous code in\ngeneral runs faster, and is easier to reason about.\n\n**BAD:**\n```dart\nvoid f() async {\n  // await Future.delayed(const Duration(seconds: 2));\n  print(0);\n}\n```\n\n**GOOD:**\n```dart\nvoid f() {\n  // await Future.delayed(const Duration(seconds: 2));\n  print(0);\n}\n```",
     "sinceDartSdk": "3.7"
   },

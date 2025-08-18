@@ -337,26 +337,33 @@
         permalink: /web/debugging
 
 - divider
+- title: Stay up to date
+  expanded: false
+  children:
+    - title: Dart Blog
+      permalink: https://medium.com/dartlang
+    - title: Dart SDK Changelog
+      permalink: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+    - title: Breaking changes
+      permalink: /resources/breaking-changes
+    - title: Language evolution
+      permalink: /resources/language/evolution
+    - title: What's new in the docs
+      permalink: /resources/whats-new
+
 - title: Resources
   expanded: false
   children:
     - title: Language cheatsheet
       permalink: /resources/dart-cheatsheet
-    - title: Breaking changes
-      permalink: /resources/breaking-changes
-    - title: Language evolution
-      permalink: /resources/language/evolution
     - title: Language specification
       permalink: /resources/language/spec
     - title: Dart 3 migration guide
       permalink: /resources/dart-3-migration
-    - title: Coming from ...
-      expanded: false
-      children:
-        - title: JavaScript to Dart
-          permalink: /resources/coming-from/js-to-dart
-        - title: Swift to Dart
-          permalink: /resources/coming-from/swift-to-dart
+    - title: From JavaScript to Dart
+      permalink: /resources/coming-from/js-to-dart
+    - title: From Swift to Dart
+      permalink: /resources/coming-from/swift-to-dart
     - divider
     - title: FAQ
       permalink: /resources/faq
@@ -374,8 +381,6 @@
   children:
     - title: API reference
       permalink: https://api.dart.dev
-    - title: Blog
-      permalink: https://medium.com/dartlang
     - title: DartPad (online editor)
       permalink: https://dartpad.dev
     - title: Flutter

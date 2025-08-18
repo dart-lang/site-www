@@ -7,7 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' doesn't conform to the bound '{2}' of the type parameter '{1}'._
+_'{0}' doesn't conform to the bound '{1}' of the type parameter '{2}'._
 
 ## Description
 

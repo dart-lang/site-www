@@ -1201,8 +1201,29 @@
     "previousNames": []
   },
   {
+    "id": "deprecated_extend",
+    "description": "_Extending '{0}' is deprecated._\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "deprecated_field",
     "description": "_The '{0}' field is no longer used and can be removed._\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "deprecated_implement",
+    "description": "_Implementing '{0}' is deprecated._\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "deprecated_instantiate",
+    "description": "_Instantiating '{0}' is deprecated._\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -1238,6 +1259,13 @@
   {
     "id": "deprecated_new_in_comment_reference",
     "description": "_Using the 'new' keyword in a comment reference is deprecated._\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "deprecated_subclass",
+    "description": "_Subclassing '{0}' is deprecated._\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -2027,13 +2055,6 @@
     "previousNames": []
   },
   {
-    "id": "external_constructor_with_body",
-    "description": "_External constructors can't have a body._\n",
-    "hasDocumentation": false,
-    "fromLint": false,
-    "previousNames": []
-  },
-  {
     "id": "external_constructor_with_field_initializers",
     "description": "_An external constructor can't initialize fields._\n",
     "hasDocumentation": false,
@@ -2064,13 +2085,6 @@
   {
     "id": "external_factory_with_body",
     "description": "_External factories can't have a body._\n",
-    "hasDocumentation": false,
-    "fromLint": false,
-    "previousNames": []
-  },
-  {
-    "id": "external_field",
-    "description": "_Fields can't be declared to be 'external'._\n",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -2398,6 +2412,13 @@
     "previousNames": []
   },
   {
+    "id": "fixme",
+    "description": "_{0}_\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "flutter_field_not_map",
     "description": "_The value of the 'flutter' field is expected to be a map._\n",
     "hasDocumentation": true,
@@ -2491,6 +2512,13 @@
   {
     "id": "getter_with_parameters",
     "description": "_Getters must be declared without a parameter list._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "hack",
+    "description": "_{0}_\n",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -2672,7 +2700,7 @@
   },
   {
     "id": "included_file_parse_error",
-    "description": "_{3} in {0}({1}..{2})_\n",
+    "description": "_{0} in {1}({2}..{3})_\n",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -2736,21 +2764,21 @@
   {
     "id": "inference_failure_on_collection_literal",
     "description": "_The type argument(s) of '{0}' can't be inferred._\n",
-    "hasDocumentation": false,
+    "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
   },
   {
     "id": "inference_failure_on_function_invocation",
     "description": "_The type argument(s) of the function '{0}' can't be inferred._\n",
-    "hasDocumentation": false,
+    "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
   },
   {
     "id": "inference_failure_on_function_return_type",
-    "description": "_The return type of '{0}' cannot be inferred._\n",
-    "hasDocumentation": false,
+    "description": "_The return type of '{0}' can't be inferred._\n",
+    "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
   },
@@ -2771,14 +2799,14 @@
   {
     "id": "inference_failure_on_uninitialized_variable",
     "description": "_The type of {0} can't be inferred without either a type or initializer._\n",
-    "hasDocumentation": false,
+    "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
   },
   {
     "id": "inference_failure_on_untyped_parameter",
     "description": "_The type of {0} can't be inferred; a type must be explicitly provided._\n",
-    "hasDocumentation": false,
+    "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
   },
@@ -2812,7 +2840,7 @@
   },
   {
     "id": "instance_access_to_static_member",
-    "description": "_The static {1} '{0}' can't be accessed through an instance._\n",
+    "description": "_The static {0} '{1}' can't be accessed through an instance._\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -3077,6 +3105,34 @@
     "previousNames": []
   },
   {
+    "id": "invalid_deprecated_extend_annotation",
+    "description": "_The annotation '@Deprecated.extend' can only be applied to extendable classes._\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_deprecated_implement_annotation",
+    "description": "_The annotation '@Deprecated.implement' can only be applied to implementable classes._\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_deprecated_instantiate_annotation",
+    "description": "_The annotation '@Deprecated.instantiate' can only be applied to classes._\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_deprecated_subclass_annotation",
+    "description": "_The annotation '@Deprecated.subclass' can only be applied to subclassable classes and mixins._\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "invalid_exception_value",
     "description": "_The method {0} can't have an exceptional return value (the second argument) when the return type of the function is either 'void', 'Handle' or 'Pointer'._\n",
     "hasDocumentation": true,
@@ -3155,7 +3211,7 @@
   },
   {
     "id": "invalid_implementation_override",
-    "description": "_'{1}.{0}' ('{2}') isn't a valid concrete implementation of '{3}.{0}' ('{4}')._\n_The setter '{1}.{0}' ('{2}') isn't a valid concrete implementation of '{3}.{0}' ('{4}')._\n",
+    "description": "_'{0}.{1}' ('{2}') isn't a valid concrete implementation of '{3}.{1}' ('{4}')._\n_The setter '{0}.{1}' ('{2}') isn't a valid concrete implementation of '{3}.{1}' ('{4}')._\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -3267,7 +3323,7 @@
   },
   {
     "id": "invalid_override",
-    "description": "_'{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._\n_The setter '{1}.{0}' ('{2}') isn't a valid override of '{3}.{0}' ('{4}')._\n",
+    "description": "_'{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._\n_The setter '{0}.{1}' ('{2}') isn't a valid override of '{3}.{1}' ('{4}')._\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -4674,7 +4730,7 @@
   },
   {
     "id": "non_sized_type_argument",
-    "description": "_The type '{1}' isn't a valid type argument for '{0}'. The type argument must be a native integer, 'Float', 'Double', 'Pointer', or subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._\n",
+    "description": "_The type '{0}' isn't a valid type argument for '{1}'. The type argument must be a native integer, 'Float', 'Double', 'Pointer', or subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -4758,7 +4814,7 @@
   },
   {
     "id": "not_enough_positional_arguments",
-    "description": "_1 positional argument expected by '{0}', but 0 found._\n_1 positional argument expected, but 0 found._\n_{0} positional arguments expected by '{2}', but {1} found._\n_{0} positional arguments expected, but {1} found._\n",
+    "description": "_1 positional argument expected by '{0}', but 0 found._\n_1 positional argument expected, but 0 found._\n_{0} positional arguments expected by '{1}', but {2} found._\n_{0} positional arguments expected, but {1} found._\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -5032,7 +5088,7 @@
   {
     "id": "pattern_never_matches_value_type",
     "description": "_The matched value type '{0}' can never match the required type '{1}'._\n",
-    "hasDocumentation": false,
+    "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
   },
@@ -5333,20 +5389,20 @@
   {
     "id": "removed_lint_use",
     "description": "_'{0}' was removed in Dart '{1}'_\n",
-    "hasDocumentation": false,
+    "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
   },
   {
     "id": "replaced_lint",
-    "description": "_'{0}' was replaced by '{2}' in Dart '{1}'._\n",
+    "description": "_'{0}' was replaced by '{1}' in Dart '{2}'._\n",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
   {
     "id": "replaced_lint_use",
-    "description": "_'{0}' was replaced by '{2}' in Dart '{1}'._\n",
+    "description": "_'{0}' was replaced by '{1}' in Dart '{2}'._\n",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -5402,7 +5458,7 @@
   },
   {
     "id": "return_of_invalid_type",
-    "description": "_A value of type '{0}' can't be returned from the constructor '{2}' because it has a return type of '{1}'._\n_A value of type '{0}' can't be returned from the function '{2}' because it has a return type of '{1}'._\n_A value of type '{0}' can't be returned from the method '{2}' because it has a return type of '{1}'._\n",
+    "description": "_A value of type '{0}' can't be returned from the constructor '{1}' because it has a return type of '{2}'._\n_A value of type '{0}' can't be returned from the function '{1}' because it has a return type of '{2}'._\n_A value of type '{0}' can't be returned from the method '{1}' because it has a return type of '{2}'._\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -5809,6 +5865,13 @@
     "previousNames": []
   },
   {
+    "id": "todo",
+    "description": "_{0}_\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "top_level_cycle",
     "description": "_The type of '{0}' can't be inferred because it depends on itself through the cycle: {1}._\n",
     "hasDocumentation": true,
@@ -5852,7 +5915,7 @@
   },
   {
     "id": "type_argument_not_matching_bounds",
-    "description": "_'{0}' doesn't conform to the bound '{2}' of the type parameter '{1}'._\n",
+    "description": "_'{0}' doesn't conform to the bound '{1}' of the type parameter '{2}'._\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -6091,6 +6154,13 @@
     ]
   },
   {
+    "id": "undone",
+    "description": "_{0}_\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "unexpected_dollar_in_string",
     "description": "_A '$' has special meaning inside a string, and must be followed by an identifier or an expression in curly braces ({})._\n",
     "hasDocumentation": false,
@@ -6149,7 +6219,7 @@
   {
     "id": "unnecessary_cast_pattern",
     "description": "_Unnecessary cast pattern._\n",
-    "hasDocumentation": false,
+    "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
   },
@@ -6302,28 +6372,28 @@
   },
   {
     "id": "unsupported_option_without_values",
-    "description": "_The option '{1}' isn't supported by '{0}'._\n",
+    "description": "_The option '{0}' isn't supported by '{1}'._\n",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
   {
     "id": "unsupported_option_with_legal_value",
-    "description": "_The option '{1}' isn't supported by '{0}'. Try using the only supported option: '{2}'._\n",
+    "description": "_The option '{0}' isn't supported by '{1}'. Try using the only supported option: '{2}'._\n",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
   {
     "id": "unsupported_option_with_legal_values",
-    "description": "_The option '{1}' isn't supported by '{0}'._\n",
+    "description": "_The option '{0}' isn't supported by '{1}'._\n",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
   {
     "id": "unsupported_value",
-    "description": "_The value '{1}' isn't supported by '{0}'._\n",
+    "description": "_The value '{0}' isn't supported by '{1}'._\n",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -6704,6 +6774,34 @@
     "description": "_Use 'package:' imports for files in the 'lib' directory._\n",
     "hasDocumentation": true,
     "fromLint": true,
+    "previousNames": []
+  },
+  {
+    "id": "analyzer_public_api_bad_part_directive",
+    "description": "_Part directives in the analyzer public API should point to files in the analyzer public API._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "analyzer_public_api_bad_type",
+    "description": "_Element makes use of type(s) which is not part of the analyzer public API: {0}._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "analyzer_public_api_exports_non_public_name",
+    "description": "_Export directive exports element(s) that are not part of the analyzer public API: {0}._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "analyzer_public_api_impl_in_public_api",
+    "description": "_Declarations in the analyzer public API should not end in \"Impl\"._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
     "previousNames": []
   },
   {
@@ -7099,6 +7197,13 @@
     "previousNames": []
   },
   {
+    "id": "conflicting_key",
+    "description": "_The key '{0}' can't be used when '{1}' is also used._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "constant_identifier_names",
     "description": "_The constant name '{0}' isn't a lowerCamelCase identifier._\n",
     "hasDocumentation": true,
@@ -7156,7 +7261,7 @@
   },
   {
     "id": "directives_ordering",
-    "description": "_Place 'dart:' {0}s before other {0}s._\n_Place 'package:' {0}s before relative {0}s._\n_Sort directive sections alphabetically._\n_Specify exports in a separate section after all imports._\n",
+    "description": "_Place 'dart:' {0} before other {0}._\n_Place 'package:' {0} before relative {0}._\n_Sort directive sections alphabetically._\n_Specify exports in a separate section after all imports._\n",
     "hasDocumentation": false,
     "fromLint": true,
     "previousNames": []
@@ -7232,6 +7337,13 @@
     "previousNames": []
   },
   {
+    "id": "expected_primary",
+    "description": "_Expected either an identifier or a string literal._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "file_names",
     "description": "_The file name '{0}' isn't a lower\\_case\\_with\\_underscores identifier._\n",
     "hasDocumentation": true,
@@ -7274,6 +7386,13 @@
     "previousNames": []
   },
   {
+    "id": "incompatible_element_kind",
+    "description": "_An element of kind '{0}' can't be replaced by an element of kind '{1}'._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "invalid_case_patterns",
     "description": "_This expression is not valid in a 'case' clause in Dart 3.0._\n",
     "hasDocumentation": false,
@@ -7281,10 +7400,59 @@
     "previousNames": []
   },
   {
+    "id": "invalid_change_for_kind",
+    "description": "_A change of type '{0}' can't be used for an element of kind '{1}'._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_character",
+    "description": "_Invalid character '{0}'._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_key",
+    "description": "_Keys must be of type 'String' but found the type '{0}'._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_parameter_style",
+    "description": "_The parameter style must be one of the following: {0}._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_required_if",
+    "description": "_The key 'requiredIf' can only be used with optional named parameters._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "invalid_runtime_check_with_js_interop_types",
     "description": "_Cast from '{0}' to '{1}' casts a Dart value to a JS interop type, which might not be platform-consistent._\n_Cast from '{0}' to '{1}' casts a JS interop value to a Dart type, which might not be platform-consistent._\n_Cast from '{0}' to '{1}' casts a JS interop value to an incompatible JS interop type, which might not be platform-consistent._\n_Runtime check between '{0}' and '{1}' checks whether a Dart value is a JS interop type, which might not be platform-consistent._\n_Runtime check between '{0}' and '{1}' checks whether a JS interop value is a Dart type, which might not be platform-consistent._\n_Runtime check between '{0}' and '{1}' involves a non-trivial runtime check between two JS interop types that might not be platform-consistent._\n_Runtime check between '{0}' and '{1}' involves a runtime check between a JS interop value and an unrelated JS interop type that will always be true and won't check the underlying type._\n",
     "hasDocumentation": true,
     "fromLint": true,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_value",
+    "description": "_The value of '{0}' should be of type '{1}' but is of type '{2}'._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_value_one_of",
+    "description": "_The value of '{0}' must be one of the following: '{1}'._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
     "previousNames": []
   },
   {
@@ -7379,6 +7547,41 @@
     "previousNames": []
   },
   {
+    "id": "missing_key",
+    "description": "_Missing the required key '{0}'._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "missing_one_of_multiple_keys",
+    "description": "_Exactly one of the following keys must be provided: {0}._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "missing_template_end",
+    "description": "_Missing the end brace for the template._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "missing_token",
+    "description": "_Expected to find {0}._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "missing_uri",
+    "description": "_At least one URI must be provided._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "missing_whitespace_between_adjacent_strings",
     "description": "_Missing whitespace between adjacent strings._\n",
     "hasDocumentation": true,
@@ -7446,6 +7649,20 @@
     "description": "_The variable or property is being assigned to itself._\n",
     "hasDocumentation": false,
     "fromLint": true,
+    "previousNames": []
+  },
+  {
+    "id": "no_solo_tests",
+    "description": "_Don't commit soloed tests._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "no_trailing_spaces",
+    "description": "_Don't create string literals with trailing spaces in tests._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
     "previousNames": []
   },
   {
@@ -8009,10 +8226,31 @@
     "previousNames": []
   },
   {
+    "id": "undefined_variable",
+    "description": "_The variable '{0}' isn't defined._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "unexpected_token",
+    "description": "_Didn't expect to find {0}._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "unintended_html_in_doc_comment",
     "description": "_Angle brackets will be interpreted as HTML._\n",
     "hasDocumentation": true,
     "fromLint": true,
+    "previousNames": []
+  },
+  {
+    "id": "unknown_accessor",
+    "description": "_The accessor '{0}' is invalid._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
     "previousNames": []
   },
   {
@@ -8247,6 +8485,27 @@
     "previousNames": []
   },
   {
+    "id": "unsupported_key",
+    "description": "_The key '{0}' isn't supported._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "unsupported_static",
+    "description": "_The key 'static' is only supported for elements in a class, enum, extension, or mixin._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "unsupported_version",
+    "description": "_Only version '1' is supported at this time._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "use_build_context_synchronously",
     "description": "_Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check._\n_Don't use 'BuildContext's across async gaps._\n",
     "hasDocumentation": true,
@@ -8401,10 +8660,31 @@
     "previousNames": []
   },
   {
+    "id": "visit_registered_nodes",
+    "description": "_Declare 'visit' methods for all registered node types._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "void_checks",
     "description": "_Assignment to a variable of type 'void'._\n",
     "hasDocumentation": true,
     "fromLint": true,
+    "previousNames": []
+  },
+  {
+    "id": "wrong_token",
+    "description": "_Expected to find {0}, but found {1}._\n",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "yaml_syntax_error",
+    "description": "_Parse error: {0}_\n",
+    "hasDocumentation": false,
+    "fromLint": false,
     "previousNames": []
   }
 ]
