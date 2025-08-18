@@ -212,7 +212,7 @@ null checks, and string interpolation.
        be null, even in production. The purpose of null-safety isn't
        to stop you from ever using null in your code, because
        representing the absense of a value can be valuable. Rather,
-       it's to force you to consider nullability and therefor be more
+       it's to force you to consider nullability and therefore be more
        careful about it. Along with the analyzer, this helps prevent
        one of the most common runtime crashes in programming:
        null-pointer errors.
