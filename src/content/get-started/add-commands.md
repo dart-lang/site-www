@@ -294,7 +294,7 @@ null checks, and string interpolation.
 
     ```dart
     void searchWikipedia(List<String>? arguments) {
-      late String articleTitle;
+      late String? articleTitle;
 
       // If the user didn't pass in arguments, request an article title.
       if (arguments == null || arguments.isEmpty) {
