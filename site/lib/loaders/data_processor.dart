@@ -4,8 +4,6 @@ import 'dart:io' show FileSystemException, Process;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as path;
 
-import '../util.dart';
-
 final class DataProcessor implements DataLoader {
   @override
   Future<void> loadData(Page page) async {
@@ -19,7 +17,7 @@ final class DataProcessor implements DataLoader {
       page.apply(
         data: {
           'page': {
-            if (productionBuild) 'date': ?_lastModifiedDateForPath(inputPath),
+            'date': ?_lastModifiedDateForPath(inputPath),
             'inputPath': inputPath,
           },
         },
