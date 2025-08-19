@@ -4,15 +4,12 @@ description: >-
   Details about the override_on_non_overriding_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The field doesn't override an inherited getter or setter._
-
 _The getter doesn't override an inherited getter._
-
 _The method doesn't override an inherited method._
-
 _The setter doesn't override an inherited setter._
 
 ## Description

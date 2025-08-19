@@ -4,11 +4,10 @@ description: >-
   Details about the non_sized_type_argument
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' isn't a valid type argument for '{1}'. The type argument must be
-a native integer, 'Float', 'Double', 'Pointer', or subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
+_The type '{0}' isn't a valid type argument for '{1}'. The type argument must be a native integer, 'Float', 'Double', 'Pointer', or subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
 
 ## Description
 

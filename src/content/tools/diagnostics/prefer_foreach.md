@@ -4,7 +4,7 @@ description: >-
   Details about the prefer_foreach
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -18,8 +18,7 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_Use 'forEach' and a tear-off rather than a 'for' loop to apply a function to
-every element._
+_Use 'forEach' and a tear-off rather than a 'for' loop to apply a function to every element._
 
 ## Description
 

@@ -4,7 +4,7 @@ description: >-
   Details about the const_constructor_with_non_const_super
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A constant constructor can't call a non-constant super constructor of '{0}'._

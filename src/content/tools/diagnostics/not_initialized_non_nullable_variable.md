@@ -4,7 +4,7 @@ description: >-
   Details about the not_initialized_non_nullable_variable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The non-nullable variable '{0}' must be initialized._

@@ -4,7 +4,7 @@ description: >-
   Details about the asset_not_string
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Assets are required to be file paths (strings)._

@@ -4,7 +4,7 @@ description: >-
   Details about the async_for_in_wrong_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The async for-in loop can only be used in an async function._

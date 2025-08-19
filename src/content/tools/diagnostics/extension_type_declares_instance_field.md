@@ -4,7 +4,7 @@ description: >-
   Details about the extension_type_declares_instance_field
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Extension types can't declare instance fields._

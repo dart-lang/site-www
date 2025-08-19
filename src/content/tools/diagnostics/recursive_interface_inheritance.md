@@ -4,17 +4,13 @@ description: >-
   Details about the recursive_interface_inheritance
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' can't be a superinterface of itself: {1}._
-
 _'{0}' can't extend itself._
-
 _'{0}' can't implement itself._
-
 _'{0}' can't use itself as a mixin._
-
 _'{0}' can't use itself as a superclass constraint._
 
 ## Description

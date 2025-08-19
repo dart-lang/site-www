@@ -4,7 +4,7 @@ description: >-
   Details about the implicit_this_reference_in_initializer
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The instance member '{0}' can't be accessed in an initializer._

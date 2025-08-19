@@ -4,7 +4,7 @@ description: >-
   Details about the duplicate_pattern_assignment_variable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The variable '{0}' is already assigned in this pattern._

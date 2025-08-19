@@ -4,11 +4,10 @@ description: >-
   Details about the non_constant_default_value_from_deferred_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Constant values from a deferred library can't be used as a default parameter
-value._
+_Constant values from a deferred library can't be used as a default parameter value._
 
 ## Description
 

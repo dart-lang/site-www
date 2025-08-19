@@ -4,7 +4,7 @@ description: >-
   Details about the instance_access_to_static_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The static {0} '{1}' can't be accessed through an instance._

@@ -4,7 +4,7 @@ description: >-
   Details about the undefined_extension_setter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The setter '{0}' isn't defined for the extension '{1}'._

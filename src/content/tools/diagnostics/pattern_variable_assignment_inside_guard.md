@@ -4,11 +4,10 @@ description: >-
   Details about the pattern_variable_assignment_inside_guard
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Pattern variables can't be assigned inside the guard of the enclosing guarded
-pattern._
+_Pattern variables can't be assigned inside the guard of the enclosing guarded pattern._
 
 ## Description
 

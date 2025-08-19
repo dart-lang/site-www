@@ -4,11 +4,10 @@ description: >-
   Details about the invalid_visible_outside_template_annotation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The annotation 'visibleOutsideTemplate' can only be applied to a member of a
-class, enum, or mixin that is annotated with 'visibleForTemplate'._
+_The annotation 'visibleOutsideTemplate' can only be applied to a member of a class, enum, or mixin that is annotated with 'visibleForTemplate'._
 
 ## Description
 

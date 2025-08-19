@@ -4,7 +4,7 @@ description: >-
   Details about the unnecessary_null_aware_operator_on_extension_on_nullable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -18,8 +18,7 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary use of a null-aware operator to invoke an extension method on a
-nullable type._
+_Unnecessary use of a null-aware operator to invoke an extension method on a nullable type._
 
 ## Description
 
