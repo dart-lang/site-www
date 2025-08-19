@@ -779,7 +779,7 @@
     [`pub get`]: /tools/pub/cmd/pub-get
     [`pub upgrade`]: /tools/pub/cmd/pub-upgrade
     [`pub downgrade`]: /tools/pub/cmd/pub-downgrade
-    [application package]: #application-packages
+    [application package]: #application-package
     [content hash]: #pub-content-hash
   related_links:
     - text: "pub get"
