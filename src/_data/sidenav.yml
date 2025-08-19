@@ -168,8 +168,6 @@
       children:
         - title: Dependencies
           permalink: /tools/pub/dependencies
-        - title: Glossary
-          permalink: /tools/pub/glossary
         - title: Package layout conventions
           permalink: /tools/pub/package-layout
         - title: Pub environment variables

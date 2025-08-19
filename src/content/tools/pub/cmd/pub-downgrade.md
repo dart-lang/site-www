@@ -12,7 +12,7 @@ $ dart pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...]
 Without any additional arguments, `dart pub downgrade` gets the lowest versions of
 all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file
 in the current working directory, as well as their [transitive
-dependencies](/tools/pub/glossary#transitive-dependency).
+dependencies](/resources/glossary#transitive-dependency).
 For example:
 
 ```console
