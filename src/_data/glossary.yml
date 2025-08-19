@@ -530,7 +530,7 @@
 
     [dependency]: #dependency
     [`pubspec.yaml`]: /tools/pub/pubspec
-    [transitive dependency]: #transitive-dependency
+    [transitive dependencies]: #transitive-dependency
   related_links:
     - text: "Package dependencies"
       link: "/tools/pub/dependencies"
@@ -879,28 +879,27 @@
 
     Packages can have [dependencies][] on other packages
     *and* can be dependencies themselves.
-    A package's `/lib` directory contains the
-    [public libraries][] that other packages can import and use.
+    A package's `/lib` directory contains the [public libraries][] that
+    other packages can import and use.
     They can also include scripts to be run directly.
-    A package that is not intended to be depended on by other packages is an
-    [application package][].
+    A package that is not intended to be depended on by
+    other packages is an [application package][].
     Shared packages are [published][] to pub.dev,
     but you can also have non-published packages.
 
-    Don't check the [lockfile][] of a package into source
-    control, since libraries should support a range of dependency versions. The
-    [version constraints][] of a package's
-    [immediate dependencies][] should be as wide as possible while still
-    ensuring that the dependencies will be compatible with the versions that were
-    tested against.
+    Don't check the [lockfile][] of a package into source control,
+    since libraries should support a range of dependency versions.
+    The [version constraints][] of a package's [immediate dependencies][] should
+    be as wide as possible while still ensuring that the dependencies will be
+    compatible with the versions that were tested against.
 
-    Since [semantic versioning][] requires
-    that libraries increment their major version numbers for any backwards
-    incompatible changes, packages will usually require their dependencies'
-    versions to be greater than or equal to the versions that were tested and less
-    than the next major version. So if your library depended on the (fictional)
-    `transmogrify` package and you tested it at version 1.2.1, your version
-    constraint would be `^1.2.1`.
+    Since [semantic versioning][] requires that
+    libraries increment their major version numbers for
+    any backwards incompatible changes, packages will usually
+    require their dependencies' versions to be greater than or equal to
+    the versions that were tested and less than the next major version.
+    So if your library depended on the (fictional) `transmogrify` package and
+    you tested it at version `1.2.1`, your version constraint would be `^1.2.1`.
 
     [libraries]: #library
     [`pubspec.yaml`]: /tools/pub/pubspec
@@ -910,6 +909,7 @@
     [published]: /tools/pub/publishing
     [lockfile]: #lockfile
     [version constraints]: #version-constraint
+    [immediate dependencies]: #immediate-dependency
     [semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
   related_links:
     - text: "How to use packages"
