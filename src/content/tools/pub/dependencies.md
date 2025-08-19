@@ -11,7 +11,7 @@ A _dependency_ is another package that your package needs to work.
 Dependencies are specified in your [pubspec](/tools/pub/pubspec).
 You list only _immediate dependencies_: the
 software that your package uses directly. Pub handles
-[transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
+[transitive dependencies](/resources/glossary#transitive-dependency) for you.
 
 This page has detailed information on how to specify dependencies.
 At the end is a list of
@@ -24,7 +24,7 @@ and the _range of versions_ of that package that you allow.
 You can also specify the [_source_][].
 The source tells pub how to locate the package.
 
-[_source_]: /tools/pub/glossary#source
+[_source_]: /resources/glossary#dependency-source
 
 As an example, you specify a dependency in the following format:
 
@@ -602,8 +602,9 @@ this flag only resolves new dependencies if:
 * The packages' [content hashes][] match
 
 [enforce-lock]: /tools/pub/cmd/pub-get#enforce-lockfile
-[lockfile]: /tools/pub/glossary#lockfile
-[content hashes]: /tools/pub/glossary#content-hashes
+[lockfile]: /resources/glossary#lockfile
+[content hashes]: /resources/glossary#pub-content-hash
+
 ---
 
 <aside id="fn:semver" class="footnote">

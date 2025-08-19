@@ -1,3 +1,36 @@
+- term: "Application package"
+  short_description: |-
+    A Dart package that contains a runnable application.
+  long_description: |-
+    An _application package_ is a Dart package that
+    contains a program or app with a [main entrypoint](#entrypoint).
+    Meant to be run directly, either on the command line, in a browser,
+    or by another embedder, such as provided by Flutter.
+
+    Application packages can have [dependencies][] on other [packages][],
+    but are never depended on themselves.
+    Unlike regular packages, they are not intended to be shared.
+
+    Application packages should check their [lockfiles][] into source control,
+    so that everyone working on the application and every location the
+    application is deployed has a consistent set of dependencies.
+
+    [main entrypoint]: #entrypoint
+    [dependencies]: #dependency
+    [packages]: #package
+    [lockfiles]: #lockfile
+    [version constraints]: #version-constraint
+  related_links:
+    - text: "Package layout"
+      link: "/tools/pub/package-layout"
+      type: "doc"
+    - text: "Pub versioning philosophy"
+      link: "/tools/pub/versioning"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+
 - term: "Assist"
   short_description: |-
     An automated, local code edit targeted at making common improvements to code.
@@ -237,6 +270,27 @@
   alternate:
     - "Implicit const"
 
+- term: "Dart SDK constraint"
+  short_description: |-
+    The versions of Dart that a package supports.
+  long_description: |-
+    The range of Dart SDK versions that a package itself declares it supports.
+    An SDK constraint is specified using normal [version constraint][] syntax,
+    but in a special `environment` section [in the pubspec][].
+
+    [version constraint]: #version-constraint
+    [in the pubspec]: /tools/pub/pubspec#sdk-constraints
+  related_links:
+    - text: "SDK constraints in the pubspec"
+      link: "/tools/pub/pubspec#sdk-constraints"
+      type: "doc"
+    - text: "Language versions"
+      link: "/resources/language/evolution#language-versioning"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+
 - term: "Definite assignment"
   short_description: |-
     The determination of whether a variable has definitely been
@@ -341,6 +395,112 @@
     - "flow analysis"
     - "understanding diagnostics"
 
+- term: "Dependency"
+  short_description: |-
+    A Dart package that a package relies on.
+  long_description: |-
+    A dependency is any other Dart [package][] that a package relies on.
+    If your package wants to import code from some other package,
+    that package must be a dependency of yours first.
+    Dependencies are specified in your package's [pubspec][] file
+    with the syntax described in [Package dependencies][].
+
+    To view the dependencies used by a package, use [`pub deps`][].
+
+    [package]: #package
+    [pubspec]: /tools/pub/pubspec
+    [Package dependencies]: /tools/pub/dependencies
+    [`pub deps`]: /tools/pub/cmd/pub-deps
+  related_links:
+    - text: "Package dependencies"
+      link: "/tools/pub/dependencies"
+      type: "doc"
+    - text: "pub deps"
+      link: "/tools/pub/cmd/pub-deps"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+
+- term: "Dependency source"
+  short_description: |-
+    A kind of place that pub can get packages from.
+  long_description: |-
+    A type of repository or location that pub can retrieve packages from.
+    A source isn't a specific place like the pub.dev site or a specific git URL.
+    Each source describes a general procedure for accessing a package.
+
+    As an example, _git_ is one of the supported dependency source.
+    The git source knows how to download packages given a git URL.
+    Several different [supported sources][] are available.
+
+    [supported sources]: /tools/pub/dependencies#dependency-sources
+  related_links:
+    - text: "Dependency sources"
+      link: "/tools/pub/dependencies#dependency-sources"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+
+- term: "Entrypoint"
+  short_description: |-
+    A Dart library that is directly invoked by a Dart implementation.
+  long_description: |-
+    In the general context of Dart, an _entrypoint_ is
+    a Dart library that is directly invoked by a Dart implementation.
+    For example, when you pass a Dart library as a command-line argument to
+    the standalone Dart VM, that library is the entrypoint.
+    In other words, it's usually the `.dart` file that contains `main()`.
+
+    In the context of pub, an _entrypoint package_ or _root package_ is
+    the root of a dependency graph.
+    It will usually be an application.
+    When you run your app, it's the entrypoint package.
+    Every other package it depends on will not be an entrypoint in that context.
+
+    A package can be an entrypoint in some contexts and not in others.
+    Say your app uses a package `A`.
+    When you run your app, `A` is not the entrypoint package.
+    However, if you go over to `A` and execute its tests, in that context,
+    it _is_ the entrypoint since your app isn't involved.
+  related_links:
+    - text: "Entrypoint directory"
+      link: "#entrypoint-directory"
+      type: "term"
+  labels:
+    - "pub"
+    - "packages"
+    - "language"
+  alternate:
+    - "Entry point"
+    - "Main function"
+
+- term: "Entrypoint directory"
+  short_description: |-
+    A directory that contains Dart entrypoints.
+  long_description: |-
+    An _entrypoint directory_ is a directory inside your Dart [package][] that
+    is allowed to contain [Dart entrypoints][].
+
+    Pub has a list of these directories: `benchmark`, `bin`, `example`,
+    `test`, `tool`, and `web` (and `lib`, for [Flutter apps][]).
+    Any subdirectories of those (except `bin`) can also contain entrypoints.
+
+    [package]: #package
+    [Dart entrypoints]: #entrypoint
+    [Flutter apps]: https://docs.flutter.dev/packages-and-plugins/developing-packages
+  related_links:
+    - text: "Entrypoint"
+      link: "#entrypoint"
+      type: "term"
+    - text: "Flutter packages and plugins"
+      link: "https://docs.flutter.dev/packages-and-plugins/developing-packages"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+
 - term: "Function"
   short_description: |-
     An umbrella term to refer to top-level functions, local functions,
@@ -357,6 +517,32 @@
     - "umbrella term"
   alternate:
     - "Procedure"
+
+- term: "Immediate dependency"
+  short_description: |-
+    A dependency that a Dart package directly uses.
+  long_description: |-
+    An immediate dependency is a [dependency][] that a
+    package directly uses and declares itself.
+    The dependencies you list in your [`pubspec.yaml`][] file are
+    your package's immediate dependencies.
+    All other dependencies are [transitive dependencies][].
+
+    [dependency]: #dependency
+    [`pubspec.yaml`]: /tools/pub/pubspec
+    [transitive dependency]: #transitive-dependency
+  related_links:
+    - text: "Package dependencies"
+      link: "/tools/pub/dependencies"
+      type: "doc"
+    - text: "Transitive dependency"
+      link: "#transitive-dependency"
+      type: "term"
+  labels:
+    - "pub"
+    - "packages"
+  alternate:
+    - "Direct dependency"
 
 - term: "Immutable"
   short_description: |-
@@ -546,6 +732,71 @@
     - "deferred initialization"
     - "late final"
 
+- term: "Library"
+  short_description: |-
+    A single compilation unit in Dart, made up of a
+    primary Dart file and its parts.
+  long_description: |-
+    A Dart _library_ is a single compilation unit in Dart,
+    made up of a primary `.dart` file and any optional number of [parts][].
+    Libraries have their own private scope.
+
+    [parts]: #part-file
+  related_links:
+    - text: "Part file"
+      link: "#part-file"
+      type: "term"
+  labels:
+    - "language"
+    - "libraries"
+
+- term: "Lockfile"
+  short_description: |-
+    A file named pubspec.lock that specifies the versions of each dependency.
+  long_description: |-
+    A file named `pubspec.lock` that specifies the
+    concrete versions and other identifying information for every
+    [immediate][] and [transitive][] dependency a package relies on.
+
+    Unlike the [pubspec][], which only lists immediate dependencies and
+    allows version ranges, the lockfile comprehensively pins down
+    the entire dependency graph to specific versions of packages.
+    A lockfile ensures that you can recreate the
+    exact configuration of packages used by an application.
+
+    The lockfile is generated automatically for you by pub when you run
+    [`pub get`][], [`pub upgrade`][], or [`pub downgrade`][].
+    Pub includes a [content hash][] for each dependency
+    to check against during future resolutions.
+
+    If your package is an [application package][],
+    you will typically check this into source control.
+    For regular (library) packages, you usually won't.
+
+    [immediate]: #immediate-dependency
+    [transitive]: #transitive-dependency
+    [pubspec]: #pubspec
+    [`pub get`]: /tools/pub/cmd/pub-get
+    [`pub upgrade`]: /tools/pub/cmd/pub-upgrade
+    [`pub downgrade`]: /tools/pub/cmd/pub-downgrade
+    [application package]: #application-packages
+    [content hash]: #pub-content-hash
+  related_links:
+    - text: "pub get"
+      link: "/tools/pub/cmd/pub-get"
+      type: "doc"
+    - text: "pub upgrade"
+      link: "/tools/pub/cmd/pub-upgrade"
+      type: "doc"
+    - text: "pub downgrade"
+      link: "/tools/pub/cmd/pub-downgrade"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+  alternate:
+    - "pubspec.lock"
+
 - term: "Override inference"
   short_description: |-
     How missing types in a method declaration are inferred.
@@ -618,6 +869,88 @@
     - "type inference"
     - "understanding diagnostics"
 
+- term: "Package"
+  short_description: |-
+    A directory with a collection of Dart libraries, resources,
+    and a pubspec.yaml file describing them.
+  long_description: |-
+    A Dart _package_ is a collection of Dart [libraries][] and resources in
+    a directory, with a [`pubspec.yaml`][] file in the root of that directory.
+
+    Packages can have [dependencies][] on other packages
+    *and* can be dependencies themselves.
+    A package's `/lib` directory contains the
+    [public libraries][] that other packages can import and use.
+    They can also include scripts to be run directly.
+    A package that is not intended to be depended on by other packages is an
+    [application package][].
+    Shared packages are [published][] to pub.dev,
+    but you can also have non-published packages.
+
+    Don't check the [lockfile][] of a package into source
+    control, since libraries should support a range of dependency versions. The
+    [version constraints][] of a package's
+    [immediate dependencies][] should be as wide as possible while still
+    ensuring that the dependencies will be compatible with the versions that were
+    tested against.
+
+    Since [semantic versioning][] requires
+    that libraries increment their major version numbers for any backwards
+    incompatible changes, packages will usually require their dependencies'
+    versions to be greater than or equal to the versions that were tested and less
+    than the next major version. So if your library depended on the (fictional)
+    `transmogrify` package and you tested it at version 1.2.1, your version
+    constraint would be `^1.2.1`.
+
+    [libraries]: #library
+    [`pubspec.yaml`]: /tools/pub/pubspec
+    [dependencies]: #dependency
+    [public libraries]: /tools/pub/package-layout#public-libraries
+    [application package]: #application-package
+    [published]: /tools/pub/publishing
+    [lockfile]: #lockfile
+    [version constraints]: #version-constraint
+    [semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
+  related_links:
+    - text: "How to use packages"
+      link: "/tools/pub/packages"
+      type: "doc"
+    - text: "The pubspec.yaml file"
+      link: "/tools/pub/pubspec"
+      type: "doc"
+    - text: "Publishing packages"
+      link: "/tools/pub/publishing"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+  alternate:
+    - "Library package"
+
+- term: "Package uploader"
+  short_description: |-
+    A pub.dev user who has administrative permissions for a package.
+  long_description: |-
+    A _package uploader_ is someone who has
+    administrative permissions for a package.
+    A package uploader can upload new versions of the package,
+    and they can also [add and remove other uploaders][] for that package.
+
+    If a package has a [verified publisher][],
+    then all members of the publisher can upload the package.
+
+    [add and remove other uploaders]: /tools/pub/publishing#uploaders
+    [verified publisher]: #verified-publisher
+  related_links:
+    - text: "Managing uploaders"
+      link: "/tools/pub/publishing#uploaders"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+  alternate:
+    - "Uploader"
+
 - term: "Part file"
   short_description: |-
     A Dart source file that contains a `part of` directive.
@@ -685,6 +1018,99 @@
   labels:
     - "language"
     - "libraries"
+
+- term: "Pub content hash"
+  short_description: |-
+    SHA256 hashes maintained by pub.dev to validate package integrity.
+  long_description: |-
+    The pub.dev repository maintains a SHA256 _content hash_ of
+    each version of each package it hosts.
+    Pub clients use this hash to validate the integrity of downloaded packages,
+    and protect against changes on the source repository.
+
+    When `dart pub get` downloads a package,
+    it computes the hash of the downloaded archive.
+    The hash of each hosted dependency is stored with the
+    [resolution][] in the [lockfile][].
+
+    The pub client uses this content hash to verify that
+    running `dart pub get` again using the same lockfile,
+    potentially on a different computer, uses exactly the same packages.
+
+    If the locked hash doesn't match what's currently in the pub cache,
+    pub redownloads the archive. If it still doesn't match,
+    the lockfile updates and a warning is printed.
+
+    To make a discrepancy become an error instead of a warning,
+    use the [`--enforce-lockfile`][] option for `dart pub get`.
+    With this option, if pub can't find package archives with the same hashes,
+    dependency resolution fails and the lockfile isn't updated.
+
+    [resolution]: /tools/pub/cmd/pub-get
+    [lockfile]: #lockfile
+    [`--enforce-lockfile`]: /tools/pub/cmd/pub-get#enforce-lockfile
+  related_links:
+    - text: "dart pub get --enforce-lockfile"
+      link: "/tools/pub/cmd/pub-get#enforce-lockfile"
+      type: "doc"
+  labels:
+    - "pub"
+    - "security"
+
+- term: "Pub system cache"
+  short_description: |-
+    A directory where pub stores downloaded remote packages.
+  long_description: |-
+    When pub gets a remote package,
+    it downloads it into a single _pub system cache_ directory.
+    On macOS and Linux, this directory defaults to `~/.pub-cache`.
+    On Windows, the directory defaults to `%LOCALAPPDATA%\Pub\Cache`,
+    though its exact location might vary depending on the Windows version.
+    You can specify a different location using the
+    [`PUB_CACHE`][] environment variable.
+
+    Once packages are in the system cache,
+    pub creates a `package_config.json` file that maps each package
+    used by your application to the corresponding package in the cache.
+
+    You only have to download a given version of a package once
+    and can then reuse it in as many packages as you would like.
+    If you specify the `--offline` flag to use cached packages,
+    you can delete and regenerate your `package_config.json`
+    files without having to access the network.
+
+    [`PUB_CACHE`]: /tools/pub/environment-variables
+  related_links:
+    - text: "Pub environment variables"
+      link: "/tools/pub/environment-variables"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+  alternate:
+    - "Pub cache"
+
+- term: "Pub workspace"
+  short_description: |-
+    A collection of packages that are developed together with
+    a shared resolution of their dependency constraints.
+  long_description: |-
+    A _pub workspace_ associated a collection of local packages that are
+    treated as a single unit during development, enabling
+    shared resolution of their dependency constraints.
+    Useful for developing in a monorepo.
+
+    The packages have shared `pubspec.lock` and
+    `.dart_tool/package_config.json` files in the workspace root directory.
+  related_links:
+    - text: "Pub workspaces"
+      link: "/tools/pub/workspaces"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+  alternate:
+    - "Workspace"
 
 - term: "Quick fix"
   short_description: |-
@@ -885,6 +1311,27 @@
   alternate:
     - "subtyping"
     - "subtype polymorphism"
+
+- term: "Transitive dependency"
+  short_description: |-
+    A dependency that a package indirectly uses because
+    one of its dependencies requires it.
+  long_description: |-
+    A _transitive dependency_ is a [dependency][] that a package indirectly uses
+    because one of its dependencies, or their dependencies, requires it.
+
+    If your package depends on A, which in turn depends on B which depends on C,
+    then A is an [immediate dependency][] and B and C are transitive ones.
+
+    [dependency]: #dependency
+    [immediate dependency]: #immediate-dependency
+  related_links:
+    - text: "Immediate dependency"
+      link: "#immediate-dependency"
+      type: "term"
+  labels:
+    - "pub"
+    - "packages"
 
 - term: "Type alias"
   short_description: |-
@@ -1146,3 +1593,59 @@
     - "dart zones"
     - "execution zone"
     - "runZoned"
+
+- term: "Verified publisher"
+  short_description: |-
+    A package publisher on the pub.dev site whose
+    identity has been verified by pub.dev.
+  long_description: |-
+    A _verified publisher_ is a collection of one or more users who
+    are identified with a unique domain name.
+    The ownership of the domain name is verified by pub.dev,
+    such as for the [dart.dev publisher][] on pub.dev by the Dart team.
+
+    [dart.dev publisher]: https://pub.dev/publishers/dart.dev
+  related_links:
+    - text: "Verified publishers"
+      link: "/tools/pub/verified-publishers"
+      type: "doc"
+    - text: "Publishing packages as verified publisher"
+      link: "/tools/pub/publishing#verified-publisher"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"
+
+- term: "Version constraint"
+  short_description: |-
+    A constraint associated with each dependency that
+    specifies which versions a package is expected to work with.
+  long_description: |-
+    A _version constraint_ is a specified range of compatible versions
+    of a [dependency][] for a package.
+    This can be a single version (`0.3.0`) or a range of versions (`^1.2.1`).
+    While `any` is also allowed, for performance reasons it's not recommended.
+
+    Library [packages][] should always specify version constraints
+    for each of their non-dev dependencies.
+    [Application packages][], on the other hand,
+    can allow any version of their dependencies,
+    since they use the [lockfile][] to manage their dependency versions.
+
+    [dependency]: #dependency
+    [packages]: #packages
+    [Application packages]: #application-package
+    [lockfile]: #lockfile
+  related_links:
+    - text: "Version constraints"
+      link: "/tools/pub/dependencies#version-constraints"
+      type: "doc"
+    - text: "Pub versioning philosophy"
+      link: "/tools/pub/versioning"
+      type: "doc"
+    - text: "Caret syntax"
+      link: "/tools/pub/dependencies#caret-syntax"
+      type: "doc"
+  labels:
+    - "pub"
+    - "packages"

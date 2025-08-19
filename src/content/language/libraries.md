@@ -27,7 +27,7 @@ provides a straightforward configuration mechanism,
 helps enable an efficient implementation of [dynamic access][],
 and improves tree shaking (dead code elimination).
 
-[library]: /tools/pub/glossary#library
+[library]: /resources/glossary#library
 [dynamic access]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 
 ## Using libraries

@@ -12,7 +12,7 @@ $ dart pub cache clean
 ```
 
 The `dart pub cache` command works with the
-[system cache](/tools/pub/glossary#system-cache).
+[system cache](/resources/glossary#pub-system-cache).
 
 ## Adding a package to the system cache
 

@@ -248,4 +248,4 @@ all dependencies
 [package dependencies]: /tools/pub/dependencies
 [`http`]: {{site.pub-pkg}}/http
 [`dart pub deps`]: /tools/pub/cmd/pub-deps
-[transitive dependencies]: /tools/pub/glossary#transitive-dependency
+[transitive dependencies]: /resources/glossary#transitive-dependency
