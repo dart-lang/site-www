@@ -221,8 +221,8 @@
     packaged and used by a Dart application. Examples include shared libraries
     (`.so`, `.dll`, `.dylib`) built in languages like C, C++, or Rust.
 
-    Code assets can be bundled with a Dart package using a [build hook](/tools/hooks)
-
+    Code assets can be bundled with a Dart package using a [build hook](/tools/hooks).
+    
     Dart code can call into these assets using the [FFI](/guides/libraries/c-interop).
 
     > Historically, code assets were referred to as **native assets** or
