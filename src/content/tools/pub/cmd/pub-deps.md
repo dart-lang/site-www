@@ -11,9 +11,9 @@ $ dart pub deps [--style=<style>] [--[no-]dev] [--executables]
 
 This command prints the dependency graph for a package.
 The graph includes both the
-[immediate dependencies](/tools/pub/glossary#immediate-dependency)
+[immediate dependencies](/resources/glossary#immediate-dependency)
 that the package uses (as specified in the pubspec), as well as the
-[transitive dependencies](/tools/pub/glossary#transitive-dependency)
+[transitive dependencies](/resources/glossary#transitive-dependency)
 pulled in by the immediate dependencies.
 
 The dependency information is printed as a tree by default.
