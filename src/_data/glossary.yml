@@ -213,6 +213,43 @@
     - "language"
     - "type system"
 
+- term: "Code asset"
+  short_description: |-
+    Compiled native code that is bundled with Dart app using a build hook can use through `dart:ffi`.
+  long_description: |-
+    A **code asset** is compiled code that isn't written in Dart but can be
+    packaged and used by a Dart application. Examples include shared libraries
+    (`.so`, `.dll`, `.dylib`) built in languages like C, C++, or Rust.
+
+    Code assets can be bundled with a Dart package using a  [build hook](/tools/hooks)
+
+    Dart code can call into these assets using the [FFI](/guides/libraries/c-interop).
+
+    > Historically, code assets were referred to as **native assets** or
+    **native code assets**. These names are kept as alternates for clarity.
+
+    Code assets are useful for:
+    * Integrating with existing native libraries.
+    * Accessing system capabilities not directly exposed in Dart.
+    * Sharing performance-critical functionality across platforms.
+
+    For example, a Dart application may include a native `.so` library
+    that exposes specific functions, and call those functions from Dart.
+
+  related_links:
+    - text: "C interop using dart:ffi"
+      link: "/interop/c-interop/"
+      type: "doc"
+    - text: "Hooks"
+      link: "/tools/hooks"
+      type: "doc"
+  labels:
+    - "language"
+    - "interop"
+  alternate:
+    - "Native asset"
+    - "Native code asset"
+  
 - term: "Constant context"
   short_description: |-
     A region of code where the const keyword is implied and
@@ -731,43 +768,6 @@
     - "late keyword"
     - "deferred initialization"
     - "late final"
-
-
-- term: "Native asset"
-  short_description: |-
-      A non-Dart resource, such as native code or data, that a Dart app can use.
-  long_description: |-
-      A **native asset** in Dart is any resource that isn't written in Dart code but
-      can be packaged and used by a Dart application.  
-
-      Examples include:
-      * Using compiled native code (such as a shared library in C, C++, or Rust).
-      * Using platform-specific binaries or object files.
-      * Using data files such as images, fonts, or configuration resources.
-
-      Native assets are useful for:
-      * Integrating with existing native libraries.
-      * Accessing system capabilities that aren't directly exposed in Dart.
-      * Packaging additional runtime resources along with your Dart app.
-
-      For example, a Dart application may include a native `.so` or `.dll` library
-      that exposes specific functions, and call those functions through the Dart FFI
-      (Foreign Function Interface).
-
-  related_links:
-      - text: "C interop using dart:ffi"
-        link: "/interop/c-interop/"
-        type: "doc"
-      - text: "Hooks"
-        link: "/tools/hooks"
-        type: "doc"
-  labels:
-      - "language"
-      - "interop"
-  alternate:
-      - "Native resource"
-      - "Non-Dart asset"
-      - "Hooks"
 
 - term: "Library"
   short_description: |-
