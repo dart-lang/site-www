@@ -215,13 +215,13 @@
 
 - term: "Code asset"
   short_description: |-
-    Compiled native code that is bundled with Dart app using a build hook can use through `dart:ffi`.
+    Compiled native code that is bundled with Dart app using a build hook, can be used through `dart:ffi`.
   long_description: |-
     A **code asset** is compiled code that isn't written in Dart but can be
     packaged and used by a Dart application. Examples include shared libraries
     (`.so`, `.dll`, `.dylib`) built in languages like C, C++, or Rust.
 
-    Code assets can be bundled with a Dart package using a  [build hook](/tools/hooks)
+    Code assets can be bundled with a Dart package using a [build hook](/tools/hooks)
 
     Dart code can call into these assets using the [FFI](/guides/libraries/c-interop).
 
