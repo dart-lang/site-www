@@ -248,8 +248,9 @@
       link: "/tools/hooks"
       type: "doc"
   labels:
-    - "language"
     - "interop"
+    - "libraries"
+    - "packages"
   alternate:
     - "Native asset"
     - "Native code asset"
