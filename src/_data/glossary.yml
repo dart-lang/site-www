@@ -213,6 +213,48 @@
     - "language"
     - "type system"
 
+- term: "Code asset"
+  short_description: |-
+    Compiled native code that is bundled with a Dart app using a build hook
+    and can be used through `dart:ffi`.
+  long_description: |-
+    A **code asset** is compiled code that isn't written in Dart but
+    can be packaged and used by a Dart application.
+    Examples include shared libraries (`.so`, `.dll`, `.dylib`) built
+    in languages like C, C++, or Rust.
+
+    Code assets can be bundled with a Dart package using a [build hook][].
+    Dart code can call into these assets using [FFI][].
+
+    > Historically, code assets were also referred to
+    > as **native assets** or **native code assets**.
+
+    Code assets are useful for:
+
+    * Integrating with existing native libraries.
+    * Accessing system capabilities not directly exposed in Dart.
+    * Sharing performance-critical functionality across platforms.
+
+    For example, a Dart application could include a native `.so` library
+    that exposes specific functions, and call those functions from Dart.
+
+    [build hook]: /tools/hooks
+    [FFI]: /interop/c-interop
+  related_links:
+    - text: "C interop using dart:ffi"
+      link: "/interop/c-interop/"
+      type: "doc"
+    - text: "Hooks"
+      link: "/tools/hooks"
+      type: "doc"
+  labels:
+    - "interop"
+    - "libraries"
+    - "packages"
+  alternate:
+    - "Native asset"
+    - "Native code asset"
+
 - term: "Constant context"
   short_description: |-
     A region of code where the const keyword is implied and
@@ -796,6 +838,7 @@
     - "packages"
   alternate:
     - "pubspec.lock"
+
 
 - term: "Override inference"
   short_description: |-
