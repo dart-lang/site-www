@@ -243,6 +243,8 @@ null checks, and string interpolation.
 
     Highlights from the preceding code:
 
+    * `final` variables can only be set once and are used when you never intend to change it again in
+        the code. 
     * `arguments.sublist(1)` creates a new list
         containing all elements of the `arguments` list *after* the first
         element (which was `search`).
@@ -312,7 +314,7 @@ null checks, and string interpolation.
     This preceding code block introduces a few
     key concepts:
 
-    * It declares a `late String? articleTitle` variable which will
+    * It declares a `final String articleTitle` variable which will
         hold the full search query, whether it comes from the command
         line or user input. `late` is a keyword that tells the
         analyzer that you, the programmer, promise that this variable
@@ -346,11 +348,11 @@ null checks, and string interpolation.
 
     ```dart
     void searchWikipedia(List<String>? arguments) {
-      late String? articleTitle;
+      final String articleTitle;
 
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
-        articleTitle = stdin.readLineSync();
+        articleTitle = stdin.readLineSync() ?? '';
         return; // Exits here if input is from stdin
       } else {
         articleTitle = arguments.join(' ');
