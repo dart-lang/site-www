@@ -473,7 +473,7 @@ void main() {
 
 When `i` gets the static type `NumberE` based on a cast or a pattern match, `i`
 still refers to the same object, and `v` refers to the same object as `i`, and
-nothing has changed about this object. It is only the static type that changeed
+nothing has changed about this object. It is only the static type that changed
 (and hence the methods that we can call on this object). In particular, the
 change of type does not involve an invocation of a constructor. If you wish to
 execute a constructor (for example, to perform some kind of validation) then it
