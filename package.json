@@ -20,7 +20,7 @@
   "packageManager": "pnpm@10.13.1",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "@swc/html": "^1.13.4",
+    "@swc/html": "^1.13.5",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.17.2",
