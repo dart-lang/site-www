@@ -476,8 +476,8 @@ still refers to the same object, and `v` refers to the same object as `i`, and
 nothing has changed about this object. It is only the static type that changeed
 (and hence the methods that we can call on this object). In particular, the
 change of type does not involve an invocation of a constructor. If you wish to
-execute a constructor (e.g., to perform some kind of validation) then it is
-necessary to write an explicit constructor invocation (such as `NumberE(i)`).
+execute a constructor (for example, to perform some kind of validation) then it
+is necessary to write an explicit constructor invocation (such as `NumberE(i)`).
 
 It's important to be aware of this behavior when using extension types.
 Always keep in mind that an extension type exists and matters at compile time,
