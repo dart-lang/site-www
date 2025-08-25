@@ -294,12 +294,12 @@ null checks, and string interpolation.
 
     ```dart
     void searchWikipedia(List<String>? arguments) {
-      late String? articleTitle;
+      final String articleTitle;
 
       // If the user didn't pass in arguments, request an article title.
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
-        articleTitle = stdin.readLineSync(); // Await input from the user
+        articleTitle = stdin.readLineSync() ?? ''; // Await input from the user
       } else {
         // Otherwise, join the arguments into the CLI into a single string
         articleTitle = arguments.join(' ');
