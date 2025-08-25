@@ -7177,6 +7177,7 @@ _The type argument(s) of '{0}' can't be inferred._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/inference_failure_on_collection_literal" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="inference_failure_on_collection_literal" title="Copy inference_failure_on_collection_literal to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -7194,6 +7195,7 @@ _The type argument(s) of the function '{0}' can't be inferred._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/inference_failure_on_function_invocation" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="inference_failure_on_function_invocation" title="Copy inference_failure_on_function_invocation to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -7204,13 +7206,14 @@ _The type argument(s) of the function '{0}' can't be inferred._
 </div>
 <div class="card-content">
 
-_The return type of '{0}' cannot be inferred._
+_The return type of '{0}' can't be inferred._
 
 </div>
 <div class="card-actions">
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/inference_failure_on_function_return_type" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="inference_failure_on_function_return_type" title="Copy inference_failure_on_function_return_type to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -7262,6 +7265,7 @@ _The type of {0} can't be inferred without either a type or initializer._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/inference_failure_on_uninitialized_variable" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="inference_failure_on_uninitialized_variable" title="Copy inference_failure_on_uninitialized_variable to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -7279,6 +7283,7 @@ _The type of {0} can't be inferred; a type must be explicitly provided._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/inference_failure_on_untyped_parameter" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="inference_failure_on_untyped_parameter" title="Copy inference_failure_on_untyped_parameter to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -13208,6 +13213,7 @@ _The matched value type '{0}' can never match the required type '{1}'._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/pattern_never_matches_value_type" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="pattern_never_matches_value_type" title="Copy pattern_never_matches_value_type to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -13991,6 +13997,7 @@ _'{0}' was removed in Dart '{1}'_
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/removed_lint_use" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="removed_lint_use" title="Copy removed_lint_use to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -16185,6 +16192,7 @@ _Unnecessary cast pattern._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/unnecessary_cast_pattern" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="unnecessary_cast_pattern" title="Copy unnecessary_cast_pattern to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -17629,6 +17637,57 @@ _Use 'package:' imports for files in the 'lib' directory._
 <div class="trailing">
   <a class="outlined-button" href="/tools/diagnostics/always_use_package_imports" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="always_use_package_imports" title="Copy always_use_package_imports to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="analyzer_element_model_tracking_bad">
+<div class="card-header">
+<header class="card-title" id="analyzer_element_model_tracking_bad">{{"analyzer_element_model_tracking_bad" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Bad tracking annotation for this member._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="analyzer_element_model_tracking_bad" title="Copy analyzer_element_model_tracking_bad to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="analyzer_element_model_tracking_more_than_one">
+<div class="card-header">
+<header class="card-title" id="analyzer_element_model_tracking_more_than_one">{{"analyzer_element_model_tracking_more_than_one" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_There can be only one tracking annotation._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="analyzer_element_model_tracking_more_than_one" title="Copy analyzer_element_model_tracking_more_than_one to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
+<div class="card outlined-card" id="analyzer_element_model_tracking_zero">
+<div class="card-header">
+<header class="card-title" id="analyzer_element_model_tracking_zero">{{"analyzer_element_model_tracking_zero" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_No required tracking annotation._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+</div>
+<div class="trailing">
+  <button class="copy-button filled-button hidden" data-copy="analyzer_element_model_tracking_zero" title="Copy analyzer_element_model_tracking_zero to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
