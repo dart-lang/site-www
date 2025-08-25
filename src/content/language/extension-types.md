@@ -446,8 +446,8 @@ and when testing against an extension type (`case MyExtensionType(): ... `).
 void main() {
   var n = NumberE(1);
 
-  // Run-time type of 'n' is representation type 'int'.
-  if (n is int) print(n.value); // Prints 1.
+  // The run-time type of 'n' is the representation type 'int'.
+  if (n is int) print(n); // Prints 1.
 
   // Can use 'int' methods on 'n' at run time.
   if (n case int x) print(x.toRadixString(10)); // Prints 1.
@@ -471,13 +471,21 @@ void main() {
 }
 ```
 
-It's important to be aware of this quality when using extension types.
+When `i` gets the static type `NumberE` based on a cast or a pattern match, `i`
+still refers to the same object, and `v` refers to the same object as `i`, and
+nothing has changed about this object. It is only the static type that changeed
+(and hence the methods that we can call on this object). In particular, the
+change of type does not involve an invocation of a constructor. If you wish to
+execute a constructor (e.g., to perform some kind of validation) then it is
+necessary to write an explicit constructor invocation (such as `NumberE(1)`).
+
+It's important to be aware of this behavior when using extension types.
 Always keep in mind that an extension type exists and matters at compile time,
-but gets erased _during_ compilation.
+but gets _erased_ during compilation.
 
 For example, consider an expression `e` whose static type is the
-extension type `E`, and the representation type of `E` is `R`.
-Then, the run-time type of the value of `e` is a subtype of `R`.
+extension type `E`. Assume that the representation type of `E` is `R`.
+The run-time type of the value of `e` is then a subtype of `R`.
 Even the type itself is erased;
 `List<E>` is exactly the same thing as `List<R>` at run time.
 
