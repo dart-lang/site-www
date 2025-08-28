@@ -36,23 +36,19 @@ class DashBanner extends StatelessComponent {
   final BannerContent content;
 
   @override
-  Iterable<Component> build(BuildContext context) {
-    return [
-      div(
-        id: 'site-banner',
-        attributes: {'role': 'alert'},
-        [
-          p([
-            text(content.text),
-            text(' '),
-            a(
-              href: content.linkUri,
-              target: content.newTab ? Target.blank : null,
-              [text(content.linkText)],
-            ),
-          ]),
-        ],
-      ),
-    ];
-  }
+  Component build(BuildContext context) => div(
+    id: 'site-banner',
+    attributes: {'role': 'alert'},
+    [
+      p([
+        text(content.text),
+        text(' '),
+        a(
+          href: content.linkUri,
+          target: content.newTab ? Target.blank : null,
+          [text(content.linkText)],
+        ),
+      ]),
+    ],
+  );
 }

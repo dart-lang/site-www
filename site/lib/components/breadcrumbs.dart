@@ -13,11 +13,11 @@ class PageBreadcrumbs extends StatelessComponent {
   const PageBreadcrumbs({super.key});
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final crumbs = _breadcrumbsForPage(context.pages, context.page);
-    if (crumbs == null || crumbs.isEmpty) return;
+    if (crumbs == null || crumbs.isEmpty) return const Fragment(children: []);
 
-    yield nav(
+    return nav(
       classes: 'breadcrumbs',
       attributes: {'aria-label': 'breadcrumb'},
       [
@@ -131,33 +131,31 @@ final class _BreadcrumbItemComponent extends StatelessComponent {
   final bool isLast;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield li(
-      classes: [
-        'breadcrumb-item',
-        if (isLast) 'active',
-      ].join(' '),
-      attributes: {
-        'property': 'itemListElement',
-        'typeof': 'ListItem',
-        if (isLast) 'aria-current': 'page',
-      },
-      [
-        a(
-          href: crumb.url,
-          attributes: {'property': 'item', 'typeof': 'WebPage'},
-          [
-            span(attributes: {'property': 'name'}, [text(crumb.title)]),
-          ],
+  Component build(BuildContext context) => li(
+    classes: [
+      'breadcrumb-item',
+      if (isLast) 'active',
+    ].join(' '),
+    attributes: {
+      'property': 'itemListElement',
+      'typeof': 'ListItem',
+      if (isLast) 'aria-current': 'page',
+    },
+    [
+      a(
+        href: crumb.url,
+        attributes: {'property': 'item', 'typeof': 'WebPage'},
+        [
+          span(attributes: {'property': 'name'}, [text(crumb.title)]),
+        ],
+      ),
+      meta(attributes: {'property': 'position', 'content': index.toString()}),
+      if (!isLast)
+        span(
+          classes: 'material-symbols child-icon',
+          attributes: {'aria-hidden': 'true'},
+          [text('chevron_right')],
         ),
-        meta(attributes: {'property': 'position', 'content': index.toString()}),
-        if (!isLast)
-          span(
-            classes: 'material-symbols child-icon',
-            attributes: {'aria-hidden': 'true'},
-            [text('chevron_right')],
-          ),
-      ],
-    );
-  }
+    ],
+  );
 }

@@ -17,7 +17,7 @@ final class RobotsTxtOutput implements SecondaryOutput {
   @override
   Component build(Page _) {
     return Builder(
-      builder: (context) sync* {
+      builder: (context) {
         context.setHeader('Content-Type', 'text/plain; charset=utf-8');
         final String textContent;
         if (productionBuild) {
@@ -37,6 +37,7 @@ Disallow: /
 ''';
         }
         context.setStatusCode(200, responseBody: textContent);
+        return const Fragment(children: []);
       },
     );
   }

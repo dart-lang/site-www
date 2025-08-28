@@ -13,24 +13,26 @@ class LintRuleIndex extends StatelessComponent {
   const LintRuleIndex();
 
   @override
-  Iterable<Component> build(BuildContext context) {
+  Component build(BuildContext context) {
     final linterRules = readAndLoadLints();
-    return [
-      const _LintFilterSearchSection(),
-      section(
-        classes: 'content-search-results',
-        [
-          div(
-            id: 'lint-cards',
-            classes: 'card-grid',
-            [
-              for (final lint in linterRules)
-                if (lint.state != 'internal') _LintRuleCard(lint: lint),
-            ],
-          ),
-        ],
-      ),
-    ];
+    return Fragment(
+      children: [
+        const _LintFilterSearchSection(),
+        section(
+          classes: 'content-search-results',
+          [
+            div(
+              id: 'lint-cards',
+              classes: 'card-grid',
+              [
+                for (final lint in linterRules)
+                  if (lint.state != 'internal') _LintRuleCard(lint: lint),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
 
@@ -38,8 +40,8 @@ class _LintFilterSearchSection extends StatelessComponent {
   const _LintFilterSearchSection();
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield section(
+  Component build(BuildContext context) {
+    return section(
       id: 'filter-and-search',
       classes: 'hidden',
       [
@@ -99,7 +101,7 @@ class _LintRuleCard extends StatelessComponent {
   final LintDetails lint;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final lintId = lint.name.toLowerCase();
 
     final attributes = <String, String>{
@@ -111,7 +113,7 @@ class _LintRuleCard extends StatelessComponent {
       if (lint.lintSets.contains('flutter')) 'data-in-flutter': 'true',
     };
 
-    yield Card(
+    return Card(
       id: lintId,
       outlined: true,
       attributes: attributes,

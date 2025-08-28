@@ -37,7 +37,7 @@ class DashTabs implements CustomComponent {
             baseId: '${_currentTabId++}',
             isActive: tabIndex == 0,
             wrapperId: wrapperId,
-            child: builder.build(tab.children) ?? const Text(''),
+            child: builder.build(tab.children),
           ),
       ],
     );
@@ -58,49 +58,47 @@ class _DashTabsWrapper extends StatelessComponent {
   final List<_DashTabPane> tabs;
 
   @override
-  Iterable<Component> build(BuildContext context) {
-    return [
-      div(
-        id: id,
-        classes: ['tabs-wrapper', if (wrapped) 'wrapped'].join(' '),
-        attributes: {
-          'data-tab-save-key': ?saveKey,
-        },
-        [
-          ul(
-            classes: 'nav-tabs',
-            attributes: {
-              'role': 'tablist',
-            },
-            [
-              for (final tab in tabs)
-                li(classes: 'nav-item', [
-                  a(
-                    id: tab.tabId,
-                    href: '#${tab.panelId}',
-                    classes: [
-                      'nav-link',
-                      if (tab.isActive) 'active',
-                    ].join(' '),
-                    attributes: {
-                      'tabindex': '0',
-                      'data-tab-save-id': tab.saveId,
-                      'role': 'tab',
-                      'aria-controls': tab.panelId,
-                      'aria-selected': '${tab.isActive}',
-                    },
-                    [text(tab.tabName)],
-                  ),
-                ]),
-            ],
-          ),
-          div(
-            classes: 'tab-content',
-            tabs,
-          ),
-        ],
-      ),
-    ];
+  Component build(BuildContext context) {
+    return div(
+      id: id,
+      classes: ['tabs-wrapper', if (wrapped) 'wrapped'].join(' '),
+      attributes: {
+        'data-tab-save-key': ?saveKey,
+      },
+      [
+        ul(
+          classes: 'nav-tabs',
+          attributes: {
+            'role': 'tablist',
+          },
+          [
+            for (final tab in tabs)
+              li(classes: 'nav-item', [
+                a(
+                  id: tab.tabId,
+                  href: '#${tab.panelId}',
+                  classes: [
+                    'nav-link',
+                    if (tab.isActive) 'active',
+                  ].join(' '),
+                  attributes: {
+                    'tabindex': '0',
+                    'data-tab-save-id': tab.saveId,
+                    'role': 'tab',
+                    'aria-controls': tab.panelId,
+                    'aria-selected': '${tab.isActive}',
+                  },
+                  [text(tab.tabName)],
+                ),
+              ]),
+          ],
+        ),
+        div(
+          classes: 'tab-content',
+          tabs,
+        ),
+      ],
+    );
   }
 }
 
@@ -124,19 +122,17 @@ class _DashTabPane extends StatelessComponent {
   final Component child;
 
   @override
-  Iterable<Component> build(BuildContext context) {
-    return [
-      div(
-        id: panelId,
-        classes: 'tab-pane',
-        attributes: {
-          'role': 'tabpanel',
-          'aria-labelledby': tabId,
-          'data-tab-id': tabId,
-          'data-tab-wrapper-id': wrapperId,
-        },
-        [child],
-      ),
-    ];
+  Component build(BuildContext context) {
+    return div(
+      id: panelId,
+      classes: 'tab-pane',
+      attributes: {
+        'role': 'tabpanel',
+        'aria-labelledby': tabId,
+        'data-tab-id': tabId,
+        'data-tab-wrapper-id': wrapperId,
+      },
+      [child],
+    );
   }
 }

@@ -14,24 +14,14 @@ class MaterialIcon extends StatelessComponent {
   final String? label;
 
   @override
-  Iterable<Component> build(BuildContext _) {
-    return [
-      span(
-        classes: ['material-symbols', ...classes].join(' '),
-        attributes: {
-          'title': ?title,
-          'aria-label': ?(label ?? title),
-        },
-        [text(id)],
-      ),
-    ];
-  }
-}
-
-class SvgIcon extends StatelessComponent {
-  @override
-  Iterable<Component> build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+  Component build(BuildContext _) {
+    return span(
+      classes: ['material-symbols', ...classes].join(' '),
+      attributes: {
+        'title': ?title,
+        'aria-label': ?(label ?? title),
+      },
+      [text(id)],
+    );
   }
 }

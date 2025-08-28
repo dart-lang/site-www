@@ -29,20 +29,30 @@ dev_dependencies:
   build_web_compilers: ^4.1.5
   jaspr_builder: ^0.20.0
   lints: ^6.0.0
-  sass: ^1.89.2
+  sass: ^1.91.0
   sass_builder: ^2.2.1
 
 dependency_overrides:
-  # Remove once build performance and base href fixes have been published.
+  # Remove once next stable release of Jaspr has been published.
   jaspr:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr
       ref: main
+  jaspr_builder:
+    git:
+      url: https://github.com/schultek/jaspr.git
+      path: packages/jaspr_builder
+      ref: main
   jaspr_content:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr_content
+      ref: main
+  jaspr_router:
+    git:
+      url: https://github.com/schultek/jaspr.git
+      path: packages/jaspr_router
       ref: main
 
 jaspr:

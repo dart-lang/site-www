@@ -8,7 +8,7 @@ class TrailingContent extends StatelessComponent {
   final String? sdkVersion;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final page = context.page;
     final pageUrl = page.url;
     final pageData = page.data.page;
@@ -40,7 +40,7 @@ class TrailingContent extends StatelessComponent {
           '$repoUrl/issues/new?template=1_page_issue.yml&page-url=$fullPageUrl';
     }
 
-    yield div(
+    return div(
       id: 'trailing-content',
       attributes: {'data-nosnippet': 'true'},
       [

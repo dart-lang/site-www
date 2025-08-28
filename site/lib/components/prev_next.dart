@@ -7,10 +7,12 @@ class PrevNext extends StatelessComponent {
   final ({String url, String title})? nextPage;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    if (previousPage == null && nextPage == null) return;
+  Component build(BuildContext context) {
+    if (previousPage == null && nextPage == null) {
+      return const Fragment(children: []);
+    }
 
-    yield nav(id: 'site-prev-next', [
+    return nav(id: 'site-prev-next', [
       if (previousPage case final previousPage?)
         _PrevNextCard(page: previousPage, isPrevious: true),
       if (nextPage case final nextPage?)
@@ -26,13 +28,13 @@ class _PrevNextCard extends StatelessComponent {
   final bool isPrevious;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final classes = isPrevious ? 'prev' : 'next';
     final subtitle = isPrevious ? 'Previous' : 'Next';
     final ariaLabel = isPrevious ? 'Previous page: ' : 'Next page: ';
     final iconName = isPrevious ? 'chevron_left' : 'chevron_right';
 
-    yield a(classes: classes, href: page.url, [
+    return a(classes: classes, href: page.url, [
       if (isPrevious)
         span(
           classes: 'material-symbols',

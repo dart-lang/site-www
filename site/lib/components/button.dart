@@ -44,7 +44,7 @@ class Button extends StatelessComponent {
   final List<String>? classes;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final mergedAttributes = <String, String>{
       ...attributes,
       if (disabled) 'disabled': 'disabled',
@@ -64,7 +64,7 @@ class Button extends StatelessComponent {
     ];
 
     if (href case final href?) {
-      yield a(
+      return a(
         id: id,
         href: href,
         classes: mergedClasses,
@@ -72,7 +72,7 @@ class Button extends StatelessComponent {
         children,
       );
     } else {
-      yield button(
+      return button(
         id: id,
         classes: mergedClasses,
         attributes: mergedAttributes,

@@ -12,18 +12,16 @@ class SearchBar extends StatelessComponent {
   final String label;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: 'search-row', [
-      div(classes: 'search-wrapper', [
-        const MaterialIcon('search', classes: ['leading-icon']),
-        input(
-          type: InputType.search,
-          attributes: {
-            'placeholder': placeholder,
-            'aria-label': label,
-          },
-        ),
-      ]),
-    ]);
-  }
+  Component build(BuildContext context) => div(classes: 'search-row', [
+    div(classes: 'search-wrapper', [
+      const MaterialIcon('search', classes: ['leading-icon']),
+      input(
+        type: InputType.search,
+        attributes: {
+          'placeholder': placeholder,
+          'aria-label': label,
+        },
+      ),
+    ]),
+  ]);
 }

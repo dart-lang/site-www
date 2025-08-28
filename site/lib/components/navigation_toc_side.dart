@@ -14,13 +14,13 @@ class NavigationTocSide extends StatelessComponent {
   final int? maxDepth;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     // Only render if there is more than 1 entry.
     if (toc.entries.length <= 1) {
-      return;
+      return const Fragment(children: []);
     }
 
-    yield div(id: 'site-toc--side', classes: 'site-toc', [
+    return div(id: 'site-toc--side', classes: 'site-toc', [
       nav(classes: 'site-sidenav', [
         header(classes: 'site-toc__title', [text('Contents')]),
         ul(classes: 'section-nav', [

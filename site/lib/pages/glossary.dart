@@ -152,27 +152,31 @@ class GlossaryIndex extends StatelessComponent {
   const GlossaryIndex();
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final glossary = Glossary.fromList(
       context.page.data['glossary'] as List<Object?>,
     );
-    yield p([
-      text(
-        'The following are definitions of terms used '
-        'across the Dart documentation.',
-      ),
-    ]);
-    yield section(id: 'filter-and-search', [
-      const SearchBar(
-        placeholder: 'Search terms...',
-        label: 'Search terms by name...',
-      ),
-    ]);
-    yield section(id: 'content-search-results', [
-      div(classes: 'card-list', [
-        for (final entry in glossary.entries) GlossaryCard(entry: entry),
-      ]),
-    ]);
+    return Fragment(
+      children: [
+        p([
+          text(
+            'The following are definitions of terms used '
+            'across the Dart documentation.',
+          ),
+        ]),
+        section(id: 'filter-and-search', [
+          const SearchBar(
+            placeholder: 'Search terms...',
+            label: 'Search terms by name...',
+          ),
+        ]),
+        section(id: 'content-search-results', [
+          div(classes: 'card-list', [
+            for (final entry in glossary.entries) GlossaryCard(entry: entry),
+          ]),
+        ]),
+      ],
+    );
   }
 }
 
@@ -185,14 +189,14 @@ class GlossaryCard extends StatelessComponent {
   final GlossaryEntry entry;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final cardId = entry.id;
     final contentId = '$cardId-content';
 
     final partialMatches = entry.term.toLowerCase();
     final fullMatches = entry.alternate.map((e) => e.toLowerCase()).join(',');
 
-    yield Card.expandable(
+    return Card.expandable(
       id: cardId,
       outlined: true,
       additionalClasses: 'glossary-card',

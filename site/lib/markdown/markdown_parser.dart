@@ -51,7 +51,7 @@ class DashMarkdown extends AsyncStatelessComponent {
   final bool inline;
 
   @override
-  Stream<Component> build(BuildContext context) async* {
+  Future<Component> build(BuildContext context) async {
     final currentPage = context.page;
     final markdownNodes = _defaultMarkdownDocument.parse(content);
     var nodes = DashMarkdownParser.buildNodes(markdownNodes);
@@ -59,10 +59,7 @@ class DashMarkdown extends AsyncStatelessComponent {
       nodes = await extension.apply(currentPage, nodes);
     }
 
-    final builtComponent = _nodeBuilder.build(nodes);
-    if (builtComponent != null) {
-      yield builtComponent;
-    }
+    return _nodeBuilder.build(nodes);
   }
 }
 

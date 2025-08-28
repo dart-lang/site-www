@@ -13,15 +13,15 @@ class NavigationTocTop extends StatelessComponent {
   final int? maxDepth;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     // Only render if there is more than 1 entry.
     if (toc.entries.length <= 1) {
-      return;
+      return const Fragment(children: []);
     }
 
     final isCollapsible = toc.entries.length > 10;
 
-    yield div(
+    return div(
       id: 'site-toc--inline',
       classes: isCollapsible
           ? 'site-toc toc-collapsible toc-collapsed'

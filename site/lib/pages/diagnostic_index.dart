@@ -12,20 +12,18 @@ class DiagnosticIndex extends StatelessComponent {
   const DiagnosticIndex();
 
   @override
-  Iterable<Component> build(BuildContext context) {
+  Component build(BuildContext context) {
     final diagnostics = (context.page.data['diagnostics'] as List<Object?>)
         .cast<Map<String, Object?>>()
         .map(_DiagnosticInfo._)
         .toList(growable: false);
-    return [
-      div(
-        id: 'diagnostic-index',
-        classes: 'card-list',
-        [
-          for (final diagnostic in diagnostics) _DiagnosticCard(diagnostic),
-        ],
-      ),
-    ];
+    return div(
+      id: 'diagnostic-index',
+      classes: 'card-list',
+      [
+        for (final diagnostic in diagnostics) _DiagnosticCard(diagnostic),
+      ],
+    );
   }
 }
 
@@ -35,10 +33,10 @@ class _DiagnosticCard extends StatelessComponent {
   final _DiagnosticInfo diagnostic;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final diagnosticId = diagnostic.id.trim().toLowerCase();
 
-    yield Card(
+    return Card(
       outlined: true,
       header: [
         for (final previousName in diagnostic.previousNames)

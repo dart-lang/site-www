@@ -7,19 +7,15 @@ class ChipSet extends StatelessComponent {
   final bool resettable;
 
   @override
-  Iterable<Component> build(BuildContext context) {
-    return [
-      div(classes: 'chip-set', [
-        ...chips,
-        if (resettable)
-          button(
-            id: 'reset-filters',
-            classes: 'text-button',
-            [text('Clear filters')],
-          ),
-      ]),
-    ];
-  }
+  Component build(BuildContext context) => div(classes: 'chip-set', [
+    ...chips,
+    if (resettable)
+      button(
+        id: 'reset-filters',
+        classes: 'text-button',
+        [text('Clear filters')],
+      ),
+  ]);
 }
 
 class InfoChip extends StatelessComponent {
@@ -45,11 +41,10 @@ class InfoChip extends StatelessComponent {
   final Map<String, String>? attributes;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    final chipClasses = ['chip', 'info-chip'];
-    if (classes != null) chipClasses.addAll(classes!);
+  Component build(BuildContext context) {
+    final chipClasses = ['chip', 'info-chip', ...?classes];
 
-    yield div(
+    return div(
       classes: chipClasses.join(' '),
       attributes: attributes,
       [
@@ -110,8 +105,8 @@ class FilterChip extends StatelessComponent {
   final void Function()? onTap;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield button(
+  Component build(BuildContext context) {
+    return button(
       classes: 'chip filter-chip',
       attributes: {
         'data-filter': dataFilter,
@@ -184,8 +179,8 @@ class SelectChip extends StatelessComponent {
   final String? dropdownIconPath;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: 'button-menu-wrapper', [
+  Component build(BuildContext context) {
+    return div(classes: 'button-menu-wrapper', [
       button(
         classes: 'chip select-chip',
         attributes: {
@@ -252,8 +247,8 @@ class SelectMenuItem extends StatelessComponent {
   final void Function()? onTap;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield li([
+  Component build(BuildContext context) {
+    return li([
       button(
         attributes: {
           'data-filter': dataFilter,

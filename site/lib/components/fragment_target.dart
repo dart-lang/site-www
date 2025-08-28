@@ -6,12 +6,10 @@ final class FragmentTarget extends StatelessComponent {
   final String id;
 
   @override
-  Iterable<Component> build(BuildContext context) => [
-    a(
-      href: '',
-      id: id,
-      attributes: {'aria-hidden': 'true'},
-      [],
-    ),
-  ];
+  Component build(BuildContext context) => a(
+    href: '',
+    id: id,
+    attributes: {'aria-hidden': 'true'},
+    [],
+  );
 }

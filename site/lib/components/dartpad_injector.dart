@@ -19,23 +19,19 @@ final class DartPadInjector extends StatelessComponent {
   final bool runAutomatically;
 
   @override
-  Iterable<Component> build(BuildContext context) {
-    return [
-      pre([
-        code(
-          attributes: {
-            'title': title,
-            'data-dartpad': 'true',
-            'data-embed': 'true',
-            'data-theme': theme,
-            'data-run': runAutomatically.toString(),
-            'data-height': ?height,
-          },
-          [
-            text(content.join('\n')),
-          ],
-        ),
-      ]),
-    ];
-  }
+  Component build(BuildContext context) => pre([
+    code(
+      attributes: {
+        'title': title,
+        'data-dartpad': 'true',
+        'data-embed': 'true',
+        'data-theme': theme,
+        'data-run': runAutomatically.toString(),
+        'data-height': ?height,
+      },
+      [
+        text(content.join('\n')),
+      ],
+    ),
+  ]);
 }

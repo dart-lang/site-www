@@ -48,7 +48,7 @@ class Card extends StatelessComponent {
   final bool initiallyExpanded;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final classes = [
       'card',
       if (outlined) 'outlined-card',
@@ -73,7 +73,7 @@ class Card extends StatelessComponent {
     ];
 
     if (link case final link?) {
-      yield a(
+      return a(
         classes: classes,
         id: id,
         href: link,
@@ -81,7 +81,7 @@ class Card extends StatelessComponent {
         children,
       );
     } else {
-      yield div(
+      return div(
         classes: classes,
         id: id,
         attributes: attributes,
@@ -98,12 +98,10 @@ class CardActions extends StatelessComponent {
   final List<Component> trailing;
 
   @override
-  Iterable<Component> build(BuildContext context) {
-    return [
-      div(classes: 'card-actions', [
-        div(classes: 'leading', leading),
-        div(classes: 'trailing', trailing),
-      ]),
-    ];
+  Component build(BuildContext context) {
+    return div(classes: 'card-actions', [
+      div(classes: 'leading', leading),
+      div(classes: 'trailing', trailing),
+    ]);
   }
 }

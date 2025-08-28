@@ -8,11 +8,8 @@ class Tags extends StatelessComponent {
   final List<Tag> tags;
 
   @override
-  Iterable<Component> build(BuildContext context) {
-    return [
-      div(classes: 'tags', [for (final tag in tags) tag]),
-    ];
-  }
+  Component build(BuildContext context) =>
+      div(classes: 'tags', [for (final tag in tags) tag]);
 }
 
 class Tag extends StatelessComponent {
@@ -25,19 +22,17 @@ class Tag extends StatelessComponent {
   final String? color;
 
   @override
-  Iterable<Component> build(BuildContext context) {
-    return [
-      div(
-        classes: 'tag-label',
-        attributes: {
-          'title': ?title,
-          'aria-label': ?(label ?? title),
-        },
-        [
-          if (icon case final iconId?) MaterialIcon(iconId),
-          span([text(content)]),
-        ],
-      ),
-    ];
+  Component build(BuildContext context) {
+    return div(
+      classes: 'tag-label',
+      attributes: {
+        'title': ?title,
+        'aria-label': ?(label ?? title),
+      },
+      [
+        if (icon case final iconId?) MaterialIcon(iconId),
+        span([text(content)]),
+      ],
+    );
   }
 }

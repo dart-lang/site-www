@@ -39,7 +39,7 @@ to your app's pubspec:
 dev_dependencies:
   # ···
   build_runner: ^2.4.15
-  build_test: ^2.2.3
+  build_test: any
 ```
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
