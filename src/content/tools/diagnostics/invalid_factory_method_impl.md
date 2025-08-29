@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_factory_method_impl
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Factory method '{0}' doesn't return a newly allocated object._

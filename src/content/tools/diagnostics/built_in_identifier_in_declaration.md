@@ -4,19 +4,14 @@ description: >-
   Details about the built_in_identifier_in_declaration
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The built-in identifier '{0}' can't be used as a prefix name._
-
 _The built-in identifier '{0}' can't be used as a type name._
-
 _The built-in identifier '{0}' can't be used as a type parameter name._
-
 _The built-in identifier '{0}' can't be used as a typedef name._
-
 _The built-in identifier '{0}' can't be used as an extension name._
-
 _The built-in identifier '{0}' can't be used as an extension type name._
 
 ## Description

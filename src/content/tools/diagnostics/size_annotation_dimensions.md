@@ -4,7 +4,7 @@ description: >-
   Details about the size_annotation_dimensions
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'Array's must have an 'Array' annotation that matches the dimensions._

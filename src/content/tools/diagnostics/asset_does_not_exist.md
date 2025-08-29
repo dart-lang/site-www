@@ -4,7 +4,7 @@ description: >-
   Details about the asset_does_not_exist
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The asset file '{0}' doesn't exist._

@@ -4,7 +4,7 @@ description: >-
   Details about the non_constant_map_value
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The values in a const map literal must be constant._

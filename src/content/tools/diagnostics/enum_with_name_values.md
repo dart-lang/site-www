@@ -4,7 +4,7 @@ description: >-
   Details about the enum_with_name_values
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The name 'values' is not a valid name for an enum._

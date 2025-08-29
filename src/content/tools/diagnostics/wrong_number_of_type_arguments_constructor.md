@@ -4,11 +4,10 @@ description: >-
   Details about the wrong_number_of_type_arguments_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The constructor '{0}.{1}' doesn't have type parameters._
-
 _The constructor '{0}.{1}` doesn't have type parameters._
 
 ## Description

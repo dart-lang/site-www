@@ -4,7 +4,7 @@ description: >-
   Details about the removed_lint_use
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' was removed in Dart '{1}'_

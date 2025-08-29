@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_use_of_null_value
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _An expression whose value is always 'null' can't be dereferenced._

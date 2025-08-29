@@ -4,11 +4,10 @@ description: >-
   Details about the non_constant_type_argument
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The type arguments to '{0}' must be known at compile time, so they can't be
-type parameters._
+_The type arguments to '{0}' must be known at compile time, so they can't be type parameters._
 
 ## Description
 

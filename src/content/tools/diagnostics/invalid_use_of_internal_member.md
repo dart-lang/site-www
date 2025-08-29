@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_use_of_internal_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The member '{0}' can only be used within its package._

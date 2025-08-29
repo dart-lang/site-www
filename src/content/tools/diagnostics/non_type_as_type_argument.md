@@ -4,7 +4,7 @@ description: >-
   Details about the non_type_as_type_argument
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The name '{0}' isn't a type, so it can't be used as a type argument._

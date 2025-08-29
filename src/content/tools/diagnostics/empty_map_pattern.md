@@ -4,7 +4,7 @@ description: >-
   Details about the empty_map_pattern
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A map pattern must have at least one entry._

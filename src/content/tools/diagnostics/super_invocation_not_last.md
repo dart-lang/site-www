@@ -4,7 +4,7 @@ description: >-
   Details about the super_invocation_not_last
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `invalid_super_invocation`)_

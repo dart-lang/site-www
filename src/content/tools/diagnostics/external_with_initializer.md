@@ -4,11 +4,10 @@ description: >-
   Details about the external_with_initializer
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _External fields can't have initializers._
-
 _External variables can't have initializers._
 
 ## Description

@@ -4,11 +4,10 @@ description: >-
   Details about the switch_expression_not_assignable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Type '{0}' of the switch expression isn't assignable to the type '{1}' of case
-expressions._
+_Type '{0}' of the switch expression isn't assignable to the type '{1}' of case expressions._
 
 ## Description
 

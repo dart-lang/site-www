@@ -4,11 +4,10 @@ description: >-
   Details about the private_setter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The setter '{0}' is private and can't be accessed outside the library that
-declares it._
+_The setter '{0}' is private and can't be accessed outside the library that declares it._
 
 ## Description
 

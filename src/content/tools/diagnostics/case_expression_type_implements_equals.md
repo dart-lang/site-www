@@ -4,7 +4,7 @@ description: >-
   Details about the case_expression_type_implements_equals
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The switch case expression type '{0}' can't override the '==' operator._

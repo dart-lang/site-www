@@ -4,7 +4,7 @@ description: >-
   Details about the prefer_const_constructors_in_immutables
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">

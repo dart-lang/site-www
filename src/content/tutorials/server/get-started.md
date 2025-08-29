@@ -45,7 +45,14 @@ More information:
 
 ## 2. Install Dart
 
-{% include 'get-sdk.md' %}
+To develop Dart apps, you need the Dart SDK.
+To continue with this guide,
+either [download the Dart SDK][dart-download] or
+[install Flutter][flutter-download],
+which includes the full Dart SDK.
+
+[dart-download]: /get-dart
+[flutter-download]: {{site.flutter-docs}}/get-started/install
 
 ## 3. Create a small app
 

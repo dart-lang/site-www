@@ -4,7 +4,7 @@ description: >-
   Details about the no_annotation_constructor_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Annotation creation must have arguments._

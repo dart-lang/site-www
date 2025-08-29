@@ -4,7 +4,7 @@ description: >-
   Details about the prefer_typing_uninitialized_variables
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,7 +19,6 @@ body_class: highlight-diagnostics
 </div>
 
 _An uninitialized field should have an explicit type annotation._
-
 _An uninitialized variable should have an explicit type annotation._
 
 ## Description
