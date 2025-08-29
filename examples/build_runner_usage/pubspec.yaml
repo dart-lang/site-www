@@ -8,4 +8,4 @@ environment:
 dev_dependencies:
   args: ^2.7.0
   build_runner: ^2.7.0
-  build_test: any
+  build_test: ^3.3.0
