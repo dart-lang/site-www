@@ -817,7 +817,7 @@
 
     [immediate]: #immediate-dependency
     [transitive]: #transitive-dependency
-    [pubspec]: #pubspec
+    [pubspec]: /tools/pub/pubspec
     [`pub get`]: /tools/pub/cmd/pub-get
     [`pub upgrade`]: /tools/pub/cmd/pub-upgrade
     [`pub downgrade`]: /tools/pub/cmd/pub-downgrade
@@ -1676,7 +1676,7 @@
     since they use the [lockfile][] to manage their dependency versions.
 
     [dependency]: #dependency
-    [packages]: #packages
+    [packages]: #package
     [Application packages]: #application-package
     [lockfile]: #lockfile
   related_links:
