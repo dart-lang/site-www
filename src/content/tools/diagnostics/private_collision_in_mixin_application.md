@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The private name '{0}', defined by '{1}', conflicts with the same name defined
-by '{2}'._
+_The private name '{0}', defined by '{1}', conflicts with the same name defined by '{2}'._
 
 ## Description
 

@@ -4,12 +4,15 @@ short-title: Learn
 breadcrumb: Tutorial
 description: >-
   Begin your Dart learning journey by building an interactive CLI app.
+sitemap: false
+noindex: true
+showToc: false
 nextpage:
   url: /get-started/hello-world
   title: Build your first app
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 ## Set up Dart {: #set-up }
 

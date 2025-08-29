@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Only public elements in a package's private API can be annotated as being
-internal._
+_Only public elements in a package's private API can be annotated as being internal._
 
 ## Description
 

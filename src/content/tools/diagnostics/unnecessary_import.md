@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The import of '{0}' is unnecessary because all of the used elements are also
-provided by the import of '{1}'._
+_The import of '{0}' is unnecessary because all of the used elements are also provided by the import of '{1}'._
 
 ## Description
 

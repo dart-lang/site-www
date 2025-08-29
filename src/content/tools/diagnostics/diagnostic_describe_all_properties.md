@@ -18,8 +18,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The public property isn't described by either 'debugFillProperties' or
-'debugDescribeChildren'._
+_The public property isn't described by either 'debugFillProperties' or 'debugDescribeChildren'._
 
 ## Description
 

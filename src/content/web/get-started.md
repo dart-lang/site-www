@@ -13,7 +13,14 @@ Then follow the steps below to create a small web app with Dart.
 
 ## 1. Install Dart {:#install-dart}
 
-{% include 'get-sdk.md' %}
+To develop Dart apps, you need the Dart SDK.
+To continue with this guide,
+either [download the Dart SDK][dart-download] or
+[install Flutter][flutter-download],
+which includes the full Dart SDK.
+
+[dart-download]: /get-dart
+[flutter-download]: {{site.flutter-docs}}/get-started/install
 
 ## 2. Get CLI tools or an IDE (or both) {:#tools}
 

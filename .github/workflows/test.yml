@@ -17,8 +17,6 @@ permissions: read-all
 env:
   # Configure analytics reporting for pub.
   PUB_ENVIRONMENT: bot.github
-  # The Node version to use for site infra. Generally should be the latest LTS.
-  NODE_VERSION: '22'
 
 jobs:
   test:

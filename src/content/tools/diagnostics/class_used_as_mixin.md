@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't be used as a mixin because it's neither a mixin class nor
-a mixin._
+_The class '{0}' can't be used as a mixin because it's neither a mixin class nor a mixin._
 
 ## Description
 

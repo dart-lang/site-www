@@ -34,10 +34,11 @@ final class FormatDartCommand extends Command<int> {
 }
 
 int formatDart({bool justCheck = false}) {
-  // Currently format all Dart files in the /tool directory
-  // and everything in /examples.
+  // Currently format all Dart files in the
+  // top-level /tool, /site, and /examples directories.
   final directoriesToFormat = [
     'tool',
+    'site',
     ...Directory('examples')
         .listSync()
         .whereType<Directory>()

@@ -7,14 +7,11 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Constant list literals can't use a type parameter in a type argument, such as
-'{0}'._
+_Constant list literals can't use a type parameter in a type argument, such as '{0}'._
 
-_Constant map literals can't use a type parameter in a type argument, such as
-'{0}'._
+_Constant map literals can't use a type parameter in a type argument, such as '{0}'._
 
-_Constant set literals can't use a type parameter in a type argument, such as
-'{0}'._
+_Constant set literals can't use a type parameter in a type argument, such as '{0}'._
 
 ## Description
 

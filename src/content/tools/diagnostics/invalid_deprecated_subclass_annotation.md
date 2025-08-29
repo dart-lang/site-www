@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@Deprecated.subclass' can only be applied to subclassable
-classes and mixins._
+_The annotation '@Deprecated.subclass' can only be applied to subclassable classes and mixins._
 
 ## Description
 

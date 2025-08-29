@@ -18,8 +18,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The parameter name '{0}' doesn't match the name '{1}' in the overridden
-method._
+_The parameter name '{0}' doesn't match the name '{1}' in the overridden method._
 
 ## Description
 

@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The integer literal is being used as a double, but can't be represented as a
-64-bit double without overflow or loss of precision: '{0}'._
+_The integer literal is being used as a double, but can't be represented as a 64-bit double without overflow or loss of precision: '{0}'._
 
 ## Description
 

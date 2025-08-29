@@ -13,8 +13,7 @@ bodyClass: highlight-diagnostics
 
 _(Previously known as `continue_label_on_switch`)_
 
-_The label used in a 'continue' statement must be defined on either a loop or a
-switch member._
+_The label used in a 'continue' statement must be defined on either a loop or a switch member._
 
 ## Description
 
