@@ -4,11 +4,10 @@ description: >-
   Details about the null_check_always_fails
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_This null-check will always throw an exception because the expression will
-always evaluate to 'null'._
+_This null-check will always throw an exception because the expression will always evaluate to 'null'._
 
 ## Description
 

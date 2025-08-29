@@ -4,7 +4,7 @@ description: >-
   Details about the extension_override_without_access
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _An extension override can only be used to access instance members._

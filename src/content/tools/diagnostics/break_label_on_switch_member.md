@@ -4,7 +4,7 @@ description: >-
   Details about the break_label_on_switch_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A break label resolves to the 'case' or 'default' statement._

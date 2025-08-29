@@ -4,15 +4,12 @@ description: >-
   Details about the subtype_of_disallowed_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' can't be used as a superclass constraint._
-
 _Classes and mixins can't implement '{0}'._
-
 _Classes can't extend '{0}'._
-
 _Classes can't mixin '{0}'._
 
 ## Description

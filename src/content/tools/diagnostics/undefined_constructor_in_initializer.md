@@ -4,11 +4,10 @@ description: >-
   Details about the undefined_constructor_in_initializer
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' doesn't have a constructor named '{1}'._
-
 _The class '{0}' doesn't have an unnamed constructor._
 
 ## Description

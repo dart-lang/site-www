@@ -4,7 +4,7 @@ description: >-
   Details about the avoid_returning_null_for_void
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,7 +19,6 @@ body_class: highlight-diagnostics
 </div>
 
 _Don't return 'null' from a function with a return type of 'void'._
-
 _Don't return 'null' from a method with a return type of 'void'._
 
 ## Description

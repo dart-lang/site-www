@@ -8,17 +8,14 @@ canonical: https://dart.dev/tools/diagnostics/undefined_super_member
 redirectTo: /tools/diagnostics/undefined_super_member
 sitemap: false
 noindex: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `undefined_super_method`)_
 
 _The getter '{0}' isn't defined in a superclass of '{1}'._
-
 _The method '{0}' isn't defined in a superclass of '{1}'._
-
 _The operator '{0}' isn't defined in a superclass of '{1}'._
-
 _The setter '{0}' isn't defined in a superclass of '{1}'._
 
 ## Description

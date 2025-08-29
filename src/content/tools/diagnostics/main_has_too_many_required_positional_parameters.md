@@ -4,7 +4,7 @@ description: >-
   Details about the main_has_too_many_required_positional_parameters
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The function 'main' can't have more than two required positional parameters._

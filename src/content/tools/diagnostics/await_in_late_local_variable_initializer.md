@@ -4,7 +4,7 @@ description: >-
   Details about the await_in_late_local_variable_initializer
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The 'await' expression can't be used in a 'late' local variable's initializer._

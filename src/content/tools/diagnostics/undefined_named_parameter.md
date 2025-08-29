@@ -4,7 +4,7 @@ description: >-
   Details about the undefined_named_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The named parameter '{0}' isn't defined._

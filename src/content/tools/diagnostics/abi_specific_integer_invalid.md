@@ -4,11 +4,10 @@ description: >-
   Details about the abi_specific_integer_invalid
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Classes extending 'AbiSpecificInteger' must have exactly one const constructor,
-no other members, and no type parameters._
+_Classes extending 'AbiSpecificInteger' must have exactly one const constructor, no other members, and no type parameters._
 
 ## Description
 

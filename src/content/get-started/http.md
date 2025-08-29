@@ -4,6 +4,9 @@ short-title: Http
 description: >-
   Implement Wikipedia API calls to complete the core functionality of the
   Wikipedia CLI.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/testing
   title: Testing
@@ -12,7 +15,7 @@ nextpage:
   title: Logging
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll implement the core functionality of the Wikipedia CLI by
 making API calls to retrieve data. You'll add the `http` package as a

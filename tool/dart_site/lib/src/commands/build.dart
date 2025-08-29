@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:io/io.dart' as io;
+import 'package:path/path.dart' as path;
 
 import '../utils.dart';
 
@@ -23,22 +25,43 @@ final class BuildSiteCommand extends Command<int> {
 
   @override
   Future<int> run() async {
+    installJasprCliIfNecessary();
+
     final productionRelease = argResults.get<bool>(_releaseFlag, false);
 
     final process = await Process.start(
-      'npx',
-      const [
-        'tsx',
-        'node_modules/@11ty/eleventy/cmd.cjs',
-        '--config=eleventy.config.ts',
+      Platform.resolvedExecutable,
+      [
+        'pub',
+        'global',
+        'run',
+        'jaspr_cli:jaspr',
+        'build',
+        '--sitemap-domain=https://dart.dev',
+        '--dart-define=PRODUCTION=$productionRelease',
       ],
-      environment: {'PRODUCTION': '$productionRelease'},
+      workingDirectory: 'site',
+      mode: ProcessStartMode.inheritStdio,
     );
 
-    await stdout.addStream(process.stdout);
-    await stderr.addStream(process.stderr);
-
     final processExitCode = await process.exitCode;
+
+    final originalOutputDirectoryPath = path.join(
+      repositoryRoot,
+      'site',
+      'build',
+      'jaspr',
+    );
+    if (!Directory(originalOutputDirectoryPath).existsSync()) {
+      stderr.writeln(
+        'Error: Jaspr output directory not found at: '
+        '$originalOutputDirectoryPath',
+      );
+      return 1;
+    }
+
+    await io.copyPath(originalOutputDirectoryPath, siteOutputDirectoryPath);
+
     return processExitCode;
   }
 }

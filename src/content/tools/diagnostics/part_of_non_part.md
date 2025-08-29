@@ -4,7 +4,7 @@ description: >-
   Details about the part_of_non_part
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The included part '{0}' must have a part-of directive._

@@ -4,6 +4,9 @@ short-title: Command_runner polish
 description: >-
   Improve the HelpCommand to provide more detailed information and add an
   onOutput argument for flexible output handling.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/advanced-oop
   title: Advanced OOP features
@@ -12,7 +15,7 @@ nextpage:
   title: Data and JSON
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll put the finishing touches on the `command_runner`
 package. You'll refine the `HelpCommand` to provide more detailed usage

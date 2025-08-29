@@ -4,13 +4,12 @@ description: >-
   Details about the continue_label_invalid
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `continue_label_on_switch`)_
 
-_The label used in a 'continue' statement must be defined on either a loop or a
-switch member._
+_The label used in a 'continue' statement must be defined on either a loop or a switch member._
 
 ## Description
 

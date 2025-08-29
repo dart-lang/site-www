@@ -4,7 +4,7 @@ description: >-
   Details about the recursive_constructor_redirect
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Constructors can't redirect to themselves either directly or indirectly._

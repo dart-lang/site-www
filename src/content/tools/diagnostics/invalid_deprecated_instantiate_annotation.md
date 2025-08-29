@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_deprecated_instantiate_annotation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The annotation '@Deprecated.instantiate' can only be applied to classes._

@@ -4,7 +4,7 @@ description: >-
   Details about the const_instance_field
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Only static fields can be declared as const._

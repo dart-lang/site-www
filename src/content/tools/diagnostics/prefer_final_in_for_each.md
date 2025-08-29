@@ -4,7 +4,7 @@ description: >-
   Details about the prefer_final_in_for_each
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,7 +19,6 @@ body_class: highlight-diagnostics
 </div>
 
 _The pattern should be final._
-
 _The variable '{0}' should be final._
 
 ## Description

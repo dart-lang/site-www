@@ -4,7 +4,7 @@ description: >-
   Details about the const_with_non_const
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The constructor being called isn't a const constructor._

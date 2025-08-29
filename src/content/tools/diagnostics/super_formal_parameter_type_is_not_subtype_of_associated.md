@@ -4,11 +4,10 @@ description: >-
   Details about the super_formal_parameter_type_is_not_subtype_of_associated
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' of this parameter isn't a subtype of the type '{1}' of the
-associated super constructor parameter._
+_The type '{0}' of this parameter isn't a subtype of the type '{1}' of the associated super constructor parameter._
 
 ## Description
 

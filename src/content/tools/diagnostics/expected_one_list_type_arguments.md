@@ -4,7 +4,7 @@ description: >-
   Details about the expected_one_list_type_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _List literals require one type argument or none, but {0} found._

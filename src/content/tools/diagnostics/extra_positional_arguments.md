@@ -4,7 +4,7 @@ description: >-
   Details about the extra_positional_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Too many positional arguments: {0} expected, but {1} found._

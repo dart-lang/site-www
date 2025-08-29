@@ -4,7 +4,7 @@ description: >-
   Details about the const_not_initialized
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The constant '{0}' must be initialized._

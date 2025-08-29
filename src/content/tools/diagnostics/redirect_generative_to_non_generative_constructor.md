@@ -4,7 +4,7 @@ description: >-
   Details about the redirect_generative_to_non_generative_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Generative constructors can't redirect to a factory constructor._

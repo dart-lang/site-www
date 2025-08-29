@@ -4,7 +4,7 @@ description: >-
   Details about the use_of_native_extension
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Dart native extensions are deprecated and aren't available in Dart 2.15._

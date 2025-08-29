@@ -4,7 +4,7 @@ description: >-
   Details about the default_value_in_function_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Parameters in a function type can't have default values._

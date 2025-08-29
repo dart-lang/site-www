@@ -4,11 +4,10 @@ description: >-
   Details about the redirect_to_type_alias_expands_to_type_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_A redirecting constructor can't redirect to a type alias that expands to a type
-parameter._
+_A redirecting constructor can't redirect to a type alias that expands to a type parameter._
 
 ## Description
 

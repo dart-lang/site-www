@@ -4,7 +4,7 @@ description: >-
   Details about the field_initialized_in_parameter_and_initializer
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Fields can't be initialized in both the parameter list and the initializers._
