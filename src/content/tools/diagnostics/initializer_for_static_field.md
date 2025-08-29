@@ -4,11 +4,10 @@ description: >-
   Details about the initializer_for_static_field
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is a static field in the enclosing class. Fields initialized in a
-constructor can't be static._
+_'{0}' is a static field in the enclosing class. Fields initialized in a constructor can't be static._
 
 ## Description
 

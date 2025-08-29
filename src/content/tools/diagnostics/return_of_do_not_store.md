@@ -4,11 +4,10 @@ description: >-
   Details about the return_of_do_not_store
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is annotated with 'doNotStore' and shouldn't be returned unless '{1}' is
-also annotated._
+_'{0}' is annotated with 'doNotStore' and shouldn't be returned unless '{1}' is also annotated._
 
 ## Description
 

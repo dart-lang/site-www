@@ -4,7 +4,7 @@ description: >-
   Details about the enum_constant_same_name_as_enclosing
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The name of the enum value can't be the same as the enum's name._

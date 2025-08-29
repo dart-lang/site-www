@@ -4,7 +4,7 @@ description: >-
   Details about the unnecessary_non_null_assertion
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The '!' will have no effect because the receiver can't be null._

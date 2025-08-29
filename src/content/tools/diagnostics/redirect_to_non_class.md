@@ -4,7 +4,7 @@ description: >-
   Details about the redirect_to_non_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The name '{0}' isn't a type and can't be used in a redirected constructor._

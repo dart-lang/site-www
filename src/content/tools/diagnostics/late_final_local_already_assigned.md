@@ -4,7 +4,7 @@ description: >-
   Details about the late_final_local_already_assigned
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The late final local variable is already assigned._

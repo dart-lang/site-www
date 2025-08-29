@@ -4,7 +4,7 @@ description: >-
   Details about the redeclare_on_non_redeclaring_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The {0} doesn't redeclare a {0} declared in a superinterface._

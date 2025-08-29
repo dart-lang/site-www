@@ -4,7 +4,7 @@ description: >-
   Details about the assignment_to_final_local
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The final variable '{0}' can only be set once._

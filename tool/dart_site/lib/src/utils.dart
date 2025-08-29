@@ -19,6 +19,9 @@ String get repositoryRoot {
   return maybeRoot;
 }
 
+/// The path of the site output directory.
+String get siteOutputDirectoryPath => path.join(repositoryRoot, '_site');
+
 final bool _runningInCi = Platform.environment['CI'] == 'true';
 
 void groupStart(String text) {
@@ -33,6 +36,33 @@ void groupEnd() {
   if (_runningInCi) {
     print('::endgroup::');
   }
+}
+
+int installJasprCliIfNecessary() {
+  // TODO(parlough): Eventually replace this with
+  //  the hosted version and use dart install.
+  final activateOutput = Process.runSync(Platform.executable, const [
+    'pub',
+    'global',
+    'activate',
+    '--source',
+    'git',
+    'https://github.com/schultek/jaspr.git',
+    '--git-path=packages/jaspr_cli',
+    '--git-ref=827dd3c6ab0dc3018d17eb36b6f7f7a390a6da99',
+  ]);
+
+  if (activateOutput.exitCode != 0) {
+    final normalOutput = activateOutput.stdout.toString();
+    final errorOutput = activateOutput.stderr.toString();
+
+    stderr.write(normalOutput);
+    stderr.write(errorOutput);
+    stderr.writeln('Error: Installing jaspr_cli failed.');
+    return 1;
+  }
+
+  return 0;
 }
 
 int runPubGetIfNecessary(String directory) {

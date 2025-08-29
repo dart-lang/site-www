@@ -4,7 +4,7 @@ description: >-
   Details about the inference_failure_on_untyped_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The type of {0} can't be inferred; a type must be explicitly provided._

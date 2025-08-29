@@ -4,11 +4,10 @@ description: >-
   Details about the wrong_number_of_type_arguments_enum
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The enum is declared with {0} type parameters, but {1} type arguments were
-given._
+_The enum is declared with {0} type parameters, but {1} type arguments were given._
 
 ## Description
 

@@ -4,7 +4,7 @@ description: >-
   Details about the redirect_to_missing_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The constructor '{0}' couldn't be found in '{1}'._

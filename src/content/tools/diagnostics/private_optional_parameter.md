@@ -4,7 +4,7 @@ description: >-
   Details about the private_optional_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Named parameters can't start with an underscore._

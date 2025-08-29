@@ -4,7 +4,7 @@ description: >-
   Details about the integer_literal_out_of_range
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The integer literal {0} can't be represented in 64 bits._

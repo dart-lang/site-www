@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_annotation_target
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The annotation '{0}' can only be used on {1}._

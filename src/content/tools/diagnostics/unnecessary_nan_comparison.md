@@ -4,11 +4,10 @@ description: >-
   Details about the unnecessary_nan_comparison
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A double can't equal 'double.nan', so the condition is always 'false'._
-
 _A double can't equal 'double.nan', so the condition is always 'true'._
 
 ## Description

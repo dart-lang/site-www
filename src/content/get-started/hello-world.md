@@ -3,6 +3,9 @@ title: Your first Dart program
 short-title: Your first app
 description: >-
   Create, run, and make your first change to a Dart command-line program.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started
   title: Get started
@@ -11,7 +14,7 @@ nextpage:
   title: Add interactivity to your app
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 Welcome to Dart!
 In this chapter, you'll ensure your setup is complete, and

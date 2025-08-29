@@ -4,11 +4,10 @@ description: >-
   Details about the invalid_use_of_protected_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The member '{0}' can only be used within instance members of subclasses of
-'{1}'._
+_The member '{0}' can only be used within instance members of subclasses of '{1}'._
 
 ## Description
 

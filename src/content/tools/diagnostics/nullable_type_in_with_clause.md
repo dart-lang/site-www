@@ -4,7 +4,7 @@ description: >-
   Details about the nullable_type_in_with_clause
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A class or mixin can't mix in a nullable type._

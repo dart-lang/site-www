@@ -4,7 +4,7 @@ description: >-
   Details about the prefer_inlined_adds
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,7 +19,6 @@ body_class: highlight-diagnostics
 </div>
 
 _The addition of a list item could be inlined._
-
 _The addition of multiple list items could be inlined._
 
 ## Description

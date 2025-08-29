@@ -4,7 +4,7 @@ short-title: Get Dart
 description: >-
   Get the libraries and command-line tools that you need to develop
   Dart web, command-line, and server apps.
-channel-list: [Stable, Beta, Dev]
+channelList: [Stable, Beta, Dev]
 js: [{url: '/assets/js/get-dart/install.js', defer: true}]
 ---
 
@@ -33,22 +33,12 @@ to develop and run Dart code.
 {% assign dep = '<span class="material-symbols system-support" style="color: #EF6C00" aria-label="Deprecated" title="Deprecated">error</span>' %}
 {% assign rem = '<span class="material-symbols system-support" style="color: #E25012" aria-label="Final deprecation" title="Final deprecation">report</span>' %}
 {% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Does not exist" title="Does not exist">do_not_disturb_on</span>' %}
-{% assign macversions = 'Latest three versions of macOS:<br>' %}
-{% for version in macos limit:3 %}
-{%- if version.eol == false -%}
-{% capture maclinkversion -%}
-[{{version.codename}}]({{version.link}}) ({{version.cycle}})
-{%- endcapture -%}
-{% assign macversions = macversions | append: maclinkversion %}
-{%- unless forloop.last -%}{% assign macversions = macversions | append: ', ' %}{% endunless -%}
-{%- endif %}
-{% endfor %}
 
-| Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                 |
-|----------|:-------:|:----------:|:-------:|:-------:|:---------------:|-------------------------------------------------------------|
-| Windows  | {{yes}} |  {{no}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                |
-| Linux    | {{yes}} |  {{no}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support |
-| macOS    | {{yes}} |   {{no}}   | {{na}}  | {{yes}} |     {{na}}      | {{macversions}}                                             |
+| Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                                                                                                                                                                                             |
+|----------|:-------:|:----------:|:-------:|:-------:|:---------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Windows  | {{yes}} |   {{no}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                                                                                                                                                                                            |
+| Linux    | {{yes}} |   {{no}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support                                                                                                                                                                             |
+| macOS    | {{yes}} |   {{no}}   | {{na}}  | {{yes}} |     {{na}}      | Latest three versions of macOS:<br>{% for version in macos limit:3 %}{%- if version.eol == false -%}[{{version.codename}}]({{version.link}}) ({{version.cycle}}){%- unless forloop.last -%}, {% endunless -%} {%- endif %} {% endfor %} |
 
 {:.table .table-striped}
 
@@ -77,7 +67,7 @@ choose one of the following options:
 1. [Build the SDK from source][build-source].
 
 :::warning Notice
-{% include './archive/_sdk-terms.md' %}
+{% render 'install/sdk-terms.md' %}
 :::
 
 {% comment %}
@@ -93,27 +83,27 @@ use the appropriate package manager for your development platform.
 To upgrade the Dart SDK,
 run the same command to install the Dart SDK from your package manager.
 
-{% tabs "dev-os", true %}
-{% tab "Windows" %}
+<Tabs key="dev-os" wrapped="true">
+  <Tab name="Windows">
 
-{% include 'install/windows.md' %}
+  {% render 'install/windows.md', site: site %}
 
-{% endtab %}
-{% tab "Linux" %}
+  </Tab>
+  <Tab name="Linux">
 
-{% include 'install/linux.md' %}
+  {% render 'install/linux.md', site: site %}
 
-{% endtab %}
-{% tab "macOS" %}
+  </Tab>
+  <Tab name="macOS">
 
-{% include 'install/macos.md' %}
+  {% render 'install/macos.md', site: site %}
 
-{% endtab %}
-{% endtabs %}
+  </Tab>
+</Tabs>
 
 ## Release channel reference {:#release-channels}
 
-{% for channel in channel-list %}
+{% for channel in page.channelList %}
 {% assign chnl = channel | downcase -%}
 {% assign current="`[calculating]`{:.build-rev-" | append: chnl | append: "}" %}
 {% case chnl %}

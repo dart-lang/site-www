@@ -4,7 +4,7 @@ description: >-
   Details about the equal_elements_in_const_set
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Two elements in a constant set literal can't be equal._

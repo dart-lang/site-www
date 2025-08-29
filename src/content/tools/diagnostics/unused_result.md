@@ -4,11 +4,10 @@ description: >-
   Details about the unused_result
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' should be used. {1}._
-
 _The value of '{0}' should be used._
 
 ## Description

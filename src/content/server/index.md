@@ -2,7 +2,7 @@
 title: Command-line and server apps
 short-title: CLI & server apps
 description: All things relating to command-line and server apps.
-toc: false
+showToc: false
 ---
 
 This page points to tools and documentation
