@@ -88,7 +88,6 @@ abstract class DashLayout extends PageLayoutBase {
     yield link(
       rel: 'preconnect',
       href: 'https://fonts.gstatic.com',
-      // TODO(parlough): See if crossorigin should be added upstream.
       attributes: {'crossorigin': ''},
     );
     yield link(

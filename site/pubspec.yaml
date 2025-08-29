@@ -25,35 +25,35 @@ dependencies:
 dev_dependencies:
   analysis_defaults:
     path: ../site-shared/pkgs/analysis_defaults
-  build_runner: ^2.5.2
-  build_web_compilers: ^4.1.5
+  build_runner: ^2.7.0
+  build_web_compilers: ^4.2.2
   jaspr_builder: ^0.20.0
   lints: ^6.0.0
   sass: ^1.91.0
   sass_builder: ^2.2.1
 
 dependency_overrides:
-  # Remove once next stable release of Jaspr has been published.
+  # Remove once the next stable release of Jaspr has been published.
   jaspr:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr
-      ref: main
+      ref: 827dd3c6ab0dc3018d17eb36b6f7f7a390a6da99
   jaspr_builder:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr_builder
-      ref: main
+      ref: 827dd3c6ab0dc3018d17eb36b6f7f7a390a6da99
   jaspr_content:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr_content
-      ref: main
+      ref: 827dd3c6ab0dc3018d17eb36b6f7f7a390a6da99
   jaspr_router:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr_router
-      ref: main
+      ref: 827dd3c6ab0dc3018d17eb36b6f7f7a390a6da99
 
 jaspr:
   mode: static
