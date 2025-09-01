@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_await_not_required_annotation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The annotation 'awaitNotRequired' can only be applied to a Future-returning

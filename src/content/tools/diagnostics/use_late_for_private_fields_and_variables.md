@@ -4,7 +4,7 @@ description: >-
   Details about the use_late_for_private_fields_and_variables
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">

@@ -4,7 +4,7 @@ description: >-
   Details about the deprecated_extend
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Extending '{0}' is deprecated._

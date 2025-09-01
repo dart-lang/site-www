@@ -4,7 +4,7 @@ description: >-
   Details about the disallowed_type_instantiation_expression
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Only a generic type, generic function, generic instance method, or generic

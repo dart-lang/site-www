@@ -4,7 +4,7 @@ description: >-
   Details about the non_constant_relational_pattern_expression
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The relational pattern expression must be a constant._

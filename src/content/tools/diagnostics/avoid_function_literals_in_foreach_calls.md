@@ -4,7 +4,7 @@ description: >-
   Details about the avoid_function_literals_in_foreach_calls
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">

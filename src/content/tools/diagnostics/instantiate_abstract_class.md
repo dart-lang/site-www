@@ -4,7 +4,7 @@ description: >-
   Details about the instantiate_abstract_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Abstract classes can't be instantiated._

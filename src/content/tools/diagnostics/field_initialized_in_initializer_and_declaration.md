@@ -4,7 +4,7 @@ description: >-
   Details about the field_initialized_in_initializer_and_declaration
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Fields can't be initialized in the constructor if they are final and were

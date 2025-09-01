@@ -4,7 +4,7 @@ description: >-
   Details about the sdk_version_constructor_tearoffs
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Tearing off a constructor requires the 'constructor-tearoffs' language

@@ -4,7 +4,7 @@ description: >-
   Details about the workspace_value_not_string
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Workspace entries are required to be directory paths (strings)._

@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_field_name
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Record field names can't be a dollar sign followed by an integer when the

@@ -4,7 +4,7 @@ description: >-
   Details about the missing_exception_value
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The method {0} must have an exceptional return value (the second argument) when

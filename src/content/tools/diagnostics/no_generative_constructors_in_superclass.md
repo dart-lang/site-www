@@ -4,7 +4,7 @@ description: >-
   Details about the no_generative_constructors_in_superclass
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' can't extend '{1}' because '{1}' only has factory constructors

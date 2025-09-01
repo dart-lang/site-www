@@ -4,7 +4,7 @@ description: >-
   Details about the inference_failure_on_function_invocation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The type argument(s) of the function '{0}' can't be inferred._

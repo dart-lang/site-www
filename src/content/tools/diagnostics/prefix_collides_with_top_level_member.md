@@ -4,7 +4,7 @@ description: >-
   Details about the prefix_collides_with_top_level_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The name '{0}' is already used as an import prefix and can't be used to name a

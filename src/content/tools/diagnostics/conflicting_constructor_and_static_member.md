@@ -4,7 +4,7 @@ description: >-
   Details about the conflicting_constructor_and_static_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' can't be used to name both a constructor and a static field in this

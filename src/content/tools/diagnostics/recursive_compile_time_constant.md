@@ -4,7 +4,7 @@ description: >-
   Details about the recursive_compile_time_constant
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The compile-time constant expression depends on itself._

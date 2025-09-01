@@ -4,7 +4,7 @@ description: >-
   Details about the sdk_version_as_expression_in_const_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The use of an as expression in a constant expression wasn't supported until

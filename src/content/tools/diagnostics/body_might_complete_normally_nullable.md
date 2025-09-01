@@ -4,7 +4,7 @@ description: >-
   Details about the body_might_complete_normally_nullable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _This function has a nullable return type of '{0}', but ends without returning a

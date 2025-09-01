@@ -4,7 +4,7 @@ description: >-
   Details about the non_nullable_equals_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The parameter type of '==' operators should be non-nullable._

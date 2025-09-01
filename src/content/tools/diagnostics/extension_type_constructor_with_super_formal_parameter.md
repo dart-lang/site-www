@@ -4,7 +4,7 @@ description: >-
   Details about the extension_type_constructor_with_super_formal_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Extension type constructors can't declare super formal parameters._

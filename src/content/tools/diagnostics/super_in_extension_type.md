@@ -4,7 +4,7 @@ description: >-
   Details about the super_in_extension_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The 'super' keyword can't be used in an extension type because an extension

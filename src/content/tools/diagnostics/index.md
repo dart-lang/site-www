@@ -4,7 +4,7 @@ short-title: Diagnostics
 description: >-
   An index of the diagnostics produced by the Dart analyzer.
 skipFreshness: true
-body_class: diagnostics
+bodyClass: diagnostics
 ---
 
 {%- comment %}

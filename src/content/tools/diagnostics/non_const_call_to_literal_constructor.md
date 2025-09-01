@@ -4,7 +4,7 @@ description: >-
   Details about the non_const_call_to_literal_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _This instance creation must be 'const', because the {0} constructor is marked

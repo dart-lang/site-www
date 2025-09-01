@@ -4,7 +4,7 @@ description: >-
   Details about the must_call_super
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _This method overrides a method annotated as '@mustCallSuper' in '{0}', but

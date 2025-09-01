@@ -4,7 +4,7 @@ description: >-
   Details about the illegal_sync_generator_return_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Functions marked 'sync*' must have a return type that is a supertype of

@@ -4,7 +4,7 @@ description: >-
   Details about the subtype_of_sealed_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' shouldn't be extended, mixed in, or implemented because it's

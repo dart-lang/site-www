@@ -4,7 +4,7 @@ description: >-
   Details about the mixin_class_declaration_extends_not_object
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' can't be declared a mixin because it extends a class other than

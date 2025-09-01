@@ -4,7 +4,7 @@ description: >-
   Details about the optional_parameter_in_operator
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Optional parameters aren't allowed when defining an operator._

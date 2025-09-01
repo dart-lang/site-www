@@ -4,7 +4,7 @@ description: >-
   Details about the empty_struct
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' can't be empty because it's a subclass of '{1}'._

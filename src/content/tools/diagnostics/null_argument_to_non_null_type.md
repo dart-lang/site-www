@@ -4,7 +4,7 @@ description: >-
   Details about the null_argument_to_non_null_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' shouldn't be called with a 'null' argument for the non-nullable type

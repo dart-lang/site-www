@@ -4,7 +4,7 @@ description: >-
   Details about the case_block_not_terminated
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The last statement of the 'case' should be 'break', 'continue', 'rethrow',

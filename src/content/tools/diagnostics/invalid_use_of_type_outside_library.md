@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_use_of_type_outside_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' can't be extended outside of its library because it's a final

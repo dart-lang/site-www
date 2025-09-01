@@ -4,7 +4,7 @@ description: >-
   Details about the cast_to_non_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The name '{0}' isn't a type, so it can't be used in an 'as' expression._

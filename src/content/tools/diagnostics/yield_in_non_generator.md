@@ -4,7 +4,7 @@ description: >-
   Details about the yield_in_non_generator
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Yield statements must be in a generator function (one marked with either

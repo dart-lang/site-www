@@ -4,7 +4,7 @@ description: >-
   Details about the instance_member_access_from_factory
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Instance members can't be accessed from a factory constructor._

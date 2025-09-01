@@ -4,7 +4,7 @@ description: >-
   Details about the relational_pattern_operand_type_not_assignable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The constant expression type '{0}' is not assignable to the parameter type

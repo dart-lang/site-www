@@ -4,7 +4,7 @@ description: >-
   Details about the final_initialized_in_declaration_and_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' is final and was given a value when it was declared, so it can't be set

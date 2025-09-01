@@ -4,7 +4,7 @@ description: >-
   Details about the wrong_number_of_parameters_for_setter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Setters must declare exactly one required positional parameter._

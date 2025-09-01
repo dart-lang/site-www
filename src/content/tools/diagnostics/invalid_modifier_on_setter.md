@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_modifier_on_setter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Setters can't use 'async', 'async*', or 'sync*'._

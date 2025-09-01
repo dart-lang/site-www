@@ -4,7 +4,7 @@ description: >-
   Details about the export_of_non_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The exported library '{0}' can't have a part-of directive._

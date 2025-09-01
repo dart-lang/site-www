@@ -4,7 +4,7 @@ description: >-
   Details about the address_position
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The '.address' expression can only be used as argument to a leaf native

@@ -4,7 +4,7 @@ description: >-
   Details about the assignment_of_do_not_store
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' is marked 'doNotStore' and shouldn't be assigned to a field or top-level

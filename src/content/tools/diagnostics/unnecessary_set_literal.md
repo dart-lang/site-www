@@ -4,7 +4,7 @@ description: >-
   Details about the unnecessary_set_literal
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Braces unnecessarily wrap this expression in a set literal._

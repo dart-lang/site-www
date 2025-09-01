@@ -4,7 +4,7 @@ description: >-
   Details about the duplicate_field_formal_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The field '{0}' can't be initialized by multiple parameters in the same

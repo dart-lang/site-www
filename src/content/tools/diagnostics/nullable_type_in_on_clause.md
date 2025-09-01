@@ -4,7 +4,7 @@ description: >-
   Details about the nullable_type_in_on_clause
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A mixin can't have a nullable type as a superclass constraint._

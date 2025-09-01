@@ -4,7 +4,7 @@ description: >-
   Details about the multiple_combinators
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Using multiple 'hide' or 'show' combinators is never necessary and often

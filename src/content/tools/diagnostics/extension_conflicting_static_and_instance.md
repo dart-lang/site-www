@@ -4,7 +4,7 @@ description: >-
   Details about the extension_conflicting_static_and_instance
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _An extension can't define static member '{0}' and an instance member with the

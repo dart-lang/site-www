@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_return_type_for_catch_error
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A value of type '{0}' can't be returned by the 'onError' handler because it

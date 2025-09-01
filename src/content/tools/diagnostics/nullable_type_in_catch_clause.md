@@ -4,7 +4,7 @@ description: >-
   Details about the nullable_type_in_catch_clause
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A potentially nullable type can't be used in an 'on' clause because it isn't

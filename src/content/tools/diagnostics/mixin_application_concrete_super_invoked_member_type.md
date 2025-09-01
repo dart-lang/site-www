@@ -4,7 +4,7 @@ description: >-
   Details about the mixin_application_concrete_super_invoked_member_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The super-invoked member '{0}' has the type '{1}', and the concrete member in

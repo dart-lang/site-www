@@ -4,7 +4,7 @@ description: >-
   Details about the missing_annotation_on_struct_field
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Fields of type '{0}' in a subclass of '{1}' must have an annotation indicating

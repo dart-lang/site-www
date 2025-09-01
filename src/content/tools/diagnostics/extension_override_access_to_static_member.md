@@ -4,7 +4,7 @@ description: >-
   Details about the extension_override_access_to_static_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _An extension override can't be used to access a static member from an

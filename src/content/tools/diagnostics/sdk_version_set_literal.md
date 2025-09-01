@@ -4,7 +4,7 @@ description: >-
   Details about the sdk_version_set_literal
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Set literals weren't supported until version 2.2, but this code is required to

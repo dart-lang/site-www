@@ -4,7 +4,7 @@ description: >-
   Details about the argument_must_be_a_constant
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Argument '{0}' must be a constant._
