@@ -4,7 +4,7 @@ description: >-
   Details about the empty_record_literal_with_comma
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A record literal without fields can't have a trailing comma._

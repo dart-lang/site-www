@@ -4,7 +4,7 @@ description: >-
   Details about the multiple_redirecting_constructor_invocations
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Constructors can have only one 'this' redirection, at most._

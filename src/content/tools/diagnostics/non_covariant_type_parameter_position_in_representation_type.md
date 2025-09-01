@@ -4,7 +4,7 @@ description: >-
   Details about the non_covariant_type_parameter_position_in_representation_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _An extension type parameter can't be used in a non-covariant position of its

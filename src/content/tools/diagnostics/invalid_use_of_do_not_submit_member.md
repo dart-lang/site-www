@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_use_of_do_not_submit_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Uses of '{0}' should not be submitted to source control._

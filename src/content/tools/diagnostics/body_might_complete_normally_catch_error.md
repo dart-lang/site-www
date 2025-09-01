@@ -4,7 +4,7 @@ description: >-
   Details about the body_might_complete_normally_catch_error
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _This 'onError' handler must return a value assignable to '{0}', but ends

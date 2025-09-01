@@ -4,7 +4,7 @@ description: >-
   Details about the built_in_identifier_in_declaration
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The built-in identifier '{0}' can't be used as a prefix name._

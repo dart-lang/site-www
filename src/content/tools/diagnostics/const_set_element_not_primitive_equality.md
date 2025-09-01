@@ -4,7 +4,7 @@ description: >-
   Details about the const_set_element_not_primitive_equality
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `const_set_element_type_implements_equals`)_

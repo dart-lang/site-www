@@ -4,7 +4,7 @@ description: >-
   Details about the default_value_on_required_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Required named parameters can't have a default value._

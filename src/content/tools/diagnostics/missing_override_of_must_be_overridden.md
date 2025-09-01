@@ -4,7 +4,7 @@ description: >-
   Details about the missing_override_of_must_be_overridden
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Missing concrete implementation of '{0}'._

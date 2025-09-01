@@ -4,7 +4,7 @@ description: >-
   Details about the unnecessary_null_comparison
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The operand can't be 'null', so the condition is always 'false'._

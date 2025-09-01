@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_language_version_override
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The Dart language version override comment can't be followed by any

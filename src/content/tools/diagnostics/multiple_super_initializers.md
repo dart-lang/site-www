@@ -4,7 +4,7 @@ description: >-
   Details about the multiple_super_initializers
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A constructor can have at most one 'super' initializer._

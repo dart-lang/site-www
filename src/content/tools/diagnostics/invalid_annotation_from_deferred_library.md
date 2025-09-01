@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_annotation_from_deferred_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Constant values from a deferred library can't be used as annotations._

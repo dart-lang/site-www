@@ -4,7 +4,7 @@ description: >-
   Details about the undefined_super_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `undefined_super_method`)_

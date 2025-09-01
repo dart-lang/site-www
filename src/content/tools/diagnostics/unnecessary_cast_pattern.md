@@ -4,7 +4,7 @@ description: >-
   Details about the unnecessary_cast_pattern
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Unnecessary cast pattern._

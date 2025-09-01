@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_visibility_annotation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The member '{0}' is annotated with '{1}', but this annotation is only

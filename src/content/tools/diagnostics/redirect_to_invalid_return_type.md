@@ -4,7 +4,7 @@ description: >-
   Details about the redirect_to_invalid_return_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The return type '{0}' of the redirected constructor isn't a subtype of '{1}'._

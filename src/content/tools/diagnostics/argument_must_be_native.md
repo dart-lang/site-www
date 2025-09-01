@@ -4,7 +4,7 @@ description: >-
   Details about the argument_must_be_native
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Argument to 'Native.addressOf' must be annotated with @Native_

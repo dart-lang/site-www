@@ -4,7 +4,7 @@ description: >-
   Details about the constant_pattern_never_matches_value_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The matched value type '{0}' can never be equal to this constant of type

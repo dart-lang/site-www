@@ -4,7 +4,7 @@ description: >-
   Details about the sdk_version_gt_gt_gt_operator
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The operator '>>>' wasn't supported until version 2.14.0, but this code is

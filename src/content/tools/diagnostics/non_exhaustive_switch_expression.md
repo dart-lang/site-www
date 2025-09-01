@@ -4,7 +4,7 @@ description: >-
   Details about the non_exhaustive_switch_expression
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The type '{0}' isn't exhaustively matched by the switch cases since it doesn't

@@ -4,7 +4,7 @@ description: >-
   Details about the type_alias_cannot_reference_itself
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Typedefs can't reference themselves directly or recursively via another

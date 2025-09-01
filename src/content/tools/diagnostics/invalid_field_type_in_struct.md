@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_field_type_in_struct
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Fields in struct classes can't have the type '{0}'. They can only be declared

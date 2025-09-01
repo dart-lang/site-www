@@ -4,7 +4,7 @@ description: >-
   Details about the extension_type_inherited_member_conflict
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The extension type '{0}' has more than one distinct member named '{1}' from

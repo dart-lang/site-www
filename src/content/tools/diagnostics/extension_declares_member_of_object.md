@@ -4,7 +4,7 @@ description: >-
   Details about the extension_declares_member_of_object
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Extensions can't declare members with the same name as a member declared by

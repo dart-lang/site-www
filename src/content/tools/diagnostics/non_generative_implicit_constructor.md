@@ -4,7 +4,7 @@ description: >-
   Details about the non_generative_implicit_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The unnamed constructor of superclass '{0}' (called by the default constructor

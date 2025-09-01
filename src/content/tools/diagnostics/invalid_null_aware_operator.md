@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_null_aware_operator
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The element can't be null, so the null-aware operator '?' is unnecessary._

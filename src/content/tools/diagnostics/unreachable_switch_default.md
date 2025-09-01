@@ -4,7 +4,7 @@ description: >-
   Details about the unreachable_switch_default
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _This default clause is covered by the previous cases._

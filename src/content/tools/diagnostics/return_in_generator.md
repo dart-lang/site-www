@@ -4,7 +4,7 @@ description: >-
   Details about the return_in_generator
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Can't return a value from a generator function that uses the 'async*' or

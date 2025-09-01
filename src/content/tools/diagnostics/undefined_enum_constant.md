@@ -4,7 +4,7 @@ description: >-
   Details about the undefined_enum_constant
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _There's no constant named '{0}' in '{1}'._

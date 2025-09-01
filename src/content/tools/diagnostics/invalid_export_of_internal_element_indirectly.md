@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_export_of_internal_element_indirectly
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The member '{0}' can't be exported as a part of a package's public API, but is

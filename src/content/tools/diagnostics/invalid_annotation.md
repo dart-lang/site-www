@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_annotation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Annotation must be either a const variable reference or const constructor

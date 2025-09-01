@@ -4,7 +4,7 @@ description: >-
   Details about the unnecessary_dev_dependency
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The dev dependency on {0} is unnecessary because there is also a normal

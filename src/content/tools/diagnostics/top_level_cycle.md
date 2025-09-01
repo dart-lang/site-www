@@ -4,7 +4,7 @@ description: >-
   Details about the top_level_cycle
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The type of '{0}' can't be inferred because it depends on itself through the

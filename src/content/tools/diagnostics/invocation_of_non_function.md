@@ -4,7 +4,7 @@ description: >-
   Details about the invocation_of_non_function
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' isn't a function._

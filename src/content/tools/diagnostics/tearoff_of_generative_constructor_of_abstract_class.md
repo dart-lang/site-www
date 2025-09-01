@@ -4,7 +4,7 @@ description: >-
   Details about the tearoff_of_generative_constructor_of_abstract_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A generative constructor of an abstract class can't be torn off._

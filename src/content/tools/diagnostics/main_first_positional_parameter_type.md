@@ -4,7 +4,7 @@ description: >-
   Details about the main_first_positional_parameter_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The type of the first positional parameter of the 'main' function must be a

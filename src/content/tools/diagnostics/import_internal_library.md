@@ -4,7 +4,7 @@ description: >-
   Details about the import_internal_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The library '{0}' is internal and can't be imported._

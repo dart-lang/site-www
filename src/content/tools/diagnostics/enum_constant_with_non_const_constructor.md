@@ -4,7 +4,7 @@ description: >-
   Details about the enum_constant_with_non_const_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The invoked constructor isn't a 'const' constructor._

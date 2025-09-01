@@ -4,7 +4,7 @@ description: >-
   Details about the case_expression_type_is_not_switch_expression_subtype
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The switch case expression type '{0}' must be a subtype of the switch

@@ -4,7 +4,7 @@ description: >-
   Details about the const_map_key_not_primitive_equality
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The type of a key in a constant map can't override the '==' operator, or

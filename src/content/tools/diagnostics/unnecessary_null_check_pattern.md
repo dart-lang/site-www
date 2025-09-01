@@ -4,7 +4,7 @@ description: >-
   Details about the unnecessary_null_check_pattern
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The null-check pattern will have no effect because the matched type isn't

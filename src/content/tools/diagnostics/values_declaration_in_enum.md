@@ -4,7 +4,7 @@ description: >-
   Details about the values_declaration_in_enum
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A member named 'values' can't be declared in an enum._

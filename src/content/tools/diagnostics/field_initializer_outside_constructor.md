@@ -4,7 +4,7 @@ description: >-
   Details about the field_initializer_outside_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Field formal parameters can only be used in a constructor._

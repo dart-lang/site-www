@@ -4,7 +4,7 @@ description: >-
   Details about the referenced_before_declaration
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Local variable '{0}' can't be referenced before it is declared._

@@ -4,7 +4,7 @@ description: >-
   Details about the argument_type_not_assignable_to_error_handler
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The argument type '{0}' can't be assigned to the parameter type '{1}

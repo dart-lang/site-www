@@ -4,7 +4,7 @@ description: >-
   Details about the uri_does_not_exist
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Target of URI doesn't exist: '{0}'._

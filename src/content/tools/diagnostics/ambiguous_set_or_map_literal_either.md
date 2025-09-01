@@ -4,7 +4,7 @@ description: >-
   Details about the ambiguous_set_or_map_literal_either
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _This literal must be either a map or a set, but the elements don't have enough

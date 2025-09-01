@@ -4,7 +4,7 @@ description: >-
   Details about the deprecated_field
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The '{0}' field is no longer used and can be removed._

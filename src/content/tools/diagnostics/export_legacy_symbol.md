@@ -4,7 +4,7 @@ description: >-
   Details about the export_legacy_symbol
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The symbol '{0}' is defined in a legacy library, and can't be re-exported from

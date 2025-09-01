@@ -4,7 +4,7 @@ description: >-
   Details about the mixin_class_declares_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' can't be used as a mixin because it declares a constructor._

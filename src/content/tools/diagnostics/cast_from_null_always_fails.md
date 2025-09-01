@@ -4,7 +4,7 @@ description: >-
   Details about the cast_from_null_always_fails
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _This cast always throws an exception because the expression always evaluates to

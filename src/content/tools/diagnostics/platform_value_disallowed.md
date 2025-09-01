@@ -4,7 +4,7 @@ description: >-
   Details about the platform_value_disallowed
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Keys in the `platforms` field can't have values._

@@ -4,7 +4,7 @@ description: >-
   Details about the unnecessary_import
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The import of '{0}' is unnecessary because all of the used elements are also

@@ -4,7 +4,7 @@ description: >-
   Details about the ambiguous_extension_member_access
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A member named '{0}' is defined in '{1}' and '{2}', and neither is more

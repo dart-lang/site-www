@@ -4,7 +4,7 @@ description: >-
   Details about the must_return_void
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The return type of the function passed to 'NativeCallable.listener' must be

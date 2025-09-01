@@ -4,7 +4,7 @@ description: >-
   Details about the non_bool_negation_expression
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A negation operand must have a static type of 'bool'._

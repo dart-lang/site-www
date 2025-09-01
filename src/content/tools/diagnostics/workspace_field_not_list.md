@@ -4,7 +4,7 @@ description: >-
   Details about the workspace_field_not_list
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The value of the 'workspace' field is required to be a list of relative file

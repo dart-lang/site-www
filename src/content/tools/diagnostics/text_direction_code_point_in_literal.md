@@ -4,7 +4,7 @@ description: >-
   Details about the text_direction_code_point_in_literal
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The Unicode code point 'U+{0}' changes the appearance of text from how it's

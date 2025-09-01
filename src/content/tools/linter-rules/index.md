@@ -1,7 +1,7 @@
 ---
 title: Linter rules
 description: Details about the Dart linter and its style rules you can choose.
-body_class: diagnostics
+bodyClass: diagnostics
 js: [{url: '/assets/js/linter-rules.js', defer: true}]
 ---
 
