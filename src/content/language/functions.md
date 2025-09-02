@@ -600,14 +600,12 @@ making them usable in Dart. Implementation and usage is
 heavily platform specific, so check out the interop docs on, for example,
 [C][] or [JavaScript][] to learn more.
 
-External functions can be top-level functions, [instance methods][],
-[getters or setters][], or [non-redirecting constructors][].
+External functions can be top-level functions, [instance methods][], getters or setters, or [non-redirecting constructors][].
 An [instance variable][] can be `external` too,
 which is equivalent to an external getter and (if the variable
 is not `final`) an external setter.
 
 [instance methods]: /language/methods#instance-methods
-[getters or setters]: /language/methods#getters-and-setters
 [non-redirecting constructors]: /language/constructors#redirecting-constructors
 [instance variable]: /language/classes#instance-variables
 [C]: /interop/c-interop
@@ -620,3 +618,51 @@ is not `final`) an external setter.
 [conditional expression]: /language/operators#conditional-expressions
 [Flutter]: {{site.flutter}}
 [trailing commas]: /language/collections#lists
+
+## Getters and setters
+
+While getters and setters are very commonly used within classes, they are special functions that provide read and write access to an object's properties. Getters read and return the values of the properties. Setter functions take a parameter and assign it to the property. 
+
+Getters and setters control access to a property and are most useful when you want to protect or manage an internal private variable. 
+
+```dart
+/// Defines a private variable secret with `_`.
+String _secret = 'Hello';
+
+/// The public top-level GETTER.
+/// It provides read access to the [_secret].
+String get secret {
+  print('Getter was used!');
+  return _secret.toUpperCase();
+}
+
+/// The public top-level SETTER.
+/// It provides write access to the [_secret].
+set secret(String newMessage) {
+  print('Setter was used! New secret: "$newMessage"');
+  if (newMessage.isNotEmpty) {
+    _secret = newMessage;
+  }
+}
+
+void main() {
+  // Reading the value calls the GETTER.
+  print('Current message: ${secret}');
+  // Output:
+  // Getter was used!
+  // Current message: HELLO 
+
+  // Assigning a value calls the SETTER.
+  secret = 'Dart is fun';
+
+
+  // Reading it again calls the GETTER to show the new value.
+  print('New message: ${secret}');
+  // Output:
+  // Setter was used! New secret: "Dart is fun"
+  // 
+  // Getter was used!
+  // New message: DART IS FUN
+}
+```
+
