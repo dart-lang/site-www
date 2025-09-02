@@ -108,7 +108,9 @@ additional properties by implementing getters and setters, using the
 `get` and `set` keywords:
 
 <?code-excerpt "misc/lib/language_tour/classes/rectangle.dart"?>
-```dart
+```dart highlightLines=8-12
+/// A rectangle in a screen coordinate system,
+/// where the origin `(0, 0)` is the top-left corner.
 class Rectangle {
   double left, top, width, height;
 
@@ -133,7 +135,7 @@ With getters and setters, you can start with instance variables, later
 wrapping them with methods, all without changing client code.
 
 :::note
-Operators such as increment (++) work in the expected way, whether or
+Operators such as increment (`++`) work in the expected way, whether or
 not a getter is explicitly defined. To avoid any unexpected side
 effects, the operator calls the getter exactly once, saving its value
 in a temporary variable.
