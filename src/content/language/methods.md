@@ -110,7 +110,7 @@ additional properties by implementing getters and setters, using the
 <?code-excerpt "misc/lib/language_tour/classes/rectangle.dart"?>
 ```dart highlightLines=8-12
 /// A rectangle in a screen coordinate system,
-/// where the origin `(0, 0)` is the top-left corner.
+/// where the origin `(0, 0)` is in the top-left corner.
 class Rectangle {
   double left, top, width, height;
 
