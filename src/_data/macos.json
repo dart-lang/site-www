@@ -1,11 +1,20 @@
-[
+[    {
+        "cycle":"15",
+        "codename":"Sequoia",
+        "releaseDate":"2024-09-16",
+        "eol":false,
+        "latest":"15.6.1",
+        "latestReleaseDate":"2025-08-20",
+        "link":"https://support.apple.com/120283",
+        "lts":false
+    },
     {
         "cycle":"14",
         "codename":"Sonoma",
         "releaseDate":"2023-09-26",
         "eol":false,
-        "latest":"14.2.1",
-        "latestReleaseDate":"2023-12-19",
+        "latest":"14.7.8",
+        "latestReleaseDate":"2025-08-20",
         "link":"https://support.apple.com/HT213895",
         "lts":false
     },
@@ -14,8 +23,8 @@
         "codename":"Ventura",
         "releaseDate":"2022-10-24",
         "eol":false,
-        "latest":"13.6.3",
-        "latestReleaseDate":"2023-12-11",
+        "latest":"13.7.8",
+        "latestReleaseDate":"2025-08-20",
         "link":"https://support.apple.com/HT213268",
         "lts":false
     },
@@ -23,7 +32,7 @@
         "cycle":"12",
         "codename":"Monterey",
         "releaseDate":"2021-10-25",
-        "eol":false,
+        "eol":"2024-11-30",
         "latest":"12.7.2",
         "latestReleaseDate":"2023-12-11",
         "link":"https://support.apple.com/HT212585",
