@@ -102,7 +102,7 @@
     A function passed as an argument to another function to be called later.
   long_description: |-
     A **callback** is a function that you pass as an argument to another
-    function, so that it can be invoked (or "called back") at a later time.
+    function so that it can be invoked (or "called back") at a later time.
 
     Callbacks are often used for:
     * Event handling.
