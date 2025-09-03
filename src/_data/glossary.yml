@@ -96,6 +96,49 @@
     - "language"
   alternate:
     - "Never"
+    
+- term: "Callback"
+  short_description: |-
+    A function passed as an argument to another function, to be called later.
+  long_description: |-
+    A **callback** is a function that you pass as an argument to another
+    function, so that it can be invoked (or "called back") at a later time.
+
+    Callbacks are often used for:
+    * Event handling.
+    * Customizing the behavior of APIs.
+    * Asynchronous operations, such as responding to the result of a future.
+
+    For example, in the following code the `printResult` function is passed
+    as a callback to `doOperation`, and is called after the operation finishes:
+
+    ```dart
+    void doOperation(int a, int b, void Function(int) callback) {
+      final result = a + b;
+      callback(result);
+    }
+
+    void printResult(int value) {
+      print('The result is $value');
+    }
+
+    void main() {
+      doOperation(3, 4, printResult); // Prints: The result is 7
+    }
+    ```
+  related_links:
+    - text: "Futures"
+      link: "/libraries/dart-async#future"
+      type: "doc"
+    - text: "Futures and error handling"
+      link: "/libraries/async/futures-error-handling"
+      type: "doc"
+  labels:
+    - "language"
+    - "asynchronous"
+  alternate:
+    - "Function callback"
+    - "Callback function"
 
 - term: "Combinator"
   short_description: |-
