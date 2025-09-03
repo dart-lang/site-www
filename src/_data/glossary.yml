@@ -109,7 +109,7 @@
     * Customizing the behavior of APIs.
     * Asynchronous operations, such as responding to the result of a future.
 
-    For example, in the following code the `printResult` function is passed
+    For example, in the following code, the `printResult` function is passed
     as a callback to `doOperation`, and is called after the operation finishes:
 
     ```dart
