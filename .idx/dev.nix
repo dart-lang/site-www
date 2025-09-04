@@ -2,10 +2,11 @@
 # see: https://firebase.google.com/docs/studio/customize-workspace
 { pkgs, ... }: {
   # Which nixpkgs channel to use.
-  channel = "stable-25.05"; # or "unstable"
+  channel = "stable-25.05";
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
+    # Node is included for deploying to Firebase.
     pkgs.nodejs_24
   ];
 
