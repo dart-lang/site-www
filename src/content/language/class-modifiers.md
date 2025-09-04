@@ -304,8 +304,9 @@ Vehicle myCar = Car();
 extension VehicleSounds on Vehicle {
   String get sound {
     // ERROR: The switch does not exhaustively account for
-    // all possible instances of a `Vehicle`.
-    // In this case, a `Vehicle` with a run-time type of `Bicycle`.
+    // all possible objects of type `Vehicle`.
+    // In this case, a `Vehicle` with a run-time type of `Bicycle` will not
+    // match any of the cases.
     return switch (this) {
       Car() => 'vroom',
       Truck() => 'VROOOOMM',
