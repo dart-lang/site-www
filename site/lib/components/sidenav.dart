@@ -57,8 +57,8 @@ final class SideNav extends StatelessComponent {
   final String currentPageUrl;
 
   late final List<int> activeIndices = () {
-    // TODO(parlough): This was directly converted from the JS implementation.
-    //   When reworking sidenav, rewrite this or at least make functions pure.
+    // TODO(https://github.com/dart-lang/site-www/issues/6839):
+    //  Simplify this implementation or at least make functions pure.
     void visitPermalinks(
       List<NavEntry> entries,
       String targetUrl,

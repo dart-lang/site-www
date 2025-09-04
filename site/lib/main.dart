@@ -27,8 +27,8 @@ void main() {
   // Initializes the server environment with the generated default options.
   Jaspr.initializeApp(options: defaultJasprOptions);
 
-  // TODO(parlough): Eventually migrate away from
-  //   the remaining Liquid filter usages.
+  // TODO(https://github.com/dart-lang/site-www/issues/6840):
+  //  Eventually migrate away from the remaining Liquid filter usages.
   FilterRegistry.register('slugify', (value, _, _) {
     if (value is! String) return value;
 
@@ -75,12 +75,14 @@ void main() {
           DataProcessor(),
         ],
         templateEngine: LiquidTemplateEngine(
-          includesPath: path.join(
-            siteSrcPath,
-            // TODO(parlough): Figure out why liquid is going back a directory,
-            //  requiring this to be duplicated.
-            '_includes',
-            '_includes',
+          includesPath: path.canonicalize(
+            path.join(
+              siteSrcPath,
+              // TODO(https://github.com/schultek/jaspr/pull/545):
+              //  Remove duplicated segment once linked fix has been released.
+              '_includes',
+              '_includes',
+            ),
           ),
         ),
         parsers: const [

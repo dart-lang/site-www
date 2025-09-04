@@ -24,7 +24,8 @@ List<LintDetails> readAndLoadLints() {
 
 List<LintDetails>? _loadedLints;
 
-// TODO(parlough): Once replacing rules.json, get rid of this structure.
+// TODO(https://github.com/dart-lang/site-www/issues/4499):
+//  Once replacing rules.json, get rid of this structure.
 extension type LintDetails._(Map<String, Object?> details) {
   String get name => details['name'] as String;
   String get id => name.trim();
