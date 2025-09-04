@@ -18,8 +18,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Don't throw instances of classes that don't extend either 'Exception' or
-'Error'._
+_Don't throw instances of classes that don't extend either 'Exception' or 'Error'._
 
 ## Description
 

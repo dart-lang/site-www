@@ -1,7 +1,7 @@
 ---
 title: dart info
 description: Command-line tool for outputting Dart tooling diagnostic information.
-toc: false
+showToc: false
 ---
 
 The `dart info` command

@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The library '{0}' is legacy, and shouldn't be imported into a null safe
-library._
+_The library '{0}' is legacy, and shouldn't be imported into a null safe library._
 
 ## Description
 

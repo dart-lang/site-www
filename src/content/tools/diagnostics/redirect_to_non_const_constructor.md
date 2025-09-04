@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A constant redirecting constructor can't redirect to a non-constant
-constructor._
+_A constant redirecting constructor can't redirect to a non-constant constructor._
 
 ## Description
 

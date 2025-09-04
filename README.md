@@ -11,7 +11,7 @@
 </a>
 
 The documentation site for the [Dart programming language](https://dart.dev), 
-built with [Eleventy][] and hosted on [Firebase][].
+built with [Jaspr][] and hosted on [Firebase][].
 
 We welcome contributions of all kinds!
 To set up the site locally, follow the
@@ -66,29 +66,6 @@ and already the latest stable version:
 dart --version
 ```
 
-#### Node.js
-
-The **latest** stable LTS release of Node.js is required to build the site.
-If you don't have Node.js or need to update, download your
-computer's corresponding version and follow the instructions
-from the [Node.js download archive][].
-If you prefer, you can use a version manager such as [nvm][],
-and run `nvm install` from the repository's root directory.
-
-If you already have Node installed, verify it's available on your path
-and already the latest stable version _(currently `22.15` or later)_:
-
-```terminal
-node --version
-```
-
-If your version is out of date,
-follow the update instructions for how you originally installed it.
-
-[Get the Dart SDK]: https://dart.dev/get-dart
-[Node.js download archive]: https://nodejs.org/en/download/
-[nvm]: https://github.com/nvm-sh/nvm
-
 ### Clone this repo and its submodules
 
 > [!NOTE]
@@ -128,7 +105,7 @@ _choose one_ of the following submodule-cloning techniques:
 ## Set up your local environment and serve changes
 
 Before you continue setting up the site infrastructure,
-verify the correct versions of Dart and Node.js are set up and available by
+verify the correct version of Dart is set up and available by
 following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
 1. _Optional:_ After cloning the repo and its submodules,
@@ -145,38 +122,14 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
    dart pub get
    ```
 
-3. Install [`pnpm`][] using your preferred [installation method][pnpm-install].
-   `pnpm` is an alternative, efficient package manager for npm packages.
-   If you already have `pnpm`, verify you have the latest stable version.
-   We recommend using [`corepack`][] to install and manage `pnpm` versions,
-   since it is bundled with most installations of Node.
-
-   If you haven't used `corepack` before, you'll need to
-   first enable it with `corepack enable`.
-   Then, to install the correct `pnpm` version, from the
-   root directory of the repository, run `corepack install`:
-
-   ```terminal
-   corepack enable
-   corepack install
-   ```
-
-4. Once you have `pnpm` installed and setup,
-   fetch the site's npm dependencies using `pnpm install`.
-   We highly recommend you use `pnpm`, but you can also use `npm`.
-
-   ```terminal
-   pnpm install
-   ```
-
-5. From the root directory, run the `dash_site` tool to
+3. From the root directory, run the `dash_site` tool to
    validate your setup and learn about the available commands.
 
    ```terminal
    ./dash_site --help
    ```
 
-6. From the root directory, serve the site locally.
+4. From the root directory, serve the site locally.
 
    ```terminal
    ./dash_site serve
@@ -185,14 +138,11 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
    This command generates and serves the site on a
    local port that's printed to your terminal.
 
-7. View your changes in the browser by navigating to <http://localhost:4000>.
+5. View your changes in the browser by navigating to <http://localhost:8080>.
 
-   Note the port might be different if `4000` is taken.
+   Note the port might be different if `8080` is taken.
 
-   If you want to check the raw, generated HTML output and structure,
-   view the `_site` directory in a file explorer or an IDE.
-
-8. Make your changes to the local repo.
+6. Make your changes to the local repo.
 
    The site should automatically rebuild on most changes, but if
    something doesn't update, exit the process and rerun the command.
@@ -207,10 +157,6 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
 > [!TIP]
 > To find additional commands that you can run,
 > run `./dash_site --help` from the repository's root directory.
-
-[`corepack`]: https://nodejs.org/api/corepack.html
-[`pnpm`]: https://pnpm.io/
-[pnpm-install]: https://pnpm.io/installation
 
 ## Validate your changes
 
@@ -298,7 +244,7 @@ you can build a full version and upload it to Firebase.
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
 [Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
 [cloning]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
-[Eleventy]: https://www.11ty.dev/
+[Jaspr]: https://jaspr.site
 [Firebase]: https://firebase.google.com/
 [forking]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 [Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain

@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The null-assert pattern will have no effect because the matched type isn't
-nullable._
+_The null-assert pattern will have no effect because the matched type isn't nullable._
 
 ## Description
 

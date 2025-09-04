@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_This method overrides a method annotated as '@mustCallSuper' in '{0}', but
-doesn't invoke the overridden method._
+_This method overrides a method annotated as '@mustCallSuper' in '{0}', but doesn't invoke the overridden method._
 
 ## Description
 

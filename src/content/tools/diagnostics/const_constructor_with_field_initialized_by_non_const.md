@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Can't define the 'const' constructor because the field '{0}' is initialized
-with a non-constant value._
+_Can't define the 'const' constructor because the field '{0}' is initialized with a non-constant value._
 
 ## Description
 

@@ -18,8 +18,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Instances of 'Color' should be created using an 8-digit hexadecimal integer
-(such as '0xFFFFFFFF')._
+_Instances of 'Color' should be created using an 8-digit hexadecimal integer (such as '0xFFFFFFFF')._
 
 ## Description
 

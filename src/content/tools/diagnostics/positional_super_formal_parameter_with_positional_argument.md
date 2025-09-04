@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Positional super parameters can't be used when the super constructor invocation
-has a positional argument._
+_Positional super parameters can't be used when the super constructor invocation has a positional argument._
 
 ## Description
 

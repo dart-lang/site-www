@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The field '{0}' can't be initialized by multiple parameters in the same
-constructor._
+_The field '{0}' can't be initialized by multiple parameters in the same constructor._
 
 ## Description
 

@@ -637,7 +637,8 @@ web.document.querySelector('#confirm')
   ..scrollIntoView();
 ```
 
-### Exercise {:.no_toc}
+### Exercise
+{:.no_toc}
 
 Use cascades to create a single statement that
 sets the `anInt`, `aString`, and `aList` properties of a `BigObject`

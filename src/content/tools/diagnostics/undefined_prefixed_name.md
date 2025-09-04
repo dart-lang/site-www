@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The name '{0}' is being referenced through the prefix '{1}', but it isn't
-defined in any of the libraries imported using that prefix._
+_The name '{0}' is being referenced through the prefix '{1}', but it isn't defined in any of the libraries imported using that prefix._
 
 ## Description
 

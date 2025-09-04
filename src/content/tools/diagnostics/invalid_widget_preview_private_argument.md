@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'@Preview(...)' can only accept arguments that consist of literals and public
-symbols._
+_'@Preview(...)' can only accept arguments that consist of literals and public symbols._
 
 ## Description
 

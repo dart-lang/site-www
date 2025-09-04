@@ -9,8 +9,7 @@ bodyClass: highlight-diagnostics
 
 _Dead code._
 
-_Dead code: The assigned-to wildcard variable is marked late and can never be
-referenced so this initializer will never be evaluated._
+_Dead code: The assigned-to wildcard variable is marked late and can never be referenced so this initializer will never be evaluated._
 
 ## Description
 

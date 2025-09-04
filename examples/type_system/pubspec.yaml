@@ -3,7 +3,7 @@ description: dart.dev type system examples.
 
 resolution: workspace
 environment:
-  sdk: ^3.9.0-0
+  sdk: ^3.9.0
 
 dependencies:
   examples_util: {path: ../util}

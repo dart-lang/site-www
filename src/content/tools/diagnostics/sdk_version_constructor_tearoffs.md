@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Tearing off a constructor requires the 'constructor-tearoffs' language
-feature._
+_Tearing off a constructor requires the 'constructor-tearoffs' language feature._
 
 ## Description
 

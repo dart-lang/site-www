@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Fields in a struct class whose type is 'Pointer' shouldn't have any
-annotations._
+_Fields in a struct class whose type is 'Pointer' shouldn't have any annotations._
 
 ## Description
 

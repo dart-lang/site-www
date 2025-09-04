@@ -18,19 +18,19 @@ learn about _iterables_, _streams_, and _packages_,
 which are fundamental to most Dart programs.
 
 <div class="card-grid no_toc_section">
-  {% card "Asynchronous programming: streams", "/libraries/async/using-streams" %}
+  <Card title="Asynchronous programming: streams" link="/libraries/async/using-streams">
     Use streams to manage sequences of data.
-  {% endcard %}
-  {% card "How to use packages", "/tools/pub/packages" %}
+  </Card>
+  <Card title="How to use packages" link="/tools/pub/packages">
     Organize and share code on the pub.dev site.
-  {% endcard %}
+  </Card>
 </div>
 
 
 <a id="server-side-dart-tutorials" aria-hidden="true"></a>
 ## Build server-side apps {:#server}
 
-{% include 'server-tutorials.md' %}
+{% render 'server-tutorials.md' %}
 
 <a id="more-tutorials" aria-hidden="true"></a>
 ## Keep learning
@@ -39,16 +39,16 @@ To get more experience developing with Dart,
 try more of the available tutorials!
 
 <div class="card-grid no_toc_section">
-  {% card "Dart cheatsheet", "/resources/dart-cheatsheet" %}
+  <Card title="Dart cheatsheet" link="/resources/dart-cheatsheet">
     Quickly try out some of Dart's unique language features.
-  {% endcard %}
-  {% card "Records and patterns", "https://codelabs.developers.google.com/codelabs/dart-patterns-records" %}
+  </Card>
+  <Card title="Records and patterns" link="https://codelabs.developers.google.com/codelabs/dart-patterns-records">
     Discover Dart's support for records and patterns.
-  {% endcard %}
-  {% card "Iterable collections", "/libraries/collections/iterables" %}
+  </Card>
+  <Card title="Iterable collections" link="/libraries/collections/iterables">
     Learn to analyze and manipulate data stored in collections.
-  {% endcard %}
-  {% card "Flutter codelabs and tutorials", "https://docs.flutter.dev/codelabs" %}
+  </Card>
+  <Card title="Flutter codelabs and tutorials" link="https://docs.flutter.dev/codelabs">
     Expand your Dart skills by building Flutter apps.
-  {% endcard %}
+  </Card>
 </div>

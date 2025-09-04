@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Using a colon as the separator before a default value is deprecated and will
-not be supported in language version 3.0 and later._
+_Using a colon as the separator before a default value is deprecated and will not be supported in language version 3.0 and later._
 
 ## Description
 

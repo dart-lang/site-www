@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type arguments to '{0}' must be known at compile time, so they can't be
-type parameters._
+_The type arguments to '{0}' must be known at compile time, so they can't be type parameters._
 
 ## Description
 

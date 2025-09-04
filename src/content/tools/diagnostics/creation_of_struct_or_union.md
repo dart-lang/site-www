@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Subclasses of 'Struct' and 'Union' are backed by native memory, and can't be
-instantiated by a generative constructor._
+_Subclasses of 'Struct' and 'Union' are backed by native memory, and can't be instantiated by a generative constructor._
 
 ## Description
 

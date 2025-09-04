@@ -18,11 +18,9 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The comparison is always 'false' because the length is always greater than or
-equal to 0._
+_The comparison is always 'false' because the length is always greater than or equal to 0._
 
-_The comparison is always 'true' because the length is always greater than or
-equal to 0._
+_The comparison is always 'true' because the length is always greater than or equal to 0._
 
 _Use 'isEmpty' instead of 'length' to test whether the collection is empty._
 

@@ -17,14 +17,11 @@ _A nullable expression can't be used in a yield-each statement._
 
 _The function can't be unconditionally invoked because it can be 'null'._
 
-_The method '{0}' can't be unconditionally invoked because the receiver can be
-'null'._
+_The method '{0}' can't be unconditionally invoked because the receiver can be 'null'._
 
-_The operator '{0}' can't be unconditionally invoked because the receiver can be
-'null'._
+_The operator '{0}' can't be unconditionally invoked because the receiver can be 'null'._
 
-_The property '{0}' can't be unconditionally accessed because the receiver can
-be 'null'._
+_The property '{0}' can't be unconditionally accessed because the receiver can be 'null'._
 
 ## Description
 

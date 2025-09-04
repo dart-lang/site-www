@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The 'super' keyword can't be used in an extension type because an extension
-type doesn't have a superclass._
+_The 'super' keyword can't be used in an extension type because an extension type doesn't have a superclass._
 
 ## Description
 

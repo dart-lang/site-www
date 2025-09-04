@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The extension '{0}' doesn't define a 'call' method so the override can't be
-used in an invocation._
+_The extension '{0}' doesn't define a 'call' method so the override can't be used in an invocation._
 
 ## Description
 

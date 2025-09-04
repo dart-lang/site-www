@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_A 'sealed' class can't be marked 'abstract' because it's already implicitly
-abstract._
+_A 'sealed' class can't be marked 'abstract' because it's already implicitly abstract._
 
 ## Description
 

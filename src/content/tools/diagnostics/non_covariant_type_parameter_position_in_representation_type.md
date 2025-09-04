@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_An extension type parameter can't be used in a non-covariant position of its
-representation type._
+_An extension type parameter can't be used in a non-covariant position of its representation type._
 
 ## Description
 

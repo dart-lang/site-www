@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Using multiple 'hide' or 'show' combinators is never necessary and often
-produces surprising results._
+_Using multiple 'hide' or 'show' combinators is never necessary and often produces surprising results._
 
 ## Description
 

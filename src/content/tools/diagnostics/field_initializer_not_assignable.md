@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The initializer type '{0}' can't be assigned to the field type '{1}' in a const
-constructor._
+_The initializer type '{0}' can't be assigned to the field type '{1}' in a const constructor._
 
 _The initializer type '{0}' can't be assigned to the field type '{1}'._
 

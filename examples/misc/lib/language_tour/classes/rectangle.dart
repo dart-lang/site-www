@@ -1,3 +1,5 @@
+/// A rectangle in a screen coordinate system,
+/// where the origin `(0, 0)` is in the top-left corner.
 class Rectangle {
   double left, top, width, height;
 

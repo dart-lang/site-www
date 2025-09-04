@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The type of the first positional parameter of the 'main' function must be a
-supertype of 'List<String>'._
+_The type of the first positional parameter of the 'main' function must be a supertype of 'List<String>'._
 
 ## Description
 

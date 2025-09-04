@@ -3,6 +3,10 @@
     "public": "_site",
     "cleanUrls": true,
     "trailingSlash": false,
+    "ignore": [
+      "firebase.json",
+      "**/.*"
+    ],
     "headers": [
       {
         "source": "**/*.@(avif|jpg|jpeg|gif|png|md|txt|json|webp|webm|svg|css|js)",

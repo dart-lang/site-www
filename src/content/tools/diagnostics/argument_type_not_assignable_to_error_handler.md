@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The argument type '{0}' can't be assigned to the parameter type '{1}
-Function(Object)' or '{1} Function(Object, StackTrace)'._
+_The argument type '{0}' can't be assigned to the parameter type '{1} Function(Object)' or '{1} Function(Object, StackTrace)'._
 
 ## Description
 

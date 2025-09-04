@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The constant expression type '{0}' is not assignable to the parameter type
-'{1}' of the '{2}' operator._
+_The constant expression type '{0}' is not assignable to the parameter type '{1}' of the '{2}' operator._
 
 ## Description
 

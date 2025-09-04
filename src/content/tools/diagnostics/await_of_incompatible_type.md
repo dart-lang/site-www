@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The 'await' expression can't be used for an expression with an extension type
-that is not a subtype of 'Future'._
+_The 'await' expression can't be used for an expression with an extension type that is not a subtype of 'Future'._
 
 ## Description
 

@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The operator '>>>' wasn't supported until version 2.14.0, but this code is
-required to be able to run on earlier versions._
+_The operator '>>>' wasn't supported until version 2.14.0, but this code is required to be able to run on earlier versions._
 
 ## Description
 

@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@nonVirtual' can only be applied to a concrete instance
-member._
+_The annotation '@nonVirtual' can only be applied to a concrete instance member._
 
 ## Description
 

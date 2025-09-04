@@ -7,26 +7,19 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't be extended outside of its library because it's a final
-class._
+_The class '{0}' can't be extended outside of its library because it's a final class._
 
-_The class '{0}' can't be extended outside of its library because it's an
-interface class._
+_The class '{0}' can't be extended outside of its library because it's an interface class._
 
-_The class '{0}' can't be extended, implemented, or mixed in outside of its
-library because it's a sealed class._
+_The class '{0}' can't be extended, implemented, or mixed in outside of its library because it's a sealed class._
 
-_The class '{0}' can't be implemented outside of its library because it's a base
-class._
+_The class '{0}' can't be implemented outside of its library because it's a base class._
 
-_The class '{0}' can't be implemented outside of its library because it's a
-final class._
+_The class '{0}' can't be implemented outside of its library because it's a final class._
 
-_The class '{0}' can't be used as a mixin superclass constraint outside of its
-library because it's a final class._
+_The class '{0}' can't be used as a mixin superclass constraint outside of its library because it's a final class._
 
-_The mixin '{0}' can't be implemented outside of its library because it's a base
-mixin._
+_The mixin '{0}' can't be implemented outside of its library because it's a base mixin._
 
 ## Description
 

@@ -3,12 +3,12 @@ publish_to: none
 homepage: https://dart.dev
 
 environment:
-  sdk: ^3.9.0-0
+  sdk: ^3.9.0
 
 workspace:
-  - tool/dart_site
   - examples
-  - tool/get-dart
+  - site
+  - tool/dart_site
 
 dev_dependencies:
   dart_site:

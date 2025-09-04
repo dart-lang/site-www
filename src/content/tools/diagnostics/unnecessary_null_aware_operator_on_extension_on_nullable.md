@@ -18,8 +18,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Unnecessary use of a null-aware operator to invoke an extension method on a
-nullable type._
+_Unnecessary use of a null-aware operator to invoke an extension method on a nullable type._
 
 ## Description
 

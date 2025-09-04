@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Functions marked 'async*' must have a return type that is a supertype of
-'Stream<T>' for some type 'T'._
+_Functions marked 'async*' must have a return type that is a supertype of 'Stream<T>' for some type 'T'._
 
 ## Description
 

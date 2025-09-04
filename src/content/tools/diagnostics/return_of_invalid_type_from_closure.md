@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The returned type '{0}' isn't returnable from a '{1}' function, as required by
-the closure's context._
+_The returned type '{0}' isn't returnable from a '{1}' function, as required by the closure's context._
 
 ## Description
 

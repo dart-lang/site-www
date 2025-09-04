@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extension methods weren't supported until version 2.6.0, but this code is
-required to be able to run on earlier versions._
+_Extension methods weren't supported until version 2.6.0, but this code is required to be able to run on earlier versions._
 
 ## Description
 

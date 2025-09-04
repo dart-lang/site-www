@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Fields can't be initialized in the constructor if they are final and were
-already initialized at their declaration._
+_Fields can't be initialized in the constructor if they are final and were already initialized at their declaration._
 
 ## Description
 
