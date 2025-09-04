@@ -80,27 +80,18 @@ watch
 
 ## More information
 
-If you're working on web-specific code,
-see the [webdev page.][webdev]
-
-For details on using build_runner, see the following:
-
-- Documentation for packages that require you to use build_runner.
-  These packages generally have a dependency
-  [on build][] or [on build_runner.][]
-- Build_runner documentation:
-  - [Getting started with build_runner][]
-  - [Build FAQ][]
+* [webdev][] guide (use if you're working on web-specific code)
+* [build_runner][] guide
+* [packages with the `build_runner` dependency][]
+* [packages with the `build` dependency][]
 
 [build]: {{site.repo.dart.org}}/build
-[Build FAQ]: {{site.repo.dart.org}}/build/blob/master/docs/faq.md
 [build_runner]: {{site.pub-pkg}}/build_runner
 [built_value_generator]: {{site.pub-pkg}}/built_value_generator
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
-[Getting started with build_runner]: {{site.repo.dart.org}}/build/blob/master/docs/getting_started.md
 [json_serializable]: {{site.pub-pkg}}/json_serializable
-[on build]: {{site.pub-pkg}}?q=dependency%3Abuild
-[on build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
+[packages with the `build` dependency]: {{site.pub-pkg}}?q=dependency%3Abuild
+[packages with the `build_runner` dependency]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
 [sass_builder]: {{site.pub-pkg}}/sass_builder
 [tests]: /tools/testing
 [webdev]: /tools/webdev
