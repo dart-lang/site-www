@@ -1,5 +1,5 @@
 This directory contains the [Dart][], [Jaspr][], and [Jaspr Content][] based
-implementation of the dart.dev website.
+implementation of the [dart.dev documentation website][Dart].
 
 [Dart]: https://dart.dev
 [Jaspr]: https://docs.jaspr.site
@@ -23,53 +23,68 @@ Run `./dash_site --help` to learn what other commands are available.
 > Most of the site content, excluding unprocessed assets,
 > is instead located in the root `src/` directory.
 
-The implementation is roughly structured as follows in the `site` directory:
+The implementation is roughly structured as follows in the `site/` directory:
 
--  `lib/`
+- `lib/`
 
-   The source code for the Jaspr Content site.
+  The library root for the Jaspr Content site implementation.
 
-   - `_sass/`
+  - `_sass/`
 
-     The [Sass][] style files for the rendered site in the [`.scss` format][].
-   - `archive/`
+    The [Sass][] style files for the rendered site in the [`.scss` format][].
 
-     The code for building the SDK archive tables for each SDK channel.
-   - `components/`
+  - `src/`
 
-     The custom Jaspr components used across the site,
-     both statically and dynamically rendered ones.
-   - `extensions/`
+    The source code for the site implementation.
 
-     Custom Jaspr Content [page extensions][].
-   - `highlight/`
+    - `archive/`
 
-     Syntax highlighting implementation and themes.
-   - `layouts/`
+      The code for building the SDK archive tables for each SDK channel.
 
-     Custom Jaspr Content [page layouts][] for wrapping
-     content in shared layouts.
-   - `loaders/`
+    - `components/`
 
-     Custom Jaspr Content [data loaders][] for loading data
-     from custom sources or manually adding it to pages.
-   - `markdown/`
+      The custom Jaspr components used across the site,
+      both statically and dynamically rendered ones.
 
-     Custom `package:markdown` extensions and syntaxes used by the site.
-   - `models/`
+    - `extensions/`
 
-     Data classes used to generate pages or render components,
-     such as details about a lint rule.
-   - `pages/`
+      Custom Jaspr Content [page extensions][].
 
-     Custom [memory pages][] loaded with code rather than content
-     as well as [secondary outputs][], such as `robots.txt`.
-   - `main.dart`
+    - `highlight/`
 
-     The primary entry point and configuration for Jaspr and Jaspr Content.
-   - `util.dart`
+      Syntax highlighting implementation and themes.
 
-     Utility functions used across the site implementation.
+    - `layouts/`
+
+      Custom Jaspr Content [page layouts][] for wrapping
+      content in shared layouts.
+
+    - `loaders/`
+
+      Custom Jaspr Content [data loaders][] for loading data
+      from custom sources or manually adding it to pages.
+
+    - `markdown/`
+
+      Custom `package:markdown` extensions and syntaxes used by the site.
+
+    - `models/`
+
+      Classes to model data for generating pages and rendering components with,
+      such as details about a lint rule.
+
+    - `pages/`
+
+      Custom [memory pages][] loaded with code rather than content
+      as well as [secondary outputs][], such as `robots.txt`.
+
+    - `util.dart`
+
+      Utility functions used across the site implementation.
+
+  - `main.dart`
+
+    The primary entry point for running and configuring Jaspr and Jaspr Content.
 
 -  `web/`
 

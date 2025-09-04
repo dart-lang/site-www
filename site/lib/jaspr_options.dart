@@ -5,7 +5,7 @@
 // Generated with jaspr_builder
 
 import 'package:jaspr/jaspr.dart';
-import 'package:dart_dev_site/archive/archive_table.dart' as prefix0;
+import 'package:dart_dev_site/src/archive/archive_table.dart' as prefix0;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -26,7 +26,7 @@ import 'package:dart_dev_site/archive/archive_table.dart' as prefix0;
 JasprOptions get defaultJasprOptions => JasprOptions(
   clients: {
     prefix0.ArchiveTable: ClientTarget<prefix0.ArchiveTable>(
-      'archive/archive_table',
+      'src/archive/archive_table',
       params: _prefix0ArchiveTable,
     ),
   },

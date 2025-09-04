@@ -8,20 +8,20 @@ import 'package:jaspr_content/theme.dart';
 import 'package:liquify/liquify.dart' show FilterRegistry;
 import 'package:path/path.dart' as path;
 
-import 'archive/archive_table.dart';
-import 'components/card.dart';
-import 'components/tabs.dart';
-import 'extensions/registry.dart';
 import 'jaspr_options.dart'; // Generated. Do not remove or edit.
-import 'layouts/doc_layout.dart';
-import 'layouts/homepage_layout.dart';
-import 'loaders/data_processor.dart';
-import 'markdown/markdown_parser.dart';
-import 'pages/custom_pages.dart';
-import 'pages/diagnostic_index.dart';
-import 'pages/lint_index.dart';
-import 'pages/robots_txt.dart';
-import 'util.dart';
+import 'src/archive/archive_table.dart';
+import 'src/components/card.dart';
+import 'src/components/tabs.dart';
+import 'src/extensions/registry.dart';
+import 'src/layouts/doc_layout.dart';
+import 'src/layouts/homepage_layout.dart';
+import 'src/loaders/data_processor.dart';
+import 'src/markdown/markdown_parser.dart';
+import 'src/pages/custom_pages.dart';
+import 'src/pages/diagnostic_index.dart';
+import 'src/pages/lint_index.dart';
+import 'src/pages/robots_txt.dart';
+import 'src/util.dart';
 
 void main() {
   // Initializes the server environment with the generated default options.
