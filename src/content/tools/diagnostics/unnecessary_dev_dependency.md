@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The dev dependency on {0} is unnecessary because there is also a normal
-dependency on that package._
+_The dev dependency on {0} is unnecessary because there is also a normal dependency on that package._
 
 ## Description
 

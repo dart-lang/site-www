@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation 'awaitNotRequired' can only be applied to a Future-returning
-function, or a Future-typed field._
+_The annotation 'awaitNotRequired' can only be applied to a Future-returning function, or a Future-typed field._
 
 ## Description
 

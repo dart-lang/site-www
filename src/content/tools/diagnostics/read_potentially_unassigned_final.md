@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The final variable '{0}' can't be read because it's potentially unassigned at
-this point._
+_The final variable '{0}' can't be read because it's potentially unassigned at this point._
 
 ## Description
 

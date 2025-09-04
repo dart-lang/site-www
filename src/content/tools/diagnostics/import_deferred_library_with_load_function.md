@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The imported library defines a top-level function named 'loadLibrary' that is
-hidden by deferring this library._
+_The imported library defines a top-level function named 'loadLibrary' that is hidden by deferring this library._
 
 ## Description
 

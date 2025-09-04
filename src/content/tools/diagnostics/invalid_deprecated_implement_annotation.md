@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@Deprecated.implement' can only be applied to implementable
-classes._
+_The annotation '@Deprecated.implement' can only be applied to implementable classes._
 
 ## Description
 

@@ -3,13 +3,18 @@ title: Intro to async and HTTP
 short-title: Async and HTTP
 description: >-
   Learn about asynchronous programming in Dart and how to make HTTP requests.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/add-commands
   title: Make your program interactive
 nextpage:
   url: /get-started/packages-libs
-  title: Packages and librarires
+  title: Packages and libraries
 ---
+
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll explore asynchronous programming in Dart, allowing your
 applications to perform multiple tasks concurrently. You'll learn how to fetch

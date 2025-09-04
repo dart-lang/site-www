@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The member '{0}' can only be used within instance members of subclasses of
-'{1}'._
+_The member '{0}' can only be used within instance members of subclasses of '{1}'._
 
 ## Description
 

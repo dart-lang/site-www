@@ -11,8 +11,7 @@ _A type alias that expands to a type parameter can't be implemented._
 
 _A type alias that expands to a type parameter can't be mixed in._
 
-_A type alias that expands to a type parameter can't be used as a superclass
-constraint._
+_A type alias that expands to a type parameter can't be used as a superclass constraint._
 
 _A type alias that expands to a type parameter can't be used as a superclass._
 

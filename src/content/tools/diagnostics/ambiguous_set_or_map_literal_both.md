@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The literal can't be either a map or a set because it contains at least one
-literal map entry or a spread operator spreading a 'Map', and at least one element which is neither of these._
+_The literal can't be either a map or a set because it contains at least one literal map entry or a spread operator spreading a 'Map', and at least one element which is neither of these._
 
 ## Description
 

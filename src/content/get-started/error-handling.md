@@ -4,6 +4,9 @@ short-title: Error handling
 description: >-
   Improve app robustness by handling errors. Learn about exceptions, errors,
   `try/catch`, `throw`, and `rethrow`.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/object-oriented
   title: Object-oriented Dart programming
@@ -12,7 +15,7 @@ nextpage:
   title: Advanced OOP-adjacent features
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll learn how to make your application more robust by
 handling errors gracefully. You'll explore exceptions, `try/catch` blocks, and

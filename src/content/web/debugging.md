@@ -190,7 +190,7 @@ update the tools by activating them again:
 $ dart pub global activate webdev     # update webdev
 ```
 
-{% include 'tools/debug-prod-js-code.md' %}
+{% render 'tools/debug-prod-js-code.md', site: site %}
 
 ## Resources
 

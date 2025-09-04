@@ -19,7 +19,7 @@ Use of the Dart trademarks that is not expressly permitted by these
 guidelines is prohibited absent written permission from Google.
 
 The official Dart logos can be found in the
-[Dart and Flutter logo assets](https://services.google.com/fh/files/misc/dart_brand_guidelines_assets.zip)
+[Dart logo assets](https://services.google.com/fh/files/misc/dart_brand_guidelines_assets.zip)
 archive.
 
 ## General rules that govern the use of the Dart trademarks

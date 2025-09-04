@@ -3,7 +3,7 @@ title: Dart team packages
 description: >-
   The Dart team publishes packages under the verified publishers:
   dart.dev, tools.dart.dev, and labs.dart.dev.
-toc: false
+showToc: false
 ---
 
 The Dart team publishes packages on [pub.dev]({{site.pub}}) under three

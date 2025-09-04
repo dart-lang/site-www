@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Variable patterns in declaration context can't specify 'var' or 'final'
-keyword._
+_Variable patterns in declaration context can't specify 'var' or 'final' keyword._
 
 ## Description
 
