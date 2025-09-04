@@ -14,8 +14,8 @@ dependencies:
   http: ^1.4.0
   # Used for formatting dates in the SDK archive.
   intl: ^0.20.2
-  jaspr: ^0.20.0
-  jaspr_content: ^0.3.0
+  jaspr: ^0.21.0-dev.1
+  jaspr_content: ^0.3.1-dev.1
   # Used as our template engine.
   liquify: ^1.3.0
   markdown: ^7.3.0
@@ -30,11 +30,11 @@ dependencies:
 dev_dependencies:
   analysis_defaults:
     path: ../site-shared/pkgs/analysis_defaults
-  build_runner: ^2.7.0
-  build_web_compilers: ^4.2.2
-  jaspr_builder: ^0.20.0
+  build_runner: ^2.7.1
+  build_web_compilers: ^4.2.3
+  jaspr_builder: ^0.21.0-dev.1
   lints: ^6.0.0
-  sass: ^1.91.0
+  sass: ^1.92.0
   sass_builder: ^2.2.1
 
 dependency_overrides:
@@ -43,22 +43,22 @@ dependency_overrides:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr
-      ref: ccc9eec122c66b2cade5438e51123f4bb78bc8ba
+      ref: 4fc382d4f5f41c6eb6c62a7bd8d905877731298a
   jaspr_builder:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr_builder
-      ref: ccc9eec122c66b2cade5438e51123f4bb78bc8ba
+      ref: 4fc382d4f5f41c6eb6c62a7bd8d905877731298a
   jaspr_content:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr_content
-      ref: ccc9eec122c66b2cade5438e51123f4bb78bc8ba
+      ref: 4fc382d4f5f41c6eb6c62a7bd8d905877731298a
   jaspr_router:
     git:
       url: https://github.com/schultek/jaspr.git
       path: packages/jaspr_router
-      ref: ccc9eec122c66b2cade5438e51123f4bb78bc8ba
+      ref: 4fc382d4f5f41c6eb6c62a7bd8d905877731298a
 
 jaspr:
   mode: static
