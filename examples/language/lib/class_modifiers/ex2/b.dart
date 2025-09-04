@@ -10,7 +10,8 @@ base class Car extends Vehicle {
   // ...
 }
 
-// ERROR: Can't be implemented.
+// ERROR: `Vehicle` can't be implemented in a different library because
+// it is marked with `base`.
 base class MockVehicle implements Vehicle {
   @override
   void moveForward() {

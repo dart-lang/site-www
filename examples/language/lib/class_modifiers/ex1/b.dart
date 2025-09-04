@@ -3,7 +3,8 @@
 // #docregion abstract-usages
 import 'a.dart';
 
-// Error: Can't be constructed.
+// Error: `Vehicle` can't be instantiated because
+// it is marked as `abstract`.
 Vehicle myVehicle = Vehicle();
 
 // Can be extended.

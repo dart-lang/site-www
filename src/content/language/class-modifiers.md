@@ -82,7 +82,8 @@ abstract class Vehicle {
 ```dart title="b.dart"
 import 'a.dart';
 
-// Error: Can't be constructed.
+// Error: `Vehicle` can't be instantiated because
+// it is marked as `abstract`.
 Vehicle myVehicle = Vehicle();
 
 // Can be extended.
@@ -122,7 +123,7 @@ This guarantees:
   - This is true unless the subtype already declares a member with
     the same name and an incompatible signature.
 
-You must mark any class which implements or extends a base class as
+You must mark any class that implements or extends a base class as
 `base`, `final`, or `sealed`. This prevents outside libraries from
 breaking the base class guarantees.
 
@@ -148,7 +149,8 @@ base class Car extends Vehicle {
   // ...
 }
 
-// ERROR: Can't be implemented.
+// ERROR: `Vehicle` can't be implemented in a different library because
+// it is marked with `base`.
 base class MockVehicle implements Vehicle {
   @override
   void moveForward() {
@@ -187,7 +189,8 @@ import 'a.dart';
 // Can be constructed.
 Vehicle myVehicle = Vehicle();
 
-// ERROR: Can't be inherited.
+// ERROR: `Vehicle` can't be extended in a different library because
+// it is marked with `interface`.
 class Car extends Vehicle {
   int passengers = 4;
   // ...
@@ -243,14 +246,16 @@ import 'a.dart';
 // Can be constructed.
 Vehicle myVehicle = Vehicle();
 
-// ERROR: Can't be inherited.
+// ERROR: `Vehicle` can't be extended in a different library
+// because it is marked `final`.
 class Car extends Vehicle {
   int passengers = 4;
   // ...
 }
 
+// ERROR: `Vehicle` can't be implemented in a different library because
+// it is marked `final`.
 class MockVehicle implements Vehicle {
-  // ERROR: Can't be implemented.
   @override
   void moveForward(int meters) {
     // ...
@@ -289,18 +294,24 @@ class Truck implements Vehicle {}
 
 class Bicycle extends Vehicle {}
 
-// ERROR: Can't be instantiated.
+// ERROR: `Vehicle` can't be instantiated because
+// it is marked `sealed` and therefore, implicitly abstract.
 Vehicle myVehicle = Vehicle();
 
-// Subclasses can be instantiated.
+// Subclasses of a sealed class can be instantiated unless also restricted.
 Vehicle myCar = Car();
 
-String getVehicleSound(Vehicle vehicle) {
-  // ERROR: The switch is missing the Bicycle subtype or a default case.
-  return switch (vehicle) {
-    Car() => 'vroom',
-    Truck() => 'VROOOOMM',
-  };
+extension VehicleSounds on Vehicle {
+  String get sound {
+    // ERROR: The switch does not exhaustively account for
+    // all possible objects of type `Vehicle`.
+    // In this example, a `Vehicle` with a run-time type of `Bicycle`
+    // would not match any of the cases.
+    return switch (this) {
+      Car() => 'vroom',
+      Truck() => 'VROOOOMM',
+    };
+  }
 }
 ```
 
