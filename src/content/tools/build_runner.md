@@ -80,8 +80,8 @@ watch
 
 ## More information
 
-* [webdev][webdev] guide (use if you're working on web-specific code)
-* [build_runner][webdev] guide
+* [webdev][] guide (use if you're working on web-specific code)
+* [build_runner][] guide
 * [packages with the `build_runner` dependency][]
 * [packages with the `build` dependency][]
 
@@ -89,7 +89,6 @@ watch
 [build_runner]: {{site.pub-pkg}}/build_runner
 [built_value_generator]: {{site.pub-pkg}}/built_value_generator
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
-[Build_runner documentation.]: {{site.pub-pkg}}/build_runner
 [json_serializable]: {{site.pub-pkg}}/json_serializable
 [packages with the `build` dependency]: {{site.pub-pkg}}?q=dependency%3Abuild
 [packages with the `build_runner` dependency]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
