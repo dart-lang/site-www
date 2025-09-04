@@ -57,8 +57,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       sass:
-        specifier: ^1.91.0
-        version: 1.91.0
+        specifier: ^1.92.0
+        version: 1.92.0
       shiki:
         specifier: ^3.12.1
         version: 3.12.1
@@ -1084,8 +1084,8 @@ packages:
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
 
-  sass@1.91.0:
-    resolution: {integrity: sha512-aFOZHGf+ur+bp1bCHZ+u8otKGh77ZtmFyXDo4tlYvT7PWql41Kwd8wdkPqhhT+h2879IVblcHFglIMofsFd1EA==}
+  sass@1.92.0:
+    resolution: {integrity: sha512-KDNI0BxgIRDAfJgzNm5wuy+4yOCIZyrUbjSpiU/JItfih+KGXAVefKL53MTml054MmBA3DDKIBMSI/7XLxZJ3A==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -2246,7 +2246,7 @@ snapshots:
 
   resolve-pkg-maps@1.0.0: {}
 
-  sass@1.91.0:
+  sass@1.92.0:
     dependencies:
       chokidar: 4.0.3
       immutable: 5.1.3
