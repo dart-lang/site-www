@@ -4,14 +4,16 @@ import 'a.dart';
 // Can be constructed.
 Vehicle myVehicle = Vehicle();
 
-// ERROR: Can't be inherited.
+// ERROR: `Vehicle` can't be extended in a different library
+// because it is marked `final`.
 class Car extends Vehicle {
   int passengers = 4;
   // ...
 }
 
+// ERROR: `Vehicle` can't be implemented in a different library because
+// it is marked `final`.
 class MockVehicle implements Vehicle {
-  // ERROR: Can't be implemented.
   @override
   void moveForward(int meters) {
     // ...
