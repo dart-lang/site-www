@@ -254,7 +254,6 @@ final class CodeBlockProcessor implements PageExtension {
       [jaspr.text(content ?? span.content)],
       attributes: {
         'style': ?span.toInlineStyle(defaultTheme: 'light'),
-        'data-tag': span.tag,
       },
     );
   }
