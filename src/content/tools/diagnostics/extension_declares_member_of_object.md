@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Extensions can't declare members with the same name as a member declared by
-'Object'._
+_Extensions can't declare members with the same name as a member declared by 'Object'._
 
 ## Description
 

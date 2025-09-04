@@ -7,14 +7,11 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The variable '{0}' doesn't have the same type and/or finality in all cases that
-share this body._
+_The variable '{0}' doesn't have the same type and/or finality in all cases that share this body._
 
-_The variable '{0}' is available in some, but not all cases that share this
-body._
+_The variable '{0}' is available in some, but not all cases that share this body._
 
-_The variable '{0}' is not available because there is a label or 'default'
-case._
+_The variable '{0}' is not available because there is a label or 'default' case._
 
 ## Description
 

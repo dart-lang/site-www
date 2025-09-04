@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is final and was given a value when it was declared, so it can't be set
-to a new value._
+_'{0}' is final and was given a value when it was declared, so it can't be set to a new value._
 
 ## Description
 

@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_'{0}' is an unsupported type for native fields. Native fields only support
-pointers, arrays or numeric and compound types._
+_'{0}' is an unsupported type for native fields. Native fields only support pointers, arrays or numeric and compound types._
 
 ## Description
 

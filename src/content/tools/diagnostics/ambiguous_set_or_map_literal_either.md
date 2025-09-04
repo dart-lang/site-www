@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_This literal must be either a map or a set, but the elements don't have enough
-information for type inference to work._
+_This literal must be either a map or a set, but the elements don't have enough information for type inference to work._
 
 ## Description
 

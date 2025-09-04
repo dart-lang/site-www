@@ -18,8 +18,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_Use a function declaration rather than a variable assignment to bind a function
-to a name._
+_Use a function declaration rather than a variable assignment to bind a function to a name._
 
 ## Description
 

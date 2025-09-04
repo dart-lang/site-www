@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The matched value type '{0}' can never be equal to this constant of type
-'{1}'._
+_The matched value type '{0}' can never be equal to this constant of type '{1}'._
 
 ## Description
 

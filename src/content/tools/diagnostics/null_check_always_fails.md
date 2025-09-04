@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_This null-check will always throw an exception because the expression will
-always evaluate to 'null'._
+_This null-check will always throw an exception because the expression will always evaluate to 'null'._
 
 ## Description
 

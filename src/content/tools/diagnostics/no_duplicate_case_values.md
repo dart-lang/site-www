@@ -18,8 +18,7 @@ bodyClass: highlight-diagnostics
   </a>
 </div>
 
-_The value of the case clause ('{0}') is equal to the value of an earlier case
-clause ('{1}')._
+_The value of the case clause ('{0}') is equal to the value of an earlier case clause ('{1}')._
 
 ## Description
 

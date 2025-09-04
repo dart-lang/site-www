@@ -17,7 +17,7 @@ it suggests extension methods alongside regular methods.
 If watching videos helps you learn,
 check out this overview of extension methods.
 
-{% ytEmbed "D3j0OSfT9ZI", "Dart extension methods" %}
+<YouTubeEmbed id="D3j0OSfT9ZI" title="Dart extension methods"></YouTubeEmbed>
 
 ## Overview
 

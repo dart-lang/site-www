@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The prefix '{0}' can't be used here because it's shadowed by a local
-declaration._
+_The prefix '{0}' can't be used here because it's shadowed by a local declaration._
 
 ## Description
 

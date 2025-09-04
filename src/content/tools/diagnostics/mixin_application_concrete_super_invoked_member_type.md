@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The super-invoked member '{0}' has the type '{1}', and the concrete member in
-the class has the type '{2}'._
+_The super-invoked member '{0}' has the type '{1}', and the concrete member in the class has the type '{2}'._
 
 ## Description
 

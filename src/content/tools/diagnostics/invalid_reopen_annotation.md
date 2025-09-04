@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The annotation '@reopen' can only be applied to a class that opens capabilities
-that the supertype intentionally disallows._
+_The annotation '@reopen' can only be applied to a class that opens capabilities that the supertype intentionally disallows._
 
 ## Description
 

@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Constructors in subclasses of 'Struct' and 'Union' can't have field
-initializers._
+_Constructors in subclasses of 'Struct' and 'Union' can't have field initializers._
 
 ## Description
 
