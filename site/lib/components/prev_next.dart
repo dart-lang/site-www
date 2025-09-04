@@ -4,6 +4,8 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// Previous and next page buttons to display at the end of a page
+/// in a connected series of pages, such as the language docs.
 class PrevNext extends StatelessComponent {
   const PrevNext({super.key, this.previousPage, this.nextPage});
 

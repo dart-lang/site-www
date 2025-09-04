@@ -22,6 +22,7 @@ enum ResourceType {
   diagnostic,
   external;
 
+  /// The ID of the material symbol icon associated with each resource type.
   String get icon => switch (this) {
     term => 'dictionary',
     tutorial => 'school',
@@ -50,7 +51,7 @@ enum ResourceType {
 
 /// Represents a single glossary entry with all its metadata.
 @immutable
-class GlossaryEntry {
+final class GlossaryEntry {
   const GlossaryEntry({
     required this.term,
     required this.shortDescription,
@@ -72,7 +73,7 @@ class GlossaryEntry {
 
 /// Represents a related link for a glossary entry.
 @immutable
-class RelatedLink {
+final class RelatedLink {
   const RelatedLink({
     required this.text,
     required this.link,
@@ -86,16 +87,15 @@ class RelatedLink {
 
 /// Represents a complete glossary with multiple entries.
 @immutable
-class Glossary {
-  const Glossary({
-    required this.entries,
-  });
+final class Glossary {
+  const Glossary({required this.entries});
 
+  /// The entries to include in the glossary. One for each term.
   final List<GlossaryEntry> entries;
 
   /// Create a [Glossary] from parsed data.
   ///
-  /// Expects the format used by `glossary.yml`.
+  /// Expects the format used by `src/_data/glossary.yml`.
   factory Glossary.fromList(List<Object?> rawData) {
     final entries = <GlossaryEntry>[];
 
@@ -152,7 +152,7 @@ class Glossary {
 
 /// A glossary component that displays a
 /// searchable list of terms and definitions.
-class GlossaryIndex extends StatelessComponent {
+final class GlossaryIndex extends StatelessComponent {
   const GlossaryIndex();
 
   @override
@@ -184,7 +184,7 @@ class GlossaryIndex extends StatelessComponent {
   }
 }
 
-class GlossaryCard extends StatelessComponent {
+final class GlossaryCard extends StatelessComponent {
   const GlossaryCard({
     super.key,
     required this.entry,

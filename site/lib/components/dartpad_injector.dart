@@ -4,6 +4,8 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// Prepares an element with the structure expected by
+/// the `inject_dartpad` tool from site-shared.
 final class DartPadInjector extends StatelessComponent {
   const DartPadInjector({
     super.key,

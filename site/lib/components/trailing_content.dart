@@ -5,6 +5,8 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+/// The trailing content of a content documentation page, such as
+/// its last updated information, report an issue links, and similar.
 class TrailingContent extends StatelessComponent {
   const TrailingContent({super.key, this.repo, this.sdkVersion});
 

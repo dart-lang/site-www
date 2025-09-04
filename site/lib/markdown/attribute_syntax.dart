@@ -6,8 +6,8 @@ import 'package:markdown/markdown.dart' as md;
 
 import '../util.dart';
 
-/// A markdown extension that adds support for attribute syntax
-/// as a standalone block.
+/// A `package:markdown` extension that adds support for
+/// attribute syntax as a standalone block.
 ///
 /// Supports syntax like:
 ///
@@ -36,7 +36,8 @@ final class AttributeBlockSyntax extends md.BlockSyntax {
     parser.advance();
 
     // Create a special marker element that will be processed later.
-    // This allows us to apply attributes during post-processing.
+    // This allows us to apply attributes during post-processing in
+    // the `extensions/attribute_processor.dart` extension.
     final attributes = parseAttributes(attributeString);
     return md.Element.empty('attribute-marker')..attributes.addAll(attributes);
   }

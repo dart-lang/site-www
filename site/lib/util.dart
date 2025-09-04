@@ -3,11 +3,20 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaspr/jaspr.dart';
+import 'package:path/path.dart' as path;
 
 /// Whether this build of the site will be deployed to production.
 const productionBuild = bool.fromEnvironment('PRODUCTION');
 
-List<Component> underscoreBreaker(String sourceString) {
+/// Path to the `/src` directory where site content is located.
+final siteSrcDirectoryPath = path.join('..', 'src');
+
+/// Split the specific [sourceString] into a list of Jaspr [Component]
+/// by adding a `<wbr>`  element after each underscore.
+///
+/// This is useful for long IDs separated with underscores, such as lint names,
+/// that might otherwise break across lines in an undesirable way.
+List<Component> splitByUnderscore(String sourceString) {
   final parts = sourceString.split('_');
   final result = <Component>[];
 
@@ -25,6 +34,8 @@ List<Component> underscoreBreaker(String sourceString) {
   return result;
 }
 
+/// Converts the specified [text] into a standardized URL slug
+/// that can be used as the ID for headers and other anchors in HTML.
 String slugify(String text) => text
     .toLowerCase()
     .trim()

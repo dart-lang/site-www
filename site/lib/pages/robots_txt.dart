@@ -7,6 +7,8 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../util.dart';
 
+/// The secondary output to configure to create
+/// a `robots.txt` file in the root directory.
 final class RobotsTxtOutput implements SecondaryOutput {
   static final _indexPattern = RegExp(r'/?index\..*');
 
@@ -25,6 +27,7 @@ final class RobotsTxtOutput implements SecondaryOutput {
         context.setHeader('Content-Type', 'text/plain; charset=utf-8');
         final String textContent;
         if (productionBuild) {
+          // If this is a production build, allow all bots to crawl the site.
           textContent = '''
 User-agent: *
 Disallow:
@@ -32,6 +35,9 @@ Disallow:
 Sitemap: https://dart.dev/sitemap.xml
 ''';
         } else {
+          // If this isn't a production build, such as for staging on Firebase,
+          // don't allow bots to crawl or index the site.
+          // This helps prevent staged sites from showing up on search engines.
           textContent = '''
 User-agent: linkcheck
 Disallow:

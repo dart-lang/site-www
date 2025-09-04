@@ -4,6 +4,7 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// A Material Symbols icon rendered as a span element.
 class MaterialIcon extends StatelessComponent {
   const MaterialIcon(
     this.id, {

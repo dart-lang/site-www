@@ -10,6 +10,7 @@ import '../components/footer.dart';
 import '../components/header.dart';
 import '../components/sidenav.dart';
 
+/// The base Jaspr Content layout for wrapping site content.
 abstract class DashLayout extends PageLayoutBase {
   const DashLayout();
 

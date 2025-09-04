@@ -6,6 +6,7 @@ import 'package:opal/opal.dart' show MarkupTags, Tag, Tags;
 
 import '../token_renderer.dart';
 
+/// The syntax highlighting for code blocks in light mode.
 final Map<Tag, TextStyle> dashLightTheme = {
   Tags.comment: const TextStyle(
     foregroundColor: Color.fromArgb(

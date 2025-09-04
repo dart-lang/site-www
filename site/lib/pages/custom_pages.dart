@@ -8,18 +8,48 @@ import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as p;
 
 import '../components/tags.dart';
-import '../lints.dart';
 import '../markdown/markdown_parser.dart';
+import '../models/lints.dart';
 import 'glossary.dart';
 
+/// All pages that should be loaded from memory rather than
+/// from content loaded from the file system.
 List<MemoryPage> get allMemoryPages => [
+  _glossaryPage,
   _allLinterRulesPage,
   ..._lintMemoryPages,
-  _glossaryPage,
 ];
 
+/// The `/resources/glossary` page which hosts the [GlossaryIndex].
+MemoryPage get _glossaryPage => MemoryPage.builder(
+  path: 'resources/glossary.md',
+  initialData: {
+    'page': <String, Object?>{
+      'title': 'Glossary',
+      'showBreadcrumbs': false,
+      'description':
+          'A glossary reference for terminology '
+          'used across dart.dev.',
+      'showToc': false,
+      'bodyClass': 'glossary-page',
+      'js': [
+        {
+          'url': '/assets/js/glossary.js',
+          'defer': true,
+        },
+      ],
+    },
+  },
+  builder: (_) {
+    return const GlossaryIndex();
+  },
+);
+
+/// The date the lint rule docs were last extracted from the SDK.
+/// Should be in `yyyy-mm-dd` format.
 const String _lintsLastUpdated = '2025-08-16';
 
+/// The individual linter rules pages, rendered to `/tools/linter-rules/<name>`.
 List<MemoryPage> get _lintMemoryPages {
   final lintRules = readAndLoadLints();
 
@@ -170,30 +200,9 @@ linter:
   ];
 }
 
-MemoryPage get _glossaryPage => MemoryPage.builder(
-  path: 'resources/glossary.md',
-  initialData: {
-    'page': <String, Object?>{
-      'title': 'Glossary',
-      'showBreadcrumbs': false,
-      'description':
-          'A glossary reference for terminology '
-          'used across dart.dev.',
-      'showToc': false,
-      'bodyClass': 'glossary-page',
-      'js': [
-        {
-          'url': '/assets/js/glossary.js',
-          'defer': true,
-        },
-      ],
-    },
-  },
-  builder: (_) {
-    return const GlossaryIndex();
-  },
-);
-
+/// The `/tools/linter-rules/all` page that includes an example
+/// `analysis_options.yaml` file that enables all linter rules
+/// that are available in the current stable release.
 MemoryPage get _allLinterRulesPage {
   final allLinterRulesList = readAndLoadLints()
       .where(
@@ -206,6 +215,7 @@ MemoryPage get _allLinterRulesPage {
       .map((lint) => '    - ${lint.id}')
       .sorted()
       .join('\n');
+
   return MemoryPage(
     path: 'tools/linter-rules/all.md',
     initialData: const {

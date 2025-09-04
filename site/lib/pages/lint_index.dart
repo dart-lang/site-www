@@ -9,8 +9,8 @@ import '../components/card.dart';
 import '../components/chip.dart';
 import '../components/material_icon.dart';
 import '../components/search.dart';
-import '../lints.dart';
 import '../markdown/markdown_parser.dart';
+import '../models/lints.dart';
 import '../util.dart';
 
 class LintRuleIndex extends StatelessComponent {
@@ -125,7 +125,7 @@ class _LintRuleCard extends StatelessComponent {
         header(
           id: lintId,
           classes: 'card-title',
-          underscoreBreaker(lintId),
+          splitByUnderscore(lintId),
         ),
       ],
       content: [

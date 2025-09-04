@@ -16,6 +16,7 @@ import 'definition_list_syntax.dart';
 import 'fenced_code_block_syntax.dart';
 import 'header_syntax.dart';
 
+/// The `package:markdown` block syntaxes to apply when parsing Markdown.
 const List<md.BlockSyntax> _blockSyntaxes = [
   JasprHtmlBlockSyntax(),
   CustomFencedCodeBlockSyntax(),
@@ -34,11 +35,14 @@ const List<md.BlockSyntax> _blockSyntaxes = [
   md.ParagraphSyntax(),
 ];
 
+/// The `package:markdown` inline syntaxes to apply when parsing Markdown.
 final List<md.InlineSyntax> _inlineSyntaxes = [
   md.InlineHtmlSyntax(),
   AttributeInlineSyntax(),
 ];
 
+/// A component to use when needing to dynamically parse Markdown content and
+/// render it within a different Jaspr component.
 class DashMarkdown extends AsyncStatelessComponent {
   static const NodesBuilder _nodeBuilder = NodesBuilder([]);
 
@@ -63,16 +67,21 @@ class DashMarkdown extends AsyncStatelessComponent {
   }
 }
 
+/// Creates a `package:markdown` document with our custom syntaxes configured.
 md.Document get _defaultMarkdownDocument => md.Document(
   blockSyntaxes: _blockSyntaxes,
   inlineSyntaxes: _inlineSyntaxes,
   withDefaultBlockSyntaxes: false,
 );
 
-String parseMarkdownToHtml(String markdown, {bool inline = false}) {
+/// Uses our custom Markdown configuration and syntaxes to
+/// parse the specified [markdownString] into HTML.
+///
+/// Assumes it's parsing at the block-level if [inline] isn't set to `true`.
+String parseMarkdownToHtml(String markdownString, {bool inline = false}) {
   final nodes = inline
-      ? _defaultMarkdownDocument.parseInline(markdown)
-      : _defaultMarkdownDocument.parse(markdown);
+      ? _defaultMarkdownDocument.parseInline(markdownString)
+      : _defaultMarkdownDocument.parse(markdownString);
   final renderer = md.HtmlRenderer();
   return renderer.render(nodes);
 }
@@ -175,6 +184,8 @@ class DashMarkdownParser implements PageParser {
   }
 }
 
+/// Returns whether the specified HTML [tag] corresponds to a void HTML element,
+/// meaning it can't have any child nodes.
 bool _isVoidElement(String tag) => const {
   'area',
   'base',

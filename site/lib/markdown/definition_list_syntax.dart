@@ -13,10 +13,10 @@ import 'package:markdown/markdown.dart' as md;
 /// For example:
 ///
 /// ```md
-/// First Term
+/// First term
 /// : This is the definition of the first term.
 ///
-/// Second Term
+/// Second term
 /// : This is one definition of the second term.
 /// : This is another definition of the second term.
 /// ```
@@ -25,9 +25,9 @@ import 'package:markdown/markdown.dart' as md;
 ///
 /// ```html
 /// <dl>
-///   <dt>First Term</dt>
+///   <dt>First term</dt>
 ///   <dd>This is the definition of the first term.</dd>
-///   <dt>Second Term</dt>
+///   <dt>Second term</dt>
 ///   <dd>This is one definition of the second term.</dd>
 ///   <dd>This is another definition of the second term.</dd>
 /// </dl>

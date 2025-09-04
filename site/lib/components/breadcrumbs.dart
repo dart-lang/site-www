@@ -125,6 +125,7 @@ final class _BreadcrumbItem {
   final String url;
 }
 
+/// An individual breadcrumb item that corresponds to one link.
 final class _BreadcrumbItemComponent extends StatelessComponent {
   const _BreadcrumbItemComponent({
     required this.crumb,

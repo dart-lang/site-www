@@ -13,6 +13,8 @@ import '../components/trailing_content.dart';
 import '../util.dart';
 import 'dash_layout.dart';
 
+/// The Jaspr Content layout to use for normal docs pages,
+/// adding elements such as breadcrumbs, TOC, and prev/next cards.
 class DocLayout extends DashLayout {
   const DocLayout();
 
@@ -39,7 +41,7 @@ class DocLayout extends DashLayout {
               div(id: 'site-content-title', [
                 h1([
                   if (pageData['underscore_breaker_titles'] == true)
-                    ...underscoreBreaker(pageTitle)
+                    ...splitByUnderscore(pageTitle)
                   else
                     text(pageTitle),
                 ]),

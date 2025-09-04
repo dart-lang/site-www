@@ -4,6 +4,7 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// The cookie banner to show on a user's first time visiting the site.
 class DashCookieNotice extends StatelessComponent {
   const DashCookieNotice({super.key});
 

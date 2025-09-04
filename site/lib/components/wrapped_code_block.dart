@@ -4,6 +4,9 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// A rendered code block with support for syntax highlighting,
+/// line highlighting, filenames, language specifying,
+/// line numbers, and more.
 final class WrappedCodeBlock extends StatelessComponent {
   const WrappedCodeBlock({
     super.key,
@@ -108,6 +111,7 @@ final class WrappedCodeBlock extends StatelessComponent {
   }
 }
 
+/// A tag that can be applied to a code block.
 enum CodeBlockTag {
   good('good', parentClass: 'tag-good'),
   bad('bad', parentClass: 'tag-bad'),

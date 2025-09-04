@@ -6,6 +6,7 @@ import 'package:jaspr/jaspr.dart';
 
 import 'material_icon.dart';
 
+/// A search bar component, such as used on the glossary page.
 class SearchBar extends StatelessComponent {
   const SearchBar({
     required this.placeholder,

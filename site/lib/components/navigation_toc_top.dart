@@ -5,6 +5,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+/// The narrow layout, top of the page version of the table of contents.
 // TODO(https://github.com/dart-lang/site-www/issues/6838):
 //  Migrate this TOC to the style used by Flutter docs.
 class NavigationTocTop extends StatelessComponent {

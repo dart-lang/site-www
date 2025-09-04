@@ -4,6 +4,7 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// The site-wide footer.
 final class DashFooter extends StatelessComponent {
   const DashFooter({super.key});
 

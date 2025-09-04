@@ -4,6 +4,7 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// An individual entry in the sidenav.
 sealed class NavEntry {
   const NavEntry();
 
@@ -46,6 +47,8 @@ final class _NavSection extends NavEntry {
   });
 }
 
+/// The site-wide side navigation menu,
+/// with entries loaded from the `src/data/sidenav.yml` file.
 final class SideNav extends StatelessComponent {
   SideNav({
     super.key,

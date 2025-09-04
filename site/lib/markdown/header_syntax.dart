@@ -6,7 +6,7 @@ import 'package:markdown/markdown.dart' as md;
 
 import '../util.dart';
 
-/// A custom header syntax that extends HeaderSyntax to support:
+/// A custom header syntax that extends the default header syntax to support:
 ///
 /// 1. Inline attribute syntax at the end of headers,
 ///    such as `# Title {: #custom-id .class}`)`.

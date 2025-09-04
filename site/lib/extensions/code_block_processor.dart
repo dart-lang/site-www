@@ -132,10 +132,10 @@ final class CodeBlockProcessor implements PageExtension {
       _ => opal.BuiltInLanguages.text,
     };
     final highlightedSpans = languageHighlighter.tokenize(content);
-    final renderedSpans = highlighter.ThemedTokenRenderer(
+    final renderedSpans = highlighter.ThemedSpanRenderer(
       themeByName: {
-        'light': highlighter.Theme(dashLightTheme),
-        'dark': highlighter.Theme(dashDarkTheme),
+        'light': highlighter.SyntaxHighlightingTheme(dashLightTheme),
+        'dark': highlighter.SyntaxHighlightingTheme(dashDarkTheme),
       },
     ).render(highlightedSpans);
 

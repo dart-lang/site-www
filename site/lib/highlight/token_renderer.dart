@@ -5,19 +5,16 @@
 import 'package:meta/meta.dart';
 import 'package:opal/opal.dart' show Tag, TaggedToken;
 
-abstract final class TokenRenderer<T> {
-  const TokenRenderer();
+/// Renderer for converting spans of tagged tokens from `package:opal`
+/// to themed spans according to the configured themes.
+final class ThemedSpanRenderer {
+  /// Themes to be used for rendering.
+  final Map<String, SyntaxHighlightingTheme> themeByName;
+  const ThemedSpanRenderer({required this.themeByName});
 
+  /// Renders the specified [tokenLines] into a themed list of spans by line.
+  /// Each top-level list represents a single line of text.
   @useResult
-  T render(List<List<TaggedToken>> tokenLines);
-}
-
-final class ThemedTokenRenderer extends TokenRenderer<List<List<ThemedSpan>>> {
-  final Map<String, Theme> themeByName;
-
-  const ThemedTokenRenderer({required this.themeByName});
-
-  @override
   List<List<ThemedSpan>> render(List<List<TaggedToken>> tokenLines) {
     final result = <List<ThemedSpan>>[];
 
@@ -25,10 +22,11 @@ final class ThemedTokenRenderer extends TokenRenderer<List<List<ThemedSpan>>> {
       final currentLine = <ThemedSpan>[];
       for (final token in line) {
         final styleByTheme = <String, TextStyle>{};
-        for (final entry in themeByName.entries) {
-          final style = entry.value.styleForSpan(token);
+        for (final MapEntry(key: themeName, value: theme)
+            in themeByName.entries) {
+          final style = theme.styleForSpan(token);
           if (style != null) {
-            styleByTheme[entry.key] = style;
+            styleByTheme[themeName] = style;
           }
         }
         currentLine.add(
@@ -47,10 +45,12 @@ final class ThemedTokenRenderer extends TokenRenderer<List<List<ThemedSpan>>> {
   }
 }
 
-final class Theme {
+/// A theme to be used for syntax highlighting of [TaggedToken].
+final class SyntaxHighlightingTheme {
+  /// What [TextStyle] should be give for a specific [Tag].
   final Map<Tag, TextStyle> _textStyleByTag;
 
-  Theme(Map<Tag, TextStyle> textStyleByTag)
+  SyntaxHighlightingTheme(Map<Tag, TextStyle> textStyleByTag)
     : _textStyleByTag = {...textStyleByTag};
 
   @useResult

@@ -7,6 +7,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../util.dart';
 
+/// The wide layout, side version of the table of contents.
 class NavigationTocSide extends StatelessComponent {
   const NavigationTocSide({
     super.key,
@@ -46,7 +47,7 @@ class NavigationTocSide extends StatelessComponent {
           a(
             href: '#${entry.id}',
             classes: 'nav-link',
-            [...underscoreBreaker(entry.text)],
+            [...splitByUnderscore(entry.text)],
           ),
           // If this entry has children and the TOC hasn't reached max depth,
           // recursively create a nested list.

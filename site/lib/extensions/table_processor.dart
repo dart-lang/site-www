@@ -4,6 +4,9 @@
 
 import 'package:jaspr_content/jaspr_content.dart';
 
+/// A node-processing, page extension for Jaspr Content that
+/// wraps each `<table>` element in a div with the `table-wrapper` class to
+/// enable improved styling and horizontal scrolling.
 final class TableWrapperExtension implements PageExtension {
   const TableWrapperExtension();
 

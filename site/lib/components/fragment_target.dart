@@ -4,6 +4,9 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// An empty anchor that can act as a fragment target.
+///
+/// Often useful when a header, or at least its ID, needs to be updated.
 final class FragmentTarget extends StatelessComponent {
   const FragmentTarget(this.id);
 

@@ -8,6 +8,10 @@ import 'dart:io' show FileSystemException, Process;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as path;
 
+/// A shared data loader to add data to each loaded page.
+///
+/// Currently adds data about the last modified date of the page,
+/// but can be expanded to add other data as necessary.
 final class DataProcessor implements DataLoader {
   @override
   Future<void> loadData(Page page) async {
@@ -34,6 +38,11 @@ final class DataProcessor implements DataLoader {
   }
 }
 
+/// Determines the last modified date for a given path
+/// in the form `yyyy-mm-dd`.
+///
+/// Uses `git log` to get the last modified date from the git history.
+/// Returns `null` if no date can be determined.
 String? _lastModifiedDateForPath(String inputPath) =>
     _lastModifiedPerPath[inputPath]?.formatted;
 

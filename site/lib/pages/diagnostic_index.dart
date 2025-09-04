@@ -48,7 +48,7 @@ class _DiagnosticCard extends StatelessComponent {
         header(
           id: diagnosticId,
           classes: 'card-title',
-          underscoreBreaker(diagnosticId),
+          splitByUnderscore(diagnosticId),
         ),
       ],
       content: [

@@ -8,6 +8,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import 'banner.dart';
 
+/// The site-wide top navigation bar.
 class DashHeader extends StatelessComponent {
   const DashHeader({super.key});
 

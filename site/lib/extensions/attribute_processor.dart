@@ -4,6 +4,11 @@
 
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../markdown/attribute_syntax.dart';
+
+/// A node-processing, page extension for Jaspr Content that looks for
+/// attribute markers from [AttributeBlockSyntax] and [AttributeInlineSyntax],
+/// to remove them and transfer their configured attributes.
 class AttributeProcessor implements PageExtension {
   const AttributeProcessor();
 

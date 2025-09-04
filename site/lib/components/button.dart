@@ -8,6 +8,7 @@ import 'material_icon.dart';
 
 /// A generic button component with different style variants.
 class Button extends StatelessComponent {
+  /// Creates a button with textual [content] and an optional [icon].
   const Button.text({
     super.key,
     required String this.content,
@@ -22,6 +23,7 @@ class Button extends StatelessComponent {
     this.asRaw = false,
   });
 
+  /// Creates an icon button with the specified [icon] and no text.
   const Button.icon({
     super.key,
     required String this.icon,

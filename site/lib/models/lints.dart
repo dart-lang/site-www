@@ -7,10 +7,16 @@ import 'dart:io';
 
 import 'package:path/path.dart' as p;
 
+import '../util.dart';
+
+/// Reads and parses information about lint rules from
+/// the `src/data/linter_rules.json` file.
 List<LintDetails> readAndLoadLints() {
   if (_loadedLints case final alreadyLoadedLints?) return alreadyLoadedLints;
 
-  final lintRulesFile = File(p.join('..', 'src', 'data', 'linter_rules.json'));
+  final lintRulesFile = File(
+    p.join(siteSrcDirectoryPath, 'data', 'linter_rules.json'),
+  );
   final rawLintRules =
       jsonDecode(lintRulesFile.readAsStringSync()) as List<Object?>;
 
@@ -22,8 +28,10 @@ List<LintDetails> readAndLoadLints() {
   return _loadedLints = lintRules;
 }
 
+/// A cache of the loaded and parsed lint rule info.
 List<LintDetails>? _loadedLints;
 
+/// Information about the Dart lint rule named [name].
 // TODO(https://github.com/dart-lang/site-www/issues/4499):
 //  Once replacing rules.json, get rid of this structure.
 extension type LintDetails._(Map<String, Object?> details) {

@@ -4,6 +4,7 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// A set of Material Design-like chips for configuration.
 class ChipSet extends StatelessComponent {
   const ChipSet(this.chips, {this.resettable = false});
 

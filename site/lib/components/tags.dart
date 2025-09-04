@@ -6,6 +6,7 @@ import 'package:jaspr/jaspr.dart';
 
 import 'material_icon.dart';
 
+/// A display of multiple categorical or descriptive tags.
 class Tags extends StatelessComponent {
   const Tags(this.tags);
 
@@ -16,6 +17,10 @@ class Tags extends StatelessComponent {
       div(classes: 'tags', [for (final tag in tags) tag]);
 }
 
+/// An individual tag to categorize an item,
+/// such as the type of an individual lint.
+///
+/// Generally displayed within a [Tags] component.
 class Tag extends StatelessComponent {
   const Tag(this.content, {this.icon, this.title, this.label, this.color});
 

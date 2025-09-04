@@ -9,6 +9,8 @@ import 'code_block_processor.dart';
 import 'header_processor.dart';
 import 'table_processor.dart';
 
+/// A list of all node-processing, page extensions to applied to
+/// content loaded with Jaspr Content.
 const List<PageExtension> allNodeProcessingExtensions = [
   AttributeProcessor(),
   TableOfContentsExtension(maxHeaderDepth: 3),

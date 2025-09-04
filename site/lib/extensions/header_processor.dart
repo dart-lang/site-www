@@ -4,6 +4,9 @@
 
 import 'package:jaspr_content/jaspr_content.dart';
 
+/// A node-processing, page extension for Jaspr Content that
+/// wraps each `h1` -> `h5` element in a div with the `header-wrapper` class
+/// and adds an anchor that can clicked and linked to.
 final class HeaderWrapperExtension implements PageExtension {
   const HeaderWrapperExtension();
 

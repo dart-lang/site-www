@@ -4,6 +4,8 @@
 
 import 'package:jaspr/jaspr.dart';
 
+/// The information to display in the site banner,
+/// as configured in the `src/data/banner.yml` file.
 @immutable
 final class BannerContent {
   final String text;
@@ -34,6 +36,7 @@ final class BannerContent {
   }
 }
 
+/// The site-wide banner.
 class DashBanner extends StatelessComponent {
   const DashBanner(this.content, {super.key});
 

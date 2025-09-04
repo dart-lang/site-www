@@ -5,6 +5,9 @@
 import 'package:jaspr/jaspr.dart';
 
 class Card extends StatelessComponent {
+  /// Creates a card that can have a [header], [content], and [actions].
+  ///
+  /// If the card should be collapsible, use [Card.expandable] instead.
   const Card({
     super.key,
     this.header = const [],
@@ -20,6 +23,7 @@ class Card extends StatelessComponent {
        expandable = false,
        initiallyExpanded = true;
 
+  /// Creates an expandable card, such as used on the glossary page.
   const Card.expandable({
     super.key,
     this.header = const [],
