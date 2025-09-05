@@ -286,7 +286,7 @@ class _SiteWordMarkListEntry extends StatelessComponent {
       attributes: {'role': 'presentation'},
       [
         a(
-          href: '/',
+          href: href,
           classes: ['site-wordmark', if (current) 'current-site'].join(' '),
           attributes: {
             'role': 'menuitem',
