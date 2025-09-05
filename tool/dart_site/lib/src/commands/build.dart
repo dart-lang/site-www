@@ -60,8 +60,23 @@ final class BuildSiteCommand extends Command<int> {
       return 1;
     }
 
-    await io.copyPath(originalOutputDirectoryPath, siteOutputDirectoryPath);
+    // Copy the entire site output to the _site directory.
+    io.copyPathSync(originalOutputDirectoryPath, siteOutputDirectoryPath);
+
+    _move404File();
 
     return processExitCode;
+  }
+}
+
+/// Moves the 404 file to the location expected by Firebase hosting.
+void _move404File() {
+  final initial404Directory = path.join(siteOutputDirectoryPath, '404');
+  final original404File = File(path.join(initial404Directory, 'index.html'));
+  if (original404File.existsSync()) {
+    // If the 404 is in its own directory,
+    // copy the 404.html file to the root of the output directory.
+    original404File.copySync(path.join(siteOutputDirectoryPath, '404.html'));
+    Directory(initial404Directory).deleteSync(recursive: true);
   }
 }
