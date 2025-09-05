@@ -627,7 +627,7 @@ However, you can also declare a getter or a setter explicitly (using the keyword
 
 The purpose of using getters and setters is to create a clear separation between the client (the code that uses the property) and the provider (the class that defines it). The client asks for or sets a value without needing to know if that value is stored in a simple variable or calculated on the spot. This gives the provider the freedom to change how the property works. 
 
-For example, the value of the property might not be stored anywhere, it could be computed each time the getter is called. Another example is when a value is stored in a private variable, and public access is only allowed by calling a getter or a setter. The example below showcases this.
+For example, because the value of the property might not be stored anywhere, it could be computed each time the getter is called. Another example is that when a value is stored in a private variable, public access is only allowed by calling a getter or a setter. The example below showcases this.
 
 ```dart
 /// Defines a private variable secret with `_`.
