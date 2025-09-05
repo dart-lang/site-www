@@ -131,18 +131,18 @@
   }
 }
 
-body.obsolete {
-  #site-header {
-    .alert {
-      background-color: #fcf8e3;
+#obsolete-banner {
+  position: fixed;
+  z-index: var(--site-z-floating);
+  top: calc(var(--site-header-height) + 1rem);
+  right: 1rem;
+  margin-left: 1rem;
 
-      padding: 0.5rem;
-      margin: 0;
+  background-color: var(--site-raised-bgColor);
+  padding: 0.5rem;
+  max-width: 16rem;
+  font-weight: 500;
 
-      h4 {
-        margin-bottom: 0;
-        margin-top: 0;
-      }
-    }
-  }
+  border: 2px solid var(--site-alert-warning-color);
+  border-radius: var(--site-radius);
 }
