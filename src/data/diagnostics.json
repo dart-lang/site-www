@@ -1257,6 +1257,13 @@
     "previousNames": []
   },
   {
+    "id": "deprecated_mixin",
+    "description": "_Mixing in '{0}' is deprecated._",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "deprecated_new_in_comment_reference",
     "description": "_Using the 'new' keyword in a comment reference is deprecated._",
     "hasDocumentation": true,
@@ -3121,6 +3128,13 @@
   {
     "id": "invalid_deprecated_instantiate_annotation",
     "description": "_The annotation '@Deprecated.instantiate' can only be applied to classes._",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_deprecated_mixin_annotation",
+    "description": "_The annotation '@Deprecated.mixin' can only be applied to classes._",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
