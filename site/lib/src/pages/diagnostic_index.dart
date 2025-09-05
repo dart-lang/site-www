@@ -88,8 +88,8 @@ class _DiagnosticCard extends StatelessComponent {
 extension type _DiagnosticInfo._(Map<String, Object?> info) {
   String get id => info['id'] as String;
   String get description => info['description'] as String;
-  bool get hasDocumentation => info['hasDocumentation'] == 'true';
-  bool get fromLint => info['fromLint'] == 'true';
+  bool get hasDocumentation => info['hasDocumentation'] as bool? ?? false;
+  bool get fromLint => info['fromLint'] as bool? ?? false;
   List<String> get previousNames =>
       (info['previousNames'] as List<Object?>).cast<String>();
 }
