@@ -45,13 +45,7 @@ Component get _dartDevSite => ContentApp.custom(
     ],
     templateEngine: LiquidTemplateEngine(
       includesPath: path.canonicalize(
-        path.join(
-          siteSrcDirectoryPath,
-          // TODO(https://github.com/schultek/jaspr/pull/545):
-          //  Remove duplicated segment once linked fix has been released.
-          '_includes',
-          '_includes',
-        ),
+        path.join(siteSrcDirectoryPath, '_includes'),
       ),
     ),
     parsers: const [
