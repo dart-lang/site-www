@@ -126,13 +126,13 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
    validate your setup and learn about the available commands.
 
    ```terminal
-   ./dash_site --help
+   dart run dash_site --help
    ```
 
 4. From the root directory, serve the site locally.
 
    ```terminal
-   ./dash_site serve
+   dart run dash_site serve
    ```
 
    This command generates and serves the site on a
@@ -156,7 +156,7 @@ following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
 > [!TIP]
 > To find additional commands that you can run,
-> run `./dash_site --help` from the repository's root directory.
+> run `dart run dash_site --help` from the repository's root directory.
 
 ## Validate your changes
 
@@ -167,7 +167,7 @@ commit your work, then run the following command to
 verify it is up to date and matches the site standards.
 
 ```terminal
-./dash_site check-all
+dart run dash_site check-all
 ```
 
 If this script reports any errors or warnings,
@@ -189,7 +189,7 @@ in the corresponding `.dart` files.
 
 To resolve this error,
 from the root of the `site-www` directory,
-run `./dash_site refresh-excerpts`.
+run `dart run dash_site refresh-excerpts`.
 
 To learn more about creating, editing, and using code excerpts,
 check out the [excerpt updater package documentation][].
@@ -223,7 +223,7 @@ you can build a full version and upload it to Firebase.
 2. From the root directory of the repository, build the site:
 
    ```terminal
-   ./dash_site build
+   dart run dash_site build
    ```
 
    This builds the site and copies it to your local `_site` directory.

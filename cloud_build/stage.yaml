@@ -10,7 +10,7 @@ steps:
         set -e
 
         dart pub get
-        dart run dart_site build
+        dart run dash_site build
 
         cloud_build/scripts/stage_site_and_comment_on_github.sh
     secretEnv: ['GH_PAT_TOKEN']

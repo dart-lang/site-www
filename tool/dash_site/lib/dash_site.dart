@@ -22,13 +22,14 @@ import 'src/commands/serve.dart';
 import 'src/commands/test_dart.dart';
 import 'src/commands/verify_firebase_json.dart';
 
-/// The root command runner of the `dart_site` command.
+/// The root command runner of the Dart documentation website tooling.
+///
 /// To learn about it and its subcommands,
-/// run `dart run dart_site --help`.
-final class DartSiteCommandRunner extends CommandRunner<int> {
-  DartSiteCommandRunner()
+/// run `dart run dash_site --help`.
+final class DashSiteCommandRunner extends CommandRunner<int> {
+  DashSiteCommandRunner()
     : super(
-        'dart_site',
+        'dart run dash_site',
         'Infrastructure tooling for the Dart documentation website.',
       ) {
     addCommand(CheckLinksCommand());
