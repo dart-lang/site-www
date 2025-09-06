@@ -11,11 +11,9 @@ _'{0}' can't be used to name both a type parameter and a member in this class._
 
 _'{0}' can't be used to name both a type parameter and a member in this enum._
 
-_'{0}' can't be used to name both a type parameter and a member in this
-extension type._
+_'{0}' can't be used to name both a type parameter and a member in this extension type._
 
-_'{0}' can't be used to name both a type parameter and a member in this
-extension._
+_'{0}' can't be used to name both a type parameter and a member in this extension._
 
 _'{0}' can't be used to name both a type parameter and a member in this mixin._
 

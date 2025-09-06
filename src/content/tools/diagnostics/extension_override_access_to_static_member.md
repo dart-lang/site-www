@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_An extension override can't be used to access a static member from an
-extension._
+_An extension override can't be used to access a static member from an extension._
 
 ## Description
 

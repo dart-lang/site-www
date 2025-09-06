@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Only a generic type, generic function, generic instance method, or generic
-constructor can have type arguments._
+_Only a generic type, generic function, generic instance method, or generic constructor can have type arguments._
 
 ## Description
 

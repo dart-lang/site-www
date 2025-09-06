@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' wasn't exported from 'dart:core' until version 2.1, but this
-code is required to be able to run on earlier versions._
+_The class '{0}' wasn't exported from 'dart:core' until version 2.1, but this code is required to be able to run on earlier versions._
 
 ## Description
 

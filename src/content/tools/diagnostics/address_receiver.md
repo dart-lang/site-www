@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The receiver of '.address' must be a concrete 'TypedData', a concrete
-'TypedData' '[]', an 'Array', an 'Array' '[]', a Struct field, or a Union field._
+_The receiver of '.address' must be a concrete 'TypedData', a concrete 'TypedData' '[]', an 'Array', an 'Array' '[]', a Struct field, or a Union field._
 
 ## Description
 

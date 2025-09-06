@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The body might complete normally, causing 'null' to be returned, but the return
-type, '{0}', is a potentially non-nullable type._
+_The body might complete normally, causing 'null' to be returned, but the return type, '{0}', is a potentially non-nullable type._
 
 ## Description
 

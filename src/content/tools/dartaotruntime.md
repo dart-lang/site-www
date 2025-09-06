@@ -1,7 +1,7 @@
 ---
 title: dartaotruntime
 description: Command-line tool for running AOT-compiled snapshots of Dart code.
-toc: false
+showToc: false
 ---
 
 With Dart, you can create pre-compiled Dart applications called *AOT snapshots*.

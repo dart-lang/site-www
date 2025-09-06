@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:io/io.dart' as io;
+import 'package:path/path.dart' as path;
 
 import '../utils.dart';
 
@@ -23,22 +25,58 @@ final class BuildSiteCommand extends Command<int> {
 
   @override
   Future<int> run() async {
+    installJasprCliIfNecessary();
+
     final productionRelease = argResults.get<bool>(_releaseFlag, false);
 
     final process = await Process.start(
-      'npx',
-      const [
-        'tsx',
-        'node_modules/@11ty/eleventy/cmd.cjs',
-        '--config=eleventy.config.ts',
+      Platform.resolvedExecutable,
+      [
+        'pub',
+        'global',
+        'run',
+        'jaspr_cli:jaspr',
+        'build',
+        '--sitemap-domain=https://dart.dev',
+        '--dart-define=PRODUCTION=$productionRelease',
       ],
-      environment: {'PRODUCTION': '$productionRelease'},
+      workingDirectory: 'site',
+      mode: ProcessStartMode.inheritStdio,
     );
 
-    await stdout.addStream(process.stdout);
-    await stderr.addStream(process.stderr);
-
     final processExitCode = await process.exitCode;
+
+    final originalOutputDirectoryPath = path.join(
+      repositoryRoot,
+      'site',
+      'build',
+      'jaspr',
+    );
+    if (!Directory(originalOutputDirectoryPath).existsSync()) {
+      stderr.writeln(
+        'Error: Jaspr output directory not found at: '
+        '$originalOutputDirectoryPath',
+      );
+      return 1;
+    }
+
+    // Copy the entire site output to the _site directory.
+    io.copyPathSync(originalOutputDirectoryPath, siteOutputDirectoryPath);
+
+    _move404File();
+
     return processExitCode;
+  }
+}
+
+/// Moves the 404 file to the location expected by Firebase hosting.
+void _move404File() {
+  final initial404Directory = path.join(siteOutputDirectoryPath, '404');
+  final original404File = File(path.join(initial404Directory, 'index.html'));
+  if (original404File.existsSync()) {
+    // If the 404 is in its own directory,
+    // copy the 404.html file to the root of the output directory.
+    original404File.copySync(path.join(siteOutputDirectoryPath, '404.html'));
+    Directory(initial404Directory).deleteSync(recursive: true);
   }
 }

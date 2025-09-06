@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The getter name is not specified explicitly, and the pattern is not a
-variable._
+_The getter name is not specified explicitly, and the pattern is not a variable._
 
 ## Description
 

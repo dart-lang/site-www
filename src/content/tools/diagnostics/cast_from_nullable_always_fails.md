@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_This cast will always throw an exception because the nullable local variable
-'{0}' is not assigned._
+_This cast will always throw an exception because the nullable local variable '{0}' is not assigned._
 
 ## Description
 

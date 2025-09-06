@@ -1,7 +1,7 @@
 ---
 title: Typedefs
 description: Learn about type aliases in Dart.
-toc: false
+showToc: false
 prevpage:
   url: /language/generics
   title: Generics

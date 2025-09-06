@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Can't invoke 'asFunction' because the function signature '{0}' for the pointer
-isn't a valid C function signature._
+_Can't invoke 'asFunction' because the function signature '{0}' for the pointer isn't a valid C function signature._
 
 ## Description
 

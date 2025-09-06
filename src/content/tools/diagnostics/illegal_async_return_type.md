@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Functions marked 'async' must have a return type which is a supertype of
-'Future'._
+_Functions marked 'async' must have a return type which is a supertype of 'Future'._
 
 ## Description
 

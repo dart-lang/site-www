@@ -7,8 +7,7 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_The extension '{0}' is declared with {1} type parameters, but {2} type
-arguments were given._
+_The extension '{0}' is declared with {1} type parameters, but {2} type arguments were given._
 
 ## Description
 
