@@ -166,6 +166,7 @@ ga('send', 'pageview');
       ),
       _ => null,
     };
+    final obsolete = pageData['obsolete'] == true;
 
     return Component.fragment(
       [
@@ -196,6 +197,12 @@ ga('send', 'pageview');
               ].join(' '),
               [child],
             ),
+            if (obsolete)
+              div(id: 'obsolete-banner', [
+                div(classes: 'text-center', [
+                  text('Some content on this page might be out of date.'),
+                ]),
+              ]),
           ]),
           const DashFooter(),
         ]),

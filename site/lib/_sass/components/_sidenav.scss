@@ -16,7 +16,7 @@ $sidenav-wide-layout: 1024px;
   display: none;
   width: 100%;
   background-color: var(--site-base-bgColor);
-  z-index: 100;
+  z-index: var(--site-z-side);
 
   @at-root body.open_menu {
     #sidenav {

@@ -25,6 +25,7 @@ class MaterialIcon extends StatelessComponent {
       attributes: {
         'title': ?title,
         'aria-label': ?(label ?? title),
+        'translate': 'no',
       },
       [text(id)],
     );
