@@ -5,17 +5,11 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
-import 'package:dart_site/dart_site.dart';
+import 'package:dash_site/dash_site.dart';
 import 'package:io/io.dart' as io;
-import 'package:path/path.dart' as path;
 
 void main(List<String> args) async {
-  // Verify that we are running from the root of the website repository.
-  if (!Directory(path.join('tool', 'dart_site')).existsSync()) {
-    throw Exception('Error: Wrong directory, run from root of the repository.');
-  }
-
-  final runner = DartSiteCommandRunner();
+  final runner = DashSiteCommandRunner();
   try {
     final result = await runner
         .run(args)
