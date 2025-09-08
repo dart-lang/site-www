@@ -9,6 +9,8 @@ import '../components/cookie_notice.dart';
 import '../components/footer.dart';
 import '../components/header.dart';
 import '../components/sidenav.dart';
+import '../models/sidenav_model.dart';
+import '../util.dart';
 
 /// The base Jaspr Content layout for wrapping site content.
 abstract class DashLayout extends PageLayoutBase {
@@ -161,16 +163,14 @@ ga('send', 'pageview');
     final bodyClass = pageData['bodyClass'] as String?;
     final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
     final sideNavEntries = switch (page.data['sidenav']) {
-      final List<Object?> sidenavData => SideNav.navEntriesFromData(
-        sidenavData,
-      ),
+      final List<Object?> sidenavData => navEntriesFromData(sidenavData),
       _ => null,
     };
     final obsolete = pageData['obsolete'] == true;
 
     return Component.fragment(
       [
-        Document.body(attributes: {'class': ?bodyClass}),
+        if (bodyClass != null) Document.body(attributes: {'class': bodyClass}),
         raw('''
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 '''),
@@ -186,7 +186,7 @@ ga('send', 'pageview');
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [
             if (sideNavEntries != null)
-              SideNav(
+              DashSideNav(
                 navEntries: sideNavEntries,
                 currentPageUrl: pageUrl,
               ),
@@ -194,7 +194,7 @@ ga('send', 'pageview');
               id: 'page-content',
               classes: [
                 if (pageData['focusedLayout'] == true) 'focused',
-              ].join(' '),
+              ].toClasses,
               [child],
             ),
             if (obsolete)
