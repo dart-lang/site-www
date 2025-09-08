@@ -8,8 +8,4 @@ environment:
 workspace:
   - examples
   - site
-  - tool/dart_site
-
-dev_dependencies:
-  dart_site:
-    path: tool/dart_site
+  - tool/dash_site
