@@ -600,7 +600,8 @@ making them usable in Dart. Implementation and usage is
 heavily platform specific, so check out the interop docs on, for example,
 [C][] or [JavaScript][] to learn more.
 
-External functions can be top-level functions, [instance methods][], getters or setters, or [non-redirecting constructors][].
+External functions can be top-level functions, [instance methods][], 
+getters or setters, or [non-redirecting constructors][].
 An [instance variable][] can be `external` too,
 which is equivalent to an external getter and (if the variable
 is not `final`) an external setter.
@@ -621,26 +622,42 @@ is not `final`) an external setter.
 
 ## Getters and setters
 
-Every property access (top-level, static, or instance) is an invocation of a getter or a setter. A variable implicitly creates a getter and, if it's mutable, a setter. This is why when you access a property, you're actually calling a small function in the background. Reading a property calls a getter function, and writing one calls a setter function, even in cases where the property is declared a variable. 
+Every property access (top-level, static, or instance) is an invocation 
+of a getter or a setter. A variable implicitly creates a getter 
+and, if it's mutable, a setter. This is why when you access a property, 
+you're actually calling a small function in the background. Reading a 
+property calls a getter function, and writing one calls a setter function,
+even in cases where the property is declared a variable. 
 
-However, you can also declare a getter or a setter explicitly (using the keywords `get` or `set`). This allows a property's value to be computed when it's read or written.
+However, you can also declare a getter or a setter explicitly (using
+the keywords `get` or `set`). This allows a property's value to be
+computed when it's read or written.
 
-The purpose of using getters and setters is to create a clear separation between the client (the code that uses the property) and the provider (the class that defines it). The client asks for or sets a value without needing to know if that value is stored in a simple variable or calculated on the spot. This gives the provider the freedom to change how the property works. 
+The purpose of using getters and setters is to create a clear
+separation between the client (the code that uses the property) and
+the provider (the class that defines it). The client asks for or
+sets a value without needing to know if that value is stored in a
+simple variable or calculated on the spot. This gives the provider
+the freedom to change how the property works. 
 
-For example, the value of the property might not be stored anywhere, it could be computed each time the getter is called. Another example is when a value is stored in a private variable, and public access is only allowed by calling a getter or a setter. The example below showcases this.
+For example, because the value of the property might not be stored anywhere,
+it could be computed each time the getter is called. Another example
+is that when a value is stored in a private variable, and public access
+is only allowed by calling a getter or a setter.
+The example below showcases this.
 
 ```dart
 /// Defines a private variable secret with `_`.
 String _secret = 'Hello';
 
-/// The public top-level GETTER.
+/// The public top-level getter.
 /// It provides read access to the [_secret].
 String get secret {
   print('Getter was used!');
   return _secret.toUpperCase();
 }
 
-/// The public top-level SETTER.
+/// The public top-level setter.
 /// It provides write access to the [_secret].
 set secret(String newMessage) {
   print('Setter was used! New secret: "$newMessage"');
@@ -650,23 +667,29 @@ set secret(String newMessage) {
 }
 
 void main() {
-  // Reading the value calls the GETTER.
+  // Reading the value calls the getter.
   print('Current message: ${secret}');
-  // Output:
-  // Getter was used!
-  // Current message: HELLO 
+ 
+  /*
+  Output:
+  Getter was used!
+  Current message: HELLO
+  */
 
-  // Assigning a value calls the SETTER.
+  // Assigning a value calls the setter.
   secret = 'Dart is fun';
 
 
-  // Reading it again calls the GETTER to show the new value.
+  // Reading it again calls the getter to show the new value.
   print('New message: ${secret}');
-  // Output:
-  // Setter was used! New secret: "Dart is fun"
-  // 
-  // Getter was used!
-  // New message: DART IS FUN
+  
+  /*
+  Output:
+  Setter was used! New secret: "Dart is fun"
+  Getter was used!
+  New message: DART IS FUN
+  */
+
 }
 ```
 
