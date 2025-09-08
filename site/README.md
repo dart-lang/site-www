@@ -7,15 +7,15 @@ implementation of the [dart.dev documentation website][Dart].
 
 ## Usage
 
-The site should be run with the `./dash_site` tool
+The site should be run with the `dart run dash_site` tool
 from the root of the repository.
 Some relevant commands include:
 
-- **Serve:** `./dash_site serve`
-- **Build:** `./dash_site build`
-- **Clean:** `./dash_site clean`
+- **Serve:** `dart run dash_site serve`
+- **Build:** `dart run dash_site build`
+- **Clean:** `dart run dash_site clean`
 
-Run `./dash_site --help` to learn what other commands are available.
+Run `dart run dash_site --help` to learn what other commands are available.
 
 ## Structure
 
