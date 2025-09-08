@@ -104,7 +104,7 @@ it can be applied using [`dart fix`](/tools/dart-fix)
 or using your [editor with Dart support](/tools#editors).
 To learn more, see [Quick fixes for analysis issues][].
 
-[Quick fixes for analysis issues]: https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a
+[Quick fixes for analysis issues]: https://blog.dart.dev/quick-fixes-for-analysis-issues-c10df084971a
 
 ## Rules
 

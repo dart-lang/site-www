@@ -339,7 +339,7 @@
   expanded: false
   children:
     - title: Dart Blog
-      permalink: https://medium.com/dartlang
+      permalink: https://blog.dart.dev
     - title: Dart SDK Changelog
       permalink: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
     - title: Breaking changes
