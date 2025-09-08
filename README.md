@@ -196,49 +196,6 @@ check out the [excerpt updater package documentation][].
 
 [excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
 
-## [Optional] Deploy to a staging site
-
-A site maintainer can automatically stage submitted pull requests.
-If you'd like to first stage the site yourself,
-you can build a full version and upload it to Firebase.
-
-1. If you don't already have a Firebase project,
-
-   - Navigate to the [Firebase Console](https://console.firebase.google.com)
-     and create your own Firebase project (for example, `dart-dev-staging`).
-
-   - Head back to your local terminal and verify that you're logged in.
-
-     ```terminal
-     npm exec -- firebase-tools login
-     ```
-
-   - Ensure that your project exists and activate that project:
-
-     ```terminal
-     npm exec -- firebase-tools projects:list
-     npm exec -- firebase-tools use <your-project>
-     ```
-
-2. From the root directory of the repository, build the site:
-
-   ```terminal
-   dart run dash_site build
-   ```
-
-   This builds the site and copies it to your local `_site` directory.
-   If that directory previously existed, it will be replaced.
-
-3. Deploy to your activated Firebase project's default hosting site:
-
-   ```terminal
-   npm exec -- firebase-tools deploy --only hosting
-   ```
-
-4. Navigate to your PR on GitHub and include the link of the staged version.
-   Do consider adding a reference to the commit you staged,
-   so that reviewers know if any further changes have been made.
-
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
