@@ -9,15 +9,18 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
 /// The root path of the website repository.
-String get repositoryRoot {
+final String repositoryRoot = () {
   final packageConfigPath = path.fromUri(Isolate.packageConfigSync);
   final maybeRoot = path.dirname(path.dirname(packageConfigPath));
-  if (!File(path.join(maybeRoot, 'dash_site')).existsSync()) {
-    throw StateError('Trying calling dash_site from the root directory.');
+
+  // As a quick confidence check, verify that the
+  // root directory contains the firebase.json file.
+  if (!File(path.join(maybeRoot, 'firebase.json')).existsSync()) {
+    throw StateError('Try running the tool from the root directory.');
   }
 
   return maybeRoot;
-}
+}();
 
 /// The path of the site output directory.
 String get siteOutputDirectoryPath => path.join(repositoryRoot, '_site');

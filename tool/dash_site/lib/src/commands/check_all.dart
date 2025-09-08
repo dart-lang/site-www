@@ -33,7 +33,7 @@ final class CheckAllCommand extends Command<int> {
       groupStart(task.first);
       final process = await Process.start(Platform.executable, [
         'run',
-        'dart_site',
+        'dash_site',
         ...task,
       ]);
       await stdout.addStream(process.stdout);

@@ -24,7 +24,7 @@ our [code of conduct](/community/code-of-conduct).
 [@dart_lang](https://twitter.com/dart_lang)
 : Dart's official X (Twitter) account.
 
-[Dart blog](https://medium.com/dartlang)
+[Dart blog](https://blog.dart.dev)
 : The latest news and insights from a diverse group of Dart users.
 
 ## Join the conversation

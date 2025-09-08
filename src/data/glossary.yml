@@ -1204,7 +1204,7 @@
     specific diagnostic.
   related_links:
     - text: "Quick fixes for analysis issues"
-      link: "https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a"
+      link: "https://blog.dart.dev/quick-fixes-for-analysis-issues-c10df084971a"
       type: "article"
     - text: "Diagnostic messages"
       link: "/tools/diagnostic-messages"
