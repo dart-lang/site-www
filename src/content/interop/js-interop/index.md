@@ -34,7 +34,7 @@ The Dart interop story has been under heavy development for some time now;
 check out the [Past JS interop][] page for a more in depth summary on past
 iterations.
 
-[recently]: https://medium.com/dartlang/dart-3-3-325bf2bf6c13
+[recently]: https://blog.dart.dev/dart-3-3-325bf2bf6c13
 [Wasm]: /web/wasm
 [`package:web`]: {{site.pub-pkg}}/web
 [`dart:html`]: {{site.dart-api}}/dart-html/dart-html-library.html

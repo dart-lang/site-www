@@ -43,7 +43,7 @@ watch this video:
 <YouTubeEmbed id="eBr5tlumwlg" title="How to migrate Dart packages to null safety"></YouTubeEmbed>
 
 [null safety]: /null-safety
-[Gradual null safety migration for large Dart projects]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
+[Gradual null safety migration for large Dart projects]: https://blog.dart.dev/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
 
 
 ## 1. Wait to migrate {:#step1-wait}
