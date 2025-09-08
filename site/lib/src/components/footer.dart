@@ -29,7 +29,7 @@ final class DashFooter extends StatelessComponent {
           ),
           div(classes: 'footer-social-links', [
             a(
-              href: 'https://medium.com/dartlang',
+              href: 'https://blog.dart.dev',
               target: Target.blank,
               attributes: {
                 'rel': 'noopener',
