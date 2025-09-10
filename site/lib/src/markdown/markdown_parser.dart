@@ -8,11 +8,11 @@ import 'package:html/src/tokenizer.dart' as html;
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:markdown/markdown.dart' as md;
+import 'package:markdown_description_list/markdown_description_list.dart';
 
 import '../extensions/registry.dart';
 import 'alert_syntax.dart';
 import 'attribute_syntax.dart';
-import 'definition_list_syntax.dart';
 import 'fenced_code_block_syntax.dart';
 import 'header_syntax.dart';
 
@@ -23,7 +23,7 @@ const List<md.BlockSyntax> _blockSyntaxes = [
   HeaderWithAttributesSyntax(),
   AttributeBlockSyntax(),
   AlertBlockSyntax(),
-  DefinitionListSyntax(),
+  DescriptionListSyntax(),
   md.TableSyntax(),
   md.FootnoteDefSyntax(),
   md.EmptyBlockSyntax(),
