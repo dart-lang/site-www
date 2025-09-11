@@ -4,11 +4,10 @@ description: >-
   Details about the cast_from_nullable_always_fails
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_This cast will always throw an exception because the nullable local variable
-'{0}' is not assigned._
+_This cast will always throw an exception because the nullable local variable '{0}' is not assigned._
 
 ## Description
 

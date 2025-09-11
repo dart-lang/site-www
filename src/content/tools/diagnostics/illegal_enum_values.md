@@ -4,14 +4,12 @@ description: >-
   Details about the illegal_enum_values
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_An instance member named 'values' can't be declared in a class that implements
-'Enum'._
+_An instance member named 'values' can't be declared in a class that implements 'Enum'._
 
-_An instance member named 'values' can't be inherited from '{0}' in a class that
-implements 'Enum'._
+_An instance member named 'values' can't be inherited from '{0}' in a class that implements 'Enum'._
 
 ## Description
 

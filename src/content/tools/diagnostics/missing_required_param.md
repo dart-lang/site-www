@@ -4,7 +4,7 @@ description: >-
   Details about the missing_required_param
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The parameter '{0}' is required._

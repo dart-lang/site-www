@@ -4,11 +4,10 @@ description: >-
   Details about the wrong_number_of_type_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' is declared with {1} type parameters, but {2} type arguments
-were given._
+_The type '{0}' is declared with {1} type parameters, but {2} type arguments were given._
 
 ## Description
 

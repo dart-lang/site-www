@@ -12,7 +12,7 @@ $ dart pub upgrade [options] [dependencies]
 Like [`dart pub get`](/tools/pub/cmd/pub-get),
 `dart pub upgrade` gets dependencies.
 The difference is that `dart pub upgrade` ignores any existing
-[lockfile](/tools/pub/glossary#lockfile),
+[lockfile](/resources/glossary#lockfile),
 so that pub can get the latest versions of all dependencies.
 A related command is [`dart pub outdated`](/tools/pub/cmd/pub-outdated),
 which you can run to find out-of-date dependencies.
@@ -21,7 +21,7 @@ Without any additional arguments, `dart pub upgrade` gets the latest
 versions of all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working
 directory, as well as their [transitive
-dependencies](/tools/pub/glossary#transitive-dependency).
+dependencies](/resources/glossary#transitive-dependency).
 For example:
 
 ```console
@@ -43,7 +43,7 @@ one from scratch, using the latest versions of all dependencies.
 See the [`dart pub get` documentation](/tools/pub/cmd/pub-get) for more information
 on package resolution and the system package cache.
 
-[application packages]: /tools/pub/glossary#application-package
+[application packages]: /resources/glossary#application-package
 
 ## Upgrading specific dependencies
 

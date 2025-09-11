@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_reference_to_generative_enum_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Generative enum constructors can only be used as targets of redirection._

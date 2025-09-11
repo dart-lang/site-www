@@ -4,7 +4,7 @@ description: >-
   Details about the non_sync_factory
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Factory bodies can't use 'async', 'async*', or 'sync*'._

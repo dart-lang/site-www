@@ -4,11 +4,10 @@ description: >-
   Details about the invalid_override_of_non_virtual_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The member '{0}' is declared non-virtual in '{1}' and can't be overridden in
-subclasses._
+_The member '{0}' is declared non-virtual in '{1}' and can't be overridden in subclasses._
 
 ## Description
 

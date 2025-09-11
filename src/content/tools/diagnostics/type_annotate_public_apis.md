@@ -4,7 +4,7 @@ description: >-
   Details about the type_annotate_public_apis
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">

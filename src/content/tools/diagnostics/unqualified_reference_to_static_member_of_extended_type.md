@@ -4,11 +4,10 @@ description: >-
   Details about the unqualified_reference_to_static_member_of_extended_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Static members from the extended type or one of its superclasses must be
-qualified by the name of the defining type._
+_Static members from the extended type or one of its superclasses must be qualified by the name of the defining type._
 
 ## Description
 

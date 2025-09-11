@@ -4,23 +4,18 @@ description: >-
   Details about the conflicting_type_variable_and_container
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_'{0}' can't be used to name both a type parameter and the class in which the
-type parameter is defined._
+_'{0}' can't be used to name both a type parameter and the class in which the type parameter is defined._
 
-_'{0}' can't be used to name both a type parameter and the enum in which the
-type parameter is defined._
+_'{0}' can't be used to name both a type parameter and the enum in which the type parameter is defined._
 
-_'{0}' can't be used to name both a type parameter and the extension in which
-the type parameter is defined._
+_'{0}' can't be used to name both a type parameter and the extension in which the type parameter is defined._
 
-_'{0}' can't be used to name both a type parameter and the extension type in
-which the type parameter is defined._
+_'{0}' can't be used to name both a type parameter and the extension type in which the type parameter is defined._
 
-_'{0}' can't be used to name both a type parameter and the mixin in which the
-type parameter is defined._
+_'{0}' can't be used to name both a type parameter and the mixin in which the type parameter is defined._
 
 ## Description
 

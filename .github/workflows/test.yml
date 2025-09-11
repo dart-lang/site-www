@@ -17,8 +17,6 @@ permissions: read-all
 env:
   # Configure analytics reporting for pub.
   PUB_ENVIRONMENT: bot.github
-  # The Node version to use for site infra. Generally should be the latest LTS.
-  NODE_VERSION: '22'
 
 jobs:
   test:
@@ -44,13 +42,13 @@ jobs:
         run: dart pub get
         continue-on-error: ${{ matrix.experimental }}
       - name: Check Dart code formatting
-        run: dart run dart_site format-dart --check
+        run: dart run dash_site format-dart --check
         continue-on-error: ${{ matrix.experimental }}
       - name: Analyze Dart code
-        run: dart run dart_site analyze-dart
+        run: dart run dash_site analyze-dart
         continue-on-error: ${{ matrix.experimental }}
       - name: Run Dart tests
-        run: dart run dart_site test-dart
+        run: dart run dash_site test-dart
         continue-on-error: ${{ matrix.experimental }}
 
   markdown-check:
@@ -66,7 +64,7 @@ jobs:
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check Markdown for any known issues
-        run: dart run dart_site check-markdown
+        run: dart run dash_site check-markdown
 
   excerpts:
     name: Check if code excerpts are up to date
@@ -81,7 +79,7 @@ jobs:
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if excerpts are up to date
-        run: dart run dart_site refresh-excerpts --fail-on-update --dry-run
+        run: dart run dash_site refresh-excerpts --fail-on-update --dry-run
 
   site-variable-scanner:
     name: Check if text can be replaced with site variables
@@ -96,7 +94,7 @@ jobs:
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if text can be replaced with site variables
-        run: dart run dart_site check-site-variable
+        run: dart run dash_site check-site-variable
 
   firebase-validate:
     name: Validate Firebase configuration
@@ -111,4 +109,4 @@ jobs:
       - name: Fetch Dart packages
         run: dart pub get
       - name: Validate the firebase.json file
-        run: dart run dart_site verify-firebase-json
+        run: dart run dash_site verify-firebase-json

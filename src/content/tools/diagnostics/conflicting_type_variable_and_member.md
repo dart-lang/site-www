@@ -4,18 +4,16 @@ description: >-
   Details about the conflicting_type_variable_and_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' can't be used to name both a type parameter and a member in this class._
 
 _'{0}' can't be used to name both a type parameter and a member in this enum._
 
-_'{0}' can't be used to name both a type parameter and a member in this
-extension type._
+_'{0}' can't be used to name both a type parameter and a member in this extension type._
 
-_'{0}' can't be used to name both a type parameter and a member in this
-extension._
+_'{0}' can't be used to name both a type parameter and a member in this extension._
 
 _'{0}' can't be used to name both a type parameter and a member in this mixin._
 

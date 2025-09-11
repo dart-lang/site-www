@@ -4,7 +4,7 @@ description: >-
   Details about the main_is_not_function
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The declaration named 'main' must be a function._

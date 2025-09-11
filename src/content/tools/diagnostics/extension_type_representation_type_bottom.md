@@ -4,7 +4,7 @@ description: >-
   Details about the extension_type_representation_type_bottom
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The representation type can't be a bottom type._

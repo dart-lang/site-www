@@ -4,7 +4,7 @@ description: >-
   Details about the refutable_pattern_in_irrefutable_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Refutable patterns can't be used in an irrefutable context._

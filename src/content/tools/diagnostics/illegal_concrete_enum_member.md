@@ -4,14 +4,12 @@ description: >-
   Details about the illegal_concrete_enum_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_A concrete instance member named '{0}' can't be declared in a class that
-implements 'Enum'._
+_A concrete instance member named '{0}' can't be declared in a class that implements 'Enum'._
 
-_A concrete instance member named '{0}' can't be inherited from '{1}' in a class
-that implements 'Enum'._
+_A concrete instance member named '{0}' can't be inherited from '{1}' in a class that implements 'Enum'._
 
 ## Description
 

@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_runtime_check_with_js_interop_types
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -18,26 +18,19 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_Cast from '{0}' to '{1}' casts a Dart value to a JS interop type, which might
-not be platform-consistent._
+_Cast from '{0}' to '{1}' casts a Dart value to a JS interop type, which might not be platform-consistent._
 
-_Cast from '{0}' to '{1}' casts a JS interop value to a Dart type, which might
-not be platform-consistent._
+_Cast from '{0}' to '{1}' casts a JS interop value to a Dart type, which might not be platform-consistent._
 
-_Cast from '{0}' to '{1}' casts a JS interop value to an incompatible JS interop
-type, which might not be platform-consistent._
+_Cast from '{0}' to '{1}' casts a JS interop value to an incompatible JS interop type, which might not be platform-consistent._
 
-_Runtime check between '{0}' and '{1}' checks whether a Dart value is a JS
-interop type, which might not be platform-consistent._
+_Runtime check between '{0}' and '{1}' checks whether a Dart value is a JS interop type, which might not be platform-consistent._
 
-_Runtime check between '{0}' and '{1}' checks whether a JS interop value is a
-Dart type, which might not be platform-consistent._
+_Runtime check between '{0}' and '{1}' checks whether a JS interop value is a Dart type, which might not be platform-consistent._
 
-_Runtime check between '{0}' and '{1}' involves a non-trivial runtime check
-between two JS interop types that might not be platform-consistent._
+_Runtime check between '{0}' and '{1}' involves a non-trivial runtime check between two JS interop types that might not be platform-consistent._
 
-_Runtime check between '{0}' and '{1}' involves a runtime check between a JS
-interop value and an unrelated JS interop type that will always be true and won't check the underlying type._
+_Runtime check between '{0}' and '{1}' involves a runtime check between a JS interop value and an unrelated JS interop type that will always be true and won't check the underlying type._
 
 ## Description
 

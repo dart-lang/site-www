@@ -4,11 +4,10 @@ description: >-
   Details about the native_field_missing_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The native type of this field could not be inferred and must be specified in
-the annotation._
+_The native type of this field could not be inferred and must be specified in the annotation._
 
 ## Description
 

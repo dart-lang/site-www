@@ -4,11 +4,10 @@ description: >-
   Details about the asset_field_not_list
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The value of the 'assets' field is expected to be a list of relative file
-paths._
+_The value of the 'assets' field is expected to be a list of relative file paths._
 
 ## Description
 

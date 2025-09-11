@@ -4,11 +4,10 @@ description: >-
   Details about the invalid_extension_argument_count
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Extension overrides must have exactly one argument: the value of 'this' in the
-extension method._
+_Extension overrides must have exactly one argument: the value of 'this' in the extension method._
 
 ## Description
 

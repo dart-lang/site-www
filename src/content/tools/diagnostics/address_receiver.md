@@ -4,11 +4,10 @@ description: >-
   Details about the address_receiver
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The receiver of '.address' must be a concrete 'TypedData', a concrete
-'TypedData' '[]', an 'Array', an 'Array' '[]', a Struct field, or a Union field._
+_The receiver of '.address' must be a concrete 'TypedData', a concrete 'TypedData' '[]', an 'Array', an 'Array' '[]', a Struct field, or a Union field._
 
 ## Description
 

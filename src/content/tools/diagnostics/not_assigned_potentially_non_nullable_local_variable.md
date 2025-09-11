@@ -4,7 +4,7 @@ description: >-
   Details about the not_assigned_potentially_non_nullable_local_variable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The non-nullable local variable '{0}' must be assigned before it can be used._

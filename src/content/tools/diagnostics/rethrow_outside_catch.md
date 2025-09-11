@@ -4,7 +4,7 @@ description: >-
   Details about the rethrow_outside_catch
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A rethrow must be inside of a catch clause._

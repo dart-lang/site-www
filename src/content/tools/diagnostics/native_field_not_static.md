@@ -4,7 +4,7 @@ description: >-
   Details about the native_field_not_static
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Native fields must be static._

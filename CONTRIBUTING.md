@@ -78,7 +78,7 @@ the [GitHub Actions][] CI build will fail.
 Just update the PR, and GitHub Actions will run again.
 
 If you followed the setup in the README,
-you can instead run `dart run dart_site refresh-excerpts`
+you can instead run `dart run dash_site refresh-excerpts`
 from the root directory of the repository to update the Markdown files.
 
 [GitHub Actions]: https://docs.github.com/actions/learn-github-actions/understanding-github-actions

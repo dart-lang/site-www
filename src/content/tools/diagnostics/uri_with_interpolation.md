@@ -4,7 +4,7 @@ description: >-
   Details about the uri_with_interpolation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _URIs can't use string interpolation._

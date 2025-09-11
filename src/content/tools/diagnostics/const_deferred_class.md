@@ -4,7 +4,7 @@ description: >-
   Details about the const_deferred_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Deferred classes can't be created with 'const'._

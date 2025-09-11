@@ -4,7 +4,7 @@ description: >-
   Details about the creation_with_non_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The name '{0}' isn't a class._

@@ -4,11 +4,10 @@ description: >-
   Details about the sdk_version_eq_eq_operator_in_const_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Using the operator '==' for non-primitive types wasn't supported until version
-2.3.2, but this code is required to be able to run on earlier versions._
+_Using the operator '==' for non-primitive types wasn't supported until version 2.3.2, but this code is required to be able to run on earlier versions._
 
 ## Description
 

@@ -4,14 +4,12 @@ description: >-
   Details about the mixin_application_no_concrete_super_invoked_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The class doesn't have a concrete implementation of the super-invoked member
-'{0}'._
+_The class doesn't have a concrete implementation of the super-invoked member '{0}'._
 
-_The class doesn't have a concrete implementation of the super-invoked setter
-'{0}'._
+_The class doesn't have a concrete implementation of the super-invoked setter '{0}'._
 
 ## Description
 

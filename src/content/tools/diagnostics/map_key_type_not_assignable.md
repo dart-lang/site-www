@@ -4,7 +4,7 @@ description: >-
   Details about the map_key_type_not_assignable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The element type '{0}' can't be assigned to the map key type '{1}'._

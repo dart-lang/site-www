@@ -4,11 +4,10 @@ description: >-
   Details about the missing_return
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_This function has a return type of '{0}', but doesn't end with a return
-statement._
+_This function has a return type of '{0}', but doesn't end with a return statement._
 
 ## Description
 

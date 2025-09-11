@@ -4,7 +4,7 @@ description: >-
   Details about the expected_one_set_type_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Set literals require one type argument or none, but {0} were found._

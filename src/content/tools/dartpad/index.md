@@ -19,9 +19,7 @@ If you have issues using DartPad, check out the
 
 Here's what DartPad looks like when configured to run Dart:
 
-<img 
-   src="/assets/img/dartpad-hello.png" 
-   alt="Showcases what a Hello World app looks like in DartPad">
+<img src="/assets/img/dartpad-hello.png" alt="Showcases what a Hello World app looks like in DartPad"/>
 
 
 ## Library support

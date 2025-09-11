@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_reference_to_this
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Invalid reference to 'this' expression._

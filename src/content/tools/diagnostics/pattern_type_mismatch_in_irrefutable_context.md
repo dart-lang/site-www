@@ -4,7 +4,7 @@ description: >-
   Details about the pattern_type_mismatch_in_irrefutable_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The matched value of type '{0}' isn't assignable to the required type '{1}'._

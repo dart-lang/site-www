@@ -4,7 +4,7 @@ description: >-
   Details about the dot_shorthand_missing_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A dot shorthand can't be used where there is no context type._

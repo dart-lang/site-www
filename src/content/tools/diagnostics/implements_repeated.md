@@ -4,7 +4,7 @@ description: >-
   Details about the implements_repeated
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' can only be implemented once._

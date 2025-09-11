@@ -4,11 +4,10 @@ description: >-
   Details about the for_in_of_invalid_element_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The type '{0}' used in the 'for' loop must implement '{1}' with a type argument
-that can be assigned to '{2}'._
+_The type '{0}' used in the 'for' loop must implement '{1}' with a type argument that can be assigned to '{2}'._
 
 ## Description
 

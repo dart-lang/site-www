@@ -13,7 +13,7 @@ $ dart pub get [options]
 This command gets all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working
 directory, as well as their
-[transitive dependencies](/tools/pub/glossary#transitive-dependency).
+[transitive dependencies](/resources/glossary#transitive-dependency).
 For example:
 
 ```console
@@ -22,7 +22,7 @@ Resolving dependencies...
 Got dependencies!
 ```
 
-If the [system cache](/tools/pub/glossary#system-cache)
+If the [system cache](/resources/glossary#pub-system-cache)
 doesn't already contain the dependencies, `dart pub get`
 updates the cache,
 downloading dependencies if necessary.
@@ -38,7 +38,7 @@ import 'package:test/test.dart';
 ```
 
 When `dart pub get` gets new dependencies, it writes a
-[lockfile](/tools/pub/glossary#lockfile) to ensure that future
+[lockfile](/resources/glossary#lockfile) to ensure that future
 gets will use the same versions of those dependencies.
 [Application packages][] should check in the lockfile to source control;
 this ensures the application will use the exact same versions
@@ -49,12 +49,12 @@ expected to work with a range of dependency versions.
 If a lockfile already exists, `dart pub get` uses the versions of dependencies
 locked in it if possible. If a dependency isn't locked, pub gets the
 latest version of that dependency that satisfies all the [version
-constraints](/tools/pub/glossary#version-constraint).
+constraints](/resources/glossary#version-constraint).
 This is the primary difference between `dart pub get` and
 [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
 
-[Application packages]: /tools/pub/glossary#application-package
+[Application packages]: /resources/glossary#application-package
 
 ## Package resolution
 
@@ -91,7 +91,7 @@ already-acquired dependencies.
 
 Dependencies downloaded over the internet, such as those from Git and the
 [pub.dev site]({{site.pub}}), are stored in a
-[system-wide cache](/tools/pub/glossary#system-cache).
+[system-wide cache](/resources/glossary#pub-system-cache).
 This means that if multiple packages use the same version of the
 same dependency, it only needs to be
 downloaded and stored locally once.

@@ -4,11 +4,10 @@ description: >-
   Details about the part_of_unnamed_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The library is unnamed. A URI is expected, not a library name '{0}', in the
-part-of directive._
+_The library is unnamed. A URI is expected, not a library name '{0}', in the part-of directive._
 
 ## Description
 

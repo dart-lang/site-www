@@ -4,11 +4,10 @@ description: >-
   Details about the field_initializer_in_struct
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Constructors in subclasses of 'Struct' and 'Union' can't have field
-initializers._
+_Constructors in subclasses of 'Struct' and 'Union' can't have field initializers._
 
 ## Description
 

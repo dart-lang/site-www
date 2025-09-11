@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_literal_annotation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Only const constructors can have the `@literal` annotation._

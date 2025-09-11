@@ -4,7 +4,7 @@ description: >-
   Details about the initializing_formal_for_non_existent_field
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' isn't a field in the enclosing class._

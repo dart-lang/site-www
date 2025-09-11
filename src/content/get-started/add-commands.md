@@ -4,6 +4,9 @@ short-title: Add commands
 description: >-
   Add simple commands to your cli application. Learn the fundamentals of Dart
   syntax including control flow, collections, variables, functions, and more.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/hello-world
   title: Build your first app
@@ -11,6 +14,8 @@ nextpage:
   url: /get-started/async
   title: Intro to async and HTTP
 ---
+
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll get hands-on practice with Dart syntax. You'll learn how
 to read user input, print usage information, and create a basic command-line
@@ -68,6 +73,7 @@ explore the Dart syntax for it.
       }
     }
     ```
+    The `$version` syntax is called string interpolation. It lets you embed the value of the variable directly into a string by prefixing the variable name with a `$` sign. 
 
 1.  **Test the `version` command:** Run your application with the version
     argument:
@@ -120,7 +126,7 @@ explore the Dart syntax for it.
     you've implemented control flow in the `main` function, review the
     code that was added for it.
 
-    * `arguments.isNotEmpty` checks if any command-line arguments were
+    * `arguments.isEmpty` checks if no command-line arguments were
         provided.
     * `arguments.first` accesses the very first argument, which you're using as
         our command.
@@ -212,7 +218,7 @@ null checks, and string interpolation.
        be null, even in production. The purpose of null-safety isn't
        to stop you from ever using null in your code, because
        representing the absense of a value can be valuable. Rather,
-       it's to force you to consider nullability and therefor be more
+       it's to force you to consider nullability and therefore be more
        careful about it. Along with the analyzer, this helps prevent
        one of the most common runtime crashes in programming:
        null-pointer errors.
@@ -243,6 +249,7 @@ null checks, and string interpolation.
 
     Highlights from the preceding code:
 
+    * `final` variables can only be set once and are used when you never intend to change the variable again in the code. 
     * `arguments.sublist(1)` creates a new list
         containing all elements of the `arguments` list *after* the first
         element (which was `search`).
@@ -294,12 +301,13 @@ null checks, and string interpolation.
 
     ```dart
     void searchWikipedia(List<String>? arguments) {
-      late String articleTitle;
+      final String articleTitle;
 
       // If the user didn't pass in arguments, request an article title.
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
-        articleTitle = stdin.readLineSync(); // Await input from the user
+        // Await input and provide a default empty string if the input is null.
+        articleTitle = stdin.readLineSync() ?? ''; 
       } else {
         // Otherwise, join the arguments into the CLI into a single string
         articleTitle = arguments.join(' ');
@@ -312,29 +320,22 @@ null checks, and string interpolation.
     This preceding code block introduces a few
     key concepts:
 
-    * It declares a `late String? articleTitle` variable which will
-        hold the full search query, whether it comes from the command
-        line or user input. `late` is a keyword that tells the
-        analyzer that you, the programmer, promise that this variable
-        won't be null by the time it's used.
+    * It declares a `final String articleTitle` variable. This allows static analysis to detect that `articleTitle` will be a `String` and won't be null. 
     * An `if/else` statement then checks if command-line arguments for the
         search were provided.
     * If arguments are missing, it prompts the user, reads input using
-        `stdin.readLineSync()`, and performs null and empty checks.
+        `stdin.readLineSync()`, and safely handles cases where no input is given. 
     * If arguments *are* present, it uses `arguments.join(' ')` to combine
         them into a single search string.
 
     Highlights from the preceding code:
 
-    * `stdin.readLineSync()` reads a line of text typed by the user into the
-      console. Its return type is `String?`.
-    * `if (inputFromStdin == null || inputFromStdin.isEmpty)` performs a
-      null check and an empty string check. If either is true, the program
-      prints a message and `return`s, exiting the function.
+    * `stdin.readLineSync() ?? ''` reads the input from the user. While `stdin.readLineSync()` can return null, the null-coalescing operator (`??`) provides a default empty string (`''`). This is a concise way to ensure that the variable is a non-null String.
     * `arguments.join(' ')`: concatenates all elements of the `arguments` list
       into a single string, using a space as the separator. For example,
       `['Dart', 'Programming']` becomes `"Dart Programming"`. This is crucial
       for treating multi-word command-line inputs as a single search phrase.
+    * Dart static analysis can detect that `articleTitle` is guaranteed to be initialized when the print statement is executed. No matter which path is taken through this function body, the variable is non-nullable. 
 
 1.  **Finish `searchWikipedia` to print mock search results:** Update `searchWikipedia` to display
     messages that look like our program found something. This helps us see what
@@ -346,13 +347,15 @@ null checks, and string interpolation.
 
     ```dart
     void searchWikipedia(List<String>? arguments) {
-      late String? articleTitle;
+      final String articleTitle;
 
+      // If the user didn't pass in arguments, request an article title.
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
-        articleTitle = stdin.readLineSync();
-        return; // Exits here if input is from stdin
+        // Await input and provide a default empty string if the input is null.
+        articleTitle = stdin.readLineSync() ?? ''; 
       } else {
+        // Otherwise, join the arguments into the CLI into a single string
         articleTitle = arguments.join(' ');
       }
 
@@ -400,10 +403,10 @@ In this chapter, you learned:
 
 * **Control flow:** Using `if/else` statements to control the execution flow
     of your program.
-* **Variables and Constants:** Declaring variables with `var`, `const`, and `late String?`.
-* **Lists:** Creating and manipulating lists using `.isNotEmpty`, `.first`,
+* **Variables and Constants:** Declaring variables with `var`, `const`, and `final String`.
+* **Lists:** Creating and manipulating lists using `.isEmpty`, `.first`,
     `.sublist`, and `.join()`.
-* **Null Safety:** Understanding nullability (`?`) and using null checks.
+* **Null Safety:** Understanding nullability (`?`) and using null checks. Handling potential null values with the null-coalescing operator (`??`) to provide default values.
 * **Functions:** Defining and calling functions.
 * **String interpolation:** Embedding variables in strings using `$`.
 * **Input/Output:** Reading user input from the console using `stdin.readLineSync()`.

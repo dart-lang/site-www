@@ -4,7 +4,7 @@ description: >-
   Details about the not_enough_positional_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _1 positional argument expected by '{0}', but 0 found._

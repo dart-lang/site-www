@@ -4,7 +4,7 @@ description: >-
   Details about the packed_annotation_alignment
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Only packing to 1, 2, 4, 8, and 16 bytes is supported._

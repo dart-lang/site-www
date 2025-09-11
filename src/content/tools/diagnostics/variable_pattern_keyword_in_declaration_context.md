@@ -4,11 +4,10 @@ description: >-
   Details about the variable_pattern_keyword_in_declaration_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Variable patterns in declaration context can't specify 'var' or 'final'
-keyword._
+_Variable patterns in declaration context can't specify 'var' or 'final' keyword._
 
 ## Description
 

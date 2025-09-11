@@ -1,7 +1,7 @@
 ---
 title: Visual Studio Code
 description: You can use VS Code to develop Dart apps.
-toc: false
+showToc: false
 ---
 
 To develop Dart apps,

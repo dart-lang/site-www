@@ -4,7 +4,7 @@ description: >-
   Details about the invalid_deprecated_extend_annotation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The annotation '@Deprecated.extend' can only be applied to extendable classes._

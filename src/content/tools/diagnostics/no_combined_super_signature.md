@@ -4,7 +4,7 @@ description: >-
   Details about the no_combined_super_signature
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Can't infer missing types in '{0}' from overridden methods: {1}._

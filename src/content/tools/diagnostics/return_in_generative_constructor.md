@@ -4,7 +4,7 @@ description: >-
   Details about the return_in_generative_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Constructors can't return values._

@@ -4,7 +4,7 @@ description: >-
   Details about the default_list_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The default 'List' constructor isn't available when null safety is enabled._

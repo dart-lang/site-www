@@ -4,7 +4,7 @@ description: >-
   Details about the non_positive_array_dimension
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Array dimensions must be positive numbers._

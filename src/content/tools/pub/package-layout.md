@@ -73,7 +73,7 @@ enchilada/
 
 \*** The `pubspec.lock` file exists after you've run `dart pub get`.
     Leave it out of source control unless your package is an
-    [application package](/tools/pub/glossary#application-package).
+    [application package](/resources/glossary#application-package).
 
 \**** The `doc/api` directory exists locally after you've run
      [`dart doc`](/tools/dart-doc).
@@ -99,7 +99,7 @@ Running [`dart pub get`](/tools/pub/cmd/pub-get),
 [`dart pub downgrade`](/tools/pub/cmd/pub-downgrade) on the package
 creates a **lockfile**, named `pubspec.lock`. 
 If your package is an 
-[application package](/tools/pub/glossary#application-package), 
+[application package](/resources/glossary#application-package), 
 check the lockfile into source control. Otherwise, don't.
 
 For more information, see the [pubspec page](/tools/pub/pubspec).
@@ -204,7 +204,7 @@ enchilada/
     tortilla.dart
 ```
 
-Many [packages](/tools/pub/glossary#package)
+Many [packages](/resources/glossary#package)
 define Dart libraries that other packages can import and use.
 These public Dart library files go inside a directory called `lib`.
 
@@ -244,7 +244,7 @@ Note that only *libraries* should be in `lib`.
 go in `lib`. If you place a Dart script inside `lib`,
 you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
-[entrypoint directory](/tools/pub/glossary#entrypoint-directory).
+[entrypoint directory](/resources/glossary#entrypoint-directory).
 
 :::note Tip for web apps
 For the best performance when developing web apps,

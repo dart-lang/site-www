@@ -4,7 +4,7 @@ description: >-
   Details about the avoid_renaming_method_parameters
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -18,8 +18,7 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_The parameter name '{0}' doesn't match the name '{1}' in the overridden
-method._
+_The parameter name '{0}' doesn't match the name '{1}' in the overridden method._
 
 ## Description
 

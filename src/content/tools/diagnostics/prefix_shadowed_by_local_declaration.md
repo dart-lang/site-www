@@ -4,11 +4,10 @@ description: >-
   Details about the prefix_shadowed_by_local_declaration
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The prefix '{0}' can't be used here because it's shadowed by a local
-declaration._
+_The prefix '{0}' can't be used here because it's shadowed by a local declaration._
 
 ## Description
 

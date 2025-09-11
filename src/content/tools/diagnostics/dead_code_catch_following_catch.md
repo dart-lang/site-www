@@ -4,11 +4,10 @@ description: >-
   Details about the dead_code_catch_following_catch
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Dead code: Catch clauses after a 'catch (e)' or an 'on Object catch (e)' are
-never reached._
+_Dead code: Catch clauses after a 'catch (e)' or an 'on Object catch (e)' are never reached._
 
 ## Description
 

@@ -4,11 +4,10 @@ description: >-
   Details about the const_constructor_with_field_initialized_by_non_const
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Can't define the 'const' constructor because the field '{0}' is initialized
-with a non-constant value._
+_Can't define the 'const' constructor because the field '{0}' is initialized with a non-constant value._
 
 ## Description
 

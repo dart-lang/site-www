@@ -4,29 +4,22 @@ description: >-
   Details about the invalid_use_of_type_outside_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't be extended outside of its library because it's a final
-class._
+_The class '{0}' can't be extended outside of its library because it's a final class._
 
-_The class '{0}' can't be extended outside of its library because it's an
-interface class._
+_The class '{0}' can't be extended outside of its library because it's an interface class._
 
-_The class '{0}' can't be extended, implemented, or mixed in outside of its
-library because it's a sealed class._
+_The class '{0}' can't be extended, implemented, or mixed in outside of its library because it's a sealed class._
 
-_The class '{0}' can't be implemented outside of its library because it's a base
-class._
+_The class '{0}' can't be implemented outside of its library because it's a base class._
 
-_The class '{0}' can't be implemented outside of its library because it's a
-final class._
+_The class '{0}' can't be implemented outside of its library because it's a final class._
 
-_The class '{0}' can't be used as a mixin superclass constraint outside of its
-library because it's a final class._
+_The class '{0}' can't be used as a mixin superclass constraint outside of its library because it's a final class._
 
-_The mixin '{0}' can't be implemented outside of its library because it's a base
-mixin._
+_The mixin '{0}' can't be implemented outside of its library because it's a base mixin._
 
 ## Description
 

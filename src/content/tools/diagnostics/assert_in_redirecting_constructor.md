@@ -4,7 +4,7 @@ description: >-
   Details about the assert_in_redirecting_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A redirecting constructor can't have an 'assert' initializer._

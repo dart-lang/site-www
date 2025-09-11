@@ -4,7 +4,7 @@ description: >-
   Details about the on_repeated
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The type '{0}' can be included in the superclass constraints only once._

@@ -4,17 +4,14 @@ description: >-
   Details about the invalid_pattern_variable_in_shared_case_scope
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The variable '{0}' doesn't have the same type and/or finality in all cases that
-share this body._
+_The variable '{0}' doesn't have the same type and/or finality in all cases that share this body._
 
-_The variable '{0}' is available in some, but not all cases that share this
-body._
+_The variable '{0}' is available in some, but not all cases that share this body._
 
-_The variable '{0}' is not available because there is a label or 'default'
-case._
+_The variable '{0}' is not available because there is a label or 'default' case._
 
 ## Description
 

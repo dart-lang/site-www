@@ -4,7 +4,7 @@ description: >-
   Details about the non_abstract_class_inherits_abstract_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Missing concrete implementation of '{0}'._

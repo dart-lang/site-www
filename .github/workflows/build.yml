@@ -18,13 +18,12 @@ permissions: read-all
 env:
   # Configure analytics reporting for pub.
   PUB_ENVIRONMENT: bot.github
-  # The Node version to use for site infra. Generally should be the latest LTS.
-  NODE_VERSION: '22'
 
 jobs:
   build:
     name: Build site and check links
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
@@ -34,16 +33,12 @@ jobs:
           sdk: beta
       - name: Fetch Dart packages
         run: dart pub get
-      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-      - name: Install Node dependencies
-        run: pnpm install
+      - name: Install firebase-tools
+        run: npm install -g firebase-tools
       - name: Build site
-        run: dart run dart_site build
+        run: dart run dash_site build
       - name: Check for broken Markdown links
-        run: dart run dart_site check-link-references
+        run: dart run dash_site check-link-references
       - name: Check internal site links are functional
-        run: dart run dart_site check-links
+        run: dart run dash_site check-links

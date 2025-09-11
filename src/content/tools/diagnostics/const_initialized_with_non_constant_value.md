@@ -4,7 +4,7 @@ description: >-
   Details about the const_initialized_with_non_constant_value
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Const variables must be initialized with a constant value._

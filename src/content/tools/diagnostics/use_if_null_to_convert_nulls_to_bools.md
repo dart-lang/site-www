@@ -4,7 +4,7 @@ description: >-
   Details about the use_if_null_to_convert_nulls_to_bools
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">

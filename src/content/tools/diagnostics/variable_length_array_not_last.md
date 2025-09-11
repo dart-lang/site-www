@@ -4,7 +4,7 @@ description: >-
   Details about the variable_length_array_not_last
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Variable length 'Array's must only occur as the last field of Structs._

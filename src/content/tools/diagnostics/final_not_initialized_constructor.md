@@ -4,15 +4,14 @@ description: >-
   Details about the final_not_initialized_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _All final variables must be initialized, but '{0}' and '{1}' aren't._
 
 _All final variables must be initialized, but '{0}' isn't._
 
-_All final variables must be initialized, but '{0}', '{1}', and {2} others
-aren't._
+_All final variables must be initialized, but '{0}', '{1}', and {2} others aren't._
 
 ## Description
 

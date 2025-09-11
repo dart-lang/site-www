@@ -4,15 +4,14 @@ description: >-
   Details about the supertype_expands_to_type_parameter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A type alias that expands to a type parameter can't be implemented._
 
 _A type alias that expands to a type parameter can't be mixed in._
 
-_A type alias that expands to a type parameter can't be used as a superclass
-constraint._
+_A type alias that expands to a type parameter can't be used as a superclass constraint._
 
 _A type alias that expands to a type parameter can't be used as a superclass._
 

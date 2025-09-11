@@ -4,17 +4,14 @@ description: >-
   Details about the return_of_invalid_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_A value of type '{0}' can't be returned from the constructor '{1}' because it
-has a return type of '{2}'._
+_A value of type '{0}' can't be returned from the constructor '{1}' because it has a return type of '{2}'._
 
-_A value of type '{0}' can't be returned from the function '{1}' because it has
-a return type of '{2}'._
+_A value of type '{0}' can't be returned from the function '{1}' because it has a return type of '{2}'._
 
-_A value of type '{0}' can't be returned from the method '{1}' because it has a
-return type of '{2}'._
+_A value of type '{0}' can't be returned from the method '{1}' because it has a return type of '{2}'._
 
 ## Description
 
