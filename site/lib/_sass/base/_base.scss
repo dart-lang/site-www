@@ -81,18 +81,6 @@ dt {
   }
 }
 
-button {
-  &:hover, &:active {
-    color: var(--site-link-fgColor);
-    outline: none;
-    text-decoration: none;
-  }
-
-  &:active {
-    color: var(--site-link-fgColor-active);
-  }
-}
-
 a {
   border-radius: 0.2rem;
 
