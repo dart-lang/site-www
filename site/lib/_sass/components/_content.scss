@@ -46,7 +46,7 @@ article {
 
   #site-content-title {
     margin-bottom: 1rem;
-    scroll-margin: 4.5rem;
+    scroll-margin-top: calc(var(--site-header-height) + var(--site-subheader-height) + 1.25rem);
   }
 
   h1,
@@ -57,7 +57,7 @@ article {
   h6 {
     // Push # link targets clear of page header.
     &[id] {
-      scroll-margin: 4.5rem;
+      scroll-margin-top: calc(var(--site-header-height) + var(--site-subheader-height) + 1.25rem);
     }
 
     // Let the wrapper set the bottom margin.
@@ -66,7 +66,7 @@ article {
 
   // Push # link targets clear of page header.
   a[id] {
-    scroll-margin: 4.5rem;
+    scroll-margin-top: calc(var(--site-header-height) + var(--site-subheader-height) + 1.25rem);
   }
 
   .header-wrapper {

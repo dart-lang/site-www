@@ -1,7 +1,7 @@
 @media print {
   // Don't display navigation aids when printing.
   #site-header, #sidenav, #prev-next, #page-footer, .banner,
-  #site-toc--inline, #site-toc--side, #trailing-content, #cookie-notice {
+  .site-toc, #trailing-content, #cookie-notice {
     display: none !important;
   }
 
