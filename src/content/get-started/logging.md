@@ -71,53 +71,102 @@ the necessary imports.
 
 1.  Create a new file called `cli/lib/src/logger.dart`.
 
-2.  Add the necessary imports to the top of the file:
+1. To begin, add the necessary imports and define the `initFileLogger` function.
 
-    ```dart title="cli/lib/src/logger.dart"
-    import 'dart:io';
+  ``` dart title="cli/lib/src/logger.dart"
+  import 'dart:io';
+  import 'package:logging/logging.dart';
 
-    import 'package:logging/logging.dart';
-    ```
+  Logger initFileLogger(String name) {
+    // Enables logging from child loggers.
+    hierarchicalLoggingEnabled = true;
 
-3.  Define a function called `initFileLogger` that configures and returns a
-    `Logger` instance.
+    // Create a logger instance with the provided name.
+    final logger = Logger(name);
+    final now = DateTime.now();
 
-    ```dart title="cli/lib/src/logger.dart"
-    Logger initFileLogger(String name) {
-      hierarchicalLoggingEnabled = true;
-      final logger = Logger(name);
-      final now = DateTime.now();
-    
-      final segments = Platform.script.path.split('/');
-      final projectDir = segments.sublist(0, segments.length - 2).join('/');
-      final dir = Directory('$projectDir/logs');
-      if (!dir.existsSync()) dir.createSync();
-      final logFile = File(
-        '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
-      );
-    
-      logger.level = Level.ALL;
-      logger.onRecord.listen((record) {
-        final msg =
-            '[${record.time} - ${record.loggerName}] ${record.level.name}: ${record.message}';
-        logFile.writeAsStringSync('$msg \n', mode: FileMode.append);
-      });
-    
-      return logger;
-    }
-    ```
+    // The rest of the function will be added below.
+    // ...
 
-    This code does the following:
+    return logger;
+  }
+  ```
 
-    *  It enables hierarchical logging using `hierarchicalLoggingEnabled = true`.
-    *  It creates a `Logger` instance with the given name.
-    *  It gets the project directory from the `Platform.script.path`.
-    *  It creates a `logs` directory if it doesn't exist.
-    *  It creates a log file with the current date and the logger name.
-    *  It sets the logger level to `Level.ALL`, meaning it will log all messages.
-    *  It listens for log records and writes them to the log file.
+1. Next, add the code to find the project's root directory, create a `logs`
+   directory if one doesn't exist, and create a unique log file.
+   
+  ``` dart
+  Logger initFileLogger(String name) {
+    hierarchicalLoggingEnabled = true;
+    final logger = Logger(name);
+    final now = DateTime.now();
 
-4. Create a new file called `cli/lib/cli.dart` and export `logger.dart`
+    // Get the path to the project directory from the current script.
+    final segments = Platform.script.path.split('/');
+    final projectDir = segments.sublist(0, segments.length - 2).join('/');
+
+    // Create a 'logs' directory if it doesn't exist.
+    final dir = Directory('$projectDir/logs');
+    if (!dir.existsSync()) dir.createSync();
+
+    // Create a log file with a unique name based on the current date and logger name.
+    final logFile = File(
+      '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
+    );
+
+    // The rest of the function will be added below.
+    // ...
+
+    return logger;
+  }
+  ```
+1. Now, configure the logger's level and set up a listener to write log messages
+   to the file.
+
+  ``` dart
+  Logger initFileLogger(String name) {
+    hierarchicalLoggingEnabled = true;
+    final logger = Logger(name);
+    final now = DateTime.now();
+
+    final segments = Platform.script.path.split('/');
+    final projectDir = segments.sublist(0, segments.length - 2).join('/');
+    final dir = Directory('$projectDir/logs');
+    if (!dir.existsSync()) dir.createSync();
+    final logFile = File(
+      '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
+    );
+
+    // Set the logger level to ALL, so it logs all messages regardless of severity.
+    // Level.ALL is useful for development and debugging, but you'll likely want to
+    // use a more restrictive level like Level.INFO or Level.WARNING in production.
+    logger.level = Level.ALL;
+
+    // Listen for log records and write each one to the log file.
+    logger.onRecord.listen((record) {
+      final msg =
+          '[${record.time} - ${record.loggerName}] ${record.level.name}: ${record.message}';
+      logFile.writeAsStringSync('$msg \n', mode: FileMode.append);
+    });
+
+    return logger;
+  }
+  ```
+
+  This code does the following:
+
+  *  It enables hierarchical logging using `hierarchicalLoggingEnabled = true`.
+  *  It creates a `Logger` instance with the given name.
+  *  It gets the project directory from the `Platform.script.path`.
+  *  It creates a `logs` directory if it doesn't exist.
+  *  It creates a log file with the current date and the logger name.
+  *  It sets the logger level to `Level.ALL`, meaning it will log all messages.
+     This is useful for development and debugging, but you'll likely want to use
+     a more restrictive level like `Level.INFO` or `Level.WARNING` in
+     production.
+  *  It listens for log records and writes them to the log file.
+
+1. Create a new file called `cli/lib/cli.dart` and export `logger.dart`
 
    ```dart title="cli/lib/cli.dart"
     export 'src/commands/get_article.dart';
@@ -188,9 +237,167 @@ including the logging and error handling.
 
 1.  Create a new file named `/cli/lib/src/commands/search.dart`.
 
-2.  Add the following code to the new `search.dart` file:
+1.  To start, add the imports and a basic class structure. This `SearchCommand`
+    class extends `Command<String>`, and its constructor accepts a Logger
+    instance. Accepting the logger in the constructor is a common pattern called
+    dependency injection, which allows the command to log events without needing
+    to create its own logger.
 
-    ```dart title="cli/lib/src/commands/search.dart"
+    ``` dart
+    import 'dart:async';
+    import 'dart:io';
+
+    import 'package:command_runner/command_runner.dart';
+    import 'package:logging/logging.dart';
+    import 'package:wikipedia/wikipedia.dart';
+
+    class SearchCommand extends Command<String> {
+      SearchCommand({required this.logger});
+
+      final Logger logger;
+
+      @override
+      String get description => 'Search for Wikipedia articles.';
+
+      @override
+      String get name => 'search';
+
+      @override
+      String get valueHelp => 'STRING';
+
+      @override
+      String get help =>
+          'Prints a list of links to Wikipedia articles that match the given term.';
+
+      @override
+      FutureOr<String> run(ArgResults args) async {
+        // The rest of the function will be added below.
+        // ...
+      }
+    }
+    ```
+  
+1.  Now, let's add the core logic to the `run` method. This code checks for a
+    valid argument, calls the `search()` function from the `wikipedia` package,
+    formats the results, and returns them as a string.
+
+    ``` dart
+    import 'dart:async';
+    import 'dart:io';
+
+    import 'package:command_runner/command_runner.dart';
+    import 'package:logging/logging.dart';
+    import 'package:wikipedia/wikipedia.dart';
+
+    class SearchCommand extends Command<String> {
+      SearchCommand({required this.logger});
+
+      final Logger logger;
+
+      @override
+      String get description => 'Search for Wikipedia articles.';
+
+      @override
+      String get name => 'search';
+
+      @override
+      String get valueHelp => 'STRING';
+
+      @override
+      String get help =>
+          'Prints a list of links to Wikipedia articles that match the given term.';
+
+      @override
+      FutureOr<String> run(ArgResults args) async {
+        if (requiresArgument &&
+            (args.commandArg == null || args.commandArg!.isEmpty)) {
+          return 'Please include a search term';
+        }
+
+        final buffer = StringBuffer('Search results:');
+        final SearchResults results = await search(args.commandArg!);
+
+        for (var result in results.results) {
+          buffer.writeln('${result.title} - ${result.url}');
+        }
+        return buffer.toString();
+      }
+    }
+    ```
+
+1.  Next, add the "I'm feeling lucky" feature by adding a flag to the
+    constructor. Then, in the `run` method, add the logic to check if the flag
+    is set and, if so, get the summary of the top search result.
+
+    ``` dart
+    import 'dart:async';
+    import 'dart:io';
+
+    import 'package:command_runner/command_runner.dart';
+    import 'package:logging/logging.dart';
+    import 'package:wikipedia/wikipedia.dart';
+
+    class SearchCommand extends Command<String> {
+      SearchCommand({required this.logger}) {
+        addFlag(
+          'im-feeling-lucky',
+          help:
+              'If true, prints the summary of the top article that the search returns.',
+        );
+      }
+
+      final Logger logger;
+
+      @override
+      String get description => 'Search for Wikipedia articles.';
+
+      @override
+      String get name => 'search';
+
+      @override
+      String get valueHelp => 'STRING';
+
+      @override
+      String get help =>
+          'Prints a list of links to Wikipedia articles that match the given term.';
+
+      @override
+      FutureOr<String> run(ArgResults args) async {
+        if (requiresArgument &&
+            (args.commandArg == null || args.commandArg!.isEmpty)) {
+          return 'Please include a search term';
+        }
+
+        final buffer = StringBuffer('Search results:');
+        final SearchResults results = await search(args.commandArg!);
+
+        if (args.flag('im-feeling-lucky')) {
+          final title = results.results.first.title;
+          final Summary article = await getArticleSummaryByTitle(title);
+          buffer.writeln('Lucky you!');
+          buffer.writeln(article.titles.normalized.titleText);
+          if (article.description != null) {
+            buffer.writeln(article.description);
+          }
+          buffer.writeln(article.extract);
+          buffer.writeln();
+          buffer.writeln('All results:');
+        }
+
+        for (var result in results.results) {
+          buffer.writeln('${result.title} - ${result.url}');
+        }
+        return buffer.toString();
+      }
+    }
+    ```
+
+1.  Finally, wrap the main logic in a `try/catch` block. This allows you to
+    handle potential exceptions that could arise from network issues or data
+    formatting problems. You'll use the injected `logger` to record these errors
+    to the log file.
+
+    ``` dart
     import 'dart:async';
     import 'dart:io';
 
@@ -267,11 +474,15 @@ including the logging and error handling.
     }
     ```
 
-1.  Create a new file named `cli/lib/src/commands/get_article.dart`.
+Now, create the `GetArticleCommand` file and add the necessary code. The code is
+similar to the `SearchCommand` above, as it also uses a `try/catch` block to handle
+potential network or data errors.
 
-1.  Add the following code to `get_article.dart`:
+1.  Create a new file named cli/lib/src/commands/get_article.dart.
 
-    ```dart title="cli/lib/src/commands/get_article.dart"
+2.  Add the following code to `get_article.dart`.
+
+    ``` dart
     import 'dart:async';
     import 'dart:io';
 
