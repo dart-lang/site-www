@@ -5,6 +5,9 @@ description: >-
   Learn about object-oriented programming in Dart, including
   abstract classes, inheritance, overrides, and enums.
   Build a framework for well-architected CLI apps.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/packages-libs
   title: Packages and libraries

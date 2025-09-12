@@ -4,6 +4,9 @@ short-title: Logging
 description: >-
   Learn how to add logging to your Dart application to help with debugging and
   monitoring.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/http
   title: Http
@@ -11,6 +14,8 @@ nextpage:
   url: /get-started
   title: Next chapter
 ---
+
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll learn how to add logging to your Dart application.
 Logging is a critical tool for debugging, monitoring, and understanding the
