@@ -96,7 +96,7 @@
     - "language"
   alternate:
     - "Never"
-    
+
 - term: "Callback"
   short_description: |-
     A function passed as an argument to another function to be called later.
@@ -105,11 +105,12 @@
     function so that it can be invoked (or "called back") at a later time.
 
     Callbacks are often used for:
-    * Event handling.
-    * Customizing the behavior of APIs.
-    * Asynchronous operations, such as responding to the result of a future.
 
-    For example, in the following code, the `printResult` function is passed
+    - Event handling.
+    - Customizing the behavior of APIs.
+    - Asynchronous operations, such as responding to the result of a future.
+
+    For example, in the following snippet, the `printResult` function is passed
     as a callback to `doOperation`, and is called after the operation finishes:
 
     ```dart
@@ -119,11 +120,11 @@
     }
 
     void printResult(int value) {
-      print('The result is $value');
+      print('The result is $value.');
     }
 
     void main() {
-      doOperation(3, 4, printResult); // Prints: The result is 7
+      doOperation(3, 4, printResult); // Prints: The result is 7.
     }
     ```
   related_links:
