@@ -6,9 +6,8 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../components/breadcrumbs.dart';
-import '../components/navigation_toc_side.dart';
-import '../components/navigation_toc_top.dart';
 import '../components/prev_next.dart';
+import '../components/toc.dart';
 import '../components/trailing_content.dart';
 import '../util.dart';
 import 'dash_layout.dart';
@@ -25,43 +24,48 @@ class DocLayout extends DashLayout {
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
     final pageTitle = pageData['title'] as String;
+    final showToc = pageData['showToc'] as bool? ?? true;
+    final tocData = showToc ? page.data['toc'] as TableOfContents? : null;
+    final noToc = tocData == null || tocData.entries.length < 2;
+    final maxTocDepth = pageData['maxTocDepth'] as int?;
 
     return super.buildBody(
       page,
       Component.fragment(
         [
-          if (pageData['showToc'] != false)
-            if (page.data['toc'] case final TableOfContents toc)
-              NavigationTocSide(
-                toc: toc,
-                maxDepth: pageData['maxTocDepth'] as int?,
-              ),
-          article([
-            div(classes: 'content', [
-              div(id: 'site-content-title', [
-                h1([
-                  if (pageData['underscore_breaker_titles'] == true)
-                    ...splitByUnderscore(pageTitle)
-                  else
-                    text(pageTitle),
-                ]),
-                if (pageData['showBreadcrumbs'] != false)
-                  const PageBreadcrumbs(),
+          if (noToc) const Document.body(attributes: {'class': 'no-toc'}),
+          if (tocData case final TableOfContents toc)
+            TopTableOfContents(
+              toc,
+              currentTitle: pageTitle,
+              maxDepth: maxTocDepth,
+            ),
+          div(classes: 'after-leading-content', [
+            if (tocData case final TableOfContents toc)
+              aside(id: 'side-menu', [
+                SideTableOfContents(toc, maxDepth: maxTocDepth),
               ]),
+            article([
+              div(classes: 'content', [
+                div(id: 'site-content-title', [
+                  h1(id: 'document-title', [
+                    if (pageData['underscore_breaker_titles'] == true)
+                      ...splitByUnderscore(pageTitle)
+                    else
+                      text(pageTitle),
+                  ]),
+                  if (pageData['showBreadcrumbs'] != false)
+                    const PageBreadcrumbs(),
+                ]),
 
-              if (page.data['showToc'] != false)
-                if (page.data['toc'] case final TableOfContents toc)
-                  NavigationTocTop(
-                    toc: toc,
-                    maxDepth: pageData['maxTocDepth'] as int?,
-                  ),
-              child,
+                child,
 
-              PrevNext(
-                previousPage: _pageInfoFromObject(pageData['prevpage']),
-                nextPage: _pageInfoFromObject(pageData['nextpage']),
-              ),
-              const TrailingContent(),
+                PrevNext(
+                  previousPage: _pageInfoFromObject(pageData['prevpage']),
+                  nextPage: _pageInfoFromObject(pageData['nextpage']),
+                ),
+                const TrailingContent(),
+              ]),
             ]),
           ]),
         ],

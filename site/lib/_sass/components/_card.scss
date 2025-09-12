@@ -30,7 +30,7 @@
     background-color: var(--card-container-color, var(--site-filledCard-bgColor, rgb(242, 245, 255)));
     height: auto;
 
-    scroll-margin: 4rem;
+    scroll-margin-top: calc(var(--site-header-height) + var(--site-subheader-height) + 1.25rem);
 
     &.hidden {
       display: none;
