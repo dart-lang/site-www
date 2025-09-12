@@ -6,17 +6,23 @@ description: Learn how to create packages in Dart.
 The Dart ecosystem uses [packages](/tools/pub/packages)
 to share software such as libraries and tools.
 This page tells you how to create a standard shared 
-[package](/tools/pub/glossary#package).
+[package](/resources/glossary#package).
 
 ## Creating a new package
 
 To create the initial directory and structure for a package,
-use the [`dart create`](/tools/dart-create) command
+use the [`dart create`][] command
 and the `package` template:
 
 ```console
 $ dart create -t package <PACKAGE_NAME>
 ```
+
+To learn more about available templates and how to use the `-t` flag, 
+see the [`dart create` documentation][].
+
+[`dart create`]: /tools/dart-create
+[`dart create` documentation]: /tools/dart-create#available-templates
 
 ## What makes a package
 
@@ -44,7 +50,7 @@ lib directory
   To make APIs under lib/src public, you can export lib/src files
   from a file that's directly under lib.
 
-[application package]: /tools/pub/glossary#application-package
+[application package]: /resources/glossary#application-package
 
 ## Organizing a package
 

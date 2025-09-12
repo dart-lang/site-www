@@ -4,12 +4,11 @@ description: >-
   Details about the super_invocation_not_last
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 canonical: https://dart.dev/tools/diagnostics/super_invocation_not_last
 redirectTo: /tools/diagnostics/super_invocation_not_last
 sitemap: false
 noindex: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `invalid_super_invocation`)_

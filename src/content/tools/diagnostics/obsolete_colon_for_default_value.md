@@ -4,8 +4,7 @@ description: >-
   Details about the obsolete_colon_for_default_value
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Using a colon as the separator before a default value is no longer supported._

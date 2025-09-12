@@ -4,12 +4,10 @@ description: >-
   Details about the wrong_number_of_type_arguments_method
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The method '{0}' is declared with {1} type parameters, but {2} type arguments
-are given._
+_The method '{0}' is declared with {1} type parameters, but {2} type arguments are given._
 
 ## Description
 

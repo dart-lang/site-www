@@ -4,8 +4,7 @@ description: >-
   Details about the extension_type_constructor_with_super_invocation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Extension type constructors can't include super initializers._

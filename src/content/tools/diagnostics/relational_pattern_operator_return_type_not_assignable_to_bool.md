@@ -4,12 +4,10 @@ description: >-
   Details about the relational_pattern_operator_return_type_not_assignable_to_bool
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The return type of operators used in relational patterns must be assignable to
-'bool'._
+_The return type of operators used in relational patterns must be assignable to 'bool'._
 
 ## Description
 

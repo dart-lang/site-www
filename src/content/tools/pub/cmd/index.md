@@ -1,6 +1,7 @@
 ---
 title: dart pub
-description: The command-line interface for pub, a package management tool for Dart.
+description: >-
+  The command-line interface for pub, a package management tool for Dart.
 ---
 
 The [pub package manager](/tools/pub/packages) has a command-line interface

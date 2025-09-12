@@ -4,18 +4,14 @@ description: >-
   Details about the subtype_of_struct_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't extend '{1}' because '{1}' is a subtype of 'Struct',
-'Union', or 'AbiSpecificInteger'._
+_The class '{0}' can't extend '{1}' because '{1}' is a subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
 
-_The class '{0}' can't implement '{1}' because '{1}' is a subtype of 'Struct',
-'Union', or 'AbiSpecificInteger'._
+_The class '{0}' can't implement '{1}' because '{1}' is a subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
 
-_The class '{0}' can't mix in '{1}' because '{1}' is a subtype of 'Struct',
-'Union', or 'AbiSpecificInteger'._
+_The class '{0}' can't mix in '{1}' because '{1}' is a subtype of 'Struct', 'Union', or 'AbiSpecificInteger'._
 
 ## Description
 

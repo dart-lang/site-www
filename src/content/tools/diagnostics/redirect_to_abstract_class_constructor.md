@@ -4,12 +4,10 @@ description: >-
   Details about the redirect_to_abstract_class_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The redirecting constructor '{0}' can't redirect to a constructor of the
-abstract class '{1}'._
+_The redirecting constructor '{0}' can't redirect to a constructor of the abstract class '{1}'._
 
 ## Description
 

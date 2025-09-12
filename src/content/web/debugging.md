@@ -1,5 +1,7 @@
 ---
 title: Debugging Dart web apps
+short-title: Debugging web apps
+breadcrumb: Debugging
 description: Learn how to debug your Dart web app.
 ---
 
@@ -188,7 +190,7 @@ update the tools by activating them again:
 $ dart pub global activate webdev     # update webdev
 ```
 
-{% include 'tools/debug-prod-js-code.md' %}
+{% render 'tools/debug-prod-js-code.md', site: site %}
 
 ## Resources
 

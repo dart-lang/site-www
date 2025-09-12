@@ -4,20 +4,16 @@ description: >-
   Details about the invalid_null_aware_operator
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The element can't be null, so the null-aware operator '?' is unnecessary._
 
-_The map entry key can't be null, so the null-aware operator '?' is
-unnecessary._
+_The map entry key can't be null, so the null-aware operator '?' is unnecessary._
 
-_The map entry value can't be null, so the null-aware operator '?' is
-unnecessary._
+_The map entry value can't be null, so the null-aware operator '?' is unnecessary._
 
-_The receiver can't be 'null' because of short-circuiting, so the null-aware
-operator '{0}' can't be used._
+_The receiver can't be 'null' because of short-circuiting, so the null-aware operator '{0}' can't be used._
 
 _The receiver can't be null, so the null-aware operator '{0}' is unnecessary._
 

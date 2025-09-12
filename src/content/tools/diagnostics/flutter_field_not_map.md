@@ -4,8 +4,7 @@ description: >-
   Details about the flutter_field_not_map
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The value of the 'flutter' field is expected to be a map._

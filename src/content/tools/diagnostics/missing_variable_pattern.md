@@ -4,8 +4,7 @@ description: >-
   Details about the missing_variable_pattern
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Variable pattern '{0}' is missing in this branch of the logical-or pattern._

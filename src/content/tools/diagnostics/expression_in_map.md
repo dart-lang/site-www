@@ -4,8 +4,7 @@ description: >-
   Details about the expression_in_map
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Expressions can't be used in a map literal._

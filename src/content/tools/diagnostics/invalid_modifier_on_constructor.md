@@ -4,8 +4,7 @@ description: >-
   Details about the invalid_modifier_on_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The modifier '{0}' can't be applied to the body of a constructor._

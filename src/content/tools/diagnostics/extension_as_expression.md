@@ -4,8 +4,7 @@ description: >-
   Details about the extension_as_expression
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Extension '{0}' can't be used as an expression._

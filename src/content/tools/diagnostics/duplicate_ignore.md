@@ -4,12 +4,10 @@ description: >-
   Details about the duplicate_ignore
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The diagnostic '{0}' doesn't need to be ignored here because it's already being
-ignored._
+_The diagnostic '{0}' doesn't need to be ignored here because it's already being ignored._
 
 ## Description
 

@@ -4,8 +4,7 @@ description: >-
   Details about the non_const_generative_enum_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Generative enum constructors must be 'const'._

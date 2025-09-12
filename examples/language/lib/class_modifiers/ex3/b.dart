@@ -4,7 +4,8 @@ import 'a.dart';
 // Can be constructed.
 Vehicle myVehicle = Vehicle();
 
-// ERROR: Can't be inherited.
+// ERROR: `Vehicle` can't be extended in a different library because
+// it is marked with `interface`.
 class Car extends Vehicle {
   int passengers = 4;
   // ...

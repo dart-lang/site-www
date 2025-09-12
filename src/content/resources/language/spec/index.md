@@ -1,6 +1,7 @@
 ---
 title: Dart language specification
 short-title: Language specification
+breadcrumb: Specification
 description: The formal specification for the Dart language.
 ---
 
@@ -17,7 +18,7 @@ You can find the in-progress specification in PDF format:
 * [Latest, in-progress specification][latest draft]
   (produced from a [LaTeX file][])
 
-[latest draft]: https://spec.dart.dev/DartLangSpecDraft.pdf
+[latest draft]: {{site.url}}/to/spec-draft
 [LaTeX file]: {{site.repo.dart.lang}}/blob/main/specification/dartLangSpec.tex
 
 New language features are typically described using

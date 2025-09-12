@@ -4,12 +4,10 @@ description: >-
   Details about the invalid_exception_value
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The method {0} can't have an exceptional return value (the second argument)
-when the return type of the function is either 'void', 'Handle' or 'Pointer'._
+_The method {0} can't have an exceptional return value (the second argument) when the return type of the function is either 'void', 'Handle' or 'Pointer'._
 
 ## Description
 

@@ -1,6 +1,9 @@
 ---
 title: Package dependencies
-description: Add other packages to your app. Specify package locations, version constraints, and more.
+breadcrumb: Dependencies
+description: >-
+  Add other packages to your app.
+  Specify package locations, version constraints, and more.
 ---
 
 Dependencies are one of the core concepts of the [pub package manager][].
@@ -8,7 +11,7 @@ A _dependency_ is another package that your package needs to work.
 Dependencies are specified in your [pubspec](/tools/pub/pubspec).
 You list only _immediate dependencies_: the
 software that your package uses directly. Pub handles
-[transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
+[transitive dependencies](/resources/glossary#transitive-dependency) for you.
 
 This page has detailed information on how to specify dependencies.
 At the end is a list of
@@ -21,7 +24,7 @@ and the _range of versions_ of that package that you allow.
 You can also specify the [_source_][].
 The source tells pub how to locate the package.
 
-[_source_]: /tools/pub/glossary#source
+[_source_]: /resources/glossary#dependency-source
 
 As an example, you specify a dependency in the following format:
 
@@ -170,6 +173,30 @@ dependencies:
 The ref can be anything that Git allows to [identify a commit.][commit]
 
 [commit]: https://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits
+
+If the package you depend on has tagged the
+revision of each version of the package,
+you can use `tag_pattern` instead of `ref`,
+together with a version constraint.
+
+Pub will then query Git for all matching tags, and
+feed those version to the version solver.
+
+```yaml highlightLines=5
+dependencies:
+  kittens:
+    git:
+      url: git@github.com:munificent/kittens.git
+      tag_pattern: v{{version}} # Find version-tag prefixed by 'v'.
+    version: ^2.0.1
+```
+
+:::version-note
+Support for `tag_pattern` was introduced in Dart 3.9.
+
+To use `tag_pattern`, the including pubspec (but not the dependency)
+must have an SDK version constraint of `^3.9.0` or higher.
+:::
 
 Pub assumes that the package is in the root of the Git repository. To specify a
 different location in the repo, specify a `path` relative to the repository
@@ -498,7 +525,7 @@ resemble the following:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.4.15
+  build_runner: ^2.7.0
   lints: ^6.0.0
   test: ^1.25.15
 ```
@@ -575,8 +602,9 @@ this flag only resolves new dependencies if:
 * The packages' [content hashes][] match
 
 [enforce-lock]: /tools/pub/cmd/pub-get#enforce-lockfile
-[lockfile]: /tools/pub/glossary#lockfile
-[content hashes]: /tools/pub/glossary#content-hashes
+[lockfile]: /resources/glossary#lockfile
+[content hashes]: /resources/glossary#pub-content-hash
+
 ---
 
 <aside id="fn:semver" class="footnote">

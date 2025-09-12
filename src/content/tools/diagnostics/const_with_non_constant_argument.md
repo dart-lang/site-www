@@ -4,8 +4,7 @@ description: >-
   Details about the const_with_non_constant_argument
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Arguments of a constant creation must be constant expressions._

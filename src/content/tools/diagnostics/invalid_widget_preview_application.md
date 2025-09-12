@@ -4,12 +4,10 @@ description: >-
   Details about the invalid_widget_preview_application
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The '@Preview(...)' annotation can only be applied to public, statically
-accessible constructors and functions._
+_The '@Preview(...)' annotation can only be applied to public, statically accessible constructors and functions._
 
 ## Description
 

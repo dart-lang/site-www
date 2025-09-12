@@ -4,8 +4,7 @@ description: >-
   Details about the leaf_call_must_not_take_handle
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _FFI leaf call can't take arguments of type 'Handle'._

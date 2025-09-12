@@ -4,8 +4,7 @@ description: >-
   Details about the doc_import_cannot_have_prefix
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Doc imports can't have prefixes._

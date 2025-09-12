@@ -4,12 +4,10 @@ description: >-
   Details about the field_initializer_not_assignable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The initializer type '{0}' can't be assigned to the field type '{1}' in a const
-constructor._
+_The initializer type '{0}' can't be assigned to the field type '{1}' in a const constructor._
 
 _The initializer type '{0}' can't be assigned to the field type '{1}'._
 

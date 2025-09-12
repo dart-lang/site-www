@@ -4,12 +4,10 @@ description: >-
   Details about the non_covariant_type_parameter_position_in_representation_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_An extension type parameter can't be used in a non-covariant position of its
-representation type._
+_An extension type parameter can't be used in a non-covariant position of its representation type._
 
 ## Description
 

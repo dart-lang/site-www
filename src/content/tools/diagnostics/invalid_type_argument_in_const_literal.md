@@ -4,18 +4,14 @@ description: >-
   Details about the invalid_type_argument_in_const_literal
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Constant list literals can't use a type parameter in a type argument, such as
-'{0}'._
+_Constant list literals can't use a type parameter in a type argument, such as '{0}'._
 
-_Constant map literals can't use a type parameter in a type argument, such as
-'{0}'._
+_Constant map literals can't use a type parameter in a type argument, such as '{0}'._
 
-_Constant set literals can't use a type parameter in a type argument, such as
-'{0}'._
+_Constant set literals can't use a type parameter in a type argument, such as '{0}'._
 
 ## Description
 

@@ -4,8 +4,7 @@ description: >-
   Details about the non_bool_operand
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The operands of the operator '{0}' must be assignable to 'bool'._

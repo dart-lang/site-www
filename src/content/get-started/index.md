@@ -4,12 +4,15 @@ short-title: Learn
 breadcrumb: Tutorial
 description: >-
   Begin your Dart learning journey by building an interactive CLI app.
+sitemap: false
+noindex: true
+showToc: false
 nextpage:
   url: /get-started/hello-world
   title: Build your first app
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 ## Set up Dart {: #set-up }
 
@@ -26,7 +29,10 @@ follow the instructions on how to [Get the Dart SDK][].
 2. [Add interactivity to your app](/get-started/add-commands)
 3. [Intro to async and HTTP](/get-started/async)
 4. [Packages and libraries](/get-started/packages-libs)
-5. [Object oriented programming in Dart](/get-started/oop-dart)
+5. [Object-oriented programming in Dart](/get-started/oop-dart)
 6. [Error handling](/get-started/error-handling)
 7. [Advanced OOP](/get-started/advanced-oop)
-8. [command_runner polish](/get-started/command-runner-polish)
+8. [Command_runner polish](/get-started/command-runner-polish)
+9. [Data and JSON](/get-started/data-and-json)
+10. [Testing](/get-started/testing)
+11. [Http](/get-started/http)

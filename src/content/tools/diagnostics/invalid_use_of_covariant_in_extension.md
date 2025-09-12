@@ -4,8 +4,7 @@ description: >-
   Details about the invalid_use_of_covariant_in_extension
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Can't have modifier '{0}' in an extension._

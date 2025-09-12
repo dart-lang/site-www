@@ -4,12 +4,10 @@ description: >-
   Details about the dead_code_on_catch_subtype
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Dead code: This on-catch block won't be executed because '{0}' is a subtype of
-'{1}' and hence will have been caught already._
+_Dead code: This on-catch block won't be executed because '{0}' is a subtype of '{1}' and hence will have been caught already._
 
 ## Description
 

@@ -4,8 +4,7 @@ description: >-
   Details about the definitely_unassigned_late_local_variable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The late local variable '{0}' is definitely unassigned at this point._

@@ -4,8 +4,7 @@ description: >-
   Details about the deprecated_subtype_of_function
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Extending 'Function' is deprecated._

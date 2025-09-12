@@ -4,8 +4,7 @@ description: >-
   Details about the const_with_type_parameters
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A constant constructor tearoff can't use a type parameter as a type argument._

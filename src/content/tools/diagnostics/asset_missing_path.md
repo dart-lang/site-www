@@ -4,8 +4,7 @@ description: >-
   Details about the asset_missing_path
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Asset map entry must contain a 'path' field._

@@ -4,8 +4,7 @@ description: >-
   Details about the field_must_be_external_in_struct
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Fields of 'Struct' and 'Union' subclasses must be marked external._

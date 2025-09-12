@@ -4,8 +4,7 @@ description: >-
   Details about the unused_import
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Unused import: '{0}'._

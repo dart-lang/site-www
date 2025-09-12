@@ -4,8 +4,7 @@ description: >-
   Details about the equal_keys_in_map_pattern
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Two keys in a map pattern can't be equal._

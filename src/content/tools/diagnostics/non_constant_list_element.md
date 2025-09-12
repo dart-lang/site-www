@@ -4,8 +4,7 @@ description: >-
   Details about the non_constant_list_element
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The values in a const list literal must be constants._

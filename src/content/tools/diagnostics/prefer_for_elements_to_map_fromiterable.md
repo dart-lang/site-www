@@ -4,8 +4,7 @@ description: >-
   Details about the prefer_for_elements_to_map_fromiterable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">

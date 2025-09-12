@@ -4,8 +4,7 @@ description: >-
   Details about the invocation_of_non_function_expression
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The expression doesn't evaluate to a function, so it can't be invoked._

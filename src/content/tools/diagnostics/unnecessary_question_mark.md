@@ -4,8 +4,7 @@ description: >-
   Details about the unnecessary_question_mark
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The '?' is unnecessary because '{0}' is nullable without it._

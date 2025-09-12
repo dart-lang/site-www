@@ -4,12 +4,10 @@ description: >-
   Details about the abstract_sealed_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_A 'sealed' class can't be marked 'abstract' because it's already implicitly
-abstract._
+_A 'sealed' class can't be marked 'abstract' because it's already implicitly abstract._
 
 ## Description
 

@@ -4,12 +4,10 @@ description: >-
   Details about the mixin_inherits_from_not_object
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't be used as a mixin because it extends a class other than
-'Object'._
+_The class '{0}' can't be used as a mixin because it extends a class other than 'Object'._
 
 ## Description
 

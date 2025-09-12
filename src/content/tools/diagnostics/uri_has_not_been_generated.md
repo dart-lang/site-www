@@ -4,8 +4,7 @@ description: >-
   Details about the uri_has_not_been_generated
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Target of URI hasn't been generated: '{0}'._

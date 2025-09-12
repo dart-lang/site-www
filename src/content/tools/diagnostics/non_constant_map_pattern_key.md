@@ -4,8 +4,7 @@ description: >-
   Details about the non_constant_map_pattern_key
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Key expressions in map patterns must be constants._

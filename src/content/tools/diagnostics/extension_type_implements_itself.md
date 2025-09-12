@@ -4,8 +4,7 @@ description: >-
   Details about the extension_type_implements_itself
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The extension type can't implement itself._

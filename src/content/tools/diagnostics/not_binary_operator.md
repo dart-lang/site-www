@@ -4,8 +4,7 @@ description: >-
   Details about the not_binary_operator
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' isn't a binary operator._

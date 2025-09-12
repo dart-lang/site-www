@@ -4,8 +4,7 @@ description: >-
   Details about the deprecated_new_in_comment_reference
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Using the 'new' keyword in a comment reference is deprecated._

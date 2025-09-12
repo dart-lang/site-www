@@ -4,19 +4,16 @@ description: >-
   Details about the subtype_of_base_or_final_is_not_base_final_or_sealed
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The mixin '{0}' must be 'base' because the supertype '{1}' is 'base'._
 
 _The mixin '{0}' must be 'base' because the supertype '{1}' is 'final'._
 
-_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}'
-is 'base'._
+_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}' is 'base'._
 
-_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}'
-is 'final'._
+_The type '{0}' must be 'base', 'final' or 'sealed' because the supertype '{1}' is 'final'._
 
 ## Description
 

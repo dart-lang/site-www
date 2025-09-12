@@ -4,8 +4,7 @@ description: >-
   Details about the throw_of_invalid_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The type '{0}' of the thrown expression must be assignable to 'Object'._

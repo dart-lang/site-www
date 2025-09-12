@@ -4,8 +4,7 @@ description: >-
   Details about the unintended_html_in_doc_comment
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">

@@ -4,8 +4,7 @@ description: >-
   Details about the type_test_with_undefined_name
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The name '{0}' isn't defined, so it can't be used in an 'is' expression._

@@ -1,5 +1,6 @@
 ---
 title: Dart cheatsheet
+breadcrumb: Cheatsheet
 description: Interactively learn (or relearn) some of Dart's unique features.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
@@ -636,7 +637,8 @@ web.document.querySelector('#confirm')
   ..scrollIntoView();
 ```
 
-### Exercise {:.no_toc}
+### Exercise
+{:.no_toc}
 
 Use cascades to create a single statement that
 sets the `anInt`, `aString`, and `aList` properties of a `BigObject`

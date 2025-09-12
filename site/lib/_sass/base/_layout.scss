@@ -1,0 +1,74 @@
+#page-content {
+  display: flex;
+  min-width: 0;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: calc(100vh - var(--site-header-height));
+
+  &.focused {
+    flex-direction: column;
+  }
+
+  body.obsolete & {
+    border: 0.5rem solid #fcf8e3;
+    border-top: none;
+  }
+
+  .after-leading-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  article {
+    width: 60rem;
+    min-width: 8rem;
+    max-width: 100%;
+
+    min-height: calc(100vh - var(--site-header-height) - var(--site-subheader-height));
+
+    > .content {
+      min-width: 8rem;
+      padding: 1.5rem;
+
+      @media (min-width: 576px) {
+        padding: 2rem;
+      }
+    }
+  }
+}
+
+#site-below-header {
+  display: flex;
+  flex-direction: column;
+}
+
+#site-main-row {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+body {
+  // The top TOC is not shown on narrow screens.
+  @media (min-width: 1200px) {
+    --site-subheader-height: 0rem;
+  }
+
+  // If the TOC is not shown,
+  &.no-toc {
+    --site-subheader-height: 0rem;
+  }
+}
+
+.container {
+  position: relative;
+  max-width: 100%;
+  width: 1280px;
+  margin: 0 auto;
+}

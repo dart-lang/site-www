@@ -4,8 +4,7 @@ description: >-
   Details about the must_be_a_native_function_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The type '{0}' given to '{1}' must be a valid 'dart:ffi' native function type._

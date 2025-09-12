@@ -4,8 +4,7 @@ description: >-
   Details about the use_of_void_result
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _This expression has a type of 'void' so its value can't be used._

@@ -4,8 +4,7 @@ description: >-
   Details about the sized_box_for_whitespace
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">

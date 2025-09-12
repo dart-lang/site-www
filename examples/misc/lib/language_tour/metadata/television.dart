@@ -10,13 +10,13 @@ class Television {
 
   /// Turns the TV's power on.
   void turnOn() {
-    /*...*/
+    // ···
   }
   // #enddocregion deprecated
 
   // #docregion override
   set contrast(int value) {
-    /*...*/
+    // ···
   }
   // #docregion deprecated
 }
@@ -25,7 +25,7 @@ class Television {
 class SmartTelevision extends Television {
   @override
   set contrast(num value) {
-    /*...*/
+    // ···
   }
   // #enddocregion override
   // #docregion override

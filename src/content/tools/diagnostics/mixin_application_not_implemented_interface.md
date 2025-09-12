@@ -4,8 +4,7 @@ description: >-
   Details about the mixin_application_not_implemented_interface
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' can't be mixed onto '{1}' because '{1}' doesn't implement '{2}'._

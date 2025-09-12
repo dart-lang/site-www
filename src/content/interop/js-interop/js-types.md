@@ -1,5 +1,6 @@
 ---
 title: JS types
+breadcrumb: Types
 description: Usage information about the core types in JS interop.
 prevpage:
   url: /interop/js-interop/usage
@@ -27,9 +28,7 @@ In order to interact with and examine these JS values, you should use
 JS types form a natural type hierarchy:
 
 - Top type: `JSAny`, which is any non-nullish JS value
-  - Primitives: `JSNumber`, `JSBoolean`, `JSString`
-  - `JSSymbol`
-  - `JSBigInt`
+  - Primitives: `JSNumber`, `JSBoolean`, `JSString`, `JSSymbol`, `JSBigInt`
   - `JSObject`, which is any JS object
     - `JSFunction`
       - `JSExportedDartFunction`, which represents a Dart callback that was

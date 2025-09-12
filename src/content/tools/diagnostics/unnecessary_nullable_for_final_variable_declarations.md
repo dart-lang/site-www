@@ -4,8 +4,7 @@ description: >-
   Details about the unnecessary_nullable_for_final_variable_declarations
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">

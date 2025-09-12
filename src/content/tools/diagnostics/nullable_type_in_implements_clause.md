@@ -4,8 +4,7 @@ description: >-
   Details about the nullable_type_in_implements_clause
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A class, mixin, or extension type can't implement a nullable type._

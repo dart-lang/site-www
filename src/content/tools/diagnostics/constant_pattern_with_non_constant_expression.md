@@ -4,8 +4,7 @@ description: >-
   Details about the constant_pattern_with_non_constant_expression
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The expression of a constant pattern must be a valid constant._

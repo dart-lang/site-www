@@ -4,8 +4,7 @@ description: >-
   Details about the import_of_non_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The imported library '{0}' can't have a part-of directive._

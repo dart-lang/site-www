@@ -1,0 +1,188 @@
+#site-header {
+  background-color: var(--site-chrome-bgColor);
+  color: var(--site-chrome-fgColor);
+  font-family: var(--site-ui-fontFamily);
+  position: sticky;
+  top: 0;
+  z-index: var(--site-z-header);
+
+  > nav.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 1rem;
+
+    min-height: var(--site-header-height);
+
+    #menu-toggle {
+      @media (min-width: 1024px) {
+        display: none;
+      }
+    }
+
+    .navbar-contents {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    ul.nav-items {
+      display: none;
+      padding: 0;
+      margin: 0 0 0 auto;
+      gap: 1rem;
+      flex-direction: row;
+      list-style-type: none;
+
+      @media (min-width: 1024px) {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      color: var(--site-chrome-fgColor);
+      font-weight: 500;
+      padding: 0.25rem .5rem;
+      position: relative;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--site-altLink-fgColor);
+      }
+
+      &.active::after {
+        background-color: var(--site-altLink-fgColor);
+        content: "";
+        display: block;
+        height: 3px;
+        left: 0;
+        position: absolute;
+        top: calc(50% + var(--site-header-height) / 2 - 3px);
+        width: 100%;
+      }
+    }
+  }
+
+  .icon-button > .material-symbols {
+    font-size: 1.75rem;
+  }
+
+  #call-to-action {
+    padding: 0.5rem 1rem;
+    display: none;
+
+    @media (min-width: 1024px) {
+      display: unset;
+    }
+  }
+
+  #header-search {
+    display: none;
+    position: relative;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 1rem;
+
+    @media (min-width: 576px) {
+      display: flex;
+    }
+
+    &::before {
+      content: 'search';
+      color: var(--site-base-fgColor-alt);
+      font: 28px/1 var(--site-icon-fontFamily);
+      pointer-events: none;
+      position: absolute;
+      left: 1rem;
+    }
+
+    &:hover::before {
+      color: var(--site-base-fgColor);
+    }
+
+    input {
+      border: 0;
+      font-size: 1rem;
+      transition: width .35s ease-in-out;
+      width: 24px;
+      cursor: pointer;
+      border-radius: 24px;
+      padding: 0.5rem 0.5rem 0.5rem 3rem;
+      background: none;
+
+      &:focus {
+        width: 220px;
+        cursor: auto;
+      }
+    }
+  }
+
+  #fallback-search-button {
+    display: none;
+
+    @media (min-width: 320px) {
+      display: flex;
+    }
+
+    @media (min-width: 576px) {
+      display: none;
+    }
+  }
+
+  #site-primary-logo {
+    text-decoration: none;
+    border-radius: 0.25rem;
+    padding: 0;
+
+    > img {
+      width: 2.25rem;
+      margin-right: 0;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    > span {
+      &.name {
+        display: none;
+
+        @media (min-width: 200px) {
+          display: unset;
+        }
+      }
+
+      &.subtype {
+        margin-left: 0;
+
+        @media (min-width: 420px) {
+          margin-left: 0.4rem;
+        }
+      }
+    }
+  }
+}
+
+// Toggle between menu and close buttons if sidenav is open or not.
+#menu-toggle span.material-symbols {
+  &:first-child {
+    display: inline;
+  }
+
+  &:last-child {
+    display: none;
+  }
+}
+
+body.open_menu #menu-toggle span.material-symbols {
+  &:first-child {
+    display: none;
+  }
+
+  &:last-child {
+    display: inline;
+  }
+}

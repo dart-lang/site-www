@@ -4,8 +4,7 @@ description: >-
   Details about the duplicate_shown_name
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Duplicate shown name._

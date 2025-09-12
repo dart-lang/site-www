@@ -4,8 +4,7 @@ description: >-
   Details about the undefined_method
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The method '{0}' isn't defined for the '{1}' function type._

@@ -4,12 +4,10 @@ description: >-
   Details about the class_used_as_mixin
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' can't be used as a mixin because it's neither a mixin class nor
-a mixin._
+_The class '{0}' can't be used as a mixin because it's neither a mixin class nor a mixin._
 
 ## Description
 

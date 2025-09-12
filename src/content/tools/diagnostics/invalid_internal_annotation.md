@@ -4,12 +4,10 @@ description: >-
   Details about the invalid_internal_annotation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Only public elements in a package's private API can be annotated as being
-internal._
+_Only public elements in a package's private API can be annotated as being internal._
 
 ## Description
 

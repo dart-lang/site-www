@@ -1,6 +1,7 @@
 ---
 title: Dart overview
 description: A short introduction to Dart.
+showBreadcrumbs: false
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 
@@ -89,8 +90,10 @@ Stream<double> computePi({int batch = 100000}) async* {
     final ratio = count / total;
 
     // Area of a circle is A = π⋅r², therefore π = A/r².
-    // So, when given random points with x ∈ <0,1>,
-    // y ∈ <0,1>, the ratio of those inside a unit circle
+    // We consider only non-negative x and y (that is, the
+    // first quadrant), which doesn't change the ratio.
+    // So, when given random points with x ∈ [0, 1],
+    // y ∈ [0, 1], the ratio of those inside the unit circle
     // should approach π / 4. Therefore, the value of π
     // should be:
     yield ratio * 4;

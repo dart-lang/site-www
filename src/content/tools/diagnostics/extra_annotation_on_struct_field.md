@@ -4,12 +4,10 @@ description: >-
   Details about the extra_annotation_on_struct_field
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Fields in a struct class must have exactly one annotation indicating the native
-type._
+_Fields in a struct class must have exactly one annotation indicating the native type._
 
 ## Description
 

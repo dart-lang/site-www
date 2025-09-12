@@ -4,12 +4,10 @@ description: >-
   Details about the invalid_widget_preview_private_argument
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_'@Preview(...)' can only accept arguments that consist of literals and public
-symbols._
+_'@Preview(...)' can only accept arguments that consist of literals and public symbols._
 
 ## Description
 

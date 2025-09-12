@@ -1,7 +1,8 @@
 ---
 title: Books about Dart
+short-title: Books
 description: Read all about it! Here's a collection of books about Dart.
-toc: false
+showToc: false
 ---
 
 This page covers a collection of books about the Dart language.
@@ -23,12 +24,13 @@ and new developer tools.
 
 <div class="book-img-with-details">
 <a href="{{book.link}}" title="{{book.title}}">
-  <img src="/assets/img/cover/{{book.cover}}" alt="{{book.title}}">
+  <img src="/assets/img/cover/{{book.cover}}" alt="{{book.title}}" />
 </a>
 <div class="details">
 
-### [{{book.title}}]({{book.link}})
-{:.title}
+<h3 class="title" id="{{book.title | slugify}}">
+<a href="{{book.link}}">{{book.title}}</a>
+</h3>
 
 by {{book.authors | arrayToSentenceString}}
 {:.authors}

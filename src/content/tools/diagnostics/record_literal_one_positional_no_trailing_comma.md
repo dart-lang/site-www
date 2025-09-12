@@ -4,8 +4,7 @@ description: >-
   Details about the record_literal_one_positional_no_trailing_comma
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A record literal with exactly one positional field requires a trailing comma._

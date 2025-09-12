@@ -4,8 +4,7 @@ description: >-
   Details about the non_constant_annotation_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Annotation creation can only call a const constructor._

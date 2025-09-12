@@ -4,24 +4,18 @@ description: >-
   Details about the collection_element_from_deferred_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Constant values from a deferred library can't be used as keys in a 'const' map
-literal._
+_Constant values from a deferred library can't be used as keys in a 'const' map literal._
 
-_Constant values from a deferred library can't be used as values in a 'const'
-constructor._
+_Constant values from a deferred library can't be used as values in a 'const' constructor._
 
-_Constant values from a deferred library can't be used as values in a 'const'
-list literal._
+_Constant values from a deferred library can't be used as values in a 'const' list literal._
 
-_Constant values from a deferred library can't be used as values in a 'const'
-map literal._
+_Constant values from a deferred library can't be used as values in a 'const' map literal._
 
-_Constant values from a deferred library can't be used as values in a 'const'
-set literal._
+_Constant values from a deferred library can't be used as values in a 'const' set literal._
 
 ## Description
 

@@ -4,8 +4,7 @@ description: >-
   Details about the map_entry_not_in_map
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Map entries can only be used in a map literal._

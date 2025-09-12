@@ -4,8 +4,7 @@ description: >-
   Details about the undefined_hidden_name
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The library '{0}' doesn't export a member with the hidden name '{1}'._

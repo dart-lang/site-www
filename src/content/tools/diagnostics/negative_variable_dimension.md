@@ -4,8 +4,7 @@ description: >-
   Details about the negative_variable_dimension
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The variable dimension of a variable-length array must be non-negative._

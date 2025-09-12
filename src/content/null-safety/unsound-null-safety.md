@@ -1,6 +1,8 @@
 ---
 title: Unsound null safety
-description: Mixing language versions lets you migrate to null safety at your own pace, with some of the benefits of null safety.
+description: >-
+  Mixing language versions lets you migrate to null safety at your own pace,
+  with some of the benefits of null safety.
 ---
 
 :::version-note
@@ -101,7 +103,9 @@ If any libraries have cyclic imports
 (for example, A imports B which imports C, and C imports A),
 consider migrating those libraries together.
 
-### Using the migration tool
+<a id="using-the-migration-tool" aria-hidden="true"></a>
+
+### Using the migration tool {: #migration-tool}
 
 You can migrate incrementally using the
 [migration tool][].

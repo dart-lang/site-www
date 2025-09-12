@@ -4,8 +4,7 @@ description: >-
   Details about the super_in_enum_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The enum constructor can't have a 'super' initializer._

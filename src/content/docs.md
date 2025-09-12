@@ -1,7 +1,8 @@
 ---
 title: Dart documentation
 description: Learn to use the Dart language and libraries.
-toc: false
+showToc: false
+showBreadcrumbs: false
 ---
 
 Welcome to the Dart documentation!
@@ -18,8 +19,10 @@ To update these cards, edit src/_data/docs_cards.yml.
 
 <div class="card-grid">
 {% for card in docs_cards -%}
-  {% card card.name, card.url %}
-    {{card.description}}
-  {% endcard %}
+  <Card title="{{card.name}}" link="{{card.url}}">
+
+  {{card.description}}
+
+  </Card>
 {% endfor -%}
 </div>

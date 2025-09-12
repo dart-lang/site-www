@@ -1,6 +1,7 @@
 ---
 title: Package versioning
-description: "How Dart's package management tool, pub, handles versioning of packages."
+description: >-
+  How Dart's package management tool, pub, handles versioning of packages.
 ---
 
 The [pub package manager][pub] helps you work with versioning.
@@ -461,13 +462,13 @@ In summary:
 To learn more about pub's version solving algorithm,
 consult the [PubGrub][pubgrub] article on Medium.
 
-[immediate-dep]: /tools/pub/glossary#immediate-dependency
-[transitive-dep]: /tools/pub/glossary#transitive-dependency
+[immediate-dep]: /resources/glossary#immediate-dependency
+[transitive-dep]: /resources/glossary#transitive-dependency
 [pub]: /tools/pub/packages
 [npm]: https://npmjs.org/
 [bundler]: https://bundler.io
 [caret-syntax]: /tools/pub/dependencies#caret-syntax
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
-[lockfile]: /tools/pub/glossary#lockfile
-[content hash]: /tools/pub/glossary#content-hashes
+[lockfile]: /resources/glossary#lockfile
+[content hash]: /resources/glossary#pub-content-hash
 [pubgrub]: https://medium.com/@nex3/pubgrub-2fb6470504f

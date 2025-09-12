@@ -1,6 +1,7 @@
 ---
 title: dart fix
-description: Command-line tool for applying analysis fixes and migrating API usages.
+description: >-
+  Command-line tool for applying analysis fixes and migrating API usages.
 ---
 
 The `dart fix` command
@@ -17,7 +18,7 @@ finds and fixes two types of issues:
 To learn about `dart fix` in a video format,
 check out this [deep dive][] on **Decoding Flutter**:
 
-{% ytEmbed "OBIuSrg_Quo", "Using Dart analyze & Dart fix" %}
+<YouTubeEmbed id="OBIuSrg_Quo" title="Using Dart analyze & Dart fix"></YouTubeEmbed>
 :::
 
 [deep dive]: {{site.yt.watch}}/OBIuSrg_Quo

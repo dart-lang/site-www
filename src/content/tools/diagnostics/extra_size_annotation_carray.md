@@ -4,8 +4,7 @@ description: >-
   Details about the extra_size_annotation_carray
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'Array's must have exactly one 'Array' annotation._

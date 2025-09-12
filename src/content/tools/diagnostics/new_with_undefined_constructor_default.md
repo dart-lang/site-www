@@ -4,8 +4,7 @@ description: >-
   Details about the new_with_undefined_constructor_default
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The class '{0}' doesn't have an unnamed constructor._

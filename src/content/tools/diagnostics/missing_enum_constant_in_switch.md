@@ -4,8 +4,7 @@ description: >-
   Details about the missing_enum_constant_in_switch
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Missing case clause for '{0}'._

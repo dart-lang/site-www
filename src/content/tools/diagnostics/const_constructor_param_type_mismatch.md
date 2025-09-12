@@ -4,12 +4,10 @@ description: >-
   Details about the const_constructor_param_type_mismatch
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_A value of type '{0}' can't be assigned to a parameter of type '{1}' in a const
-constructor._
+_A value of type '{0}' can't be assigned to a parameter of type '{1}' in a const constructor._
 
 ## Description
 

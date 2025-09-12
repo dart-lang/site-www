@@ -4,8 +4,7 @@ description: >-
   Details about the yield_of_invalid_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A yielded value of type '{0}' must be assignable to '{1}'._

@@ -4,14 +4,12 @@ description: >-
   Details about the dot_shorthand_undefined_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The static getter '{0}' isn't defined for the context type '{1}'._
 
-_The static method or constructor '{0}' isn't defined for the context type
-'{1}'._
+_The static method or constructor '{0}' isn't defined for the context type '{1}'._
 
 ## Description
 

@@ -4,12 +4,10 @@ description: >-
   Details about the default_value_in_redirecting_factory_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Default values aren't allowed in factory constructors that redirect to another
-constructor._
+_Default values aren't allowed in factory constructors that redirect to another constructor._
 
 ## Description
 

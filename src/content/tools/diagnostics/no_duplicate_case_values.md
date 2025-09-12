@@ -4,8 +4,7 @@ description: >-
   Details about the no_duplicate_case_values
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,8 +18,7 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_The value of the case clause ('{0}') is equal to the value of an earlier case
-clause ('{1}')._
+_The value of the case clause ('{0}') is equal to the value of an earlier case clause ('{1}')._
 
 ## Description
 

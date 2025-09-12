@@ -4,8 +4,7 @@ description: >-
   Details about the inconsistent_inheritance
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Superinterfaces don't have a valid override for '{0}': {1}._

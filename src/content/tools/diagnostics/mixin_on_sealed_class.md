@@ -4,12 +4,10 @@ description: >-
   Details about the mixin_on_sealed_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The class '{0}' shouldn't be used as a mixin constraint because it is sealed,
-and any class mixing in this mixin must have '{0}' as a superclass._
+_The class '{0}' shouldn't be used as a mixin constraint because it is sealed, and any class mixing in this mixin must have '{0}' as a superclass._
 
 ## Description
 

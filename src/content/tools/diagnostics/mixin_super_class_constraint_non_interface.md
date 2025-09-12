@@ -4,8 +4,7 @@ description: >-
   Details about the mixin_super_class_constraint_non_interface
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Only classes and mixins can be used as superclass constraints._

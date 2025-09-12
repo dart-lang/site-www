@@ -4,8 +4,7 @@ description: >-
   Details about the field_initialized_by_multiple_initializers
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The field '{0}' can't be initialized twice in the same constructor._

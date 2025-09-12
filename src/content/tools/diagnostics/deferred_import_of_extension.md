@@ -4,8 +4,7 @@ description: >-
   Details about the deferred_import_of_extension
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Imports of deferred libraries must hide all extensions._

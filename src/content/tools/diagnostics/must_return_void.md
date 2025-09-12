@@ -4,12 +4,10 @@ description: >-
   Details about the must_return_void
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The return type of the function passed to 'NativeCallable.listener' must be
-'void' rather than '{0}'._
+_The return type of the function passed to 'NativeCallable.listener' must be 'void' rather than '{0}'._
 
 ## Description
 

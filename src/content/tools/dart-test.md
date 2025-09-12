@@ -1,7 +1,7 @@
 ---
 title: dart test
 description: Command-line tool for testing Dart projects.
-toc: false
+showToc: false
 ---
 
 The `dart test` command runs tests that

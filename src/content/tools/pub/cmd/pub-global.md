@@ -281,5 +281,5 @@ the preexisting executable will not be replaced.
 {% render 'pub-problems.md' %}
 
 [`dart install`]: /tools/dart-install
-[system cache]: /tools/pub/glossary#system-cache
+[system cache]: /resources/glossary#pub-system-cache
 [webdev]: /tools/webdev

@@ -4,12 +4,10 @@ description: >-
   Details about the sdk_version_ui_as_code_in_const_context
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The if and spread elements weren't supported in constant expressions until
-version 2.5.0, but this code is required to be able to run on earlier versions._
+_The if and spread elements weren't supported in constant expressions until version 2.5.0, but this code is required to be able to run on earlier versions._
 
 ## Description
 

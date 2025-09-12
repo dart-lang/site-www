@@ -4,8 +4,7 @@ description: >-
   Details about the static_access_to_instance_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Instance member '{0}' can't be accessed using static access._

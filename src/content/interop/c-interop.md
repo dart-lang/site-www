@@ -1,6 +1,8 @@
 ---
 title: "C interop using dart:ffi"
-description: "To use C code in your Dart program, use the dart:ffi library."
+short-title: C interop
+description: >-
+  To use C code in your Dart program, use the dart:ffi library.
 ---
 
 Dart mobile, command-line, and server apps
@@ -320,83 +322,21 @@ to write the Dart bindings that integrate with the C code.
 To have Dart create FFI wrappers from C header files,
 use the [`package:ffigen`][ffigen] binding generator.
 
+To learn about support for code assets in Dart FFI,
+consult the `dart:ffi` API reference for [`Native`][]
+and [`DefaultAsset`][].
+
 [ffigen]: {{site.pub-pkg}}/ffigen
+[`Native`]: {{site.dart-api}}/dart-ffi/Native-class.html
+[`DefaultAsset`]: {{site.dart-api}}/dart-ffi/DefaultAsset-class.html
 
 <a id="native-assets" aria-hidden="true"></a>
 
 ## Build and bundle native code {: #build-hooks }
 
-:::note
-Support for build hooks is in **preview** and
-can be used on the `main` channel.
-:::
-
-Dart _build hooks_ (formerly known as _native assets_) enable
-packages to contain more than just Dart source code.
-Packages can now contain native code assets that are
+Dart _build hooks_ (formerly known as _native assets_)
+enable packages to contain native code assets that are
 transparently built, bundled, and made available at runtime.
+For more information, see [Hooks][].
 
-This feature simplifies how Dart packages depend on and use native code:
-
-* Build the native code or obtain the binaries using a
-  package's build hook in `hook/build.dart`.
-* Dart and Flutter bundle the [`CodeAsset`][]s that the build hook
-  reports.
-* Access the code assets at runtime through declarative
-  `@Native<>() extern` functions using the [`assetId`][].
-
-Flutter and standalone Dart automatically bundle the
-native code of all packages used by the app and make it available at runtime.
-This works for `flutter (run|build)` as well as `dart (run|build)`.
-
-[`CodeAsset`]: {{site.pub-api}}/code_assets/latest/code_assets/CodeAsset-class.html
-[`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
-
-### Review the `native_add_library` example
-
-The [`native_add_library`][] example includes the minimum code to
-build and bundle C code in a Dart package.
-
-The example includes the following files:
-
-| **Source file**                         | **Description**                                                                                                                                                                |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [`src/native_add_library.c`][]          | The C file containing the code for `add`.                                                                                                                                      |
-| [`lib/native_add_library.dart`][]       | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
-| [`test/native_add_library_test.dart`][] | A Dart test using the native code.                                                                                                                                             |
-| [`hook/build.dart`][]                   | A build hook for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                          |
-
-{: .table .table-striped }
-
-[`src/native_add_library.c`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library/src/native_add_library.c
-[`lib/native_add_library.dart`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library/lib/native_add_library.dart
-[`test/native_add_library_test.dart`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library/test/native_add_library_test.dart
-[`hook/build.dart`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library/hook/build.dart
-
-When a Dart or Flutter project depends on `package:native_add_library`,
-it invokes the `hook/build.dart` build hook when
-running the `run`, `build`, and `test` commands.
-The [`native_add_app`][] example showcases a use of `native_add_library`.
-
-[`native_add_library`]: {{site.repo.dart.org}}/native/blob/main/pkgs/hooks/example/build/native_add_library
-[`native_add_app`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/native_add_app
-
-### Review build hooks API docs
-
-API documentation can be found for the following packages:
-
-* To learn about support for code assets in Dart FFI,
-  consult the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
-* To learn about the `hook/build.dart` build hook,
-  consult the [`package:hooks` API reference][].
-
-[`Native`]: {{site.dart-api}}/dart-ffi/Native-class.html
-[`DefaultAsset`]: {{site.dart-api}}/dart-ffi/DefaultAsset-class.html
-[`package:hooks` API reference]: {{site.pub-api}}/hooks/latest/
-
-### Provide feedback
-
-To provide feedback, consult these tracking issues:
-
-* [Dart build hooks & code assets]({{site.repo.dart.sdk}}/issues/50565)
-* [Flutter build hooks & code assets](https://github.com/flutter/flutter/issues/129757)
+[Hooks]: /tools/hooks

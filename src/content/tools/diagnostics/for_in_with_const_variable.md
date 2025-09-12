@@ -4,8 +4,7 @@ description: >-
   Details about the for_in_with_const_variable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A for-in loop variable can't be a 'const'._

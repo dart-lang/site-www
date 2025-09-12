@@ -4,8 +4,7 @@ description: >-
   Details about the dead_null_aware_expression
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The left operand can't be null, so the right operand is never executed._

@@ -1,10 +1,11 @@
 ---
 title: The pubspec file
+short-title: Pubspec file
 description: Reference guide for the fields in pubspec.yaml.
 ---
 
 Every [pub package](/tools/pub/packages) needs some metadata so it can specify its
-[dependencies](/tools/pub/glossary#dependency). Pub packages that are shared with
+[dependencies](/resources/glossary#dependency). Pub packages that are shared with
 others also need to provide some other information so users can discover them.
 All of this metadata goes in the package's _pubspec:_
 a file named `pubspec.yaml` that's written in the
@@ -224,7 +225,7 @@ with that URL; pub shows a link to this documentation on your package's page.
 
 ### Dependencies
 
-[Dependencies](/tools/pub/glossary#dependency) are the pubspec's *raison d'être*.
+[Dependencies](/resources/glossary#dependency) are the pubspec's *raison d'être*.
 In this section you list each package that your package needs in order to work.
 
 Dependencies fall into one of two types. _Regular dependencies_ are listed

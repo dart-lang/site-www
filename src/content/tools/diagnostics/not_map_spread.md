@@ -4,8 +4,7 @@ description: >-
   Details about the not_map_spread
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Spread elements in map literals must implement 'Map'._

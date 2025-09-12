@@ -4,12 +4,10 @@ description: >-
   Details about the const_initialized_with_non_constant_value_from_deferred_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_Constant values from a deferred library can't be used to initialize a 'const'
-variable._
+_Constant values from a deferred library can't be used to initialize a 'const' variable._
 
 ## Description
 

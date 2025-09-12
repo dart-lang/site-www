@@ -1,0 +1,49 @@
+// Must be imported first to ensure that
+// the reset is applied before any other styles are applied.
+@use 'base/reset';
+
+// Must be imported first after reset to ensure that our
+// defined CSS variables are defined before any other
+// styles are applied and they are used.
+@use 'base/root';
+
+@use 'base/mixins' as *;
+
+@use 'base/base';
+@use 'base/layout';
+@use 'base/utils';
+
+@use 'components/alert';
+@use 'components/banner';
+@use 'components/breadcrumbs';
+@use 'components/buttons';
+@use 'components/card';
+@use 'components/code';
+@use 'components/content';
+@use 'components/diagnostics';
+@use 'components/dropdown';
+@use 'components/filter-search';
+@use 'components/cookie-notice';
+@use 'components/footer';
+@use 'components/form';
+@use 'components/glossary';
+@use 'components/header';
+@use 'components/misc';
+@use 'components/next-prev-nav';
+@use 'components/search';
+@use 'components/side-menu';
+@use 'components/sidenav';
+@use 'components/site-switcher';
+@use 'components/tabs';
+@use 'components/tags';
+@use 'components/theming';
+@use 'components/toc';
+@use 'components/trailing';
+
+@use 'pages/dash';
+@use 'pages/error';
+@use 'pages/tutorial';
+
+// Must be imported last to ensure that
+// the print overrides take priority over earlier defined styles.
+@use 'base/print';

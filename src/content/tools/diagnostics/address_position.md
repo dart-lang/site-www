@@ -4,12 +4,10 @@ description: >-
   Details about the address_position
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The '.address' expression can only be used as argument to a leaf native
-external call._
+_The '.address' expression can only be used as argument to a leaf native external call._
 
 ## Description
 

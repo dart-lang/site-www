@@ -4,8 +4,7 @@ description: >-
   Details about the ffi_native_invalid_duplicate_default_asset
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _There may be at most one @DefaultAsset annotation on a library._

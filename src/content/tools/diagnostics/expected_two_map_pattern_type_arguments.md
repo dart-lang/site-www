@@ -4,8 +4,7 @@ description: >-
   Details about the expected_two_map_pattern_type_arguments
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Map patterns require two type arguments or none, but {0} found._

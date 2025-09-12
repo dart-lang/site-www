@@ -1,5 +1,6 @@
 ---
 title: Commonly used packages
+short-title: Common packages
 description: >-
   Some of the most useful and popular packages, and where you can learn more.
 ---

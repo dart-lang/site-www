@@ -4,8 +4,7 @@ description: >-
   Details about the invalid_factory_method_decl
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Factory method '{0}' must have a return type._

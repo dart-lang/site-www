@@ -34,7 +34,7 @@ The Dart interop story has been under heavy development for some time now;
 check out the [Past JS interop][] page for a more in depth summary on past
 iterations.
 
-[recently]: https://medium.com/dartlang/dart-3-3-325bf2bf6c13
+[recently]: https://blog.dart.dev/dart-3-3-325bf2bf6c13
 [Wasm]: /web/wasm
 [`package:web`]: {{site.pub-pkg}}/web
 [`dart:html`]: {{site.dart-api}}/dart-html/dart-html-library.html
@@ -59,6 +59,7 @@ For information on interacting with web APIs:
   * [`package:web` and migration]
 
 For tutorials and help:
+  * [Getting started with Javascript interop]
   * [How to mock JavaScript interop objects]
 
 For information on previous JavaScript interop libraries:
@@ -71,6 +72,7 @@ For additional documentation on JavaScript interop:
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
 [`package:web` and migration]: /interop/js-interop/package-web
+[Getting started with Javascript interop]: /interop/js-interop/start
 [How to mock JavaScript interop objects]: /interop/js-interop/mock
 [Past JS interop]: /interop/js-interop/past-js-interop
 [`dart:js_interop` API reference]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html

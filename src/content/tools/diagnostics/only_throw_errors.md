@@ -4,8 +4,7 @@ description: >-
   Details about the only_throw_errors
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <div class="tags">
@@ -19,8 +18,7 @@ body_class: highlight-diagnostics
   </a>
 </div>
 
-_Don't throw instances of classes that don't extend either 'Exception' or
-'Error'._
+_Don't throw instances of classes that don't extend either 'Exception' or 'Error'._
 
 ## Description
 

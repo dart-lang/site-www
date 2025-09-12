@@ -4,8 +4,7 @@ description: >-
   Details about the pattern_assignment_not_local_variable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Only local variables can be assigned in pattern assignments._

@@ -1,6 +1,7 @@
 ---
 title: How to use packages
 short-title: Packages
+breadcrumb: Overview
 description: Learn more about pub, Dart's tool for managing packages.
 ---
 
@@ -84,7 +85,7 @@ This process is called _getting the dependencies_.
 
 The `dart pub get` command
 determines which packages your app depends on,
-and puts them in a central [system cache](/tools/pub/glossary#system-cache).
+and puts them in a central [system cache](/resources/glossary#pub-system-cache).
 If your app depends on a published package, pub downloads that package from the
 [pub.dev site.]({{site.pub}})
 For a [Git dependency](/tools/pub/dependencies#git-packages),
@@ -145,7 +146,7 @@ and stores next to your pubspec.
 It lists the specific versions of each dependency (immediate and transitive) 
 that your package uses.
 
-If your package is an [application package](/tools/pub/glossary#application-package)
+If your package is an [application package](/resources/glossary#application-package)
 you should check this file into
 [source control](/tools/pub/private-files).
 That way, everyone working on your app uses the same versions
@@ -259,7 +260,7 @@ Unable to satisfy `pubspec.yaml` using `pubspec.lock`.
 To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 ```
 
-[content hash]: /tools/pub/glossary#content-hashes
+[content hash]: /resources/glossary#pub-content-hash
 
 ## More information
 
@@ -277,10 +278,10 @@ the pub package manager.
 
 * [Pub dependencies](/tools/pub/dependencies)
 * [Pub environment variables](/tools/pub/environment-variables)
-* [Pub glossary](/tools/pub/glossary)
 * [Pub package layout conventions](/tools/pub/package-layout)
 * [Pub versioning philosophy](/tools/pub/versioning)
 * [Pubspec format](/tools/pub/pubspec)
+* [Glossary with pub terms](/resources/glossary)
 
 ### Pub subcommands
 

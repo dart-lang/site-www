@@ -4,8 +4,7 @@ description: >-
   Details about the empty_record_type_with_comma
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A record type without fields can't have a trailing comma._

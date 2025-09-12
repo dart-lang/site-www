@@ -4,8 +4,7 @@ description: >-
   Details about the non_final_field_in_enum
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Enums can only declare final fields._

@@ -4,12 +4,10 @@ description: >-
   Details about the invalid_factory_name_not_a_class
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The name of a factory constructor must be the same as the name of the
-immediately enclosing class._
+_The name of a factory constructor must be the same as the name of the immediately enclosing class._
 
 ## Description
 

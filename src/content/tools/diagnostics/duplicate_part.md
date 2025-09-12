@@ -4,8 +4,7 @@ description: >-
   Details about the duplicate_part
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The library already contains a part with the URI '{0}'._

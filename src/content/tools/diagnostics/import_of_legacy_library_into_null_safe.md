@@ -4,12 +4,10 @@ description: >-
   Details about the import_of_legacy_library_into_null_safe
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The library '{0}' is legacy, and shouldn't be imported into a null safe
-library._
+_The library '{0}' is legacy, and shouldn't be imported into a null safe library._
 
 ## Description
 

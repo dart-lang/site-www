@@ -4,8 +4,7 @@ description: >-
   Details about the part_of_different_library
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Expected this library to be part of '{0}', not '{1}'._

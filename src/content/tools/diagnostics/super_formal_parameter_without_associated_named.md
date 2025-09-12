@@ -4,8 +4,7 @@ description: >-
   Details about the super_formal_parameter_without_associated_named
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _No associated named super constructor parameter._

@@ -4,8 +4,7 @@ description: >-
   Details about the duplicate_variable_pattern
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The variable '{0}' is already defined in this pattern._

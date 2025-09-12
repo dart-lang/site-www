@@ -4,12 +4,10 @@ description: >-
   Details about the import_deferred_library_with_load_function
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
-_The imported library defines a top-level function named 'loadLibrary' that is
-hidden by deferring this library._
+_The imported library defines a top-level function named 'loadLibrary' that is hidden by deferring this library._
 
 ## Description
 

@@ -4,8 +4,7 @@ description: >-
   Details about the deprecated_member_use_from_same_package
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' is deprecated and shouldn't be used._

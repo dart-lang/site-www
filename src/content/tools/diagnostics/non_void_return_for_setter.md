@@ -4,8 +4,7 @@ description: >-
   Details about the non_void_return_for_setter
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The return type of the setter must be 'void' or absent._

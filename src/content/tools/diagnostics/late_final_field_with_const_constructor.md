@@ -4,8 +4,7 @@ description: >-
   Details about the late_final_field_with_const_constructor
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Can't have a late final field in a class with a generative const constructor._

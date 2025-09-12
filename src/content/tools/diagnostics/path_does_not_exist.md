@@ -4,8 +4,7 @@ description: >-
   Details about the path_does_not_exist
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The path '{0}' doesn't exist._
