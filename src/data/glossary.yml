@@ -127,6 +127,9 @@
     }
     ```
   related_links:
+    - text: "Function types"
+      link: "/language/functions#function-types"
+      type: "doc"
     - text: "Futures"
       link: "/libraries/dart-async#future"
       type: "doc"
