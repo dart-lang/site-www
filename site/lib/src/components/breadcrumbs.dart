@@ -6,6 +6,8 @@ import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import 'material_icon.dart';
+
 /// Breadcrumbs navigation component that
 /// follows ARIA guidelines and includes RDFa markup.
 ///
@@ -162,12 +164,7 @@ final class _BreadcrumbItemComponent extends StatelessComponent {
         ],
       ),
       meta(attributes: {'property': 'position', 'content': index.toString()}),
-      if (!isLast)
-        span(
-          classes: 'material-symbols child-icon',
-          attributes: {'aria-hidden': 'true'},
-          [text('chevron_right')],
-        ),
+      if (!isLast) const MaterialIcon('chevron_right'),
     ],
   );
 }
