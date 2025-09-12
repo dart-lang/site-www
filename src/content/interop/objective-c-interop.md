@@ -1,6 +1,6 @@
 ---
 title: "Objective-C and Swift interop using package:ffigen"
-short-title: Objective-C & Swift interop
+shortTitle: Objective-C & Swift interop
 breadcrumb: Objective-C & Swift
 description: >-
   To use Objective-C and Swift code in your Dart program, use package:ffigen.

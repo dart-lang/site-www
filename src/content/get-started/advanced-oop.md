@@ -1,6 +1,6 @@
 ---
 title: Advanced OOP-adjacent features
-short-title: Advanced OOP Features
+shortTitle: Advanced OOP Features
 description: >-
   Enhance your Dart skills by exploring advanced features like enhanced enums
   and extensions. Improve your application's output formatting and color,

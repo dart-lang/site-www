@@ -1,6 +1,6 @@
 ---
 title: Command_runner polish
-short-title: Command_runner polish
+shortTitle: Command_runner polish
 description: >-
   Improve the HelpCommand to provide more detailed information and add an
   onOutput argument for flexible output handling.

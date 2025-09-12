@@ -1,6 +1,6 @@
 ---
 title: Diagnostic messages
-short-title: Diagnostics
+shortTitle: Diagnostics
 description: >-
   An index of the diagnostics produced by the Dart analyzer.
 skipFreshness: true

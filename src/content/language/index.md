@@ -1,6 +1,6 @@
 ---
 title: Introduction to Dart
-short-title: Dart basics
+shortTitle: Dart basics
 breadcrumb: Language
 description: A brief introduction to Dart programs and important concepts.
 nextpage:

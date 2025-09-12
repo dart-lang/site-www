@@ -1,6 +1,6 @@
 ---
 title: 'Java interop using package:jnigen'
-short-title: Java interop
+shortTitle: Java interop
 breadcrumb: Java
 description: >-
   To use Java in your Dart program, use package:jnigen.

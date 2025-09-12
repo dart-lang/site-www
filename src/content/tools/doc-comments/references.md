@@ -1,6 +1,6 @@
 ---
 title: Documentation comment references
-short-title: Comment references
+shortTitle: Comment references
 description: Learn about doc comment references and their syntax.
 ---
 

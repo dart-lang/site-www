@@ -1,6 +1,6 @@
 ---
 title: Dart SDK overview
-short-title: SDK overview
+shortTitle: SDK overview
 breadcrumb: SDK
 description: Dart libraries and command-line tools.
 ---

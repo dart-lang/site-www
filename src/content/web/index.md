@@ -1,6 +1,6 @@
 ---
 title: Web platform
-short-title: Web
+shortTitle: Web
 description: Resources for developing Dart web apps.
 showToc: false
 ---

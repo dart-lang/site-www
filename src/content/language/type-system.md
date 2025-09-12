@@ -1,6 +1,6 @@
 ---
 title: The Dart type system
-short-title: Type system
+shortTitle: Type system
 description: Why and how to write sound Dart code.
 prevpage:
   url: /language/typedefs
