@@ -133,9 +133,6 @@
     - text: "Futures"
       link: "/libraries/dart-async#future"
       type: "doc"
-    - text: "Futures and error handling"
-      link: "/libraries/async/futures-error-handling"
-      type: "doc"
   labels:
     - "language"
     - "asynchronous"
