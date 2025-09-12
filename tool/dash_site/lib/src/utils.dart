@@ -52,7 +52,7 @@ int installJasprCliIfNecessary() {
     'git',
     'https://github.com/schultek/jaspr.git',
     '--git-path=packages/jaspr_cli',
-    '--git-ref=4a475a603552b6491845bbc9be035c57b9ba3632',
+    '--git-ref=b7a8b00e2dd4c4d907fb6377739269d29bac6849',
   ]);
 
   if (activateOutput.exitCode != 0) {
