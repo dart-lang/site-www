@@ -110,7 +110,7 @@ abstract class DashLayout extends PageLayoutBase {
         href:
             'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
       ),
-      link(rel: 'stylesheet', href: '/assets/css/main.css'),
+      link(rel: 'stylesheet', href: '/assets/css/main.css?v=2'),
 
       script(src: '/assets/js/tabs.js'),
       script(src: '/assets/js/main.js'),
