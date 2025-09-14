@@ -89,3 +89,9 @@ Map<String, String> parseAttributes(String attributeString) {
 
   return attributes;
 }
+
+extension ListToClasses on List<String> {
+  /// Convert a list of classes into a single class string
+  /// that can be added to an HTML element.
+  String get toClasses => join(' ');
+}
