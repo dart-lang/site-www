@@ -6,6 +6,7 @@
 
 import 'package:jaspr/jaspr.dart';
 import 'package:dart_dev_site/src/archive/archive_table.dart' as prefix0;
+import 'package:dart_dev_site/src/components/feedback.dart' as prefix1;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -29,10 +30,18 @@ JasprOptions get defaultJasprOptions => JasprOptions(
       'src/archive/archive_table',
       params: _prefix0ArchiveTable,
     ),
+
+    prefix1.FeedbackComponent: ClientTarget<prefix1.FeedbackComponent>(
+      'src/components/feedback',
+      params: _prefix1FeedbackComponent,
+    ),
   },
   styles: () => [],
 );
 
 Map<String, dynamic> _prefix0ArchiveTable(prefix0.ArchiveTable c) => {
   'channel': c.channel,
+};
+Map<String, dynamic> _prefix1FeedbackComponent(prefix1.FeedbackComponent c) => {
+  'issueUrl': c.issueUrl,
 };

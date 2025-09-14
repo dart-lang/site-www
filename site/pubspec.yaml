@@ -25,7 +25,7 @@ dependencies:
   path: ^1.9.1
   # Used in the SDK archive.
   pub_semver: ^2.2.0
-  web: ^1.1.1
+  universal_web: ^1.1.1
 
 dev_dependencies:
   analysis_defaults:
