@@ -62,7 +62,7 @@ body {
 
   // If the TOC is disabled, reduce the subheader height to
   // ensure offset calculations are still correct.
-  &[data-toc="false"] {
+  &[data-toc="false"], &.no-toc {
     --site-subheader-height: 0rem;
   }
 }
