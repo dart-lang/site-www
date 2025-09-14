@@ -33,7 +33,7 @@ class DocLayout extends DashLayout {
       page,
       Component.fragment(
         [
-          if (noToc) const Document.body(attributes: {'class': 'no-toc'}),
+          if (noToc) const Document.body(attributes: {'data-toc': 'false'}),
           if (tocData case final TableOfContents toc)
             TopTableOfContents(
               toc,
