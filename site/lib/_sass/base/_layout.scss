@@ -60,8 +60,9 @@ body {
     --site-subheader-height: 0rem;
   }
 
-  // If the TOC is not shown,
-  &.no-toc {
+  // If the TOC is disabled, reduce the subheader height to
+  // ensure offset calculations are still correct.
+  &[data-toc="false"] {
     --site-subheader-height: 0rem;
   }
 }
