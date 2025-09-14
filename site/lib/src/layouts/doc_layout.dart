@@ -33,18 +33,20 @@ class DocLayout extends DashLayout {
       page,
       Component.fragment(
         [
-          if (noToc) const Document.body(attributes: {'data-toc': 'false'}),
-          if (tocData case final TableOfContents toc)
+          if (noToc)
+            const Document.body(attributes: {'data-toc': 'false'})
+          else if (tocData case final TableOfContents toc)
             TopTableOfContents(
               toc,
               currentTitle: pageTitle,
               maxDepth: maxTocDepth,
             ),
           div(classes: 'after-leading-content', [
-            if (tocData case final TableOfContents toc)
-              aside(id: 'side-menu', [
-                SideTableOfContents(toc, maxDepth: maxTocDepth),
-              ]),
+            if (!noToc)
+              if (tocData case final TableOfContents toc)
+                aside(id: 'side-menu', [
+                  SideTableOfContents(toc, maxDepth: maxTocDepth),
+                ]),
             article([
               div(classes: 'content', [
                 div(id: 'site-content-title', [
