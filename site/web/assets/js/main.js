@@ -383,64 +383,6 @@ function initCookieNotice() {
   document.getElementById('cookie-notice').classList.add(activeClass);
 }
 
-// A pattern to remove terminal command markers when copying code blocks.
-const terminalReplacementPattern = /^(\s*\$\s*)|(C:\\(.*)>\s*)/gm;
-const zeroWidthSpaceReplacementPattern = /\u200B/g;
-
-function setupCopyButtons() {
-  if (!navigator.clipboard) {
-    return;
-  }
-
-  const copyButtons = document.querySelectorAll('.copy-button[data-copy]');
-  copyButtons.forEach(button => {
-    button.addEventListener('click', async (e) => {
-      const textToCopy = button.dataset.copy;
-      if (textToCopy) {
-        await navigator.clipboard.writeText(textToCopy);
-      }
-      e.preventDefault();
-    });
-    button.classList.remove('hidden');
-  });
-
-  const codeBlocks =
-      document.querySelectorAll('.code-block-body');
-
-  codeBlocks.forEach(codeBlock => {
-    if (codeBlock.querySelector('pre')) {
-      const copyButton = document.createElement('button');
-      const innerIcon = document.createElement('span');
-
-      copyButton.classList.add('code-copy-button');
-      copyButton.title = 'Copy to clipboard';
-
-      innerIcon.textContent = 'content_copy';
-      innerIcon.ariaHidden = 'true';
-      innerIcon.classList.add('material-symbols');
-
-      copyButton.addEventListener('click', async (e) => {
-        const codeBlockBody = e.currentTarget.parentElement;
-        if (codeBlockBody) {
-          const codePre = codeBlock.querySelector('pre');
-          if (codePre) {
-            const contentToCopy = codePre.textContent
-                .replace(terminalReplacementPattern, '')
-                .replace(zeroWidthSpaceReplacementPattern, '');
-            if (contentToCopy && contentToCopy.length !== 0) {
-              await navigator.clipboard.writeText(contentToCopy);
-            }
-            e.preventDefault();
-          }
-        }
-      });
-
-      copyButton.appendChild(innerIcon);
-      codeBlock.appendChild(copyButton);
-    }
-  });
-}
-
 function setupExpandableCards() {
   const currentFragment = window?.location.hash.trim().toLowerCase().substring(1);
   const expandableCards = document.querySelectorAll('.expandable-card');
@@ -540,7 +482,6 @@ function _setupSite() {
   );
 
   setupTableOfContents();
-  setupCopyButtons();
   setupExpandableCards();
   setupFeedback();
 }

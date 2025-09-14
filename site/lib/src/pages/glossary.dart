@@ -211,7 +211,7 @@ final class GlossaryCard extends StatelessComponent {
       header: [
         h2(classes: 'card-title', [text(entry.term)]),
         div(classes: 'card-header-buttons', [
-          Button.icon(
+          Button(
             href: '#$cardId',
             icon: 'tag',
             style: ButtonStyle.text,
@@ -221,7 +221,7 @@ final class GlossaryCard extends StatelessComponent {
               'aria-label': 'Link to ${entry.term} card',
             },
           ),
-          Button.icon(
+          Button(
             icon: 'keyboard_arrow_up',
             style: ButtonStyle.text,
             classes: const ['expand-button'],
@@ -249,7 +249,7 @@ final class GlossaryCard extends StatelessComponent {
             ul(classes: 'resources-list', [
               for (final resource in entry.relatedLinks)
                 li([
-                  Button.text(
+                  Button(
                     href: resource.link,
                     content: parseMarkdownToHtml(resource.text, inline: true),
                     icon: resource.type.icon,

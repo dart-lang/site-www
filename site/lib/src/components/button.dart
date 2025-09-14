@@ -8,25 +8,10 @@ import 'material_icon.dart';
 
 /// A generic button component with different style variants.
 class Button extends StatelessComponent {
-  /// Creates a button with textual [content] and an optional [icon].
-  const Button.text({
+  /// Creates a button with either textual [content], an [icon] ID, or both.
+  const Button({
     super.key,
-    required String this.content,
-    this.href,
-    this.style = ButtonStyle.text,
     this.icon,
-    this.id,
-    this.attributes = const {},
-    this.classes,
-    this.disabled = false,
-    this.title,
-    this.asRaw = false,
-  });
-
-  /// Creates an icon button with the specified [icon] and no text.
-  const Button.icon({
-    super.key,
-    required String this.icon,
     this.href,
     this.content,
     this.style = ButtonStyle.text,
@@ -36,7 +21,8 @@ class Button extends StatelessComponent {
     this.disabled = false,
     this.title,
     this.asRaw = false,
-  });
+    this.onClick,
+  }) : assert(content != null || icon != null);
 
   final String? content;
   final String? title;
@@ -48,6 +34,7 @@ class Button extends StatelessComponent {
   final bool disabled;
   final bool asRaw;
   final List<String>? classes;
+  final void Function()? onClick;
 
   @override
   Component build(BuildContext context) {
@@ -76,6 +63,7 @@ class Button extends StatelessComponent {
         classes: mergedClasses,
         attributes: mergedAttributes,
         children,
+        onClick: onClick,
       );
     } else {
       return button(
@@ -83,6 +71,7 @@ class Button extends StatelessComponent {
         classes: mergedClasses,
         attributes: mergedAttributes,
         children,
+        onClick: onClick,
       );
     }
   }

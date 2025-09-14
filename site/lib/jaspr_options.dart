@@ -6,6 +6,7 @@
 
 import 'package:jaspr/jaspr.dart';
 import 'package:dart_dev_site/src/archive/archive_table.dart' as prefix0;
+import 'package:dart_dev_site/src/components/copy_button.dart' as prefix1;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -29,10 +30,21 @@ JasprOptions get defaultJasprOptions => JasprOptions(
       'src/archive/archive_table',
       params: _prefix0ArchiveTable,
     ),
+
+    prefix1.CopyButton: ClientTarget<prefix1.CopyButton>(
+      'src/components/copy_button',
+      params: _prefix1CopyButton,
+    ),
   },
   styles: () => [],
 );
 
 Map<String, dynamic> _prefix0ArchiveTable(prefix0.ArchiveTable c) => {
   'channel': c.channel,
+};
+Map<String, dynamic> _prefix1CopyButton(prefix1.CopyButton c) => {
+  'toCopy': c.toCopy,
+  'buttonText': c.buttonText,
+  'classes': c.classes,
+  'title': c.title,
 };

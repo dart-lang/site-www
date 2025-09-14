@@ -7,6 +7,7 @@ import 'package:jaspr/jaspr.dart';
 import '../components/button.dart';
 import '../components/card.dart';
 import '../components/chip.dart';
+import '../components/copy_button.dart';
 import '../components/material_icon.dart';
 import '../components/search.dart';
 import '../markdown/markdown_parser.dart';
@@ -134,18 +135,13 @@ class _LintRuleCard extends StatelessComponent {
       actions: CardActions(
         leading: _statusIcons,
         trailing: [
-          Button.text(
+          Button(
             href: '/tools/linter-rules/${lint.name}',
             style: ButtonStyle.outlined,
             title: 'Learn more about this lint and when to enable it.',
             content: 'Learn more',
           ),
-          Button.text(
-            style: ButtonStyle.filled,
-            classes: const ['copy-button', 'hidden'],
-            title: 'Copy ${lint.name} to your clipboard.',
-            content: 'Copy',
-          ),
+          CopyButton(toCopy: lint.name, buttonText: 'Copy name'),
         ],
       ),
     );
