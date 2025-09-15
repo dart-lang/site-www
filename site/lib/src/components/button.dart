@@ -21,6 +21,7 @@ class Button extends StatelessComponent {
     this.disabled = false,
     this.title,
     this.asRaw = false,
+    this.onClick,
   });
 
   /// Creates an icon button with the specified [icon] and no text.
@@ -36,6 +37,7 @@ class Button extends StatelessComponent {
     this.disabled = false,
     this.title,
     this.asRaw = false,
+    this.onClick,
   });
 
   final String? content;
@@ -48,6 +50,7 @@ class Button extends StatelessComponent {
   final bool disabled;
   final bool asRaw;
   final List<String>? classes;
+  final void Function()? onClick;
 
   @override
   Component build(BuildContext context) {
@@ -75,6 +78,7 @@ class Button extends StatelessComponent {
         href: href,
         classes: mergedClasses,
         attributes: mergedAttributes,
+        onClick: onClick,
         children,
       );
     } else {
@@ -82,6 +86,7 @@ class Button extends StatelessComponent {
         id: id,
         classes: mergedClasses,
         attributes: mergedAttributes,
+        onClick: onClick,
         children,
       );
     }

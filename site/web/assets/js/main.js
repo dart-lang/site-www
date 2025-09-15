@@ -353,36 +353,6 @@ function createGallery() {
   }
 }
 
-function initCookieNotice() {
-  const currentDate = Date.now();
-  const cookieKey = 'cookie-consent';
-
-  // Check if they have already recently agreed.
-  const existingDateString = window.localStorage.getItem(cookieKey);
-  if (existingDateString) {
-    const existingDate = parseInt(existingDateString);
-    if (Number.isInteger(existingDate)) {
-      const halfYearMs = 1000 * 60 * 60 * 24 * 180;
-      // If the last consent is less than 180 days old, don't show the notice.
-      if (currentDate - existingDate < halfYearMs) {
-        return;
-      }
-    }
-  }
-
-  const activeClass = 'show';
-
-  // Set up the "OK" button to update storage and hide the banner.
-  document.getElementById('cookie-consent')
-      ?.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.localStorage.setItem(cookieKey, currentDate.toString());
-    document.getElementById('cookie-notice')?.classList.remove(activeClass);
-  }, { once: true });
-
-  document.getElementById('cookie-notice').classList.add(activeClass);
-}
-
 // A pattern to remove terminal command markers when copying code blocks.
 const terminalReplacementPattern = /^(\s*\$\s*)|(C:\\(.*)>\s*)/gm;
 const zeroWidthSpaceReplacementPattern = /\u200B/g;
@@ -491,7 +461,6 @@ function setupFeedback() {
 function _setupSite() {
   setupTheme();
   setupSidenav();
-  initCookieNotice();
   setupTabs();
   setupThemeSwitcher();
   setupSiteSwitcher();
