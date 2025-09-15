@@ -41,7 +41,7 @@ you might use the [`flutter` tool][] instead.
 | Command   | Example of use                                         | More information                                                                                                   |
 |-----------|--------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
 | `analyze` | <code>dart analyze [<DIRECTORY&#124;DART_FILE>]</code> | Analyzes the project's Dart source code.<br>[Learn more.][analyze]                                                 |
-| `compile` | `dart compile exe <DART_FILE>`                         | Compiles Dart to various formats (e.g. executable, JavaScript or WebAssembly).<br>[Learn more.][compile]               | 
+| `compile` | `dart compile exe <DART_FILE>`                         | Compiles Dart to various formats (executable, JavaScript or WebAssembly).<br>[Learn more.][compile]               | 
 | `create`  | `dart create <DIRECTORY>`                              | Creates a new project.<br>[Learn more.][create]                                                                    | 
 | `doc`     | `dart doc <DIRECTORY>`                                 | Generates API reference documentation.<br>Replaces [`dartdoc`][].<br>[Learn more.][doc]                            |
 | `fix`     | <code>dart fix <DIRECTORY&#124;DART_FILE></code>       | Applies automated fixes to Dart source code.<br>[Learn more.][fix]                                                 | 
