@@ -1,6 +1,6 @@
 ---
 title: Testing
-short-title: Testing
+shortTitle: Testing
 description: >-
   Learn how to write tests for your Dart code using the `package:test` library.
 sitemap: false

@@ -1,6 +1,6 @@
 ---
 title: Dart FAQ
-short-title: FAQ
+shortTitle: FAQ
 description: You have questions about Dart, we have answers.
 ---
 

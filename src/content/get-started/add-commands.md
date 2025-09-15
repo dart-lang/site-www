@@ -1,6 +1,6 @@
 ---
 title: Make your CLI program interactive
-short-title: Add commands
+shortTitle: Add commands
 description: >-
   Add simple commands to your cli application. Learn the fundamentals of Dart
   syntax including control flow, collections, variables, functions, and more.

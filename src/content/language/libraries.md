@@ -1,6 +1,6 @@
 ---
 title: Libraries & imports
-short-title: Libraries
+shortTitle: Libraries
 description: Guidance on importing and implementing libraries.
 prevpage:
   url: /language/metadata

@@ -1,6 +1,6 @@
 ---
 title: How to mock JavaScript interop objects
-short-title: Mock JS interop objects
+shortTitle: Mock JS interop objects
 description: Learn how to mock JS interop objects in Dart for testing.
 ---
 
