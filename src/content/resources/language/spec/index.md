@@ -1,6 +1,6 @@
 ---
 title: Dart language specification
-short-title: Language specification
+shortTitle: Language specification
 breadcrumb: Specification
 description: The formal specification for the Dart language.
 ---

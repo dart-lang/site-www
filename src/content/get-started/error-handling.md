@@ -1,6 +1,6 @@
 ---
 title: Error handling
-short-title: Error handling
+shortTitle: Error handling
 description: >-
   Improve app robustness by handling errors. Learn about exceptions, errors,
   `try/catch`, `throw`, and `rethrow`.

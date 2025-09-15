@@ -1,6 +1,6 @@
 ---
 title: Debugging Dart web apps
-short-title: Debugging web apps
+shortTitle: Debugging web apps
 breadcrumb: Debugging
 description: Learn how to debug your Dart web app.
 ---
