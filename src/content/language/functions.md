@@ -646,6 +646,7 @@ is that when a value is stored in a private variable, and public access
 is only allowed by calling a getter or a setter.
 The example below showcases this.
 
+<?code-excerpt "misc/test/language_tour/functions_test.dart (getters-setters)"?>
 ```dart
 /// Defines a private variable secret with `_`.
 String _secret = 'Hello';
