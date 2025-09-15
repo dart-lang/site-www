@@ -66,6 +66,16 @@ class DashHeader extends StatelessComponent {
           ]),
           li([
             a(
+              href: 'https://blog.dart.dev',
+              classes: [
+                'nav-link',
+                if (activeEntry == _ActiveNavEntry.blog) 'active',
+              ].join(' '),
+              [text('Blog')],
+            ),
+          ]),
+          li([
+            a(
               href: '/community',
               classes: [
                 'nav-link',
@@ -329,6 +339,7 @@ _ActiveNavEntry? _activeNavEntry(String pageUrlPath) {
 
   return switch (firstFragment) {
     'overview' => _ActiveNavEntry.overview,
+    'blog' => _ActiveNavEntry.blog,
     'community' => _ActiveNavEntry.community,
     'get-started' => _ActiveNavEntry.learn,
     'get-dart' => _ActiveNavEntry.getDart,
@@ -352,6 +363,7 @@ _ActiveNavEntry? _activeNavEntry(String pageUrlPath) {
 
 enum _ActiveNavEntry {
   overview,
+  blog,
   community,
   getDart,
   docs,
