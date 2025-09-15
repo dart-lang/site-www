@@ -181,7 +181,7 @@ ga('send', 'pageview');
           attributes: {'tabindex': '1'},
           [text('Skip to main content')],
         ),
-        const DashCookieNotice(),
+        const CookieNotice(),
         const DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [
