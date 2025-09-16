@@ -17,17 +17,6 @@ function _setupFiltering() {
       inRecommended: card.dataset.inRecommended === 'true',
       inFlutter: card.dataset.inFlutter === 'true',
     });
-
-    const copyButton = card.querySelector('.copy-button');
-    if (!copyButton) return;
-
-    copyButton.addEventListener('click', async () => {
-      await navigator.clipboard.writeText(lintName);
-      // TODO(https://github.com/dart-lang/site-www/issues/6841):
-      //  Show a toast saying if successfully copied to clipboard.
-    });
-
-    copyButton.classList.remove('hidden');
   });
 
   const filterAndSearch = document.getElementById('filter-and-search');

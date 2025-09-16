@@ -5,6 +5,8 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import 'feedback.dart';
+
 /// The trailing content of a content documentation page, such as
 /// its last updated information, report an issue links, and similar.
 class TrailingContent extends StatelessComponent {
@@ -50,90 +52,7 @@ class TrailingContent extends StatelessComponent {
       id: 'trailing-content',
       attributes: {'data-nosnippet': 'true'},
       [
-        div(id: 'page-feedback', [
-          div(classes: 'feedback initial-feedback', [
-            div([text('Was this page\'s content helpful?')]),
-            div(classes: 'feedback-buttons', [
-              button(
-                id: 'feedback-up-button',
-                classes: 'icon-button',
-                attributes: {
-                  'aria-label': 'Yes, this page was helpful',
-                  'title': 'Helpful',
-                },
-                [
-                  span(
-                    classes: 'material-symbols',
-                    attributes: {'aria-hidden': 'true'},
-                    [text('thumb_up')],
-                  ),
-                ],
-              ),
-              button(
-                id: 'feedback-down-button',
-                classes: 'icon-button',
-                attributes: {
-                  'aria-label': 'No, this page was not helpful or had an issue',
-                  'title': 'Not helpful or had issue',
-                },
-                [
-                  span(
-                    classes: 'material-symbols',
-                    attributes: {'aria-hidden': 'true'},
-                    [text('thumb_down')],
-                  ),
-                ],
-              ),
-            ]),
-          ]),
-
-          div(classes: 'feedback good-feedback', [
-            div([text('Thank you for your feedback!')]),
-            a(
-              href: issueUrl,
-              classes: 'text-button',
-              attributes: {
-                'aria-label': 'Provide feedback',
-                'target': '_blank',
-                'rel': 'noopener',
-              },
-              [
-                span(
-                  classes: 'material-symbols',
-                  attributes: {'aria-hidden': 'true'},
-                  [text('feedback')],
-                ),
-                span([text('Provide details')]),
-              ],
-            ),
-          ]),
-
-          div(classes: 'feedback bad-feedback', [
-            div([
-              text(
-                'Thank you for your feedback!'
-                'Please let us know what we can do to improve.',
-              ),
-            ]),
-            a(
-              href: issueUrl,
-              classes: 'text-button',
-              attributes: {
-                'aria-label': 'Provide feedback or report an issue',
-                'target': '_blank',
-                'rel': 'noopener',
-              },
-              [
-                span(
-                  classes: 'material-symbols',
-                  attributes: {'aria-hidden': 'true'},
-                  [text('bug_report')],
-                ),
-                span([text('Provide details')]),
-              ],
-            ),
-          ]),
-        ]),
+        FeedbackComponent(issueUrl: issueUrl),
 
         p(id: 'page-github-links', [
           span([

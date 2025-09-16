@@ -7,6 +7,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../components/button.dart';
 import '../components/card.dart';
+import '../components/copy_button.dart';
 import '../components/fragment_target.dart';
 import '../components/material_icon.dart';
 import '../markdown/markdown_parser.dart';
@@ -64,21 +65,13 @@ class _DiagnosticCard extends StatelessComponent {
         ],
         trailing: [
           if (diagnostic.hasDocumentation)
-            Button.text(
+            Button(
               href: '/tools/diagnostics/$diagnosticId',
               style: ButtonStyle.outlined,
               title: 'Learn more about this diagnostic and how to resolve it.',
               content: 'Learn more',
             ),
-          Button.text(
-            style: ButtonStyle.filled,
-            classes: const ['copy-button', 'hidden'],
-            title: 'Copy $diagnosticId to your clipboard.',
-            content: 'Copy',
-            attributes: {
-              'data-copy': diagnosticId,
-            },
-          ),
+          CopyButton(toCopy: diagnosticId, buttonText: 'Copy name'),
         ],
       ),
     );
