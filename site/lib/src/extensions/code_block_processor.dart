@@ -101,6 +101,7 @@ final class CodeBlockProcessor implements PageExtension {
           return ComponentNode(
             WrappedCodeBlock(
               content: processedContent,
+              textToCopy: codeLines.copyContent,
               language: language,
               title: title,
               highlightLines: _parseNumbersAndRanges(rawHighlightLines),
@@ -389,6 +390,18 @@ final class _CodeLine {
   final List<({int startColumn, int length})> highlights;
 
   const _CodeLine({required this.content, required this.highlights});
+}
+
+extension on List<_CodeLine> {
+  static final RegExp _terminalReplacementPattern = RegExp(
+    r'^(\s*\$\s*)|(C:\\(.*)>\s*)',
+    multiLine: true,
+  );
+  static final RegExp _zeroWidthSpaceReplacementPattern = RegExp(r'\u200B');
+
+  String get copyContent => map((line) => line.content).join('\n')
+    ..replaceAll(_terminalReplacementPattern, '')
+    ..replaceAll(_zeroWidthSpaceReplacementPattern, '');
 }
 
 /// Parses a comma-separated list of numbers and ranges into a set of numbers.
