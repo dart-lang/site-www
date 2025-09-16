@@ -8,6 +8,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:dart_dev_site/src/archive/archive_table.dart' as prefix0;
 import 'package:dart_dev_site/src/components/cookie_notice.dart' as prefix1;
 import 'package:dart_dev_site/src/components/copy_button.dart' as prefix2;
+import 'package:dart_dev_site/src/components/feedback.dart' as prefix3;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -40,6 +41,11 @@ JasprOptions get defaultJasprOptions => JasprOptions(
       'src/components/copy_button',
       params: _prefix2CopyButton,
     ),
+
+    prefix3.FeedbackComponent: ClientTarget<prefix3.FeedbackComponent>(
+      'src/components/feedback',
+      params: _prefix3FeedbackComponent,
+    ),
   },
   styles: () => [],
 );
@@ -52,4 +58,7 @@ Map<String, dynamic> _prefix2CopyButton(prefix2.CopyButton c) => {
   'buttonText': c.buttonText,
   'classes': c.classes,
   'title': c.title,
+};
+Map<String, dynamic> _prefix3FeedbackComponent(prefix3.FeedbackComponent c) => {
+  'issueUrl': c.issueUrl,
 };

@@ -30,39 +30,13 @@
     }
   }
 
-  .initial-feedback {
-    .feedback-buttons {
-      display: flex;
-      flex-direction: row;
-      gap: 0.5rem;
+  .feedback-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 
-      span.material-symbols {
-        font-size: 20px;
-      }
-    }
-  }
-
-  .good-feedback, .bad-feedback {
-    display: none;
-  }
-
-  &.feedback-up {
-    .initial-feedback {
-      display: none;
-    }
-
-    .good-feedback {
-      display: flex;
-    }
-  }
-
-  &.feedback-down {
-    .initial-feedback {
-      display: none;
-    }
-
-    .bad-feedback {
-      display: flex;
+    span.material-symbols {
+      font-size: 20px;
     }
   }
 }
