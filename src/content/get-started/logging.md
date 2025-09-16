@@ -74,103 +74,103 @@ Next, create a `Logger` instance and configure it to write log messages
 to a file. This involves creating a new file for the logger and setting up
 the necessary imports.
 
-1. Create a new file called `cli/lib/src/logger.dart`.
+1.  Create a new file called `cli/lib/src/logger.dart`.
 
-1. Add the necessary imports and define the `initFileLogger` function.
+1.  Add the necessary imports and define the `initFileLogger` function.
 
-  ``` dart title="cli/lib/src/logger.dart"
-  import 'dart:io';
-  import 'package:logging/logging.dart';
+    ```dart title="cli/lib/src/logger.dart"
+    import 'dart:io';
+    import 'package:logging/logging.dart';
+  
+    Logger initFileLogger(String name) {
+      // Enables logging from child loggers.
+      hierarchicalLoggingEnabled = true;
+  
+      // Create a logger instance with the provided name.
+      final logger = Logger(name);
+      final now = DateTime.now();
+  
+      // The rest of the function will be added below.
+      // ...
+  
+      return logger;
+    }
+    ```
 
-  Logger initFileLogger(String name) {
-    // Enables logging from child loggers.
-    hierarchicalLoggingEnabled = true;
-
-    // Create a logger instance with the provided name.
-    final logger = Logger(name);
-    final now = DateTime.now();
-
-    // The rest of the function will be added below.
-    // ...
-
-    return logger;
-  }
-  ```
-
-1. Add the code to find the project's root directory, create a `logs`
-   directory if one doesn't exist, and create a unique log file.
+1.  Add the code to find the project's root directory, create a `logs`
+    directory if one doesn't exist, and create a unique log file.
    
-  ``` dart
-  Logger initFileLogger(String name) {
-    hierarchicalLoggingEnabled = true;
-    final logger = Logger(name);
-    final now = DateTime.now();
+    ```dart
+    Logger initFileLogger(String name) {
+      hierarchicalLoggingEnabled = true;
+      final logger = Logger(name);
+      final now = DateTime.now();
+  
+      // Get the path to the project directory from the current script.
+      final segments = Platform.script.path.split('/');
+      final projectDir = segments.sublist(0, segments.length - 2).join('/');
+  
+      // Create a 'logs' directory if it doesn't exist.
+      final dir = Directory('$projectDir/logs');
+      if (!dir.existsSync()) dir.createSync();
+  
+      // Create a log file with a unique name based on the current date and logger name.
+      final logFile = File(
+        '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
+      );
+  
+      // The rest of the function will be added below.
+      // ...
+  
+      return logger;
+    }
+    ```
 
-    // Get the path to the project directory from the current script.
-    final segments = Platform.script.path.split('/');
-    final projectDir = segments.sublist(0, segments.length - 2).join('/');
+1.  Configure the logger's level and set up a listener to write log messages
+    to the file.
 
-    // Create a 'logs' directory if it doesn't exist.
-    final dir = Directory('$projectDir/logs');
-    if (!dir.existsSync()) dir.createSync();
+    ```dart
+    Logger initFileLogger(String name) {
+      hierarchicalLoggingEnabled = true;
+      final logger = Logger(name);
+      final now = DateTime.now();
+    
+      final segments = Platform.script.path.split('/');
+      final projectDir = segments.sublist(0, segments.length - 2).join('/');
+      final dir = Directory('$projectDir/logs');
+      if (!dir.existsSync()) dir.createSync();
+      final logFile = File(
+        '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
+      );
+    
+      // Set the logger level to ALL, so it logs all messages regardless of severity.
+      // Level.ALL is useful for development and debugging, but you'll likely want to
+      // use a more restrictive level like Level.INFO or Level.WARNING in production.
+      logger.level = Level.ALL;
+    
+      // Listen for log records and write each one to the log file.
+      logger.onRecord.listen((record) {
+        final msg =
+            '[${record.time} - ${record.loggerName}] ${record.level.name}: ${record.message}';
+        logFile.writeAsStringSync('$msg \n', mode: FileMode.append);
+      });
+    
+      return logger;
+    }
+    ```
 
-    // Create a log file with a unique name based on the current date and logger name.
-    final logFile = File(
-      '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
-    );
+    This code does the following:
 
-    // The rest of the function will be added below.
-    // ...
-
-    return logger;
-  }
-  ```
-
-1. Configure the logger's level and set up a listener to write log messages
-   to the file.
-
-  ``` dart
-  Logger initFileLogger(String name) {
-    hierarchicalLoggingEnabled = true;
-    final logger = Logger(name);
-    final now = DateTime.now();
-
-    final segments = Platform.script.path.split('/');
-    final projectDir = segments.sublist(0, segments.length - 2).join('/');
-    final dir = Directory('$projectDir/logs');
-    if (!dir.existsSync()) dir.createSync();
-    final logFile = File(
-      '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
-    );
-
-    // Set the logger level to ALL, so it logs all messages regardless of severity.
-    // Level.ALL is useful for development and debugging, but you'll likely want to
-    // use a more restrictive level like Level.INFO or Level.WARNING in production.
-    logger.level = Level.ALL;
-
-    // Listen for log records and write each one to the log file.
-    logger.onRecord.listen((record) {
-      final msg =
-          '[${record.time} - ${record.loggerName}] ${record.level.name}: ${record.message}';
-      logFile.writeAsStringSync('$msg \n', mode: FileMode.append);
-    });
-
-    return logger;
-  }
-  ```
-
-  This code does the following:
-
-  *  It enables hierarchical logging using `hierarchicalLoggingEnabled = true`.
-  *  It creates a `Logger` instance with the given name.
-  *  It gets the project directory from the `Platform.script.path`.
-  *  It creates a `logs` directory if it doesn't exist.
-  *  It creates a log file with the current date and the logger name.
-  *  It sets the logger level to `Level.ALL`, meaning it will log all messages.
-     This is useful for development and debugging, but you'll likely want to use
-     a more restrictive level like `Level.INFO` or `Level.WARNING` in
-     production.
-  *  It listens for log records and writes them to the log file.
+    *  It enables hierarchical logging using `hierarchicalLoggingEnabled = true`.
+    *  It creates a `Logger` instance with the given name.
+    *  It gets the project directory from the `Platform.script.path`.
+    *  It creates a `logs` directory if it doesn't exist.
+    *  It creates a log file with the current date and the logger name.
+    *  It sets the logger level to `Level.ALL`, meaning it will log all messages.
+       This is useful for development and debugging, but you'll likely want to use
+       a more restrictive level like `Level.INFO` or `Level.WARNING` in
+       production.
+    *  It listens for log records and writes them to the log file.
 
 1. Create a new file called `cli/lib/cli.dart` and export `logger.dart`.
    This makes the `initFileLogger` available to other parts of your app.
@@ -249,7 +249,7 @@ including the logging and error handling.
     dependency injection, which allows the command to log events without needing
     to create its own logger.
 
-    ``` dart
+    ```dart
     import 'dart:async';
     import 'dart:io';
 
@@ -287,7 +287,7 @@ including the logging and error handling.
     valid argument, calls the `search()` function from the `wikipedia` package,
     formats the results, and returns the results as a string.
 
-    ``` dart
+    ```dart
     import 'dart:async';
     import 'dart:io';
 
@@ -335,7 +335,7 @@ including the logging and error handling.
     constructor. Then, in the `run` method, add the logic to check if the flag
     is set and, if so, get the summary of the top search result.
 
-    ``` dart
+    ```dart
     import 'dart:async';
     import 'dart:io';
 
@@ -403,7 +403,7 @@ including the logging and error handling.
     formatting problems. You'll use the injected `logger` to record these errors
     to the log file.
 
-    ``` dart
+    ```dart
     import 'dart:async';
     import 'dart:io';
 
@@ -490,7 +490,7 @@ potential network or data errors.
 
 2.  Add the following code to `get_article.dart`.
 
-    ``` dart
+    ```dart
     import 'dart:async';
     import 'dart:io';
 
