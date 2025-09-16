@@ -12,8 +12,8 @@ _'{0}' was removed in Dart '{1}'_
 ## Description
 
 The analyzer produces this diagnostic when a lint that has been removed is
-used in an analysis options file. Because the lint has been removed, the
-reference to it (such as enabling it) will have no effect.
+used in an analysis options file. Because the lint no longer exists,
+referencing it will have no effect.
 
 ## Example
 

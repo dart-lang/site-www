@@ -11,13 +11,13 @@ _The matched value type '{0}' can never match the required type '{1}'._
 
 ## Description
 
-The analyzer produces this diagnostic when the type of the object being
-matched can't ever be matched by the pattern.
+The analyzer produces this diagnostic when the object's type can't be
+matched by the pattern.
 
 ## Example
 
-The following code produces this diagnostic because a `double` is being
-matched by a pattern that requires an `int`, which can never succeed:
+The following code produces this diagnostic because a `double` is matched
+by an `int` pattern, which can never succeed:
 
 ```dart
 void f(String? s) {
@@ -27,8 +27,8 @@ void f(String? s) {
 
 ## Common fixes
 
-If one of the types is wrong, then change one or both of the types so that
-the pattern can succeed:
+If one of the types is wrong, then change one or both so the pattern match
+can succeed:
 
 ```dart
 void f(String? s) {
@@ -36,7 +36,7 @@ void f(String? s) {
 }
 ```
 
-If the types aren't wrong, then remove the pattern match:
+If the types are correct, then remove the pattern match:
 
 ```dart
 void f(double x) {}

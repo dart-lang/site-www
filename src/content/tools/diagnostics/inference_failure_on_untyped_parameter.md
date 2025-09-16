@@ -11,13 +11,13 @@ _The type of {0} can't be inferred; a type must be explicitly provided._
 
 ## Description
 
-The analyzer produces this diagnostic when
-- the language option `strict-inference` has been enabled in the analysis options file,
-- the declaration of a formal parameter doesn't have a type, and
+The analyzer produces this diagnostic when:
+- the language option `strict-inference` is enabled in the analysis options file,
+- the declaration of a formal parameter has no type, and
 - the type of the parameter can't be inferred.
 
-The type of a parameter of a method can be inferred if the method
-overrides an inherited method.
+The type of a method's parameter can be inferred if it overrides an
+inherited method.
 
 ## Example
 

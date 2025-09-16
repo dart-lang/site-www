@@ -18,7 +18,7 @@ final class GenerateLintDocs extends Command<int> {
 }
 
 Future<int> _updateLintInfo() async {
-  print('Updating src/_data/linter_rules.json...');
+  print('Updating src/data/linter_rules.json...');
   await linter.fetchAndUpdate();
 
   return 0;
