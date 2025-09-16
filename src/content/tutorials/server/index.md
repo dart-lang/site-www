@@ -1,6 +1,6 @@
 ---
 title: "Tutorials: Command-line apps and servers"
-short-title: Command-line apps
+shortTitle: Command-line apps
 description: Tutorials for writing command-line apps and servers.
 showToc: false
 ---

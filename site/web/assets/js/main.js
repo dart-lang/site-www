@@ -353,64 +353,6 @@ function createGallery() {
   }
 }
 
-// A pattern to remove terminal command markers when copying code blocks.
-const terminalReplacementPattern = /^(\s*\$\s*)|(C:\\(.*)>\s*)/gm;
-const zeroWidthSpaceReplacementPattern = /\u200B/g;
-
-function setupCopyButtons() {
-  if (!navigator.clipboard) {
-    return;
-  }
-
-  const copyButtons = document.querySelectorAll('.copy-button[data-copy]');
-  copyButtons.forEach(button => {
-    button.addEventListener('click', async (e) => {
-      const textToCopy = button.dataset.copy;
-      if (textToCopy) {
-        await navigator.clipboard.writeText(textToCopy);
-      }
-      e.preventDefault();
-    });
-    button.classList.remove('hidden');
-  });
-
-  const codeBlocks =
-      document.querySelectorAll('.code-block-body');
-
-  codeBlocks.forEach(codeBlock => {
-    if (codeBlock.querySelector('pre')) {
-      const copyButton = document.createElement('button');
-      const innerIcon = document.createElement('span');
-
-      copyButton.classList.add('code-copy-button');
-      copyButton.title = 'Copy to clipboard';
-
-      innerIcon.textContent = 'content_copy';
-      innerIcon.ariaHidden = 'true';
-      innerIcon.classList.add('material-symbols');
-
-      copyButton.addEventListener('click', async (e) => {
-        const codeBlockBody = e.currentTarget.parentElement;
-        if (codeBlockBody) {
-          const codePre = codeBlock.querySelector('pre');
-          if (codePre) {
-            const contentToCopy = codePre.textContent
-                .replace(terminalReplacementPattern, '')
-                .replace(zeroWidthSpaceReplacementPattern, '');
-            if (contentToCopy && contentToCopy.length !== 0) {
-              await navigator.clipboard.writeText(contentToCopy);
-            }
-            e.preventDefault();
-          }
-        }
-      });
-
-      copyButton.appendChild(innerIcon);
-      codeBlock.appendChild(copyButton);
-    }
-  });
-}
-
 function setupExpandableCards() {
   const currentFragment = window?.location.hash.trim().toLowerCase().substring(1);
   const expandableCards = document.querySelectorAll('.expandable-card');
@@ -434,28 +376,6 @@ function setupExpandableCards() {
       expandButton.ariaExpanded = 'false';
     }
   });
-}
-
-function setupFeedback() {
-  const feedbackContainer =
-      document.getElementById('page-feedback');
-  if (!feedbackContainer) return;
-
-  const feedbackUpButton = feedbackContainer.querySelector('#feedback-up-button');
-  const feedbackDownButton = feedbackContainer.querySelector('#feedback-down-button');
-  if (!feedbackUpButton || !feedbackDownButton) return;
-
-  feedbackUpButton.addEventListener('click', (_) => {
-    window.dataLayer?.push({'event': 'inline_feedback', 'feedback_type': 'up'});
-
-    feedbackContainer.classList.add('feedback-up');
-  }, { once: true });
-
-  feedbackDownButton.addEventListener('click', (_) => {
-    window.dataLayer?.push({'event': 'inline_feedback', 'feedback_type': 'down'});
-
-    feedbackContainer.classList.add('feedback-down');
-  }, { once: true });
 }
 
 function _setupSite() {
@@ -509,9 +429,7 @@ function _setupSite() {
   );
 
   setupTableOfContents();
-  setupCopyButtons();
   setupExpandableCards();
-  setupFeedback();
 }
 
 // Run setup if DOM is loaded, otherwise do it after it has loaded.

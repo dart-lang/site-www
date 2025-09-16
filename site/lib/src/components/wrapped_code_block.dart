@@ -4,6 +4,8 @@
 
 import 'package:jaspr/jaspr.dart';
 
+import 'copy_button.dart';
+
 /// A rendered code block with support for syntax highlighting,
 /// line highlighting, filenames, language specifying,
 /// line numbers, and more.
@@ -18,10 +20,11 @@ final class WrappedCodeBlock extends StatelessComponent {
     this.tag,
     this.initialLineNumber = 1,
     this.showLineNumbers = false,
-    this.showCopyButton = true,
+    this.textToCopy,
   });
 
   final List<List<Component>> content;
+  final String? textToCopy;
 
   final String language;
   final String? title;
@@ -32,7 +35,6 @@ final class WrappedCodeBlock extends StatelessComponent {
   final int initialLineNumber;
 
   final bool showLineNumbers;
-  final bool showCopyButton;
 
   @override
   Component build(BuildContext context) {
@@ -104,6 +106,11 @@ final class WrappedCodeBlock extends StatelessComponent {
                 ),
               ],
             ),
+            if (textToCopy case final textToCopy?)
+              CopyButton(
+                toCopy: textToCopy,
+                title: 'Copy code to clipboard',
+              ),
           ],
         ),
       ],

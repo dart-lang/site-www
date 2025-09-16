@@ -1,6 +1,6 @@
 ---
 title: Dart's support for asynchronous programming
-short-title: Asynchronous programming
+shortTitle: Asynchronous programming
 breadcrumb: Async
 description: >-
   Learn about Dart's library support for asynchronous programming.

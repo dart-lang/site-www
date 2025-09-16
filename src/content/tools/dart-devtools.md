@@ -1,6 +1,6 @@
 ---
 title: Dart DevTools
-short-title: DevTools
+shortTitle: DevTools
 description: A suite of debugging and performance tools.
 ---
 

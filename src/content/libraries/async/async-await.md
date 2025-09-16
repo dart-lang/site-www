@@ -1,6 +1,6 @@
 ---
 title: "Asynchronous programming: futures, async, await"
-short-title: Futures, async, and await
+shortTitle: Futures, async, and await
 description: Learn about and practice writing asynchronous code in DartPad!
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---

@@ -59,12 +59,12 @@ final class _CookieNoticeState extends State<CookieNotice> {
             ),
           ]),
           div(classes: 'button-group', [
-            const Button.text(
+            const Button(
               content: 'Learn more',
               href: 'https://policies.google.com/technologies/cookies',
               attributes: {'target': '_blank', 'rel': 'noopener'},
             ),
-            Button.text(
+            Button(
               content: 'OK, got it',
               style: ButtonStyle.filled,
               onClick: () {
