@@ -1,6 +1,6 @@
 ---
 title: Customizing static analysis
-short-title: Static analysis
+shortTitle: Static analysis
 description: >-
   Use an analysis options file and code comments to customize static analysis.
 bodyClass: highlight-diagnostics

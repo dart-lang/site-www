@@ -1,6 +1,6 @@
 ---
 title: Http
-short-title: Http
+shortTitle: Http
 description: >-
   Implement Wikipedia API calls to complete the core functionality of the
   Wikipedia CLI.

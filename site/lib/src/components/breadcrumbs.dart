@@ -6,6 +6,8 @@ import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import 'material_icon.dart';
+
 /// Breadcrumbs navigation component that
 /// follows ARIA guidelines and includes RDFa markup.
 ///
@@ -49,18 +51,15 @@ class PageBreadcrumbs extends StatelessComponent {
   /// Extract breadcrumbs from page data.
   ///
   /// Uses page metadata to generate breadcrumb titles with fallbacks:
-  /// breadcrumb >short-title > title.
+  /// `breadcrumb` > `shortTitle` > `title`.
   List<_BreadcrumbItem>? _breadcrumbsForPage(List<Page> pages, Page page) {
     final pageUrl = page.url;
 
     // Only show breadcrumbs if the URL isn't empty.
     if (pageUrl.isEmpty || pageUrl == '/') return null;
 
-    final pageData = page.data.page;
-
-    final displayTitle =
-        pageData['breadcrumb'] ?? pageData['short-title'] ?? pageData['title'];
-    if (displayTitle is! String || displayTitle.isEmpty) {
+    final pageBreadcrumb = page.breadcrumb;
+    if (pageBreadcrumb == null) {
       return null;
     }
 
@@ -85,15 +84,10 @@ class PageBreadcrumbs extends StatelessComponent {
       // Skip if no index page found.
       if (indexPage == null) continue;
 
-      final indexPageData = indexPage.data.page;
-      final indexTitle =
-          indexPageData['breadcrumb'] ??
-          indexPageData['short-title'] ??
-          indexPageData['title'];
-      if (indexTitle is String && indexTitle.isNotEmpty) {
+      if (indexPage.breadcrumb case final indexBreadcrumb?) {
         breadcrumbs.add(
           _BreadcrumbItem(
-            title: indexTitle,
+            title: indexBreadcrumb,
             url: indexPage.url,
           ),
         );
@@ -109,12 +103,25 @@ class PageBreadcrumbs extends StatelessComponent {
     // Add the current page as the final breadcrumb.
     breadcrumbs.add(
       _BreadcrumbItem(
-        title: displayTitle,
+        title: pageBreadcrumb,
         url: pageUrl,
       ),
     );
 
     return breadcrumbs;
+  }
+}
+
+extension on Page {
+  String? get breadcrumb {
+    final pageData = data.page;
+
+    final breadcrumbString =
+        pageData['breadcrumb'] ?? pageData['shortTitle'] ?? pageData['title'];
+    if (breadcrumbString is! String || breadcrumbString.isEmpty) {
+      return null;
+    }
+    return breadcrumbString;
   }
 }
 
@@ -157,12 +164,7 @@ final class _BreadcrumbItemComponent extends StatelessComponent {
         ],
       ),
       meta(attributes: {'property': 'position', 'content': index.toString()}),
-      if (!isLast)
-        span(
-          classes: 'material-symbols child-icon',
-          attributes: {'aria-hidden': 'true'},
-          [text('chevron_right')],
-        ),
+      if (!isLast) const MaterialIcon('chevron_right'),
     ],
   );
 }

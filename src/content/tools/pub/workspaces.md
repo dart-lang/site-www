@@ -1,6 +1,6 @@
 ---
 title: Pub workspaces (monorepo support)
-short-title: Workspaces
+shortTitle: Workspaces
 description: Learn more about pub workspaces, a way to manage package monorepos.
 ---
 

@@ -62,16 +62,16 @@ class Button extends StatelessComponent {
         href: href,
         classes: mergedClasses,
         attributes: mergedAttributes,
-        children,
         onClick: onClick,
+        children,
       );
     } else {
       return button(
         id: id,
         classes: mergedClasses,
         attributes: mergedAttributes,
-        children,
         onClick: onClick,
+        children,
       );
     }
   }
