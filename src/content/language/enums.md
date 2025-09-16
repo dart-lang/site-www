@@ -1,7 +1,7 @@
 ---
 title: Enumerated types
 description: Learn about the enum type in Dart.
-short-title: Enums
+shortTitle: Enums
 prevpage:
   url: /language/mixins
   title: Mixins

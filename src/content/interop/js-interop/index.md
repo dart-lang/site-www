@@ -1,6 +1,6 @@
 ---
 title: JavaScript interoperability
-short-title: JS interop
+shortTitle: JS interop
 description: Integrate JavaScript code into your Dart web app.
 nextpage:
   url: /interop/js-interop/usage

@@ -1,6 +1,6 @@
 ---
 title: Dart package support and tools
-short-title: Dart packages
+shortTitle: Dart packages
 breadcrumb: Packages
 description: >-
   Learn about package support in Dart and supporting tooling.

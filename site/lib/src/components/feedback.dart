@@ -40,12 +40,12 @@ final class _FeedbackComponentState extends State<FeedbackComponent> {
         ...switch (feedback) {
           _FeedbackState.none => [
             div(classes: 'feedback-buttons', [
-              Button.icon(
+              Button(
                 icon: 'thumb_up',
                 title: 'Yes, this page was helpful.',
                 onClick: () => _provideFeedback(helpful: true),
               ),
-              Button.icon(
+              Button(
                 icon: 'thumb_down',
                 title: 'No, this page was not helpful or had an issue',
                 onClick: () => _provideFeedback(helpful: false),
@@ -53,7 +53,7 @@ final class _FeedbackComponentState extends State<FeedbackComponent> {
             ]),
           ],
           _FeedbackState.helpful => [
-            Button.text(
+            Button(
               content: 'Provide details',
               icon: 'feedback',
               title: 'Provide detailed feedback.',
@@ -62,7 +62,7 @@ final class _FeedbackComponentState extends State<FeedbackComponent> {
             ),
           ],
           _FeedbackState.unhelpful => [
-            Button.text(
+            Button(
               content: 'Provide details',
               icon: 'bug_report',
               title: 'Provide feedback or report an issue.',
