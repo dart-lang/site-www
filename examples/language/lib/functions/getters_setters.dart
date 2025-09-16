@@ -1,4 +1,3 @@
-// #docregion getters-setters
 /// Defines a private variable secret with `_`.
 String _secret = 'Hello';
 
@@ -21,7 +20,7 @@ set secret(String newMessage) {
 void main() {
   // Reading the value calls the getter.
   print('Current message: $secret');
- 
+
   /*
   Output:
   Getter was used!
@@ -31,16 +30,13 @@ void main() {
   // Assigning a value calls the setter.
   secret = 'Dart is fun';
 
-
   // Reading it again calls the getter to show the new value.
   print('New message: $secret');
-  
+
   /*
   Output:
   Setter was used! New secret: "Dart is fun"
   Getter was used!
   New message: DART IS FUN
   */
-
 }
-// #enddocregion getters-setters

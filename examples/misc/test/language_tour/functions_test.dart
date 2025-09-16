@@ -161,7 +161,4 @@ ORANGES: 7
     assert(foo() == null);
     // #enddocregion implicit-return-null
   });
-
-
 }
-
