@@ -1,7 +1,7 @@
 ---
 title: "Null safety: Frequently asked questions"
 description: FAQs to help you migrate your Dart code to null safety
-short-title: FAQ (null safety)
+shortTitle: FAQ (null safety)
 ---
 
 This page collects some common questions we've heard about [null safety](/null-safety)

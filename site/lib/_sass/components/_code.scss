@@ -74,37 +74,6 @@ pre {
   }
 }
 
-.code-copy-button {
-  position: absolute;
-  user-select: none;
-  top: 6px;
-  right: 6px;
-  z-index: 10;
-
-  width: 2rem;
-  height: 2rem;
-  padding: 0;
-
-  font: 24px / 1 var(--site-icon-fontFamily);
-
-  appearance: none;
-  border: none;
-  color: var(--site-base-fgColor-alt);
-  background: none;
-  opacity: 0;
-  transition: opacity 0.4s;
-
-  &:hover, &:focus {
-    color: var(--site-link-fgColor);
-    opacity: 1;
-    outline: none;
-  }
-
-  &:active {
-    color: var(--site-link-fgColor-active);
-  }
-}
-
 .code-block-language {
   font-family: var(--site-code-fontFamily);
   user-select: none;
@@ -172,12 +141,26 @@ pre {
     position: relative;
     background: none;
 
+    .copy-button {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      z-index: 10;
+
+      opacity: 0;
+      transition: opacity 0.4s;
+
+      &:hover, &:focus, &:active {
+        opacity: 1;
+      }
+    }
+
     &:hover, &:focus-within {
       .code-block-language {
         opacity: 0;
       }
 
-      .code-copy-button {
+      .copy-button {
         opacity: 1;
       }
     }

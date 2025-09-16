@@ -1,6 +1,6 @@
 ---
 title: Object-oriented Dart programming
-short-title: Object oriented Dart
+shortTitle: Object oriented Dart
 description: >-
   Learn about object-oriented programming in Dart, including
   abstract classes, inheritance, overrides, and enums.

@@ -50,9 +50,6 @@ run `dart compile [<subcommand>] --help`:
 $ dart compile exe --help
 ```
 
-The `dart compile` command replaces the
-`dart2native`, `dart2aot`, and `dart2js` commands.
-
 :::note
 You don't need to compile Dart programs before running them.
 Instead, you can use the [`dart run` command][dart-run],

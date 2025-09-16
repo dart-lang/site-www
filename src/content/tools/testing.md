@@ -1,6 +1,6 @@
 ---
 title: Dart testing
-short-title: Testing
+shortTitle: Testing
 description: How to test Flutter, web, and VM applications.
 ---
 

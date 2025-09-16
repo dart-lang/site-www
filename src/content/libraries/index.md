@@ -1,6 +1,6 @@
 ---
 title: Dart's core libraries
-short-title: Core libraries
+shortTitle: Core libraries
 description: Learn about Dart's core libraries and APIs.
 nextpage:
   url: /libraries/dart-core
