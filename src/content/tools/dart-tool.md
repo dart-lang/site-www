@@ -1,15 +1,19 @@
 ---
 title: "dart: The Dart command-line tool"
 shortTitle: Dart CLI
-description: "The reference page for using 'dart' in a terminal window."
-showToc: false
+description: >-
+  Learn about the 'dart' CLI and its available subcommands.
 ---
 
-The `dart` tool (`bin/dart`)
-is a command-line interface to the [Dart SDK](/tools/sdk).
-The tool is available no matter how you get the Dart SDK—whether 
-you download the Dart SDK explicitly 
-or download only the [Flutter SDK.]({{site.flutter}})
+The `dart` tool is the command-line interface to the [Dart SDK][].
+The tool is available no matter how you get the Dart SDK—whether
+you download the Dart SDK explicitly
+or download only the [Flutter SDK][].
+
+[Dart SDK]: /tools/sdk
+[Flutter SDK]: {{site.flutter}}
+
+## Usage example
 
 Here's how you might use the `dart` tool
 to create, analyze, test, and run an app:
@@ -29,6 +33,8 @@ $ dart pub get
 $ dart pub outdated
 $ dart pub upgrade
 ```
+
+## Available commands
 
 The following table shows which commands you can use with the `dart` tool.
 
@@ -65,7 +71,9 @@ The following table shows which commands you can use with the `dart` tool.
 [run]: /tools/dart-run
 [test]: /tools/dart-test
 
-To get help with any of the commands, enter `dart help <command>`.
+## Learn more
+
+To get help with any of the commands, run `dart help <command>`.
 You can also get details on `pub` commands.
 
 ```console
