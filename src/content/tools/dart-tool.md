@@ -32,21 +32,21 @@ $ dart pub upgrade
 
 The following table shows which commands you can use with the `dart` tool.
 
-| Command    | Example of use                                         | More information                                                                                            |
-|------------|--------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `analyze`  | <code>dart analyze [<DIRECTORY&#124;DART_FILE>]</code> | Analyzes the project's Dart source code.<br>[Learn more.][analyze]                                          |
-| `build`    | `dart build <APP_TYPE>`                                | **Experimental**<br>Builds a Dart app including [native assets][].<br>[Learn more.][build]                  |
-| `compile`  | `dart compile exe <DART_FILE>`                         | Compiles Dart to various formats (native executable, JavaScript, or WebAssembly).<br>[Learn more.][compile] |
-| `create`   | `dart create <DIRECTORY>`                              | Creates a new project.<br>[Learn more.][create]                                                             |
-| `devtools` | `dart devtools`                                        | Opens Dart DevTools, a suite of debugging and performance tools for Dart.<br>[Learn more.][devtools]        |
-| `doc`      | `dart doc <DIRECTORY>`                                 | Generates API reference documentation.<br>[Learn more.][doc]                                                |
-| `fix`      | <code>dart fix <DIRECTORY&#124;DART_FILE></code>       | Applies automated fixes to Dart source code.<br>[Learn more.][fix]                                          |
-| `format`   | <code>dart format <DIRECTORY&#124;DART_FILE></code>    | Formats Dart source code.<br>[Learn more.][format]                                                          |
-| `info`     | `dart info`                                            | Outputs Dart tooling diagnostic information.<br>[Learn more.][info]                                         |
-| `pub`      | `dart pub <PUB_COMMAND>`                               | Works with packages.<br>Replaces `pub`.<br>[Learn more.][pub]                                               |
-| `run`      | `dart run <DART_FILE>`                                 | Runs a Dart program.<br>[Learn more.][run]                                                                  |
-| `test`     | <code>dart test <DIRECTORY&#124;DART_FILE></code>      | Runs tests in this package.<br>[Learn more.][test]                                                          |
-| _(none)_   | `dart <DART_FILE>`                                     | Runs a Dart program.<br>Prefer [`dart run`][run].                                                           |
+| Command    | Format of command                                      | More information                                                                                         |
+|------------|--------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `analyze`  | <code>dart analyze [<DIRECTORY&#124;DART_FILE>]</code> | Analyzes the project's Dart source code.<br>[Learn more.][analyze]                                       |
+| `build`    | `dart build <APP_TYPE>`                                | **Experimental**<br>Builds a Dart app including [native assets][].<br>[Learn more.][build]               |
+| `compile`  | `dart compile <FORMAT>`                                | Compiles Dart to various formats (native executable, JavaScript, WebAssembly).<br>[Learn more.][compile] |
+| `create`   | `dart create <DIRECTORY>`                              | Creates a new project.<br>[Learn more.][create]                                                          |
+| `devtools` | `dart devtools`                                        | Opens Dart DevTools, a suite of debugging and performance tools for Dart.<br>[Learn more.][devtools]     |
+| `doc`      | `dart doc <DIRECTORY>`                                 | Generates API reference documentation.<br>[Learn more.][doc]                                             |
+| `fix`      | <code>dart fix <DIRECTORY&#124;DART_FILE></code>       | Applies automated fixes to Dart source code.<br>[Learn more.][fix]                                       |
+| `format`   | <code>dart format <DIRECTORY&#124;DART_FILE></code>    | Formats Dart source code.<br>[Learn more.][format]                                                       |
+| `info`     | `dart info`                                            | Outputs Dart tooling diagnostic information.<br>[Learn more.][info]                                      |
+| `pub`      | `dart pub <PUB_COMMAND>`                               | Works with packages.<br>Replaces `pub`.<br>[Learn more.][pub]                                            |
+| `run`      | `dart run <DART_FILE>`                                 | Runs a Dart program.<br>[Learn more.][run]                                                               |
+| `test`     | <code>dart test <DIRECTORY&#124;DART_FILE></code>      | Runs tests in this package.<br>[Learn more.][test]                                                       |
+| _(none)_   | `dart <DART_FILE>`                                     | Runs a Dart program.<br>Prefer [`dart run`][run].                                                        |
 
 {:.table .table-striped .nowrap}
 
