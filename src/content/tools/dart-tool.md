@@ -38,7 +38,7 @@ The following table shows which commands you can use with the `dart` tool.
 | `build`    | `dart build <APP_TYPE>`                                | **Experimental**<br>Builds a Dart app including [native assets][].<br>[Learn more.][build]                  |
 | `compile`  | `dart compile exe <DART_FILE>`                         | Compiles Dart to various formats (native executable, JavaScript, or WebAssembly).<br>[Learn more.][compile] |
 | `create`   | `dart create <DIRECTORY>`                              | Creates a new project.<br>[Learn more.][create]                                                             |
-| `devtools` | `dart devtools`                                        | Opens Dart DevTools.<br>[Learn more.][devtools]                                                             |
+| `devtools` | `dart devtools`                                        | Opens Dart DevTools, a suite of debugging and performance tools for Dart.<br>[Learn more.][devtools]        |
 | `doc`      | `dart doc <DIRECTORY>`                                 | Generates API reference documentation.<br>[Learn more.][doc]                                                |
 | `fix`      | <code>dart fix <DIRECTORY&#124;DART_FILE></code>       | Applies automated fixes to Dart source code.<br>[Learn more.][fix]                                          |
 | `format`   | <code>dart format <DIRECTORY&#124;DART_FILE></code>    | Formats Dart source code.<br>[Learn more.][format]                                                          |
