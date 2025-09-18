@@ -1,19 +1,21 @@
-/// Defines a private variable secret with `_`.
+// Defines a variable `_secret` that is private to the library since
+// its identifier starts with an underscore (`_`).
 String _secret = 'Hello';
 
-/// The public top-level getter.
-/// It provides read access to the [_secret].
+// A public top-level getter that
+// provides read access to [_secret].
 String get secret {
   print('Getter was used!');
   return _secret.toUpperCase();
 }
 
-/// The public top-level setter.
-/// It provides write access to the [_secret].
+// A public top-level setter that
+// provides write access to [_secret].
 set secret(String newMessage) {
-  print('Setter was used! New secret: "$newMessage"');
+  print('Setter was used!');
   if (newMessage.isNotEmpty) {
     _secret = newMessage;
+    print('New secret: "$newMessage"');
   }
 }
 
@@ -30,7 +32,7 @@ void main() {
   // Assigning a value calls the setter.
   secret = 'Dart is fun';
 
-  // Reading it again calls the getter to show the new value.
+  // Reading it again calls the getter to show the new computed value
   print('New message: $secret');
 
   /*

@@ -1,7 +1,7 @@
 ---
 title: Functions
 description: Everything about functions in Dart.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+js: [{ url: "/assets/js/inject_dartpad.js", defer: true }]
 prevpage:
   url: /language/error-handling
   title: Error handling
@@ -62,8 +62,8 @@ that indicates whether the `atomicNumber` falls into the noble gas range.
 
 ## Parameters
 
-A function can have any number of *required positional* parameters. These can be
-followed either by *named* parameters or by *optional positional* parameters
+A function can have any number of _required positional_ parameters. These can be
+followed either by _named_ parameters or by _optional positional_ parameters
 (but not both).
 
 :::note
@@ -74,7 +74,6 @@ details.
 
 You can use [trailing commas][] when you pass arguments to a function
 or when you define function parameters.
-
 
 ### Named parameters
 
@@ -97,9 +96,9 @@ void enableFlags({bool? bold, bool? hidden}) {
 }
 ```
 
-When calling a function, 
+When calling a function,
 you can specify named arguments using
-<code><em>paramName</em>: <em>value</em></code>. 
+<code><em>paramName</em>: <em>value</em></code>.
 For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
@@ -144,6 +143,7 @@ A parameter marked as `required` can still be nullable:
 ```dart
 const Scrollbar({super.key, required [!Widget?!] child});
 ```
+
 :::
 
 You might want to place positional arguments first,
@@ -274,7 +274,7 @@ More about those in the next section.
 
 ## Function types
 
-You can specify the type of a function, which is known as a *function type*.
+You can specify the type of a function, which is known as a _function type_.
 A function type is obtained from a function declaration header by
 replacing the function name by the keyword `Function`.
 Moreover, you are allowed to omit the names of positional parameters, but
@@ -309,8 +309,8 @@ These functions are called _anonymous functions_, _lambdas_, or _closures_.
 
 An anonymous function resembles a named function as it has:
 
-* Zero or more parameters, comma-separated
-* Optional type annotations between parentheses.
+- Zero or more parameters, comma-separated
+- Optional type annotations between parentheses.
 
 The following code block contains the function's body:
 
@@ -511,7 +511,6 @@ void main() {
 }
 ```
 
-
 ## Return values
 
 All functions return a value. If no return value is specified, the
@@ -534,14 +533,92 @@ To return multiple values in a function, aggregate the values in a [record][].
 
 [record]: /language/records#multiple-returns
 
+## Getters and setters
+
+Every property access (top-level, static, or instance) is an invocation
+of a getter or a setter. A variable implicitly creates a getter
+and, if it's mutable, a setter. This is why when you access a property,
+you're actually calling a small function in the background. Reading a
+property calls a getter function, and writing one calls a setter function,
+even in cases where the property is declared a variable.
+
+However, you can also declare getters and setters explicitly with
+the `get` and `set` keywords respectively.
+This allows a property's value to be computed when it's read or written.
+
+The purpose of using getters and setters is to create a clear
+separation between the client (the code that uses the property) and
+the provider (the class or library that defines it). The client asks for or
+sets a value without needing to know if that value is stored in a
+simple variable or calculated on the spot. This gives the provider
+the freedom to change how the property works.
+
+For example, because the value of the property might not be stored anywhere,
+it could be computed each time the getter is called. Another example
+is that when a value is stored in a private variable, and public access
+is only allowed by calling a getter or a setter.
+
+The following example showcases this,
+with the `secret` getter and setter providing
+indirect access to the private variable `_secret` with
+its own manipulations on the assigned and retrieved values.
+
+<?code-excerpt "language/lib/functions/getters_setters.dart"?>
+```dart highlightLines=3, 7-10, 14-20, 24, 33
+// Defines a variable `_secret` that is private to the library since
+// its identifier starts with an underscore (`_`).
+String _secret = 'Hello';
+
+// A public top-level getter that
+// provides read access to [_secret].
+String get secret {
+  print('Getter was used!');
+  return _secret.toUpperCase();
+}
+
+// A public top-level setter that
+// provides write access to [_secret].
+set secret(String newMessage) {
+  print('Setter was used!');
+  if (newMessage.isNotEmpty) {
+    _secret = newMessage;
+    print('New secret: "$newMessage"');
+  }
+}
+
+void main() {
+  // Reading the value calls the getter.
+  print('Current message: $secret');
+
+  /*
+  Output:
+  Getter was used!
+  Current message: HELLO
+  */
+
+  // Assigning a value calls the setter.
+  secret = 'Dart is fun';
+
+  // Reading it again calls the getter to show the new computed value
+  print('New message: $secret');
+
+  /*
+  Output:
+  Setter was used! New secret: "Dart is fun"
+  Getter was used!
+  New message: DART IS FUN
+  */
+}
+```
+
 ## Generators
 
 When you need to lazily produce a sequence of values,
 consider using a _generator function_.
 Dart has built-in support for two kinds of generator functions:
 
-* **Synchronous** generator: Returns an [`Iterable`] object.
-* **Asynchronous** generator: Returns a [`Stream`] object.
+- **Synchronous** generator: Returns an [`Iterable`] object.
+- **Asynchronous** generator: Returns a [`Stream`] object.
 
 To implement a **synchronous** generator function,
 mark the function body as `sync*`,
@@ -580,7 +657,6 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 ```
 
-
 [`Iterable`]: {{site.dart-api}}/dart-core/Iterable-class.html
 [`Stream`]: {{site.dart-api}}/dart-async/Stream-class.html
 
@@ -600,7 +676,7 @@ making them usable in Dart. Implementation and usage is
 heavily platform specific, so check out the interop docs on, for example,
 [C][] or [JavaScript][] to learn more.
 
-External functions can be top-level functions, [instance methods][], 
+External functions can be top-level functions, [instance methods][],
 getters or setters, or [non-redirecting constructors][].
 An [instance variable][] can be `external` too,
 which is equivalent to an external getter and (if the variable
@@ -611,7 +687,6 @@ is not `final`) an external setter.
 [instance variable]: /language/classes#instance-variables
 [C]: /interop/c-interop
 [JavaScript]: /interop/js-interop
-
 [Function API reference]: {{site.dart-api}}/dart-core/Function-class.html
 [Callable objects]: /language/callable-objects
 [type annotations for public APIs]: /effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious
@@ -620,75 +695,4 @@ is not `final`) an external setter.
 [Flutter]: {{site.flutter}}
 [trailing commas]: /language/collections#lists
 
-## Getters and setters
-
-Every property access (top-level, static, or instance) is an invocation 
-of a getter or a setter. A variable implicitly creates a getter 
-and, if it's mutable, a setter. This is why when you access a property, 
-you're actually calling a small function in the background. Reading a 
-property calls a getter function, and writing one calls a setter function,
-even in cases where the property is declared a variable. 
-
-However, you can also declare a getter or a setter explicitly (using
-the keywords `get` or `set`). This allows a property's value to be
-computed when it's read or written.
-
-The purpose of using getters and setters is to create a clear
-separation between the client (the code that uses the property) and
-the provider (the class that defines it). The client asks for or
-sets a value without needing to know if that value is stored in a
-simple variable or calculated on the spot. This gives the provider
-the freedom to change how the property works. 
-
-For example, because the value of the property might not be stored anywhere,
-it could be computed each time the getter is called. Another example
-is that when a value is stored in a private variable, and public access
-is only allowed by calling a getter or a setter.
-The example below showcases this.
-
-<?code-excerpt "language/lib/functions/getters_setters.dart"?>
-```dart
-/// Defines a private variable secret with `_`.
-String _secret = 'Hello';
-
-/// The public top-level getter.
-/// It provides read access to the [_secret].
-String get secret {
-  print('Getter was used!');
-  return _secret.toUpperCase();
-}
-
-/// The public top-level setter.
-/// It provides write access to the [_secret].
-set secret(String newMessage) {
-  print('Setter was used! New secret: "$newMessage"');
-  if (newMessage.isNotEmpty) {
-    _secret = newMessage;
-  }
-}
-
-void main() {
-  // Reading the value calls the getter.
-  print('Current message: $secret');
-
-  /*
-  Output:
-  Getter was used!
-  Current message: HELLO
-  */
-
-  // Assigning a value calls the setter.
-  secret = 'Dart is fun';
-
-  // Reading it again calls the getter to show the new value.
-  print('New message: $secret');
-
-  /*
-  Output:
-  Setter was used! New secret: "Dart is fun"
-  Getter was used!
-  New message: DART IS FUN
-  */
-}
-```
 
