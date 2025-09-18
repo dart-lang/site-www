@@ -564,7 +564,7 @@ indirect access to the private variable `_secret` with
 its own manipulations on the assigned and retrieved values.
 
 <?code-excerpt "language/lib/functions/getters_setters.dart"?>
-```dart highlightLines=3, 7-10, 14-20, 24, 33
+```dart highlightLines=3,7-10,14-20,24,33
 // Defines a variable `_secret` that is private to the library since
 // its identifier starts with an underscore (`_`).
 String _secret = 'Hello';
