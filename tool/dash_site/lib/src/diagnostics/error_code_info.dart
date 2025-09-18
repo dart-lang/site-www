@@ -14,6 +14,10 @@ final class Messages {
   /// Decoded messages from the linter's `messages.yaml` file.
   final Map<String, Map<String, AnalyzerErrorCodeInfo>> linterMessages;
 
+  /// Decoded messages from the front end and analyzer's
+  /// shared `messages.yaml` file.
+  final Map<String, FrontEndErrorCodeInfo> sharedMessages;
+
   /// Decoded messages from the front end's `messages.yaml` file.
   final Map<String, FrontEndErrorCodeInfo> frontEndMessages;
 
@@ -24,6 +28,7 @@ final class Messages {
     required this.analyzerMessages,
     required this.linterMessages,
     required this.frontEndMessages,
+    required this.sharedMessages,
     required this.cfeToAnalyzerErrorCodeTables,
   });
 
@@ -32,6 +37,10 @@ final class Messages {
     final analyzerMessages = _decodeAnalyzerMessagesYaml(rawAnalyzerYaml);
     final rawFrontEndYaml = await _loadSdkYaml('pkg/front_end/messages.yaml');
     final frontEndMessages = _decodeCfeMessagesYaml(rawFrontEndYaml);
+    final rawSharedYaml = await _loadSdkYaml(
+      'pkg/_fe_analyzer_shared/messages.yaml',
+    );
+    final sharedMessages = _decodeCfeMessagesYaml(rawSharedYaml);
     final rawLinterYaml = await _loadSdkYaml('pkg/linter/messages.yaml');
     final linterMessages = _decodeAnalyzerMessagesYaml(rawLinterYaml);
 
@@ -39,9 +48,11 @@ final class Messages {
       analyzerMessages: analyzerMessages,
       linterMessages: linterMessages,
       frontEndMessages: frontEndMessages,
-      cfeToAnalyzerErrorCodeTables: CfeToAnalyzerErrorCodeTables._(
-        frontEndMessages,
-      ),
+      cfeToAnalyzerErrorCodeTables: CfeToAnalyzerErrorCodeTables._({
+        ...frontEndMessages,
+        ...sharedMessages,
+      }),
+      sharedMessages: sharedMessages,
     );
   }
 }
