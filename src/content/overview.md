@@ -242,7 +242,7 @@ Alternatively, Dart code can be compiled to WebAssembly.
 Dart web contains three compilation modes:
 
 * An incremental JavaScript development compiler enabling a fast developer 
-  cycle.
+  cycle with incremental recompilation (enabling hot reload).
 * An optimizing JavaScript production compiler which compiles Dart code to fast,
   compact, deployable JavaScript. These efficiencies come from techniques such
   as dead-code elimination.

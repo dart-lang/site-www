@@ -14,7 +14,7 @@ We recommend the [Flutter framework][] for developing multi-platform native apps
 for mobile (iOS & Android), desktop (Windows, Linux, and macOS), and the web.
 
 Flutter is powered by the [Dart platform][].
-The [Dart VM](/overview#platform) provides an instant _hot reload_ developer cycle.
+The [Dart runtimes](/overview#platform) provide an instant _hot reload_ developer cycle.
 The Dart compilers—an [ahead-of-time (AOT) compiler][] for native code
 and a [Dart-to-JavaScript compiler][] for web code—create 
 fast production code for any platform.
