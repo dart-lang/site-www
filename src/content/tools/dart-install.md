@@ -15,8 +15,7 @@ see the following sections.
 
 The following command installs all executables specified in
 a package's `pubspec.yaml` [executables][] section on the
-PATH. If the executables section doesn't exist, it installs all
-`bin/*.dart` entry points as executables.
+PATH.
 
 ```console
 $ dart install [arguments] <package> [version-constraint]
@@ -128,10 +127,9 @@ Check which packages are installed
 $ dart installed
 ```
 
-For example:
+## Options for the dart install command
 
-## Options
-
+These options can be use for the `dart install` command.
 For options that apply to all pub commands, see
 [Global options][].
 
