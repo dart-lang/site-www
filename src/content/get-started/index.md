@@ -36,3 +36,4 @@ follow the instructions on how to [Get the Dart SDK][].
 9. [Data and JSON](/get-started/data-and-json)
 10. [Testing](/get-started/testing)
 11. [Http](/get-started/http)
+12. [Logging](/get-started/logging)

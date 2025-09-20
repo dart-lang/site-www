@@ -12,7 +12,7 @@ import 'package:yaml/yaml.dart' show loadYaml;
 import '../utils.dart';
 
 String get _outputPath =>
-    path.join(repositoryRoot, 'src', '_data', 'linter_rules.json');
+    path.join(repositoryRoot, 'src', 'data', 'linter_rules.json');
 
 final Future<List<Map<String, Object?>>> _lintDocs = () async {
   final rawRulesInfoUri = Uri.parse(

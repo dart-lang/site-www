@@ -11,9 +11,9 @@ _The return type of '{0}' can't be inferred._
 
 ## Description
 
-The analyzer produces this diagnostic when
-- the language option `strict-inference` has been enabled in the analysis options file,
-- the declaration of a method or function doesn't have a return type, and
+The analyzer produces this diagnostic when:
+- the language option `strict-inference` is enabled in the analysis options file,
+- the declaration of a method or function has no return type, and
 - the return type can't be inferred.
 
 ## Example

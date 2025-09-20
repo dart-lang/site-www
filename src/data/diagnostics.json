@@ -2728,7 +2728,7 @@
   },
   {
     "id": "incompatible_lint",
-    "description": "_The rule '{0}' is incompatible with '{1}', which is included from {2} file{3}._\n\n_The rule '{0}' is incompatible with {1}._",
+    "description": "_The rule '{0}' is incompatible with {1}, which is included from {2} file{3}._\n\n_The rule '{0}' is incompatible with {1}._",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []

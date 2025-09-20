@@ -11,9 +11,9 @@ _The type argument(s) of '{0}' can't be inferred._
 
 ## Description
 
-The analyzer produces this diagnostic when
-- the language option `strict-inference` has been enabled in the analysis options file,
-- a list, map or set literal doesn't have type arguments, and
+The analyzer produces this diagnostic when:
+- the language option `strict-inference` is enabled in the analysis options file,
+- a list, map, or set literal has no type arguments, and
 - the values for the type arguments can't be inferred from the elements.
 
 ## Example
@@ -26,8 +26,8 @@ analyzer:
     strict-inference: true
 ```
 
-The following code produces this diagnostic because the type of the
-elements of the list literal can't be inferred by the analyzer:
+The following code produces this diagnostic because the type of the list
+literal's elements can't be inferred:
 
 ```dart
 void f() {

@@ -11,9 +11,9 @@ _The type of {0} can't be inferred without either a type or initializer._
 
 ## Description
 
-The analyzer produces this diagnostic when
-- the language option `strict-inference` has been enabled in the analysis options file,
-- the declaration of a variable doesn't have a type, and
+The analyzer produces this diagnostic when:
+- the language option `strict-inference` is enabled in the analysis options file,
+- the declaration of a variable has no type, and
 - the type of the variable can't be inferred.
 
 ## Example
