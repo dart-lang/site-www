@@ -1,16 +1,12 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:jaspr_content/jaspr_content.dart';
 
+import '../models/on_this_page_model.dart';
 import 'material_icon.dart';
 
-final class SideTableOfContents extends StatelessComponent {
-  const SideTableOfContents(
-    this.toc, {
-    this.maxDepth,
-  });
+final class WideTableOfContents extends StatelessComponent {
+  const WideTableOfContents(this.data);
 
-  final TableOfContents toc;
-  final int? maxDepth;
+  final OnThisPageModel data;
 
   @override
   Component build(BuildContext _) {
@@ -19,21 +15,19 @@ final class SideTableOfContents extends StatelessComponent {
         const MaterialIcon('list'),
         span([text('On this page')]),
       ]),
-      _TocContents(toc, maxDepth: maxDepth),
+      _TocContents(data),
     ]);
   }
 }
 
-final class TopTableOfContents extends StatelessComponent {
-  const TopTableOfContents(
-    this.toc, {
+final class NarrowTableOfContents extends StatelessComponent {
+  const NarrowTableOfContents(
+    this.data, {
     required this.currentTitle,
-    this.maxDepth,
   });
 
-  final TableOfContents toc;
+  final OnThisPageModel data;
   final String currentTitle;
-  final int? maxDepth;
 
   @override
   Component build(BuildContext _) {
@@ -78,7 +72,7 @@ final class TopTableOfContents extends StatelessComponent {
         ),
         nav(
           attributes: {'role': 'menu'},
-          [_TocContents(toc, maxDepth: maxDepth)],
+          [_TocContents(data)],
         ),
       ]),
     ]);
@@ -86,23 +80,17 @@ final class TopTableOfContents extends StatelessComponent {
 }
 
 final class _TocContents extends StatelessComponent {
-  const _TocContents(this.toc, {required int? maxDepth})
-    : maxDepth = maxDepth ?? 2;
+  const _TocContents(this.data);
 
-  final TableOfContents toc;
-  final int maxDepth;
+  final OnThisPageModel data;
 
   @override
   Component build(BuildContext _) => ul(
     classes: 'styled-toc-list',
-    _buildEntries(toc.entries, 0),
+    _buildEntries(data.topLevelEntries, 0),
   );
 
-  List<Component> _buildEntries(List<TocEntry> entries, int depth) {
-    if (depth >= maxDepth) {
-      return const [];
-    }
-
+  List<Component> _buildEntries(List<OnThisPageEntry> entries, int depth) {
     final nextDepth = depth + 1;
 
     return [
@@ -114,7 +102,7 @@ final class _TocContents extends StatelessComponent {
               [text(entry.text)],
             ),
           ]),
-          if (nextDepth < maxDepth && entry.children.isNotEmpty)
+          if (entry.children.isNotEmpty)
             ul(_buildEntries(entry.children, nextDepth)),
         ]),
     ];

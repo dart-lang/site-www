@@ -2,6 +2,7 @@
 title: Dart cheatsheet
 breadcrumb: Cheatsheet
 description: Interactively learn (or relearn) some of Dart's unique features.
+maxTocDepth: 2
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
@@ -39,7 +40,7 @@ Here are some examples of using string interpolation:
 | `'${"word".toUpperCase()}'` | `'WORD'`                           |
 | `'$myObject'`               | The value of `myObject.toString()` |
 
-### Exercise {:.no_toc}
+### Exercise
 
 The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
@@ -111,7 +112,7 @@ int? a; // The initial value of a is null.
 To learn more about null safety in Dart,
 read the [sound null safety guide](/null-safety).
 
-### Exercise {:.no_toc}
+### Exercise
 
 Declare two variables in this DartPad:
 
@@ -181,7 +182,7 @@ print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Try substituting in the `??=` and `??` operators
 to implement the described behavior in the following snippet.
@@ -270,7 +271,7 @@ The preceding code returns null (and never calls `someMethod()`) if either
 `myObject` or `myObject.someProperty` is null.
 
 
-### Exercise {:.no_toc}
+### Exercise
 
 The following function takes a nullable string as a parameter.
 Try using conditional property access to make it
@@ -358,7 +359,7 @@ but still want the list to be `List<BaseType>`:
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Try setting the following variables to the indicated values. Replace the existing null values.
 
@@ -488,7 +489,7 @@ Here's a simpler way to write that code:
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Try finishing the following statements, which use arrow syntax.
 
@@ -638,7 +639,6 @@ web.document.querySelector('#confirm')
 ```
 
 ### Exercise
-{:.no_toc}
 
 Use cascades to create a single statement that
 sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
@@ -769,7 +769,7 @@ class MyClass {
 }
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Imagine you have a shopping cart class that keeps a
 private `List<double>` of prices.
@@ -925,7 +925,7 @@ void main() {
 }
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Implement a function called `joinWithCommas()` that accepts one to
 five integers, then returns a string of those numbers separated by commas.
@@ -1063,7 +1063,7 @@ void printName(String firstName, String lastName, {String middleName[! = ''!]}) 
 A function can't have both optional positional and named parameters.
 
 
-### Exercise {:.no_toc}
+### Exercise
 
 Add a `copyWith()` instance method to the `MyDataObject`
 class. It should take three named, nullable parameters:
@@ -1258,7 +1258,7 @@ try {
 }
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Implement `tryFunction()` below. It should execute an untrustworthy method and
 then do the following:
@@ -1459,7 +1459,7 @@ MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Add a one-line constructor to `MyClass` that uses
 `this.` syntax to receive and assign values for
@@ -1547,7 +1547,7 @@ NonNegativePoint(this.x, this.y) : assert(x >= 0), assert(y >= 0) {
 }
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Complete the `FirstTwoLetters` constructor below.
 Use an initializer list to assign the first two characters in `word` to
@@ -1643,7 +1643,7 @@ To use a named constructor, invoke it using its full name:
 final myPoint = Point.origin();
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Give the `Color` class a constructor named `Color.black`
 that sets all three properties to zero.
@@ -1730,7 +1730,7 @@ class Shape {
 }
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Replace the line `TODO();` in the factory constructor
 named `IntegerHolder.fromList` to return the following:
@@ -1900,7 +1900,7 @@ class Automobile {
 }
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Remember the `Color` class from above? Create a named constructor called
 `black`, but rather than manually assigning the properties, redirect it to the
@@ -1982,7 +1982,7 @@ class ImmutablePoint {
 }
 ```
 
-### Exercise {:.no_toc}
+### Exercise
 
 Modify the `Recipe` class so its instances can be constants,
 and create a constant constructor that does the following:

@@ -1,7 +1,7 @@
 ---
 title: Breaking changes and deprecations
 description: A list of breaking changes by release in Dart.
-maxTocDepth: 1
+maxTocDepth: 2
 lastVerified: 2025-08-13
 ---
 
