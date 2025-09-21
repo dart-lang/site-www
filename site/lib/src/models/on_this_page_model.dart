@@ -1,11 +1,15 @@
+// Copyright (c) 2025, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 import '../extensions/header_extractor.dart';
 
-class OnThisPageModel {
+class OnThisPageData {
   final List<OnThisPageEntry> topLevelEntries;
 
-  OnThisPageModel(this.topLevelEntries);
+  OnThisPageData(this.topLevelEntries);
 
-  factory OnThisPageModel.fromContentHeaders(
+  factory OnThisPageData.fromContentHeaders(
     List<ContentHeader> headers, {
     required int minLevel,
     required int maxLevel,
@@ -54,7 +58,7 @@ class OnThisPageModel {
       }
     }
 
-    return OnThisPageModel(rootEntries);
+    return OnThisPageData(rootEntries);
   }
 }
 

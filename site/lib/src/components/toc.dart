@@ -1,3 +1,7 @@
+// Copyright (c) 2025, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 import 'package:jaspr/jaspr.dart';
 
 import '../models/on_this_page_model.dart';
@@ -6,7 +10,7 @@ import 'material_icon.dart';
 final class WideTableOfContents extends StatelessComponent {
   const WideTableOfContents(this.data);
 
-  final OnThisPageModel data;
+  final OnThisPageData data;
 
   @override
   Component build(BuildContext _) {
@@ -26,7 +30,7 @@ final class NarrowTableOfContents extends StatelessComponent {
     required this.currentTitle,
   });
 
-  final OnThisPageModel data;
+  final OnThisPageData data;
   final String currentTitle;
 
   @override
@@ -82,7 +86,7 @@ final class NarrowTableOfContents extends StatelessComponent {
 final class _TocContents extends StatelessComponent {
   const _TocContents(this.data);
 
-  final OnThisPageModel data;
+  final OnThisPageData data;
 
   @override
   Component build(BuildContext _) => ul(

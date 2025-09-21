@@ -72,14 +72,14 @@ class DocLayout extends DashLayout {
     );
   }
 
-  OnThisPageModel? _tocForPage(Page page) {
+  OnThisPageData? _tocForPage(Page page) {
     final pageData = page.data.page;
     final showToc = pageData['showToc'] as bool? ?? true;
 
     // If 'showToc' was explicitly set to false, hide the toc.
     if (!showToc) return null;
 
-    final onThisPageData = OnThisPageModel.fromContentHeaders(
+    final onThisPageData = OnThisPageData.fromContentHeaders(
       page.data['contentHeaders'] as List<ContentHeader>? ?? const [],
       minLevel: pageData['minTocDepth'] as int? ?? 2,
       maxLevel: pageData['maxTocDepth'] as int? ?? 3,
