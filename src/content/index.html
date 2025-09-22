@@ -8,27 +8,10 @@ bodyClass: homepage no-toc
 focusedLayout: true
 showBreadcrumbs: false
 ---
-<!-- Hero animation -->
-<section class="dash-header">
-    <video autoplay loop muted playsinline>
-        <source src="assets/dash/video/hotreload.webm"
-                type='video/webm;codecs="vp8, vorbis"' />
-        <source src="assets/dash/video/hotreload.mp4"
-                type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-        <img src="assets/dash/2x/paint-your-ui.png" alt="Paint your UI" />
-    </video>
-    <img src="assets/dash/2x/paint-your-ui.png" alt="Paint your UI to life"/>
-</section>
-
 <!-- Dart tag-line -->
 <section id="site-content-title" class="dash-header-callout">
     <div class="callout-title">
-        An approachable, portable, and productive language for high-quality apps on any platform
-    </div>
-    <div class="callout-button">
-        <a href="https://www.youtube.com/watch?v=5F-6n_2XWR8" target="_blank">
-            <span class="material-symbols">play_circle</span><span>Watch video</span>
-        </a>
+        An approachable, portable, and productive language<br>for high-quality apps on any platform
     </div>
 
     <img class="made-by" src="assets/dash/2x/supported-by-google.png" alt="Supported by Google"/>
@@ -52,18 +35,18 @@ showBreadcrumbs: false
         </div>
     </div>
     <div class="feature">
-        <div class="feature-icon"><img src="assets/dash/2x/client-optimized-light-op1.png" alt="Client optimised"/></div>
-        <div class="feature-title">Productive</br>development</div>
-        <div class="feature-desc">Make changes iteratively: use hot
-        reload to see the result instantly in your running app.
-        </div>
-    </div>
-    <div class="feature">
         <div class="feature-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Productive development"/></div>
-        <div class="feature-title">Portable and fast<br/>on all platforms</div>
+        <div class="feature-title">Portable and fast</div>
         <div class="feature-desc">Compile to ARM, x64, and RISC-V machine
         code for mobile, desktop, and backend. Or, compile to JavaScript & WebAssembly
         for the web.</div>
+    </div>
+    <div class="feature">
+        <div class="feature-icon"><img src="assets/dash/2x/client-optimized-light-op1.png" alt="Client optimised"/></div>
+        <div class="feature-title">Productive</div>
+        <div class="feature-desc">Make changes iteratively: use hot
+        reload to see the result instantly in your running app.
+        </div>
     </div>
 </section>
 
@@ -116,12 +99,55 @@ showBreadcrumbs: false
 
     <section class="dash-row">
         <div class="content-image">
+            <img class="galleryThree" src="assets/dash/svg/3-1-aot-compile.svg" alt="Compiling dart file"/>
+        </div>
+        <div class="content-info">
+            <div class="content-container">
+                <div class="content-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Multiplatform performance"/></div>
+                <div class="content-feature">Portable and fast</div>
+                <div class="content-desc" id="galleryThree">
+                    <ul class="selector">
+                        <li class="highlight" tabindex="0" data-banner="assets/dash/svg/3-1-aot-compile.svg">
+                                <div class="bullet-container" aria-hidden="true">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    <a href="/overview#native-platform">AOT-compile</a> apps to native
+                                    machine code for <a href="https://github.com/timsneath/time">instant startup</a>.
+                                </div>
+                        </li>
+                        <li tabindex="0" data-banner="assets/dash/svg/3-2-target-web.svg">
+                                <div class="bullet-container" aria-hidden="true">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    Target the web with complete, mature, fast
+                                    <a href="/overview#web-platform">compilers for JavaScript and WebAssembly</a>.
+                                </div>
+                        </li>
+                        <li tabindex="0" data-banner="assets/dash/svg/3-3-backend-code.svg">
+                            <div class="bullet-container" aria-hidden="true">
+                                <div class="animated-bullet"></div>
+                            </div>
+                            <div class="bullet-text">
+                                Run <a href="/tutorials/server/httpserver">backend code</a>
+                                supporting your app, written using a single programming language.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dash-row">
+        <div class="content-image">
             <img class="galleryTwo" src="assets/dash/svg/2-1-hot-reload-iterative-changes.svg" alt="Hot reload your changes"/>
         </div>
         <div class="content-info">
             <div class="content-container">
                 <div class="content-icon"><img src="assets/dash/2x/client-optimized-light-op1.png" alt="Productive development"/></div>
-                <div class="content-feature">Productive development</div>
+                <div class="content-feature">Productive</div>
                 <div class="content-desc" id="galleryTwo">
                     <ul class="selector">
                         <li class="highlight" tabindex="0" data-banner="assets/dash/svg/2-1-hot-reload-iterative-changes.svg">
@@ -160,48 +186,6 @@ showBreadcrumbs: false
         </div>
     </section>
 
-    <section class="dash-row">
-        <div class="content-image">
-            <img class="galleryThree" src="assets/dash/svg/3-1-aot-compile.svg" alt="Compiling dart file"/>
-        </div>
-        <div class="content-info">
-            <div class="content-container">
-                <div class="content-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Multiplatform performance"/></div>
-                <div class="content-feature">Fast on all platforms</div>
-                <div class="content-desc" id="galleryThree">
-                    <ul class="selector">
-                        <li class="highlight" tabindex="0" data-banner="assets/dash/svg/3-1-aot-compile.svg">
-                                <div class="bullet-container" aria-hidden="true">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    <a href="/overview#native-platform">AOT-compile</a> apps to native
-                                    machine code for <a href="https://github.com/timsneath/time">instant startup</a>.
-                                </div>
-                        </li>
-                        <li tabindex="0" data-banner="assets/dash/svg/3-2-target-web.svg">
-                                <div class="bullet-container" aria-hidden="true">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    Target the web with complete, mature, fast
-                                    <a href="/overview#web-platform">compilers for JavaScript and WebAssembly</a>.
-                                </div>
-                        </li>
-                        <li tabindex="0" data-banner="assets/dash/svg/3-3-backend-code.svg">
-                            <div class="bullet-container" aria-hidden="true">
-                                <div class="animated-bullet"></div>
-                            </div>
-                            <div class="bullet-text">
-                                Run <a href="/tutorials/server/httpserver">backend code</a>
-                                supporting your app, written using a single programming language.
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="dash-dartpad-row">
         <div class="dash-dartpad">
             <a id="try-dart" class="frontanchor" aria-hidden="true"></a>
