@@ -5,6 +5,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../client/global_scripts.dart';
 import '../components/cookie_notice.dart';
 import '../components/footer.dart';
 import '../components/header.dart';
@@ -112,7 +113,6 @@ abstract class DashLayout extends PageLayoutBase {
       ),
       link(rel: 'stylesheet', href: '/assets/css/main.css?v=2'),
 
-      script(src: '/assets/js/tabs.js'),
       script(src: '/assets/js/main.js'),
       if (pageData['js'] case final List<Object?> jsList)
         for (final js in jsList)
@@ -206,6 +206,7 @@ ga('send', 'pageview');
           ]),
           const DashFooter(),
         ]),
+        GlobalScripts(),
       ],
     );
   }

@@ -381,7 +381,6 @@ function setupExpandableCards() {
 function _setupSite() {
   setupTheme();
   setupSidenav();
-  setupTabs();
   setupThemeSwitcher();
   setupSiteSwitcher();
 
