@@ -108,21 +108,24 @@ void _setupTabs() {
 /// Apply force overrides from query parameters to saved tabs.
 void _applyFromQueryParameters() {
   final currentUrl = Uri.parse(web.window.location.href);
-  final searchParams = currentUrl.queryParameters;
-  final updatedQueryParameters = {...searchParams};
+  final originalQueryParameters = currentUrl.queryParameters;
+  final updatedQueryParameters = {...originalQueryParameters};
 
-  for (final MapEntry(:key, :value) in searchParams.entries) {
+  for (final MapEntry(:key, :value) in originalQueryParameters.entries) {
     if (key.startsWith('tab-save-')) {
       web.window.localStorage.setItem(key, value);
       updatedQueryParameters.remove(key);
     }
   }
 
-  web.window.history.replaceState(
-    null,
-    '',
-    currentUrl.replace(queryParameters: updatedQueryParameters).toString(),
-  );
+  if (originalQueryParameters.length != updatedQueryParameters.length) {
+    // If the query parameters were updated, update the user's URL.
+    web.window.history.replaceState(
+      null,
+      '',
+      currentUrl.replace(queryParameters: updatedQueryParameters).toString(),
+    );
+  }
 }
 
 void _clearActiveTabs(web.NodeList tabs) {
