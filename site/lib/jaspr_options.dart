@@ -6,9 +6,10 @@
 
 import 'package:jaspr/jaspr.dart';
 import 'package:dart_dev_site/src/archive/archive_table.dart' as prefix0;
-import 'package:dart_dev_site/src/components/cookie_notice.dart' as prefix1;
-import 'package:dart_dev_site/src/components/copy_button.dart' as prefix2;
-import 'package:dart_dev_site/src/components/feedback.dart' as prefix3;
+import 'package:dart_dev_site/src/client/global_scripts.dart' as prefix1;
+import 'package:dart_dev_site/src/components/cookie_notice.dart' as prefix2;
+import 'package:dart_dev_site/src/components/copy_button.dart' as prefix3;
+import 'package:dart_dev_site/src/components/feedback.dart' as prefix4;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -33,18 +34,22 @@ JasprOptions get defaultJasprOptions => JasprOptions(
       params: _prefix0ArchiveTable,
     ),
 
-    prefix1.CookieNotice: ClientTarget<prefix1.CookieNotice>(
+    prefix1.GlobalScripts: ClientTarget<prefix1.GlobalScripts>(
+      'src/client/global_scripts',
+    ),
+
+    prefix2.CookieNotice: ClientTarget<prefix2.CookieNotice>(
       'src/components/cookie_notice',
     ),
 
-    prefix2.CopyButton: ClientTarget<prefix2.CopyButton>(
+    prefix3.CopyButton: ClientTarget<prefix3.CopyButton>(
       'src/components/copy_button',
-      params: _prefix2CopyButton,
+      params: _prefix3CopyButton,
     ),
 
-    prefix3.FeedbackComponent: ClientTarget<prefix3.FeedbackComponent>(
+    prefix4.FeedbackComponent: ClientTarget<prefix4.FeedbackComponent>(
       'src/components/feedback',
-      params: _prefix3FeedbackComponent,
+      params: _prefix4FeedbackComponent,
     ),
   },
   styles: () => [],
@@ -53,12 +58,12 @@ JasprOptions get defaultJasprOptions => JasprOptions(
 Map<String, dynamic> _prefix0ArchiveTable(prefix0.ArchiveTable c) => {
   'channel': c.channel,
 };
-Map<String, dynamic> _prefix2CopyButton(prefix2.CopyButton c) => {
+Map<String, dynamic> _prefix3CopyButton(prefix3.CopyButton c) => {
   'toCopy': c.toCopy,
   'buttonText': c.buttonText,
   'classes': c.classes,
   'title': c.title,
 };
-Map<String, dynamic> _prefix3FeedbackComponent(prefix3.FeedbackComponent c) => {
+Map<String, dynamic> _prefix4FeedbackComponent(prefix4.FeedbackComponent c) => {
   'issueUrl': c.issueUrl,
 };
