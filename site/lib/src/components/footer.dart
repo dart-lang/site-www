@@ -104,13 +104,12 @@ final class DashFooter extends StatelessComponent {
           div(classes: 'footer-licenses', [
             text('Except as otherwise noted, this site is licensed under a '),
             a(href: 'https://creativecommons.org/licenses/by/4.0/', [
-              text('Creative Commons Attribution 4.0 International License'),
+              text('Creative Commons Attribution 4.0 International License,'),
             ]),
-            text(', and code samples are licensed under the '),
+            text(' and code samples are licensed under the '),
             a(href: 'https://opensource.org/licenses/BSD-3-Clause', [
-              text('3-Clause BSD License'),
+              text('3-Clause BSD License.'),
             ]),
-            text('.'),
           ]),
           div(classes: 'footer-utility-links', [
             ul([
@@ -136,6 +135,19 @@ final class DashFooter extends StatelessComponent {
                   [text('Security')],
                 ),
               ]),
+            ]),
+            div(classes: 'footer-technology', [
+              a(
+                href: 'https://jaspr.site',
+                target: Target.blank,
+                attributes: {
+                  'rel': 'noopener',
+                  'title':
+                      'This site is built with the '
+                      'Jaspr web framework for Dart.',
+                },
+                [text('Built with Jaspr')],
+              ),
             ]),
           ]),
         ]),
