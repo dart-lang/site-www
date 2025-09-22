@@ -4,6 +4,8 @@
 
 import 'package:jaspr/jaspr.dart';
 
+import 'material_icon.dart';
+
 /// Previous and next page buttons to display at the end of a page
 /// in a connected series of pages, such as the language docs.
 class PrevNext extends StatelessComponent {
@@ -38,15 +40,9 @@ class _PrevNextCard extends StatelessComponent {
     final classes = isPrevious ? 'prev' : 'next';
     final subtitle = isPrevious ? 'Previous' : 'Next';
     final ariaLabel = isPrevious ? 'Previous page: ' : 'Next page: ';
-    final iconName = isPrevious ? 'chevron_left' : 'chevron_right';
 
     return a(classes: classes, href: page.url, [
-      if (isPrevious)
-        span(
-          classes: 'material-symbols',
-          attributes: {'aria-hidden': 'true'},
-          [text(iconName)],
-        ),
+      if (isPrevious) const MaterialIcon('chevron_left'),
       div([
         span(
           classes: 'prev-next-subtitle',
@@ -55,12 +51,7 @@ class _PrevNextCard extends StatelessComponent {
         ),
         span(classes: 'prev-next-title', [text(page.title)]),
       ]),
-      if (!isPrevious)
-        span(
-          classes: 'material-symbols',
-          attributes: {'aria-hidden': 'true'},
-          [text(iconName)],
-        ),
+      if (!isPrevious) const MaterialIcon('chevron_right'),
     ]);
   }
 }

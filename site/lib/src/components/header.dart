@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../util.dart';
 import 'material_icon.dart';
 
 /// The site-wide top navigation bar.
@@ -48,7 +49,7 @@ class DashHeader extends StatelessComponent {
               classes: [
                 'nav-link',
                 if (activeEntry == _ActiveNavEntry.overview) 'active',
-              ].join(' '),
+              ].toClasses,
               [text('Overview')],
             ),
           ]),
@@ -58,7 +59,7 @@ class DashHeader extends StatelessComponent {
               classes: [
                 'nav-link',
                 if (activeEntry == _ActiveNavEntry.docs) 'active',
-              ].join(' '),
+              ].toClasses,
               [
                 span([text('Docs')]),
               ],
@@ -70,7 +71,7 @@ class DashHeader extends StatelessComponent {
               classes: [
                 'nav-link',
                 if (activeEntry == _ActiveNavEntry.blog) 'active',
-              ].join(' '),
+              ].toClasses,
               [text('Blog')],
             ),
           ]),
@@ -80,7 +81,7 @@ class DashHeader extends StatelessComponent {
               classes: [
                 'nav-link',
                 if (activeEntry == _ActiveNavEntry.community) 'active',
-              ].join(' '),
+              ].toClasses,
               [text('Community')],
             ),
           ]),
@@ -100,7 +101,7 @@ class DashHeader extends StatelessComponent {
               classes: [
                 'nav-link',
                 if (activeEntry == _ActiveNavEntry.getDart) 'active',
-              ].join(' '),
+              ].toClasses,
               [text('Get Dart')],
             ),
           ]),
@@ -297,7 +298,7 @@ class _SiteWordMarkListEntry extends StatelessComponent {
       [
         a(
           href: href,
-          classes: ['site-wordmark', if (current) 'current-site'].join(' '),
+          classes: ['site-wordmark', if (current) 'current-site'].toClasses,
           attributes: {
             'role': 'menuitem',
             'title': 'Navigate to the $_combinedName website.',

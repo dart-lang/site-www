@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../util.dart';
 import 'material_icon.dart';
 
 /// Breadcrumbs navigation component that
@@ -149,7 +150,7 @@ final class _BreadcrumbItemComponent extends StatelessComponent {
     classes: [
       'breadcrumb-item',
       if (isLast) 'active',
-    ].join(' '),
+    ].toClasses,
     attributes: {
       'property': 'itemListElement',
       'typeof': 'ListItem',

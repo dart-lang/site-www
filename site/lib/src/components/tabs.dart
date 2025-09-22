@@ -66,7 +66,7 @@ class _DashTabsWrapper extends StatelessComponent {
   Component build(BuildContext context) {
     return div(
       id: id,
-      classes: ['tabs-wrapper', if (wrapped) 'wrapped'].join(' '),
+      classes: ['tabs-wrapper', if (wrapped) 'wrapped'].toClasses,
       attributes: {
         'data-tab-save-key': ?saveKey,
       },
@@ -85,7 +85,7 @@ class _DashTabsWrapper extends StatelessComponent {
                   classes: [
                     'nav-link',
                     if (tab.isActive) 'active',
-                  ].join(' '),
+                  ].toClasses,
                   attributes: {
                     'tabindex': '0',
                     'data-tab-save-id': tab.saveId,
