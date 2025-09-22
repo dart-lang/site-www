@@ -9,6 +9,8 @@ import '../components/breadcrumbs.dart';
 import '../components/prev_next.dart';
 import '../components/toc.dart';
 import '../components/trailing_content.dart';
+import '../extensions/header_extractor.dart';
+import '../models/on_this_page_model.dart';
 import '../util.dart';
 import 'dash_layout.dart';
 
@@ -24,29 +26,24 @@ class DocLayout extends DashLayout {
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
     final pageTitle = pageData['title'] as String;
-    final showToc = pageData['showToc'] as bool? ?? true;
-    final tocData = showToc ? page.data['toc'] as TableOfContents? : null;
-    final noToc = tocData == null || tocData.entries.length < 2;
-    final maxTocDepth = pageData['maxTocDepth'] as int?;
+    final tocData = _tocForPage(page);
 
     return super.buildBody(
       page,
       Component.fragment(
         [
-          if (noToc)
+          if (tocData == null)
             const Document.body(attributes: {'data-toc': 'false'})
-          else if (tocData case final TableOfContents toc)
-            TopTableOfContents(
-              toc,
+          else
+            NarrowTableOfContents(
+              tocData,
               currentTitle: pageTitle,
-              maxDepth: maxTocDepth,
             ),
           div(classes: 'after-leading-content', [
-            if (!noToc)
-              if (tocData case final TableOfContents toc)
-                aside(id: 'side-menu', [
-                  SideTableOfContents(toc, maxDepth: maxTocDepth),
-                ]),
+            if (tocData != null)
+              aside(id: 'side-menu', [
+                WideTableOfContents(tocData),
+              ]),
             article([
               div(classes: 'content', [
                 div(id: 'site-content-title', [
@@ -73,6 +70,25 @@ class DocLayout extends DashLayout {
         ],
       ),
     );
+  }
+
+  OnThisPageData? _tocForPage(Page page) {
+    final pageData = page.data.page;
+    final showToc = pageData['showToc'] as bool? ?? true;
+
+    // If 'showToc' was explicitly set to false, hide the toc.
+    if (!showToc) return null;
+
+    final onThisPageData = OnThisPageData.fromContentHeaders(
+      page.data['contentHeaders'] as List<ContentHeader>? ?? const [],
+      minLevel: pageData['minTocDepth'] as int? ?? 2,
+      maxLevel: pageData['maxTocDepth'] as int? ?? 3,
+    );
+
+    // If there are less than 2 top-level entries, hide the toc.
+    if (onThisPageData.topLevelEntries.length < 2) return null;
+
+    return onThisPageData;
   }
 }
 
