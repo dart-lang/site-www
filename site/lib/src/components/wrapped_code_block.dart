@@ -4,6 +4,7 @@
 
 import 'package:jaspr/jaspr.dart';
 
+import '../util.dart';
 import 'copy_button.dart';
 
 /// A rendered code block with support for syntax highlighting,
@@ -50,7 +51,7 @@ final class WrappedCodeBlock extends StatelessComponent {
           classes: [
             'code-block-body',
             if (tag case final codeTag?) ...['has-tag', codeTag.parentClass],
-          ].join(' '),
+          ].toClasses,
           [
             if (tag case final codeTag?)
               span(
@@ -67,7 +68,7 @@ final class WrappedCodeBlock extends StatelessComponent {
               classes: [
                 if (showLineNumbers) 'show-line-numbers',
                 'opal',
-              ].join(' '),
+              ].toClasses,
               attributes: {'tabindex': '0'},
               [
                 code(
@@ -82,7 +83,7 @@ final class WrappedCodeBlock extends StatelessComponent {
                           'line',
                           if (highlightLines.contains(lineIndex + 1))
                             'highlighted-line',
-                        ].join(' '),
+                        ].toClasses,
                         attributes: {
                           if (showLineNumbers)
                             'data-line': '${initialLineNumber + lineIndex}',

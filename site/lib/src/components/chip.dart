@@ -4,6 +4,9 @@
 
 import 'package:jaspr/jaspr.dart';
 
+import '../util.dart';
+import 'material_icon.dart';
+
 /// A set of Material Design-like chips for configuration.
 class ChipSet extends StatelessComponent {
   const ChipSet(this.chips, {this.resettable = false});
@@ -50,19 +53,12 @@ class InfoChip extends StatelessComponent {
     final chipClasses = ['chip', 'info-chip', ...?classes];
 
     return div(
-      classes: chipClasses.join(' '),
+      classes: chipClasses.toClasses,
       attributes: attributes,
       [
-        if (icon != null)
-          span(
-            classes: 'material-symbols chip-icon',
-            attributes: {
-              'aria-hidden': 'true',
-              if (title != null) 'title': title!,
-            },
-            [text(icon!)],
-          )
-        else if (iconPath != null)
+        if (icon case final icon?)
+          MaterialIcon(icon, title: title, classes: ['chip-icon'])
+        else if (iconPath case final iconPath?)
           svg(
             classes: 'chip-icon',
             width: iconSize.px,
@@ -70,12 +66,12 @@ class InfoChip extends StatelessComponent {
             viewBox: iconViewBox,
             attributes: {
               'aria-hidden': 'true',
-              if (title != null) 'title': title!,
+              'title': ?title,
             },
             [
               Component.element(
                 tag: 'path',
-                attributes: {'d': iconPath!},
+                attributes: {'d': iconPath},
               ),
             ],
           ),
@@ -117,7 +113,7 @@ class FilterChip extends StatelessComponent {
         'data-filter': dataFilter,
         'role': 'checkbox',
         'aria-checked': 'false',
-        if (ariaLabel != null) 'aria-label': ariaLabel!,
+        'aria-label': ?ariaLabel,
       },
       [
         if (showCheckIcon)
@@ -139,13 +135,9 @@ class FilterChip extends StatelessComponent {
               ),
             ],
           )
-        else if (icon != null)
-          span(
-            classes: 'material-symbols chip-icon leading-icon',
-            attributes: {'aria-hidden': 'true'},
-            [text(icon!)],
-          )
-        else if (iconPath != null)
+        else if (icon case final icon?)
+          MaterialIcon(icon, classes: ['chip-icon', 'leading-icon'])
+        else if (iconPath case final iconPath?)
           svg(
             classes: 'chip-icon leading-icon',
             width: iconSize.px,
@@ -155,7 +147,7 @@ class FilterChip extends StatelessComponent {
             [
               Component.element(
                 tag: 'path',
-                attributes: {'d': iconPath!},
+                attributes: {'d': iconPath},
               ),
             ],
           ),
@@ -190,7 +182,7 @@ class SelectChip extends StatelessComponent {
         classes: 'chip select-chip',
         attributes: {
           'data-menu': menuId,
-          if (dataTitle != null) 'data-title': dataTitle!,
+          'data-title': ?dataTitle,
           'aria-controls': menuId,
           'aria-expanded': 'false',
         },
@@ -261,13 +253,9 @@ class SelectMenuItem extends StatelessComponent {
           'aria-selected': isSelected.toString(),
         },
         [
-          if (icon != null)
-            span(
-              classes: 'material-symbols',
-              attributes: {'aria-hidden': 'true'},
-              [text(icon!)],
-            )
-          else if (iconPath != null)
+          if (icon case final icon?)
+            MaterialIcon(icon)
+          else if (iconPath case final iconPath?)
             svg(
               classes: 'menu-icon',
               width: iconSize.px,
@@ -277,7 +265,7 @@ class SelectMenuItem extends StatelessComponent {
               [
                 Component.element(
                   tag: 'path',
-                  attributes: {'d': iconPath!},
+                  attributes: {'d': iconPath},
                 ),
               ],
             ),
