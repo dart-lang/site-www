@@ -902,7 +902,9 @@
     - Homogeneous list/set literals whose elements are obviously typed: `[1, 2, 3]`, `{true, false}`
     - Homogeneous map literals with obvious key and value types: `{1: 10, 2: 20}`
     - Record literals with obvious types: `(1, enabled: true)`
-    - Instance creation with non-generic classes or explicit type args: `C()`, `C<int>()`
+    - Local variables and formal parameters that have not been promoted.
+    - Instance creation with non-generic classes or explicit type arguments: `C()`, `Set<int>()`
+    - Cascades with obviously typed targets: `StringBuffer('Hello, ')..write('world!')`.
     - Type casts: `x as int`
     - Type tests: `x is String`
     - Throw expressions: `throw Exception()`
