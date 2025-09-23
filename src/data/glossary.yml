@@ -899,7 +899,7 @@
     ### Examples of obviously typed expressions
     - Non-collection literals: `1`, `true`, `'Hello'`
     - Collection literals with explicit type arguments: `<int>[]`, `<String, bool>{}`
-    - Homogeneous list/set literals: `[1, 2, 3]`, `{true, false}`
+    - Homogeneous list/set literals whose elements are obviously typed: `[1, 2, 3]`, `{true, false}`
     - Homogeneous map literals with obvious key and value types: `{1: 10, 2: 20}`
     - Record literals with obvious types: `(1, enabled: true)`
     - Instance creation with non-generic classes or explicit type args: `C()`, `C<int>()`
