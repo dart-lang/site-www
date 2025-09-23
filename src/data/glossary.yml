@@ -1435,7 +1435,7 @@
     directly impacts download time and runtime performance.
 
     Example:
-    If an imported library defines 10 classes but your app only uses 2,
+    If an imported library defines ten classes but your app only uses two,
     tree shaking ensures the other 8 classes are excluded from the compiled output.
 
   related_links:
