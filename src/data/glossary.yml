@@ -170,12 +170,12 @@
       sayHello('Dart'); // Prints: Hello, Dart!
     }
     ```
+    
     In this example, `greeter.greet` is closurized into a closure that
     captures the instance `greeter`. When `sayHello` is called, it executes
     as if you had called `greeter.greet(...)` directly.
 
-    Closurization ensures that tear-offs are **first-class function values**
-    in Dart and can be used wherever a function is expected.
+    Closurization ensures that tear-offs can be used wherever a function is expected.
   related_links:
     - text: "Functions in Dart"
       link: "/language/functions"
