@@ -906,6 +906,7 @@
     - Instance creation with non-generic classes or explicit type arguments: `C()`, `Set<int>()`
     - Cascades with obviously typed targets: `StringBuffer('Hello, ')..write('world!')`.
     - Type casts: `x as int`
+    - Conditional expressions with obviously typed branches of the same type: `condition ? 1 : 2`.
     - Type tests: `x is String`
     - Throw expressions: `throw Exception()`
     - `this` and type literals: `String`
