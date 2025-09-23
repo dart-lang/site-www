@@ -883,6 +883,54 @@
   alternate:
     - "pubspec.lock"
 
+- term: "Obviously typed"
+  short_description: |-
+    An expression whose type can be mechanically determined without ambiguity.
+  long_description: |-
+    An expression in Dart is considered **obviously typed** when its type is
+    immediately clear from its syntax, without needing inference or complex
+    analysis.
+
+    This concept is mainly used in lint rules like
+    `omit_obvious_local_variable_types` and
+    `specify_nonobvious_property_types` to decide whether an explicit type
+    annotation is redundant or necessary.
+
+    ### Examples of obviously typed expressions
+    - Non-collection literals: `1`, `true`, `'Hello'`
+    - Collection literals with explicit type arguments: `<int>[]`, `<String, bool>{}`
+    - Homogeneous list/set literals: `[1, 2, 3]`, `{true, false}`
+    - Map literals with obvious key and value types: `{1: 10, 2: 20}`
+    - Record literals with obvious types: `(1, enabled: true)`
+    - Instance creation with non-generic classes or explicit type args: `C()`, `C<int>()`
+    - Type casts: `x as int`
+    - Type tests: `x is String`
+    - Throw expressions: `throw Exception()`
+    - `this` and type literals: `String`
+
+    By contrast, if the type of an expression requires inference (for example
+    `[1, 2.5]` → `List<num>`), it is **not** considered obviously typed.
+
+    This distinction helps style rules decide when to enforce or omit type
+    annotations for clarity and consistency.
+
+  related_links:
+    - text: "Effective Dart: Style"
+      link: "/effective-dart/style"
+      type: "doc"
+    - text: "Lint: omit_obvious_local_variable_types"
+      link: "/tools/linter-rules/omit_obvious_local_variable_types"
+      type: "doc"
+    - text: "Lint: specify_nonobvious_property_types"
+      link: "/tools/linter-rules/specify_nonobvious_property_types"
+      type: "doc"
+  labels:
+    - "language"
+    - "type system"
+    - "style"
+  alternate:
+    - "Obvious expression type"
+    - "Clear type"
 
 - term: "Override inference"
   short_description: |-
