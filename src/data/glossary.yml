@@ -900,7 +900,7 @@
     - Non-collection literals: `1`, `true`, `'Hello'`
     - Collection literals with explicit type arguments: `<int>[]`, `<String, bool>{}`
     - Homogeneous list/set literals: `[1, 2, 3]`, `{true, false}`
-    - Map literals with obvious key and value types: `{1: 10, 2: 20}`
+    - Homogeneous map literals with obvious key and value types: `{1: 10, 2: 20}`
     - Record literals with obvious types: `(1, enabled: true)`
     - Instance creation with non-generic classes or explicit type args: `C()`, `C<int>()`
     - Type casts: `x as int`
