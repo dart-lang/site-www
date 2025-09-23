@@ -176,7 +176,6 @@
 
     Closurization ensures that tear-offs are **first-class function values**
     in Dart and can be used wherever a function is expected.
-
   related_links:
     - text: "Functions in Dart"
       link: "/language/functions"
@@ -189,7 +188,6 @@
     - "functions"
   alternate:
     - "Tear-offs"
-
 
 - term: "Combinator"
   short_description: |-
