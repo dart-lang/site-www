@@ -4,6 +4,7 @@
 
 import 'package:jaspr/jaspr.dart';
 
+import '../util.dart';
 import 'material_icon.dart';
 
 /// A generic button component with different style variants.
@@ -48,7 +49,7 @@ class Button extends StatelessComponent {
       style.cssClass,
       if (icon != null && content == null) 'icon-button',
       ...?classes,
-    ].join(' ');
+    ].toClasses;
 
     final children = [
       if (icon case final iconId?) MaterialIcon(iconId),

@@ -4,6 +4,8 @@
 
 import 'package:jaspr/jaspr.dart';
 
+import '../util.dart';
+
 /// A Material Symbols icon rendered as a span element.
 class MaterialIcon extends StatelessComponent {
   const MaterialIcon(
@@ -21,7 +23,7 @@ class MaterialIcon extends StatelessComponent {
   @override
   Component build(BuildContext _) {
     return span(
-      classes: ['material-symbols', ...classes].join(' '),
+      classes: ['material-symbols', ...classes].toClasses,
       attributes: {
         'title': ?title,
         'aria-label': ?(label ?? title),
