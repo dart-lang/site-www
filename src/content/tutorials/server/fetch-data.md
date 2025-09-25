@@ -1,7 +1,7 @@
 ---
 title: Fetch data from the internet
 description: Fetch data over the internet using the http package.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 prevpage:
   url: /tutorials/server/cmdline
   title: Write command-line apps
