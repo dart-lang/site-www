@@ -33,10 +33,6 @@ you probably don't need to build this site.
 Often you can make changes using the GitHub UI.
 We can stage the changes automatically in your pull request.
 
-> [!IMPORTANT]  
-> If you are cloning this repository locally,
-> follow the below instruction on cloning with its submodule.
-
 If your change involves code samples, adds/removes pages, or affects navigation,
 do consider building and testing your work before submitting.
 
@@ -68,12 +64,8 @@ dart --version
 
 ### Clone this repo
 
-> [!NOTE]
-> The GitHub documentation has general help on
-> [forking][] and [cloning][] repos.
-
 If you're not a member of the Dart organization,
-we recommend you **create a fork** of this repo under your own account,
+we recommend you [create a fork][] of this repo under your own account,
 and then submit a PR from that fork.
 
 Once you have a fork (or you're a Dart org member),
@@ -82,6 +74,8 @@ clone the repository with `git clone`:
 ```bash
 git clone https://github.com/dart-lang/site-www.git
 ```
+
+[create a fork]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 
 ## Set up your local environment and serve changes
 
@@ -181,8 +175,6 @@ check out the [excerpt updater package documentation][].
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge
 [Scorecard Results]: https://deps.dev/project/github/dart-lang%2Fsite-www
-[cloning]: https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository
 [Jaspr]: https://jaspr.site
 [Firebase]: https://firebase.google.com/
-[forking]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 [Repo on GitHub Actions]: https://github.com/dart-lang/site-www/actions?query=workflow%3Abuild+branch%3Amain
