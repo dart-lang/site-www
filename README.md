@@ -66,10 +66,9 @@ and already the latest stable version:
 dart --version
 ```
 
-### Clone this repo and its submodules
+### Clone this repo
 
 > [!NOTE]
-> This repository has git _submodules_, which affects how you clone it.
 > The GitHub documentation has general help on
 > [forking][] and [cloning][] repos.
 
@@ -78,29 +77,11 @@ we recommend you **create a fork** of this repo under your own account,
 and then submit a PR from that fork.
 
 Once you have a fork (or you're a Dart org member),
-_choose one_ of the following submodule-cloning techniques:
+clone the repository with `git clone`:
 
-1. Clone the repo and its submodule at the same time
-   using the `--recurse-submodules` option:
-
-   ```terminal
-   git clone --recurse-submodules https://github.com/dart-lang/site-www.git
-   ```
-
-2. If you've already cloned the repo without its submodule,
-   then run this command from the root of the repository:
-
-   ```terminal
-   git submodule update --init --recursive
-   ```
-
-> [!NOTE]
-> At any time during development
-> you can use the `git submodule` command to refresh submodules:
->
-> ```terminal
-> git pull && git submodule update --init --recursive
-> ```
+```bash
+git clone https://github.com/dart-lang/site-www.git
+```
 
 ## Set up your local environment and serve changes
 
@@ -108,7 +89,7 @@ Before you continue setting up the site infrastructure,
 verify the correct version of Dart is set up and available by
 following the instructions in [Get the prerequisites](#get-the-prerequisites).
 
-1. _Optional:_ After cloning the repo and its submodules,
+1. _Optional:_ After cloning the repo,
    create a branch for your changes:
 
    ```terminal
