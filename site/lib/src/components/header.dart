@@ -16,6 +16,7 @@ class DashHeader extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     final pageUrlPath = context.page.url;
+    final layout = context.page.data.page['layout'];
     final activeEntry = _activeNavEntry(pageUrlPath);
 
     return header(id: 'site-header', classes: 'always-dark-mode', [
@@ -139,69 +140,70 @@ class DashHeader extends StatelessComponent {
                 MaterialIcon('search'),
               ],
             ),
-            div(id: 'theme-switcher', classes: 'dropdown', [
-              button(
-                classes: 'dropdown-button icon-button',
-                attributes: {
-                  'title': 'Select a theme',
-                  'aria-label': 'Select a theme',
-                  'aria-expanded': 'false',
-                  'aria-controls': 'theme-menu',
-                },
-                const [MaterialIcon('routine')],
-              ),
-              div(classes: 'dropdown-content', id: 'theme-menu', [
-                div(classes: 'dropdown-menu', [
-                  ul(
-                    attributes: {'role': 'listbox'},
-                    [
-                      li([
-                        button(
-                          attributes: {
-                            'data-theme': 'light',
-                            'title': 'Switch to light mode',
-                            'aria-label': 'Switch to light mode',
-                            'aria-selected': 'false',
-                          },
-                          [
-                            const MaterialIcon('light_mode'),
-                            span([text('Light')]),
-                          ],
-                        ),
-                      ]),
-                      li([
-                        button(
-                          attributes: {
-                            'data-theme': 'dark',
-                            'title': 'Switch to dark mode',
-                            'aria-label': 'Switch to dark mode',
-                            'aria-selected': 'false',
-                          },
-                          [
-                            const MaterialIcon('dark_mode'),
-                            span([text('Dark')]),
-                          ],
-                        ),
-                      ]),
-                      li([
-                        button(
-                          attributes: {
-                            'data-theme': 'auto',
-                            'title': 'Follow the device theme',
-                            'aria-label': 'Follow the device theme',
-                            'aria-selected': 'false',
-                          },
-                          [
-                            const MaterialIcon('night_sight_auto'),
-                            span([text('Automatic')]),
-                          ],
-                        ),
-                      ]),
-                    ],
-                  ),
+            if (layout != 'homepage')
+              div(id: 'theme-switcher', classes: 'dropdown', [
+                button(
+                  classes: 'dropdown-button icon-button',
+                  attributes: {
+                    'title': 'Select a theme',
+                    'aria-label': 'Select a theme',
+                    'aria-expanded': 'false',
+                    'aria-controls': 'theme-menu',
+                  },
+                  const [MaterialIcon('routine')],
+                ),
+                div(classes: 'dropdown-content', id: 'theme-menu', [
+                  div(classes: 'dropdown-menu', [
+                    ul(
+                      attributes: {'role': 'listbox'},
+                      [
+                        li([
+                          button(
+                            attributes: {
+                              'data-theme': 'light',
+                              'title': 'Switch to light mode',
+                              'aria-label': 'Switch to light mode',
+                              'aria-selected': 'false',
+                            },
+                            [
+                              const MaterialIcon('light_mode'),
+                              span([text('Light')]),
+                            ],
+                          ),
+                        ]),
+                        li([
+                          button(
+                            attributes: {
+                              'data-theme': 'dark',
+                              'title': 'Switch to dark mode',
+                              'aria-label': 'Switch to dark mode',
+                              'aria-selected': 'false',
+                            },
+                            [
+                              const MaterialIcon('dark_mode'),
+                              span([text('Dark')]),
+                            ],
+                          ),
+                        ]),
+                        li([
+                          button(
+                            attributes: {
+                              'data-theme': 'auto',
+                              'title': 'Follow the device theme',
+                              'aria-label': 'Follow the device theme',
+                              'aria-selected': 'false',
+                            },
+                            [
+                              const MaterialIcon('night_sight_auto'),
+                              span([text('Automatic')]),
+                            ],
+                          ),
+                        ]),
+                      ],
+                    ),
+                  ]),
                 ]),
               ]),
-            ]),
             div(
               id: 'site-switcher',
               classes: 'dropdown',
