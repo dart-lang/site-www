@@ -56,6 +56,14 @@ final class _DropdownState extends State<Dropdown> {
                 toggle(to: false);
               }
             },
+            'focusout': (e) {
+              final relatedTarget =
+                  (e as web.FocusEvent).relatedTarget as web.HTMLElement?;
+              if (relatedTarget != null &&
+                  relatedTarget.closest('#${component.id}') == null) {
+                toggle(to: false);
+              }
+            },
           },
           component.children,
         ),
