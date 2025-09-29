@@ -1,5 +1,11 @@
 @use '../base/mixins';
 
+.dropdown[data-expanded="true"] {
+  .dropdown-content {
+    display: block;
+  }
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -10,10 +16,6 @@
   width: max-content;
   border: var(--site-chrome-borderColor) 1px solid;
   z-index: var(--site-z-dropdown);
-
-  &.show {
-    display: block;
-  }
 
   .dropdown-divider {
     background-color: var(--site-outline-variant);
