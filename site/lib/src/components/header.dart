@@ -7,6 +7,8 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../util.dart';
+import 'header/site_switcher.dart';
+import 'header/theme_switcher.dart';
 import 'material_icon.dart';
 
 /// The site-wide top navigation bar.
@@ -140,123 +142,8 @@ class DashHeader extends StatelessComponent {
                 MaterialIcon('search'),
               ],
             ),
-            if (layout != 'homepage')
-              div(id: 'theme-switcher', classes: 'dropdown', [
-                button(
-                  classes: 'dropdown-button icon-button',
-                  attributes: {
-                    'title': 'Select a theme',
-                    'aria-label': 'Select a theme',
-                    'aria-expanded': 'false',
-                    'aria-controls': 'theme-menu',
-                  },
-                  const [MaterialIcon('routine')],
-                ),
-                div(classes: 'dropdown-content', id: 'theme-menu', [
-                  div(classes: 'dropdown-menu', [
-                    ul(
-                      attributes: {'role': 'listbox'},
-                      [
-                        li([
-                          button(
-                            attributes: {
-                              'data-theme': 'light',
-                              'title': 'Switch to light mode',
-                              'aria-label': 'Switch to light mode',
-                              'aria-selected': 'false',
-                            },
-                            [
-                              const MaterialIcon('light_mode'),
-                              span([text('Light')]),
-                            ],
-                          ),
-                        ]),
-                        li([
-                          button(
-                            attributes: {
-                              'data-theme': 'dark',
-                              'title': 'Switch to dark mode',
-                              'aria-label': 'Switch to dark mode',
-                              'aria-selected': 'false',
-                            },
-                            [
-                              const MaterialIcon('dark_mode'),
-                              span([text('Dark')]),
-                            ],
-                          ),
-                        ]),
-                        li([
-                          button(
-                            attributes: {
-                              'data-theme': 'auto',
-                              'title': 'Follow the device theme',
-                              'aria-label': 'Follow the device theme',
-                              'aria-selected': 'false',
-                            },
-                            [
-                              const MaterialIcon('night_sight_auto'),
-                              span([text('Automatic')]),
-                            ],
-                          ),
-                        ]),
-                      ],
-                    ),
-                  ]),
-                ]),
-              ]),
-            div(
-              id: 'site-switcher',
-              classes: 'dropdown',
-              [
-                button(
-                  classes: 'dropdown-button icon-button',
-                  attributes: {
-                    'title': 'Select a theme',
-                    'aria-label': 'Select a theme',
-                    'aria-expanded': 'false',
-                    'aria-controls': 'site-switcher-menu',
-                  },
-                  const [MaterialIcon('apps')],
-                ),
-
-                div(
-                  id: 'site-switcher-menu',
-                  classes: 'dropdown-content',
-                  [
-                    nav(
-                      classes: 'dropdown-menu',
-                      attributes: {
-                        'role': 'menu',
-                      },
-                      [
-                        ul(
-                          const [
-                            _SiteWordMarkListEntry(
-                              name: 'Dart',
-                              href: '/',
-                              current: true,
-                            ),
-                            _SiteWordMarkListEntry(
-                              name: 'Dart',
-                              subtype: 'API',
-                              href: 'https://api.dart.dev',
-                            ),
-                            _SiteWordMarkListEntry(
-                              name: 'DartPad',
-                              href: 'https://dartpad.dev',
-                            ),
-                            _SiteWordMarkListEntry(
-                              name: 'pub.dev',
-                              href: 'https://pub.dev',
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            if (layout != 'homepage') const ThemeSwitcher(),
+            const SiteSwitcher(),
             button(
               id: 'menu-toggle',
               classes: 'icon-button',
@@ -275,60 +162,6 @@ class DashHeader extends StatelessComponent {
         ),
       ]),
     ]);
-  }
-}
-
-class _SiteWordMarkListEntry extends StatelessComponent {
-  const _SiteWordMarkListEntry({
-    required this.href,
-    required this.name,
-    this.subtype,
-    this.current = false,
-  });
-
-  final String href;
-  final String name;
-  final String? subtype;
-  final bool current;
-
-  String get _combinedName => '$name${subtype != null ? ' $subtype' : ''}';
-
-  @override
-  Component build(BuildContext context) {
-    return li(
-      attributes: {'role': 'presentation'},
-      [
-        a(
-          href: href,
-          classes: ['site-wordmark', if (current) 'current-site'].toClasses,
-          attributes: {
-            'role': 'menuitem',
-            'title': 'Navigate to the $_combinedName website.',
-            'aria-label': 'Navigate to the $_combinedName website.',
-          },
-          [
-            img(
-              src: '/assets/img/logo/dart-192.svg',
-              alt: 'Dart logo',
-              width: 28,
-              height: 28,
-            ),
-            span(
-              classes: 'name',
-              attributes: {
-                'translate': 'no',
-              },
-              [text(name)],
-            ),
-            if (subtype case final subtype?)
-              span(
-                classes: 'subtype',
-                [text(subtype)],
-              ),
-          ],
-        ),
-      ],
-    );
   }
 }
 
