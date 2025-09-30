@@ -2,7 +2,9 @@
 title: dart install
 description: Install Dart CLI tools for global use.
 ---
-
+:::version-note
+Support for `dart install` was introduced in Dart 3.10.
+:::
 The `dart install` command installs Dart CLI tools for global use.
 It is a newer alternative to `dart pub global activate`.
 
