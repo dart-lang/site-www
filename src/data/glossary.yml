@@ -1454,7 +1454,7 @@
     - "compiler"
     - "optimization"
   alternate:
-    - "Dead code elimination"
+    - "Dead-code elimination"
 
 
 - term: "Type alias"
