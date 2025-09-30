@@ -38,13 +38,74 @@ final class _GlobalScriptsState extends State<GlobalScripts> {
 }
 
 void _setupSite() {
-  _setupTabs();
+  _setUpSidenav();
+  _setUpSearchKeybindings();
+  _setUpTabs();
 }
 
+void _setUpSidenav() {
+  final sidenav = web.document.getElementById('sidenav');
+  if (sidenav == null) return;
+  final activeEntries = sidenav.querySelectorAll('a.nav-link.active');
+
+  if (activeEntries.length > 0) {
+    // Scroll the last active entry into view.
+    // This is usually the most specific active entry.
+    final lastActiveEntry = activeEntries.item(activeEntries.length - 1);
+    if (lastActiveEntry case final web.HTMLElement lastActiveEntry) {
+      sidenav.scrollTo(
+        web.ScrollToOptions(
+          top: lastActiveEntry.offsetTop - (web.window.innerHeight / 3),
+        ),
+      );
+    }
+  }
+}
+
+void _setUpSearchKeybindings() {
+  web.document.addEventListener('keydown', _handleSearchShortcut.toJS);
+}
+
+void _handleSearchShortcut(web.Event event) {
+  final keyboardEvent = event as web.KeyboardEvent;
+  final activeElement = web.document.activeElement;
+
+  // Don't intercept if typing in an input field or not pressing slash key.
+  if (activeElement.isA<web.HTMLInputElement>() ||
+      activeElement.isA<web.HTMLTextAreaElement>() ||
+      keyboardEvent.code != 'Slash') {
+    return;
+  }
+
+  final web.Element? parentElement;
+  // If the sidebar is open, focus its search field.
+  if (web.document.body!.classList.contains('open_menu')) {
+    parentElement = web.document.getElementById('sidenav');
+  } else {
+    // If the page has a search field in the body, focus that.
+    if (web.document.getElementById('in-content-search')
+        case final bodySearch?) {
+      parentElement = bodySearch;
+    } else {
+      // Otherwise, fallback to the top navbar search field.
+      parentElement = web.document.getElementById('header-search');
+    }
+  }
+
+  // If we found any search field, focus it.
+  if (parentElement?.querySelector('.search-field')
+      case final web.HTMLElement searchField) {
+    searchField.focus();
+    // Prevent the initial slash from showing up in the search field.
+    event.preventDefault();
+  }
+}
+
+// TODO(parlough): Migrate interactivity of tabs to the Jaspr components.
 /// Set up interactivity of tabs created with
 /// the `<Tabs>` and `<Tab>` custom components.
-void _setupTabs() {
-  _applyFromQueryParameters();
+void _setUpTabs() {
+  _updateTabsFromQueryParameters();
 
   final tabsWrappers = web.document.querySelectorAll('.tabs-wrapper');
 
@@ -106,7 +167,7 @@ void _setupTabs() {
 }
 
 /// Apply force overrides from query parameters to saved tabs.
-void _applyFromQueryParameters() {
+void _updateTabsFromQueryParameters() {
   final currentUrl = Uri.parse(web.window.location.href);
   final originalQueryParameters = currentUrl.queryParameters;
   final updatedQueryParameters = {...originalQueryParameters};
