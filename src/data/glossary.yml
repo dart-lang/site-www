@@ -897,6 +897,7 @@
     annotation is redundant or necessary.
 
     ### Definition of obviously typed expressions
+
     - Non-collection literals: `1`, `true`, `'Hello'`
     - Collection literals with explicit type arguments: `<int>[]`, `<String, bool>{}`
     - Homogeneous list/set literals whose elements are obviously typed: `[1, 2, 3]`, `{true, false}`
@@ -912,7 +913,9 @@
     - A parenthesized expression whose contents is obviously typed: `('Hello!')`.
     - `this` and type literals: `String`
 
-In this list, _homogeneous_ means "where every element has the same type". For example, `{1: "one", 2: "two"}` is a homogeneous map, but `{1: "one", 1.5: true}` is not.
+    In this list, _homogeneous_ means "where every element has the same type".
+    For example, `{1: "one", 2: "two"}` is a homogeneous map,
+    but `{1: "one", 1.5: true}` is not.
     By contrast, if the type of an expression requires inference (for example
     `[1, 2.5]` → `List<num>`), it is **not** considered obviously typed.
 
