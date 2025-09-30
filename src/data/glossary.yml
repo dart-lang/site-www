@@ -1451,7 +1451,7 @@
 
   labels:
     - "language"
-    - "compiler"
+    - "compilation"
     - "optimization"
   alternate:
     - "Dead-code elimination"
