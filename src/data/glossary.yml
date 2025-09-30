@@ -146,7 +146,7 @@
     The process of turning a method or function tear-off into a closure.
   long_description: |-
     **Closurization** is the process where Dart turns a method or function
-    tear-off into a closure object that can be stored, passed, or invoked later.
+    tear-off into a function object that can be stored, passed, or invoked later.
 
     A tear-off is a reference to an existing function or method without calling it.
     When you take a tear-off, the runtime (or compiler) wraps it into a closure
