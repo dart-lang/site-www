@@ -11,7 +11,7 @@ function setupTheme() {
     document.body.classList.add(storedTheme);
   }
 
-  const themeMenu = document.getElementById('theme-menu');
+  const themeMenu = document.getElementById('theme-switcher-content');
   if (themeMenu) {
     const themeButtons = themeMenu.querySelectorAll('button');
 
@@ -55,103 +55,6 @@ function _switchToPreferenceIfAuto() {
       document.body.classList.add('light-mode');
     }
   }
-}
-
-function setupThemeSwitcher() {
-  const themeSwitcher = document.getElementById('theme-switcher');
-  if (!themeSwitcher) {
-    return;
-  }
-
-  const themeSwitcherButton = themeSwitcher.querySelector('.dropdown-button');
-  const themeSwitcherMenu = themeSwitcher.querySelector('#theme-menu');
-  if (!themeSwitcherButton || !themeSwitcherMenu) {
-    return;
-  }
-
-  function _closeMenusAndToggle() {
-    themeSwitcherMenu.classList.remove('show');
-    themeSwitcherButton.ariaExpanded = 'false';
-  }
-
-  themeSwitcherButton.addEventListener('click', (_) => {
-    if (themeSwitcherMenu.classList.contains('show')) {
-      _closeMenusAndToggle();
-    } else {
-      themeSwitcherMenu.classList.add('show');
-      themeSwitcherButton.ariaExpanded = 'true';
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    // If pressing the `esc` key in the menu area, close the menu.
-    if (event.key === 'Escape' && event.target.closest('#theme-switcher')) {
-      _closeMenusAndToggle();
-    }
-  });
-
-  themeSwitcher.addEventListener('focusout', (e) => {
-    // If focus leaves the theme-switcher, hide the menu.
-    if (e.relatedTarget && !e.relatedTarget.closest('#theme-switcher')) {
-      _closeMenusAndToggle();
-    }
-  });
-
-  document.addEventListener('click', (event) => {
-    // If not clicking inside the theme switcher, close the menu.
-    if (!event.target.closest('#theme-switcher')) {
-      _closeMenusAndToggle();
-    }
-  })
-}
-
-function setupSiteSwitcher() {
-  const siteSwitcher = document.getElementById('site-switcher');
-
-  if (!siteSwitcher) {
-    return;
-  }
-
-  const siteSwitcherButton = siteSwitcher.querySelector('.dropdown-button');
-  const siteSwitcherMenu = siteSwitcher.querySelector('#site-switcher-menu');
-  if (!siteSwitcherButton || !siteSwitcherMenu) {
-    return;
-  }
-
-  function _closeMenusAndToggle() {
-    siteSwitcherMenu.classList.remove('show');
-    siteSwitcherButton.ariaExpanded = 'false';
-  }
-
-  siteSwitcherButton.addEventListener('click', (_) => {
-    if (siteSwitcherMenu.classList.contains('show')) {
-      _closeMenusAndToggle();
-    } else {
-      siteSwitcherMenu.classList.add('show');
-      siteSwitcherButton.ariaExpanded = 'true';
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    // If pressing the `esc` key in the menu area, close the menu.
-    if (event.key === 'Escape' && event.target.closest('#site-switcher')) {
-      _closeMenusAndToggle();
-    }
-  });
-
-  siteSwitcher.addEventListener('focusout', (e) => {
-    // If focus leaves the site-switcher, hide the menu.
-    if (e.relatedTarget && !e.relatedTarget.closest('#site-switcher')) {
-      _closeMenusAndToggle();
-    }
-  });
-
-  document.addEventListener('click', (event) => {
-    // If not clicking inside the site switcher, close the menu.
-    if (!event.target.closest('#site-switcher')) {
-      _closeMenusAndToggle();
-    }
-  });
 }
 
 function handleSearchShortcut(event) {
@@ -233,15 +136,15 @@ function _setupInlineTocDropdown() {
   if (!dropdownButton || !dropdownMenu) return;
 
   function _closeMenu() {
-    dropdownMenu.classList.remove('show');
+    inlineToc.dataset.expanded = 'false';
     dropdownButton.ariaExpanded = 'false';
   }
 
   dropdownButton.addEventListener('click', (_) => {
-    if (dropdownMenu.classList.contains('show')) {
+    if (inlineToc.dataset.expanded === 'true') {
       _closeMenu();
     } else {
-      dropdownMenu.classList.add('show');
+      inlineToc.dataset.expanded = 'true';
       dropdownButton.ariaExpanded = 'true';
     }
   });
@@ -381,8 +284,6 @@ function setupExpandableCards() {
 function _setupSite() {
   setupTheme();
   setupSidenav();
-  setupThemeSwitcher();
-  setupSiteSwitcher();
 
   // Set up collapse and expand for sidenav buttons.
   const toggles = document.querySelectorAll('.nav-link.collapsible');
