@@ -2,7 +2,7 @@
 title: "Asynchronous programming: Streams"
 breadcrumb: Using streams
 description: Learn how to consume single-subscriber and broadcast streams.
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 ---
 
 :::secondary What's the point?

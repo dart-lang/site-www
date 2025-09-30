@@ -1,7 +1,7 @@
 ---
 title: Functions
 description: Everything about functions in Dart.
-js: [{ url: "/assets/js/inject_dartpad.js", defer: true }]
+js: [{ url: "/assets/js/inject_dartpad.dart.js", defer: true }]
 prevpage:
   url: /language/error-handling
   title: Error handling

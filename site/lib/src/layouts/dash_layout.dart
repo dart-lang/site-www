@@ -5,6 +5,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../client/global_scripts.dart';
 import '../components/cookie_notice.dart';
 import '../components/footer.dart';
 import '../components/header.dart';
@@ -110,10 +111,9 @@ abstract class DashLayout extends PageLayoutBase {
         href:
             'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
       ),
-      link(rel: 'stylesheet', href: '/assets/css/main.css?v=2'),
+      link(rel: 'stylesheet', href: '/assets/css/main.css?v=3'),
 
-      script(src: '/assets/js/tabs.js'),
-      script(src: '/assets/js/main.js'),
+      script(src: '/assets/js/main.js?v=2'),
       if (pageData['js'] case final List<Object?> jsList)
         for (final js in jsList)
           if (js case {'url': final String jsUrl, 'defer': final Object? defer})
@@ -206,6 +206,7 @@ ga('send', 'pageview');
           ]),
           const DashFooter(),
         ]),
+        GlobalScripts(),
       ],
     );
   }

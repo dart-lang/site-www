@@ -24,9 +24,9 @@ body.homepage {
 
   .dash-header-callout {
     font-family: var(--site-ui-fontFamily);
-    background-color: $dash-callout;
+    background-color: var(--site-chrome-bgColor);
     text-align: center;
-    padding: 4rem 0 4rem 0 !important;
+    padding: 8rem 0 4rem 0 !important;
 
     .callout-button {
       display: flex;
@@ -51,7 +51,7 @@ body.homepage {
 
     .callout-oss {
       font-size: .95rem;
-      color: $dash-dark-grey;
+      color: $dash-sub-grey;
       margin-left: 2rem;
       margin-right: 2rem;
       margin-top: 1rem;

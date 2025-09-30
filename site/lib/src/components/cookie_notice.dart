@@ -5,6 +5,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
+import '../util.dart';
 import 'button.dart';
 
 /// The cookie banner to show on a user's first time visiting the site.
@@ -48,7 +49,7 @@ final class _CookieNoticeState extends State<CookieNotice> {
   Component build(BuildContext context) {
     return section(
       id: 'cookie-notice',
-      classes: [if (showNotice) 'show'].join(' '),
+      classes: [if (showNotice) 'show'].toClasses,
       attributes: {'data-nosnippet': 'true'},
       [
         div(classes: 'container', [

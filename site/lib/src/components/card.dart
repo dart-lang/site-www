@@ -4,6 +4,8 @@
 
 import 'package:jaspr/jaspr.dart';
 
+import '../util.dart';
+
 class Card extends StatelessComponent {
   /// Creates a card that can have a [header], [content], and [actions].
   ///
@@ -62,7 +64,7 @@ class Card extends StatelessComponent {
       if (filled) 'filled-card',
       if (expandable) 'expandable-card',
       if (additionalClasses != null) additionalClasses!,
-    ].join(' ');
+    ].toClasses;
 
     final children = [
       if (header.isNotEmpty) div(classes: 'card-header', header),
@@ -73,7 +75,7 @@ class Card extends StatelessComponent {
         classes: [
           'card-content',
           if (expandable) 'expandable-content',
-        ].join(' '),
+        ].toClasses,
         content,
       ),
       ?actions,

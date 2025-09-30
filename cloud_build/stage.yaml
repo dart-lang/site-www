@@ -1,6 +1,4 @@
 steps:
-  - name: gcr.io/cloud-builders/git
-    args: ['submodule', 'update', '--init', '--recursive']
   - name: gcr.io/flutter-dev-230821/firebase-ghcli
     # Build the site, deploy it to staging, then comment the link on the PR.
     entrypoint: '/bin/bash'

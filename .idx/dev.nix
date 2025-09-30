@@ -38,7 +38,6 @@
     workspace = {
       # Runs when a workspace is first created
       onCreate = {
-        get-submodule = "git submodule update --init --recursive";
         dart-pub-get = "dart pub get";
       };
       # Runs when the workspace is (re)started
