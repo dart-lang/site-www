@@ -300,6 +300,8 @@
           permalink: /tools/dart-format
         - title: dart info
           permalink: /tools/dart-info
+        - title: dart install
+          permalink: /tools/dart-install
         - title: dart pub
           permalink: /tools/pub/cmd
         - title: dart run
