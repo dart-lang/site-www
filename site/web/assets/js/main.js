@@ -266,8 +266,6 @@ function _setupSite() {
     });
   });
 
-  document.addEventListener('keydown', handleSearchShortcut);
-
   createGallery(
     'galleryOne',
     'galleryTwo',
