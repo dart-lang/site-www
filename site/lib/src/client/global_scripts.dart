@@ -22,9 +22,9 @@ final class _GlobalScriptsState extends State<GlobalScripts> {
     if (kIsWeb) {
       // Run setup if DOM is loaded, otherwise do it after it has loaded.
       if (web.document.readyState == 'loading') {
-        web.document.addEventListener('DOMContentLoaded', _setupSite.toJS);
+        web.document.addEventListener('DOMContentLoaded', _setUpSite.toJS);
       } else {
-        _setupSite();
+        _setUpSite();
       }
     }
 
@@ -32,12 +32,10 @@ final class _GlobalScriptsState extends State<GlobalScripts> {
   }
 
   @override
-  Component build(BuildContext context) {
-    return const Component.empty();
-  }
+  Component build(BuildContext context) => const Component.empty();
 }
 
-void _setupSite() {
+void _setUpSite() {
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpTabs();
