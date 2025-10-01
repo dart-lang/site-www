@@ -164,7 +164,7 @@
     void main() {
       var greeter = Greeter();
 
-      // Tear-off of the instance method `greet`
+      // Tear-off of the instance method `greet`.
       var sayHello = greeter.greet;
 
       sayHello('Dart'); // Prints: Hello, Dart!
