@@ -108,21 +108,6 @@ function setupSidenav() {
 }
 
 function setupTableOfContents() {
-  const tocHeader = document.querySelector('#toc-side header');
-
-  if (tocHeader) {
-    tocHeader.addEventListener('click', (_) => {
-      _scrollToTop();
-    });
-  }
-
-  function _scrollToTop() {
-    const distanceBetweenTop = document.documentElement.scrollTop || document.body.scrollTop;
-    if (distanceBetweenTop > 0) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }
-
   _setupTocActiveObserver();
   _setupInlineTocDropdown();
 }
