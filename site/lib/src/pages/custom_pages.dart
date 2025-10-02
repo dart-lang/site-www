@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
 import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart' show Component;
 import 'package:jaspr_content/jaspr_content.dart';
@@ -17,6 +19,7 @@ import 'glossary.dart';
 List<MemoryPage> get allMemoryPages => [
   _glossaryPage,
   _allLinterRulesPage,
+  _allLinterRulesJson,
   ..._lintMemoryPages,
 ];
 
@@ -200,20 +203,23 @@ linter:
   ];
 }
 
+final linterRulesToShow = readAndLoadLints()
+    .where(
+      (lint) =>
+          lint.sinceDartSdk != 'Unreleased' &&
+          !lint.sinceDartSdk.contains('wip') &&
+          lint.state != 'removed' &&
+          lint.state != 'internal',
+    )
+    .sortedBy((lint) => lint.name)
+    .toList(growable: false);
+
 /// The `/tools/linter-rules/all` page that includes an example
 /// `analysis_options.yaml` file that enables all linter rules
 /// that are available in the current stable release.
 MemoryPage get _allLinterRulesPage {
-  final allLinterRulesList = readAndLoadLints()
-      .where(
-        (lint) =>
-            lint.sinceDartSdk != 'Unreleased' &&
-            !lint.sinceDartSdk.contains('wip') &&
-            lint.state != 'removed' &&
-            lint.state != 'internal',
-      )
+  final allLinterRulesListAsString = linterRulesToShow
       .map((lint) => '    - ${lint.id}')
-      .sorted()
       .join('\n');
 
   return MemoryPage(
@@ -239,8 +245,32 @@ and adjust as you see fit.
 ```yaml title="analysis_options.yaml"
 linter:
   rules:
-$allLinterRulesList
+$allLinterRulesListAsString
 ```
 ''',
   );
 }
+
+/// A JSON rendered version of [_allLinterRulesPage].
+MemoryPage get _allLinterRulesJson => MemoryPage(
+  path: 'tools/linter-rules/all.json',
+  keepSuffix: true,
+  initialData: const {
+    'page': <String, Object?>{
+      'title': 'All of Dart\'s linter rules in JSON format',
+      'description':
+          'All released linter rules supported by '
+          'the Dart analyzer in JSON format.',
+      'sitemap': false,
+    },
+  },
+  content:
+      const JsonEncoder.withIndent(
+        '  ',
+      ).convert([
+        for (final lint in linterRulesToShow)
+          {
+            'id': lint.id,
+          },
+      ]),
+);

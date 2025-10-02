@@ -52,7 +52,7 @@ Component get _dartDevSite => ContentApp.custom(
       DashMarkdownParser(),
       HtmlParser(),
     ],
-    rawOutputPattern: RegExp(r'.*\.txt$'),
+    rawOutputPattern: RegExp(r'.*\.(txt|json)$'),
     extensions: allNodeProcessingExtensions,
     components: _embeddableComponents,
     layouts: const [DocLayout(), HomepageLayout()],
