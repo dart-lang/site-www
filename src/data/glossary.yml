@@ -896,7 +896,9 @@
     `specify_nonobvious_property_types` to decide whether an explicit type
     annotation is redundant or necessary.
 
-    ### Definition of obviously typed expressions
+    ### Obviously typed expressions
+    
+    The following types of expressions are considered obviously typed:
 
     - Non-collection literals: `1`, `true`, `'Hello'`
     - Collection literals with explicit type arguments: `<int>[]`, `<String, bool>{}`
