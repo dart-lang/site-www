@@ -34,11 +34,11 @@ to develop and run Dart code.
 {% assign rem = '<span class="material-symbols system-support" style="color: #E25012" aria-label="Final deprecation" title="Final deprecation">report</span>' %}
 {% assign na = '<span class="material-symbols system-support" style="color: #DADCE0" aria-label="Does not exist" title="Does not exist">do_not_disturb_on</span>' %}
 
-| Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                                                                                                                                                                                             |
-|----------|:-------:|:----------:|:-------:|:-------:|:---------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Windows  | {{yes}} |   {{no}}   | {{no}}  | {{yes}} |     {{na}}      | [10], [11][]                                                                                                                                                                                                                            |
-| Linux    | {{yes}} |   {{no}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support                                                                                                                                                                             |
-| macOS    | {{yes}} |   {{no}}   | {{na}}  | {{yes}} |     {{na}}      | Latest three versions of macOS:<br>{% for version in macos limit:3 %}{%- if version.eol == false -%}[{{version.codename}}]({{version.link}}) ({{version.cycle}}){%- unless forloop.last -%}, {% endunless -%} {%- endif %} {% endfor %} |
+| Platform |   x64   | IA32 (x86) |  Arm32  |  Arm64  | RISC-V (RV64GC) | OS Versions                                                                                                                                                                                                  |
+|----------|:-------:|:----------:|:-------:|:-------:|:---------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Windows  | {{yes}} |   {{no}}   | {{no}}  | {{yes}} |     {{na}}      | [Windows 11][], [Windows 10][]                                                                                                                                                                               |
+| Linux    | {{yes}} |   {{no}}   | {{yes}} | {{yes}} |     {{yes}}     | [Debian stable][],<br>[Ubuntu LTS][] under standard support                                                                                                                                                  |
+| macOS    | {{yes}} |   {{no}}   | {{na}}  | {{yes}} |     {{na}}      | Latest three versions of macOS:<br>{% for version in supportedMacosVersions limit:3 %}[{{version.codename}}]({{version.link}}) ({{version.cycle}}){%- unless forloop.last -%}, {% endunless -%} {% endfor %} |
 
 {:.table .table-striped}
 
@@ -47,6 +47,11 @@ to develop and run Dart code.
 {{rem}} Support is deprecated and will likely be removed in the next stable release.<br>
 {{no}} Unsupported on all channels.<br>
 {{na}} Unsupported by the operating system.<br>
+
+[Windows 10]: https://www.microsoft.com/en-us/software-download/windows10
+[Windows 11]: https://www.microsoft.com/en-us/software-download/windows11
+[Debian stable]: https://www.debian.org/releases
+[Ubuntu LTS]: https://wiki.ubuntu.com/Releases
 
 ## Choose an installation option
 
@@ -158,7 +163,3 @@ follow the [instructions on this page](#install).
 [dart-docker]: https://hub.docker.com/_/dart
 [dl-sdk]: /get-dart/archive
 [install-flutter]: {{site.flutter-docs}}/get-started/install
-[10]: https://www.microsoft.com/en-us/software-download/windows10%20
-[11]: https://www.microsoft.com/en-us/software-download/windows11
-[Debian stable]: https://www.debian.org/releases
-[Ubuntu LTS]: https://wiki.ubuntu.com/Releases
