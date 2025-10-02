@@ -1478,6 +1478,40 @@
     - "pub"
     - "packages"
 
+- term: "Tree shaking"
+  short_description: |-
+    A compiler optimization that removes unused code.
+  long_description: |-
+    **Tree shaking** is a compiler optimization that
+    analyzes which parts of the code are actually used by an application and
+    removes everything else from the final output.
+
+    This makes the compiled program smaller and faster to load, since dead code
+    that is never referenced doesn't end up in the binary or bundle.
+
+    Tree shaking is especially important for web and mobile apps, where
+    code size directly impacts download time and runtime performance.
+
+    For example, if you import a library that defines ten top-level functions,
+    but your app only calls two, tree shaking ensures
+    the other eight functions are excluded from the compiled output.
+  related_links:
+    - text: "Dart compile"
+      link: "/tools/dart-compile"
+      type: "doc"
+    - text: "Libraries & imports"
+      link: "/language/libraries"
+      type: "doc"
+    - text:  "Web deployment"
+      link:  "/web/deployment"
+      type: "doc"
+  labels:
+    - "language"
+    - "compilation"
+    - "optimization"
+  alternate:
+    - "Dead-code elimination"
+
 - term: "Type alias"
   short_description: |-
     A user-defined name for an existing type.
