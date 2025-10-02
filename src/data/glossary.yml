@@ -1434,10 +1434,10 @@
     Tree shaking is especially important for web and mobile apps, where code size
     directly impacts download time and runtime performance.
 
-    Example:
-    If an imported library defines ten classes but your app only uses two,
-    tree shaking ensures the other eight classes are excluded from the compiled output.
-
+    For example, if you import a library that defines ten top-level functions,
+    but your app only calls two, tree shaking ensures
+    the other eight functions are excluded from the compiled output.
+    
   related_links:
     - text: "Dart compile"
       link: "/tools/dart-compile"
