@@ -930,7 +930,7 @@
       type: "doc"
     - text: "Lint: omit_obvious_local_variable_types"
       link: "/tools/linter-rules/omit_obvious_local_variable_types"
-      type: "doc"
+      type: "diagnostic"
     - text: "Lint: specify_nonobvious_property_types"
       link: "/tools/linter-rules/specify_nonobvious_property_types"
       type: "doc"
