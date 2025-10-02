@@ -1436,6 +1436,7 @@
 
     For example, if you import a library that defines ten top-level functions,
     but your app only calls two, tree shaking ensures
+    the other eight functions are excluded from the compiled output.
   related_links:
     - text: "Dart compile"
       link: "/tools/dart-compile"
@@ -1446,14 +1447,12 @@
     - text:  "Web deployment"
       link:  "/web/deployment"
       type: "doc"
-
   labels:
     - "language"
     - "compilation"
     - "optimization"
   alternate:
     - "Dead-code elimination"
-
 
 - term: "Type alias"
   short_description: |-
