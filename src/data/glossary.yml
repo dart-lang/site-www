@@ -912,7 +912,7 @@
     - Conditional expressions with obviously typed branches of the same type: `condition ? 1 : 2`.
     - Type tests: `x is String`
     - Throw expressions: `throw Exception()`
-    - A parenthesized expression whose contents is obviously typed: `('Hello!')`.
+    - Parenthesized expressions whose contents are obviously typed: `('Hello!')`.
     - `this` and type literals: `String`
 
     In this list, _homogeneous_ means "where every element has the same type".
