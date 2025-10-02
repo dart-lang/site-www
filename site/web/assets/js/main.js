@@ -57,72 +57,7 @@ function _switchToPreferenceIfAuto() {
   }
 }
 
-function handleSearchShortcut(event) {
-  const activeElement = document.activeElement;
-  if (activeElement instanceof HTMLInputElement ||
-      activeElement instanceof HTMLTextAreaElement ||
-      event.code !== 'Slash'
-  ) {
-    return;
-  }
-
-  let parentElement;
-  // If the sidebar is open, focus its search field.
-  if (document.body.classList.contains('open_menu')) {
-    parentElement = document.getElementById('sidenav');
-  } else {
-    const bodySearch = document.getElementById('in-content-search');
-    // If the page has a search field in the body, focus that.
-    if (bodySearch !== null) {
-      parentElement = bodySearch;
-    } else {
-      // Otherwise, fallback to the top navbar search field.
-      parentElement = document.getElementById('header-search');
-    }
-  }
-
-  // If we found any search field, focus it.
-  if (parentElement !== null) {
-    parentElement
-        .querySelector('.search-field')
-        .focus();
-    // Prevent the initial slash from showing up in the search field.
-    event.preventDefault();
-  }
-}
-
-function setupSidenav() {
-  const sidenav = document.getElementById('sidenav');
-  if (!sidenav) {
-    return;
-  }
-
-  const activeEntries = sidenav.querySelectorAll('a.nav-link.active');
-  if (activeEntries.length > 0) {
-    const activeEntry = activeEntries[activeEntries.length - 1];
-
-    sidenav.scrollTo({
-      top: activeEntry.offsetTop - window.innerHeight / 3,
-    });
-  }
-}
-
 function setupTableOfContents() {
-  const tocHeader = document.querySelector('#toc-side header');
-
-  if (tocHeader) {
-    tocHeader.addEventListener('click', (_) => {
-      _scrollToTop();
-    });
-  }
-
-  function _scrollToTop() {
-    const distanceBetweenTop = document.documentElement.scrollTop || document.body.scrollTop;
-    if (distanceBetweenTop > 0) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }
-
   _setupTocActiveObserver();
   _setupInlineTocDropdown();
 }
@@ -283,7 +218,6 @@ function setupExpandableCards() {
 
 function _setupSite() {
   setupTheme();
-  setupSidenav();
 
   // Set up collapse and expand for sidenav buttons.
   const toggles = document.querySelectorAll('.nav-link.collapsible');
@@ -293,8 +227,6 @@ function _setupSite() {
       e.preventDefault();
     });
   });
-
-  document.addEventListener('keydown', handleSearchShortcut);
 
   createGallery(
     'galleryOne',

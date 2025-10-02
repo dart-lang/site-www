@@ -5,6 +5,7 @@
 import 'package:jaspr/jaspr.dart';
 
 import '../models/on_this_page_model.dart';
+import 'client/on_this_page_button.dart';
 import 'material_icon.dart';
 
 final class WideTableOfContents extends StatelessComponent {
@@ -15,10 +16,7 @@ final class WideTableOfContents extends StatelessComponent {
   @override
   Component build(BuildContext _) {
     return nav(id: 'toc-side', classes: 'site-toc', [
-      header([
-        const MaterialIcon('list'),
-        span([text('On this page')]),
-      ]),
+      const OnThisPageButton(),
       _TocContents(data),
     ]);
   }
