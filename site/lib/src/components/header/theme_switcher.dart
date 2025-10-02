@@ -22,11 +22,11 @@ enum _Theme {
   dark('Dark', 'Switch to the dark theme.', 'dark_mode'),
   auto('Automatic', 'Match theme to device theme.', 'night_sight_auto');
 
-  final String name;
+  final String label;
   final String description;
   final String iconId;
 
-  const _Theme(this.name, this.description, this.iconId);
+  const _Theme(this.label, this.description, this.iconId);
 
   String get id => '$name-mode';
 }
@@ -132,7 +132,7 @@ final class _ThemeButtonEntry extends StatelessComponent {
       },
       [
         MaterialIcon(mode.iconId),
-        span([text(mode.name)]),
+        span([text(mode.label)]),
       ],
     ),
   ]);
