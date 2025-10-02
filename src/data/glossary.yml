@@ -933,7 +933,7 @@
       type: "diagnostic"
     - text: "Lint: specify_nonobvious_property_types"
       link: "/tools/linter-rules/specify_nonobvious_property_types"
-      type: "doc"
+      type: "diagnostic"
   labels:
     - "language"
     - "type system"
