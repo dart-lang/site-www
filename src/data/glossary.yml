@@ -931,6 +931,75 @@
   alternate:
     - "pubspec.lock"
 
+- term: "Obviously typed"
+  short_description: |-
+    An expression whose type can be mechanically determined without ambiguity.
+  long_description: |-
+    An expression in Dart is considered **obviously typed** when
+    its type is immediately clear from its syntax,
+    without needing inference or complex analysis.
+
+    This concept is mainly used in lint rules like
+    `omit_obvious_local_variable_types` and `specify_nonobvious_property_types`
+    to decide whether an explicit type annotation is redundant or necessary.
+
+    ### Obviously typed expressions
+
+    The following types of expressions are considered obviously typed:
+
+    - Non-collection literals:
+      `1`, `true`, `'Hello'`.
+    - Collection literals with explicit type arguments:
+      `<int>[]`, `<String, bool>{}`.
+    - Homogeneous list/set literals whose elements are obviously typed:
+      `[1, 2, 3]`, `{true, false}`.
+    - Homogeneous map literals with obvious key and value types:
+      `{1: 10, 2: 20}`.
+    - Record literals with obvious types:
+      `(1, enabled: true)`.
+    - Local variables and formal parameters that have not been promoted.
+    - Instance creation with non-generic classes or explicit type arguments:
+      `C()`, `Set<int>()`.
+    - Cascades with obviously typed targets:
+      `StringBuffer('Hello, ')..write('world!')`.
+    - Type casts:
+      `x as int`.
+    - Conditional expressions with obviously typed branches of the same type:
+      `condition ? 1 : 2`.
+    - Type tests:
+      `x is String`.
+    - Throw expressions:
+      `throw Exception()`.
+    - Parenthesized expressions whose contents are obviously typed:
+      `('Hello!')`.
+    - `this` and type literals:
+      `String`.
+
+    In this list, _homogeneous_ means "where every element has the same type".
+    For example, `{1: 'one', 2: 'two'}` is a homogeneous map,
+    but `{1: 'one', 1.5: true}` is not.
+    By contrast, if the type of an expression requires inference (for example
+    `[1, 2.5]` → `List<num>`), it is **not** considered obviously typed.
+
+    This distinction helps style rules decide when to
+    enforce or omit type annotations for clarity and consistency.
+  related_links:
+    - text: "Effective Dart: Style"
+      link: "/effective-dart/style"
+      type: "doc"
+    - text: "Lint: omit_obvious_local_variable_types"
+      link: "/tools/linter-rules/omit_obvious_local_variable_types"
+      type: "diagnostic"
+    - text: "Lint: specify_nonobvious_property_types"
+      link: "/tools/linter-rules/specify_nonobvious_property_types"
+      type: "diagnostic"
+  labels:
+    - "language"
+    - "type system"
+    - "style"
+  alternate:
+    - "Obvious expression type"
+    - "Clear type"
 
 - term: "Override inference"
   short_description: |-
@@ -1467,6 +1536,40 @@
   labels:
     - "pub"
     - "packages"
+
+- term: "Tree shaking"
+  short_description: |-
+    A compiler optimization that removes unused code.
+  long_description: |-
+    **Tree shaking** is a compiler optimization that
+    analyzes which parts of the code are actually used by an application and
+    removes everything else from the final output.
+
+    This makes the compiled program smaller and faster to load, since dead code
+    that is never referenced doesn't end up in the binary or bundle.
+
+    Tree shaking is especially important for web and mobile apps, where
+    code size directly impacts download time and runtime performance.
+
+    For example, if you import a library that defines ten top-level functions,
+    but your app only calls two, tree shaking ensures
+    the other eight functions are excluded from the compiled output.
+  related_links:
+    - text: "Dart compile"
+      link: "/tools/dart-compile"
+      type: "doc"
+    - text: "Libraries & imports"
+      link: "/language/libraries"
+      type: "doc"
+    - text:  "Web deployment"
+      link:  "/web/deployment"
+      type: "doc"
+  labels:
+    - "language"
+    - "compilation"
+    - "optimization"
+  alternate:
+    - "Dead-code elimination"
 
 - term: "Type alias"
   short_description: |-
