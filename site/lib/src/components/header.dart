@@ -7,6 +7,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../util.dart';
+import 'header/menu_toggle.dart';
 import 'header/site_switcher.dart';
 import 'header/theme_switcher.dart';
 import 'material_icon.dart';
@@ -144,20 +145,7 @@ class DashHeader extends StatelessComponent {
             ),
             if (layout != 'homepage') const ThemeSwitcher(),
             const SiteSwitcher(),
-            button(
-              id: 'menu-toggle',
-              classes: 'icon-button',
-              type: ButtonType.button,
-              attributes: {
-                'aria-controls': 'sidenav',
-                'aria-label': 'Open navigation menu.',
-                'title': 'Open navigation menu.',
-              },
-              const [
-                MaterialIcon('menu'),
-                MaterialIcon('close'),
-              ],
-            ),
+            const MenuToggle(),
           ],
         ),
       ]),

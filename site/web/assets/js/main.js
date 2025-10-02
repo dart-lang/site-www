@@ -228,29 +228,6 @@ function _setupSite() {
     });
   });
 
-  document.getElementById('menu-toggle')?.addEventListener('click', function (e) {
-    e.stopPropagation();
-    document.body.classList.toggle('open_menu');
-  });
-
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 1025) {
-      document.body.classList.remove('open_menu');
-    }
-  });
-
-  const topLevelMenuTogglers = ['#site-header', '.banner', '#page-content', '#page-footer'];
-  topLevelMenuTogglers.forEach(function (togglerSelector) {
-    const toggler = document.querySelector(togglerSelector);
-    toggler?.addEventListener('click', function (e) {
-      const bodyClassList = document.body.classList;
-      if (bodyClassList.contains('open_menu')) {
-        e.preventDefault();
-        bodyClassList.remove('open_menu');
-      }
-    });
-  });
-
   createGallery(
     'galleryOne',
     'galleryTwo',
