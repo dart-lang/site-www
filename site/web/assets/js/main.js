@@ -1,62 +1,3 @@
-const _prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-
-function setupTheme() {
-  const storedTheme = window.localStorage.getItem('theme') ?? 'light-mode';
-  if (storedTheme === 'auto-mode') {
-    document.body.classList.add(
-        'auto-mode',
-        _prefersDarkMode.matches ? 'dark-mode' : 'light-mode',
-    );
-  } else {
-    document.body.classList.add(storedTheme);
-  }
-
-  const themeMenu = document.getElementById('theme-switcher-content');
-  if (themeMenu) {
-    const themeButtons = themeMenu.querySelectorAll('button');
-
-    function updateButtonSelectedState() {
-      const theme =
-          document.body.classList.contains('auto-mode') ? 'auto' :
-              document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-
-      themeButtons.forEach((button) => {
-        button.ariaSelected = button.dataset.theme === theme ? 'true' : 'false';
-      });
-    }
-
-    themeButtons.forEach((button) => {
-      button.addEventListener('click', (_) => {
-        const newMode = `${button.dataset.theme}-mode`;
-
-        document.body.classList.remove('auto-mode', 'dark-mode', 'light-mode');
-        document.body.classList.add(newMode);
-
-        window.localStorage.setItem('theme', newMode);
-        _switchToPreferenceIfAuto();
-
-        updateButtonSelectedState();
-      });
-    });
-
-    updateButtonSelectedState();
-  }
-
-  _prefersDarkMode.addEventListener('change', _switchToPreferenceIfAuto);
-}
-
-function _switchToPreferenceIfAuto() {
-  if (document.body.classList.contains('auto-mode')) {
-    if (_prefersDarkMode.matches) {
-      document.body.classList.remove('light-mode');
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-      document.body.classList.add('light-mode');
-    }
-  }
-}
-
 function setupTableOfContents() {
   _setupTocActiveObserver();
   _setupInlineTocDropdown();
@@ -217,37 +158,12 @@ function setupExpandableCards() {
 }
 
 function _setupSite() {
-  setupTheme();
-
   // Set up collapse and expand for sidenav buttons.
   const toggles = document.querySelectorAll('.nav-link.collapsible');
   toggles.forEach(function (toggle) {
     toggle.addEventListener('click', (e) => {
       toggle.classList.toggle('collapsed');
       e.preventDefault();
-    });
-  });
-
-  document.getElementById('menu-toggle')?.addEventListener('click', function (e) {
-    e.stopPropagation();
-    document.body.classList.toggle('open_menu');
-  });
-
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 1025) {
-      document.body.classList.remove('open_menu');
-    }
-  });
-
-  const topLevelMenuTogglers = ['#site-header', '.banner', '#page-content', '#page-footer'];
-  topLevelMenuTogglers.forEach(function (togglerSelector) {
-    const toggler = document.querySelector(togglerSelector);
-    toggler?.addEventListener('click', function (e) {
-      const bodyClassList = document.body.classList;
-      if (bodyClassList.contains('open_menu')) {
-        e.preventDefault();
-        bodyClassList.remove('open_menu');
-      }
     });
   });
 
