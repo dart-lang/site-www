@@ -928,8 +928,8 @@
       `String`.
 
     In this list, _homogeneous_ means "where every element has the same type".
-    For example, `{1: "one", 2: "two"}` is a homogeneous map,
-    but `{1: "one", 1.5: true}` is not.
+    For example, `{1: 'one', 2: 'two'}` is a homogeneous map,
+    but `{1: 'one', 1.5: true}` is not.
     By contrast, if the type of an expression requires inference (for example
     `[1, 2.5]` → `List<num>`), it is **not** considered obviously typed.
 
