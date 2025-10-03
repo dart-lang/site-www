@@ -19,6 +19,8 @@ pre {
   code {
     white-space: pre;
     font-family: var(--site-code-fontFamily);
+    color: var(--site-base-fgColor);
+    --opal-dark-color: var(--site-base-fgColor);
   }
 
   a {
