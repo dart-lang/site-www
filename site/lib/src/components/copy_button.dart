@@ -38,7 +38,7 @@ class _CopyButtonState extends State<CopyButton> {
     super.initState();
   }
 
-  void copy() {
+  void _copy() {
     web.window.navigator.clipboard.writeText(component.toCopy);
 
     setState(() => _copied = true);
