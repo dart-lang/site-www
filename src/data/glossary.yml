@@ -141,6 +141,58 @@
     - "Function callback"
     - "Callback function"
 
+- term: "Closurization"
+  short_description: |-
+    The process of turning a method or function into a closure.
+  long_description: |-
+    **Closurization** is the process where Dart turns a
+    method or function into a function object (or _tear-off_) that
+    can be stored, passed, or invoked later.
+
+    A tear-off is a reference to an existing function or method that evaluates
+    to a function object for that entity, but does not call it.
+    When you tear off a function, the runtime (or compiler) wraps it
+    into a closure so that it behaves like any other function object in Dart.
+
+    Example:
+
+    ```dart
+    class Greeter {
+      void greet(String name) {
+        print('Hello, $name!');
+      }
+    }
+
+    void main() {
+      final greeter = Greeter();
+
+      // Tear-off of the instance method `greet`.
+      final sayHello = greeter.greet;
+
+      sayHello('Dart'); // Prints: Hello, Dart!
+    }
+    ```
+
+    In this example, `greeter.greet` is closurized into
+    a function object that captures the instance `greeter`.
+    When you call `sayHello`, it executes as if
+    you had called `greeter.greet(...)` directly.
+
+    Closurization ensures that tear-offs can be
+    used wherever a function is expected.
+  related_links:
+    - text: "Functions in Dart"
+      link: "/language/functions"
+      type: "doc"
+    - text: "Tear-offs"
+      link: "/language/functions#tear-offs"
+      type: "doc"
+  labels:
+    - "language"
+    - "functions"
+  alternate:
+    - "Tear-offs"
+
 - term: "Combinator"
   short_description: |-
     A keyword clause that limits or modifies what's imported or exported.
