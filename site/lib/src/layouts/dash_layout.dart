@@ -111,9 +111,9 @@ abstract class DashLayout extends PageLayoutBase {
         href:
             'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
       ),
-      link(rel: 'stylesheet', href: '/assets/css/main.css?v=2'),
+      link(rel: 'stylesheet', href: '/assets/css/main.css?v=3'),
 
-      script(src: '/assets/js/main.js'),
+      script(src: '/assets/js/main.js?v=4'),
       if (pageData['js'] case final List<Object?> jsList)
         for (final js in jsList)
           if (js case {'url': final String jsUrl, 'defer': final Object? defer})
@@ -206,6 +206,23 @@ ga('send', 'pageview');
           ]),
           const DashFooter(),
         ]),
+        // The theme setting logic should remain before other scripts to
+        // avoid a flash of the initial theme on load.
+        raw('''
+<script>
+const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+const storedTheme = window.localStorage.getItem('theme') ?? 'light-mode';
+if (storedTheme === 'auto-mode') {
+  document.body.classList.add(
+      'auto-mode',
+      prefersDarkMode.matches ? 'dark-mode' : 'light-mode',
+  );
+} else {
+  document.body.classList.add(storedTheme);
+}
+</script>
+      '''),
         GlobalScripts(),
       ],
     );

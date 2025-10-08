@@ -1,10 +1,6 @@
 #theme-switcher {
   position: relative;
 
-  //.icon-button span {
-  //  font-size: 1.5rem;
-  //}
-
   > .dropdown-content {
     right: -0.5rem;
 
@@ -13,21 +9,7 @@
     }
   }
 
-  @at-root body:not(.dark-mode):not(.auto-mode) & {
-    button[data-theme="light"] {
-      background-color: var(--site-primary-color-highlight);
-    }
-  }
-
-  @at-root body.dark-mode:not(.auto-mode) & {
-    button[data-theme="dark"] {
-      background-color: var(--site-primary-color-highlight);
-    }
-  }
-
-  @at-root body.auto-mode & {
-    button[data-theme="auto"] {
-      background-color: var(--site-primary-color-highlight);
-    }
+  button[aria-selected="true"] {
+    background-color: var(--site-primary-color-highlight);
   }
 }
