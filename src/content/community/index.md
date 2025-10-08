@@ -48,7 +48,7 @@ Learn how to
     The design of the Dart language.
   </Card>
   <Card title="Dart website repo" link="{{site.repo.this}}/">
-    The source for the Dart website, built with [Jaspr]({{site.jaspr}}).
+    The source for the Dart website, built with Jaspr.
   </Card>
   <Card title="DartPad" link="{{site.dartpad}}/">
     An online Dart editor with support for console, web, and Flutter apps.
@@ -87,6 +87,6 @@ Get answers and connect with Dart developers.
     Discuss miscellaneous Dart topics.
   </Card>
   <Card title="Dart analyzer" link="{{page.group}}/d/forum/analyzer-discuss>">
-    Get help understanding the [Dart analyzer](/tools/dart-analyze).
+    Get help understanding the Dart analyzer.
   </Card>
 </div>
