@@ -43,8 +43,9 @@ Here is an overview of a few things it can do:
 *  Format code with the same formatter and config as
    [`dart format`][] and the Dart analysis server.
 
-:::note Experimental
-This tool is still experimental and is likely to evolve quickly.
+:::experimental
+The Dart and Flutter MCP server is experimental and likely to evolve quickly.
+
 The following setup and usage instructions
 require Dart 3.9 or later.
 :::

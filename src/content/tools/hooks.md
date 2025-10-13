@@ -3,7 +3,7 @@ title: Hooks
 description: Run custom build scripts.
 ---
 
-:::note
+:::experimental Preview
 Support for build hooks is in **preview** and
 can be used on the `main` and `beta` channels.
 :::
