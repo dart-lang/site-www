@@ -4,9 +4,6 @@ shortTitle: Archive
 description: >-
   Download specific stable, beta, dev, and main channel versions of
   the Dart SDK and the Dart API documentation.
-js:
-- url: /assets/js/get-dart/install.js
-  defer: true
 ---
 
 Use this archive to download
