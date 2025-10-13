@@ -112,7 +112,7 @@ final class AlertBlockSyntax extends md.BlockSyntax {
 enum _AlertType {
   experimental(
     cssClass: 'alert-warning',
-    iconId: 'constructor',
+    iconId: 'construction',
     defaultTitle: 'Experimental',
   ),
   note(
