@@ -271,14 +271,14 @@ with hooks and code assets:
 
 | **Project**                  | **Description**                                                                         |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
-| [`sqlite`][]                 | A package compiling, bundling and using a native database engine.                       |
-| [`mini_audio`][]             | A package compiling, bundling and using a native audio player.                          |
-| [`stb_image`][]              | A package compiling, bundling and using a native image library.                         |
+| [`sqlite`][]                 | A package compiling, bundling, and using a native database engine.                       |
+| [`mini_audio`][]             | A package compiling, bundling, and using a native audio player.                          |
+| [`stb_image`][]              | A package compiling, bundling, and using a native image library.                         |
 | [`host_name`][]              | A package using a native system library.                                                |
-| [`native_add_library`][]     | A package compiling, bundling and using some simple C code.                             |
-| [`native_add_app`][]         | A dart cli application that depends on `native_add_library`.                            |
-| [`download_asset`][]         | A package bundling and using prebuilt assets which are downloaded in the build hook.    |
-| [`native_dynamic_linking`][] | A package compiling, bundling and using three native libraries depending on each other. |
+| [`native_add_library`][]     | A package compiling, bundling, and using some simple C code.                             |
+| [`native_add_app`][]         | A Dart CLI application that depends on `native_add_library`.                            |
+| [`download_asset`][]         | A package bundling and using prebuilt assets that are downloaded in the build hook.    |
+| [`native_dynamic_linking`][] | A package compiling, bundling, and using three native libraries that depend on each other. |
 | [`use_dart_api`][]           | A package that uses the C API of the Dart VM.                                           |
  
 {: .table .table-striped }
