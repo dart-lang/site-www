@@ -1,8 +1,9 @@
 ---
 title: Community and support
-shortTitle: Track the Dart project, get help, and talk with other Dart developers.
+shortTitle: Community
 description: Communities, mailing lists, and bug databases for the Dart project.
 group: https://groups.google.com/a/dartlang.org
+showBreadcrumbs: false
 ---
 
 We pledge to maintain an open and welcoming environment.
