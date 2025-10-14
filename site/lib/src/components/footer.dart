@@ -146,7 +146,9 @@ final class DashFooter extends StatelessComponent {
                       'This site is built with the '
                       'Jaspr web framework for Dart.',
                 },
-                [text('Built with Jaspr')],
+                [
+                  JasprBadge.light(),
+                ],
               ),
             ]),
           ]),
