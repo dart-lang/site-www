@@ -41,7 +41,6 @@ class LintRuleIndex extends StatelessComponent {
   }
 }
 
-
 class _LintRuleCard extends StatelessComponent {
   const _LintRuleCard({
     required this.lint,
