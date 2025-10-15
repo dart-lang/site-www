@@ -367,11 +367,11 @@ requires a [language version][] of at least 2.14.
 Dart has two operators that let you concisely evaluate expressions
 that might otherwise require [if-else][] statements:
 
-*`condition `* `? ` *`expr1 `* `: ` *`expr2`*
+_`condition`_ `?` _`expr1`_ `:` _`expr2`_
 : If _condition_ is true, evaluates _expr1_ (and returns its value);
   otherwise, evaluates and returns the value of _expr2_.
 
- *`expr1 `* `?? ` *`expr2`*
+_`expr1`_ `??` _`expr2`_
 : If _expr1_ is non-null, returns its value;
   otherwise, evaluates and returns the value of _expr2_.
 
