@@ -19,11 +19,11 @@ class ChipSet extends StatelessComponent {
   @override
   Component build(BuildContext context) => div(classes: 'chip-set', [
     ...chips,
-    if (onReset != null)
+    if (onReset case final onReset?)
       button(
         id: 'reset-filters',
         classes: 'text-button',
-        events: {'click': (_) => onReset!()},
+        events: {'click': (_) => onReset()},
         [text('Clear filters')],
       ),
   ]);
