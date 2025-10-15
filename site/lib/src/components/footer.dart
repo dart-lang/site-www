@@ -138,6 +138,7 @@ final class DashFooter extends StatelessComponent {
             ]),
             div(classes: 'footer-technology', [
               a(
+                classes: 'jaspr-badge-link',
                 href: 'https://jaspr.site',
                 target: Target.blank,
                 attributes: {
@@ -147,7 +148,8 @@ final class DashFooter extends StatelessComponent {
                       'Jaspr web framework for Dart.',
                 },
                 [
-                  JasprBadge.light(),
+                  span([JasprBadge.light()]),
+                  span([JasprBadge.lightTwoTone()]),
                 ],
               ),
             ]),
