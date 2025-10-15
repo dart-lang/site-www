@@ -108,7 +108,7 @@ class FilterChip extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return button(
-      classes: 'chip filter-chip${selected ? ' selected' : ''}',
+      classes: ['chip', 'filter-chip', if (selected) 'selected'].toClasses,
       attributes: {
         'role': 'checkbox',
         'aria-checked': selected ? 'true' : 'false',
@@ -219,8 +219,11 @@ class _SelectChipState<T> extends State<SelectChip<T>> {
       },
       div(classes: 'button-menu-wrapper', [
         button(
-          classes:
-              'chip select-chip${component.selectedValue != null ? ' selected' : ''}',
+          classes: [
+            'chip',
+            'select-chip',
+            if (component.selectedValue != null) 'selected',
+          ].toClasses,
           attributes: {
             'aria-controls': component.menuId,
             'aria-expanded': isMenuShown ? 'true' : 'false',

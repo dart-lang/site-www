@@ -1,3 +1,7 @@
+// Copyright (c) 2025, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -84,6 +88,18 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
     }
   }
 
+  /// Update the filter state and re-evaluate which lints to show.
+  ///
+  /// Use like the `setState` method by passing a callback that updates
+  /// the relevant state variables.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// updateFilters(() {
+  ///   onlyFixable = !onlyFixable;
+  /// });
+  /// ```
   void updateFilters(void Function() callback) {
     setState(() {
       callback();
@@ -93,7 +109,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
 
     for (final lint in lintsInfo) {
       final lintName = lint.name;
-      if (!lintName.contains(searchQuery)) continue;
+      if (!lintName.contains(searchQuery.trim().toLowerCase())) continue;
       if (onlyFixable && !lint.hasFix) continue;
       if (onlyStable && !lint.stable) continue;
       switch (selectedRuleSet) {
