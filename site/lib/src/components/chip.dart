@@ -3,24 +3,26 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaspr/jaspr.dart';
+import 'package:universal_web/web.dart' as web;
 
 import '../util.dart';
 import 'material_icon.dart';
 
 /// A set of Material Design-like chips for configuration.
 class ChipSet extends StatelessComponent {
-  const ChipSet(this.chips, {this.resettable = false});
+  const ChipSet(this.chips, {this.onReset});
 
   final List<Component> chips;
-  final bool resettable;
+  final void Function()? onReset;
 
   @override
   Component build(BuildContext context) => div(classes: 'chip-set', [
     ...chips,
-    if (resettable)
+    if (onReset != null)
       button(
         id: 'reset-filters',
         classes: 'text-button',
+        events: {'click': (_) => onReset!()},
         [text('Clear filters')],
       ),
   ]);
@@ -69,10 +71,7 @@ class InfoChip extends StatelessComponent {
               'title': ?title,
             },
             [
-              Component.element(
-                tag: 'path',
-                attributes: {'d': iconPath},
-              ),
+              Component.element(tag: 'path', attributes: {'d': iconPath}),
             ],
           ),
         span(classes: 'label', [text(label)]),
@@ -85,36 +84,36 @@ class FilterChip extends StatelessComponent {
   const FilterChip({
     super.key,
     required this.label,
-    required this.dataFilter,
     this.icon,
     this.iconPath,
     this.iconSize = 18,
     this.iconViewBox = '0 0 18 18',
     this.ariaLabel,
     this.showCheckIcon = true,
+    this.selected = false,
     this.onTap,
   });
 
   final String label;
-  final String dataFilter;
   final String? icon;
   final String? iconPath;
   final int iconSize;
   final String iconViewBox;
   final String? ariaLabel;
   final bool showCheckIcon;
+  final bool selected;
   final void Function()? onTap;
 
   @override
   Component build(BuildContext context) {
     return button(
-      classes: 'chip filter-chip',
+      classes: 'chip filter-chip${selected ? ' selected' : ''}',
       attributes: {
-        'data-filter': dataFilter,
         'role': 'checkbox',
-        'aria-checked': 'false',
+        'aria-checked': selected ? 'true' : 'false',
         'aria-label': ?ariaLabel,
       },
+      events: {'click': (_) => onTap?.call()},
       [
         if (showCheckIcon)
           svg(
@@ -157,38 +156,93 @@ class FilterChip extends StatelessComponent {
   }
 }
 
-class SelectChip extends StatelessComponent {
+class SelectChip<T> extends StatefulComponent {
   const SelectChip({
     super.key,
     required this.label,
     required this.menuId,
-    this.dataTitle,
     this.menuItems = const [],
     this.showDropdownIcon = true,
     this.dropdownIconPath,
+    this.selectedValue,
+    this.onSelect,
   });
 
   final String label;
   final String menuId;
-  final String? dataTitle;
-  final List<SelectMenuItem> menuItems;
+  final List<SelectMenuItem<T>> menuItems;
   final bool showDropdownIcon;
   final String? dropdownIconPath;
+  final T? selectedValue;
+  final void Function(T?)? onSelect;
+
+  @override
+  State createState() => _SelectChipState<T>();
+}
+
+class _SelectChipState<T> extends State<SelectChip<T>> {
+  bool isMenuShown = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (kIsWeb) {
+      const onClick = web.EventStreamProvider('click');
+      onClick.forTarget(web.document).listen((event) {
+        // If not clicking inside a menu wrapper, close the menu.
+        if ((event.target as web.Element).closest('.button-menu-wrapper') ==
+            null) {
+          setState(() {
+            isMenuShown = false;
+          });
+        }
+      });
+
+      const onKeyDown = web.EventStreamProvider('keydown');
+      onKeyDown.forTarget(web.document).listen((event) {
+        // If pressing the `esc` key in the menu wrapper, close the menu.
+        if ((event as web.KeyboardEvent).key == 'Escape' &&
+            (event.target as web.Element).closest('.button-menu-wrapper') !=
+                null) {
+          setState(() {
+            isMenuShown = false;
+          });
+        }
+      });
+    }
+  }
+
+  @override
+  void didUpdateComponent(SelectChip<T> oldComponent) {
+    super.didUpdateComponent(oldComponent);
+
+    if (oldComponent.selectedValue != component.selectedValue) {
+      setState(() {
+        isMenuShown = false;
+      });
+    }
+  }
 
   @override
   Component build(BuildContext context) {
     return div(classes: 'button-menu-wrapper', [
       button(
-        classes: 'chip select-chip',
+        classes:
+            'chip select-chip${component.selectedValue != null ? ' selected' : ''}',
         attributes: {
-          'data-menu': menuId,
-          'data-title': ?dataTitle,
-          'aria-controls': menuId,
-          'aria-expanded': 'false',
+          'aria-controls': component.menuId,
+          'aria-expanded': isMenuShown ? 'true' : 'false',
+        },
+        events: {
+          'click': (_) {
+            setState(() {
+              isMenuShown = !isMenuShown;
+            });
+          },
         },
         [
-          span(classes: 'label', [text(label)]),
-          if (showDropdownIcon)
+          span(classes: 'label', [text(component.label)]),
+          if (component.showDropdownIcon)
             svg(
               classes: 'chip-icon trailing-icon',
               width: 24.px,
@@ -199,21 +253,36 @@ class SelectChip extends StatelessComponent {
                 Component.element(
                   tag: 'path',
                   attributes: {
-                    'd': dropdownIconPath ?? 'M7 10l5 5 5-5H7z',
+                    'd': component.dropdownIconPath ?? 'M7 10l5 5 5-5H7z',
                   },
                 ),
               ],
             ),
         ],
       ),
-      if (menuItems.isNotEmpty)
+      if (component.menuItems.isNotEmpty)
         div(
-          id: menuId,
-          classes: 'select-menu',
+          id: component.menuId,
+          classes: 'select-menu${isMenuShown ? ' show-menu' : ''}',
           [
             ul(
               attributes: {'role': 'listbox'},
-              menuItems,
+              [
+                for (final item in component.menuItems)
+                  item._buildItem(
+                    item.value == component.selectedValue,
+                    () {
+                      component.onSelect?.call(
+                        item.value == component.selectedValue
+                            ? null
+                            : item.value,
+                      );
+                      setState(() {
+                        isMenuShown = false;
+                      });
+                    },
+                  ),
+              ],
             ),
           ],
         ),
@@ -221,37 +290,32 @@ class SelectChip extends StatelessComponent {
   }
 }
 
-class SelectMenuItem extends StatelessComponent {
+class SelectMenuItem<T> {
   const SelectMenuItem({
-    super.key,
     required this.label,
-    required this.dataFilter,
+    required this.value,
     this.icon,
     this.iconPath,
     this.iconSize = 24,
     this.iconViewBox = '0 0 24 24',
-    this.isSelected = false,
-    this.onTap,
   });
 
   final String label;
-  final String dataFilter;
+  final T value;
   final String? icon;
   final String? iconPath;
   final int iconSize;
   final String iconViewBox;
-  final bool isSelected;
-  final void Function()? onTap;
 
-  @override
-  Component build(BuildContext context) {
+  Component _buildItem(bool isSelected, void Function()? onTap) {
     return li([
       button(
+        classes: isSelected ? 'selected' : null,
         attributes: {
-          'data-filter': dataFilter,
           'role': 'option',
           'aria-selected': isSelected.toString(),
         },
+        events: {'click': (_) => onTap?.call()},
         [
           if (icon case final icon?)
             MaterialIcon(icon)

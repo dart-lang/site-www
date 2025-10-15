@@ -2,7 +2,6 @@
 title: Linter rules
 description: Details about the Dart linter and its style rules you can choose.
 bodyClass: diagnostics
-js: [{url: '/assets/js/linter-rules.js', defer: true}]
 ---
 
 Use the Dart linter to identify possible problems in your Dart code.
@@ -119,6 +118,6 @@ check out [All linter rules](/tools/linter-rules/all).
 
 ---
 
-<LintRuleIndex></LintRuleIndex>
+<div><LintRuleIndex></LintRuleIndex></div>
 
 [Dart style guide]: /effective-dart/style
