@@ -8,6 +8,10 @@ to build a Dart application.
 
 ## Overview
 
+:::version-note
+Support for `dart build` was introduced in Dart 3.10.
+:::
+
 Use the `dart build` command to build a Dart application.
 This command automatically runs [build hooks](/tools/hooks) from your project and its dependencies to compile or download code assets and bundle them with your application.
 
