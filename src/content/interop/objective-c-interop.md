@@ -51,9 +51,9 @@ and then load the library with `dart:ffi`.
 using [LLVM](https://llvm.org/),
 so you'll need to install that first.
 See [Installing LLVM]({{page.ffigen}}#installing-llvm)
-from the ffigen README for more details.
+from the FFIgen README for more details.
 
-### Configuring ffigen
+### Configuring FFIgen for Objective-C
 
 First, add `package:ffigen` as a dev dependency:
 
@@ -61,11 +61,11 @@ First, add `package:ffigen` as a dev dependency:
 $ dart pub add --dev ffigen
 ```
 
-Then, configure ffigen to generate bindings for the
+Then, configure FFIgen to generate bindings for the
 Objective-C header containing the API.
-The ffigen configuration options go in your `pubspec.yaml` file,
+The FFIgen configuration options go in your `pubspec.yaml` file,
 under a top-level `ffigen` entry.
-Alternatively, you can put the ffigen config in its own `.yaml` file.
+Alternatively, you can put the FFIgen config in its own `.yaml` file.
 
 ```yaml
 ffigen:
@@ -81,7 +81,7 @@ ffigen:
 The `name` is the name of the native library wrapper class
 that will be generated,
 and the `description` will be used in the documentation for that class.
-The `output` is the path of the Dart file that ffigen will create.
+The `output` is the path of the Dart file that FFIgen will create.
 The entry point is the header file containing the API.
 In this example, it is the internal `AVAudioPlayer.h` header.
 
@@ -96,7 +96,7 @@ which are very large.
 If bindings are generated without any filters,
 the resulting file can be millions of lines long.
 To solve this problem,
-the ffigen config has fields that enable you to filter out
+the FFIgen config has fields that enable you to filter out
 all the functions, structs, enums, etc., that you're not interested in.
 For this example, we're only interested in `AVAudioPlayer`,
 so you can exclude everything else:
@@ -158,20 +158,20 @@ to insert some linter ignore rules at the top of the generated file:
     // ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, return_of_invalid_type, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
 ```
 
-See the [ffigen readme]({{page.ffigen}}#configurations)
+See the [FFIgen readme]({{page.ffigen}}#configurations)
 for a full list of configuration options.
 
-### Generating the Dart bindings
+### Generating the Dart/Objective-C bindings
 
 To generate the bindings, navigate to the example directory,
-and run ffigen:
+and run FFIgen:
 
 ```console
 $ dart run ffigen
 ```
 
 This will search in the `pubspec.yaml` file for a top-level `ffigen` entry.
-If you chose to put the ffigen config in a separate file, use the
+If you chose to put the FFIgen config in a separate file, use the
 `--config` option and specify that file:
 
 ```console
@@ -188,7 +188,7 @@ The other classes in this file are all Dart wrappers
 around the Objective-C interfaces that we need,
 such as `AVAudioPlayer` and its dependencies.
 
-### Using the bindings
+### Using the Objective-C bindings
 
 Now you're ready to load and interact with the generated library.
 The example app, [play_audio.dart]({{page.example}}/play_audio.dart),
@@ -360,6 +360,10 @@ This [example][swift_example] demonstrates how to
 make a Swift class compatible with Objective-C,
 generate a wrapper header, and invoke it from Dart code.
 
+The process detailed below is quite manual.
+There is an experimental project to automate these steps
+called [Swiftgen][].
+
 ### Generating the Objective-C wrapper header
 
 Swift APIs can be made compatible with Objective-C,
@@ -367,7 +371,7 @@ by using the `@objc` annotation.
 Make sure to make any classes or methods you want to use
 `public`, and have your classes extend `NSObject`.
 
-```dart
+```swift
 import Foundation
 
 @objc public class SwiftClass: NSObject {
@@ -422,9 +426,9 @@ SWIFT_CLASS("_TtC12swift_module10SwiftClass")
 If the interface is missing, or doesn't have all its methods,
 make sure they're all annotated with `@objc` and `public`.
 
-### Configuring ffigen
+### Configuring FFIgen for Swift
 
-Ffigen only sees the Objective-C wrapper header, `swift_api.h`.
+FFIgen only sees the Objective-C wrapper header, `swift_api.h`.
 So most of this config looks similar
 to the Objective-C example,
 including setting the language to `objc`.
@@ -499,10 +503,10 @@ $ echo "_TtC12swift_module10SwiftClass" | swift demangle
 
 This outputs `swift_module.SwiftClass`.
 
-### Generating the Dart bindings
+### Generating the Dart/Swift bindings
 
 As before, navigate to the example directory,
-and run ffigen:
+and run FFIgen:
 
 ```console
 $ dart run ffigen
@@ -510,7 +514,7 @@ $ dart run ffigen
 
 This generates `swift_api_bindings.dart`.
 
-### Using the bindings
+### Using the Swift bindings
 
 Interacting with these bindings is exactly the same
 as for a normal Objective-C library:
