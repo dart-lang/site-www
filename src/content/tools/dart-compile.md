@@ -8,6 +8,11 @@ to compile a Dart program to a target platform.
 
 ## Overview
 
+:::note
+If your package or any of its dependencies has [build hooks](/tools/hooks), you must use the [`dart build`](/tools/dart-build) command.
+The `dart compile exe` and `dart compile aot-snapshot` commands do not run build hooks, and will fail if hooks are present.
+:::
+
 Use the `dart compile` command to compile
 a Dart program to a [target platform](/overview#platform).
 The output—which you specify using a subcommand—can 

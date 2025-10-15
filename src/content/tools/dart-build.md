@@ -8,8 +8,8 @@ to build a Dart application.
 
 ## Overview
 
-Use the `dart build` command to build a Dart application,
-including code assets.
+Use the `dart build` command to build a Dart application.
+This command automatically runs [build hooks](/tools/hooks) from your project and its dependencies to compile or download code assets and bundle them with your application.
 
 {% render 'tools/dart-tool-note.md' %}
 
