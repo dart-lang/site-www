@@ -7,6 +7,7 @@ import 'package:universal_web/web.dart' as web;
 
 import '../util.dart';
 import 'material_icon.dart';
+import 'util/global_event_listener.dart';
 
 /// A set of Material Design-like chips for configuration.
 class ChipSet extends StatelessComponent {
@@ -184,35 +185,6 @@ class _SelectChipState<T> extends State<SelectChip<T>> {
   bool isMenuShown = false;
 
   @override
-  void initState() {
-    super.initState();
-    if (kIsWeb) {
-      const onClick = web.EventStreamProvider('click');
-      onClick.forTarget(web.document).listen((event) {
-        // If not clicking inside a menu wrapper, close the menu.
-        if ((event.target as web.Element).closest('.button-menu-wrapper') ==
-            null) {
-          setState(() {
-            isMenuShown = false;
-          });
-        }
-      });
-
-      const onKeyDown = web.EventStreamProvider('keydown');
-      onKeyDown.forTarget(web.document).listen((event) {
-        // If pressing the `esc` key in the menu wrapper, close the menu.
-        if ((event as web.KeyboardEvent).key == 'Escape' &&
-            (event.target as web.Element).closest('.button-menu-wrapper') !=
-                null) {
-          setState(() {
-            isMenuShown = false;
-          });
-        }
-      });
-    }
-  }
-
-  @override
   void didUpdateComponent(SelectChip<T> oldComponent) {
     super.didUpdateComponent(oldComponent);
 
@@ -225,68 +197,89 @@ class _SelectChipState<T> extends State<SelectChip<T>> {
 
   @override
   Component build(BuildContext context) {
-    return div(classes: 'button-menu-wrapper', [
-      button(
-        classes:
-            'chip select-chip${component.selectedValue != null ? ' selected' : ''}',
-        attributes: {
-          'aria-controls': component.menuId,
-          'aria-expanded': isMenuShown ? 'true' : 'false',
-        },
-        events: {
-          'click': (_) {
-            setState(() {
-              isMenuShown = !isMenuShown;
-            });
+    return GlobalEventListener(
+      onClick: (event) {
+        // If not clicking inside a menu wrapper, close the menu.
+        if ((event.target as web.Element?)?.closest('.button-menu-wrapper') ==
+            null) {
+          setState(() {
+            isMenuShown = false;
+          });
+        }
+      },
+      onKeyDown: (event) {
+        // If pressing the `esc` key in the menu wrapper, close the menu.
+        if (event.key == 'Escape' &&
+            (event.target as web.Element?)?.closest('.button-menu-wrapper') !=
+                null) {
+          setState(() {
+            isMenuShown = false;
+          });
+        }
+      },
+      div(classes: 'button-menu-wrapper', [
+        button(
+          classes:
+              'chip select-chip${component.selectedValue != null ? ' selected' : ''}',
+          attributes: {
+            'aria-controls': component.menuId,
+            'aria-expanded': isMenuShown ? 'true' : 'false',
           },
-        },
-        [
-          span(classes: 'label', [text(component.label)]),
-          if (component.showDropdownIcon)
-            svg(
-              classes: 'chip-icon trailing-icon',
-              width: 24.px,
-              height: 24.px,
-              viewBox: '0 0 24 24',
-              attributes: {'aria-hidden': 'true'},
-              [
-                Component.element(
-                  tag: 'path',
-                  attributes: {
-                    'd': component.dropdownIconPath ?? 'M7 10l5 5 5-5H7z',
-                  },
-                ),
-              ],
-            ),
-        ],
-      ),
-      if (component.menuItems.isNotEmpty)
-        div(
-          id: component.menuId,
-          classes: 'select-menu${isMenuShown ? ' show-menu' : ''}',
+          events: {
+            'click': (_) {
+              setState(() {
+                isMenuShown = !isMenuShown;
+              });
+            },
+          },
           [
-            ul(
-              attributes: {'role': 'listbox'},
-              [
-                for (final item in component.menuItems)
-                  item._buildItem(
-                    item.value == component.selectedValue,
-                    () {
-                      component.onSelect?.call(
-                        item.value == component.selectedValue
-                            ? null
-                            : item.value,
-                      );
-                      setState(() {
-                        isMenuShown = false;
-                      });
+            span(classes: 'label', [text(component.label)]),
+            if (component.showDropdownIcon)
+              svg(
+                classes: 'chip-icon trailing-icon',
+                width: 24.px,
+                height: 24.px,
+                viewBox: '0 0 24 24',
+                attributes: {'aria-hidden': 'true'},
+                [
+                  Component.element(
+                    tag: 'path',
+                    attributes: {
+                      'd': component.dropdownIconPath ?? 'M7 10l5 5 5-5H7z',
                     },
                   ),
-              ],
-            ),
+                ],
+              ),
           ],
         ),
-    ]);
+        if (component.menuItems.isNotEmpty)
+          div(
+            id: component.menuId,
+            classes: 'select-menu${isMenuShown ? ' show-menu' : ''}',
+            [
+              ul(
+                attributes: {'role': 'listbox'},
+                [
+                  for (final item in component.menuItems)
+                    item._buildItem(
+                      item.value == component.selectedValue,
+                      () {
+                        component.onSelect?.call(
+                          item.value == component.selectedValue
+                              ? null
+                              : item.value,
+                        );
+                        setState(() {
+                          isMenuShown = false;
+                        });
+                      },
+                    ),
+                ],
+              ),
+            ],
+          ),
+      ]),
+    );
   }
 }
 
