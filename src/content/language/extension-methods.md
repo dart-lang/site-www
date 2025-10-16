@@ -2,8 +2,8 @@
 title: Extension methods
 description: Learn how to add to existing APIs.
 prevpage:
-  url: /language/enums
-  title: Enums
+  url: /language/dot-shorthand
+  title: Shorthand
 nextpage:
   url: /language/extension-types
   title: Extension types
