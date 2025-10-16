@@ -3,7 +3,6 @@ title: Dart cheatsheet
 breadcrumb: Cheatsheet
 description: Interactively learn (or relearn) some of Dart's unique features.
 maxTocDepth: 2
-js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
