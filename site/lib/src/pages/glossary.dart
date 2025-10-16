@@ -7,7 +7,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../components/button.dart';
 import '../components/card.dart';
-import '../components/search.dart';
+import '../components/glossary_search_section.dart';
 import '../markdown/markdown_parser.dart';
 import '../util.dart';
 
@@ -153,12 +153,16 @@ final class Glossary {
 /// A glossary component that displays a
 /// searchable list of terms and definitions.
 final class GlossaryIndex extends StatelessComponent {
-  const GlossaryIndex();
+  const GlossaryIndex([this.glossaryData]);
+
+  /// The raw glossary data to display. If `null`, the data will be
+  /// loaded from the 'glossary.yml' file.
+  final List<Object?>? glossaryData;
 
   @override
   Component build(BuildContext context) {
     final glossary = Glossary.fromList(
-      context.page.data['glossary'] as List<Object?>,
+      glossaryData ?? context.page.data['glossary'] as List<Object?>,
     );
     return Component.fragment(
       [
@@ -168,12 +172,7 @@ final class GlossaryIndex extends StatelessComponent {
             'across the Dart documentation.',
           ),
         ]),
-        section(id: 'filter-and-search', [
-          const SearchBar(
-            placeholder: 'Search terms...',
-            label: 'Search terms by name...',
-          ),
-        ]),
+        const GlossarySearchSection(),
         section(id: 'content-search-results', [
           div(classes: 'card-list', [
             for (final entry in glossary.entries) GlossaryCard(entry: entry),
@@ -235,7 +234,8 @@ final class GlossaryCard extends StatelessComponent {
         ]),
       ],
       collapsedContent: [
-        DashMarkdown(content: entry.shortDescription, inline: true),
+        if (entry.shortDescription.isNotEmpty)
+          DashMarkdown(content: entry.shortDescription, inline: true),
       ],
       expandedContent: [
         if (entry.longDescription case final longDescription?)
