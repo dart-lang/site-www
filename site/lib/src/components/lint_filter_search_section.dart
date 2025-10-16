@@ -59,7 +59,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
     super.initState();
 
     if (kIsWeb) {
-      // Waiting until after the frame is only needed for tests, since there 
+      // Waiting until after the frame is only needed for tests, since there
       // the cards are not pre-rendered. Does not affect the real app.
       context.binding.addPostFrameCallback(() {
         final cards = web.document
@@ -113,7 +113,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
 
     for (final lint in lintsInfo) {
       final lintName = lint.name;
-     
+
       if (!lintName.contains(searchQuery.trim().toLowerCase())) continue;
       if (onlyFixable && !lint.hasFix) continue;
       if (onlyStable && !lint.stable) continue;
@@ -130,7 +130,6 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
       }
       lintsToShow.add(lintName);
     }
-
 
     for (final card in lintCards) {
       if (lintsToShow.contains(card.id)) {
