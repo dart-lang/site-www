@@ -59,32 +59,36 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
     super.initState();
 
     if (kIsWeb) {
-      final cards = web.document
-          .getElementById('lint-cards')
-          ?.querySelectorAll('.card');
-      if (cards == null) return;
+      // Waiting until after the frame is only needed for tests, since there 
+      // the cards are not pre-rendered. Does not affect the real app.
+      context.binding.addPostFrameCallback(() {
+        final cards = web.document
+            .getElementById('lint-cards')
+            ?.querySelectorAll('.card');
+        if (cards == null) return;
 
-      bool hasData(web.HTMLElement elem, String name) =>
-          elem.attributes.getNamedItem('data-$name')?.value == 'true';
+        bool hasData(web.HTMLElement elem, String name) =>
+            elem.attributes.getNamedItem('data-$name')?.value == 'true';
 
-      for (var i = 0; i < cards.length; i++) {
-        final card = cards.item(i) as web.HTMLElement;
-        lintCards.add(card);
+        for (var i = 0; i < cards.length; i++) {
+          final card = cards.item(i) as web.HTMLElement;
+          lintCards.add(card);
 
-        final lintName = card.id;
-        if (lintName.isEmpty) return;
+          final lintName = card.id;
+          if (lintName.isEmpty) return;
 
-        lintsInfo.add(
-          LintInfo(
-            name: lintName,
-            hasFix: hasData(card, 'has-fix'),
-            stable: hasData(card, 'stable'),
-            inCore: hasData(card, 'in-core'),
-            inRecommended: hasData(card, 'in-recommended'),
-            inFlutter: hasData(card, 'in-flutter'),
-          ),
-        );
-      }
+          lintsInfo.add(
+            LintInfo(
+              name: lintName,
+              hasFix: hasData(card, 'has-fix'),
+              stable: hasData(card, 'stable'),
+              inCore: hasData(card, 'in-core'),
+              inRecommended: hasData(card, 'in-recommended'),
+              inFlutter: hasData(card, 'in-flutter'),
+            ),
+          );
+        }
+      });
     }
   }
 
@@ -109,6 +113,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
 
     for (final lint in lintsInfo) {
       final lintName = lint.name;
+     
       if (!lintName.contains(searchQuery.trim().toLowerCase())) continue;
       if (onlyFixable && !lint.hasFix) continue;
       if (onlyStable && !lint.stable) continue;
@@ -125,6 +130,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
       }
       lintsToShow.add(lintName);
     }
+
 
     for (final card in lintCards) {
       if (lintsToShow.contains(card.id)) {

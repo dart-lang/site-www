@@ -22,7 +22,7 @@ List<LintDetails> readAndLoadLints() {
 
   final lintRules = rawLintRules
       .cast<Map<String, Object?>>()
-      .map(LintDetails._)
+      .map(LintDetails.new)
       .toList(growable: false);
 
   return _loadedLints = lintRules;
@@ -34,7 +34,7 @@ List<LintDetails>? _loadedLints;
 /// Information about the Dart lint rule named [name].
 // TODO(https://github.com/dart-lang/site-www/issues/4499):
 //  Once replacing rules.json, get rid of this structure.
-extension type LintDetails._(Map<String, Object?> details) {
+extension type LintDetails(Map<String, Object?> details) {
   String get name => details['name'] as String;
   String get id => name.trim();
   String get description => details['description'] as String;

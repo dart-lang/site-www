@@ -33,8 +33,9 @@ final class TestDartCommand extends Command<int> {
 
 int _testDart({bool verboseLogging = false}) {
   final directoriesToTest = [
-    path.join('tool', 'dash_site'),
-    ...dartProjectExampleDirectories,
+    path.join('tool', 'dash_site'), // This package itself.
+    'site', // The main site package.
+    ...dartProjectExampleDirectories, // All example packages.
   ];
 
   print('Testing code...');

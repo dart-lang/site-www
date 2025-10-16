@@ -15,11 +15,15 @@ import '../models/lints.dart';
 import '../util.dart';
 
 class LintRuleIndex extends StatelessComponent {
-  const LintRuleIndex();
+  const LintRuleIndex([this.linterRules]);
+
+  /// The list of linter rules to display. If `null`, the rules will be
+  /// loaded from the `src/data/linter_rules.json` file.
+  final List<LintDetails>? linterRules;
 
   @override
   Component build(BuildContext context) {
-    final linterRules = readAndLoadLints();
+    final linterRules = this.linterRules ?? readAndLoadLints();
     return Component.fragment(
       [
         const LintFilterSearchSection(),
@@ -73,7 +77,8 @@ class _LintRuleCard extends StatelessComponent {
         ),
       ],
       content: [
-        DashMarkdown(content: lint.description, inline: true),
+        if (lint.description.isNotEmpty)
+          DashMarkdown(content: lint.description, inline: true),
       ],
       actions: CardActions(
         leading: _statusIcons,
