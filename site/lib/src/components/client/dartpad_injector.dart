@@ -2,10 +2,15 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:inject_dartpad/inject_dartpad.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:meta/meta.dart';
 import 'package:universal_web/web.dart' as web;
+
+@Import.onWeb(
+  'package:inject_dartpad/inject_dartpad.dart',
+  show: [#EmbeddedDartPad, #DartPadTheme],
+)
+import 'dartpad_injector.imports.dart';
 
 /// Prepares an element with the structure expected by
 /// the `inject_dartpad` tool from site-shared.
@@ -43,11 +48,10 @@ final class _DartPadInjectorState extends State<DartPadInjector> {
 
   @override
   void initState() {
-    if (kIsWeb) {
-      _replaceWithDartPad();
-    }
-
     super.initState();
+    if (kIsWeb) {
+      context.binding.addPostFrameCallback(_replaceWithDartPad);
+    }
   }
 
   /// Initialize the embedded DartPad.
@@ -90,19 +94,14 @@ final class _DartPadInjectorState extends State<DartPadInjector> {
   }
 
   @override
-  Component build(BuildContext _) =>
-      div(key: _wrapperKey, classes: 'injected-dartpad-wrapper', [
-        pre(
-          [
-            code(
-              attributes: {
-                'title': component.title,
-              },
-              [
-                text(component.content),
-              ],
-            ),
-          ],
+  Component build(BuildContext context) {
+    return div(key: _wrapperKey, classes: 'injected-dartpad-wrapper', [
+      pre([
+        code(
+          attributes: {'title': component.title},
+          [text(component.content)],
         ),
-      ]);
+      ]),
+    ]);
+  }
 }
