@@ -37,6 +37,7 @@ dev_dependencies:
   build_runner: ^2.8.0
   build_web_compilers: ^4.2.3
   jaspr_builder: ^0.21.5
+  jaspr_test: ^0.21.5
   lints: ^6.0.0
   sass: ^1.92.1
   sass_builder: ^2.3.1
