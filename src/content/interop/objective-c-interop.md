@@ -85,7 +85,7 @@ The `output` is the path of the Dart file that ffigen will create.
 The entry point is the header file containing the API.
 In this example, it is the internal `AVAudioPlayer.h` header.
 
-Another import thing you'll see,
+Another important thing you'll see,
 if you look at the [example config]({{page.example}}/pubspec.yaml),
 is the exclude and include options.
 By default, `ffigen` generates bindings for everything
@@ -367,7 +367,7 @@ by using the `@objc` annotation.
 Make sure to make any classes or methods you want to use
 `public`, and have your classes extend `NSObject`.
 
-```swift
+```dart
 import Foundation
 
 @objc public class SwiftClass: NSObject {
