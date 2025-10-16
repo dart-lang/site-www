@@ -303,7 +303,7 @@ which can be useful for clarity and reusability.
 
 ## Anonymous functions
 
-Though you name most functions, such as `main()` or `printElement()`.
+Though you name most functions, such as `main()` or `printElement()`,
 you can also create functions without names.
 These functions are called _anonymous functions_, _lambdas_, or _closures_.
 
