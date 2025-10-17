@@ -3,13 +3,15 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaspr/jaspr.dart';
-import 'embedded_dartpad.dart';
+import '../dartpad/embedded_dartpad.dart';
 
-/// Prepares an element with the structure expected by
-/// the `inject_dartpad` tool from site-shared.
-@client
-final class DartPadInjector extends StatefulComponent {
-  DartPadInjector({
+import '../dartpad/extract_content.dart'
+    if (dart.library.io) '../dartpad/extract_content_vm.dart';
+
+/// Prepares a code block that will be replaced with an embedded
+/// DartPad when the site is loaded.
+final class DartPadWrapper extends StatefulComponent {
+  DartPadWrapper({
     super.key,
     required this.content,
     required this.title,
@@ -22,13 +24,44 @@ final class DartPadInjector extends StatefulComponent {
   final String title;
   final String? theme;
   final String? height;
+  // TODO(schultek): This is currently not used.
   final bool runAutomatically;
 
   @override
-  State<StatefulComponent> createState() => _DartPadInjectorState();
+  State<StatefulComponent> createState() => _DartPadWrapperState();
 }
 
-final class _DartPadInjectorState extends State<DartPadInjector> {
+final class _DartPadWrapperState extends State<DartPadWrapper> {
+  @override
+  Component build(BuildContext context) {
+    return DartPadInjector(
+      title: component.title,
+      theme: component.theme,
+      height: component.height,
+      // We don't pass the content here, so it's not part of the client
+      // component data. It will be retrieved by DartPadInjector automatically.
+    );
+  }
+}
+
+@client
+class DartPadInjector extends StatefulComponent {
+  const DartPadInjector({
+    required this.title,
+    this.theme,
+    this.height,
+    super.key,
+  });
+
+  final String title;
+  final String? theme;
+  final String? height;
+
+  @override
+  State<DartPadInjector> createState() => _DartPadInjectorState();
+}
+
+class _DartPadInjectorState extends State<DartPadInjector> {
   static int _injectedIndex = 0;
 
   final String _frameId = () {
@@ -37,33 +70,49 @@ final class _DartPadInjectorState extends State<DartPadInjector> {
     return 'embedded-dartpad-$nextId';
   }();
 
+  String content = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (kIsWeb) {
+      // During hydration, extract the content from the pre-rendered code block.
+      content = extractContent(context as Element);
+    }
+  }
+
   @override
   Component build(BuildContext context) {
-    return div(classes: 'injected-dartpad-wrapper', [
-      if (!kIsWeb)
-        pre([
-          code(
-            attributes: {'title': component.title},
-            [text(component.content)],
-          ),
-        ])
-      else
-        Component.wrapElement(
-          attributes: {
-            'height': ?component.height,
-            'title': component.title,
-          },
-          child: EmbeddedDartPad.create(
-            iframeId: _frameId,
-            theme: switch (component.theme) {
-              'auto' => DartPadTheme.auto,
-              'dark' => DartPadTheme.dark,
-              _ => DartPadTheme.light,
-            },
-            embedLayout: true,
-            code: component.content,
-          ),
+    if (!kIsWeb) {
+      // During pre-rendering, get the content from the nearest DartPadWrapper.
+      final content = context
+          .findAncestorStateOfType<_DartPadWrapperState>()
+          ?.component
+          .content;
+      return pre([
+        code(
+          attributes: {'title': component.title},
+          [text(content ?? '')],
         ),
-    ]);
+      ]);
+    }
+
+    return Component.wrapElement(
+      attributes: {
+        'height': ?component.height,
+        'title': component.title,
+      },
+      child: EmbeddedDartPad.create(
+        iframeId: _frameId,
+        theme: switch (component.theme) {
+          'auto' => DartPadTheme.auto,
+          'dark' => DartPadTheme.dark,
+          _ => DartPadTheme.light,
+        },
+        embedLayout: true,
+        code: content,
+      ),
+    );
   }
 }

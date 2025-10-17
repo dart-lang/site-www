@@ -65,7 +65,7 @@ final class CodeBlockProcessor implements PageExtension {
 
           if (language == 'dartpad') {
             return ComponentNode(
-              DartPadInjector(
+              DartPadWrapper(
                 content: lines.join('\n'),
                 title: title ?? 'Runnable Dart example',
                 theme: metadata['theme'],

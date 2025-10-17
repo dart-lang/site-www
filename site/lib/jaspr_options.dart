@@ -90,11 +90,9 @@ Map<String, dynamic> _prefix0ArchiveTable(prefix0.ArchiveTable c) => {
   'channel': c.channel,
 };
 Map<String, dynamic> _prefix2DartPadInjector(prefix2.DartPadInjector c) => {
-  'content': c.content,
   'title': c.title,
   'theme': c.theme,
   'height': c.height,
-  'runAutomatically': c.runAutomatically,
 };
 Map<String, dynamic> _prefix8CopyButton(prefix8.CopyButton c) => {
   'toCopy': c.toCopy,
