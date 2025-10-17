@@ -17,15 +17,12 @@ final class DartPadWrapper extends StatefulComponent {
     required this.title,
     this.theme,
     this.height,
-    this.runAutomatically = false,
   });
 
   final String content;
   final String title;
   final String? theme;
   final String? height;
-  // TODO(schultek): This is currently not used.
-  final bool runAutomatically;
 
   @override
   State<StatefulComponent> createState() => _DartPadWrapperState();

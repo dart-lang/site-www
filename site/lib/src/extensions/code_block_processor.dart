@@ -70,7 +70,6 @@ final class CodeBlockProcessor implements PageExtension {
                 title: title ?? 'Runnable Dart example',
                 theme: metadata['theme'],
                 height: metadata['height'],
-                runAutomatically: metadata['run'] == 'true',
               ),
             );
           }
