@@ -394,7 +394,7 @@ final class _CodeLine {
 
 extension on List<_CodeLine> {
   static final RegExp _terminalReplacementPattern = RegExp(
-    r'^(\s*\$\s*)|(C:\\(.*)>\s*)',
+    r'^(\s*\$\s*)|(PS\s+)?(C:\\(.*)>\s*)',
     multiLine: true,
   );
   static final RegExp _zeroWidthSpaceReplacementPattern = RegExp(r'\u200B');
