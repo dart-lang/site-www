@@ -11,8 +11,13 @@ final class ServeSiteCommand extends Command<int> {
   @override
   String get name => 'serve';
 
+  ServeSiteCommand() {
+    argParser.addFlag('release', defaultsTo: false);
+  }
+
   @override
   Future<int> run() async {
+    final release = argResults!.flag('release');
     installJasprCliIfNecessary();
 
     final process = await Process.start(
@@ -23,7 +28,9 @@ final class ServeSiteCommand extends Command<int> {
         'run',
         'jaspr_cli:jaspr',
         'serve',
+        '--no-managed-build-options',
         '--dart-define=PRODUCTION=false',
+        if (release) '--release',
       ],
       workingDirectory: 'site',
       runInShell: true,
