@@ -399,9 +399,10 @@ extension on List<_CodeLine> {
   );
   static final RegExp _zeroWidthSpaceReplacementPattern = RegExp(r'\u200B');
 
-  String get copyContent => map((line) => line.content).join('\n')
-    ..replaceAll(_terminalReplacementPattern, '')
-    ..replaceAll(_zeroWidthSpaceReplacementPattern, '');
+  String get copyContent => map((line) => line.content)
+      .join('\n')
+      .replaceAll(_terminalReplacementPattern, '')
+      .replaceAll(_zeroWidthSpaceReplacementPattern, '');
 }
 
 /// Parses a comma-separated list of numbers and ranges into a set of numbers.
