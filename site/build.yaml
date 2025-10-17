@@ -1,0 +1,11 @@
+builders:
+  stylesHashBuilder:
+    import: 'package:dart_dev_site/builders.dart'
+    builder_factories: [ 'stylesHashBuilder' ]
+    build_extensions:
+      "web/assets/css/main.css":
+        - "lib/src/style_hash.dart"
+    auto_apply: root_package
+    build_to: source
+    required_inputs:
+      - ".css"

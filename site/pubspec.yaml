@@ -7,9 +7,11 @@ environment:
   sdk: ^3.9.0
 
 dependencies:
+  build: ^4.0.1
   collection: ^1.19.1
+  crypto: ^3.0.6
   # Used for accessing the SDK archive storage buckets.
-  googleapis: ^14.0.0
+  googleapis: ^15.0.0
   html: ^0.15.6
   http: ^1.4.0
   # Used for formatting dates in the SDK archive.
