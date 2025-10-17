@@ -7,5 +7,3 @@ builders:
         - "lib/src/style_hash.dart"
     auto_apply: root_package
     build_to: source
-    required_inputs:
-      - ".css"
