@@ -288,6 +288,8 @@
           permalink: /tools/dart-tool
         - title: dart analyze
           permalink: /tools/dart-analyze
+        - title: dart build
+          permalink: /tools/dart-build
         - title: dart compile
           permalink: /tools/dart-compile
         - title: dart create
