@@ -37,6 +37,7 @@ final class BuildSiteCommand extends Command<int> {
         'run',
         'jaspr_cli:jaspr',
         'build',
+        '--no-managed-build-options',
         '--sitemap-domain=https://dart.dev',
         '--dart-define=PRODUCTION=$productionRelease',
       ],
