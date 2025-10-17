@@ -51,6 +51,7 @@ final class EmbeddedDartPad extends StatefulComponent {
     String? scheme,
     String? host,
     bool? embedLayout,
+    bool runAutomatically = false,
     DartPadTheme? theme = DartPadTheme.auto,
     required String code,
   }) {
@@ -60,6 +61,7 @@ final class EmbeddedDartPad extends StatefulComponent {
       queryParameters: <String, String>{
         if (embedLayout ?? true) 'embed': '$embedLayout',
         if (theme != DartPadTheme.auto) 'theme': '$theme',
+        if (runAutomatically) 'run': 'true',
       },
     ).toString();
 

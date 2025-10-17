@@ -17,12 +17,14 @@ final class DartPadWrapper extends StatefulComponent {
     required this.title,
     this.theme,
     this.height,
+    this.runAutomatically = false,
   });
 
   final String content;
   final String title;
   final String? theme;
   final String? height;
+  final bool runAutomatically;
 
   @override
   State<StatefulComponent> createState() => _DartPadWrapperState();
@@ -35,6 +37,7 @@ final class _DartPadWrapperState extends State<DartPadWrapper> {
       title: component.title,
       theme: component.theme,
       height: component.height,
+      runAutomatically: component.runAutomatically,
       // We don't pass the content here, so it's not part of the client
       // component data. It will be retrieved by DartPadInjector automatically.
     );
@@ -47,12 +50,14 @@ class DartPadInjector extends StatefulComponent {
     required this.title,
     this.theme,
     this.height,
+    this.runAutomatically = false,
     super.key,
   });
 
   final String title;
   final String? theme;
   final String? height;
+  final bool runAutomatically;
 
   @override
   State<DartPadInjector> createState() => _DartPadInjectorState();
@@ -108,6 +113,7 @@ class _DartPadInjectorState extends State<DartPadInjector> {
           _ => DartPadTheme.light,
         },
         embedLayout: true,
+        runAutomatically: component.runAutomatically,
         code: content,
       ),
     );
