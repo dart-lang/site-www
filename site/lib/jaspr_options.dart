@@ -20,6 +20,10 @@ import 'package:dart_dev_site/src/components/header/theme_switcher.dart'
 import 'package:dart_dev_site/src/components/cookie_notice.dart' as prefix7;
 import 'package:dart_dev_site/src/components/copy_button.dart' as prefix8;
 import 'package:dart_dev_site/src/components/feedback.dart' as prefix9;
+import 'package:dart_dev_site/src/components/glossary_search_section.dart'
+    as prefix10;
+import 'package:dart_dev_site/src/components/lint_filter_search_section.dart'
+    as prefix11;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -71,6 +75,11 @@ JasprOptions get defaultJasprOptions => JasprOptions(
       params: _prefix9FeedbackComponent,
     ),
 
+    prefix10.GlossarySearchSection:
+        ClientTarget<prefix10.GlossarySearchSection>(
+          'src/components/glossary_search_section',
+        ),
+
     prefix4.MenuToggle: ClientTarget<prefix4.MenuToggle>(
       'src/components/header/menu_toggle',
     ),
@@ -82,6 +91,11 @@ JasprOptions get defaultJasprOptions => JasprOptions(
     prefix6.ThemeSwitcher: ClientTarget<prefix6.ThemeSwitcher>(
       'src/components/header/theme_switcher',
     ),
+
+    prefix11.LintFilterSearchSection:
+        ClientTarget<prefix11.LintFilterSearchSection>(
+          'src/components/lint_filter_search_section',
+        ),
   },
   styles: () => [],
 );
