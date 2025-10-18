@@ -2,7 +2,6 @@
 title: Dart overview
 description: A short introduction to Dart.
 showBreadcrumbs: false
-js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 ---
 
 <img

@@ -2,7 +2,6 @@
 title: "Asynchronous programming: futures, async, await"
 shortTitle: Futures, async, and await
 description: Learn about and practice writing asynchronous code in DartPad!
-js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
