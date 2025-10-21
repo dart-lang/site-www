@@ -92,7 +92,7 @@ $ dart build cli --target=bin/my_command.dart
 ### `--verbosity`
 
 Use the `--verbosity` option to set the verbosity level of the 
-compilation. The value can be `error`, `warning`, `info`, or `all`.
+compilation. The level can be `error`, `warning`, `info`, or `all`.
 
 ```console
 $ dart build cli --verbosity=<level>
