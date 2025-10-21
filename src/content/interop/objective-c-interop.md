@@ -16,11 +16,6 @@ running on the [Dart Native platform](/overview#platform), on macOS or iOS,
 can use `dart:ffi` and [`package:ffigen`]({{page.ffigen}})
 to call Objective-C and Swift APIs.
 
-:::note
-This interop feature is **experimental**,
-and [in active development]({{site.repo.dart.sdk}}/issues/49673).
-:::
-
 `dart:ffi` enables Dart code to interact with native C APIs.
 Objective-C is based on and compatible with C,
 so it is possible to interact with Objective-C APIs using only `dart:ffi`.
@@ -71,11 +66,15 @@ Then, configure FFIgen to generate bindings for the
 Objective-C header containing the API.
 FFIgen can be configured via YAML or Dart code,
 but Dart is preferred for new projects.
-The YAML config will be phased out in future versions of FFIgen.
+The YAML config will be deprecated in future versions of FFIgen.
 Start by creating a `generate_code.dart` script somewhere in your package.
 A good directory to create this file in is `my_package/tool`.
 
-```yaml
+The `generate_code.dart` script should create an `FfiGenerator` object,
+which will contain all our configuration options,
+then call its `.generate()` method.
+
+```dart
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
@@ -83,10 +82,6 @@ final config = FfiGenerator(
 
 void main() => config.generate();
 ```
-
-The `generate_code.dart` script creates an `FfiGenerator` object,
-which will contain all our configuration options,
-then calls its `.generate()` method.
 
 First, we'll tell FFIgen where to find the API we're trying to
 generate bindings for.
@@ -98,13 +93,14 @@ which is located in your Xcode installation.
 FFIgen includes some helper functions to locate these sorts of APIs,
 such as `macSdkPath`.
 Using these helper functions makes your code generation script
-more reliable across different machines.
+more reliable across different machines,
+which may have different SDK installation locations.
 
 `macSdkPath` returns the result of `xcrun --show-sdk-path --sdk macosx`.
 You can run this command in a terminal to locate your macOS SDKs,
 or with `--sdk iphoneos` to find your iOS SDKs.
 When generating bindings for an Apple API,
-exploring these directories is the easiest way to find
+exploring these directories is a great way to find
 the right headers to pass to FFIgen.
 
 ```dart
@@ -130,7 +126,7 @@ This file's location is defined by the `output.dartFile` option.
 
 In some cases, FFIgen will also generate a `.m` file,
 containing Objective-C code required for interop with the API.
-This fill will only be generated
+This file will only be generated
 if the API you're generating bindings for needs it
 (e.g. if you're using blocks or protocols).
 By default this file will have the same name as the Dart bindings,
@@ -140,10 +136,10 @@ If FFIgen produces this file, you must compile it into your package,
 otherwise you may get runtime exceptions to do with missing symbols.
 For this simple example we won't get a `.m` file.
 
-Another important option is `ouput.preamble`.
+Another important option is `output.preamble`.
 This is simply text inserted at the top of the Dart output,
 which can be useful for adding a license header
-or disabling specific lints that FFIgen doesn't adhere to.
+or disabling specific lints that FFIgen's output doesn't adhere to.
 In this case we'll disable several lints.
 
 ```dart
@@ -169,13 +165,13 @@ void main() => config.generate();
 ```
 
 The last thing we need to do is tell FFIgen
-which parts of the input header to generate bindings for.
+which parts of the input API to generate bindings for.
 By default, FFIgen will filter out all the bindings.
 In this case we want to generate bindings for `AVAudioPlayer`,
 which is an Objective-C interface.
 So we have to set the `objectiveC.interfaces` field.
 
-Setting the `objectiveC` field also tells `FFIgen`
+Setting the `objectiveC` field also tells FFIgen
 to generate bindings for the Objective-C language.
 By default, FFIgen will generate C bindings.
 
@@ -221,7 +217,7 @@ $ dart run generate_code.dart
 ```
 
 This should generate a large `avf_audio_bindings.dart` file,
-similar to the example.
+similar to [this one]({{page.example}}/avf_audio_bindings.dart).
 The main class we're interested in is `AVAudioPlayer`.
 
 You may notice other classes in the file
@@ -255,7 +251,7 @@ void main(List<String> args) async {
 
 Since you're loading an internal library,
 the dylib path is pointing at an internal framework dylib.
-You can also load your own `.dylib` file.
+You can also load your own `.dylib` file,
 or if the library is statically linked into your app (often the case on iOS)
 you don't need to load anything.
 
@@ -265,7 +261,7 @@ For each argument,
 you first have to convert the Dart `String` to an Objective-C `NSString`.
 The generated `NSString` wrapper has a convenient constructor
 that handles this conversion,
-and a `toString()` method that converts it back to a Dart `String`.
+and a `toDartString()` method that converts it back to a Dart `String`.
 
 ```dart
   for (final file in args) {
@@ -276,8 +272,6 @@ and a `toString()` method that converts it back to a Dart `String`.
 The audio player expects an `NSURL`, so next we use the [`fileURLWithPath:`](
 {{page.appledoc}}/foundation/nsurl/1410828-fileurlwithpath?language=objc)
 method to convert the `NSString` to an `NSURL`.
-Since `:` is not a valid character in a Dart method name,
-it has been translated to `_` in the bindings.
 
 ```dart
     final fileUrl = NSURL.fileURLWithPath(fileStr);
@@ -300,12 +294,15 @@ use the [`initWithContentsOfURL:error:`][] method:
     );
 ```
 
+This Dart `AVAudioPlayer` object is a wrapper around an underlying
+Objective-C `AVAudioPlayer*` object pointer.
+
 Objective-C uses reference counting for memory management
 (through retain, release, and other functions),
 but on the Dart side memory management is handled automatically.
 The Dart wrapper object retains a reference to the Objective-C object,
 and when the Dart object is garbage collected,
-the generated code automatically releases that reference.
+the reference is automatically released.
 
 Next, look up the length of the audio file,
 which you'll need later to wait for the audio to finish.
