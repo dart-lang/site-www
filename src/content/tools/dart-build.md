@@ -14,7 +14,7 @@ code assets and bundle them with your application.
 
 ## Build a CLI application 
 
-The `dart build` command has a `cli` subcommand that 
+The `dart build cli` command
 builds a Dart application with a command line interface (CLI)
 including any code assets.
 
