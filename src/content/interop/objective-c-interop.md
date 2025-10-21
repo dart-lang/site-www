@@ -407,6 +407,8 @@ The process detailed below is quite manual.
 There is an experimental project to automate these steps
 called [Swiftgen][].
 
+[Swiftgen]: https://pub.dev/packages/swiftgen
+
 ### Generating the Objective-C wrapper header
 
 Swift APIs can be made compatible with Objective-C,
