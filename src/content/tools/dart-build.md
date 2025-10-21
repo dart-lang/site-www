@@ -30,7 +30,7 @@ bundle/
 
 ## Options for `dart build cli`
 
-These options can be used for the dart build cli command. 
+The following options can be used for the `dart build cli` command. 
 For options that apply to all pub commands, see [Global options][].
 
 ### `-h`, `--help`
