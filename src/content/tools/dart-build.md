@@ -36,7 +36,7 @@ For options that apply to all pub commands, see [Global options][].
 
 ### `-h`, `--help`
 
-Use the `-h` or `--help` option to get help for the cli subcommand.
+Use the `-h` or `--help` option to get help for the `cli` subcommand.
 
 ```console
 $ dart build cli --help
