@@ -148,8 +148,8 @@ final class DashFooter extends StatelessComponent {
                       'Jaspr web framework for Dart.',
                 },
                 [
-                  span([JasprBadge.light()]),
-                  span([JasprBadge.lightTwoTone()]),
+                  span([const JasprBadge.light()]),
+                  span([const JasprBadge.lightTwoTone()]),
                 ],
               ),
             ]),
