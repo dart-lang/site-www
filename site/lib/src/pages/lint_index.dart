@@ -3,26 +3,30 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/server.dart';
 
 import '../components/button.dart';
 import '../components/card.dart';
-import '../components/chip.dart';
 import '../components/copy_button.dart';
+import '../components/lint_filter_search_section.dart';
 import '../components/material_icon.dart';
-import '../components/search.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/lints.dart';
 import '../util.dart';
 
 class LintRuleIndex extends StatelessComponent {
-  const LintRuleIndex();
+  const LintRuleIndex([this.linterRules]);
+
+  /// The list of linter rules to display. If `null`, the rules will be
+  /// loaded from the `src/data/linter_rules.json` file.
+  final List<LintDetails>? linterRules;
 
   @override
   Component build(BuildContext context) {
-    final linterRules = readAndLoadLints();
+    final linterRules = this.linterRules ?? readAndLoadLints();
     return Component.fragment(
       [
-        const _LintFilterSearchSection(),
+        const LintFilterSearchSection(),
         section(
           classes: 'content-search-results',
           [
@@ -35,63 +39,6 @@ class LintRuleIndex extends StatelessComponent {
               ],
             ),
           ],
-        ),
-      ],
-    );
-  }
-}
-
-class _LintFilterSearchSection extends StatelessComponent {
-  const _LintFilterSearchSection();
-
-  @override
-  Component build(BuildContext context) {
-    return section(
-      id: 'filter-and-search',
-      classes: 'hidden',
-      [
-        div(classes: 'search-row', [
-          const SearchBar(
-            placeholder: 'Search rules...',
-            label: 'Search linter rules by their name.',
-          ),
-        ]),
-        const ChipSet(
-          [
-            SelectChip(
-              label: 'Rule set',
-              menuId: 'rule-set-menu',
-              dataTitle: 'Rule set',
-              menuItems: [
-                SelectMenuItem(
-                  dataFilter: 'inFlutter',
-                  icon: 'flutter',
-                  label: 'Flutter',
-                ),
-                SelectMenuItem(
-                  dataFilter: 'inRecommended',
-                  icon: 'thumb_up',
-                  label: 'Recommended',
-                ),
-                SelectMenuItem(
-                  dataFilter: 'inCore',
-                  icon: 'circles',
-                  label: 'Core',
-                ),
-              ],
-            ),
-            FilterChip(
-              label: 'Fix available',
-              dataFilter: 'hasFix',
-              ariaLabel: 'Show only lints with a fix available',
-            ),
-            FilterChip(
-              label: 'Stable only',
-              dataFilter: 'stable',
-              ariaLabel: 'Show only released, stable rules',
-            ),
-          ],
-          resettable: true,
         ),
       ],
     );
@@ -130,7 +77,8 @@ class _LintRuleCard extends StatelessComponent {
         ),
       ],
       content: [
-        DashMarkdown(content: lint.description, inline: true),
+        if (lint.description.isNotEmpty)
+          DashMarkdown(content: lint.description, inline: true),
       ],
       actions: CardActions(
         leading: _statusIcons,
