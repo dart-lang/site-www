@@ -22,4 +22,6 @@ targets:
             dart2js:
               args: [-O4, -Djaspr.flags.release=true]
             dart2wasm:
-              args: [-O4, -Djaspr.flags.release=true]
+              # Use -O2 to catch more potential runtime issues, it is not much
+              # slower than -O4: https://github.com/dart-lang/site-www/pull/6953#discussion_r2453318668
+              args: [-O2, -Djaspr.flags.release=true]
