@@ -84,7 +84,8 @@ $ dart build cli --target=<path>
 $ dart build cli -t=<path>
 ```
 
-For example:
+For example, to set the entrypoint to the `bin/my_command.dart` file:
+
 ```console
 $ dart build cli --target=bin/my_command.dart
 ```
