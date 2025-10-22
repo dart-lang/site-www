@@ -99,7 +99,8 @@ The level can be `error`, `warning`, `info`, or `all`.
 $ dart build cli --verbosity=<level>
 ```
 
-For example:
+For example, to show only error messages:
+
 ```console
 $ dart build cli --verbosity=error
 ```
