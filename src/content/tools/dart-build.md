@@ -80,6 +80,7 @@ Dart file in `bin/`, then that is used instead.
 ```console
 $ dart build cli --target=<path>
 ```
+
 ```console
 $ dart build cli -t=<path>
 ```
