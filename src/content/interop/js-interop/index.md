@@ -11,7 +11,7 @@ Seamlessly integrate JavaScript libraries and APIs into your Dart web app.
 
 ## Overview
 
-The [Dart web platform](/overview#web-platform) provides powerful tools to
+The [Dart web platform][] provides powerful tools to
 call JavaScript from Dart and vice-versa and allows you to leverage the vast
 JavaScript ecosystem without leaving your Dart code.
 
@@ -32,6 +32,7 @@ Review the reference guides:
 Interact with the browser:
   * [`package:web` and migration]
 
+[Dart web platform]: /web
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
 [`package:web` and migration]: /interop/js-interop/package-web
