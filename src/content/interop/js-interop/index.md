@@ -22,15 +22,15 @@ use a specific JavaScript library, or interact with browser APIs, this is the
 place to start.
 
 Get started wtih JS interop:
+  * [Getting started with Javascript interop]
+  * [How to mock JavaScript interop objects]
+
+Review the reference guides:
   * [Usage reference]
   * [JS types reference]
 
 Interact with the browser:
   * [`package:web` and migration]
-
-Learn from examples and tutorials:
-  * [Getting started with Javascript interop]
-  * [How to mock JavaScript interop objects]
 
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
@@ -40,10 +40,11 @@ Learn from examples and tutorials:
 
 ## The evolution of JavaScript interop
 
-In [Dart 3.3][] (Febrary 2024), the collection of features and APIs that 
-allow developers access to JavaScript and browser bindings in their Dart code.
-This next generation of web interop not only improves user experience,
-but also enables [Wasm][] support, aligning Dart with the future of the Web.
+[Dart 3.3][] introduces a new generation of JS interop which offerins
+a unified set of features and APIs to access JavaScript and browser
+functionalities within your Dart code. This modern approach enhances the
+developer experience and enables WebAssembly ([Wasm][]) support, aligning
+Dart with the future of the web.
 
 The following table maps Dart's new JS and web interop solutions to
 their past counterparts:
@@ -54,9 +55,6 @@ their past counterparts:
 | [`dart:js_interop`][] <br> [`dart:js_interop_unsafe`][] | [`package:js`][] <br> [`dart:js`][] <br> [`dart:js_util`][] |
 
 {:.table .table-striped}
-
-Check out the [Past JS interop][] page for details of our the deprecated
-features if you maintain legacy code.
 
 [Dart 3.3]: https://blog.dart.dev/dart-3-3-325bf2bf6c13
 [Wasm]: /web/wasm
@@ -71,7 +69,11 @@ features if you maintain legacy code.
 [`package:js`]: {{site.pub-api}}/js
 [`dart:js`]: {{site.dart-api}}/dart-js/
 [`dart:js_util`]: {{site.dart-api}}/dart-js_util/
-[Past JS interop]: /interop/js-interop/past-js-interop/
+
+## Work with deprecated features
+
+If you maintain legacy code, you can continue to work with some deprecated features.
+To learn more about JS interop deprecated features, see the [Past JS interop][] guide.
 
 ## Additional resources
 
