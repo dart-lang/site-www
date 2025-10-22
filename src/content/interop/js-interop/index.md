@@ -7,40 +7,36 @@ nextpage:
   title: Usage
 ---
 
-The [Dart web platform](/overview#web-platform) supports communication with
-JavaScript apps and libraries, as well as browser APIs, using `dart:js_interop`.
+Seamlessly integrate JavaScript libraries and APIs into your Dart web app.
 
-Web developers can benefit from using external JS libraries in their Dart code,
-without having to rewrite anything in Dart.
+## Overview
 
-## Contents
+The [Dart web platform](/overview#web-platform) provides powerful tools to
+call JavaScript from Dart and vice-versa and allows you to leverage the vast
+JavaScript ecosystem without leaving your Dart code.
 
-For information on how to write and use JavaScript interop:
+This page provides a central hub for learning about JavaScript interoperability
+in Dart. You'll find resources to get you started, detailed usage guides, and
+information on the latest `dart:js_interop` library. Whether you're looking to
+use a specific JavaScript library, or interact with browser APIs, this is the
+place to start.
+
+Get started wtih JS interop:
   * [Usage reference]
   * [JS types reference]
 
-For information on interacting with web APIs:
+Interact with the browser:
   * [`package:web` and migration]
 
-For tutorials and help:
+Learn from examples and tutorials:
   * [Getting started with Javascript interop]
   * [How to mock JavaScript interop objects]
-
-For information on previous JavaScript interop libraries:
-  * [Past JS interop]
-
-For additional documentation on JavaScript interop:
-  * [`dart:js_interop` API reference]
-  * [`dart:js_interop_unsafe` API reference]
 
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
 [`package:web` and migration]: /interop/js-interop/package-web
 [Getting started with Javascript interop]: /interop/js-interop/start
 [How to mock JavaScript interop objects]: /interop/js-interop/mock
-[Past JS interop]: /interop/js-interop/past-js-interop
-[`dart:js_interop` API reference]: {{site.dart-api}}/dart-js_interop/
-[`dart:js_interop_unsafe` API reference]: {{site.dart-api}}/dart-js_interop_unsafe/
 
 ## The evolution of JavaScript interop
 
@@ -76,3 +72,16 @@ features if you maintain legacy code.
 [`dart:js`]: {{site.dart-api}}/dart-js/
 [`dart:js_util`]: {{site.dart-api}}/dart-js_util/
 [Past JS interop]: /interop/js-interop/past-js-interop/
+
+## Additional resources
+
+Previous JavaScript interop libraries:
+  * [Past JS interop]
+
+Additional documentation on JavaScript interop:
+  * [`dart:js_interop` API reference]
+  * [`dart:js_interop_unsafe` API reference]
+
+[Past JS interop]: /interop/js-interop/past-js-interop
+[`dart:js_interop` API reference]: {{site.dart-api}}/dart-js_interop/
+[`dart:js_interop_unsafe` API reference]: {{site.dart-api}}/dart-js_interop_unsafe/
