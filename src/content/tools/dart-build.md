@@ -2,6 +2,7 @@
 title: dart build
 description: Command-line tool for building Dart applications.
 ---
+
 :::version-note
 Support for `dart build` was introduced in Dart 3.10.
 :::
