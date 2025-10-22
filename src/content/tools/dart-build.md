@@ -61,7 +61,8 @@ $ dart build cli --output=<path>
 $ dart build cli -o=<path>
 ```
 
-For example:
+For example, to set the output directory to `./my_custom_output`:
+
 ```console
 $ dart build cli --output=./my_custom_output
 ```
