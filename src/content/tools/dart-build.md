@@ -19,7 +19,7 @@ The `dart build cli` command
 builds a Dart application with a command-line interface (CLI)
 including any code assets.
 
-The resulting app bundle is structured in the following manner:
+The resulting app bundle is structured as follows:
 
 ```plaintext
 bundle/
