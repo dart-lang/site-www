@@ -3,9 +3,8 @@ title: Hooks
 description: Run custom build scripts.
 ---
 
-:::experimental Preview
-Support for build hooks is in **preview** and
-can be used on the `main` and `beta` channels.
+:::version-note
+Support for build hooks was introduced in Dart 3.10.
 :::
 
 This guide explains what hooks are and how to use them
