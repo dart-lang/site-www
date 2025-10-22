@@ -9,7 +9,7 @@ nextpage:
 
 Seamlessly integrate JavaScript libraries and APIs into your Dart web app.
 
-## Overview
+## Overview {: #overview }
 
 The [Dart web platform][] provides powerful tools to
 call JavaScript from Dart and vice-versa and allows you to leverage the vast
@@ -39,7 +39,7 @@ Interact with the browser:
 [Getting started with Javascript interop]: /interop/js-interop/start
 [How to mock JavaScript interop objects]: /interop/js-interop/mock
 
-## The evolution of JavaScript interop
+## The evolution of JavaScript interop {: #next-generation-js-interop }
 
 [Dart 3.3][] introduces a new generation of JS interop which offerins
 a unified set of features and APIs to access JavaScript and browser
@@ -71,12 +71,12 @@ their past counterparts:
 [`dart:js`]: {{site.dart-api}}/dart-js/
 [`dart:js_util`]: {{site.dart-api}}/dart-js_util/
 
-## Work with deprecated features
+## Work with deprecated features {: #deprecated-features }
 
 If you maintain legacy code, you can continue to work with some deprecated features.
 To learn more about JS interop deprecated features, see the [Past JS interop][] guide.
 
-## Additional resources
+## Additional resources {: #additional-resources }
 
 Previous JavaScript interop libraries:
   * [Past JS interop]
