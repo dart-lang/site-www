@@ -60,7 +60,7 @@
           permalink: /language/mixins
         - title: Enums
           permalink: /language/enums
-        - title: Shorthand
+        - title: Dot Shorthands
           permalink: /language/dot-shorthand
         - title: Extension methods
           permalink: /language/extension-methods
