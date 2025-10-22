@@ -21,7 +21,7 @@ including any code assets.
 
 The resulting app bundle is structured in the following manner:
 
-```
+```plaintext
 bundle/
   bin/
     <executable>
