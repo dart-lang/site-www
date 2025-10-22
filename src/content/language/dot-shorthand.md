@@ -11,7 +11,7 @@ nextpage:
 ---
 
 :::experimental
-Support for shorthand syntax is experimental and
+Support for dot shorthand syntax is experimental and
 can only be used on the `main` channel.
 :::
 
