@@ -3,7 +3,7 @@ title: Extension methods
 description: Learn how to add to existing APIs.
 prevpage:
   url: /language/dot-shorthand
-  title: Shorthand
+  title: Dot Shorthands
 nextpage:
   url: /language/extension-types
   title: Extension types

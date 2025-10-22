@@ -30,7 +30,7 @@ String colorCode(LogLevel level) {
 }
 
 // Example usage:
-// var warnColor = colorCode(.warning); // Returns 'orange'
+var warnColor = colorCode(.warning); // Returns 'orange'
 
 // #enddocregion enums
 
@@ -57,35 +57,11 @@ Point origin = .origin(); // Instead of Point.origin()
 Point p1 = .fromList([1.0, 2.0]); // Instead of Point.fromList([1.0, 2.0])
 
 // With type arguments for generic class constructors
-List<int> intList = .filled(5, 0); // Instead of List<int>.filled(5, 0)
+List<int> intList = .filled(5, 0); // Instead of List.filled(5, 0)
 // #enddocregion constructors
 
 // #docregion tearoff
-class Logger {
-  final String name;
-  Logger(this.name); // Unnamed constructor
-  Logger.verbose() : name = 'VERBOSE'; // Named constructor
-}
 
-void main() {
-  // .new for an UNNAMED constructor tear-off:
-  Logger Function(String) createLogger = .new; // Instead of Logger.new
-
-  // .identifier for a NAMED constructor tear-off:
-  Logger Function() createVerboseLogger = .verbose; // Instead of Logger.verbose
-
-  // .new for a generic UNNAMED constructor tear-off:
-  Set<String> Function() createStringSet = .new; // Instead of Set<String>.new
-
-  // Now use the tear-offs to create instances:
-  var appLog = createLogger('App');
-  var verboseLog = createVerboseLogger();
-  var stringSet = createStringSet();
-
-  print(appLog.name);         // Prints "App"
-  print(verboseLog.name);     // Prints "VERBOSE"
-  print(stringSet.isEmpty);   // Prints "true"
-}
 // #enddocregion tearoff
 
 // #docregion chain
@@ -93,7 +69,7 @@ void main() {
 // then the instance method .toLowerCase() is called on that String.
 String lowerH = .fromCharCode(72).toLowerCase(); // Instead of String.fromCharCode(72).toLowerCase()
 
-// print(lowerH); // Output: h
+print(lowerH); // Output: h
 // #enddocregion chain
 
 // #docregion allowedequality
@@ -165,21 +141,83 @@ const Point myOrigin = .origin(); // Instead of const Point.origin()
 const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ]; // Instead of [const Point.origin(), const Point(1.0, 1.0)]
 // #enddocregion const
 
-// #docregion nested
-// AVOID: Hard to read, types are hidden
-// Widget complex = .container(
-//   child: .padding(
-//     padding: .all(8.0),
-//     child: .text('Hello')
-//   )
-// );
+// #docregion best
+// GOOD: Use dot shorthands in typed collections.
+final alignments = <MainAxisAlignment>[.center, .bottomLeft];
 
-// PREFER: Explicit types in nested structures
-Widget complex = Container( // Assuming types
-  child: Padding(
-    padding: EdgeInsets.all(8.0),
-    child: Text('Hello')
-  )
-);
+List<Person>[
+  .new(name: 'Joe', age: 145),
+  .new(name: 'Alice', age: 495),
+];
 
-// #enddocregion nested
+// GOOD: Use dot shorthands for implicit return values.
+class Foo {
+  MainAxisAlignment pickAlignment() => .start;  
+  EdgeInsets get padding => .all(8.0); 
+}
+
+
+
+// #enddocregion best
+
+// #docregion avoid 
+Size calculateSize() {
+  // AVOID: Return statement type is not obvious from the return statement alone. 
+  return .fromHeight(10);
+}
+
+Size calculateSize() {
+  // GOOD: Return statement type is obvious.
+  return Size.fromHeight(10);
+}
+
+
+// AVOID: The type of _character isn't obvious in this context.
+setState(() {
+  _character = .jefferson;
+});
+
+// AVOID: Prefer using explicit types for arrow syntax.
+ScrollController buildController() => .new();
+
+
+GlobalKey<ScaffoldMessengerState> buildKey() {
+// AVOID: Don't use .new() as a shorthand in return statements.
+  return .new();
+
+  // GOOD
+  return GlobalKey<ScaffoldMessengerState>();
+}
+
+// AVOID: Don't use .new() for class field declarations
+class Foo {
+  // BAD: Omit obvious types instead of using .new.
+  final ScrollController _controller = .new();
+
+  // GOOD
+  final _controller = ScrollController();
+}
+
+// #enddocregion avoid 
+
+// #docregion unnamed
+class _PageState extends State<Page> {
+  // Before
+  final AnimationController _animationController = AnimationController(vsync: this);
+  final ScrollController _scrollController = ScrollController();
+
+  final GlobalKey<ScaffoldMessengerState> scaffoldKey =
+    GlobalKey<ScaffoldMessengerState>();
+
+  Map<String, Map<String, bool>> properties 
+    = <String, Map<String, bool>>{};
+
+  // After
+  final AnimationController _animationController = .new(vsync: this);
+  final ScrollController _scrollController = .new();
+  final GlobalKey<ScaffoldMessengerState> scaffoldKey = .new();
+  Map<String, Map<String, bool>> properties = .new();
+
+  // ...
+}
+// #enddocregion unnamed

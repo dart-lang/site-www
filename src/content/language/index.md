@@ -283,7 +283,7 @@ if (!yourPlanet.isGiant) {
 ```
 
 When the compiler can infer the enum type from the context, 
-you can use a more concise shorthand syntax to access enum values. 
+you can use a more concise dot shorthand syntax to access enum values. 
 Instead of writing the full `EnumName.value`, 
 you can simply write `.value`. This can make your code cleaner 
 and easier to read.
@@ -301,7 +301,7 @@ Planet myPlanet = Planet.venus;
 // You can use the dot shorthand:
 Planet myPlanet = .venus;
 ```
-This shorthand isn't limited to variable declarations. 
+Dot shorthand isn't limited to variable declarations. 
 It can also be used in contexts like function arguments 
 and switch cases where the enum type is clear to the compiler.
 
