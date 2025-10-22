@@ -121,7 +121,6 @@ abstract class DashLayout extends PageLayoutBase {
             'hash=${htmlEscape.convert(generatedStylesHash)}',
       ),
 
-      script(src: '/assets/js/main.js?v=4'),
       if (pageData['js'] case final List<Object?> jsList)
         for (final js in jsList)
           if (js case {'url': final String jsUrl, 'defer': final Object? defer})

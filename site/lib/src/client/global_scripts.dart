@@ -39,6 +39,9 @@ void _setUpSite() {
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpTabs();
+  _setUpGallery();
+  _setUpExpandableCards();
+  _setUpTableOfContents();
 }
 
 void _setUpSidenav() {
@@ -57,6 +60,19 @@ void _setUpSidenav() {
         ),
       );
     }
+  }
+
+  // Set up collapse and expand for sidenav buttons.
+  final toggles = web.document.querySelectorAll('.nav-link.collapsible');
+  for (var i = 0; i < toggles.length; i++) {
+    final toggle = toggles.item(i) as web.HTMLElement;
+    toggle.addEventListener(
+      'click',
+      (web.Event e) {
+        toggle.classList.toggle('collapsed');
+        e.preventDefault();
+      }.toJS,
+    );
   }
 }
 
@@ -265,5 +281,224 @@ enum _ClientOperatingSystem {
     }
 
     return fallback;
+  }
+}
+
+void _setUpGallery() {
+  final galleries = [
+    'galleryOne',
+    'galleryTwo',
+    'galleryThree',
+    'galleryFour',
+    'galleryFive',
+    'gallerySix',
+  ];
+
+  void switchBanner(
+    web.Element selector,
+    web.NodeList selectors,
+    String galleryName,
+  ) {
+    for (var i = 0; i < selectors.length; i++) {
+      final selector = selectors.item(i) as web.Element;
+      selector.classList.remove('highlight');
+    }
+
+    selector.classList.add('highlight');
+
+    final imgSelector = web.document.querySelector('.$galleryName');
+    imgSelector?.setAttribute(
+      'src',
+      selector.getAttribute('data-banner') ?? '',
+    );
+  }
+
+  for (final galleryName in galleries) {
+    final selectors = web.document.querySelectorAll(
+      '#$galleryName .selector li',
+    );
+
+    for (var i = 0; i < selectors.length; i++) {
+      final selector = selectors.item(i) as web.Element;
+
+      selector.addEventListener(
+        'mouseover',
+        ((web.Event _) {
+          switchBanner(selector, selectors, galleryName);
+        }).toJS,
+      );
+
+      selector.addEventListener(
+        'focus',
+        ((web.Event _) {
+          switchBanner(selector, selectors, galleryName);
+        }).toJS,
+      );
+    }
+  }
+}
+
+void _setUpExpandableCards() {
+  var currentFragment = web.window.location.hash.trim().toLowerCase();
+  if (currentFragment.startsWith('#')) {
+    // Remove the leading '#' from the fragment.
+    currentFragment = currentFragment.substring(1);
+  }
+  final expandableCards = web.document.querySelectorAll('.expandable-card');
+
+  for (var i = 0; i < expandableCards.length; i++) {
+    final card = expandableCards.item(i) as web.Element;
+    final expandButton = card.querySelector('.expand-button');
+    if (expandButton == null) continue;
+
+    expandButton.addEventListener(
+      'click',
+      ((web.Event e) {
+        if (card.classList.contains('collapsed')) {
+          card.classList.remove('collapsed');
+          expandButton.ariaExpanded = 'true';
+        } else {
+          card.classList.add('collapsed');
+          expandButton.ariaExpanded = 'false';
+        }
+        e.preventDefault();
+      }).toJS,
+    );
+
+    if (card.id != currentFragment) {
+      card.classList.add('collapsed');
+      expandButton.ariaExpanded = 'false';
+    }
+  }
+}
+
+void _setUpTableOfContents() {
+  _setUpTocActiveObserver();
+  _setUpInlineTocDropdown();
+}
+
+void _setUpInlineTocDropdown() {
+  final inlineToc = web.document.getElementById('toc-top');
+  if (inlineToc == null) return;
+
+  final dropdownButton = inlineToc.querySelector('.dropdown-button');
+  final dropdownMenu = inlineToc.querySelector('.dropdown-content');
+  if (dropdownButton == null || dropdownMenu == null) return;
+
+  void closeMenu() {
+    inlineToc.setAttribute('data-expanded', 'false');
+    dropdownButton.ariaExpanded = 'false';
+  }
+
+  dropdownButton.addEventListener(
+    'click',
+    ((web.Event _) {
+      print(inlineToc.getAttribute('data-expanded'));
+      if (inlineToc.getAttribute('data-expanded') == 'true') {
+        closeMenu();
+      } else {
+        inlineToc.setAttribute('data-expanded', 'true');
+        dropdownButton.ariaExpanded = 'true';
+      }
+    }).toJS,
+  );
+
+  web.document.addEventListener(
+    'keydown',
+    ((web.KeyboardEvent event) {
+      if (event.key == 'Escape') {
+        closeMenu();
+      }
+    }).toJS,
+  );
+
+  // Close the dropdown if any link in the TOC is navigated to.
+  final inlineTocLinks = inlineToc.querySelectorAll('a');
+  for (var i = 0; i < inlineTocLinks.length; i++) {
+    final tocLink = inlineTocLinks.item(i) as web.Element;
+    tocLink.addEventListener(
+      'click',
+      ((web.Event _) {
+        closeMenu();
+      }).toJS,
+    );
+  }
+
+  // Close the dropdown if anywhere not in the inline TOC is clicked.
+  web.document.addEventListener(
+    'click',
+    ((web.Event event) {
+      if ((event.target as web.Element).closest('#toc-top') != null) {
+        return;
+      }
+      closeMenu();
+    }).toJS,
+  );
+}
+
+void _setUpTocActiveObserver() {
+  final headings = web.document.querySelectorAll(
+    'article .header-wrapper, #site-content-title',
+  );
+  final currentHeaderText = web.document.getElementById('current-header');
+
+  // No need to have toc scrollspy if there is only one non-title heading.
+  if (headings.length < 2 || currentHeaderText == null) return;
+
+  final visibleAnchors = <String>{};
+  final initialHeaderText = currentHeaderText.textContent;
+
+  final observer = web.IntersectionObserver(
+    ((JSArray<web.IntersectionObserverEntry> entries) {
+      for (var i = 0; i < entries.length; i++) {
+        final entry = entries[i];
+        final headingId = entry.target.querySelector('h1, h2, h3')?.id;
+        if (headingId == null) return;
+
+        if (entry.isIntersecting) {
+          visibleAnchors.add(headingId);
+        } else {
+          visibleAnchors.remove(headingId);
+        }
+      }
+
+      if (visibleAnchors.isNotEmpty) {
+        var isFirst = true;
+
+        // If the page title is visible, set the current header to its contents.
+        if (visibleAnchors.contains('document-title')) {
+          currentHeaderText.textContent = initialHeaderText;
+          isFirst = false;
+        }
+
+        final tocLinks = web.document.querySelectorAll(
+          '.site-toc .sidenav-item a',
+        );
+        for (var i = 0; i < tocLinks.length; i++) {
+          final tocLink = tocLinks.item(i) as web.Element;
+          final headingId = tocLink.getAttribute('href')?.substring(1);
+          if (headingId == null) return;
+
+          final sidenavItem = tocLink.closest('.sidenav-item');
+          if (sidenavItem == null) return;
+
+          if (visibleAnchors.contains(headingId)) {
+            sidenavItem.classList.add('active');
+
+            if (isFirst) {
+              currentHeaderText.textContent = tocLink.textContent;
+              isFirst = false;
+            }
+          } else {
+            sidenavItem.classList.remove('active');
+          }
+        }
+      }
+    }).toJS,
+    web.IntersectionObserverInit(rootMargin: '-80px 0px -25% 0px'),
+  );
+
+  for (var i = 0; i < headings.length; i++) {
+    observer.observe(headings.item(i) as web.Element);
   }
 }
