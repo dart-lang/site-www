@@ -137,7 +137,7 @@ body.diagnostics {
       border: 1px solid var(--menu-border-color);
       min-width: 100%;
       max-height: 15rem;
-      overflow-y: scroll;
+      overflow-y: auto;
       scrollbar-width: thin;
       overscroll-behavior: contain;
       margin-top: 0.25rem;

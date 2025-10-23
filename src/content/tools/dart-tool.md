@@ -41,7 +41,7 @@ The following table shows which commands you can use with the `dart` tool.
 | Command    | Format of command                                      | More information                                                                                         |
 |------------|--------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
 | `analyze`  | <code>dart analyze [<DIRECTORY&#124;DART_FILE>]</code> | Analyzes the project's Dart source code.<br>[Learn more.][analyze]                                       |
-| `build`    | `dart build <APP_TYPE>`                                | **Experimental**<br>Builds a Dart app including [native assets][].<br>[Learn more.][build]               |
+| `build`    | `dart build <APP_TYPE>`                                | Builds a Dart app including [code assets][].<br>[Learn more.][build]               |
 | `compile`  | `dart compile <FORMAT>`                                | Compiles Dart to various formats (native executable, JavaScript, WebAssembly).<br>[Learn more.][compile] |
 | `create`   | `dart create <DIRECTORY>`                              | Creates a new project.<br>[Learn more.][create]                                                          |
 | `devtools` | `dart devtools`                                        | Opens Dart DevTools, a suite of debugging and performance tools for Dart.<br>[Learn more.][devtools]     |
@@ -56,10 +56,10 @@ The following table shows which commands you can use with the `dart` tool.
 
 {:.table .table-striped .nowrap}
 
-[native assets]: /tools/hooks#assets
+[code assets]: /tools/hooks#assets
 
 [analyze]: /tools/dart-analyze
-[build]: /tools/hooks
+[build]: /tools/dart-build
 [compile]: /tools/dart-compile
 [create]: /tools/dart-create
 [devtools]: /tools/dart-devtools

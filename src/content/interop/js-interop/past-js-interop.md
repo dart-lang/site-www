@@ -15,14 +15,14 @@ None of these legacy interop libraries are supported when compiling to [Wasm][].
 :::
 
 This page addresses previous iterations of JS interop for Dart that
-have been considered legacy and are deprecated as of Dart 3.7.
+have been considered legacy and are deprecated as of Dart 3.7 (Feb 2025).
 Therefore, prefer using [`dart:js_interop`][] going forwards and
 migrate usages of old interop libraries when possible.
-While [`dart:html`][] and other web libraries are closely related,
-they're covered in the [`package:web`][] page.
+Support for browser APIs, such as [`dart:html`][], are now supported by
+[`package:web`][].
 
-[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
-[`dart:html`]: {{site.dart-api}}/dart-html/dart-html-library.html
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/
+[`dart:html`]: {{site.dart-api}}/dart-html/
 [`package:web`]: /interop/js-interop/package-web
 
 ## `dart:js`
@@ -114,7 +114,7 @@ and forth. This included members like:
 possibly alternate syntax.
 
 
-[`dart:js`]: {{site.dart-api}}/dart-js/dart-js-library.html
+[`dart:js`]: {{site.dart-api}}/dart-js/
 [`object wrapper`]: {{site.dart-api}}/dart-js/JsObject-class.html
 [`allowInterop`]: {{site.dart-api}}/dart-js_util/allowInterop.html
 [`package:js`]: {{site.pub-pkg}}/js
@@ -124,5 +124,5 @@ possibly alternate syntax.
 [`@staticInterop`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L48
 [`dart:js_util`]: {{site.dart-api}}/dart-js_util/dart-js_util-library.html
 [`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/
 [Wasm]: /web/wasm

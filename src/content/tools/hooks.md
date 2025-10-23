@@ -3,9 +3,8 @@ title: Hooks
 description: Run custom build scripts.
 ---
 
-:::note
-Support for build hooks is in **preview** and
-can be used on the `main` and `beta` channels.
+:::version-note
+Support for build hooks was introduced in Dart 3.10.
 :::
 
 This guide explains what hooks are and how to use them
@@ -267,16 +266,19 @@ void main() {
 ## Example projects
 
 There are several example projects to help you get started
-with hooks:
+with hooks and code assets:
 
-| **Project**                  | **Description**                                                                   |
-| ---------------------------- | --------------------------------------------------------------------------------- |
-| [`native_add_library`][]     | Native code that should be bundled with Dart and Flutter applications.            |
-| [`native_add_app`][]         | Invocation of native code bundled with the native assets feature.                 |
-| [`download_asset`][]         | Library depending on prebuilt assets which are downloaded in the build hook.      |
-| [`native_dynamic_linking`][] | Builds three native libraries, two of which are dynamically linked to each other. |
-| [`system_library`][]         | A Dart library using a native system library.                                     |
-| [`use_dart_api`][]           | Project that uses the C API of the Dart VM.                                       |
+| **Project**                  | **Description**                                                                         |
+| ---------------------------- | --------------------------------------------------------------------------------------- |
+| [`sqlite`][]                 | A package compiling, bundling, and using a native database engine.                       |
+| [`mini_audio`][]             | A package compiling, bundling, and using a native audio player.                          |
+| [`stb_image`][]              | A package compiling, bundling, and using a native image library.                         |
+| [`host_name`][]              | A package using a native system library.                                                |
+| [`native_add_library`][]     | A package compiling, bundling, and using some simple C code.                             |
+| [`native_add_app`][]         | A Dart CLI application that depends on `native_add_library`.                            |
+| [`download_asset`][]         | A package bundling and using prebuilt assets that are downloaded in the build hook.    |
+| [`native_dynamic_linking`][] | A package compiling, bundling, and using three native libraries that depend on each other. |
+| [`use_dart_api`][]           | A package that uses the C API of the Dart VM.                                           |
  
 {: .table .table-striped }
 
@@ -284,8 +286,11 @@ with hooks:
 [`native_add_app`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/native_add_app
 [`download_asset`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/download_asset
 [`native_dynamic_linking`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/native_dynamic_linking
-[`system_library`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/system_library
 [`use_dart_api`]: {{site.repo.dart.org}}/native/tree/main/pkgs/hooks/example/build/use_dart_api
+[`host_name`]: {{site.repo.dart.org}}/native/tree/main/pkgs/code_assets/example/host_name
+[`sqlite`]: {{site.repo.dart.org}}/native/tree/main/pkgs/code_assets/example/sqlite
+[`mini_audio`]: {{site.repo.dart.org}}/native/tree/main/pkgs/code_assets/example/mini_audio
+[`stb_image`]: {{site.repo.dart.org}}/native/tree/main/pkgs/code_assets/example/stb_image
 
 ## More information
 
@@ -293,8 +298,12 @@ See the following links for more information:
 
 * [Hooks package][]
 * [Hooks library reference][]
+* [Code assets package][]
+* [Code assets library reference][]
 * [C interop][]
 
 [Hooks package]: {{site.pub-pkg}}/hooks
 [Hooks library reference]: {{site.pub-api}}/hooks/latest/hooks/
+[Code assets package]: {{site.pub-pkg}}/code_assets
+[Code assets library reference]: {{site.pub-api}}/code_assets/latest/code_assets/
 [C interop]: /interop/c-interop
