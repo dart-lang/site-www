@@ -7,3 +7,21 @@ builders:
         - "lib/src/style_hash.dart"
     auto_apply: root_package
     build_to: source
+
+targets:
+  $default:
+    builders:
+      build_web_compilers:entrypoint:
+        dev_options:
+          compilers:
+            dartdevc:
+        release_options:
+          # Use production compilers for release builds, and ensure
+          # kReleaseMode in jaspr is enabled.
+          compilers:
+            dart2js:
+              args: [-O4, -Djaspr.flags.release=true]
+            dart2wasm:
+              # Use -O2 to catch more potential runtime issues, it is not much
+              # slower than -O4: https://github.com/dart-lang/site-www/pull/6953#discussion_r2453318668
+              args: [-O2, -Djaspr.flags.release=true]
