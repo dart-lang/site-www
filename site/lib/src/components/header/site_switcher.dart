@@ -37,6 +37,16 @@ final class SiteSwitcher extends StatelessComponent {
                   href: 'https://api.dart.dev',
                 ),
                 _SiteWordMarkListEntry(
+                  name: 'Dart',
+                  subtype: 'Blog',
+                  href: 'https://blog.dart.dev',
+                ),
+                Component.element(
+                  tag: 'li',
+                  classes: 'dropdown-divider',
+                  attributes: {'aria-hidden': 'true', 'role': 'separator'},
+                ),
+                _SiteWordMarkListEntry(
                   name: 'DartPad',
                   href: 'https://dartpad.dev',
                 ),
