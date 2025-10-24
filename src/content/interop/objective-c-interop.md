@@ -6,6 +6,8 @@ description: >-
   To use Objective-C and Swift code in your Dart program, use package:ffigen.
 ffigen: "https://pub.dev/packages/ffigen"
 example: "https://github.com/dart-lang/native/tree/main/pkgs/ffigen/example/objective_c"
+ffigenapi: "https://pub.dev/documentation/ffigen/latest/ffigen"
+ffigendoc: "https://github.com/dart-lang/native/blob/main/pkgs/ffigen/doc/README.md"
 appledoc: "https://developer.apple.com/documentation"
 ---
 
@@ -13,11 +15,6 @@ Dart mobile, command-line, and server apps
 running on the [Dart Native platform](/overview#platform), on macOS or iOS,
 can use `dart:ffi` and [`package:ffigen`]({{page.ffigen}})
 to call Objective-C and Swift APIs.
-
-:::note
-This interop feature is **experimental**,
-and [in active development]({{site.repo.dart.sdk}}/issues/49673).
-:::
 
 `dart:ffi` enables Dart code to interact with native C APIs.
 Objective-C is based on and compatible with C,
@@ -30,6 +27,10 @@ see the [C interop guide](/interop/c-interop).
 
 You can generate Objective-C headers for Swift APIs,
 enabling `dart:ffi` and `package:ffigen` to interact with Swift.
+
+For more information about using FFIgen,
+see the [FFIgen README]({{page.ffigen}})
+and the [additional documentation]({{page.ffigendoc}}).
 
 ## Objective-C Example
 
@@ -51,9 +52,9 @@ and then load the library with `dart:ffi`.
 using [LLVM](https://llvm.org/),
 so you'll need to install that first.
 See [Installing LLVM]({{page.ffigen}}#installing-llvm)
-from the ffigen README for more details.
+from the FFIgen README for more details.
 
-### Configuring ffigen
+### Configuring FFIgen for Objective-C
 
 First, add `package:ffigen` as a dev dependency:
 
@@ -61,134 +62,174 @@ First, add `package:ffigen` as a dev dependency:
 $ dart pub add --dev ffigen
 ```
 
-Then, configure ffigen to generate bindings for the
+Then, configure FFIgen to generate bindings for the
 Objective-C header containing the API.
-The ffigen configuration options go in your `pubspec.yaml` file,
-under a top-level `ffigen` entry.
-Alternatively, you can put the ffigen config in its own `.yaml` file.
+FFIgen can be configured via YAML or Dart code,
+but Dart is preferred for new projects.
+The YAML config will be deprecated in future versions of FFIgen.
+Start by creating a `generate_code.dart` script somewhere in your package.
+A good directory to create this file in is `my_package/tool`.
 
-```yaml
-ffigen:
-  name: AVFAudio
-  description: Bindings for AVFAudio.
-  language: objc
-  output: 'avf_audio_bindings.dart'
-  headers:
-    entry-points:
-      - '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AVFAudio.framework/Headers/AVAudioPlayer.h'
+The `generate_code.dart` script should create an `FfiGenerator` object,
+which will contain all our configuration options,
+then call its `.generate()` method.
+
+```dart
+import 'package:ffigen/ffigen.dart';
+
+final config = FfiGenerator(
+);
+
+void main() => config.generate();
 ```
 
-The `name` is the name of the native library wrapper class
-that will be generated,
-and the `description` will be used in the documentation for that class.
-The `output` is the path of the Dart file that ffigen will create.
-The entry point is the header file containing the API.
-In this example, it is the internal `AVAudioPlayer.h` header.
+First, we'll tell FFIgen where to find the API we're trying to
+generate bindings for.
+To do this, we set the `headers.entryPoints` option.
 
-Another import thing you'll see,
-if you look at the [example config]({{page.example}}/pubspec.yaml),
-is the exclude and include options.
-By default, `ffigen` generates bindings for everything
-it finds in the header,
-and everything that those bindings depend on in other headers.
-Most Objective-C libraries depend on Apple's internal libraries,
-which are very large.
-If bindings are generated without any filters,
-the resulting file can be millions of lines long.
-To solve this problem,
-the ffigen config has fields that enable you to filter out
-all the functions, structs, enums, etc., that you're not interested in.
-For this example, we're only interested in `AVAudioPlayer`,
-so you can exclude everything else:
+For this example, we need to load `AVAudioPlayer.h`.
+This is part of the `AVFAudio` framework,
+which is located in your Xcode installation.
+FFIgen includes some helper functions to locate these sorts of APIs,
+such as `macSdkPath`.
+Using these helper functions makes your code generation script
+more reliable across different machines,
+which may have different SDK installation locations.
 
-```yaml
-  exclude-all-by-default: true
-  objc-interfaces:
-    include:
-      - 'AVAudioPlayer'
+`macSdkPath` returns the result of `xcrun --show-sdk-path --sdk macosx`.
+You can run this command in a terminal to locate your macOS SDKs,
+or with `--sdk iphoneos` to find your iOS SDKs.
+When generating bindings for an Apple API,
+exploring these directories is a great way to find
+the right headers to pass to FFIgen.
+
+```dart
+import 'package:ffigen/ffigen.dart';
+
+final config = FfiGenerator(
+  headers: Headers(
+    entryPoints: [
+      Uri.file(
+        '$macSdkPath/System/Library/Frameworks/AVFAudio.framework/Headers/AVAudioPlayer.h',
+      ),
+    ],
+  ),
+);
+
+void main() => config.generate();
 ```
 
-Since `AVAudioPlayer` is explicitly included like this,
-`ffigen` excludes all other interfaces.
-The `exclude-all-by-default` flag tells `ffigen` to
-exclude everything else.
-The result is that nothing is included except `AVAudioPlayer`,
-and its dependencies, such as `NSObject` and `NSString`.
-So instead of several million lines of bindings,
-you end up with tens of thousands.
+Next, we'll define the output file.
+The main output of FFIgen is a single Dart file
+containing bindings for the given inputs.
+This file's location is defined by the `output.dartFile` option.
 
-If you need more granular control,
-you can exclude or include all declarations individually,
-rather than using `exclude-all-by-default`:
+In some cases, FFIgen will also generate a `.m` file,
+containing Objective-C code required for interop with the API.
+This file will only be generated
+if the API you're generating bindings for needs it
+(e.g. if you're using blocks or protocols).
+By default this file will have the same name as the Dart bindings,
+but with `.m` at the end of the file name.
+You can change its location with `output.objectiveCFile` option.
+If FFIgen produces this file, you must compile it into your package,
+otherwise you may get runtime exceptions to do with missing symbols.
+For this simple example we won't get a `.m` file.
 
-```yaml
-  functions:
-    exclude:
-      - '.*'
-  structs:
-    exclude:
-      - '.*'
-  unions:
-    exclude:
-      - '.*'
-  globals:
-    exclude:
-      - '.*'
-  macros:
-    exclude:
-      - '.*'
-  enums:
-    exclude:
-      - '.*'
-  unnamed-enums:
-    exclude:
-      - '.*'
+Another important option is `output.preamble`.
+This is simply text inserted at the top of the Dart output,
+which can be useful for adding a license header
+or disabling specific lints that FFIgen's output doesn't adhere to.
+In this case we'll disable several lints.
+
+```dart
+import 'package:ffigen/ffigen.dart';
+
+final config = FfiGenerator(
+  headers: Headers(
+    entryPoints: [
+      Uri.file(
+        '$macSdkPath/System/Library/Frameworks/AVFAudio.framework/Headers/AVAudioPlayer.h',
+      ),
+    ],
+  ),
+  output: Output(
+    dartFile: Uri.file('avf_audio_bindings.dart'),
+    preamble: '''
+// ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
+'''
+  ),
+);
+
+void main() => config.generate();
 ```
 
-These `exclude` entries all exclude the regular expression `'.*'`,
-which matches anything.
+The last thing we need to do is tell FFIgen
+which parts of the input API to generate bindings for.
+By default, FFIgen will filter out all the bindings.
+In this case we want to generate bindings for `AVAudioPlayer`,
+which is an Objective-C interface.
+So we have to set the `objectiveC.interfaces` field.
 
-You can also use the `preamble` option
-to insert text at the top of the generated file.
-In this example, the `preamble` was used
-to insert some linter ignore rules at the top of the generated file:
+Setting the `objectiveC` field also tells FFIgen
+to generate bindings for the Objective-C language.
+By default, FFIgen will generate C bindings.
 
-```yaml
-  preamble: |
-    // ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, return_of_invalid_type, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
+```dart
+import 'package:ffigen/ffigen.dart';
+
+final config = FfiGenerator(
+  headers: Headers(
+    entryPoints: [
+      Uri.file(
+        '$macSdkPath/System/Library/Frameworks/AVFAudio.framework/Headers/AVAudioPlayer.h',
+      ),
+    ],
+  ),
+  objectiveC: ObjectiveC(
+    interfaces: Interfaces.includeSet({'AVAudioPlayer'}),
+  ),
+  output: Output(
+    dartFile: Uri.file('avf_audio_bindings.dart'),
+    preamble: '''
+// ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
+'''
+  ),
+);
+
+void main() => config.generate();
 ```
 
-See the [ffigen readme]({{page.ffigen}}#configurations)
+You can also use `includeMember` to filter out specific methods from the class,
+and `rename` or `renameMember` to rename the included classes or methods.
+There are similar options for protocols and categories.
+
+See the [FFIgen API documentation]({{page.ffigenapi}})
 for a full list of configuration options.
 
-### Generating the Dart bindings
+### Generating the Dart/Objective-C bindings
 
 To generate the bindings, navigate to the example directory,
-and run ffigen:
+and run the script:
 
 ```console
-$ dart run ffigen
+$ dart run generate_code.dart
 ```
 
-This will search in the `pubspec.yaml` file for a top-level `ffigen` entry.
-If you chose to put the ffigen config in a separate file, use the
-`--config` option and specify that file:
+This should generate a large `avf_audio_bindings.dart` file,
+similar to [this one]({{page.example}}/avf_audio_bindings.dart).
+The main class we're interested in is `AVAudioPlayer`.
 
-```console
-$ dart run ffigen --config my_ffigen_config.yaml
-```
+You may notice other classes in the file
+with a comment indicating they are a stub.
+FFIgen will generate stub bindings for all transitive dependencies
+of the directly included APIs.
+To generate full bindings for these stubs,
+add them to the includes in your config.
+This stubbing behavior can be changed
+with the `includeTransitive` options.
 
-For this example, this will generate
-[avf_audio_bindings.dart]({{page.example}}/avf_audio_bindings.dart).
-
-This file contains a class called `AVFAudio`, which is the native library
-wrapper that loads all the API functions using FFI,
-and provides convenient wrapper methods to call them.
-The other classes in this file are all Dart wrappers
-around the Objective-C interfaces that we need,
-such as `AVAudioPlayer` and its dependencies.
-
-### Using the bindings
+### Using the Objective-C bindings
 
 Now you're ready to load and interact with the generated library.
 The example app, [play_audio.dart]({{page.example}}/play_audio.dart),
@@ -205,19 +246,14 @@ const _dylibPath =
     '/System/Library/Frameworks/AVFAudio.framework/Versions/Current/AVFAudio';
 
 void main(List<String> args) async {
-  final lib = AVFAudio(DynamicLibrary.open(_dylibPath));
+  DynamicLibrary.open(_dylibPath);
 ```
 
 Since you're loading an internal library,
 the dylib path is pointing at an internal framework dylib.
 You can also load your own `.dylib` file,
 or if the library is statically linked into your app (often the case on iOS)
-you can use [`DynamicLibrary.process()`](
-{{site.dart-api}}/dart-ffi/DynamicLibrary/DynamicLibrary.process.html):
-
-```dart
-  final lib = AVFAudio(DynamicLibrary.process());
-```
+you don't need to load anything.
 
 The goal of the example is to play each of the audio files
 specified as command line arguments one by one.
@@ -225,22 +261,20 @@ For each argument,
 you first have to convert the Dart `String` to an Objective-C `NSString`.
 The generated `NSString` wrapper has a convenient constructor
 that handles this conversion,
-and a `toString()` method that converts it back to a Dart `String`.
+and a `toDartString()` method that converts it back to a Dart `String`.
 
 ```dart
   for (final file in args) {
-    final fileStr = NSString(lib, file);
-    print('Loading $fileStr');
+    final fileStr = NSString(file);
+    print('Loading $file');
 ```
 
 The audio player expects an `NSURL`, so next we use the [`fileURLWithPath:`](
 {{page.appledoc}}/foundation/nsurl/1410828-fileurlwithpath?language=objc)
 method to convert the `NSString` to an `NSURL`.
-Since `:` is not a valid character in a Dart method name,
-it has been translated to `_` in the bindings.
 
 ```dart
-    final fileUrl = NSURL.fileURLWithPath_(lib, fileStr);
+    final fileUrl = NSURL.fileURLWithPath(fileStr);
 ```
 
 Now, you can construct the `AVAudioPlayer`.
@@ -254,17 +288,21 @@ To initialize the `AVAudioPlayer`,
 use the [`initWithContentsOfURL:error:`][] method:
 
 ```dart
-    final player =
-        AVAudioPlayer.alloc(lib).initWithContentsOfURL_error_(fileUrl, nullptr);
+    final player = AVAudioPlayer.alloc().initWithContentsOfURL(
+      fileUrl,
+      error: nullptr,
+    );
 ```
+
+This Dart `AVAudioPlayer` object is a wrapper around an underlying
+Objective-C `AVAudioPlayer*` object pointer.
 
 Objective-C uses reference counting for memory management
 (through retain, release, and other functions),
 but on the Dart side memory management is handled automatically.
 The Dart wrapper object retains a reference to the Objective-C object,
 and when the Dart object is garbage collected,
-the generated code automatically releases that reference using a
-[`NativeFinalizer`]({{site.dart-api}}/dart-ffi/NativeFinalizer-class.html).
+the reference is automatically released.
 
 Next, look up the length of the audio file,
 which you'll need later to wait for the audio to finish.
@@ -297,46 +335,53 @@ then check the status, and wait for the duration of the audio file:
 
 ### Callbacks and multithreading limitations
 
-Multithreading issues are the biggest limitation
-of Dart's experimental support for Objective-C interop.
-These limitations are due to the relationship between
-Dart isolates and OS threads,
+Multithreading is one of the trickiest parts
+of interop between Objective-C and Dart.
+This is due to the relationship between Dart isolates and OS threads,
 and the way Apple's APIs handle multithreading:
 
-* Dart isolates are not the same thing as threads.
-  Isolates run on threads,
-  but aren't guaranteed to run on any particular thread,
-  and the VM might change which thread an isolate is running on
-  without warning.
-  There is an [open feature request][] to enable isolates to be
-  pinned to specific threads.
-* While `ffigen` supports converting
-  Dart functions to Objective-C blocks,
-  most Apple APIs don't make any guarantees about
-  on which thread a callback will run.
-* Most APIs that involve UI interaction
-  can only be called on the main thread,
-  also called the _platform_ thread in Flutter.
-* Many Apple APIs are [not thread safe][].
+1. Dart isolates are not the same thing as threads.
+   Isolates run on threads,
+   but aren't guaranteed to run on any particular thread,
+   and the VM might change which thread an isolate is running on
+   without warning.
+   There is an [open feature request][] to enable isolates to be
+   pinned to specific threads.
+2. While FFIgen supports converting
+   Dart functions to Objective-C blocks,
+   most Apple APIs don't make any guarantees about
+   which thread a callback will run on.
+3. Most APIs that involve UI interaction
+   can only be called on the main thread,
+   also called the platform thread in Flutter.
+4. Many Apple APIs are [not thread safe][].
 
-The first two points mean that a callback created in one isolate
+The first two points mean that a block created in one isolate
 might be invoked on a thread running a different isolate,
 or no isolate at all.
-Depending on the type of callback you are using,
+Depending on the type of block you are using,
 this could cause your app to crash.
-Callbacks created using
-[`Pointer.fromFunction`][] or [`NativeCallable.isolateLocal`][]
+When a block is created, the isolate it was created in is its owner.
+Blocks created using `FooBlock.fromFunction`
 must be invoked on the owner isolate's thread,
 otherwise they will crash.
-Callbacks created using [`NativeCallable.listener`][]
-can be safely invoked from any thread.
+Blocks created using `FooBlock.listener` or `FooBlock.blocking`
+can be safely invoked from any thread,
+and the function they wrap will (eventually) be invoked
+inside the owner isolate,
+though these constructors are only supported for blocks that return `void`.
+`FooBlock.blocking` may add support for non-`void` return values in future,
+if there is user demand for it.
 
 The third point means that directly calling some Apple APIs
 using the generated Dart bindings might be thread unsafe.
 This could crash your app, or cause other unpredictable behavior.
-You can work around this limitation by writing some
-Objective-C code that dispatches your call
-to the main thread.
+In recent versions of Flutter, the main isolate runs on the platform thread,
+so this isn't an issue when invoking these thread-locked APIs
+from the main isolate.
+If you need to invoke these APIs from other isolates,
+or you need to support older versions of flutter,
+you can use the [`runOnPlatformThread`][] function.
 For more information, see the [Objective-C dispatch documentation][].
 
 Regarding the last point,
@@ -347,18 +392,22 @@ doesn't necessarily have to be thread safe,
 as long as it is not thread hostile,
 and doesn't have constraints about which thread it's called from.
 
-You can safely interact with Objective-C code,
+You can safely interact with Objective-C code
 as long as you keep these limitations in mind.
 
-[`Pointer.fromFunction`]: {{site.dart-api}}/dart-ffi/Pointer/fromFunction.html
-[`NativeCallable.isolateLocal`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.isolateLocal.html
-[`NativeCallable.listener`]: {{site.dart-api}}/dart-ffi/NativeCallable/NativeCallable.listener.html
+[`runOnPlatformThread`]: https://api.flutter.dev/flutter/dart-ui/runOnPlatformThread.html
 
 ## Swift example
 
 This [example][swift_example] demonstrates how to
 make a Swift class compatible with Objective-C,
 generate a wrapper header, and invoke it from Dart code.
+
+The process detailed below is quite manual.
+There is an experimental project to automate these steps
+called [Swiftgen][].
+
+[Swiftgen]: https://pub.dev/packages/swiftgen
 
 ### Generating the Objective-C wrapper header
 
@@ -422,9 +471,9 @@ SWIFT_CLASS("_TtC12swift_module10SwiftClass")
 If the interface is missing, or doesn't have all its methods,
 make sure they're all annotated with `@objc` and `public`.
 
-### Configuring ffigen
+### Configuring FFIgen for Swift
 
-Ffigen only sees the Objective-C wrapper header, `swift_api.h`.
+FFIgen only sees the Objective-C wrapper header, `swift_api.h`.
 So most of this config looks similar
 to the Objective-C example,
 including setting the language to `objc`.
@@ -499,10 +548,10 @@ $ echo "_TtC12swift_module10SwiftClass" | swift demangle
 
 This outputs `swift_module.SwiftClass`.
 
-### Generating the Dart bindings
+### Generating the Dart/Swift bindings
 
 As before, navigate to the example directory,
-and run ffigen:
+and run FFIgen:
 
 ```console
 $ dart run ffigen
@@ -510,7 +559,7 @@ $ dart run ffigen
 
 This generates `swift_api_bindings.dart`.
 
-### Using the bindings
+### Using the Swift bindings
 
 Interacting with these bindings is exactly the same
 as for a normal Objective-C library:
