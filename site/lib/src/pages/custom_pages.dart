@@ -35,12 +35,6 @@ MemoryPage get _glossaryPage => MemoryPage.builder(
           'used across dart.dev.',
       'showToc': false,
       'bodyClass': 'glossary-page',
-      'js': [
-        {
-          'url': '/assets/js/glossary.js',
-          'defer': true,
-        },
-      ],
     },
   },
   builder: (_) {

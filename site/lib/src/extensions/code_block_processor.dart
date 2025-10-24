@@ -10,7 +10,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 import 'package:meta/meta.dart';
 import 'package:opal/opal.dart' as opal;
 
-import '../components/dartpad_injector.dart';
+import '../components/client/dartpad_injector.dart';
 import '../components/wrapped_code_block.dart';
 import '../highlight/theme/dark.dart';
 import '../highlight/theme/light.dart';
@@ -18,20 +18,7 @@ import '../highlight/token_renderer.dart' as highlighter;
 
 final class CodeBlockProcessor implements PageExtension {
   static final opal.LanguageRegistry _languageRegistry =
-      opal.LanguageRegistry.of(
-        [
-          opal.BuiltInLanguages.dart,
-          opal.BuiltInLanguages.xml,
-          opal.BuiltInLanguages.html,
-          opal.BuiltInLanguages.kotlin,
-          opal.BuiltInLanguages.markdown,
-          opal.BuiltInLanguages.java,
-          opal.BuiltInLanguages.js,
-          opal.BuiltInLanguages.yaml,
-          opal.BuiltInLanguages.json,
-        ],
-        fallbackLanguageNames: {'md': 'markdown', 'yml': 'yaml'},
-      );
+      opal.LanguageRegistry.withDefaults();
 
   const CodeBlockProcessor();
 
@@ -65,9 +52,9 @@ final class CodeBlockProcessor implements PageExtension {
 
           if (language == 'dartpad') {
             return ComponentNode(
-              DartPadInjector(
-                content: lines,
-                title: title,
+              DartPadWrapper(
+                content: lines.join('\n'),
+                title: title ?? 'Runnable Dart example',
                 theme: metadata['theme'],
                 height: metadata['height'],
                 runAutomatically: metadata['run'] == 'true',
@@ -394,14 +381,15 @@ final class _CodeLine {
 
 extension on List<_CodeLine> {
   static final RegExp _terminalReplacementPattern = RegExp(
-    r'^(\s*\$\s*)|(C:\\(.*)>\s*)',
+    r'^(\s*\$\s*)|(PS\s+)?(C:\\(.*)>\s*)',
     multiLine: true,
   );
   static final RegExp _zeroWidthSpaceReplacementPattern = RegExp(r'\u200B');
 
-  String get copyContent => map((line) => line.content).join('\n')
-    ..replaceAll(_terminalReplacementPattern, '')
-    ..replaceAll(_zeroWidthSpaceReplacementPattern, '');
+  String get copyContent => map((line) => line.content)
+      .join('\n')
+      .replaceAll(_terminalReplacementPattern, '')
+      .replaceAll(_zeroWidthSpaceReplacementPattern, '');
 }
 
 /// Parses a comma-separated list of numbers and ranges into a set of numbers.
