@@ -79,7 +79,7 @@ $sidenav-wide-layout: 1024px;
       margin-top: 0.5rem;
     }
 
-    a.nav-link, button.nav-link {
+    a, button {
       background: none;
       border: none;
       text-wrap: pretty;
@@ -106,52 +106,55 @@ $sidenav-wide-layout: 1024px;
         outline: 2px solid var(--site-primary-color);
       }
 
-      > div {
-        display: inline-block;
+      &.nav-link {
 
-        .material-symbols {
-          font-size: 0.825rem;
-          margin-left: 0.125rem;
-          color: var(--site-base-fgColor-alt);
+        > div {
+          display: inline-block;
+
+          .material-symbols {
+            font-size: 0.825rem;
+            margin-left: 0.125rem;
+            color: var(--site-base-fgColor-alt);
+          }
         }
-      }
 
-      span {
-        vertical-align: middle;
-      }
+        span {
+          vertical-align: middle;
+        }
 
-      .expander {
-        color: var(--site-base-fgColor-lighter);
-        transition: transform .3s ease-in-out;
-      }
-
-      + ul {
-        display: none;
-      }
-
-      &:hover {
-        @include mixins.interaction-style(3%);
-      }
-
-      &:active {
-        @include mixins.interaction-style(5%);
-      }
-
-      &:not(.collapsed) {
         .expander {
-          transform: rotate(180deg);
+          color: var(--site-base-fgColor-lighter);
+          transition: transform .3s ease-in-out;
         }
 
         + ul {
-          display: block;
+          display: none;
         }
-      }
 
-      &.active {
-        background-color: rgb(var(--site-interaction-base-values) / 4%);
+        &:hover {
+          @include mixins.interaction-style(3%);
+        }
 
-        &:not(.collapsible) {
-          color: var(--site-link-fgColor);
+        &:active {
+          @include mixins.interaction-style(5%);
+        }
+
+        &:not(.collapsed) {
+          .expander {
+            transform: rotate(180deg);
+          }
+
+          + ul {
+            display: block;
+          }
+        }
+
+        &.active {
+          background-color: rgb(var(--site-interaction-base-values) / 4%);
+
+          &:not(.collapsible) {
+            color: var(--site-link-fgColor);
+          }
         }
       }
     }
@@ -171,11 +174,30 @@ $sidenav-wide-layout: 1024px;
   .navbar-nav {
     display: block;
 
-    a.nav-link {
+    a.nav-button {
       font-size: 1.125rem;
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
       padding: 0.375rem 0.6rem;
+      justify-content: flex-start;
+      gap: .5rem;
+
+      &.active {
+        background-color: var(--site-primary-color);
+        color: var(--site-onPrimary-color-lightest);
+      }
+
+      &:hover {
+        @include mixins.interaction-style(5%);
+      }
+
+      &:active {
+        @include mixins.interaction-style(10%);
+      }
+    }
+
+    .material-symbols {
+      font-size: 1.25rem;
     }
 
     // Hide items from top navbar in wide layout to avoid duplication.
