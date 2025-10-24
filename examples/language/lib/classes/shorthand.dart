@@ -47,16 +47,20 @@ BigInt bigIntZero = .zero; // Instead of BigInt.zero
   final double x, y;
   const Point(this.x, this.y);
   const Point.origin() : x = 0, y = 0; // Named constructor
-  static Point fromList(List<double> list) => Point(list[0], list[1]); // Static method
+
+  // Factory constructor
+  factory Point.fromList(List<double> list) {
+    return Point(list[0], list[1]);
+  }
 }
 
 // Named constructor
 Point origin = .origin(); // Instead of Point.origin()
 
-// Static factory method
+// Factory constructor
 Point p1 = .fromList([1.0, 2.0]); // Instead of Point.fromList([1.0, 2.0])
 
-// With type arguments for generic class constructors
+// Generic class constructor
 List<int> intList = .filled(5, 0); // Instead of List.filled(5, 0)
 // #enddocregion constructors
 
@@ -132,77 +136,19 @@ class Point {
 }
 
 // Enum values are always constants
-const Status defaultStatus = .running; // Instead of const Status.running
+const Status defaultStatus = .running; // Instead of Status.running
 
 // Invoking a const named constructor
-const Point myOrigin = .origin(); // Instead of const Point.origin()
+const Point myOrigin = .origin(); 
+// Instead of Point.origin()
 
 // Using shorthands in a const collection literal
-const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ]; // Instead of [const Point.origin(), const Point(1.0, 1.0)]
+const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ]; 
+// Instead of [Point.origin(), Point(1.0, 1.0)]
 // #enddocregion const
 
-// #docregion best
-// GOOD: Use dot shorthands in typed collections.
-final alignments = <MainAxisAlignment>[.center, .bottomLeft];
-
-List<Person>[
-  .new(name: 'Joe', age: 145),
-  .new(name: 'Alice', age: 495),
-];
-
-// GOOD: Use dot shorthands for implicit return values.
-class Foo {
-  MainAxisAlignment pickAlignment() => .start;  
-  EdgeInsets get padding => .all(8.0); 
-}
-
-
-
-// #enddocregion best
-
-// #docregion avoid 
-Size calculateSize() {
-  // AVOID: Return statement type is not obvious from the return statement alone. 
-  return .fromHeight(10);
-}
-
-Size calculateSize() {
-  // GOOD: Return statement type is obvious.
-  return Size.fromHeight(10);
-}
-
-
-// AVOID: The type of _character isn't obvious in this context.
-setState(() {
-  _character = .jefferson;
-});
-
-// AVOID: Prefer using explicit types for arrow syntax.
-ScrollController buildController() => .new();
-
-
-GlobalKey<ScaffoldMessengerState> buildKey() {
-// AVOID: Don't use .new() as a shorthand in return statements.
-  return .new();
-
-  // GOOD
-  return GlobalKey<ScaffoldMessengerState>();
-}
-
-// AVOID: Don't use .new() for class field declarations
-class Foo {
-  // BAD: Omit obvious types instead of using .new.
-  final ScrollController _controller = .new();
-
-  // GOOD
-  final _controller = ScrollController();
-}
-
-// #enddocregion avoid 
-
-// #docregion unnamed
+// #docregion unnamedbefore
 class _PageState extends State<Page> {
-  // Before
   final AnimationController _animationController = AnimationController(vsync: this);
   final ScrollController _scrollController = ScrollController();
 
@@ -211,13 +157,16 @@ class _PageState extends State<Page> {
 
   Map<String, Map<String, bool>> properties 
     = <String, Map<String, bool>>{};
+  // ...
+}
+// #enddocregion unnamedbefore
 
-  // After
+// #docregion unnamedafter
+class _PageState extends State<Page> {
   final AnimationController _animationController = .new(vsync: this);
   final ScrollController _scrollController = .new();
   final GlobalKey<ScaffoldMessengerState> scaffoldKey = .new();
   Map<String, Map<String, bool>> properties = .new();
-
   // ...
 }
-// #enddocregion unnamed
+// #enddocregion unnamedafter
