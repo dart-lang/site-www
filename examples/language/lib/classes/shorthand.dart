@@ -71,7 +71,8 @@ List<int> intList = .filled(5, 0); // Instead of List.filled(5, 0)
 // #docregion chain
 // .fromCharCode(72) resolves to the String "H",
 // then the instance method .toLowerCase() is called on that String.
-String lowerH = .fromCharCode(72).toLowerCase(); // Instead of String.fromCharCode(72).toLowerCase()
+String lowerH = .fromCharCode(72).toLowerCase(); 
+// Instead of String.fromCharCode(72).toLowerCase()
 
 print(lowerH); // Output: h
 // #enddocregion chain
@@ -139,8 +140,7 @@ class Point {
 const Status defaultStatus = .running; // Instead of Status.running
 
 // Invoking a const named constructor
-const Point myOrigin = .origin(); 
-// Instead of Point.origin()
+const Point myOrigin = .origin(); // Instead of Point.origin()
 
 // Using shorthands in a const collection literal
 const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ]; 

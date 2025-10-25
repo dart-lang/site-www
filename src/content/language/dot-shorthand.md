@@ -164,13 +164,14 @@ class Point {
 }
 
 // Enum values are always constants
-const Status defaultStatus = .running; // Instead of const Status.running
+const Status defaultStatus = .running; // Instead of Status.running
 
 // Invoking a const named constructor
-const Point myOrigin = .origin(); // Instead of const Point.origin()
+const Point myOrigin = .origin(); // Instead of Point.origin()
 
 // Using shorthands in a const collection literal
-const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ]; // Instead of [const Point.origin(), const Point(1.0, 1.0)]
+const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ];
+// Instead of [Point.origin(), Point(1.0, 1.0)]
 ```
 
 
@@ -191,7 +192,8 @@ context type.
 ```dart
 // .fromCharCode(72) resolves to the String "H",
 // then the instance method .toLowerCase() is called on that String.
-String lowerH = .fromCharCode(72).toLowerCase(); // Instead of String.fromCharCode(72).toLowerCase()
+String lowerH = .fromCharCode(72).toLowerCase();
+// Instead of String.fromCharCode(72).toLowerCase()
 
 print(lowerH); // Output: h
 ```
