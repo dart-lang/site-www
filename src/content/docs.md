@@ -26,3 +26,4 @@ To update these cards, edit src/_data/docs_cards.yml.
   </Card>
 {% endfor -%}
 </div>
+<!-- Small Hacktoberfest edit -->
