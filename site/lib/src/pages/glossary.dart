@@ -196,7 +196,10 @@ final class GlossaryCard extends StatelessComponent {
     final cardId = entry.id;
     final contentId = '$cardId-content';
 
-    final partialMatches = entry.term.toLowerCase();
+    final partialMatches = [
+      entry.term.toLowerCase(),
+      ...entry.labels,
+    ].join(' ');
     final fullMatches = entry.alternate.map((e) => e.toLowerCase()).join(',');
 
     return Card.expandable(
