@@ -6,7 +6,7 @@ prevpage:
   url: /language/mixins
   title: Mixins
 nextpage:
-  url: /language/dot-shorthand
+  url: /language/dot-shorthands
   title: Dot Shorthands
 ---
 
