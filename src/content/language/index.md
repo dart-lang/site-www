@@ -308,7 +308,7 @@ and switch cases where the enum type is clear to the compiler.
 [Read more](/language/enums) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
-[Read more](/language/dot-shorthand) about shorthand syntax. 
+[Read more](/language/dot-shorthands) about dot shorthand syntax. 
 
 
 ## Inheritance
