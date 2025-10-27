@@ -3,9 +3,11 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../models/sidenav_model.dart';
 import '../../util.dart';
+import '../../utils/active_nav.dart';
 import '../common/material_icon.dart';
 
 /// The site-wide side navigation menu,
@@ -23,52 +25,99 @@ final class DashSideNav extends StatelessComponent {
   final String currentPageUrl;
 
   @override
-  Component build(BuildContext _) => div(id: 'sidenav', [
-    form(action: '/search/', classes: 'site-header-search form-inline', [
-      input(
-        classes: 'site-header-searchfield search-field',
-        type: InputType.search,
-        name: 'q',
-        id: 'search-side',
-        attributes: {
-          'autocomplete': 'off',
-          'placeholder': 'Search',
-          'aria-label': 'Search',
-        },
-      ),
-    ]),
-    ul(classes: 'navbar-nav', const [
-      _SideNavDivider(),
-      _TopNavItem(href: '/overview', label: 'Overview'),
-      _TopNavItem(href: '/community', label: 'Community'),
-      _TopNavItem(href: 'https://dartpad.dev', label: 'Try Dart'),
-      _TopNavItem(href: '/get-dart', label: 'Get Dart'),
-      _TopNavItem(href: '/docs', label: 'Docs'),
-      _SideNavDivider(),
-    ]),
-    _SideNavLevel(
-      entries: navEntries,
-      parentId: 'docs',
-      currentLevel: 0,
-      possiblyActive: true,
-      activePath: _ActiveNavigationPath.findActive(
+  Component build(BuildContext context) {
+    final activeEntry = activeNavEntry(context.page.url);
+
+    return div(id: 'sidenav', [
+      form(action: '/search/', classes: 'site-header-search form-inline', [
+        input(
+          classes: 'site-header-searchfield search-field',
+          type: InputType.search,
+          name: 'q',
+          id: 'search-side',
+          attributes: {
+            'autocomplete': 'off',
+            'placeholder': 'Search',
+            'aria-label': 'Search',
+          },
+        ),
+      ]),
+      ul(classes: 'navbar-nav', [
+        const _SideNavDivider(),
+        _TopNavItem(
+          href: '/overview',
+          label: 'Overview',
+          iconId: 'asterisk',
+          active: activeEntry == ActiveNavEntry.overview,
+        ),
+        _TopNavItem(
+          href: '/docs',
+          label: 'Docs',
+          iconId: 'docs',
+          active: activeEntry == ActiveNavEntry.docs,
+        ),
+        const _TopNavItem(
+          href: 'https://blog.dart.dev',
+          label: 'Blog',
+          iconId: 'newsmode',
+        ),
+        _TopNavItem(
+          href: '/community',
+          label: 'Community',
+          iconId: 'public',
+          active: activeEntry == ActiveNavEntry.community,
+        ),
+        const _TopNavItem(
+          href: 'https://dart.dev',
+          label: 'Try Dart',
+          iconId: 'code_blocks',
+        ),
+        _TopNavItem(
+          href: '/get-dart',
+          label: 'Get Dart',
+          iconId: 'download',
+          active: activeEntry == ActiveNavEntry.getDart,
+        ),
+        const _SideNavDivider(),
+      ]),
+      _SideNavLevel(
         entries: navEntries,
-        currentPageUrl: currentPageUrl,
+        parentId: 'docs',
+        currentLevel: 0,
+        possiblyActive: true,
+        activePath: _ActiveNavigationPath.findActive(
+          entries: navEntries,
+          currentPageUrl: currentPageUrl,
+        ),
+        classes: 'nav',
       ),
-      classes: 'nav',
-    ),
-  ]);
+    ]);
+  }
 }
 
 class _TopNavItem extends StatelessComponent {
-  const _TopNavItem({required this.href, required this.label});
+  const _TopNavItem({
+    required this.href,
+    required this.label,
+    required this.iconId,
+    this.active = false,
+  });
 
   final String href;
   final String label;
+  final String iconId;
+  final bool active;
 
   @override
   Component build(BuildContext _) => li(classes: 'nav-item', [
-    a(href: href, classes: 'nav-link', [text(label)]),
+    a(
+      href: href,
+      classes: ['nav-button', if (active) 'active'].toClasses,
+      [
+        MaterialIcon(iconId),
+        text(label),
+      ],
+    ),
   ]);
 }
 

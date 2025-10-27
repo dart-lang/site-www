@@ -2,11 +2,11 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../util.dart';
+import '../../utils/active_nav.dart';
 import '../common/material_icon.dart';
 import 'menu_toggle.dart';
 import 'site_switcher.dart';
@@ -20,7 +20,7 @@ class DashHeader extends StatelessComponent {
   Component build(BuildContext context) {
     final pageUrlPath = context.page.url;
     final layout = context.page.data.page['layout'];
-    final activeEntry = _activeNavEntry(pageUrlPath);
+    final activeEntry = activeNavEntry(pageUrlPath);
 
     return header(id: 'site-header', classes: 'always-dark-mode', [
       nav(classes: 'navbar', [
@@ -52,7 +52,7 @@ class DashHeader extends StatelessComponent {
               href: '/overview',
               classes: [
                 'nav-link',
-                if (activeEntry == _ActiveNavEntry.overview) 'active',
+                if (activeEntry == ActiveNavEntry.overview) 'active',
               ].toClasses,
               [text('Overview')],
             ),
@@ -62,7 +62,7 @@ class DashHeader extends StatelessComponent {
               href: '/docs',
               classes: [
                 'nav-link',
-                if (activeEntry == _ActiveNavEntry.docs) 'active',
+                if (activeEntry == ActiveNavEntry.docs) 'active',
               ].toClasses,
               [
                 span([text('Docs')]),
@@ -83,13 +83,13 @@ class DashHeader extends StatelessComponent {
               href: '/community',
               classes: [
                 'nav-link',
-                if (activeEntry == _ActiveNavEntry.community) 'active',
+                if (activeEntry == ActiveNavEntry.community) 'active',
               ].toClasses,
               [text('Community')],
             ),
           ]),
           li([
-            if (activeEntry == _ActiveNavEntry.learn)
+            if (activeEntry == ActiveNavEntry.learn)
               a(href: '/get-started', classes: 'nav-link active', [
                 text('Learn'),
               ])
@@ -103,7 +103,7 @@ class DashHeader extends StatelessComponent {
               href: '/get-dart',
               classes: [
                 'nav-link',
-                if (activeEntry == _ActiveNavEntry.getDart) 'active',
+                if (activeEntry == ActiveNavEntry.getDart) 'active',
               ].toClasses,
               [text('Get Dart')],
             ),
@@ -150,43 +150,4 @@ class DashHeader extends StatelessComponent {
       ]),
     ]);
   }
-}
-
-_ActiveNavEntry? _activeNavEntry(String pageUrlPath) {
-  final firstFragment = pageUrlPath
-      .split('/')
-      .where((fragment) => fragment.isNotEmpty)
-      .firstOrNull
-      ?.trim()
-      .toLowerCase();
-
-  return switch (firstFragment) {
-    'overview' => _ActiveNavEntry.overview,
-    'community' => _ActiveNavEntry.community,
-    'get-started' => _ActiveNavEntry.learn,
-    'get-dart' => _ActiveNavEntry.getDart,
-    'deprecated' ||
-    'docs' ||
-    'effective-dart' ||
-    'get-started' ||
-    'interop' ||
-    'language' ||
-    'libraries' ||
-    'null-safety' ||
-    'resources' ||
-    'server' ||
-    'tools' ||
-    'tutorials' ||
-    'web' ||
-    'multiplatform-apps' => _ActiveNavEntry.docs,
-    _ => null,
-  };
-}
-
-enum _ActiveNavEntry {
-  overview,
-  community,
-  getDart,
-  docs,
-  learn,
 }
