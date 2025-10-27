@@ -535,7 +535,7 @@ void _setUpReleaseTags() {
         'dart-archive/channels/$channel/release/latest/VERSION',
       ),
     );
-    final data = jsonDecode(response.body) as Map<String, dynamic>;
+    final data = jsonDecode(response.body) as Map<String, Object?>;
     updatePlaceholders(channel, data['version'] as String);
   }
 
