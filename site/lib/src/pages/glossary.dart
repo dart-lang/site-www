@@ -5,9 +5,9 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../components/button.dart';
-import '../components/card.dart';
-import '../components/glossary_search_section.dart';
+import '../components/common/button.dart';
+import '../components/common/card.dart';
+import '../components/pages/glossary_search_section.dart';
 import '../markdown/markdown_parser.dart';
 import '../util.dart';
 

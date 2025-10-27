@@ -1,7 +1,7 @@
 @TestOn('browser')
 library;
 
-import 'package:dart_dev_site/src/components/chip.dart';
+import 'package:dart_dev_site/src/components/common/chip.dart';
 import 'package:dart_dev_site/src/models/lints.dart';
 import 'package:dart_dev_site/src/pages/lint_index.dart';
 import 'package:jaspr_test/browser_test.dart';

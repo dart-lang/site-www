@@ -2,6 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
@@ -42,6 +45,7 @@ void _setUpSite() {
   _setUpGallery();
   _setUpExpandableCards();
   _setUpTableOfContents();
+  _setUpReleaseTags();
 }
 
 void _setUpSidenav() {
@@ -501,4 +505,41 @@ void _setUpTocActiveObserver() {
   for (var i = 0; i < headings.length; i++) {
     observer.observe(headings.item(i) as web.Element);
   }
+}
+
+void _setUpReleaseTags() {
+  void updatePlaceholders(String channel, String version) {
+    final revisionElements = web.document.querySelectorAll(
+      '.build-rev-$channel',
+    );
+    for (var i = 0; i < revisionElements.length; i++) {
+      final revisionElement = revisionElements.item(i) as web.Element;
+      revisionElement.textContent = version;
+    }
+
+    if (channel == 'stable') {
+      final download =
+          'https://storage.googleapis.com/dart-archive/channels/$channel/release/latest/linux_packages/dart_$version-1_amd64.deb';
+      final targets = web.document.querySelectorAll('.debian-link-stable');
+      for (var i = 0; i < targets.length; i++) {
+        final target = targets.item(i) as web.Element;
+        target.setAttribute('href', download);
+      }
+    }
+  }
+
+  void fetchVersion(String channel) async {
+    final response = await http.get(
+      Uri.https(
+        'storage.googleapis.com',
+        'dart-archive/channels/$channel/release/latest/VERSION',
+      ),
+    );
+    final data = jsonDecode(response.body) as Map<String, dynamic>;
+    updatePlaceholders(channel, data['version'] as String);
+  }
+
+  fetchVersion('stable');
+  fetchVersion('beta');
+  fetchVersion('dev');
 }

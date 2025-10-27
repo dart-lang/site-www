@@ -5,7 +5,6 @@ description: >-
   Get the libraries and command-line tools that you need to develop
   Dart web, command-line, and server apps.
 channelList: [Stable, Beta, Dev]
-js: [{url: '/assets/js/get-dart/install.js', defer: true}]
 ---
 
 This page describes how to download the Dart SDK.
