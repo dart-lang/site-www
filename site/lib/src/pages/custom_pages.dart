@@ -9,7 +9,7 @@ import 'package:jaspr/jaspr.dart' show Component;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as p;
 
-import '../components/tags.dart';
+import '../components/common/tags.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/lints.dart';
 import 'glossary.dart';

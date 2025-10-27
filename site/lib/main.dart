@@ -10,8 +10,9 @@ import 'package:path/path.dart' as path;
 
 import 'jaspr_options.dart'; // Generated. Do not remove or edit.
 import 'src/archive/archive_table.dart';
-import 'src/components/card.dart';
-import 'src/components/tabs.dart';
+import 'src/components/common/card.dart';
+import 'src/components/common/tabs.dart';
+import 'src/components/common/youtube_embed.dart';
 import 'src/extensions/registry.dart';
 import 'src/layouts/doc_layout.dart';
 import 'src/layouts/homepage_layout.dart';
@@ -64,69 +65,22 @@ Component get _dartDevSite => ContentApp.custom(
 /// Custom "components" that can be used from Markdown files.
 List<CustomComponent> get _embeddableComponents => [
   const DashTabs(),
+  const YoutubeEmbed(),
   CustomComponent(
-    pattern: RegExp('ArchiveTable', caseSensitive: false),
-    builder: (name, attributes, child) {
-      final channel = attributes['channel']!;
-      return ArchiveTable(channel: channel);
-    },
+    pattern: RegExp('ArchiveTable'),
+    builder: (_, attrs, _) => ArchiveTable.fromAttributes(attrs),
   ),
   CustomComponent(
     pattern: RegExp('LintRuleIndex', caseSensitive: false),
-    builder: (name, attributes, child) {
-      return const LintRuleIndex();
-    },
+    builder: (_, _, _) => const LintRuleIndex(),
   ),
   CustomComponent(
     pattern: RegExp('DiagnosticIndex', caseSensitive: false),
-    builder: (name, attributes, child) {
-      return const DiagnosticIndex();
-    },
+    builder: (_, _, _) => const DiagnosticIndex(),
   ),
   CustomComponent(
     pattern: RegExp('Card', caseSensitive: false),
-    builder: (name, attributes, child) {
-      final link = attributes['link'];
-      final title = attributes['title']!;
-      return Card(
-        header: [
-          header(classes: 'card-title', [text(title)]),
-        ],
-        content: [?child],
-        link: link,
-        filled: link != null,
-      );
-    },
-  ),
-  CustomComponent(
-    pattern: RegExp('YouTubeEmbed', caseSensitive: false),
-    builder: (name, attributes, child) {
-      final rawVideoId = attributes['id'] as String;
-      final videoTitle = attributes['title'] as String;
-      final playlistId = attributes['playlist'];
-
-      final String videoId;
-      final int startTime;
-      if (rawVideoId.contains('?')) {
-        videoId = rawVideoId.split('?')[0];
-
-        final idAndStartTime = videoId.split('start=');
-        startTime = int.tryParse(idAndStartTime[1]) ?? 0;
-      } else {
-        startTime = 0;
-        videoId = rawVideoId;
-      }
-
-      // Instead of directly including a YouTube embed iframe,
-      // we use https://github.com/justinribeiro/lite-youtube which
-      // lazily loads the video, significantly reduces page load times,
-      // and enables configurability through element attributes.
-      return raw('''
-<lite-youtube videoid="$videoId" videotitle="$videoTitle" videoStartAt="$startTime" ${playlistId != null ? 'playlistid="$playlistId"' : ''}>
-  <a class="lite-youtube-fallback" href="https://www.youtube.com/watch/$videoId" target="_blank" rel="noopener">Watch on YouTube in a new tab: "$videoTitle"</a>
-</lite-youtube>
-''');
-    },
+    builder: (_, attrs, child) => Card.fromAttributes(attrs, child),
   ),
 ];
 
