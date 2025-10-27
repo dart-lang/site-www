@@ -20,6 +20,16 @@ typedef VersionRow = ({
 final class ArchiveTable extends StatelessComponent {
   ArchiveTable({required this.channel, super.key});
 
+  /// Creates an [ArchiveTable] from a set of attributes parsed from markdown.
+  factory ArchiveTable.fromAttributes(Map<String, String> attributes) {
+    final channel =
+        attributes['channel'] ??
+        (throw Exception(
+          'ArchiveTable component requires a "channel" attribute.',
+        ));
+    return ArchiveTable(channel: channel);
+  }
+
   static VersionRow templateRow(String channel) {
     return (
       version: switch (channel) {
