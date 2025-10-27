@@ -5,10 +5,10 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../models/sidenav_model.dart';
-import '../util.dart';
-import '../utils/active_nav.dart';
-import 'material_icon.dart';
+import '../../models/sidenav_model.dart';
+import '../../util.dart';
+import '../../utils/active_nav.dart';
+import '../common/material_icon.dart';
 
 /// The site-wide side navigation menu,
 /// with entries loaded from the `src/data/sidenav.yml` file.

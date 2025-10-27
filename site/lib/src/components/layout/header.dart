@@ -5,12 +5,12 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../util.dart';
-import '../utils/active_nav.dart';
-import 'header/menu_toggle.dart';
-import 'header/site_switcher.dart';
-import 'header/theme_switcher.dart';
-import 'material_icon.dart';
+import '../../util.dart';
+import '../../utils/active_nav.dart';
+import '../common/material_icon.dart';
+import 'menu_toggle.dart';
+import 'site_switcher.dart';
+import 'theme_switcher.dart';
 
 /// The site-wide top navigation bar.
 class DashHeader extends StatelessComponent {
