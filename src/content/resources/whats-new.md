@@ -46,7 +46,7 @@ we made the following changes to docs on this site:
 
 [JNIGen documentation]: /interop/java-interop
 [`dart compile` documentation]: /tools/dart-compile
-[Dart MCP Server guide]: /tools/mcp-server
+[Dart MCP Server guide]: {{site.flutter-docs}}/ai/mcp-server
 [`dart create` page]: /tools/dart-create
 [metadata and annotations documentation]: /language/metadata
 ["external resource type"]: {{site.repo.this}}/pull/6762
