@@ -550,7 +550,7 @@ void _setUpTooltips() {
 
   final isTouchscreen = web.window.matchMedia('(pointer: coarse)').matches;
 
-  void setup(bool setUpClickListener) {
+  void setup({required bool setUpClickListener}) {
     for (var i = 0; i < tooltipWrappers.length; i++) {
       final linkWrapper = tooltipWrappers.item(i) as web.HTMLElement;
       final target = linkWrapper.querySelector('.tooltip-target');
@@ -589,11 +589,11 @@ void _setUpTooltips() {
     }
   }
 
-  setup(true);
+  setup(setUpClickListener: true);
 
   // Reposition tooltips on window resize.
   web.EventStreamProviders.resizeEvent.forTarget(web.window).listen((_) {
-    setup(false);
+    setup(setUpClickListener: false);
   });
 
   // Close tooltips when clicking outside of any tooltip wrapper.
