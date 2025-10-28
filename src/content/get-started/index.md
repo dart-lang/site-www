@@ -6,7 +6,7 @@ description: >-
   Begin your Dart learning journey by building an interactive CLI app.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 nextpage:
   url: /get-started/hello-world
   title: Build your first app

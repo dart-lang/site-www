@@ -22,6 +22,8 @@ class DocLayout extends DashLayout {
   @override
   String get name => 'docs';
 
+  bool get showTocDefault => true;
+
   @override
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
@@ -73,6 +75,10 @@ class DocLayout extends DashLayout {
   }
 
   OnThisPageData? _tocForPage(Page page) {
+    if (!showTocDefault) {
+      return null;
+    }
+
     final pageData = page.data.page;
     final showToc = pageData['showToc'] as bool? ?? true;
 

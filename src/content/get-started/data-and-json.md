@@ -6,7 +6,7 @@ description: >-
   JSON data from the Wikipedia API.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 prevpage:
   url: /get-started/command-runner-polish
   title: Command runner polish
