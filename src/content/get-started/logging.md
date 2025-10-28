@@ -6,7 +6,7 @@ description: >-
   monitoring.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 prevpage:
   url: /get-started/http
   title: Http

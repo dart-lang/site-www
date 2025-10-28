@@ -16,6 +16,7 @@ import 'src/components/common/youtube_embed.dart';
 import 'src/extensions/registry.dart';
 import 'src/layouts/doc_layout.dart';
 import 'src/layouts/homepage_layout.dart';
+import 'src/layouts/learn_layout.dart';
 import 'src/loaders/data_processor.dart';
 import 'src/markdown/markdown_parser.dart';
 import 'src/pages/custom_pages.dart';
@@ -56,7 +57,7 @@ Component get _dartDevSite => ContentApp.custom(
     rawOutputPattern: RegExp(r'.*\.(txt|json)$'),
     extensions: allNodeProcessingExtensions,
     components: _embeddableComponents,
-    layouts: const [DocLayout(), HomepageLayout()],
+    layouts: const [DocLayout(), HomepageLayout(), LearnLayout()],
     theme: const ContentTheme.none(),
     secondaryOutputs: const [RobotsTxtOutput()],
   ),

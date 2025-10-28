@@ -5,7 +5,7 @@ description: >-
   Learn how to organize your Dart code into reusable libraries and packages.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 prevpage:
   url: /get-started/async
   title: Introduction to async and HTTP
