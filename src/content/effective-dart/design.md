@@ -660,7 +660,7 @@ intend, and they may break your code without realizing it.
 ### DO use class modifiers to control if your class can be an interface
 
 When designing a library, use class modifiers like `final`, `base`, or `sealed` to enforce intended
-usage. For example, use `final class C {}` or `base class D{}` to prevent
+usage. For example, use `final class C {}` or `base class D {}` to prevent
 implementation outside the current library.
 While it's ideal for all libraries to use these modifiers to enforce design intent,
 developers may still encounter cases where they aren't applied. In such cases, be mindful of
