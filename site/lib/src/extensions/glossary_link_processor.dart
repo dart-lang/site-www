@@ -6,6 +6,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../pages/glossary.dart';
+import '../util.dart';
 
 /// A node-processing, page extension for Jaspr Content that looks for links to
 /// glossary entries and enhances them with interactive glossary tooltips.
@@ -21,9 +22,7 @@ class GlossaryLinkProcessor implements PageExtension {
   List<Node> _processNodes(List<Node> nodes, Glossary glossary) {
     final processedNodes = <Node>[];
 
-    for (var i = 0; i < nodes.length; i++) {
-      final node = nodes[i];
-
+    for (final node in nodes) {
       if (node is ElementNode &&
           node.tag == 'a' &&
           node.attributes['href']?.startsWith('/resources/glossary') == true) {
@@ -46,8 +45,10 @@ class GlossaryLinkProcessor implements PageExtension {
             [
               ElementNode('a', {
                 ...node.attributes,
-                'class': '${node.attributes['class'] ?? ''} tooltip-target'
-                    .trim(),
+                'class': [
+                  ?node.attributes['class'],
+                  'tooltip-target',
+                ].toClasses,
               }, node.children),
               ComponentNode(GlossaryTooltip(entry: entry)),
             ],
