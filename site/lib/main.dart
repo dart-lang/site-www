@@ -5,7 +5,6 @@
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
-import 'package:liquify/liquify.dart' show FilterRegistry;
 import 'package:path/path.dart' as path;
 
 import 'jaspr_options.dart'; // Generated. Do not remove or edit.
@@ -22,13 +21,12 @@ import 'src/pages/custom_pages.dart';
 import 'src/pages/diagnostic_index.dart';
 import 'src/pages/lint_index.dart';
 import 'src/pages/robots_txt.dart';
+import 'src/templating/dash_template_engine.dart';
 import 'src/util.dart';
 
 void main() {
   // Initializes the server environment with the generated default options.
   Jaspr.initializeApp(options: defaultJasprOptions);
-
-  _setUpLiquid();
 
   runApp(_dartDevSite);
 }
@@ -44,8 +42,8 @@ Component get _dartDevSite => ContentApp.custom(
       FilesystemDataLoader(path.join(siteSrcDirectoryPath, 'data')),
       DataProcessor(),
     ],
-    templateEngine: LiquidTemplateEngine(
-      includesPath: path.canonicalize(
+    templateEngine: DashTemplateEngine(
+      partialDirectoryPath: path.canonicalize(
         path.join(siteSrcDirectoryPath, '_includes'),
       ),
     ),
@@ -83,40 +81,3 @@ List<CustomComponent> get _embeddableComponents => [
     builder: (_, attrs, child) => Card.fromAttributes(attrs, child),
   ),
 ];
-
-/// Set up the Liquid templating engine from `package:liquify`,
-/// adding filters, tags, and other functionality our content relies on.
-void _setUpLiquid() {
-  // TODO(https://github.com/dart-lang/site-www/issues/6840):
-  //  Eventually migrate away from the remaining Liquid filter usages.
-  FilterRegistry.register('slugify', (value, _, _) {
-    if (value is! String) return value;
-
-    return slugify(value);
-  });
-
-  FilterRegistry.register('arrayToSentenceString', (value, _, _) {
-    if (value is! List) return value;
-
-    if (value.isEmpty) {
-      return '';
-    }
-
-    if (value.length == 1) {
-      return value[0];
-    }
-
-    final result = StringBuffer();
-
-    for (var i = 0; i < value.length; i++) {
-      final item = value[i].toString();
-      if (i == value.length - 1) {
-        result.write('and $item');
-      } else {
-        result.write('$item, ');
-      }
-    }
-
-    return result.toString();
-  });
-}
