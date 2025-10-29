@@ -19,7 +19,7 @@ instead of `ContextType.foo`. The compiler infers the type
 from context, letting you access enum values, static members, 
 or constructors more cleanly.
 
-Here is a quick look:
+Here's is a quick look:
 
 <?code-excerpt "language/lib/classes/shorthand.dart (intro)"?>
 ```dart
