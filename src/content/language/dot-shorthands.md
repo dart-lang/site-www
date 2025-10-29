@@ -100,7 +100,9 @@ Point p1 = .fromList([1.0, 2.0]); // Instead of Point.fromList([1.0, 2.0])
 // Generic class constructor
 List<int> intList = .filled(5, 0); // Instead of List.filled(5, 0)
 ``` 
+
 ### Unnamed constructors
+
 The `.new` dot shorthand provides a concise way to call an
 unnamed constructor of a class. This is useful 
 for instantiating fields and variables where the type is 
