@@ -1,7 +1,6 @@
 ---
 title: Dot shorthands
 description: Learn about the dot shorthand syntax in Dart.
-shortTitle: Dot Shorthands
 prevpage:
   url: /language/enums
   title: Enums
