@@ -14,6 +14,8 @@ Support for dot shorthand syntax is experimental and
 can only be used on the `main` channel.
 :::
 
+## Grammar
+
 Write more concise Dart code by using the dot shorthand syntax `.foo` 
 instead of `ContextType.foo`. The compiler infers the type 
 from context, letting you access enum values, static members, 
