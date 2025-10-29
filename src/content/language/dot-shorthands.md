@@ -178,7 +178,9 @@ const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ];
 ```
 
 
-## Advanced usage
+## Rules and limitations
+
+Add an intro sentence here.
 
 ### Clear context type required in chains
 While you can chain operations like method calls or 
