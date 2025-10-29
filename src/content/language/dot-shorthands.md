@@ -47,7 +47,9 @@ For example, in `Status currentStatus = .running`,
 the compiler knows a `Status` is expected, so it infers 
 `.running` to mean `Status.running`.
 
-## Using dot shorthand syntax
+## Lexical structure and syntax
+
+The dot shorthand feature introduces a new expression, the _static member shorthand_, which begins with a leading dot (`.`) and provides a concise way to access static members, constructors, and enum values when the compiler can infer the type from the surrounding code.
 
 ### Enums
 A primary and highly recommended use case for dot shorthands 
