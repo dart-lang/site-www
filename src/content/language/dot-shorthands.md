@@ -180,7 +180,7 @@ const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ];
 
 ## Advanced usage
 
-### Chaining
+### Clear context type required in chains
 While you can chain operations like method calls or 
 property accesses onto a dot shorthand, the entire expression 
 is validated against the context type.
