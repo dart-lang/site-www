@@ -201,7 +201,7 @@ String lowerH = .fromCharCode(72).toLowerCase();
 print(lowerH); // Output: h
 ```
 
-### Equality operators
+### Asymmetric equality checks
 The `==` and `!=` operators have a special rule for dot shorthands. 
 When dot shorthand syntax is used directly on the right-hand side (RHS) 
 of an equality check, Dart uses the static type of the 
