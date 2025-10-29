@@ -7,7 +7,7 @@ prevpage:
   title: Mixins
 nextpage:
   url: /language/dot-shorthands
-  title: Dot Shorthands
+  title: Dot shorthands
 ---
 
 Enumerated types, often called _enumerations_ or _enums_,
