@@ -268,4 +268,46 @@ void notAllowedExamples() {
   }
 }
 ```
+### Expression statements can't start with `.`
 
+To avoid potential parsing ambiguities in the future, an
+expression statement is not allowed to begin with a
+`.` token.
+
+### No generic constructor tear-offs with type arguments
+
+You can't use type arguments on a `.new` dot shorthand to
+create an instantiated tear-off of a constructor. This is 
+consistent with the existing behavior for explicit constructor
+tear-offs (`MyClass.new<int>`) and produces a
+compile-time error.
+
+### Limited declaration kinds
+
+Dot shorthands is designed to work with types that have a 
+clear static scope, namely `class`, `mixin`, `enum`, and
+`extension` type declarations. This can be problematic for
+some platform types (like `Function`) whose declaration
+kind is not explicitly specified.
+
+### Delayed resolution during compilation
+
+Unlike regular static member access, which can be resolved
+lexically before type inference, dot shorthands can only be
+resolved after the compiler has inferred the types. This 
+delayed resolution is a complication for the Dart
+implementation and could potentially affect tooling, like
+static analysis and tree-shaking, that might expect all static
+targets to be known earlier.
+
+### Limited handling of union types
+
+While there is special handling for nullable types (`T?`) and
+`FutureOr<T>`, support is limited.
+
+*  For a nullable type (T?), you can access static members
+   of `T`, but not of `Null`.
+
+*  For `FutureOr<T>`, you can access static members of `T`
+  (primarily to support `async` function returns), but you
+  can't access static members of the `Future` class itself.
