@@ -179,6 +179,12 @@ ga('send', 'pageview');
 
     return Component.fragment(
       [
+        const Document.html(
+          attributes: {
+            'lang': 'en',
+            'dir': 'ltr',
+          },
+        ),
         Document.body(
           attributes: {
             'class': [?bodyClass, ...defaultBodyClasses].toClasses,
