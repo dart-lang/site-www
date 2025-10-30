@@ -29,7 +29,8 @@ body.glossary-page main {
     }
 
     .expand-button {
-      &:hover, &:focus-within {
+      &:hover,
+      &:focus-within {
         transition: transform .25s ease-out;
       }
     }
@@ -61,7 +62,8 @@ body.glossary-page main {
     }
   }
 
-  .initial-content, .expandable-content {
+  .initial-content,
+  .expandable-content {
     > :first-child {
       margin-top: 0;
     }
