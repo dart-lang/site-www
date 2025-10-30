@@ -45,8 +45,42 @@ article {
   }
 
   #site-content-title {
-    margin-bottom: 1rem;
+    position: relative;
+    font-family: var(--site-ui-fontFamily);
+    margin-block-end: 1.5rem;
     scroll-margin-top: calc(var(--site-header-height) + var(--site-subheader-height) + 1.25rem);
+
+    &.wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+
+      background-color: var(--site-raised-bgColor);
+      padding: 1rem;
+      border-radius: var(--site-radius);
+    }
+
+    h1 {
+      text-wrap: pretty;
+    }
+
+    .page-description {
+      margin-block: 0;
+    }
+
+    #page-header-options {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+
+      > button {
+        color: var(--site-base-fgColor-alt);
+      }
+
+      .dropdown-content {
+        right: -0.5rem;
+      }
+    }
   }
 
   h1,

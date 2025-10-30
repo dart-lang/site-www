@@ -4,12 +4,12 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--site-chrome-bgColor);
-    color: var(--site-chrome-fgColor);
+    background-color: var(--site-raised-bgColor);
     box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.2);
     border-radius: calc(var(--site-radius) * 1.25);
     width: max-content;
-    border: var(--site-chrome-borderColor) 1px solid;
+    border: rgba(0, 0, 0, 0.15) 1px solid;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     z-index: var(--site-z-dropdown);
 
     .dropdown-divider {
@@ -36,6 +36,7 @@
           a, button {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             flex-direction: row;
             width: 100%;
             gap: 0.4rem;

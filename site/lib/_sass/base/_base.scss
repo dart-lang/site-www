@@ -30,25 +30,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, .h1 {
   font-family: var(--site-ui-fontFamily);
-  font-size: 3rem;
+  font-size: 2.75rem;
+  font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.material-symbols {
-  font-family: var(--site-icon-fontFamily);
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
 }
 
 h2, .h2 {
@@ -69,6 +54,22 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 0.9375rem;
+}
+
+.material-symbols {
+  font-family: var(--site-icon-fontFamily);
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }
 
 dd {

@@ -15,18 +15,20 @@ import 'package:dart_dev_site/src/components/common/client/feedback.dart'
     as prefix4;
 import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
     as prefix5;
-import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
+import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     as prefix6;
-import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
+import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
     as prefix7;
-import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
+import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
     as prefix8;
-import 'package:dart_dev_site/src/components/layout/theme_switcher.dart'
+import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
     as prefix9;
-import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
+import 'package:dart_dev_site/src/components/layout/theme_switcher.dart'
     as prefix10;
-import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
+import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
     as prefix11;
+import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
+    as prefix12;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -73,30 +75,35 @@ JasprOptions get defaultJasprOptions => JasprOptions(
       'src/components/common/client/on_this_page_button',
     ),
 
-    prefix6.DartPadInjector: ClientTarget<prefix6.DartPadInjector>(
-      'src/components/dartpad/dartpad_injector',
-      params: _prefix6DartPadInjector,
+    prefix6.PageHeaderOptions: ClientTarget<prefix6.PageHeaderOptions>(
+      'src/components/common/client/page_header_options',
+      params: _prefix6PageHeaderOptions,
     ),
 
-    prefix7.MenuToggle: ClientTarget<prefix7.MenuToggle>(
+    prefix7.DartPadInjector: ClientTarget<prefix7.DartPadInjector>(
+      'src/components/dartpad/dartpad_injector',
+      params: _prefix7DartPadInjector,
+    ),
+
+    prefix8.MenuToggle: ClientTarget<prefix8.MenuToggle>(
       'src/components/layout/menu_toggle',
     ),
 
-    prefix8.SiteSwitcher: ClientTarget<prefix8.SiteSwitcher>(
+    prefix9.SiteSwitcher: ClientTarget<prefix9.SiteSwitcher>(
       'src/components/layout/site_switcher',
     ),
 
-    prefix9.ThemeSwitcher: ClientTarget<prefix9.ThemeSwitcher>(
+    prefix10.ThemeSwitcher: ClientTarget<prefix10.ThemeSwitcher>(
       'src/components/layout/theme_switcher',
     ),
 
-    prefix10.GlossarySearchSection:
-        ClientTarget<prefix10.GlossarySearchSection>(
+    prefix11.GlossarySearchSection:
+        ClientTarget<prefix11.GlossarySearchSection>(
           'src/components/pages/glossary_search_section',
         ),
 
-    prefix11.LintFilterSearchSection:
-        ClientTarget<prefix11.LintFilterSearchSection>(
+    prefix12.LintFilterSearchSection:
+        ClientTarget<prefix12.LintFilterSearchSection>(
           'src/components/pages/lint_filter_search_section',
         ),
   },
@@ -115,7 +122,12 @@ Map<String, dynamic> _prefix3CopyButton(prefix3.CopyButton c) => {
 Map<String, dynamic> _prefix4FeedbackComponent(prefix4.FeedbackComponent c) => {
   'issueUrl': c.issueUrl,
 };
-Map<String, dynamic> _prefix6DartPadInjector(prefix6.DartPadInjector c) => {
+Map<String, dynamic> _prefix6PageHeaderOptions(prefix6.PageHeaderOptions c) => {
+  'title': c.title,
+  'sourceUrl': c.sourceUrl,
+  'issueUrl': c.issueUrl,
+};
+Map<String, dynamic> _prefix7DartPadInjector(prefix7.DartPadInjector c) => {
   'title': c.title,
   'theme': c.theme,
   'height': c.height,
