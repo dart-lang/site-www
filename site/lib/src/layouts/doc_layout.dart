@@ -5,13 +5,12 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../components/common/breadcrumbs.dart';
+import '../components/common/page_header.dart';
 import '../components/common/prev_next.dart';
 import '../components/layout/toc.dart';
 import '../components/layout/trailing_content.dart';
 import '../extensions/header_extractor.dart';
 import '../models/on_this_page_model.dart';
-import '../util.dart';
 import 'dash_layout.dart';
 
 /// The Jaspr Content layout to use for normal docs pages,
@@ -28,6 +27,7 @@ class DocLayout extends DashLayout {
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
     final pageTitle = pageData['title'] as String;
+    final pageDescription = (pageData['description'] as String?)?.trim();
     final tocData = _tocForPage(page);
 
     return super.buildBody(
@@ -48,16 +48,13 @@ class DocLayout extends DashLayout {
               ]),
             article([
               div(classes: 'content', [
-                div(id: 'site-content-title', [
-                  h1(id: 'document-title', [
-                    if (pageData['underscore_breaker_titles'] == true)
-                      ...splitByUnderscore(pageTitle)
-                    else
-                      text(pageTitle),
-                  ]),
-                  if (pageData['showBreadcrumbs'] != false)
-                    const PageBreadcrumbs(),
-                ]),
+                PageHeader(
+                  title: pageTitle,
+                  description: pageDescription,
+                  showBreadcrumbs: pageData['showBreadcrumbs'] as bool? ?? true,
+                  splitTitleByUnderscores:
+                      pageData['underscore_breaker_titles'] as bool? ?? false,
+                ),
 
                 child,
 
