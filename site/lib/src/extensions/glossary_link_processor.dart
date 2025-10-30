@@ -83,7 +83,15 @@ class GlossaryTooltip extends StatelessComponent {
       span(classes: 'tooltip-content', [
         text(entry.shortDescription),
         text(' '),
-        a(href: '/resources/glossary#${entry.id}', [text('Learn more')]),
+        a(
+          href: '/resources/glossary#${entry.id}',
+          attributes: {
+            'title':
+                'Learn more about \'${entry.term}\' and '
+                'find related resources.',
+          },
+          [text('Learn more')],
+        ),
       ]),
     ]);
   }

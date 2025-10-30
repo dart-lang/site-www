@@ -13,7 +13,6 @@ body.glossary-page main {
       min-height: 8rem;
 
       .initial-content {
-
         // Only show the first paragraph if collapsed.
         > :not(:first-child) {
           display: none;
@@ -30,7 +29,6 @@ body.glossary-page main {
     }
 
     .expand-button {
-
       &:hover,
       &:focus-within {
         transition: transform .25s ease-out;
