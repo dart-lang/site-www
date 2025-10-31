@@ -172,7 +172,7 @@ accounting for them before the 3.10 release.
 #### Analyzer
 
 - Using members marked as `@experimental` outside
-  the package they are declared in,
+  the package they are declared in
   now results in a warning.
 
 - Lint rules enabled in included analysis options files
