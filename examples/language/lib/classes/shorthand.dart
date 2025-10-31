@@ -77,7 +77,7 @@ String lowerH = .fromCharCode(72).toLowerCase();
 print(lowerH); // Output: h
 // #enddocregion chain
 
-// #docregion allowedequality
+// #docregion allowed-equality
 enum Color { red, green, blue }
 
 void allowedExamples() {
@@ -99,9 +99,9 @@ void allowedExamples() {
   Color inferredColor = condition ? .green : .blue;
   print('Inferred color is $inferredColor');
 }
-// #enddocregion allowedequality
+// #enddocregion allowed-equality
 
-// #docregion notallowedequality
+// #docregion not-allowed-equality
 enum Color { red, green, blue }
 
 void notAllowedExamples() {
@@ -126,7 +126,7 @@ void notAllowedExamples() {
     print('This will not compile.');
   }
 }
-// #enddocregion notallowedequality
+// #enddocregion not-allowed-equality
 
 // #docregion const
 enum Status { none, running, stopped, paused }
@@ -147,7 +147,7 @@ const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ];
 // Instead of [Point.origin(), Point(1.0, 1.0)]
 // #enddocregion const
 
-// #docregion unnamedbefore
+// #docregion unnamed-before
 class _PageState extends State<Page> {
   final AnimationController _animationController = AnimationController(vsync: this);
   final ScrollController _scrollController = ScrollController();
@@ -159,9 +159,9 @@ class _PageState extends State<Page> {
     = <String, Map<String, bool>>{};
   // ...
 }
-// #enddocregion unnamedbefore
+// #enddocregion unnamed-before
 
-// #docregion unnamedafter
+// #docregion unnamed-after
 class _PageState extends State<Page> {
   final AnimationController _animationController = .new(vsync: this);
   final ScrollController _scrollController = .new();
@@ -169,4 +169,4 @@ class _PageState extends State<Page> {
   Map<String, Map<String, bool>> properties = .new();
   // ...
 }
-// #enddocregion unnamedafter
+// #enddocregion unnamed-after

@@ -51,7 +51,11 @@ the compiler knows a `Status` is expected, so it infers
 
 ## Lexical structure and syntax
 
-The dot shorthand feature introduces a new expression, the _static member shorthand_, which begins with a leading dot (`.`) and provides a concise way to access static members, constructors, and enum values when the compiler can infer the type from the surrounding code.
+The dot shorthand feature introduces a new expression, 
+the _static member shorthand_, which begins with a leading dot (`.`) 
+and provides a concise way to access static members, 
+constructors, and enum values when the compiler can infer 
+the type from the surrounding code.
 
 ### Enums
 A primary and highly recommended use case for dot shorthands 
@@ -113,7 +117,7 @@ for instantiating fields and variables where the type is
 already explicitly declared.
 
 Before:
-<?code-excerpt "language/lib/classes/shorthand.dart (unnamedbefore)"?>
+<?code-excerpt "language/lib/classes/shorthand.dart (unnamed-before)"?>
 ```dart
 class _PageState extends State<Page> {
   final AnimationController _animationController = AnimationController(vsync: this);
@@ -128,7 +132,7 @@ class _PageState extends State<Page> {
 }
 ```
 After:
-<?code-excerpt "language/lib/classes/shorthand.dart (unnamedafter)"?>
+<?code-excerpt "language/lib/classes/shorthand.dart (unnamed-after)"?>
 ```dart
 class _PageState extends State<Page> {
   final AnimationController _animationController = .new(vsync: this);
@@ -215,7 +219,7 @@ For instance, in an expression like `myColor == .green`,
 the type of the variable `myColor` is used as the context. 
 This means the compiler interprets `.green` as `Color.green`.
 
-<?code-excerpt "language/lib/classes/shorthand.dart (allowedequality)"?>
+<?code-excerpt "language/lib/classes/shorthand.dart (allowed-equality)"?>
 ```dart
 enum Color { red, green, blue }
 
@@ -243,7 +247,7 @@ The dot shorthand must be on the right-hand side of the `==`
 or `!=` operator. Comparing against a more complex expression, 
 like a ternary, is also not allowed.
 
-<?code-excerpt "language/lib/classes/shorthand.dart (notallowedequality)"?>
+<?code-excerpt "language/lib/classes/shorthand.dart (not-allowed-equality)"?>
 ```dart
 enum Color { red, green, blue }
 
