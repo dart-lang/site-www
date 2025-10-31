@@ -23,6 +23,8 @@ abstract class DashLayout extends PageLayoutBase {
   @override
   String get name;
 
+  List<String> get defaultBodyClasses => [];
+
   @override
   @mustCallSuper
   Iterable<Component> buildHead(Page page) {
@@ -177,7 +179,17 @@ ga('send', 'pageview');
 
     return Component.fragment(
       [
-        if (bodyClass != null) Document.body(attributes: {'class': bodyClass}),
+        const Document.html(
+          attributes: {
+            'lang': 'en',
+            'dir': 'ltr',
+          },
+        ),
+        Document.body(
+          attributes: {
+            'class': [?bodyClass, ...defaultBodyClasses].toClasses,
+          },
+        ),
         raw('''
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 '''),

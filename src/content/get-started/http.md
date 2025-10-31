@@ -6,7 +6,7 @@ description: >-
   Wikipedia CLI.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 prevpage:
   url: /get-started/testing
   title: Testing

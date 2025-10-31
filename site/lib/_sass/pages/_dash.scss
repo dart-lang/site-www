@@ -16,12 +16,6 @@ $dash-dartpad-border: #293542;
 $dash-max-width: 1330px;
 
 body.homepage {
-  &:not(.open_menu) {
-    #sidenav {
-      display: none;
-    }
-  }
-
   .dash-header-callout {
     font-family: var(--site-ui-fontFamily);
     background-color: var(--site-chrome-bgColor);

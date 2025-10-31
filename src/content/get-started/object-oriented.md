@@ -7,7 +7,7 @@ description: >-
   Build a framework for well-architected CLI apps.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 prevpage:
   url: /get-started/packages-libs
   title: Packages and libraries

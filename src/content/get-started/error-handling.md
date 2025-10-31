@@ -6,7 +6,7 @@ description: >-
   `try/catch`, `throw`, and `rethrow`.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 prevpage:
   url: /get-started/object-oriented
   title: Object-oriented Dart programming

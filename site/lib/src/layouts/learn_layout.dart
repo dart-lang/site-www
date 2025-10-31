@@ -2,16 +2,18 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dash_layout.dart';
+import 'doc_layout.dart';
 
-/// The Jaspr Content layout to use on the homepage of the site,
-/// with various elements not added, such as a TOC.
-class HomepageLayout extends DashLayout {
-  const HomepageLayout();
+/// The Jaspr Content layout to use in the getting started tutorial.
+class LearnLayout extends DocLayout {
+  const LearnLayout();
 
   @override
-  String get name => 'homepage';
+  String get name => 'learn';
 
   @override
   List<String> get defaultBodyClasses => ['sidenav-hidden', 'no-toc'];
+
+  @override
+  bool get showTocDefault => false;
 }
