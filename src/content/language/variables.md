@@ -58,9 +58,8 @@ detects these potential errors at compile time.
 
 For example, say you want to find the absolute value of an `int` variable `i`.
 If `i` is `null`, calling `i.abs()` causes a null dereference error.
-In other languages, trying this could lead to a runtime error,
-but Dart's compiler prohibits these actions.
-Therefore, Dart apps can't cause runtime errors.
+In other languages, trying this could lead to a runtime error.
+Dart's compiler prevents this error by prohibiting these actions.
 
 Null safety introduces three key changes:
 
