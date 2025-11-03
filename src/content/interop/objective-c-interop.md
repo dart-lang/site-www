@@ -166,7 +166,7 @@ void main() => config.generate();
 
 The last thing you need to do is tell FFIgen
 which parts of the input API to generate bindings for.
-By default, FFIgen will filter out all the bindings.
+By default, FFIgen filters out all the bindings.
 In this case we want to generate bindings for `AVAudioPlayer`,
 which is an Objective-C interface.
 So we have to set the `objectiveC.interfaces` field.
