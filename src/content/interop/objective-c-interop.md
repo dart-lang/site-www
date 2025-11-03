@@ -222,7 +222,7 @@ The most relevant class for this example is `AVAudioPlayer`.
 
 You might notice other classes in the file
 with a comment indicating they are a stub.
-FFIgen will generate stub bindings for all transitive dependencies
+FFIgen generates stub bindings for all transitive dependencies
 of the directly included APIs.
 To generate full bindings for these stubs,
 add them to the includes in your config.
