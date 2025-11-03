@@ -133,7 +133,7 @@ By default this file will have the same name as the Dart bindings,
 but with `.m` at the end of the file name.
 You can change its location with `output.objectiveCFile` option.
 If FFIgen produces this file, you must compile it into your package,
-otherwise you may get runtime exceptions to do with missing symbols.
+otherwise you might get runtime exceptions relating to missing symbols.
 For this simple example we won't get a `.m` file.
 
 Another important option is `output.preamble`.
