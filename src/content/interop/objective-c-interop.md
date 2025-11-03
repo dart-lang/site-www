@@ -173,7 +173,7 @@ you have to set the `objectiveC.interfaces` field.
 
 Setting the `objectiveC` field also tells FFIgen
 to generate bindings for the Objective-C language.
-By default, FFIgen will generate C bindings.
+By default, FFIgen generates C bindings.
 
 ```dart
 import 'package:ffigen/ffigen.dart';
