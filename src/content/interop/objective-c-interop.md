@@ -370,8 +370,9 @@ can be safely invoked from any thread,
 and the function they wrap will (eventually) be invoked
 inside the owner isolate,
 though these constructors are only supported for blocks that return `void`.
-`FooBlock.blocking` may add support for non-`void` return values in future,
-if there is user demand for it.
+If there is demand for it,
+`FooBlock.blocking` might add support for
+non-`void` return values in the future.
 
 The third point means that directly calling some Apple APIs
 using the generated Dart bindings might be thread unsafe.
