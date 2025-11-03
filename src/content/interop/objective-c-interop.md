@@ -83,11 +83,11 @@ final config = FfiGenerator(
 void main() => config.generate();
 ```
 
-First, we'll tell FFIgen where to find the API we're trying to
+First, you'll tell FFIgen where to find the API we're trying to
 generate bindings for.
-To do this, we set the `headers.entryPoints` option.
+To do this, you set the `headers.entryPoints` option.
 
-For this example, we need to load `AVAudioPlayer.h`.
+For this example, you'll load `AVAudioPlayer.h`.
 This is part of the `AVFAudio` framework,
 which is located in your Xcode installation.
 FFIgen includes some helper functions to locate these sorts of APIs,
