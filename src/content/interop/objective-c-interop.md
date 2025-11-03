@@ -124,9 +124,9 @@ The main output of FFIgen is a single Dart file
 containing bindings for the given inputs.
 This file's location is defined by the `output.dartFile` option.
 
-In some cases, FFIgen will also generate a `.m` file,
+In some cases, FFIgen also generates a `.m` file,
 containing Objective-C code required for interop with the API.
-This file will only be generated
+This file is only generated
 if the API you're generating bindings for needs it,
 such as if you're using blocks or protocols.
 By default, this file has the same name as the Dart bindings,
