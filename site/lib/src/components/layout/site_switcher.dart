@@ -5,8 +5,8 @@
 import 'package:jaspr/jaspr.dart';
 
 import '../../util.dart';
-import '../button.dart';
-import '../dropdown.dart';
+import '../common/button.dart';
+import '../common/dropdown.dart';
 
 @client
 final class SiteSwitcher extends StatelessComponent {
@@ -35,6 +35,16 @@ final class SiteSwitcher extends StatelessComponent {
                   name: 'Dart',
                   subtype: 'API',
                   href: 'https://api.dart.dev',
+                ),
+                _SiteWordMarkListEntry(
+                  name: 'Dart',
+                  subtype: 'Blog',
+                  href: 'https://blog.dart.dev',
+                ),
+                Component.element(
+                  tag: 'li',
+                  classes: 'dropdown-divider',
+                  attributes: {'aria-hidden': 'true', 'role': 'separator'},
                 ),
                 _SiteWordMarkListEntry(
                   name: 'DartPad',

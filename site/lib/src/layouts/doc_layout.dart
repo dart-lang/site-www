@@ -5,10 +5,10 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../components/breadcrumbs.dart';
-import '../components/prev_next.dart';
-import '../components/toc.dart';
-import '../components/trailing_content.dart';
+import '../components/common/breadcrumbs.dart';
+import '../components/common/prev_next.dart';
+import '../components/layout/toc.dart';
+import '../components/layout/trailing_content.dart';
 import '../extensions/header_extractor.dart';
 import '../models/on_this_page_model.dart';
 import '../util.dart';
@@ -21,6 +21,8 @@ class DocLayout extends DashLayout {
 
   @override
   String get name => 'docs';
+
+  bool get showTocDefault => true;
 
   @override
   Component buildBody(Page page, Component child) {
@@ -73,6 +75,10 @@ class DocLayout extends DashLayout {
   }
 
   OnThisPageData? _tocForPage(Page page) {
+    if (!showTocDefault) {
+      return null;
+    }
+
     final pageData = page.data.page;
     final showToc = pageData['showToc'] as bool? ?? true;
 

@@ -7,7 +7,7 @@ description: >-
   making it more user-friendly.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 prevpage:
   url: /get-started/error-handling
   title: Error handling

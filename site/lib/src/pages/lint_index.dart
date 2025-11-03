@@ -5,11 +5,11 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/server.dart';
 
-import '../components/button.dart';
-import '../components/card.dart';
-import '../components/copy_button.dart';
-import '../components/lint_filter_search_section.dart';
-import '../components/material_icon.dart';
+import '../components/common/button.dart';
+import '../components/common/card.dart';
+import '../components/common/client/copy_button.dart';
+import '../components/common/material_icon.dart';
+import '../components/pages/lint_filter_search_section.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/lints.dart';
 import '../util.dart';

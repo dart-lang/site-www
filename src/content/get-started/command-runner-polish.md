@@ -6,7 +6,7 @@ description: >-
   onOutput argument for flexible output handling.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 prevpage:
   url: /get-started/advanced-oop
   title: Advanced OOP features

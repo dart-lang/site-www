@@ -1,10 +1,4 @@
 body.error {
-  &:not(.open_menu) {
-    #sidenav {
-      display: none;
-    }
-  }
-
   .banner {
     display: none;
   }
