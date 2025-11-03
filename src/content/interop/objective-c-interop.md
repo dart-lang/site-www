@@ -218,7 +218,7 @@ $ dart run generate_code.dart
 
 This should generate a large `avf_audio_bindings.dart` file,
 similar to [this one]({{page.example}}/avf_audio_bindings.dart).
-The main class we're interested in is `AVAudioPlayer`.
+The most relevant class for this example is `AVAudioPlayer`.
 
 You may notice other classes in the file
 with a comment indicating they are a stub.
