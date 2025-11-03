@@ -53,6 +53,7 @@ Point origin = .origin(); // Instead of Point.origin()
 ```
 
 ## The role of context type 
+
 Dot shorthands use the context type to determine the member 
 the complier resolves to. The context type is the type that Dart 
 expects an expression to have based on its location. 
@@ -69,6 +70,7 @@ constructors, and enum values when the compiler can infer
 the type from the surrounding code.
 
 ### Enums
+
 A primary and highly recommended use case for dot shorthands 
 is with enums, especially in assignments and switch statements, 
 where the enum type is very obvious.
@@ -93,6 +95,7 @@ var warnColor = colorCode(.warning); // Returns 'orange'
 ```
 
 ### Named constructors
+
 Dot shorthands are useful for invoking named constructors 
 or factory constructors. This syntax also works when providing 
 type arguments to a generic class's constructor.
@@ -148,6 +151,7 @@ class _PageState extends State<Page> {
   // ...
 }
 ```
+
 After:
 <?code-excerpt "language/lib/classes/shorthand_unnamed_constructor.dart (unnamed-after)"?>
 ```dart
@@ -161,6 +165,7 @@ class _PageState extends State<Page> {
 ```
 
 ### Static members
+
 You can use dot shorthand syntax to call static methods or 
 access static fields/getters. The compiler infers the 
 target class from the context type of the expression.
@@ -175,6 +180,7 @@ BigInt bigIntZero = .zero; // Instead of BigInt.zero
 ```
 
 ### Constant expressions 
+
 You can use dot shorthands within a constant context
 if the member being accessed is a compile-time constant. 
 This is common for enum values and invoking `const` constructors.
@@ -199,13 +205,13 @@ const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ];
 // Instead of [Point.origin(), Point(1.0, 1.0)]
 ```
 
-
 ## Rules and limitations
 
 Dot shorthands rely on a clear context type, which leads to 
 a few specific rules and limitations you should know about.
 
 ### Clear context type required in chains
+
 While you can chain operations like method calls or 
 property accesses onto a dot shorthand, the entire expression 
 is validated against the context type.
@@ -214,7 +220,6 @@ The compiler first uses the context to determine what the
 dot shorthand resolves to. Any subsequent operations in the 
 chain must return a value that matches that same initial 
 context type.
-
 
 <?code-excerpt "language/lib/classes/shorthand_chain.dart"?>
 ```dart
@@ -227,6 +232,7 @@ print(lowerH); // Output: h
 ```
 
 ### Asymmetric equality checks
+
 The `==` and `!=` operators have a special rule for dot shorthands. 
 When dot shorthand syntax is used directly on the right-hand side (RHS) 
 of an equality check, Dart uses the static type of the 
@@ -260,6 +266,7 @@ void allowedExamples() {
   print('Inferred color is $inferredColor');
 }
 ```
+
 The dot shorthand must be on the right-hand side of the `==` 
 or `!=` operator. Comparing against a more complex expression, 
 like a ternary, is also not allowed.
