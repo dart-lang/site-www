@@ -129,7 +129,7 @@ containing Objective-C code required for interop with the API.
 This file will only be generated
 if the API you're generating bindings for needs it,
 such as if you're using blocks or protocols.
-By default this file will have the same name as the Dart bindings,
+By default, this file has the same name as the Dart bindings,
 but with `.m` at the end of the file name.
 You can change its location with `output.objectiveCFile` option.
 If FFIgen produces this file, you must compile it into your package,
