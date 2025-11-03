@@ -70,8 +70,8 @@ The YAML config will be deprecated in future versions of FFIgen.
 Start by creating a `generate_code.dart` script somewhere in your package.
 A good directory to create this file in is `my_package/tool`.
 
-The `generate_code.dart` script should create an `FfiGenerator` object,
-which will contain all our configuration options,
+The `generate_code.dart` script should create an `FfiGenerator` object to
+contain all your configuration options,
 then call its `.generate()` method.
 
 ```dart
