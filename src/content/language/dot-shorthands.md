@@ -16,12 +16,23 @@ can only be used on the `main` channel.
 
 ## Grammar
 
-Write more concise Dart code by using the dot shorthand syntax `.foo` 
-instead of `ContextType.foo`. The compiler infers the type 
-from context, letting you access enum values, static members, 
-or constructors more cleanly.
+Dot shorthand syntax `.foo` lets you write more concise Dart 
+code by omitting the type when the compiler can infer it 
+from context. This provides a clean alternative to writing 
+the full `ContextType.foo` when accessing enum values, 
+static members, or constructors.
 
-Here's is a quick look:
+In essence, the dot shorthands grammar allows an expression 
+to start with one of the following and then optionally chain 
+other operations onto it:
+
+* and an identifier `.myValue`
+
+* Constructor `.new()`
+
+* Constant creation `const .myValue()`
+
+Here’s a quick look at how it simplifies an enum assignment:
 
 <?code-excerpt "language/lib/classes/shorthand.dart (intro)"?>
 ```dart
@@ -62,7 +73,7 @@ A primary and highly recommended use case for dot shorthands
 is with enums, especially in assignments and switch statements, 
 where the enum type is very obvious.
 
-<?code-excerpt "language/lib/classes/shorthand.dart (enums)"?>
+<?code-excerpt "language/lib/classes/shorthand_enums.dart"?>
 ```dart
 // Enum example
 enum LogLevel { debug, info, warning, error }
@@ -86,7 +97,7 @@ Dot shorthands are useful for invoking named constructors
 or factory constructors. This syntax also works when providing 
 type arguments to a generic class's constructor.
 
-<?code-excerpt "language/lib/classes/shorthand.dart (constructors)"?>
+<?code-excerpt "language/lib/classes/shorthand_constructor.dart"?>
 ```dart
  class Point {
   final double x, y;
@@ -116,8 +127,14 @@ unnamed constructor of a class. This is useful
 for instantiating fields and variables where the type is 
 already explicitly declared.
 
+This syntax is particularly effective for cleaning up 
+repetitive class field initializers. As shown in the 
+"After" example, it can be used for constructors both with 
+and without arguments. It also infers any generic type arguments 
+from the context. 
+
 Before:
-<?code-excerpt "language/lib/classes/shorthand.dart (unnamed-before)"?>
+<?code-excerpt "language/lib/classes/shorthand_unnamed_constructor.dart (unnamed-before)"?>
 ```dart
 class _PageState extends State<Page> {
   final AnimationController _animationController = AnimationController(vsync: this);
@@ -132,7 +149,7 @@ class _PageState extends State<Page> {
 }
 ```
 After:
-<?code-excerpt "language/lib/classes/shorthand.dart (unnamed-after)"?>
+<?code-excerpt "language/lib/classes/shorthand_unnamed_constructor.dart (unnamed-after)"?>
 ```dart
 class _PageState extends State<Page> {
   final AnimationController _animationController = .new(vsync: this);
@@ -143,13 +160,12 @@ class _PageState extends State<Page> {
 }
 ```
 
-
 ### Static members
 You can use dot shorthand syntax to call static methods or 
 access static fields/getters. The compiler infers the 
 target class from the context type of the expression.
 
-<?code-excerpt "language/lib/classes/shorthand.dart (methods)"?>
+<?code-excerpt "language/lib/classes/shorthand_methods.dart"?>
 ```dart
 // Static method
 int httpPort = .parse('80'); // Instead of int.parse('80')
@@ -163,7 +179,7 @@ You can use dot shorthands within a constant context
 if the member being accessed is a compile-time constant. 
 This is common for enum values and invoking `const` constructors.
 
-<?code-excerpt "language/lib/classes/shorthand.dart (const)"?>
+<?code-excerpt "language/lib/classes/shorthand_const.dart"?>
 ```dart
 enum Status { none, running, stopped, paused }
 class Point {
@@ -186,7 +202,8 @@ const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ];
 
 ## Rules and limitations
 
-Add an intro sentence here.
+Dot shorthands rely on a clear context type, which leads to 
+a few specific rules and limitations you should know about.
 
 ### Clear context type required in chains
 While you can chain operations like method calls or 
@@ -199,7 +216,7 @@ chain must return a value that matches that same initial
 context type.
 
 
-<?code-excerpt "language/lib/classes/shorthand.dart (chain)"?>
+<?code-excerpt "language/lib/classes/shorthand_chain.dart"?>
 ```dart
 // .fromCharCode(72) resolves to the String "H",
 // then the instance method .toLowerCase() is called on that String.
@@ -219,7 +236,7 @@ For instance, in an expression like `myColor == .green`,
 the type of the variable `myColor` is used as the context. 
 This means the compiler interprets `.green` as `Color.green`.
 
-<?code-excerpt "language/lib/classes/shorthand.dart (allowed-equality)"?>
+<?code-excerpt "language/lib/classes/shorthand_equality.dart (allowed-equality)"?>
 ```dart
 enum Color { red, green, blue }
 
@@ -247,7 +264,7 @@ The dot shorthand must be on the right-hand side of the `==`
 or `!=` operator. Comparing against a more complex expression, 
 like a ternary, is also not allowed.
 
-<?code-excerpt "language/lib/classes/shorthand.dart (not-allowed-equality)"?>
+<?code-excerpt "language/lib/classes/shorthand_equality.dart (not-allowed-equality)"?>
 ```dart
 enum Color { red, green, blue }
 
@@ -274,37 +291,12 @@ void notAllowedExamples() {
   }
 }
 ```
+
 ### Expression statements can't start with `.`
 
 To avoid potential parsing ambiguities in the future, an
 expression statement is not allowed to begin with a
 `.` token.
-
-### No generic constructor tear-offs with type arguments
-
-You can't use type arguments on a `.new` dot shorthand to
-create an instantiated tear-off of a constructor. This is 
-consistent with the existing behavior for explicit constructor
-tear-offs (`MyClass.new<int>`) and produces a
-compile-time error.
-
-### Limited declaration kinds
-
-Dot shorthands is designed to work with types that have a 
-clear static scope, namely `class`, `mixin`, `enum`, and
-`extension` type declarations. This can be problematic for
-some platform types (like `Function`) whose declaration
-kind is not explicitly specified.
-
-### Delayed resolution during compilation
-
-Unlike regular static member access, which can be resolved
-lexically before type inference, dot shorthands can only be
-resolved after the compiler has inferred the types. This 
-delayed resolution is a complication for the Dart
-implementation and could potentially affect tooling, like
-static analysis and tree-shaking, that might expect all static
-targets to be known earlier.
 
 ### Limited handling of union types
 
@@ -312,7 +304,7 @@ While there is special handling for nullable types (`T?`) and
 `FutureOr<T>`, support is limited.
 
 *  For a nullable type (T?), you can access static members
-   of `T`, but not of `Null`.
+ of `T`, but not of `Null`.
 
 *  For `FutureOr<T>`, you can access static members of `T`
   (primarily to support `async` function returns), but you
