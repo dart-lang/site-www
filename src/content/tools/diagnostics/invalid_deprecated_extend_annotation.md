@@ -11,11 +11,11 @@ _The annotation '@Deprecated.extend' can only be applied to extendable classes._
 
 ## Description
 
-The analyzer produces this diagnostic when anything other than an
-extendable class is annotated with
-Deprecated.extend. An extendable class is a
-class not declared with the `interface`, `final`, or `sealed` keywords,
-and with at least one public generative constructor.
+The analyzer produces this diagnostic when the `@Deprecated.extend`
+annotation is applied to a declaration that isn't an extendable class. An
+extendable class is one that isn't declared with the `interface`,
+`final`, or `sealed` keywords and has at least one public, generative
+constructor.
 
 ## Example
 
