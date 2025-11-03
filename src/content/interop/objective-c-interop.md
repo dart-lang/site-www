@@ -204,8 +204,8 @@ You can also use `includeMember` to filter out specific methods from the class,
 and `rename` or `renameMember` to rename the included classes or methods.
 There are similar options for protocols and categories.
 
-See the [FFIgen API documentation]({{page.ffigenapi}})
-for a full list of configuration options.
+For a full list of configuration options,
+check out the [FFIgen API documentation]({{page.ffigenapi}}).
 
 ### Generating the Dart/Objective-C bindings
 
