@@ -137,7 +137,7 @@ otherwise you might get runtime exceptions relating to missing symbols.
 For this example, FFIgen doesn't generate a `.m` file.
 
 Another important option is `output.preamble`.
-This is simply text inserted at the top of the Dart output,
+This is text inserted at the top of the Dart output,
 which can be useful for adding a license header
 or disabling specific lints that FFIgen's output doesn't adhere to.
 In this case we'll disable several lints.
