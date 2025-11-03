@@ -164,7 +164,7 @@ final config = FfiGenerator(
 void main() => config.generate();
 ```
 
-The last thing we need to do is tell FFIgen
+The last thing you need to do is tell FFIgen
 which parts of the input API to generate bindings for.
 By default, FFIgen will filter out all the bindings.
 In this case we want to generate bindings for `AVAudioPlayer`,
