@@ -381,7 +381,7 @@ In recent versions of Flutter, the main isolate runs on the platform thread,
 so this isn't an issue when invoking these thread-locked APIs
 from the main isolate.
 If you need to invoke these APIs from other isolates,
-or you need to support older versions of flutter,
+or you need to support older versions of Flutter,
 you can use the [`runOnPlatformThread`][] function.
 For more information, see the [Objective-C dispatch documentation][].
 
