@@ -142,7 +142,7 @@ which can be useful for adding a license header
 or disabling specific lints that FFIgen's output doesn't adhere to.
 In this case, disable several lints:
 
-```dart
+```dart highlightLines=11-16
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
