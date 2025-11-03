@@ -57,7 +57,7 @@ Component get _dartDevSite => ContentApp.custom(
     components: _embeddableComponents,
     layouts: const [DocLayout(), HomepageLayout(), LearnLayout()],
     theme: const ContentTheme.none(),
-    secondaryOutputs: const [RobotsTxtOutput()],
+    secondaryOutputs: [const RobotsTxtOutput(), MarkdownOutput()],
   ),
 );
 
