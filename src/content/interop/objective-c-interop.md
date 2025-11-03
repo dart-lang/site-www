@@ -127,8 +127,8 @@ This file's location is defined by the `output.dartFile` option.
 In some cases, FFIgen will also generate a `.m` file,
 containing Objective-C code required for interop with the API.
 This file will only be generated
-if the API you're generating bindings for needs it
-(e.g. if you're using blocks or protocols).
+if the API you're generating bindings for needs it,
+such as if you're using blocks or protocols.
 By default this file will have the same name as the Dart bindings,
 but with `.m` at the end of the file name.
 You can change its location with `output.objectiveCFile` option.
