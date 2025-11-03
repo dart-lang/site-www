@@ -175,7 +175,7 @@ Setting the `objectiveC` field also tells FFIgen
 to generate bindings for the Objective-C language.
 By default, FFIgen generates C bindings.
 
-```dart
+```dart highlightLines=11-13
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
