@@ -134,7 +134,7 @@ but with `.m` at the end of the file name.
 You can change its location with `output.objectiveCFile` option.
 If FFIgen produces this file, you must compile it into your package,
 otherwise you might get runtime exceptions relating to missing symbols.
-For this simple example we won't get a `.m` file.
+For this example, FFIgen doesn't generate a `.m` file.
 
 Another important option is `output.preamble`.
 This is simply text inserted at the top of the Dart output,
