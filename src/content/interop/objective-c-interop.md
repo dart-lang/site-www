@@ -94,7 +94,7 @@ FFIgen includes some helper functions to locate these sorts of APIs,
 such as `macSdkPath`.
 Using these helper functions makes your code generation script
 more reliable across different machines,
-which may have different SDK installation locations.
+which might have different SDK installation locations.
 
 `macSdkPath` returns the result of `xcrun --show-sdk-path --sdk macosx`.
 You can run this command in a terminal to locate your macOS SDKs,
