@@ -37,7 +37,7 @@ and the [additional documentation][].
 [FFIgen README]: {{page.ffigen}}
 [additional documentation]: {{page.ffigendoc}}
 
-## Objective-C example {: #objective-c-example }
+## Objective-C example
 
 This guide walks you through [an example][]
 that uses `package:ffigen` to generate bindings for
@@ -64,7 +64,7 @@ from the FFIgen README for more details.
 [LLVM]: https://llvm.org/
 [Installing LLVM]: {{page.ffigen}}#installing-llvm
 
-### Configure FFIgen for Objective-C {: #configuring-ffigen-for-objective-c }
+### Configure FFIgen for Objective-C
 
 First, add `package:ffigen` as a dev dependency:
 
@@ -214,7 +214,7 @@ check out the [FFIgen API documentation][].
 
 [FFIgen API documentation]: {{page.ffigenapi}}
 
-### Generate the Objective-C bindings {: #generating-the-objective-c-bindings }
+### Generate the Objective-C bindings
 
 To generate the bindings, navigate to the example directory,
 and run the script:
@@ -238,7 +238,7 @@ with the `includeTransitive` options.
 
 [this one]: {{page.example}}/avf_audio_bindings.dart
 
-### Use the Objective-C bindings {: #using-the-objective-c-bindings }
+### Use the Objective-C bindings
 
 Now you're ready to load and interact with the generated library.
 The example app, [play_audio.dart][],
@@ -344,7 +344,7 @@ then check the status, and wait for the duration of the audio file:
 [dylib]: {{page.appledoc}}/avfaudio?language=objc
 [`fileURLWithPath:`]: {{page.appledoc}}/foundation/nsurl/1410828-fileurlwithpath?language=objc
 
-### Callbacks and multithreading limitations {: #callbacks-and-multithreading-limitations }
+### Callbacks and multithreading limitations
 
 Multithreading introduces complexity to interop between Objective-C and Dart.
 This stems from differences between Dart isolates and OS threads,
@@ -404,9 +404,9 @@ which thread it's called from.
 You can safely interact with Objective-C code
 as long as you keep these limitations in mind.
 
-[`runOnPlatformThread`]: https://api.flutter.dev/flutter/dart-ui/runOnPlatformThread.html
+[`runOnPlatformThread`]: {{site.flutter-api}}/flutter/dart-ui/runOnPlatformThread.html
 
-## Swift example {: #swift-example }
+## Swift example
 
 This [example][swift_example] demonstrates how to
 make a Swift class compatible with Objective-C,
@@ -416,9 +416,9 @@ The process below is manual.
 There's an experimental project to automate these steps
 called [Swiftgen][].
 
-[Swiftgen]: https://pub.dev/packages/swiftgen
+[Swiftgen]: {{site.pub-pkg}}/swiftgen
 
-### Generating the Objective-C wrapper header {: #generating-the-objective-c-wrapper-header }
+### Generating the Objective-C wrapper header
 
 Swift APIs can be made compatible with Objective-C,
 by using the `@objc` annotation.
@@ -479,7 +479,7 @@ SWIFT_CLASS("_TtC12swift_module10SwiftClass")
 If the interface is missing, or doesn't have all its methods,
 make sure they're all annotated with `@objc` and `public`.
 
-### Configuring FFIgen for Swift {: #configuring-ffigen-for-swift }
+### Configuring FFIgen for Swift
 
 FFIgen only sees the Objective-C wrapper header, `swift_api.h`.
 So most of this config looks similar
@@ -554,7 +554,7 @@ $ echo "_TtC12swift_module10SwiftClass" | swift demangle
 
 This outputs `swift_module.SwiftClass`.
 
-### Generating the Swift bindings {: #generating-the-swift-bindings }
+### Generating the Swift bindings
 
 As before, navigate to the example directory,
 and run FFIgen:
@@ -565,7 +565,7 @@ $ dart run ffigen
 
 This generates `swift_api_bindings.dart`.
 
-### Using the Swift bindings {: #using-the-swift-bindings }
+### Using the Swift bindings
 
 Interacting with these bindings is exactly the same
 as for a normal Objective-C library:
