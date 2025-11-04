@@ -39,9 +39,9 @@ and the [additional documentation][].
 
 ## Objective-C example {: #objective-c-example }
 
-This guide walks you through [an example]({{page.example}})
+This guide walks you through [an example][]
 that uses `package:ffigen` to generate bindings for
-[`AVAudioPlayer`]({{page.appledoc}}/avfaudio/avaudioplayer?language=objc).
+[`AVAudioPlayer`][].
 This API requires at least macOS SDK 10.7,
 so check your version and update Xcode if necessary:
 
@@ -54,10 +54,15 @@ Direct `package:ffigen` at the header file that describes the API,
 and then load the library with `dart:ffi`.
 
 `package:ffigen` parses Objective-C header files
-using [LLVM](https://llvm.org/),
+using [LLVM][],
 so you'll need to install that first.
-See [Installing LLVM]({{page.ffigen}}#installing-llvm)
+See [Installing LLVM][]
 from the FFIgen README for more details.
+
+[an example]: {{page.example}}
+[`AVAudioPlayer`]: {{page.appledoc}}/avfaudio/avaudioplayer?language=objc
+[LLVM]: https://llvm.org/
+[Installing LLVM]: {{page.ffigen}}#installing-llvm
 
 ### Configure FFIgen for Objective-C {: #configuring-ffigen-for-objective-c }
 
@@ -205,8 +210,10 @@ You can use `includeMember` to filter out specific methods from the class,
 and `rename` or `renameMember` to rename the included classes or methods.
 There are similar options for protocols and categories.
 
-See the [FFIgen API documentation]({{page.ffigenapi}})
+See the [FFIgen API documentation][]
 for a full list of configuration options.
+
+[FFIgen API documentation]: {{page.ffigenapi}}
 
 ### Generate the Objective-C bindings {: #generating-the-objective-c-bindings }
 
@@ -218,7 +225,7 @@ $ dart run generate_code.dart
 ```
 
 This should generate a large `avf_audio_bindings.dart` file,
-similar to [this one]({{page.example}}/avf_audio_bindings.dart).
+similar to [this one][].
 The main class of interest is `AVAudioPlayer`.
 
 You may notice other classes in the file
@@ -230,13 +237,14 @@ add them to the includes in your config.
 This stubbing behavior can be changed
 with the `includeTransitive` options.
 
+[this one]: {{page.example}}/avf_audio_bindings.dart
+
 ### Use the Objective-C bindings {: #using-the-objective-c-bindings }
 
 Now you're ready to load and interact with the generated library.
-The example app, [play_audio.dart]({{page.example}}/play_audio.dart),
+The example app, [play_audio.dart][],
 loads and plays audio files passed as command line arguments.
-The first step is to load the
-[dylib]({{page.appledoc}}/avfaudio?language=objc)
+The first step is to load the [dylib][]
 and instantiate the native `AVFAudio` library:
 
 ```dart
@@ -270,8 +278,7 @@ and a `toDartString()` method that converts it back to a Dart `String`.
     print('Loading $file');
 ```
 
-The audio player expects an `NSURL`, so next we use the [`fileURLWithPath:`](
-{{page.appledoc}}/foundation/nsurl/1410828-fileurlwithpath?language=objc)
+The audio player expects an `NSURL`, so next we use the [`fileURLWithPath:`][]
 method to convert the `NSString` to an `NSURL`.
 
 ```dart
@@ -333,6 +340,10 @@ then check the status, and wait for the duration of the audio file:
       print('Failed to play audio.');
     }
 ```
+
+[play_audio.dart]: {{page.example}}/play_audio.dart
+[dylib]: {{page.appledoc}}/avfaudio?language=objc
+[`fileURLWithPath:`]: {{page.appledoc}}/foundation/nsurl/1410828-fileurlwithpath?language=objc
 
 ### Callbacks and multithreading limitations {: #callbacks-and-multithreading-limitations }
 
