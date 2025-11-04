@@ -320,7 +320,7 @@ While there is special handling for nullable types (`T?`) and
 `FutureOr<T>`, support is limited.
 
 *  For a nullable type (T?), you can access static members
- of `T`, but not of `Null`.
+   of `T`, but not of `Null`.
 
 *  For `FutureOr<T>`, you can access static members of `T`
   (primarily to support `async` function returns), but you
