@@ -11,10 +11,11 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
-:::experimental
-Support for dot shorthand syntax is experimental and
-can only be used on the `main` channel.
+:::version-note
+Dot shorthands require a [language version][] of at least 3.10.
 :::
+
+[language version]: /resources/language/evolution#language-versioning
 
 ## Grammar
 
