@@ -1,6 +1,7 @@
 // ignore_for_file: dead_code
 enum Color { red, green, blue }
 
+// Use dot shorthand syntax for equality expressions:
 void allowedExamples() {
   Color myColor = Color.red;
   bool condition = true;

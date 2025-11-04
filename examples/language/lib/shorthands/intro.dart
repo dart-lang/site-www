@@ -1,12 +1,12 @@
-// Enum example:
+// Use dot shorthand syntax on enums:
 enum Status { none, running, stopped, paused }
 
 Status currentStatus = .running; // Instead of Status.running
 
-// Static method example:
+// Use dot shorthand syntax on a static method:
 int port = .parse('8080'); // Instead of int.parse('8080')
 
-// Constructor example:
+// Uses dot shorthand syntax on a constructor:
 class Point {
   final int x, y;
   Point(this.x, this.y);

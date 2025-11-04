@@ -17,7 +17,7 @@ Dot shorthands require a [language version][] of at least 3.10.
 
 [language version]: /resources/language/evolution#language-versioning
 
-## Grammar
+## Overview
 
 Dot shorthand syntax `.foo` lets you write more concise Dart 
 code by omitting the type when the compiler can infer it 
@@ -29,7 +29,7 @@ In essence, dot shorthands allow an expression
 to start with one of the following and then optionally chain 
 other operations onto it:
 
-* and an identifier `.myValue`
+* Identifier `.myValue`
 
 * Constructor `.new()`
 
@@ -39,15 +39,15 @@ Here's a quick look at how it simplifies an enum assignment:
 
 <?code-excerpt "language/lib/shorthands/intro.dart"?>
 ```dart
-// Enum example
+// Use dot shorthand syntax on enums:
 enum Status { none, running, stopped, paused }
 
 Status currentStatus = .running; // Instead of Status.running
 
-// Static method example
+// Use dot shorthand syntax on a static method:
 int port = .parse('8080'); // Instead of int.parse('8080')
 
-// Constructor example
+// Uses dot shorthand syntax on a constructor:
 class Point {
   final int x, y;
   Point(this.x, this.y);
@@ -59,12 +59,14 @@ Point origin = .origin(); // Instead of Point.origin()
 
 ## The role of context type 
 
-Dot shorthands use the context type to determine the member 
+Dot shorthands use the [context type][] to determine the member 
 the complier resolves to. The context type is the type that Dart 
 expects an expression to have based on its location. 
 For example, in `Status currentStatus = .running`, 
 the compiler knows a `Status` is expected, so it infers 
 `.running` to mean `Status.running`.
+
+[context type]: /resources/glossary#context-type
 
 ## Lexical structure and syntax
 
@@ -82,11 +84,11 @@ where the enum type is very obvious.
 
 <?code-excerpt "language/lib/shorthands/enums.dart"?>
 ```dart
-// Enum example
 enum LogLevel { debug, info, warning, error }
 
-// Function to get a color code based on log level
+/// Returns the color code to use for the specified log [level].
 String colorCode(LogLevel level) {
+  // Use dot shorthand syntax for enum values in switch cases:
   return switch (level) {
     .debug => 'gray', // Instead of LogLevel.debug
     .info => 'blue', // Instead of LogLevel.info
@@ -118,13 +120,13 @@ class Point {
   }
 }
 
-// Named constructor
+// Use dot shorthand syntax on a named constructor:
 Point origin = .origin(); // Instead of Point.origin()
 
-// Factory constructor
+// Use dot shorthand syntax on a factory constructor:
 Point p1 = .fromList([1.0, 2.0]); // Instead of Point.fromList([1.0, 2.0])
 
-// Generic class constructor
+// Use dot shorthand syntax on a generic class constructor:
 List<int> intList = .filled(5, 0); // Instead of List.filled(5, 0)
 ``` 
 
@@ -163,6 +165,7 @@ class _PageState extends State<Page> {
 
 <?code-excerpt "language/lib/shorthands/unnamed_constructors.dart (unnamed-after)" replace="/_PageStateAfter/_PageState/g;"?>
 ```dart
+// Use dot shorthand syntax for calling unnamed constructors
 class _PageState extends State<Page> {
   late final AnimationController _animationController = .new(vsync: this);
   final ScrollController _scrollController = .new();
@@ -180,10 +183,10 @@ target class from the context type of the expression.
 
 <?code-excerpt "language/lib/shorthands/static_members.dart"?>
 ```dart
-// Static method
+// Use dot shorthand syntax to invoke a static method:
 int httpPort = .parse('80'); // Instead of int.parse('80')
 
-// Static field/getter
+// Use dot shorthand syntax to access a static field or getter:
 BigInt bigIntZero = .zero; // Instead of BigInt.zero
 ```
 
@@ -203,13 +206,13 @@ class Point {
   const Point.origin() : x = 0.0, y = 0.0;
 }
 
-// Enum values are always constants
+// Use dot shorthand syntax for enum value:
 const Status defaultStatus = .running; // Instead of Status.running
 
-// Invoking a const named constructor
+// Use dot shorthand syntax to invoke a const named constructor:
 const Point myOrigin = .origin(); // Instead of Point.origin()
 
-// Using shorthands in a const collection literal
+// Use dot shorthand syntax in a const collection literal:
 const List<Point> keyPoints = [.origin(), .new(1.0, 1.0)];
 // Instead of [Point.origin(), Point(1.0, 1.0)]
 ```
@@ -232,6 +235,7 @@ context type.
 
 <?code-excerpt "language/lib/shorthands/chain.dart (chain)"?>
 ```dart
+// Use dot shorthand syntax for static members
 // .fromCharCode(72) resolves to the String "H",
 // then the instance method .toLowerCase() is called on that String.
 String lowerH = .fromCharCode(72).toLowerCase();
@@ -255,6 +259,7 @@ This means the compiler interprets `.green` as `Color.green`.
 ```dart
 enum Color { red, green, blue }
 
+// Use dot shorthand syntax for equality expressions:
 void allowedExamples() {
   Color myColor = Color.red;
   bool condition = true;
@@ -294,7 +299,7 @@ void notAllowedExamples() {
     print('This will not compile.');
   }
 
-  // ERROR: The right-hand side is a complex expression (a ternary),
+  // ERROR: The right-hand side is a complex expression (a conditional expression),
   // which is not a valid target for shorthand in a comparison.
   if (myColor == (condition ? .green : .blue)) {
     print('This will not compile.');
@@ -313,6 +318,22 @@ void notAllowedExamples() {
 To avoid potential parsing ambiguities in the future, an
 expression statement is not allowed to begin with a
 `.` token.
+
+<?code-excerpt "language/lib/shorthands/expression_with_errors.dart"?>
+```dart tag=fails-sa
+class Logger {
+  static void log(String message) {
+    print(message);
+  }
+}
+
+void main() {
+  // ERROR: An expression statement cannot begin with  `.`
+  // The compiler has no type context (like a variable assignment)
+  // to infer that `.log` should refer to `Logger.log`.
+  .log('Hello');
+}
+```
 
 ### Limited handling of union types
 

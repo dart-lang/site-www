@@ -6,12 +6,12 @@ class Point {
   const Point.origin() : x = 0.0, y = 0.0;
 }
 
-// Enum values are always constants
+// Use dot shorthand syntax for enum value:
 const Status defaultStatus = .running; // Instead of Status.running
 
-// Invoking a const named constructor
+// Use dot shorthand syntax to invoke a const named constructor:
 const Point myOrigin = .origin(); // Instead of Point.origin()
 
-// Using shorthands in a const collection literal
+// Use dot shorthand syntax in a const collection literal:
 const List<Point> keyPoints = [.origin(), .new(1.0, 1.0)];
 // Instead of [Point.origin(), Point(1.0, 1.0)]
