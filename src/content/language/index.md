@@ -301,8 +301,9 @@ Planet myPlanet = Planet.venus;
 // You can use the dot shorthand:
 Planet myPlanet = .venus;
 ```
-Dot shorthand isn't limited to variable declarations. 
-It can also be used in contexts like function arguments 
+
+Dot shorthands aren't limited to variable declarations. 
+They can also be used in contexts like function arguments 
 and switch cases where the enum type is clear to the compiler.
 
 [Read more](/language/enums) about enums in Dart,
