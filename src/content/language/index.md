@@ -298,7 +298,7 @@ the type of `Planet` is already established:
 // Instead of the full, explicit syntax:
 Planet myPlanet = Planet.venus;
 
-// You can use the dot shorthand:
+// You can use a dot shorthand:
 Planet myPlanet = .venus;
 ```
 
