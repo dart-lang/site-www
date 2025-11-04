@@ -278,7 +278,7 @@ void allowedExamples() {
 
 The dot shorthand must be on the right-hand side of the `==` 
 or `!=` operator. Comparing against a more complex expression, 
-like a ternary, is also not allowed.
+like a conditional expression, is also not allowed.
 
 <?code-excerpt "language/lib/shorthands/equality_with_errors.dart"?>
 ```dart
