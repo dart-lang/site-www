@@ -35,7 +35,7 @@ other operations onto it:
 
 * Constant creation `const .myValue()`
 
-Here’s a quick look at how it simplifies an enum assignment:
+Here's a quick look at how it simplifies an enum assignment:
 
 <?code-excerpt "language/lib/shorthands/intro.dart"?>
 ```dart
