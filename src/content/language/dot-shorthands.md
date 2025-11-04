@@ -243,7 +243,7 @@ print(lowerH); // Output: h
 ### Asymmetric equality checks
 
 The `==` and `!=` operators have a special rule for dot shorthands. 
-When dot shorthand syntax is used directly on the right-hand side (RHS) 
+When dot shorthand syntax is used directly on the right-hand side
 of an equality check, Dart uses the static type of the 
 left-hand side to determine the class or enum for the shorthand.
 
