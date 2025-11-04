@@ -68,11 +68,11 @@ the compiler knows a `Status` is expected, so it infers
 
 ## Lexical structure and syntax
 
-The dot shorthand feature introduces a new expression, 
-the _static member shorthand_, which begins with a leading dot (`.`) 
-and provides a concise way to access static members, 
-constructors, and enum values when the compiler can infer 
-the type from the surrounding code.
+A _static member shorthand_ is an expression that
+begins with a leading dot (`.`).
+When the type is known from the surrounding context
+this syntax provides a concise way to access
+static members, constructors, and enum values.
 
 ### Enums
 
