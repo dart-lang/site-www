@@ -3,7 +3,7 @@ enum Status { none, running, stopped, paused }
 
 Status currentStatus = .running; // Instead of Status.running
 
-// Static method example
+// Static method example:
 int port = .parse('8080'); // Instead of int.parse('8080')
 
 // Constructor example:
