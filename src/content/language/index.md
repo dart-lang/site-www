@@ -289,9 +289,9 @@ you can simply write `.value`. This can make your code cleaner
 and easier to read.
 
 
-For example, when declaring a variable with an explicit enum type, 
-you can omit the Planet class name because 
-the type of Planet is already established:
+For example, when declaring a variable with an explicit type of `Planet`, 
+you can omit the enum name because 
+the type of `Planet` is already established:
 
 
 ```dart
