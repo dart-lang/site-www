@@ -13,8 +13,9 @@ _Instantiating '{0}' is deprecated._
 
 The analyzer produces this diagnostic when a class annotated with
 `@Deprecated.instantiate` is instantiated. This annotation indicates that
-the ability to instantiate the class is deprecated, and will soon be removed,
-perhaps by marking the annotated class with `abstract`, or `sealed`.
+instantiating the class is deprecated and will soon be removed. This
+change will likely be enforced by marking the class as `abstract` or
+`sealed`.
 
 ## Example
 
@@ -26,7 +27,7 @@ If the library `p` defines a class annotated with
 class C {}
 ```
 
-Then, the following code, when in a library other than `p`, produces this
+Then, in any library other than `p`, the following code produces this
 diagnostic:
 
 ```dart

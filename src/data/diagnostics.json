@@ -996,6 +996,13 @@
     "previousNames": []
   },
   {
+    "id": "const_without_primary_constructor",
+    "description": "_'const' can only be used together with a primary constructor declaration._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "const_with_non_const",
     "description": "_The constructor being called isn't a const constructor._",
     "hasDocumentation": true,
@@ -1250,13 +1257,6 @@
     "previousNames": []
   },
   {
-    "id": "deprecated_member_use_from_same_package",
-    "description": "_'{0}' is deprecated and shouldn't be used._\n\n_'{0}' is deprecated and shouldn't be used. {1}_",
-    "hasDocumentation": true,
-    "fromLint": false,
-    "previousNames": []
-  },
-  {
     "id": "deprecated_mixin",
     "description": "_Mixing in '{0}' is deprecated._",
     "hasDocumentation": true,
@@ -1266,6 +1266,13 @@
   {
     "id": "deprecated_new_in_comment_reference",
     "description": "_Using the 'new' keyword in a comment reference is deprecated._",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "deprecated_optional",
+    "description": "_Omitting an argument for the '{0}' parameter is deprecated._",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -1586,6 +1593,13 @@
     "previousNames": []
   },
   {
+    "id": "encoding",
+    "description": "_Unable to decode bytes as UTF-8._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "enum_constant_invokes_factory_constructor",
     "description": "_An enum value can't invoke a factory constructor._",
     "hasDocumentation": false,
@@ -1819,6 +1833,13 @@
   {
     "id": "expected_type_name",
     "description": "_Expected a type name._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "experimental_member_use",
+    "description": "_'{0}' is experimental and could be removed or changed at any time._",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -2308,7 +2329,7 @@
   },
   {
     "id": "field_initializer_outside_constructor",
-    "description": "_Field formal parameters can only be used in a constructor._\n\n_Initializing formal parameters can only be used in constructors._",
+    "description": "_Field formal parameters can only be used in a constructor._",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -3140,6 +3161,13 @@
     "previousNames": []
   },
   {
+    "id": "invalid_deprecated_optional_annotation",
+    "description": "_The annotation '@Deprecated.optional' can only be applied to optional parameters._",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "invalid_deprecated_subclass_annotation",
     "description": "_The annotation '@Deprecated.subclass' can only be applied to subclassable classes and mixins._",
     "hasDocumentation": true,
@@ -3365,7 +3393,7 @@
   },
   {
     "id": "invalid_reference_to_generative_enum_constructor",
-    "description": "_Generative enum constructors can only be used as targets of redirection._",
+    "description": "_Generative enum constructors can only be used to create an enum constant._\n\n_Generative enum constructors can't be torn off._",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -3381,27 +3409,6 @@
     "id": "invalid_reopen_annotation",
     "description": "_The annotation '@reopen' can only be applied to a class that opens capabilities that the supertype intentionally disallows._",
     "hasDocumentation": true,
-    "fromLint": false,
-    "previousNames": []
-  },
-  {
-    "id": "invalid_required_named_param",
-    "description": "_The type parameter '{0}' is annotated with @required but only named parameters without a default value can be annotated with it._",
-    "hasDocumentation": false,
-    "fromLint": false,
-    "previousNames": []
-  },
-  {
-    "id": "invalid_required_optional_positional_param",
-    "description": "_Incorrect use of the annotation @required on the optional positional parameter '{0}'. Optional positional parameters cannot be required._",
-    "hasDocumentation": false,
-    "fromLint": false,
-    "previousNames": []
-  },
-  {
-    "id": "invalid_required_positional_param",
-    "description": "_Redundant use of the annotation @required on the required positional parameter '{0}'._",
-    "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
@@ -5142,6 +5149,13 @@
     "previousNames": []
   },
   {
+    "id": "plugins_in_inner_options",
+    "description": "_Plugins can only be specified in the root of a pub workspace or the root of a package that isn't in a workspace._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "positional_after_named_argument",
     "description": "_Positional arguments must occur before named arguments._",
     "hasDocumentation": false,
@@ -5200,6 +5214,13 @@
   {
     "id": "private_collision_in_mixin_application",
     "description": "_The private name '{0}', defined by '{1}', conflicts with the same name defined by '{2}'._",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "private_named_non_field_parameter",
+    "description": "_Named parameters that don't refer to instance variables can't start with underscore._",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -6826,6 +6847,13 @@
     "previousNames": []
   },
   {
+    "id": "analyzer_public_api_experimental_inconsistency",
+    "description": "_Element makes use of experimental type(s), but is not itself marked with `@experimental`: {0}._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "analyzer_public_api_exports_non_public_name",
     "description": "_Export directive exports element(s) that are not part of the analyzer public API: {0}._",
     "hasDocumentation": false,
@@ -8114,6 +8142,13 @@
     "previousNames": []
   },
   {
+    "id": "remove_deprecations_in_breaking_versions",
+    "description": "_Remove deprecated elements in breaking versions._",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "require_trailing_commas",
     "description": "_Missing a required trailing comma._",
     "hasDocumentation": false,
@@ -8268,7 +8303,7 @@
     "previousNames": []
   },
   {
-    "id": "unexpected_token",
+    "id": "unexpected_transform_set_token",
     "description": "_Didn't expect to find {0}._",
     "hasDocumentation": false,
     "fromLint": false,
