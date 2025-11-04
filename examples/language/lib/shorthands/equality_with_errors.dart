@@ -12,7 +12,7 @@ void notAllowedExamples() {
     print('This will not compile.');
   }
 
-  // ERROR: The right-hand side is a complex expression (a ternary),
+  // ERROR: The right-hand side is a complex expression (a conditional expression),
   // which is not a valid target for shorthand in a comparison.
   // ignore: dot_shorthand_missing_context
   if (myColor == (condition ? .green : .blue)) {
