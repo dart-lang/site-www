@@ -80,7 +80,7 @@ Start by creating a `generate_code.dart` script somewhere in your package.
 We recommend placing this file in `my_package/tool`.
 
 The `generate_code.dart` script should create an `FfiGenerator` object,
-which will contain all our configuration options,
+which will contain all your configuration options,
 then call its `.generate()` method.
 
 ```dart
@@ -92,18 +92,18 @@ final config = FfiGenerator(
 void main() => config.generate();
 ```
 
-First, we'll tell FFIgen where to find the API we're trying to
+First, you'll tell FFIgen where to find the API you're trying to
 generate bindings for.
-To do this, we set the `headers.entryPoints` option.
+To do this, set the `headers.entryPoints` option.
 
-For this example, we need to load `AVAudioPlayer.h`.
+For this example, you'll load `AVAudioPlayer.h`.
 This is part of the `AVFAudio` framework,
 which is located in your Xcode installation.
 FFIgen includes some helper functions to locate these sorts of APIs,
 such as `macSdkPath`.
 Using these helper functions makes your code generation script
 more reliable across different machines,
-which may have different SDK installation locations.
+which might have different SDK installation locations.
 
 The `macSdkPath` utility finds the macOS SDK by running `xcrun --show-sdk-path --sdk macosx`.
 You can run this command in a terminal to locate your macOS SDKs,
@@ -112,7 +112,7 @@ When generating bindings for an Apple API,
 exploring these directories is a great way to find
 the right headers to pass to FFIgen.
 
-```dart
+```dart highlightLines=4-10
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
@@ -128,7 +128,7 @@ final config = FfiGenerator(
 void main() => config.generate();
 ```
 
-Next, we'll define the output file.
+Next, you'll define the output file.
 The main output of FFIgen is a single Dart file
 containing bindings for the given inputs.
 This file's location is defined by the `output.dartFile` option.
@@ -141,14 +141,14 @@ By default this file will have the same name as the Dart bindings,
 but with `.m` at the end of the file name.
 You can change its location with the `output.objectiveCFile` option.
 If FFIgen produces this file, you must compile it into your package,
-otherwise you may get runtime exceptions to do with missing symbols.
-For this simple example we won't get a `.m` file.
+otherwise you might get runtime exceptions relating to missing symbols.
+For this example, FFIgen doesn't generate a `.m` file.
 
 Use the `output.preamble` option to insert text at the top of the Dart output,
 such as license headers or lint directives.
-In this case we'll disable several lints.
+In this case, disable several lints:
 
-```dart
+```dart highlightLines=11-16
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
@@ -170,18 +170,17 @@ final config = FfiGenerator(
 void main() => config.generate();
 ```
 
-Finally, tell FFIgen
-which parts of the input API to generate bindings for.
-By default, FFIgen will filter out all the bindings.
-In this case we want to generate bindings for `AVAudioPlayer`,
-which is an Objective-C interface.
-So we have to set the `objectiveC.interfaces` field.
+Finally, tell FFIgen which parts of the input API to generate bindings for.
+By default, FFIgen filters out all the bindings.
+In this case, to generate bindings for `AVAudioPlayer`,
+which is an Objective-C interface,
+you have to set the `objectiveC.interfaces` field.
 
 Setting the `objectiveC` field tells FFIgen
 to generate bindings for the Objective-C language.
-By default, FFIgen will generate C bindings.
+By default, FFIgen generates C bindings.
 
-```dart
+```dart highlightLines=11-13
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
@@ -210,8 +209,8 @@ You can use `includeMember` to filter out specific methods from the class,
 and `rename` or `renameMember` to rename the included classes or methods.
 There are similar options for protocols and categories.
 
-See the [FFIgen API documentation][]
-for a full list of configuration options.
+For a full list of configuration options,
+check out the [FFIgen API documentation][].
 
 [FFIgen API documentation]: {{page.ffigenapi}}
 
@@ -228,9 +227,9 @@ This should generate a large `avf_audio_bindings.dart` file,
 similar to [this one][].
 The main class of interest is `AVAudioPlayer`.
 
-You may notice other classes in the file
+You might notice other classes in the file
 with a comment indicating they are a stub.
-FFIgen will generate stub bindings for all transitive dependencies
+FFIgen generates stub bindings for all transitive dependencies
 of the directly included APIs.
 To generate full bindings for these stubs,
 add them to the includes in your config.
@@ -278,8 +277,8 @@ and a `toDartString()` method that converts it back to a Dart `String`.
     print('Loading $file');
 ```
 
-The audio player expects an `NSURL`, so next we use the [`fileURLWithPath:`][]
-method to convert the `NSString` to an `NSURL`.
+The audio player expects an `NSURL`, so next,
+use the [`fileURLWithPath:`][] method to convert the `NSString` to an `NSURL`.
 
 ```dart
     final fileUrl = NSURL.fileURLWithPath(fileStr);
@@ -351,7 +350,7 @@ Multithreading introduces complexity to interop between Objective-C and Dart.
 This stems from differences between Dart isolates and OS threads,
 and how Apple's APIs handle concurrency:
 
-1. Dart isolates are not the same thing as threads.
+1. Dart isolates aren't the same thing as threads.
    Isolates run on threads,
    but aren't guaranteed to run on any particular thread,
    and the VM might change which thread an isolate is running on
@@ -381,8 +380,8 @@ can be safely invoked from any thread,
 and the function they wrap will (eventually) be invoked
 inside the owner isolate,
 though these constructors are only supported for blocks that return `void`.
-`FooBlock.blocking` may add support for non-`void` return values in future,
-if there is user demand for it.
+If there is user demand for it, `FooBlock.blocking` might
+add support for non-`void` return values in the future.
 
 The third point means that directly calling some Apple APIs
 using the generated Dart bindings might be thread unsafe.
@@ -391,7 +390,7 @@ In recent versions of Flutter, the main isolate runs on the platform thread,
 so this isn't an issue when invoking these thread-locked APIs
 from the main isolate.
 If you need to invoke these APIs from other isolates,
-or you need to support older versions of flutter,
+or you need to support older versions of Flutter,
 you can use the [`runOnPlatformThread`][] function.
 For more information, see the [Objective-C dispatch documentation][].
 
