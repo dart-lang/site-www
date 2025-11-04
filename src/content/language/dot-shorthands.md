@@ -141,7 +141,8 @@ repetitive class field initializers. As shown in the
 and without arguments. It also infers any generic type arguments 
 from the context. 
 
-Before:
+**Without dot shorthands:**
+
 <?code-excerpt "language/lib/shorthands/unnamed_constructors.dart (unnamed-before)"?>
 ```dart
 class _PageState extends State<Page> {
