@@ -1,6 +1,6 @@
 enum LogLevel { debug, info, warning, error }
 
-// Function to get a color code based on log level
+/// Returns the color code to use for the specified log [level].
 String colorCode(LogLevel level) {
   return switch (level) {
     .debug => 'gray', // Instead of LogLevel.debug
