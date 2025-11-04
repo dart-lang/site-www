@@ -1,6 +1,7 @@
 // #docregion intro
 // Enum example
 enum Status { none, running, stopped, paused }
+
 Status currentStatus = .running; // Instead of Status.running
 
 // Static method example
@@ -12,9 +13,6 @@ class Point {
   Point(this.x, this.y);
   Point.origin() : x = 0, y = 0;
 }
+
 Point origin = .origin(); // Instead of Point.origin()
 // #enddocregion intro
-
-
-
-

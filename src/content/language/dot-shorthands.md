@@ -9,6 +9,8 @@ nextpage:
   title: Extension methods
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
+
 :::experimental
 Support for dot shorthand syntax is experimental and
 can only be used on the `main` channel.
@@ -38,6 +40,7 @@ Here’s a quick look at how it simplifies an enum assignment:
 ```dart
 // Enum example
 enum Status { none, running, stopped, paused }
+
 Status currentStatus = .running; // Instead of Status.running
 
 // Static method example
@@ -49,6 +52,7 @@ class Point {
   Point(this.x, this.y);
   Point.origin() : x = 0, y = 0;
 }
+
 Point origin = .origin(); // Instead of Point.origin()
 ```
 
@@ -83,15 +87,15 @@ enum LogLevel { debug, info, warning, error }
 // Function to get a color code based on log level
 String colorCode(LogLevel level) {
   return switch (level) {
-    .debug   => 'gray',    // Instead of LogLevel.debug
-    .info    => 'blue',    // Instead of LogLevel.info
-    .warning => 'orange',  // Instead of LogLevel.warning
-    .error   => 'red',     // Instead of LogLevel.error
+    .debug => 'gray', // Instead of LogLevel.debug
+    .info => 'blue', // Instead of LogLevel.info
+    .warning => 'orange', // Instead of LogLevel.warning
+    .error => 'red', // Instead of LogLevel.error
   };
 }
 
 // Example usage:
-var warnColor = colorCode(.warning); // Returns 'orange'
+String warnColor = colorCode(.warning); // Returns 'orange'
 ```
 
 ### Named constructors
@@ -102,7 +106,7 @@ type arguments to a generic class's constructor.
 
 <?code-excerpt "language/lib/classes/shorthand_constructor.dart"?>
 ```dart
- class Point {
+class Point {
   final double x, y;
   const Point(this.x, this.y);
   const Point.origin() : x = 0, y = 0; // Named constructor
@@ -140,23 +144,24 @@ Before:
 <?code-excerpt "language/lib/classes/shorthand_unnamed_constructor.dart (unnamed-before)"?>
 ```dart
 class _PageState extends State<Page> {
-  final AnimationController _animationController = AnimationController(vsync: this);
+  late final AnimationController _animationController = AnimationController(
+    vsync: this,
+  );
   final ScrollController _scrollController = ScrollController();
 
   final GlobalKey<ScaffoldMessengerState> scaffoldKey =
-    GlobalKey<ScaffoldMessengerState>();
+      GlobalKey<ScaffoldMessengerState>();
 
-  Map<String, Map<String, bool>> properties
-    = <String, Map<String, bool>>{};
+  Map<String, Map<String, bool>> properties = <String, Map<String, bool>>{};
   // ...
 }
 ```
 
 After:
-<?code-excerpt "language/lib/classes/shorthand_unnamed_constructor.dart (unnamed-after)"?>
+<?code-excerpt "language/lib/classes/shorthand_unnamed_constructor.dart (unnamed-after)" replace="/_PageStateAfter/_PageState/g;"?>
 ```dart
 class _PageState extends State<Page> {
-  final AnimationController _animationController = .new(vsync: this);
+  late final AnimationController _animationController = .new(vsync: this);
   final ScrollController _scrollController = .new();
   final GlobalKey<ScaffoldMessengerState> scaffoldKey = .new();
   Map<String, Map<String, bool>> properties = .new();
@@ -188,6 +193,7 @@ This is common for enum values and invoking `const` constructors.
 <?code-excerpt "language/lib/classes/shorthand_const.dart"?>
 ```dart
 enum Status { none, running, stopped, paused }
+
 class Point {
   final double x, y;
   const Point(this.x, this.y);
@@ -201,7 +207,7 @@ const Status defaultStatus = .running; // Instead of Status.running
 const Point myOrigin = .origin(); // Instead of Point.origin()
 
 // Using shorthands in a const collection literal
-const List<Point> keyPoints = [ .origin(), .new(1.0, 1.0) ];
+const List<Point> keyPoints = [.origin(), .new(1.0, 1.0)];
 // Instead of [Point.origin(), Point(1.0, 1.0)]
 ```
 
@@ -221,7 +227,7 @@ dot shorthand resolves to. Any subsequent operations in the
 chain must return a value that matches that same initial 
 context type.
 
-<?code-excerpt "language/lib/classes/shorthand_chain.dart"?>
+<?code-excerpt "language/lib/classes/shorthand_chain.dart (chain)"?>
 ```dart
 // .fromCharCode(72) resolves to the String "H",
 // then the instance method .toLowerCase() is called on that String.
@@ -242,7 +248,7 @@ For instance, in an expression like `myColor == .green`,
 the type of the variable `myColor` is used as the context. 
 This means the compiler interprets `.green` as `Color.green`.
 
-<?code-excerpt "language/lib/classes/shorthand_equality.dart (allowed-equality)"?>
+<?code-excerpt "language/lib/classes/shorthand_equality.dart"?>
 ```dart
 enum Color { red, green, blue }
 
@@ -271,7 +277,7 @@ The dot shorthand must be on the right-hand side of the `==`
 or `!=` operator. Comparing against a more complex expression, 
 like a ternary, is also not allowed.
 
-<?code-excerpt "language/lib/classes/shorthand_equality.dart (not-allowed-equality)"?>
+<?code-excerpt "language/lib/classes/shorthand_equality_errors.dart"?>
 ```dart
 enum Color { red, green, blue }
 

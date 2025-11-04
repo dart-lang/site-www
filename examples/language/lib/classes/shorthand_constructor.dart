@@ -1,4 +1,4 @@
- class Point {
+class Point {
   final double x, y;
   const Point(this.x, this.y);
   const Point.origin() : x = 0, y = 0; // Named constructor
