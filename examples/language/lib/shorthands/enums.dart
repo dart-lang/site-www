@@ -1,4 +1,3 @@
-// Enum example
 enum LogLevel { debug, info, warning, error }
 
 // Function to get a color code based on log level
