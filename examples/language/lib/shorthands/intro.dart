@@ -6,7 +6,7 @@ Status currentStatus = .running; // Instead of Status.running
 // Static method example
 int port = .parse('8080'); // Instead of int.parse('8080')
 
-// Constructor example
+// Constructor example:
 class Point {
   final int x, y;
   Point(this.x, this.y);
