@@ -1,4 +1,4 @@
-// Enum example
+// Enum example:
 enum Status { none, running, stopped, paused }
 
 Status currentStatus = .running; // Instead of Status.running
