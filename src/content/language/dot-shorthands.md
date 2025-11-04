@@ -138,9 +138,10 @@ for assigning fields or variables where the type is
 already explicitly declared.
 
 This syntax is particularly effective for cleaning up 
-repetitive class field initializers. As shown in the 
-"After" example, it can be used for constructors both with 
-and without arguments. It also infers any generic type arguments 
+repetitive class field initializers.
+As shown in the following "after" example using dot shorthands,
+it can be used for constructors both with and without arguments.
+tt also infers any generic type arguments 
 from the context. 
 
 **Without dot shorthands:**
