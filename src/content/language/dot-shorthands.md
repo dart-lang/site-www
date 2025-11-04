@@ -165,7 +165,7 @@ class _PageState extends State<Page> {
 
 <?code-excerpt "language/lib/shorthands/unnamed_constructors.dart (unnamed-after)" replace="/_PageStateAfter/_PageState/g;"?>
 ```dart
-// Use dot shorthand syntax for calling unnamed constructors
+// Use dot shorthand syntax for calling unnamed constructors:
 class _PageState extends State<Page> {
   late final AnimationController _animationController = .new(vsync: this);
   final ScrollController _scrollController = .new();
@@ -235,7 +235,6 @@ context type.
 
 <?code-excerpt "language/lib/shorthands/chain.dart (chain)"?>
 ```dart
-// Use dot shorthand syntax for static members
 // .fromCharCode(72) resolves to the String "H",
 // then the instance method .toLowerCase() is called on that String.
 String lowerH = .fromCharCode(72).toLowerCase();
@@ -328,7 +327,7 @@ class Logger {
 }
 
 void main() {
-  // ERROR: An expression statement cannot begin with  `.`
+  // ERROR: An expression statement can't begin with `.`.
   // The compiler has no type context (like a variable assignment)
   // to infer that `.log` should refer to `Logger.log`.
   .log('Hello');

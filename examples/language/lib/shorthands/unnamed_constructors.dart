@@ -16,7 +16,7 @@ class _PageState extends State<Page> {
 // #enddocregion unnamed-before
 
 // #docregion unnamed-after
-// Use dot shorthand syntax for calling unnamed constructors
+// Use dot shorthand syntax for calling unnamed constructors:
 class _PageStateAfter extends State<Page> {
   late final AnimationController _animationController = .new(vsync: this);
   final ScrollController _scrollController = .new();
