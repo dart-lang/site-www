@@ -208,7 +208,7 @@ There are similar options for protocols and categories.
 See the [FFIgen API documentation]({{page.ffigenapi}})
 for a full list of configuration options.
 
-### Generate Dart and Objective-C bindings {: #generating-dart-and-objective-c-bindings }
+### Generate the Objective-C bindings {: #generating-the-objective-c-bindings }
 
 To generate the bindings, navigate to the example directory,
 and run the script:
@@ -544,7 +544,7 @@ $ echo "_TtC12swift_module10SwiftClass" | swift demangle
 
 This outputs `swift_module.SwiftClass`.
 
-### Generating Dart and Swift bindings {: #generating-dart-and-swift-bindings }
+### Generating the Swift bindings {: #generating-the-swift-bindings }
 
 As before, navigate to the example directory,
 and run FFIgen:
