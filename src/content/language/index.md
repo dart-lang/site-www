@@ -283,7 +283,7 @@ if (!yourPlanet.isGiant) {
 ```
 
 When the compiler can infer the enum type from the context, 
-you can use a more concise dot shorthand syntax to access enum values. 
+you can use the more concise dot-shorthand syntax to access enum values. 
 Instead of writing the full `EnumName.value`, 
 you can simply write `.value`. This can make your code cleaner 
 and easier to read.
