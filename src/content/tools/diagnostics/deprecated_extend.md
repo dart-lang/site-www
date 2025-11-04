@@ -15,9 +15,9 @@ The analyzer produces this diagnostic when a class annotated with
 `@Deprecated.extend` is used in the `extends` clause of a class
 declaration.
 
-This annotation indicates that the ability for classes to extend the
-annotated class is deprecated, and will soon be removed, perhaps by
-marking the annotated class with `interface`, `final`, or `sealed`.
+This annotation indicates that the ability to extend the annotated class
+is deprecated and will soon be removed. This change will likely be
+enforced by marking the class with `interface`, `final`, or `sealed`.
 
 ## Example
 
@@ -28,7 +28,7 @@ If the library `p` defines a class annotated with `@Deprecated.extend`:
 class C {}
 ```
 
-Then, the following code, when in a library other than `p`, produces this
+Then, in any library other than `p`, the following code produces this
 diagnostic:
 
 ```dart
@@ -39,8 +39,8 @@ class D extends [!C!] {}
 
 ## Common fixes
 
-Follow any directions found in the `Deprecation.extend` annotation, or
-just remove the `extends` clause.
+Follow any directions found in the `Deprecation.extend` annotation.
+Otherwise, remove the `extends` clause.
 
 ```dart
 class D {}

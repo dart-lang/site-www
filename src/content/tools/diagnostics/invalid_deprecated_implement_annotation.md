@@ -11,11 +11,10 @@ _The annotation '@Deprecated.implement' can only be applied to implementable cla
 
 ## Description
 
-The analyzer produces this diagnostic when anything other than an
-implementable class or mixin is annotated with
-Deprecated.implement. An implementable
-class or mixin is one not declared with the `base`, `final`, or `sealed`
-keywords.
+The analyzer produces this diagnostic when the `@Deprecated.implement`
+annotation is applied to a declaration that isn't an implementable class
+or mixin. An implementable class or mixin is one that isn't declared with
+the base, final, or sealed keywords.
 
 ## Example
 

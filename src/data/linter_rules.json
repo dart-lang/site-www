@@ -2498,6 +2498,19 @@
     "sinceDartSdk": "2.0"
   },
   {
+    "name": "remove_deprecations_in_breaking_versions",
+    "description": "Deprecation in major version.",
+    "categories": [
+      "publicInterface"
+    ],
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsFix",
+    "details": "**DO** Remove deprecated elements in breaking version numbers.\nBreaking version numbers are on the form `x.0.0` or `0.x.0`.\n\nFor example given a package with a `pubspec.yaml` file containing:\n\n```yaml\nname: p\nversion: 2.0.0\nenvironment:\n  sdk: ^3.9.0\n```\n\n**BAD:**\n```dart\n@deprecated\nvoid f() {}\n```\n\n**GOOD:**\n```dart\n// (f is removed).\n```\n\n**GOOD:**\n```yaml\nname: p\nversion: 1.0.1\nenvironment:\n  sdk: ^3.9.0\n```",
+    "sinceDartSdk": "3.10"
+  },
+  {
     "name": "require_trailing_commas",
     "description": "Use trailing commas for all parameter lists and argument lists.",
     "categories": [

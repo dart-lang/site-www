@@ -2,6 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
@@ -42,6 +45,8 @@ void _setUpSite() {
   _setUpGallery();
   _setUpExpandableCards();
   _setUpTableOfContents();
+  _setUpReleaseTags();
+  _setUpTooltips();
 }
 
 void _setUpSidenav() {
@@ -345,6 +350,7 @@ void _setUpExpandableCards() {
     currentFragment = currentFragment.substring(1);
   }
   final expandableCards = web.document.querySelectorAll('.expandable-card');
+  web.Element? targetCard;
 
   for (var i = 0; i < expandableCards.length; i++) {
     final card = expandableCards.item(i) as web.Element;
@@ -368,7 +374,14 @@ void _setUpExpandableCards() {
     if (card.id != currentFragment) {
       card.classList.add('collapsed');
       expandButton.ariaExpanded = 'false';
+    } else {
+      targetCard = card;
     }
+  }
+
+  if (targetCard != null) {
+    // Scroll the expanded card into view.
+    targetCard.scrollIntoView();
   }
 }
 
@@ -500,5 +513,132 @@ void _setUpTocActiveObserver() {
 
   for (var i = 0; i < headings.length; i++) {
     observer.observe(headings.item(i) as web.Element);
+  }
+}
+
+void _setUpReleaseTags() {
+  void updatePlaceholders(String channel, String version) {
+    final revisionElements = web.document.querySelectorAll(
+      '.build-rev-$channel',
+    );
+    for (var i = 0; i < revisionElements.length; i++) {
+      final revisionElement = revisionElements.item(i) as web.Element;
+      revisionElement.textContent = version;
+    }
+
+    if (channel == 'stable') {
+      final download =
+          'https://storage.googleapis.com/dart-archive/channels/$channel/release/latest/linux_packages/dart_$version-1_amd64.deb';
+      final targets = web.document.querySelectorAll('.debian-link-stable');
+      for (var i = 0; i < targets.length; i++) {
+        final target = targets.item(i) as web.Element;
+        target.setAttribute('href', download);
+      }
+    }
+  }
+
+  void fetchVersion(String channel) async {
+    final response = await http.get(
+      Uri.https(
+        'storage.googleapis.com',
+        'dart-archive/channels/$channel/release/latest/VERSION',
+      ),
+    );
+    final data = jsonDecode(response.body) as Map<String, Object?>;
+    updatePlaceholders(channel, data['version'] as String);
+  }
+
+  fetchVersion('stable');
+  fetchVersion('beta');
+  fetchVersion('dev');
+}
+
+void _setUpTooltips() {
+  final tooltipWrappers = web.document.querySelectorAll('.tooltip-wrapper');
+
+  final isTouchscreen = web.window.matchMedia('(pointer: coarse)').matches;
+
+  void setup({required bool setUpClickListener}) {
+    for (var i = 0; i < tooltipWrappers.length; i++) {
+      final linkWrapper = tooltipWrappers.item(i) as web.HTMLElement;
+      final target = linkWrapper.querySelector('.tooltip-target');
+      final tooltip = linkWrapper.querySelector('.tooltip') as web.HTMLElement?;
+
+      if (target == null || tooltip == null) {
+        continue;
+      }
+      _ensureVisible(tooltip);
+
+      if (setUpClickListener && isTouchscreen) {
+        // On touchscreen devices, toggle tooltip visibility on tap.
+        target.addEventListener(
+          'click',
+          ((web.Event e) {
+            final isVisible = tooltip.classList.contains('visible');
+            if (isVisible) {
+              tooltip.classList.remove('visible');
+            } else {
+              tooltip.classList.add('visible');
+            }
+            e.preventDefault();
+          }).toJS,
+        );
+      }
+    }
+  }
+
+  void closeAll() {
+    final visibleTooltips = web.document.querySelectorAll(
+      '.tooltip.visible',
+    );
+    for (var i = 0; i < visibleTooltips.length; i++) {
+      final tooltip = visibleTooltips.item(i) as web.HTMLElement;
+      tooltip.classList.remove('visible');
+    }
+  }
+
+  setup(setUpClickListener: true);
+
+  // Reposition tooltips on window resize.
+  web.EventStreamProviders.resizeEvent.forTarget(web.window).listen((_) {
+    setup(setUpClickListener: false);
+  });
+
+  // Close tooltips when clicking outside of any tooltip wrapper.
+  web.EventStreamProviders.clickEvent.forTarget(web.document).listen((e) {
+    if ((e.target as web.Element).closest('.tooltip-wrapper') == null) {
+      closeAll();
+    }
+  });
+
+  // On touchscreen devices, close tooltips when scrolling.
+  if (isTouchscreen) {
+    web.EventStreamProviders.scrollEvent.forTarget(web.window).listen((_) {
+      closeAll();
+    });
+  }
+}
+
+/// Adjust the tooltip position to ensure it is fully inside the
+/// ancestor .content element.
+void _ensureVisible(web.HTMLElement tooltip) {
+  final containerRect = tooltip.closest('.content')!.getBoundingClientRect();
+  final tooltipRect = tooltip.getBoundingClientRect();
+  final offset = double.parse(tooltip.getAttribute('data-adjusted') ?? '0');
+
+  final tooltipLeft = tooltipRect.left - offset;
+  final tooltipRight = tooltipRect.right - offset;
+
+  if (tooltipLeft < containerRect.left) {
+    final offset = containerRect.left - tooltipLeft;
+    tooltip.style.left = 'calc(50% + ${offset}px)';
+    tooltip.dataset['adjusted'] = offset.toString();
+  } else if (tooltipRight > containerRect.right) {
+    final offset = tooltipRight - containerRect.right;
+    tooltip.style.left = 'calc(50% - ${offset}px)';
+    tooltip.dataset['adjusted'] = (-offset).toString();
+  } else {
+    tooltip.style.left = '50%';
+    tooltip.dataset['adjusted'] = '0';
   }
 }

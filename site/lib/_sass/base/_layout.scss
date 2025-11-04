@@ -55,6 +55,14 @@
 }
 
 body {
+  // If configured to, hide the sidenav in the wide layout
+  // unless specifically opened.
+  &.sidenav-hidden:not(.open_menu) {
+    #sidenav {
+      display: none;
+    }
+  }
+
   // The top TOC is not shown on narrow screens.
   @media (min-width: 1200px) {
     --site-subheader-height: 0rem;

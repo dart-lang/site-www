@@ -264,7 +264,7 @@
   - title: AI
     children:
         - title: Dart and Flutter MCP Server
-          permalink: /tools/mcp-server
+          permalink: https://docs.flutter.dev/ai/mcp-server
   - title: Editors & debuggers
     children:
       - title: IntelliJ & Android Studio
