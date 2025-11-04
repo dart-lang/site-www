@@ -281,7 +281,7 @@ or `!=` operator. Comparing against a more complex expression,
 like a conditional expression, is also not allowed.
 
 <?code-excerpt "language/lib/shorthands/equality_with_errors.dart"?>
-```dart
+```dart tag=fails-sa
 enum Color { red, green, blue }
 
 void notAllowedExamples() {
