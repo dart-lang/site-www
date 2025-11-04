@@ -1,4 +1,3 @@
-// #docregion intro
 // Enum example
 enum Status { none, running, stopped, paused }
 
@@ -15,4 +14,3 @@ class Point {
 }
 
 Point origin = .origin(); // Instead of Point.origin()
-// #enddocregion intro

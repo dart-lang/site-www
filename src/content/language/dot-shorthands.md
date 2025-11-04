@@ -36,7 +36,7 @@ other operations onto it:
 
 Here’s a quick look at how it simplifies an enum assignment:
 
-<?code-excerpt "language/lib/classes/shorthand.dart (intro)"?>
+<?code-excerpt "language/lib/shorthands/intro.dart"?>
 ```dart
 // Enum example
 enum Status { none, running, stopped, paused }
@@ -79,7 +79,7 @@ A primary and highly recommended use case for dot shorthands
 is with enums, especially in assignments and switch statements, 
 where the enum type is very obvious.
 
-<?code-excerpt "language/lib/classes/shorthand_enums.dart"?>
+<?code-excerpt "language/lib/shorthands/enums.dart"?>
 ```dart
 // Enum example
 enum LogLevel { debug, info, warning, error }
@@ -104,7 +104,7 @@ Dot shorthands are useful for invoking named constructors
 or factory constructors. This syntax also works when providing 
 type arguments to a generic class's constructor.
 
-<?code-excerpt "language/lib/classes/shorthand_constructor.dart"?>
+<?code-excerpt "language/lib/shorthands/constructors.dart"?>
 ```dart
 class Point {
   final double x, y;
@@ -141,7 +141,7 @@ and without arguments. It also infers any generic type arguments
 from the context. 
 
 Before:
-<?code-excerpt "language/lib/classes/shorthand_unnamed_constructor.dart (unnamed-before)"?>
+<?code-excerpt "language/lib/shorthands/unnamed_constructors.dart (unnamed-before)"?>
 ```dart
 class _PageState extends State<Page> {
   late final AnimationController _animationController = AnimationController(
@@ -158,7 +158,7 @@ class _PageState extends State<Page> {
 ```
 
 After:
-<?code-excerpt "language/lib/classes/shorthand_unnamed_constructor.dart (unnamed-after)" replace="/_PageStateAfter/_PageState/g;"?>
+<?code-excerpt "language/lib/shorthands/unnamed_constructors.dart (unnamed-after)" replace="/_PageStateAfter/_PageState/g;"?>
 ```dart
 class _PageState extends State<Page> {
   late final AnimationController _animationController = .new(vsync: this);
@@ -175,7 +175,7 @@ You can use dot shorthand syntax to call static methods or
 access static fields/getters. The compiler infers the 
 target class from the context type of the expression.
 
-<?code-excerpt "language/lib/classes/shorthand_methods.dart"?>
+<?code-excerpt "language/lib/shorthands/static_members.dart"?>
 ```dart
 // Static method
 int httpPort = .parse('80'); // Instead of int.parse('80')
@@ -190,7 +190,7 @@ You can use dot shorthands within a constant context
 if the member being accessed is a compile-time constant. 
 This is common for enum values and invoking `const` constructors.
 
-<?code-excerpt "language/lib/classes/shorthand_const.dart"?>
+<?code-excerpt "language/lib/shorthands/consts.dart"?>
 ```dart
 enum Status { none, running, stopped, paused }
 
@@ -227,7 +227,7 @@ dot shorthand resolves to. Any subsequent operations in the
 chain must return a value that matches that same initial 
 context type.
 
-<?code-excerpt "language/lib/classes/shorthand_chain.dart (chain)"?>
+<?code-excerpt "language/lib/shorthands/chain.dart (chain)"?>
 ```dart
 // .fromCharCode(72) resolves to the String "H",
 // then the instance method .toLowerCase() is called on that String.
@@ -248,7 +248,7 @@ For instance, in an expression like `myColor == .green`,
 the type of the variable `myColor` is used as the context. 
 This means the compiler interprets `.green` as `Color.green`.
 
-<?code-excerpt "language/lib/classes/shorthand_equality.dart"?>
+<?code-excerpt "language/lib/shorthands/equality.dart"?>
 ```dart
 enum Color { red, green, blue }
 
@@ -277,7 +277,7 @@ The dot shorthand must be on the right-hand side of the `==`
 or `!=` operator. Comparing against a more complex expression, 
 like a ternary, is also not allowed.
 
-<?code-excerpt "language/lib/classes/shorthand_equality_errors.dart"?>
+<?code-excerpt "language/lib/shorthands/equality_with_errors.dart"?>
 ```dart
 enum Color { red, green, blue }
 
