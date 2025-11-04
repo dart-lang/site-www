@@ -103,7 +103,7 @@ When generating bindings for an Apple API,
 exploring these directories is a great way to find
 the right headers to pass to FFIgen.
 
-```dart
+```dart highlightLines=4-10
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
