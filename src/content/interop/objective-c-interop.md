@@ -69,7 +69,7 @@ from the FFIgen README for more details.
 First, add `package:ffigen` as a dev dependency:
 
 ```console
-$ dart pub add --dev ffigen
+$ dart pub add dev:ffigen
 ```
 
 Then, configure FFIgen to generate bindings for the
@@ -137,7 +137,7 @@ FFIgen sometimes generates a `.m` file,
 containing Objective-C code required for interop with the API.
 FFIgen generates this file only if the API requires it
 (for example, if you're using blocks or protocols).
-By default this file will have the same name as the Dart bindings,
+By default, this file has the same name as the Dart bindings,
 but with `.m` at the end of the file name.
 You can change its location with the `output.objectiveCFile` option.
 If FFIgen produces this file, you must compile it into your package,
@@ -216,8 +216,8 @@ check out the [FFIgen API documentation][].
 
 ### Generate the Objective-C bindings
 
-To generate the bindings, navigate to the example directory,
-and run the script:
+To generate the bindings,
+navigate to the `example` directory and run the script:
 
 ```console
 $ dart run generate_code.dart
@@ -272,16 +272,16 @@ that handles this conversion,
 and a `toDartString()` method that converts it back to a Dart `String`.
 
 ```dart
-  for (final file in args) {
-    final fileStr = NSString(file);
-    print('Loading $file');
+for (final file in args) {
+  final fileStr = NSString(file);
+  print('Loading $file');
 ```
 
 The audio player expects an `NSURL`, so next,
 use the [`fileURLWithPath:`][] method to convert the `NSString` to an `NSURL`.
 
 ```dart
-    final fileUrl = NSURL.fileURLWithPath(fileStr);
+final fileUrl = NSURL.fileURLWithPath(fileStr);
 ```
 
 Now, you can construct the `AVAudioPlayer`.
@@ -295,10 +295,10 @@ To initialize the `AVAudioPlayer`,
 use the [`initWithContentsOfURL:error:`][] method:
 
 ```dart
-    final player = AVAudioPlayer.alloc().initWithContentsOfURL(
-      fileUrl,
-      error: nullptr,
-    );
+final player = AVAudioPlayer.alloc().initWithContentsOfURL(
+  fileUrl,
+  error: nullptr,
+);
 ```
 
 This Dart `AVAudioPlayer` object is a wrapper around an underlying
@@ -323,21 +323,21 @@ so you can immediately use the Dart `.ceil()` method
 to round up to the next second:
 
 ```dart
-    final durationSeconds = player.duration.ceil();
-    print('$durationSeconds sec');
+final durationSeconds = player.duration.ceil();
+print('$durationSeconds sec');
 ```
 
 Finally, you can use the [`play`][] method to play the audio,
 then check the status, and wait for the duration of the audio file:
 
 ```dart
-    final status = player.play();
-    if (status) {
-      print('Playing...');
-      await Future<void>.delayed(Duration(seconds: durationSeconds));
-    } else {
-      print('Failed to play audio.');
-    }
+final status = player.play();
+if (status) {
+  print('Playing...');
+  await Future<void>.delayed(Duration(seconds: durationSeconds));
+} else {
+  print('Failed to play audio.');
+}
 ```
 
 [play_audio.dart]: {{page.example}}/play_audio.dart
@@ -351,10 +351,10 @@ This stems from differences between Dart isolates and OS threads,
 and how Apple's APIs handle concurrency:
 
 1. Dart isolates aren't the same thing as threads.
-   Isolates run on threads,
-   but aren't guaranteed to run on any particular thread,
-   and the VM might change which thread an isolate is running on
-   without warning.
+   Isolates run on threads but aren't
+2. guaranteed to run on any particular thread,
+   and the VM might change which thread an isolate is
+   running on without warning.
    There is an [open feature request][] to enable isolates to be
    pinned to specific threads.
 2. While FFIgen supports converting
@@ -385,7 +385,7 @@ add support for non-`void` return values in the future.
 
 The third point means that directly calling some Apple APIs
 using the generated Dart bindings might be thread unsafe.
-This could crash your app, or cause other unpredictable behavior.
+This could crash your app or cause other unpredictable behavior.
 In recent versions of Flutter, the main isolate runs on the platform thread,
 so this isn't an issue when invoking these thread-locked APIs
 from the main isolate.
@@ -462,7 +462,7 @@ and generates a wrapper header, `swift_api.h`.
 It also generates the dylib you're going to load later,
 `libswiftapi.dylib`.
 
-You can verify that the header generated correctly by opening it, 
+You can verify that the header generated correctly by opening it
 and checking that the interfaces are what you expect.
 Towards the bottom of the file,
 you should see something like the following:
@@ -476,7 +476,7 @@ SWIFT_CLASS("_TtC12swift_module10SwiftClass")
 @end
 ```
 
-If the interface is missing, or doesn't have all its methods,
+If the interface is missing, or doesn't have all of its methods,
 make sure they're all annotated with `@objc` and `public`.
 
 ### Configuring FFIgen for Swift
@@ -556,8 +556,8 @@ This outputs `swift_module.SwiftClass`.
 
 ### Generating the Swift bindings
 
-As before, navigate to the example directory,
-and run FFIgen:
+As before, to generate the bindings,
+navigate to the example directory and run FFIgen:
 
 ```console
 $ dart run ffigen
@@ -586,7 +586,7 @@ void main() {
 
 Note that the module name is not mentioned
 in the generated Dart API.
-It's only used internally,
+It's only used internally
 to load the class from the dylib.
 
 Now you can run the example using:
