@@ -132,7 +132,7 @@ List<int> intList = .filled(5, 0); // Instead of List.filled(5, 0)
 
 The `.new` dot shorthand provides a concise way to call an
 unnamed constructor of a class. This is useful 
-for instantiating fields and variables where the type is 
+for assigning fields or variables where the type is 
 already explicitly declared.
 
 This syntax is particularly effective for cleaning up 
