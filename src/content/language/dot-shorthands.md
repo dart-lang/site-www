@@ -159,7 +159,8 @@ class _PageState extends State<Page> {
 }
 ```
 
-After:
+**Using dot shorthands:**
+
 <?code-excerpt "language/lib/shorthands/unnamed_constructors.dart (unnamed-after)" replace="/_PageStateAfter/_PageState/g;"?>
 ```dart
 class _PageState extends State<Page> {
