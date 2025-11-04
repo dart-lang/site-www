@@ -72,7 +72,7 @@ the compiler knows a `Status` is expected, so it infers
 
 A _static member shorthand_ is an expression that
 begins with a leading dot (`.`).
-When the type is known from the surrounding context
+When the type is known from the surrounding context,
 this syntax provides a concise way to access
 static members, constructors, and enum values.
 
