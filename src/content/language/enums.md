@@ -6,8 +6,8 @@ prevpage:
   url: /language/mixins
   title: Mixins
 nextpage:
-  url: /language/extension-methods
-  title: Extension methods
+  url: /language/dot-shorthands
+  title: Dot shorthands
 ---
 
 Enumerated types, often called _enumerations_ or _enums_,
