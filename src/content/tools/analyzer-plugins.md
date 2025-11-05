@@ -180,7 +180,7 @@ See the following guides for details:
 
 ### Debug a plugin
 
-If your plugin isn't working as expected, 
+If your plugin is not working as expected, 
 here are the recommended ways to debug it:
 
 * Your first stop should be the [analyzer diagnostics pages][]. 
