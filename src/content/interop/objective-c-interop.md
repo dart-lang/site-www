@@ -313,7 +313,7 @@ Some interfaces also provide `new*` methods that do both of these steps.
 To initialize the `AVAudioPlayer`,
 use the [`initWithContentsOfURL:error:`][] method:
 
-```dart highlightLines=8-13
+```dart highlightLines=9-13
 void main(List<String> args) async {
   DynamicLibrary.open(_dylibPath);
 
