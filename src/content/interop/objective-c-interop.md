@@ -352,7 +352,7 @@ and how Apple's APIs handle concurrency:
 
 1. Dart isolates aren't the same thing as threads.
    Isolates run on threads but aren't
-2. guaranteed to run on any particular thread,
+   guaranteed to run on any particular thread,
    and the VM might change which thread an isolate is
    running on without warning.
    There is an [open feature request][] to enable isolates to be
