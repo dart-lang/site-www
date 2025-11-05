@@ -295,10 +295,7 @@ To initialize the `AVAudioPlayer`,
 use the [`initWithContentsOfURL:error:`][] method:
 
 ```dart
-final player = AVAudioPlayer.alloc().initWithContentsOfURL(
-  fileUrl,
-  error: nullptr,
-);
+final player = AVAudioPlayer.alloc().initWithContentsOfURL(fileUrl);
 ```
 
 This Dart `AVAudioPlayer` object is a wrapper around an underlying
