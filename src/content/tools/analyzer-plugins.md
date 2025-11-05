@@ -43,7 +43,7 @@ plugins:
     path: /path/to/my_plugin
 ```
 
-After you’ve made changes to the plugins section, 
+After you have made changes to the plugins section, 
 restart the Dart Analysis Server to see the effects.
 
 [pub.dev]: https://pub.dev
