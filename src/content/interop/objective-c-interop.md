@@ -145,11 +145,7 @@ If FFIgen produces this file, you must compile it into your package,
 otherwise you might get runtime exceptions relating to missing symbols.
 For this example, FFIgen doesn't generate a `.m` file.
 
-Use the `output.preamble` option to insert text at the top of the Dart output,
-such as license headers or lint directives.
-In this case, disable several lints:
-
-```dart highlightLines=11-16
+```dart highlightLines=11-13
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
@@ -162,9 +158,6 @@ final config = FfiGenerator(
   ),
   output: Output(
     dartFile: Uri.file('avf_audio_bindings.dart'),
-    preamble: '''
-// ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
-'''
   ),
 );
 
@@ -197,9 +190,6 @@ final config = FfiGenerator(
   ),
   output: Output(
     dartFile: Uri.file('lib/avf_audio_bindings.dart'),
-    preamble: '''
-// ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
-'''
   ),
 );
 
@@ -566,8 +556,6 @@ ffigen:
   headers:
     entry-points:
       - 'swift_api.h'
-  preamble: |
-    // ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, return_of_invalid_type, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
 ```
 
 As before, set the language to `objc`,
