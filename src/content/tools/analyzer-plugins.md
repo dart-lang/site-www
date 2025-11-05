@@ -152,7 +152,7 @@ class SimplePlugin extends Plugin {
 
 Key points:
 * You need a top-level variable named `plugin` that 
-instantiates your class. The analysis server looks 
+instantiates your class. The Dart Analysis Server looks 
 for this variable.
 * Your class must extend `Plugin` from 
 `package:analysis_server_plugin/plugin.dart`.
