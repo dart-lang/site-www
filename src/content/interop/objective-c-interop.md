@@ -313,7 +313,7 @@ Some interfaces also provide `new*` methods that do both of these steps.
 To initialize the `AVAudioPlayer`,
 use the [`initWithContentsOfURL:error:`][] method:
 
-```dart highlightLines=8-16
+```dart highlightLines=8-13
 void main(List<String> args) async {
   DynamicLibrary.open(_dylibPath);
 
@@ -322,10 +322,7 @@ void main(List<String> args) async {
     print('Loading $file');
 
     final fileUrl = NSURL.fileURLWithPath(fileStr);
-    final player = AVAudioPlayer.alloc().initWithContentsOfURL(
-      fileUrl,
-      error: nullptr,
-    );
+    final player = AVAudioPlayer.alloc().initWithContentsOfURL(fileUrl);
     if (player == null) {
       print('Failed to load audio.');
       continue;
@@ -355,7 +352,7 @@ Since `duration` is `readonly`, only the getter is generated.
 so you can immediately use the Dart `.ceil()` method
 to round up to the next second:
 
-```dart highlightLines=18-19
+```dart highlightLines=15-16
 void main(List<String> args) async {
   DynamicLibrary.open(_dylibPath);
 
@@ -364,10 +361,7 @@ void main(List<String> args) async {
     print('Loading $file');
 
     final fileUrl = NSURL.fileURLWithPath(fileStr);
-    final player = AVAudioPlayer.alloc().initWithContentsOfURL(
-      fileUrl,
-      error: nullptr,
-    );
+    final player = AVAudioPlayer.alloc().initWithContentsOfURL(fileUrl);
     if (player == null) {
       print('Failed to load audio.');
       continue;
@@ -382,7 +376,7 @@ void main(List<String> args) async {
 Finally, you can use the [`play`][] method to play the audio,
 then check the status, and wait for the duration of the audio file:
 
-```dart highlightLines=21-27
+```dart highlightLines=18-24
 void main(List<String> args) async {
   DynamicLibrary.open(_dylibPath);
 
@@ -391,10 +385,7 @@ void main(List<String> args) async {
     print('Loading $file');
 
     final fileUrl = NSURL.fileURLWithPath(fileStr);
-    final player = AVAudioPlayer.alloc().initWithContentsOfURL(
-      fileUrl,
-      error: nullptr,
-    );
+    final player = AVAudioPlayer.alloc().initWithContentsOfURL(fileUrl);
     if (player == null) {
       print('Failed to load audio.');
       continue;
