@@ -331,6 +331,8 @@
         permalink: /tools/non-promotion-reasons
       - title: Linter rules
         permalink: /tools/linter-rules
+      - title: Analyzer plugins
+        permalink: /tools/analyzer-plugins
       - title: Diagnostic messages
         permalink: /tools/diagnostics
   - title: Testing & optimization
