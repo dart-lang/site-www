@@ -41,7 +41,7 @@ Interact with the browser:
 
 ## The evolution of JavaScript interop {: #next-generation-js-interop }
 
-[Dart 3.3][] introduces a new generation of JS interop which offers
+[Dart 3.3][] introduces a new generation of JS interop that offers
 a unified set of features and APIs to access JavaScript and browser
 functionalities within your Dart code. This modern approach enhances the
 developer experience and enables WebAssembly ([Wasm][]) support, aligning
