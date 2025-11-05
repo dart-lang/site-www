@@ -194,4 +194,4 @@ and inspect values is to write to a log file from
 your plugin's code.
 
 
-[analyzer diagnostics pages]:https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/tutorial/instrumentation.md#open-the-analyzer-diagnostics-pages
+[analyzer diagnostics pages]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/tutorial/instrumentation.md#open-the-analyzer-diagnostics-pages
