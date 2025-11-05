@@ -26,7 +26,7 @@ file at the root of your package or workspace.
 ### Enable a plugin
 
 To enable an analyzer plugin, add it to the top-level
-plugins section of your `analysis_options.yaml file`. You can
+plugins section of your `analysis_options.yaml` file. You can
 add a plugin from [pub.dev][] using a version constraint:
 
 ```yaml
