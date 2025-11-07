@@ -462,7 +462,7 @@ To enable a legacy plugin:
     To indicate specific plugin functionality to enable,
     such as new diagnostics, additional setup might be required.
 
-[analyzer plugin]: /tool/analyzer-plugins
+[analyzer plugin]: /tools/analyzer-plugins
 
 ## Excluding code from analysis
 
