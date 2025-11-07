@@ -57,7 +57,27 @@ Component get _dartDevSite => ContentApp.custom(
     components: _embeddableComponents,
     layouts: const [DocLayout(), HomepageLayout(), LearnLayout()],
     theme: const ContentTheme.none(),
-    secondaryOutputs: [const RobotsTxtOutput(), MarkdownOutput()],
+    secondaryOutputs: [
+      const RobotsTxtOutput(),
+
+      MarkdownOutput(
+        createHeader: (page) {
+          final header = StringBuffer();
+          if (page.data.page['title'] case final String title
+              when title.isNotEmpty) {
+            header.writeln('# $title');
+
+            if (page.data.page['description'] case final String description
+                when description.isNotEmpty) {
+              header.writeln();
+              header.writeln('> $description');
+            }
+          }
+
+          return header.toString();
+        },
+      ),
+    ],
   ),
 );
 
