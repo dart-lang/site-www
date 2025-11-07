@@ -164,7 +164,8 @@ quick fixes, and assists with the analyzer.
 Once you have your basic plugin package set up, 
 you can start adding custom functionality by 
 implementing the `register` method. 
-See the following guides for details:
+To learn more about implementing specific functionality,
+check out the following guides:
 
 * [Writing rules][]
 * [Writing fixes][]
