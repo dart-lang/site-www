@@ -143,7 +143,7 @@ final plugin = SimplePlugin();
 class SimplePlugin extends Plugin {
   @override
   void register(PluginRegistry registry) {
-    //Register analysis rules, quick fixes, and quick assists.
+    // Register diagnostics, quick fixes, and assists.
   }
 }
 ```
