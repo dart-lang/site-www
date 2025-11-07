@@ -116,7 +116,7 @@ which provides the core `Plugin` class.
 
 1. Create the `pubspec.yaml` file:
 
-```yaml
+```yaml title"pubspec.yaml"
 name: test_analyzer_plugin
 version: 0.0.1
 
