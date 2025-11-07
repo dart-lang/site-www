@@ -46,7 +46,7 @@ restart the Dart Analysis Server to see the effects.
 
 [pub.dev]: {{site.pub}}
 
-### Configure lint rules
+### Configure diagnostics
 
 A plugin can report two kinds of diagnostics: warnings and lints. 
 The analyzer handles them differently by default:
