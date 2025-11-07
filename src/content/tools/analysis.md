@@ -433,7 +433,7 @@ You can enable only one plugin per `analysis_options.yaml` file.
 Enabling a legacy analyzer plugin increases how much memory 
 the analyzer uses.
 
-Don't use the legacy analyzer plugins if your situation meets
+Don't use legacy analyzer plugins if your situation meets
 either of the following conditions:
 
 * You use a development machine with less than 16 GB of memory.
