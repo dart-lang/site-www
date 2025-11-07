@@ -423,7 +423,7 @@ in `one.yaml`, then `two.yaml`, then `three.yaml`, and finally
 :::note
 This is for the legacy plugin system, which will be 
 deprecated in a future release. For new
-development use [analyzer plugin][].
+development use the new [analyzer plugin][] system.
 :::
 
 The analyzer has experimental support for legacy plugins.
