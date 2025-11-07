@@ -93,6 +93,7 @@ To suppress for a single line:
 ```
 
 To suppress for an entire file:
+
 ```dart
 // ignore_for_file: some_plugin/some_code
 ```
