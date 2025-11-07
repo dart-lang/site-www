@@ -189,8 +189,8 @@ here are the recommended ways to debug it:
 Plugins run in a separate isolate, and their standard output 
 is not connected to your console.
 * The most reliable way to trace your plugin's execution 
-and inspect values is to write to a log file from 
-your plugin's code.
+  and inspect values is to write to a log file from 
+  your plugin's code.
 
 
 [analyzer diagnostics pages]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/tutorial/instrumentation.md#open-the-analyzer-diagnostics-pages
