@@ -66,10 +66,11 @@ from the FFIgen README for more details.
 
 ### Configure FFIgen for Objective-C
 
-First, add `package:ffigen` as a dev dependency:
+First, add `package:ffigen` as a dev dependency and the helpers
+`package:objective_c` and `package:ffi` as a regular dependency:
 
 ```console
-$ dart pub add dev:ffigen
+$ dart pub add dev:ffigen objective_c ffi
 ```
 
 Then, configure FFIgen to generate bindings for the
@@ -144,11 +145,7 @@ If FFIgen produces this file, you must compile it into your package,
 otherwise you might get runtime exceptions relating to missing symbols.
 For this example, FFIgen doesn't generate a `.m` file.
 
-Use the `output.preamble` option to insert text at the top of the Dart output,
-such as license headers or lint directives.
-In this case, disable several lints:
-
-```dart highlightLines=11-16
+```dart highlightLines=11-13
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
@@ -161,9 +158,6 @@ final config = FfiGenerator(
   ),
   output: Output(
     dartFile: Uri.file('avf_audio_bindings.dart'),
-    preamble: '''
-// ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
-'''
   ),
 );
 
@@ -195,10 +189,7 @@ final config = FfiGenerator(
     interfaces: Interfaces.includeSet({'AVAudioPlayer'}),
   ),
   output: Output(
-    dartFile: Uri.file('avf_audio_bindings.dart'),
-    preamble: '''
-// ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
-'''
+    dartFile: Uri.file('lib/avf_audio_bindings.dart'),
   ),
 );
 
@@ -220,7 +211,7 @@ To generate the bindings,
 navigate to the `example` directory and run the script:
 
 ```console
-$ dart run generate_code.dart
+$ dart run tool/generate_code.dart
 ```
 
 This should generate a large `avf_audio_bindings.dart` file,
@@ -248,6 +239,9 @@ and instantiate the native `AVFAudio` library:
 
 ```dart
 import 'dart:ffi';
+
+import 'package:objective_c/objective_c.dart';
+
 import 'avf_audio_bindings.dart';
 
 const _dylibPath =
@@ -255,6 +249,7 @@ const _dylibPath =
 
 void main(List<String> args) async {
   DynamicLibrary.open(_dylibPath);
+}
 ```
 
 Because this example loads a system library,
@@ -271,17 +266,31 @@ The generated `NSString` wrapper has a convenient constructor
 that handles this conversion,
 and a `toDartString()` method that converts it back to a Dart `String`.
 
-```dart
-for (final file in args) {
-  final fileStr = NSString(file);
-  print('Loading $file');
+```dart highlightLines=4-7
+void main(List<String> args) async {
+  DynamicLibrary.open(_dylibPath);
+
+  for (final file in args) {
+    final fileStr = NSString(file);
+    print('Loading $file');
+  }
+}
 ```
 
 The audio player expects an `NSURL`, so next,
 use the [`fileURLWithPath:`][] method to convert the `NSString` to an `NSURL`.
 
-```dart
-final fileUrl = NSURL.fileURLWithPath(fileStr);
+```dart highlightLines=8
+void main(List<String> args) async {
+  DynamicLibrary.open(_dylibPath);
+
+  for (final file in args) {
+    final fileStr = NSString(file);
+    print('Loading $file');
+
+    final fileUrl = NSURL.fileURLWithPath(fileStr);
+  }
+}
 ```
 
 Now, you can construct the `AVAudioPlayer`.
@@ -294,11 +303,22 @@ Some interfaces also provide `new*` methods that do both of these steps.
 To initialize the `AVAudioPlayer`,
 use the [`initWithContentsOfURL:error:`][] method:
 
-```dart
-final player = AVAudioPlayer.alloc().initWithContentsOfURL(
-  fileUrl,
-  error: nullptr,
-);
+```dart highlightLines=9-13
+void main(List<String> args) async {
+  DynamicLibrary.open(_dylibPath);
+
+  for (final file in args) {
+    final fileStr = NSString(file);
+    print('Loading $file');
+
+    final fileUrl = NSURL.fileURLWithPath(fileStr);
+    final player = AVAudioPlayer.alloc().initWithContentsOfURL(fileUrl);
+    if (player == null) {
+      print('Failed to load audio.');
+      continue;
+    }
+  }
+}
 ```
 
 This Dart `AVAudioPlayer` object is a wrapper around an underlying
@@ -322,21 +342,56 @@ Since `duration` is `readonly`, only the getter is generated.
 so you can immediately use the Dart `.ceil()` method
 to round up to the next second:
 
-```dart
-final durationSeconds = player.duration.ceil();
-print('$durationSeconds sec');
+```dart highlightLines=15-16
+void main(List<String> args) async {
+  DynamicLibrary.open(_dylibPath);
+
+  for (final file in args) {
+    final fileStr = NSString(file);
+    print('Loading $file');
+
+    final fileUrl = NSURL.fileURLWithPath(fileStr);
+    final player = AVAudioPlayer.alloc().initWithContentsOfURL(fileUrl);
+    if (player == null) {
+      print('Failed to load audio.');
+      continue;
+    }
+
+    final durationSeconds = player.duration.ceil();
+    print('$durationSeconds sec');
+  }
+}
 ```
 
 Finally, you can use the [`play`][] method to play the audio,
 then check the status, and wait for the duration of the audio file:
 
-```dart
-final status = player.play();
-if (status) {
-  print('Playing...');
-  await Future<void>.delayed(Duration(seconds: durationSeconds));
-} else {
-  print('Failed to play audio.');
+```dart highlightLines=18-24
+void main(List<String> args) async {
+  DynamicLibrary.open(_dylibPath);
+
+  for (final file in args) {
+    final fileStr = NSString(file);
+    print('Loading $file');
+
+    final fileUrl = NSURL.fileURLWithPath(fileStr);
+    final player = AVAudioPlayer.alloc().initWithContentsOfURL(fileUrl);
+    if (player == null) {
+      print('Failed to load audio.');
+      continue;
+    }
+
+    final durationSeconds = player.duration.ceil();
+    print('$durationSeconds sec');
+
+    final status = player.play();
+    if (status) {
+      print('Playing...');
+      await Future<void>.delayed(Duration(seconds: durationSeconds));
+    } else {
+      print('Failed to play audio.');
+    }
+  }
 }
 ```
 
@@ -352,7 +407,7 @@ and how Apple's APIs handle concurrency:
 
 1. Dart isolates aren't the same thing as threads.
    Isolates run on threads but aren't
-2. guaranteed to run on any particular thread,
+   guaranteed to run on any particular thread,
    and the VM might change which thread an isolate is
    running on without warning.
    There is an [open feature request][] to enable isolates to be
@@ -501,8 +556,6 @@ ffigen:
   headers:
     entry-points:
       - 'swift_api.h'
-  preamble: |
-    // ignore_for_file: camel_case_types, non_constant_identifier_names, unused_element, unused_field, return_of_invalid_type, void_checks, annotate_overrides, no_leading_underscores_for_local_identifiers, library_private_types_in_public_api
 ```
 
 As before, set the language to `objc`,
