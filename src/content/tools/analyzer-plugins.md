@@ -186,8 +186,8 @@ here are the recommended ways to debug it:
   If your plugin's isolate crashes, the "plugins" screen 
   displays the crash information and stack trace.
 * Remember `print` statements will not work. 
-Plugins run in a separate isolate, and their standard output 
-is not connected to your console.
+  Plugins run in a separate isolate, and their standard output 
+  is not connected to your console.
 * The most reliable way to trace your plugin's execution 
   and inspect values is to write to a log file from 
   your plugin's code.
