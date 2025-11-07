@@ -20,6 +20,21 @@ String get _indexOutputPath =>
 /// Markdown link definitions used by various diagnostic docs.
 Map<String, String> get _linkDefinitions => {
   'bottom type': '/null-safety/understanding-null-safety#top-and-bottom',
+  'context-type': '/resources/glossary#context-type',
+  'core-deprecated-new':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.html',
+  'core-deprecated-extend':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.extend.html',
+  'core-deprecated-implement':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.implement.html',
+  'core-deprecated-instantiate':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.instantiate.html',
+  'core-deprecated-mixin':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.mixin.html',
+  'core-deprecated-optional':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.optional.html',
+  'core-deprecated-subclass':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.subclass.html',
   'debugPrint': 'https://api.flutter.dev/flutter/foundation/debugPrint.html',
   'ffi': '/interop/c-interop',
   'IEEE 754': 'https://en.wikipedia.org/wiki/IEEE_754',
@@ -65,6 +80,7 @@ Map<String, String> get _linkDefinitions => {
   'part file': '/resources/glossary#part-file',
   'potentially non-nullable': '/resources/glossary#potentially-non-nullable',
   'public library': '/resources/glossary#public-library',
+  'obviously-typed': '/resources/glossary#obviously-typed',
 };
 
 /// Generate the diagnostic index page and individual diagnostic pages.
