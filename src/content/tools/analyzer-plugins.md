@@ -98,7 +98,7 @@ To suppress for an entire file:
 // ignore_for_file: some_plugin/some_code
 ```
 
-[built-in Dart diagnostics]: https://dart.dev/tools/analysis#suppressing-diagnostics-for-a-file
+[built-in Dart diagnostics]: /tools/analysis#suppressing-diagnostics-for-a-file
 
 ## Write an analyzer plugin
 
