@@ -44,7 +44,7 @@ plugins:
 After you have made changes to the plugins section, 
 restart the Dart Analysis Server to see the effects.
 
-[pub.dev]: https://pub.dev
+[pub.dev]: {{site.pub}}
 
 ### Configure lint rules
 
