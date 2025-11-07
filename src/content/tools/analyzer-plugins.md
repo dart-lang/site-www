@@ -60,7 +60,7 @@ and must be explicitly enabled in your analysis options file.
 You can enable or disable specific lint rules under 
 the diagnostics section for a plugin:
 
-```yaml
+```yaml title="analysis_options.yaml"
 plugins:
   my_plugin:
     path: /path/to/my_plugin
