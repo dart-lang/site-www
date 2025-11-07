@@ -135,7 +135,7 @@ This file is the entry point for the analysis server to load your plugin.
 
 Here's the basic structure:
 
-```dart
+```dart title="lib/main.dart"
 import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
 
