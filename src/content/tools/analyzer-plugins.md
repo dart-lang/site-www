@@ -183,8 +183,8 @@ If your plugin is not working as expected,
 here are the recommended ways to debug it:
 
 * Your first stop should be the [analyzer diagnostics pages][]. 
-If your plugin's isolate has crashed, the "plugins" screen 
-will display the crash information and stack trace.
+  If your plugin's isolate crashes, the "plugins" screen 
+  displays the crash information and stack trace.
 * Remember `print` statements will not work. 
 Plugins run in a separate isolate, and their standard output 
 is not connected to your console.
