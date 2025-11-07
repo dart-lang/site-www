@@ -13,7 +13,7 @@ _The annotation '@Deprecated.subclass' can only be applied to subclassable class
 
 The analyzer produces this diagnostic when anything other than a
 subclassable class or mixin is annotated with
-Deprecated.subclass. A subclassable
+`@Deprecated.subclass`. A subclassable
 class is a class not declared with the `final` or `sealed` keywords. A
 subclassable mixin is a mixin not declared with the `base` keyword.
 
