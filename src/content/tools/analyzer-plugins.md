@@ -112,7 +112,7 @@ specific dependencies and structure. The primary dependency
 you will use is the [`analysis_server_plugin` package][], 
 which provides the core `Plugin` class.
 
-[`analysis_server_plugin` package]: https://pub.dev/packages/analysis_server_plugin
+[`analysis_server_plugin` package]: {{site.pub-pkg}}/analysis_server_plugin
 
 1. Create the `pubspec.yaml` file:
 
