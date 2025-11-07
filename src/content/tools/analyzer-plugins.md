@@ -6,7 +6,7 @@ description: >-
 ---
 
 :::version-note
-Analyzer plugins introduced in Dart 3.10.
+Support for analyzer plugins was added in Dart 3.10.
 :::
 
 Analyzer plugins extend the Dart analyzer to report custom
