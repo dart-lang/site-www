@@ -9,11 +9,13 @@ description: >-
 Support for analyzer plugins was added in Dart 3.10.
 :::
 
-Analyzer plugins extend the Dart analyzer to report custom
+Analyzer plugins extend the [Dart analyzer][] to report custom
 diagnostics (lints and warnings), offer quick fixes,
 and provide assists. This functionality is available directly
 in your IDE and at the command line when you run
 `dart analyze` or `flutter analyze`.
+
+[Dart analyzer]: /tools/analysis
 
 ## Use analyzer plugins
 
