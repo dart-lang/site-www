@@ -35,7 +35,7 @@ plugins:
 Or, if you are developing a plugin locally, 
 you can use a local path:
 
-```yaml
+```yaml title="analysis_options.yaml"
 plugins:
   my_plugin:
     path: /path/to/my_plugin
