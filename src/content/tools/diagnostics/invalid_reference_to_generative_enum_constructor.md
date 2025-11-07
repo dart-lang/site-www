@@ -7,7 +7,9 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Generative enum constructors can only be used as targets of redirection._
+_Generative enum constructors can only be used to create an enum constant._
+
+_Generative enum constructors can't be torn off._
 
 ## Description
 

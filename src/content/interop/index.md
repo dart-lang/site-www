@@ -8,18 +8,18 @@ sitemap: false
 noindex: true
 ---
 
-<div class="card-list no_toc_section">
-  {% card "C interop & FFI", "/interop/c-interop" %}
+<div class="card-grid no_toc_section">
+  <Card title="C interop & FFI" link="/interop/c-interop">
     Learn how to interop with C libraries and code from Dart.
-  {% endcard %}
-  {% card "Java interop", "/interop/java-interop" %}
+  </Card>
+  <Card title="Java interop" link="/interop/java-interop">
     Learn how to interop with Java code, such as on Android, from Dart.
-  {% endcard %}
-  {% card "Objective-C & Swift interop", "/interop/objective-c-interop" %}
+  </Card>
+  <Card title="Objective-C & Swift interop" link="/interop/objective-c-interop">
     Learn how to interop with Objective-C and Swift code,
     such as on iOS, from Dart.
-  {% endcard %}
-  {% card "JS interop", "/interop/js-interop" %}
+  </Card>
+  <Card title="JS interop" link="/interop/js-interop">
     Learn how to interop with the web and other JavaScript code from Dart.
-  {% endcard %}
+  </Card>
 </div>

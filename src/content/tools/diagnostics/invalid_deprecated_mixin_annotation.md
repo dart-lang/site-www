@@ -11,8 +11,8 @@ _The annotation '@Deprecated.mixin' can only be applied to classes._
 
 ## Description
 
-The analyzer produces this diagnostic when anything other than a
-mixin class is annotated with Deprecated.mixin.
+The analyzer produces this diagnostic when the `@Deprecated.mixin`
+annotation is applied to a declaration that isn't a mixin class.
 
 ## Example
 
