@@ -27,7 +27,7 @@ To enable an analyzer plugin, add it to the top-level
 plugins section of your `analysis_options.yaml` file. You can
 add a plugin from [pub.dev][] using a version constraint:
 
-```yaml
+```yaml title="analysis_options.yaml"
 plugins:
   my_plugin: ^1.0.0
 ```
