@@ -48,7 +48,7 @@ _Released 12 November 2025_
 | [Dart 3.10 announcement]()
 
 Dart 3.10 introduces [dot shorthands][], a concise syntax 
-that lets you omit explicit type names when accessing enums,
+that lets you omit explicit type names when accessing enum values,
 static members, or constructors. If the compiler can infer 
 the type from context, you can now simply use `.foo` 
 instead of the full `ContextType.foo`.
