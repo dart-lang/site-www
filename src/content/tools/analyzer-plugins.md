@@ -188,7 +188,7 @@ here are the recommended ways to debug it:
 * Your first stop should be the [analyzer diagnostics pages][]. 
   If your plugin's isolate crashes, the "plugins" screen 
   displays the crash information and stack trace.
-* Remember `print` statements will not work. 
+* `print` statements won't work. 
   Plugins run in a separate isolate, and their standard output 
   is not connected to your console.
 * The most reliable way to trace your plugin's execution 
