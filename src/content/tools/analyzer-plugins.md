@@ -111,7 +111,7 @@ quick fixes, or assists to the Dart development experience.
 
 An analyzer plugin is a standard Dart package with 
 specific dependencies and structure. The primary dependency 
-you will use is the [`analysis_server_plugin` package][], 
+is the [`analysis_server_plugin` package][], 
 which provides the core `Plugin` class.
 
 [`analysis_server_plugin` package]: {{site.pub-pkg}}/analysis_server_plugin
