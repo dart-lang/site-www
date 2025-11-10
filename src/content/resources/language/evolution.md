@@ -43,6 +43,38 @@ on the Dart language GitHub repo.
 
 ## Changes in each release
 
+### Dart 3.10
+_Released 12 November 2025_
+| [Dart 3.10 announcement](https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088)
+
+Dart 3.10 introduces [dot shorthands][], a concise syntax 
+that lets you omit explicit type names when accessing enum values,
+static members, or constructors. If the compiler can infer 
+the type from context, you can now simply use `.foo` 
+instead of the full `ContextType.foo`.
+
+<?code-excerpt "language/lib/shorthands/intro.dart"?>
+```dart
+// Use dot shorthand syntax on enums:
+enum Status { none, running, stopped, paused }
+
+Status currentStatus = .running; // Instead of Status.running
+
+// Use dot shorthand syntax on a static method:
+int port = .parse('8080'); // Instead of int.parse('8080')
+
+// Uses dot shorthand syntax on a constructor:
+class Point {
+  final int x, y;
+  Point(this.x, this.y);
+  Point.origin() : x = 0, y = 0;
+}
+
+Point origin = .origin(); // Instead of Point.origin()
+```
+
+[dot shorthands]: /language/dot-shorthands
+
 ### Dart 3.9
 _Released 13 August 2025_
 | [Dart 3.9 announcement](https://blog.dart.dev/announcing-dart-3-9-ba49e8f38298)
