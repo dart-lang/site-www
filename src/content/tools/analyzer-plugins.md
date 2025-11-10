@@ -123,38 +123,38 @@ which provides the core `Plugin` class.
 
 1. Create the `pubspec.yaml` file. For example:
 
-```yaml title"pubspec.yaml"
-name: test_analyzer_plugin
-version: 0.0.1
+   ```yaml title"pubspec.yaml"
+   name: test_analyzer_plugin
+   version: 0.0.1
+   
+   environment:
+     sdk: ^3.10.0
+   
+   dependencies:
+     analysis_server_plugin: ^^0.3.0
+     analyzer: ^8.0.0
+   ```
 
-environment:
-  sdk: ^3.10.0
+2. Create the plugin entry point. For example:
 
-dependencies:
-  analysis_server_plugin: ^^0.3.0
-  analyzer: ^8.0.0
-```
-
-2. Create the plugin entry point
-
-```dart title="lib/main.dart"
-import 'package:analysis_server_plugin/plugin.dart';
-import 'package:analysis_server_plugin/registry.dart';
-
-final plugin = SimplePlugin();
-
-class SimplePlugin extends Plugin {
-  @override
-  void register(PluginRegistry registry) {
-    // Register diagnostics, quick fixes, and assists.
-  }
-}
-```
-
-The preceding code represents the basic structure for plugin 
-entry point. Make sure that you have a `lib/main.dart` file 
-in your package because this is the entry point for the 
-analysis server to load your plugin.
+   ```dart title="lib/main.dart"
+   import 'package:analysis_server_plugin/plugin.dart';
+   import 'package:analysis_server_plugin/registry.dart';
+   
+   final plugin = SimplePlugin();
+   
+   class SimplePlugin extends Plugin {
+     @override
+     void register(PluginRegistry registry) {
+       // Register diagnostics, quick fixes, and assists.
+     }
+   }
+   ```
+   
+   The preceding code represents the basic structure for plugin 
+   entry point. Make sure that you have a `lib/main.dart` file 
+   in your package because this is the entry point for the 
+   analysis server to load your plugin.
 
 Key points:
 
