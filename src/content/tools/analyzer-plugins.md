@@ -74,7 +74,10 @@ plugins:
 
 In the preceding example, `rule_1` and `rule_2` are enabled. 
 `rule_3` is explicitly disabled, which is useful for 
-overriding a rule that might be enabled from an `include:` file.
+overriding a rule that might be enabled from an [`include:`][] 
+file.
+
+[`include:`]: /tools/analysis#including-shared-options
 
 ### Suppress diagnostics
 
@@ -105,7 +108,9 @@ To suppress for an entire file:
 ## Write an analyzer plugin
 
 Create your own analyzer plugin to add custom static analysis, 
-quick fixes, or assists to the Dart development experience.
+quick fixes, or [assists][] to the Dart development experience.
+
+[assists]: /resources/glossary#assist
 
 ### Set up the plugin package
 
@@ -132,11 +137,6 @@ dependencies:
 
 2. Create the plugin entry point
 
-You must have a `lib/main.dart` file in your package. 
-This file is the entry point for the analysis server to load your plugin.
-
-Here's the basic structure:
-
 ```dart title="lib/main.dart"
 import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
@@ -151,16 +151,22 @@ class SimplePlugin extends Plugin {
 }
 ```
 
+The preceding code represents the basic structure for plugin 
+entry point. Make sure that you have a `lib/main.dart` file 
+in your package because this is the entry point for the 
+analysis server to load your plugin.
+
 Key points:
+
 * You need a top-level variable named `plugin` that 
-instantiates your class. The Dart Analysis Server looks 
-for this variable.
+  instantiates your class. The Dart Analysis Server looks 
+  for this variable.
 * Your class must extend `Plugin` from 
-`package:analysis_server_plugin/plugin.dart`.
+  `package:analysis_server_plugin/plugin.dart`.
 * Override the `register` method to add your 
-plugin's features. This method serves as the main entry 
-point for registering your custom analysis rules, 
-quick fixes, and assists with the analyzer.
+  plugin's features. This method serves as the main entry 
+  point for registering your custom analysis rules, 
+  quick fixes, and assists with the analyzer.
 
 ### Implement plugin features
 
