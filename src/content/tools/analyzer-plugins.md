@@ -116,7 +116,7 @@ which provides the core `Plugin` class.
 
 [`analysis_server_plugin` package]: {{site.pub-pkg}}/analysis_server_plugin
 
-1. Create the `pubspec.yaml` file:
+1. Create the `pubspec.yaml` file. For example:
 
 ```yaml title"pubspec.yaml"
 name: test_analyzer_plugin
