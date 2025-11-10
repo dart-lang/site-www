@@ -19,10 +19,28 @@ String get _indexOutputPath =>
 
 /// Markdown link definitions used by various diagnostic docs.
 Map<String, String> get _linkDefinitions => {
+  'IEEE 754': 'https://en.wikipedia.org/wiki/IEEE_754',
   'bottom type': '/null-safety/understanding-null-safety#top-and-bottom',
+  'constant context': '/resources/glossary#constant-context',
+  'context type': '/resources/glossary#context-type',
+  'core-deprecated-extend':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.extend.html',
+  'core-deprecated-implement':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.implement.html',
+  'core-deprecated-instantiate':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.instantiate.html',
+  'core-deprecated-mixin':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.mixin.html',
+  'core-deprecated-new':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.html',
+  'core-deprecated-optional':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.optional.html',
+  'core-deprecated-subclass':
+      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.subclass.html',
+  'definite assignment': '/resources/glossary#definite-assignment',
   'debugPrint': 'https://api.flutter.dev/flutter/foundation/debugPrint.html',
   'ffi': '/interop/c-interop',
-  'IEEE 754': 'https://en.wikipedia.org/wiki/IEEE_754',
+  'irrefutable pattern': '/resources/glossary#irrefutable-pattern',
   'kDebugMode':
       'https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html',
   'meta-awaitNotRequired':
@@ -55,16 +73,14 @@ Map<String, String> get _linkDefinitions => {
       'https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html',
   'meta-visibleForTesting':
       'https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html',
-  'package-logging': 'https://pub.dev/packages/logging',
-  'irrefutable pattern': '/resources/glossary#irrefutable-pattern',
-  'refutable pattern': '/resources/glossary#refutable-pattern',
-  'constant context': '/resources/glossary#constant-context',
-  'definite assignment': '/resources/glossary#definite-assignment',
   'mixin application': '/resources/glossary#mixin-application',
+  'obviously typed': '/resources/glossary#obviously-typed',
   'override inference': '/resources/glossary#override-inference',
+  'package-logging': 'https://pub.dev/packages/logging',
   'part file': '/resources/glossary#part-file',
   'potentially non-nullable': '/resources/glossary#potentially-non-nullable',
   'public library': '/resources/glossary#public-library',
+  'refutable pattern': '/resources/glossary#refutable-pattern',
 };
 
 /// Generate the diagnostic index page and individual diagnostic pages.
