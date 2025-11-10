@@ -301,7 +301,7 @@ Boolean values in both Dart and Javascript express a binary condition.
 These two values represent whether a value or expression is
 `true` or `false`.
 You can return the values using the literals `true` and `false`,
-or produced them using expressions like `x < 5` or `y == null`.
+or produce them using expressions like `x < 5` or `y == null`.
 
 ```js
 let isBananaPeeled = false;
