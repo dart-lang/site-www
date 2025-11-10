@@ -72,7 +72,7 @@ plugins:
       rule_3: false
 ```
 
-In this example, `rule_1` and `rule_2` are enabled. 
+In the preceding example, `rule_1` and `rule_2` are enabled. 
 `rule_3` is explicitly disabled, which is useful for 
 overriding a rule that might be enabled from an `include:` file.
 
