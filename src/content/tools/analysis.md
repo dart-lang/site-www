@@ -420,23 +420,30 @@ in `one.yaml`, then `two.yaml`, then `three.yaml`, and finally
 
 ## Enabling analyzer plugins (experimental) {:#plugins}
 
-The analyzer has experimental support for plugins.
+:::note
+This is for the legacy plugin system, which will be 
+deprecated in a future release. For new
+development use the new [analyzer plugin][] system.
+:::
+
+The analyzer has experimental support for legacy plugins.
 These plugins integrate with the analyzer to add functionality
 such as new diagnostics, quick fixes, and custom code completion.
 You can enable only one plugin per `analysis_options.yaml` file.
-Enabling an analyzer plugin increases how much memory the analyzer uses.
+Enabling a legacy analyzer plugin increases how much memory 
+the analyzer uses.
 
-Don't use analyzer plugins if your situation meets
+Don't use legacy analyzer plugins if your situation meets
 either of the following conditions:
 
 * You use a development machine with less than 16 GB of memory.
 * You use a mono-repo with more than 10 `pubspec.yaml` and
   `analysis_options.yaml` files.
   
-You can find a few analyzer plugins on
+You can find a few legacy analyzer plugins on
 [pub.dev]({{site.pub-pkg}}?q=dependency%3Aanalyzer_plugin).
 
-To enable a plugin:
+To enable a legacy plugin:
 
  1. Add the package containing the plugin as a dev dependency.
 
@@ -454,6 +461,8 @@ To enable a plugin:
 
     To indicate specific plugin functionality to enable,
     such as new diagnostics, additional setup might be required.
+
+[analyzer plugin]: /tools/analyzer-plugins
 
 ## Excluding code from analysis
 
