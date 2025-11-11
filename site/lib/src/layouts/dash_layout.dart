@@ -175,15 +175,13 @@ ga('send', 'pageview');
     final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
 
     final pageSidenav = pageData['sidenav'] as String? ?? defaultSidenav;
-    final List<NavEntry>? sideNavEntries;
-    if (page.data['sidenav'] case final Map<String, Object?> sidenavs) {
-      sideNavEntries = switch (sidenavs[pageSidenav]) {
+    final sideNavEntries = switch (page.data['sidenav']) {
+      final Map<String, Object?> sidenavs => switch (sidenavs[pageSidenav]) {
         final List<Object?> sidenavData => navEntriesFromData(sidenavData),
         _ => null,
-      };
-    } else {
-      sideNavEntries = null;
-    }
+      },
+      _ => null,
+    };
 
     final obsolete = pageData['obsolete'] == true;
 
