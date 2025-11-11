@@ -27,20 +27,22 @@ The following annotations are available to all Dart code:
   indicating it should be migrated away from,
   with a message explaining the replacement and potential removal date.
 
-[`@deprecated`][]
-: Marks a declaration as deprecated until an unspecified future release.
-  Prefer using `@Deprecated` and [providing a deprecation message][].
+  In addition to the general `@Deprecated` annotation, 
+  you can use specific annotations to deprecate certain 
+  usages of a declaration:
 
-[`@override`][]
-: Marks an instance member as an override or implementation of
-  a member with the same name from a parent class or interface.
-  For examples of using `@override`, check out [Extend a class][].
+  * [`@Deprecated.extend()`][]: Extending the class is deprecated.
+  * [`@Deprecated.implement()`][]: Implementing the class or 
+    mixin is deprecated.
+  * [`@Deprecated.subclass()`][]: Subclassing (extending or 
+    implementing) the class or mixin is deprecated.
+  * [`@Deprecated.mixin()`][]: Mixing in the class is deprecated.
+  * [`@Deprecated.instantiate()`][]: Instantiating the class 
+    is deprecated.
+  * [`@Deprecated.optional()`][]: Omitting an argument for 
+    the parameter is deprecated.
 
-[`@pragma`][]
-: Provides specific instructions or hints about a declaration to
-  Dart tools, such as the compiler or analyzer.
-
-Here's an example of using the `@Deprecated` annotation:
+  Here's an example of using the `@Deprecated` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)"?>
 ```dart highlightLines=3
@@ -59,6 +61,19 @@ class Television {
 }
 ```
 
+[`@deprecated`][]
+: Marks a declaration as deprecated until an unspecified future release.
+  Prefer using `@Deprecated` and [providing a deprecation message][].
+
+[`@override`][]
+: Marks an instance member as an override or implementation of
+  a member with the same name from a parent class or interface.
+  For examples of using `@override`, check out [Extend a class][].
+
+[`@pragma`][]
+: Provides specific instructions or hints about a declaration to
+  Dart tools, such as the compiler or analyzer.
+
 The [Dart analyzer][] provides feedback as diagnostics if
 the `@override` annotation is needed and when using
 members annotated with `@deprecated` or `@Deprecated`.
@@ -70,6 +85,12 @@ members annotated with `@deprecated` or `@Deprecated`.
 [providing a deprecation message]: /tools/linter-rules/provide_deprecation_message
 [Extend a class]: /language/extend
 [Dart analyzer]: /tools/analysis
+[`@Deprecated.extend()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.extend.html
+[`@Deprecated.implement()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.implement.html
+[`@Deprecated.subclass()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.subclass.html
+[`@Deprecated.mixin()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.mixin.html
+[`@Deprecated.instantiate()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.instantiate.html
+[`@Deprecated.optional()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.optional.html
 
 ## Analyzer-supported annotations
 
