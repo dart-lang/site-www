@@ -37,8 +37,7 @@ The following annotations are available to all Dart code:
   * [`@Deprecated.subclass()`][]: Subclassing (extending or 
     implementing) the class or mixin is deprecated.
   * [`@Deprecated.mixin()`][]: Mixing in the class is deprecated.
-  * [`@Deprecated.instantiate()`][]: Instantiating the class 
-    is deprecated.
+  * [`@Deprecated.instantiate()`][]: Instantiating the class is deprecated.
   * [`@Deprecated.optional()`][]: Omitting an argument for 
     the parameter is deprecated.
 
