@@ -25,6 +25,8 @@ abstract class DashLayout extends PageLayoutBase {
 
   List<String> get defaultBodyClasses => [];
 
+  String get defaultSidenav => 'default';
+
   @override
   @mustCallSuper
   Iterable<Component> buildHead(Page page) {
@@ -171,10 +173,16 @@ ga('send', 'pageview');
     final pageData = page.data.page;
     final bodyClass = pageData['bodyClass'] as String?;
     final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
+
+    final pageSidenav = pageData['sidenav'] as String? ?? defaultSidenav;
     final sideNavEntries = switch (page.data['sidenav']) {
-      final List<Object?> sidenavData => navEntriesFromData(sidenavData),
+      final Map<String, Object?> sidenavs => switch (sidenavs[pageSidenav]) {
+        final List<Object?> sidenavData => navEntriesFromData(sidenavData),
+        _ => null,
+      },
       _ => null,
     };
+
     final obsolete = pageData['obsolete'] == true;
 
     return Component.fragment(
@@ -190,6 +198,23 @@ ga('send', 'pageview');
             'class': [?bodyClass, ...defaultBodyClasses].toClasses,
           },
         ),
+        // The theme setting logic should remain before other scripts to
+        // avoid a flash of the initial theme on load.
+        raw('''
+<script>
+const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+const storedTheme = window.localStorage.getItem('theme') ?? 'light-mode';
+if (storedTheme === 'auto-mode') {
+  document.body.classList.add(
+      'auto-mode',
+      prefersDarkMode.matches ? 'dark-mode' : 'light-mode',
+  );
+} else {
+  document.body.classList.add(storedTheme);
+}
+</script>
+      '''),
         raw('''
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 '''),
@@ -225,23 +250,6 @@ ga('send', 'pageview');
           ]),
           const DashFooter(),
         ]),
-        // The theme setting logic should remain before other scripts to
-        // avoid a flash of the initial theme on load.
-        raw('''
-<script>
-const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-
-const storedTheme = window.localStorage.getItem('theme') ?? 'light-mode';
-if (storedTheme === 'auto-mode') {
-  document.body.classList.add(
-      'auto-mode',
-      prefersDarkMode.matches ? 'dark-mode' : 'light-mode',
-  );
-} else {
-  document.body.classList.add(storedTheme);
-}
-</script>
-      '''),
         GlobalScripts(),
       ],
     );

@@ -10,8 +10,8 @@ prevpage:
   url: /get-started/async
   title: Introduction to async and HTTP
 nextpage:
-  url: /get-started
-  title: Object oriented dart
+  url: /get-started/object-oriented
+  title: Object-oriented Dart
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
