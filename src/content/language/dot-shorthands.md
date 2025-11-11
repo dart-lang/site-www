@@ -25,7 +25,7 @@ from context. This provides a clean alternative to writing
 the full `ContextType.foo` when accessing enum values, 
 static members, or constructors.
 
-In essence, dot shorthands allow an expression 
+In essence, dot shorthands allows an expression 
 to start with one of the following and then optionally chain 
 other operations onto it:
 
@@ -59,8 +59,8 @@ Point origin = .origin(); // Instead of Point.origin()
 
 ## The role of context type 
 
-Dot shorthands use the [context type][] to determine the member 
-the complier resolves to. The context type is the type that Dart 
+Dot shorthands uses the [context type][] to determine the member 
+the compiler resolves to. The context type is the type that Dart 
 expects an expression to have based on its location. 
 For example, in `Status currentStatus = .running`, 
 the compiler knows a `Status` is expected, so it infers 
@@ -103,7 +103,7 @@ String warnColor = colorCode(.warning); // Returns 'orange'
 
 ### Named constructors
 
-Dot shorthands are useful for invoking named constructors 
+Dot shorthands is useful for invoking named constructors 
 or factory constructors. This syntax also works when providing 
 type arguments to a generic class's constructor.
 
@@ -141,7 +141,7 @@ This syntax is particularly effective for cleaning up
 repetitive class field initializers.
 As shown in the following "after" example using dot shorthands,
 it can be used for constructors both with and without arguments.
-tt also infers any generic type arguments 
+It also infers any generic type arguments 
 from the context. 
 
 **Without dot shorthands:**
@@ -220,7 +220,7 @@ const List<Point> keyPoints = [.origin(), .new(1.0, 1.0)];
 
 ## Rules and limitations
 
-Dot shorthands rely on a clear context type, which leads to 
+Dot shorthands relies on a clear context type, which leads to 
 a few specific rules and limitations you should know about.
 
 ### Clear context type required in chains
@@ -340,7 +340,7 @@ void main() {
 While there is special handling for nullable types (`T?`) and
 `FutureOr<T>`, support is limited.
 
-*  For a nullable type (T?), you can access static members
+*  For a nullable type (`T?`), you can access static members
    of `T`, but not of `Null`.
 
 *  For `FutureOr<T>`, you can access static members of `T`
