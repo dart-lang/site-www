@@ -220,7 +220,7 @@ const List<Point> keyPoints = [.origin(), .new(1.0, 1.0)];
 
 ## Rules and limitations
 
-Dot shorthands relies on a clear context type, which leads to 
+Dot shorthands rely on a clear context type, which leads to 
 a few specific rules and limitations you should know about.
 
 ### Clear context type required in chains
