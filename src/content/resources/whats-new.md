@@ -31,7 +31,7 @@ check out the [3.10 announcement][] and the
 ### Documentation updates {:.no_toc}
 
 *   Added a guide for the new [dot shorthands][] feature.
-*   Added a guide for the new [analyzer plugin][] feature.
+*   Added a guide for the new [analyzer plugin][] support.
 *   Added a reference for the [`dart build`][] tool.
 *   Added a reference for the [`dart install`][] tool.
 *   Documented the new [`@Deprecated` annotation][] varieties.
