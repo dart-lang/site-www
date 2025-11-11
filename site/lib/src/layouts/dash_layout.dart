@@ -25,6 +25,8 @@ abstract class DashLayout extends PageLayoutBase {
 
   List<String> get defaultBodyClasses => [];
 
+  String get defaultSidenav => 'default';
+
   @override
   @mustCallSuper
   Iterable<Component> buildHead(Page page) {
@@ -171,10 +173,18 @@ ga('send', 'pageview');
     final pageData = page.data.page;
     final bodyClass = pageData['bodyClass'] as String?;
     final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
-    final sideNavEntries = switch (page.data['sidenav']) {
-      final List<Object?> sidenavData => navEntriesFromData(sidenavData),
-      _ => null,
-    };
+
+    final pageSidenav = pageData['sidenav'] as String? ?? defaultSidenav;
+    final List<NavEntry>? sideNavEntries;
+    if (page.data['sidenav'] case final Map<String, Object?> sidenavs) {
+      sideNavEntries = switch (sidenavs[pageSidenav]) {
+        final List<Object?> sidenavData => navEntriesFromData(sidenavData),
+        _ => null,
+      };
+    } else {
+      sideNavEntries = null;
+    }
+
     final obsolete = pageData['obsolete'] == true;
 
     return Component.fragment(

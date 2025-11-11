@@ -1,0 +1,46 @@
+- header: Get started
+
+- title: Dart overview
+  permalink: /overview
+- title: Set up Dart
+  permalink: /get-dart
+  hiddenChildren: true
+  children:
+    - title: Install Dart
+      permalink: /get-dart
+    - title: SDK archive
+      permalink: /get-dart/archive
+- title: Get support
+  permalink: /community
+
+- divider
+- header: Learn Dart
+
+- title: Start learning
+  permalink: /get-started
+- title: Create your first program
+  permalink: /get-started/hello-world
+- title: Add interactivity to your app
+  permalink: /get-started/add-commands
+- title: Write asynchronous code
+  permalink: /get-started/async
+- title: Organize code with packages and libraries
+  permalink: /get-started/packages-libs
+- title: Define relationships with classes
+  permalink: /get-started/object-oriented
+- title: Handle errors gracefully
+  permalink: /get-started/error-handling
+- title: Extend your app with enums and extensions
+  permalink: /get-started/advanced-oop
+- title: Polish your app
+  permalink: /get-started/command-runner-polish
+- title: Work with JSON data
+  permalink: /get-started/data-and-json
+- title: Write tests for your app
+  permalink: /get-started/testing
+- title: Fetch data from the internet
+  permalink: /get-started/http
+- title: Add logging for debugging and monitoring
+  permalink: /get-started/logging
+
+- divider
