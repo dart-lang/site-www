@@ -103,7 +103,7 @@ String warnColor = colorCode(.warning); // Returns 'orange'
 
 ### Named constructors
 
-Dot shorthands is useful for invoking named constructors 
+Dot shorthands are useful for invoking named constructors 
 or factory constructors. This syntax also works when providing 
 type arguments to a generic class's constructor.
 
