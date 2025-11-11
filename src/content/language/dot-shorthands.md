@@ -59,7 +59,7 @@ Point origin = .origin(); // Instead of Point.origin()
 
 ## The role of context type 
 
-Dot shorthands uses the [context type][] to determine the member 
+Dot shorthands use the [context type][] to determine the member 
 the compiler resolves to. The context type is the type that Dart 
 expects an expression to have based on its location. 
 For example, in `Status currentStatus = .running`, 
