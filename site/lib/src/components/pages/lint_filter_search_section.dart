@@ -11,7 +11,7 @@ import '../common/search.dart';
 enum RuleSetOption {
   inFlutter('Flutter'),
   inRecommended('Recommended'),
-  inCore('Core')
+  inCore('Core'),
   ;
 
   final String label;
