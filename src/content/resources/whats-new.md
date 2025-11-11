@@ -42,7 +42,7 @@ check out the [3.10 announcement][] and the
 ### Site improvements {:.no_toc}
 
 *   Migrated core site infrastructure to the [Jaspr framework][Jaspr migration]
-    for improved performance.
+    for an improved contributor experience.
 *   Implemented a new [Table of Contents and "On this page" extension][Table of Contents extension].
 *   Enhanced the Glossary with new [filtering by label][Glossary filtering]
     and [tooltips][Glossary tooltips].
