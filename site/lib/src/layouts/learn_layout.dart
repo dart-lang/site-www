@@ -12,7 +12,10 @@ class LearnLayout extends DocLayout {
   String get name => 'learn';
 
   @override
-  List<String> get defaultBodyClasses => ['sidenav-hidden', 'no-toc'];
+  List<String> get defaultBodyClasses => ['no-toc'];
+
+  @override
+  String get defaultSidenav => 'getStarted';
 
   @override
   bool get showTocDefault => false;
