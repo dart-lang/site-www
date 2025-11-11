@@ -58,7 +58,7 @@ The following annotations are available to all Dart code:
     }
     // ···
   }
-```
+  ```
 
 [`@deprecated`][]
 : Marks a declaration as deprecated until an unspecified future release.
