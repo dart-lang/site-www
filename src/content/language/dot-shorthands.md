@@ -25,7 +25,7 @@ from context. This provides a clean alternative to writing
 the full `ContextType.foo` when accessing enum values, 
 static members, or constructors.
 
-In essence, dot shorthands allows an expression 
+In essence, dot shorthands allow an expression 
 to start with one of the following and then optionally chain 
 other operations onto it:
 
