@@ -34,7 +34,7 @@ check out the [3.10 announcement][] and the
 *   Added a guide for the new [analyzer plugin][] feature.
 *   Added a reference for the [`dart build`][] tool.
 *   Added a reference for the [`dart install`][] tool.
-*   Extended the [`@Deprecated` annotation][] content with new features.
+*   Documented the new [`@Deprecated` annotation][] varieties.
 *   Expanded the [Glossary][] with new terms including "obviously typed",
     "closurization", "callback", "tree shaking", and "native asset".
     (Thank you, [IldySilva](https://github.com/IldySilva))
