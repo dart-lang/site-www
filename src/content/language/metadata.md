@@ -43,21 +43,21 @@ The following annotations are available to all Dart code:
 
   Here's an example of using the `@Deprecated` annotation:
 
-<?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)"?>
-```dart highlightLines=3
-class Television {
-  /// Use [turnOn] to turn the power on instead.
-  @Deprecated('Use turnOn instead')
-  void activate() {
-    turnOn();
-  }
-
-  /// Turns the TV's power on.
-  void turnOn() {
+  <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)"?>
+  ```dart highlightLines=3
+  class Television {
+    /// Use [turnOn] to turn the power on instead.
+    @Deprecated('Use turnOn instead')
+    void activate() {
+      turnOn();
+    }
+  
+    /// Turns the TV's power on.
+    void turnOn() {
+      // ···
+    }
     // ···
   }
-  // ···
-}
 ```
 
 [`@deprecated`][]
