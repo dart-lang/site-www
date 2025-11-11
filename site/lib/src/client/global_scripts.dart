@@ -258,7 +258,8 @@ void _activateTabWithSaveId(web.HTMLElement tabWrapper, String saveId) {
 enum _ClientOperatingSystem {
   macos,
   windows,
-  linux;
+  linux
+  ;
 
   static _ClientOperatingSystem fromUserAgent({
     _ClientOperatingSystem fallback = _ClientOperatingSystem.windows,
