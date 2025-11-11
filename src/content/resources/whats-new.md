@@ -57,7 +57,7 @@ check out the [3.10 announcement][] and the
 [`dart install`]: /tools/dart-install
 [`@Deprecated` annotation]: /language/metadata
 [Glossary]: /resources/glossary
-[Jaspr migration]: https://github.com/dart-lang/site-www/pull/6822
+[Jaspr migration]: https://jaspr.site
 [Table of Contents extension]: https://github.com/dart-lang/site-www/pull/6886
 [Glossary filtering]: https://github.com/dart-lang/site-www/pull/6945
 [Glossary tooltips]: https://github.com/dart-lang/site-www/pull/6969
