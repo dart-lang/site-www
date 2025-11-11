@@ -32,8 +32,8 @@ check out the [3.10 announcement][] and the
 
 *   Added a guide for the new [dot shorthands][] feature.
 *   Added a guide for the new [analyzer plugin][] feature.
-*   Added a guide for the [`dart build`][] tool.
-*   Added a guide for the [`dart install`][] tool.
+*   Added a reference for the [`dart build`][] tool.
+*   Added a reference for the [`dart install`][] tool.
 *   Extended the [`@Deprecated` annotation][] content with new features.
 *   Expanded the [Glossary][] with new terms including "obviously typed",
     "closurization", "callback", "tree shaking", and "native asset".
