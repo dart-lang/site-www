@@ -27,18 +27,20 @@ input and output, which allows the Dart SDK to:
 
 Example project with a build hook:
 
-```plaintext
-📁  example_project                   // Project with hooks.
-    📁  hook                          // Add hook scripts here.
-        📄 build.dart
-    📁  lib                           // Use your assets here.
-        📄 example.dart
-    📁  src                           // Add native sources here.
-        📄 example_native_library.c
-        📄 example_native_library.h
-    📁  test                          // Test your assets here.
-        📄 example_test.dart
-```
+<FileTree>
+
+- example_project/ // Project with hooks.
+  - hook/ // Add hook scripts here.
+    - build.dart 
+  - lib/  // Use your assets here.
+    - example.dart
+  - src/  // Add native sources here.
+    - example_native_library.c
+    - example_native_library.h
+  - test/ // Test your assets here.
+    - example_test.dart
+
+</FileTree>
 
 ## Hooks
 

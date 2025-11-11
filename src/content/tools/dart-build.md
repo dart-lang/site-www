@@ -21,13 +21,15 @@ including any code assets.
 
 The resulting app bundle is structured as follows:
 
-```plaintext
-bundle/
-  bin/
-    <executable>
-  lib/
-    <dynamic libraries>
-```
+<FileTree>
+
+- bundle/
+  - bin/
+    - <compiled_executable> 
+  - lib/
+    - <dynamic_libraries>
+
+</FileTree>
 
 ## Options for `dart build cli`
 
