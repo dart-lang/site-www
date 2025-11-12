@@ -18,6 +18,52 @@ and follow the [Dart blog][].
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://blog.dart.dev
 
+## 3.10 release
+
+_Released on: November 12, 2025_
+
+This section lists notable changes made from August 14, 2025,
+through November 12, 2025 to [dart.dev](https://dart.dev/docs).
+For details about the 3.10 release of Dart,
+check out the [3.10 announcement][] and the
+[3.10 SDK changelog][3-10-changelog].
+
+### Documentation updates {:.no_toc}
+
+*   Added a guide for the new [dot shorthands][] language feature.
+*   Added a guide for the new [analyzer plugin][] support.
+*   Added a reference for the [`dart build`][] tool.
+*   Added a reference for the [`dart install`][] tool.
+*   Documented the new [`@Deprecated` annotation][] varieties.
+*   Expanded the [Glossary][] with new terms including "obviously typed",
+    "closurization", "callback", "tree shaking", and "native asset".
+    (Thank you, [IldySilva](https://github.com/IldySilva))
+
+### Site improvements {:.no_toc}
+
+*   Migrated core site infrastructure to the [Jaspr framework][Jaspr migration]
+    for an improved contributor experience.
+*   Enhanced the Glossary with new [filtering by label][Glossary filtering]
+    and [tooltips][Glossary tooltips].
+*   Redesigned the [Community page][Community page redesign] with a modern
+    card-based layout.
+*   Started compiling client-side Dart code to [Wasm][Wasm compilation].
+
+[3.10 announcement]: https://blog.dart.dev
+[3-10-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+[dot shorthands]: /language/dot-shorthands
+[analyzer plugin]: /tools/analyzer-plugins
+[`dart build`]: /tools/dart-build
+[`dart install`]: /tools/dart-install
+[`@Deprecated` annotation]: /language/metadata
+[Glossary]: /resources/glossary
+[Jaspr migration]: https://jaspr.site
+[Table of Contents extension]: https://github.com/dart-lang/site-www/pull/6886
+[Glossary filtering]: https://github.com/dart-lang/site-www/pull/6945
+[Glossary tooltips]: https://github.com/dart-lang/site-www/pull/6969
+[Community page redesign]: https://github.com/dart-lang/site-www/pull/6900
+[Wasm compilation]: https://github.com/dart-lang/site-www/pull/6953
+
 ## 3.9 release
 
 _Released on: August 13, 2025_
