@@ -101,13 +101,6 @@ accounting for them before the 3.11 release.
 
 ## 3.10.0
 
-:::note Tentative
-The following changes are expected to be included in the 3.10 stable release,
-but the final list might change before then.
-To reduce the potential impact of these changes, consider
-accounting for them before the 3.10 release.
-:::
-
 ### Language
 
 - `sync*` and `async*` generator functions without a specified return now
