@@ -60,7 +60,7 @@ Point origin = .origin(); // Instead of Point.origin()
 ## The role of context type 
 
 Dot shorthands use the [context type][] to determine the member 
-the complier resolves to. The context type is the type that Dart 
+the compiler resolves to. The context type is the type that Dart 
 expects an expression to have based on its location. 
 For example, in `Status currentStatus = .running`, 
 the compiler knows a `Status` is expected, so it infers 
@@ -141,7 +141,7 @@ This syntax is particularly effective for cleaning up
 repetitive class field initializers.
 As shown in the following "after" example using dot shorthands,
 it can be used for constructors both with and without arguments.
-tt also infers any generic type arguments 
+It also infers any generic type arguments 
 from the context. 
 
 **Without dot shorthands:**
@@ -340,7 +340,7 @@ void main() {
 While there is special handling for nullable types (`T?`) and
 `FutureOr<T>`, support is limited.
 
-*  For a nullable type (T?), you can access static members
+*  For a nullable type (`T?`), you can access static members
    of `T`, but not of `Null`.
 
 *  For `FutureOr<T>`, you can access static members of `T`
