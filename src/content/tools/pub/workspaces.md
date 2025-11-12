@@ -9,22 +9,27 @@ version control repository (a _monorepo_).
 
 For example you might have a directory layout like: 
 
-```plaintext
-/
-  packages/
-    shared/
-      pubspec.yaml
-      pubspec.lock
-      .dart_tool/package_config.json
-    client_package/
-      pubspec.yaml
-      pubspec.lock
-      .dart_tool/package_config.json
-    server_package/
-      pubspec.yaml
-      pubspec.lock
-      .dart_tool/package_config.json
-```
+<FileTree>
+
+- /
+  - packages/
+    - shared/
+      - pubspec.yaml
+      - pubspec.lock
+      - .dart_tool/
+        - package_config.json
+    - client_package/
+      - pubspec.yaml
+      - pubspec.lock
+      - .dart_tool/
+        - package_config.json
+    - server_package/
+      - pubspec.yaml
+      - pubspec.lock
+      - .dart_tool/
+        - package_config.json
+
+</FileTree>
 
 There are some downsides to this setup:
 
@@ -86,19 +91,22 @@ To create a workspace:
 
 Now the file structure looks like this:
 
-```plaintext
-/
-  packages/
-    shared/
-      pubspec.yaml
-    client_package/
-      pubspec.yaml
-    server_package/
-      pubspec.yaml
-  pubspec.yaml
-  pubspec.lock
-  .dart_tool/package_config.json
-```
+<FileTree>
+
+- /
+  - packages/
+    - shared/
+      - pubspec.yaml
+    - client_package/
+      - pubspec.yaml
+    - server_package/
+      - pubspec.yaml
+  - pubspec.yaml
+  - pubspec.lock
+  - .dart_tool/
+    - package_config.json
+
+</FileTree>
 
 :::version-note
 Support for pub workspaces was introduced in Dart 3.6.0.
@@ -119,17 +127,19 @@ Therefore, `pub get` will delete any `pubspec.lock` and
 `.dart_tool/package_config.json` located in directories between the root and
 (including) any workspace package.
 
-```plaintext
-/
-  pubspec.yaml                       # Root
-  packages/
-    pubspec.lock                     # Deleted by `pub get`
-    .dart_tool/package_config.json   # Deleted by `pub get`
-    foo/
-      pubspec.yaml                   # Workspace member
-      pubspec.lock                   # Deleted by `pub get`
-      .dart_tool/package_config.json # Deleted by `pub get`
-```
+<FileTree>
+
+- /                    
+  - packages/
+    - foo/
+      - pubspec.yaml   # Workspace member
+      - pubspec.lock   # Deleted by `pub get`
+      - .dart_tool/package_config.json # Deleted by `pub get`
+    - pubspec.lock     # Deleted by `pub get`
+    - .dart_tool/package_config.json # Deleted by `pub get`
+  - pubspec.yaml       # Root
+
+</FileTree>
 
 If any directory between the workspace root and a workspace package contains a
 "stray" `pubspec.yaml` file that is not member of the workspace, `pub get` will
@@ -138,15 +148,16 @@ create a `.dart_tool/package_config.json` file that shadows the one at the root.
 
 For example:
 
-```plaintext
-/
-  pubspec.yaml                      # Root `workspace: ['foo/']`
-  packages/
-    pubspec.yaml                    # Not workspace member => error
-    foo/
-      pubspec.yaml                  # Workspace member
-```
+<FileTree>
 
+- /
+  - packages/
+    - foo/
+      - pubspec.yaml    # Workspace member
+    - pubspec.yaml      # Not workspace member => error
+  - pubspec.yaml        # Root `workspace: ['packages/foo']`
+
+</FileTree>
 
 ## Interdependencies between workspace packages
 
