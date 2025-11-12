@@ -49,7 +49,7 @@ check out the [3.10 announcement][] and the
     card-based layout.
 *   Started compiling client-side Dart code to [Wasm][Wasm compilation].
 
-[3.10 announcement]: https://blog.dart.dev
+[3.10 announcement]: https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088
 [3-10-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [dot shorthands]: /language/dot-shorthands
 [analyzer plugin]: /tools/analyzer-plugins
