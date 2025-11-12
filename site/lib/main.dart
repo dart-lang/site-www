@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaspr/server.dart';
+import 'package:jaspr_content/components/file_tree.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
 import 'package:path/path.dart' as path;
@@ -85,6 +86,7 @@ Component get _dartDevSite => ContentApp.custom(
 List<CustomComponent> get _embeddableComponents => [
   const DashTabs(),
   const YoutubeEmbed(),
+  const FileTree(),
   CustomComponent(
     pattern: RegExp('ArchiveTable'),
     builder: (_, attrs, _) => ArchiveTable.fromAttributes(attrs),
