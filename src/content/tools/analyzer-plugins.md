@@ -23,8 +23,8 @@ You can start using an analyzer plugin in your Dart project
 by enabling it in the `analysis_options.yaml` 
 file at the root of your package or workspace.
 
-You can search for analyzer plugins on the
-[pub.dev repository]({{site.pub}}/packages?q=dependency%3Aanalysis_server_plugin).
+You can search for analyzer plugins on
+[pub.dev]({{site.pub}}/packages?q=dependency%3Aanalysis_server_plugin).
 
 ### Enable a plugin
 
