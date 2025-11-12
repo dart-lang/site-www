@@ -1,7 +1,7 @@
 text: >-
-  Don't miss the live Dart and Flutter Q&A
-  happening Wednesday, November 12, at 11am PST.
+  Dart 3.10 is taking off with dot shorthands,
+  stable build hooks, nuanced deprecation annotations, and more!
 link:
-  text: "Join us!"
-  url: "https://www.youtube.com/watch?v=RTb3gP4p5bw"
+  text: "Learn more"
+  url: "https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088"
   newTab: true
