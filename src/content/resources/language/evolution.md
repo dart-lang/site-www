@@ -44,6 +44,8 @@ on the Dart language GitHub repo.
 ## Changes in each release
 
 ### Dart 3.10
+_Released 12 November 2025_
+| [Dart 3.10 announcement](https://blog.dart.dev/ea8b952b6088)
 
 Dart 3.10 introduces [dot shorthands][], a concise syntax 
 that lets you omit explicit type names when accessing enum values,
