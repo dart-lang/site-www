@@ -20,9 +20,11 @@
     margin: 0;
     flex-grow: 1;
     text-wrap: balance;
+    max-width: 32rem;
   }
 
   a, button {
+    font-weight: 700;
     white-space: nowrap;
     color: var(--site-onPrimary-color);
     font-family: var(--site-ui-fontFamily);
