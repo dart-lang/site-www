@@ -257,13 +257,16 @@ if (storedTheme === 'auto-mode') {
   }
 
   Component? buildBanner(Page page) {
-    if ((page.data.page['showBanner'] as bool?) ??
+    final showBanner =
+        (page.data.page['showBanner'] as bool?) ??
         (page.data.site['showBanner'] as bool?) ??
-        false) {
+        false;
+    if (showBanner) {
       if (page.data['banner'] case final Map<String, Object?> bannerData) {
         return DashBanner(BannerContent.fromMap(bannerData));
       }
     }
+
     return null;
   }
 }
