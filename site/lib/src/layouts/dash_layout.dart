@@ -9,6 +9,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../client/global_scripts.dart';
 import '../components/common/client/cookie_notice.dart';
+import '../components/layout/banner.dart';
 import '../components/layout/footer.dart';
 import '../components/layout/header.dart';
 import '../components/layout/sidenav.dart';
@@ -253,5 +254,19 @@ if (storedTheme === 'auto-mode') {
         GlobalScripts(),
       ],
     );
+  }
+
+  Component? buildBanner(Page page) {
+    final showBanner =
+        (page.data.page['showBanner'] as bool?) ??
+        (page.data.site['showBanner'] as bool?) ??
+        false;
+    if (showBanner) {
+      if (page.data['banner'] case final Map<String, Object?> bannerData) {
+        return DashBanner(BannerContent.fromMap(bannerData));
+      }
+    }
+
+    return null;
   }
 }

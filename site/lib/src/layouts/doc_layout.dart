@@ -41,6 +41,7 @@ class DocLayout extends DashLayout {
               tocData,
               currentTitle: pageTitle,
             ),
+          ?buildBanner(page),
           div(classes: 'after-leading-content', [
             if (tocData != null)
               aside(id: 'side-menu', [
