@@ -134,7 +134,7 @@ which provides the core `Plugin` class.
      sdk: ^3.10.0
    
    dependencies:
-     analysis_server_plugin: ^^0.3.0
+     analysis_server_plugin: ^0.3.0
      analyzer: ^8.0.0
    ```
 
