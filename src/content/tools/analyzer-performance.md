@@ -91,5 +91,6 @@ To capture these logs:
 * **VS Code:** Follow the instructions for [capturing analyzer instrumentation logs in Dart-Code](https://dartcode.org/docs/logging/#analyzer-instrumentation).
 * **IntelliJ / Android Studio:** Follow the [Analyzer Instrumentation instructions for IntelliJ / Android Studio](https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/tutorial/instrumentation.md#intellij-idea-and-android-studio).
 
-Before attaching logs to a GitHub issue, review them carefully 
-to ensure they do not contain any personal, sensitive, or proprietary information.
+Before attaching logs to a GitHub issue, review them carefully
+to ensure they do not contain any personal, sensitive, or proprietary
+information.
