@@ -34,7 +34,7 @@ If you choose to set up exclusions, include the following directories:
 * Any other directories containing code for your applications.
 
 For another way to improve file I/O performance, 
-consider setting up a [dev drive](https://devblogs.microsoft.com/visualstudio/devdrive/).
+consider setting up a [dev drive][].
 
 ### Symbolic links
 
@@ -49,7 +49,7 @@ you may experience performance problems with Dart tooling (like the analyzer).
 ## Report unknown issues
 
 If the known issues don't seem to apply to your situation, 
-please open an issue in the [Dart SDK issue tracker](https://github.com/dart-lang/sdk/issues). 
+please open an issue in the [Dart SDK issue tracker][]. 
 The more information you provide, the faster the team can diagnose and fix
 the problem.
 
@@ -88,9 +88,15 @@ details for diagnosing issues.
 
 To capture these logs:
 
-* **VS Code:** Follow the instructions for [capturing analyzer instrumentation logs in Dart-Code](https://dartcode.org/docs/logging/#analyzer-instrumentation).
-* **IntelliJ / Android Studio:** Follow the [Analyzer Instrumentation instructions for IntelliJ / Android Studio](https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/tutorial/instrumentation.md#intellij-idea-and-android-studio).
+* **VS Code:** Follow the instructions for 
+[capturing analyzer instrumentation logs][].
+* **IntelliJ / Android Studio:** Follow the [analyzer instrumentation instructions][].
 
 Before attaching logs to a GitHub issue, review them carefully
 to ensure they do not contain any personal, sensitive, or proprietary
 information.
+
+[dev drive]: https://devblogs.microsoft.com/visualstudio/devdrive/
+[Dart SDK issue tracker]:https://github.com/dart-lang/sdk/issues
+[capturing analyzer instrumentation logs]: https://dartcode.org/docs/logging/#analyzer-instrumentation
+[analyzer instrumentation instructions]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/tutorial/instrumentation.md#intellij-idea-and-android-studio
