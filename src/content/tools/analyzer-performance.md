@@ -50,7 +50,8 @@ you may experience performance problems with Dart tooling (like the analyzer).
 
 If the known issues don't seem to apply to your situation, 
 please open an issue in the [Dart SDK issue tracker](https://github.com/dart-lang/sdk/issues). 
-The more information you provide, the faster the team can diagnose and fix the problem.
+The more information you provide, the faster the team can diagnose and fix
+the problem.
 
 ###  Include reproduction steps
 
