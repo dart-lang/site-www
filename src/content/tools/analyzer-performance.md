@@ -79,7 +79,7 @@ analysis server's diagnostic pages:
     * Click the `Download report` link.
 3. **Attach the report to your issue:** While the report shouldn't contain 
     personal or proprietary information, 
-    review it before submitting it. 
+    review it before submitting it.
 
 ### Capture instrumentation logs
 
