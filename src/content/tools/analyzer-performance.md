@@ -53,7 +53,7 @@ please open an issue in the [Dart SDK issue tracker](https://github.com/dart-lan
 The more information you provide, the faster the team can diagnose and fix
 the problem.
 
-###  Include reproduction steps
+### Include reproduction steps
 
 In your issue, please provide detailed steps to reproduce the behavior you're observing.
 
