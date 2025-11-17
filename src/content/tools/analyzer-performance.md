@@ -100,6 +100,6 @@ to ensure they do not contain any personal, sensitive, or proprietary
 information.
 
 [dev drive]: https://learn.microsoft.com/windows/dev-drive/
-[Dart SDK issue tracker]:https://github.com/dart-lang/sdk/issues
+[Dart SDK issue tracker]: https://github.com/dart-lang/sdk/issues
 [capturing analyzer instrumentation logs]: https://dartcode.org/docs/logging/#analyzer-instrumentation
 [analyzer instrumentation instructions]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/tutorial/instrumentation.md#intellij-idea-and-android-studio
