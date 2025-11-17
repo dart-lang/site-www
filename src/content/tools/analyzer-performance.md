@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Analyzer Performance
+title: Troubleshoot analyzer performance
 description: Help users with analyzer performance issues.
 ---
 
