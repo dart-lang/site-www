@@ -92,7 +92,7 @@ details for diagnosing issues.
 To capture these logs:
 
 * **VS Code:** Follow the instructions for 
-[capturing analyzer instrumentation logs][].
+  [capturing analyzer instrumentation logs][].
 * **IntelliJ / Android Studio:** Follow the [analyzer instrumentation instructions][].
 
 Before attaching logs to a GitHub issue, review them carefully
