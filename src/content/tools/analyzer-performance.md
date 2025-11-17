@@ -6,7 +6,7 @@ description: Help users with analyzer performance issues.
 This guide helps you diagnose and resolve common Dart analysis server 
 performance issues in your Dart or Flutter IDE.
 
-## Known Performance Issues
+## Known performance issues
 
 Several common issues significantly hurt the performance of 
 the Dart analysis server (the analyzer).
