@@ -93,7 +93,8 @@ To capture these logs:
 
 * **VS Code:** Follow the instructions for 
   [capturing analyzer instrumentation logs][].
-* **IntelliJ / Android Studio:** Follow the [analyzer instrumentation instructions][].
+* **IntelliJ / Android Studio:** Follow the
+  [analyzer instrumentation instructions][].
 
 Before attaching logs to a GitHub issue, review them carefully
 to ensure they do not contain any personal, sensitive, or proprietary
