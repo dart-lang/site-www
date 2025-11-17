@@ -42,7 +42,7 @@ consider setting up a [dev drive][].
 
 If your package directory contains symbolic links that point 
 to a location inside the same directory, or to a parent directory, 
-you may experience performance problems with Dart tooling (like the analyzer).
+you might experience performance problems with Dart tooling (like the analyzer).
 
 **Status:** The Dart team is actively working on a fix for this issue.
 
