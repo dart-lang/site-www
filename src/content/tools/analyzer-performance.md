@@ -15,7 +15,7 @@ the Dart analysis server (the analyzer).
 Check the following issues to see if they might be impacting 
 your development environment.
 
-### Security Software (Windows)
+### Security software on Windows
 
 On Windows systems, if Windows Defender (or other real-time security software) 
 is enabled, it can slow down the file read times enough 
