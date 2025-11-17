@@ -1,6 +1,8 @@
 ---
 title: Troubleshoot analyzer performance
-description: Help users with analyzer performance issues.
+description: >-
+  Learn how to diagnose and resolve common
+  Dart analysis server performance issues.
 ---
 
 This guide helps you diagnose and resolve common Dart analysis server 
