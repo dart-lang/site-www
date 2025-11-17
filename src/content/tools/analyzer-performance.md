@@ -57,7 +57,8 @@ the faster the team can diagnose and fix the problem.
 
 ### Include reproduction steps
 
-In your issue, please provide detailed steps to reproduce the behavior you're observing.
+In your issue, please provide detailed steps to
+reproduce the behavior you're observing.
 
 * If you're working on an open-source project, include instructions 
     for downloading the code.
