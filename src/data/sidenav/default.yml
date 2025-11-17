@@ -271,7 +271,7 @@
         permalink: /tools/jetbrains-plugin
       - title: VS Code
         permalink: /tools/vs-code
-      - title: Troubleshoot Analyzer Performance
+      - title: Troubleshoot analyzer performance
         permalink: /tools/analyzer-performance
       - title: Dart DevTools
         permalink: /tools/dart-devtools
