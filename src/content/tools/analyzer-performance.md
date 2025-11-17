@@ -61,7 +61,7 @@ In your issue, please provide detailed steps to
 reproduce the behavior you're observing.
 
 * If you're working on an open-source project, include instructions 
-    for downloading the code.
+  for downloading the code.
 * If you can't share your code, create a small, self-contained reproduction case.
 * If you can't provide either, please state that in the issue.
 
