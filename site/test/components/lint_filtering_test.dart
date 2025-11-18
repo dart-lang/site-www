@@ -2,52 +2,56 @@
 library;
 
 import 'package:dart_dev_site/src/components/common/chip.dart';
-import 'package:dart_dev_site/src/models/lints.dart';
+import 'package:dart_dev_site/src/models/lint_rules.dart';
 import 'package:dart_dev_site/src/pages/lint_index.dart';
 import 'package:jaspr_test/browser_test.dart';
 import 'package:universal_web/web.dart' as web;
 
-final testLinterRules = <LintDetails>[
-  LintDetails({
-    'name': 'fixable_lint',
-    'description': '',
-    'categories': ['style'],
-    'state': 'stable',
-    'incompatible': [],
-    'sets': [],
-    'fixStatus': 'hasFix',
-    'sinceDartSdk': '2.0',
-  }),
-  LintDetails({
-    'name': 'non_fixable_lint',
-    'description': '',
-    'categories': ['effectiveDart'],
-    'state': 'stable',
-    'incompatible': [],
-    'sets': [],
-    'fixStatus': 'noFix',
-    'sinceDartSdk': '2.0',
-  }),
-  LintDetails({
-    'name': 'core_lint',
-    'description': '',
-    'categories': [],
-    'state': 'stable',
-    'incompatible': [],
-    'sets': ['core'],
-    'fixStatus': 'hasFix',
-    'sinceDartSdk': '2.0',
-  }),
-  LintDetails({
-    'name': 'experimental_lint',
-    'description': '',
-    'categories': [],
-    'state': 'experimental',
-    'incompatible': [],
-    'sets': [],
-    'fixStatus': 'hasFix',
-    'sinceDartSdk': '2.0',
-  }),
+const testLinterRules = <LintRule>[
+  LintRule(
+    name: 'fixable_lint',
+    description: '',
+    categories: ['style'],
+    states: [LintState(type: LintStateType.stable, since: '2.0')],
+    incompatible: [],
+    sets: [],
+    fixStatus: LintFixStatus.hasFix,
+    justification: '',
+    hasDiagnosticDocs: false,
+  ),
+  LintRule(
+    name: 'non_fixable_lint',
+    description: '',
+    categories: ['effectiveDart'],
+    states: [LintState(type: LintStateType.stable, since: '2.0')],
+    incompatible: [],
+    sets: [],
+    fixStatus: LintFixStatus.noFix,
+    justification: '',
+    hasDiagnosticDocs: false,
+  ),
+  LintRule(
+    name: 'core_lint',
+    description: '',
+    categories: [],
+    states: [LintState(type: LintStateType.stable, since: '2.0')],
+    incompatible: [],
+    sets: ['core'],
+    fixStatus: LintFixStatus.hasFix,
+    justification: '',
+    hasDiagnosticDocs: false,
+  ),
+  LintRule(
+    name: 'experimental_lint',
+    description: '',
+    categories: [],
+    states: [LintState(type: LintStateType.experimental, since: '2.0')],
+    incompatible: [],
+    sets: [],
+    fixStatus: LintFixStatus.hasFix,
+    justification: '',
+    hasDiagnosticDocs: false,
+  ),
 ];
 
 void main() {
@@ -72,7 +76,7 @@ void main() {
     }
 
     testBrowser('shows all lints by default', (tester) async {
-      tester.pumpComponent(LintRuleIndex(testLinterRules));
+      tester.pumpComponent(const LintRuleIndex(testLinterRules));
 
       final cards = web.document
           .getElementById('lint-cards')
@@ -83,7 +87,7 @@ void main() {
     });
 
     testBrowser('filters fixable lints', (tester) async {
-      tester.pumpComponent(LintRuleIndex(testLinterRules));
+      tester.pumpComponent(const LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
 
@@ -95,7 +99,7 @@ void main() {
     });
 
     testBrowser('filters stable lints', (tester) async {
-      tester.pumpComponent(LintRuleIndex(testLinterRules));
+      tester.pumpComponent(const LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
 
@@ -107,7 +111,7 @@ void main() {
     });
 
     testBrowser('filters core lints', (tester) async {
-      tester.pumpComponent(LintRuleIndex(testLinterRules));
+      tester.pumpComponent(const LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
 
@@ -126,7 +130,7 @@ void main() {
     });
 
     testBrowser('filters lints by search query', (tester) async {
-      tester.pumpComponent(LintRuleIndex(testLinterRules));
+      tester.pumpComponent(const LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
 

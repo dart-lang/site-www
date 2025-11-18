@@ -11,7 +11,7 @@ import 'package:path/path.dart' as p;
 
 import '../components/common/tags.dart';
 import '../markdown/markdown_parser.dart';
-import '../models/lints.dart';
+import '../models/lint_rules.dart';
 import 'glossary.dart';
 
 /// All pages that should be loaded from memory rather than
@@ -56,14 +56,14 @@ List<MemoryPage> get _lintMemoryPages {
         path: p.join(
           'tools',
           'linter-rules',
-          '${lint.id}.md',
+          '${lint.name}.md',
         ),
         initialData: {
           'page': <String, Object?>{
             'title': lint.name,
             'underscore_breaker_titles': true,
             'description': 'Learn about the ${lint.name} linter rule.',
-            if (lint.state == 'removed') ...const {
+            if (lint.latestState.type == LintStateType.removed) ...const {
               'noindex': true,
               'sitemap': false,
             } else
@@ -74,13 +74,14 @@ List<MemoryPage> get _lintMemoryPages {
         },
         builder: (context) {
           final incompatibleLintsText = StringBuffer();
-          if (lint.incompatibleLints.isNotEmpty) {
+          if (lint.incompatible.isNotEmpty) {
             incompatibleLintsText.writeln('## Incompatible rules\n');
             incompatibleLintsText.writeln(
-              'The `${lint.id}` lint is incompatible with the following rules:',
+              'The `${lint.name}` lint is incompatible with '
+              'the following rules:',
             );
             incompatibleLintsText.writeln();
-            for (final incompatibleLint in lint.incompatibleLints) {
+            for (final incompatibleLint in lint.incompatible) {
               incompatibleLintsText.writeln(
                 '- [`$incompatibleLint`](/tools/linter-rules/$incompatibleLint)',
               );
@@ -90,63 +91,64 @@ List<MemoryPage> get _lintMemoryPages {
           return Component.fragment(
             [
               Tags([
-                if (lint.sinceDartSdk == 'Unreleased' ||
-                    lint.sinceDartSdk.contains('-wip'))
-                  const Tag(
-                    'Unreleased',
-                    icon: 'pending',
-                    color: 'orange',
-                    title: 'Lint is unreleased or work in progress.',
-                  )
-                else if (lint.state == 'experimental')
-                  const Tag(
-                    'Experimental',
-                    icon: 'science',
-                    color: 'orange',
-                    title: 'Lint is experimental.',
-                  )
-                else if (lint.state == 'deprecated')
-                  const Tag(
+                switch (lint.latestState.type) {
+                  LintStateType.deprecated => const Tag(
                     'Deprecated',
                     icon: 'report',
                     color: 'orange',
                     title: 'Lint is deprecated.',
-                  )
-                else if (lint.state == 'removed')
-                  const Tag(
+                  ),
+                  LintStateType.experimental => const Tag(
+                    'Experimental',
+                    icon: 'science',
+                    color: 'orange',
+                    title: 'Lint is experimental.',
+                  ),
+                  LintStateType.removed => const Tag(
                     'Removed',
                     icon: 'error',
                     color: 'red',
                     title: 'Lint has been removed.',
-                  )
-                else
-                  const Tag(
-                    'Stable',
-                    icon: 'verified_user',
-                    color: 'green',
-                    title: 'Lint is stable.',
                   ),
+                  LintStateType.stable =>
+                    lint.latestState.isUnreleased
+                        ? const Tag(
+                            'Unreleased',
+                            icon: 'pending',
+                            color: 'orange',
+                            title: 'Lint is unreleased or work in progress.',
+                          )
+                        : const Tag(
+                            'Stable',
+                            icon: 'verified_user',
+                            color: 'green',
+                            title: 'Lint is stable.',
+                          ),
+                  LintStateType.internal => throw StateError(
+                    'An internal lint shouldn\'t be documented: ${lint.name}',
+                  ),
+                },
 
-                if (lint.lintSets.contains('core'))
+                if (lint.sets.contains('core'))
                   const Tag(
                     'Core',
                     icon: 'circles',
                     title: 'Lint is included in the core set of rules.',
                   )
-                else if (lint.lintSets.contains('recommended'))
+                else if (lint.sets.contains('recommended'))
                   const Tag(
                     'Recommended',
                     icon: 'thumb_up',
                     title: 'Lint is included in the recommended set of rules.',
                   )
-                else if (lint.lintSets.contains('flutter'))
+                else if (lint.sets.contains('flutter'))
                   const Tag(
                     'Flutter',
                     icon: 'flutter',
                     title: 'Lint is included in the Flutter set of rules.',
                   ),
 
-                if (lint.fixStatus == 'hasFix')
+                if (lint.fixStatus == LintFixStatus.hasFix)
                   const Tag(
                     'Fix available',
                     icon: 'build',
@@ -160,7 +162,7 @@ ${lint.description}
 
 ## Details
 
-${lint.docs}
+${lint.justification}
 
 $incompatibleLintsText
 ''',
@@ -171,22 +173,22 @@ $incompatibleLintsText
 <a id="usage" aria-hidden="true"></a>
 ## Enable
 
-To enable the `${lint.id}` rule, add `${lint.id}` under
+To enable the `${lint.name}` rule, add `${lint.name}` under
 **linter > rules** in your [`analysis_options.yaml`](/tools/analysis) file:
 
 ```yaml title="analysis_options.yaml"
 linter:
   rules:
-    - ${lint.id}
+    - ${lint.name}
 ```
 
 If you're instead using the YAML map syntax to configure linter rules,
-add `${lint.id}: true` under **linter > rules**:
+add `${lint.name}: true` under **linter > rules**:
 
 ```yaml title="analysis_options.yaml"
 linter:
   rules:
-    ${lint.id}: true
+    ${lint.name}: true
 ```
 ''',
               ),
@@ -198,12 +200,13 @@ linter:
 }
 
 final linterRulesToShow = readAndLoadLints()
-    .where(
-      (lint) =>
-          lint.sinceDartSdk != 'Unreleased' &&
-          !lint.sinceDartSdk.contains('wip') &&
-          lint.state != 'removed' &&
-          lint.state != 'internal',
+    .whereNot(
+      (lint) {
+        final latestState = lint.latestState;
+        return latestState.isUnreleased ||
+            latestState.type == LintStateType.internal ||
+            latestState.type == LintStateType.removed;
+      },
     )
     .sortedBy((lint) => lint.name)
     .toList(growable: false);
@@ -213,7 +216,7 @@ final linterRulesToShow = readAndLoadLints()
 /// that are available in the current stable release.
 MemoryPage get _allLinterRulesPage {
   final allLinterRulesListAsString = linterRulesToShow
-      .map((lint) => '    - ${lint.id}')
+      .map((lint) => '    - ${lint.name}')
       .join('\n');
 
   return MemoryPage(
@@ -264,7 +267,7 @@ MemoryPage get _allLinterRulesJson => MemoryPage(
       ).convert([
         for (final lint in linterRulesToShow)
           {
-            'id': lint.id,
+            'id': lint.name,
           },
       ]),
 );
