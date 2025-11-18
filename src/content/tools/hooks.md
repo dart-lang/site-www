@@ -131,7 +131,7 @@ description: Sums two numbers with native code.
 version: 0.1.0
 
 environment:
-  sdk: '^3.9.0'
+  sdk: '^3.10.0'
 
 dependencies:
   # ... 
