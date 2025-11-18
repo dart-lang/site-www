@@ -5,7 +5,6 @@
 import 'dart:convert' show jsonDecode;
 import 'dart:io' show File;
 
-import 'package:collection/collection.dart';
 import 'package:path/path.dart' as p;
 
 import '../util.dart' show siteSrcDirectoryPath;
@@ -21,11 +20,15 @@ List<LintRule> readAndLoadLints() {
   final rawLintRules =
       jsonDecode(lintRulesFile.readAsStringSync()) as List<Object?>;
 
+  print(rawLintRules);
+
   final lintRules = rawLintRules
       .cast<Map<String, Object?>>()
       .map(LintRule.fromJson)
-      .whereNot((rule) => rule.latestState.type != LintStateType.internal)
+      .where((rule) => rule.latestState.type != LintStateType.internal)
       .toList(growable: false);
+
+  print(lintRules.length);
 
   return _loadedLints = lintRules;
 }
@@ -74,6 +77,7 @@ final class LintRule {
     required this.hasDiagnosticDocs,
   });
 
+  /// The most recent state of this lint.
   LintState get latestState => states.last;
 
   factory LintRule.fromJson(Map<String, Object?> json) => LintRule(
@@ -102,10 +106,11 @@ final class LintState {
 
   const LintState({required this.type, required this.since});
 
-  bool get isUnreleased {
+  /// If this lint is in a released of the SDK.
+  bool get isReleased {
     final standardizedSince = since.trim().toLowerCase();
-    return standardizedSince == 'unreleased' ||
-        standardizedSince.contains('-wip');
+    return standardizedSince != 'unreleased' &&
+        !standardizedSince.contains('-wip');
   }
 
   factory LintState.fromJson(Map<String, Object?> json) => LintState(

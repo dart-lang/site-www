@@ -55,7 +55,7 @@ class _LintRuleCard extends StatelessComponent {
 
     final attributes = <String, String>{
       if (lint.latestState.type == LintStateType.stable &&
-          !lint.latestState.isUnreleased)
+          lint.latestState.isReleased)
         'data-stable': 'true',
       if (lint.fixStatus == LintFixStatus.hasFix) 'data-has-fix': 'true',
       if (lint.sets.contains('core')) 'data-in-core': 'true',
@@ -109,7 +109,7 @@ class _LintRuleCard extends StatelessComponent {
         title: 'Lint has been removed.',
         classes: ['removed-lints'],
       ),
-      LintStateType.stable when lint.latestState.isUnreleased =>
+      LintStateType.stable when !lint.latestState.isReleased =>
         const MaterialIcon(
           'pending',
           title: 'Lint is unreleased.',

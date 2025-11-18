@@ -111,18 +111,18 @@ List<MemoryPage> get _lintMemoryPages {
                     title: 'Lint has been removed.',
                   ),
                   LintStateType.stable =>
-                    lint.latestState.isUnreleased
+                    lint.latestState.isReleased
                         ? const Tag(
-                            'Unreleased',
-                            icon: 'pending',
-                            color: 'orange',
-                            title: 'Lint is unreleased or work in progress.',
-                          )
-                        : const Tag(
                             'Stable',
                             icon: 'verified_user',
                             color: 'green',
                             title: 'Lint is stable.',
+                          )
+                        : const Tag(
+                            'Unreleased',
+                            icon: 'pending',
+                            color: 'orange',
+                            title: 'Lint is unreleased or work in progress.',
                           ),
                   LintStateType.internal => throw StateError(
                     'An internal lint shouldn\'t be documented: ${lint.name}',
@@ -200,14 +200,10 @@ linter:
 }
 
 final linterRulesToShow = readAndLoadLints()
-    .whereNot(
-      (lint) {
-        final latestState = lint.latestState;
-        return latestState.isUnreleased ||
-            latestState.type == LintStateType.internal ||
-            latestState.type == LintStateType.removed;
-      },
-    )
+    .where((lint) {
+      final latestState = lint.latestState;
+      return latestState.isReleased && latestState.type == LintStateType.stable;
+    })
     .sortedBy((lint) => lint.name)
     .toList(growable: false);
 
