@@ -7,7 +7,7 @@ import 'package:dart_dev_site/src/pages/lint_index.dart';
 import 'package:jaspr_test/browser_test.dart';
 import 'package:universal_web/web.dart' as web;
 
-const testLinterRules = <LintRule>[
+final testLinterRules = const <LintRule>[
   LintRule(
     name: 'fixable_lint',
     description: '',
@@ -76,7 +76,7 @@ void main() {
     }
 
     testBrowser('shows all lints by default', (tester) async {
-      tester.pumpComponent(const LintRuleIndex(testLinterRules));
+      tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       final cards = web.document
           .getElementById('lint-cards')
@@ -87,7 +87,7 @@ void main() {
     });
 
     testBrowser('filters fixable lints', (tester) async {
-      tester.pumpComponent(const LintRuleIndex(testLinterRules));
+      tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
 
@@ -99,7 +99,7 @@ void main() {
     });
 
     testBrowser('filters stable lints', (tester) async {
-      tester.pumpComponent(const LintRuleIndex(testLinterRules));
+      tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
 
@@ -111,7 +111,7 @@ void main() {
     });
 
     testBrowser('filters core lints', (tester) async {
-      tester.pumpComponent(const LintRuleIndex(testLinterRules));
+      tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
 
@@ -130,7 +130,7 @@ void main() {
     });
 
     testBrowser('filters lints by search query', (tester) async {
-      tester.pumpComponent(const LintRuleIndex(testLinterRules));
+      tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
 

@@ -64,6 +64,7 @@ class _LintRuleCard extends StatelessComponent {
     };
 
     return Card(
+      id: lintId,
       outlined: true,
       attributes: attributes,
       header: [

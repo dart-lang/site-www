@@ -20,15 +20,11 @@ List<LintRule> readAndLoadLints() {
   final rawLintRules =
       jsonDecode(lintRulesFile.readAsStringSync()) as List<Object?>;
 
-  print(rawLintRules);
-
   final lintRules = rawLintRules
       .cast<Map<String, Object?>>()
       .map(LintRule.fromJson)
       .where((rule) => rule.latestState.type != LintStateType.internal)
       .toList(growable: false);
-
-  print(lintRules.length);
 
   return _loadedLints = lintRules;
 }
