@@ -71,7 +71,7 @@ class _LintRuleCard extends StatelessComponent {
         header(
           id: lintId,
           classes: 'card-title',
-          splitByUnderscore(lintId),
+          splitByUnderscore(lint.name),
         ),
       ],
       content: [
