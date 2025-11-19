@@ -20,7 +20,7 @@ For example, asynchronous concepts like futures
 
 Dart is strongly typed, unlike JavaScript.
 If you have used TypeScript or Flow,
-learning Dart should be easy.
+you should find it easy to learn Dart.
 If you've mostly worked with pure JavaScript,
 it might be more of an adjustment.
 With strong typing, Dart catches many errors before compiling
