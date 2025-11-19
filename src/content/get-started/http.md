@@ -44,7 +44,7 @@ Before you begin this chapter, ensure you:
 
 In this chapter, you'll move beyond simple scripts and implement a proper API
 layer. You'll work within the `wikipedia` package to implement the API client
-logic, ensuring your application is scalable and maintainable.
+logic, which improves your application's scalability and maintainability.
 
 ### Task 1: Add the http dependency to the wikipedia package
 
