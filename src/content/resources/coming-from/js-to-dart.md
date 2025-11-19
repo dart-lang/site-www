@@ -19,8 +19,8 @@ For example, asynchronous concepts like futures
 (promises in JavaScript) and the `async/await` syntax are very similar.
 
 Dart is strongly typed, unlike JavaScript.
-If you have used with TypeScript or Flow,
-this should simplify learning Dart.
+If you have used TypeScript or Flow,
+you should find it easy to learn Dart.
 If you've mostly worked with pure JavaScript,
 it might be more of an adjustment.
 With strong typing, Dart catches many errors before compiling
