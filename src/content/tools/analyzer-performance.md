@@ -60,10 +60,10 @@ the faster the team can diagnose and fix the problem.
 In your issue, please provide detailed steps to
 reproduce the behavior you're observing.
 
-* If you're working on an open-source project, include instructions 
+1. If you're working on an open-source project, include instructions 
   for downloading the code.
-* If you can't share your code, create a small, self-contained reproduction case.
-* If you can't provide either, please state that in the issue.
+2. If you can't share your code, create a small, self-contained reproduction case.
+3. If you can't provide either, please state that in the issue.
 
 ### Provide performance data
 
@@ -72,17 +72,23 @@ can be very helpful. You can collect this data using the
 analysis server's diagnostic pages:
 
 1. **Open the Analyzer Diagnostics page:**
-    * **VS Code:** Open the `Command Palette` (View > Command Palette...), 
-        then type and select `Dart: Open Analyzer Diagnostics`.
-    * **IntelliJ / Android Studio:** Open the `Dart Analysis` tool window, 
-        click the settings icon, and select `View analyzer diagnostics`.
+    * **If you are using VS Code:**
+        1. Click **View > Command Palette**.
+        2. Type `Dart: Open Analyzer Diagnostics` and select it.
+    * **If you are using IntelliJ / Android Studio:**
+        1. Open the **Dart Analysis** tool window.
+        2. Click the settings icon, and then select **View analyzer diagnostics**.
 2. **Collect the report:**
-    * In the browser page that opens, click `Collect Report` in the top banner.
-    * Perform the actions that trigger the slow behavior.
-    * Click the `Download report` link.
-3. **Attach the report to your issue:** While the report shouldn't contain 
-    personal or proprietary information, 
-    review it before submitting it.
+    1. In the browser page that opens, click **Collect Report** in the top banner.
+    2. Perform the actions that trigger the slow behavior.
+    3. Click the **Download report** link.
+3. **Attach the report to your issue.**
+
+:::note
+While the report shouldn't contain 
+personal or proprietary information, 
+review it before submitting it.
+:::
 
 ### Capture instrumentation logs
 
