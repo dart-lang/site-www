@@ -1,6 +1,6 @@
 ---
 title: IntelliJ & Android Studio
-description: Use the Dart plugin with a variety of  IntelliJ Platform-based IDEs.
+description: Use the Dart plugin with a variety of IntelliJ Platform-based IDEs.
 ---
 
 The [Dart plugin][] adds Dart support
