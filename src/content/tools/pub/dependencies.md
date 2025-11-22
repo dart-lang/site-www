@@ -525,9 +525,9 @@ resemble the following:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.8.0
+  build_runner: ^2.10.4
   lints: ^6.0.0
-  test: ^1.25.15
+  test: ^1.26.3
 ```
 
 This YAML sets the `dev_dependencies` to the latest patch versions.
