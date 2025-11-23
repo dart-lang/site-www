@@ -159,7 +159,7 @@ context.
 ### Element and HTMLElement
 
 `Element` is now `HTMLElement` but `Element` class also exists as base class for
-HTMLElement, SVGElement etc. See [msdn element].
+HTMLElement, SVGElement etc. See [mdn element].
 `querySelector` returns `Element` as it can query in SVG as well so cast is
 required to access `HTMLElement` methods.
 
@@ -179,7 +179,7 @@ For immutable operations you can use `JSImmutableListWrapper`:
 
 ```dart
 final anchors = document.querySelectorAll('a');
-for (final anchor in anchors)) {} // Remove
+for (final anchor in anchors) {} // Remove
 for (final anchor in JSImmutableListWrapper(anchors)) {} //Add
 
 for (final child in parent.children) {} // Remove
@@ -388,4 +388,4 @@ Do we have any other package migrations to show off here?
 [restricts]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [#54507]: {{site.repo.dart.sdk}}/issues/54507
 [mocking tutorial]: /interop/js-interop/mock
-[msdn element]: https://developer.mozilla.org/en-US/docs/Web/API/Element
+[mdn element]: https://developer.mozilla.org/en-US/docs/Web/API/Element
