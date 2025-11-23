@@ -135,6 +135,7 @@ which provides the core `Plugin` class.
    
    dependencies:
      analysis_server_plugin: ^0.3.0
+     analyzer_plugin: ^0.13.0
      analyzer: ^8.0.0
    ```
 
@@ -147,6 +148,9 @@ which provides the core `Plugin` class.
    final plugin = SimplePlugin();
    
    class SimplePlugin extends Plugin {
+     @override
+     String get name => 'Simple plugin';
+   
      @override
      void register(PluginRegistry registry) {
        // Register diagnostics, quick fixes, and assists.
@@ -171,13 +175,19 @@ Key points:
   point for registering your custom analysis rules, 
   quick fixes, and assists with the analyzer.
 
+:::tip
+After you have made changes to your plugin, restart the Dart
+Analysis Server to see the effects.
+:::
+
 ### Implement plugin features
 
 Once you have your basic plugin package set up, 
 you can start adding custom functionality by 
-implementing the `register` method. 
-To learn more about implementing specific functionality,
-check out the following guides:
+implementing the `register` method.
+
+Read the following guides to learn how to implement specific
+funcitonality:
 
 * [Writing rules][]
 * [Writing fixes][]
@@ -188,6 +198,17 @@ check out the following guides:
 [Writing fixes]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server_plugin/doc/writing_fixes.md
 [Writing assists]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server_plugin/doc/writing_assists.md
 [Testing rules]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server_plugin/doc/testing_rules.md
+
+Check the Dart Analysis Server for many examples of rules,
+fixes, and, assists:
+
+* [Dart Analysis Server's rules][]
+* [Dart Analysis Server's fixes][]
+* [Dart Analysis Serer's assists][]
+
+[Dart Analysis Server's rules]: https://github.com/dart-lang/sdk/tree/main/pkg/linter/lib/src/rules
+[Dart Analysis Server's fixes]: https://github.com/dart-lang/sdk/tree/main/pkg/analysis_server/lib/src/services/correction/dart
+[Dart Analysis Serer's assists]: https://github.com/dart-lang/sdk/tree/main/pkg/analysis_server/lib/src/services/correction/dart
 
 ### Debug a plugin
 
