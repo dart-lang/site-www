@@ -201,15 +201,27 @@ for (var i = parent.children.length - 1; i >= 0; --i) {
 
 ### Common DOM manipulation examples
 
+All non standard `dart:html` fields and helpers not present in IDL definitions
+are not available. Hence tiny changes are required for some DOM manipulation 
+operations. 
+
 ```dart
 element.querySelector('#selector')?.innerHtml = 'something'; // Remove
 element.querySelector('#selector')?.innerHTML = 'something'.toJS; // Add
 
-element.classes.add('class'); // Remove
-element.classList.add('class'); // Add
+element.parent.classes.add('class'); // Remove
+element.parentElement.classList.add('class'); // Add
 
 element.appendHtml(html); // Remove
 element.insertAdjacentHTML('beforeend', html.toJS); // Add
+
+var checkbox = CheckboxInputElement(); // Remove
+var checkbox = HTMLInputElement()..type='checkbox'; // Add
+
+element.querySelectorAll('a').classes.add('link'); // Remove
+for (final a in JSImmutableListWrapper(element.querySelectorAll('a'))) {
+  a.classList.add('a');
+} // Add
 ```
 
 {% comment %}
