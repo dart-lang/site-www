@@ -657,6 +657,7 @@ Use the following resources to learn more about static analysis in Dart:
 * [Dart's type system][type-system]
 * [Dart linter rules][linter rules]
 * [analyzer package]({{site.pub-pkg}}/analyzer)
+* [Troubleshoot analyzer performance][]
 
 [invalid_null_aware_operator]: /tools/diagnostic-messages#invalid_null_aware_operator
 [analyzer diagnostics]: /tools/diagnostic-messages
@@ -671,3 +672,4 @@ Use the following resources to learn more about static analysis in Dart:
 [Effective Dart]: /effective-dart
 [`dart format`]: /tools/dart-format
 [Configuring formatter page width]: /tools/dart-format#configuring-formatter-page-width
+[Troubleshoot analyzer performance]: /tools/analyzer-performance
