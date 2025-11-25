@@ -2,8 +2,8 @@
 title: Http
 shortTitle: Http
 description: >-
-  Implement Wikipedia API calls to complete the core functionality of the
-  Wikipedia CLI.
+  Refactor your application to use a robust, production-ready API client
+  for the Wikipedia CLI.
 sitemap: false
 noindex: true
 layout: learn
@@ -17,16 +17,16 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-In this chapter, you'll implement the core functionality of the Wikipedia CLI by
-making API calls to retrieve data. You'll add the `http` package as a
-dependency, create API functions, and then export those functions so they can be
-used by the `cli` package.
+In Chapter 3, you used the `http` package to make a simple request. Now, you'll
+revisit HTTP to build a robust, production-ready API client within the
+`wikipedia` package. You'll learn how to handle query parameters, map JSON
+responses to your data models, and export these functions for use in your CLI.
 
 :::secondary What you'll learn
 
-*   Construct `Uri` objects for API requests.
-*   Make HTTP GET requests using the `http` package.
-*   Handle API responses and decode JSON data.
+*   Construct complex `Uri` objects with query parameters.
+*   Apply HTTP requests within a structured package architecture.
+*   Map JSON responses to the data models created in Chapter 9.
 *   Export functions and models from a Dart library.
 
 :::
@@ -42,9 +42,9 @@ Before you begin this chapter, ensure you:
 
 ## Tasks
 
-In this chapter, you'll add the core functionality of the Wikipedia CLI by
-making API calls to retrieve data. You'll work within the `wikipedia` package to
-implement the API client logic.
+In this chapter, you'll move beyond simple scripts and implement a proper API
+layer. You'll work within the `wikipedia` package to implement the API client
+logic, which improves your application's scalability and maintainability.
 
 ### Task 1: Add the http dependency to the wikipedia package
 
