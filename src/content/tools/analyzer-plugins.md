@@ -187,7 +187,7 @@ you can start adding custom functionality by
 implementing the `register` method.
 
 Read the following guides to learn how to implement specific
-funcitonality:
+functionality:
 
 * [Writing rules][]
 * [Writing fixes][]
