@@ -23,7 +23,7 @@ need to perform large computations that might otherwise cause the
 UI to become unresponsive.
 
 :::flutter-note
-If you're using Flutter web, multiple Isolates are not supported.
+Multiple Isolates not supported by Flutter web
 See also: [Concurrency on the web](https://dart.dev/language/concurrency#concurrency-on-the-web)
 :::
 
