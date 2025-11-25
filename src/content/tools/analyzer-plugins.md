@@ -208,7 +208,7 @@ fixes, and, assists:
 
 [Dart Analysis Server's rules]: https://github.com/dart-lang/sdk/tree/main/pkg/linter/lib/src/rules
 [Dart Analysis Server's fixes]: https://github.com/dart-lang/sdk/tree/main/pkg/analysis_server/lib/src/services/correction/dart
-[Dart Analysis Serer's assists]: https://github.com/dart-lang/sdk/tree/main/pkg/analysis_server/lib/src/services/correction/dart
+[Dart Analysis Server's assists]: https://github.com/dart-lang/sdk/tree/main/pkg/analysis_server/lib/src/services/correction/dart
 
 ### Debug a plugin
 
