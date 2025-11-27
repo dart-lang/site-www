@@ -66,7 +66,7 @@ To create a workspace:
   environment:
     sdk: ^3.6.0
   workspace:
-    - packages/helper
+    - packages/shared
     - packages/client_package
     - packages/server_package
   ```
