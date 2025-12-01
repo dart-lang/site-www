@@ -26,6 +26,7 @@ If you don't already have the IDE and the Dart SDK, get them.
 Then install the Dart plugin and tell it where to find the Dart SDK.
 
 
+
 ### Downloading the IDE
 
 Install a JetBrains IDE if you don't already have one. Choose one:
