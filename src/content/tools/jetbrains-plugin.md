@@ -67,71 +67,36 @@ Choose one:
 
 Here's one way to configure Dart support:
 
-<ol>
-<li>
-  <p>
-    Start the IDE, and install the <b>Dart</b> plugin.
-  </p>
+1. Start the IDE, and install the **Dart** plugin.
+   1. From the Welcome screen, choose **Plugins**.
+   2. Search for **Dart**.
+   3. Once you've installed the Dart plugin, restart the IDE.
 
-  <ol type="a">
-    <li>From the Welcome screen, choose <b>Plugins</b>.</li>
-    <li>Search for <b>Dart</b>.</li>
-    <li>Once you've installed the Dart plugin, restart the IDE.</li>
-  </ol>
-</li>
-<br>
+2. Create a new Dart project:
+   1. From the Welcome screen, click **New Project**.
+   2. In the next dialog, click **Dart**.
 
-<li>
-  <p>
-    Create a new Dart project:
-  </p>
+3. If you don't see a value for the **Dart SDK** path,
+   enter or select it.
 
-  <ol type="a">
-    <li>From the Welcome screen, click <b>New Project</b>.</li>
-    <li>In the next dialog, click <b>Dart</b>.</li>
-  </ol>
-</li>
-<br>
+   For example, the SDK path might be `<dart installation directory>/dart/dart-sdk`.
 
-<li>
-  <p>
-    If you don't see a value for the <b>Dart SDK</b> path,
-    enter or select it.
-  </p>
+   :::note
+   The **Dart SDK** specifies the directory that contains the SDK's `bin` and `lib` directories;
+   the `bin` directory contains tools such as `dart` and `dartaotruntime`.
+   The IDE ensures that the path is valid.
+   :::
 
-  <p>
-    For example, the SDK path might be
-    <code><em>&lt;dart installation directory></em>/dart/dart-sdk</code>.
-  </p>
+4. Choose a starting template.
+   1. To enable starting templates, click **Generate sample content**.
+   2. Pick your desired template.
 
-  :::note
-  The **Dart SDK** specifies the directory that
-  contains the SDK's `bin` and `lib` directories;
-  the `bin` directory contains tools such as `dart` and `dartaotruntime`.
-  The IDE ensures that the path is valid.
-  :::
-</li>
+   :::note
+   The provided templates are supplied and created by
+   [`dart create`](/tools/dart-create).
+   :::
 
-<li>
-  <p>
-    Choose a starting template.
-  </p>
-
-  <ol type="a">
-    <li>To enable starting templates, click <b>Generate sample content</b>.</li>
-    <li>Pick your desired template.</li>
-  </ol>
-
-  :::note
-  The provided templates are supplied and created
-  by [`dart create`](/tools/dart-create).
-  :::
-</li>
-
-<li>
-  <p>Click <b>Next</b> and continue project setup.</p>
-</li>
-</ol>
+5. Click **Next** and continue project setup.
 
 An alternative to Step 2 is to open an existing Dart project,
 and then open its `pubspec.yaml` file or any of its Dart files.
@@ -140,12 +105,12 @@ and then open its `pubspec.yaml` file or any of its Dart files.
 ## Reporting issues
 
 Please report issues and feedback via the official
-[JetBrains issue tracker for Dart.][]
+[JetBrains issue tracker for Dart][]
 
 Include details of the expected behavior, the actual behavior,
 and screenshots if appropriate.
 
-[JetBrains issue tracker for Dart.]: https://youtrack.jetbrains.com/issues?q=Subsystem:%20%7BLang.%20Dart%7D%20
+[JetBrains issue tracker for Dart]: https://youtrack.jetbrains.com/issues?q=Subsystem:%20%7BLang.%20Dart%7D%20
 
 ## More information
 
