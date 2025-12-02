@@ -24,7 +24,7 @@ _Use interpolation to compose strings and values._
 
 The analyzer produces this diagnostic when string literals and computed
 strings are being concatenated using the `+` operator, but string
-interpolation would achieve the same result. Key advantages of string interpolation: improves readability, reduces the chance of errors when combining values, and is easier to maintain than using string concatenation with the + operator.
+interpolation would achieve the same result. String interpolation has several key advantages: it improves readability, reduces the chance of errors when combining values, and is easier to maintain than using string concatenation with the `+` operator.
 
 
 ## Example
