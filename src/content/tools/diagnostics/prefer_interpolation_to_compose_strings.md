@@ -41,7 +41,7 @@ String f(String s) {
 ## Common fixes
 
 Use string interpolation:
-Note how using multiple + operators would be more error-prone, especially when combining several values.
+Using multiple `+` operators can be more error-prone, especially when combining several values.
 
 ```dart
 String f(List<String> l) {
