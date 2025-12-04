@@ -62,7 +62,6 @@ class DashMarkdown extends AsyncStatelessComponent {
           ? _defaultMarkdownDocument.parseInline(content)
           : _defaultMarkdownDocument.parse(content);
 
-
       var nodes = DashMarkdownParser.buildNodes(markdownNodes);
       for (final extension in allNodeProcessingExtensions) {
         nodes = await extension.apply(currentPage, nodes);

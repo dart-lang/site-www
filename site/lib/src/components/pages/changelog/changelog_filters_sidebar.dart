@@ -110,7 +110,7 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                       ChangelogFiltersSidebar.filters.availableAreas
                           .where((area) => area != 'Docs')
                           .toList()
-                    ..sort(ChangelogFiltersSidebar.filters.compareAreas),
+                        ..sort(ChangelogFiltersSidebar.filters.compareAreas),
                   selectedItems: ChangelogFiltersSidebar.filters.selectedAreas,
                   onToggle: (area, checked) =>
                       ChangelogFiltersSidebar.filters.setArea(area, checked),

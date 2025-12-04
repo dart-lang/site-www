@@ -29,11 +29,14 @@ final class ChangelogEntry {
 
     return ChangelogEntry(
       description: description,
-      version: map['version'].toString().trim(), // Ensure version is string even if e.g. 3.0
+      version: map['version']
+          .toString()
+          .trim(), // Ensure version is string even if e.g. 3.0
       releaseDate: map['releaseDate']?.toString(),
       area: map['area'] as String,
       subArea: map['subArea'] as String?,
-      tags: (map['tags'] as List<Object?>?)
+      tags:
+          (map['tags'] as List<Object?>?)
               ?.cast<String>()
               .map(ChangelogTag.fromId)
               .toList() ??
@@ -117,7 +120,8 @@ enum ChangelogTag {
   versioned('versioned', 'Language versioned'),
   deprecated('deprecated', 'Deprecated'),
   removed('removed', 'Removed'),
-  none('none', 'None');
+  none('none', 'None')
+  ;
 
   const ChangelogTag(this.id, this.label);
 
