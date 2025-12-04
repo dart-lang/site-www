@@ -56,14 +56,23 @@ class DashMarkdown extends AsyncStatelessComponent {
 
   @override
   Future<Component> build(BuildContext context) async {
-    final currentPage = context.page;
-    final markdownNodes = _defaultMarkdownDocument.parse(content);
-    var nodes = DashMarkdownParser.buildNodes(markdownNodes);
-    for (final extension in allNodeProcessingExtensions) {
-      nodes = await extension.apply(currentPage, nodes);
-    }
+    try {
+      final currentPage = context.page;
+      final markdownNodes = inline
+          ? _defaultMarkdownDocument.parseInline(content)
+          : _defaultMarkdownDocument.parse(content);
 
-    return _nodeBuilder.build(nodes);
+
+      var nodes = DashMarkdownParser.buildNodes(markdownNodes);
+      for (final extension in allNodeProcessingExtensions) {
+        nodes = await extension.apply(currentPage, nodes);
+      }
+
+      return _nodeBuilder.build(nodes);
+    } catch (e, st) {
+      print('Error rendering markdown: $e\n$st');
+      return text('Error rendering markdown');
+    }
   }
 }
 
@@ -174,7 +183,9 @@ class DashMarkdownParser implements PageParser {
               'id': ?node.generatedId,
               ...node.attributes,
             },
-            nodeChildren != null ? buildNodes(nodeChildren) : null,
+            nodeChildren != null
+                ? buildNodes(nodeChildren)
+                : [if (node.textContent.isNotEmpty) TextNode(node.textContent)],
           ),
         );
       }
