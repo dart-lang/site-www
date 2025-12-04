@@ -35,6 +35,12 @@ final class Messages {
   static Future<Messages> retrieve() async {
     final rawAnalyzerYaml = await _loadSdkYaml('pkg/analyzer/messages.yaml');
     final analyzerMessages = _decodeAnalyzerMessagesYaml(rawAnalyzerYaml);
+    final rawAnalysisServerYaml = await _loadSdkYaml(
+      'pkg/analysis_server/messages.yaml',
+    );
+    final analysisServerMessages = _decodeAnalyzerMessagesYaml(
+      rawAnalysisServerYaml,
+    );
     final rawFrontEndYaml = await _loadSdkYaml('pkg/front_end/messages.yaml');
     final frontEndMessages = _decodeCfeMessagesYaml(rawFrontEndYaml);
     final rawSharedYaml = await _loadSdkYaml(
@@ -45,7 +51,7 @@ final class Messages {
     final linterMessages = _decodeAnalyzerMessagesYaml(rawLinterYaml);
 
     return Messages._(
-      analyzerMessages: analyzerMessages,
+      analyzerMessages: {...analyzerMessages, ...analysisServerMessages},
       linterMessages: linterMessages,
       frontEndMessages: frontEndMessages,
       cfeToAnalyzerErrorCodeTables: CfeToAnalyzerErrorCodeTables._({
