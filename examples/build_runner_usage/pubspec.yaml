@@ -3,9 +3,9 @@ description: dart.dev build_runner example code.
 
 resolution: workspace
 environment:
-  sdk: ^3.10.0-0
+  sdk: ^3.10.0
 
 dev_dependencies:
   args: ^2.7.0
-  build_runner: ^2.8.0
-  build_test: ^3.4.0
+  build_runner: ^2.10.4
+  build_test: ^3.5.4
