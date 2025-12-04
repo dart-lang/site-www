@@ -42,7 +42,7 @@ analyzer:
 ## Common fixes
 
 If the file is intended to be included, then correct the included file to
-be valid YAML::
+be valid YAML:
 
 ```yaml
 // %uri="shared.yaml"
