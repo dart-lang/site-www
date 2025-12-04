@@ -17,7 +17,7 @@ attempts to enable a lint rule that is not defined.
 ## Example
 
 The following code produces this diagnostic because the lint
-`this_is_not_a_real_lint` isn't a known lint:
+`implementation_import` isn't a known lint:
 
 ```yaml
 // %uri="analysis_options.yaml"
