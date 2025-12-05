@@ -22,6 +22,11 @@ The most common example is in [Flutter][] applications, when you
 need to perform large computations that might otherwise cause the 
 UI to become unresponsive.
 
+:::flutter-note
+Multiple Isolates not supported by Flutter web
+See also: [Concurrency on the web](https://dart.dev/language/concurrency#concurrency-on-the-web)
+:::
+
 There aren't any rules about when you _must_ use isolates, 
 but here are some more situations where they can be useful:
 
