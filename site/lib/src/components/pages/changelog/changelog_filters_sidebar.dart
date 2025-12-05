@@ -297,9 +297,7 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
 
     for (final entry in entries) {
       final matchesTags =
-          selectedTags.isEmpty ||
-          (entry.tags.isEmpty && selectedTags.contains(ChangelogTag.none)) ||
-          entry.tags.any(selectedTags.contains);
+          selectedTags.isEmpty || entry.tags.any(selectedTags.contains);
       if (!matchesTags) continue;
 
       final matchesAreas =

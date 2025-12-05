@@ -20,5 +20,7 @@
 }
 
 .hidden {
+  // Use !important to ensure this utility class always hides the element,
+    // overriding any other display styles.
   display: none !important;
 }

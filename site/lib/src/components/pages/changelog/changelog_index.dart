@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:math';
+
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
@@ -51,7 +53,7 @@ class _ChangelogEntryCard extends StatelessComponent {
   Component build(BuildContext context) {
     // Generate a somewhat unique ID for DOM filtering
     final uniqueId = slugify(
-      '${entry.version}-${entry.area}-${entry.subArea ?? ''}-${entry.description.substring(0, min(20, entry.description.length))}',
+      '${entry.version}-${entry.area}-${entry.subArea ?? ''}-${entry.description.substring(0, min(20, entry.description.length))}-${entry.hashCode}',
     );
 
     return div(
@@ -104,6 +106,4 @@ class _ChangelogEntryCard extends StatelessComponent {
       ],
     );
   }
-
-  int min(int a, int b) => a < b ? a : b;
 }

@@ -1,5 +1,61 @@
 @use '../base/mixins';
 
+$sidebar-width: 220px;
+
+:root {
+  // Tag Colors (Light Mode)
+  --tag-versioned-bg: #e3f2fd;
+  --tag-versioned-fg: #1565c0;
+
+  --tag-deprecated-bg: #fff3e0;
+  --tag-deprecated-fg: #e65100;
+
+  --tag-removed-bg: #ffebee;
+  --tag-removed-fg: #c62828;
+
+  --tag-experimental-bg: #f3e5f5;
+  --tag-experimental-fg: #4a148c;
+
+  --tag-breaking-bg: #ffebee;
+  --tag-breaking-fg: #b71c1c;
+
+  --tag-changed-bg: #e0f7fa;
+  --tag-changed-fg: #006064;
+
+  --tag-new-bg: #e8f5e9;
+  --tag-new-fg: #1b5e20;
+
+  --tag-fixed-bg: #eceff1;
+  --tag-fixed-fg: #263238;
+}
+
+body.dark-mode {
+  // Tag Colors (Dark Mode)
+  --tag-versioned-bg: #1b4773;
+  --tag-versioned-fg: #64b5f6;
+
+  --tag-deprecated-bg: #57432a;
+  --tag-deprecated-fg: #ffb74d;
+
+  --tag-removed-bg: #692626;
+  --tag-removed-fg: #de9b9b;
+
+  --tag-experimental-bg: #542d6c;
+  --tag-experimental-fg: #d47ce5;
+
+  --tag-breaking-bg: #5e412f;
+  --tag-breaking-fg: #ff9560;
+
+  --tag-changed-bg: #004d40;
+  --tag-changed-fg: #4dd0e1;
+
+  --tag-new-bg: #204728;
+  --tag-new-fg: #a5d6a7;
+
+  --tag-fixed-bg: #233d4b;
+  --tag-fixed-fg: #b0bec5;
+}
+
 #changelog-filter-group-wrapper {
   border: 1px solid var(--site-inset-borderColor);
   background-color: var(--site-inset-bgColor);
@@ -53,8 +109,8 @@
     position: fixed;
     top: 11rem;
     bottom: 0;
-    right: -220px;
-    width: 220px;
+    right: -$sidebar-width;
+    width: $sidebar-width;
     border-bottom: none;
     border-radius: 0;
     transition: right 0.3s ease-in-out;
@@ -62,7 +118,7 @@
   }
 
   #open-filter-toggle:not(:checked)+#changelog-filter-group-wrapper {
-    right: -220px;
+    right: -$sidebar-width;
   }
 
   #open-filter-toggle:checked+#changelog-filter-group-wrapper {
@@ -93,7 +149,7 @@
   }
 
   .right-col {
-    width: 220px;
+    width: $sidebar-width;
 
     @media (max-width: 840px) {
       position: fixed;
@@ -102,7 +158,7 @@
       right: -15rem;
       box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.2);
       border-radius: 0.4rem;
-      width: 220px;
+      width: $sidebar-width;
 
       @keyframes slidein {
         0% {
@@ -420,28 +476,43 @@
         font-weight: 500;
 
         &.versioned-tag {
-          background-color: #e3f2fd;
-          color: #1565c0;
+          background-color: var(--tag-versioned-bg);
+          color: var(--tag-versioned-fg);
         }
 
         &.deprecated-tag {
-          background-color: #fff3e0;
-          color: #e65100;
+          background-color: var(--tag-deprecated-bg);
+          color: var(--tag-deprecated-fg);
         }
 
         &.removed-tag {
-          background-color: #ffebee;
-          color: #c62828;
+          background-color: var(--tag-removed-bg);
+          color: var(--tag-removed-fg);
         }
 
         &.experimental-tag {
-          background-color: #f3e5f5;
-          color: #4a148c;
+          background-color: var(--tag-experimental-bg);
+          color: var(--tag-experimental-fg);
         }
 
         &.breaking-tag {
-          background-color: #ffebee;
-          color: #b71c1c;
+          background-color: var(--tag-breaking-bg);
+          color: var(--tag-breaking-fg);
+        }
+
+        &.changed-tag {
+          background-color: var(--tag-changed-bg);
+          color: var(--tag-changed-fg);
+        }
+
+        &.new-tag {
+          background-color: var(--tag-new-bg);
+          color: var(--tag-new-fg);
+        }
+
+        &.fixed-tag {
+          background-color: var(--tag-fixed-bg);
+          color: var(--tag-fixed-fg);
         }
 
       }
@@ -578,28 +649,43 @@
       display: inline-block; // Ensure they don't break weirdly
 
       &.versioned-tag {
-        background-color: #e3f2fd;
-        color: #1565c0;
+        background-color: var(--tag-versioned-bg);
+        color: var(--tag-versioned-fg);
       }
 
       &.deprecated-tag {
-        background-color: #fff3e0;
-        color: #e65100;
+        background-color: var(--tag-deprecated-bg);
+        color: var(--tag-deprecated-fg);
       }
 
       &.removed-tag {
-        background-color: #ffebee;
-        color: #c62828;
+        background-color: var(--tag-removed-bg);
+        color: var(--tag-removed-fg);
       }
 
       &.experimental-tag {
-        background-color: #f3e5f5;
-        color: #4a148c;
+        background-color: var(--tag-experimental-bg);
+        color: var(--tag-experimental-fg);
       }
 
       &.breaking-tag {
-        background-color: #ffebee;
-        color: #b71c1c;
+        background-color: var(--tag-breaking-bg);
+        color: var(--tag-breaking-fg);
+      }
+
+      &.changed-tag {
+        background-color: var(--tag-changed-bg);
+        color: var(--tag-changed-fg);
+      }
+
+      &.new-tag {
+        background-color: var(--tag-new-bg);
+        color: var(--tag-new-fg);
+      }
+
+      &.fixed-tag {
+        background-color: var(--tag-fixed-bg);
+        color: var(--tag-fixed-fg);
       }
     }
   }
