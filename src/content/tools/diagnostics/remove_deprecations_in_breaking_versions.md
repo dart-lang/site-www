@@ -7,6 +7,17 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
+<div class="tags">
+  <a class="tag-label"
+      href="/tools/linter-rules/remove_deprecations_in_breaking_versions"
+      title="Learn about the lint rule that enables this diagnostic."
+      aria-label="Learn about the lint rule that enables this diagnostic."
+      target="_blank">
+    <span class="material-symbols" aria-hidden="true">toggle_on</span>
+    <span>Lint rule</span>
+  </a>
+</div>
+
 _Remove deprecated elements in breaking versions._
 
 ## Description

@@ -20,6 +20,7 @@ The following code produces this diagnostic because the name of the factory
 constructor (`A`) isn't the same as the surrounding class (`C`):
 
 ```dart
+// @dart = 3.10
 class A {}
 
 class C {
