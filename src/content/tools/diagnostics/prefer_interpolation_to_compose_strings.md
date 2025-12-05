@@ -24,7 +24,8 @@ _Use interpolation to compose strings and values._
 
 The analyzer produces this diagnostic when string literals and computed
 strings are being concatenated using the `+` operator, but string
-interpolation would achieve the same result.
+interpolation would achieve the same result. String interpolation has several key advantages: it improves readability, reduces the chance of errors when combining values, and is easier to maintain than using string concatenation with the `+` operator.
+
 
 ## Example
 
@@ -40,6 +41,7 @@ String f(String s) {
 ## Common fixes
 
 Use string interpolation:
+Using multiple `+` operators can be more error-prone, especially when combining several values.
 
 ```dart
 String f(List<String> l) {
