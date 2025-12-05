@@ -1549,7 +1549,7 @@
     out [Fixing type promotion failures](/tools/non-promotion-reasons).
   tags:
     - new
-  link: /language/type-system#promotion
+  link: /tools/non-promotion-reasons
 # --------------------------------------------------
 - version: 3.2.0
   releaseDate: 2023-11-15
@@ -2348,7 +2348,7 @@
   description: |
     Added support for unnamed libraries.
     Library directives, used for appending library-level doc comments and
-    annotations, can and [should](/effective-dart/style#dont-explicitly-name-libraries) now be written without a name:
+    annotations, can and should now be written without a name:
 
     ```dart
     /// A really great test library.
@@ -2357,7 +2357,7 @@
     ```
   tags:
     - new
-  link: /language/libraries#declaring-libraries
+  link: /effective-dart/style#dont-explicitly-name-libraries
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2983,7 +2983,7 @@
     In particular, constructor tear-offs are now supported.
   tags:
     - new
-  link: /language/constructors#tear-offs
+  link: /language/constructors#constructor-tear-offs
 # --------------------------------------------------
 - version: 2.15.0
   releaseDate: 2021-12-08
@@ -4474,7 +4474,8 @@
     `double` literal (for example, `4.0`)
     when the value was an integer in concept.
 
-    In the following Flutter code, `horizontal` and `vertical` have type `double`:
+    In the following Flutter code, `horizontal` and `vertical` have type
+    `double`:
 
     ```dart
     padding: const EdgeInsets.symmetric(
@@ -4484,7 +4485,7 @@
     ```
   tags:
     - new
-  link: /language/built-in-types#doubles
+  link: /language/built-in-types#numbers
 # --------------------------------------------------
 - version: 2.1.0
   releaseDate: 2018-11-15
