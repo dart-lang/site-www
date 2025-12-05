@@ -2258,7 +2258,7 @@
   area: Language
   description: |
     The 3.0 release of the Dart SDK dropped support for
-    [language versions][] before 2.12.
+    [language versions](/resources/language/evolution#language-versioning) before 2.12.
   tags:
     - removed
     - breaking
