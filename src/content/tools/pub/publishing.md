@@ -53,7 +53,8 @@ Beyond these conventions, you must follow these requirements:
   you upload as part of your package.
 
 * Keep package size within limits: less than **100 MB after gzip compression**
-  and less than **256 MB uncompressed**.  
+  and less than **256 MB uncompressed**.
+
   If your package is too large, consider splitting it into multiple packages,
   using a `.pubignore` file to remove unnecessary content, or reducing the
   number of included resources or examples.
