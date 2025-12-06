@@ -3,7 +3,7 @@ description: dart.dev example code.
 
 resolution: workspace
 environment:
-  sdk: ^3.9.0
+  sdk: ^3.10.0
 
 dependencies:
   charcode: ^1.4.0
@@ -11,4 +11,4 @@ dependencies:
   meta: ^1.17.0
 
 dev_dependencies:
-  test: ^1.26.0
+  test: ^1.28.0

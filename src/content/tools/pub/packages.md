@@ -117,15 +117,17 @@ your app.
 You can also use this style to import libraries from within your own package.
 Let's say that the `transmogrify` package is laid out as follows:
 
-```plaintext
-transmogrify/
-  lib/
-    transmogrify.dart
-    parser.dart
-  test/
-    parser/
-      parser_test.dart
-```
+<FileTree>
+
+- transmogrify/
+  - lib/
+    - transmogrify.dart
+    - parser.dart
+  - test/
+    - parser/
+      - parser_test.dart
+
+</FileTree>
 
 The `parser_test.dart` file can import `parser.dart` like this:
 

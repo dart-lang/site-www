@@ -187,7 +187,7 @@ dependencies:
   kittens:
     git:
       url: git@github.com:munificent/kittens.git
-      tag_pattern: v{{version}} # Find version-tag prefixed by 'v'.
+      tag_pattern: v{% raw %}{{version}}{% endraw %} # Find version-tag prefixed by 'v'.
     version: ^2.0.1
 ```
 
@@ -525,9 +525,9 @@ resemble the following:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.8.0
+  build_runner: ^2.10.4
   lints: ^6.0.0
-  test: ^1.25.15
+  test: ^1.26.3
 ```
 
 This YAML sets the `dev_dependencies` to the latest patch versions.

@@ -172,7 +172,7 @@ The compiler flags an explicit runtime null check as an unnecessary
 comparison if you make `arg` non-nullable.
 
 ```dart
-if (arg == null) throw ArgumentError(...)`
+if (arg == null) throw ArgumentError(...)
 ```
 
 You must include this check if the program is a mixed-version one.

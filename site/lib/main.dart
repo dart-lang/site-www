@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaspr/server.dart';
+import 'package:jaspr_content/components/file_tree.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
 import 'package:path/path.dart' as path;
@@ -57,7 +58,27 @@ Component get _dartDevSite => ContentApp.custom(
     components: _embeddableComponents,
     layouts: const [DocLayout(), HomepageLayout(), LearnLayout()],
     theme: const ContentTheme.none(),
-    secondaryOutputs: const [RobotsTxtOutput()],
+    secondaryOutputs: [
+      const RobotsTxtOutput(),
+
+      MarkdownOutput(
+        createHeader: (page) {
+          final header = StringBuffer();
+          if (page.data.page['title'] case final String title
+              when title.isNotEmpty) {
+            header.writeln('# $title');
+
+            if (page.data.page['description'] case final String description
+                when description.isNotEmpty) {
+              header.writeln();
+              header.writeln('> $description');
+            }
+          }
+
+          return header.toString();
+        },
+      ),
+    ],
   ),
 );
 
@@ -65,6 +86,7 @@ Component get _dartDevSite => ContentApp.custom(
 List<CustomComponent> get _embeddableComponents => [
   const DashTabs(),
   const YoutubeEmbed(),
+  const FileTree(),
   CustomComponent(
     pattern: RegExp('ArchiveTable'),
     builder: (_, attrs, _) => ArchiveTable.fromAttributes(attrs),

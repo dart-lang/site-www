@@ -1,8 +1,7 @@
 text: >-
-  Dart 3.9 is officially here!
-  This release is all about making your work easier and
-  your apps more efficient.
+  Dart 3.10 is taking off with dot shorthands,
+  stable build hooks, nuanced deprecation annotations, and more!
 link:
   text: "Learn more"
-  url: "https://blog.dart.dev/announcing-dart-3-9-ba49e8f38298"
+  url: "https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088"
   newTab: true

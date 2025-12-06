@@ -9,6 +9,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../client/global_scripts.dart';
 import '../components/common/client/cookie_notice.dart';
+import '../components/layout/banner.dart';
 import '../components/layout/footer.dart';
 import '../components/layout/header.dart';
 import '../components/layout/sidenav.dart';
@@ -24,6 +25,8 @@ abstract class DashLayout extends PageLayoutBase {
   String get name;
 
   List<String> get defaultBodyClasses => [];
+
+  String get defaultSidenav => 'default';
 
   @override
   @mustCallSuper
@@ -171,19 +174,48 @@ ga('send', 'pageview');
     final pageData = page.data.page;
     final bodyClass = pageData['bodyClass'] as String?;
     final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
+
+    final pageSidenav = pageData['sidenav'] as String? ?? defaultSidenav;
     final sideNavEntries = switch (page.data['sidenav']) {
-      final List<Object?> sidenavData => navEntriesFromData(sidenavData),
+      final Map<String, Object?> sidenavs => switch (sidenavs[pageSidenav]) {
+        final List<Object?> sidenavData => navEntriesFromData(sidenavData),
+        _ => null,
+      },
       _ => null,
     };
+
     final obsolete = pageData['obsolete'] == true;
 
     return Component.fragment(
       [
+        const Document.html(
+          attributes: {
+            'lang': 'en',
+            'dir': 'ltr',
+          },
+        ),
         Document.body(
           attributes: {
             'class': [?bodyClass, ...defaultBodyClasses].toClasses,
           },
         ),
+        // The theme setting logic should remain before other scripts to
+        // avoid a flash of the initial theme on load.
+        raw('''
+<script>
+const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+const storedTheme = window.localStorage.getItem('theme') ?? 'light-mode';
+if (storedTheme === 'auto-mode') {
+  document.body.classList.add(
+      'auto-mode',
+      prefersDarkMode.matches ? 'dark-mode' : 'light-mode',
+  );
+} else {
+  document.body.classList.add(storedTheme);
+}
+</script>
+      '''),
         raw('''
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 '''),
@@ -219,25 +251,22 @@ ga('send', 'pageview');
           ]),
           const DashFooter(),
         ]),
-        // The theme setting logic should remain before other scripts to
-        // avoid a flash of the initial theme on load.
-        raw('''
-<script>
-const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-
-const storedTheme = window.localStorage.getItem('theme') ?? 'light-mode';
-if (storedTheme === 'auto-mode') {
-  document.body.classList.add(
-      'auto-mode',
-      prefersDarkMode.matches ? 'dark-mode' : 'light-mode',
-  );
-} else {
-  document.body.classList.add(storedTheme);
-}
-</script>
-      '''),
         GlobalScripts(),
       ],
     );
+  }
+
+  Component? buildBanner(Page page) {
+    final showBanner =
+        (page.data.page['showBanner'] as bool?) ??
+        (page.data.site['showBanner'] as bool?) ??
+        false;
+    if (showBanner) {
+      if (page.data['banner'] case final Map<String, Object?> bannerData) {
+        return DashBanner(BannerContent.fromMap(bannerData));
+      }
+    }
+
+    return null;
   }
 }

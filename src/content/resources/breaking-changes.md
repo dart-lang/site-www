@@ -77,15 +77,49 @@ don't include the section header.
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
 
-## 3.10.0
+## 3.11.0
 
-**Tentative**<br>
-The following changes are expected to be included in the 3.10 stable release,
+:::note Tentative
+The following changes are expected to be included in the 3.11 stable release,
 but the final list might change before then.
 To reduce the potential impact of these changes, consider
-accounting for them before the 3.10 release.
+accounting for them before the 3.11 release.
+:::
+
+### Tools
+
+#### Wasm compilation (`dart compile wasm`)
+
+- {{removed}}
+  Code that imports `dart:js_util` or `package:js` now
+  [results in a compilation error][61550] when compiling to WebAssembly.
+  
+  Invoking any API from these libraries will result in a runtime error.
+  Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
+
+[61550]: {{site.repo.dart.sdk}}/issues/61550
+
+## 3.10.0
+
+### Language
+
+- `sync*` and `async*` generator functions without a specified return now
+  correctly infer return types as non-nullable when no `null` value is yielded.
+  This might trigger new diagnostics related to unnecessary code elements,
+  such as an unnecessary null-aware access operator (`?.`).
 
 ### Libraries
+
+#### `dart:core`
+
+- The `Uri.parseIPv4Address` and `Uri.parseIPv6Address` functions
+  [no longer incorrectly allow][61392] leading zeros in IPv4 addresses.
+
+- {{deprecated}}
+  The ability to implement `RegExp` and `RegExpMatch` is deprecated
+  and will be removed in a future release.
+
+[61392]: {{site.repo.dart.sdk}}/issues/61392
 
 #### `dart:io`
 
@@ -94,25 +128,67 @@ accounting for them before the 3.10 release.
 
 [56468]: {{site.repo.dart.sdk}}/issues/56468
 
-### SDK
+#### `dart:js_interop`
+
+- The `Uint16ListToJSInt16Array` extension has been
+  renamed to `Uint16ListToJSUint16Array`.
+
+- The `JSUint16ArrayToInt16List` extension has been
+  renamed to `JSUint16ArrayToUint16List`.
+
+- The `Function.toJSCaptureThis` function now results in addditional
+  compile-time checks to match `Function.toJS`.
+  If the function doesn't have a statically known type,
+  has unsupported types in its signature, includes type parameters,
+  or has any named parameters, the call will result in a compile-time error.
+
+### Tools
+
+#### SDK
 
 - The `dart` CLI and Dart VM are now separate executables,
   with the pure Dart VM executable and process called `dartvm`.
   Dart programs should still be run with [`dart run`][].
 
-[`dart run`]: /tools/dart-run
-
-### Tools
-
 - Subcommands of the `dart` tool, such as `dart format` and `dart compile`
   now run AOT-compiled snapshots of the underlying tools.
   There should be no functional difference outside of performance improvements,
   but if you come across incompatibilities, please [report them][sdk report].
+
 - {{removed}}
   The `dart` tool is no longer available for IA32 platforms
   as the Dart SDK no longer supports IA32.
 
+[`dart run`]: /tools/dart-run
 [sdk report]: {{site.repo.dart.sdk}}/issues/new/choose
+
+#### Analyzer
+
+- Using members marked as `@experimental` outside
+  the package they are declared in
+  now results in a warning.
+
+- Lint rules enabled in included analysis options files
+  now result in incompatible lint diagnostics when appropriate.
+
+- {{removed}}
+  The deprecated `@required` annotation from
+  `package:meta` is no longer supported.
+  To mark a parameter as required, instead use the `required` keyword.
+
+#### Wasm compilation (`dart compile wasm`)
+
+- `dart:js_util` and `package:js` are [no longer supported][61550] when
+  compiling to WebAssembly.
+  Invoking any API from these libraries will result in a runtime error.
+  Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
+
+- To match the JS compilers, `dartify` when compiled to Wasm,
+  [now converts][54573] JS `Promise` objects to Dart `Future` objects
+  instead of Dart `JSValue` objects. 
+
+[61550]: {{site.repo.dart.sdk}}/issues/61550
+[54573]: {{site.repo.dart.sdk}}/issues/54573
 
 ## 3.9.0
 

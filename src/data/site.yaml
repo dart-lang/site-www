@@ -35,14 +35,14 @@ yt:
   watch: 'https://www.youtube.com/watch'
   playlist: 'https://www.youtube.com/playlist?list='
 
-showBanner: false
+showBanner: true
 
 # Increment this global og:image URL version number (used as a query parameter)
 # when you update any og:image file. (Also increment the corresponding number
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
 
-sdkVersion: 3.9.2
+sdkVersion: 3.10.3
 
 # Settings for Jaspr.
 

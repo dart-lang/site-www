@@ -35,6 +35,12 @@ final class Messages {
   static Future<Messages> retrieve() async {
     final rawAnalyzerYaml = await _loadSdkYaml('pkg/analyzer/messages.yaml');
     final analyzerMessages = _decodeAnalyzerMessagesYaml(rawAnalyzerYaml);
+    final rawAnalysisServerYaml = await _loadSdkYaml(
+      'pkg/analysis_server/messages.yaml',
+    );
+    final analysisServerMessages = _decodeAnalyzerMessagesYaml(
+      rawAnalysisServerYaml,
+    );
     final rawFrontEndYaml = await _loadSdkYaml('pkg/front_end/messages.yaml');
     final frontEndMessages = _decodeCfeMessagesYaml(rawFrontEndYaml);
     final rawSharedYaml = await _loadSdkYaml(
@@ -45,7 +51,7 @@ final class Messages {
     final linterMessages = _decodeAnalyzerMessagesYaml(rawLinterYaml);
 
     return Messages._(
-      analyzerMessages: analyzerMessages,
+      analyzerMessages: {...analyzerMessages, ...analysisServerMessages},
       linterMessages: linterMessages,
       frontEndMessages: frontEndMessages,
       cfeToAnalyzerErrorCodeTables: CfeToAnalyzerErrorCodeTables._({
@@ -218,10 +224,6 @@ class AnalyzerErrorCodeInfo extends ErrorCodeInfo {
 /// Data tables mapping between CFE errors and their corresponding automatically
 /// generated analyzer errors.
 class CfeToAnalyzerErrorCodeTables {
-  /// List of CFE errors for which analyzer errors should be automatically
-  /// generated, organized by their `index` property.
-  final List<ErrorCodeInfo?> indexToInfo = [];
-
   /// Map whose values are the CFE errors for which analyzer errors should be
   /// automatically generated, and whose keys are the corresponding analyzer
   /// error name.  (Names are simple identifiers; they are not prefixed by the
@@ -231,39 +233,22 @@ class CfeToAnalyzerErrorCodeTables {
   CfeToAnalyzerErrorCodeTables._(Map<String, FrontEndErrorCodeInfo> messages) {
     for (final entry in messages.entries) {
       final errorCodeInfo = entry.value;
-      final index = errorCodeInfo.index;
-      if (index == null || errorCodeInfo.analyzerCode.length != 1) {
+      if (errorCodeInfo.analyzerCode.length != 1) {
         continue;
       }
       final frontEndCode = entry.key;
-      if (index < 1) {
-        throw Exception('''
-$frontEndCode specifies index $index but indices must be 1 or greater.
-For more information run:
-pkg/front_end/tool/fasta generate-messages
-''');
-      }
-      if (indexToInfo.length <= index) {
-        indexToInfo.length = index + 1;
-      }
-      final previousEntryForIndex = indexToInfo[index];
-      if (previousEntryForIndex != null) {
-        throw Exception(
-          'Index $index used by both '
-          '$previousEntryForIndex and $frontEndCode',
-        );
-      }
-      indexToInfo[index] = errorCodeInfo;
       final analyzerCodeLong = errorCodeInfo.analyzerCode.single;
-      final expectedPrefix = 'ParserErrorCode.';
-      if (!analyzerCodeLong.startsWith(expectedPrefix)) {
-        throw Exception(
-          'Expected all analyzer error codes to be prefixed with '
-          '${json.encode(expectedPrefix)}.  Found '
-          '${json.encode(analyzerCodeLong)}.',
+      final String analyzerCode;
+      if (analyzerCodeLong.startsWith('ParserErrorCode.')) {
+        analyzerCode = analyzerCodeLong.substring('ParserErrorCode.'.length);
+      } else if (analyzerCodeLong.startsWith('CompileTimeErrorCode.')) {
+        analyzerCode = analyzerCodeLong.substring(
+          'CompileTimeErrorCode.'.length,
         );
+      } else {
+        // Ignore error codes that start with other types.
+        continue;
       }
-      final analyzerCode = analyzerCodeLong.substring(expectedPrefix.length);
       final previousEntryForAnalyzerCode = analyzerCodeToInfo[analyzerCode];
       if (previousEntryForAnalyzerCode != null) {
         throw Exception(
@@ -273,13 +258,6 @@ pkg/front_end/tool/fasta generate-messages
         );
       }
       analyzerCodeToInfo[analyzerCode] = errorCodeInfo;
-    }
-    for (var i = 1; i < indexToInfo.length; i++) {
-      if (indexToInfo[i] == null) {
-        throw Exception(
-          'Indices are not consecutive; no error code has index $i.',
-        );
-      }
     }
   }
 }
@@ -360,12 +338,8 @@ class FrontEndErrorCodeInfo extends ErrorCodeInfo {
   /// any.
   final List<String> analyzerCode;
 
-  /// The index of the error in the analyzer's `fastaAnalyzerErrorCodes` table.
-  final int? index;
-
   FrontEndErrorCodeInfo.fromYaml(super.yaml)
     : analyzerCode = _decodeAnalyzerCode(yaml['analyzerCode']),
-      index = yaml['index'] as int?,
       super.fromYaml();
 
   static List<String> _decodeAnalyzerCode(Object? value) {

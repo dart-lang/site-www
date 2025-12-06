@@ -29,6 +29,7 @@ import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
     as prefix11;
 import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
     as prefix12;
+import 'package:jaspr_content/components/file_tree.dart' as prefix13;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -107,7 +108,7 @@ JasprOptions get defaultJasprOptions => JasprOptions(
           'src/components/pages/lint_filter_search_section',
         ),
   },
-  styles: () => [],
+  styles: () => [...prefix13.FileTree.styles],
 );
 
 Map<String, dynamic> _prefix0ArchiveTable(prefix0.ArchiveTable c) => {

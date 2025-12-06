@@ -22,45 +22,47 @@ Here's what a complete package (named `enchilada`)
 that uses every corner of these guidelines
 might look like:
 
-```plaintext
-enchilada/
-  .dart_tool/ *
-  pubspec.yaml
-  pubspec_overrides.yaml **
-  pubspec.lock ***
-  LICENSE
-  README.md
-  CHANGELOG.md
-  benchmark/
-    make_lunch.dart
-  bin/
-    enchilada
-  doc/
-    api/ ****
-    getting_started.md
-  example/
-    main.dart
-  hook/
-    build.dart
-  integration_test/
-    app_test.dart
-  lib/
-    enchilada.dart
-    tortilla.dart
-    guacamole.css
-    src/
-      beans.dart
-      queso.dart
-  test/
-    enchilada_test.dart
-    tortilla_test.dart
-  tool/
-    generate_docs.dart
-  web/
-    index.html
-    main.dart
-    style.css
-```
+<FileTree>
+
+- enchilada/
+  - .dart_tool/ *
+  - benchmark/
+    - make_lunch.dart
+  - bin/
+    - enchilada
+  - doc/
+    - api/ ****
+    - getting_started.md
+  - example/
+    - main.dart
+  - hook/
+    - build.dart
+  - integration_test/
+    - app_test.dart
+  - lib/
+    - enchilada.dart
+    - tortilla.dart
+    - guacamole.css
+    - src/
+      - beans.dart
+      - queso.dart
+  - test/
+    - enchilada_test.dart
+    - tortilla_test.dart
+  - tool/
+    - generate_docs.dart
+  - web/
+    - index.html
+    - main.dart
+    - style.css
+  - CHANGELOG.md
+  - LICENSE
+  - pubspec.yaml
+  - pubspec_overrides.yaml **
+  - pubspec.lock ***
+  - README.md
+
+</FileTree>
 
 \* The `.dart_tool/` directory exists after you've run `dart pub get`.
    Don't check it into source control.
@@ -84,11 +86,13 @@ enchilada/
 
 ## The pubspec
 
-```plaintext
-enchilada/
-  pubspec.yaml
-  pubspec.lock
-```
+<FileTree>
+
+- enchilada/
+  - pubspec.yaml
+  - pubspec.lock
+
+</FileTree>
 
 Every package has a [_pubspec_](/tools/pub/pubspec), a file named
 `pubspec.yaml`, in the root directory of the package. That's what *makes* it a
@@ -106,10 +110,12 @@ For more information, see the [pubspec page](/tools/pub/pubspec).
 
 ## LICENSE
 
-```plaintext
-enchilada/
-  LICENSE
-```
+<FileTree>
+
+- enchilada/
+  - LICENSE
+
+</FileTree>
 
 If you're publishing your package, include a license file named `LICENSE`.
 We recommend using an [OSI-approved license](https://opensource.org/licenses)
@@ -118,10 +124,12 @@ so that others can reuse your work.
 
 ## README.md
 
-```plaintext
-enchilada/
-  README.md
-```
+<FileTree>
+
+- enchilada/
+  - README.md
+
+</FileTree>
 
 One file that's very common in open source is a _README_ file that
 describes the project. This is especially important in pub. When you upload
@@ -135,10 +143,12 @@ For guidance on how to write a great README, see
 <a id="changelogmd"></a>
 ## CHANGELOG.md {:#changelog}
 
-```plaintext
-enchilada/
-  CHANGELOG.md
-```
+<FileTree>
+
+- enchilada/
+  - CHANGELOG.md
+
+</FileTree>
 
 Include a `CHANGELOG.md` file that has a section for
 each release of your package,
@@ -197,12 +207,14 @@ Two directories in your package are public to other packages: `lib` and
 
 The following directory structure shows the `lib` portion of enchilada:
 
-```plaintext
-enchilada/
-  lib/
-    enchilada.dart
-    tortilla.dart
-```
+<FileTree>
+
+- enchilada/
+  - lib/
+    - enchilada.dart
+    - tortilla.dart
+
+</FileTree>
 
 Many [packages](/resources/glossary#package)
 define Dart libraries that other packages can import and use.
@@ -225,13 +237,15 @@ If you want to organize your public libraries, you can also create
 subdirectories inside `lib`. If you do that, users will specify that path
 when they import it. Say you have the following file hierarchy:
 
-```plaintext
-enchilada/
-  lib/
-    some/
-      path/
-        olives.dart
-```
+<FileTree>
+
+- enchilada/
+  - lib/
+    - some/
+      - path/
+        - olives.dart
+
+</FileTree>
 
 Users import `olives.dart` as follows:
 
@@ -278,11 +292,13 @@ scripts in `bin`.
 
 ## Public assets
 
-```plaintext
-enchilada/
-  lib/
-    guacamole.css
-```
+<FileTree>
+
+- enchilada/
+  - lib/
+    - guacamole.css
+
+</FileTree>
 
 While most packages exist to let you reuse Dart code, you can also
 reuse other kinds of content. For example, a package for
@@ -295,13 +311,15 @@ in there and organize it with subdirectories however you like.
 
 ## Implementation files
 
-```plaintext
-enchilada/
-  lib/
-    src/
-      beans.dart
-      queso.dart
-```
+<FileTree>
+
+- enchilada/
+  - lib/
+    - src/
+      - beans.dart
+      - queso.dart
+
+</FileTree>
 
 The libraries inside `lib` are publicly visible: other packages are free to
 import them. But much of a package's code is internal implementation libraries
@@ -344,13 +362,15 @@ your package in its [pubspec](/tools/pub/pubspec).
 
 ## Web files
 
-```plaintext
-enchilada/
-  web/
-    index.html
-    main.dart
-    style.css
-```
+<FileTree>
+
+- enchilada/
+  - web/
+    - index.html
+    - main.dart
+    - style.css
+
+</FileTree>
 
 For web packages, place entrypoint code—Dart scripts that include
 `main()` and supporting files, such as CSS or HTML—under `web`.
@@ -365,11 +385,13 @@ such as images.
 
 ## Command-line apps
 
-```plaintext
-enchilada/
-  bin/
-    enchilada
-```
+<FileTree>
+
+- enchilada/
+  - bin/
+    - enchilada
+
+</FileTree>
 
 Some packages define programs that can be run directly from the command
 line. These can be shell scripts or any other scripting language,
@@ -382,12 +404,14 @@ using
 
 ## Tests and benchmarks
 
-```plaintext
-enchilada/
-  test/
-    enchilada_test.dart
-    tortilla_test.dart
-```
+<FileTree>
+
+- enchilada/
+  - test/
+    - enchilada_test.dart
+    - tortilla_test.dart
+
+</FileTree>
 
 Every package should have tests. With pub, the convention is
 that most of these go in a `test` directory (or some directory inside it if you
@@ -395,11 +419,13 @@ like) and have `_test` at the end of their file names.
 
 Typically, these use the [test]({{site.pub-pkg}}/test) package.
 
-```plaintext
-enchilada/
-  integration_test/
-    app_test.dart
-```
+<FileTree>
+
+- enchilada/
+  - integration_test/
+    - app_test.dart
+
+</FileTree>
 
 Flutter app packages may also have special integration tests, which use the
 [integration_test]({{site.flutter-docs}}/cookbook/testing/integration/introduction)
@@ -410,11 +436,13 @@ integration tests from their unit tests, but note that by default `dart test`
 will not run these tests. You will have to explicitly run them with
 `dart test integration_test`.
 
-```plaintext
-enchilada/
-  benchmark/
-    make_lunch.dart
-```
+<FileTree>
+
+- enchilada/
+  - benchmark/
+    - make_lunch.dart
+
+</FileTree>
 
 Packages that have performance critical code may also include *benchmarks*.
 These test the API not for correctness but for speed (or memory use, or maybe
@@ -422,12 +450,14 @@ other empirical metrics).
 
 ## Documentation
 
-```plaintext
-enchilada/
-  doc/
-    api/
-    getting_started.md
-```
+<FileTree>
+
+- enchilada/
+  - doc/
+    - api/
+    - getting_started.md
+
+</FileTree>
 
 If you have code and tests, the next piece you might want
 is good documentation. That goes inside a directory named `doc`.
@@ -443,11 +473,13 @@ that you author.  Use whatever markup format that you prefer.
 
 ## Examples
 
-```plaintext
-enchilada/
-  example/
-    main.dart
-```
+<FileTree>
+
+- enchilada/
+  - example/
+    - main.dart
+
+</FileTree>
 
 Code, tests, docs, what else
 could your users want? Standalone example programs that use your package, of
@@ -485,11 +517,13 @@ https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code
 
 ## Internal tools and scripts
 
-```plaintext
-enchilada/
-  tool/
-    generate_docs.dart
-```
+<FileTree>
+
+- enchilada/
+  - tool/
+    - generate_docs.dart
+
+</FileTree>
 
 Mature packages often have little helper scripts and programs that people
 run while developing the package itself. Think things like test runners,
@@ -500,11 +534,13 @@ If you have any of these, place them in a directory called `tool`.
 
 ## Hooks
 
-```plaintext
-enchilada/
-  hook/
-    build.dart
-```
+<FileTree>
+
+- enchilada/
+  - hook/
+    - build.dart
+
+</FileTree>
 
 Packages can define hooks to be invoked by the Dart and Flutter SDK.
 These hooks have a predefined CLI, and will be invoked by the SDK tools if present.
