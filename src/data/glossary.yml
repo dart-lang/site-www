@@ -575,8 +575,8 @@
     * Build systems, to detect what needs to be rebuilt.
     * Tree shaking, to remove unused code.
 
-    For example, if file `main.dart` imports `utils.dart`, and `utils.dart` depends
-    on `math.dart`, the dependency graph helps the compiler understand the correct
+    For example, if file `main.dart` imports `utils.dart`, and `utils.dart` in turn
+    imports `math.dart`, the dependency graph helps the compiler understand the correct
     order to process these files and which parts of the program are actually used.
 
     Dependency graphs are essential for:
@@ -588,6 +588,9 @@
     - text: "Dart packages (pub.dev)"
       link: "https://pub.dev"
       type: "external"
+    - text: "Pub deps"
+      link: "/tools/pub/cmd/pub-deps"
+      type: "doc"
     - text: "Tree shaking"
       link: "#tree-shaking"
       type: "doc"
