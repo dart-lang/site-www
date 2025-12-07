@@ -142,110 +142,116 @@ List<MemoryPage> get _lintMemoryPages {
 
   return [
     for (final lint in lintRules)
-      MemoryPage.builder(
-        path: path.join(
-          'tools',
-          'linter-rules',
-          '${lint.id}.md',
-        ),
-        initialData: {
-          'page': <String, Object?>{
-            'title': lint.name,
-            'underscore_breaker_titles': true,
-            'description': 'Learn about the ${lint.name} linter rule.',
-            if (lint.state == 'removed') ...const {
-              'noindex': true,
-              'sitemap': false,
-            } else
-              'sitemap': {
-                'lastmod': _diagnosticsLastUpdated,
-              },
+      for (final lintId in {lint.id, lint.id.toLowerCase()})
+        MemoryPage.builder(
+          path: path.join(
+            'tools',
+            'linter-rules',
+            '$lintId.md',
+          ),
+          initialData: {
+            'page': <String, Object?>{
+              'title': lint.name,
+              'underscore_breaker_titles': true,
+              'description': 'Learn about the ${lint.name} linter rule.',
+              // If this lint has a version not fully lower case,
+              // specify that version as the canonical destination.
+              if (lintId != lint.id)
+                'canonical': 'https://dart.dev/tools/linter-rules/${lint.id}',
+              if (lint.state == 'removed') ...const {
+                'noindex': true,
+                'sitemap': false,
+              } else
+                'sitemap': {
+                  'lastmod': _diagnosticsLastUpdated,
+                },
+            },
           },
-        },
-        builder: (context) {
-          final incompatibleLintsText = StringBuffer();
-          if (lint.incompatibleLints.isNotEmpty) {
-            incompatibleLintsText.writeln('## Incompatible rules\n');
-            incompatibleLintsText.writeln(
-              'The `${lint.id}` lint is incompatible with the following rules:',
-            );
-            incompatibleLintsText.writeln();
-            for (final incompatibleLint in lint.incompatibleLints) {
+          builder: (context) {
+            final incompatibleLintsText = StringBuffer();
+            if (lint.incompatibleLints.isNotEmpty) {
+              incompatibleLintsText.writeln('## Incompatible rules\n');
               incompatibleLintsText.writeln(
-                '- [`$incompatibleLint`](/tools/linter-rules/$incompatibleLint)',
+                'The `${lint.id}` lint is incompatible with the following rules:',
               );
+              incompatibleLintsText.writeln();
+              for (final incompatibleLint in lint.incompatibleLints) {
+                incompatibleLintsText.writeln(
+                  '- [`$incompatibleLint`](/tools/linter-rules/$incompatibleLint)',
+                );
+              }
             }
-          }
 
-          return Component.fragment(
-            [
-              Tags([
-                if (lint.sinceDartSdk == 'Unreleased' ||
-                    lint.sinceDartSdk.contains('-wip'))
-                  const Tag(
-                    'Unreleased',
-                    icon: 'pending',
-                    color: 'orange',
-                    title: 'Lint is unreleased or work in progress.',
-                  )
-                else if (lint.state == 'experimental')
-                  const Tag(
-                    'Experimental',
-                    icon: 'science',
-                    color: 'orange',
-                    title: 'Lint is experimental.',
-                  )
-                else if (lint.state == 'deprecated')
-                  const Tag(
-                    'Deprecated',
-                    icon: 'report',
-                    color: 'orange',
-                    title: 'Lint is deprecated.',
-                  )
-                else if (lint.state == 'removed')
-                  const Tag(
-                    'Removed',
-                    icon: 'error',
-                    color: 'red',
-                    title: 'Lint has been removed.',
-                  )
-                else
-                  const Tag(
-                    'Stable',
-                    icon: 'verified_user',
-                    color: 'green',
-                    title: 'Lint is stable.',
-                  ),
+            return Component.fragment(
+              [
+                Tags([
+                  if (lint.sinceDartSdk == 'Unreleased' ||
+                      lint.sinceDartSdk.contains('-wip'))
+                    const Tag(
+                      'Unreleased',
+                      icon: 'pending',
+                      color: 'orange',
+                      title: 'Lint is unreleased or work in progress.',
+                    )
+                  else if (lint.state == 'experimental')
+                    const Tag(
+                      'Experimental',
+                      icon: 'science',
+                      color: 'orange',
+                      title: 'Lint is experimental.',
+                    )
+                  else if (lint.state == 'deprecated')
+                    const Tag(
+                      'Deprecated',
+                      icon: 'report',
+                      color: 'orange',
+                      title: 'Lint is deprecated.',
+                    )
+                  else if (lint.state == 'removed')
+                    const Tag(
+                      'Removed',
+                      icon: 'error',
+                      color: 'red',
+                      title: 'Lint has been removed.',
+                    )
+                  else
+                    const Tag(
+                      'Stable',
+                      icon: 'verified_user',
+                      color: 'green',
+                      title: 'Lint is stable.',
+                    ),
 
-                if (lint.lintSets.contains('core'))
-                  const Tag(
-                    'Core',
-                    icon: 'circles',
-                    title: 'Lint is included in the core set of rules.',
-                  )
-                else if (lint.lintSets.contains('recommended'))
-                  const Tag(
-                    'Recommended',
-                    icon: 'thumb_up',
-                    title: 'Lint is included in the recommended set of rules.',
-                  )
-                else if (lint.lintSets.contains('flutter'))
-                  const Tag(
-                    'Flutter',
-                    icon: 'flutter',
-                    title: 'Lint is included in the Flutter set of rules.',
-                  ),
+                  if (lint.lintSets.contains('core'))
+                    const Tag(
+                      'Core',
+                      icon: 'circles',
+                      title: 'Lint is included in the core set of rules.',
+                    )
+                  else if (lint.lintSets.contains('recommended'))
+                    const Tag(
+                      'Recommended',
+                      icon: 'thumb_up',
+                      title:
+                          'Lint is included in the recommended set of rules.',
+                    )
+                  else if (lint.lintSets.contains('flutter'))
+                    const Tag(
+                      'Flutter',
+                      icon: 'flutter',
+                      title: 'Lint is included in the Flutter set of rules.',
+                    ),
 
-                if (lint.fixStatus == 'hasFix')
-                  const Tag(
-                    'Fix available',
-                    icon: 'build',
-                    title: 'Lint has one or more quick fixes available.',
-                  ),
-              ]),
-              DashMarkdown(
-                content:
-                    '''
+                  if (lint.fixStatus == 'hasFix')
+                    const Tag(
+                      'Fix available',
+                      icon: 'build',
+                      title: 'Lint has one or more quick fixes available.',
+                    ),
+                ]),
+                DashMarkdown(
+                  content:
+                      '''
 ${lint.description}
 
 ## Details
@@ -254,10 +260,10 @@ ${lint.docs}
 
 $incompatibleLintsText
 ''',
-              ),
-              DashMarkdown(
-                content:
-                    '''
+                ),
+                DashMarkdown(
+                  content:
+                      '''
 <a id="usage" aria-hidden="true"></a>
 ## Enable
 
@@ -279,11 +285,11 @@ linter:
     ${lint.id}: true
 ```
 ''',
-              ),
-            ],
-          );
-        },
-      ),
+                ),
+              ],
+            );
+          },
+        ),
   ];
 }
 
