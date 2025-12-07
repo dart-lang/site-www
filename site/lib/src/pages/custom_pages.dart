@@ -5,12 +5,13 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:jaspr/jaspr.dart' show Component;
+import 'package:jaspr/jaspr.dart' show Component, a, p, span, text;
 import 'package:jaspr_content/jaspr_content.dart';
-import 'package:path/path.dart' as p;
+import 'package:path/path.dart' as path;
 
 import '../components/common/tags.dart';
 import '../markdown/markdown_parser.dart';
+import '../models/diagnostic_model.dart';
 import '../models/lints.dart';
 import 'glossary.dart';
 
@@ -21,6 +22,7 @@ List<MemoryPage> get allMemoryPages => [
   _allLinterRulesPage,
   _allLinterRulesJson,
   ..._lintMemoryPages,
+  ..._diagnosticMemoryPages,
 ];
 
 /// The `/resources/glossary` page which hosts the [GlossaryIndex].
@@ -42,9 +44,97 @@ MemoryPage get _glossaryPage => MemoryPage.builder(
   },
 );
 
-/// The date the lint rule docs were last extracted from the SDK.
+/// The date the diagnostic and lint docs were last extracted from the SDK.
 /// Should be in `yyyy-mm-dd` format.
-const String _lintsLastUpdated = '2025-08-16';
+const String _diagnosticsLastUpdated = '2025-12-07';
+
+/// The individual diagnostic message pages,
+/// rendered at `/tools/diagnostics/<name>`.
+List<MemoryPage> get _diagnosticMemoryPages {
+  final diagnostics = readAndLoadDiagnostics();
+
+  return [
+    for (final diagnostic in diagnostics.where((d) => d.hasDocumentation)) ...[
+      MemoryPage.builder(
+        path: path.join(
+          'tools',
+          'diagnostics',
+          '${diagnostic.id}.md',
+        ),
+        initialData: {
+          'page': <String, Object?>{
+            'title': diagnostic.id,
+            'underscore_breaker_titles': true,
+            'description':
+                'Details about the \'${diagnostic.id}\' diagnostic '
+                'produced by the Dart analyzer.',
+            'bodyClass': 'highlight-diagnostics',
+            'sitemap': {
+              'lastmod': _diagnosticsLastUpdated,
+            },
+          },
+        },
+        builder: (context) {
+          return Component.fragment(
+            [
+              if (diagnostic.fromLint)
+                Tags([
+                  Tag(
+                    'Lint rule',
+                    icon: 'toggle_on',
+                    title:
+                        'Learn about the lint rule that '
+                        'enables this diagnostic.',
+                    link: '/tools/linter-rules/${diagnostic.id}',
+                  ),
+                ]),
+              DashMarkdown(
+                content:
+                    '''
+${diagnostic.previousNames.map((oldName) => '_(Previously known as `$oldName`._)').join('\n\n')}
+
+${diagnostic.description}
+
+${diagnostic.documentation}
+''',
+              ),
+            ],
+          );
+        },
+      ),
+      for (final previousDiagnosticName in diagnostic.previousNames)
+        MemoryPage.builder(
+          path: path.join(
+            'tools',
+            'diagnostics',
+            '$previousDiagnosticName.md',
+          ),
+          initialData: {
+            'page': <String, Object?>{
+              'title': previousDiagnosticName,
+              'underscore_breaker_titles': true,
+              'description':
+                  'Details about the \'$previousDiagnosticName\' diagnostic '
+                  'produced by the Dart analyzer.',
+              'canonical':
+                  'https://dart.dev/tools/diagnostics/${diagnostic.id}',
+              'redirectTo': '/tools/diagnostics/${diagnostic.id}',
+              'noindex': true,
+              'sitemap': false,
+            },
+          },
+          builder: (context) {
+            return p([
+              span([text('Diagnostic renamed to: ')]),
+              a(href: '/tools/diagnostics/${diagnostic.id}', [
+                text(diagnostic.id),
+              ]),
+            ]);
+          },
+        ),
+    ],
+  ];
+}
 
 /// The individual linter rules pages, rendered to `/tools/linter-rules/<name>`.
 List<MemoryPage> get _lintMemoryPages {
@@ -53,7 +143,7 @@ List<MemoryPage> get _lintMemoryPages {
   return [
     for (final lint in lintRules)
       MemoryPage.builder(
-        path: p.join(
+        path: path.join(
           'tools',
           'linter-rules',
           '${lint.id}.md',
@@ -68,7 +158,7 @@ List<MemoryPage> get _lintMemoryPages {
               'sitemap': false,
             } else
               'sitemap': {
-                'lastmod': _lintsLastUpdated,
+                'lastmod': _diagnosticsLastUpdated,
               },
           },
         },
@@ -224,7 +314,7 @@ MemoryPage get _allLinterRulesPage {
         'description':
             'Auto-generated configuration enabling all linter rules.',
         'sitemap': {
-          'lastmod': _lintsLastUpdated,
+          'lastmod': _diagnosticsLastUpdated,
         },
       },
     },
