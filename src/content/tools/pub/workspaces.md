@@ -115,6 +115,33 @@ To use pub workspaces, all your workspace packages (but not your dependencies)
 must have an SDK version constraint of `^3.6.0` or higher.
 :::
 
+## Glob pattern support in workspaces
+
+Starting with Dart 3.11.0, the `workspace` entry supports glob patterns to automatically include packages:
+
+```yaml
+workspace:
+  - packages/*
+```
+
+This includes all subdirectories in `packages/` that contain a `pubspec.yaml` file, eliminating the need to manually list each package. This is especially useful for large or frequently growing monorepos.
+
+Instead of:
+
+```yaml
+workspace:
+  - packages/shared
+  - packages/client_package
+  - packages/server_package
+```
+
+You can use a glob pattern that automatically picks up new packages.
+
+:::note
+Glob pattern support requires Dart 3.11.0 or later. If you use an earlier version, use explicit paths instead.
+:::
+
+
 <a name='stray-files'></a>
 ## Stray files
 
