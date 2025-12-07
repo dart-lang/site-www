@@ -89,14 +89,14 @@ List<MemoryPage> get _diagnosticMemoryPages {
                   ),
                 ]),
               DashMarkdown(
-                content:
-                    '''
-${diagnostic.previousNames.map((oldName) => '_(Previously known as `$oldName`._)').join('\n\n')}
-
-${diagnostic.description}
-
-${diagnostic.documentation}
-''',
+                content: [
+                  if (diagnostic.previousNames.isNotEmpty)
+                    diagnostic.previousNames
+                        .map((oldName) => '_(Previously known as `$oldName`._)')
+                        .join('\n\n'),
+                  diagnostic.description,
+                  ?diagnostic.documentation,
+                ].where((s) => s.isNotEmpty).join('\n\n'),
               ),
             ],
           );
