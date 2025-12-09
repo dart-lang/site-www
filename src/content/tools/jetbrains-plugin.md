@@ -3,8 +3,7 @@ title: IntelliJ & Android Studio
 description: Use the Dart plugin with a variety of IntelliJ Platform-based IDEs.
 ---
 
-The [Dart plugin][] adds Dart support
-to IntelliJ Platform-based IDEs.
+The Dart plugin adds Dart support to IntelliJ Platform-based IDEs.
 These IDEs provide features unique to specific development technologies.
 Whichever JetBrains IDE you choose for Dart development,
 this page has resources to help you get started quickly
