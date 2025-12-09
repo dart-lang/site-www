@@ -124,10 +124,10 @@ You can customize Dart syntax highlighting to match your preferences.
 ## Report issues
 
 Please report issues and feedback via the
-[Intellij issue tracker][]. Include details of the 
+[IntelliJ issue tracker][]. Include details of the 
 expected behavior, the actual behavior, and screenshots if appropriate.
 
-[Intellij issue tracker]: https://github.com/flutter/flutter-intellij/issues
+[IntelliJ issue tracker]: https://github.com/flutter/flutter-intellij/issues
 
 ## More information
 
