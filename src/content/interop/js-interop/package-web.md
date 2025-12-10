@@ -156,12 +156,14 @@ Node append(Node node) native;
 `native` is an internal keyword that means the same as `external` in this
 context.
 
-### Element and HTMLElement
+### `Element` and `HTMLElement`
 
-`Element` is now `HTMLElement` but `Element` class also exists as base class for
-HTMLElement, SVGElement etc. See [mdn element].
-`querySelector` returns `Element` as it can query in SVG as well so cast is
-required to access `HTMLElement` methods.
+`Element` is now `HTMLElement` but the extension type `Element` also exists as
+a base type for `HTMLElement`, `SVGElement`, etc.
+See [Element MDN documentation].
+`querySelector` returns an Element as it can return other subtypes of `Element`
+besides `HTMLElement` like `SVGElement`. A downcast to `HTMLElement` is needed
+if you need to access its methods.
 
 ```dart
 element.querySelector('#selectme')!.className = 'test'; // valid in both
@@ -172,10 +174,11 @@ element.querySelector('#selectme')!.style.color = 'red'; // Remove
 
 ### List operations
 
-Methods like `Element::querySelectorAll` or `Element::children` return values no
-longer implement `List` interface.
+Unlike `dart:html`, `package:web` methods like `Element.querySelectorAll` and
+`Element.children` return values that don't implement `List`. If a `List` is
+required, you'll need to wrap it with a class.
 
-For immutable operations you can use `JSImmutableListWrapper`:
+For immutable operations, you can use `JSImmutableListWrapper`:
 
 ```dart
 final anchors = document.querySelectorAll('a');
@@ -201,9 +204,8 @@ for (var i = parent.children.length - 1; i >= 0; --i) {
 
 ### Common DOM manipulation examples
 
-All non standard `dart:html` fields and helpers not present in IDL definitions
-are not available. Hence tiny changes are required for some DOM manipulation 
-operations. 
+Here are some common examples of trivial changes that need to be made when
+migrating from `dart:html` to `package:web`:
 
 ```dart
 element.querySelector('#selector')?.innerHtml = 'something'; // Remove
@@ -400,4 +402,4 @@ Do we have any other package migrations to show off here?
 [restricts]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [#54507]: {{site.repo.dart.sdk}}/issues/54507
 [mocking tutorial]: /interop/js-interop/mock
-[mdn element]: https://developer.mozilla.org/en-US/docs/Web/API/Element
+[Element MDN documentation]: https://developer.mozilla.org/en-US/docs/Web/API/Element
