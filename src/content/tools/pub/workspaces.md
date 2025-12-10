@@ -117,7 +117,11 @@ must have an SDK version constraint of `^3.6.0` or higher.
 
 ## Glob pattern support in workspaces
 
-Starting with Dart 3.11.0, the `workspace` entry supports glob patterns to automatically include packages:
+:::version-note
+Glob pattern support requires Dart 3.11.0 or later. If you use an earlier version, use explicit paths instead.
+:::
+
+The `workspace` entry supports glob patterns to automatically include packages:
 
 ```yaml
 workspace:
@@ -136,10 +140,6 @@ workspace:
 ```
 
 You can use a glob pattern that automatically picks up new packages.
-
-:::version-note
-Glob pattern support requires Dart 3.11.0 or later. If you use an earlier version, use explicit paths instead.
-:::
 
 <a name='stray-files'></a>
 ## Stray files
