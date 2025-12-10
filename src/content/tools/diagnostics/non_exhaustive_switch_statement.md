@@ -7,6 +7,8 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
+_The enum '{0}' isn't exhaustively matched by the switch cases because some of the enum constants are private._
+
 _The type '{0}' isn't exhaustively matched by the switch cases since it doesn't match the pattern '{1}'._
 
 ## Description

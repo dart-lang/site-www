@@ -7,11 +7,11 @@ underscore_breaker_titles: true
 bodyClass: highlight-diagnostics
 ---
 
-_Missing concrete implementation of '{0}'._
+_Missing a required override of '{0}' and '{1}'._
 
-_Missing concrete implementations of '{0}' and '{1}'._
+_Missing a required override of '{0}', '{1}', and {2} more._
 
-_Missing concrete implementations of '{0}', '{1}', and {2} more._
+_Missing a required override of '{0}'._
 
 ## Description
 

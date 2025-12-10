@@ -187,7 +187,7 @@ dependencies:
   kittens:
     git:
       url: git@github.com:munificent/kittens.git
-      tag_pattern: v{{version}} # Find version-tag prefixed by 'v'.
+      tag_pattern: v{% raw %}{{version}}{% endraw %} # Find version-tag prefixed by 'v'.
     version: ^2.0.1
 ```
 
