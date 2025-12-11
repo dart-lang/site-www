@@ -594,7 +594,7 @@
       type: "doc"
     - text: "Tree shaking"
       link: "#tree-shaking"
-      type: "doc"
+      type: "term"
   labels:
     - "language"
     - "tooling"
