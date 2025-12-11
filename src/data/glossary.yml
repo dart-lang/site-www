@@ -570,6 +570,7 @@
     dependency between two components.
 
     In Dart and Flutter, dependency graphs are commonly used by tools like:
+
     * The compiler, to determine build order.
     * The package manager, to resolve package versions.
     * Build systems, to detect what needs to be rebuilt.
