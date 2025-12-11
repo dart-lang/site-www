@@ -5,7 +5,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -13,32 +12,7 @@ import 'package:universal_web/web.dart' as web;
 ///
 /// These are temporary until they can be integrated with their
 /// relevant Jaspr components.
-@client
-final class GlobalScripts extends StatefulComponent {
-  @override
-  State<StatefulComponent> createState() => _GlobalScriptsState();
-}
-
-final class _GlobalScriptsState extends State<GlobalScripts> {
-  @override
-  void initState() {
-    if (kIsWeb) {
-      // Run setup if DOM is loaded, otherwise do it after it has loaded.
-      if (web.document.readyState == 'loading') {
-        web.document.addEventListener('DOMContentLoaded', _setUpSite.toJS);
-      } else {
-        _setUpSite();
-      }
-    }
-
-    super.initState();
-  }
-
-  @override
-  Component build(BuildContext context) => const Component.empty();
-}
-
-void _setUpSite() {
+void setUpSite() {
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpTabs();

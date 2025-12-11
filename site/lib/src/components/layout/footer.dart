@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// The site-wide footer.
@@ -10,7 +11,7 @@ final class DashFooter extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return footer(
+    return const footer(
       id: 'page-footer',
       attributes: {'data-nosnippet': 'true'},
       [
@@ -37,7 +38,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/medium.svg#medium',
@@ -55,7 +56,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/github.svg#github',
@@ -73,7 +74,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/bluesky.svg#bluesky',
@@ -91,7 +92,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {'href': '/assets/img/social/x.svg#x'},
                   ),
@@ -102,13 +103,13 @@ final class DashFooter extends StatelessComponent {
         ]),
         div(classes: 'footer-section footer-tray', [
           div(classes: 'footer-licenses', [
-            text('Except as otherwise noted, this site is licensed under a '),
+            .text('Except as otherwise noted, this site is licensed under a '),
             a(href: 'https://creativecommons.org/licenses/by/4.0/', [
-              text('Creative Commons Attribution 4.0 International License,'),
+              .text('Creative Commons Attribution 4.0 International License,'),
             ]),
-            text(' and code samples are licensed under the '),
+            .text(' and code samples are licensed under the '),
             a(href: 'https://opensource.org/licenses/BSD-3-Clause', [
-              text('3-Clause BSD License.'),
+              .text('3-Clause BSD License.'),
             ]),
           ]),
           div(classes: 'footer-utility-links', [
@@ -117,7 +118,7 @@ final class DashFooter extends StatelessComponent {
                 a(
                   href: '/terms',
                   attributes: {'title': 'Terms of use'},
-                  [text('Terms')],
+                  [.text('Terms')],
                 ),
               ]),
               li([
@@ -125,14 +126,14 @@ final class DashFooter extends StatelessComponent {
                   href: 'https://policies.google.com/privacy',
                   target: Target.blank,
                   attributes: {'rel': 'noopener', 'title': 'Privacy policy'},
-                  [text('Privacy')],
+                  [.text('Privacy')],
                 ),
               ]),
               li([
                 a(
                   href: '/security',
                   attributes: {'title': 'Security philosophy and practices'},
-                  [text('Security')],
+                  [.text('Security')],
                 ),
               ]),
             ]),
@@ -148,8 +149,8 @@ final class DashFooter extends StatelessComponent {
                       'Jaspr web framework for Dart.',
                 },
                 [
-                  span([const JasprBadge.light()]),
-                  span([const JasprBadge.lightTwoTone()]),
+                  span([JasprBadge.light()]),
+                  span([JasprBadge.lightTwoTone()]),
                 ],
               ),
             ]),

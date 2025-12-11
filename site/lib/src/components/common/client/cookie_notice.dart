@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -53,8 +54,8 @@ final class _CookieNoticeState extends State<CookieNotice> {
       attributes: {'data-nosnippet': 'true'},
       [
         div(classes: 'container', [
-          p([
-            text(
+          const p([
+            .text(
               'dart.dev uses cookies from Google to deliver and '
               'enhance the quality of its services and to analyze traffic.',
             ),

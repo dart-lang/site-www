@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../client/global_scripts.dart';
 import '../components/common/client/cookie_notice.dart';
 import '../components/layout/banner.dart';
 import '../components/layout/footer.dart';
@@ -39,39 +39,39 @@ abstract class DashLayout extends PageLayoutBase {
       ...super.buildHead(page),
       if (pageData['noindex'] case final noIndex?
           when noIndex == true || noIndex == 'true')
-        meta(name: 'robots', content: 'noindex'),
+        const meta(name: 'robots', content: 'noindex'),
       if (pageData['canonical'] case final String canonicalUrl
           when canonicalUrl.isNotEmpty)
         link(rel: 'canonical', href: canonicalUrl),
       if (pageData['redirectTo'] case final String redirectTo
           when redirectTo.isNotEmpty)
-        raw('<script>window.location.replace("$redirectTo");</script>'),
-      link(
+        RawText('<script>window.location.replace("$redirectTo");</script>'),
+      const link(
         rel: 'icon',
         href: '/assets/img/logo/dart-64.png',
         attributes: {'sizes': '64x64'},
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-iphone.png',
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-ipad.png',
         attributes: {'sizes': '152x152'},
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-iphone-retina.png',
         attributes: {'sizes': '180x180'},
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-ipad-retina.png',
         attributes: {'sizes': '167x167'},
       ),
-      meta(name: 'twitter:card', content: 'summary'),
-      meta(name: 'twitter:site', content: '@dart_lang'),
+      const meta(name: 'twitter:card', content: 'summary'),
+      const meta(name: 'twitter:site', content: '@dart_lang'),
       meta(name: 'twitter:title', content: pageTitle),
       meta(
         name: 'twitter:description',
@@ -86,35 +86,35 @@ abstract class DashLayout extends PageLayoutBase {
         },
       ),
       meta(attributes: {'property': 'og:url', 'content': page.path}),
-      meta(
+      const meta(
         attributes: {
           'property': 'og:image',
           'content': '/assets/img/logo/dart-logo-for-shares.png',
         },
       ),
 
-      link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),
-      link(
+      const link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),
+      const link(
         rel: 'preconnect',
         href: 'https://fonts.gstatic.com',
         attributes: {'crossorigin': ''},
       ),
-      link(
+      const link(
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap',
       ),
-      link(
+      const link(
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap',
       ),
-      link(
+      const link(
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&display=swap',
       ),
-      link(
+      const link(
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
@@ -133,7 +133,7 @@ abstract class DashLayout extends PageLayoutBase {
               src: jsUrl,
               attributes: {if (defer == 'true' || defer == true) 'defer': ''},
             ),
-      script(
+      const script(
         src:
             'https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.8.2/lite-youtube.js',
         attributes: {
@@ -145,7 +145,7 @@ abstract class DashLayout extends PageLayoutBase {
       ),
 
       // Set up tag manager and analytics.
-      raw('''
+      const RawText('''
 <script>
   window.dataLayer = window.dataLayer || [];
 </script>
@@ -155,7 +155,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5VSZM5J');</script>
 '''),
-      raw('''
+      const RawText('''
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -201,7 +201,7 @@ ga('send', 'pageview');
         ),
         // The theme setting logic should remain before other scripts to
         // avoid a flash of the initial theme on load.
-        raw('''
+        const RawText('''
 <script>
 const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -216,15 +216,15 @@ if (storedTheme === 'auto-mode') {
 }
 </script>
       '''),
-        raw('''
+        const RawText('''
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 '''),
-        a(
+        const a(
           id: 'skip-to-main',
           classes: 'filled-button',
           href: '#site-content-title',
           attributes: {'tabindex': '1'},
-          [text('Skip to main content')],
+          [.text('Skip to main content')],
         ),
         const CookieNotice(),
         const DashHeader(),
@@ -243,15 +243,14 @@ if (storedTheme === 'auto-mode') {
               [child],
             ),
             if (obsolete)
-              div(id: 'obsolete-banner', [
+              const div(id: 'obsolete-banner', [
                 div(classes: 'text-center', [
-                  text('Some content on this page might be out of date.'),
+                  .text('Some content on this page might be out of date.'),
                 ]),
               ]),
           ]),
           const DashFooter(),
         ]),
-        GlobalScripts(),
       ],
     );
   }
