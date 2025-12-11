@@ -523,8 +523,7 @@ keep these facts and concepts in mind:
     because Dart can infer types. In `var number = 101`, `number`
     is inferred to be of type `int`.
 
--   If you enable [null safety][ns],
-    variables can't contain `null` unless you say they can.
+-   Variables can't contain `null` unless you say they can.
     You can make a variable nullable by
     putting a question mark (`?`) at the end of its type.
     For example, a variable of type `int?` might be an integer,
