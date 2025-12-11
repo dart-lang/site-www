@@ -4,7 +4,7 @@
 
 import 'dart:js_interop';
 
-import 'package:jaspr/browser.dart';
+import 'package:jaspr/client.dart';
 import 'package:universal_web/web.dart' as web;
 
 /// Extracts the content of a <pre><code> block inside the given

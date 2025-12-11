@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
@@ -54,7 +55,7 @@ class DocLayout extends DashLayout {
                     if (pageData['underscore_breaker_titles'] == true)
                       ...splitByUnderscore(pageTitle)
                     else
-                      text(pageTitle),
+                      .text(pageTitle),
                   ]),
                   if (pageData['showBreadcrumbs'] != false)
                     const PageBreadcrumbs(),

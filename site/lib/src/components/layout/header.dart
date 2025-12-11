@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
@@ -24,7 +25,7 @@ class DashHeader extends StatelessComponent {
 
     return header(id: 'site-header', classes: 'always-dark-mode', [
       nav(classes: 'navbar', [
-        a(
+        const a(
           id: 'site-primary-logo',
           classes: 'site-wordmark',
           href: '/',
@@ -41,7 +42,7 @@ class DashHeader extends StatelessComponent {
             span(
               classes: 'name',
               attributes: {'translate': 'no'},
-              [text('Dart')],
+              [.text('Dart')],
             ),
           ],
         ),
@@ -54,7 +55,7 @@ class DashHeader extends StatelessComponent {
                 'nav-link',
                 if (activeEntry == ActiveNavEntry.overview) 'active',
               ].toClasses,
-              [text('Overview')],
+              [const .text('Overview')],
             ),
           ]),
           li([
@@ -65,7 +66,7 @@ class DashHeader extends StatelessComponent {
                 if (activeEntry == ActiveNavEntry.docs) 'active',
               ].toClasses,
               [
-                span([text('Docs')]),
+                const span([.text('Docs')]),
               ],
             ),
           ]),
@@ -75,7 +76,7 @@ class DashHeader extends StatelessComponent {
               classes: [
                 'nav-link',
               ].toClasses,
-              [text('Blog')],
+              [const .text('Blog')],
             ),
           ]),
           li([
@@ -85,17 +86,17 @@ class DashHeader extends StatelessComponent {
                 'nav-link',
                 if (activeEntry == ActiveNavEntry.community) 'active',
               ].toClasses,
-              [text('Community')],
+              [const .text('Community')],
             ),
           ]),
           li([
             if (activeEntry == ActiveNavEntry.learn)
-              a(href: '/get-started', classes: 'nav-link active', [
-                text('Learn'),
+              const a(href: '/get-started', classes: 'nav-link active', [
+                .text('Learn'),
               ])
             else
-              a(href: '/#try-dart', classes: 'nav-link', [
-                text('Try Dart'),
+              const a(href: '/#try-dart', classes: 'nav-link', [
+                .text('Try Dart'),
               ]),
           ]),
           li([
@@ -105,7 +106,7 @@ class DashHeader extends StatelessComponent {
                 'nav-link',
                 if (activeEntry == ActiveNavEntry.getDart) 'active',
               ].toClasses,
-              [text('Get Dart')],
+              [const .text('Get Dart')],
             ),
           ]),
         ]),
@@ -113,7 +114,7 @@ class DashHeader extends StatelessComponent {
         div(
           classes: 'navbar-contents',
           [
-            form(
+            const form(
               action: '/search/',
               id: 'header-search',
               [
@@ -130,7 +131,7 @@ class DashHeader extends StatelessComponent {
                 ),
               ],
             ),
-            a(
+            const a(
               id: 'fallback-search-button',
               classes: 'icon-button',
               href: '/search',
@@ -138,7 +139,7 @@ class DashHeader extends StatelessComponent {
                 'aria-label': 'Navigate to the dart.dev search page.',
                 'title': 'Navigate to the dart.dev search page.',
               },
-              const [
+              [
                 MaterialIcon('search'),
               ],
             ),

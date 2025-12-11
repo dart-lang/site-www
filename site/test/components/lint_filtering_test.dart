@@ -1,10 +1,14 @@
+// Copyright (c) 2025, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 @TestOn('browser')
 library;
 
 import 'package:dart_dev_site/src/components/common/chip.dart';
 import 'package:dart_dev_site/src/models/lints.dart';
 import 'package:dart_dev_site/src/pages/lint_index.dart';
-import 'package:jaspr_test/browser_test.dart';
+import 'package:jaspr_test/client_test.dart';
 import 'package:universal_web/web.dart' as web;
 
 final testLinterRules = <LintDetails>[
@@ -71,7 +75,7 @@ void main() {
       );
     }
 
-    testBrowser('shows all lints by default', (tester) async {
+    testClient('shows all lints by default', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       final cards = web.document
@@ -82,7 +86,7 @@ void main() {
       expectVisibleLength(4);
     });
 
-    testBrowser('filters fixable lints', (tester) async {
+    testClient('filters fixable lints', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
@@ -94,7 +98,7 @@ void main() {
       expectCardVisible('non_fixable_lint', false);
     });
 
-    testBrowser('filters stable lints', (tester) async {
+    testClient('filters stable lints', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
@@ -106,7 +110,7 @@ void main() {
       expectCardVisible('experimental_lint', false);
     });
 
-    testBrowser('filters core lints', (tester) async {
+    testClient('filters core lints', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
@@ -125,7 +129,7 @@ void main() {
       expectCardVisible('fixable_lint', false);
     });
 
-    testBrowser('filters lints by search query', (tester) async {
+    testClient('filters lints by search query', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);
