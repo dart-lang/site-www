@@ -599,6 +599,7 @@
     - "language"
     - "tooling"
     - "build"
+    - "packages"
   alternate:
     - "Dependency tree"
     - "Module dependency graph"
