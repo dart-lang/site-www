@@ -44,6 +44,7 @@
 @use 'pages/dash';
 @use 'pages/error';
 @use 'pages/tutorial';
+@use 'pages/changelog-index';
 
 // Must be imported last to ensure that
 // the print overrides take priority over earlier defined styles.

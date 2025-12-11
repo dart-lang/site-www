@@ -23,11 +23,15 @@ import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
     as prefix8;
 import 'package:dart_dev_site/src/components/layout/theme_switcher.dart'
     as prefix9;
-import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
+import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters.dart'
     as prefix10;
-import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
+import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters_sidebar.dart'
     as prefix11;
-import 'package:jaspr_content/components/file_tree.dart' as prefix12;
+import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
+    as prefix12;
+import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
+    as prefix13;
+import 'package:jaspr_content/components/file_tree.dart' as prefix14;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -91,17 +95,26 @@ JasprOptions get defaultJasprOptions => JasprOptions(
       'src/components/layout/theme_switcher',
     ),
 
-    prefix10.GlossarySearchSection:
-        ClientTarget<prefix10.GlossarySearchSection>(
+    prefix10.ChangelogFilters: ClientTarget<prefix10.ChangelogFilters>(
+      'src/components/pages/changelog/changelog_filters',
+    ),
+
+    prefix11.ChangelogFiltersSidebar:
+        ClientTarget<prefix11.ChangelogFiltersSidebar>(
+          'src/components/pages/changelog/changelog_filters_sidebar',
+        ),
+
+    prefix12.GlossarySearchSection:
+        ClientTarget<prefix12.GlossarySearchSection>(
           'src/components/pages/glossary_search_section',
         ),
 
-    prefix11.LintFilterSearchSection:
-        ClientTarget<prefix11.LintFilterSearchSection>(
+    prefix13.LintFilterSearchSection:
+        ClientTarget<prefix13.LintFilterSearchSection>(
           'src/components/pages/lint_filter_search_section',
         ),
   },
-  styles: () => [...prefix12.FileTree.styles],
+  styles: () => [...prefix14.FileTree.styles],
 );
 
 Map<String, dynamic> _prefix0ArchiveTable(prefix0.ArchiveTable c) => {
