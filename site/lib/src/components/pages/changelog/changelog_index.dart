@@ -9,6 +9,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../../models/changelog_model.dart';
 import '../../../util.dart';
+import '../../common/button.dart';
 import 'changelog_filters.dart';
 import 'changelog_filters_sidebar.dart';
 import '../../../markdown/markdown_parser.dart';
@@ -24,12 +25,14 @@ final class ChangelogIndex extends StatelessComponent {
     final changesData = context.page.data['changelog'] as List<Object?>?;
 
     final changelogEntries = <ChangelogEntry>[];
-    if (changesData != null) {
-      for (final change in changesData) {
-        changelogEntries.add(
-          ChangelogEntry.fromMap(change as Map<String, Object?>),
-        );
-      }
+    if (changesData == null) {
+      throw Exception('Changelog data is missing or invalid.');
+    }
+
+    for (final change in changesData) {
+      changelogEntries.add(
+        ChangelogEntry.fromMap(change as Map<String, Object?>),
+      );
     }
 
     return div(id: 'changelog-index-content', [
@@ -65,9 +68,7 @@ class _ChangelogEntryCard extends StatelessComponent {
         'data-area': entry.area,
         if (entry.subArea != null) 'data-subarea': entry.subArea!,
         'data-tags': entry.tags.map((t) => t.id).join(','),
-        // Store description for client-side search.
-        // Warning: This might be large.
-        'data-description': entry.description,
+
         if (entry.link != null) 'data-link': entry.link!,
       },
       [
@@ -93,14 +94,14 @@ class _ChangelogEntryCard extends StatelessComponent {
               em([text('Released: ${entry.releaseDate} • v${entry.version}')]),
             ]),
           DashMarkdown(content: entry.description),
-          if (entry.link != null)
+          if (entry.link case final entryLink?)
             div(classes: 'read-more', [
-              a(href: entry.link!, target: Target.blank, [
-                text('Read more'),
-                span(classes: 'material-symbols-outlined', [
-                  text('open_in_new'),
-                ]),
-              ]),
+              Button(
+                href: entryLink,
+                content: 'Read more',
+                trailingIcon: 'open_in_new',
+                attributes: {'target': '_blank'},
+              ),
             ]),
         ]),
       ],

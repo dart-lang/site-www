@@ -107,8 +107,4 @@ List<CustomComponent> get _embeddableComponents => [
     pattern: RegExp('ChangelogIndex', caseSensitive: false),
     builder: (_, _, _) => const ChangelogIndex(),
   ),
-  // CustomComponent(
-  //   pattern: RegExp('LearningResourceIndex', caseSensitive: false),
-  //   builder: (_, _, _) => LearningResourceIndex(),
-  // ),
 ];

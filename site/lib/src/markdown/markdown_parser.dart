@@ -56,7 +56,6 @@ class DashMarkdown extends AsyncStatelessComponent {
 
   @override
   Future<Component> build(BuildContext context) async {
-    try {
       final currentPage = context.page;
       final markdownNodes = inline
           ? _defaultMarkdownDocument.parseInline(content)
@@ -67,11 +66,7 @@ class DashMarkdown extends AsyncStatelessComponent {
         nodes = await extension.apply(currentPage, nodes);
       }
 
-      return _nodeBuilder.build(nodes);
-    } catch (e, st) {
-      print('Error rendering markdown: $e\n$st');
-      return text('Error rendering markdown');
-    }
+    return _nodeBuilder.build(nodes);
   }
 }
 

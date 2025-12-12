@@ -20,12 +20,9 @@ final class ChangelogEntry {
     var link = map['link'] as String?;
 
     // Resolve liquid variables
-    for (final entry in _liquidVariables.entries) {
-      description = description.replaceAll(entry.key, entry.value);
-      if (link != null) {
-        link = link.replaceAll(entry.key, entry.value);
-      }
-    }
+    // Note: We no longer manually replace liquid variables here.
+    // Data should be pre-processed or contain valid links/text.
+
 
     return ChangelogEntry(
       description: description,
@@ -45,18 +42,16 @@ final class ChangelogEntry {
     );
   }
 
-  static const _liquidVariables = {
-    '{{site.dart-api}}': 'https://api.dart.dev',
-    '{{site.pub-pkg}}': 'https://pub.dev/packages',
-    '{{site.pub}}': 'https://pub.dev',
-    '{{site.repo.dart.org}}': 'https://github.com/dart-lang',
-    '{{site.redirect.go}}': 'https://dart.dev/go',
-  };
+
 
   factory ChangelogEntry.fromElement(web.Element element) {
     final dataTags = element.getAttribute('data-tags') ?? '';
+    // Use textContent for description to avoid data-description bloat.
+    final contentElement = element.querySelector('.card-content') ?? element;
+    final description = contentElement.textContent ?? '';
+
     return ChangelogEntry(
-      description: element.getAttribute('data-description') ?? '',
+      description: description,
       version: (element.getAttribute('data-version') ?? '').trim(),
       releaseDate: element.getAttribute('data-releasedate'),
       area: element.getAttribute('data-area') ?? '',

@@ -159,6 +159,7 @@ body.dark-mode {
       box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.2);
       border-radius: 0.4rem;
       width: $sidebar-width;
+      z-index: 2000;
 
       @keyframes slidein {
         0% {
@@ -577,6 +578,11 @@ body.dark-mode {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   width: 90%;
   max-width: 600px;
+
+  @media (min-width: 840px) {
+    max-width: 900px;
+  }
+
   max-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -624,9 +630,13 @@ body.dark-mode {
 
     dl {
       display: grid;
-      grid-template-columns: max-content 1fr;
+      grid-template-columns: 1fr;
       gap: 0.5rem 1rem;
       align-items: baseline;
+
+      @media (min-width: 600px) {
+        grid-template-columns: 2fr 3fr;
+      }
 
       dt {
         font-weight: bold;
@@ -757,6 +767,15 @@ body.dark-mode {
           border-color: transparent;
         }
       }
+    }
+  }
+}
+
+body.changelog-page {
+  #page-content {
+    article {
+      // Match the width of a standard page (60rem) plus the TOC (15rem).
+      width: 75rem;
     }
   }
 }
