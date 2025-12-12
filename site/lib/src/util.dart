@@ -21,7 +21,7 @@ List<Component> splitByUnderscore(String sourceString) {
   final result = <Component>[];
 
   for (var i = 0; i < parts.length; i++) {
-    result.add(text(parts[i]));
+    result.add(.text(parts[i]));
 
     // Add a word break opportunity after each underscore,
     // except for the final one.
