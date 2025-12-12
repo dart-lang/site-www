@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
@@ -39,13 +40,13 @@ class PageHeader extends StatelessComponent {
           if (splitTitleByUnderscores)
             ...splitByUnderscore(title)
           else
-            text(title),
+            .text(title),
         ]),
         if (description case final description? when description.isNotEmpty)
           p(
             classes: ['page-description'].toClasses,
             [
-              text(description),
+              .text(description),
             ],
           ),
         PageHeaderOptions(
