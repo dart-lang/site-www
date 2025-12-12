@@ -66,7 +66,7 @@ final class CodeBlockProcessor implements PageExtension {
           final tag = metadata['tag'];
 
           final rawHighlightLines = metadata['highlightLines'];
-          final skipSyntaxHighlighting = metadata.containsKey('noHighlight');
+          final skipHighlighting = metadata.containsKey('noHighlight');
 
           var showLineNumbers = false;
           int? initialLineNumber;
@@ -76,26 +76,63 @@ final class CodeBlockProcessor implements PageExtension {
             final rawShowLineNumbers = metadata['showLineNumbers'];
             if (rawShowLineNumbers != null) {
               initialLineNumber = int.tryParse(rawShowLineNumbers);
+            } else {
+              initialLineNumber = 1;
             }
           }
 
-          final codeLines = _removeHighlights(lines);
-          final processedContent = _highlightCode(
+          final isDiff = metadata.containsKey('diff');
+          if (isDiff && showLineNumbers) {
+            throw ArgumentError(
+              'showLineNumbers and diff are not supported on the same '
+              'code block yet.',
+            );
+          }
+
+          final isCollapsed = metadata.containsKey('collapsed');
+          if (isCollapsed && title == null) {
+            throw ArgumentError('Collapsed code blocks must have a title.');
+          }
+
+          final isFolding = metadata.containsKey('foldable');
+
+          final diffResult = isDiff
+              ? _processDiffLines(lines)
+              : (lines: lines, addedLines: <int>{}, removedLines: <int>{});
+          final foldingResult = isFolding
+              ? _processFoldingLines(diffResult.lines)
+              : (lines: diffResult.lines, foldingRanges: <FoldingRange>[]);
+
+          final codeLines = _removeHighlights(
+            foldingResult.lines,
+            skipHighlighting,
+          );
+          final processedContent = highlightCode(
             codeLines,
             language: language,
-            skipSyntaxHighlighting: skipSyntaxHighlighting,
+            skipSyntaxHighlighting: skipHighlighting,
           );
 
           return ComponentNode(
             WrappedCodeBlock(
               content: processedContent,
-              textToCopy: codeLines.copyContent,
               language: language,
+              languagesToHide: const {
+                'plaintext',
+                'text',
+                'console',
+                'ps',
+                'diff',
+              },
               title: title,
               highlightLines: _parseNumbersAndRanges(rawHighlightLines),
+              addedLines: diffResult.addedLines,
+              removedLines: diffResult.removedLines,
+              foldingRanges: foldingResult.foldingRanges,
               tag: tag != null ? CodeBlockTag.parse(tag) : null,
               initialLineNumber: initialLineNumber ?? 1,
               showLineNumbers: showLineNumbers,
+              collapsed: isCollapsed,
             ),
           );
         }
@@ -110,8 +147,8 @@ final class CodeBlockProcessor implements PageExtension {
     );
   }
 
-  List<List<jaspr.Component>> _highlightCode(
-    List<_CodeLine> codeLines, {
+  static List<List<jaspr.Component>> highlightCode(
+    List<CodeLine> codeLines, {
     required String language,
     bool skipSyntaxHighlighting = false,
   }) {
@@ -121,12 +158,16 @@ final class CodeBlockProcessor implements PageExtension {
       _ => opal.BuiltInLanguages.text,
     };
     final highlightedSpans = languageHighlighter.tokenize(content);
-    final renderedSpans = highlighter.ThemedSpanRenderer(
+    var renderedSpans = highlighter.ThemedSpanRenderer(
       themeByName: {
         'light': highlighter.SyntaxHighlightingTheme(dashLightTheme),
         'dark': highlighter.SyntaxHighlightingTheme(dashDarkTheme),
       },
     ).render(highlightedSpans);
+
+    if (language == 'console') {
+      renderedSpans = _applyConsoleStyles(renderedSpans);
+    }
 
     return [
       for (var i = 0; i < renderedSpans.length; i++)
@@ -134,7 +175,40 @@ final class CodeBlockProcessor implements PageExtension {
     ];
   }
 
-  List<jaspr.Component> _processLine(
+  static const _consolePromptTokenTag = '__console_prompt_token';
+
+  static List<List<highlighter.ThemedSpan>> _applyConsoleStyles(
+    List<List<highlighter.ThemedSpan>> lines,
+  ) {
+    return [
+      for (final line in lines)
+        if (line case [
+          final span,
+          ...final rest,
+        ] when span.content.startsWith('\$ '))
+          [
+            highlighter.ThemedSpan(
+              content: '\$ ',
+              styleByTheme: {
+                'light': dashLightTheme[opal.Tags.comment]!,
+                'dark': dashDarkTheme[opal.Tags.comment]!,
+              },
+              tag: _consolePromptTokenTag,
+            ),
+            if (span.content.length > 2)
+              highlighter.ThemedSpan(
+                content: span.content.substring(2),
+                styleByTheme: span.styleByTheme,
+                tag: span.tag,
+              ),
+            ...rest,
+          ]
+        else
+          line,
+    ];
+  }
+
+  static List<jaspr.Component> _processLine(
     List<highlighter.ThemedSpan> spans,
     List<({int startColumn, int length})> highlights,
   ) {
@@ -166,7 +240,7 @@ final class CodeBlockProcessor implements PageExtension {
     return processedSpans;
   }
 
-  List<({int startColumn, int length})> _findIntersectingHighlights(
+  static List<({int startColumn, int length})> _findIntersectingHighlights(
     List<({int startColumn, int length})> highlights,
     int spanStart,
     int spanEnd,
@@ -177,7 +251,7 @@ final class CodeBlockProcessor implements PageExtension {
       })
       .sorted((a, b) => a.startColumn.compareTo(b.startColumn));
 
-  List<jaspr.Component> _splitSpanByHighlights(
+  static List<jaspr.Component> _splitSpanByHighlights(
     highlighter.ThemedSpan span,
     List<({int startColumn, int length})> highlights,
     int spanStart,
@@ -235,7 +309,7 @@ final class CodeBlockProcessor implements PageExtension {
     return result;
   }
 
-  jaspr.Component _createSpan(
+  static jaspr.Component _createSpan(
     highlighter.ThemedSpan span, {
     String? content,
   }) {
@@ -243,6 +317,7 @@ final class CodeBlockProcessor implements PageExtension {
       [.text(content ?? span.content)],
       attributes: {
         'style': ?span.toInlineStyle(defaultTheme: 'light'),
+        if (span.tag == _consolePromptTokenTag) 'aria-hidden': 'true',
       },
     );
   }
@@ -262,7 +337,16 @@ final class CodeBlockProcessor implements PageExtension {
         .toList(growable: false);
   }
 
-  List<_CodeLine> _removeHighlights(List<String> lines) {
+  List<CodeLine> _removeHighlights(
+    List<String> lines, [
+    bool skipHighlighting = false,
+  ]) {
+    if (skipHighlighting) {
+      return lines
+          .map((line) => CodeLine(content: line, highlights: const []))
+          .toList(growable: false);
+    }
+
     final lineHighlights = <int, List<({int startColumn, int length})>>{};
     ({int startLine, int startColumn})? currentHighlight;
 
@@ -364,33 +448,115 @@ final class CodeBlockProcessor implements PageExtension {
 
     return [
       for (var i = 0; i < processedLines.length; i++)
-        _CodeLine(
+        CodeLine(
           content: processedLines[i],
           highlights: lineHighlights[i] ?? [],
         ),
     ];
   }
+
+  /// Processes lines for diff mode, extracting added/removed line markers.
+  ///
+  /// Lines starting with '+' are marked as added lines.
+  /// Lines starting with '-' are marked as removed lines.
+  /// The first two characters (marker and space) are removed from each line.
+  ({
+    List<String> lines,
+    Set<int> addedLines,
+    Set<int> removedLines,
+  })
+  _processDiffLines(List<String> lines) {
+    final addedLines = <int>{};
+    final removedLines = <int>{};
+    final processedLines = <String>[];
+
+    for (var lineIndex = 0; lineIndex < lines.length; lineIndex += 1) {
+      final line = lines[lineIndex];
+
+      switch (line.isNotEmpty ? line[0] : '') {
+        case '+':
+          addedLines.add(lineIndex + 1);
+        case '-':
+          removedLines.add(lineIndex + 1);
+      }
+
+      // Remove the first 2 characters (marker and space).
+      processedLines.add(line.length >= 2 ? line.substring(2) : '');
+    }
+
+    return (
+      lines: processedLines,
+      addedLines: addedLines,
+      removedLines: removedLines,
+    );
+  }
+
+  /// Processes lines for folding mode, extracting folding range line markers.
+  ///
+  /// Lines equal to '[*' are marked as the start of an open folding range.
+  /// Lines equal to '[* -' are marked as the start of a closed folding range.
+  /// Lines equal to '*]' are marked as the end of a folding range.
+  /// The folding markers are removed from the lines.
+  ({
+    List<String> lines,
+    List<FoldingRange> foldingRanges,
+  })
+  _processFoldingLines(List<String> lines) {
+    final foldingRanges = <FoldingRange>[];
+    final processedLines = <String>[];
+    final foldingStack = <({int start, bool open})>[];
+
+    for (var lineIndex = 0; lineIndex < lines.length; lineIndex += 1) {
+      final line = lines[lineIndex];
+
+      // To account for removal of the folding marker lines.
+      final lineIndexCorrection =
+          (foldingRanges.length * 2) + foldingStack.length;
+
+      if (line.trim() == '[*') {
+        foldingStack.add((
+          start: lineIndex + 1 - lineIndexCorrection,
+          open: true,
+        ));
+        // Skip adding this line to processed lines.
+        continue;
+      } else if (line.trim() == '[* -') {
+        foldingStack.add((
+          start: lineIndex + 1 - lineIndexCorrection,
+          open: false,
+        ));
+        // Skip adding this line to processed lines.
+        continue;
+      } else if (line.trim() == '*]') {
+        if (foldingStack.isNotEmpty) {
+          final (:start, :open) = foldingStack.removeLast();
+          foldingRanges.add((
+            start: start,
+            end: lineIndex - lineIndexCorrection,
+            level: foldingStack.length,
+            open: open,
+          ));
+        }
+        // Skip adding this line to processed lines.
+        continue;
+      }
+
+      processedLines.add(line);
+    }
+
+    return (
+      lines: processedLines,
+      foldingRanges: foldingRanges,
+    );
+  }
 }
 
 @immutable
-final class _CodeLine {
+final class CodeLine {
   final String content;
   final List<({int startColumn, int length})> highlights;
 
-  const _CodeLine({required this.content, required this.highlights});
-}
-
-extension on List<_CodeLine> {
-  static final RegExp _terminalReplacementPattern = RegExp(
-    r'^(\s*\$\s*)|(PS\s+)?(C:\\(.*)>\s*)',
-    multiLine: true,
-  );
-  static final RegExp _zeroWidthSpaceReplacementPattern = RegExp(r'\u200B');
-
-  String get copyContent => map((line) => line.content)
-      .join('\n')
-      .replaceAll(_terminalReplacementPattern, '')
-      .replaceAll(_zeroWidthSpaceReplacementPattern, '');
+  const CodeLine({required this.content, required this.highlights});
 }
 
 /// Parses a comma-separated list of numbers and ranges into a set of numbers.
@@ -433,9 +599,9 @@ Set<int> _parseNumbersAndRanges(String? input) {
 /// Matches a key-value attribute pair, similar to HTML elements.
 ///
 /// Group 1: The attribute key.
-/// Group 2: The value if quoted.
-/// Group 3: The value if unquoted.
-final RegExp _attributeRegex = RegExp(r'(\w+)=(?:"([^"]*)"|(\S+))');
+/// Group 2: The value if quoted and present.
+/// Group 3: The value if unquoted and present.
+final RegExp _attributeRegex = RegExp(r'(\w+)(?:=(?:"([^"]*)"|(\S+)))?');
 
 Map<String, String?> _parseAttributes(String input) {
   final matches = _attributeRegex.allMatches(input);
