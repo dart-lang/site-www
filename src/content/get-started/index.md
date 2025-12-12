@@ -1,7 +1,6 @@
 ---
 title: Learn Dart
 shortTitle: Learn
-breadcrumb: Tutorial
 description: >-
   Begin your Dart learning journey by building an interactive CLI app.
 sitemap: false

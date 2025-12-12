@@ -82,7 +82,6 @@ class _SiteWordMarkListEntry extends StatelessComponent {
   @override
   Component build(BuildContext _) {
     return li(
-      attributes: {'role': 'presentation'},
       [
         a(
           href: href,

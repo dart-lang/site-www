@@ -1,12 +1,11 @@
 nav.breadcrumbs {
   align-items: center;
-  margin-block-start: 0.25rem;
-  margin-block-end: 1rem;
 
   ol.breadcrumb-list {
     margin: 0;
-    border-radius: 0.375rem;
-    padding: 0.375rem 0;
+    padding: 0;
+    border-radius: var(--site-radius);
+    font-size: 0.925rem;
 
     align-items: center;
     list-style: none;
@@ -29,7 +28,7 @@ nav.breadcrumbs {
       }
 
       &.active a {
-        color: var(--site-base-fgColor-alt);
+        color: var(--site-base-fgColor-lighter);
         cursor: default;
         text-decoration: none;
       }
@@ -41,6 +40,8 @@ nav.breadcrumbs {
 
     .material-symbols {
       user-select: none;
+      font-size: 1.25rem;
+      color: var(--site-base-fgColor-lighter);
     }
   }
 }
