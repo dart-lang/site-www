@@ -5,7 +5,8 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:jaspr/jaspr.dart' show Component, a, p, span, text;
+import 'package:jaspr/dom.dart';
+import 'package:jaspr/jaspr.dart' show Component;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as path;
 
@@ -96,7 +97,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
                         .join('\n\n'),
                   diagnostic.description,
                   ?diagnostic.documentation,
-                ].where((s) => s.isNotEmpty).join('\n\n'),
+                ].where((content) => content.isNotEmpty).join('\n\n'),
               ),
             ],
           );
@@ -125,9 +126,9 @@ List<MemoryPage> get _diagnosticMemoryPages {
           },
           builder: (context) {
             return p([
-              span([text('Diagnostic renamed to: ')]),
+              const span([.text('Diagnostic renamed to: ')]),
               a(href: '/tools/diagnostics/${diagnostic.id}', [
-                text(diagnostic.id),
+                .text(diagnostic.id),
               ]),
             ]);
           },
@@ -172,7 +173,8 @@ List<MemoryPage> get _lintMemoryPages {
             if (lint.incompatibleLints.isNotEmpty) {
               incompatibleLintsText.writeln('## Incompatible rules\n');
               incompatibleLintsText.writeln(
-                'The `${lint.id}` lint is incompatible with the following rules:',
+                'The `${lint.id}` lint is incompatible with '
+                'the following rules:',
               );
               incompatibleLintsText.writeln();
               for (final incompatibleLint in lint.incompatibleLints) {
