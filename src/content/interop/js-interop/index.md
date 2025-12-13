@@ -39,43 +39,6 @@ Interact with the browser:
 [Getting started with Javascript interop]: /interop/js-interop/start
 [How to mock JavaScript interop objects]: /interop/js-interop/mock
 
-## The evolution of JavaScript interop {: #next-generation-js-interop }
-
-[Dart 3.3][] introduces a new generation of JS interop that offers
-a unified set of features and APIs to access JavaScript and browser
-functionalities within your Dart code. This modern approach enhances the
-developer experience and enables WebAssembly ([Wasm][]) support, aligning
-Dart with the future of the web.
-
-The following table maps Dart's new JS and web interop solutions to
-their past counterparts:
-
-| New interop libraries        | Previous libraries                       |
-|------------------------------|------------------------------------------|
-| [`package:web`][] | [`dart:html`][] <br> [`dart:indexed_db`][] <br> [`dart:svg`][] <br> [`dart:web_audio`][] <br> [`dart:web_gl`][] |
-| [`dart:js_interop`][] <br> [`dart:js_interop_unsafe`][] | [`package:js`][] <br> [`dart:js`][] <br> [`dart:js_util`][] |
-
-{:.table .table-striped}
-
-[Dart 3.3]: https://blog.dart.dev/dart-3-3-325bf2bf6c13
-[Wasm]: /web/wasm
-[`package:web`]: {{site.pub-pkg}}/web
-[`dart:html`]: {{site.dart-api}}/dart-html/
-[`dart:svg`]: {{site.dart-api}}/dart-svg/
-[`dart:indexed_db`]: {{site.dart-api}}/dart-indexed_db/
-[`dart:web_audio`]: {{site.dart-api}}/dart-web_audio/
-[`dart:web_gl`]: {{site.dart-api}}/dart-web_gl/
-[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/
-[`package:js`]: {{site.pub-api}}/js
-[`dart:js`]: {{site.dart-api}}/dart-js/
-[`dart:js_util`]: {{site.dart-api}}/dart-js_util/
-
-## Work with deprecated features {: #deprecated-features }
-
-If you maintain legacy code, you can continue to work with some deprecated features.
-To learn more about JS interop deprecated features, see the [Past JS interop][] guide.
-
 ## Additional resources {: #additional-resources }
 
 Previous JavaScript interop libraries:
