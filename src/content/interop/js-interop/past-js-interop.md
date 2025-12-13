@@ -1,6 +1,6 @@
 ---
 title: Past JS interop
-breadcrumb: Background
+breadcrumb: Legacy
 description: Archive of Dart's previous JS interop support.
 prevpage:
   url: /interop/js-interop/tutorials
@@ -10,20 +10,35 @@ nextpage:
   title: Migrate to package:web
 ---
 
-:::warning
-None of these legacy interop libraries are supported when compiling to [Wasm][].
-:::
+## The evolution of JavaScript interop {: #next-generation-js-interop }
 
-This page addresses previous iterations of JS interop for Dart that
-have been considered legacy and are deprecated as of Dart 3.7 (Feb 2025).
-Therefore, prefer using [`dart:js_interop`][] going forwards and
+[Dart 3.3][] introduces a new generation of JS interop that offers
+a unified set of features and APIs to access JavaScript and browser
+functionalities within your Dart code. This modern approach enhances the
+developer experience and enables WebAssembly ([Wasm][]) support, aligning
+Dart with the future of the web.
+
+The following table maps Dart's new JS and web interop solutions to
+their past counterparts:
+
+| New interop libraries        | Legacy libraries                       |
+|------------------------------|------------------------------------------|
+| [`package:web`][] | [`dart:html`][] <br> [`dart:indexed_db`][] <br> [`dart:svg`][] <br> [`dart:web_audio`][] <br> [`dart:web_gl`][] |
+| [`dart:js_interop`][] <br> [`dart:js_interop_unsafe`][] | [`package:js`][] <br> [`dart:js`][] <br> [`dart:js_util`][] |
+
+{:.table .table-striped}
+
+
+Previous iterations of JS interop for Dart are considered legacy and are deprecated as of Dart 3.7 (Feb 2025).
+Prefer using [`dart:js_interop`][] going forwards and
 migrate usages of old interop libraries when possible.
 Support for browser APIs, such as [`dart:html`][], are now supported by
 [`package:web`][].
 
-[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/
-[`dart:html`]: {{site.dart-api}}/dart-html/
-[`package:web`]: /interop/js-interop/package-web
+
+:::warning
+None of the legacy interop libraries are supported when compiling to [Wasm][].
+:::
 
 ## `dart:js`
 
@@ -114,15 +129,23 @@ and forth. This included members like:
 possibly alternate syntax.
 
 
-[`dart:js`]: {{site.dart-api}}/dart-js/
-[`object wrapper`]: {{site.dart-api}}/dart-js/JsObject-class.html
-[`allowInterop`]: {{site.dart-api}}/dart-js_util/allowInterop.html
-[`package:js`]: {{site.pub-pkg}}/js
-[`JSObject`]: {{site.dart-api}}/dart-js_interop/JSObject-extension-type.html
-[tutorial on mocking]: /interop/js-interop/mock
 [`@anonymous`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L40
 [`@staticInterop`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L48
-[`dart:js_util`]: {{site.dart-api}}/dart-js_util/dart-js_util-library.html
-[`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`allowInterop`]: {{site.dart-api}}/dart-js_util/allowInterop.html
+[Dart 3.3]: https://blog.dart.dev/dart-3-3-325bf2bf6c13
+[`dart:html`]: {{site.dart-api}}/dart-html/
+[`dart:indexed_db`]: {{site.dart-api}}/dart-indexed_db/
+[`dart:js`]: {{site.dart-api}}/dart-js/
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/
+[`dart:js_util`]: {{site.dart-api}}/dart-js_util/
+[`dart:svg`]: {{site.dart-api}}/dart-svg/
+[`dart:web_audio`]: {{site.dart-api}}/dart-web_audio/
+[`dart:web_gl`]: {{site.dart-api}}/dart-web_gl/
+[`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
+[`JSObject`]: {{site.dart-api}}/dart-js_interop/JSObject-extension-type.html
+[`object wrapper`]: {{site.dart-api}}/dart-js/JsObject-class.html
+[`package:js`]: {{site.pub-pkg}}/js
+[`package:web`]: {{site.pub-pkg}}/web
+[tutorial on mocking]: /interop/js-interop/mock
 [Wasm]: /web/wasm
