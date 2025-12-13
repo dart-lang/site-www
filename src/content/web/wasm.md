@@ -33,7 +33,7 @@ restrictions:
    [issue #53884]({{site.repo.dart.sdk}}/issues/53884)
 
 1. Only Dart's
-   [next-gen JS interop mechanism](/interop/js-interop/)
+   [next-gen JS interop mechanism](/interop/js-interop)
    is supported when compiling to Wasm.
 
 1. There is currently no support in the `webdev` tool for running
