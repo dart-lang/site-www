@@ -28,7 +28,7 @@ class DocLayout extends DashLayout {
   @override
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
-    final pageTitle = pageData['title'] as String;
+    final pageTitle = pageData['title'] as String? ?? 'Untitled';
     final tocData = _tocForPage(page);
 
     return super.buildBody(
