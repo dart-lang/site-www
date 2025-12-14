@@ -6,6 +6,7 @@
 
 import 'package:jaspr/server.dart';
 import 'package:dart_dev_site/src/archive/archive_table.dart' as _archive_table;
+import 'package:dart_dev_site/src/components/blog/blog_list.dart' as _blog_list;
 import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     as _collapse_button;
 import 'package:dart_dev_site/src/components/common/client/cookie_notice.dart'
@@ -60,6 +61,10 @@ ServerOptions get defaultServerOptions => ServerOptions(
     _archive_table.ArchiveTable: ClientTarget<_archive_table.ArchiveTable>(
       'archive_table',
       params: __archive_tableArchiveTable,
+    ),
+    _blog_list.BlogList: ClientTarget<_blog_list.BlogList>(
+      'blog_list',
+      params: __blog_listBlogList,
     ),
     _collapse_button.CollapseButton:
         ClientTarget<_collapse_button.CollapseButton>(
@@ -126,6 +131,9 @@ ServerOptions get defaultServerOptions => ServerOptions(
 Map<String, Object?> __archive_tableArchiveTable(
   _archive_table.ArchiveTable c,
 ) => {'channel': c.channel};
+Map<String, Object?> __blog_listBlogList(_blog_list.BlogList c) => {
+  'posts': c.posts,
+};
 Map<String, Object?> __collapse_buttonCollapseButton(
   _collapse_button.CollapseButton c,
 ) => {'classes': c.classes, 'title': c.title};

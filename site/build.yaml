@@ -8,6 +8,18 @@ builders:
     auto_apply: root_package
     build_to: source
 
+  contentAssetsBuilder:
+    import: 'package:dart_dev_site/builders.dart'
+    builder_factories: [ 'contentAssetsBuilder' ]
+    build_extensions:
+      'src/content/{{}}.png': ['web/images/content/{{}}.png']
+      'src/content/{{}}.jpg': ['web/images/content/{{}}.jpg']
+      'src/content/{{}}.jpeg': ['web/images/content/{{}}.jpeg']
+      'src/content/{{}}.gif': ['web/images/content/{{}}.gif']
+      'src/content/{{}}.svg': ['web/images/content/{{}}.svg']
+    auto_apply: root_package
+    build_to: source
+
 targets:
   $default:
     builders:
@@ -28,3 +40,10 @@ targets:
       dart_dev_site:stylesHashBuilder: 
         dev_options:
           fixed_hash: true
+      dart_dev_site:contentAssetsBuilder:
+        options: {}
+    sources:
+      - lib/**
+      - web/**
+      - src/content/**
+      - pubspec.yaml

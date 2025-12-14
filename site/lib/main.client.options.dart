@@ -8,6 +8,8 @@ import 'package:jaspr/client.dart';
 
 import 'package:dart_dev_site/src/archive/archive_table.dart'
     deferred as _archive_table;
+import 'package:dart_dev_site/src/components/blog/blog_list.dart'
+    deferred as _blog_list;
 import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     deferred as _collapse_button;
 import 'package:dart_dev_site/src/components/common/client/cookie_notice.dart'
@@ -61,6 +63,14 @@ ClientOptions get defaultClientOptions => ClientOptions(
     'archive_table': ClientLoader(
       (p) => _archive_table.ArchiveTable(channel: p['channel'] as String),
       loader: _archive_table.loadLibrary,
+    ),
+    'blog_list': ClientLoader(
+      (p) => _blog_list.BlogList(
+        posts: (p['posts'] as List<Object?>)
+            .map((i) => (i as Map<String, Object?>))
+            .toList(),
+      ),
+      loader: _blog_list.loadLibrary,
     ),
     'collapse_button': ClientLoader(
       (p) => _collapse_button.CollapseButton(

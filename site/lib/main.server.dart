@@ -10,6 +10,7 @@ import 'package:path/path.dart' as path;
 
 import 'main.server.options.dart'; // Generated. Do not remove or edit.
 import 'src/archive/archive_table.dart';
+import 'src/components/blog/blog_index.dart';
 import 'src/components/common/card.dart';
 import 'src/components/common/tabs.dart';
 import 'src/components/common/youtube_embed.dart';
@@ -21,7 +22,9 @@ import 'src/extensions/registry.dart';
 import 'src/layouts/doc_layout.dart';
 import 'src/layouts/homepage_layout.dart';
 import 'src/layouts/learn_layout.dart';
+import 'src/loaders/blog_loader.dart';
 import 'src/loaders/data_processor.dart';
+import 'src/loaders/filtered_filesystem_loader.dart';
 import 'src/markdown/markdown_parser.dart';
 import 'src/pages/custom_pages.dart';
 import 'src/pages/diagnostic_index.dart';
@@ -40,13 +43,17 @@ void main() {
 Component get _dartDevSite => ContentApp.custom(
   eagerlyLoadAllPages: true,
   loaders: [
-    FilesystemLoader(path.join(siteSrcDirectoryPath, 'content')),
+    FilteredFilesystemLoader(
+      path.join(siteSrcDirectoryPath, 'content'),
+      extensions: const {'.md', '.html'},
+    ),
     MemoryLoader(pages: allMemoryPages),
   ],
   configResolver: PageConfig.all(
     dataLoaders: [
       FilesystemDataLoader(path.join(siteSrcDirectoryPath, 'data')),
       DataProcessor(),
+      BlogDataLoader(),
     ],
     templateEngine: DashTemplateEngine(
       partialDirectoryPath: path.canonicalize(
@@ -112,5 +119,9 @@ List<CustomComponent> get _embeddableComponents => [
   CustomComponent(
     pattern: RegExp('ChangelogIndex', caseSensitive: false),
     builder: (_, _, _) => const ChangelogIndex(),
+  ),
+  CustomComponent(
+    pattern: RegExp('BlogIndex', caseSensitive: false),
+    builder: (_, _, _) => const BlogIndex(),
   ),
 ];
