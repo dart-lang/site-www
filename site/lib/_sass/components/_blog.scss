@@ -13,39 +13,52 @@
 
 .blog-categories {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-
-  @media (max-width: 600px) {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
+  justify-content: flex-start;
+  gap: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--site-outline);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar but keep functionality */
+    scrollbar-width: none;
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  
+    @media (max-width: 600px) {
+      gap: 1.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      /* Ensure content isn't cut off on edges */
+      margin-left: -1rem;
+      margin-right: -1rem;
   }
 }
 
 .blog-category-chip {
-  padding: 0.5rem 1.25rem;
-  border-radius: 99px;
-  border: 1px solid var(--site-outline);
-  background-color: var(--site-bg-color, transparent);
-  color: var(--site-base-fgColor);
-  font-size: 0.9375rem;
-  font-weight: 600;
+  padding: 0.75rem 0;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background-color: transparent;
+    color: var(--site-base-fgColor-alt);
+    font-size: 1rem;
+    font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    /* Overlap the container border */
 
   &:hover {
-    border-color: var(--site-primary-color);
-    background-color: rgba(var(--site-primary-color-rgb, 0, 0, 0), 0.05);
+    color: var(--site-base-fgColor);
+      background-color: transparent;
   }
 
   &.active {
-    background-color: var(--site-primary-color);
-    color: white;
-    border-color: var(--site-primary-color);
+    background-color: transparent;
+      color: var(--site-base-fgColor);
+      border-bottom-color: var(--site-base-fgColor);
   }
 }
 
