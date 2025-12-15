@@ -94,7 +94,7 @@
           }
 
           p.correct {
-            color: green;
+            color: var(--site-alert-tip-color);
 
             &::before {
               content: "✓";
@@ -102,7 +102,7 @@
           }
 
           p.incorrect {
-            color: red;
+            color: var(--site-alert-error-color);
 
             &::before {
               content: "✗";
