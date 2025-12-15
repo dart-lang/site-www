@@ -2,7 +2,10 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart';
+
+import '../markdown/markdown_parser.dart' show parseMarkdownToHtml;
 
 class Question {
   const Question(this.question, this.options);
@@ -13,10 +16,10 @@ class Question {
   @decoder
   factory Question.fromMap(Map<Object?, Object?> json) {
     return Question(
-      json['question'] as String,
+      parseMarkdownToHtml(json['question'] as String, inline: true),
       (json['options'] as List<Object?>)
           .map((e) => AnswerOption.fromJson(e as Map<Object?, Object?>))
-          .toList(),
+          .shuffled(),
     );
   }
 
@@ -30,16 +33,21 @@ class Question {
 class AnswerOption {
   const AnswerOption(this.text, this.correct, this.explanation);
 
+  /// The option text formatted as raw HTML.
   final String text;
+
+  /// Whether this answer is correct.
   final bool correct;
+
+  /// The correct/incorrect explanation formatted as raw HTML.
   final String explanation;
 
   @decoder
   factory AnswerOption.fromJson(Map<Object?, Object?> json) {
     return AnswerOption(
-      json['text'] as String,
+      parseMarkdownToHtml(json['text'] as String, inline: true),
       json['correct'] as bool? ?? false,
-      json['explanation'] as String,
+      parseMarkdownToHtml(json['explanation'] as String),
     );
   }
 

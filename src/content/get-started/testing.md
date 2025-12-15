@@ -403,21 +403,107 @@ In this chapter, you learned about:
 
 ## Quiz
 
-**Question 1:** What is the purpose of the `group` function in the
-`package:test` library?
-
-*   A) To run all tests in a project.
-*   B) To group related tests together.
-*   C) To define a new test case.
-*   D) To assert that a value meets certain criteria.
-
-**Question 2:** What is the purpose of the `expect` function in the
-`package:test` library?
-
-*   A) To define a new test case.
-*   B) To group related tests together.
-*   C) To assert that a value meets certain criteria.
-*   D) To run all tests in a project.
+<Quiz title="Check your understanding">
+- question: >-
+    What's the relationship between `group`, `test`, and `expect`
+    in Dart's testing library?
+  options:
+    - text: >-
+        `group` organizes related tests, `test` defines individual test cases,
+        `expect` asserts that values match expectations.
+      correct: true
+      explanation: >-
+        Groups contain tests, tests contain expectations.
+        This hierarchy keeps your test suite organized
+        and your assertions clear.
+    - text: >-
+        `group` runs tests, `test` defines assertions,
+        `expect` organizes output.
+      correct: false
+      explanation: >-
+        The roles are mixed up here.
+        Think about what each name suggests:
+        "group" implies organization, "test" implies a test case.
+    - text: >-
+        `group` and `test` are interchangeable, and `expect` runs them both.
+      correct: false
+      explanation: >-
+        They're not interchangeable.
+        Each serves a distinct purpose in structuring your test code.
+    - text: >-
+        `expect` must be called before `test`,
+        which must be called before `group`.
+      correct: false
+      explanation: >-
+        The nesting order is reversed in this answer.
+        Think about which element is the container
+        and which is contained.
+- question: >-
+    In `expect(results.length, greaterThan(1))`,
+    what is `greaterThan(1)` called and what does it do?
+  options:
+    - text: >-
+        A matcher.
+        It describes the condition the actual value should satisfy.
+      correct: true
+      explanation: >-
+        Matchers like `greaterThan`, `equals`, `contains`, and `isNull`
+        describe expected conditions.
+        They make test assertions readable and provide helpful failure messages.
+    - text: >-
+        A validator.
+        It throws an exception if the value is wrong.
+      correct: false
+      explanation: >-
+        Close, but not quite.
+        Matchers don't throw directly, they instead
+        return a result that `expect` uses to pass or fail the test.
+    - text: >-
+        A comparator.
+        It returns `true` or `false` for sorting.
+      correct: false
+      explanation: >-
+        Comparators are used for sorting collections.
+        This serves a different purpose in the testing context.
+    - text: >-
+        A predicate.
+        It filters the results before testing.
+      correct: false
+      explanation: >-
+        Predicates are typically used for filtering collections.
+        In `expect`, the second argument serves
+        a different role than filtering.
+- question: >-
+    You write a test that calls `await File(path).readAsString()`.
+    What do you need to add to the test function for this to work?
+  options:
+    - text: >-
+        Mark the test callback as `async`: `test('...', () async { ... })`
+      correct: true
+      explanation: >-
+        Just like regular Dart functions, test callbacks can be `async`.
+        The test framework automatically waits
+        for the returned `Future` to complete.
+    - text: >-
+        Wrap the file read in a `Future.sync()` call.
+      correct: false
+      explanation: >-
+        There's no `Future.sync()` in Dart.
+        Think about what you normally do when a function uses `await`.
+    - text: >-
+        Use `testAsync` instead of `test`.
+      correct: false
+      explanation: >-
+        There's no `testAsync` function.
+        The regular `test` function can handle async operations
+        with the right modification to its callback.
+    - text: >-
+        Call `await Future.delayed(Duration.zero)` first to enable async mode.
+      correct: false
+      explanation: >-
+        No special initialization or delay is needed.
+        The change you need is to the function signature, not its body.
+</Quiz>
 
 ## Next lesson
 

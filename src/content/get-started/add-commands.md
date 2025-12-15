@@ -413,17 +413,90 @@ In this chapter, you learned:
 
 ## Quiz
 
-**Question 1:** Which keyword is used to declare a constant variable in Dart whose value is known at compile time?
-* A) `var`
-* B) `final`
-* C) `const`
-* D) `static`
-
-**Question 2:** What is the primary purpose of `stdin.readLineSync()` in a CLI application?
-* A) To print output to the console.
-* B) To read a single line of text input from the user.
-* C) To execute a command.
-* D) To check if a file exists.
+<Quiz title="Check your understanding">
+- question: >-
+    Which keyword is used to declare a constant variable in Dart
+    whose value is known at compile time?
+  options:
+    - text: >-
+        `const`
+      correct: true
+      explanation: >-
+        `const` declares a compile-time constant.
+        The value must be known at compile time and can never change.
+    - text: >-
+        `var`
+      correct: false
+      explanation: >-
+        Variables declared with `var` can be reassigned
+        and aren't required to be known at compile time.
+    - text: >-
+        `final`
+      correct: false
+      explanation: >-
+        `final` creates a variable that can only be initialized once,
+        but its value is determined at runtime, not compile time.
+    - text: >-
+        `static`
+      correct: false
+      explanation: >-
+        `static` is used for class-level members, not for declaring constants.
+        However, class-level constants, must also be `static`.
+- question: >-
+    What is the primary purpose of `stdin.readLineSync()` in a CLI application?
+  options:
+    - text: >-
+        To read a single line of text input from the user.
+      correct: true
+      explanation: >-
+        `stdin.readLineSync()` reads a single line of text
+        from standard input, allowing your program to receive user input.
+    - text: >-
+        To print output to the console.
+      correct: false
+      explanation: >-
+        Printing output is done with `print()`, `stdout.write()`,
+        and other similar methods.
+    - text: >-
+        To execute a command.
+      correct: false
+      explanation: >-
+        Command execution is done using `Process.run()` or similar methods.
+    - text: >-
+        To check if a file exists.
+      correct: false
+      explanation: >-
+        File existence is checked using `File.existsSync()` or similar methods.
+- question: >-
+    What does `arguments.sublist(1)` return
+    when `arguments` is `['search', 'Dart', 'Programming']`?
+  options:
+    - text: >-
+        `['Dart', 'Programming']`
+      correct: true
+      explanation: >-
+        `sublist(1)` creates a new list containing all elements
+        from index 1 onward, skipping the first element.
+    - text: >-
+        `['search']`
+      correct: false
+      explanation: >-
+        `sublist(1)` returns elements starting from
+        index 1 (the second element), not just the first element.
+    - text: >-
+        `['search', 'Dart']`
+      correct: false
+      explanation: >-
+        This answer includes `'search'`, but `sublist(1)` starts
+        from index 1, which excludes the element at index 0.
+    - text: >-
+        `['Programming']`
+      correct: false
+      explanation: >-
+        This is only the last element.
+        The argument `1` specifies the starting index,
+        not how many elements to skip from the end.
+</Quiz>
 
 ## Next lesson
 

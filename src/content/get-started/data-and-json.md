@@ -454,27 +454,101 @@ In this lesson, you learned about:
 
 ## Quiz
 
-**Question 1:** What is JSON?
-
-* A) A programming language.
-* B) A data serialization format.
-* C) A type of database.
-* D) A web server.
-
-**Question 2:** Which Dart library is used to work with JSON data?
-
-* A) `dart:html`
-* B) `dart:json`
-* C) `dart:convert`
-* D) `dart:io`
-
-**Question 3:** What is the purpose of the `fromJson` method in the `Summary`
-class?
-
-* A) To convert a `Summary` object into a JSON object.
-* B) To create a new `Summary` object from a JSON object.
-* C) To print the contents of a `Summary` object.
-* D) To validate the data in a `Summary` object.
+<Quiz title="Check your understanding">
+- question: >-
+    What is JSON?
+  options:
+    - text: >-
+        A lightweight data-interchange format that's
+        easy for humans to read and write and
+        easy for machines to parse and generate.
+      correct: true
+      explanation: >-
+        JSON (JavaScript Object Notation) is a text-based format
+        for representing structured data.
+        It's widely used for data exchange between
+        applications, especially in web APIs.
+    - text: >-
+        A programming language specifically designed for web development.
+      correct: false
+      explanation: >-
+        JSON is not a programming language.
+        You can't write logic or execute code with JSON.
+    - text: >-
+        A database format used exclusively by JavaScript applications.
+      correct: false
+      explanation: >-
+        JSON is not a database format, and it's not exclusive to JavaScript.
+        While it originated from JavaScript syntax,
+        it's used across many languages and platforms.
+    - text: >-
+        A Dart-specific library for handling data serialization.
+      correct: false
+      explanation: >-
+        JSON is not Dart-specific or even a library.
+        It existed before Dart and is used everywhere.
+- question: >-
+    When `jsonDecode` parses a JSON object like `{"name": "Dart"}`,
+    what Dart type does it return?
+  options:
+    - text: >-
+        A `Map<String, dynamic>` representing the JSON object.
+      correct: true
+      explanation: >-
+        JSON objects become `Map<String, dynamic>`,
+        where keys are strings and values can be any JSON-compatible type.
+    - text: >-
+        A `String` containing the JSON text.
+      correct: false
+      explanation: >-
+        `jsonDecode` parses the JSON string into Dart objects.
+        It converts the string representation into structured data,
+        including maps and lists, not keeping it as a string.
+    - text: >-
+        A custom `JsonObject` class from `dart:convert`.
+      correct: false
+      explanation: >-
+        There's no `JsonObject` class in Dart.
+        `jsonDecode` returns standard Dart collection types.
+    - text: >-
+        A `List<String>` containing the key-value pairs.
+      correct: false
+      explanation: >-
+        A list would lose the key-value relationship.
+        JSON objects have named properties, which
+        requires a different data structure than a list.
+- question: >-
+    Why create a `Summary` class with a `fromJson` factory constructor
+    instead of just using the raw `Map` from `jsonDecode`?
+  options:
+    - text: >-
+        Type safety, IDE autocompletion, and clearer code
+        that documents the expected data structure.
+      correct: true
+      explanation: >-
+        A class gives you compile-time type checking,
+        autocomplete for properties, and self-documenting code.
+        `summary.title` is clearer than `map['title']`.
+    - text: >-
+        Raw maps are slower to access than class properties.
+      correct: false
+      explanation: >-
+        Performance isn't the main reason.
+        Map access is quite fast in Dart.
+        Think about developer experience instead.
+    - text: >-
+        `jsonDecode` can't parse nested JSON objects without a class.
+      correct: false
+      explanation: >-
+        `jsonDecode` handles nested objects fine, they become nested maps.
+        Classes serve a different purpose than parsing.
+    - text: >-
+        Dart requires all JSON data to be converted to classes before use.
+      correct: false
+      explanation: >-
+        Dart doesn't require this.
+        You can use raw maps directly throughout your code.
+</Quiz>
 
 ## Next lesson
 

@@ -288,20 +288,102 @@ In this chapter, you learned about:
 
 ## Quiz
 
-**Question 1:** What is the purpose of the `export` statement in a Dart library?
-
-* A) To hide declarations from other libraries.
-* B) To make declarations available to other libraries.
-* C) To specify the version of the Dart SDK required by the library.
-* D) To define the entry point of the library.
-
-**Question 2:** How do you add a local package as a dependency in
-`pubspec.yaml`?
-
-* A) By specifying the package name and version.
-* B) By specifying the package name and the path to the package.
-* C) By using the `git` option and specifying the URL of the Git repository.
-* D) By using the `hosted` option and specifying the URL of the package server.
+<Quiz title="Check your understanding">
+- question: >-
+    What is the purpose of the `export` statement in a Dart library?
+  options:
+    - text: >-
+        To make declarations from other files available
+        through your library's public API.
+      correct: true
+      explanation: >-
+        Export lets you re-expose declarations.
+        For example, `export 'src/command.dart';` makes `Command` accessible
+        to anyone importing your package.
+    - text: >-
+        To hide implementation details from other libraries.
+      correct: false
+      explanation: >-
+        The `export` statement does the opposite of hiding.
+        To hide implementation-only members,
+        don't include them in any export statement.
+    - text: >-
+        To import multiple libraries with a single statement.
+      correct: false
+      explanation: >-
+        `import` and `export` serve different purposes.
+        `import` makes code available to your library, while
+        `export` does something for consumers of your library.
+    - text: >-
+        To specify which Dart SDK versions your package supports.
+      correct: false
+      explanation: >-
+        SDK constraints go in `pubspec.yaml`, not in Dart code.
+        `export` is a Dart language feature, not a configuration option.
+- question: >-
+    How do you add a local package (one on your filesystem) as a dependency?
+  options:
+    - text: >-
+        Use a path dependency like `command_runner: {path: ../command_runner}`.
+      correct: true
+      explanation: >-
+        Path dependencies point to a local directory.
+        This is perfect for multi-package projects
+        or developing packages before publishing.
+    - text: >-
+        Use a version constraint like `command_runner: ^1.0.0`.
+      correct: false
+      explanation: >-
+        Version constraints are for packages published on pub.dev.
+        Local packages require a different kind of dependency specification.
+    - text: >-
+        Copy the package folder into your project's `lib/` directory.
+      correct: false
+      explanation: >-
+        Copying creates duplication and versioning problems.
+        Dart provides a way to reference packages by their location
+        without copying them.
+    - text: >-
+        Run `dart pub add command_runner --local`
+      correct: false
+      explanation: >-
+        There's no `--local` flag for `dart pub add`.
+        You need to specify the location differently in `pubspec.yaml`
+        or by passing a source descriptor to `dart pub add`.
+- question: >-
+    A package has code in `lib/src/parser.dart`.
+    Why might you create `lib/parser.dart`
+    that just contains `export 'src/parser.dart';`?
+  options:
+    - text: >-
+        To allow users to import from a clean path
+        while keeping implementation files organized in `src/`.
+      correct: true
+      explanation: >-
+        Users can write `import 'package:mylib/parser.dart';`
+        instead of reaching into `src/`.
+        This separates your public API from internal organization.
+    - text: >-
+        To make the code run faster by reducing import depth.
+      correct: false
+      explanation: >-
+        Export doesn't affect runtime performance.
+        The number of directories in an import path
+        has no impact on how fast code runs.
+    - text: >-
+        Because Dart requires all public files to be
+        in the `lib/` root directory.
+      correct: false
+      explanation: >-
+        Dart doesn't require this structure.
+        It's a convention, not a language requirement.
+    - text: >-
+        To prevent other packages from importing the `src/` files directly.
+      correct: false
+      explanation: >-
+        Files in `src/` can technically still be imported directly.
+        Dart best practices discourage it, but don't prevent it.
+</Quiz>
 
 ## Next lesson
 
