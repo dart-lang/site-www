@@ -549,13 +549,7 @@ Because these hooks are invoked by the
 `dart` and `flutter` tools on runs and builds, the dependencies
 of these hooks must be normal dependencies and not `dev_dependencies`.
 
-:::experimental
-Support for package hooks is **experimental** and in active development.
-
-To learn more about how to define hooks and their current status,
-refer to the [build hooks][] documentation.
-:::
-
+To learn more about how to define hooks, refer to the [build hooks][] documentation.
 
 [build hooks]: /tools/hooks
 
