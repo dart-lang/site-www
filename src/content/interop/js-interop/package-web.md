@@ -160,7 +160,7 @@ context.
 
 `Element` is now `HTMLElement` but the extension type `Element` also exists as
 a base type for `HTMLElement`, `SVGElement`, etc.
-See [Element MDN documentation].
+See [Element MDN documentation][].
 `querySelector` returns an Element as it can return other subtypes of `Element`
 besides `HTMLElement` like `SVGElement`. A downcast to `HTMLElement` is needed
 if you need to access its methods.
