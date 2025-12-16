@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// The information to display in the site banner,
@@ -48,12 +49,12 @@ class DashBanner extends StatelessComponent {
     attributes: {'role': 'alert'},
     [
       p([
-        text(content.text),
-        text(' '),
+        .text(content.text),
+        const .text(' '),
         a(
           href: content.linkUri,
           target: content.newTab ? Target.blank : null,
-          [text(content.linkText)],
+          [.text(content.linkText)],
         ),
       ]),
     ],

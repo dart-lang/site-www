@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../models/on_this_page_model.dart';
@@ -43,18 +44,18 @@ final class NarrowTableOfContents extends StatelessComponent {
           'aria-label': 'Toggle the table of contents dropdown',
         },
         [
-          span(classes: 'toc-intro', [
-            const MaterialIcon('list'),
+          const span(classes: 'toc-intro', [
+            MaterialIcon('list'),
             span(
               attributes: {'aria-label': 'On this page'},
               [
-                text('On this page'),
+                .text('On this page'),
               ],
             ),
           ]),
           span(classes: 'toc-current', [
             const MaterialIcon('chevron_right'),
-            span(id: 'current-header', [text(currentTitle)]),
+            span(id: 'current-header', [.text(currentTitle)]),
           ]),
         ],
       ),
@@ -64,10 +65,10 @@ final class NarrowTableOfContents extends StatelessComponent {
           id: 'return-to-top',
           [
             const MaterialIcon('vertical_align_top'),
-            span([text(currentTitle)]),
+            span([.text(currentTitle)]),
           ],
         ),
-        div(
+        const div(
           classes: 'dropdown-divider',
           attributes: {'aria-hidden': 'true', 'role': 'separator'},
           [],
@@ -101,7 +102,7 @@ final class _TocContents extends StatelessComponent {
           span(classes: 'sidenav-item', [
             a(
               href: '#${entry.id}',
-              [text(entry.text)],
+              [.text(entry.text)],
             ),
           ]),
           if (entry.children.isNotEmpty)

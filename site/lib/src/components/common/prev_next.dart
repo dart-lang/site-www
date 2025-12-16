@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import 'material_icon.dart';
@@ -47,9 +48,9 @@ class _PrevNextCard extends StatelessComponent {
         span(
           classes: 'prev-next-subtitle',
           attributes: {'aria-label': ariaLabel},
-          [text(subtitle)],
+          [.text(subtitle)],
         ),
-        span(classes: 'prev-next-title', [text(page.title)]),
+        span(classes: 'prev-next-title', [.text(page.title)]),
       ]),
       if (!isPrevious) const MaterialIcon('chevron_right'),
     ]);

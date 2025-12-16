@@ -560,6 +560,50 @@
     - "pub"
     - "packages"
 
+- term: "Dependency graph"
+  short_description: |-
+    A representation of how components in a system depend on each other.
+  long_description: |-
+    A **dependency graph** is a directed graph that shows the relationships between
+    different components in a system, such as files, modules, packages, functions,
+    or assets. Each node represents a component, and each edge represents a
+    dependency between two components.
+
+    In Dart and Flutter, dependency graphs are commonly used by tools like:
+
+    * The compiler, to determine build order.
+    * The package manager, to resolve package versions.
+    * Build systems, to detect what needs to be rebuilt.
+    * Tree shaking, to remove unused code.
+
+    For example, if file `main.dart` imports `utils.dart`, and `utils.dart` in turn
+    imports `math.dart`, the dependency graph helps the compiler understand the correct
+    order to process these files and which parts of the program are actually used.
+
+    Dependency graphs are essential for:
+    * Efficient builds
+    * Dead code elimination (tree shaking)
+    * Dependency resolution
+    * Incremental compilation
+  related_links:
+    - text: "Dart packages (pub.dev)"
+      link: "https://pub.dev"
+      type: "external"
+    - text: "Pub deps"
+      link: "/tools/pub/cmd/pub-deps"
+      type: "doc"
+    - text: "Tree shaking"
+      link: "#tree-shaking"
+      type: "term"
+  labels:
+    - "language"
+    - "tooling"
+    - "build"
+    - "packages"
+  alternate:
+    - "Dependency tree"
+    - "Module dependency graph"
+
 - term: "Dependency source"
   short_description: |-
     A kind of place that pub can get packages from.

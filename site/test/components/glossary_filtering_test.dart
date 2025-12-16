@@ -1,8 +1,12 @@
+// Copyright (c) 2025, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 @TestOn('browser')
 library;
 
 import 'package:dart_dev_site/src/pages/glossary.dart';
-import 'package:jaspr_test/browser_test.dart';
+import 'package:jaspr_test/client_test.dart';
 import 'package:universal_web/web.dart' as web;
 
 final testGlossaryEntries = <Object>[
@@ -31,7 +35,7 @@ final testGlossaryEntries = <Object>[
 
 void main() {
   group('glossary filtering', () {
-    Future<void> enterSearchQuery(BrowserTester tester, String query) async {
+    Future<void> enterSearchQuery(ClientTester tester, String query) async {
       final searchInput = tester.findNode<web.HTMLInputElement>(
         find.tag('input'),
       )!;
@@ -60,7 +64,7 @@ void main() {
       );
     }
 
-    testBrowser('shows all entries by default', (tester) async {
+    testClient('shows all entries by default', (tester) async {
       tester.pumpComponent(GlossaryIndex(testGlossaryEntries));
 
       final cards = web.document
@@ -71,7 +75,7 @@ void main() {
       expectVisibleLength(3);
     });
 
-    testBrowser('filters by partial term', (tester) async {
+    testClient('filters by partial term', (tester) async {
       tester.pumpComponent(GlossaryIndex(testGlossaryEntries));
 
       expectVisibleLength(3);
@@ -90,7 +94,7 @@ void main() {
       expectCardVisible('yet-another-term', true);
     });
 
-    testBrowser('no results on unknown query', (tester) async {
+    testClient('no results on unknown query', (tester) async {
       tester.pumpComponent(GlossaryIndex(testGlossaryEntries));
 
       expectVisibleLength(3);
@@ -100,7 +104,7 @@ void main() {
       expectVisibleLength(0);
     });
 
-    testBrowser('filters by full alternate term', (tester) async {
+    testClient('filters by full alternate term', (tester) async {
       tester.pumpComponent(GlossaryIndex(testGlossaryEntries));
 
       expectVisibleLength(3);

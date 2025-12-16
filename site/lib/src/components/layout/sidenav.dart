@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
@@ -29,19 +30,23 @@ final class DashSideNav extends StatelessComponent {
     final activeEntry = activeNavEntry(context.page.url);
 
     return div(id: 'sidenav', [
-      form(action: '/search/', classes: 'site-header-search form-inline', [
-        input(
-          classes: 'site-header-searchfield search-field',
-          type: InputType.search,
-          name: 'q',
-          id: 'search-side',
-          attributes: {
-            'autocomplete': 'off',
-            'placeholder': 'Search',
-            'aria-label': 'Search',
-          },
-        ),
-      ]),
+      const form(
+        action: '/search/',
+        classes: 'site-header-search form-inline',
+        [
+          input(
+            classes: 'site-header-searchfield search-field',
+            type: InputType.search,
+            name: 'q',
+            id: 'search-side',
+            attributes: {
+              'autocomplete': 'off',
+              'placeholder': 'Search',
+              'aria-label': 'Search',
+            },
+          ),
+        ],
+      ),
       ul(classes: 'navbar-nav', [
         const _SideNavDivider(),
         _TopNavItem(
@@ -116,7 +121,7 @@ class _TopNavItem extends StatelessComponent {
       classes: ['nav-button', if (active) 'active'].toClasses,
       [
         MaterialIcon(iconId),
-        text(label),
+        .text(label),
       ],
     ),
   ]);
@@ -187,7 +192,7 @@ class _SideNavDivider extends StatelessComponent {
   const _SideNavDivider();
 
   @override
-  Component build(BuildContext _) => li(
+  Component build(BuildContext _) => const li(
     attributes: {'aria-hidden': 'true'},
     [div(classes: 'sidenav-divider', [])],
   );
@@ -199,7 +204,7 @@ class _SideNavHeader extends StatelessComponent {
   final String title;
 
   @override
-  Component build(BuildContext _) => li(classes: 'nav-header', [text(title)]);
+  Component build(BuildContext _) => li(classes: 'nav-header', [.text(title)]);
 }
 
 class _SideNavCollapsibleSection extends StatelessComponent {
@@ -233,7 +238,7 @@ class _SideNavCollapsibleSection extends StatelessComponent {
               isActive: isInActivePath,
             )
           : li(classes: 'nav-item', [
-              span(classes: 'nav-link', [text(section.title)]),
+              span(classes: 'nav-link', [.text(section.title)]),
             ]);
     }
 
@@ -254,7 +259,7 @@ class _SideNavCollapsibleSection extends StatelessComponent {
           'aria-controls': id,
         },
         [
-          span([text(section.title)]),
+          span([.text(section.title)]),
           const MaterialIcon('expand_more', classes: ['expander']),
         ],
       ),
@@ -316,7 +321,7 @@ class _SideNavLink extends StatelessComponent {
         attributes: isExternal ? {'rel': 'noopener'} : null,
         [
           div([
-            span([text(link.title)]),
+            span([.text(link.title)]),
             if (isExternal) const MaterialIcon('open_in_new'),
           ]),
         ],
