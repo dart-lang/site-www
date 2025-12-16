@@ -421,7 +421,7 @@ we made the following changes to this site:
 [Web libraries and packages]: /web/libraries/
 [Records]: /language/records/#multiple-returns
 [Patterns]: /language/patterns/#destructuring-multiple-returns
-[before-and-after table]: /interop/js-interop#next-generation-js-interop
+[before-and-after table]: /interop/past-js-interop#next-generation-js-interop
 [spread operators]: /language/operators/#spread-operators
 [parenthetical patterns]: /language/pattern-types/#parenthesized
 [`ExternalDartReference`]: /interop/js-interop/js-types/#jsboxeddartobject-vs-externaldartreference
