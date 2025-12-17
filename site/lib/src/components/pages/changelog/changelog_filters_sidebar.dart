@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -34,24 +35,24 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
   @override
   Component build(BuildContext context) {
     return div(classes: 'right-col', [
-      input(
+      const input(
         type: InputType.checkbox,
         id: 'open-filter-toggle',
         attributes: {'hidden': 'true'},
       ),
       div(id: 'changelog-filter-group-wrapper', [
         div(id: 'changelog-filter-group', [
-          div(classes: 'filter-header', [
+          const div(classes: 'filter-header', [
             label(
               attributes: {'for': 'open-filter-toggle', 'aria-hidden': 'true'},
               classes: 'close-icon',
               [
-                span(classes: 'material-symbols-outlined', [text('close')]),
+                span(classes: 'material-symbols-outlined', [.text('close')]),
               ],
             ),
           ]),
           div(classes: 'table-title', [
-            text('Filter by'),
+            const .text('Filter by'),
             button(
               classes: 'info-icon',
               onClick: () {
@@ -59,7 +60,9 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
               },
               attributes: {'aria-label': 'About changelog'},
               [
-                span(classes: 'material-symbols-outlined', [text('info')]),
+                const span(classes: 'material-symbols-outlined', [
+                  .text('info'),
+                ]),
               ],
             ),
           ]),
@@ -85,12 +88,14 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
               }
               for (final group in groups.values) {
                 group.sort(
-                  (a, b) =>
-                      ChangelogFiltersSidebar.filters.compareVersions(b, a),
+                  (left, right) => ChangelogFiltersSidebar.filters
+                      .compareVersions(right, left),
                 );
               }
               final sortedMajors = groups.keys.toList()
-                ..sort((a, b) => int.parse(b).compareTo(int.parse(a)));
+                ..sort(
+                  (left, right) => int.parse(right).compareTo(int.parse(left)),
+                );
 
               return div(classes: 'table-content', [
                 CheckboxFilterGroup<ChangelogTag>(
@@ -118,7 +123,7 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                   idProvider: (area) => 'area-${slugify(area)}',
                 ),
                 div([
-                  h4([text('Version')]),
+                  const h4([.text('Version')]),
                   for (final major in sortedMajors)
                     CollapsibleFilterGroup<String>(
                       key: Key(major),

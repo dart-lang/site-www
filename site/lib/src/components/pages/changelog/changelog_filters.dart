@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -101,10 +102,10 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
       resultCount: label(
         attributes: {'for': 'changelog-search'},
         [
-          text('Showing '),
-          span([text('$filteredEntriesCount')]),
-          text(' / '),
-          span([text('${entries.length}')]),
+          const .text('Showing '),
+          span([.text('$filteredEntriesCount')]),
+          const .text(' / '),
+          span([.text('${entries.length}')]),
         ],
       ),
       actions: [
@@ -119,7 +120,9 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
             }
           },
           [
-            span(classes: 'material-symbols-outlined', [text('filter_list')]),
+            const span(classes: 'material-symbols-outlined', [
+              .text('filter_list'),
+            ]),
           ],
         ),
       ],
@@ -134,15 +137,18 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
           },
           onClick: () {
             // Update search query and reset filters.
-            // We call setFilters to ensure the UI updates even if filters.reset()
-            // doesn't trigger a change (e.g. only search query was active).
+            // We call setFilters to ensure the UI updates even if
+            // filters.reset() doesn't trigger a change,
+            // such as if only search query was active.
             searchQuery = '';
             filters.reset();
             setFilters();
           },
           [
-            span(classes: 'material-symbols-outlined', [text('close_small')]),
-            span([text('Clear filters')]),
+            const span(classes: 'material-symbols-outlined', [
+              .text('close_small'),
+            ]),
+            const span([.text('Clear filters')]),
           ],
         ),
       ],

@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -25,10 +26,10 @@ class CheckboxFilterGroup<T> extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    if (items.isEmpty) return div([]);
+    if (items.isEmpty) return const div([]);
 
     return div([
-      h4([text(title)]),
+      h4([.text(title)]),
       ul([
         for (final item in items)
           li([
@@ -45,7 +46,7 @@ class CheckboxFilterGroup<T> extends StatelessComponent {
             ),
             label(
               attributes: {'for': 'filter-${idProvider(item)}'},
-              [text(labelProvider(item))],
+              [.text(labelProvider(item))],
             ),
           ]),
       ]),
@@ -79,21 +80,19 @@ class CollapsibleFilterGroup<T> extends StatefulComponent {
 class _CollapsibleFilterGroupState<T> extends State<CollapsibleFilterGroup<T>> {
   bool _isOpen = false;
 
-  void _onToggle(dynamic event) {
+  void _onToggle(web.Event event) {
     // In universal_web/package:web, the event is a JS object.
     // We need to access the target safely.
     // Assuming event is an Event wrapper or the Event itself.
-    if (event is web.Event) {
-      final target = event.target as web.HTMLDetailsElement;
-      _isOpen = target.open;
-    }
+    final target = event.target as web.HTMLDetailsElement;
+    _isOpen = target.open;
   }
 
   @override
   Component build(BuildContext context) {
     return details(
       [
-        summary([text(component.title)]),
+        summary([.text(component.title)]),
         ul([
           for (final item in component.items)
             li([
@@ -111,7 +110,7 @@ class _CollapsibleFilterGroupState<T> extends State<CollapsibleFilterGroup<T>> {
               ),
               label(
                 attributes: {'for': 'filter-${component.idProvider(item)}'},
-                [text(component.labelProvider(item))],
+                [.text(component.labelProvider(item))],
               ),
             ]),
         ]),

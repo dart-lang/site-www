@@ -4,15 +4,16 @@
 
 import 'dart:math';
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../../../markdown/markdown_parser.dart';
 import '../../../models/changelog_model.dart';
 import '../../../util.dart';
 import '../../common/button.dart';
 import 'changelog_filters.dart';
 import 'changelog_filters_sidebar.dart';
-import '../../../markdown/markdown_parser.dart';
 
 final class ChangelogIndex extends StatelessComponent {
   const ChangelogIndex({super.key});
@@ -56,7 +57,9 @@ class _ChangelogEntryCard extends StatelessComponent {
   Component build(BuildContext context) {
     // Generate a somewhat unique ID for DOM filtering
     final uniqueId = slugify(
-      '${entry.version}-${entry.area}-${entry.subArea ?? ''}-${entry.description.substring(0, min(20, entry.description.length))}-${entry.hashCode}',
+      '${entry.version}-${entry.area}-${entry.subArea ?? ''}-'
+      '${entry.description.substring(0, min(20, entry.description.length))}-'
+      '${entry.hashCode}',
     );
 
     return div(
@@ -74,10 +77,10 @@ class _ChangelogEntryCard extends StatelessComponent {
       [
         div(classes: 'card-header', [
           div(classes: 'header-left', [
-            span(classes: 'version-badge', [text(entry.shortVersion)]),
+            span(classes: 'version-badge', [.text(entry.shortVersion)]),
 
             span(classes: 'area-badge', [
-              text(
+              .text(
                 entry.area +
                     (entry.subArea != null ? ': ${entry.subArea}' : ''),
               ),
@@ -85,13 +88,13 @@ class _ChangelogEntryCard extends StatelessComponent {
           ]),
           div(classes: 'tags', [
             for (final tag in entry.tags)
-              span(classes: 'tag-label ${tag.id}-tag', [text(tag.label)]),
+              span(classes: 'tag-label ${tag.id}-tag', [.text(tag.label)]),
           ]),
         ]),
         div(classes: 'card-content', [
           if (entry.releaseDate != null)
             p(classes: 'release-date', [
-              em([text('Released: ${entry.releaseDate} • v${entry.version}')]),
+              em([.text('Released: ${entry.releaseDate} • v${entry.version}')]),
             ]),
           DashMarkdown(content: entry.description),
           if (entry.link case final entryLink?)
