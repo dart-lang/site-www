@@ -86,7 +86,9 @@ String parseMarkdownToHtml(String markdownString, {bool inline = false}) {
   return renderer.render(nodes);
 }
 
-final RegExp _markdownFilePattern = RegExp(r'.*\.md$');
+final RegExp _markdownFilePattern = RegExp(
+  r'(.*\.md$)|(^blog$)|(^blog/index$)',
+);
 
 class DashMarkdownParser implements PageParser {
   const DashMarkdownParser();
