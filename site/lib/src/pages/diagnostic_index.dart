@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
@@ -11,6 +12,7 @@ import '../components/common/client/copy_button.dart';
 import '../components/common/fragment_target.dart';
 import '../components/common/material_icon.dart';
 import '../markdown/markdown_parser.dart';
+import '../models/diagnostic_model.dart';
 import '../util.dart';
 
 class DiagnosticIndex extends StatelessComponent {
@@ -20,7 +22,7 @@ class DiagnosticIndex extends StatelessComponent {
   Component build(BuildContext context) {
     final diagnostics = (context.page.data['diagnostics'] as List<Object?>)
         .cast<Map<String, Object?>>()
-        .map(_DiagnosticInfo._)
+        .map(DiagnosticInfo.fromJson)
         .toList(growable: false);
     return div(
       id: 'diagnostic-index',
@@ -35,7 +37,7 @@ class DiagnosticIndex extends StatelessComponent {
 class _DiagnosticCard extends StatelessComponent {
   const _DiagnosticCard(this.diagnostic);
 
-  final _DiagnosticInfo diagnostic;
+  final DiagnosticInfo diagnostic;
 
   @override
   Component build(BuildContext context) {
@@ -76,13 +78,4 @@ class _DiagnosticCard extends StatelessComponent {
       ),
     );
   }
-}
-
-extension type _DiagnosticInfo._(Map<String, Object?> info) {
-  String get id => info['id'] as String;
-  String get description => info['description'] as String;
-  bool get hasDocumentation => info['hasDocumentation'] as bool? ?? false;
-  bool get fromLint => info['fromLint'] as bool? ?? false;
-  List<String> get previousNames =>
-      (info['previousNames'] as List<Object?>).cast<String>();
 }

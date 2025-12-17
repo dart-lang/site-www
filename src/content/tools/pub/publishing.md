@@ -52,10 +52,12 @@ Beyond these conventions, you must follow these requirements:
 * Verify that you have the legal right to redistribute anything that
   you upload as part of your package.
 
-* Keep package size to less than 100 MB after gzip compression.
-  If it's too large, consider splitting it into multiple packages,
-  using a `.pubignore` file to remove unnecessary content,
-  or cutting down on the number of included resources or examples.
+* Keep package size within limits. We recommend less than
+  100 MB after gzip compression and less than 256 MB uncompressed.
+
+  If your package is too large, consider splitting it into multiple packages,
+  using a `.pubignore` file to remove unnecessary content, or reducing the
+  number of included resources or examples.
 
 * Have your package depend only on hosted dependencies
   from the default pub package server and SDK dependencies

@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import 'material_icon.dart';
@@ -22,26 +23,46 @@ class Tags extends StatelessComponent {
 ///
 /// Generally displayed within a [Tags] component.
 class Tag extends StatelessComponent {
-  const Tag(this.content, {this.icon, this.title, this.label, this.color});
+  const Tag(
+    this.content, {
+    this.icon,
+    this.title,
+    this.label,
+    this.color,
+    this.link,
+  });
 
   final String content;
   final String? icon;
   final String? title;
   final String? label;
   final String? color;
+  final String? link;
 
   @override
   Component build(BuildContext context) {
+    final children = <Component>[
+      if (icon case final iconId?) MaterialIcon(iconId),
+      span([.text(content)]),
+    ];
+    final attributes = {
+      'title': ?title,
+      'aria-label': ?(label ?? title),
+    };
+
+    if (link case final link?) {
+      return a(
+        href: link,
+        classes: 'tag-label',
+        attributes: attributes,
+        children,
+      );
+    }
+
     return div(
       classes: 'tag-label',
-      attributes: {
-        'title': ?title,
-        'aria-label': ?(label ?? title),
-      },
-      [
-        if (icon case final iconId?) MaterialIcon(iconId),
-        span([text(content)]),
-      ],
+      attributes: attributes,
+      children,
     );
   }
 }
