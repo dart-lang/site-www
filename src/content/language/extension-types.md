@@ -334,7 +334,7 @@ the extension type is needed.
 <a id="transparency" aria-hidden="true"></a>
 <a id="1-provide-an-extended-interface-to-an-existing-type" aria-hidden="true"></a>
 
-### 1. Provide an *extended* interface to an existing type {#provide-extended-interface}
+### 1. Provide an *extended* interface to an existing type {: #provide-extended-interface}
 
 When an extension type [implements](#implements) its representation type,
 you can consider it "transparent", because it allows the extension type
