@@ -29,35 +29,51 @@ their past counterparts:
 {:.table .table-striped}
 
 
-Previous iterations of JS interop for Dart are considered legacy and are deprecated as of Dart 3.7 (Feb 2025).
+Previous iterations of JS interop for Dart are considered legacy and
+are deprecated as of Dart 3.7 (Feb 2025).
 Prefer using [`dart:js_interop`][] going forwards and
 migrate usages of old interop libraries when possible.
-Support for browser APIs, such as [`dart:html`][], are now supported by
-[`package:web`][].
+Support for browser APIs, such as [`dart:html`][],
+are now supported by [`package:web`][].
 
 
 :::warning
 None of the legacy interop libraries are supported when compiling to [Wasm][].
 :::
 
+[Dart 3.3]: https://blog.dart.dev/dart-3-3-325bf2bf6c13
+[`package:web`]: {{site.pub-pkg}}/web
+[`dart:html`]: {{site.dart-api}}/dart-html/
+[`dart:indexed_db`]: {{site.dart-api}}/dart-indexed_db/
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/
+[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/
+[`dart:js_util`]: {{site.dart-api}}/dart-js_util/
+[`dart:svg`]: {{site.dart-api}}/dart-svg/
+[`dart:web_audio`]: {{site.dart-api}}/dart-web_audio/
+[`dart:web_gl`]: {{site.dart-api}}/dart-web_gl/
+[Wasm]: /web/wasm
+
 ## `dart:js`
 
-[`dart:js`] exposed a concrete [`object wrapper`] to interop with JS objects.
+[`dart:js`][] exposed a concrete [`object wrapper`][] to interop with JS objects.
 This wrapper contained String-based methods to dynamically get, set, and call
 properties on the wrapped JS object. It was less performant due to wrapping
 costs and ergonomically more difficult to use. For example, you did not get
 code-completion as you couldn't declare interop members and instead relied on
-Strings. Many of the functionalities exposed in `dart:js` like [`allowInterop`]
-were later re-exposed through other interop libraries.
+Strings. Many of the functionalities exposed in `dart:js` like
+[`allowInterop`][] were later re-exposed through other interop libraries.
 
 This library has been legacy since
 `package:js` and `dart:js_util` were released.
 
+[`object wrapper`]: {{site.dart-api}}/dart-js/JsObject-class.html
+[`allowInterop`]: {{site.dart-api}}/dart-js_util/allowInterop.html
+
 ## `package:js`
 
-[`package:js`] introduced functionality to declare interop types and members.
-It allowed users to write interop classes instead of interop extension types. At
-runtime, these classes were erased to a type that is similar to
+[`package:js`][] introduced functionality to declare interop types and members.
+It allowed users to write interop classes instead of interop extension types.
+At runtime, these classes were erased to a type that is similar to
 `dart:js_interop`'s [`JSObject`].
 
 ```dart
@@ -84,9 +100,13 @@ There are significant differences, however:
 - `package:js` types could subtype and be a supertype of non-interop classes.
   This was often used for mocks. With `dart:js_interop`, mocking is done by
   substituting the JS object instead. See the [tutorial on mocking].
-- [`@anonymous`] types were a way to declare an interop type with an object
+- [`@anonymous`][] types were a way to declare an interop type with an object
   literal constructor. `dart:js_interop` doesn't distinguish types this way and
   any `external` named-argument constructor is an object literal constructor.
+
+[`JSObject`]: {{site.dart-api}}/dart-js_interop/JSObject-extension-type.html
+[`@anonymous`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L40
+[tutorial on mocking]: /interop/js-interop/mock
 
 ### `@staticInterop`
 
@@ -111,13 +131,15 @@ annotations.
 extension types were added to the language. All such types should now be
 migrated to extension types.
 
+[`@staticInterop`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L48
+
 ## `dart:js_util`
 
 [`dart:js_util`] supplied a number of utility functions that could not be
 declared in an `package:js` type or were necessary for values to be passed back
 and forth. This included members like:
 
-- `allowInterop` (which is now [`Function.toJS`])
+- `allowInterop` (which is now [`Function.toJS`][])
 - `getProperty`/`setProperty`/`callMethod`/`callConstructor` (which are now in
   [`dart:js_interop_unsafe`])
 - Various JS operators
@@ -128,24 +150,7 @@ and forth. This included members like:
 `dart:js_interop` and `dart:js_interop_unsafe` contain these helpers now with
 possibly alternate syntax.
 
-
-[`@anonymous`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L40
-[`@staticInterop`]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/js/_js_annotations.dart#L48
-[`allowInterop`]: {{site.dart-api}}/dart-js_util/allowInterop.html
-[Dart 3.3]: https://blog.dart.dev/dart-3-3-325bf2bf6c13
-[`dart:html`]: {{site.dart-api}}/dart-html/
-[`dart:indexed_db`]: {{site.dart-api}}/dart-indexed_db/
-[`dart:js`]: {{site.dart-api}}/dart-js/
-[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/
-[`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/
-[`dart:js_util`]: {{site.dart-api}}/dart-js_util/
-[`dart:svg`]: {{site.dart-api}}/dart-svg/
-[`dart:web_audio`]: {{site.dart-api}}/dart-web_audio/
-[`dart:web_gl`]: {{site.dart-api}}/dart-web_gl/
 [`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
-[`JSObject`]: {{site.dart-api}}/dart-js_interop/JSObject-extension-type.html
-[`object wrapper`]: {{site.dart-api}}/dart-js/JsObject-class.html
+
+[`dart:js`]: {{site.dart-api}}/dart-js/
 [`package:js`]: {{site.pub-pkg}}/js
-[`package:web`]: {{site.pub-pkg}}/web
-[tutorial on mocking]: /interop/js-interop/mock
-[Wasm]: /web/wasm
