@@ -21,7 +21,7 @@ information on the latest `dart:js_interop` library. Whether you're looking to
 use a specific JavaScript library, or interact with browser APIs, this is the
 place to start.
 
-Get started wtih JS interop:
+Get started with JS interop:
   * [Getting started with Javascript interop]
   * [How to mock JavaScript interop objects]
 
@@ -38,6 +38,9 @@ Interact with the browser:
 [`package:web` and migration]: /interop/js-interop/package-web
 [Getting started with Javascript interop]: /interop/js-interop/start
 [How to mock JavaScript interop objects]: /interop/js-interop/mock
+
+<a id="next-generation-js-interop" aria-hidden="true"></a>
+<a id="deprecated-features" aria-hidden="true"></a>
 
 ## Additional resources {: #additional-resources }
 
