@@ -93,14 +93,15 @@ final class ChangelogEntry {
           tags.asMap().entries.every((e) => e.value == other.tags[e.key]);
 
   @override
-  int get hashCode =>
-      description.hashCode ^
-      version.hashCode ^
-      releaseDate.hashCode ^
-      area.hashCode ^
-      subArea.hashCode ^
-      link.hashCode ^
-      Object.hashAll(tags);
+  int get hashCode => Object.hashAll([
+    description,
+    version,
+    releaseDate,
+    area,
+    subArea,
+    link,
+    ...tags,
+  ]);
 }
 
 enum ChangelogTag {
@@ -109,7 +110,7 @@ enum ChangelogTag {
   fixed('fixed', 'Fixed'),
   changed('changed', 'Changed'),
   experimental('experimental', 'Experimental'),
-  versioned('versioned', 'Language versioned'),
+  languageVersioned('versioned', 'Language versioned'),
   deprecated('deprecated', 'Deprecated'),
   removed('removed', 'Removed'),
   none('none', 'None')

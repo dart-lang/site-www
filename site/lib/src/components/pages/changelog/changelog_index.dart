@@ -36,6 +36,10 @@ final class ChangelogIndex extends StatelessComponent {
       );
     }
 
+    if (changelogEntries.isEmpty) {
+      throw Exception('No changelog entries found.');
+    }
+
     return div(id: 'changelog-index-content', [
       div(classes: 'left-col', id: 'changelog-main-content', [
         const ChangelogFilters(),
@@ -55,7 +59,7 @@ class _ChangelogEntryCard extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    // Generate a somewhat unique ID for DOM filtering
+    // Generate a somewhat unique ID for DOM filtering.
     final uniqueId = slugify(
       '${entry.version}-${entry.area}-${entry.subArea ?? ''}-'
       '${entry.description.substring(0, min(20, entry.description.length))}-'
@@ -67,12 +71,11 @@ class _ChangelogEntryCard extends StatelessComponent {
       id: uniqueId,
       attributes: {
         'data-version': entry.version,
-        if (entry.releaseDate != null) 'data-releasedate': entry.releaseDate!,
+        'data-releasedate': ?entry.releaseDate,
         'data-area': entry.area,
-        if (entry.subArea != null) 'data-subarea': entry.subArea!,
+        'data-subarea': ?entry.subArea,
         'data-tags': entry.tags.map((t) => t.id).join(','),
-
-        if (entry.link != null) 'data-link': entry.link!,
+        'data-link': ?entry.link,
       },
       [
         div(classes: 'card-header', [
