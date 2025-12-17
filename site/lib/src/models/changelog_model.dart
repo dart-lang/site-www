@@ -19,10 +19,6 @@ final class ChangelogEntry {
     final description = map['description'] as String;
     final link = map['link'] as String?;
 
-    // Resolve liquid variables
-    // Note: We no longer manually replace liquid variables here.
-    // Data should be pre-processed or contain valid links/text.
-
     return ChangelogEntry(
       description: description,
       version: map['version']

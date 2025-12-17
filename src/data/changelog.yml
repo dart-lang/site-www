@@ -23,7 +23,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/61550"
+  link: "https://github.com/dart-lang/sdk/issues/61550"
 # --------------------------------------------------
 - version: 3.10.0
   releaseDate: 2025-11-12
@@ -61,7 +61,7 @@
     incorrectly allow leading zeros in IPv4 addresses.
   tags:
     - fixed
-  link: "{{site.repo.dart.org}}/sdk/issues/61392"
+  link: "https://github.com/dart-lang/sdk/issues/61392"
 # --------------------------------------------------
 - version: 3.10.0
   releaseDate: 2025-11-12
@@ -81,7 +81,7 @@
     `IOOverrides` can no longer be implemented, but can still be extended.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/56468"
+  link: "https://github.com/dart-lang/sdk/issues/56468"
 # --------------------------------------------------
 - version: 3.10.0
   releaseDate: 2025-11-12
@@ -139,7 +139,7 @@
     across incompatibilities, please report them.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/new/choose"
+  link: "https://github.com/dart-lang/sdk/issues/new/choose"
 # --------------------------------------------------
 - version: 3.10.0
   releaseDate: 2025-11-12
@@ -196,7 +196,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/61550"
+  link: "https://github.com/dart-lang/sdk/issues/61550"
 # --------------------------------------------------
 - version: 3.10.0
   releaseDate: 2025-11-12
@@ -208,7 +208,7 @@
     objects.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/54573"
+  link: "https://github.com/dart-lang/sdk/issues/54573"
 # --------------------------------------------------
 # --------------------------------------------------
 - version: 3.9.4
@@ -291,7 +291,7 @@
     across incompatibilities, please report them.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/new/choose"
+  link: "https://github.com/dart-lang/sdk/issues/new/choose"
 # --------------------------------------------------
 - version: 3.9.0
   releaseDate: 2025-08-13
@@ -395,7 +395,7 @@
     extended.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/53264"
+  link: "https://github.com/dart-lang/sdk/issues/53264"
 # --------------------------------------------------
 - version: 3.8.0
   releaseDate: 2025-05-20
@@ -522,7 +522,7 @@
     expected to make any difference in practice.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/56893"
+  link: "https://github.com/dart-lang/sdk/issues/56893"
 # --------------------------------------------------
 - version: 3.7.0
   releaseDate: 2025-02-12
@@ -535,7 +535,7 @@
     package:web](/interop/js-interop/package-web).
   tags:
     - deprecated
-  link: "{{site.pub-pkg}}/web"
+  link: "https://pub.dev/packages/web"
 # --------------------------------------------------
 - version: 3.7.0
   releaseDate: 2025-02-12
@@ -671,7 +671,7 @@
     in practice.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/56065"
+  link: "https://github.com/dart-lang/sdk/issues/56065"
 # --------------------------------------------------
 - version: 3.6.0
   releaseDate: 2024-12-11
@@ -683,7 +683,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/52444"
+  link: "https://github.com/dart-lang/sdk/issues/52444"
 # --------------------------------------------------
 - version: 3.6.0
   releaseDate: 2024-12-11
@@ -694,7 +694,7 @@
     by throwing a `RedirectException` instead of a `StateError`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/53618"
+  link: "https://github.com/dart-lang/sdk/issues/53618"
 # --------------------------------------------------
 - version: 3.6.0
   releaseDate: 2024-12-11
@@ -719,7 +719,7 @@
     apps that already pass analysis are unlikely to be affected by this change.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/56466"
+  link: "https://github.com/dart-lang/sdk/issues/56466"
 # --------------------------------------------------
 - version: 3.6.0
   releaseDate: 2024-12-11
@@ -827,7 +827,7 @@
   tags:
     - changed
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/55418"
+  link: "https://github.com/dart-lang/sdk/issues/55418"
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
@@ -840,7 +840,7 @@
   tags:
     - changed
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/55436"
+  link: "https://github.com/dart-lang/sdk/issues/55436"
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
@@ -851,7 +851,7 @@
     matching the behavior on native platforms.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/44876"
+  link: "https://github.com/dart-lang/sdk/issues/44876"
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
@@ -861,7 +861,7 @@
     `SecurityContext` is now final and can no longer be subclassed.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/55786"
+  link: "https://github.com/dart-lang/sdk/issues/55786"
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
@@ -872,7 +872,7 @@
     JS values as well, such as `TrustedScriptURL` objects.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/55508"
+  link: "https://github.com/dart-lang/sdk/issues/55508"
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
@@ -883,7 +883,7 @@
     consistent with other JS operator methods.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/55267"
+  link: "https://github.com/dart-lang/sdk/issues/55267"
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
@@ -895,7 +895,7 @@
     of the Dart object that is externalized.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/56015"
+  link: "https://github.com/dart-lang/sdk/issues/56015"
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
@@ -908,7 +908,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/53218"
+  link: "https://github.com/dart-lang/sdk/issues/53218"
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
@@ -1008,7 +1008,7 @@
     type) instead of `Object?`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/54640"
+  link: "https://github.com/dart-lang/sdk/issues/54640"
 # --------------------------------------------------
 - version: 3.4.0
   releaseDate: 2024-05-14
@@ -1019,7 +1019,7 @@
     has been made nullable, to match what currently happens in `list` literals.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/54828"
+  link: "https://github.com/dart-lang/sdk/issues/54828"
 # --------------------------------------------------
 - version: 3.4.0
   releaseDate: 2024-05-14
@@ -1031,7 +1031,7 @@
     - experimental
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/52121"
+  link: "https://github.com/dart-lang/sdk/issues/52121"
 # --------------------------------------------------
 - version: 3.4.0
   releaseDate: 2024-05-14
@@ -1044,7 +1044,7 @@
     package:web](/interop/js-interop/package-web).
   tags:
     - deprecated
-  link: "{{site.pub-pkg}}/web"
+  link: "https://pub.dev/packages/web"
 # --------------------------------------------------
 - version: 3.4.0
   releaseDate: 2024-05-14
@@ -1057,7 +1057,7 @@
     `/go/next-gen-js-interop`.
   tags:
     - deprecated
-  link: "{{site.redirect.go}}/next-gen-js-interop"
+  link: "https://dart.dev/go/next-gen-js-interop"
 # --------------------------------------------------
 - version: 3.4.0
   releaseDate: 2024-05-14
@@ -1070,7 +1070,7 @@
     `/go/next-gen-js-interop`.
   tags:
     - deprecated
-  link: "{{site.redirect.go}}/next-gen-js-interop"
+  link: "https://dart.dev/go/next-gen-js-interop"
 # --------------------------------------------------
 - version: 3.4.0
   releaseDate: 2024-05-14
@@ -1084,7 +1084,7 @@
   tags:
     - new
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/53863"
+  link: "https://github.com/dart-lang/sdk/issues/53863"
 # --------------------------------------------------
 - version: 3.4.0
   releaseDate: 2024-05-14
@@ -1105,7 +1105,7 @@
     methods on typed data lists.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/53218"
+  link: "https://github.com/dart-lang/sdk/issues/53218"
 # --------------------------------------------------
 - version: 3.4.0
   releaseDate: 2024-05-14
@@ -1263,7 +1263,7 @@
   tags:
     - experimental
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/52121"
+  link: "https://github.com/dart-lang/sdk/issues/52121"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1274,7 +1274,7 @@
     deprecated. Migrate to the `-` and `+` operators instead.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/54250"
+  link: "https://github.com/dart-lang/sdk/issues/54250"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1297,7 +1297,7 @@
     `package:http`.
   tags:
     - changed
-  link: "{{site.pub-pkg}}/http"
+  link: "https://pub.dev/packages/http"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1308,7 +1308,7 @@
     `package:http`.
   tags:
     - changed
-  link: "{{site.pub-pkg}}/http"
+  link: "https://pub.dev/packages/http"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1318,7 +1318,7 @@
     JS types like `JSAny` have new compiler-specific representation types.
   tags:
     - experimental
-  link: "{{site.repo.dart.org}}/sdk/issues/52687"
+  link: "https://github.com/dart-lang/sdk/issues/52687"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1330,7 +1330,7 @@
     defined as extension types.
   tags:
     - experimental
-  link: "{{site.repo.dart.org}}/sdk/issues/52687"
+  link: "https://github.com/dart-lang/sdk/issues/52687"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1362,7 +1362,7 @@
   tags:
     - deprecated
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/53218"
+  link: "https://github.com/dart-lang/sdk/issues/53218"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1373,7 +1373,7 @@
     subtypes can be implemented.
   tags:
     - experimental
-  link: "{{site.repo.dart.org}}/sdk/issues/51896"
+  link: "https://github.com/dart-lang/sdk/issues/51896"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1384,7 +1384,7 @@
     `memberName`, even when compiled with `--minify`.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/54201"
+  link: "https://github.com/dart-lang/sdk/issues/54201"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1395,7 +1395,7 @@
     `dart:js_interop` and `dart:js_interop_unsafe` instead.
   tags:
     - experimental
-  link: "{{site.repo.dart.org}}/sdk/issues/54004"
+  link: "https://github.com/dart-lang/sdk/issues/54004"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1418,7 +1418,7 @@
     * `invalid_null_aware_operator`
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/54056"
+  link: "https://github.com/dart-lang/sdk/issues/54056"
 # --------------------------------------------------
 - version: 3.3.0
   releaseDate: 2024-02-15
@@ -1554,7 +1554,7 @@
   tags:
     - versioned
     - fixed
-  link: "{{site.repo.dart.org}}/sdk/issues/53167"
+  link: "https://github.com/dart-lang/sdk/issues/53167"
 # --------------------------------------------------
 - version: 3.2.0
   releaseDate: 2023-11-15
@@ -1565,7 +1565,7 @@
   tags:
     - experimental
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/52121"
+  link: "https://github.com/dart-lang/sdk/issues/52121"
 # --------------------------------------------------
 - version: 3.2.0
   releaseDate: 2023-11-15
@@ -1576,7 +1576,7 @@
     `List<int>` to `Uint8List`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/52801"
+  link: "https://github.com/dart-lang/sdk/issues/52801"
 # --------------------------------------------------
 - version: 3.2.0
   releaseDate: 2023-11-15
@@ -1596,7 +1596,7 @@
     receiver is already closed, instead of returning `nullptr`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/53311"
+  link: "https://github.com/dart-lang/sdk/issues/53311"
 # --------------------------------------------------
 - version: 3.2.0
   releaseDate: 2023-11-15
@@ -1606,7 +1606,7 @@
     Eliminated trailing whitespace from HTTP headers.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/53005"
+  link: "https://github.com/dart-lang/sdk/issues/53005"
 # --------------------------------------------------
 - version: 3.2.0
   releaseDate: 2023-11-15
@@ -1617,7 +1617,7 @@
     `HttpClientResponse.headers` and `HttpRequest.headers` return.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/53227"
+  link: "https://github.com/dart-lang/sdk/issues/53227"
 # --------------------------------------------------
 - version: 3.2.0
   releaseDate: 2023-11-15
@@ -1703,7 +1703,7 @@
     no longer be used with `package:js` classes.
   tags:
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/53106"
+  link: "https://github.com/dart-lang/sdk/issues/53106"
 # --------------------------------------------------
 - version: 3.2.0
   releaseDate: 2023-11-15
@@ -1714,7 +1714,7 @@
     no longer be used with `package:js` classes.
   tags:
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/53106"
+  link: "https://github.com/dart-lang/sdk/issues/53106"
 # --------------------------------------------------
 - version: 3.2.0
   releaseDate: 2023-11-15
@@ -1744,7 +1744,7 @@
   tags:
     - versioned
     - changed
-  link: "{{site.repo.dart.org}}/language/issues/2020"
+  link: "https://github.com/dart-lang/language/issues/2020"
 # --------------------------------------------------
 - version: 3.1.5
   releaseDate: 2023-10-25
@@ -1824,7 +1824,7 @@
     `StreamTransformer`.
   tags:
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/52334"
+  link: "https://github.com/dart-lang/sdk/issues/52334"
 # --------------------------------------------------
 - version: 3.1.0
   releaseDate: 2023-08-16
@@ -1834,7 +1834,7 @@
     Added `sameSite` to the `Cookie` class, and added the class `SameSite`.
   tags:
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/51486"
+  link: "https://github.com/dart-lang/sdk/issues/51486"
 # --------------------------------------------------
 - version: 3.1.0
   releaseDate: 2023-08-16
@@ -1845,7 +1845,7 @@
     extended or implemented.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/52027"
+  link: "https://github.com/dart-lang/sdk/issues/52027"
 # --------------------------------------------------
 - version: 3.1.0
   releaseDate: 2023-08-16
@@ -2068,7 +2068,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/50902"
+  link: "https://github.com/dart-lang/sdk/issues/50902"
 # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2104,7 +2104,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/49529"
+  link: "https://github.com/dart-lang/sdk/issues/49529"
 # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2114,7 +2114,7 @@
     `List` constructor: Deprecated in favor of `List.filled`.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/49529"
+  link: "https://github.com/dart-lang/sdk/issues/49529"
 # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2122,12 +2122,12 @@
   subArea: "`dart:async`"
   description: |
     Removed the deprecated
-    [`DeferredLibrary`]({{site.dart-api}}/stable/2.18.4/dart-async/DeferredLibrary-class.html)
+    [`DeferredLibrary`](https://api.dart.dev/stable/2.18.4/dart-async/DeferredLibrary-class.html)
     class.
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/49529"
+  link: "https://github.com/dart-lang/sdk/issues/49529"
 # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2146,14 +2146,14 @@
   subArea: "`dart:developer`"
   description: |
     Removed the deprecated
-    [`MAX_USER_TAGS`]({{site.dart-api}}/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html)
+    [`MAX_USER_TAGS`](https://api.dart.dev/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html)
     constant. Use
-    [`maxUserTags`]({{site.dart-api}}/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html)
+    [`maxUserTags`](https://api.dart.dev/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html)
     instead.
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/49529"
+  link: "https://github.com/dart-lang/sdk/issues/49529"
 # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2161,14 +2161,14 @@
   subArea: "dart:developer"
   description: |
     Removed the deprecated
-    [`Metrics`]({{site.dart-api}}/stable/2.18.2/dart-developer/Metrics-class.html)
+    [`Metrics`](https://api.dart.dev/stable/2.18.2/dart-developer/Metrics-class.html)
     and
-    [`Metric`]({{site.dart-api}}/stable/2.18.2/dart-developer/Metric-class.html)
+    [`Metric`](https://api.dart.dev/stable/2.18.2/dart-developer/Metric-class.html)
     classes as they have been broken since Dart 2.0.
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/50231"
+  link: "https://github.com/dart-lang/sdk/issues/50231"
 # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2176,12 +2176,12 @@
   subArea: "`dart:developer`"
   description: |
     Removed the deprecated
-    [`Counter`]({{site.dart-api}}/stable/2.18.2/dart-developer/Counter-class.html)
+    [`Counter`](https://api.dart.dev/stable/2.18.2/dart-developer/Counter-class.html)
     class as it has been broken since Dart 2.0.
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/50231"
+  link: "https://github.com/dart-lang/sdk/issues/50231"
 # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2189,12 +2189,12 @@
   subArea: "`dart:developer`"
   description: |
     Removed the deprecated
-    [`Gauge`]({{site.dart-api}}/stable/2.18.2/dart-developer/Gauge-class.html)
+    [`Gauge`](https://api.dart.dev/stable/2.18.2/dart-developer/Gauge-class.html)
     class as it has been broken since Dart 2.0.
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/50231"
+  link: "https://github.com/dart-lang/sdk/issues/50231"
 # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2217,7 +2217,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/49536"
+  link: "https://github.com/dart-lang/sdk/issues/49536"
 # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2239,7 +2239,7 @@
   tags:
     - new
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/51035"
+  link: "https://github.com/dart-lang/sdk/issues/51035"
   # --------------------------------------------------
 - version: 3.0.0
   releaseDate: 2023-05-10
@@ -2363,7 +2363,7 @@
     Flagged additional code as unreachable due to types `Null` and `Never`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/49635"
+  link: "https://github.com/dart-lang/sdk/issues/49635"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2372,7 +2372,7 @@
     Don't delegate inaccessible private names to `noSuchMethod`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/49687"
+  link: "https://github.com/dart-lang/sdk/issues/49687"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2382,7 +2382,7 @@
     type inference.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/50383"
+  link: "https://github.com/dart-lang/sdk/issues/50383"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2394,7 +2394,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/34233"
+  link: "https://github.com/dart-lang/sdk/issues/34233"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2407,7 +2407,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/34233"
+  link: "https://github.com/dart-lang/sdk/issues/34233"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2419,7 +2419,7 @@
     not report any type argument.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/49935"
+  link: "https://github.com/dart-lang/sdk/issues/49935"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2429,7 +2429,7 @@
     Disallow negative or hexadecimal content-length headers.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/49305"
+  link: "https://github.com/dart-lang/sdk/issues/49305"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2441,7 +2441,7 @@
   tags:
     - new
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/49647"
+  link: "https://github.com/dart-lang/sdk/issues/49647"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2453,7 +2453,7 @@
     more than once now throws a `StateError`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/49878"
+  link: "https://github.com/dart-lang/sdk/issues/49878"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2474,7 +2474,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/34233"
+  link: "https://github.com/dart-lang/sdk/issues/34233"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2484,8 +2484,8 @@
     Breaking changes to the preview feature `@staticInterop`:
     * Disallowed classes with this annotation from using `external`
     generative constructors. See
-    [48730]({{site.repo.dart.org}}/sdk/issues/48730) and
-    [49941]({{site.repo.dart.org}}/sdk/issues/49941) for more details.
+    [48730](https://github.com/dart-lang/sdk/issues/48730) and
+    [49941](https://github.com/dart-lang/sdk/issues/49941) for more details.
     * Disallowed classes with this annotation's external extension members from
     using type parameters.
     * Classes with this annotation should also have the `@JS` annotation.
@@ -2494,7 +2494,7 @@
   tags:
     - changed
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/49350"
+  link: "https://github.com/dart-lang/sdk/issues/49350"
 # --------------------------------------------------
 - version: 2.19.0
   releaseDate: 2023-01-25
@@ -2504,7 +2504,7 @@
     `dart2js` no longer supports HTTP URIs as inputs.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/49473"
+  link: "https://github.com/dart-lang/sdk/issues/49473"
 # --------------------------------------------------
 - version: 2.18.5
   releaseDate: 2022-11-23
@@ -2592,7 +2592,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/48167"
+  link: "https://github.com/dart-lang/sdk/issues/48167"
 # --------------------------------------------------
 - version: 2.18.0
   releaseDate: 2022-08-30
@@ -2603,7 +2603,7 @@
     nullable.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/49045"
+  link: "https://github.com/dart-lang/sdk/issues/49045"
 # --------------------------------------------------
 - version: 2.18.0
   releaseDate: 2022-08-30
@@ -2615,7 +2615,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/34218"
+  link: "https://github.com/dart-lang/sdk/issues/34218"
 # --------------------------------------------------
 - version: 2.18.0
   releaseDate: 2022-08-30
@@ -2626,7 +2626,7 @@
     upon exit.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/45630"
+  link: "https://github.com/dart-lang/sdk/issues/45630"
 # --------------------------------------------------
 - version: 2.18.0
   releaseDate: 2022-08-30
@@ -2636,7 +2636,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/48272"
+  link: "https://github.com/dart-lang/sdk/issues/48272"
 # --------------------------------------------------
 - version: 2.18.0
   releaseDate: 2022-08-30
@@ -2647,7 +2647,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.18.0
   releaseDate: 2022-08-30
@@ -2658,7 +2658,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.17.7
   releaseDate: 2022-08-24
@@ -2776,7 +2776,7 @@
     Added new `connectionFactory` property to `HttpClient`.
   tags:
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/47887"
+  link: "https://github.com/dart-lang/sdk/issues/47887"
 # --------------------------------------------------
 - version: 2.17.0
   releaseDate: 2022-05-11
@@ -2788,7 +2788,7 @@
   tags:
     - fixed
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/48093"
+  link: "https://github.com/dart-lang/sdk/issues/48093"
 # --------------------------------------------------
 - version: 2.17.0
   releaseDate: 2022-05-11
@@ -2799,7 +2799,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/34218"
+  link: "https://github.com/dart-lang/sdk/issues/34218"
 # --------------------------------------------------
 - version: 2.17.0
   releaseDate: 2022-05-11
@@ -2810,7 +2810,7 @@
     which allows TLS renegotiation for client secure sockets.
   tags:
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/48513"
+  link: "https://github.com/dart-lang/sdk/issues/48513"
 # --------------------------------------------------
 - version: 2.17.0
   releaseDate: 2022-05-11
@@ -2820,7 +2820,7 @@
     Deprecated the standalone `dart2js` tool.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.17.0
   releaseDate: 2022-05-11
@@ -2830,7 +2830,7 @@
     Deprecated the standalone `dartdevc` tool.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.17.0
   releaseDate: 2022-05-11
@@ -2841,7 +2841,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.16.2
   releaseDate: 2022-03-24
@@ -2886,7 +2886,7 @@
     `newPath` specifies one. Instead, a `FileSystemException` will be thrown.
   tags:
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/47653"
+  link: "https://github.com/dart-lang/sdk/issues/47653"
 # --------------------------------------------------
 - version: 2.16.0
   releaseDate: 2022-02-03
@@ -2897,7 +2897,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/47769"
+  link: "https://github.com/dart-lang/sdk/issues/47769"
 # --------------------------------------------------
 - version: 2.16.0
   releaseDate: 2022-02-03
@@ -2908,7 +2908,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/47769"
+  link: "https://github.com/dart-lang/sdk/issues/47769"
 # --------------------------------------------------
 - version: 2.16.0
   releaseDate: 2022-02-03
@@ -2918,7 +2918,7 @@
     Deprecated the standalone `dartanalyzer` tool.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.16.0
   releaseDate: 2022-02-03
@@ -2928,7 +2928,7 @@
     Deprecated the standalone `dartdoc` tool.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.16.0
   releaseDate: 2022-02-03
@@ -2939,7 +2939,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.15.1
   releaseDate: 2021-12-14
@@ -2983,7 +2983,7 @@
     to TLS1_2_VERSION (1.2) instead of TLS1_VERSION.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/46875"
+  link: "https://github.com/dart-lang/sdk/issues/46875"
 # --------------------------------------------------
 - version: 2.15.0
   releaseDate: 2021-12-08
@@ -2994,7 +2994,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/46316"
+  link: "https://github.com/dart-lang/sdk/issues/46316"
 # --------------------------------------------------
 - version: 2.15.0
   releaseDate: 2021-12-08
@@ -3005,7 +3005,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/46316"
+  link: "https://github.com/dart-lang/sdk/issues/46316"
 # --------------------------------------------------
 - version: 2.15.0
   releaseDate: 2021-12-08
@@ -3016,7 +3016,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.15.0
   releaseDate: 2021-12-08
@@ -3037,7 +3037,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/45451"
+  link: "https://github.com/dart-lang/sdk/issues/45451"
 # --------------------------------------------------
 - version: 2.15.0
   releaseDate: 2021-12-08
@@ -3048,7 +3048,7 @@
     same managed heap, and therefore share various VM-internal data structures.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/46754"
+  link: "https://github.com/dart-lang/sdk/issues/46754"
 # --------------------------------------------------
 - version: 2.14.4
   releaseDate: 2021-10-14
@@ -3153,7 +3153,7 @@
     mixed-in.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/45115"
+  link: "https://github.com/dart-lang/sdk/issues/45115"
 # --------------------------------------------------
 - version: 2.14.0
   releaseDate: 2021-09-08
@@ -3165,7 +3165,7 @@
     `Struct`
   tags:
     - new
-  link: "{{site.repo.dart.org}}/sdk/issues/45071"
+  link: "https://github.com/dart-lang/sdk/issues/45071"
 # --------------------------------------------------
 - version: 2.14.0
   releaseDate: 2021-09-08
@@ -3175,7 +3175,7 @@
     Deprecated the standalone `dart2native` tool
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/46100"
+  link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.14.0
   releaseDate: 2021-09-08
@@ -3195,7 +3195,7 @@
     JavaScript by default.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/46545"
+  link: "https://github.com/dart-lang/sdk/issues/46545"
 # --------------------------------------------------
 - version: 2.14.0
   releaseDate: 2021-09-08
@@ -3206,7 +3206,7 @@
     consistent with Dart2JS.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/44154"
+  link: "https://github.com/dart-lang/sdk/issues/44154"
 # --------------------------------------------------
 - version: 2.13.4
   releaseDate: 2021-06-28
@@ -3282,7 +3282,7 @@
     `@JS()` annotation for a non-anonymous JS interop class.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/44211"
+  link: "https://github.com/dart-lang/sdk/issues/44211"
 # --------------------------------------------------
 - version: 2.12.4
   releaseDate: 2021-04-15
@@ -3359,7 +3359,7 @@
     promotion in extensions.
   tags:
     - fixed
-  link: "{{site.repo.dart.org}}/sdk/issues/44660"
+  link: "https://github.com/dart-lang/sdk/issues/44660"
 # --------------------------------------------------
 - version: 2.12.0
   releaseDate: 2021-03-03
@@ -3382,7 +3382,7 @@
     extends Struct>[]`
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/44621"
+  link: "https://github.com/dart-lang/sdk/issues/44621"
 # --------------------------------------------------
 - version: 2.12.0
   releaseDate: 2021-03-03
@@ -3393,7 +3393,7 @@
     invoke `sizeOf<T>` generically.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/44621"
+  link: "https://github.com/dart-lang/sdk/issues/44621"
 # --------------------------------------------------
 - version: 2.12.0
   releaseDate: 2021-03-03
@@ -3403,7 +3403,7 @@
     Deprecated subtypes of `Struct` without any native member.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/44622"
+  link: "https://github.com/dart-lang/sdk/issues/44622"
 # --------------------------------------------------
 - version: 2.12.0
   releaseDate: 2021-03-03
@@ -3414,7 +3414,7 @@
     referenced object is garbage collected to avoid race conditions.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/42312"
+  link: "https://github.com/dart-lang/sdk/issues/42312"
 # --------------------------------------------------
 - version: 2.12.0
   releaseDate: 2021-03-03
@@ -3427,7 +3427,7 @@
     - removed
     - breaking
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/42312"
+  link: "https://github.com/dart-lang/sdk/issues/42312"
 # --------------------------------------------------
 - version: 2.12.0
   releaseDate: 2021-03-03
@@ -3437,7 +3437,7 @@
     The Dart SDK constraint is now **required** in `pubspec.yaml`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/44072"
+  link: "https://github.com/dart-lang/sdk/issues/44072"
 # --------------------------------------------------
 - version: 2.10.5
   releaseDate: 2021-01-21
@@ -3510,7 +3510,7 @@
     Renamed `dart_api_dl.cc` to `dart_api_dl.c` and changed to a pure C file.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/42982"
+  link: "https://github.com/dart-lang/sdk/issues/42982"
 # --------------------------------------------------
 - version: 2.9.3
   releaseDate: 2020-09-08
@@ -3563,7 +3563,7 @@
     surrogates will be encoded as replacement characters (`U+FFFD`).
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/41100"
+  link: "https://github.com/dart-lang/sdk/issues/41100"
 # --------------------------------------------------
 - version: 2.9.0
   releaseDate: 2020-08-05
@@ -3573,7 +3573,7 @@
     When decoding UTF-8, encoded surrogates will be treated as malformed input.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/41100"
+  link: "https://github.com/dart-lang/sdk/issues/41100"
 # --------------------------------------------------
 - version: 2.9.0
   releaseDate: 2020-08-05
@@ -3586,7 +3586,7 @@
     UTF-8 with `allowMalformed: true`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/41100"
+  link: "https://github.com/dart-lang/sdk/issues/41100"
 # --------------------------------------------------
 - version: 2.9.0
   releaseDate: 2020-08-05
@@ -3607,7 +3607,7 @@
     `dart:mirrors` is imported.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/42714"
+  link: "https://github.com/dart-lang/sdk/issues/42714"
 # --------------------------------------------------
 - version: 2.9.0
   releaseDate: 2020-08-05
@@ -3619,7 +3619,7 @@
     replacement characters (`U+FFFD`).
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/41100"
+  link: "https://github.com/dart-lang/sdk/issues/41100"
 # --------------------------------------------------
 - version: 2.9.0
   releaseDate: 2020-08-05
@@ -3630,7 +3630,7 @@
     surrogates into replacement characters.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/41100"
+  link: "https://github.com/dart-lang/sdk/issues/41100"
 # --------------------------------------------------
 - version: 2.8.4
   releaseDate: 2020-06-04
@@ -3683,7 +3683,7 @@
     use the promoted type of a type variable.
   tags:
     - fixed
-  link: "{{site.repo.dart.org}}/sdk/issues/40675"
+  link: "https://github.com/dart-lang/sdk/issues/40675"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3694,7 +3694,7 @@
     2.0.0.
   tags:
     - fixed
-  link: "{{site.repo.dart.org}}/sdk/issues/41362"
+  link: "https://github.com/dart-lang/sdk/issues/41362"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3704,7 +3704,7 @@
     Changed the return type of `StreamSubscription.cancel()` to `Future<void>`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/40676"
+  link: "https://github.com/dart-lang/sdk/issues/40676"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3716,7 +3716,7 @@
     and the former has none.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/40681"
+  link: "https://github.com/dart-lang/sdk/issues/40681"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3728,7 +3728,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/40683"
+  link: "https://github.com/dart-lang/sdk/issues/40683"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3739,7 +3739,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/40130"
+  link: "https://github.com/dart-lang/sdk/issues/40130"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3751,7 +3751,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/40674"
+  link: "https://github.com/dart-lang/sdk/issues/40674"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3763,7 +3763,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/40678"
+  link: "https://github.com/dart-lang/sdk/issues/40678"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3775,7 +3775,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/40678"
+  link: "https://github.com/dart-lang/sdk/issues/40678"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3796,7 +3796,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/33501"
+  link: "https://github.com/dart-lang/sdk/issues/33501"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3809,7 +3809,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/40702"
+  link: "https://github.com/dart-lang/sdk/issues/40702"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3822,7 +3822,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/40483"
+  link: "https://github.com/dart-lang/sdk/issues/40483"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3836,7 +3836,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/40483"
+  link: "https://github.com/dart-lang/sdk/issues/40483"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3849,7 +3849,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/40706"
+  link: "https://github.com/dart-lang/sdk/issues/40706"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3859,7 +3859,7 @@
     The `HeaderValue` class now parses more strictly in two invalid edge cases.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/40709"
+  link: "https://github.com/dart-lang/sdk/issues/40709"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3881,7 +3881,7 @@
   tags:
     - removed
     - breaking
-  link: "{{site.repo.dart.org}}/sdk/issues/38994"
+  link: "https://github.com/dart-lang/sdk/issues/38994"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -3924,7 +3924,7 @@
   tags:
     - changed
     - breaking
-  link: "{{site.repo.dart.org}}/language/blob/main/resources/type-system/normalization.md"
+  link: "https://github.com/dart-lang/language/blob/main/resources/type-system/normalization.md"
 # --------------------------------------------------
 - version: 2.8.1
   releaseDate: 2020-05-06
@@ -4015,7 +4015,7 @@
     The Dart SDK for macOS is now only available for x64.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/39810"
+  link: "https://github.com/dart-lang/sdk/issues/39810"
 # --------------------------------------------------
 - version: 2.7.0
   releaseDate: 2019-12-11
@@ -4024,7 +4024,7 @@
     Static extension members are accessible when imported with a prefix.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/language/issues/671"
+  link: "https://github.com/dart-lang/language/issues/671"
 # --------------------------------------------------
 - version: 2.7.0
   releaseDate: 2019-12-11
@@ -4079,7 +4079,7 @@
     ```
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/37985"
+  link: "https://github.com/dart-lang/sdk/issues/37985"
 # --------------------------------------------------
 - version: 2.6.0
   releaseDate: 2019-11-05
@@ -4160,7 +4160,7 @@
     of `Uint8List`.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/36900"
+  link: "https://github.com/dart-lang/sdk/issues/36900"
 # --------------------------------------------------
 - version: 2.5.0
   releaseDate: 2019-09-10
@@ -4171,7 +4171,7 @@
     parameters are now mandatory.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/37192"
+  link: "https://github.com/dart-lang/sdk/issues/37192"
 # --------------------------------------------------
 - version: 2.5.0
   releaseDate: 2019-09-10
@@ -4182,18 +4182,18 @@
     strings are made from the allowed character set and are not null.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/37192"
+  link: "https://github.com/dart-lang/sdk/issues/37192"
 # --------------------------------------------------
 - version: 2.5.0
   releaseDate: 2019-09-10
   area: Tools
   subArea: Pub
   description: |
-    Packages published to [pub.dev]({{site.pub}}) can no longer contain git
+    Packages published to [pub.dev](https://pub.dev) can no longer contain git
     dependencies.
   tags:
     - deprecated
-  link: "{{site.repo.dart.org}}/sdk/issues/36765"
+  link: "https://github.com/dart-lang/sdk/issues/36765"
 # --------------------------------------------------
 - version: 2.4.1
   releaseDate: 2019-08-07
@@ -4233,7 +4233,7 @@
     ```
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/35097"
+  link: "https://github.com/dart-lang/sdk/issues/35097"
 # --------------------------------------------------
 - version: 2.4.0
   releaseDate: 2019-06-27
@@ -4264,7 +4264,7 @@
     as a stream.
   tags:
     - fixed
-  link: "{{site.repo.dart.org}}/sdk/issues/36382"
+  link: "https://github.com/dart-lang/sdk/issues/36382"
 # --------------------------------------------------
 - version: 2.3.2
   releaseDate: 2019-06-11
@@ -4409,7 +4409,7 @@
     junctions on Windows.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/33966"
+  link: "https://github.com/dart-lang/sdk/issues/33966"
 # --------------------------------------------------
 - version: 2.1.1
   releaseDate: 2018-11-15
@@ -4431,7 +4431,7 @@
   tags:
     - new
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/29554"
+  link: "https://github.com/dart-lang/sdk/issues/29554"
 # --------------------------------------------------
 - version: 2.1.1
   releaseDate: 2018-11-15
@@ -4442,7 +4442,7 @@
     method in an incorrect way that violates its static types.
   tags:
     - fixed
-  link: "{{site.repo.dart.org}}/sdk/issues/35611"
+  link: "https://github.com/dart-lang/sdk/issues/35611"
 # --------------------------------------------------
 - version: 2.1.0
   releaseDate: 2018-11-15
@@ -4485,18 +4485,18 @@
     not supported in 2.0.0. These are reported now, which means existing
     incorrect code might show new errors:
     * Mixins must correctly override their superclasses.
-    * [Implicit type arguments in extends clauses must satisfy the class bounds]({{site.repo.dart.org}}/sdk/issues/34532).
-    * [Instance members should shadow prefixes]({{site.repo.dart.org}}/sdk/issues/34498).
-    * [Constructor invocations must use valid syntax, even with optional `new`]({{site.repo.dart.org}}/sdk/issues/34403).
-    * [Type arguments to generic typedefs must satisfy their bounds]({{site.repo.dart.org}}/sdk/issues/33308).
-    * [Classes can't implement FutureOr]({{site.repo.dart.org}}/sdk/issues/33744).
-    * [Abstract methods may not unsoundly override a concrete method]({{site.repo.dart.org}}/sdk/issues/32014).
-    * [Constant constructors cannot redirect to non-constant constructors]({{site.repo.dart.org}}/sdk/issues/34161).
-    * [Setters with the same name as the enclosing class aren't allowed]({{site.repo.dart.org}}/sdk/issues/34225).
+    * [Implicit type arguments in extends clauses must satisfy the class bounds](https://github.com/dart-lang/sdk/issues/34532).
+    * [Instance members should shadow prefixes](https://github.com/dart-lang/sdk/issues/34498).
+    * [Constructor invocations must use valid syntax, even with optional `new`](https://github.com/dart-lang/sdk/issues/34403).
+    * [Type arguments to generic typedefs must satisfy their bounds](https://github.com/dart-lang/sdk/issues/33308).
+    * [Classes can't implement FutureOr](https://github.com/dart-lang/sdk/issues/33744).
+    * [Abstract methods may not unsoundly override a concrete method](https://github.com/dart-lang/sdk/issues/32014).
+    * [Constant constructors cannot redirect to non-constant constructors](https://github.com/dart-lang/sdk/issues/34161).
+    * [Setters with the same name as the enclosing class aren't allowed](https://github.com/dart-lang/sdk/issues/34225).
   tags:
     - new
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/34235"
+  link: "https://github.com/dart-lang/sdk/issues/34235"
 # --------------------------------------------------
 - version: 2.1.0
   releaseDate: 2018-11-15
@@ -4538,7 +4538,7 @@
     statement.
   tags:
     - changed
-  link: "{{site.repo.dart.org}}/sdk/issues/30345"
+  link: "https://github.com/dart-lang/sdk/issues/30345"
 # --------------------------------------------------
 - version: 2.0.0
   releaseDate: 2018-02-22
@@ -4581,4 +4581,4 @@
     Replaced pub's transformer-based build system with a new build system.
   tags:
     - new
-  link: "{{site.repo.dart.org}}/build"
+  link: "https://github.com/dart-lang/build"
