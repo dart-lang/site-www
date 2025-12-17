@@ -26,8 +26,6 @@ class CheckboxFilterGroup<T> extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    if (items.isEmpty) return const div([]);
-
     return div([
       h4([.text(title)]),
       ul([
@@ -81,9 +79,6 @@ class _CollapsibleFilterGroupState<T> extends State<CollapsibleFilterGroup<T>> {
   bool _isOpen = false;
 
   void _onToggle(web.Event event) {
-    // In universal_web/package:web, the event is a JS object.
-    // We need to access the target safely.
-    // Assuming event is an Event wrapper or the Event itself.
     final target = event.target as web.HTMLDetailsElement;
     _isOpen = target.open;
   }
