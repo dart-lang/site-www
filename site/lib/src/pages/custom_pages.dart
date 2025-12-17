@@ -5,12 +5,14 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart' show Component;
 import 'package:jaspr_content/jaspr_content.dart';
-import 'package:path/path.dart' as p;
+import 'package:path/path.dart' as path;
 
 import '../components/common/tags.dart';
 import '../markdown/markdown_parser.dart';
+import '../models/diagnostic_model.dart';
 import '../models/lints.dart';
 import 'glossary.dart';
 
@@ -21,6 +23,7 @@ List<MemoryPage> get allMemoryPages => [
   _allLinterRulesPage,
   _allLinterRulesJson,
   ..._lintMemoryPages,
+  ..._diagnosticMemoryPages,
 ];
 
 /// The `/resources/glossary` page which hosts the [GlossaryIndex].
@@ -42,9 +45,97 @@ MemoryPage get _glossaryPage => MemoryPage.builder(
   },
 );
 
-/// The date the lint rule docs were last extracted from the SDK.
+/// The date the diagnostic and lint docs were last extracted from the SDK.
 /// Should be in `yyyy-mm-dd` format.
-const String _lintsLastUpdated = '2025-08-16';
+const String _diagnosticsLastUpdated = '2025-12-07';
+
+/// The individual diagnostic message pages,
+/// rendered at `/tools/diagnostics/<name>`.
+List<MemoryPage> get _diagnosticMemoryPages {
+  final diagnostics = readAndLoadDiagnostics();
+
+  return [
+    for (final diagnostic in diagnostics.where((d) => d.hasDocumentation)) ...[
+      MemoryPage.builder(
+        path: path.join(
+          'tools',
+          'diagnostics',
+          '${diagnostic.id}.md',
+        ),
+        initialData: {
+          'page': <String, Object?>{
+            'title': diagnostic.id,
+            'underscore_breaker_titles': true,
+            'description':
+                'Details about the \'${diagnostic.id}\' diagnostic '
+                'produced by the Dart analyzer.',
+            'bodyClass': 'highlight-diagnostics',
+            'sitemap': {
+              'lastmod': _diagnosticsLastUpdated,
+            },
+          },
+        },
+        builder: (context) {
+          return Component.fragment(
+            [
+              if (diagnostic.fromLint)
+                Tags([
+                  Tag(
+                    'Lint rule',
+                    icon: 'toggle_on',
+                    title:
+                        'Learn about the lint rule that '
+                        'enables this diagnostic.',
+                    link: '/tools/linter-rules/${diagnostic.id}',
+                  ),
+                ]),
+              DashMarkdown(
+                content: [
+                  if (diagnostic.previousNames.isNotEmpty)
+                    diagnostic.previousNames
+                        .map((oldName) => '_(Previously known as `$oldName`._)')
+                        .join('\n\n'),
+                  diagnostic.description,
+                  ?diagnostic.documentation,
+                ].where((content) => content.isNotEmpty).join('\n\n'),
+              ),
+            ],
+          );
+        },
+      ),
+      for (final previousDiagnosticName in diagnostic.previousNames)
+        MemoryPage.builder(
+          path: path.join(
+            'tools',
+            'diagnostics',
+            '$previousDiagnosticName.md',
+          ),
+          initialData: {
+            'page': <String, Object?>{
+              'title': previousDiagnosticName,
+              'underscore_breaker_titles': true,
+              'description':
+                  'Details about the \'$previousDiagnosticName\' diagnostic '
+                  'produced by the Dart analyzer.',
+              'canonical':
+                  'https://dart.dev/tools/diagnostics/${diagnostic.id}',
+              'redirectTo': '/tools/diagnostics/${diagnostic.id}',
+              'noindex': true,
+              'sitemap': false,
+            },
+          },
+          builder: (context) {
+            return p([
+              const span([.text('Diagnostic renamed to: ')]),
+              a(href: '/tools/diagnostics/${diagnostic.id}', [
+                .text(diagnostic.id),
+              ]),
+            ]);
+          },
+        ),
+    ],
+  ];
+}
 
 /// The individual linter rules pages, rendered to `/tools/linter-rules/<name>`.
 List<MemoryPage> get _lintMemoryPages {
@@ -52,110 +143,117 @@ List<MemoryPage> get _lintMemoryPages {
 
   return [
     for (final lint in lintRules)
-      MemoryPage.builder(
-        path: p.join(
-          'tools',
-          'linter-rules',
-          '${lint.id}.md',
-        ),
-        initialData: {
-          'page': <String, Object?>{
-            'title': lint.name,
-            'underscore_breaker_titles': true,
-            'description': 'Learn about the ${lint.name} linter rule.',
-            if (lint.state == 'removed') ...const {
-              'noindex': true,
-              'sitemap': false,
-            } else
-              'sitemap': {
-                'lastmod': _lintsLastUpdated,
-              },
+      for (final lintId in {lint.id, lint.id.toLowerCase()})
+        MemoryPage.builder(
+          path: path.join(
+            'tools',
+            'linter-rules',
+            '$lintId.md',
+          ),
+          initialData: {
+            'page': <String, Object?>{
+              'title': lint.name,
+              'underscore_breaker_titles': true,
+              'description': 'Learn about the ${lint.name} linter rule.',
+              // If this lint has a version not fully lower case,
+              // specify that version as the canonical destination.
+              if (lintId != lint.id)
+                'canonical': 'https://dart.dev/tools/linter-rules/${lint.id}',
+              if (lint.state == 'removed') ...const {
+                'noindex': true,
+                'sitemap': false,
+              } else
+                'sitemap': {
+                  'lastmod': _diagnosticsLastUpdated,
+                },
+            },
           },
-        },
-        builder: (context) {
-          final incompatibleLintsText = StringBuffer();
-          if (lint.incompatibleLints.isNotEmpty) {
-            incompatibleLintsText.writeln('## Incompatible rules\n');
-            incompatibleLintsText.writeln(
-              'The `${lint.id}` lint is incompatible with the following rules:',
-            );
-            incompatibleLintsText.writeln();
-            for (final incompatibleLint in lint.incompatibleLints) {
+          builder: (context) {
+            final incompatibleLintsText = StringBuffer();
+            if (lint.incompatibleLints.isNotEmpty) {
+              incompatibleLintsText.writeln('## Incompatible rules\n');
               incompatibleLintsText.writeln(
-                '- [`$incompatibleLint`](/tools/linter-rules/$incompatibleLint)',
+                'The `${lint.id}` lint is incompatible with '
+                'the following rules:',
               );
+              incompatibleLintsText.writeln();
+              for (final incompatibleLint in lint.incompatibleLints) {
+                incompatibleLintsText.writeln(
+                  '- [`$incompatibleLint`](/tools/linter-rules/$incompatibleLint)',
+                );
+              }
             }
-          }
 
-          return Component.fragment(
-            [
-              Tags([
-                if (lint.sinceDartSdk == 'Unreleased' ||
-                    lint.sinceDartSdk.contains('-wip'))
-                  const Tag(
-                    'Unreleased',
-                    icon: 'pending',
-                    color: 'orange',
-                    title: 'Lint is unreleased or work in progress.',
-                  )
-                else if (lint.state == 'experimental')
-                  const Tag(
-                    'Experimental',
-                    icon: 'science',
-                    color: 'orange',
-                    title: 'Lint is experimental.',
-                  )
-                else if (lint.state == 'deprecated')
-                  const Tag(
-                    'Deprecated',
-                    icon: 'report',
-                    color: 'orange',
-                    title: 'Lint is deprecated.',
-                  )
-                else if (lint.state == 'removed')
-                  const Tag(
-                    'Removed',
-                    icon: 'error',
-                    color: 'red',
-                    title: 'Lint has been removed.',
-                  )
-                else
-                  const Tag(
-                    'Stable',
-                    icon: 'verified_user',
-                    color: 'green',
-                    title: 'Lint is stable.',
-                  ),
+            return Component.fragment(
+              [
+                Tags([
+                  if (lint.sinceDartSdk == 'Unreleased' ||
+                      lint.sinceDartSdk.contains('-wip'))
+                    const Tag(
+                      'Unreleased',
+                      icon: 'pending',
+                      color: 'orange',
+                      title: 'Lint is unreleased or work in progress.',
+                    )
+                  else if (lint.state == 'experimental')
+                    const Tag(
+                      'Experimental',
+                      icon: 'science',
+                      color: 'orange',
+                      title: 'Lint is experimental.',
+                    )
+                  else if (lint.state == 'deprecated')
+                    const Tag(
+                      'Deprecated',
+                      icon: 'report',
+                      color: 'orange',
+                      title: 'Lint is deprecated.',
+                    )
+                  else if (lint.state == 'removed')
+                    const Tag(
+                      'Removed',
+                      icon: 'error',
+                      color: 'red',
+                      title: 'Lint has been removed.',
+                    )
+                  else
+                    const Tag(
+                      'Stable',
+                      icon: 'verified_user',
+                      color: 'green',
+                      title: 'Lint is stable.',
+                    ),
 
-                if (lint.lintSets.contains('core'))
-                  const Tag(
-                    'Core',
-                    icon: 'circles',
-                    title: 'Lint is included in the core set of rules.',
-                  )
-                else if (lint.lintSets.contains('recommended'))
-                  const Tag(
-                    'Recommended',
-                    icon: 'thumb_up',
-                    title: 'Lint is included in the recommended set of rules.',
-                  )
-                else if (lint.lintSets.contains('flutter'))
-                  const Tag(
-                    'Flutter',
-                    icon: 'flutter',
-                    title: 'Lint is included in the Flutter set of rules.',
-                  ),
+                  if (lint.lintSets.contains('core'))
+                    const Tag(
+                      'Core',
+                      icon: 'circles',
+                      title: 'Lint is included in the core set of rules.',
+                    )
+                  else if (lint.lintSets.contains('recommended'))
+                    const Tag(
+                      'Recommended',
+                      icon: 'thumb_up',
+                      title:
+                          'Lint is included in the recommended set of rules.',
+                    )
+                  else if (lint.lintSets.contains('flutter'))
+                    const Tag(
+                      'Flutter',
+                      icon: 'flutter',
+                      title: 'Lint is included in the Flutter set of rules.',
+                    ),
 
-                if (lint.fixStatus == 'hasFix')
-                  const Tag(
-                    'Fix available',
-                    icon: 'build',
-                    title: 'Lint has one or more quick fixes available.',
-                  ),
-              ]),
-              DashMarkdown(
-                content:
-                    '''
+                  if (lint.fixStatus == 'hasFix')
+                    const Tag(
+                      'Fix available',
+                      icon: 'build',
+                      title: 'Lint has one or more quick fixes available.',
+                    ),
+                ]),
+                DashMarkdown(
+                  content:
+                      '''
 ${lint.description}
 
 ## Details
@@ -164,10 +262,10 @@ ${lint.docs}
 
 $incompatibleLintsText
 ''',
-              ),
-              DashMarkdown(
-                content:
-                    '''
+                ),
+                DashMarkdown(
+                  content:
+                      '''
 <a id="usage" aria-hidden="true"></a>
 ## Enable
 
@@ -189,11 +287,11 @@ linter:
     ${lint.id}: true
 ```
 ''',
-              ),
-            ],
-          );
-        },
-      ),
+                ),
+              ],
+            );
+          },
+        ),
   ];
 }
 
@@ -224,7 +322,7 @@ MemoryPage get _allLinterRulesPage {
         'description':
             'Auto-generated configuration enabling all linter rules.',
         'sitemap': {
-          'lastmod': _lintsLastUpdated,
+          'lastmod': _diagnosticsLastUpdated,
         },
       },
     },

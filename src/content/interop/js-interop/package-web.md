@@ -156,6 +156,80 @@ Node append(Node node) native;
 `native` is an internal keyword that means the same as `external` in this
 context.
 
+### `Element` and `HTMLElement`
+
+`Element` is now `HTMLElement` but the extension type `Element` also exists as
+a base type for `HTMLElement`, `SVGElement`, etc.
+See [Element MDN documentation][].
+`querySelector` returns an Element as it can return other subtypes of `Element`
+besides `HTMLElement` like `SVGElement`. A downcast to `HTMLElement` is needed
+if you need to access its methods.
+
+```dart
+element.querySelector('#selectme')!.className = 'test'; // valid in both
+
+element.querySelector('#selectme')!.style.color = 'red'; // Remove
+(element.querySelector('#selectme') as HTMLElement).style.color = 'red'; // Add
+```
+
+### List operations
+
+Unlike `dart:html`, `package:web` methods like `Element.querySelectorAll` and
+`Element.children` return values that don't implement `List`. If a `List` is
+required, you'll need to wrap it with a class.
+
+For immutable operations, you can use `JSImmutableListWrapper`:
+
+```dart
+final anchors = document.querySelectorAll('a');
+for (final anchor in anchors) {} // Remove
+for (final anchor in JSImmutableListWrapper(anchors)) {} //Add
+
+for (final child in parent.children) {} // Remove
+for (final child in JSImmutableListWrapper(parent.children)) {} // Add
+```
+
+You need to add implementation for simple mutable operations like `removeWhere`:
+
+```dart
+parent.children.removeWhere(test); // Remove
+
+for (var i = parent.children.length - 1; i >= 0; --i) {
+  if (test(parent.children.item(i)!)) {
+    parent.children.item(i)!.remove();
+  }
+}  // Add
+
+```
+
+### Common DOM manipulation examples
+
+Here are some common examples of trivial changes that need to be made when
+migrating from `dart:html` to `package:web`:
+
+```dart
+element.querySelector('#selector')?.innerHtml = 'something'; // Remove
+element.querySelector('#selector')?.innerHTML = 'something'.toJS; // Add
+
+element.parent.classes.add('class'); // Remove
+element.parentElement.classList.add('class'); // Add
+
+element.appendHtml(html); // Remove
+element.insertAdjacentHTML('beforeend', html.toJS); // Add
+
+var checkbox = CheckboxInputElement(); // Remove
+var checkbox = HTMLInputElement()..type='checkbox'; // Add
+
+element.querySelectorAll('a').classes.add('link'); // Remove
+for (final a in JSImmutableListWrapper(element.querySelectorAll('a'))) {
+  a.classList.add('a');
+} // Add
+```
+
+{% comment %}
+TODO: add more examples
+{% endcomment -%}
+
 ### Type tests
 
 It's common for code that uses `dart:html` to utilize runtime checks like `is`.
@@ -175,6 +249,9 @@ section of the JS types page covers alternatives in detail.
 ```dart
 obj is Window; // Remove
 obj.instanceOfString('Window'); // Add
+
+element is InputElement; // Remove
+element.isA<HTMLInputElement>(); // Add
 ```
 
 ### Type signatures
@@ -325,3 +402,4 @@ Do we have any other package migrations to show off here?
 [restricts]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [#54507]: {{site.repo.dart.sdk}}/issues/54507
 [mocking tutorial]: /interop/js-interop/mock
+[Element MDN documentation]: https://developer.mozilla.org/en-US/docs/Web/API/Element
