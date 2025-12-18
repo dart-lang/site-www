@@ -40,11 +40,11 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
       }
 
       final entryCards = listContainer.querySelectorAll('.changelog-card');
-      recreateEntries(entryCards);
+      _recreateEntries(entryCards);
     }
   }
 
-  void recreateEntries(web.NodeList entryCards) {
+  void _recreateEntries(web.NodeList entryCards) {
     for (var i = 0; i < entryCards.length; i++) {
       final element = entryCards.item(i) as web.Element;
       final entry = ChangelogEntry.fromElement(element);
