@@ -34,7 +34,6 @@ class CheckboxFilterGroup<T> extends StatelessComponent {
             input(
               type: InputType.checkbox,
               attributes: {
-                'role': 'checkbox',
                 'name': 'filter-${idProvider(item)}',
                 'autocomplete': 'off',
               },
