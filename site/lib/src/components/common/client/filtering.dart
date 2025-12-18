@@ -109,7 +109,7 @@ class _CollapsibleFilterGroupState<T> extends State<CollapsibleFilterGroup<T>> {
         ]),
       ],
       classes: 'version-group',
-      attributes: _isOpen ? {'open': ''} : null,
+      open: _isOpen,
       events: {'toggle': _onToggle},
     );
   }
