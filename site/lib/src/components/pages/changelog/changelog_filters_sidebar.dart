@@ -51,7 +51,7 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
               attributes: {'for': 'open-filter-toggle', 'aria-hidden': 'true'},
               classes: 'close-icon',
               [
-                span(classes: 'material-symbols-outlined', [.text('close')]),
+                MaterialIcon('close', title: 'Close filters'),
               ],
             ),
           ]),
