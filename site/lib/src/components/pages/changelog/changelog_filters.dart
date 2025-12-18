@@ -56,7 +56,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
   void setFilters([void Function()? callback]) {
     setState(callback ?? () {});
 
-    final entriesToShow = filters.filterEntries(entries, searchQuery);
+    final entriesToShow = filters.filterEntries(entries, searchQuery).toSet();
     filteredEntriesCount = entriesToShow.length;
 
     final listContainer = web.document.getElementById('all-changelog-list');
