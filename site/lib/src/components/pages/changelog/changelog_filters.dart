@@ -109,8 +109,9 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
         ],
       ),
       actions: [
-        button(
-          classes: 'icon-button show-filters-button',
+        Button(
+          icon: 'filter_list',
+          classes: ['show-filters-button'],
           onClick: () {
             final toggle =
                 web.document.getElementById('open-filter-toggle')
@@ -119,11 +120,6 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
               toggle.checked = !toggle.checked;
             }
           },
-          [
-            const span(classes: 'material-symbols-outlined', [
-              .text('filter_list'),
-            ]),
-          ],
         ),
       ],
       bottomActions: [
