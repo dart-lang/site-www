@@ -57,17 +57,13 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
           ]),
           div(classes: 'table-title', [
             const .text('Filter by'),
-            button(
-              classes: 'info-icon',
+            Button(
+              icon: 'info',
+              classes: ['info-icon'],
+              title: 'About changelog',
               onClick: () {
                 setState(() => _showLegend = true);
               },
-              attributes: {'aria-label': 'About changelog'},
-              [
-                const span(classes: 'material-symbols-outlined', [
-                  .text('info'),
-                ]),
-              ],
             ),
           ]),
           ListenableBuilder(
