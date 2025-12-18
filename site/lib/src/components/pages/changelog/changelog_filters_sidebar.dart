@@ -100,11 +100,9 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                 ),
                 CheckboxFilterGroup<String>(
                   title: 'Area',
-                  items:
-                      ChangelogFiltersSidebar.filters.availableAreas
-                          .where((area) => area != 'Docs')
-                          .toList()
-                        ..sort(ChangelogFiltersSidebar.filters.compareAreas),
+                  items: ChangelogFiltersSidebar.filters.availableAreas
+                      .where((area) => area != 'Docs')
+                      .sorted(ChangelogFiltersSidebar.filters.compareAreas),
                   selectedItems: ChangelogFiltersSidebar.filters.selectedAreas,
                   onToggle: (area, checked) =>
                       ChangelogFiltersSidebar.filters.setArea(area, checked),
