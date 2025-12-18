@@ -69,16 +69,6 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
           ListenableBuilder(
             listenable: ChangelogFiltersSidebar.filters,
             builder: (context) {
-              // Ensure we have populated available filters if running on web.
-              if (kIsWeb &&
-                  (ChangelogFiltersSidebar.filters.availableAreas.isEmpty ||
-                      ChangelogFiltersSidebar
-                          .filters
-                          .availableVersions
-                          .isEmpty)) {
-                // Do not populate here to avoid side effects during build.
-                // It should be done in initState.
-              }
 
               final groups = <String, List<String>>{};
               for (final version
