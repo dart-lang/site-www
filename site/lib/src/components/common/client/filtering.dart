@@ -136,7 +136,7 @@ class FilterToolbar extends StatelessComponent {
     return div(id: id, classes: 'chip-filters-group', [
       div(classes: 'top-row', [
         searchBar,
-        if (actions.isNotEmpty) ...actions,
+        ...actions,
       ]),
       div(classes: 'label-row', [
         resultCount,
