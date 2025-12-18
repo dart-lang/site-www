@@ -24,21 +24,14 @@ final class ChangelogIndex extends StatelessComponent {
     ChangelogFiltersSidebar.filters.disposeState(notify: false);
 
     final changesData = context.page.data['changelog'] as List<Object?>?;
-
-    final changelogEntries = <ChangelogEntry>[];
-    if (changesData == null) {
+    if (changesData == null || changesData.isEmpty) {
       throw Exception('Changelog data is missing or invalid.');
     }
 
-    for (final change in changesData) {
-      changelogEntries.add(
+    final changelogEntries = <ChangelogEntry>[
+      for (final change in changesData)
         ChangelogEntry.fromMap(change as Map<String, Object?>),
-      );
-    }
-
-    if (changelogEntries.isEmpty) {
-      throw Exception('No changelog entries found.');
-    }
+    ];
 
     return div(id: 'changelog-index-content', [
       div(classes: 'left-col', id: 'changelog-main-content', [
