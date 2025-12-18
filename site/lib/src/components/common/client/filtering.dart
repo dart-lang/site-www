@@ -140,7 +140,7 @@ class FilterToolbar extends StatelessComponent {
       ]),
       div(classes: 'label-row', [
         resultCount,
-        if (bottomActions.isNotEmpty) ...bottomActions,
+        ...bottomActions,
       ]),
     ]);
   }
