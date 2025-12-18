@@ -16,14 +16,10 @@ class BreakingChangesLegend extends StatelessComponent {
       div(classes: 'legend-dialog', [
         div(classes: 'legend-header', [
           const h3([.text('About Breaking Changes')]),
-          button(
-            classes: 'close-button',
+          Button(
+            icon: 'close',
+            classes: ['close-button'],
             onClick: onClose,
-            [
-              const span(classes: 'material-symbols-outlined', [
-                .text('close'),
-              ]),
-            ],
           ),
         ]),
         const div(classes: 'legend-content', [
