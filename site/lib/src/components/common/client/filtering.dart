@@ -93,7 +93,6 @@ class _CollapsibleFilterGroupState<T> extends State<CollapsibleFilterGroup<T>> {
               input(
                 type: InputType.checkbox,
                 attributes: {
-                  'role': 'checkbox',
                   'name': 'filter-${component.idProvider(item)}',
                   'autocomplete': 'off',
                 },
