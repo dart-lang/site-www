@@ -127,14 +127,14 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
         ),
       ],
       bottomActions: [
-        button(
-          attributes: {
-            if (searchQuery.isEmpty &&
-                filters.selectedTags.isEmpty &&
-                filters.selectedAreas.isEmpty &&
-                filters.selectedVersions.isEmpty)
-              'disabled': 'true',
-          },
+        Button(
+          icon: 'close_small',
+          content: 'Clear filters',
+          disabled:
+              searchQuery.isEmpty &&
+              filters.selectedTags.isEmpty &&
+              filters.selectedAreas.isEmpty &&
+              filters.selectedVersions.isEmpty,
           onClick: () {
             // Update search query and reset filters.
             // We call setFilters to ensure the UI updates even if
@@ -144,12 +144,6 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
             filters.reset();
             setFilters();
           },
-          [
-            const span(classes: 'material-symbols-outlined', [
-              .text('close_small'),
-            ]),
-            const span([.text('Clear filters')]),
-          ],
         ),
       ],
     );
