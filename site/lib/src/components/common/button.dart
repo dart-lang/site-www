@@ -25,7 +25,7 @@ class Button extends StatelessComponent {
     this.title,
     this.asRaw = false,
     this.onClick,
-  }) : assert(content != null || icon != null || trailingIcon != null);
+  }) : assert(content != null || icon != null);
 
   final String? content;
   final String? title;
