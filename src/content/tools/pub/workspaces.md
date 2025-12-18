@@ -115,7 +115,7 @@ To use pub workspaces, all your workspace packages (but not your dependencies)
 must have an SDK version constraint of `^3.6.0` or higher.
 :::
 
-## Glob pattern support in workspaces
+## Glob pattern support
 
 :::version-note
 Glob pattern support requires Dart 3.11 or later.
