@@ -82,10 +82,9 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                       .compareVersions(right, left),
                 );
               }
-              final sortedMajors = groups.keys.toList()
-                ..sort(
-                  (left, right) => int.parse(right).compareTo(int.parse(left)),
-                );
+              final sortedMajors = groups.keys.sorted(
+                (left, right) => int.parse(right).compareTo(int.parse(left)),
+              );
 
               return div(classes: 'table-content', [
                 CheckboxFilterGroup<ChangelogTag>(
