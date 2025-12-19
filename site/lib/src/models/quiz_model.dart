@@ -5,8 +5,6 @@
 import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart';
 
-import '../markdown/markdown_parser.dart' show parseMarkdownToHtml;
-
 class Question {
   const Question(this.question, this.options);
 
@@ -14,17 +12,17 @@ class Question {
   final List<AnswerOption> options;
 
   @decoder
-  factory Question.fromMap(Map<Object?, Object?> json) {
+  factory Question.fromMap(Map<String, Object?> json) {
     return Question(
-      parseMarkdownToHtml(json['question'] as String, inline: true),
+      json['question'] as String,
       (json['options'] as List<Object?>)
-          .map((e) => AnswerOption.fromJson(e as Map<Object?, Object?>))
+          .map((e) => AnswerOption.fromJson(e as Map<String, Object?>))
           .shuffled(),
     );
   }
 
   @encoder
-  Map<Object?, Object?> toJson() => {
+  Map<String, Object?> toJson() => {
     'question': question,
     'options': options.map((e) => e.toJson()).toList(),
   };
@@ -43,16 +41,16 @@ class AnswerOption {
   final String explanation;
 
   @decoder
-  factory AnswerOption.fromJson(Map<Object?, Object?> json) {
+  factory AnswerOption.fromJson(Map<String, Object?> json) {
     return AnswerOption(
-      parseMarkdownToHtml(json['text'] as String, inline: true),
+      json['text'] as String,
       json['correct'] as bool? ?? false,
-      parseMarkdownToHtml(json['explanation'] as String),
+      json['explanation'] as String,
     );
   }
 
   @encoder
-  Map<Object?, Object?> toJson() => {
+  Map<String, Object?> toJson() => {
     'text': text,
     'correct': correct,
     'explanation': explanation,

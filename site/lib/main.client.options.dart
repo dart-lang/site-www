@@ -117,9 +117,7 @@ ClientOptions get defaultClientOptions => ClientOptions(
       (p) => _quiz.InteractiveQuiz(
         title: p['title'] as String?,
         questions: (p['questions'] as List<Object?>)
-            .map(
-              (i) => _quiz_model.Question.fromMap(i as Map<Object?, Object?>),
-            )
+            .map((i) => _quiz_model.Question.fromMap(i as Map<String, Object?>))
             .toList(),
       ),
       loader: _quiz.loadLibrary,
