@@ -6,6 +6,8 @@
 
 import 'package:jaspr/server.dart';
 import 'package:dart_dev_site/src/archive/archive_table.dart' as _archive_table;
+import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
+    as _collapse_button;
 import 'package:dart_dev_site/src/components/common/client/cookie_notice.dart'
     as _cookie_notice;
 import 'package:dart_dev_site/src/components/common/client/copy_button.dart'
@@ -14,6 +16,8 @@ import 'package:dart_dev_site/src/components/common/client/feedback.dart'
     as _feedback;
 import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
     as _on_this_page_button;
+import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
+    as _page_header_options;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
     as _dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
@@ -22,6 +26,10 @@ import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
     as _site_switcher;
 import 'package:dart_dev_site/src/components/layout/theme_switcher.dart'
     as _theme_switcher;
+import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters.dart'
+    as _changelog_filters;
+import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters_sidebar.dart'
+    as _changelog_filters_sidebar;
 import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
     as _glossary_search_section;
 import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
@@ -51,6 +59,11 @@ ServerOptions get defaultServerOptions => ServerOptions(
       'archive_table',
       params: __archive_tableArchiveTable,
     ),
+    _collapse_button.CollapseButton:
+        ClientTarget<_collapse_button.CollapseButton>(
+          'collapse_button',
+          params: __collapse_buttonCollapseButton,
+        ),
     _cookie_notice.CookieNotice: ClientTarget<_cookie_notice.CookieNotice>(
       'cookie_notice',
     ),
@@ -66,6 +79,11 @@ ServerOptions get defaultServerOptions => ServerOptions(
         ClientTarget<_on_this_page_button.OnThisPageButton>(
           'on_this_page_button',
         ),
+    _page_header_options.PageHeaderOptions:
+        ClientTarget<_page_header_options.PageHeaderOptions>(
+          'page_header_options',
+          params: __page_header_optionsPageHeaderOptions,
+        ),
     _dartpad_injector.DartPadInjector:
         ClientTarget<_dartpad_injector.DartPadInjector>(
           'dartpad_injector',
@@ -80,6 +98,12 @@ ServerOptions get defaultServerOptions => ServerOptions(
     _theme_switcher.ThemeSwitcher: ClientTarget<_theme_switcher.ThemeSwitcher>(
       'theme_switcher',
     ),
+    _changelog_filters.ChangelogFilters:
+        ClientTarget<_changelog_filters.ChangelogFilters>('changelog_filters'),
+    _changelog_filters_sidebar.ChangelogFiltersSidebar:
+        ClientTarget<_changelog_filters_sidebar.ChangelogFiltersSidebar>(
+          'changelog_filters_sidebar',
+        ),
     _glossary_search_section.GlossarySearchSection:
         ClientTarget<_glossary_search_section.GlossarySearchSection>(
           'glossary_search_section',
@@ -95,15 +119,21 @@ ServerOptions get defaultServerOptions => ServerOptions(
 Map<String, Object?> __archive_tableArchiveTable(
   _archive_table.ArchiveTable c,
 ) => {'channel': c.channel};
+Map<String, Object?> __collapse_buttonCollapseButton(
+  _collapse_button.CollapseButton c,
+) => {'classes': c.classes, 'title': c.title};
 Map<String, Object?> __copy_buttonCopyButton(_copy_button.CopyButton c) => {
-  'toCopy': c.toCopy,
   'buttonText': c.buttonText,
+  'toCopy': c.toCopy,
   'classes': c.classes,
   'title': c.title,
 };
 Map<String, Object?> __feedbackFeedbackComponent(
   _feedback.FeedbackComponent c,
 ) => {'issueUrl': c.issueUrl};
+Map<String, Object?> __page_header_optionsPageHeaderOptions(
+  _page_header_options.PageHeaderOptions c,
+) => {'title': c.title, 'sourceUrl': c.sourceUrl, 'issueUrl': c.issueUrl};
 Map<String, Object?> __dartpad_injectorDartPadInjector(
   _dartpad_injector.DartPadInjector c,
 ) => {
