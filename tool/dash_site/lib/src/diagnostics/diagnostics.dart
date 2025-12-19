@@ -75,6 +75,7 @@ Map<String, String> get _linkDefinitions => {
       'https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html',
   'mixin application': '/resources/glossary#mixin-application',
   'obviously typed': '/resources/glossary#obviously-typed',
+  'obviously-typed': '/resources/glossary#obviously-typed',
   'override inference': '/resources/glossary#override-inference',
   'package-logging': 'https://pub.dev/packages/logging',
   'part file': '/resources/glossary#part-file',
@@ -92,7 +93,6 @@ Future<void> generate() async {
   );
 
   generator._writeDiagnosticDataFile();
-  generator._writeIndividualFiles();
 }
 
 /// An information holder containing information about a diagnostic that was
@@ -148,32 +148,13 @@ class DiagnosticInformation {
     return buffer.toString();
   }
 
-  /// Write the content of this diagnostic's documentation to the given [sink].
-  void writeOn(StringSink sink) {
-    for (final previousName in previousNames) {
-      sink.writeln();
-      final previousInLowerCase = previousName.toLowerCase();
-      sink.writeln('_(Previously known as `$previousInLowerCase`)_');
-    }
-    if (isFromLint) {
-      sink.writeln();
-      sink.writeln('''
-<div class="tags">
-  <a class="tag-label"
-      href="/tools/linter-rules/$name"
-      title="Learn about the lint rule that enables this diagnostic."
-      aria-label="Learn about the lint rule that enables this diagnostic."
-      target="_blank">
-    <span class="material-symbols" aria-hidden="true">toggle_on</span>
-    <span>Lint rule</span>
-  </a>
-</div>''');
-    }
-    sink.writeln();
-    sink.write(formattedProblemMessages);
+  /// Returns the Markdown formatted documentation of this diagnostic.
+  String get formattedDocumentation {
+    final buffer = StringBuffer();
+
     final diagnosticDocumentation = documentation!;
 
-    sink.writeln(
+    buffer.writeln(
       diagnosticDocumentation.replaceAll('#### ', '## ').trimRight(),
     );
 
@@ -183,12 +164,14 @@ class DiagnosticInformation {
       final linkReference = '[$reference]';
       if (diagnosticDocumentation.contains(linkReference)) {
         if (noLinkReference) {
-          sink.writeln();
+          buffer.writeln();
           noLinkReference = false;
         }
-        sink.writeln('$linkReference: $url');
+        buffer.writeln('$linkReference: $url');
       }
     }
+
+    return buffer.toString();
   }
 
   /// Return a version of the [text] in which characters that have special
@@ -234,6 +217,7 @@ final class DocumentationGenerator {
       final condensedInfo = {
         'id': formattedDiagnostic,
         'description': info.formattedProblemMessages.trimRight(),
+        if (info.hasDocumentation) 'documentation': info.formattedDocumentation,
         'hasDocumentation': info.hasDocumentation,
         'fromLint': info.isFromLint,
         'previousNames': info.previousNames
@@ -303,67 +287,5 @@ final class DocumentationGenerator {
       for (final documentationPart in parsedComment)
         documentationPart.formatForDocumentation(),
     ].join('\n');
-  }
-
-  void _writeIndividualFiles() {
-    final diagnosticDirectory = path.join(
-      repositoryRoot,
-      'src',
-      'content',
-      'tools',
-      'diagnostics',
-    );
-
-    for (final diagnostic in infoByName.values) {
-      if (!diagnostic.hasDocumentation) continue;
-      final diagnosticName = diagnostic.name.toLowerCase().trim();
-      final diagnosticPath = path.join(
-        diagnosticDirectory,
-        '$diagnosticName.md',
-      );
-
-      final buffer = StringBuffer('''
----
-title: $diagnosticName
-description: >-
-  Details about the $diagnosticName
-  diagnostic produced by the Dart analyzer.
-underscore_breaker_titles: true
-bodyClass: highlight-diagnostics
----
-''');
-
-      diagnostic.writeOn(buffer);
-
-      File(diagnosticPath).writeAsStringSync(buffer.toString());
-
-      // Create hidden pages for removed diagnostics that
-      // redirect to the page for the current name.
-      for (final previousName in diagnostic.previousNames) {
-        final previousDiagnosticName = previousName.toLowerCase().trim();
-        final previousDiagnosticPath = path.join(
-          diagnosticDirectory,
-          '$previousDiagnosticName.md',
-        );
-
-        final buffer = StringBuffer('''
----
-title: $diagnosticName
-description: >-
-  Details about the $diagnosticName
-  diagnostic produced by the Dart analyzer.
-underscore_breaker_titles: true
-canonical: https://dart.dev/tools/diagnostics/$diagnosticName
-redirectTo: /tools/diagnostics/$diagnosticName
-sitemap: false
-noindex: true
-bodyClass: highlight-diagnostics
----
-''');
-        diagnostic.writeOn(buffer);
-
-        File(previousDiagnosticPath).writeAsStringSync(buffer.toString());
-      }
-    }
   }
 }

@@ -3,6 +3,10 @@
 
   > .dropdown-content {
     right: -0.5rem;
+    background-color: var(--site-chrome-bgColor);
+    color: var(--site-chrome-fgColor);
+    border: var(--site-chrome-borderColor) 1px solid;
+    box-shadow: none;
 
     .material-symbols {
       font-size: 20px;

@@ -48,7 +48,7 @@ use the [`wasm-ready`][] filter on [pub.dev][].
 
 A package is "wasm-ready" if it doesn't import non-Wasm compliant libraries
 like `dart:html`, `dart:js`, etc. You can find the full list of unallowed
-libraries on the [JS interop page](/interop/js-interop/#next-generation-js-interop).
+libraries on the [JS interop page](/interop/js-interop/past-js-interop#next-generation-js-interop).
 
 [`wasm-ready`]: {{site.pub-pkg}}?q=is%3Awasm-ready
 [pub.dev]: {{site.pub}}
