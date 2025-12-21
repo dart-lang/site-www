@@ -1,0 +1,94 @@
+- question: >-
+    You're writing a function that parses user input.
+    If the input is invalid,
+    what's the best way to signal this to the calling code?
+  options:
+    - text: >-
+        Throw an exception describing what went wrong.
+      correct: true
+      explanation: >-
+        Throwing an exception immediately stops the invalid code path,
+        provides a clear error message,
+        and forces the caller to handle the error explicitly.
+    - text: >-
+        Return `null` and let the caller check for it.
+      correct: false
+      explanation: >-
+        Returning `null` forces callers to remember to check for it.
+        If they forget, bugs can occur silently.
+        There's a more explicit way to signal problems.
+    - text: >-
+        Print an error message and continue execution.
+      correct: false
+      explanation: >-
+        Printing doesn't stop invalid data from being used.
+        The function would still need to return something,
+        potentially causing bugs downstream.
+    - text: >-
+        Set a global error flag that other code can check.
+      correct: false
+      explanation: >-
+        Global state is error-prone and easy to forget.
+        This approach doesn't force callers to handle the error.
+- question: >-
+    What's the difference between `throw` and `rethrow` in a catch block?
+  options:
+    - text: >-
+        `throw` always creates a new stack trace;
+        `rethrow` preserves the original stack trace.
+      correct: true
+      explanation: >-
+        Use `rethrow` when you want to log or partially handle
+        an exception but still let it propagate
+        with its original stack trace intact for debugging.
+    - text: >-
+        `throw` creates a new exception; `rethrow` just prints the current one.
+      correct: false
+      explanation: >-
+        Neither one prints anything.
+        `rethrow` propagates the exception, it doesn't just display it.
+    - text: >-
+        `throw` works inside catch blocks, while
+        `rethrow` only works outside them.
+      correct: false
+      explanation: >-
+        It's closer to the opposite. `rethrow` only works inside catch blocks.
+        `throw` works anywhere.
+    - text: >-
+        `throw` is for errors; `rethrow` is for exceptions.
+      correct: false
+      explanation: >-
+        Both work with any throwable object.
+        The difference isn't about the type of object being thrown.
+- question: >-
+    Consider this code:
+    `try { riskyOperation(); } on FormatException catch (e) { print(e); }`.
+    What happens if `riskyOperation()` throws an `HttpException`?
+  options:
+    - text: >-
+        The `HttpException` propagates up, uncaught by this try/catch.
+      correct: true
+      explanation: >-
+        The `on` clause filters by exception type.
+        Since `HttpException` isn't a `FormatException`,
+        it bypasses this catch block entirely.
+    - text: >-
+        The `HttpException` is caught and printed.
+      correct: false
+      explanation: >-
+        The `on FormatException` clause only
+        catches `FormatException` and its subtypes.
+        `HttpException` is a different type.
+    - text: >-
+        The program crashes because you can't use `on` with `catch`.
+      correct: false
+      explanation: >-
+        `on Type catch (e)` is valid syntax that
+        filters which exceptions to catch.
+        The issue is the type mismatch, not the syntax.
+    - text: >-
+        The exception is silently ignored and execution continues.
+      correct: false
+      explanation: >-
+        Exceptions are never silently ignored in Dart.
+        If a catch block doesn't match, the exception doesn't just disappear.

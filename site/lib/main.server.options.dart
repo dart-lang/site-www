@@ -16,6 +16,8 @@ import 'package:dart_dev_site/src/components/common/client/feedback.dart'
     as _feedback;
 import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
     as _on_this_page_button;
+import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
+    as _page_header_options;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
     as _dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
@@ -75,6 +77,11 @@ ServerOptions get defaultServerOptions => ServerOptions(
         ClientTarget<_on_this_page_button.OnThisPageButton>(
           'on_this_page_button',
         ),
+    _page_header_options.PageHeaderOptions:
+        ClientTarget<_page_header_options.PageHeaderOptions>(
+          'page_header_options',
+          params: __page_header_optionsPageHeaderOptions,
+        ),
     _dartpad_injector.DartPadInjector:
         ClientTarget<_dartpad_injector.DartPadInjector>(
           'dartpad_injector',
@@ -120,6 +127,9 @@ Map<String, Object?> __copy_buttonCopyButton(_copy_button.CopyButton c) => {
 Map<String, Object?> __feedbackFeedbackComponent(
   _feedback.FeedbackComponent c,
 ) => {'issueUrl': c.issueUrl};
+Map<String, Object?> __page_header_optionsPageHeaderOptions(
+  _page_header_options.PageHeaderOptions c,
+) => {'title': c.title, 'sourceUrl': c.sourceUrl, 'issueUrl': c.issueUrl};
 Map<String, Object?> __dartpad_injectorDartPadInjector(
   _dartpad_injector.DartPadInjector c,
 ) => {

@@ -18,6 +18,8 @@ import 'package:dart_dev_site/src/components/common/client/feedback.dart'
     deferred as _feedback;
 import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
     deferred as _on_this_page_button;
+import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
+    deferred as _page_header_options;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
     deferred as _dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
@@ -83,6 +85,14 @@ ClientOptions get defaultClientOptions => ClientOptions(
     'on_this_page_button': ClientLoader(
       (p) => _on_this_page_button.OnThisPageButton(),
       loader: _on_this_page_button.loadLibrary,
+    ),
+    'page_header_options': ClientLoader(
+      (p) => _page_header_options.PageHeaderOptions(
+        title: p['title'] as String,
+        sourceUrl: p['sourceUrl'] as String?,
+        issueUrl: p['issueUrl'] as String?,
+      ),
+      loader: _page_header_options.loadLibrary,
     ),
     'dartpad_injector': ClientLoader(
       (p) => _dartpad_injector.DartPadInjector(
