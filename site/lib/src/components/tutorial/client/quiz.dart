@@ -144,7 +144,7 @@ class _InteractiveQuizState extends State<InteractiveQuiz> {
               currentQuestionIndex--;
             });
           },
-          content: 'Previous',
+          content: 'Previous question',
         ),
         Button(
           key: nextButtonKey,
