@@ -602,29 +602,7 @@ In this lesson, you learned about:
 
 ## Quiz
 
-**Question 1:** In the `Option` class, what is the purpose of the `@override`
-  notation?
-
-* A) To create a new method that doesn't exist in the parent class.
-* B) To indicate that a method is optional.
-* C) To provide a specific implementation for a method or property defined in a
-  parent class.
-* D) To make a property private.
-
-**Question 2:** What is the difference between an `abstract` class and a regular
-class in Dart?
-
-* A) An `abstract` class cannot have any methods.
-* B) An `abstract` class cannot be instantiated directly.
-* C) An `abstract` class can only have private methods.
-* D) There is no difference between an `abstract` class and a regular class.
-
-**Question 3:** In the guide, what was the `enum OptionType` used for?
-
-* A) To define the different types of commands.
-* B) To represent a fixed set of option types: `flag` and `option`.
-* C) To store the default values for options.
-* D) To control the color of the command-line output.
+<Quiz title="Check your understanding" id="object-oriented" />
 
 ## Next lesson
 

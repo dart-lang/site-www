@@ -314,26 +314,7 @@ In this chapter, you learned how to:
 
 ## Quiz
 
-**Question 1:** Which file is used to manage dependencies in a Dart project?
-
-*   A) `main.dart`
-*   B) `pubspec.yaml`
-*   C) `README.md`
-*   D) `LICENSE`
-
-**Question 2:** Which Dart library is used to make HTTP requests?
-
-*   A) `dart:io`
-*   B) `dart:convert`
-*   C) `package:http`
-*   D) `package:async`
-
-**Question 3:** What is the purpose of the `export` statement in a Dart library?
-
-*   A) To hide declarations from other libraries.
-*   B) To make declarations available to other libraries.
-*   C) To specify the version of the Dart SDK required by the library.
-*   D) To define the entry point of the library.
+<Quiz title="Check your understanding" id="http" />
 
 ## Next lesson
 

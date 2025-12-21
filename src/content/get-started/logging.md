@@ -594,27 +594,7 @@ In this lesson, you learned:
 
 ## Quiz
 
-**Question 1:** What is the purpose of the `logging` package in Dart?
-
-*  A) To handle HTTP requests.
-*  B) To manage dependencies in your project.
-*  C) To provide a way to record events and errors in your application.
-*  D) To create a command-line interface.
-
-**Question 2:** What does the `hierarchicalLoggingEnabled = true;` line do?
-
-*  A) It enables logging to a hierarchical file system.
-*  B) It enables a logger to capture events from child loggers.
-*  C) It disables logging to the console.
-*  D) It enables logging of HTTP requests.
-
-**Question 3:** What are some benefits of logging?
-
-*  A) Helps prevent run-time crashes
-*  B) Helps with debugging, monitoring, and understanding the behavior of your
-      application.
-*  C) Improves performance
-*  D) Reduces the number of dependencies.
+<Quiz title="Check your understanding" id="logging" />
 
 ## Next lesson
 

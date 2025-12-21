@@ -243,20 +243,7 @@ In this lesson, you learned:
 
 ## Quiz
 
-**Question 1:** What is the purpose of the `StringBuffer` class in Dart?
-
-* A) To store a fixed-size string.
-* B) To efficiently build strings by appending multiple parts.
-* C) To encrypt strings.
-* D) To compare two strings for equality.
-
-**Question 2:** What does the `onOutput` argument in the `CommandRunner` class
-allow you to do?
-
-* A) Specify the input for a command.
-* B) Customize the output handling of a command.
-* C) Set the error message for a command.
-* D) Define the name of a command.
+<Quiz title="Check your understanding" id="command-runner-polish" />
 
 ## Next lesson
 

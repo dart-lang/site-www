@@ -394,24 +394,7 @@ function for better structure.
 
 ## Quiz
 
-**Question 1:** What keyword is used to mark a function as asynchronous in Dart?
-* A) `sync`
-* B) `async`
-* C) `future`
-* D) `thread`
-
-**Question 2:** What does the `await` keyword do?
-* A) Cancels the execution of an asynchronous function.
-* B) Declares a new `Future` object.
-* C) Pauses the execution of the current `async` function until a `Future`
-    completes.
-* D) Creates a new thread.
-
-**Question 3:** Which package is used in this guide to make HTTP requests?
-* A) `dart:io`
-* B) `dart:html`
-* C) `package:http`
-* D) `package:async`
+<Quiz title="Check your understanding" id="async" />
 
 ## Next lesson
 

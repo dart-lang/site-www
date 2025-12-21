@@ -413,17 +413,7 @@ In this chapter, you learned:
 
 ## Quiz
 
-**Question 1:** Which keyword is used to declare a constant variable in Dart whose value is known at compile time?
-* A) `var`
-* B) `final`
-* C) `const`
-* D) `static`
-
-**Question 2:** What is the primary purpose of `stdin.readLineSync()` in a CLI application?
-* A) To print output to the console.
-* B) To read a single line of text input from the user.
-* C) To execute a command.
-* D) To check if a file exists.
+<Quiz title="Check your understanding" id="add-commands" />
 
 ## Next lesson
 

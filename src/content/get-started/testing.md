@@ -403,21 +403,7 @@ In this chapter, you learned about:
 
 ## Quiz
 
-**Question 1:** What is the purpose of the `group` function in the
-`package:test` library?
-
-*   A) To run all tests in a project.
-*   B) To group related tests together.
-*   C) To define a new test case.
-*   D) To assert that a value meets certain criteria.
-
-**Question 2:** What is the purpose of the `expect` function in the
-`package:test` library?
-
-*   A) To define a new test case.
-*   B) To group related tests together.
-*   C) To assert that a value meets certain criteria.
-*   D) To run all tests in a project.
+<Quiz title="Check your understanding" id="testing" />
 
 ## Next lesson
 

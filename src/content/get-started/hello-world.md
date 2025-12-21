@@ -216,12 +216,7 @@ You'll see these quizzes throughout this tutorial.
 Feel free to skip them if you want.
 :::
 
-Which command is used to create a new Dart project from a template?
-
-* A) `dart new`
-* B) `dart build`
-* C) `dart create`
-* D) `dart init`
+<Quiz title="Check your understanding" id="hello-world" />
 
 ## Next lesson
 

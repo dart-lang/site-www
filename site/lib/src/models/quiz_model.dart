@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart';
 
 class Question {
@@ -11,17 +12,17 @@ class Question {
   final List<AnswerOption> options;
 
   @decoder
-  factory Question.fromMap(Map<Object?, Object?> json) {
+  factory Question.fromMap(Map<String, Object?> json) {
     return Question(
       json['question'] as String,
       (json['options'] as List<Object?>)
-          .map((e) => AnswerOption.fromJson(e as Map<Object?, Object?>))
-          .toList(),
+          .map((e) => AnswerOption.fromJson(e as Map<String, Object?>))
+          .shuffled(),
     );
   }
 
   @encoder
-  Map<Object?, Object?> toJson() => {
+  Map<String, Object?> toJson() => {
     'question': question,
     'options': options.map((e) => e.toJson()).toList(),
   };
@@ -30,12 +31,17 @@ class Question {
 class AnswerOption {
   const AnswerOption(this.text, this.correct, this.explanation);
 
+  /// The option text formatted as raw HTML.
   final String text;
+
+  /// Whether this answer is correct.
   final bool correct;
+
+  /// The correct/incorrect explanation formatted as raw HTML.
   final String explanation;
 
   @decoder
-  factory AnswerOption.fromJson(Map<Object?, Object?> json) {
+  factory AnswerOption.fromJson(Map<String, Object?> json) {
     return AnswerOption(
       json['text'] as String,
       json['correct'] as bool? ?? false,
@@ -44,7 +50,7 @@ class AnswerOption {
   }
 
   @encoder
-  Map<Object?, Object?> toJson() => {
+  Map<String, Object?> toJson() => {
     'text': text,
     'correct': correct,
     'explanation': explanation,

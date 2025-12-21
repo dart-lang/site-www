@@ -454,27 +454,7 @@ In this lesson, you learned about:
 
 ## Quiz
 
-**Question 1:** What is JSON?
-
-* A) A programming language.
-* B) A data serialization format.
-* C) A type of database.
-* D) A web server.
-
-**Question 2:** Which Dart library is used to work with JSON data?
-
-* A) `dart:html`
-* B) `dart:json`
-* C) `dart:convert`
-* D) `dart:io`
-
-**Question 3:** What is the purpose of the `fromJson` method in the `Summary`
-class?
-
-* A) To convert a `Summary` object into a JSON object.
-* B) To create a new `Summary` object from a JSON object.
-* C) To print the contents of a `Summary` object.
-* D) To validate the data in a `Summary` object.
+<Quiz title="Check your understanding" id="data-and-json" />
 
 ## Next lesson
 

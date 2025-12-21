@@ -288,20 +288,7 @@ In this chapter, you learned about:
 
 ## Quiz
 
-**Question 1:** What is the purpose of the `export` statement in a Dart library?
-
-* A) To hide declarations from other libraries.
-* B) To make declarations available to other libraries.
-* C) To specify the version of the Dart SDK required by the library.
-* D) To define the entry point of the library.
-
-**Question 2:** How do you add a local package as a dependency in
-`pubspec.yaml`?
-
-* A) By specifying the package name and version.
-* B) By specifying the package name and the path to the package.
-* C) By using the `git` option and specifying the URL of the Git repository.
-* D) By using the `hosted` option and specifying the URL of the package server.
+<Quiz title="Check your understanding" id="packages-libs" />
 
 ## Next lesson
 

@@ -374,26 +374,7 @@ In this lesson, you learned about:
 
 ## Quiz
 
-**Question 1:** What is the purpose of the `try/catch` block in Dart?
-
-* A) To define a new class.
-* B) To handle exceptions that may occur during the execution of code.
-* C) To declare a variable.
-* D) To define a function.
-
-**Question 2:** What is the purpose of the `throw` keyword in Dart?
-
-* A) To declare a new class.
-* B) To handle exceptions that may occur during the execution of code.
-* C) To signal an error or exception.
-* D) To define a function.
-
-**Question 3:** What is the purpose of the `rethrow` keyword in Dart?
-
-* A) To create a new exception.
-* B) To catch an exception.
-* C) To propagate an exception up the call stack.
-* D) To ignore an exception.
+<Quiz title="Check your understanding" id="error-handling" />
 
 ## Next lesson
 
