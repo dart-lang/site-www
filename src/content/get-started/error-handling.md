@@ -371,7 +371,7 @@ subtitle: Here's a summary of what you built and learned in this lesson.
 completed: true
 items:
   - title: Distinguished errors from exceptions
-    icon: warning
+    icon: error
     details: >-
       You learned that subtypes of `Error` indicate
       programming bugs and shouldn't be caught,
