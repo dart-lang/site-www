@@ -23,14 +23,16 @@ information and add an `onOutput` argument for more flexible output handling.
 This finalizes the `CommandRunner` package and prepares it for use in more
 complex scenarios.
 
-:::secondary What you'll learn
-
-* Use `StringBuffer` for efficient string concatenation.
-* Enhance the `HelpCommand` to provide more detailed usage information.
-* Add an `onOutput` argument to the `CommandRunner` for customizable output
-* handling.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Learn how to iteratively build strings
+    icon: text_snippet
+  - title: Enhance help usage information
+    icon: help
+  - title: Make your command runner more flexible
+    icon: terminal
+</SummaryCard>
 
 ## Prerequisites
 
@@ -234,12 +236,33 @@ Test the improved `HelpCommand` and the `onOutput` callback.
 
 ## Review
 
-In this lesson, you learned:
-
-* How to use `StringBuffer` for efficient string manipulation.
-* How to improve the `HelpCommand` to display detailed usage information.
-* How to add an `onOutput` argument to the `CommandRunner` for customizable
-  output handling.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Used StringBuffer for efficient string building
+    icon: text_snippet
+    details: >-
+      You replaced string concatenation with a `StringBuffer`,
+      which can be more efficient for building strings in loops.
+      Methods like `writeln()` and `write()` append content,
+      while `toString()` produces the final string.
+  - title: Enhanced HelpCommand with verbose output
+    icon: help
+    details: >-
+      You improved the help system to show detailed usage information
+      including options, default values, and descriptions.
+      The `--verbose` flag and `--command` option give users
+      control over the level of detail.
+  - title: Added an onOutput callback argument for flexible handling
+    icon: terminal
+    details: >-
+      You added `onOutput` to `CommandRunner`,
+      allowing library consumers to customize how output is displayed.
+      This pattern makes your package more flexible and adaptable,
+      enabling delayed printing, logging, or output redirection.
+</SummaryCard>
 
 ## Quiz
 

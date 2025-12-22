@@ -26,15 +26,18 @@ making it easier to work with in your application.
 You'll use the [`dart:convert` library][],
 the `jsonDecode` function, and pattern matching.
 
-:::secondary What you'll learn
-
-*  Deserialize JSON data into Dart objects.
-*  Use the `dart:convert` library to work with JSON.
-*  Use the `jsonDecode` function to parse JSON strings.
-*  Use pattern matching to extract data from JSON objects.
-*  Create Dart classes to represent JSON data structures.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Create data model classes for JSON data
+    icon: data_object
+  - title: Use dart:convert to work with JSON data
+    icon: convert_to_text
+  - title: Use pattern matching to extract data from JSON objects
+    icon: bento
+  - title: Set up a multi-package workspace
+    icon: workspaces
+</SummaryCard>
 
 [JSON (JavaScript Object Notation)]:  https://en.wikipedia.org/wiki/JSON
 [`dart:convert` library]: {{site.dart-api}}/dart-convert
@@ -444,13 +447,40 @@ which will enable you to test how data is deserialized from the Wikipedia API.
 
 ## Review
 
-In this lesson, you learned about:
-
-*   Deserializing JSON data into Dart objects.
-*   Using the `dart:convert` library to work with JSON.
-*   Using the `jsonDecode` function to parse JSON strings.
-*   Using pattern matching to extract data from JSON objects.
-*   Creating Dart classes to represent JSON data structures.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Created data model classes for JSON
+    icon: data_object
+    details: >-
+      You built `Summary`, `TitlesSet`, `Article`, and `SearchResults` classes
+      to represent Wikipedia API responses.
+      These typed models provide compile-time safety and
+      IDE support when working with API data.
+  - title: Used dart:convert to work with JSON data
+    icon: convert_to_text
+    details: >-
+      You imported the `dart:convert` library and used `jsonDecode()` to
+      parse JSON strings into Dart objects, including `Map` and `List`,
+      that you can then work with programmatically.
+  - title: Used pattern matching to extract data from JSON objects
+    icon: bento
+    details: >-
+      You implemented `fromJson` factory methods using Dart's pattern matching
+      with `switch` expressions and `if case` statement.
+      This structure allowed you to validate the JSON structure and
+      extract values from the JSON objects in single, readable expressions.
+  - title: Set up a pub workspace
+    icon: workspaces
+    details: >-
+      To simplify dependency management for your multi-package project,
+      you created a new pub workspace.
+      To do so, you created a root `pubspec.yaml` file with
+      a `workspace:` section listing your packages, then
+      added `resolution: workspace` to each sub-package.
+</SummaryCard>
 
 ## Quiz
 

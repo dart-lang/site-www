@@ -21,15 +21,16 @@ In this chapter, you'll ensure your setup is complete, and
 then work through creating your first Dart program.
 This chapter starts simple but moves fast!
 
-:::secondary What you'll learn
-
-* Confirm your Dart SDK installation.
-* Use `dart create` to generate a new command-line interface (CLI) project.
-* Run your Dart program from the terminal using `dart run`.
-* Identify the `main` function as the program's entry point.
-* Make your first code change and see the updated output.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Verify your Dart SDK installation
+    icon: check_circle
+  - title: Create a CLI project with dart create
+    icon: terminal
+  - title: Run and modify your first program
+    icon: play_arrow
+</SummaryCard>
 
 ## Prerequisites
 
@@ -198,14 +199,31 @@ Next, modify the code that generated `Hello world: 42!`.
 
 ## Review
 
-In this lesson, you:
-
-* Verified your Dart SDK installation.
-* Used `dart create` to generate a new CLI project.
-* Ran your Dart program from the terminal using `dart run`.
-* Identified the `main` function as the
-  program's entry point within `bin/cli.dart`.
-* Made your first code change and saw the updated output.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Verified your Dart SDK installation
+    icon: check_circle
+    details: >-
+      You ran `dart --version` to confirm Dart is properly installed
+      and accessible from your terminal.
+  - title: Created your first CLI project
+    icon: terminal
+    details: >-
+      You used `dart create` to generate a new command-line application.
+      This command scaffolds a basic project with
+      core files like `pubspec.yaml`.
+      It also generates a `bin/cli.dart` file with a `main` function
+      that acts as the entry point for your program.
+  - title: Ran and modified your program
+    icon: play_arrow
+    details: >-
+      You executed your app with `dart run` and saw the "Hello world" output.
+      Then you modified the `main` function to print a custom greeting,
+      experiencing Dart's edit-run cycle firsthand.
+</SummaryCard>
 
 ## Quiz
 

@@ -21,15 +21,16 @@ applications to perform multiple tasks concurrently. You'll learn how to fetch
 data from the internet using the `http` package, to retrieve an article summary
 from Wikipedia.
 
-:::secondary What you'll learn
-
-* Understand asynchronous programming, `Future`s, `async`, and `await`.
-* Learn about the `http` package and import statements.
-* Implement the `getWikipediaArticle` function step-by-step, including `http.Client`.
-* Understand how the main logic function becomes `async` to handle `await`.
-* Run the application to see HTTP data fetching in action.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Write asynchronous code with futures and await
+    icon: sync
+  - title: Install and use external packages
+    icon: package_2
+  - title: Fetch live data from the Wikipedia API
+    icon: cloud_download
+</SummaryCard>
 
 ## Prerequisites
 
@@ -380,17 +381,31 @@ application, test it out.
 
 ## Review
 
-In this chapter, you learned about:
-
-* **Asynchronous programming:** Understanding `Future`s, `async`, and `await`
-for operations that take time, like network requests.
-* **External packages:** How to add dependencies using `pubspec.yaml` and import
-them into your Dart files.
-* **HTTP requests:** Making network calls using the `package:http` library.
-* **API interaction:** Fetching data from a public API (Wikipedia) and handling
-its response.
-* **Code organization:** Refactoring logic into a dedicated `searchWikipedia`
-function for better structure.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Mastered futures, async, and await
+    icon: sync
+    details: >-
+      You learned that `Future` represents a value that will be available later.
+      The `async` keyword marks functions as asynchronous, and
+      `await` pauses execution until a `Future` completes.
+  - title: Added the http package as a dependency
+    icon: package_2
+    details: >-
+      You modified `pubspec.yaml` to add the `http` package,
+      ran `dart pub get` to fetch it, and imported it with an alias (`as http`).
+      You can follow these steps to add any external package from pub.dev.
+  - title: Fetched live data from Wikipedia
+    icon: cloud_download
+    details: >-
+      You built `getWikipediaArticle()` to
+      make HTTP GET requests using `http.Client`, constructed URIs,
+      checked status codes, and returned the response body.
+      Your CLI now fetches real data from the web!
+</SummaryCard>
 
 ## Quiz
 

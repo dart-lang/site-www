@@ -23,15 +23,18 @@ in Dart. You'll learn how to create classes and define relationships between
 them, including **inheritance** and **abstract classes**. You'll also build a
 foundation for creating well-structured CLI applications.
 
-:::secondary What you'll learn
-
-* Understand `abstract` classes and their use cases.
-* Implement inheritance using the `extends` keyword and override methods.
-* Use `FutureOr` for functions that can return a value synchronously or
-  asynchronously.
-* Define and use `enum` types to represent a fixed set of values.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Design and understand abstract classes
+    icon: schema
+  - title: Extend parent classes and override methods
+    icon: account_tree
+  - title: Use enums to represent fixed sets of values
+    icon: format_list_bulleted
+  - title: Continue building out your CLI framework
+    icon: terminal
+</SummaryCard>
 
 ## Prerequisites
 
@@ -593,12 +596,37 @@ Test the new `CommandRunner` and `HelpCommand`.
 
 ## Review
 
-In this lesson, you learned about:
-
-* Defining **`abstract`** classes to create a type hierarchy.
-* Implementing inheritance using the **`extends`** keyword.
-* Defining and using **`enum`** types to represent a fixed set of values.
-* Building a basic command-line argument parsing framework using OOP principles.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Designed and understood abstract classes
+    icon: schema
+    details: >-
+      You created an abstract `Argument` class as a blueprint that
+      can't be instantiated directly.
+      Abstract classes define a contract that subclasses must fulfill,
+      ensuring consistency across your class hierarchy.
+  - title: Extended parent classes and overrode methods
+    icon: account_tree
+    details: >-
+      You used `extends` to create `Option` and `Command` subclasses of
+      the abstract `Argument` class.
+      Within those subclasses, you used `@override` to
+      provide concrete implementations of abstract members.
+  - title: Used enums to represent fixed sets of values
+    icon: format_list_bulleted
+    details: >-
+      You defined an `OptionType` enum to represent a fixed set of values.
+      In Dart, enums are type-safe and help prevent invalid values from
+      being used where only specific options are valid.
+  - title: Continued building out your CLI framework
+    icon: terminal
+    details: >-
+      You applied object-oriented programming principles to implement a
+      robust and extensible framework for parsing command-line arguments.
+</SummaryCard>
 
 ## Quiz
 

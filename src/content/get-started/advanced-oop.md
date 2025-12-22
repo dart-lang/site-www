@@ -23,13 +23,16 @@ experience of your command-line application. You'll learn how to use enhanced
 enums to manage console colors and extensions to add new functionality to
 existing types, making your application more interactive and visually appealing.
 
-:::secondary What you'll learn
-
-*   Use enhanced enums to define and manage console colors.
-*   Apply extensions to add new methods to the `String` class.
-*   Improve output formatting and color for a better user experience.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Use enhanced enums with fields and methods
+    icon: format_list_bulleted
+  - title: Extend existing types with extensions
+    icon: extension
+  - title: Add colorful console output
+    icon: palette
+</SummaryCard>
 
 ## Prerequisites
 
@@ -321,11 +324,34 @@ that makes console output colorful.
 
 ## Review
 
-In this lesson, you learned about:
-
-*   Using enhanced enums to define and manage console colors.
-*   Applying extensions to add new methods to the `String` class.
-*   Improving output formatting and color for a better user experience.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Used enhanced enums with fields and methods
+    icon: format_list_bulleted
+    details: >-
+      You created `ConsoleColor` as an enhanced enum with
+      `r`, `g`, `b` fields and methods like `applyForeground()`.
+      Enhanced enums can have constructors, properties, and methods,
+      combining the benefits of enums and normal classes.
+  - title: Extended existing types with extensions
+    icon: extension
+    details: >-
+      You created a `TextRenderUtils` extension on the `String` class to
+      add getters like `errorText` and `titleText` to all strings.
+      Extensions let you add functionality to any type without
+      needing to modify or subclass it, which is particularly useful in
+      cases like strings which can't be subclassed.
+  - title: Added colorful console output
+    icon: palette
+    details: >-
+      To improve the readability and user experience of your CLI,
+      you used ANSI escape codes to style terminal output with colors.
+      In particular, you used `ConsoleColor` and updated your CLI to
+      display errors in red, titles in blue, and instructions in yellow.
+</SummaryCard>
 
 ## Quiz
 

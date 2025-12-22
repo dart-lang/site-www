@@ -22,14 +22,16 @@ revisit HTTP to build a robust, production-ready API client within the
 `wikipedia` package. You'll learn how to handle query parameters, map JSON
 responses to your data models, and export these functions for use in your CLI.
 
-:::secondary What you'll learn
-
-*   Construct complex `Uri` objects with query parameters.
-*   Apply HTTP requests within a structured package architecture.
-*   Map JSON responses to the data models created in Chapter 9.
-*   Export functions and models from a Dart library.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Construct complex URIs with query parameters
+    icon: link
+  - title: Create a production-ready HTTP API client
+    icon: cloud_download
+  - title: Export functions and types for reuse
+    icon: export_notes
+</SummaryCard>
 
 ## Prerequisites
 
@@ -304,13 +306,31 @@ functionality of the `wikipedia` package.
 
 ## Review
 
-In this chapter, you learned how to:
-
-*   Add a package dependency to `pubspec.yaml`.
-*   Construct `Uri` objects for API requests.
-*   Make HTTP GET requests using the `http` package.
-*   Handle API responses and decode JSON data.
-*   Export functions and models from a Dart library.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Constructed complex URIs with query parameters
+    icon: link
+    details: >-
+      You used `Uri.https()` with a query parameter map to construct API URLs.
+      This approach properly encodes special characters and
+      handles complex query parameter combinations.
+  - title: Created a production-ready API client
+    icon: cloud_download
+    details: >-
+      You implemented a variety of functions that properly manage
+      the HTTP client lifecycle with `try` and `finally`,
+      and maps the raw JSON responses to typed Dart objects.
+  - title: Exported functions and types for reuse
+    icon: export_notes
+    details: >-
+      You added export statements in `wikipedia.dart` to
+      expose both the API functions and data model types.
+      This creates a public library that your
+      `cli` package can import and use directly.
+</SummaryCard>
 
 ## Quiz
 

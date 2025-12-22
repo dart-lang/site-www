@@ -1,6 +1,5 @@
 ---
 title: Logging
-short-title: Logging
 description: >-
   Learn how to add logging to your Dart application to help with debugging and
   monitoring.
@@ -21,14 +20,16 @@ In this chapter, you'll learn how to add logging to your Dart application.
 Logging is a critical tool for debugging, monitoring, and understanding the
 behavior of your application in different environments.
 
-:::secondary What you'll learn
-
-*  Add the `logging` package to your project.
-*  Understand different log levels and how to use them.
-*  Create a `Logger` instance and configure it to write to a file.
-*  Log errors and warnings to a file for later inspection.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Add and learn about the logging package
+    icon: note_stack
+  - title: Configure log levels and file output
+    icon: tune
+  - title: Integrate logging into your CLI commands
+    icon: terminal
+</SummaryCard>
 
 ## Prerequisites
 
@@ -585,12 +586,32 @@ file to see the results.
 
 ## Review
 
-In this lesson, you learned:
-
-*  How to add the `logging` package to your project.
-*  How to create a `Logger` instance and configure it to write to a file.
-*  How to log errors and warnings to a file for later inspection.
-*  The importance of logging for debugging and monitoring your application.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Added and learned about the logging package
+    icon: note_stack
+    details: >-
+      You added `logging` to your dependencies and imported it into your CLI.
+      The package provides `Logger`, `Level`, and `LogRecord` classes for
+      structured logging with configurable severity levels.
+  - title: Configured log levels and file output
+    icon: tune
+    details: >-
+      You created `initFileLogger()` to set up hierarchical logging
+      to timestamped files in the `logs/` directory.
+      This enables you to review application behavior after the fact.
+  - title: Integrated logging into your CLI commands
+    icon: terminal
+    details: >-
+      You passed the logger to commands using dependency injection,
+      then used `logger.warning()`, `logger.severe()`, and `logger.info()` to
+      record errors of different levels alongside relevant context.
+      This setup helps you more easily debug and filter issues
+      in both development and production.
+</SummaryCard>
 
 ## Quiz
 
