@@ -66,7 +66,9 @@ ClientOptions get defaultClientOptions => ClientOptions(
       loader: _collapse_button.loadLibrary,
     ),
     'cookie_notice': ClientLoader(
-      (p) => _cookie_notice.CookieNotice(),
+      (p) => _cookie_notice.CookieNotice(
+        alwaysDarkMode: p['alwaysDarkMode'] as bool,
+      ),
       loader: _cookie_notice.loadLibrary,
     ),
     'copy_button': ClientLoader(
