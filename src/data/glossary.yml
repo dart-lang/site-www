@@ -1429,7 +1429,7 @@
     **Scope** defines where identifiers—such as variables, parameters, functions,
     and classes are accessible within a program.
 
-    Dart uses **lexical scoping**, meaning that the scope of a name is
+    Dart uses **lexical (static) scoping**, meaning that the scope of a name is
     determined by the structure of the source code, not by how the program
     executes at runtime. See
     [lexical scope](/language/functions#lexical-scope) for more details.
@@ -1450,7 +1450,6 @@
       type: "doc"
   labels:
     - "language"
-    - "fundamentals"
   alternate:
     - "Lexical scope"
 
