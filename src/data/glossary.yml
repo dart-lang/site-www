@@ -793,7 +793,7 @@
     - text: "C interop using dart:ffi"
       link: "/interop/c-interop/"
       type: "doc"
-    - text: "Native assets"
+    - text: "Hooks"
       link: "/tools/hooks"
       type: "doc"
   labels:
