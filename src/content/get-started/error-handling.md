@@ -96,7 +96,7 @@ represent errors related to command-line arguments.
 Next, update the `CommandRunner` class to
 handle potential errors gracefully.
 This involves adding an error-handling callback,
-using `try/catch`to manage exceptions, and
+using `try/catch` to manage exceptions, and
 throwing your new `ArgumentException` when the user provides bad input.
 
 1.  Add the necessary imports.
@@ -172,7 +172,7 @@ throwing your new `ArgumentException` when the user provides bad input.
 
     Finally, replace the existing `parse` method in `command_runner_base.dart`
     with the following updated version. This new version is much more robust.
-    It's filled with checks that will -throw your custom `ArgumentException`
+    It's filled with checks that will throw your custom `ArgumentException`
     whenever it detects invalid user input.
 
     ```dart

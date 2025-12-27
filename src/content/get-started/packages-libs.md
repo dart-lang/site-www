@@ -224,7 +224,7 @@ fixes the program exit behavior discussed at the end of Chapter 3.
     ```
 
     **Now, replace the entire contents of `cli/bin/cli.dart`
-    (except for the `http` import) with the following updated version:*- 
+    (except for the `http` import) with the following updated version:
 
     ```dart
     import 'dart:io';

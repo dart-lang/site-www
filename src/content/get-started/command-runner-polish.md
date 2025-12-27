@@ -149,7 +149,7 @@ allow for flexible output handling.
 1.  Open the `command_runner/lib/src/command_runner_base.dart` file.
 
 1.  Add the `onOutput` argument to the `CommandRunner` constructor, and
-    add the scorresponding `onOutput` member to the class.
+    add the corresponding `onOutput` member to the class.
 
     ```dart
     class CommandRunner {

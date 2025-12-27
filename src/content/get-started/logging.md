@@ -36,7 +36,7 @@ Before you begin this chapter, ensure you:
 
 - Have completed Chapter 11 and have a
   working Dart development environment with the `dartpedia` project.
-— Understand the basics of debugging and why it's
+- Understand the basics of debugging and why it's
   important to track errors and events in your application.
 
 ## Tasks

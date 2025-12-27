@@ -235,7 +235,7 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     ```
 
     The `group` function takes a description of the group and a
-    callback -function that contains the tests.
+    callback function that contains the tests.
 
 1.  Create a test for the `Summary` model.
     Add the following `test` function inside the `group` function:
