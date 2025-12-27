@@ -1437,9 +1437,10 @@
     Common kinds of scope in Dart include:
 
     - **Class scope**: Members accessible within a class.
-    - **Function scope**: Parameters and local variables inside a function.
     - **Block scope**: Variables declared inside blocks such as `if`, `for`,
       or `while`.
+    - **Function scope**: Parameters and local variables inside a function.
+    - **Library scope**: Top-level declarations visible within a library.
 
   related_links:
     - text: "Variables"
