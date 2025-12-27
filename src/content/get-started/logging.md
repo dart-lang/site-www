@@ -82,18 +82,18 @@ creating a new file for the logger and setting up the necessary imports.
     ```dart title="cli/lib/src/logger.dart"
     import 'dart:io';
     import 'package:logging/logging.dart';
-  
+
     Logger initFileLogger(String name) {
       // Enables logging from child loggers.
       hierarchicalLoggingEnabled = true;
-  
+
       // Create a logger instance with the provided name.
       final logger = Logger(name);
       final now = DateTime.now();
-  
+
       // The rest of the function will be added below.
       // ...
-  
+
       return logger;
     }
     ```
@@ -101,30 +101,30 @@ creating a new file for the logger and setting up the necessary imports.
 1.  Add the code to find the project's root directory,
     create a `logs` directory if one doesn't exist, and
     create a unique log file.
-   
+
     ```dart
     Logger initFileLogger(String name) {
       hierarchicalLoggingEnabled = true;
       final logger = Logger(name);
       final now = DateTime.now();
-  
+
       // Get the path to the project directory from the current script.
       final segments = Platform.script.path.split('/');
       final projectDir = segments.sublist(0, segments.length - 2).join('/');
-  
+
       // Create a 'logs' directory if it doesn't exist.
       final dir = Directory('$projectDir/logs');
       if (!dir.existsSync()) dir.createSync();
-  
+
       // Create a log file with a unique name based on
       // the current date and logger name.
       final logFile = File(
         '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
       );
-  
+
       // The rest of the function will be added below.
       // ...
-  
+
       return logger;
     }
     ```
@@ -137,7 +137,7 @@ creating a new file for the logger and setting up the necessary imports.
       hierarchicalLoggingEnabled = true;
       final logger = Logger(name);
       final now = DateTime.now();
-    
+
       final segments = Platform.script.path.split('/');
       final projectDir = segments.sublist(0, segments.length - 2).join('/');
       final dir = Directory('$projectDir/logs');
@@ -145,19 +145,19 @@ creating a new file for the logger and setting up the necessary imports.
       final logFile = File(
         '${dir.path}/${now.year}_${now.month}_${now.day}_$name.txt',
       );
-    
+
       // Set the logger level to ALL, so it logs all messages regardless of severity.
       // Level.ALL is useful for development and debugging, but you'll likely want to
       // use a more restrictive level like Level.INFO or Level.WARNING in production.
       logger.level = Level.ALL;
-    
+
       // Listen for log records and write each one to the log file.
       logger.onRecord.listen((record) {
         final msg =
             '[${record.time} - ${record.loggerName}] ${record.level.name}: ${record.message}';
         logFile.writeAsStringSync('$msg \n', mode: FileMode.append);
       });
-    
+
       return logger;
     }
     ```
@@ -206,7 +206,7 @@ create a logger instance and log messages to a file.
     ```dart title="cli/bin/cli.dart"
     import 'package:cli/cli.dart';
     import 'package:command_runner/command_runner.dart';
-    
+
     void main(List<String> arguments) async {
       final errorLogger = initFileLogger('errors');
       final app =
@@ -229,7 +229,7 @@ create a logger instance and log messages to a file.
             ..addCommand(HelpCommand())
             ..addCommand(SearchCommand(logger: errorLogger))
             ..addCommand(GetArticleCommand(logger: errorLogger));
-    
+
       app.run(arguments);
     }
     ```
@@ -289,7 +289,7 @@ add the necessary code, including the logging and error handling.
       }
     }
     ```
-  
+
 1.  Now, add the core logic to the `run` method.
     This code checks for a valid argument,
     calls the `search()` function from the `wikipedia` package,

@@ -244,12 +244,12 @@ fixes the program exit behavior discussed at the end of Chapter 3.
       Notice that `main` is now declared `async`.
       This is essential because `runner.run()` returns a `Future`, and
       `main` must `await` its completion to ensure the program waits
-       for all asynchronous tasks to finish before exiting. 
+       for all asynchronous tasks to finish before exiting.
     - `var runner = CommandRunner();` creates an instance of the
       `CommandRunner` class from your new `command_runner` package.
     - `await runner.run(arguments);` calls the `run` method on the
       `CommandRunner` instance, passing in the command-line arguments.
-    
+
     Removed functions:
 
     - The `printUsage`, `searchWikipedia`, an` getWikipediaArticle` functions

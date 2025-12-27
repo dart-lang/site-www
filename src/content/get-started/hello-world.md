@@ -172,7 +172,7 @@ Next, modify the code that generated `Hello world: 42!`.
 
 1.  Simplify the output for now.
     Delete the first line (you don't need this import statement), and
-    change the `print` statement to display a simple greeting: 
+    change the `print` statement to display a simple greeting:
 
     ```dart title="bin/cli.dart" highlightLines=1,4
     import 'package:cli/cli.dart' as cli; // Delete this entire line

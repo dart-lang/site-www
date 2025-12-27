@@ -106,13 +106,13 @@ establishing an inheritance relationship.
     abstract class Argument {
       String get name;
       String? get help;
-    
+
       // In the case of flags, the default value is a bool.
       // In other options and commands, the default value is a String.
       // NB: flags are just Option objects that don't take arguments
       Object? get defaultValue;
       String? get valueHelp;
-    
+
       String get usage;
     }
     ```
@@ -149,29 +149,29 @@ establishing an inheritance relationship.
         this.defaultValue,
         this.valueHelp,
       });
-    
+
       @override
       final String name;
-    
+
       final OptionType type;
-    
+
       @override
       final String? help;
-    
+
       final String? abbr;
-    
+
       @override
       final Object? defaultValue;
-    
+
       @override
       final String? valueHelp;
-    
+
       @override
       String get usage {
         if (abbr != null) {
           return '-$abbr,--$name: $help';
         }
-    
+
         return '--$name: $help';
       }
     }
@@ -213,19 +213,19 @@ establishing an inheritance relationship.
     abstract class Command extends Argument {
       @override
       String get name;
-    
+
       String get description;
-    
+
       bool get requiresArgument => false;
-    
+
       late CommandRunner runner;
-    
+
       @override
       String? help;
-    
+
       @override
       String? defaultValue;
-    
+
       @override
       String? valueHelp;
     }
@@ -267,7 +267,7 @@ establishing an inheritance relationship.
       // Add the following lines to the bottom of your Command class:
 
       final List<Option> _options = [];
-    
+
       UnmodifiableSetView<Option> get options =>
           UnmodifiableSetView(_options.toSet());
     }
@@ -282,7 +282,7 @@ establishing an inheritance relationship.
 
       UnmodifiableSetView<Option> get options =>
           UnmodifiableSetView(_options.toSet());
-    
+
 
       // Add the following lines to the bottom of your Command class:
 
@@ -299,7 +299,7 @@ establishing an inheritance relationship.
           ),
         );
       }
-    
+
       // An option is an [Option] that takes a value.
       void addOption(
         String name, {
@@ -366,7 +366,7 @@ establishing an inheritance relationship.
 
       // Add the following lines to the bottom of your Command class:
       FutureOr<Object?> run(ArgResults args);
-    
+
       @override
       String get usage {
         return '$name:  $description';
@@ -394,7 +394,7 @@ establishing an inheritance relationship.
       Command? command;
       String? commandArg;
       Map<Option, Object?> options = {};
-    
+
       // Returns true if the flag exists.
       bool flag(String name) {
         // Only check flags, because we're sure that flags are booleans.
@@ -407,16 +407,16 @@ establishing an inheritance relationship.
         }
         return false;
       }
-    
+
       bool hasOption(String name) {
         return options.keys.any((option) => option.name == name);
       }
-    
+
       ({Option option, Object? input}) getOption(String name) {
         var mapEntry = options.entries.firstWhere(
           (entry) => entry.key.name == name || entry.key.abbr == name,
         );
-    
+
         return (option: mapEntry.key, input: mapEntry.value);
       }
     }
@@ -443,13 +443,13 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
     import 'dart:collection';
     import 'dart:io';
     import 'arguments.dart';
-    
+
     class CommandRunner {
       final Map<String, Command> _commands = <String, Command>{};
-    
+
       UnmodifiableSetView<Command> get commands =>
           UnmodifiableSetView<Command>(<Command>{..._commands.values});
-    
+
       Future<void> run(List<String> input) async {
         final ArgResults results = parse(input);
         if (results.command != null) {
@@ -457,19 +457,19 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
           print(output.toString());
         }
       }
-    
+
       void addCommand(Command command) {
         // TODO: handle error (Commands can't have names that conflict)
         _commands[command.name] = command;
         command.runner = this;
       }
-    
+
       ArgResults parse(List<String> input) {
         var results = ArgResults();
         results.command = _commands[input.first];
         return results;
       }
-    
+
       // Returns usage for the executable only.
       // Should be overridden if you aren't using [HelpCommand]
       // or another means of printing usage.
@@ -494,11 +494,11 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
     ///
     /// More dartdocs go here.
     library;
-    
+
     export 'src/arguments.dart';
     export 'src/command_runner_base.dart';
     export 'src/help_command.dart';
-    
+
     // TODO: Export any libraries intended for clients of this package.
     ```
 
@@ -546,20 +546,20 @@ prints usage information.
       }
       @override
       String get name => 'help';
-    
+
       @override
       String get description => 'Prints usage information to the command line.';
-    
+
       @override
       String? get help => 'Prints this usage information';
-    
+
       @override
       FutureOr<Object?> run(ArgResults args) async {
         var usage = runner.usage;
         for (var command in runner.commands) {
           usage += '\n ${command.usage}';
         }
-    
+
         return usage;
       }
     }
@@ -580,9 +580,9 @@ Modify `cli/bin/cli.dart` to use the new `CommandRunner` and `HelpCommand`.
 
     ```dart title="cli/bin/cli.dart"
     import 'package:command_runner/command_runner.dart';
-    
+
     const version = '0.0.1';
-    
+
     void main(List<String> arguments) {
       var commandRunner = CommandRunner()..addCommand(HelpCommand());
       commandRunner.run(arguments);

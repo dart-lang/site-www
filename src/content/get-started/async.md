@@ -76,8 +76,8 @@ dependency to your project.
     You should see output similar to this:
 
     ```bash
-    Resolving dependencies...  
-    Downloading packages...  
+    Resolving dependencies...
+    Downloading packages...
     + http 1.4.0
       lints 5.1.1 (6.0.0 available)
     Changed 1 dependency!
@@ -218,7 +218,7 @@ This function will house the core logic for handling the `wikipedia` command.
 
     // ... (your existing printUsage() function)
     ```
-    
+
     Highlights from the preceding code:
 
     - `void searchWikipedia(List<String>? arguments) async`:
@@ -307,10 +307,10 @@ the `wikipedia` command is used.
     currently handles the `search` command.
     Change the command name from `search` to `wikipedia` and
     update the function call.
-    
+
     In the sample code, `main` does _not_ `await` the call to `searchWikipedia`,
     meaning `main` itself does not need to be marked `async`.
-    
+
     Your `main` function should now look like this:
 
     ```dart
@@ -349,11 +349,11 @@ Now that you've implemented the `http` request and
 integrated it into your application, test it out.
 
 1.  Open your terminal and run the following command:
-    
+
     ```bash
     dart run bin/cli.dart wikipedia "Dart_(programming_language)"
     ```
-    
+
 1.  Check to make sure that the application fetched
     the summary of the "Dart" article from the Wikipedia API and
     print the raw JSON response to the console.

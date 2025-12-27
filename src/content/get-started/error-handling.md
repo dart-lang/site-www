@@ -64,11 +64,11 @@ represent errors related to command-line arguments.
       ///
       /// This will be empty if the error was on the root parser.
       final String? command;
-    
+
       /// The name of the argument that was being parsed when the error was
       /// discovered.
       final String? argumentName;
-    
+
       ArgumentException(
         super.message, [
         this.command,
@@ -137,7 +137,7 @@ throwing your new `ArgumentException` when the user provides bad input.
     // ... rest of the class
     }
     ```
-    
+
     This change introduces a nullable `onError` property.
     The `FutureOr<void> Function(Object)?` type means it's a function that
     takes an `Object` and returns a `Future` or nothing, and it might be null.
@@ -276,7 +276,7 @@ throwing your new `ArgumentException` when the user provides bad input.
         return input;
     }
     ```
-    
+
     This updated parse method now actively defends against bad input.
     Specifically, the new throw statements handle several common error cases:
 
@@ -347,12 +347,12 @@ Make `ArgumentException` available to the `command_runner` library.
     ///
     /// More dartdocs go here.
     library;
-    
+
     export 'src/arguments.dart';
     export 'src/command_runner_base.dart';
     export 'src/help_command.dart';
     export 'src/exceptions.dart'; // Add this line
-    
+
     // TODO: Export any libraries intended for clients of this package.
     ```
 

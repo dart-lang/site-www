@@ -77,7 +77,7 @@ then explore the Dart syntax for it.
     ```
     The `$version` syntax is called string interpolation.
     It lets you embed the value of the variable directly into
-    a string by prefixing the variable name with a `$` sign. 
+    a string by prefixing the variable name with a `$` sign.
 
 1.  **Test the `version` command:**
     Run your application with the version argument:
@@ -171,7 +171,7 @@ As you build this functionality, you'll work with
     ```dart
     void main(List<String> arguments) {
       if (arguments.isEmpty || arguments.first == 'help') {
-        printUsage(); 
+        printUsage();
       } else if (arguments.first == 'version') {
         print('Dartpedia CLI version $version');
       } else if (arguments.first == 'search') {
@@ -197,7 +197,7 @@ As you build this functionality, you'll work with
     ```
 
 1.  **Define the `searchWikipedia` function:**
-    The `search` command will eventually run the core logic of your application 
+    The `search` command will eventually run the core logic of your application
     by calling a function called `searchWikipedia`.
     For now, have `searchWikipedia` print the
     arguments passed into it with the `search` command.
@@ -216,8 +216,8 @@ As you build this functionality, you'll work with
     Highlights from the preceding code:
 
     -  `List<String>? arguments` means that the `arguments` list itself
-       can be `null`. 
-       
+       can be `null`.
+
        :::note
        Dart enforces [sound null safety][], which means you
        have to explicitly state when a variable can be null.
@@ -232,7 +232,7 @@ As you build this functionality, you'll work with
        Along with the analyzer, this helps prevent
        one of the most common runtime crashes in programming:
        null-pointer errors.
-       ::: 
+       :::
 
 1.  **Call the `searchWikipedia` function from the `main` function:**
     Now, modify the `search` command block in `main` to
@@ -245,7 +245,7 @@ As you build this functionality, you'll work with
     ```dart
     void main(List<String> arguments) {
       if (arguments.isEmpty || arguments.first == 'help') {
-        printUsage(); 
+        printUsage();
       } else if (arguments.first == 'version') {
         print('Dartpedia CLI version $version');
       } else if (arguments.first == 'search') {
@@ -261,7 +261,7 @@ As you build this functionality, you'll work with
     Highlights from the preceding code:
 
     - `final` variables can only be set once and are used when
-      you never intend to change the variable again in the code. 
+      you never intend to change the variable again in the code.
     - `arguments.sublist(1)` creates a new list containing all elements of
       the `arguments` list _after_ the first element (which was `search`).
     - `arguments.length > 1 ? ... : null;` is a conditional (ternary) operator.
@@ -308,7 +308,7 @@ As you build this functionality, you'll work with
 
     `dart:io` is a core library in the Dart SDK, and
     provides APIs to deal with files, directories, sockets, and
-    HTTP clients and servers, and more. 
+    HTTP clients and servers, and more.
 
     Now, update your `searchWikipedia` function.
 
@@ -320,7 +320,7 @@ As you build this functionality, you'll work with
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
         // Await input and provide a default empty string if the input is null.
-        articleTitle = stdin.readLineSync() ?? ''; 
+        articleTitle = stdin.readLineSync() ?? '';
       } else {
         // Otherwise, join the arguments into a single string.
         articleTitle = arguments.join(' ');
@@ -334,12 +334,12 @@ As you build this functionality, you'll work with
 
     - It declares a `final String articleTitle` variable.
       This allows static analysis to detect that
-      `articleTitle` will be a `String` and won't be null. 
+      `articleTitle` will be a `String` and won't be null.
     - An `if/else` statement then checks if command-line arguments for
       the search were provided.
     - If arguments are missing, it prompts the user,
       reads input using `stdin.readLineSync()`, and
-      safely handles cases where no input is given. 
+      safely handles cases where no input is given.
     - If arguments _are_ present, it uses `arguments.join(' ')` to
       combine them into a single search string.
 
@@ -367,7 +367,7 @@ As you build this functionality, you'll work with
     actually building everything right now.
     You'll only see these messages if you
     include a search query when you run the program.
-    
+
     For example: `dart bin/cli.dart search Dart Programming`.
 
     ```dart
@@ -378,7 +378,7 @@ As you build this functionality, you'll work with
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
         // Await input and provide a default empty string if the input is null.
-        articleTitle = stdin.readLineSync() ?? ''; 
+        articleTitle = stdin.readLineSync() ?? '';
       } else {
         // Otherwise, join the arguments into the CLI into a single string
         articleTitle = arguments.join(' ');
