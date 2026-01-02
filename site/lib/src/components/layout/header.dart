@@ -91,7 +91,7 @@ class DashHeader extends StatelessComponent {
           ]),
           li([
             if (activeEntry == ActiveNavEntry.learn)
-              const a(href: '/get-started', classes: 'nav-link active', [
+              const a(href: '/learn', classes: 'nav-link active', [
                 .text('Learn'),
               ])
             else

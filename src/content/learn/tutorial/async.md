@@ -1,17 +1,17 @@
 ---
-title: Intro to async and HTTP
-shortTitle: Async and HTTP
+title: Write asynchronous code
+shortTitle: Async code
 description: >-
   Learn about asynchronous programming in Dart and how to make HTTP requests.
 sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/add-commands
-  title: Make your program interactive
+  url: /learn/tutorial/interactivity
+  title: Add interactivity to your app
 nextpage:
-  url: /get-started/packages-libs
-  title: Packages and libraries
+  url: /learn/tutorial/packages-libs
+  title: Organize code with packages and libraries
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}

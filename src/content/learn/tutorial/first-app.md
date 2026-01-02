@@ -1,5 +1,5 @@
 ---
-title: Your first Dart program
+title: Build your first app
 shortTitle: Your first app
 description: >-
   Create, run, and make your first change to a Dart command-line program.
@@ -7,10 +7,10 @@ sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started
+  url: /learn/tutorial
   title: Get started
 nextpage:
-  url: /get-started/add-commands
+  url: /learn/tutorial/interactivity
   title: Add interactivity to your app
 ---
 
@@ -216,7 +216,7 @@ You'll see these quizzes throughout this tutorial.
 Feel free to skip them if you want.
 :::
 
-<Quiz title="Check your understanding" id="hello-world" />
+<Quiz title="Check your understanding" id="first-app" />
 
 ## Next lesson
 

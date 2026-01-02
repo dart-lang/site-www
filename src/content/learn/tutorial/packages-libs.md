@@ -1,5 +1,5 @@
 ---
-title: Organizing Dart code with packages and libraries
+title: Organize Dart code with packages and libraries
 shortTitle: Packages and libraries
 description: >-
   Learn how to organize your Dart code into reusable libraries and packages.
@@ -7,11 +7,11 @@ sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/async
-  title: Introduction to async and HTTP
+  url: /learn/tutorial/async
+  title: Write asynchronous code
 nextpage:
-  url: /get-started/object-oriented
-  title: Object-oriented Dart
+  url: /learn/tutorial/object-oriented
+  title: Define relationships with classes
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}

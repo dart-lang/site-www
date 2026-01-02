@@ -1,18 +1,19 @@
 ---
-title: Make your CLI program interactive
-shortTitle: Add commands
+title: Add interactivity to your app
+shortTitle: Interactivity
 description: >-
-  Add simple commands to your cli application. Learn the fundamentals of Dart
-  syntax including control flow, collections, variables, functions, and more.
+  Add simple commands to your cli application.
+  Learn the fundamentals of Dart syntax including
+  control flow, collections, variables, functions, and more.
 sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/hello-world
+  url: /learn/tutorial/first-app
   title: Build your first app
 nextpage:
-  url: /get-started/async
-  title: Intro to async and HTTP
+  url: /learn/tutorial/async
+  title: Write asynchronous code
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
@@ -413,7 +414,7 @@ In this chapter, you learned:
 
 ## Quiz
 
-<Quiz title="Check your understanding" id="add-commands" />
+<Quiz title="Check your understanding" id="interactivity" />
 
 ## Next lesson
 
