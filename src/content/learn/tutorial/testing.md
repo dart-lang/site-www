@@ -1,5 +1,5 @@
 ---
-title: Testing
+title: Test your app & code
 shortTitle: Testing
 description: >-
   Learn how to write tests for your Dart code using the `package:test` library.
@@ -7,11 +7,11 @@ sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/data-json
-  title: Data and JSON
+  url: /learn/tutorial/data-json
+  title: Work with JSON data
 nextpage:
-  url: /get-started/http
-  title: Http
+  url: /learn/tutorial/http
+  title: Fetch data from the internet
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
