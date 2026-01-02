@@ -8,7 +8,7 @@ sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /learn/tutorial/http
+  url: /learn/tutorial/fetch-data
   title: Fetch data from the internet
 nextpage:
   # TODO: Create a conclusion page or section with next steps.
