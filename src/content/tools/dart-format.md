@@ -66,6 +66,31 @@ so they can trigger another action in response to the exit code.
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
+## Format on save
+
+Most editors with Dart support can automatically format your code when you save a file.
+
+### VS Code
+
+To enable format on save in [VS Code](/tools/vs-code),
+add the following to your `settings.json` file:
+
+```json
+{
+  "[dart]": {
+    "editor.formatOnSave": true
+  }
+}
+```
+
+### IntelliJ and Android Studio
+
+To enable format on save in [IntelliJ or Android Studio](/tools/jetbrains-plugin):
+
+1. Open the [IDE settings](/tools/jetbrains-plugin#settings).
+2. Go to **Languages & Frameworks > Dart**.
+3. Check the **Format code on save** checkbox.
+
 ## What changes?
 
 `dart format` makes the following formatting changes:
