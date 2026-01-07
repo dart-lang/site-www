@@ -1,3 +1,14 @@
+- term: AOT
+  short_description: Ahead-Of-Time compilation for optimized Dart production binaries.
+  long_description: |
+    `dart compile exe` / Flutter release builds AOT-compile to native machine code at 
+    build time. Smaller/faster than JIT, no warmup, tree-shaken.
+  labels: [compilation, deployment]
+  related_links:
+    - text: AOT explained
+      link: https://dart.dev/overview#compilers
+      type: doc
+      
 - term: "Application package"
   short_description: |-
     A Dart package that contains a runnable application.
@@ -683,6 +694,25 @@
     - "pub"
     - "packages"
 
+- term: FFI
+  short_description: Foreign Function Interface to call C/C++ code from Dart.
+  long_description: |
+    `dart:ffi` binds Dart to native libraries (.so/.dll) without JS bridge. Use for 
+    performance-critical code like image processing or crypto.
+    
+    ```dart
+    import 'dart:ffi';
+    import 'package:ffi/ffi.dart';
+    
+    final lib = DynamicLibrary.open('libexample.so');
+    final func = lib.lookupFunction<Int32 Function(), int Function()>('example');
+    ```
+  labels: [native, performance]
+  related_links:
+    - text: FFI guide
+      link: https://dart.dev/interop/ffi
+      type: doc
+
 - term: "Function"
   short_description: |-
     An umbrella term to refer to top-level functions, local functions,
@@ -796,6 +826,67 @@
     - "patterns"
   alternate:
     - "irrefutable context"
+
+- term: Isolate
+  short_description: Dart's unit of concurrency with isolated memory heap.
+  long_description: |
+    Unlike threads, isolates have **no shared memory**—communicate via message passing 
+    (`SendPort`). Spawn via `Isolate.spawn()` for parallelism without locks.
+    
+    Use cases: Compute-heavy tasks (ML inference), I/O parallelism.
+    
+    ```dart
+    import 'dart:isolate';
+    
+    void heavyWork(SendPort sendPort) { sendPort.send('done'); }
+    
+    await Isolate.spawn(heavyWork, receivePort.sendPort);
+    ```
+  labels: [concurrency, performance]
+  related_links:
+    - text: Concurrency overview
+      link: https://dart.dev/language/concurrency
+      type: doc
+
+- term: JIT
+  short_description: Just-In-Time compiler for fast Dart development iteration.
+  long_description: |
+    `dart run` / Flutter hot reload uses JIT: compiles to native at runtime, enables 
+    fast feedback. Switches to AOT (ahead-of-time) for production builds.
+  labels: [compilation, devtools]
+  related_links:
+    - text: Dart compilers
+      link: https://dart.dev/overview#compilers
+      type: doc
+
+- term: JS interop
+  short_description: Dart's typed interface to call JavaScript APIs from Dart code.
+  long_description: |
+    Modern Dart web apps use `package:web` for browser APIs (DOM, Fetch, Canvas) and 
+    `@external` with `JSFunction` for dynamic JS calls. Generated from Web IDL for type 
+    safety. Replaces older `@JS()` + `package:js`.
+    
+    ```dart
+    import 'package:web/web.dart' as web;
+    
+    void main() {
+      web.console.log('Hello from Dart!');
+      final response = await web.fetch('https://api.example.com');
+    }
+    ```
+    
+    Benefits: Null safety, generics, async/await over browser APIs.
+  labels: [web, browser]
+  related_links:
+    - text: JS interop overview
+      link: https://dart.dev/interop/js-interop
+      type: doc
+    - text: package:web on pub.dev
+      link: https://pub.dev/packages/web
+      type: doc
+    - text: Migrate from package:js
+      link: https://dart.dev/interop/js-interop/migrate-from-js
+      type: tutorial
 
 - term: "Mixin application"
   short_description: |-
