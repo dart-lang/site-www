@@ -52,13 +52,15 @@ final class HeaderWrapperExtension implements PageExtension {
             'aria-label': "Link to '$headerText' section",
             // 👇 COPY TO CLIPBOARD LOGIC
             'onclick': '''
-              event.preventDefault();
-              const url =
-                window.location.origin +
-                window.location.pathname +
-                '#$headerId';
-              navigator.clipboard?.writeText(url);
-              history.replaceState(null, '', '#$headerId');
+            event.preventDefault();
+            const url = window.location.origin + window.location.pathname + '#$headerId';
+            navigator.clipboard.writeText(url);
+            history.replaceState(null, '', '#$headerId');
+
+            // Replace '#' with 'Copied!' temporarily
+            const originalText = this.textContent;
+            this.textContent = 'Copied!';
+            setTimeout(() => { this.textContent = originalText; }, 1200);
             ''',
           },
           const [TextNode('#')],
