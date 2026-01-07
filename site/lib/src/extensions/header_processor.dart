@@ -50,6 +50,16 @@ final class HeaderWrapperExtension implements PageExtension {
             'class': 'heading-link',
             'href': '#$headerId',
             'aria-label': "Link to '$headerText' section",
+            // 👇 COPY TO CLIPBOARD LOGIC
+            'onclick': '''
+              event.preventDefault();
+              const url =
+                window.location.origin +
+                window.location.pathname +
+                '#$headerId';
+              navigator.clipboard?.writeText(url);
+              history.replaceState(null, '', '#$headerId');
+            ''',
           },
           const [TextNode('#')],
         ),
