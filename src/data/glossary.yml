@@ -869,7 +869,7 @@
     ```dart
     import 'package:web/web.dart' as web;
     
-    void main() {
+    void main() async{
       web.console.log('Hello from Dart!');
       final response = await web.fetch('https://api.example.com');
     }
