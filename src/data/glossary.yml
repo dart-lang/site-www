@@ -50,6 +50,40 @@
   alternate:
     - "Quick assist"
 
+- term: Asynchronous
+  short_description: Programming paradigm in Dart where operations like I/O or network calls complete later without blocking the event loop, using Futures, Streams, async/await, and isolates.
+  long_description: |
+    Dart uses a single-threaded event loop model for asynchronous programming, allowing non-blocking execution of time-consuming tasks such as file I/O, HTTP requests, or timers. 
+    
+    Key components include:
+    
+    - **Futures**: Represent a value available later, created by APIs like `http.get()`.
+    - **async/await**: Syntactic sugar for readable async code (`Future<String> getData() async { return await http.get(url); }`).
+    - **Streams**: Handle sequences of async events (e.g., WebSocket data).
+    - **Isolates**: Enable true parallelism via independent execution contexts with message passing.
+    
+    Unlike synchronous code that blocks until completion, async operations queue via microtasks/events, keeping UIs responsive.
+  labels:
+    - async
+    - futures
+    - event-loop
+    - concurrency
+  related_links:
+    - text: "Asynchronous programming: futures, async, await"
+      link: "https://dart.dev/libraries/async/async-await"
+      type: doc
+    - text: "Asynchronous programming overview"
+      link: "https://dart.dev/language/async"
+      type: doc
+    - text: "dart:async library"
+      link: "https://api.dart.dev/stable/dart-async/dart-async-library.html"
+      type: api
+    - text: "Future class reference"
+      link: "https://api.dart.dev/stable/dart-async/Future-class.html"
+      type: api
+  alternate: ["Async", "Non-blocking"]
+
+
 - term: "Bottom type"
   short_description: |-
     A type that has no values and is a subtype of all other types.
