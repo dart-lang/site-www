@@ -1,6 +1,6 @@
 ---
-title: Command_runner polish
-shortTitle: Command_runner polish
+title: Polish your CLI app
+shortTitle: CLI polish
 description: >-
   Improve the HelpCommand to provide more detailed information and
   add an onOutput argument for flexible output handling.
@@ -8,11 +8,11 @@ sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/advanced-oop
-  title: Advanced OOP features
+  url: /learn/tutorial/advanced-oop
+  title: Extend your app with enums and extensions
 nextpage:
-  url: /get-started/data-and-json
-  title: Data and JSON
+  url: /learn/tutorial/data-and-json
+  title: Work with JSON data
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
@@ -248,7 +248,7 @@ In this lesson, you learned:
 
 ## Quiz
 
-<Quiz title="Check your understanding" id="command-runner-polish" />
+<Quiz title="Check your understanding" id="cli-polish" />
 
 ## Next lesson
 

@@ -1,18 +1,18 @@
 ---
-title: Http
-shortTitle: Http
+title: Fetch data from the internet
+shortTitle: HTTP requests
 description: >-
-  Refactor your application to use a
-  robust, production-ready API client for the Wikipedia CLI.
+  Refactor your application to use a robust, production-ready
+  API client for the Wikipedia CLI.
 sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/testing
-  title: Testing
+  url: /learn/tutorial/testing
+  title: Test your app & code
 nextpage:
-  url: /get-started/logging
-  title: Logging
+  url: /learn/tutorial/logging
+  title: Add logging for debugging and monitoring
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
@@ -323,7 +323,7 @@ In this chapter, you learned how to:
 
 ## Quiz
 
-<Quiz title="Check your understanding" id="http" />
+<Quiz title="Check your understanding" id="fetch-data" />
 
 ## Next lesson
 

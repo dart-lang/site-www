@@ -1,5 +1,5 @@
 ---
-title: Error handling
+title: Handle errors gracefully
 shortTitle: Error handling
 description: >-
   Improve app robustness by handling errors.
@@ -8,11 +8,11 @@ sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/object-oriented
-  title: Object-oriented Dart programming
+  url: /learn/tutorial/object-oriented
+  title: Define relationships with classes
 nextpage:
-  url: /get-started/advanced-oop
-  title: Advanced OOP-adjacent features
+  url: /learn/tutorial/advanced-oop
+  title: Extend your app with enums and extensions
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}

@@ -1,6 +1,6 @@
 ---
-title: Advanced OOP-adjacent features
-shortTitle: Advanced OOP Features
+title: Extend your app with enums and extensions
+shortTitle: Advanced OOP features
 description: >-
   Enhance your Dart skills by exploring
   advanced features like enhanced enums and extensions.
@@ -10,11 +10,11 @@ sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/error-handling
-  title: Error handling
+  url: /learn/tutorial/error-handling
+  title: Handle errors gracefully
 nextpage:
-  url: /get-started/command-runner-polish
-  title: command_runner polish
+  url: /learn/tutorial/cli-polish
+  title: Polish your CLI app
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}

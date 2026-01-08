@@ -169,6 +169,7 @@
       { "source": "/faq", "destination": "/resources/faq", "type": 301 },
       { "source": "/ffi", "destination": "/interop/c-interop", "type": 301 },
       { "source": "/flutter", "destination": "https://flutter.dev", "type": 301 },
+      { "source": "/get-started{,/**}", "destination": "/learn/tutorial", "type": 301 },
       { "source": "/glossary", "destination": "/resources/glossary", "type": 301 },
       { "source": "/glossary/:entry", "destination": "/resources/glossary#:entry", "type": 301 },
 
@@ -353,6 +354,7 @@
       { "source": "/language/macros", "destination": "https://blog.dart.dev/an-update-on-dart-macros-data-serialization-06d3037d4f12", "type": 301 },
       { "source": "/language/null-safety", "destination": "/null-safety", "type": 301 },
       { "source": "/language/specification", "destination": "/resources/language/spec", "type": 301 },
+      { "source": "/learn", "destination": "/docs", "type": 301 },
       { "source": "/libraries/async", "destination": "/libraries/dart-async", "type": 301 },
       { "source": "/libraries/serialization", "destination": "/libraries/serialization/json", "type": 301 },
       { "source": "/linter/lints/:lint*", "destination": "/tools/linter-rules/:lint", "type": 301 },
