@@ -350,6 +350,9 @@
   children:
     - title: Dart Blog
       permalink: https://blog.dart.dev
+    - title: Changelog
+      permalink: /changelog
+    - divider
     - title: Dart SDK Changelog
       permalink: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
     - title: Breaking changes

@@ -26,6 +26,10 @@ import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
     as _site_switcher;
 import 'package:dart_dev_site/src/components/layout/theme_switcher.dart'
     as _theme_switcher;
+import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters.dart'
+    as _changelog_filters;
+import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters_sidebar.dart'
+    as _changelog_filters_sidebar;
 import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
     as _glossary_search_section;
 import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
@@ -96,6 +100,12 @@ ServerOptions get defaultServerOptions => ServerOptions(
     _theme_switcher.ThemeSwitcher: ClientTarget<_theme_switcher.ThemeSwitcher>(
       'theme_switcher',
     ),
+    _changelog_filters.ChangelogFilters:
+        ClientTarget<_changelog_filters.ChangelogFilters>('changelog_filters'),
+    _changelog_filters_sidebar.ChangelogFiltersSidebar:
+        ClientTarget<_changelog_filters_sidebar.ChangelogFiltersSidebar>(
+          'changelog_filters_sidebar',
+        ),
     _glossary_search_section.GlossarySearchSection:
         ClientTarget<_glossary_search_section.GlossarySearchSection>(
           'glossary_search_section',

@@ -28,6 +28,10 @@ import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
     deferred as _site_switcher;
 import 'package:dart_dev_site/src/components/layout/theme_switcher.dart'
     deferred as _theme_switcher;
+import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters.dart'
+    deferred as _changelog_filters;
+import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters_sidebar.dart'
+    deferred as _changelog_filters_sidebar;
 import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
     deferred as _glossary_search_section;
 import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
@@ -114,6 +118,14 @@ ClientOptions get defaultClientOptions => ClientOptions(
     'theme_switcher': ClientLoader(
       (p) => _theme_switcher.ThemeSwitcher(),
       loader: _theme_switcher.loadLibrary,
+    ),
+    'changelog_filters': ClientLoader(
+      (p) => _changelog_filters.ChangelogFilters(),
+      loader: _changelog_filters.loadLibrary,
+    ),
+    'changelog_filters_sidebar': ClientLoader(
+      (p) => _changelog_filters_sidebar.ChangelogFiltersSidebar(),
+      loader: _changelog_filters_sidebar.loadLibrary,
     ),
     'glossary_search_section': ClientLoader(
       (p) => _glossary_search_section.GlossarySearchSection(),
