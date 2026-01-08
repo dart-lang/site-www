@@ -226,7 +226,7 @@ if (storedTheme === 'auto-mode') {
           attributes: {'tabindex': '1'},
           [.text('Skip to main content')],
         ),
-        const CookieNotice(),
+        CookieNotice(alwaysDarkMode: name == 'homepage'),
         const DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [

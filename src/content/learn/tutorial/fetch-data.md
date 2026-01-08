@@ -1,26 +1,28 @@
 ---
-title: Http
-shortTitle: Http
+title: Fetch data from the internet
+shortTitle: HTTP requests
 description: >-
-  Refactor your application to use a robust, production-ready API client
-  for the Wikipedia CLI.
+  Refactor your application to use a robust, production-ready
+  API client for the Wikipedia CLI.
 sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/testing
-  title: Testing
+  url: /learn/tutorial/testing
+  title: Test your app & code
 nextpage:
-  url: /get-started/logging
-  title: Logging
+  url: /learn/tutorial/logging
+  title: Add logging for debugging and monitoring
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-In Chapter 3, you used the `http` package to make a simple request. Now, you'll
-revisit HTTP to build a robust, production-ready API client within the
-`wikipedia` package. You'll learn how to handle query parameters, map JSON
-responses to your data models, and export these functions for use in your CLI.
+In Chapter 3, you used the `http` package to make a simple request.
+Now, you'll revisit HTTP to
+build a robust, production-ready API client within the `wikipedia` package.
+You'll learn how to handle query parameters,
+map JSON responses to your data models, and
+export these functions for use in your CLI.
 
 <SummaryCard>
 title: What you'll accomplish
@@ -37,21 +39,23 @@ items:
 
 Before you begin this chapter, ensure you:
 
-*   Have completed Chapter 10 and have a working Dart development environment
-    with the `dartpedia` project.
-*   Understand basic networking concepts (like APIs and HTTP requests).
-*   Understand basic data serialization formats such as JSON.
+-   Have completed Chapter 10 and have a
+    working Dart development environment with the `dartpedia` project.
+-   Understand basic networking concepts (like APIs and HTTP requests).
+-   Understand basic data serialization formats such as JSON.
 
 ## Tasks
 
-In this chapter, you'll move beyond simple scripts and implement a proper API
-layer. You'll work within the `wikipedia` package to implement the API client
-logic, which improves your application's scalability and maintainability.
+In this chapter, you'll move beyond simple scripts and
+implement a proper API layer.
+You'll work within the `wikipedia` package to
+implement the API client logic, which
+improves your application's scalability and maintainability.
 
 ### Task 1: Add the http dependency to the wikipedia package
 
-To make HTTP requests, you need to add the `http` package as a dependency to the
-`wikipedia` package.
+To make HTTP requests, you need to
+add the `http` package as a dependency to the `wikipedia` package.
 
 1.  Open the `wikipedia/pubspec.yaml` file within your project.
 
@@ -70,14 +74,15 @@ To make HTTP requests, you need to add the `http` package as a dependency to the
 
 ### Task 2: Implement Wikipedia API calls
 
-Next, you'll create the API functions to fetch data from Wikipedia. You'll
-create three files:
+Next, you'll create the API functions to fetch data from Wikipedia.
+You'll create three files:
 
-* `summary.dart`: This file will contain functions for retrieving article
-  summaries.
-* `search.dart`: This file will handle search queries to find articles.
-* `get_article.dart`: This file will contain functions for fetching the full
-  content of an article.
+- `summary.dart`:
+  This file will contain functions for retrieving article summaries.
+- `search.dart`:
+  This file will handle search queries to find articles.
+- `get_article.dart`:
+  This file will contain functions for fetching the full content of an article.
 
 1.  Create the directory `wikipedia/lib/src/api`.
 
@@ -146,9 +151,10 @@ create three files:
     }
     ```
 
-    This code defines two functions: `getRandomArticleSummary` and
-    `getArticleSummaryByTitle`. Both functions use the `http` package to make
-    GET requests to the Wikipedia API and return a `Summary` object.
+    This code defines two functions:
+    `getRandomArticleSummary` and `getArticleSummaryByTitle`.
+    Both functions use the `http` package to
+    make GET requests to the Wikipedia API and return a `Summary` object.
     `getRandomArticleSummary` fetches a summary for a random article, while
     `getArticleSummaryByTitle` fetches a summary for a specific article title.
 
@@ -196,8 +202,8 @@ create three files:
     }
     ```
 
-    This code defines the `search` function, which uses the
-    `http` package to make a GET request to the Wikipedia API's
+    This code defines the `search` function, which
+    uses the `http` package to make a GET request to the Wikipedia API's
     `opensearch` endpoint and returns a `SearchResults` object.
     The `opensearch` endpoint is used to search for
     Wikipedia articles based on a search term.
@@ -250,16 +256,18 @@ create three files:
     }
     ```
 
-    This code defines the `getArticleByTitle` function, which uses the `http`
-    package to make a GET request to the Wikipedia API and returns a
-    `List<Article>` object. This function retrieves the content of a Wikipedia
-    article based on its title.
+    This code defines the `getArticleByTitle` function, which
+    uses the `http` package to make a GET request to the Wikipedia API and
+    returns a `List<Article>` object.
+    This function retrieves the content of a
+    Wikipedia article based on its title.
 
 ### Task 3: Export the API functions
 
-Now that you've created the API functions, you need to export them from the
-`wikipedia` library so they can be used by the `cli` package. You'll also export
-the existing models.
+Now that you've created the API functions,
+you need to export them from the `wikipedia` library so that
+they can be used by the `cli` package.
+You'll also export the existing models.
 
 1.  Open the `wikipedia/lib/wikipedia.dart` file.
 
@@ -281,23 +289,24 @@ the existing models.
 
 ## Task 4: Verify with tests
 
-Now that you have implemented the API functions and updated the package
-dependencies, it's good practice to run the tests you created in the previous
-chapter. This will confirm that your changes have not broken the existing
-functionality of the `wikipedia` package.
+Now that you have implemented the API functions and
+updated the package dependencies, it's good practice to
+run the tests you created in the previous chapter.
+This will confirm that your changes have not
+broken the existing functionality of the `wikipedia` package.
 
 1.  Open your terminal and navigate to the `wikipedia/test` directory.
 
 1.  Remove the default test file by running the command `rm wikipedia_test.dart`
-    (on macOS or Linux) or `del wikipedia_test.dart` (on Windows). This file was
-    generated automatically but is not used in our project.
+    (on macOS or Linux) or `del wikipedia_test.dart` (on Windows).
+    This file was generated automatically but is not used in our project.
 
 1.  Open your terminal and navigate to the `wikipedia` directory.
 
 1.  Run the command `dart test`.
 
-    You should see output similar to this, confirming all your existing tests
-    still pass:
+    You should see output similar to this,
+    confirming all your existing tests still pass:
 
     ```bash
     00:02 +3: All tests passed!
@@ -334,10 +343,10 @@ items:
 
 ## Quiz
 
-<Quiz title="Check your understanding" id="http" />
+<Quiz title="Check your understanding" id="fetch-data" />
 
 ## Next lesson
 
-In the next lesson, you'll complete the CLI by integrating the `wikipedia`
-package with the `cli` package. You'll implement the command logic and display
-the results to the user.
+In the next lesson, you'll complete the CLI by
+integrating the `wikipedia` package with the `cli` package.
+You'll implement the command logic and display the results to the user.

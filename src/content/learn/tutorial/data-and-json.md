@@ -1,18 +1,19 @@
 ---
-title: Data and JSON
+title: Work with JSON data
+shortTitle: Data and JSON
 description: >-
   Learn about JSON deserialization in Dart, including how to
-  use `dart:convert`, `jsonDecode`, and pattern matching to work with
-  JSON data from the Wikipedia API.
+  use `dart:convert`, `jsonDecode`, and pattern matching to
+  work with JSON data from the Wikipedia API.
 sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/command-runner-polish
-  title: Command runner polish
+  url: /learn/tutorial/cli-polish
+  title: Polish your CLI app
 nextpage:
-  url: /get-started/testing
-  title: Testing
+  url: /learn/tutorial/testing
+  title: Test your app & code
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
@@ -46,9 +47,9 @@ items:
 
 Before you begin this chapter, ensure you:
 
-* Have completed Chapter 8 and have a
+- Have completed Chapter 8 and have a
   working Dart development environment with the `dartpedia` project.
-* Understand basic Dart syntax, including [classes][] and data types.
+- Understand basic Dart syntax, including [classes][] and data types.
 
 [classes]: /language/classes
 
@@ -69,9 +70,10 @@ First, create a new Dart package to house the data models.
     dart create wikipedia
     ```
 
-    This command creates a new directory named `wikipedia` with the basic
-    structure of a Dart package. You should now see a new folder
-    `wikipedia` in your project root, alongside `cli` and `command_runner`.
+    This command creates a new directory named `wikipedia` with
+    the basic structure of a Dart package.
+    You should now see a new folder `wikipedia` in your project root,
+    alongside `cli` and `command_runner`.
 
 ### Task 2: Configure a Dart workspace
 
@@ -83,8 +85,8 @@ it's a good time to configure your project to use a Dart workspace.
 
 1.  **Create the root `pubspec.yaml` file.**
 
-    Navigate to the root directory of your project (`/dartpedia`) and create a
-    new file named `pubspec.yaml` with the following content:
+    Navigate to the root directory of your project (`/dartpedia`) and
+    create a new file named `pubspec.yaml` with the following content:
 
     ```yaml
     name: _
@@ -105,7 +107,7 @@ it's a good time to configure your project to use a Dart workspace.
     add `resolution: workspace` to `pubspec.yaml`.
     This tells Dart to resolve dependencies within the workspace.
 
-    *   For `cli/pubspec.yaml`:
+    -   For `cli/pubspec.yaml`:
 
         ```yaml highlightLines=5
         # ... (existing content) ...
@@ -116,7 +118,7 @@ it's a good time to configure your project to use a Dart workspace.
         # ... (existing content) ...
         ```
 
-    *   For `command_runner/pubspec.yaml`:
+    -   For `command_runner/pubspec.yaml`:
 
         ```yaml highlightLines=5
         # ... (existing content) ...
@@ -127,7 +129,7 @@ it's a good time to configure your project to use a Dart workspace.
         # ... (existing content) ...
         ```
 
-    *   For `wikipedia/pubspec.yaml`:
+    -   For `wikipedia/pubspec.yaml`:
 
         ```yaml highlightLines=5
         # ... (existing content) ...
@@ -258,8 +260,8 @@ Let's create a Dart class to represent this summary.
     }
     ```
 
-    This code defines a `Summary` class with properties that correspond to the
-    fields in the JSON response from the Wikipedia API.
+    This code defines a `Summary` class with properties that
+    correspond to the fields in the JSON response from the Wikipedia API.
     The `fromJson` method uses [pattern matching][] to
     extract the data from the JSON object and create a new `Summary` instance.
     The `toString` method provides a convenient way to
@@ -390,7 +392,7 @@ Finally, let's create a class to represent the
 search results from the Wikipedia API.
 
 1.  Create the file `wikipedia/lib/src/model/search_results.dart`.
-2.  Add the following code to `wikipedia/lib/src/model/search_results.dart`:
+1.  Add the following code to `wikipedia/lib/src/model/search_results.dart`:
 
     ```dart title="wikipedia/lib/src/model/search_results.dart"
     class SearchResult {
