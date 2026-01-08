@@ -148,5 +148,3 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
     ]);
   }
 }
-
-
