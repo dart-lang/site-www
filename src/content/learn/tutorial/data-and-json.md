@@ -1,18 +1,19 @@
 ---
-title: Data and JSON
+title: Work with JSON data
+shortTitle: Data and JSON
 description: >-
   Learn about JSON deserialization in Dart, including how to
-  use `dart:convert`, `jsonDecode`, and pattern matching to work with
-  JSON data from the Wikipedia API.
+  use `dart:convert`, `jsonDecode`, and pattern matching to
+  work with JSON data from the Wikipedia API.
 sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/command-runner-polish
-  title: Command runner polish
+  url: /learn/tutorial/cli-polish
+  title: Polish your CLI app
 nextpage:
-  url: /get-started/testing
-  title: Testing
+  url: /learn/tutorial/testing
+  title: Test your app & code
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}

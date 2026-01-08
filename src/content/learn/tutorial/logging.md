@@ -1,18 +1,19 @@
 ---
-title: Logging
+title: Add logging for debugging and monitoring
 short-title: Logging
 description: >-
-  Learn how to add logging to your Dart application to help with debugging and
-  monitoring.
+  Learn how to add logging to your Dart application to
+  help with debugging and monitoring.
 sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/http
-  title: Http
+  url: /learn/tutorial/fetch-data
+  title: Fetch data from the internet
 nextpage:
-  url: /get-started
-  title: Next chapter
+  # TODO: Create a conclusion page or section with next steps.
+  url: /learn
+  title: Keep learning!
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
