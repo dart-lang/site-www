@@ -1,6 +1,6 @@
 ---
-title: Object-oriented Dart programming
-shortTitle: Object oriented Dart
+title: Define relationships with classes
+shortTitle: Object-oriented Dart
 description: >-
   Learn about object-oriented programming in Dart, including
   abstract classes, inheritance, overrides, and enums.
@@ -9,11 +9,11 @@ sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/packages-libs
-  title: Packages and libraries
+  url: /learn/tutorial/packages-libs
+  title: Organize code with packages and libraries
 nextpage:
-  url: /get-started/error-handling
-  title: Error handling
+  url: /learn/tutorial/error-handling
+  title: Handle errors gracefully
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
