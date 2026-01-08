@@ -99,6 +99,17 @@ void main(List<String> arguments) {
   final parser = ArgParser()..addFlag(lineNumber, negatable: false, abbr: 'n');
 
   ArgResults argResults = parser.parse(arguments);
+
+  ### Running with arguments
+
+  Once built, run your CLI app with arguments directly:
+
+  ```bash
+  dart run bin/greet.dart --help        # Show usage
+  dart run bin/greet.dart Bob          # Greet "Bob"
+  dart run bin/greet.dart --name Alice # Named arg
+  dart run bin/greet.dart Alice Bob    # Positional args
+
   final paths = argResults.rest;
 
   dcat(paths, showLineNumbers: argResults[lineNumber] as bool);
