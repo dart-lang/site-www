@@ -19,10 +19,11 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-In this chapter, you'll explore advanced Dart features that improve the user
-experience of your command-line application. You'll learn how to use enhanced
-enums to manage console colors and extensions to add new functionality to
-existing types, making your application more interactive and visually appealing.
+In this chapter, you'll explore advanced Dart features that
+improve the user experience of your command-line application.
+You'll learn how to use enhanced enums to manage console colors and
+extensions to add new functionality to existing types,
+making your application more interactive and visually appealing.
 
 :::secondary What you'll learn
 
@@ -36,28 +37,28 @@ existing types, making your application more interactive and visually appealing.
 
 Before you begin this chapter, ensure you:
 
-*   Have completed Chapter 6 and have a working Dart development environment
-    with the `dartpedia` project.
-*   Are familiar with basic programming concepts like variables, functions, and
-    control flow.
-*   Understand the concepts of packages and libraries in Dart.
-*   Have a basic understanding of object-oriented programming concepts like
-    classes and enums.
+-   Have completed Chapter 6 and have a
+    working Dart development environment with the `dartpedia` project.
+-   Are familiar with basic programming concepts like
+    variables, functions, and control flow.
+-   Understand the concepts of packages and libraries in Dart.
+-   Have a basic understanding of
+    object-oriented programming concepts like classes and enums.
 
 ## Tasks
 
-You will improve the user experience of your Dartpedia CLI application by adding
-color to the output and improving text formatting.
+You will improve the user experience of your Dartpedia CLI application by
+adding color to the output and improving text formatting.
 
 ### Task 1: Enhance the console color enum
 
-First, add color to the console output. The
-`ConsoleColor` enum will include RGB values and methods for applying
-colors to text.
+First, add color to the console output.
+The `ConsoleColor` enum will include RGB values and
+methods for applying colors to text.
 
 1.  Create the `command_runner/lib/src/console.dart` file.
 
-2.  Add the following code to define the `ConsoleColor` enum:
+1.  Add the following code to define the `ConsoleColor` enum:
 
     ```dart title="command_runner/lib/src/console.dart"
     import 'dart:io';
@@ -113,10 +114,11 @@ colors to text.
     }
     ```
 
-    This enum defines a set of console colors with their corresponding RGB
-    values. Each color is a constant instance of the `ConsoleColor` enum.
+    This enum defines a set of console colors with
+    their corresponding RGB values.
+    Each color is a constant instance of the `ConsoleColor` enum.
 
-3.  Add methods to the `ConsoleColor` enum for applying colors to text:
+1.  Add methods to the `ConsoleColor` enum for applying colors to text:
 
     ```dart title="command_runner/lib/src/console.dart"
     enum ConsoleColor {
@@ -159,14 +161,17 @@ colors to text.
     }
     ```
 
-    These methods use [ANSI escape codes][] to apply foreground and background
-    colors to text. The `applyForeground` and `applyBackground` methods return
+    These methods use [ANSI escape codes][] to
+    apply foreground and background colors to text.
+    The `applyForeground` and `applyBackground` methods return
     a string with the ANSI escape codes applied.
+
+[ANSI escape codes]: https://en.wikipedia.org/wiki/ANSI_escape_code
 
 ### Task 2: Create a String extension
 
-Next, create an extension on the `String` class to add utility methods
-for applying console colors and formatting text.
+Next, create an extension on the `String` class to
+add utility methods for applying console colors and formatting text.
 
 1.  Add the following code to the `command_runner/lib/src/console.dart` file:
 
@@ -204,10 +209,12 @@ for applying console colors and formatting text.
     }
     ```
 
-    This code defines an extension called `TextRenderUtils` on the `String`
-    class. It adds three getter methods for applying console colors:
-    `errorText`, `instructionText`, and `titleText`. It also adds a method for
-    splitting a string into lines of a specified length called `splitLinesByLength`.
+    This code defines an extension called
+    `TextRenderUtils` on the `String` class.
+    It adds three getter methods for applying console colors:
+    `errorText`, `instructionText`, and `titleText`.
+    It also adds a method for splitting a string into
+    lines of a specified length called `splitLinesByLength`.
 
 ### Task 3: Update command_runner package
 
@@ -229,13 +236,13 @@ Update the `command_runner` package to export `console.dart`.
 
 ### Task 4: Implement colorful echo command
 
-Finally, implement an example command to test the print. It's
-good practice to implement example usage of a package in Dart for
-developers that will use your package.  This example creates a command
-that makes console output colorful.
+Finally, implement an example command to test the print.
+It's good practice to implement example usage of a package in Dart for
+developers that will use your package.
+This example creates a command that makes console output colorful.
 
 1.  Open the `example/command_runner_example.dart` file.
-2.  Replace the contents of the file with the following code:
+1.  Replace the contents of the file with the following code:
 
     ```dart title="command_runner/example/command_runner_example.dart"
     import 'dart:async';
@@ -301,20 +308,24 @@ that makes console output colorful.
     }
     ```
 
-    This code defines a `PrettyEcho` command that extends the `Command` class.
-    It takes a string as an argument and applies different colors to each word
-    based on its position in the string. The `run` method uses the `titleText`,
-    `instructionText`, and `errorText` getter methods from the `TextRenderUtils`
-    extension to apply the colors.
+    This code defines a `PrettyEcho` command that
+    extends the `Command` class.
+    It takes a string as an argument and
+    applies different colors to each word
+    based on its position in the string.
+    The `run` method uses the
+    `titleText`, `instructionText`, and `errorText` getter methods from
+    the `TextRenderUtils` extension to apply the colors.
 
-3.  Navigate to `/dartpedia/command_runner` and run the following command:
+1.  Navigate to `/dartpedia/command_runner` and run the following command:
 
     ```bash
     dart run example/command_runner_example.dart echo "hello world goodbye"
     ```
 
-    You should see the following text printed to the console, with the first
-    word appearing in light blue, the second in yellow, and the third in red.
+    You should see the following text printed to the console,
+    with the first word appearing in light blue,
+    the second in yellow, and the third in red.
 
     ```bash
     hello world goodbye
@@ -334,9 +345,7 @@ In this lesson, you learned about:
 
 ## Next lesson
 
-In the next lesson, you'll learn how to further improve the
-`command_runner` package by polishing the `HelpCommand`, completing the
-`CommandRunner` class, adding the `onOutput` argument, and providing a complete
-example.
-
-[ANSI escape codes]: https://en.wikipedia.org/wiki/ANSI_escape_code
+In the next lesson, you'll learn how to
+further improve the `command_runner` package by
+polishing the `HelpCommand`, completing the `CommandRunner` class,
+adding the `onOutput` argument, and providing a complete example.
