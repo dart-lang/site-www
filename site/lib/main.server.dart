@@ -14,6 +14,7 @@ import 'src/components/common/card.dart';
 import 'src/components/common/tabs.dart';
 import 'src/components/common/youtube_embed.dart';
 import 'src/components/tutorial/quiz.dart';
+import 'src/components/pages/changelog/changelog_index.dart';
 import 'src/extensions/registry.dart';
 import 'src/layouts/doc_layout.dart';
 import 'src/layouts/homepage_layout.dart';
@@ -104,5 +105,9 @@ List<CustomComponent> get _embeddableComponents => [
   CustomComponent(
     pattern: RegExp('Card', caseSensitive: false),
     builder: (_, attrs, child) => Card.fromAttributes(attrs, child),
+  ),
+  CustomComponent(
+    pattern: RegExp('ChangelogIndex', caseSensitive: false),
+    builder: (_, _, _) => const ChangelogIndex(),
   ),
 ];
