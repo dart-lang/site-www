@@ -22,18 +22,20 @@ In this chapter, you'll get hands-on practice with Dart syntax.
 You'll learn how to read user input, print usage information, and
 create a basic command-line interaction.
 
-:::secondary What you'll learn
-
-* Implement basic control flow with `if/else` statements.
-* Work with collections, specifically `List` objects, and perform common operations
-  like checking if a list is empty.
-* Declare and use variables with `const` and `late String?`.
-* Handle nullability with null checks.
-* Define and call functions.
-* Use string interpolation for dynamic text.
-* Read user input from the command line using the `stdin` command.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Build command handlers with if statements
+    icon: account_tree
+  - title: Work with lists and variables
+    icon: data_array
+  - title: Account for nullability in your code
+    icon: help_outline
+  - title: Define and call functions
+    icon: function
+  - title: Read and handle user input
+    icon: keyboard
+</SummaryCard>
 
 ## Prerequisites
 
@@ -426,17 +428,46 @@ As you build this functionality, you'll work with
 
 ## Review
 
-In this chapter, you learned:
-
-* **Control flow:** Using `if/else` statements to control the execution flow
-    of your program.
-* **Variables and Constants:** Declaring variables with `var`, `const`, and `final String`.
-* **Lists:** Creating and manipulating lists using `.isEmpty`, `.first`,
-    `.sublist`, and `.join()`.
-* **Null Safety:** Understanding nullability (`?`) and using null checks. Handling potential null values with the null-coalescing operator (`??`) to provide default values.
-* **Functions:** Defining and calling functions.
-* **String interpolation:** Embedding variables in strings using `$`.
-* **Input/Output:** Reading user input from the console using `stdin.readLineSync()`.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Built command handlers with if and else statements
+    icon: account_tree
+    details: >-
+      You used `if` and `else` statements to
+      route different commands like `help`, `version`, and `search`.
+      This control flow pattern is fundamental to
+      building interactive CLI applications that respond to user input.
+  - title: Worked with Lists and variables
+    icon: data_array
+    details: >-
+      You learned to declare variables with `var`, `final`, and `const`, and
+      worked with lists using `.isEmpty`, `.first`, `.sublist()`, and `.join()`.
+      You also used string interpolation (`$variable`) to
+      embed values in string literals.
+  - title: Accounted for nullability in your code
+    icon: help_outline
+    details: >-
+      You embraced Dart's sound null safety by using nullable types (`?`),
+      null checks, and the null-coalescing operator (`??`) to
+      provide default values when expressions might be `null`.
+  - title: Defined and called functions
+    icon: function
+    details: >-
+      You created the `printUsage()` and `searchWikipedia()` functions to
+      organize your code into reusable units.
+      Separating reusable logic into functions, helps keep the `main` function
+      clean and make your code easier to read and maintain.
+  - title: Read and handled user input
+    icon: keyboard
+    details: >-
+      You used `stdin.readLineSync()` from `dart:io` to
+      read input from the terminal.
+      This enables interactive prompts
+      as an alternative or in addition to command-line arguments.
+</SummaryCard>
 
 ## Quiz
 

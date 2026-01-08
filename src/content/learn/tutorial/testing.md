@@ -23,14 +23,16 @@ as expected and remains stable as you make changes.
 You'll use the `package:test` library, a popular testing framework for Dart,
 to write unit tests for the data models you created in the previous chapter.
 
-:::secondary What you'll learn
-
-*   Install and import the `package:test` library.
-*   Write tests using `group`, `test`, `expect`, and matchers.
-*   Create test files and organize tests.
-*   Write tests for JSON deserialization logic.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Add the test package as a dev dependency
+    icon: experiment
+  - title: Write structured tests with the test package and matchers
+    icon: lab_panel
+  - title: Test JSON deserialization logic
+    icon: fact_check
+</SummaryCard>
 
 ## Prerequisites
 
@@ -400,13 +402,33 @@ Now that you've written the tests, you can run them to verify that they pass.
 
 ## Review
 
-In this chapter, you learned about:
-
-*   Installing the `package:test` library.
-*   Writing tests using `group`, `test`, and `expect`.
-*   Creating test files and organizing tests.
-*   Writing tests for JSON deserialization logic.
-*   Using matchers to assert that values meet certain criteria.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Added the test package as a dev dependency
+    icon: experiment
+    details: >-
+      You added `test` as a dev dependency in `pubspec.yaml` and
+      created test files in the `test/` directory.
+      Pub dev dependencies are intended for use during
+      development and testing, not during production.
+      As a result, they can't be used in the `lib` directory.
+  - title: Wrote structured tests with the test package and matchers
+    icon: lab_panel
+    details: >-
+      You used `group()` to organize related tests,
+      `test()` to define individual test cases, and `expect()` with
+      matchers like `equals` and `greaterThan` to assert expected behavior.
+      Running `dart test` executes all tests declared by your package.
+  - title: Tested JSON deserialization logic
+    icon: fact_check
+    details: >-
+      You created test data files with sample JSON and wrote tests to verify
+      that your `fromJson` methods correctly parse the data into Dart objects.
+      This ensures your models handle real API responses properly.
+</SummaryCard>
 
 ## Quiz
 

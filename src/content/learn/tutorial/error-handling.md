@@ -22,15 +22,16 @@ make your application more robust by handling errors gracefully.
 You'll explore exceptions, `try/catch` blocks, and how to
 create custom exceptions to manage errors in a structured way.
 
-:::secondary What you'll learn
-
-* Understand the difference between errors and exceptions in Dart.
-* Use `try/catch` blocks to handle exceptions.
-* `throw` exceptions to signal errors.
-* Create a custom exception class.
-* `rethrow` exceptions to propagate them up the call stack.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Distinguish errors and exceptions
+    icon: error
+  - title: Use try/catch to handle failures
+    icon: shield
+  - title: Create and throw custom exceptions
+    icon: deployed_code_alert
+</SummaryCard>
 
 ## Prerequisites
 
@@ -378,13 +379,32 @@ Test the new error handling by running the application with invalid arguments.
 
 ## Review
 
-In this lesson, you learned about:
-
-*   The difference between `Error` and `Exception` in Dart.
-*   Using `try/catch` blocks to handle exceptions.
-*   `throw` exceptions to signal errors.
-*   Creating a custom exception class to represent specific types of errors.
-*   `rethrow` exceptions to propagate them up the call stack.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Distinguished errors from exceptions
+    icon: error
+    details: >-
+      You learned that subtypes of `Error` indicate
+      programming bugs and shouldn't be caught,
+      while subtypes of `Exception` represent
+      recoverable failures that your code should handle gracefully.
+  - title: Used try-catch blocks to handle failures
+    icon: shield
+    details: >-
+      You wrapped risky code in `try`-`catch` blocks to intercept exceptions.
+      You used `on ExceptionType catch (e)` to handle specific types and
+      `rethrow` to repropagate exceptions while preserving the stack trace.
+  - title: Created and threw custom exceptions
+    icon: deployed_code_alert
+    details: >-
+      You built a `ArgumentException` class that extends `FormatException` to
+      provide context-rich error information.
+      Then you used `throw` to signal validation failures with
+      meaningful messages for better debugging and user feedback.
+</SummaryCard>
 
 ## Quiz
 

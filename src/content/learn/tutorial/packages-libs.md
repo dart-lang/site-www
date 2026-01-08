@@ -28,17 +28,16 @@ Wikipedia logic and a robust `command_runner` framework.
 This chapter helps you understand Dart libraries, export statements, and
 how to structure your project for better organization and maintainability.
 
-:::secondary What you'll learn
-
-* Create new Dart packages using `dart create -t package`.
-* Structure your project to include local packages.
-* Add local packages as dependencies using the `path` option in `pubspec.yaml`.
-* Use `export` statements to make library declarations available to other
-  packages.
-* Import and use classes from your new package in your `dartpedia` application.
-* Recognize the benefits of separating code into packages.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Create a reusable Dart package
+    icon: package_2
+  - title: Use exports to define a public API
+    icon: export_notes
+  - title: Add local path dependencies
+    icon: folder_code
+</SummaryCard>
 
 ## Prerequisites
 
@@ -293,16 +292,36 @@ is working correctly at this stage.
 
 ## Review
 
-In this chapter, you learned about:
-
-* Creating Dart packages using `dart create -t package`.
-* Using `export` statements to make declarations from one library available in
-  another.
-* Adding local packages as dependencies using the `path` option in
-  `pubspec.yaml`.
-* Importing packages into your Dart code using `import` statements.
-* Refactoring code to improve organization and maintainability, including making
-  `main` `async` to correctly `await` asynchronous operations.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Created a reusable Dart package
+    icon: package_2
+    details: >-
+      You used `dart create -t package command_runner` to
+      scaffold a new library package intended to be used in other packages.
+      Library packages are the standard way to
+      organize and share reusable Dart libraries,
+      both within a project workspace or published to pub.dev.
+  - title: Used exports to define a public API
+    icon: export_notes
+    details: >-
+      You added `export` statements in your library file to expose specific
+      libraries and their definitions to consumers.
+      If not exported from files in the `lib` root directory,
+      code in `lib/src/` remains private to the package.
+      This allows you to carefully craft a public API for others,
+      while still having full control over the implementation details.
+  - title: Added local path dependencies
+    icon: folder_code
+    details: >-
+      You configured `pubspec.yaml` to
+      depend on a local package using a path dependency.
+      This enables multi-package projects where packages can
+      evolve together before being published separately.
+</SummaryCard>
 
 ## Quiz
 
