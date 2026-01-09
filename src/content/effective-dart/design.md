@@ -1134,9 +1134,9 @@ If you think the initializer expression—whatever it is—is
 sufficiently clear, then you may omit the annotation. But if you think
 annotating helps make the code clearer, then add one.
 
-When in doubt, add a type annotation. You can also explicitly 
-annotate obvious types. If the inferred type relies 
-on values or declarations from other libraries, 
+When in doubt, add a type annotation.
+You can also explicitly annotate obvious types.
+If the inferred type relies on values or declarations from other libraries,
 you may want to type annotate *your*
 declaration so that a change to that other library doesn't silently change the
 type of your own API without you realizing.
