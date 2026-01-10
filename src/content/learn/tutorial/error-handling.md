@@ -2,8 +2,8 @@
 title: Handle errors gracefully
 shortTitle: Error handling
 description: >-
-  Improve app robustness by handling errors. Learn about exceptions, errors,
-  `try/catch`, `throw`, and `rethrow`.
+  Improve app robustness by handling errors.
+  Learn about exceptions, errors, `try/catch`, `throw`, and `rethrow`.
 sitemap: false
 noindex: true
 layout: learn
@@ -17,42 +17,45 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-In this chapter, you'll learn how to make your application more robust by
-handling errors gracefully. You'll explore exceptions, `try/catch` blocks, and
-how to create custom exceptions to manage errors in a structured way.
+In this chapter, you'll learn how to
+make your application more robust by handling errors gracefully.
+You'll explore exceptions, `try/catch` blocks, and how to
+create custom exceptions to manage errors in a structured way.
 
-:::secondary What you'll learn
-
-* Understand the difference between errors and exceptions in Dart.
-* Use `try/catch` blocks to handle exceptions.
-* `throw` exceptions to signal errors.
-* Create a custom exception class.
-* `rethrow` exceptions to propagate them up the call stack.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Distinguish errors and exceptions
+    icon: error
+  - title: Use try/catch to handle failures
+    icon: shield
+  - title: Create and throw custom exceptions
+    icon: deployed_code_alert
+</SummaryCard>
 
 ## Prerequisites
 
 Before you begin this chapter, ensure you:
 
-* Have completed Chapter 5 and have a working Dart development environment with
-  the `dartpedia` project.
-* Understand basic programming concepts like functions and classes.
+- Have completed Chapter 5 and have a
+  working Dart development environment with the `dartpedia` project.
+- Understand basic programming concepts like functions and classes.
 
 ## Tasks
 
-In this chapter, you will improve the robustness of your `command_runner`
-package by implementing error handling. You'll create a custom exception class
-and add error handling to the `CommandRunner` to gracefully manage errors that
-may occur during command execution.
+In this chapter, you will improve the robustness of
+your `command_runner` package by implementing error handling.
+You'll create a custom exception class
+and add error handling to the `CommandRunner` to
+gracefully manage errors that may occur during command execution.
 
 ### Task 1: Create a custom ArgumentException
 
 First, define a custom exception class called `ArgumentException` to
 represent errors related to command-line arguments.
 
-1.  Create the file `command_runner/lib/src/exceptions.dart`. This file will
-    contain the definition for your `ArgumentException` class.
+1.  Create the file `command_runner/lib/src/exceptions.dart`.
+    This file will contain the definition for your `ArgumentException` class.
 
 1.  Define a class called `ArgumentException` that `extends` `FormatException`.
 
@@ -62,11 +65,11 @@ represent errors related to command-line arguments.
       ///
       /// This will be empty if the error was on the root parser.
       final String? command;
-    
+
       /// The name of the argument that was being parsed when the error was
       /// discovered.
       final String? argumentName;
-    
+
       ArgumentException(
         super.message, [
         this.command,
@@ -77,27 +80,31 @@ represent errors related to command-line arguments.
     }
     ```
 
-    This class extends `FormatException`, which is a built-in Dart exception
-    class. It includes additional properties to store the command and argument
-    name associated with the error. This provides more context when handling the
-    exception.
+    This class extends `FormatException`, which
+    is a built-in Dart exception class.
+    It includes additional properties to store the
+    command and argument name associated with the error.
+    This provides more context when handling the exception.
 
-    * `command`: The command that was being processed when the exception
-    occurred.
-    * `argumentName`: The name of the argument that caused the exception.
+    - `command`:
+      The command that was being processed when the exception occurred.
+    - `argumentName`:
+      The name of the argument that caused the exception.
 
 
 ## Task 2: Implement error handling in CommandRunner
 
-Next, update the `CommandRunner` class to handle potential errors
-gracefully. This involves adding an error-handling callback, using `try/catch`
-to manage exceptions, and throwing your new `ArgumentException` when the user
-provides bad input.
+Next, update the `CommandRunner` class to
+handle potential errors gracefully.
+This involves adding an error-handling callback,
+using `try/catch` to manage exceptions, and
+throwing your new `ArgumentException` when the user provides bad input.
 
 1.  Add the necessary imports.
 
-    In `command_runner/lib/src/command_runner_base.dart`, add imports for
-    `dart:async` (to use `FutureOr`) and your new `exceptions.dart` file.
+    In `command_runner/lib/src/command_runner_base.dart`,
+    add imports for `dart:async` (to use `FutureOr`) and
+    your new `exceptions.dart` file.
 
     ```dart
     import 'dart:async'; // Add this line
@@ -110,9 +117,10 @@ provides bad input.
 
 1.  Add an `onError` callback to the `CommandRunner`.
 
-    Modify the CommandRunner to accept an optional `onError` function in its
-    constructor. This will allow the user of your package to define their own
-    error-handling logic.
+    Modify the CommandRunner to
+    accept an optional `onError` function in its constructor.
+    This will allow the user of your package to
+    define their own error-handling logic.
 
     ```dart
     class CommandRunner {
@@ -130,21 +138,21 @@ provides bad input.
     // ... rest of the class
     }
     ```
-    
-    This change introduces a nullable `onError` property. The
-    `FutureOr<void> Function(Object)?` type means it's a function that takes an
-    `Object` and returns a `Future` or nothing, and it might be null.
+
+    This change introduces a nullable `onError` property.
+    The `FutureOr<void> Function(Object)?` type means it's a function that
+    takes an `Object` and returns a `Future` or nothing, and it might be null.
 
 1.  Update the run method to use `try`/`catch`.
 
-    Wrap the logic inside the run method in a `try`/`catch` block. If an exception
-    occurs, this block will "catch" it and either pass it to the `onError`
-    callback or rethrow it if no callback was provided. `rethrow` preserves the
-    original error and stack trace.
+    Wrap the logic inside the run method in a `try`/`catch` block.
+    If an exception occurs, this block will "catch" it and either
+    pass it to the `onError` callback or rethrow it if no callback was provided.
+    `rethrow` preserves the original error and stack trace.
 
     ```dart
     Future<void> run(List<String> input) async {
-    // [Step 6 update] try/catch added
+        // [Step 6 update] try/catch added
         try {
             final ArgResults results = parse(input);
             if (results.command != null) {
@@ -269,21 +277,26 @@ provides bad input.
         return input;
     }
     ```
-    
+
     This updated parse method now actively defends against bad input.
     Specifically, the new throw statements handle several common error cases:
 
-    *   Unknown commands: The first `if`/`else` block ensures the first argument is
-        a valid command.
-    *   Multiple commands: It checks that the user hasn't tried to run more than
-        one command at a time.
-    *   Unknown Options: The `orElse` parameter within `firstWhere` now throws an
+    -   **Unknown commands:**
+        The first `if`/`else` block ensures the
+        first argument is a valid command.
+    -   **Multiple commands:**
+        It checks that the user hasn't tried to
+        run more than one command at a time.
+    -   **Unknown options:**
+        The `orElse` parameter within `firstWhere` now throws an
         exception if a user provides a flag or option (like `--foo`) that
         hasn't been defined for that command.
-    *   Missing option values: It ensures that an option (like `--output`) is
-        followed by a value and not another option or the end of the input.
-    *   Too many arguments: It enforces a rule that commands can only have one
-        positional argument.
+    -   **Missing option values:**
+        It ensures that an option (like `--output`) is followed by a value and
+        not another option or the end of the input.
+    -   **Too many arguments:**
+        It enforces a rule that commands can
+        only have one positional argument.
 
 ### Task 3: Update cli.dart to use the new error handling
 
@@ -291,8 +304,8 @@ Modify `cli/bin/cli.dart` to use the new error handling in `CommandRunner`.
 
 1.  Open the `cli/bin/cli.dart` file.
 
-1.  Update the `main` function to pass in an `onError` method to the
-    `CommandRunner`:
+1.  Update the `main` function to pass in
+    an `onError` function to the `CommandRunner`:
 
     ```dart title="cli/bin/cli.dart"
     import 'package:command_runner/command_runner.dart';
@@ -315,35 +328,37 @@ Modify `cli/bin/cli.dart` to use the new error handling in `CommandRunner`.
     }
     ```
 
-    This code passes in an `onError` callback function to the `CommandRunner`
-    constructor. If an error occurs during the execution of a command, the
-    `onError` callback function is called with the error object. The callback
-    checks whether the error is an `Error` or an `Exception`. If it's an
-    `Error`, it's rethrown. If it's an `Exception`, it's printed to the console.
+    This code passes in an `onError` callback function to
+    the `CommandRunner` constructor.
+    If an error occurs during the execution of a command,
+    the `onError` callback function is called with the error object.
+    The callback checks whether the error is an `Error` or an `Exception`.
+    If it's an `Error`, it's rethrown.
+    If it's an `Exception`, it's printed to the console.
 
 ### Task 4: Update command_runner library exports
 
 Make `ArgumentException` available to the `command_runner` library.
 
-1.  Open `command_runner/lib/command_runner.dart`, and add the following
-    exports:
+1.  Open `command_runner/lib/command_runner.dart`, and
+    add the following exports:
 
     ```dart title="command_runner/lib/command_runner.dart"
     /// Support for doing something awesome.
     ///
     /// More dartdocs go here.
     library;
-    
+
     export 'src/arguments.dart';
     export 'src/command_runner_base.dart';
     export 'src/help_command.dart';
     export 'src/exceptions.dart'; // Add this line
-    
+
     // TODO: Export any libraries intended for clients of this package.
     ```
 
-    This ensures that the `ArgumentException` is available to consumers of the
-    `command_runner` package.
+    This ensures that the `ArgumentException` is
+    available to consumers of the `command_runner` package.
 
 ### Task 5: Test the new error handling
 
@@ -359,18 +374,37 @@ Test the new error handling by running the application with invalid arguments.
     ArgumentException: The first word of input must be a command.
     ```
 
-    This confirms that the `ArgumentException` is being thrown and caught
-    correctly.
+    This confirms that the `ArgumentException` is
+    being thrown and caught correctly.
 
 ## Review
 
-In this lesson, you learned about:
-
-*   The difference between `Error` and `Exception` in Dart.
-*   Using `try/catch` blocks to handle exceptions.
-*   `throw` exceptions to signal errors.
-*   Creating a custom exception class to represent specific types of errors.
-*   `rethrow` exceptions to propagate them up the call stack.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Distinguished errors from exceptions
+    icon: error
+    details: >-
+      You learned that subtypes of `Error` indicate
+      programming bugs and shouldn't be caught,
+      while subtypes of `Exception` represent
+      recoverable failures that your code should handle gracefully.
+  - title: Used try-catch blocks to handle failures
+    icon: shield
+    details: >-
+      You wrapped risky code in `try`-`catch` blocks to intercept exceptions.
+      You used `on ExceptionType catch (e)` to handle specific types and
+      `rethrow` to repropagate exceptions while preserving the stack trace.
+  - title: Created and threw custom exceptions
+    icon: deployed_code_alert
+    details: >-
+      You built a `ArgumentException` class that extends `FormatException` to
+      provide context-rich error information.
+      Then you used `throw` to signal validation failures with
+      meaningful messages for better debugging and user feedback.
+</SummaryCard>
 
 ## Quiz
 
@@ -378,6 +412,7 @@ In this lesson, you learned about:
 
 ## Next lesson
 
-In the next lesson, you'll learn about advanced object-oriented features in
-Dart, including enhanced enums and extensions. You'll improve the output
-formatting and add color to your CLI application.
+In the next lesson, you'll learn about
+advanced object-oriented features in Dart,
+including enhanced enums and extensions.
+You'll improve the output formatting and add color to your CLI application.

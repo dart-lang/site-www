@@ -17,49 +17,53 @@ nextpage:
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-In this chapter, you'll put the finishing touches on the `command_runner`
-package. You'll refine the `HelpCommand` to provide more detailed usage
-information and add an `onOutput` argument for more flexible output handling.
-This finalizes the `CommandRunner` package and prepares it for use in more
-complex scenarios.
+In this chapter, you'll
+put the finishing touches on the `command_runner` package.
+You'll refine the `HelpCommand` to provide more detailed usage information and
+add an `onOutput` argument for more flexible output handling.
+This finalizes the `CommandRunner` package and prepares it for
+use in more complex scenarios.
 
-:::secondary What you'll learn
-
-* Use `StringBuffer` for efficient string concatenation.
-* Enhance the `HelpCommand` to provide more detailed usage information.
-* Add an `onOutput` argument to the `CommandRunner` for customizable output
-* handling.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Learn how to iteratively build strings
+    icon: text_snippet
+  - title: Enhance help usage information
+    icon: help
+  - title: Make your command runner more flexible
+    icon: terminal
+</SummaryCard>
 
 ## Prerequisites
 
 Before you begin this chapter, ensure you:
 
-* Have completed Chapter 7 and have a working Dart development environment
-  with the `dartpedia` project.
-* Are familiar with basic programming concepts like variables, functions, and
-  control flow.
-* Understand the concepts of packages and libraries in Dart.
-* Are familiar with object-oriented programming principles like inheritance and
-  abstract classes.
+- Have completed Chapter 7 and have a
+  working Dart development environment with the `dartpedia` project.
+- Are familiar with basic programming concepts like
+  variables, functions, and control flow.
+- Understand the concepts of packages and libraries in Dart.
+- Are familiar with object-oriented programming principles like
+  inheritance and abstract classes.
 
 ## Tasks
 
-You will polish the `command_runner` package to make it more robust and
-user-friendly.
+You will polish the `command_runner` package to
+make it more robust and user-friendly.
 
 ### Task 1 Improve the `HelpCommand` output
 
 Enhance the `HelpCommand` to provide more detailed usage information,
-including options and their descriptions. This will make it easier for users to
+including options and their descriptions.
+This will make it easier for users to
 understand how to use your CLI application.
 
 1.  Open the `command_runner/lib/src/help_command.dart` file.
 
 1.  Add imports for `console.dart` and `exceptions.dart` at the top of the file.
-    You need these to use the color extensions and to throw an
-    `ArgumentException`.
+    You need these to use the color extensions and to
+    throw an `ArgumentException`.
 
     ```dart
     import 'dart:async';
@@ -70,9 +74,9 @@ understand how to use your CLI application.
     import 'exceptions.dart';
     ```
 
-1.  Replace the existing `run` method with the following. This new version uses
-    a `StringBuffer` to efficiently build the help string and includes logic to
-    handle verbose output.
+1.  Replace the existing `run` method with the following.
+    This new version uses a `StringBuffer` to efficiently
+    build the help string and includes logic to handle verbose output.
 
     ```dart
     @override
@@ -113,11 +117,12 @@ understand how to use your CLI application.
     ```
 
     `StringBuffer` is a Dart class that allows you to efficiently build strings.
-    It's more performant than using the `+` operator, especially when performing
-    many concatenations inside a loop.
+    It's more performant than using the `+` operator,
+    especially when performing many concatenations inside a loop.
 
-1.  Add the `_renderCommandVerbose` private helper method to the `HelpCommand`
-    class. This method formats the detailed output for a single command.
+1.  Add the `_renderCommandVerbose` private helper method to
+    the `HelpCommand` class.
+    This method formats the detailed output for a single command.
 
     ```dart
     String _renderCommandVerbose(Command cmd) {
@@ -140,13 +145,13 @@ understand how to use your CLI application.
 
 ### Task 2 Add an `onOutput` callback
 
-Next, add an `onOutput` argument to the `CommandRunner` to allow for
-flexible output handling.
+Next, add an `onOutput` argument to the `CommandRunner` to
+allow for flexible output handling.
 
 1.  Open the `command_runner/lib/src/command_runner_base.dart` file.
 
-1.  Add the `onOutput` argument to the `CommandRunner` constructor, and add the
-    corresponding `onOutput` member to the class.
+1.  Add the `onOutput` argument to the `CommandRunner` constructor, and
+    add the corresponding `onOutput` member to the class.
 
     ```dart
     class CommandRunner {
@@ -184,8 +189,9 @@ flexible output handling.
       }
     ```
 
-    This updates the `run` method to use the `onOutput` function if it is
-    provided, otherwise it defaults to printing to the console.
+    This updates the `run` method to
+    use the `onOutput` function if it is provided, otherwise it
+    defaults to printing to the console.
 
 ### Task 3 Use the `onOutput` callback
 
@@ -193,8 +199,9 @@ Finally, update your main application to use the new `onOutput` feature.
 
 1.  Open the `cli/bin/cli.dart` file.
 
-1.  Update the `main` function to pass the `onOutput` function to the
-    `CommandRunner`. You will also need to add an import for `console.dart` to
+1.  Update the `main` function to
+    pass the `onOutput` function to the `CommandRunner`.
+    You will also need to add an import for `console.dart` to
     make the `write` function available.
 
     ```dart
@@ -229,17 +236,38 @@ Test the improved `HelpCommand` and the `onOutput` callback.
 
 1.  Run the command `dart run bin/cli.dart help --verbose`.
 
-    You should see detailed usage information for the `help` command, printed
-    using the custom `write` function.
+    You should see detailed usage information for the `help` command,
+    printed using the custom `write` function.
 
 ## Review
 
-In this lesson, you learned:
-
-* How to use `StringBuffer` for efficient string manipulation.
-* How to improve the `HelpCommand` to display detailed usage information.
-* How to add an `onOutput` argument to the `CommandRunner` for customizable
-  output handling.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Used StringBuffer for efficient string building
+    icon: text_snippet
+    details: >-
+      You replaced string concatenation with a `StringBuffer`,
+      which can be more efficient for building strings in loops.
+      Methods like `writeln()` and `write()` append content,
+      while `toString()` produces the final string.
+  - title: Enhanced HelpCommand with verbose output
+    icon: help
+    details: >-
+      You improved the help system to show detailed usage information
+      including options, default values, and descriptions.
+      The `--verbose` flag and `--command` option give users
+      control over the level of detail.
+  - title: Added an onOutput callback argument for flexible handling
+    icon: terminal
+    details: >-
+      You added `onOutput` to `CommandRunner`,
+      allowing library consumers to customize how output is displayed.
+      This pattern makes your package more flexible and adaptable,
+      enabling delayed printing, logging, or output redirection.
+</SummaryCard>
 
 ## Quiz
 
@@ -247,4 +275,5 @@ In this lesson, you learned:
 
 ## Next lesson
 
-In the next lesson, you'll prepare for the Wikipedia portion of the application.
+In the next lesson, you'll prepare for
+the Wikipedia portion of the application.
