@@ -24,6 +24,7 @@ dependencies:
   markdown_description_list: ^0.1.1
   meta: ^1.17.0
   # Used for syntax highlighting.
+  nanoid2: ^2.0.1
   opal: ^0.2.1
   path: ^1.9.1
   # Used in the SDK archive.
