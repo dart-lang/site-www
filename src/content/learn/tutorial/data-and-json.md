@@ -1,18 +1,19 @@
 ---
-title: Data and JSON
+title: Work with JSON data
+shortTitle: Data and JSON
 description: >-
   Learn about JSON deserialization in Dart, including how to
-  use `dart:convert`, `jsonDecode`, and pattern matching to work with
-  JSON data from the Wikipedia API.
+  use `dart:convert`, `jsonDecode`, and pattern matching to
+  work with JSON data from the Wikipedia API.
 sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started/command-runner-polish
-  title: Command runner polish
+  url: /learn/tutorial/cli-polish
+  title: Polish your CLI app
 nextpage:
-  url: /get-started/testing
-  title: Testing
+  url: /learn/tutorial/testing
+  title: Test your app & code
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
@@ -26,15 +27,18 @@ making it easier to work with in your application.
 You'll use the [`dart:convert` library][],
 the `jsonDecode` function, and pattern matching.
 
-:::secondary What you'll learn
-
-*  Deserialize JSON data into Dart objects.
-*  Use the `dart:convert` library to work with JSON.
-*  Use the `jsonDecode` function to parse JSON strings.
-*  Use pattern matching to extract data from JSON objects.
-*  Create Dart classes to represent JSON data structures.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Create data model classes for JSON data
+    icon: data_object
+  - title: Use dart:convert to work with JSON data
+    icon: convert_to_text
+  - title: Use pattern matching to extract data from JSON objects
+    icon: bento
+  - title: Set up a multi-package workspace
+    icon: workspaces
+</SummaryCard>
 
 [JSON (JavaScript Object Notation)]:  https://en.wikipedia.org/wiki/JSON
 [`dart:convert` library]: {{site.dart-api}}/dart-convert
@@ -43,9 +47,9 @@ the `jsonDecode` function, and pattern matching.
 
 Before you begin this chapter, ensure you:
 
-* Have completed Chapter 8 and have a
+- Have completed Chapter 8 and have a
   working Dart development environment with the `dartpedia` project.
-* Understand basic Dart syntax, including [classes][] and data types.
+- Understand basic Dart syntax, including [classes][] and data types.
 
 [classes]: /language/classes
 
@@ -66,9 +70,10 @@ First, create a new Dart package to house the data models.
     dart create wikipedia
     ```
 
-    This command creates a new directory named `wikipedia` with the basic
-    structure of a Dart package. You should now see a new folder
-    `wikipedia` in your project root, alongside `cli` and `command_runner`.
+    This command creates a new directory named `wikipedia` with
+    the basic structure of a Dart package.
+    You should now see a new folder `wikipedia` in your project root,
+    alongside `cli` and `command_runner`.
 
 ### Task 2: Configure a Dart workspace
 
@@ -80,8 +85,8 @@ it's a good time to configure your project to use a Dart workspace.
 
 1.  **Create the root `pubspec.yaml` file.**
 
-    Navigate to the root directory of your project (`/dartpedia`) and create a
-    new file named `pubspec.yaml` with the following content:
+    Navigate to the root directory of your project (`/dartpedia`) and
+    create a new file named `pubspec.yaml` with the following content:
 
     ```yaml
     name: _
@@ -102,7 +107,7 @@ it's a good time to configure your project to use a Dart workspace.
     add `resolution: workspace` to `pubspec.yaml`.
     This tells Dart to resolve dependencies within the workspace.
 
-    *   For `cli/pubspec.yaml`:
+    -   For `cli/pubspec.yaml`:
 
         ```yaml highlightLines=5
         # ... (existing content) ...
@@ -113,7 +118,7 @@ it's a good time to configure your project to use a Dart workspace.
         # ... (existing content) ...
         ```
 
-    *   For `command_runner/pubspec.yaml`:
+    -   For `command_runner/pubspec.yaml`:
 
         ```yaml highlightLines=5
         # ... (existing content) ...
@@ -124,7 +129,7 @@ it's a good time to configure your project to use a Dart workspace.
         # ... (existing content) ...
         ```
 
-    *   For `wikipedia/pubspec.yaml`:
+    -   For `wikipedia/pubspec.yaml`:
 
         ```yaml highlightLines=5
         # ... (existing content) ...
@@ -255,8 +260,8 @@ Let's create a Dart class to represent this summary.
     }
     ```
 
-    This code defines a `Summary` class with properties that correspond to the
-    fields in the JSON response from the Wikipedia API.
+    This code defines a `Summary` class with properties that
+    correspond to the fields in the JSON response from the Wikipedia API.
     The `fromJson` method uses [pattern matching][] to
     extract the data from the JSON object and create a new `Summary` instance.
     The `toString` method provides a convenient way to
@@ -387,7 +392,7 @@ Finally, let's create a class to represent the
 search results from the Wikipedia API.
 
 1.  Create the file `wikipedia/lib/src/model/search_results.dart`.
-2.  Add the following code to `wikipedia/lib/src/model/search_results.dart`:
+1.  Add the following code to `wikipedia/lib/src/model/search_results.dart`:
 
     ```dart title="wikipedia/lib/src/model/search_results.dart"
     class SearchResult {
@@ -444,13 +449,40 @@ which will enable you to test how data is deserialized from the Wikipedia API.
 
 ## Review
 
-In this lesson, you learned about:
-
-*   Deserializing JSON data into Dart objects.
-*   Using the `dart:convert` library to work with JSON.
-*   Using the `jsonDecode` function to parse JSON strings.
-*   Using pattern matching to extract data from JSON objects.
-*   Creating Dart classes to represent JSON data structures.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Created data model classes for JSON
+    icon: data_object
+    details: >-
+      You built `Summary`, `TitlesSet`, `Article`, and `SearchResults` classes
+      to represent Wikipedia API responses.
+      These typed models provide compile-time safety and
+      IDE support when working with API data.
+  - title: Used dart:convert to work with JSON data
+    icon: convert_to_text
+    details: >-
+      You imported the `dart:convert` library and used `jsonDecode()` to
+      parse JSON strings into Dart objects, including `Map` and `List`,
+      that you can then work with programmatically.
+  - title: Used pattern matching to extract data from JSON objects
+    icon: bento
+    details: >-
+      You implemented `fromJson` factory methods using Dart's pattern matching
+      with `switch` expressions and `if case` statement.
+      This structure allowed you to validate the JSON structure and
+      extract values from the JSON objects in single, readable expressions.
+  - title: Set up a pub workspace
+    icon: workspaces
+    details: >-
+      To simplify dependency management for your multi-package project,
+      you created a new pub workspace.
+      To do so, you created a root `pubspec.yaml` file with
+      a `workspace:` section listing your packages, then
+      added `resolution: workspace` to each sub-package.
+</SummaryCard>
 
 ## Quiz
 

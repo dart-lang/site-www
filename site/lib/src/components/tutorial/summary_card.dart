@@ -16,28 +16,29 @@ class SummaryCard extends CustomComponent {
 
   @override
   Component? create(Node node, NodesBuilder builder) {
-    if (node is ElementNode && node.tag.toLowerCase() == 'summarycard') {
-      if (node.children?.whereType<ElementNode>().isNotEmpty ?? false) {
-        throw Exception(
-          'Invalid SummaryCard content. Remove any leading empty lines to '
-          'avoid parsing as markdown.',
-        );
-      }
-
-      final content = node.children?.map((n) => n.innerText).join('\n') ?? '';
-      final data = loadYamlNode(content);
-      assert(
-        data is YamlMap,
-        'Invalid SummaryCard content. Expected a YAML map.',
-      );
-      final model = SummaryCardModel.fromMap(data as YamlMap);
-      assert(
-        model.items.isNotEmpty,
-        'SummaryCard must contain at least one item.',
-      );
-      return SummaryCardComponent(model: model);
+    if (node is! ElementNode || node.tag.toLowerCase() != 'summarycard') {
+      return null;
     }
-    return null;
+
+    if (node.children?.whereType<ElementNode>().isNotEmpty ?? false) {
+      throw Exception(
+        'Invalid SummaryCard content. Remove any leading empty lines to '
+        'avoid parsing as markdown.',
+      );
+    }
+
+    final content = node.children?.map((n) => n.innerText).join('\n') ?? '';
+    final data = loadYamlNode(content);
+    assert(
+      data is YamlMap,
+      'Invalid SummaryCard content. Expected a YAML map.',
+    );
+    final model = SummaryCardModel.fromMap(data as YamlMap);
+    assert(
+      model.items.isNotEmpty,
+      'SummaryCard must contain at least one item.',
+    );
+    return SummaryCardComponent(model: model);
   }
 }
 
