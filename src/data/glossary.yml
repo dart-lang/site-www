@@ -61,10 +61,10 @@
     HTTP requests, or timers. Unlike synchronous code that blocks until completion, 
     async operations queue via microtasks/events, keeping UIs responsive.
   Key components include: 
-    - Futures: Represent a value available later, created by APIs like `http.get()`.
-    - async/await: Syntactic sugar for readable async code (`Future<String> getData() async { return await http.get(url); }`).
-    - Streams**: Handle sequences of async events like WebSocket data.
-    - Isolates: Enable true parallelism via independent execution contexts with message passing.
+    - "**Futures**": Represent a value available later, created by APIs like `http.get()`.
+    - "**async/await**": Syntactic sugar for readable async code (`Future<String> getData() async { return await http.get(url); }`).
+    - "**Streams**": Handle sequences of async events like WebSocket data.
+    - "**Isolates**": Enable true parallelism via independent execution contexts with message passing.
   labels:
     - "async"
     - "futures"
@@ -72,16 +72,16 @@
     - "concurrency"
   related_links:
     - text: "Asynchronous programming: futures, async, await"
-      link: "https://dart.dev/libraries/async/async-await"
+      link: "/libraries/async/async-await"
       type: "doc"
     - text: "Asynchronous programming overview"
-      link: "https://dart.dev/language/async"
+      link: "/language/async"
       type: "doc"
     - text: "dart:async library"
-      link: "https://api.dart.dev/stable/dart-async/dart-async-library.html"
+      link: "{{site.dart-api}}/dart-async"
       type: "api"
     - text: "Future class reference"
-      link: "https://api.dart.dev/stable/dart-async/Future-class.html"
+      link: "{{site.dart-api}}/dart-async/Future-class.html"
       type: "api"
   alternate: ["Async", "Non-blocking"]
 
