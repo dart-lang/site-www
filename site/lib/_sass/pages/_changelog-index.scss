@@ -445,19 +445,20 @@ body.dark-mode {
   gap: 1rem;
 
   .version-group {
-      .version-header {
-        margin-top: 0;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        color: var(--site-base-fgColor);
-      }
-  
-      .version-items {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
+    .version-header {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: var(--site-base-fgColor);
     }
+
+    .version-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
   .changelog-card {
 
     padding: 0; // Reset default card padding if any, we'll use inner elements
@@ -493,17 +494,17 @@ body.dark-mode {
 
       .area-badge {
         background-color: var(--site-primary-color);
-          color: var(--site-onPrimary-color);
-          padding: 0.25rem 0.5rem;
-          border-radius: 4px;
-          font-weight: bold;
-          font-size: 0.9rem;
-        }
-        
-        .entry-title {
-          font-weight: 600;
-          font-size: 1rem;
-          color: var(--site-base-fgColor);
+        color: var(--site-onPrimary-color);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+
+      .entry-title {
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--site-base-fgColor);
       }
 
       .tags {
@@ -566,9 +567,11 @@ body.dark-mode {
   background-color: rgba(0, 0, 0, 0.5);
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
+
   &.show {
     display: flex;
   }
+
   justify-content: center;
   align-items: center;
   z-index: 1000; // Ensure it's on top of everything
