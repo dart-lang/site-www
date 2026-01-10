@@ -5,7 +5,6 @@
 import 'package:collection/collection.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:universal_web/web.dart' as web;
 
 import '../../../models/changelog_model.dart';
 import '../../../util.dart';

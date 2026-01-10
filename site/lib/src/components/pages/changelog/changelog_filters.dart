@@ -10,8 +10,8 @@ import '../../../models/changelog_model.dart';
 import '../../common/button.dart';
 import '../../common/client/filtering.dart';
 import '../../common/search.dart';
-import 'changelog_filters_sidebar.dart';
 import 'changelog_filters_notifier.dart';
+import 'changelog_filters_sidebar.dart';
 
 @client
 class ChangelogFilters extends StatefulComponent {

@@ -39,7 +39,7 @@ final class ChangelogIndex extends StatelessComponent {
     }
 
     final sortedVersions = groupedEntries.keys.toList()
-      ..sort((a, b) => b.compareTo(a));
+      ..sort((vA, vB) => vB.compareTo(vA));
 
     return div(id: 'changelog-index-content', [
       div(classes: 'left-col', id: 'changelog-main-content', [

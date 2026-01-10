@@ -33,7 +33,6 @@ class Dialog extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return div(
-      // TODO: Rename these classes to be generic (e.g. dialog-overlay) in global styles
       classes: 'legend-overlay',
       events: {
         'click': (e) {
@@ -45,7 +44,7 @@ class Dialog extends StatelessComponent {
       [
         div(classes: 'legend-dialog', [
           div(classes: 'legend-header', [
-            h3([text(title)]),
+            h3([Component.text(title)]),
             Button(
               icon: 'close',
               classes: ['close-button'],
