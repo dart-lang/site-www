@@ -352,13 +352,6 @@
       permalink: https://blog.dart.dev
     - title: Changelog
       permalink: /changelog
-    - divider
-    - title: Dart SDK Changelog
-      permalink: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
-    - title: Breaking changes
-      permalink: /resources/breaking-changes
-    - title: Language evolution
-      permalink: /resources/language/evolution
     - title: What's new in the docs
       permalink: /resources/whats-new
 
