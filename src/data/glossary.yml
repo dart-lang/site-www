@@ -1421,6 +1421,39 @@
   alternate:
     - "matching contexts"
 
+- term: "Scope"
+  short_description: |-
+    The region of a program where a name (such as a variable, function, or class)
+    is visible and can be referenced.
+  long_description: |-
+    **Scope** defines where identifiers—such as variables, parameters, functions,
+    and classes are accessible within a program.
+
+    Dart uses **lexical (static) scoping**, meaning that the scope of a name is
+    determined by the structure of the source code, not by how the program
+    executes at runtime. See
+    [lexical scope](/language/functions#lexical-scope) for more details.
+
+    Common kinds of scope in Dart include:
+
+    - **Class scope**: Members accessible within a class.
+    - **Block scope**: Variables declared inside blocks such as `if`, `for`,
+      or `while`.
+    - **Function scope**: Parameters and local variables inside a function.
+    - **Library scope**: Top-level declarations visible within a library.
+
+  related_links:
+    - text: "Variables"
+      link: "/language/variables"
+      type: "doc"
+    - text: "Functions and closures"
+      link: "/language/functions"
+      type: "doc"
+  labels:
+    - "language"
+  alternate:
+    - "Lexical scope"
+
 - term: "Subclass"
   short_description: |-
     A class that inherits the implementation of another class.
