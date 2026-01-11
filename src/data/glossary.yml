@@ -773,6 +773,37 @@
     - "Read-only"
     - "Unchangeable"
 
+- term: "Interop"
+  short_description: |-
+    The ability for Dart code to interact with code written in other languages.
+  long_description: |-
+    **Interop** (short for _interoperability_) refers to Dart's ability to
+    communicate and work with code written in other programming languages.
+
+    In Dart, interop is commonly used to:
+
+    - Call native code written in languages like C, C++, or Rust.
+    - Interact with platform-specific APIs.
+    - Reuse existing libraries that aren't written in Dart.
+
+    Dart provides different interop mechanisms
+    depending on the platform and use case.
+    For example, Dart applications can use the
+    Foreign Function Interface (FFI) to call native libraries, or
+    platform-specific interop layers when running on Flutter or the web.
+  related_links:
+    - text: "C interop using dart:ffi"
+      link: "/interop/c-interop"
+      type: "doc"
+    - text: "Hooks"
+      link: "/tools/hooks"
+      type: "doc"
+  labels:
+    - "interop"
+    - "platform"
+  alternate:
+    - "Interoperability"
+
 - term: "Irrefutable pattern"
   short_description: |-
     A pattern that always matches.
