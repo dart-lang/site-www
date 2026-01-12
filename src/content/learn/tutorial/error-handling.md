@@ -15,8 +15,6 @@ nextpage:
   title: Extend your app with enums and extensions
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In this chapter, you'll learn how to
 make your application more robust by handling errors gracefully.
 You'll explore exceptions, `try/catch` blocks, and how to
