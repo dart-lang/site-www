@@ -81,8 +81,6 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
   void setVersion(Version version, bool isSelected) {
     if (isSelected) {
       selectedVersions.add(version);
-      // Check if all versions of this major are selected
-      // Logic for major "check" is now computed in UI, so we just add the individual version
     } else {
       selectedVersions.remove(version);
     }
@@ -97,6 +95,12 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
       selectedVersions.removeAll(versionsInMajor);
     }
     notifyListeners();
+  }
+
+  bool isMajorSelected(int major) {
+    final versionsInMajor = availableVersions.where((v) => v.major == major);
+    return versionsInMajor.isNotEmpty &&
+        versionsInMajor.every(selectedVersions.contains);
   }
 
   void reset() {

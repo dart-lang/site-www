@@ -18,6 +18,7 @@ class Dialog extends StatelessComponent {
     required this.onClose,
     required this.title,
     required this.children,
+    this.visible = false,
     this.classes,
     super.key,
   });
@@ -31,13 +32,16 @@ class Dialog extends StatelessComponent {
   /// The content of the dialog.
   final List<Component> children;
 
+  /// Whether to show the dialog.
+  final bool visible;
+
   /// Additional CSS classes for the dialog overlay.
   final String? classes;
 
   @override
   Component build(BuildContext context) {
     return div(
-      classes: 'legend-overlay ${classes ?? ''}',
+      classes: 'legend-overlay ${visible ? 'show' : ''} ${classes ?? ''}',
       events: {
         'click': (e) {
           if (e.target == e.currentTarget) {

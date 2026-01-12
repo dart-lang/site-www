@@ -27,7 +27,7 @@ class BreakingChangesLegend extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return Dialog(
-      classes: visible ? 'show' : null,
+      visible: visible,
       onClose: onClose,
       title: 'Types of changes',
       children: const [

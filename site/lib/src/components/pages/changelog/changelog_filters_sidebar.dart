@@ -128,20 +128,17 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                       key: Key('$major'),
                       title: '$major.x',
                       items: [major, ...groups[major]!],
-                      // We don't use direct set containment for mixed types
-                      selectedItems: const {},
+                      selectedItems: {
+                        if (ChangelogFiltersSidebar.filters.isMajorSelected(
+                          major,
+                        ))
+                          major,
+                        ...ChangelogFiltersSidebar.filters.selectedVersions,
+                      },
                       isCheckedProvider: (item) {
                         if (item is int) {
-                          // Major version header check
-                          // Checked if all versions in this major are selected
-                          final versions = groups[item]!;
-                          return versions.isNotEmpty &&
-                              versions.every(
-                                ChangelogFiltersSidebar
-                                    .filters
-                                    .selectedVersions
-                                    .contains,
-                              );
+                          return ChangelogFiltersSidebar.filters
+                              .isMajorSelected(item);
                         } else if (item is Version) {
                           return ChangelogFiltersSidebar
                               .filters
@@ -150,6 +147,7 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                         }
                         return false;
                       },
+
                       onToggle: (item, checked) {
                         if (item is int) {
                           ChangelogFiltersSidebar.filters.toggleMajor(

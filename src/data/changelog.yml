@@ -27,7 +27,7 @@
 # --------------------------------------------------
 - version: 3.10.0
   releaseDate: 2025-11-12
-  area: SDK
+  area: Language
   subArea: Dot Shorthands
   description: |
     Dart 3.10 introduces dot shorthands for enums and other static members,
