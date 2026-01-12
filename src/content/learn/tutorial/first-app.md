@@ -14,8 +14,6 @@ nextpage:
   title: Add interactivity to your app
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 Welcome to Dart! In this chapter, you'll
 ensure your setup is complete and then
 work through creating your first Dart program.

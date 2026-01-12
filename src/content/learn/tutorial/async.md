@@ -14,8 +14,6 @@ nextpage:
   title: Organize code with packages and libraries
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In this chapter, you'll explore asynchronous programming in Dart,
 allowing your applications to perform multiple tasks concurrently.
 You'll learn how to fetch data from the internet using the `http` package,

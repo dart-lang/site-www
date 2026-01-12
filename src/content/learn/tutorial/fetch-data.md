@@ -15,8 +15,6 @@ nextpage:
   title: Add logging for debugging and monitoring
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In Chapter 3, you used the `http` package to make a simple request.
 Now, you'll revisit HTTP to
 build a robust, production-ready API client within the `wikipedia` package.
