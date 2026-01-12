@@ -1,5 +1,5 @@
 ---
-title: Your first Dart program
+title: Build your first app
 shortTitle: Your first app
 description: >-
   Create, run, and make your first change to a Dart command-line program.
@@ -7,36 +7,37 @@ sitemap: false
 noindex: true
 layout: learn
 prevpage:
-  url: /get-started
+  url: /learn/tutorial
   title: Get started
 nextpage:
-  url: /get-started/add-commands
+  url: /learn/tutorial/interactivity
   title: Add interactivity to your app
 ---
 
 {% render 'fwe-wip-warning.md', site: site %}
 
-Welcome to Dart!
-In this chapter, you'll ensure your setup is complete, and
-then work through creating your first Dart program.
+Welcome to Dart! In this chapter, you'll
+ensure your setup is complete and then
+work through creating your first Dart program.
 This chapter starts simple but moves fast!
 
-:::secondary What you'll learn
-
-* Confirm your Dart SDK installation.
-* Use `dart create` to generate a new command-line interface (CLI) project.
-* Run your Dart program from the terminal using `dart run`.
-* Identify the `main` function as the program's entry point.
-* Make your first code change and see the updated output.
-
-:::
+<SummaryCard>
+title: What you'll accomplish
+items:
+  - title: Verify your Dart SDK installation
+    icon: check_circle
+  - title: Create a CLI project with dart create
+    icon: terminal
+  - title: Run and modify your first program
+    icon: play_arrow
+</SummaryCard>
 
 ## Prerequisites
 
 Before you begin this chapter, ensure you:
 
-* [Installed the Dart SDK](/get-dart).
-* Reviewed the [Dart overview](/overview) (if you're new to Dart).
+- [Installed the Dart SDK](/get-dart).
+- Reviewed the [Dart overview](/overview) (if you're new to Dart).
 
 ## Tasks
 
@@ -48,13 +49,13 @@ First, make sure Dart is ready to go on your system by following these steps.
 
 1.  Open a terminal (or command prompt).
 
-2.  Run the following command to check your Dart SDK version:
+1.  Run the following command to check your Dart SDK version:
 
     ```bash
     dart --version
     ```
 
-3.  Make sure that you see output similar to this
+1.  Make sure that you see output similar to this
     (the version numbers might be different):
 
     ```bash
@@ -62,7 +63,9 @@ First, make sure Dart is ready to go on your system by following these steps.
     ```
 
     If you see an error like "command not found," refer to the
-    [Dart installation guide](/get-dart) to set up your environment.
+    [Dart installation guide][] to set up your environment.
+
+[Dart installation guide]: /get-dart
 
 ### Task 2: Create a new Dart project
 
@@ -156,7 +159,7 @@ Next, modify the code that generated `Hello world: 42!`.
     `cli.dart` is the entry point of your application.
 
     Inside, you'll see the `main` function.
-    Every Dart program [starts executing from its `main` function](/language#hello-world).
+    Every Dart program starts executing from its `main` function.
 
 1.  Check to make sure that your `bin/cli.dart` looks like this:
 
@@ -169,8 +172,8 @@ Next, modify the code that generated `Hello world: 42!`.
     ```
 
 1.  Simplify the output for now.
-    Delete the first line (you don't need this import statement), and change the
-    `print` statement to display a simple greeting: 
+    Delete the first line (you don't need this import statement), and
+    change the `print` statement to display a simple greeting:
 
     ```dart title="bin/cli.dart" highlightLines=1,4
     import 'package:cli/cli.dart' as cli; // Delete this entire line
@@ -180,13 +183,13 @@ Next, modify the code that generated `Hello world: 42!`.
     }
     ```
 
-2.  Save your file. Then in the terminal, run your program again:
+1.  Save your file. Then in the terminal, run your program again:
 
     ```bash
     dart run
     ```
 
-3.  Check to make sure that you see the following:
+1.  Check to make sure that you see the following:
 
     ```bash
     Building package executable...
@@ -198,14 +201,31 @@ Next, modify the code that generated `Hello world: 42!`.
 
 ## Review
 
-In this lesson, you:
-
-* Verified your Dart SDK installation.
-* Used `dart create` to generate a new CLI project.
-* Ran your Dart program from the terminal using `dart run`.
-* Identified the `main` function as the
-  program's entry point within `bin/cli.dart`.
-* Made your first code change and saw the updated output.
+<SummaryCard>
+title: What you accomplished
+subtitle: Here's a summary of what you built and learned in this lesson.
+completed: true
+items:
+  - title: Verified your Dart SDK installation
+    icon: check_circle
+    details: >-
+      You ran `dart --version` to confirm Dart is properly installed
+      and accessible from your terminal.
+  - title: Created your first CLI project
+    icon: terminal
+    details: >-
+      You used `dart create` to generate a new command-line application.
+      This command scaffolds a basic project with
+      core files like `pubspec.yaml`.
+      It also generates a `bin/cli.dart` file with a `main` function
+      that acts as the entry point for your program.
+  - title: Ran and modified your program
+    icon: play_arrow
+    details: >-
+      You executed your app with `dart run` and saw the "Hello world" output.
+      Then you modified the `main` function to print a custom greeting,
+      experiencing Dart's edit-run cycle firsthand.
+</SummaryCard>
 
 ## Quiz
 
@@ -216,7 +236,7 @@ You'll see these quizzes throughout this tutorial.
 Feel free to skip them if you want.
 :::
 
-<Quiz title="Check your understanding" id="hello-world" />
+<Quiz title="Check your understanding" id="first-app" />
 
 ## Next lesson
 
