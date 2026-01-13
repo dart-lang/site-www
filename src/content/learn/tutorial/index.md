@@ -11,7 +11,9 @@ nextpage:
   title: Build your first app
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
+{% comment %}
+TODO(ewindmill): Add introduction.
+{% endcomment %}
 
 ## Set up Dart {: #set-up }
 
@@ -22,7 +24,7 @@ follow the instructions on how to [Get the Dart SDK][].
 
 [Get the Dart SDK]: /get-dart
 
-## In-progress lessons {: #lessons }
+## Lessons {: #lessons }
 
 1. [Build your first app](/learn/tutorial/first-app)
 1. [Add interactivity to your app](/learn/tutorial/interactivity)

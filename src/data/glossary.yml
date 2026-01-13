@@ -813,6 +813,37 @@
     - "Read-only"
     - "Unchangeable"
 
+- term: "Interop"
+  short_description: |-
+    The ability for Dart code to interact with code written in other languages.
+  long_description: |-
+    **Interop** (short for _interoperability_) refers to Dart's ability to
+    communicate and work with code written in other programming languages.
+
+    In Dart, interop is commonly used to:
+
+    - Call native code written in languages like C, C++, or Rust.
+    - Interact with platform-specific APIs.
+    - Reuse existing libraries that aren't written in Dart.
+
+    Dart provides different interop mechanisms
+    depending on the platform and use case.
+    For example, Dart applications can use the
+    Foreign Function Interface (FFI) to call native libraries, or
+    platform-specific interop layers when running on Flutter or the web.
+  related_links:
+    - text: "C interop using dart:ffi"
+      link: "/interop/c-interop"
+      type: "doc"
+    - text: "Hooks"
+      link: "/tools/hooks"
+      type: "doc"
+  labels:
+    - "interop"
+    - "platform"
+  alternate:
+    - "Interoperability"
+
 - term: "Irrefutable pattern"
   short_description: |-
     A pattern that always matches.
@@ -1460,6 +1491,39 @@
     - "patterns"
   alternate:
     - "matching contexts"
+
+- term: "Scope"
+  short_description: |-
+    The region of a program where a name (such as a variable, function, or class)
+    is visible and can be referenced.
+  long_description: |-
+    **Scope** defines where identifiers—such as variables, parameters, functions,
+    and classes are accessible within a program.
+
+    Dart uses **lexical (static) scoping**, meaning that the scope of a name is
+    determined by the structure of the source code, not by how the program
+    executes at runtime. See
+    [lexical scope](/language/functions#lexical-scope) for more details.
+
+    Common kinds of scope in Dart include:
+
+    - **Class scope**: Members accessible within a class.
+    - **Block scope**: Variables declared inside blocks such as `if`, `for`,
+      or `while`.
+    - **Function scope**: Parameters and local variables inside a function.
+    - **Library scope**: Top-level declarations visible within a library.
+
+  related_links:
+    - text: "Variables"
+      link: "/language/variables"
+      type: "doc"
+    - text: "Functions and closures"
+      link: "/language/functions"
+      type: "doc"
+  labels:
+    - "language"
+  alternate:
+    - "Lexical scope"
 
 - term: "Subclass"
   short_description: |-

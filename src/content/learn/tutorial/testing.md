@@ -15,8 +15,6 @@ nextpage:
   title: Fetch data from the internet
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In this chapter, you'll learn how to write tests for your Dart code.
 Testing is crucial for ensuring that your application behaves
 as expected and remains stable as you make changes.

@@ -14,8 +14,6 @@ nextpage:
   title: Define relationships with classes
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In this chapter, you'll level up from basic Dart syntax to
 building command-line applications "the Dart way," embracing best practices.
 You'll learn to refactor your code into reusable components by

@@ -17,8 +17,6 @@ nextpage:
   title: Polish your CLI app
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In this chapter, you'll explore advanced Dart features that
 improve the user experience of your command-line application.
 You'll learn how to use enhanced enums to manage console colors and
