@@ -100,16 +100,6 @@ void main(List<String> arguments) {
 
   ArgResults argResults = parser.parse(arguments);
 
-  ### Running with arguments
-
-  Once built, run your CLI app with arguments directly:
-
-  ```bash
-  dart run bin/greet.dart --help        # Show usage
-  dart run bin/greet.dart Bob          # Greet "Bob"
-  dart run bin/greet.dart --name Alice # Named arg
-  dart run bin/greet.dart Alice Bob    # Positional args
-
   final paths = argResults.rest;
 
   dcat(paths, showLineNumbers: argResults[lineNumber] as bool);
@@ -146,6 +136,20 @@ Future<void> _handleError(String path) async {
     exitCode = 2;
   }
 }
+
+### Running dcat with arguments
+
+You can run the `dcat` app with flags and file paths as arguments.
+
+```bash
+# Show usage information
+$ dart run bin/dcat.dart --help
+
+# Display the contents of a single file
+$ dart run bin/dcat.dart pubspec.yaml
+
+# Display multiple files with line numbers
+$ dart run bin/dcat.dart -n README.md pubspec.yaml
 ```
 
 ### Getting dependencies
