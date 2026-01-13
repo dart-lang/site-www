@@ -822,7 +822,7 @@
     fast feedback. Switches to AOT (ahead-of-time) for production builds.
   related_links:
     - text: "Dart: The platforms"
-      link: "/overview#platforms"
+      link: "/overview#platform"
       type: "doc" 
     - text: "JIT"
       link: "https://en.wikipedia.org/wiki/Just-in-time_compilation"
