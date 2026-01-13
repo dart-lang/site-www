@@ -74,7 +74,7 @@ format your code when you save a file.
 ### VS Code
 
 To enable format on save in [VS Code](/tools/vs-code),
-add the following to your `settings.json` file:
+add the following entry to your `settings.json` file:
 
 ```json
 {
