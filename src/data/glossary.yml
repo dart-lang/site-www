@@ -60,16 +60,13 @@
     allowing non-blocking execution of time-consuming tasks such as file I/O, 
     HTTP requests, or timers. Unlike synchronous code that blocks until completion, 
     async operations queue via microtasks/events, keeping UIs responsive.
-  Key components include: 
+
+    Key components include:
+
     - "**Futures**": Represent a value available later, created by APIs like `http.get()`.
     - "**async/await**": Syntactic sugar for readable async code (`Future<String> getData() async { return await http.get(url); }`).
     - "**Streams**": Handle sequences of async events like WebSocket data.
     - "**Isolates**": Enable true parallelism via independent execution contexts with message passing.
-  labels:
-    - "async"
-    - "futures"
-    - "event-loop"
-    - "concurrency"
   related_links:
     - text: "Asynchronous programming: futures, async, await"
       link: "/libraries/async/async-await"
@@ -78,12 +75,19 @@
       link: "/language/async"
       type: "doc"
     - text: "dart:async library"
-      link: "{{site.dart-api}}/dart-async"
+      link: "https://api.dart.dev/dart-async"
       type: "api"
     - text: "Future class reference"
-      link: "{{site.dart-api}}/dart-async/Future-class.html"
+      link: "https://api.dart.dev/dart-async/Future-class.html"
       type: "api"
-  alternate: ["Async", "Non-blocking"]
+  labels:
+    - "async"
+    - "futures"
+    - "event-loop"
+    - "concurrency"
+  alternate:
+    - "Async"
+    - "Non-blocking"
 
 
 - term: "Bottom type"
