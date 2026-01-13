@@ -13,6 +13,7 @@ import 'package:universal_web/web.dart' as web;
 /// These are temporary until they can be integrated with their
 /// relevant Jaspr components.
 void setUpSite() {
+  _setUpHeadingLinkCopy();
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpTabs();
@@ -23,6 +24,46 @@ void setUpSite() {
   _setUpTooltips();
   _setUpSteppers();
 }
+
+void _setUpHeadingLinkCopy() {
+  final anchors = web.document.querySelectorAll(
+    'a.heading-link[data-heading-id]',
+  );
+
+  for (var i = 0; i < anchors.length; i++) {
+    final anchor = anchors.item(i) as web.HTMLAnchorElement;
+
+    anchor.addEventListener(
+      'click',
+      ((web.Event event) {
+        event.preventDefault();
+
+        final headingId = anchor.dataset['headingId'];
+        if (headingId == null || headingId.isEmpty) return;
+
+        final url =
+            '${web.window.location.origin}${web.window.location.pathname}#$headingId';
+
+        // Copy URL to clipboard (if available)
+        web.window.navigator.clipboard?.writeText(url);
+
+        // Update the URL hash without triggering a jump
+        web.window.history.replaceState(null, '', '#$headingId');
+
+        // Temporary visual feedback
+        final originalText = anchor.textContent;
+        anchor.textContent = 'Copied!';
+        web.window.setTimeout(
+          (() {
+            anchor.textContent = originalText;
+          }).toJS,
+          1200 as JSAny,
+        );
+      }).toJS,
+    );
+  }
+}
+
 
 void _setUpSidenav() {
   final sidenav = web.document.getElementById('sidenav');
