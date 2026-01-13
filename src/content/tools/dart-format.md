@@ -68,7 +68,8 @@ $ dart format -o none --set-exit-if-changed bin/my_app.dart
 
 ## Format on save
 
-Most editors with Dart support can automatically format your code when you save a file.
+Most editors with Dart support can automatically 
+format your code when you save a file.
 
 ### VS Code
 
@@ -85,11 +86,14 @@ add the following to your `settings.json` file:
 
 ### IntelliJ and Android Studio
 
-To enable format on save in [IntelliJ or Android Studio](/tools/jetbrains-plugin):
+To enable formatting on save in [JetBrains IDEs](/tools/jetbrains-plugin),
+including IntelliJ IDEA and Android Studio:
 
-1. Open the [IDE settings](/tools/jetbrains-plugin#settings).
-2. Go to **Languages & Frameworks > Dart**.
-3. Check the **Format code on save** checkbox.
+1. Open the IDE settings.
+2. Enable **Reformat code** under IntelliJ’s *Actions on Save*.
+3. See the official JetBrains documentation for details:
+   https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html#reformat-on-save
+
 
 ## What changes?
 
