@@ -52,21 +52,26 @@
 
 - term: "Asynchronous"
   short_description: |-
-    Programming paradigm in Dart where operations like I/O or network calls 
-    complete later without blocking the event loop, using Futures, Streams, 
-    async/await, and isolates.
+    Programming paradigm in Dart where operations like
+    I/O or network calls complete later without blocking the event loop.
   long_description: |-
     Dart uses a single-threaded event loop model for asynchronous programming, 
-    allowing non-blocking execution of time-consuming tasks such as file I/O, 
-    HTTP requests, or timers. Unlike synchronous code that blocks until completion, 
-    async operations queue via microtasks/events, keeping UIs responsive.
+    allowing non-blocking execution of time-consuming tasks such as
+    file I/O, HTTP requests, and timers.
+    Unlike synchronous code that blocks until completion, 
+    async operations queue through microtasks/events, keeping UIs responsive.
 
     Key components include:
 
-    - "**Futures**": Represent a value available later, created by APIs like `http.get()`.
-    - "**async/await**": Syntactic sugar for readable async code (`Future<String> getData() async { return await http.get(url); }`).
-    - "**Streams**": Handle sequences of async events like WebSocket data.
-    - "**Isolates**": Enable true parallelism via independent execution contexts with message passing.
+    - **Futures**:
+      Represent a value available later, created by APIs like `http.get()`.
+    - **async/await**:
+      Dart keywords for writing maintainable and readable asynchronous code.
+    - **Streams**:
+      Handle sequences of async events like data from web sockets.
+    - **Isolates**:
+      Enable true parallelism through
+      independent execution contexts with message passing.
   related_links:
     - text: "Asynchronous programming: futures, async, await"
       link: "/libraries/async/async-await"
