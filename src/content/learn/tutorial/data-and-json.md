@@ -16,8 +16,6 @@ nextpage:
   title: Test your app & code
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In this chapter, you'll learn how to work with
 [JSON (JavaScript Object Notation)][] data in Dart.
 JSON is a common format for data exchange on the web, and

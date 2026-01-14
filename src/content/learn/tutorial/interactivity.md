@@ -16,8 +16,6 @@ nextpage:
   title: Write asynchronous code
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In this chapter, you'll get hands-on practice with Dart syntax.
 You'll learn how to read user input, print usage information, and
 create a basic command-line interaction.

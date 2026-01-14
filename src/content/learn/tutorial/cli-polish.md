@@ -15,8 +15,6 @@ nextpage:
   title: Work with JSON data
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In this chapter, you'll
 put the finishing touches on the `command_runner` package.
 You'll refine the `HelpCommand` to provide more detailed usage information and

@@ -16,8 +16,6 @@ nextpage:
   title: Keep learning!
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
-
 In this chapter, you'll learn how to add logging to your Dart application.
 Logging is a critical tool for debugging, monitoring, and
 understanding the behavior of your application in different environments.
