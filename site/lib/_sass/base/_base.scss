@@ -70,6 +70,7 @@ h6, .h6 {
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+  user-select: none;
 }
 
 dd {

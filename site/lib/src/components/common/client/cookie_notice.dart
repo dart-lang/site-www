@@ -12,7 +12,9 @@ import '../button.dart';
 /// The cookie banner to show on a user's first time visiting the site.
 @client
 final class CookieNotice extends StatefulComponent {
-  const CookieNotice({super.key});
+  const CookieNotice({super.key, this.alwaysDarkMode = false});
+
+  final bool alwaysDarkMode;
 
   @override
   State<CookieNotice> createState() => _CookieNoticeState();
@@ -50,7 +52,10 @@ final class _CookieNoticeState extends State<CookieNotice> {
   Component build(BuildContext context) {
     return section(
       id: 'cookie-notice',
-      classes: [if (showNotice) 'show'].toClasses,
+      classes: [
+        if (showNotice) 'show',
+        if (component.alwaysDarkMode) 'always-dark-mode',
+      ].toClasses,
       attributes: {'data-nosnippet': 'true'},
       [
         div(classes: 'container', [
