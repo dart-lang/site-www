@@ -135,20 +135,6 @@ Future<void> _handleError(String path) async {
     exitCode = 2;
   }
 }
-
-### Running dcat with arguments
-
-You can run the `dcat` app with flags and file paths as arguments.
-
-```bash
-# Show usage information
-$ dart run bin/dcat.dart --help
-
-# Display the contents of a single file
-$ dart run bin/dcat.dart pubspec.yaml
-
-# Display multiple files with line numbers
-$ dart run bin/dcat.dart -n README.md pubspec.yaml
 ```
 
 ### Getting dependencies
@@ -193,8 +179,21 @@ To learn more about using packages and organizing your code, check out
 ### Running dcat
 
 Once you have your app's dependencies,
-you can run the app from the command line over any text file,
-like `pubspec.yaml`:
+you can run the app from the command line over one or more text files:
+
+```bash
+# Show usage information.
+$ dart run bin/dcat.dart --help
+
+# Display the contents of a single file.
+$ dart run bin/dcat.dart pubspec.yaml
+
+# Display multiple files with line numbers.
+$ dart run bin/dcat.dart -n README.md pubspec.yaml
+```
+
+For a specific example, you can
+display the contents of the `pubspec.yaml` file:
 
 ```console
 $ dart run bin/dcat.dart -n pubspec.yaml
