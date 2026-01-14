@@ -99,7 +99,6 @@ void main(List<String> arguments) {
   final parser = ArgParser()..addFlag(lineNumber, negatable: false, abbr: 'n');
 
   ArgResults argResults = parser.parse(arguments);
-
   final paths = argResults.rest;
 
   dcat(paths, showLineNumbers: argResults[lineNumber] as bool);
