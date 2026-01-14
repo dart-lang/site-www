@@ -1,4 +1,4 @@
-// Copyright (c) 2025, the Dart project authors. Please see the AUTHORS file
+// Copyright (c) 2026, the Dart project authors. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
@@ -144,10 +144,11 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
   /// Filters [entries] based on [searchQuery] and selected filters.
   ///
   /// Returns a new list containing only the entries that match:
-  /// - Any selected tag (or all if none selected)
-  /// - Any selected area (or all if none selected)
-  /// - Any selected version (or all if none selected)
-  /// - The search query (matched against description, area, subarea, or version)
+  ///
+  /// - Any selected tag (or all if none selected).
+  /// - Any selected area (or all if none selected).
+  /// - Any selected version (or all if none selected).
+  /// - The search query (matched against description, area, subarea, version).
   List<ChangelogEntry> filterEntries(
     List<ChangelogEntry> entries,
     String searchQuery,
