@@ -38,11 +38,15 @@ void _setUpHeadingLinkCopy() {
       ((web.Event event) {
         event.preventDefault();
 
-        final headingId = anchor.dataset['headingId'];
-        if (headingId == null || headingId.isEmpty) return;
+        final href = anchor.getAttribute('href');
+        if (href == null || !href.startsWith('#')) return;
 
-        final url =
-            '${web.window.location.origin}${web.window.location.pathname}#$headingId';
+        final headingId = href.substring(1);
+        if (headingId.isEmpty) return;
+
+        final url = Uri.parse(web.window.location.href)
+            .replace(fragment: headingId)
+            .toString();
 
         // Copy URL to clipboard (if available)
         web.window.navigator.clipboard?.writeText(url);
@@ -53,12 +57,9 @@ void _setUpHeadingLinkCopy() {
         // Temporary visual feedback
         final originalText = anchor.textContent;
         anchor.textContent = 'Copied!';
-        web.window.setTimeout(
-          (() {
-            anchor.textContent = originalText;
-          }).toJS,
-          1200 as JSAny,
-        );
+        Future<void>.delayed(const Duration(milliseconds: 1200), () {
+          anchor.textContent = originalText;
+        });
       }).toJS,
     );
   }
