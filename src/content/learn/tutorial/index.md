@@ -11,20 +11,34 @@ nextpage:
   title: Build your first app
 ---
 
-{% comment %}
-TODO(ewindmill): Add introduction.
-{% endcomment %}
+Welcome to the Dart tutorial!
+This tutorial teaches you how to write Dart code by building an
+interactive command-line (CLI) application.
 
-## Set up Dart {: #set-up }
+You'll start from the very beginning: creating a blank Dart application.
+By the end, you'll have built an app that demonstrates the essential
+features of Dart development—variables, functions, classes,
+async programming, testing, and more!
 
-These lessons assume you're using the latest, stable version of Dart.
+### Before you begin {:.no_toc}
 
-To learn how to install or update Dart,
-follow the instructions on how to [Get the Dart SDK][].
+:::tip
+**Part of the Flutter learning pathway**
 
-[Get the Dart SDK]: /get-dart
+This tutorial is the second step in the
+[Dart and Flutter learning pathway]({{site.flutter-docs}}/learn/pathway).
+If you're interested in learning both Dart and Flutter,
+start there!
+:::
 
-## Lessons {: #lessons }
+This tutorial assumes that you have:
+
+1. A Dart environment set up—if not,
+   follow the instructions to [get the Dart SDK](/get-dart).
+2. Basic familiarity with programming concepts—if you've never programmed before,
+   that's okay! This tutorial is designed for beginners.
+
+## Lessons
 
 1. [Build your first app](/learn/tutorial/first-app)
 1. [Add interactivity to your app](/learn/tutorial/interactivity)
