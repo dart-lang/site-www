@@ -35,8 +35,8 @@ This tutorial assumes that you have:
 
 1. A Dart environment set up—if not,
    follow the instructions to [get the Dart SDK](/get-dart).
-2. Basic familiarity with programming concepts—if you've never programmed before,
-   that's okay! This tutorial is designed for beginners.
+2. Basic familiarity with programming concepts. The tutorial 
+   is beginner friendly, but doesn't cover the fundamentals of programming.
 
 ## Lessons
 

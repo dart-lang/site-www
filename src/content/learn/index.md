@@ -8,47 +8,33 @@ sitemap: false
 noindex: true
 ---
 
-## For beginners
+## Learn Dart
 
-Start here for an overview of how to get set up and
-learn how to write Dart code.
+The following tutorial is the recommended way to learn Dart.
 
-<div class="card-grid">
-  <Card title="Dart tutorial" link="/learn/tutorial">
-    
-      Learn how to write Dart code by building an interactive CLI app.
-      This is the recommended set of resources to start learning Dart!
-      Great for beginners with minimal programming experience.
+<Card title="Dart tutorial" additional-classes="display-card">
+  Learn how to write Dart code by building an interactive CLI app. 
+  Great for beginners with minimal programming experience.
 
-  </Card>
-</div>
+  <a href="/learn/tutorial" class="outlined-button-cta">Start learning</a>
 
-:::tip
-**Want to learn Dart and Flutter together?**
+</Card>
 
-If you're interested in learning Flutter, check out the
-[Dart and Flutter learning pathway]({{site.flutter-docs}}/learn/pathway),
-which teaches you both Dart and Flutter step-by-step.
-:::
+## Learn Dart and Flutter together
 
-## For experienced developers
+The above tutorial is part of a larger learning pathway that 
+teaches you both Dart and Flutter. If you're interested 
+in learning Flutter, you should follow the setup guide there, 
+as the installing Flutter automatically installs Dart. 
 
-Dive deeper into more specific topics with reference documentation,
-sample code, and more.
+<Card title="Dart and Flutter learning pathway" additional-classes="display-card">
 
-<div class="card-grid">
-  <a class="card-grid__card" href="/language">
-    <b>Language reference</b>
-    <p>
-      Explore Dart's language features in depth,
-      from variables and operators to patterns and macros.
-    </p>
-  </a>
-  <a class="card-grid__card" href="/libraries">
-    <b>Core libraries</b>
-    <p>
-      Learn about Dart's core libraries,
-      including collections, async programming, and more.
-    </p>
-  </a>
-</div>
+Learn how to write Dart code in the first tutorial, then build a
+series of apps using Flutter in the second. You'll learn the essential
+best practices for Flutter app development, app architecture,
+fetching data from the network, and more. Great for beginners with
+minimal programming experience.
+
+  <a href="{{site.flutter-docs}}/learn/pathway" class="outlined-button-cta">Start learning</a>
+
+</Card>
