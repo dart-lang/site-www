@@ -4,8 +4,6 @@ breadcrumb: Learn
 description: >-
   Find everything you need to start learning the Dart programming language.
 sidenav: getStarted
-sitemap: false
-noindex: true
 ---
 
 ## Learn Dart
@@ -23,9 +21,9 @@ The following tutorial is the recommended way to learn Dart.
 ## Learn Dart and Flutter together
 
 The above tutorial is part of a larger learning pathway that 
-teaches you both Dart and Flutter. If you're interested 
-in learning Flutter, you should follow the setup guide there, 
-as the installing Flutter automatically installs Dart. 
+  teaches you both Dart and Flutter. If you're interested 
+  in learning Flutter, you should follow the setup guide there, 
+  as the installing Flutter automatically installs Dart. 
 
 <Card title="Dart and Flutter learning pathway" additional-classes="display-card">
 

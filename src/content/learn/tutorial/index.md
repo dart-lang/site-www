@@ -3,8 +3,6 @@ title: Dart tutorial
 shortTitle: Tutorial
 description: >-
   Begin your Dart learning journey by building an interactive CLI app.
-sitemap: false
-noindex: true
 layout: learn
 nextpage:
   url: /learn/tutorial/first-app

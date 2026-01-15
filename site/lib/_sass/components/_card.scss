@@ -17,27 +17,6 @@
 
   // Disable lite-youtube shadow for videos in cards.
   --lite-youtube-frame-shadow-visible: false;
-
-  &.link-cards {
-    margin-block: 1.5rem;
-  }
-
-  &.wide {
-    --card-min-width: 19rem;
-  }
-
-  &.very-wide {
-    --card-min-width: 32rem;
-
-    .card {
-      min-height: 7.5rem;
-    }
-  }
-
-  &.narrow {
-    --card-min-width: 10rem;
-    grid-auto-rows: 1fr;
-  }
 }
 
 // Base card styles - work independently without a container
@@ -52,23 +31,6 @@
   overflow: hidden;
 
   scroll-margin: 5rem;
-
-  &.hidden {
-    display: none;
-  }
-
-  &.filled-card {
-    background-color: var(--site-filledCard-bgColor);
-  }
-
-  &.outlined-card {
-    border: 1px solid var(--card-border-color, var(--site-card-borderColor));
-  }
-
-  &.wrapped-card {
-    padding: 0;
-    border-width: 2px;
-  }
 
   // Card that is used to display content, not necessarily used in a collection of cards
   &.display-card {
