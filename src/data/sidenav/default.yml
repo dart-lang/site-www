@@ -9,6 +9,8 @@
       permalink: /language/operators
     - title: Comments
       permalink: /language/comments
+    - title: Language versioning
+      permalink: /language/versions
     - divider
     - title: Types
       children:

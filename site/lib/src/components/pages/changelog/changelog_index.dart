@@ -90,7 +90,9 @@ class _ChangelogEntryCard extends StatelessComponent {
               .text(entry.area),
             ]),
             if (entry.subArea case final subArea?)
-              span(classes: 'entry-title', [.text(subArea)]),
+              span(classes: 'entry-title', [
+                DashMarkdown(content: subArea, inline: true),
+              ]),
           ]),
           div(classes: 'tags', [
             for (final tag in entry.tags)
