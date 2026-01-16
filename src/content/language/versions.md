@@ -10,7 +10,6 @@ nextpage:
 ---
 
 ## Overview
-
 A single Dart SDK can simultaneously support
 multiple versions of the Dart language.
 The compiler determines what version the code is targeting,
@@ -120,16 +119,13 @@ To use a language feature introduced after 2.0,
 set an [SDK constraint][] no lower than
 the release when Dart first supported that feature.
 
-**For example:** To use null safety, introduced in [2.12][],
+**For example:** To use null safety, introduced in 2.12,
 set `2.12.0` as the lower constraint in the `pubspec.yaml` file.
 
 ```yaml
 environment:
   sdk: '>=2.12.0 <3.0.0'
 ```
-
-[2.12]: #dart-2-12
-[SDK constraint]: /tools/pub/pubspec#sdk-constraints
 
 :::tip
 To review the features being discussed, investigated, and
@@ -138,10 +134,11 @@ check out the [language funnel][] tracker
 on the Dart language GitHub repo.
 :::
 
+[SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [Dart library]: /tools/pub/create-packages#organizing-a-package
 [language funnel]: {{site.repo.dart.lang}}/projects/1
 [language specification]: /resources/language/spec
 [language documentation]: /language
 [language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [null safety]: /null-safety
-[Changelog]: /Changelog.md
+[Changelog]: /changelog
