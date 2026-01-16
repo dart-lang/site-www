@@ -9,6 +9,8 @@
       permalink: /language/operators
     - title: Comments
       permalink: /language/comments
+    - title: Language versioning
+      permalink: /language/versions
     - divider
     - title: Types
       children:
@@ -358,12 +360,8 @@
   children:
     - title: Dart Blog
       permalink: https://blog.dart.dev
-    - title: Dart SDK Changelog
-      permalink: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
-    - title: Breaking changes
-      permalink: /resources/breaking-changes
-    - title: Language evolution
-      permalink: /resources/language/evolution
+    - title: Changelog
+      permalink: /changelog
     - title: What's new in the docs
       permalink: /resources/whats-new
 

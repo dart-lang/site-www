@@ -87,7 +87,7 @@ mailing list.
   periodically to see if your dependencies have had security updates,
   and update the version pin accordingly.
 
-[Dart changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
+[Dart changelog]: /changelog
 [GitHub security advisories]: https://docs.github.com/en/code-security/security-advisories
 [Google's security philosophy]: https://www.google.com/about/appsecurity/
 [https://g.co/vulnz]: https://g.co/vulnz
