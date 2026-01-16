@@ -3,7 +3,6 @@ title: Learn Dart
 breadcrumb: Learn
 description: >-
   Find everything you need to start learning the Dart programming language.
-sidenav: getStarted
 ---
 
 ## Learn Dart
