@@ -1,3 +1,20 @@
+- term: AOT
+  short_description: |-
+    Ahead-Of-Time compilation for optimized Dart production binaries.
+  long_description: |-
+    `dart compile exe` / Flutter release builds AOT-compile to native machine code at 
+    build time. Smaller/faster than JIT, no warmup, tree-shaken.
+  related_links:
+    - text: "Dart: The Platforms"
+      link: "/overview#platform"
+      type: "doc"
+    - text: "AOT"
+      link: "https://en.wikipedia.org/wiki/Ahead-of-time_compilation"
+      type: "external"
+  labels: 
+    - "compilation"
+    - "deployment"
+      
 - term: "Application package"
   short_description: |-
     A Dart package that contains a runnable application.
@@ -872,6 +889,23 @@
     - "patterns"
   alternate:
     - "irrefutable context"
+
+- term: JIT
+  short_description: |-
+    Just-In-Time compiler for fast Dart development iteration.
+  long_description: |-
+    `dart run` / Flutter hot reload uses JIT: compiles to native at runtime, enables 
+    fast feedback. Switches to AOT (ahead-of-time) for production builds.
+  related_links:
+    - text: "Dart: The platforms"
+      link: "/overview#platform"
+      type: "doc" 
+    - text: "JIT"
+      link: "https://en.wikipedia.org/wiki/Just-in-time_compilation"
+      type: "external"
+  labels: 
+    - "compilation"
+    - "devtools"
 
 - term: "Mixin application"
   short_description: |-
