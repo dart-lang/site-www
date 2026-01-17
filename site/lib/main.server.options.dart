@@ -64,6 +64,7 @@ ServerOptions get defaultServerOptions => ServerOptions(
         ),
     _cookie_notice.CookieNotice: ClientTarget<_cookie_notice.CookieNotice>(
       'cookie_notice',
+      params: __cookie_noticeCookieNotice,
     ),
     _copy_button.CopyButton: ClientTarget<_copy_button.CopyButton>(
       'copy_button',
@@ -118,6 +119,9 @@ Map<String, Object?> __archive_tableArchiveTable(
 Map<String, Object?> __collapse_buttonCollapseButton(
   _collapse_button.CollapseButton c,
 ) => {'classes': c.classes, 'title': c.title};
+Map<String, Object?> __cookie_noticeCookieNotice(
+  _cookie_notice.CookieNotice c,
+) => {'alwaysDarkMode': c.alwaysDarkMode};
 Map<String, Object?> __copy_buttonCopyButton(_copy_button.CopyButton c) => {
   'buttonText': c.buttonText,
   'toCopy': c.toCopy,

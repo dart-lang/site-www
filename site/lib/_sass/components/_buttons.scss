@@ -8,7 +8,7 @@ a, button {
   border: none;
   font-weight: 400;
 
-  &.filled-button, &.icon-button, &.text-button, &.outlined-button {
+  &.filled-button, &.icon-button, &.text-button, &.outlined-button, &.outlined-button-cta {
     // Reset style of buttons.
     user-select: none;
     padding: 0;
@@ -44,7 +44,7 @@ a, button {
     }
   }
 
-  &.filled-button, &.outlined-button, &.text-button {
+  &.filled-button, &.outlined-button, &.text-button, &.outlined-button-cta {
     padding: 0.25rem 0.75rem;
     gap: 0.4rem;
 
@@ -109,5 +109,24 @@ a, button {
 
   &.outlined-button {
     border: 1px solid var(--site-outline);
+  }
+
+  &.outlined-button-cta {
+    border: 1px solid var(--site-primary-color);
+    color: var(--site-primary-color);
+
+    &:hover {
+      @include mixins.interaction-style(6%);
+      text-decoration: none;
+    }
+
+    &:active {
+      @include mixins.interaction-style(10%);
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--site-primary-color);
+    }
   }
 }

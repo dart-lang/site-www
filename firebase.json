@@ -169,6 +169,7 @@
       { "source": "/faq", "destination": "/resources/faq", "type": 301 },
       { "source": "/ffi", "destination": "/interop/c-interop", "type": 301 },
       { "source": "/flutter", "destination": "https://flutter.dev", "type": 301 },
+      { "source": "/get-started{,/**}", "destination": "/learn/tutorial", "type": 301 },
       { "source": "/glossary", "destination": "/resources/glossary", "type": 301 },
       { "source": "/glossary/:entry", "destination": "/resources/glossary#:entry", "type": 301 },
 

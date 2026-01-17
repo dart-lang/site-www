@@ -50,6 +50,51 @@
   alternate:
     - "Quick assist"
 
+- term: "Asynchronous"
+  short_description: |-
+    Programming paradigm in Dart where operations like
+    I/O or network calls complete later without blocking the event loop.
+  long_description: |-
+    Dart uses a single-threaded event loop model for asynchronous programming, 
+    allowing non-blocking execution of time-consuming tasks such as
+    file I/O, HTTP requests, and timers.
+    Unlike synchronous code that blocks until completion, 
+    async operations queue through microtasks/events, keeping UIs responsive.
+
+    Key components include:
+
+    - **Futures**:
+      Represent a value available later, created by APIs like `http.get()`.
+    - **async/await**:
+      Dart keywords for writing maintainable and readable asynchronous code.
+    - **Streams**:
+      Handle sequences of async events like data from web sockets.
+    - **Isolates**:
+      Enable true parallelism through
+      independent execution contexts with message passing.
+  related_links:
+    - text: "Asynchronous programming: futures, async, await"
+      link: "/libraries/async/async-await"
+      type: "doc"
+    - text: "Asynchronous programming overview"
+      link: "/language/async"
+      type: "doc"
+    - text: "dart:async library"
+      link: "https://api.dart.dev/dart-async"
+      type: "api"
+    - text: "Future class reference"
+      link: "https://api.dart.dev/dart-async/Future-class.html"
+      type: "api"
+  labels:
+    - "async"
+    - "futures"
+    - "event-loop"
+    - "concurrency"
+  alternate:
+    - "Async"
+    - "Non-blocking"
+
+
 - term: "Bottom type"
   short_description: |-
     A type that has no values and is a subtype of all other types.
@@ -773,6 +818,37 @@
     - "Read-only"
     - "Unchangeable"
 
+- term: "Interop"
+  short_description: |-
+    The ability for Dart code to interact with code written in other languages.
+  long_description: |-
+    **Interop** (short for _interoperability_) refers to Dart's ability to
+    communicate and work with code written in other programming languages.
+
+    In Dart, interop is commonly used to:
+
+    - Call native code written in languages like C, C++, or Rust.
+    - Interact with platform-specific APIs.
+    - Reuse existing libraries that aren't written in Dart.
+
+    Dart provides different interop mechanisms
+    depending on the platform and use case.
+    For example, Dart applications can use the
+    Foreign Function Interface (FFI) to call native libraries, or
+    platform-specific interop layers when running on Flutter or the web.
+  related_links:
+    - text: "C interop using dart:ffi"
+      link: "/interop/c-interop"
+      type: "doc"
+    - text: "Hooks"
+      link: "/tools/hooks"
+      type: "doc"
+  labels:
+    - "interop"
+    - "platform"
+  alternate:
+    - "Interoperability"
+
 - term: "Irrefutable pattern"
   short_description: |-
     A pattern that always matches.
@@ -1420,6 +1496,39 @@
     - "patterns"
   alternate:
     - "matching contexts"
+
+- term: "Scope"
+  short_description: |-
+    The region of a program where a name (such as a variable, function, or class)
+    is visible and can be referenced.
+  long_description: |-
+    **Scope** defines where identifiers—such as variables, parameters, functions,
+    and classes are accessible within a program.
+
+    Dart uses **lexical (static) scoping**, meaning that the scope of a name is
+    determined by the structure of the source code, not by how the program
+    executes at runtime. See
+    [lexical scope](/language/functions#lexical-scope) for more details.
+
+    Common kinds of scope in Dart include:
+
+    - **Class scope**: Members accessible within a class.
+    - **Block scope**: Variables declared inside blocks such as `if`, `for`,
+      or `while`.
+    - **Function scope**: Parameters and local variables inside a function.
+    - **Library scope**: Top-level declarations visible within a library.
+
+  related_links:
+    - text: "Variables"
+      link: "/language/variables"
+      type: "doc"
+    - text: "Functions and closures"
+      link: "/language/functions"
+      type: "doc"
+  labels:
+    - "language"
+  alternate:
+    - "Lexical scope"
 
 - term: "Subclass"
   short_description: |-
