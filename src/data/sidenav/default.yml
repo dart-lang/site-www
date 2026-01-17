@@ -345,6 +345,14 @@
         permalink: /web/debugging
 
 - divider
+
+- title: Learn Dart
+  children:
+    - title: Overview
+      permalink: /learn
+    - title: Tutorial
+      permalink: /learn/tutorial
+
 - title: Stay up to date
   expanded: false
   children:
