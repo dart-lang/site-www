@@ -138,7 +138,7 @@ Replace `"main.dart"` with the path to your app's main file.
 
 2. In the VS Code Debug Console or terminal output, look for a line similar to:
    ```
-   The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/XXXX/devtools/#/?uri=...
+   The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/aBcDeFg123=/devtools/#/?uri=...
    ```
 
 3. Copy the DevTools URL and paste it into a Chrome browser window.
