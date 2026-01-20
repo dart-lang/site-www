@@ -2,8 +2,8 @@
 title: Built-in types
 description: Information on the types Dart supports.
 prevpage:
-  url: /language/comments
-  title: Comments
+  url: /language/versions
+  title: Language versioning
 nextpage:
   url: /language/records
   title: Records

@@ -1,5 +1,6 @@
 ---
 title: Breaking changes and deprecations
+breadcrumb: Legacy
 description: A list of breaking changes by release in Dart.
 maxTocDepth: 2
 lastVerified: 2025-08-13
@@ -9,6 +10,13 @@ lastVerified: 2025-08-13
 {% assign deprecated = '<span class="tag-label deprecated-tag">Deprecated</span>' %}
 {% assign removed = '<span class="tag-label removed-tag">Removed</span>' %}
 {% assign experimental = '<span class="tag-label experimental-tag">Experimental</span>' %}
+
+:::warning
+**This page has been deprecated.**
+See the [Changelog](/changelog) for changes to the language and SDK,
+and [Language versioning](/language/versions) for how versioning is used
+with Dart and the SDK.
+:::
 
 This page lists all breaking changes and deprecations in
 updates to the Dart SDK, organized by release and area,
