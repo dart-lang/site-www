@@ -14,6 +14,7 @@ nextpage:
   title: Add interactivity to your app
 ---
 
+<YoutubeEmbed id="ulg4bjQQJi0" title="What is Dart?" fullWidth="true"></YoutubeEmbed>
 Welcome to Dart! In this chapter, you'll
 ensure your setup is complete and then
 work through creating your first Dart program.

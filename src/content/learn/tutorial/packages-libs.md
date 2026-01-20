@@ -14,6 +14,8 @@ nextpage:
   title: Define relationships with classes
 ---
 
+<YoutubeEmbed id="En5lVTdmZIY" title="The Dart platform" fullWidth="true"></YoutubeEmbed>
+
 In this chapter, you'll level up from basic Dart syntax to
 building command-line applications "the Dart way," embracing best practices.
 You'll learn to refactor your code into reusable components by
