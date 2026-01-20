@@ -6,12 +6,6 @@ description: >-
 sitemap: false
 noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial
-  title: Get started
-nextpage:
-  url: /learn/tutorial/interactivity
-  title: Add interactivity to your app
 ---
 
 Welcome to Dart! In this chapter, you'll
