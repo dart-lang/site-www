@@ -624,5 +624,7 @@ items:
 
 Congratulations! You've now completed all the
 core chapters of the Dart Getting Started tutorial.
-As a bonus, you can learn how to make your application into a
-server using `package:shelf` in the next chapter.
+Want to continue learning? Check out the next step in the 
+[Dart and Flutter learning pathway] on the Flutter site.
+
+[Dart and Flutter learning pathway]: {{site.flutter-docs}}/learn/pathway
