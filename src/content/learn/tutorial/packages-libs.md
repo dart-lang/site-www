@@ -3,8 +3,6 @@ title: Organize Dart code with packages and libraries
 shortTitle: Packages and libraries
 description: >-
   Learn how to organize your Dart code into reusable libraries and packages.
-sitemap: false
-noindex: true
 layout: learn
 prevpage:
   url: /learn/tutorial/async

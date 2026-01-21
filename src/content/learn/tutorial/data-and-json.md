@@ -5,8 +5,6 @@ description: >-
   Learn about JSON deserialization in Dart, including how to
   use `dart:convert`, `jsonDecode`, and pattern matching to
   work with JSON data from the Wikipedia API.
-sitemap: false
-noindex: true
 layout: learn
 prevpage:
   url: /learn/tutorial/cli-polish

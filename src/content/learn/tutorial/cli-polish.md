@@ -4,8 +4,6 @@ shortTitle: CLI polish
 description: >-
   Improve the HelpCommand to provide more detailed information and
   add an onOutput argument for flexible output handling.
-sitemap: false
-noindex: true
 layout: learn
 prevpage:
   url: /learn/tutorial/advanced-oop

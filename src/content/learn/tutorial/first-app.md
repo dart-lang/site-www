@@ -3,8 +3,6 @@ title: Build your first app
 shortTitle: Your first app
 description: >-
   Create, run, and make your first change to a Dart command-line program.
-sitemap: false
-noindex: true
 layout: learn
 prevpage:
   url: /learn/tutorial
@@ -15,6 +13,7 @@ nextpage:
 ---
 
 <YoutubeEmbed id="ulg4bjQQJi0" title="What is Dart?" fullWidth="true"></YoutubeEmbed>
+
 Welcome to Dart! In this chapter, you'll
 ensure your setup is complete and then
 work through creating your first Dart program.
