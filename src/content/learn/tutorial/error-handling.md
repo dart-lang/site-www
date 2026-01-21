@@ -7,12 +7,6 @@ description: >-
 sitemap: false
 noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/object-oriented
-  title: Define relationships with classes
-nextpage:
-  url: /learn/tutorial/advanced-oop
-  title: Extend your app with enums and extensions
 ---
 
 In this chapter, you'll learn how to

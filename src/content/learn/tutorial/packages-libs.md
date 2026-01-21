@@ -6,12 +6,6 @@ description: >-
 sitemap: false
 noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/async
-  title: Write asynchronous code
-nextpage:
-  url: /learn/tutorial/object-oriented
-  title: Define relationships with classes
 ---
 
 <YoutubeEmbed id="En5lVTdmZIY" title="The Dart platform" fullWidth="true"></YoutubeEmbed>
