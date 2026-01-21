@@ -13,6 +13,7 @@ import 'src/archive/archive_table.dart';
 import 'src/components/common/card.dart';
 import 'src/components/common/tabs.dart';
 import 'src/components/common/youtube_embed.dart';
+import 'src/components/pages/changelog/changelog_index.dart';
 import 'src/components/tutorial/quiz.dart';
 import 'src/components/tutorial/summary_card.dart';
 import 'src/components/tutorial/tutorial_outline.dart';
@@ -63,7 +64,6 @@ Component get _dartDevSite => ContentApp.custom(
     theme: const ContentTheme.none(),
     secondaryOutputs: [
       const RobotsTxtOutput(),
-
       MarkdownOutput(
         createHeader: (page) {
           final header = StringBuffer();
@@ -108,5 +108,9 @@ List<CustomComponent> get _embeddableComponents => [
   CustomComponent(
     pattern: RegExp('Card', caseSensitive: false),
     builder: (_, attrs, child) => Card.fromAttributes(attrs, child),
+  ),
+  CustomComponent(
+    pattern: RegExp('ChangelogIndex', caseSensitive: false),
+    builder: (_, _, _) => const ChangelogIndex(),
   ),
 ];
