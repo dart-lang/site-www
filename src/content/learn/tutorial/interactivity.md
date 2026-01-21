@@ -8,12 +8,6 @@ description: >-
 sitemap: false
 noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/first-app
-  title: Build your first app
-nextpage:
-  url: /learn/tutorial/async
-  title: Write asynchronous code
 ---
 
 In this chapter, you'll get hands-on practice with Dart syntax.

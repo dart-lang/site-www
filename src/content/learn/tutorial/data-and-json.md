@@ -8,12 +8,6 @@ description: >-
 sitemap: false
 noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/cli-polish
-  title: Polish your CLI app
-nextpage:
-  url: /learn/tutorial/testing
-  title: Test your app & code
 ---
 
 In this chapter, you'll learn how to work with

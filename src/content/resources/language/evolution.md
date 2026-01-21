@@ -1,10 +1,17 @@
 ---
 title: Dart language evolution
 shortTitle: Language evolution
-breadcrumb: Evolution
+breadcrumb: Legacy
 description: Notable changes and additions to the Dart programming language.
 lastVerified: 2024-08-04
 ---
+
+:::warning
+**This page has been deprecated.**
+See the [Changelog](/changelog) for changes to the language and SDK,
+and [Language versioning](/language/versions) for how versioning is used
+with Dart and the SDK.
+:::
 
 This page lists notable changes and additions to the
 Dart programming language.
