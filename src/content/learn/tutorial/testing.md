@@ -5,12 +5,6 @@ description: >-
   Learn how to write tests for your Dart code
   using the `package:test` library.
 layout: learn
-prevpage:
-  url: /learn/tutorial/data-and-json
-  title: Work with JSON data
-nextpage:
-  url: /learn/tutorial/fetch-data
-  title: Fetch data from the internet
 ---
 
 In this chapter, you'll learn how to write tests for your Dart code.

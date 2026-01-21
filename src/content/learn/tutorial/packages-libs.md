@@ -4,12 +4,6 @@ shortTitle: Packages and libraries
 description: >-
   Learn how to organize your Dart code into reusable libraries and packages.
 layout: learn
-prevpage:
-  url: /learn/tutorial/async
-  title: Write asynchronous code
-nextpage:
-  url: /learn/tutorial/object-oriented
-  title: Define relationships with classes
 ---
 
 <YoutubeEmbed id="En5lVTdmZIY" title="The Dart platform" fullWidth="true"></YoutubeEmbed>

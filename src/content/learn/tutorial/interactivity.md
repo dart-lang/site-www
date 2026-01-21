@@ -6,12 +6,6 @@ description: >-
   Learn the fundamentals of Dart syntax including
   control flow, collections, variables, functions, and more.
 layout: learn
-prevpage:
-  url: /learn/tutorial/first-app
-  title: Build your first app
-nextpage:
-  url: /learn/tutorial/async
-  title: Write asynchronous code
 ---
 
 In this chapter, you'll get hands-on practice with Dart syntax.

@@ -4,12 +4,6 @@ shortTitle: Your first app
 description: >-
   Create, run, and make your first change to a Dart command-line program.
 layout: learn
-prevpage:
-  url: /learn/tutorial
-  title: Get started
-nextpage:
-  url: /learn/tutorial/interactivity
-  title: Add interactivity to your app
 ---
 
 <YoutubeEmbed id="ulg4bjQQJi0" title="What is Dart?" fullWidth="true"></YoutubeEmbed>

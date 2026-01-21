@@ -6,12 +6,6 @@ description: >-
   use `dart:convert`, `jsonDecode`, and pattern matching to
   work with JSON data from the Wikipedia API.
 layout: learn
-prevpage:
-  url: /learn/tutorial/cli-polish
-  title: Polish your CLI app
-nextpage:
-  url: /learn/tutorial/testing
-  title: Test your app & code
 ---
 
 In this chapter, you'll learn how to work with

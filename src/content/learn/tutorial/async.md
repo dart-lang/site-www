@@ -4,12 +4,6 @@ shortTitle: Async code
 description: >-
   Learn about asynchronous programming in Dart and how to make HTTP requests.
 layout: learn
-prevpage:
-  url: /learn/tutorial/interactivity
-  title: Add interactivity to your app
-nextpage:
-  url: /learn/tutorial/packages-libs
-  title: Organize code with packages and libraries
 ---
 
 In this chapter, you'll explore asynchronous programming in Dart,

@@ -6,12 +6,6 @@ description: >-
   abstract classes, inheritance, overrides, and enums.
   Build a framework for well-architected CLI apps.
 layout: learn
-prevpage:
-  url: /learn/tutorial/packages-libs
-  title: Organize code with packages and libraries
-nextpage:
-  url: /learn/tutorial/error-handling
-  title: Handle errors gracefully
 ---
 
 In this chapter, you'll explore the

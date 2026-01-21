@@ -5,13 +5,6 @@ description: >-
   Learn how to add logging to your Dart application to
   help with debugging and monitoring.
 layout: learn
-prevpage:
-  url: /learn/tutorial/fetch-data
-  title: Fetch data from the internet
-nextpage:
-  # TODO: Create a conclusion page or section with next steps.
-  url: /learn
-  title: Keep learning!
 ---
 
 In this chapter, you'll learn how to add logging to your Dart application.

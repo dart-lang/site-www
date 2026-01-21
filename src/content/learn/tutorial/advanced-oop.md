@@ -7,12 +7,6 @@ description: >-
   Improve your application's output formatting and color,
   making it more user-friendly.
 layout: learn
-prevpage:
-  url: /learn/tutorial/error-handling
-  title: Handle errors gracefully
-nextpage:
-  url: /learn/tutorial/cli-polish
-  title: Polish your CLI app
 ---
 
 In this chapter, you'll explore advanced Dart features that

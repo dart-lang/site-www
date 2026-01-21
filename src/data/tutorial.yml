@@ -1,0 +1,29 @@
+title: Learn Dart
+url: /learn/tutorial
+units:
+  - title: Learn Dart
+    chapters:
+      - title: Build your first app
+        url: /learn/tutorial/first-app
+      - title: Add interactivity to your app
+        url: /learn/tutorial/interactivity
+      - title: Write asynchronous code
+        url: /learn/tutorial/async
+      - title: Organize code with packages and libraries
+        url: /learn/tutorial/packages-libs
+      - title: Define relationships with classes
+        url: /learn/tutorial/object-oriented
+      - title: Handle errors gracefully
+        url: /learn/tutorial/error-handling
+      - title: Extend your app with enums and extensions
+        url: /learn/tutorial/advanced-oop
+      - title: Polish your CLI app
+        url: /learn/tutorial/cli-polish
+      - title: Work with JSON data
+        url: /learn/tutorial/data-and-json
+      - title: Test your app & code
+        url: /learn/tutorial/testing
+      - title: Fetch data from the internet
+        url: /learn/tutorial/fetch-data
+      - title: Add logging for debugging and monitoring
+        url: /learn/tutorial/logging
