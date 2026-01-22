@@ -4,8 +4,6 @@ shortTitle: HTTP requests
 description: >-
   Refactor your application to use a robust, production-ready
   API client for the Wikipedia CLI.
-sitemap: false
-noindex: true
 layout: learn
 ---
 

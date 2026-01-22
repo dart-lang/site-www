@@ -5,8 +5,6 @@ description: >-
   Add simple commands to your cli application.
   Learn the fundamentals of Dart syntax including
   control flow, collections, variables, functions, and more.
-sitemap: false
-noindex: true
 layout: learn
 ---
 

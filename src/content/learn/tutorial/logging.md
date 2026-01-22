@@ -4,8 +4,6 @@ short-title: Logging
 description: >-
   Learn how to add logging to your Dart application to
   help with debugging and monitoring.
-sitemap: false
-noindex: true
 layout: learn
 ---
 

@@ -3,8 +3,6 @@ title: Write asynchronous code
 shortTitle: Async code
 description: >-
   Learn about asynchronous programming in Dart and how to make HTTP requests.
-sitemap: false
-noindex: true
 layout: learn
 ---
 

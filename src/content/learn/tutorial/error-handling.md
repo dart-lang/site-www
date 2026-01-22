@@ -4,8 +4,6 @@ shortTitle: Error handling
 description: >-
   Improve app robustness by handling errors.
   Learn about exceptions, errors, `try/catch`, `throw`, and `rethrow`.
-sitemap: false
-noindex: true
 layout: learn
 ---
 

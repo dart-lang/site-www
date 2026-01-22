@@ -6,8 +6,6 @@ description: >-
   advanced features like enhanced enums and extensions.
   Improve your application's output formatting and color,
   making it more user-friendly.
-sitemap: false
-noindex: true
 layout: learn
 ---
 
