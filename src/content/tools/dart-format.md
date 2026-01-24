@@ -106,13 +106,16 @@ that splits across multiple lines, and removes them from ones that don't.
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
 
-### Configuring formatter page width
+### Configuring the formatter
 
 When you run `dart format`, the formatter defaults to
 80 character line length or shorter. 
-If you'd like to configure the line length for your project,
-you can add a top-level `formatter` section to the
-[`analysis_options.yaml`][] file, like so:
+You can configure the formatter's behavior by adding a top-level
+`formatter` section to the [`analysis_options.yaml`][] file.
+
+#### Page width
+
+To configure the line length for your project:
 
 ```yaml title="analysis_options.yaml"
 formatter:
@@ -121,6 +124,24 @@ formatter:
 
 With the analysis options file typically at the root,
 the configured line length will apply to everything in the package.
+
+#### Preserving trailing commas
+
+By default, `dart format` automatically adds or removes trailing commas
+based on whether the construct splits across multiple lines.
+To force a construct to always split even when it could fit on one line,
+you can configure the formatter to preserve trailing commas:
+
+```yaml title="analysis_options.yaml"
+formatter:
+  trailing_commas: preserve
+```
+
+When this option is enabled, if you add a trailing comma to an argument list,
+parameter list, or other comma-separated construct,
+the formatter will always split it across multiple lines,
+even if it could fit on one line.
+This gives you manual control over line breaks for specific constructs.
 
 You can also configure individual files' line length,
 overriding the analysis options file,
@@ -131,8 +152,9 @@ with a marker comment at the top of the file before any other code:
 ```
 
 :::version-note
-Configurable page width requires
+Configurable formatter options require
 a [language version][] of at least 3.7.
+The `trailing_commas` option requires at least 3.8.
 :::
 
 ## Learn more
