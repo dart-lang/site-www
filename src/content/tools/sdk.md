@@ -40,9 +40,14 @@ The Dart SDK includes two directories:
 [`dartaotruntime`](/tools/dartaotruntime)
 : A Dart runtime for AOT-compiled snapshots.
 
-{% render 'tools/utf-8.md' %}
+To learn more about the SDK, check out its [README file][sdk-readme].
 
-To learn more about the SDK, check out its [README file][readme].
+:::note
+The Dart language expects Dart code to be encoded using [UTF-8][utf8].
+:::
+
+[sdk-readme]: {{site.repo.dart.sdk}}/blob/main/README.dart-sdk
+[utf8]: https://www.utf8.com/
 
 ## Support policy
 
@@ -77,5 +82,4 @@ go to [the SDK issue tracker][sdk-issues].
 
 [Dart libraries]: /libraries
 [flutter]: {{site.flutter-docs}}/get-started/install
-[readme]: {{site.repo.dart.sdk}}/blob/main/README.dart-sdk
 [sdk-issues]: {{site.repo.dart.sdk}}/issues

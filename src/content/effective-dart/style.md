@@ -525,7 +525,7 @@ an import or export), it may remain whole even if it causes the line to go over
 because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
 
-[configure]: /tools/dart-format#configuring-formatter-page-width
+[configure]: /tools/dart-format#page-width
 
 <a id="do-use-curly-braces-for-all-flow-control-structures"></a>
 ### DO use curly braces for all flow control statements
