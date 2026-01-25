@@ -173,8 +173,12 @@ allow for flexible output handling.
               print(output.toString());
             }
           }
-        } on Exception catch (e) {
-          print(e);
+        } on Exception catch (exception) {
+          if (onError != null) {
+            onError!(exception);
+          } else {
+            rethrow;
+          }
         }
       }
     ```
