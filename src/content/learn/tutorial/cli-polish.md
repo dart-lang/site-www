@@ -196,12 +196,11 @@ Finally, update your main application to use the new `onOutput` feature.
 
     ```dart
     import 'package:command_runner/command_runner.dart';
-    import 'package:command_runner/src/console.dart';
 
     const version = '0.0.1';
 
     void main(List<String> arguments) {
-      var commandRunner = CommandRunner<String>(
+      var commandRunner = CommandRunner(
         onOutput: (String output) async {
           await write(output);
         },
