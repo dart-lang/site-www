@@ -68,7 +68,6 @@ represent errors related to command-line arguments.
         super.offset,
       ]);
 
-
       @override
       String toString() {
         return 'ArgumentException: $message';
