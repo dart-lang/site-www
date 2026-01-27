@@ -645,10 +645,36 @@ analyzer:
 ## Configuring `dart format`
 
 You can configure the behavior of [`dart format`][] by adding a
-`formatter` section to the analysis options file
-specifying your preferred `page_width`.
+`formatter` section to the analysis options file.
+
+### Configurable options
+
+#### `page_width`
+
+You can specify your preferred `page_width` (line length).
+The default is 80 characters.
 
 For more information, read [Configuring formatter page width][].
+
+#### `trailing_commas`
+
+You can configure how the formatter handles trailing commas in argument
+and parameter lists. The `trailing_commas` option accepts one of two values:
+
+`automate` (default)
+: The formatter adds and removes trailing commas based on
+  its decision to split the surrounding construct.
+
+`preserve`
+: A trailing comma forces the surrounding construct to split.
+  The formatter will add a trailing comma when it splits a
+  construct but will not remove one.
+
+```yaml title="analysis_options.yaml"
+formatter:
+  page_width: 120
+  trailing_commas: preserve
+```
 
 ## Resources
 
