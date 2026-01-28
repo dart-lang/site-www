@@ -50,7 +50,7 @@ The Flutter inspector works only for Flutter apps;
 other web apps should use browser tools such as the Chrome DevTools.
 
 
-## Using DevTools with a command-line app
+## Command-line apps
 
 You can use DevTools to perform source-level debugging 
 or to view general log and diagnostics information
@@ -93,14 +93,14 @@ displaying information about the target app.
 Click **Debugger** to start debugging the app.
 
 
-## Using DevTools with a Flutter app
+## Flutter apps
 
 For details on using DevTools with a Flutter app for any platform
 (including web) see the
 [DevTools documentation on flutter.dev.][Flutter devtools]
 
 
-## Using DevTools with a non-Flutter web app
+## Other web apps
 
 To launch a web app so that you can use Dart DevTools,
 use the `webdev serve` command with the `--debug` or `--debug-extension` flag:
@@ -113,7 +113,7 @@ For more information, see [Debugging Dart web apps][].
 
 [App size tool]: {{site.flutter-docs}}/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
-[Command-line]: #using-devtools-with-a-command-line-app
+[Command-line]: #command-line-apps
 [CPU profiler]: {{site.flutter-docs}}/tools/devtools/cpu-profiler
 [Debugger]: {{site.flutter-docs}}/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
@@ -122,6 +122,6 @@ For more information, see [Debugging Dart web apps][].
 [Logging view]: {{site.flutter-docs}}/tools/devtools/logging
 [Memory view]: {{site.flutter-docs}}/tools/devtools/memory
 [Network view]: {{site.flutter-docs}}/tools/devtools/network
-[Other web]: #using-devtools-with-a-non-flutter-web-app
+[Other web]: #other-web-apps
 [Performance view]: {{site.flutter-docs}}/tools/devtools/performance
 [Timeline view]: {{site.flutter-docs}}/tools/devtools/timeline

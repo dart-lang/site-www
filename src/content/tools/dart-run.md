@@ -153,7 +153,7 @@ to your `dart run` command:
 To learn more about other debugging options, run `dart run --help`.
 
 [assert]: /language/error-handling#assert
-[Using DevTools with a command-line app]: /tools/dart-devtools#using-devtools-with-a-command-line-app
+[Using DevTools with a command-line app]: /tools/dart-devtools#command-line-apps
 
 ## Enabling experimental features
 
