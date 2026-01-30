@@ -26,7 +26,8 @@ console view. Try editing the source code—perhaps you'd like to change the
 greeting to use another language.
 
 :::note
-{% render 'dartpad-embedded-troubleshooting.md' %}
+If you see an empty box instead of code, go to the
+[DartPad troubleshooting page](/tools/dartpad/troubleshoot).
 :::
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
