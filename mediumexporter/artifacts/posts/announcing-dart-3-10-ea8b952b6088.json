@@ -1,0 +1,1601 @@
+{
+    "success": true,
+    "payload": {
+        "value": {
+            "id": "ea8b952b6088",
+            "versionId": "57da27a84549",
+            "creatorId": "c4c58c97a41b",
+            "homeCollectionId": "23738d481ce8",
+            "title": "Announcing Dart 3.10",
+            "detectedLanguage": "en",
+            "latestVersion": "57da27a84549",
+            "latestPublishedVersion": "57da27a84549",
+            "hasUnpublishedEdits": false,
+            "latestRev": 533,
+            "createdAt": 1762804014359,
+            "updatedAt": 1762979402101,
+            "acceptedAt": 0,
+            "firstPublishedAt": 1762974121406,
+            "latestPublishedAt": 1762975145044,
+            "vote": false,
+            "experimentalCss": "",
+            "displayAuthor": "",
+            "content": {
+                "subtitle": "Today, we’re excited to announce the release of Dart 3.10!",
+                "bodyModel": {
+                    "paragraphs": [
+                        {
+                            "name": "9353",
+                            "type": 3,
+                            "text": "Announcing Dart 3.10",
+                            "markups": []
+                        },
+                        {
+                            "name": "f30d",
+                            "type": 1,
+                            "text": "Today, we’re excited to announce the release of Dart 3.10!",
+                            "markups": []
+                        },
+                        {
+                            "name": "c1ce",
+                            "type": 4,
+                            "text": "Announcing Dart 3.10",
+                            "markups": [],
+                            "layout": 1,
+                            "metadata": {
+                                "id": "1*AyAyohCAvBT-ta-nJPrkEg.png",
+                                "originalWidth": 1920,
+                                "originalHeight": 1080
+                            }
+                        },
+                        {
+                            "name": "b0b7",
+                            "type": 1,
+                            "text": "This release continues our focus on improving the core developer experience. The new dot shorthands (.) feature will help you write more readable and less verbose code. We’re also introducing a powerful new analyzer plugin system that allows you to create custom static analysis rules that integrate directly into your IDE. And we’re excited to announce that build hooks are now stable!",
+                            "markups": [
+                                {
+                                    "type": 10,
+                                    "start": 101,
+                                    "end": 102
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 85,
+                                    "end": 99
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 101,
+                                    "end": 102
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 207,
+                                    "end": 229
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 359,
+                                    "end": 370
+                                }
+                            ]
+                        },
+                        {
+                            "name": "98f9",
+                            "type": 1,
+                            "text": "This release also brings several improvements to pub.dev and package management. You’ll find new search capabilities in the “Likes” tab in your profile, and package authors can now disable manual publishing for improved security. Finally, we’ve added a suite of new, more specific deprecation annotations to give you finer-grained control over your API’s evolution.",
+                            "markups": [
+                                {
+                                    "type": 1,
+                                    "start": 124,
+                                    "end": 135
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 181,
+                                    "end": 206
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 281,
+                                    "end": 304
+                                }
+                            ]
+                        },
+                        {
+                            "name": "7806",
+                            "type": 1,
+                            "text": "Read on to learn more about these and the other improvements in Dart 3.10.",
+                            "markups": []
+                        },
+                        {
+                            "name": "ff89",
+                            "type": 3,
+                            "text": "Language updates",
+                            "markups": []
+                        },
+                        {
+                            "name": "f2d6",
+                            "type": 13,
+                            "text": "Dot shorthands 🆕",
+                            "markups": []
+                        },
+                        {
+                            "name": "9ad1",
+                            "type": 1,
+                            "text": "Dart 3.10 introduces dot shorthands (.). This new feature lets you omit redundant class or enum names when the compiler can infer the type from the context.",
+                            "markups": [
+                                {
+                                    "type": 10,
+                                    "start": 37,
+                                    "end": 38
+                                },
+                                {
+                                    "type": 3,
+                                    "start": 21,
+                                    "end": 35,
+                                    "href": "https://dart.dev/language/dot-shorthands",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 21,
+                                    "end": 35
+                                }
+                            ]
+                        },
+                        {
+                            "name": "5087",
+                            "type": 1,
+                            "text": "Let’s look at a common scenario: logging. Before, you might have written:",
+                            "markups": []
+                        },
+                        {
+                            "name": "891a",
+                            "type": 8,
+                            "text": "enum LogLevel { info, warning, error, debug }\n\nvoid logMessage(String message, {LogLevel level = LogLevel.info}) {\n  // ... implementation\n}\n\n// Somewhere else in your app\nlogMessage('Failed to connect to database', level: LogLevel.error);",
+                            "markups": [],
+                            "codeBlockMetadata": {
+                                "mode": 2,
+                                "lang": "dart"
+                            }
+                        },
+                        {
+                            "name": "abb5",
+                            "type": 1,
+                            "text": "Since the level parameter already expects a LogLevel, repeating the enum name is unnecessary. With dot shorthands, you can now write:",
+                            "markups": [
+                                {
+                                    "type": 10,
+                                    "start": 10,
+                                    "end": 15
+                                },
+                                {
+                                    "type": 10,
+                                    "start": 44,
+                                    "end": 52
+                                }
+                            ]
+                        },
+                        {
+                            "name": "eeeb",
+                            "type": 8,
+                            "text": "enum LogLevel { info, warning, error, debug }\n\nvoid logMessage(String message, {LogLevel level = .info}) {\n  // ... implementation\n}\n\n// Somewhere else in your app\nlogMessage('Failed to connect to database', level: .error);",
+                            "markups": [],
+                            "codeBlockMetadata": {
+                                "mode": 2,
+                                "lang": "dart"
+                            }
+                        },
+                        {
+                            "name": "f7e3",
+                            "type": 1,
+                            "text": "The code now focuses on the value (.error) rather than the type (LogLevel).",
+                            "markups": [
+                                {
+                                    "type": 10,
+                                    "start": 35,
+                                    "end": 41
+                                },
+                                {
+                                    "type": 10,
+                                    "start": 65,
+                                    "end": 73
+                                },
+                                {
+                                    "type": 2,
+                                    "start": 28,
+                                    "end": 33
+                                },
+                                {
+                                    "type": 2,
+                                    "start": 59,
+                                    "end": 63
+                                }
+                            ]
+                        },
+                        {
+                            "name": "5ac0",
+                            "type": 1,
+                            "text": "Dot shorthands aren’t just for enums. You can also use them with constructors, static methods, and static fields. To learn more, read our Dot shorthands guide.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 138,
+                                    "end": 152,
+                                    "href": "https://dart.dev/language/dot-shorthands",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "8762",
+                            "type": 3,
+                            "text": "Tools updates",
+                            "markups": []
+                        },
+                        {
+                            "name": "5017",
+                            "type": 13,
+                            "text": "Analyzer plugins 🆕",
+                            "markups": []
+                        },
+                        {
+                            "name": "c6bc",
+                            "type": 1,
+                            "text": "Have you ever been reviewing code and thought, “Shouldn’t the analyzer be able to catch that?”. Now it can.",
+                            "markups": []
+                        },
+                        {
+                            "name": "d963",
+                            "type": 1,
+                            "text": "Dart 3.10 introduces a powerful new plugin system for the Dart analyzer. This allows you to write and use your own static analysis rules that integrate directly into IDEs and command-line tools like dart analyze and flutter analyze. You can use analyzer plugins to:",
+                            "markups": [
+                                {
+                                    "type": 10,
+                                    "start": 199,
+                                    "end": 211
+                                },
+                                {
+                                    "type": 10,
+                                    "start": 216,
+                                    "end": 231
+                                },
+                                {
+                                    "type": 3,
+                                    "start": 245,
+                                    "end": 261,
+                                    "href": "https://dart.dev/tools/analyzer-plugins",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "f695",
+                            "type": 9,
+                            "text": "Enforce project-specific rules, such as bespoke lints and warnings to maintain conventions in your team’s codebase.",
+                            "markups": []
+                        },
+                        {
+                            "name": "078c",
+                            "type": 9,
+                            "text": "Avoid common pitfalls and best practices specific to your domain.",
+                            "markups": []
+                        },
+                        {
+                            "name": "33c2",
+                            "type": 9,
+                            "text": "Automate code changes by providing quick fixes and assists to help automatically correct issues or migrate to new APIs.",
+                            "markups": []
+                        },
+                        {
+                            "name": "1567",
+                            "type": 1,
+                            "text": "This new system is the result of a significant architectural effort to enable a rich ecosystem of community-driven tools, and we’d like to extend a special thanks to community contributor Felipe Morschel for his valuable fixes and features for the analyzer in general.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 188,
+                                    "end": 203,
+                                    "href": "https://github.com/FMorschel",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "f880",
+                            "type": 1,
+                            "text": "To use an analyzer plugin, simply add it to your analysis_options.yaml file:",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 49,
+                                    "end": 70,
+                                    "href": "https://dart.dev/tools/analysis#the-analysis-options-file",
+                                    "title": "",
+                                    "rel": "noopener",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "db8f",
+                            "type": 8,
+                            "text": "analyzer:\n  plugins:\n    - some_plugin\n    - another_plugin",
+                            "markups": [],
+                            "codeBlockMetadata": {
+                                "mode": 2,
+                                "lang": "yaml"
+                            }
+                        },
+                        {
+                            "name": "a13e",
+                            "type": 1,
+                            "text": "To learn more about creating your own custom rules, see the documentation for writing an analyzer plugin.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 78,
+                                    "end": 104,
+                                    "href": "https://dart.dev/tools/analyzer-plugins",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "2c68",
+                            "type": 13,
+                            "text": "Build hooks 🚀",
+                            "markups": []
+                        },
+                        {
+                            "name": "1b4f",
+                            "type": 1,
+                            "text": "Integrating native code (like C++, Rust, or Swift) into a Dart package has often required managing complex, platform-specific build files like CMake or Gradle. With Dart 3.10, this process is now dramatically simpler.",
+                            "markups": []
+                        },
+                        {
+                            "name": "c146",
+                            "type": 1,
+                            "text": "We’re excited to announce that build hooks (formerly known as native assets) are now stable. You can use these hooks to compile native code or download native assets (like dynamic libraries) and bundle them directly with your Dart package. This powerful capability lets you reuse existing native code or libraries from within your package and eliminates the need to write separate build files such as SPM, Gradle, or CMake for different operating systems.",
+                            "markups": [
+                                {
+                                    "type": 1,
+                                    "start": 31,
+                                    "end": 43
+                                }
+                            ]
+                        },
+                        {
+                            "name": "2fde",
+                            "type": 1,
+                            "text": "To learn more, see the documentation for writing a build hook, or watch the Flutter Build show episode on build hooks.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 41,
+                                    "end": 61,
+                                    "href": "https://dart.dev/tools/hooks",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                },
+                                {
+                                    "type": 3,
+                                    "start": 76,
+                                    "end": 102,
+                                    "href": "https://www.youtube.com/watch?v=AxNF5dj8HWQ",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "f3ac",
+                            "type": 13,
+                            "text": "Remove Deprecations lint 🆕",
+                            "markups": []
+                        },
+                        {
+                            "name": "dc8c",
+                            "type": 1,
+                            "text": "When you release a new major version of a package (like 1.0.0 or 0.2.0), it’s a best practice to remove any APIs you previously marked as deprecated. This keeps your package clean and prevents developers from using outdated code. However, it’s easy to forget this step during the release process.",
+                            "markups": []
+                        },
+                        {
+                            "name": "ba7d",
+                            "type": 1,
+                            "text": "To help, we’ve introduced a new lint: remove_deprecations_in_breaking_versions. This lint detects leftover deprecated elements when a package’s version is updated to a new major breaking version. By flagging these cases, the lint helps ensure that your package’s API remains modern and easy for your users to understand.",
+                            "markups": [
+                                {
+                                    "type": 10,
+                                    "start": 38,
+                                    "end": 78
+                                },
+                                {
+                                    "type": 3,
+                                    "start": 38,
+                                    "end": 78,
+                                    "href": "https://dart.dev/tools/linter-rules/remove_deprecations_in_breaking_versions/",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 38,
+                                    "end": 78
+                                }
+                            ]
+                        },
+                        {
+                            "name": "0052",
+                            "type": 4,
+                            "text": "remove_deprecations_in_breaking_versions lint example",
+                            "markups": [
+                                {
+                                    "type": 10,
+                                    "start": 0,
+                                    "end": 53
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 0,
+                                    "end": 53
+                                }
+                            ],
+                            "layout": 1,
+                            "metadata": {
+                                "id": "1*keU2TVVnlbe0e0UFtj3mwA.png",
+                                "originalWidth": 2076,
+                                "originalHeight": 736
+                            }
+                        },
+                        {
+                            "name": "34e4",
+                            "type": 13,
+                            "text": "@Deprecated annotation ⬆️",
+                            "markups": []
+                        },
+                        {
+                            "name": "de69",
+                            "type": 1,
+                            "text": "The existing @Deprecated annotation is a blunt instrument. It informs developers that an API is no longer recommended, but it doesn’t allow for nuance. For example, how do you signal that a class should no longer be extended, but can still be instantiated?",
+                            "markups": [
+                                {
+                                    "type": 1,
+                                    "start": 13,
+                                    "end": 24
+                                }
+                            ]
+                        },
+                        {
+                            "name": "da31",
+                            "type": 1,
+                            "text": "To give package authors more precise control over their API’s evolution, Dart 3.10 introduces a suite of new, more specific deprecation annotations.",
+                            "markups": []
+                        },
+                        {
+                            "name": "3db5",
+                            "type": 1,
+                            "text": "You can now deprecate specific use cases for classes and mixins:",
+                            "markups": []
+                        },
+                        {
+                            "name": "e973",
+                            "type": 9,
+                            "text": "@Deprecated.extend(): The ability to extend a class is deprecated.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 0,
+                                    "end": 20,
+                                    "href": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.extend.html",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "60eb",
+                            "type": 9,
+                            "text": "@Deprecated.implement(): The ability to implement a class or mixin is deprecated.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 0,
+                                    "end": 23,
+                                    "href": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.implement.html",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "c34a",
+                            "type": 9,
+                            "text": "@Deprecated.subclass(): The ability to subclass (extend or implement) a class or mixin is deprecated.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 0,
+                                    "end": 22,
+                                    "href": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.subclass.html",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "2b7d",
+                            "type": 9,
+                            "text": "@Deprecated.mixin(): The ability to mix in a class is deprecated.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 0,
+                                    "end": 19,
+                                    "href": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.mixin.html",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "4123",
+                            "type": 9,
+                            "text": "@Deprecated.instantiate(): The ability to instantiate a class is deprecated.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 0,
+                                    "end": 25,
+                                    "href": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.instantiate.html",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "bc95",
+                            "type": 1,
+                            "text": "Additionally, you can now signal that an optional parameter will become required in a future version using @Deprecated.optional().",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 107,
+                                    "end": 129,
+                                    "href": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.optional.html",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "9737",
+                            "type": 3,
+                            "text": "Pub updates",
+                            "markups": []
+                        },
+                        {
+                            "name": "c5e4",
+                            "type": 13,
+                            "text": "Search, sort, and unlike support for your favorite packages 🆕",
+                            "markups": []
+                        },
+                        {
+                            "name": "9367",
+                            "type": 1,
+                            "text": "Managing your favorite packages on pub.dev just got a major upgrade. You can do this through the Search feature or the Likes tab on your profile, where you can now search, sort, and filter your liked packages with the same familiar controls you use for regular searches. This includes sorting by likes, pub points, and popularity. We’ve also improved the UI for unliking packages, making it easier than ever to keep your list of liked packages tidy and up-to-date.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 119,
+                                    "end": 128,
+                                    "href": "https://pub.dev/my-liked-packages",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        },
+                        {
+                            "name": "3317",
+                            "type": 4,
+                            "text": "Search, sort, and unlike support for your favorite packages in your Likes tab",
+                            "markups": [],
+                            "layout": 1,
+                            "metadata": {
+                                "id": "1*cOONo9VV-HsJPA0WMv1COQ.png",
+                                "originalWidth": 1724,
+                                "originalHeight": 1480
+                            }
+                        },
+                        {
+                            "name": "3433",
+                            "type": 1,
+                            "text": "If you choose to search for your liked packages with the Search feature, simply add is:liked-by-me to your query.",
+                            "markups": [
+                                {
+                                    "type": 10,
+                                    "start": 84,
+                                    "end": 98
+                                }
+                            ]
+                        },
+                        {
+                            "name": "91e3",
+                            "type": 4,
+                            "text": "Search, but only include packages you like",
+                            "markups": [],
+                            "layout": 1,
+                            "metadata": {
+                                "id": "1*cO5K265sp2QbF-vNgcpFzQ.png",
+                                "originalWidth": 1678,
+                                "originalHeight": 1322
+                            }
+                        },
+                        {
+                            "name": "82a2",
+                            "type": 13,
+                            "text": "Enable or disable manual publishing 🆕",
+                            "markups": []
+                        },
+                        {
+                            "name": "7764",
+                            "type": 1,
+                            "text": "To enhance security and prevent accidental publications, you can now disable manual publishing (pub publish) for your packages. This is ideal for packages that have an automated publishing workflow or are no longer being actively published.",
+                            "markups": []
+                        },
+                        {
+                            "name": "72e8",
+                            "type": 1,
+                            "text": "By disabling manual publishing, you prevent package updates using personal credentials, reducing the risk of an unauthorized or accidental release.",
+                            "markups": []
+                        },
+                        {
+                            "name": "84bf",
+                            "type": 1,
+                            "text": "You can control this feature in your package’s Admin tab using the “Enable manual publishing” checkbox.",
+                            "markups": [
+                                {
+                                    "type": 1,
+                                    "start": 47,
+                                    "end": 52
+                                }
+                            ]
+                        },
+                        {
+                            "name": "e918",
+                            "type": 4,
+                            "text": "Enable or disable manual publishing in the Admin tab",
+                            "markups": [],
+                            "layout": 1,
+                            "metadata": {
+                                "id": "1*qBE5Jhe138ktNrcBIy5L1w.png",
+                                "originalWidth": 1888,
+                                "originalHeight": 972
+                            }
+                        },
+                        {
+                            "name": "3a42",
+                            "type": 3,
+                            "text": "Wrap up",
+                            "markups": []
+                        },
+                        {
+                            "name": "d138",
+                            "type": 1,
+                            "text": "The Dart 3.10 release brings a host of improvements focused on developer productivity, tooling, and the overall health of the package ecosystem. From language features like dot shorthands that make your code more concise, to powerful new tooling capabilities like analyzer plugins and stable build hooks, we hope this release empowers you to build even better apps.",
+                            "markups": []
+                        },
+                        {
+                            "name": "9362",
+                            "type": 1,
+                            "text": "We’re incredibly grateful for the many engineers and teams who contributed to this release, including a special thanks to our community contributors who help make Dart better for everyone.",
+                            "markups": []
+                        },
+                        {
+                            "name": "4e19",
+                            "type": 1,
+                            "text": "We’re excited to see what you build with Dart 3.10. To get started, you can get the Dart 3.10 SDK today. For a complete list of all the new and updated features, check out the Dart SDK changelog.",
+                            "markups": [
+                                {
+                                    "type": 3,
+                                    "start": 176,
+                                    "end": 194,
+                                    "href": "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md",
+                                    "title": "",
+                                    "rel": "",
+                                    "anchorType": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "sections": [
+                        {
+                            "name": "671f",
+                            "startIndex": 0
+                        },
+                        {
+                            "name": "b9b4",
+                            "startIndex": 6
+                        },
+                        {
+                            "name": "6352",
+                            "startIndex": 15
+                        },
+                        {
+                            "name": "13fd",
+                            "startIndex": 44
+                        },
+                        {
+                            "name": "b9c4",
+                            "startIndex": 55
+                        }
+                    ]
+                },
+                "postDisplay": {
+                    "coverless": true
+                }
+            },
+            "virtuals": {
+                "statusForCollection": "APPROVED",
+                "allowNotes": true,
+                "previewImage": {
+                    "imageId": "1*AyAyohCAvBT-ta-nJPrkEg.png",
+                    "filter": "",
+                    "backgroundSize": "",
+                    "originalWidth": 1920,
+                    "originalHeight": 1080,
+                    "strategy": "resample",
+                    "height": 0,
+                    "width": 0
+                },
+                "wordCount": 1206,
+                "imageCount": 5,
+                "readingTime": 5.3842767295597485,
+                "subtitle": "Today, we’re excited to announce the release of Dart 3.10!",
+                "userPostRelation": {
+                    "userId": "8b6a7f6f197d",
+                    "postId": "ea8b952b6088",
+                    "readAt": 1769779106219,
+                    "readLaterAddedAt": 0,
+                    "votedAt": 0,
+                    "collaboratorAddedAt": 0,
+                    "notesAddedAt": 0,
+                    "subscribedAt": 0,
+                    "lastReadSectionName": "",
+                    "lastReadVersionId": "",
+                    "lastReadAt": 0,
+                    "lastReadParagraphName": "",
+                    "lastReadPercentage": 0,
+                    "viewedAt": 1769779701303,
+                    "presentedCountInResponseManagement": 0,
+                    "clapCount": 0,
+                    "seriesUpdateNotifsOptedInAt": 0,
+                    "queuedAt": 0,
+                    "seriesFirstViewedAt": 0,
+                    "presentedCountInStream": 12,
+                    "seriesLastViewedAt": 0,
+                    "audioProgressSec": 0
+                },
+                "publishedInCount": 1,
+                "usersBySocialRecommends": [],
+                "noIndex": false,
+                "recommends": 88,
+                "isBookmarked": false,
+                "tags": [
+                    {
+                        "slug": "announcements",
+                        "name": "Announcements",
+                        "postCount": 13699,
+                        "metadata": {
+                            "postCount": 13699,
+                            "coverImage": {
+                                "id": "1*NID7gzHCH5pIB3Cy0Lcnjw.png",
+                                "originalWidth": 1536,
+                                "originalHeight": 1024,
+                                "isFeatured": true
+                            }
+                        },
+                        "type": "Tag"
+                    },
+                    {
+                        "slug": "dart",
+                        "name": "Dart",
+                        "postCount": 13858,
+                        "metadata": {
+                            "postCount": 13858,
+                            "coverImage": {
+                                "id": "1*rQugDrmwFFsEDL_CqSBJNw.png",
+                                "originalWidth": 1536,
+                                "originalHeight": 1024,
+                                "isFeatured": true
+                            }
+                        },
+                        "type": "Tag"
+                    },
+                    {
+                        "slug": "releases",
+                        "name": "Releases",
+                        "postCount": 2657,
+                        "metadata": {
+                            "postCount": 2657,
+                            "coverImage": {
+                                "id": "1*iArl-N8doV29po53Pcyxmw.jpeg",
+                                "originalWidth": 2160,
+                                "originalHeight": 1440,
+                                "isFeatured": true
+                            }
+                        },
+                        "type": "Tag"
+                    }
+                ],
+                "socialRecommendsCount": 0,
+                "responsesCreatedCount": 9,
+                "links": {
+                    "entries": [
+                        {
+                            "url": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.mixin.html",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.optional.html",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.subclass.html",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.implement.html",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.extend.html",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://api.dart.dev/dev/latest/dart-core/Deprecated/Deprecated.instantiate.html",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://dart.dev/language/dot-shorthands",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://dart.dev/tools/analysis#the-analysis-options-file",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://dart.dev/tools/analyzer-plugins",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://dart.dev/tools/linter-rules/remove_deprecations_in_breaking_versions/",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://dart.dev/tools/hooks",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://pub.dev/my-liked-packages",
+                            "alts": [],
+                            "httpStatus": 401
+                        },
+                        {
+                            "url": "https://github.com/FMorschel",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://www.youtube.com/watch?v=AxNF5dj8HWQ",
+                            "alts": [],
+                            "httpStatus": 200
+                        },
+                        {
+                            "url": "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md",
+                            "alts": [],
+                            "httpStatus": 200
+                        }
+                    ],
+                    "version": "0.3",
+                    "generatedAt": 1762975147235
+                },
+                "isLockedPreviewOnly": false,
+                "metaDescription": "",
+                "totalClapCount": 748,
+                "sectionCount": 5,
+                "readingList": 0,
+                "topics": [
+                    {
+                        "topicId": "decb52b64abf",
+                        "slug": "programming",
+                        "createdAt": 1493934116328,
+                        "deletedAt": 0,
+                        "image": {
+                            "id": "1*iPa136b1cGEO7lvoXg6uHQ@2x.jpeg",
+                            "originalWidth": 6016,
+                            "originalHeight": 4016
+                        },
+                        "name": "Programming",
+                        "description": "The good, the bad, the buggy.",
+                        "relatedTopics": [],
+                        "visibility": 1,
+                        "relatedTags": [],
+                        "relatedTopicIds": [],
+                        "seoTitle": "Programming News and Articles — Medium",
+                        "type": "Topic"
+                    }
+                ]
+            },
+            "coverless": true,
+            "slug": "announcing-dart-3-10",
+            "translationSourcePostId": "",
+            "translationSourceCreatorId": "",
+            "isApprovedTranslation": false,
+            "inResponseToPostId": "",
+            "inResponseToRemovedAt": 0,
+            "isTitleSynthesized": true,
+            "allowResponses": true,
+            "importedUrl": "",
+            "importedPublishedAt": 0,
+            "visibility": 0,
+            "uniqueSlug": "announcing-dart-3-10-ea8b952b6088",
+            "previewContent": {
+                "bodyModel": {
+                    "paragraphs": [
+                        {
+                            "name": "9353",
+                            "type": 3,
+                            "text": "Announcing Dart 3.10",
+                            "markups": [],
+                            "alignment": 1
+                        },
+                        {
+                            "name": "f30d",
+                            "type": 1,
+                            "text": "Today, we’re excited to announce the release of Dart 3.10!",
+                            "markups": [],
+                            "alignment": 1
+                        },
+                        {
+                            "name": "c1ce",
+                            "type": 4,
+                            "text": "",
+                            "markups": [],
+                            "layout": 9,
+                            "metadata": {
+                                "id": "1*AyAyohCAvBT-ta-nJPrkEg.png",
+                                "originalWidth": 1920,
+                                "originalHeight": 1080
+                            }
+                        }
+                    ],
+                    "sections": [
+                        {
+                            "startIndex": 0
+                        }
+                    ]
+                },
+                "isFullContent": false,
+                "subtitle": "Today, we’re excited to announce the release of Dart 3.10!"
+            },
+            "license": 0,
+            "inResponseToMediaResourceId": "",
+            "canonicalUrl": "https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088",
+            "approvedHomeCollectionId": "23738d481ce8",
+            "isNewsletter": false,
+            "newsletterId": "",
+            "webCanonicalUrl": "https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088",
+            "mediumUrl": "https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088",
+            "migrationId": "",
+            "notifyFollowers": true,
+            "notifyTwitter": false,
+            "notifyFacebook": false,
+            "responseHiddenOnParentPostAt": 0,
+            "isSeries": false,
+            "isSubscriptionLocked": false,
+            "seriesLastAppendedAt": 0,
+            "audioVersionDurationSec": 0,
+            "sequenceId": "",
+            "isEligibleForRevenue": false,
+            "isBlockedFromHightower": false,
+            "deletedAt": 0,
+            "lockedPostSource": 0,
+            "hightowerMinimumGuaranteeStartsAt": 0,
+            "hightowerMinimumGuaranteeEndsAt": 0,
+            "featureLockRequestAcceptedAt": 0,
+            "mongerRequestType": 1,
+            "layerCake": 4,
+            "socialTitle": "",
+            "socialDek": "",
+            "editorialPreviewTitle": "",
+            "editorialPreviewDek": "",
+            "curationEligibleAt": 0,
+            "isProxyPost": false,
+            "proxyPostFaviconUrl": "",
+            "proxyPostProviderName": "",
+            "proxyPostType": 0,
+            "isSuspended": false,
+            "isLimitedState": false,
+            "seoTitle": "",
+            "previewContent2": {
+                "bodyModel": {
+                    "paragraphs": [
+                        {
+                            "name": "9353",
+                            "type": 3,
+                            "text": "Announcing Dart 3.10",
+                            "markups": []
+                        },
+                        {
+                            "name": "f30d",
+                            "type": 1,
+                            "text": "Today, we’re excited to announce the release of Dart 3.10!",
+                            "markups": []
+                        },
+                        {
+                            "name": "c1ce",
+                            "type": 4,
+                            "text": "Announcing Dart 3.10",
+                            "markups": [],
+                            "layout": 1,
+                            "metadata": {
+                                "id": "1*AyAyohCAvBT-ta-nJPrkEg.png",
+                                "originalWidth": 1920,
+                                "originalHeight": 1080
+                            }
+                        },
+                        {
+                            "name": "b0b7",
+                            "type": 1,
+                            "text": "This release continues our focus on improving the core developer experience. The new dot shorthands (.) feature will help you write more readable and less verbose code. We’re also introducing a powerful new analyzer plugin system that allows you to…",
+                            "markups": [
+                                {
+                                    "type": 10,
+                                    "start": 101,
+                                    "end": 102
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 85,
+                                    "end": 99
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 101,
+                                    "end": 102
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 207,
+                                    "end": 229
+                                },
+                                {
+                                    "type": 1,
+                                    "start": 359,
+                                    "end": 370
+                                }
+                            ]
+                        }
+                    ],
+                    "sections": [
+                        {
+                            "name": "671f",
+                            "startIndex": 0
+                        }
+                    ]
+                },
+                "isFullContent": false,
+                "subtitle": "Today, we’re excited to announce the release of Dart 3.10!"
+            },
+            "cardType": 0,
+            "isDistributionAlertDismissed": false,
+            "isShortform": false,
+            "shortformType": 0,
+            "responsesLocked": false,
+            "isLockedResponse": false,
+            "isPublishToEmail": false,
+            "responseDistribution": 0,
+            "isMarkedPaywallOnly": false,
+            "type": "Post"
+        },
+        "mentionedUsers": [],
+        "collaborators": [],
+        "hideMeter": false,
+        "shareKey": "391c0650ed3de3eb987679a04c3e7776",
+        "collectionUserRelations": [
+            {
+                "collectionId": "23738d481ce8",
+                "userId": "8b6a7f6f197d",
+                "role": "ADMIN"
+            },
+            {
+                "collectionId": "4da7dfd21a33",
+                "userId": "8b6a7f6f197d",
+                "role": "WRITER"
+            },
+            {
+                "collectionId": "24d8f4fa8912",
+                "userId": "8b6a7f6f197d",
+                "role": "WRITER"
+            }
+        ],
+        "mode": "canEdit",
+        "references": {
+            "User": {
+                "c4c58c97a41b": {
+                    "userId": "c4c58c97a41b",
+                    "name": "Amanda Fitch",
+                    "username": "afitch_66294",
+                    "createdAt": 1559939201253,
+                    "imageId": "1*JXjnwMAb89ePR-FoV4-5Hg.jpeg",
+                    "backgroundImageId": "",
+                    "bio": "Flutter and Dart enthusiast!",
+                    "twitterScreenName": "",
+                    "socialStats": {
+                        "userId": "c4c58c97a41b",
+                        "usersFollowedCount": 6,
+                        "usersFollowedByCount": 501,
+                        "type": "SocialStats"
+                    },
+                    "social": {
+                        "userId": "8b6a7f6f197d",
+                        "targetUserId": "c4c58c97a41b",
+                        "type": "Social"
+                    },
+                    "allowNotes": 1,
+                    "mediumMemberAt": 0,
+                    "isWriterProgramEnrolled": true,
+                    "isSuspended": false,
+                    "isMembershipTrialEligible": true,
+                    "facebookDisplayName": "",
+                    "optInToIceland": true,
+                    "hasCompletedProfile": false,
+                    "userDismissableFlags": [
+                        29,
+                        52,
+                        53,
+                        56,
+                        58,
+                        61
+                    ],
+                    "hasSeenIcelandOnboarding": false,
+                    "postSubscribeMembershipUpsellShownAt": 0,
+                    "languageCode": "en-us",
+                    "type": "User"
+                }
+            },
+            "Collection": {
+                "23738d481ce8": {
+                    "id": "23738d481ce8",
+                    "name": "Dart",
+                    "slug": "dartlang",
+                    "tags": [
+                        "MOBILE APP DEVELOPMENT",
+                        "WEB DEVELOPMENT",
+                        "DART",
+                        "PROGRAMMING LANGUAGES",
+                        "SOFTWARE DEVELOPMENT"
+                    ],
+                    "creatorId": "a6d788faa5e5",
+                    "description": "Dart is an approachable, portable, and productive language for high-quality apps on any platform. Learn more at https://dart.dev.",
+                    "shortDescription": "Dart is an approachable, portable, and productive language…",
+                    "image": {
+                        "imageId": "1*uWy1Ajpd0oTUQBO9WBHoQg@2x.png",
+                        "filter": "",
+                        "backgroundSize": "",
+                        "originalWidth": 1001,
+                        "originalHeight": 1001,
+                        "strategy": "resample",
+                        "height": 0,
+                        "width": 0
+                    },
+                    "metadata": {
+                        "followerCount": 14031,
+                        "activeAt": 1762974121956
+                    },
+                    "virtuals": {
+                        "permissions": {
+                            "canPublish": true,
+                            "canPublishAll": true,
+                            "canRepublish": true,
+                            "canRemove": true,
+                            "canManageAll": true,
+                            "canSubmit": true,
+                            "canEditPosts": true,
+                            "canAddWriters": true,
+                            "canViewStats": true,
+                            "canSendNewsletter": true,
+                            "canViewLockedPosts": true,
+                            "canViewCloaked": true,
+                            "canEditOwnPosts": true,
+                            "canBeAssignedAuthor": true,
+                            "canEnrollInHightower": false,
+                            "canLockPostsForMediumMembers": false,
+                            "canLockOwnPostsForMediumMembers": false,
+                            "canViewNewsletterV2Stats": true,
+                            "canCreateNewsletterV3": true
+                        },
+                        "isSubscribed": true,
+                        "isEnrolledInHightower": false,
+                        "isEligibleForHightower": false,
+                        "isSubscribedToCollectionEmails": false,
+                        "isMuted": false,
+                        "canToggleEmail": false,
+                        "isWriter": false
+                    },
+                    "logo": {
+                        "imageId": "1*NRb7RFVWJQFzY47j3v4U7Q.png",
+                        "filter": "",
+                        "backgroundSize": "",
+                        "originalWidth": 400,
+                        "originalHeight": 154,
+                        "strategy": "resample",
+                        "height": 0,
+                        "width": 0
+                    },
+                    "twitterUsername": "dart_lang",
+                    "publicEmail": "medium@dartlang.org",
+                    "domain": "blog.dart.dev",
+                    "sections": [
+                        {
+                            "type": 2,
+                            "collectionHeaderMetadata": {
+                                "title": "Dart",
+                                "description": "An approachable, portable, and productive language for high-quality apps on any platform",
+                                "backgroundImage": {},
+                                "logoImage": {
+                                    "id": "1*knHF_qpxdtS8h0Z8EeqowA@2x.png",
+                                    "originalWidth": 1080,
+                                    "originalHeight": 1080,
+                                    "alt": "Dart"
+                                },
+                                "alignment": 2,
+                                "layout": 5
+                            }
+                        },
+                        {
+                            "type": 1,
+                            "postListMetadata": {
+                                "source": 1,
+                                "layout": 4,
+                                "number": 7,
+                                "postIds": []
+                            }
+                        },
+                        {
+                            "type": 1,
+                            "postListMetadata": {
+                                "source": 1,
+                                "layout": 5,
+                                "number": 15,
+                                "postIds": []
+                            }
+                        }
+                    ],
+                    "tintColor": "#FF042B59",
+                    "lightText": true,
+                    "favicon": {
+                        "imageId": "",
+                        "filter": "",
+                        "backgroundSize": "",
+                        "originalWidth": 0,
+                        "originalHeight": 0,
+                        "strategy": "resample",
+                        "height": 0,
+                        "width": 0
+                    },
+                    "colorPalette": {
+                        "defaultBackgroundSpectrum": {
+                            "colorPoints": [
+                                {
+                                    "color": "#FF6588BA",
+                                    "point": 0
+                                },
+                                {
+                                    "color": "#FF607EAB",
+                                    "point": 0.1
+                                },
+                                {
+                                    "color": "#FF59759C",
+                                    "point": 0.2
+                                },
+                                {
+                                    "color": "#FF536B8E",
+                                    "point": 0.3
+                                },
+                                {
+                                    "color": "#FF4C617F",
+                                    "point": 0.4
+                                },
+                                {
+                                    "color": "#FF445670",
+                                    "point": 0.5
+                                },
+                                {
+                                    "color": "#FF3D4B61",
+                                    "point": 0.6
+                                },
+                                {
+                                    "color": "#FF344052",
+                                    "point": 0.7
+                                },
+                                {
+                                    "color": "#FF2B3442",
+                                    "point": 0.8
+                                },
+                                {
+                                    "color": "#FF212832",
+                                    "point": 0.9
+                                },
+                                {
+                                    "color": "#FF161A22",
+                                    "point": 1
+                                }
+                            ],
+                            "backgroundColor": "#FFFFFFFF"
+                        },
+                        "tintBackgroundSpectrum": {
+                            "colorPoints": [
+                                {
+                                    "color": "#FF042B59",
+                                    "point": 0
+                                },
+                                {
+                                    "color": "#FF294871",
+                                    "point": 0.1
+                                },
+                                {
+                                    "color": "#FF456087",
+                                    "point": 0.2
+                                },
+                                {
+                                    "color": "#FF5F779B",
+                                    "point": 0.3
+                                },
+                                {
+                                    "color": "#FF788DAD",
+                                    "point": 0.4
+                                },
+                                {
+                                    "color": "#FF8FA2BF",
+                                    "point": 0.5
+                                },
+                                {
+                                    "color": "#FFA5B6CF",
+                                    "point": 0.6
+                                },
+                                {
+                                    "color": "#FFBBC9DF",
+                                    "point": 0.7
+                                },
+                                {
+                                    "color": "#FFD1DCEE",
+                                    "point": 0.8
+                                },
+                                {
+                                    "color": "#FFE6EEFC",
+                                    "point": 0.9
+                                },
+                                {
+                                    "color": "#FFFBFFFF",
+                                    "point": 1
+                                }
+                            ],
+                            "backgroundColor": "#FF042B59"
+                        },
+                        "highlightSpectrum": {
+                            "colorPoints": [
+                                {
+                                    "color": "#FFECF3FF",
+                                    "point": 0
+                                },
+                                {
+                                    "color": "#FFE9F2FF",
+                                    "point": 0.1
+                                },
+                                {
+                                    "color": "#FFE5F0FF",
+                                    "point": 0.2
+                                },
+                                {
+                                    "color": "#FFE2EFFF",
+                                    "point": 0.3
+                                },
+                                {
+                                    "color": "#FFDEEDFF",
+                                    "point": 0.4
+                                },
+                                {
+                                    "color": "#FFDBEBFF",
+                                    "point": 0.5
+                                },
+                                {
+                                    "color": "#FFD7EAFF",
+                                    "point": 0.6
+                                },
+                                {
+                                    "color": "#FFD3E8FF",
+                                    "point": 0.7
+                                },
+                                {
+                                    "color": "#FFCFE6FF",
+                                    "point": 0.8
+                                },
+                                {
+                                    "color": "#FFCBE5FF",
+                                    "point": 0.9
+                                },
+                                {
+                                    "color": "#FFC8E3FF",
+                                    "point": 1
+                                }
+                            ],
+                            "backgroundColor": "#FFFFFFFF"
+                        },
+                        "darkBackgroundSpectrum": {
+                            "colorPoints": [
+                                {
+                                    "color": "#FF7DA0D3",
+                                    "point": 0
+                                },
+                                {
+                                    "color": "#FF89A9D8",
+                                    "point": 0.1
+                                },
+                                {
+                                    "color": "#FF94B1DC",
+                                    "point": 0.2
+                                },
+                                {
+                                    "color": "#FFA0B9E0",
+                                    "point": 0.3
+                                },
+                                {
+                                    "color": "#FFABC1E3",
+                                    "point": 0.4
+                                },
+                                {
+                                    "color": "#FFB6C9E7",
+                                    "point": 0.5
+                                },
+                                {
+                                    "color": "#FFC0D1EB",
+                                    "point": 0.6
+                                },
+                                {
+                                    "color": "#FFCBD8EF",
+                                    "point": 0.7
+                                },
+                                {
+                                    "color": "#FFD5E0F2",
+                                    "point": 0.8
+                                },
+                                {
+                                    "color": "#FFE0E7F6",
+                                    "point": 0.9
+                                },
+                                {
+                                    "color": "#FFEAEFFA",
+                                    "point": 1
+                                }
+                            ],
+                            "backgroundColor": "#FF000000"
+                        }
+                    },
+                    "navItems": [
+                        {
+                            "type": 1,
+                            "title": "Announcements",
+                            "tagSlug": "announcements",
+                            "url": "https://blog.dart.dev/tagged/announcements",
+                            "source": "tagSlug"
+                        },
+                        {
+                            "type": 5,
+                            "title": "Archive",
+                            "url": "https://blog.dart.dev/archive"
+                        },
+                        {
+                            "type": 3,
+                            "title": "dart.dev",
+                            "url": "https://dart.dev"
+                        }
+                    ],
+                    "colorBehavior": 2,
+                    "collectionFeatures": [
+                        25
+                    ],
+                    "ampLogo": {
+                        "imageId": "",
+                        "filter": "",
+                        "backgroundSize": "",
+                        "originalWidth": 0,
+                        "originalHeight": 0,
+                        "strategy": "resample",
+                        "height": 0,
+                        "width": 0
+                    },
+                    "header": {
+                        "title": "Dart",
+                        "description": "An approachable, portable, and productive language for high-quality apps on any platform",
+                        "backgroundImage": {},
+                        "logoImage": {
+                            "id": "1*knHF_qpxdtS8h0Z8EeqowA@2x.png",
+                            "originalWidth": 1080,
+                            "originalHeight": 1080,
+                            "alt": "Dart"
+                        },
+                        "alignment": 2,
+                        "layout": 5
+                    },
+                    "subscriberCount": 14031,
+                    "tagline": "Dart is a client-optimized language for fast apps on any platform.",
+                    "isOptedIntoAurora": false,
+                    "isCurationAllowedByDefault": false,
+                    "polarisCoverImage": {
+                        "imageId": "",
+                        "filter": "",
+                        "backgroundSize": "",
+                        "originalWidth": 0,
+                        "originalHeight": 0,
+                        "strategy": "resample",
+                        "height": 0,
+                        "width": 0
+                    },
+                    "ptsQualifiedAt": 1616092887098,
+                    "type": "Collection"
+                }
+            },
+            "Social": {
+                "c4c58c97a41b": {
+                    "userId": "8b6a7f6f197d",
+                    "targetUserId": "c4c58c97a41b",
+                    "type": "Social"
+                }
+            },
+            "SocialStats": {
+                "c4c58c97a41b": {
+                    "userId": "c4c58c97a41b",
+                    "usersFollowedCount": 6,
+                    "usersFollowedByCount": 501,
+                    "type": "SocialStats"
+                }
+            }
+        }
+    },
+    "v": 3,
+    "b": "20260130-1005-root"
+}
