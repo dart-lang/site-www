@@ -37,17 +37,5 @@ The following libraries and packages are useful across Dart platforms:
 
 ## Web app resources
 
-[Fetch data from the internet](/tutorials/server/fetch-data)
+[Fetch data from the internet](/server/fetch-data)
 : Demonstrates how to use `package:http` to retrieve data with a web server.
-
-
-
-{% comment %}
-## VM resources
-
-[Write HTTP servers](/tutorials/server/httpserver)
-: Walks through how to implement command-line clients and servers
-  that exchange JSON data.
-
-## Other tools and resources
-{% endcomment %}

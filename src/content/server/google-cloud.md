@@ -10,12 +10,14 @@ Dart servers can use many
 [Google Cloud products](https://cloud.google.com/products),
 often with the help of the pre-packaged Docker
 [Official Images for Dart](https://hub.docker.com/_/dart).
-For information about creating HTTP servers with Dart, see the
-[Write HTTP servers page](/tutorials/server/httpserver).
+To get started creating HTTP servers with Dart,
+check out some of the popular [server frameworks][server-frameworks].
 
 For information about other Google APIs (including Firebase)
 that you might want to use from Dart code,
 see the [Google APIs page](/resources/google-apis).
+
+[server-frameworks]: /server#frameworks
 
 ## Recommended solutions
 
