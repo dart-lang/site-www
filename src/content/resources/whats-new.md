@@ -467,7 +467,7 @@ we made the following changes to this site:
 * Included a definition for "Function" in the [Glossary][].
 * Deconstructed the [Library tour][] into individual pages for each library.
 * Updated the [Breaking changes][] page for 3.3.
-* Updated a few outdated entries on the [FAQ](/resources/faq) page.
+* Updated a few outdated entries on the FAQ page. _(Now removed)_
 * Expanded documentation on [`dart doc`][].
 * Updated and simplified [supported platforms][] content.
 * Consolidated multiples of [`dart format`][] content.
@@ -804,8 +804,6 @@ we made the following changes to this site:
 [Style]: /effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /effective-dart/usage#do-use-strings-in-part-of-directives
 [The language tour]: /language/libraries#library-directive
-[Is Dart single-threaded?]: /resources/faq#q-is-dart-single-threaded
-[Is Dart single-threaded on the web?]: /resources/faq#q-is-dart-single-threaded-on-the-web
 [Dart's web concurrency capabilities]: /language/concurrency#concurrency-on-the-web
 [discussion]: /language/functions#parameters
 [Concurrency in Dart]: /language/concurrency

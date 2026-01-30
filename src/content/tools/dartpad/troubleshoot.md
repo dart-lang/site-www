@@ -90,7 +90,7 @@ the code may no longer analyze or run without errors.
   check out [Get the Dart SDK](/get-dart).
 
 ## DartPad doesn't work in China
-  
+
 Try [dartpad.cn.](https://dartpad.cn)
 
 ## Other issues
@@ -99,6 +99,5 @@ If you have any other problems when using DartPad,
 [create an issue on GitHub.][new-issue]
 
 [GitHub rate limiting.]: https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
-[browser]: /resources/faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [chrome-cookies]: https://support.google.com/chrome/answer/95647
 [new-issue]: {{site.repo.dart.org}}/dart-pad/issues/new

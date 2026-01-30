@@ -19,9 +19,6 @@ Check out the following Dart language resources:
   <Card title="Videos" link="/resources/videos">
     Videos aimed at Dart developers.
   </Card>
-  <Card title="FAQ" link="/resources/faq">
-    Frequently asked questions about Dart.
-  </Card>
   <Card title="Code of conduct" link="/community/code-of-conduct">
     Keeping community spaces safe and respectful.
   </Card>
