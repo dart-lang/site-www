@@ -101,8 +101,8 @@ creating a new file for the logger and setting up the necessary imports.
       final now = DateTime.now();
 
       // Get the path to the project directory from the current script.
-      final segments = Platform.script.path.split('/');
-      final projectDir = segments.sublist(0, segments.length - 2).join('/');
+      final scriptFile = File(Platform.script.toFilePath());
+      final projectDir = scriptFile.parent.parent.path;
 
       // Create a 'logs' directory if it doesn't exist.
       final dir = Directory('$projectDir/logs');
@@ -130,8 +130,8 @@ creating a new file for the logger and setting up the necessary imports.
       final logger = Logger(name);
       final now = DateTime.now();
 
-      final segments = Platform.script.path.split('/');
-      final projectDir = segments.sublist(0, segments.length - 2).join('/');
+      final scriptFile = File(Platform.script.toFilePath());
+      final projectDir = scriptFile.parent.parent.path;
       final dir = Directory('$projectDir/logs');
       if (!dir.existsSync()) dir.createSync();
       final logFile = File(
