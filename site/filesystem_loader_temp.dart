@@ -36,14 +36,18 @@ class FilesystemLoader extends RouteLoaderBase {
   @visibleForTesting
   final DirectoryWatcherFactory watcherFactory;
 
-  static DirectoryWatcher _defaultWatcherFactory(String path) => DirectoryWatcher(path);
+  static DirectoryWatcher _defaultWatcherFactory(String path) =>
+      DirectoryWatcher(path);
 
   final Map<String, Set<PageSource>> dependentSources = {};
 
   StreamSubscription<WatchEvent>? _watcherSub;
 
   @override
-  Future<List<RouteBase>> loadRoutes(ConfigResolver resolver, bool eager) async {
+  Future<List<RouteBase>> loadRoutes(
+    ConfigResolver resolver,
+    bool eager,
+  ) async {
     if (kDebugMode) {
       _watcherSub ??= watcherFactory(directory).events.listen((event) {
         // It looks like event.path is relative on most platforms, but an
@@ -129,14 +133,20 @@ class FilesystemLoader extends RouteLoaderBase {
   }
 
   void removeFile(String path) {
-    final source = sources.whereType<FilePageSource>().where((source) => source.file.path == path).firstOrNull;
+    final source = sources
+        .whereType<FilePageSource>()
+        .where((source) => source.file.path == path)
+        .firstOrNull;
     if (source != null) {
       removeSource(source);
     }
   }
 
   void invalidateFile(String path, {bool rebuild = true}) {
-    final source = sources.whereType<FilePageSource>().where((source) => source.file.path == path).firstOrNull;
+    final source = sources
+        .whereType<FilePageSource>()
+        .where((source) => source.file.path == path)
+        .firstOrNull;
     if (source != null) {
       invalidateSource(source, rebuild: rebuild);
     }
@@ -161,7 +171,13 @@ class FilesystemLoader extends RouteLoaderBase {
 }
 
 class FilePageSource extends PageSource {
-  FilePageSource(super.path, this.file, super.loader, {super.keepSuffix, super.context});
+  FilePageSource(
+    super.path,
+    this.file,
+    super.loader, {
+    super.keepSuffix,
+    super.context,
+  });
 
   final File file;
 
@@ -169,6 +185,12 @@ class FilePageSource extends PageSource {
   Future<Page> buildPage() async {
     final content = await file.readAsString();
 
-    return Page(path: path, url: url, content: content, config: config, loader: loader);
+    return Page(
+      path: path,
+      url: url,
+      content: content,
+      config: config,
+      loader: loader,
+    );
   }
 }

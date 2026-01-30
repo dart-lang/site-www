@@ -20,18 +20,15 @@ function createFolder(path) {
 module.exports = async function (mediumURL, params = {}) {
   options = params
 
-  // if (!mediumURL || mediumURL.substr(0, 18) !== 'https://medium.com') {
-  //   throw new Error('no url or not a medium.com url')
-  // }
+  let output = params.output || path.join(__dirname, '..', '..', 'src', 'content', 'blog')
 
-  let output = null
   const json = await utils.loadMediumPost(mediumURL, options)
   const s = json.payload.value
   const story = {}
   const images = []
 
-  story.title = s.title.replace(/:/g, '&#58;')
-  story.subtitle = s.virtuals.subtitle.trim().replace(/:/g, '&#58;')
+  story.title = s.title
+  story.subtitle = s.virtuals.subtitle ? s.virtuals.subtitle.trim() : ''
   story.author = s.displayAuthor
   story.date = new Date(s.createdAt).toJSON()
   story.slug = s.slug
@@ -64,30 +61,38 @@ module.exports = async function (mediumURL, params = {}) {
   }
 
   if (s.virtuals.previewImage) {
-    story.featuredImage = s.virtuals.previewImage.imageId
+    story.featuredImage = s.virtuals.previewImage.imageId.replace(/\*/g, '')
   }
 
   if (params && params.info) {
     process.exit(0)
   }
 
-  if (params) {
-    output = params.output ? params.output : 'content'
-  } else {
-    output = process.env.PWD
-  }
-
   story.sections = s.content.bodyModel.sections
   story.paragraphs = s.content.bodyModel.paragraphs
 
-  const sections = []
+  // First pass: collect images
   for (let i = 0; i < story.sections.length; i++) {
-    const s = story.sections[i]
-    const section = utils.processSection(s, story.slug, images, options)
-    sections[s.startIndex] = section
+    utils.processSection(story.sections[i], story.slug, images, options)
+  }
+  for (let i = 0; i < story.paragraphs.length; i++) {
+    await utils.processParagraph(story.paragraphs[i], story.slug, images, options)
   }
 
-  if (story.paragraphs.length > 1) {
+  const postFolder = path.join(output, story.slug)
+  const imagesFolder = path.join(postFolder, 'images')
+  createFolder(imagesFolder)
+
+  let imageMap = {}
+  if (!!images.length) {
+    imageMap = await utils.downloadImages(images, {
+      featuredImage: story.featuredImage,
+      imageFolder: imagesFolder,
+      puppeteerPage: options.puppeteerPage
+    })
+  }
+
+  if (!story.subtitle && story.paragraphs.length > 1) {
     story.subtitle = story.paragraphs[1].text
   }
 
@@ -109,98 +114,57 @@ module.exports = async function (mediumURL, params = {}) {
     return true
   })
 
-  const promises = []
-  for (let i = 2; i < story.paragraphs.length; i++) {
-    if (sections[i]) story.markdown.push(sections[i])
-
-    const promise = new Promise(function (resolve, reject) {
-      const p = story.paragraphs[i]
-
-      const text = utils.processParagraph(p, story.slug, images, options)
-      return resolve(text)
-    })
-    promises.push(promise)
+  // Second pass: generate markdown with imageMap
+  const sections = []
+  for (let i = 0; i < story.sections.length; i++) {
+    const s = story.sections[i]
+    sections[s.startIndex] = utils.processSection(s, story.slug, [], { ...options, imageMap })
   }
 
-  return Promise.all(promises)
-    .then(async results => {
-      if (!!images.length) {
-        let featuredImage = story.featuredImage
-        let outputPath = path.join(output, story.slug, 'images')
-        if (!!options.jekyll) {
-          outputPath = path.join(output, `assets/images/${story.slug}`)
-        }
-        createFolder(outputPath)
-        story.images = await utils.downloadImages(images, {
-          featuredImage: featuredImage,
-          imageFolder: outputPath
-        })
-      } else {
-        createFolder(output)
-      }
+  const results = []
+  for (let i = 0; i < story.paragraphs.length; i++) {
+    if (sections[i]) story.markdown.push(sections[i])
+    const p = story.paragraphs[i]
+    const text = await utils.processParagraph(p, story.slug, [], { ...options, imageMap })
+    results.push(text)
+  }
 
-      for (let text of results) {
-        story.markdown.push(text)
-      }
+  for (let text of results) {
+    story.markdown.push(text)
+  }
 
-      if (params && params.debug) {
-        console.log('debug', story.paragraphs)
-      }
+  // frontmatter
+  let outputText = ''
+  if (options.frontmatter) {
+    outputText = '---\n'
+    outputText += `title: "${story.title.replace(/"/g, '\\"')}"\n`
+    outputText += `description: "${story.subtitle.replace(/"/g, '\\"')}"\n`
+    outputText += `date: ${story.date.slice(0, 10)}\n`
+    outputText += `author: "${story.author}"\n`
+    outputText += `layout: docs\n`
+    outputText += `sidenav: ""\n`
 
-      // frontmatter
-      let outputText = ''
-      if (options.frontmatter) {
-        outputText = '---\n'
-        outputText += `slug: ${story.slug}\n`
-        outputText += `date: ${story.date}\n`
-        outputText += `author: "${story.author}"\n`
-        outputText += `title: "${story.title}"\n`
-        if (story.subtitle) {
-          outputText += `subtitle: "${story.subtitle}"\n`
-        }
-        if (story.images.length > 0) {
-          outputText += 'images:\n'
-          for (const image of story.images) {
-            outputText += `  - ${image}\n`
-          }
-        }
-        if (story.tags.length > 0) {
-          outputText += 'tags:\n'
-          for (const tag of story.tags) {
-            outputText += `  - ${tag}\n`
-          }
-          outputText += 'keywords:\n'
-          for (const tag of story.tags) {
-            outputText += `  - ${tag}\n`
-          }
-        }
-        outputText += 'draft: true' + '\n'
-        outputText += '---\n'
+    if (story.featuredImage) {
+      const featImgFile = imageMap[story.featuredImage] || utils.normalizeId(story.featuredImage)
+      if (featImgFile) {
+        outputText += `image: images/${featImgFile}\n`
       }
-      outputText += story.markdown.join('\n')
+    }
 
-      let outputPath = `${output}/${story.slug}.md`
+    const tags = story.tags || []
+    if (tags.length > 0) {
+      // Use first tag as category
+      outputText += `category: ${tags[0]}\n`
+      outputText += 'tags:\n'
+      for (const tag of tags) {
+        outputText += `  - ${tag}\n`
+      }
+    }
+    outputText += '---\n\n'
+  }
+  outputText += story.markdown.join('\n')
 
-      if (!!options.jekyll) {
-        outputPath = `${output}/${story.date.slice(0, 10)}-${story.slug}.md`
-      }
-      if (output) {
-        if (!!images.length && !options.jekyll) {
-          outputPath = path.join(output, story.slug) + '/index.md'
-        }
-        fs.writeFileSync(outputPath, outputText)
-        // return post object if required, else just exit
-        return options.returnObject ? story : undefined
-      } else if (!output && params && params.commands) {
-        console.log(outputText)
-        return outputText
-      } else {
-        return outputText
-      }
-    })
-    .catch(err => {
-      console.log('something went wrong')
-      console.log(err)
-      return err
-    })
+  let outputPath = path.join(postFolder, 'index.md')
+  fs.writeFileSync(outputPath, outputText)
+  return options.returnObject ? story : undefined
 }

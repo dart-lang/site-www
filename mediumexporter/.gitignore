@@ -27,3 +27,6 @@ build/Release
 node_modules
 content
 .nyc_output
+
+artifacts/cache/
+artifacts/failed_downloads.txt

@@ -17,14 +17,14 @@ class ImagePathProcessor implements PageExtension {
           // It's a relative path. Rewrite it.
           // page.path is likely "blog/test-folder-post/test-folder-post.md" or similar.
           // We want: /images/content/blog/test-folder-post/dash.png
-          
+
           final contentDir = p.dirname(page.path);
           // If page.path is "blog/test-folder-post", dirname is "blog", which might be wrong for index.md?
           // But if page.path comes from FilesystemLoader, it usually includes extension or is the ID.
-          
+
           // Let's assume contentAssetsBuilder mirrors the src/content structure to web/images/content
           final newSrc = p.join('/images/content', contentDir, src);
-          
+
           return ElementNode(
             node.tag,
             {...node.attributes, 'src': newSrc},
