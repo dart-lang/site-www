@@ -241,7 +241,7 @@ add the necessary code, including the logging and error handling.
 1.  Create a new file named `/cli/lib/src/commands/search.dart`.
 
 1.  Add the imports and a basic class structure.
-    This `SearchCommand` class extends `Command<String>`, and
+    This `SearchCommand` class extends `Command`, and
     its constructor accepts a `Logger` instance.
     Accepting the logger in the constructor is a
     common pattern called dependency injection,
@@ -256,7 +256,7 @@ add the necessary code, including the logging and error handling.
     import 'package:logging/logging.dart';
     import 'package:wikipedia/wikipedia.dart';
 
-    class SearchCommand extends Command<String> {
+    class SearchCommand extends Command {
       SearchCommand({required this.logger});
 
       final Logger logger;
@@ -295,7 +295,7 @@ add the necessary code, including the logging and error handling.
     import 'package:logging/logging.dart';
     import 'package:wikipedia/wikipedia.dart';
 
-    class SearchCommand extends Command<String> {
+    class SearchCommand extends Command {
       SearchCommand({required this.logger});
 
       final Logger logger;
@@ -344,7 +344,7 @@ add the necessary code, including the logging and error handling.
     import 'package:logging/logging.dart';
     import 'package:wikipedia/wikipedia.dart';
 
-    class SearchCommand extends Command<String> {
+    class SearchCommand extends Command {
       SearchCommand({required this.logger}) {
         addFlag(
           'im-feeling-lucky',
@@ -412,7 +412,7 @@ add the necessary code, including the logging and error handling.
     import 'package:logging/logging.dart';
     import 'package:wikipedia/wikipedia.dart';
 
-    class SearchCommand extends Command<String> {
+    class SearchCommand extends Command {
       SearchCommand({required this.logger}) {
         addFlag(
           'im-feeling-lucky',
@@ -499,7 +499,7 @@ uses a `try/catch` block to handle potential network or data errors.
     import 'package:logging/logging.dart';
     import 'package:wikipedia/wikipedia.dart';
 
-    class GetArticleCommand extends Command<String> {
+    class GetArticleCommand extends Command {
       GetArticleCommand({required this.logger});
 
       final Logger logger;
