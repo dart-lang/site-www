@@ -1,0 +1,16 @@
+name: dart_site_mcp_server
+description: A local MCP server for dart.dev maintenance tasks.
+publish_to: none
+environment:
+  sdk: ^3.9.0
+resolution: workspace
+
+dependencies:
+  http: ^1.2.0
+  dart_mcp: ^0.4.1
+  path: ^1.9.0
+  yaml: ^3.1.2
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.24.0

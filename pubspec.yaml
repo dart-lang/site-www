@@ -9,3 +9,4 @@ workspace:
   - examples
   - site
   - tool/dash_site
+  - tool/mcp_server
