@@ -49,6 +49,7 @@ instead, they can use browser tools such as the [Chrome DevTools.][]
 The Flutter inspector works only for Flutter apps;
 other web apps should use browser tools such as the Chrome DevTools.
 
+<a id="using-devtools-with-a-command-line-apps" aria-hidden="true"></a>
 
 ## Command-line apps
 
@@ -92,8 +93,7 @@ the Dart DevTools UI appears,
 displaying information about the target app.
 Click **Debugger** to start debugging the app.
 
-
-## Flutter apps
+<a id="command-line-apps" aria-hidden="true"></a>
 
 ## VS Code debug configurations
 
@@ -146,12 +146,15 @@ Replace `"main.dart"` with the path to your app's main file.
 
 4. In DevTools, view the timeline, memory, and performance for your running app.
 
+<a id="using-devtools-with-a-flutter-app" aria-hidden="true"></a>
+
 ## Flutter apps
 
 For details on using DevTools with a Flutter app for any platform
 (including web) see the
 [DevTools documentation on flutter.dev.][Flutter devtools]
 
+<a id="using-devtools-with-a-non-flutter-web-app" aria-hidden="true"></a>
 
 ## Other web apps
 
