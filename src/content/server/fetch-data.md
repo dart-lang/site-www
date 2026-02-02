@@ -1,12 +1,7 @@
 ---
 title: Fetch data from the internet
+shortTitle: Fetch data
 description: Fetch data over the internet using the http package.
-prevpage:
-  url: /tutorials/server/cmdline
-  title: Write command-line apps
-nextpage:
-  url: /tutorials/server/httpserver
-  title: Write HTTP servers
 ---
 
 <?code-excerpt path-base="fetch_data"?>
@@ -126,7 +121,7 @@ For this current page, the URL is composed of:
 
 * The scheme used for determining the protocol used: `https`
 * The authority or hostname of the server: `dart.dev`
-* The path to the resource: `/tutorials/server/fetch-data.html`
+* The path to the resource: `/server/fetch-data.html`
 
 There are other optional parameters as well
 that aren't used by the current page:
