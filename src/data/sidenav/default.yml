@@ -206,14 +206,8 @@
       children:
         - title: Overview
           permalink: /server
-        - title: Get started
-          permalink: /tutorials/server/get-started
-        - title: Write command-line apps
-          permalink: /tutorials/server/cmdline
         - title: Fetch data from the internet
-          permalink: /tutorials/server/fetch-data
-        - title: Write HTTP servers
-          permalink: /tutorials/server/httpserver
+          permalink: /server/fetch-data
         - title: Libraries & packages
           permalink: /server/libraries
         - title: Google Cloud
@@ -383,8 +377,6 @@
       permalink: /resources/books
     - title: Videos
       permalink: /resources/videos
-    - title: Tutorials
-      permalink: /tutorials
 
 - title: Related sites
   expanded: true

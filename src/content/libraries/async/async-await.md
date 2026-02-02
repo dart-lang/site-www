@@ -1067,7 +1067,6 @@ Congratulations, you've finished the tutorial! If you'd like to learn more, here
 are some suggestions for where to go next:
 
 - Play with [DartPad]({{site.dartpad}}).
-- Try another [tutorial](/tutorials).
 - Learn more about futures and asynchronous code in Dart:
   - [Streams tutorial](/libraries/async/using-streams):
     Learn how to work with a sequence of asynchronous events.

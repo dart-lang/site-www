@@ -791,7 +791,7 @@ we made the following changes to this site:
   * Included SDK version support info for linter rules.
   * Added diagnostic and lint messages for 2.19 changes.
  
-[Fetch data from the internet]: /tutorials/server/fetch-data
+[Fetch data from the internet]: /server/fetch-data
 [Automated publishing of packages to pub.dev]: /tools/pub/automated-publishing
 [community resources]: /community
 [migration guide]: /null-safety/migration-guide
@@ -1191,12 +1191,12 @@ we made the following changes to this site:
   * [Using Google Cloud][] describes Google Cloud products that
     Dart servers can use,
     often with the help of pre-packaged Docker images.
-  * The [HTTP server tutorial][],
+  * The HTTP server tutorial,
     which featured the discontinued `http_server` package,
     has been temporarily replaced by
     an "under construction" page that
-    links to helpful documentation and samples.
-  * The [command-line tutorial][] has been completely updated.
+    links to helpful documentation and samples. _(Now removed)_
+  * The command-line tutorial has been completely updated. _(Now removed)_
 * Published some other new pages:
   * Null safety codelab that teaches you about Dart's null-safe type system,
     which was introduced in Dart 2.12.
@@ -1220,12 +1220,10 @@ we made the following changes to this site:
   * Added Docker as a way to [get Dart][].
   * Updated the [language evolution page][evolution] to reflect Dart 2.13.
 
-[command-line tutorial]: /tutorials/server/cmdline
 [`dart run` page]: /tools/dart-run
 [`dart create`]: /tools/dart-create
 [Fixing type promotion failures]: /tools/non-promotion-reasons
 [get Dart]: /get-dart
-[HTTP server tutorial]: /tutorials/server/httpserver
 [`lints`]: {{site.pub-pkg}}/lints
 [Numbers in Dart]: /resources/language/number-representation
 [streams tutorial]: /libraries/async/using-streams
@@ -1274,7 +1272,7 @@ In addition to bug fixes and incremental improvements, we made the following cha
 * Updated the [language evolution page][evolution]
   to add information about language versioning
   and to reflect Dart 2.12.
-* Updated the [library tour][] and [tutorials][]
+* Updated the [library tour][] and tutorials
   to reflect sound null safety.
 * Updated pages across the site to use [the `dart` tool][]
   instead of deprecated commands.
@@ -1297,7 +1295,7 @@ We also switched from Travis CI to GitHub Actions, and we made multiple CSS chan
 [language tour]: /language
 [`late` variables]: /language/variables#late-variables
 [library tour]: /libraries
-[tutorials]: /tutorials
+
 [the `dart` tool]: /tools/dart-tool
 [`dart analyze`]: /tools/dart-analyze
 [`dart compile`]: /tools/dart-compile
