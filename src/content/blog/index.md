@@ -1,8 +1,7 @@
 ---
 title: "The Dart Blog"
 description: "The official blog of the Dart team."
-layout: docs
-sidenav: ""
+layout: blog
 showBreadcrumbs: false
 ---
 

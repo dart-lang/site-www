@@ -45,15 +45,17 @@ class _BlogListState extends State<BlogList> {
       div(classes: 'blog-categories', [
         for (final category in categories)
           button(
-            classes:
-                'blog-category-chip ${category == selectedCategory ? 'active' : ''}',
+            classes: [
+              'blog-category-chip',
+              if (category == selectedCategory) 'active',
+            ].join(' '),
             onClick: () {
               setState(() {
                 selectedCategory = category;
               });
             },
             [
-              text(category[0].toUpperCase() + category.substring(1)),
+              .text(category[0].toUpperCase() + category.substring(1)),
             ],
           ),
       ]),
@@ -86,8 +88,8 @@ class _BlogListState extends State<BlogList> {
             ),
         ])
       else if (filteredPosts.isEmpty)
-        div(classes: 'no-posts', [
-          text('No posts found in this category.'),
+        const div(classes: 'no-posts', [
+          .text('No posts found in this category.'),
         ]),
     ]);
   }

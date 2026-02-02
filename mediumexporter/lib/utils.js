@@ -92,7 +92,7 @@ async function downloadImages(images, options = {}) {
     if (!response) continue
 
     fs.writeFileSync(`${options.imageFolder}/${file}`, response)
-    articleImages[sourceId] = file
+    articleImages[normalizeId(sourceId)] = file
   }
   return articleImages
 }
@@ -124,7 +124,7 @@ function processSection(s, slug, images, options = {}) {
     const imgwidth = parseInt(s.backgroundImage.originalWidth, 10)
     const imgsrc = MEDIUM_IMG_CDN + (imgwidth || 2000) + '/' + s.backgroundImage.id
     images.push(imgsrc)
-    const fileName = (options.imageMap && options.imageMap[s.backgroundImage.id]) || normalizeId(s.backgroundImage.id)
+    const fileName = (options.imageMap && options.imageMap[normalizeId(s.backgroundImage.id)]) || normalizeId(s.backgroundImage.id)
     section = '\n![](images/' + fileName + ')'
   }
   return section
@@ -281,7 +281,7 @@ async function processParagraph(p, slug, images, options = {}) {
       const imgwidth = parseInt(p.metadata.originalWidth, 10)
       const imgsrc = MEDIUM_IMG_CDN + (imgwidth || 2000) + '/' + p.metadata.id
       images.push(imgsrc)
-      const fileName = (options.imageMap && options.imageMap[p.metadata.id]) || normalizeId(p.metadata.id)
+      const fileName = (options.imageMap && options.imageMap[normalizeId(p.metadata.id)]) || normalizeId(p.metadata.id)
       let imgText = '\n![' + processedText + '](images/' + fileName + ')'
       if (processedText) {
         imgText += '*' + processedText + '*'

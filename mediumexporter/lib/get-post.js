@@ -71,6 +71,14 @@ module.exports = async function (mediumURL, params = {}) {
   story.sections = s.content.bodyModel.sections
   story.paragraphs = s.content.bodyModel.paragraphs
 
+  // Add featured image to images collection if it exists
+  const MEDIUM_IMG_CDN = 'https://cdn-images-1.medium.com/max/'
+  if (s.virtuals.previewImage) {
+    const imgwidth = parseInt(s.virtuals.previewImage.originalWidth, 10)
+    const imgsrc = MEDIUM_IMG_CDN + (imgwidth || 2000) + '/' + s.virtuals.previewImage.imageId
+    images.push(imgsrc)
+  }
+
   // First pass: collect images
   for (let i = 0; i < story.sections.length; i++) {
     utils.processSection(story.sections[i], story.slug, images, options)
@@ -141,8 +149,6 @@ module.exports = async function (mediumURL, params = {}) {
     outputText += `description: "${story.subtitle.replace(/"/g, '\\"')}"\n`
     outputText += `date: ${story.date.slice(0, 10)}\n`
     outputText += `author: "${story.author}"\n`
-    outputText += `layout: docs\n`
-    outputText += `sidenav: ""\n`
 
     if (story.featuredImage) {
       const featImgFile = imageMap[story.featuredImage] || utils.normalizeId(story.featuredImage)

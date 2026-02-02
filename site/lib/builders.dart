@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:build/build.dart';
-import 'package:path/path.dart' as p;
 
 import 'src/builders/styles_hash_builder.dart';
 

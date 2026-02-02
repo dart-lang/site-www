@@ -4,7 +4,7 @@
 
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/components/file_tree.dart';
-import 'package:jaspr_content/jaspr_content.dart';
+import 'package:jaspr_content/jaspr_content.dart' hide BlogLayout;
 import 'package:jaspr_content/theme.dart';
 import 'package:path/path.dart' as path;
 
@@ -19,6 +19,7 @@ import 'src/components/tutorial/quiz.dart';
 import 'src/components/tutorial/summary_card.dart';
 import 'src/components/tutorial/tutorial_outline.dart';
 import 'src/extensions/registry.dart';
+import 'src/layouts/blog_layout.dart';
 import 'src/layouts/doc_layout.dart';
 import 'src/layouts/homepage_layout.dart';
 import 'src/layouts/learn_layout.dart';
@@ -67,7 +68,12 @@ Component get _dartDevSite => ContentApp.custom(
     rawOutputPattern: RegExp(r'.*\.(txt|json)$'),
     extensions: allNodeProcessingExtensions,
     components: _embeddableComponents,
-    layouts: const [DocLayout(), HomepageLayout(), LearnLayout()],
+    layouts: const [
+      DocLayout(),
+      HomepageLayout(),
+      LearnLayout(),
+      BlogLayout(),
+    ],
     theme: const ContentTheme.none(),
     secondaryOutputs: [
       const RobotsTxtOutput(),
