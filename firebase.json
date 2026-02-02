@@ -458,6 +458,7 @@
       { "source": "/tools/sdk/archive", "destination": "/get-dart/archive", "type": 301 },
       { "source": "/tools/webstorm", "destination": "/tools#editors", "type": 301 },
       { "source": "/tos", "destination": "/terms", "type": 301 },
+      { "source": "/tutorial", "destination": "/learn/tutorial", "type": 301 },
       { "source": "/tutorials", "destination": "/learn", "type": 301 },
       { "source": "/tutorials/dart-vm{,/**}", "destination": "/learn/tutorial", "type": 301 },
       { "source": "/tutorials/language", "destination": "/language", "type": 301 },
