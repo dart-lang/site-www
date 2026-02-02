@@ -95,6 +95,59 @@ Click **Debugger** to start debugging the app.
 
 ## Flutter apps
 
+## VS Code debug configurations
+
+Configure VS Code to launch Dart command-line apps with DevTools enabled to access features like the Timeline view.
+
+### Debug configurations in VS Code
+
+The following table shows examples of VS Code debug configurations for Dart apps:
+
+| Configuration | `vmAdditionalArgs` | Description |
+|---------------|---------------------|-------------|
+| Default VS Code debug | `[]` | Standard debugging. Includes debugger and logging; excludes timeline data. |
+| With timeline streams | `["--timeline_streams=VM,Isolate,GC"]` | Enables timeline streams for timeline, memory, and performance profiling. |
+
+{:.table .table-striped}
+
+### Example launch.json
+
+To enable timeline events, add this configuration to your `.vscode/launch.json`:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dart with DevTools Timeline",
+      "type": "dart",
+      "request": "launch",
+      "vmAdditionalArgs": [
+        "--timeline_streams=VM,Isolate,GC"
+      ],
+      "program": "main.dart"
+    }
+  ]
+}
+```
+
+Replace `"main.dart"` with the path to your app's main file.
+
+### Connect DevTools
+
+1. Start debugging in VS Code using the configured launch configuration.
+
+2. In the VS Code Debug Console or terminal output, look for a line similar to:
+   ```
+   The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/aBcDeFg123=/devtools/#/?uri=...
+   ```
+
+3. Copy the DevTools URL and paste it into a Chrome browser window.
+
+4. In DevTools, view the timeline, memory, and performance for your running app.
+
+## Flutter apps
+
 For details on using DevTools with a Flutter app for any platform
 (including web) see the
 [DevTools documentation on flutter.dev.][Flutter devtools]
