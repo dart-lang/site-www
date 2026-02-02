@@ -448,7 +448,7 @@ For more information about Dart web libraries, see the
 
 [AnchorElement]: {{site.dart-api}}/dart-html/AnchorElement-class.html
 [dart:html]: {{site.dart-api}}/dart-html/dart-html-library.html
-[Fetch data from the internet]: /tutorials/server/fetch-data
+[Fetch data from the internet]: /server/fetch-data
 [Document]: {{site.dart-api}}/dart-html/Document-class.html
 [Element]: {{site.dart-api}}/dart-html/Element-class.html
 [`HttpRequest`]: {{site.dart-api}}/dart-html/HttpRequest-class.html

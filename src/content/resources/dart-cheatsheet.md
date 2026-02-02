@@ -2068,7 +2068,6 @@ some of the most interesting features of the Dart language.
 
 What you can try next includes:
 
-* Try [other Dart tutorials](/tutorials).
 * Read the [Dart language tour](/language).
 * Play with [DartPad.]({{site.dartpad}})
 * [Get the Dart SDK](/get-dart).
