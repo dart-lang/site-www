@@ -49,8 +49,9 @@ instead, they can use browser tools such as the [Chrome DevTools.][]
 The Flutter inspector works only for Flutter apps;
 other web apps should use browser tools such as the Chrome DevTools.
 
+<a id="using-devtools-with-a-command-line-apps" aria-hidden="true"></a>
 
-## Using DevTools with a command-line app
+## Command-line apps
 
 You can use DevTools to perform source-level debugging 
 or to view general log and diagnostics information
@@ -92,15 +93,70 @@ the Dart DevTools UI appears,
 displaying information about the target app.
 Click **Debugger** to start debugging the app.
 
+<a id="command-line-apps" aria-hidden="true"></a>
 
-## Using DevTools with a Flutter app
+## VS Code debug configurations
+
+Configure VS Code to launch Dart command-line apps with DevTools enabled to access features like the Timeline view.
+
+### Debug configurations in VS Code
+
+The following table shows examples of VS Code debug configurations for Dart apps:
+
+| Configuration | `vmAdditionalArgs` | Description |
+|---------------|---------------------|-------------|
+| Default VS Code debug | `[]` | Standard debugging. Includes debugger and logging; excludes timeline data. |
+| With timeline streams | `["--timeline_streams=VM,Isolate,GC"]` | Enables timeline streams for timeline, memory, and performance profiling. |
+
+{:.table .table-striped}
+
+### Example launch.json
+
+To enable timeline events, add this configuration to your `.vscode/launch.json`:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dart with DevTools Timeline",
+      "type": "dart",
+      "request": "launch",
+      "vmAdditionalArgs": [
+        "--timeline_streams=VM,Isolate,GC"
+      ],
+      "program": "main.dart"
+    }
+  ]
+}
+```
+
+Replace `"main.dart"` with the path to your app's main file.
+
+### Connect DevTools
+
+1. Start debugging in VS Code using the configured launch configuration.
+
+2. In the VS Code Debug Console or terminal output, look for a line similar to:
+   ```
+   The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/aBcDeFg123=/devtools/#/?uri=...
+   ```
+
+3. Copy the DevTools URL and paste it into a Chrome browser window.
+
+4. In DevTools, view the timeline, memory, and performance for your running app.
+
+<a id="using-devtools-with-a-flutter-app" aria-hidden="true"></a>
+
+## Flutter apps
 
 For details on using DevTools with a Flutter app for any platform
 (including web) see the
 [DevTools documentation on flutter.dev.][Flutter devtools]
 
+<a id="using-devtools-with-a-non-flutter-web-app" aria-hidden="true"></a>
 
-## Using DevTools with a non-Flutter web app
+## Other web apps
 
 To launch a web app so that you can use Dart DevTools,
 use the `webdev serve` command with the `--debug` or `--debug-extension` flag:
@@ -113,7 +169,7 @@ For more information, see [Debugging Dart web apps][].
 
 [App size tool]: {{site.flutter-docs}}/tools/devtools/app-size
 [Chrome DevTools.]: https://developer.chrome.com/docs/devtools/
-[Command-line]: #using-devtools-with-a-command-line-app
+[Command-line]: #command-line-apps
 [CPU profiler]: {{site.flutter-docs}}/tools/devtools/cpu-profiler
 [Debugger]: {{site.flutter-docs}}/tools/devtools/debugger
 [Debugging Dart web apps]: /web/debugging
@@ -122,6 +178,6 @@ For more information, see [Debugging Dart web apps][].
 [Logging view]: {{site.flutter-docs}}/tools/devtools/logging
 [Memory view]: {{site.flutter-docs}}/tools/devtools/memory
 [Network view]: {{site.flutter-docs}}/tools/devtools/network
-[Other web]: #using-devtools-with-a-non-flutter-web-app
+[Other web]: #other-web-apps
 [Performance view]: {{site.flutter-docs}}/tools/devtools/performance
 [Timeline view]: {{site.flutter-docs}}/tools/devtools/timeline
