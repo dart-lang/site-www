@@ -40,62 +40,70 @@ void main() async {
             final prompts = result['prompts'] as List;
             print('Found ${prompts.length} prompts.');
             final updatePrompt = prompts.firstWhere(
-                (p) => p['name'] == 'update_sdk_changelog',
-                orElse: () => null);
-            
+              (p) => p['name'] == 'update_sdk_changelog',
+              orElse: () => null,
+            );
+
             if (updatePrompt != null) {
-                print('SUCCESS: Found "update_sdk_changelog" prompt.');
-                print('Retrieving prompt content...');
-                final getPromptRequest = {
-                    'jsonrpc': '2.0',
-                    'method': 'prompts/get',
-                    'params': {'name': 'update_sdk_changelog'},
-                    'id': 3
-                };
-                process.stdin.writeln(jsonEncode(getPromptRequest));
+              print('SUCCESS: Found "update_sdk_changelog" prompt.');
+              print('Retrieving prompt content...');
+              final getPromptRequest = {
+                'jsonrpc': '2.0',
+                'method': 'prompts/get',
+                'params': {'name': 'update_sdk_changelog'},
+                'id': 3,
+              };
+              process.stdin.writeln(jsonEncode(getPromptRequest));
             } else {
-                print('FAILURE: "update_sdk_changelog" prompt not found.');
-                process.kill();
-                exit(1);
+              print('FAILURE: "update_sdk_changelog" prompt not found.');
+              process.kill();
+              exit(1);
             }
           }
         } else if (json['id'] == 3) {
-            print('Prompt content received.');
-            final result = json['result'];
-            if (result != null && result['messages'] != null) {
-                final messages = result['messages'] as List;
-                if (messages.isNotEmpty) {
-                    final content = messages[0]['content'];
-                    // content can be TextContent or just a check
-                    print('Message content type: ${content.runtimeType}');
-                    // In dart_mcp/JSON-RPC, content might be a map
-                    if (content is Map && content['text'] != null) {
-                         final text = content['text'] as String;
-                         if (text.contains('# Update SDK Changelog Workflow')) {
-                             print('SUCCESS: Prompt content verified.');
-                             print('Preview (first 50 chars): ${text.substring(0, 50)}...');
-                             process.kill();
-                             exit(0);
-                         } else {
-                             print('FAILURE: Prompt content does not match expected markdown.');
-                             process.kill();
-                             exit(1);
-                         }
-                    } else {
-                        // It might be nested differently or just text? 
-                        // TextContent usually serializes to {type: text, text: ...}
-                        print('Raw content: $content');
-                         if (content['type'] == 'text' && (content['text'] as String).contains('# Update SDK Changelog Workflow')) {
-                             print('SUCCESS: Prompt content verified.');
-                             process.kill();
-                             exit(0);
-                         }
-                    }
+          print('Prompt content received.');
+          final result = json['result'];
+          if (result != null && result['messages'] != null) {
+            final messages = result['messages'] as List;
+            if (messages.isNotEmpty) {
+              final content = messages[0]['content'];
+              // content can be TextContent or just a check
+              print('Message content type: ${content.runtimeType}');
+              // In dart_mcp/JSON-RPC, content might be a map
+              if (content is Map && content['text'] != null) {
+                final text = content['text'] as String;
+                if (text.contains('# Update SDK Changelog Workflow')) {
+                  print('SUCCESS: Prompt content verified.');
+                  print(
+                    'Preview (first 50 chars): ${text.substring(0, 50)}...',
+                  );
+                  process.kill();
+                  exit(0);
+                } else {
+                  print(
+                    'FAILURE: Prompt content does not match expected markdown.',
+                  );
+                  process.kill();
+                  exit(1);
                 }
+              } else {
+                // It might be nested differently or just text?
+                // TextContent usually serializes to {type: text, text: ...}
+                print('Raw content: $content');
+                if (content['type'] == 'text' &&
+                    (content['text'] as String).contains(
+                      '# Update SDK Changelog Workflow',
+                    )) {
+                  print('SUCCESS: Prompt content verified.');
+                  process.kill();
+                  exit(0);
+                }
+              }
             }
-            print('FAILURE: Valid prompt content not found.');
-            process.kill();
-            exit(1);
+          }
+          print('FAILURE: Valid prompt content not found.');
+          process.kill();
+          exit(1);
         }
       } catch (e) {
         // ignore non-json

@@ -208,7 +208,7 @@ class SyncSdkChangelogTool {
         }
       } else if (line.trim().isNotEmpty && bulletBuffer.isNotEmpty) {
         bulletBuffer.write('\n${line.trim()}');
-        
+
         // potential link on multi-line?
         if (pendingLink == null) {
           // Check for inline link [text](url)

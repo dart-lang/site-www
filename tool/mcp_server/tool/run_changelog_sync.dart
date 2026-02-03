@@ -26,7 +26,9 @@ void main(List<String> args) async {
       try {
         final json = jsonDecode(line);
         if (json['id'] == 1) {
-          print('Initialization successful. Calling sync_sdk_changelog tool (WRITE MODE)...');
+          print(
+            'Initialization successful. Calling sync_sdk_changelog tool (WRITE MODE)...',
+          );
           // Call tool
           final callToolRequest = {
             'jsonrpc': '2.0',
@@ -45,14 +47,16 @@ void main(List<String> args) async {
             final content = result['content'] as List;
             if (content.isNotEmpty) {
               print('Content received: ${content[0]['text']}');
-              if ((content[0]['text'] as String).contains('Successfully added')) {
-                 print('SUCCESS: Tool execution verified (changes applied).');
-                 process.kill();
-                 exit(0);
+              if ((content[0]['text'] as String).contains(
+                'Successfully added',
+              )) {
+                print('SUCCESS: Tool execution verified (changes applied).');
+                process.kill();
+                exit(0);
               } else {
-                 print('FAILURE: Unexpected tool output.');
-                 process.kill();
-                 exit(1);
+                print('FAILURE: Unexpected tool output.');
+                process.kill();
+                exit(1);
               }
             }
           } else if (json['error'] != null) {
