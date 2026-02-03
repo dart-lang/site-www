@@ -81,12 +81,12 @@ dependencies between packages are not supported when using hooks.
 
 ### Environment variables {:.no_toc}
 
-Hooks are executed in a semi-hermetic environment. This means they do not
-inherit the full system environment variables. This ensures that builds are
-reproducible and cacheable and do not depend on accidental environment
-variables.
+Hooks are executed in a semi-hermetic environment. This means that
+`Platform.environment` does not expose all environment variables from the parent
+process. This ensures that hook invocations are reproducible and cacheable, and
+do not depend on accidental environment variables.
 
-However, some environment variables are necessary for locating tools (such as
+However, some environment variables are necessary for locating tools (like
 compilers) or configuring network access. The following environment variables
 are passed through to the hook process:
 
