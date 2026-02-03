@@ -3,7 +3,16 @@
 A local MCP server designed to help `dart.dev` writers and maintainers automate
 common tasks using Antigravity.
 
-## 1. Add this MCP server to Antigravity
+## 1. Setup
+
+1.  Ensure you have the [Dart SDK](https://dart.dev/get-dart) installed.
+2.  Navigate to the `site-www` repository root and run `dart pub get` to install dependencies:
+    ```terminal
+    cd path/to/site-www
+    dart pub get
+    ```
+
+## 2. Add this MCP server to Antigravity
 
 To use this server, you need to configure Antigravity to run it. Add the
 following configuration to your MCP settings file
