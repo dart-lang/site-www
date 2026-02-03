@@ -1,3 +1,22 @@
+- term: "AOT"
+  short_description: |-
+    Ahead-of-Time (AOT) compilation produces optimized native binaries at build time.
+  long_description: |-
+    Ahead-of-Time (AOT) compilation converts Dart code to native machine code at 
+    build time. This results in smaller, faster executables that start instantly 
+    and run with consistent performance. AOT builds are tree-shaken to remove unused 
+    code and are used for deploying production apps.
+  related_links:
+    - text: "Dart: The Platforms"
+      link: "/overview#platform"
+      type: "doc"
+    - text: "AOT"
+      link: "https://en.wikipedia.org/wiki/Ahead-of-time_compilation"
+      type: "external"
+  labels: 
+    - "compilation"
+    - "deployment"
+      
 - term: "Application package"
   short_description: |-
     A Dart package that contains a runnable application.
@@ -872,6 +891,26 @@
     - "patterns"
   alternate:
     - "irrefutable context"
+
+- term: "Just-in-Time compilation (JIT)"
+  short_description: |-
+    Just-in-Time compilation (JIT) is a compilation mode that compiles 
+    code at runtime for fast development iteration.
+  long_description: |-
+    Just-in-Time (JIT) compilation compiles Dart code to native machine 
+    code as it runs. This enables features like **hot reload** and rich 
+    debugging by allowing for incremental compilation. JIT is typically used 
+    during development, whereas production builds uses AOT.
+  related_links:
+    - text: "Dart: The platforms"
+      link: "/overview#platform"
+      type: "doc" 
+    - text: "JIT"
+      link: "https://en.wikipedia.org/wiki/Just-in-time_compilation"
+      type: "external"
+  labels: 
+    - "compilation"
+    - "devtools"
 
 - term: "Mixin application"
   short_description: |-
