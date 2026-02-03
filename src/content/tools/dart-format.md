@@ -106,16 +106,16 @@ that splits across multiple lines, and removes them from ones that don't.
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
 
-### Configuring the formatter
+### Configure the formatter
 
 When you run `dart format`, the formatter defaults to
 80 character line length or shorter. 
-You can configure the formatter's behavior by adding a top-level
+Configure the formatter's behavior by adding a top-level
 `formatter` section to the [`analysis_options.yaml`][] file.
 
 #### Page width
 
-To configure the line length for your project:
+Configure the line length for your project:
 
 ```yaml title="analysis_options.yaml"
 formatter:
@@ -125,27 +125,27 @@ formatter:
 With the analysis options file typically at the root,
 the configured line length will apply to everything in the package.
 
-#### Preserving trailing commas
+#### Preserve trailing commas
 
-By default, `dart format` automatically adds or removes trailing commas
+By default, `dart format` adds or removes trailing commas
 based on whether the construct splits across multiple lines.
-To force a construct to always split even when it could fit on one line,
-you can configure the formatter to preserve trailing commas:
+To force a construct to split even when it fits on one line,
+configure the formatter to preserve trailing commas:
 
 ```yaml title="analysis_options.yaml"
 formatter:
   trailing_commas: preserve
 ```
 
-When this option is enabled, if you add a trailing comma to an argument list,
-parameter list, or other comma-separated construct,
-the formatter will always split it across multiple lines,
-even if it could fit on one line.
+When enabled, adding a trailing comma to an argument list,
+parameter list, or other constructs, forces the formatter to split 
+it across multiple lines, even if it fits on one line. This provides 
+manual control over line breaks for specific constructs.
 This gives you manual control over line breaks for specific constructs.
 
-You can also configure individual files' line length,
-overriding the analysis options file,
-with a marker comment at the top of the file before any other code:
+Configure an individual file's line length,
+overriding the analysis options, by adding 
+a marker comment at the top of the file, before any other code:
 
 ```dart
 // dart format width=123
