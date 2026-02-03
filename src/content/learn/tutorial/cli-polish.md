@@ -196,7 +196,6 @@ Finally, update your main application to use the new `onOutput` feature.
 
     ```dart
     import 'package:command_runner/command_runner.dart';
-    import 'package:command_runner/src/console.dart';
 
     const version = '0.0.1';
 
