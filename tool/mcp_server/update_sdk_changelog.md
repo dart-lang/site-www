@@ -30,7 +30,7 @@ This workflow describes the steps to update the Dart SDK changelog entries in `s
     -   **Redundant:** Entries that duplicate others for the same feature.
 
 4.  **Refine Tags**
-    Review the `description` of each new entry and update the `tags` list to be more specific. The tool defaults to `['changed']`.
+    Review the `description` of each new entry. The tool automatically infers tags like `new`, `fixed`, and `breaking`, but you should verify they are correct.
     
     **Available Tags & Guidelines:**
     -   `new`: For new features, additions, or introductions (e.g., "Added...", "Introduced...").

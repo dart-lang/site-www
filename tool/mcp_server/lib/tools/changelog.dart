@@ -197,9 +197,32 @@ class SyncSdkChangelogTool {
       // Check for list items
       if (line.trim().startsWith('- ')) {
         flushBullet();
-        bulletBuffer.write(line.trim().substring(2));
+        final content = line.trim().substring(2);
+        bulletBuffer.write(content);
+
+        // Extract link if present
+        // Matches [text](url)
+        final linkMatch = RegExp(r'\[.*?\]\((.*?)\)').firstMatch(content);
+        if (linkMatch != null) {
+          pendingLink = linkMatch.group(1);
+        }
       } else if (line.trim().isNotEmpty && bulletBuffer.isNotEmpty) {
         bulletBuffer.write('\n${line.trim()}');
+        
+        // potential link on multi-line?
+        if (pendingLink == null) {
+          // Check for inline link [text](url)
+          var linkMatch = RegExp(r'\[.*?\]\((.*?)\)').firstMatch(line);
+          if (linkMatch != null) {
+            pendingLink = linkMatch.group(1);
+          } else {
+            // Check for reference link definition [id]: url
+            linkMatch = RegExp(r'\[.*?\]:\s+(https?://\S+)').firstMatch(line);
+            if (linkMatch != null) {
+              pendingLink = linkMatch.group(1);
+            }
+          }
+        }
       }
     }
     flushBullet();
@@ -273,13 +296,34 @@ class SyncSdkChangelogTool {
   }
 
   List<String> _inferTags(String description) {
-    final tags = <String>[];
+    final tags = <String>{};
     final lower = description.toLowerCase();
+
     if (lower.contains('breaking change')) {
       tags.add('breaking');
     }
-    if (tags.isEmpty) tags.add('changed');
-    return tags;
+    if (lower.startsWith('added') ||
+        lower.startsWith('introduced') ||
+        lower.startsWith('new')) {
+      tags.add('new');
+    }
+    if (lower.startsWith('fixed') || lower.startsWith('resolved')) {
+      tags.add('fixed');
+    }
+    if (lower.startsWith('deprecated')) {
+      tags.add('deprecated');
+    }
+    if (lower.startsWith('removed')) {
+      tags.add('removed');
+    }
+    if (lower.contains('experimental')) {
+      tags.add('experimental');
+    }
+
+    if (tags.isEmpty) {
+      tags.add('changed');
+    }
+    return tags.toList();
   }
 }
 

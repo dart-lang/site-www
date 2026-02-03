@@ -55,7 +55,7 @@ data file (`src/data/changelog.yml`).
 1.  Fetches the latest changelog from the Dart SDK repository.
 2.  Parses entries for the requested version (e.g., 3.11.0).
 3.  Adds them to `src/data/changelog.yml` with appropriate tags
-    (`new`, `fixed`, `deprecated`) and links.
+    (`new`, `fixed`, `deprecated`, `removed`, `experimental`) and links.
 4.  Filters out vague or non-user-facing entries.
 
 Antigravity will recognize the request, retrieve the official workflow guide,
