@@ -938,7 +938,7 @@ we made the following changes to this site:
   * Documented for the deprecation and planned removal
     of the `dart2js` and `dartdevc` standalone tools.
   * Consolidated and clarified the documentation
-    of [dart2js][] and [dartdevc][]
+    of `dart2js` and `dartdevc`
     as the underlying compilers of tools like
     [`dart compile js`][] and [`webdev`][].
 * Increased documentation coverage of null safety:
@@ -984,8 +984,6 @@ we made the following changes to this site:
 [diagnostic messages]: /tools/diagnostic-messages
 [linter rules]: /tools/linter-rules
 
-[dart2js]: /tools/dart2js
-[dartdevc]: /tools/dartdevc
 [`webdev`]: /tools/webdev
 
 [Other operators]: /language/operators#other-operators
