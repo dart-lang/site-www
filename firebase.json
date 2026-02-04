@@ -210,6 +210,7 @@
       { "source": "/go/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
       { "source": "/go/package-web", "destination": "/interop/js-interop/package-web", "type": 301 },
       { "source": "/go/pub-cache", "destination": "/tools/pub/cmd/pub-cache", "type": 301 },
+      { "source": "/go/pub-descriptors", "destination": "https://github.com/dart-lang/site-www/issues/7145", "type": 301 },
       { "source": "/go/pubignore", "destination": "/tools/pub/publishing#what-files-are-published", "type": 301 },
       { "source": "/go/publishing-from-github", "destination": "/tools/pub/automated-publishing#publishing-packages-using-github-actions", "type": 301 },
       { "source": "/go/publishing-with-service-account", "destination": "/tools/pub/automated-publishing#publishing-from-google-cloud-build", "type": 301 },
