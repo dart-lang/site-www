@@ -368,10 +368,6 @@
       permalink: /resources/language/spec
     - title: Dart 3 migration guide
       permalink: /resources/dart-3-migration
-    - title: From JavaScript to Dart
-      permalink: /resources/coming-from/js-to-dart
-    - title: From Swift to Dart
-      permalink: /resources/coming-from/swift-to-dart
     - divider
     - title: FAQ
       permalink: /resources/faq
