@@ -79,6 +79,43 @@ dependencies between packages are not supported when using hooks.
 [`BuildInput.sharedOutputDirectory`]: {{site.pub-api}}/hooks/latest/hooks/HookInput/outputDirectoryShared.html
 [`metadata`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput/metadata.html
 
+### Environment variables {:.no_toc}
+
+Hooks are executed in a semi-hermetic environment.
+This means that `Platform.environment` doesn't
+expose all environment variables from the parent process.
+This ensures that hook invocations are reproducible and cacheable, and
+don't depend on accidental environment variables.
+
+However, some environment variables are necessary for
+locating tools (like compilers) or configuring network access.
+The following environment variables are
+passed through to the hook process:
+
+*   **Path and system roots:**
+    *   `PATH`: Invoke native tools.
+    *   `HOME`, `USERPROFILE`: Find tools in default install locations.
+    *   `SYSTEMDRIVE`, `SYSTEMROOT`, `WINDIR`: Process invocations and
+        CMake on Windows.
+    *   `PROGRAMDATA`: For `vswhere.exe` on Windows.
+*   **Temporary directories:**
+    *   `TEMP`, `TMP`, `TMPDIR`: Temporary directories.
+*   **HTTP proxies:**
+    *   `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`: Network access behind proxies.
+*   **Clang/LLVM:**
+    *   `LIBCLANG_PATH`: Rust's `bindgen` + `clang-sys`.
+*   **Android NDK:**
+    *   `ANDROID_HOME`: Standard location for the Android SDK/NDK.
+    *   `ANDROID_NDK`, `ANDROID_NDK_HOME`, `ANDROID_NDK_LATEST_HOME`,
+        `ANDROID_NDK_ROOT`: Alternative locations for the NDK.
+*   **Nix:**
+    *   Any variable starting with `NIX_`.
+
+Any changes to these environment variables
+cause cache invalidation for hooks.
+
+All other environment variables are stripped.
+
 ## Assets
 
 Assets are the files that are produced by a hook and then
@@ -270,17 +307,17 @@ void main() {
 There are several example projects to help you get started
 with hooks and code assets:
 
-| **Project**                  | **Description**                                                                         |
-| ---------------------------- | --------------------------------------------------------------------------------------- |
-| [`sqlite`][]                 | A package compiling, bundling, and using a native database engine.                       |
-| [`mini_audio`][]             | A package compiling, bundling, and using a native audio player.                          |
-| [`stb_image`][]              | A package compiling, bundling, and using a native image library.                         |
-| [`host_name`][]              | A package using a native system library.                                                |
-| [`native_add_library`][]     | A package compiling, bundling, and using some simple C code.                             |
-| [`native_add_app`][]         | A Dart CLI application that depends on `native_add_library`.                            |
-| [`download_asset`][]         | A package bundling and using prebuilt assets that are downloaded in the build hook.    |
+| **Project**                  | **Description**                                                                            |
+| ---------------------------- | ------------------------------------------------------------------------------------------ |
+| [`sqlite`][]                 | A package compiling, bundling, and using a native database engine.                         |
+| [`mini_audio`][]             | A package compiling, bundling, and using a native audio player.                            |
+| [`stb_image`][]              | A package compiling, bundling, and using a native image library.                           |
+| [`host_name`][]              | A package using a native system library.                                                   |
+| [`native_add_library`][]     | A package compiling, bundling, and using some simple C code.                               |
+| [`native_add_app`][]         | A Dart CLI application that depends on `native_add_library`.                               |
+| [`download_asset`][]         | A package bundling and using prebuilt assets that are downloaded in the build hook.        |
 | [`native_dynamic_linking`][] | A package compiling, bundling, and using three native libraries that depend on each other. |
-| [`use_dart_api`][]           | A package that uses the C API of the Dart VM.                                           |
+| [`use_dart_api`][]           | A package that uses the C API of the Dart VM.                                              |
  
 {: .table .table-striped }
 
