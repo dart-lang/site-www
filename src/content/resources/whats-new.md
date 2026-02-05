@@ -467,7 +467,7 @@ we made the following changes to this site:
 * Included a definition for "Function" in the [Glossary][].
 * Deconstructed the [Library tour][] into individual pages for each library.
 * Updated the [Breaking changes][] page for 3.3.
-* Updated a few outdated entries on the [FAQ](/resources/faq) page.
+* Updated a few outdated entries on the FAQ page. _(Now removed)_
 * Expanded documentation on [`dart doc`][].
 * Updated and simplified [supported platforms][] content.
 * Consolidated multiples of [`dart format`][] content.
@@ -766,7 +766,7 @@ we made the following changes to this site:
   * Changed the version constraints in the [migration guide][] for Dart 3 compatibility.
   * Added Dart 3 full sound null safety overview to the [Sound null safety][] page.
   * Emphasized Dart 3's incompatibility with [unsound null safety][] in a note.
-* Introduced the new [Learning Dart as a Swift developer][] guide.
+* Introduced the new Learning Dart as a Swift developer guide. _(Now removed)_
 * Replaced an Effective Dart section with more general guidance on [booleans and equality operators][]. 
 * Documented [content-hashing][] across the pub docs.
 * Began effort to overhaul the [Zones][] page by
@@ -780,7 +780,7 @@ we made the following changes to this site:
 * Rearranged and clarified [discussion][] of default values for optional and positional parameters.
 * Updated [Concurrency in Dart][] to default to new `Isolate.run()` function.
 * Documented specifying a file path when activating a package on the [`pub global` page][].
-* Rewrote [Learning Dart as a JavaScript developer][].
+* Rewrote Learning Dart as a JavaScript developer _(Now removed)_
 * Added a brief overview of Dart DevTools to [`dart run` page][].
 * Provided more clarity around [operator precedence and associativity][] in the Language tour.
 * Expanded Library tour section on [Building URIs][] with URI http and factory constructor info.
@@ -796,7 +796,6 @@ we made the following changes to this site:
 [community resources]: /community
 [migration guide]: /null-safety/migration-guide
 [unsound null safety]: /null-safety/unsound-null-safety
-[Learning Dart as a Swift developer]: /resources/coming-from/swift-to-dart
 [booleans and equality operators]: /effective-dart/usage#dont-use-true-or-false-in-equality-operations
 [content-hashing]: /resources/glossary#pub-content-hash
 [Zones]: /libraries/async/zones
@@ -804,13 +803,10 @@ we made the following changes to this site:
 [Style]: /effective-dart/style#dont-explicitly-name-libraries
 [Usage]: /effective-dart/usage#do-use-strings-in-part-of-directives
 [The language tour]: /language/libraries#library-directive
-[Is Dart single-threaded?]: /resources/faq#q-is-dart-single-threaded
-[Is Dart single-threaded on the web?]: /resources/faq#q-is-dart-single-threaded-on-the-web
 [Dart's web concurrency capabilities]: /language/concurrency#concurrency-on-the-web
 [discussion]: /language/functions#parameters
 [Concurrency in Dart]: /language/concurrency
 [`pub global` page]: /tools/pub/cmd/pub-global
-[Learning Dart as a JavaScript developer]: /resources/coming-from/js-to-dart
 [`dart run` page]: /tools/dart-run#debugging
 [operator precedence and associativity]: /language/operators
 [Building URIs]: /libraries/dart-core#building-uris
@@ -895,9 +891,9 @@ see [Dart 2.17: Productivity and integration][].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
-* Introduced the [Learning Dart as a JavaScript developer][] guide,
+* Introduced the Learning Dart as a JavaScript developer guide,
   which aims to leverage your JavaScript programming knowledge
-  when learning Dart.
+  when learning Dart. _(Now removed)_
 * Documented the features and changes introduced in Dart 2.17:
   * Updated the [Named parameters][] section of the language tour
     to reflect support for specifying named arguments anywhere.
@@ -938,7 +934,7 @@ we made the following changes to this site:
   * Documented for the deprecation and planned removal
     of the `dart2js` and `dartdevc` standalone tools.
   * Consolidated and clarified the documentation
-    of [dart2js][] and [dartdevc][]
+    of `dart2js` and `dartdevc`
     as the underlying compilers of tools like
     [`dart compile js`][] and [`webdev`][].
 * Increased documentation coverage of null safety:
@@ -956,8 +952,6 @@ we made the following changes to this site:
     and elaborated on [why asynchronous code matters][].
   * Updated the [security][] page to match our current security practices.
   * Added a key binding (`/`) to automatically focus the search bar.
-
-[Learning Dart as a JavaScript developer]: /resources/coming-from/js-to-dart
 
 [Named parameters]: /language/functions#named-parameters
 [Enumerated types]: /language/enums
@@ -984,8 +978,6 @@ we made the following changes to this site:
 [diagnostic messages]: /tools/diagnostic-messages
 [linter rules]: /tools/linter-rules
 
-[dart2js]: /tools/dart2js
-[dartdevc]: /tools/dartdevc
 [`webdev`]: /tools/webdev
 
 [Other operators]: /language/operators#other-operators
