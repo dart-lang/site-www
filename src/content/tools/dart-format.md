@@ -106,13 +106,16 @@ that splits across multiple lines, and removes them from ones that don't.
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
 
-### Configuring formatter page width
+### Configure the formatter
 
 When you run `dart format`, the formatter defaults to
 80 character line length or shorter. 
-If you'd like to configure the line length for your project,
-you can add a top-level `formatter` section to the
-[`analysis_options.yaml`][] file, like so:
+Configure the formatter's behavior by adding a top-level
+`formatter` section to the [`analysis_options.yaml`][] file.
+
+#### Page width
+
+Configure the line length for your project:
 
 ```yaml title="analysis_options.yaml"
 formatter:
@@ -122,17 +125,36 @@ formatter:
 With the analysis options file typically at the root,
 the configured line length will apply to everything in the package.
 
-You can also configure individual files' line length,
-overriding the analysis options file,
-with a marker comment at the top of the file before any other code:
+#### Preserve trailing commas
+
+By default, `dart format` adds or removes trailing commas
+based on whether the construct splits across multiple lines.
+To force a construct to split even when it fits on one line,
+configure the formatter to preserve trailing commas:
+
+```yaml title="analysis_options.yaml"
+formatter:
+  trailing_commas: preserve
+```
+
+When enabled, adding a trailing comma to an argument list,
+parameter list, or other constructs, forces the formatter to split 
+it across multiple lines, even if it fits on one line. This provides 
+manual control over line breaks for specific constructs.
+This gives you manual control over line breaks for specific constructs.
+
+Configure an individual file's line length,
+overriding the analysis options, by adding 
+a marker comment at the top of the file, before any other code:
 
 ```dart
 // dart format width=123
 ```
 
 :::version-note
-Configurable page width requires
+Configurable formatter options require
 a [language version][] of at least 3.7.
+The `trailing_commas` option requires at least 3.8.
 :::
 
 ## Learn more

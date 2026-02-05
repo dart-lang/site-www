@@ -252,7 +252,7 @@ we made the following changes to this site:
 [inference using bounds]: /language/type-system/#type-argument-inference
 [for example]: /tools/linter-rules/annotate_overrides
 [Bluesky]: https://bsky.app/profile/dart.dev
-[configurable line length]: /tools/dart-format#configuring-formatter-page-width
+[configurable line length]: /tools/dart-format#page-width
 [shared analysis options]: /tools/analysis#including-shared-options
 [line length]: /effective-dart/style#prefer-lines-80-characters-or-fewer
 [stray files]: /tools/pub/workspaces#stray-files
