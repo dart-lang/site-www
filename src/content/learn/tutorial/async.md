@@ -123,9 +123,9 @@ network requests are asynchronous operations.
     - The `async` keyword marks the function as asynchronous,
       allowing you to use `await` inside it.
 
-1.  **Construct the API URL and `http.Client`:**
+1.  **Construct the API URL:**
     Inside your new `getWikipediaArticle` function,
-    create an `http.Client()` instance and a `Uri` object.
+    create a `Uri` object.
     The `Uri` represents the endpoint of the Wikipedia API that
     you'll be calling to get an article summary.
 
@@ -133,7 +133,6 @@ network requests are asynchronous operations.
 
     ```dart
     Future<String> getWikipediaArticle(String articleTitle) async {
-      final client = http.Client(); // Create an HTTP client
       final url = Uri.https(
         'en.wikipedia.org', // Wikipedia API domain
         '/api/rest_v1/page/summary/$articleTitle', // API path for article summary
@@ -142,11 +141,11 @@ network requests are asynchronous operations.
     }
     ```
 
-1.  **Make the HTTP Request and handle the response:**
-    Now, use the `http` client to make an HTTP `GET` request to
-    the URL you just constructed.
+1.  **Make the HTTP request and handle the response:**
+    Now, use the top-level `get` function from `package:http` to
+    make an HTTP `GET` request to the URL you just constructed.
     The `await` keyword pauses the execution of `getWikipediaArticle` until
-    the `client.get(url)` call completes and returns an `http.Response` object.
+    the `get` call completes and returns an `http.Response` object.
 
     After the request completes, check the `response.statusCode` to
     ensure the request was successful (a status code of `200` means OK).
@@ -158,12 +157,11 @@ network requests are asynchronous operations.
 
     ```dart
     Future<String> getWikipediaArticle(String articleTitle) async {
-      final client = http.Client();
       final url = Uri.https(
         'en.wikipedia.org',
         '/api/rest_v1/page/summary/$articleTitle',
       );
-      final response = await client.get(url); // Make the HTTP request
+      final response = await http.get(url); // Make the HTTP request
 
       if (response.statusCode == 200) {
         return response.body; // Return the response body if successful
@@ -415,7 +413,7 @@ items:
     icon: cloud_download
     details: >-
       You built `getWikipediaArticle()` to
-      make HTTP GET requests using `http.Client`, constructed URIs,
+      make HTTP GET requests using `package:http`, constructed URIs,
       checked status codes, and returned the response body.
       Your CLI now fetches real data from the web!
 </SummaryCard>
