@@ -82,10 +82,10 @@ dependencies between packages are not supported when using hooks.
 ### Environment variables {:.no_toc}
 
 Hooks are executed in a semi-hermetic environment.
-This means that `Platform.environment` does not
+This means that `Platform.environment` doesn't
 expose all environment variables from the parent process.
 This ensures that hook invocations are reproducible and cacheable, and
-do not depend on accidental environment variables.
+don't depend on accidental environment variables.
 
 However, some environment variables are necessary for
 locating tools (like compilers) or configuring network access.
@@ -111,7 +111,7 @@ passed through to the hook process:
 *   **Nix:**
     *   Any variable starting with `NIX_`.
 
-Any changes to these environment variables will
+Any changes to these environment variables
 cause cache invalidation for hooks.
 
 All other environment variables are stripped.
