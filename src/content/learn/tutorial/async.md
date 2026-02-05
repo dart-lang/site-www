@@ -188,7 +188,7 @@ This function will house the core logic for handling the `wikipedia` command.
     // ... (your existing main function)
 
     void searchWikipedia(List<String>? arguments) async { // Added 'async'
-      late String? articleTitle;
+      final String? articleTitle;
 
       // If the user didn't pass in arguments, request an article title.
       if (arguments == null || arguments.isEmpty) {
@@ -224,7 +224,7 @@ This function will house the core logic for handling the `wikipedia` command.
 
     ```dart
     void searchWikipedia(List<String>? arguments) async {
-      late String? articleTitle;
+      final String articleTitle;
 
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
@@ -254,7 +254,7 @@ This function will house the core logic for handling the `wikipedia` command.
     // ... (beginning of searchWikipedia function, after determining articleTitle)
 
     void searchWikipedia(List<String>? arguments) async {
-      late String? articleTitle;
+      final String articleTitle;
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
         final inputFromStdin = stdin.readLineSync();
