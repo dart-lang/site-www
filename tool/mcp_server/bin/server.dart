@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:dart_mcp/server.dart';
 import 'package:dart_mcp/stdio.dart';
@@ -16,9 +17,6 @@ final class SiteMcpServer extends MCPServer with ToolsSupport, PromptsSupport {
 
   @override
   Future<InitializeResult> initialize(InitializeRequest request) async {
-    // Calling super.initialize is required to set up capabilities
-    final result = await super.initialize(request);
-
     // Register tools
     final changelogTool = SyncSdkChangelogTool();
     registerTool(changelogTool.toolDef, changelogTool.call);
@@ -31,9 +29,14 @@ final class SiteMcpServer extends MCPServer with ToolsSupport, PromptsSupport {
             'Workflow instructions for updating the Dart SDK changelog. Use this whenever asked to update, sync, or modify the changelog for a new version.',
       ),
       (request) async {
-        final content = await File(
-          'tool/mcp_server/update_sdk_changelog.md',
-        ).readAsString();
+        final libUri = await Isolate.resolvePackageUri(
+          Uri.parse('package:dart_site_mcp_server/'),
+        );
+        if (libUri == null) {
+          throw StateError('Could not resolve package:dart_site_mcp_server/');
+        }
+        final uri = libUri.resolve('../update_sdk_changelog.md');
+        final content = await File.fromUri(uri).readAsString();
         return GetPromptResult(
           description: 'Steps to update SDK changelog',
           messages: [
@@ -45,6 +48,9 @@ final class SiteMcpServer extends MCPServer with ToolsSupport, PromptsSupport {
         );
       },
     );
+
+    // Calling super.initialize is required to set up capabilities
+    final result = await super.initialize(request);
 
     return result;
   }

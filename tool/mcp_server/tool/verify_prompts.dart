@@ -1,3 +1,6 @@
+/// Verification script to check if the MCP server correctly lists and retrieves
+/// prompts. Specifically verifies the `update_sdk_changelog` prompt
+/// availability and content.
 import 'dart:convert';
 import 'dart:io';
 

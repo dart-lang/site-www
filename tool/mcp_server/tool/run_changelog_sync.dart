@@ -1,3 +1,6 @@
+/// Manual script to run the changelog sync tool directly via the MCP server.
+/// This script executes the tool in write mode, effectively applying changes to
+/// changelog.yml.
 import 'dart:convert';
 import 'dart:io';
 

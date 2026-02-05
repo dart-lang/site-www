@@ -1,3 +1,5 @@
+/// Basic verification script to check if the MCP server starts and lists tools.
+/// Verifies the presence of the `sync_sdk_changelog` tool.
 import 'dart:convert';
 import 'dart:io';
 
@@ -59,7 +61,8 @@ Future<void> main() async {
         );
         if (hasChangelog) {
           print('SUCCESS: sync_sdk_changelog tool found.');
-          // We won't actually call it to avoid modifying the file in this dry run unless requested.
+          // We won't actually call it to avoid modifying the file in this
+          // dry run unless requested.
           // But parsing SDK changelog is safe? It writes to file though.
           // User wants verification.
           // Let's call it with a dummy version if we want to test parsing?

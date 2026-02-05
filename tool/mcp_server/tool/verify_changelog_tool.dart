@@ -1,3 +1,6 @@
+/// Verification script to test the `sync_sdk_changelog` tool in dry-run mode.
+/// Ensures the tool can fetch and parse the SDK changelog without modifying
+/// local files.
 import 'dart:convert';
 import 'dart:io';
 
@@ -55,8 +58,10 @@ void main(List<String> args) async {
                 process.kill();
                 exit(0);
               } else {
-                // If regex fails (e.g. "No entries found"), we also print failure but exit 0 if it's a valid response
-                // But user wants to verify it works, so strict check is maybe better.
+                // If regex fails (e.g. "No entries found"), we also print
+                // failure but exit 0 if it's a valid response
+                // But user wants to verify it works, so strict check is maybe
+                // better.
                 // However, "No entries found" is also a valid tool execution.
                 if ((content[0]['text'] as String).contains(
                   'No entries found',
