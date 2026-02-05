@@ -413,7 +413,7 @@ items:
     icon: cloud_download
     details: >-
       You built `getWikipediaArticle()` to
-      make HTTP GET requests using `package:http`, constructed URIs,
+      make HTTP GET requests using the `get` function from `package:http`, constructed URIs,
       checked status codes, and returned the response body.
       Your CLI now fetches real data from the web!
 </SummaryCard>
