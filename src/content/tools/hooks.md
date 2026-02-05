@@ -81,20 +81,22 @@ dependencies between packages are not supported when using hooks.
 
 ### Environment variables {:.no_toc}
 
-Hooks are executed in a semi-hermetic environment. This means that
-`Platform.environment` does not expose all environment variables from the parent
-process. This ensures that hook invocations are reproducible and cacheable, and
+Hooks are executed in a semi-hermetic environment.
+This means that `Platform.environment` does not
+expose all environment variables from the parent process.
+This ensures that hook invocations are reproducible and cacheable, and
 do not depend on accidental environment variables.
 
-However, some environment variables are necessary for locating tools (like
-compilers) or configuring network access. The following environment variables
-are passed through to the hook process:
+However, some environment variables are necessary for
+locating tools (like compilers) or configuring network access.
+The following environment variables are
+passed through to the hook process:
 
 *   **Path and system roots:**
     *   `PATH`: Invoke native tools.
     *   `HOME`, `USERPROFILE`: Find tools in default install locations.
-    *   `SYSTEMDRIVE`, `SYSTEMROOT`, `WINDIR`: Process invocations and CMake on
-        Windows.
+    *   `SYSTEMDRIVE`, `SYSTEMROOT`, `WINDIR`: Process invocations and
+        CMake on Windows.
     *   `PROGRAMDATA`: For `vswhere.exe` on Windows.
 *   **Temporary directories:**
     *   `TEMP`, `TMP`, `TMPDIR`: Temporary directories.
@@ -109,8 +111,8 @@ are passed through to the hook process:
 *   **Nix:**
     *   Any variable starting with `NIX_`.
 
-Any changes to these environment variables will cause cache invalidation for
-hooks.
+Any changes to these environment variables will
+cause cache invalidation for hooks.
 
 All other environment variables are stripped.
 
