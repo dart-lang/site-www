@@ -241,7 +241,7 @@ String _generateYamlString(List<ChangelogEntry> entries) {
 
   for (final entry in entries) {
     newYaml.writeln('- version: ${entry.version}');
-    newYaml.writeln('  releaseDate: ${entry.releaseDate ?? "TBD"}');
+    newYaml.writeln('  releaseDate: ${entry.releaseDate}');
 
     newYaml.writeln('  area: ${yamlSafe(entry.area)}');
     if (entry.subArea != null) {
