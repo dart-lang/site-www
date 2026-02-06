@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:args/args.dart';
 import 'package:http/http.dart' as http;
@@ -121,6 +122,15 @@ List<ChangelogEntry> _parseChangelog(String markdown, String targetVersion) {
     if (bulletBuffer.isNotEmpty) {
       final description = bulletBuffer.toString().trim();
       if (description.isNotEmpty) {
+        String? link = pendingLink;
+        if (link == null) {
+          // Default to the SDK CHANGELOG anchor if no specific link is found.
+          // Anchor format for "3.11.0" is usually "#3110".
+          final anchor = targetVersion.replaceAll('.', '');
+          link =
+              'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#$anchor';
+        }
+
         entries.add(
           ChangelogEntry(
             version: targetVersion,
@@ -129,7 +139,7 @@ List<ChangelogEntry> _parseChangelog(String markdown, String targetVersion) {
             subArea: currentSubArea,
             description: description,
             tags: _inferTags(description),
-            link: pendingLink,
+            link: link,
           ),
         );
       }
@@ -221,12 +231,21 @@ String _generateYamlString(List<ChangelogEntry> entries) {
   final newYaml = StringBuffer();
   final firstSeparator = '# --------------------------------------------------';
 
+  // Helper to safely quote strings for YAML if needed
+  String yamlSafe(String? value) {
+    if (value == null) return '';
+    // Simple check: alpha-numeric only?
+    if (RegExp(r'^[a-zA-Z0-9_]+$').hasMatch(value)) return value;
+    return jsonEncode(value);
+  }
+
   for (final entry in entries) {
     newYaml.writeln('- version: ${entry.version}');
-    newYaml.writeln('  releaseDate: ${entry.releaseDate}');
-    newYaml.writeln('  area: ${entry.area}');
+    newYaml.writeln('  releaseDate: ${entry.releaseDate ?? "TBD"}');
+
+    newYaml.writeln('  area: ${yamlSafe(entry.area)}');
     if (entry.subArea != null) {
-      newYaml.writeln('  subArea: ${entry.subArea}');
+      newYaml.writeln('  subArea: ${yamlSafe(entry.subArea!)}');
     }
     newYaml.writeln('  description: |');
     for (final line in entry.description.split('\n')) {
@@ -239,7 +258,7 @@ String _generateYamlString(List<ChangelogEntry> entries) {
       }
     }
     if (entry.link != null) {
-      newYaml.writeln('  link: ${entry.link}');
+      newYaml.writeln('  link: ${yamlSafe(entry.link)}'); 
     }
     newYaml.writeln(firstSeparator);
   }
