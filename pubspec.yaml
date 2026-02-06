@@ -5,8 +5,12 @@ homepage: https://dart.dev
 environment:
   sdk: ^3.10.0
 
+dev_dependencies:
+  http: ^1.2.0
+  path: ^1.9.0
+  args: ^2.4.0
+
 workspace:
   - examples
   - site
   - tool/dash_site
-  - tool/mcp_server
