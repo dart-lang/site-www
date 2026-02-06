@@ -258,7 +258,7 @@ String _generateYamlString(List<ChangelogEntry> entries) {
       }
     }
     if (entry.link != null) {
-      newYaml.writeln('  link: ${yamlSafe(entry.link)}'); 
+      newYaml.writeln('  link: ${yamlSafe(entry.link)}');
     }
     newYaml.writeln(firstSeparator);
   }
