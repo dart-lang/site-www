@@ -658,7 +658,10 @@ For more information, read [Configuring formatter page width][].
 
 #### `trailing_commas`
 
-You can configure how the formatter handles trailing commas in argument and parameter lists using the `trailing_commas` option. It accepts one of two values:
+You can configure how the formatter handles trailing commas
+in argument and parameter lists
+using the `trailing_commas` option.
+It accepts one of two values:
 
 `automate` (default)
 : The formatter adds and removes trailing commas based on
