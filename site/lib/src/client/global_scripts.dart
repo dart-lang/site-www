@@ -13,6 +13,7 @@ import 'package:universal_web/web.dart' as web;
 /// These are temporary until they can be integrated with their
 /// relevant Jaspr components.
 void setUpSite() {
+  _setUpHeadingLinkCopy();
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpTabs();
@@ -22,6 +23,46 @@ void setUpSite() {
   _setUpReleaseTags();
   _setUpTooltips();
   _setUpSteppers();
+}
+
+void _setUpHeadingLinkCopy() {
+  final anchors = web.document.querySelectorAll(
+    'a.heading-link[data-heading-id]',
+  );
+
+  for (var i = 0; i < anchors.length; i++) {
+    final anchor = anchors.item(i) as web.HTMLAnchorElement;
+
+    anchor.addEventListener(
+      'click',
+      ((web.Event event) {
+        event.preventDefault();
+
+        final href = anchor.getAttribute('href');
+        if (href == null || !href.startsWith('#')) return;
+
+        final headingId = href.substring(1);
+        if (headingId.isEmpty) return;
+
+        final url = Uri.parse(
+          web.window.location.href,
+        ).replace(fragment: headingId).toString();
+
+        // Copy URL to clipboard (if available)
+        web.window.navigator.clipboard?.writeText(url);
+
+        // Update the URL hash without triggering a jump
+        web.window.history.replaceState(null, '', '#$headingId');
+
+        // Temporary visual feedback
+        final originalText = anchor.textContent;
+        anchor.textContent = 'Copied!';
+        Future<void>.delayed(const Duration(milliseconds: 1200), () {
+          anchor.textContent = originalText;
+        });
+      }).toJS,
+    );
+  }
 }
 
 void _setUpSidenav() {
