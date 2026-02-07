@@ -671,5 +671,5 @@ Use the following resources to learn more about static analysis in Dart:
 [disable individual rules]: #disabling-individual-rules
 [Effective Dart]: /effective-dart
 [`dart format`]: /tools/dart-format
-[Configuring formatter page width]: /tools/dart-format#configuring-formatter-page-width
+[Configuring formatter page width]: /tools/dart-format#page-width
 [Troubleshoot analyzer performance]: /tools/analyzer-performance
