@@ -58,7 +58,7 @@
       explanation: >-
         There's no `--local` flag for `dart pub add`.
         You need to specify the location differently in `pubspec.yaml`
-        or by passing a source descriptor to `dart pub add`.
+        or by passing a package descriptor to `dart pub add`.
 - question: >-
     A package has code in `lib/src/parser.dart`.
     Why might you create `lib/parser.dart`

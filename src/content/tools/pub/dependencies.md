@@ -56,10 +56,15 @@ The next section describes the format for each dependency source.
 
 Pub can use the following sources to locate packages:
 
-* [SDK](#sdk)
 * [Hosted packages](#hosted-packages)
 * [Git packages](#git-packages)
 * [Path packages](#path-packages)
+* [SDK](#sdk-packages)
+
+Several [`dart` tool][] commands also support specifying dependency sources
+directly on the command line using [package descriptors](#package-descriptors).
+
+[`dart` tool]: /tools/dart-tool
 
 ### Hosted packages
 
@@ -253,7 +258,9 @@ Instead, the typical workflow is:
 4. Change your pubspec to point to the now hosted version of its dependent.
 5. Publish your main package too, if you want.
 
-### SDK
+<a id="sdk" aria-hidden="true"></a>
+
+### SDK packages
 
 The SDK source is used for any SDKs that are shipped along with packages,
 which may themselves be dependencies.
@@ -274,6 +281,86 @@ If it's `flutter`, the dependency is satisfiable as long as:
 * The Flutter SDK contains a package with the given name
 
 If it's an unknown identifier, the dependency is always considered unsatisfied.
+
+<a id="source-descriptors" aria-hidden="true"></a>
+
+## Package descriptors
+
+Several [`dart` tool][dart-tool] commands, such as
+[`dart pub add`][pub-add] and [`dart pub unpack`][pub-unpack],
+accept a _package descriptor_ after the package name
+to specify the version or dependency source of a package.
+
+The simplest form of a package descriptor is
+a [version constraint](#version-constraints),
+assuming the default source of the [pub.dev site][pubsite].
+For example, the following command uses a descriptor of `^1.2.3`
+to [add a dependency][pub-add] on `package:foo` with a constraint of `^1.2.3`.
+
+```console
+dart pub add foo:^1.2.3
+```
+
+To specify a custom [dependency source](#dependency-sources),
+use the same structure as in `pubspec.yaml`,
+but using [flow-style YAML][flow-style]:
+
+```plaintext
+{<source>: <descriptor>[, <source>: <descriptor>], version: <constraint>}
+```
+
+The following subsections show the package descriptor syntax
+for each tpye of pub [dependency source](#dependency-sources).
+
+[dart-tool]: /tools/dart-tool
+[pub-add]: /tools/pub/cmd/pub-add
+[pub-unpack]: /tools/pub/cmd/pub-unpack
+[flow-style]: https://yaml.org/spec/1.2.2/#chapter-7-flow-style-productions
+
+### Hosted dependency descriptor
+
+To specify a [hosted package](#hosted-packages):
+
+```plaintext
+{hosted: my-pub.dev}
+```
+
+You can also specify a [version constraint](#version-constraints):
+
+```plaintext
+{hosted: my-pub.dev, version: ^1.2.3}
+```
+
+### Git dependency descriptor
+
+To specify a [git package](#git-packages):
+
+```plaintext
+{git: https://github.com/foo/foo}
+```
+
+You can specify the repository URL, a branch or commit reference,
+and the path to the package within the repository:
+
+```plaintext
+{git: {url: ../foo.git, ref: branch, path: subdir}}
+```
+
+### Path package descriptor
+
+To specify a [path package](#path-packages):
+
+```plaintext
+{path: ../foo}
+```
+
+### SDK package descriptor
+
+To specify an [SDK package](#sdk-packages):
+
+```plaintext
+{sdk: flutter}
+```
 
 ## Version constraints
 

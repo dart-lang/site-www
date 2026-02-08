@@ -685,7 +685,7 @@ we made the following changes:
 - Added a page for the new [`dart info`][] command 
   that helps with tooling diagnostics.
 - Overhauled the [`dart pub add`][] documentation
-  to cover its new [source descriptor][] syntax.
+  to cover its new [package descriptor][] syntax.
 - Surfaced preview Linux RISC-V (RV64GC) builds on the
   beta channel in the [SDK archive][].
 - Began a new site-wide [glossary][] to contain 
@@ -712,7 +712,7 @@ we made the following changes:
 [unnamed extensions]: /language/extension-methods#unnamed-extensions
 [`dart info`]: /tools/dart-info
 [`dart pub add`]: /tools/pub/cmd/pub-add
-[source descriptor]: /tools/pub/cmd/pub-add#source-descriptor
+[package descriptor]: /tools/pub/dependencies#package-descriptors
 [SDK archive]: /get-dart/archive
 [glossary]: /resources/glossary
 [JS static interop support]: /interop/js-interop
