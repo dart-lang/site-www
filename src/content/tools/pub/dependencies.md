@@ -306,7 +306,7 @@ use the same structure as in `pubspec.yaml`,
 but using [flow-style YAML][flow-style]:
 
 ```plaintext
-{<source>: <descriptor>, version: <constraint>}
+{<source>: <descriptor>, [version: <constraint>]}
 ```
 
 The following subsections show the package descriptor syntax
