@@ -88,7 +88,10 @@ final Map<String, DateTime> _lastModifiedPerPath = () {
 }();
 
 extension on DateTime {
-  // Formats the date as YYYY-MM-DD. This format is required for valid sitemaps.
-  String get formatted =>
-      '$year-${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
+  String get formatted {
+    final year = this.year.toString().padLeft(4, '0');
+    final month = this.month.toString().padLeft(2, '0');
+    final day = this.day.toString().padLeft(2, '0');
+    return '$year-$month-$day';
+  }
 }

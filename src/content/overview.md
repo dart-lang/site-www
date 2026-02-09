@@ -223,12 +223,6 @@ enforces the sound Dart type system and
 manages memory using fast object allocation and a
 [generational garbage collector](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
-More information:
-* [Get started: Command-line and server apps](/tutorials/server/get-started)
-* [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
-* [Write command-line apps](/tutorials/server/cmdline)
-* [Write HTTP servers](/tutorials/server/httpserver)
-
 #### Dart Web (JavaScript dev & prod and WebAssembly) {:#web-platform}
 
 Dart Web enables running Dart code on web platforms powered by
@@ -286,10 +280,10 @@ You have many choices for learning Dart. Here are a few that we recommend:
 
 * [Explore Dart in the browser]({{site.dartpad}}/) through DartPad,
   a web-based execution environment for Dart code.
+* [Complete the Dart tutorial](/learn/tutorial) that
+  covers the basics of using Dart to build for the command line.
 * [Take a tour of the Dart language](/language),
   which shows you how to use each major Dart feature.
-* [Complete a Dart tutorial](/tutorials/server/cmdline) that 
-  covers the basics of using Dart to build for the command line.
 * [Work through extensive online training][udemy]
   from Dart experts.
 * [Explore the API documentation]({{site.dart-api}}) that

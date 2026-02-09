@@ -372,12 +372,13 @@ The `js` subcommand compiles Dart code to deployable JavaScript.
 
 :::note
 Use the [`webdev` tool][webdev] rather than running the 
-Dart-to-JavaScript compiler.
+Dart-to-JavaScript compiler directly.
 
-* The [`webdev build`][] command, by default, produces minified, deployable JavaScript.
+* The [`webdev build`][] command, by default,
+  produces minified, deployable JavaScript.
 
-* The [`webdev serve`][] command, by default, produces JavaScript
-  modules for running and debugging during development.
+* The [`webdev serve`][] command, by default,
+  produces JavaScript modules for running and debugging during development.
 :::
 
 {% render 'tools/dart-compile-js-options.md', site: site %}

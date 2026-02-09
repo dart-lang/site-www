@@ -264,7 +264,7 @@ For more information about server-side and command-line app development, see the
 
 [dart:io]: {{site.dart-api}}/dart-io/dart-io-library.html
 [Directory]: {{site.dart-api}}/dart-io/Directory-class.html
-[Fetch data from the internet]: /tutorials/server/fetch-data
+[Fetch data from the internet]: /server/fetch-data
 [File]: {{site.dart-api}}/dart-io/File-class.html
 [HttpClient]: {{site.dart-api}}/dart-io/HttpClient-class.html
 [HttpRequest]: {{site.dart-api}}/dart-html/HttpRequest-class.html
