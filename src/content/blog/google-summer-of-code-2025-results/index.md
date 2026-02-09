@@ -16,7 +16,8 @@ tags:
 
 The [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) program focuses on engaging new developers worldwide with open source software development. Google sponsors contributors to work with a mentoring open source organization on a 12-week programming project during the summer. Over the past 20 years, more than 20,000 contributors have participated in Google Summer of Code.
 
-![](images/1AWu8hJLDQzrZqv7BxH3byA.png)
+<DashImage src="images/1AWu8hJLDQzrZqv7BxH3byA.png" />
+
 
 In 2025, Dart participated as a mentoring organization in Google Summer of Code for a sixth consecutive year. This year we received well over a 100 project proposals from prospective participants around the world. Today, we spotlight some of the projects we mentored this summer. The contributors describe their projects in this post.
 
@@ -32,7 +33,8 @@ With this improvement, Flutter developers can now build more expressive and feat
 
 Below is an example showing custom menu items like **Clear Text**, **Add Heart ❤️**, and **Uppercase** alongside standard iOS menu items in the native context menu.
 
-![](images/1kkXQy4enw3Pr2or4OVlLtw.gif)
+<DashImage src="images/1kkXQy4enw3Pr2or4OVlLtw.gif" />
+
 
 ## Dart TUI framework
 
@@ -42,15 +44,18 @@ Before this project, Dart developers who wanted to build interactive terminal ap
 
 Pixel Prompt introduces a Component to a ComponentInstance model, inspired from Flutter’s layered architecture that maps a widget (in the widget layer) to an element layer and, in turn, to the RenderObject layer. Components describe the UI declaratively while `ComponentInstances` manage state layout and rendering. Check out a simplified version of the architecture:
 
-![](images/1mDFQO27q9khSRlpThxmcKw.png)
+<DashImage src="images/1mDFQO27q9khSRlpThxmcKw.png" />
+
 
 The framework supports stateful and stateless components, input handling, and optimized rendering with double buffering and ANSI diffing. This improves performance by minimizing terminal redraws and enables reliable golden testing with a virtual terminal interpreter.
 
 To give a visual sense of what Pixel Prompt can achieve, screenshots of some demo are available below. These demonstrate the declarative layout, interactive components, and real-time updates that the framework supports, showing that Dart can now power fully interactive terminal applications without leaving its ecosystem.
 
-![](images/185MHC2CehYCqjIIb_FDQIQ.png)
+<DashImage src="images/185MHC2CehYCqjIIb_FDQIQ.png" />
 
-![](images/1dTEQLLG7c6yfSbceRRc8pQ.png)
+
+<DashImage src="images/1dTEQLLG7c6yfSbceRRc8pQ.png" />
+
 
 While Pixel Prompt already enables building core terminal applications, there’s more to come: the support for complex components like `TextArea` and `Tables`, a flex-like layout system, a dedicated animation API, and a visual debugger are planned for future contributions. Interested developers can explore open issues and contribute on the [pixel_prompt](https://github.com/primequantuM4/pixel_prompt) repo.
 
@@ -62,7 +67,8 @@ The primary goal of **TestGen**, an experimental project that automates unit tes
 
 One of the main challenges in using LLMs for automated test generation is deciding how much code context to give the model. For example, if a function needs testing and we provide the entire file as context, the LLM might get overwhelmed and produce irrelevant or inaccurate tests. If we provide only the function itself, the model can miss important dependencies inside the function, leading to incomplete or broken tests. To solve this, TestGen uses the Dart analyzer to parse the whole codebase into **Declarations,** which are classes that represent a code construct like a function, variable, class, or mixin**. **After parsing, it constructs a **dependency graph** across these declarations, which shows exactly the pieces of code on which a given declaration depends. This is done by traversing the **Abstract Syntax Tree (AST**) of a given declaration and recording its dependencies during the visit. Using this graph, TestGen can provide the LLM with only the** **relevant context *(context-aware prompting)* at a configurable depth, helping it generate accurate and focused tests without extra noise.
 
-![*The figure shows the dependency graph generated for the given Dart file. When testing toBeTestedFunction, the graph helps us easily retrieve all relevant context to include in the prompt. The LLM now can better understand the function and its surroundings, leading to a more effective and accurate test generation process.*](images/1ucv5C_h_O3tF8s5DKxKzGQ.png)**The figure shows the dependency graph generated for the given Dart file. When testing toBeTestedFunction, the graph helps us easily retrieve all relevant context to include in the prompt. The LLM now can better understand the function and its surroundings, leading to a more effective and accurate test generation process.**
+<DashImage src="images/1ucv5C_h_O3tF8s5DKxKzGQ.png" alt="*The figure shows the dependency graph generated for the given Dart file. When testing toBeTestedFunction, the graph helps us easily retrieve all relevant context to include in the prompt. The LLM now can better understand the function and its surroundings, leading to a more effective and accurate test generation process.*" caption="*The figure shows the dependency graph generated for the given Dart file. When testing toBeTestedFunction, the graph helps us easily retrieve all relevant context to include in the prompt. The LLM now can better understand the function and its surroundings, leading to a more effective and accurate test generation process.*" />
+
 
 To make test generation effective, TestGen integrates with **`package:coverage`** to automatically detect which parts of the code are not yet tested and target those. The tool connects to **Gemini models** through `package:google_generative_ai`, *using variants like gemini-2.5-pro, gemini-2.5-flash, and gemini-2.5-flash-lite* to generate test cases. These tests then go through a validation and feedback loop, where they are executed and checked for errors. If issues are found, the errors are fed back into the LLM so it can refine the output, making the final tests more accurate and reliable.
 
@@ -74,9 +80,11 @@ There is more to come for this package, including new features, improved testing
 
 Android libraries and utilities are typically documented with Java/Kotlin code snippets. While JNIgen makes it possible to generate Dart bindings for these libraries, writing Dart code against the bindings can be challenging due to syntactic and structural differences between the languages. This means developers cannot directly reuse the many Java/Kotlin examples found in official Android documentation and tutorials. The native_doc_dartifier project was created to address this gap by automatically translating Java and Kotlin snippets in Android documentation into their Dart equivalents.
 
-![Example Java snippet.](images/1iC6YYhsTRRz1Cps07v5NIg.png)*Example Java snippet.*
+<DashImage src="images/1iC6YYhsTRRz1Cps07v5NIg.png" alt="Example Java snippet." caption="Example Java snippet." />
 
-![Example snippet Translation.](images/1Yalahis692k6SIKP4-N9JA.png)*Example snippet Translation.*
+
+<DashImage src="images/1Yalahis692k6SIKP4-N9JA.png" alt="Example snippet Translation." caption="Example snippet Translation." />
+
 
 The project builds on JNIgen, which generates Dart bindings for Java and Kotlin APIs through foreign function interface (FFI). Because Java and Dart differ in both syntax and semantics, a direct translation is not sufficient. For example, Java supports method overloading while Dart does not, leading JNIgen to disambiguate bindings with renamed methods such as `add$1` and `add$2`. To generate accurate Dart code, the translation model must take these binding conventions into account rather than relying on surface-level conversion.
 
@@ -92,7 +100,8 @@ For more information, visit the [native_doc_dartifier](https://github.com/dart-l
 
 *By Nikechukwu Okoronkwo*
 
-![](images/1dljRp-oi3pUFHHsdX6gYdQ.png)
+<DashImage src="images/1dljRp-oi3pUFHHsdX6gYdQ.png" />
+
 
 Dart provides powerful interop with JavaScript through `dart:js_interop`, which can be used to interface with code written in JavaScript. However, writing bindings for large libraries and packages can be time-consuming and error-prone. To solve this, we created the JS Interop Generator. It automatically generates Dart wrappers from a [TypeScript declaration file](https://www.typescriptlang.org/docs/handbook/declaration-files/by-example.html) (`.d.ts`). This helps with Dart’s adoption on the web and allows Dart and Flutter developers to more easily leverage the vast ecosystem of JS libraries from NPM and elsewhere.
 

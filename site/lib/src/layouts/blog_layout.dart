@@ -6,8 +6,9 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../components/blog/author_card.dart';
+import '../components/blog/post_info.dart';
 import '../components/common/breadcrumbs.dart';
+import '../models/blog.dart';
 import '../util.dart';
 import 'dash_layout.dart';
 
@@ -27,7 +28,7 @@ class BlogLayout extends DashLayout {
     final pageData = page.data.page;
     final pageTitle = pageData['title'] as String? ?? 'Untitled';
 
-    final authorData = page.data['author_data'] as Map<String, dynamic>?;
+    final isPost = page.url.startsWith('/blog/');
 
     return super.buildBody(
       page,
@@ -36,7 +37,7 @@ class BlogLayout extends DashLayout {
         ?buildBanner(page),
         div(classes: 'after-leading-content', [
           article([
-            div(classes: 'content', [
+            div(classes: 'content ${isPost ? 'post-content' : ''}', [
               div(id: 'site-content-title', [
                 if (pageData['showBreadcrumbs'] != false)
                   const PageBreadcrumbs(),
@@ -51,13 +52,10 @@ class BlogLayout extends DashLayout {
                     .text(pageData['description'] as String),
                   ]),
               ]),
-              if (authorData != null)
-                AuthorCard(
-                  name: authorData['name'] as String,
-                  bio: authorData['bio'] as String,
-                  image: authorData['image'] as String?,
-                  twitter: authorData['twitter'] as String?,
-                  github: authorData['github'] as Map<String, dynamic>?,
+              if (isPost)
+                PostInfo(
+                  post: Post(pageData),
+                  url: page.url,
                 ),
               child,
             ]),

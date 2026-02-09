@@ -3,15 +3,16 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import 'blog_list.dart';
-export 'blog_list.dart';
+import '../../models/blog.dart';
+import 'blog_card.dart';
+import 'client/blog_categories.dart';
 
 class BlogIndex extends StatelessComponent {
   const BlogIndex({super.key});
 
   @override
   Component build(BuildContext context) {
-    final allPosts = context.pages
+    final posts = context.pages
         .where((page) => page.url.startsWith('/blog/'))
         .sortedBy(
           (page) =>
@@ -21,24 +22,26 @@ class BlogIndex extends StatelessComponent {
               DateTime(1970),
         )
         .reversed
-        .map(
-          (page) => {
-            'title': page.data.page['title'] ?? 'Untitled',
-            'publishDate': page.data.page['publishDate'] ?? '',
-            'description': page.data.page['description'] ?? '',
-            'href': page.url,
-            'image': page.data.page['image'],
-            'author': page.data.page['author'],
-            'category':
-                (page.data.page['category'] as String?)?.toLowerCase() ?? 'all',
-          },
-        )
         .toList();
 
-    if (allPosts.isEmpty) {
-      return const p([.text('No blog posts found.')]);
-    }
-
-    return BlogList(posts: allPosts);
+    return div(classes: 'blog-index', [
+      const BlogCategories(),
+      div(
+        id: 'blog-container',
+        classes: 'blog-posts-grid',
+        attributes: {'data-selected': 'all'},
+        [
+          for (var i = 0; i < posts.length; i++)
+            BlogCard(
+              post: Post(posts[i].data.page),
+              url: posts[i].url,
+              isFeatured: i == 0,
+              className: i == 0
+                  ? 'layout-featured'
+                  : (i < 5 ? 'layout-grid' : 'layout-list'),
+            ),
+        ],
+      ),
+    ]);
   }
 }

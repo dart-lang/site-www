@@ -6,7 +6,10 @@
 
 import 'package:jaspr/server.dart';
 import 'package:dart_dev_site/src/archive/archive_table.dart' as _archive_table;
-import 'package:dart_dev_site/src/components/blog/blog_list.dart' as _blog_list;
+import 'package:dart_dev_site/src/components/blog/client/blog_categories.dart'
+    as _blog_categories;
+import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
+    as _share_button;
 import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     as _collapse_button;
 import 'package:dart_dev_site/src/components/common/client/cookie_notice.dart'
@@ -38,6 +41,7 @@ import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.da
 import 'package:dart_dev_site/src/components/tutorial/client/quiz.dart'
     as _quiz;
 import 'package:jaspr_content/components/file_tree.dart' as _file_tree;
+import 'package:jaspr_content/components/post_break.dart' as _post_break;
 
 /// Default [ServerOptions] for use with your Jaspr project.
 ///
@@ -62,9 +66,11 @@ ServerOptions get defaultServerOptions => ServerOptions(
       'archive_table',
       params: __archive_tableArchiveTable,
     ),
-    _blog_list.BlogList: ClientTarget<_blog_list.BlogList>(
-      'blog_list',
-      params: __blog_listBlogList,
+    _blog_categories.BlogCategories:
+        ClientTarget<_blog_categories.BlogCategories>('blog_categories'),
+    _share_button.ShareButton: ClientTarget<_share_button.ShareButton>(
+      'share_button',
+      params: __share_buttonShareButton,
     ),
     _collapse_button.CollapseButton:
         ClientTarget<_collapse_button.CollapseButton>(
@@ -125,14 +131,18 @@ ServerOptions get defaultServerOptions => ServerOptions(
       params: __quizInteractiveQuiz,
     ),
   },
-  styles: () => [..._file_tree.FileTree.styles],
+  styles: () => [
+    ..._file_tree.FileTree.styles,
+    ..._post_break.PostBreak.styles,
+  ],
 );
 
 Map<String, Object?> __archive_tableArchiveTable(
   _archive_table.ArchiveTable c,
 ) => {'channel': c.channel};
-Map<String, Object?> __blog_listBlogList(_blog_list.BlogList c) => {
-  'posts': c.posts,
+Map<String, Object?> __share_buttonShareButton(_share_button.ShareButton c) => {
+  'url': c.url,
+  'title': c.title,
 };
 Map<String, Object?> __collapse_buttonCollapseButton(
   _collapse_button.CollapseButton c,

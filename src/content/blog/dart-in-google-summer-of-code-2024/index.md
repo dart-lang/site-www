@@ -13,7 +13,8 @@ tags:
 ---
 
 
-![](images/169jdaJUqgu_phIVF4w-7_A.png)
+<DashImage src="images/169jdaJUqgu_phIVF4w-7_A.png" />
+
 
 The Google Summer of Code (GSoC) program focuses on bringing student developers from around the world into open source software development. Google sponsors students to work with a mentoring open source organization on a 12 week (or longer) programming project during the summer. Over the past 19 years, more than 20,000 contributors have participated in Google Summer of Code.
 

@@ -4,7 +4,7 @@ description: "Improved language & developer experience, and an update on web app
 publishDate: 2023-11-15
 author: "mit-mit"
 image: images/1u5YRn1uMmXf94b2aPbcLRQ.png
-category: other
+category: announcements
 tags:
   - dart
   - dartlang
@@ -15,7 +15,8 @@ By: [Kevin Moore](https://twitter.com/kevmoo) & [Michael Thomsen](https://medium
 
 Today we’re announcing Dart 3.2, featuring a new language feature for non-null promotion of private final fields, improved developer experience with new interop capabilities, support for extensions in DevTools, and an update on our web roadmap including support for Wasm (aka WebAssembly).
 
-![](images/1u5YRn1uMmXf94b2aPbcLRQ.png)
+<DashImage src="images/1u5YRn1uMmXf94b2aPbcLRQ.png" />
+
 
 ## Non-null promotion for private final fields
 
@@ -76,7 +77,8 @@ As of Dart 3.2, we’ve made a number of improvements to native interop:
 
 Dart [DevTools](https://dart.dev/tools/dart-devtools) is a suite of debugging and performance tools that supports both pure-Dart and Flutter apps. In Dart 3.2 & Flutter 3.16 [we’re announcing](https://medium.com/p/c8bc1aaf8e5f/) a new [extensions framework](https://pub.dev/packages/devtools_extensions) which enables package authors to build custom tooling for their package, surfaced directly in DevTools. This allows pub.dev packages that contain frameworks to offer custom tools specific to their use cases. For example, the authors of [Serverpod](https://pub.dev/packages/serverpod) have been hard at work building developer tools for their package and are excited to be shipping a DevTools extension in their upcoming [1.2 release](https://github.com/orgs/serverpod/projects/4).
 
-![*A DevTools extension planned for the upcoming ServerPod 1.2 release*](images/0N6ZSt1McXO_opQU7.png)**A DevTools extension planned for the upcoming ServerPod 1.2 release**
+<DashImage src="images/0N6ZSt1McXO_opQU7.png" alt="*A DevTools extension planned for the upcoming ServerPod 1.2 release*" caption="*A DevTools extension planned for the upcoming ServerPod 1.2 release*" />
+
 
 ## Dart web and Wasm update
 

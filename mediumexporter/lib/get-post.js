@@ -224,9 +224,16 @@ github: ${authorData.github ? `\n  handle: "${authorData.github.handle}"\n  user
     }
 
     const tags = story.tags || []
+    let category = 'other'
+
+    if (tags.includes('announcements')) {
+      category = 'announcements'
+    } else if (story.title.startsWith('Announcing Dart') || story.title.startsWith('New in Dart')) {
+      category = 'announcements'
+    }
+
+    outputText += `category: ${category}\n`
     if (tags.length > 0) {
-      const category = tags.includes('announcements') ? 'announcements' : 'other'
-      outputText += `category: ${category}\n`
       outputText += 'tags:\n'
       for (const tag of tags) {
         outputText += `  - ${tag}\n`

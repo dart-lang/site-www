@@ -15,7 +15,8 @@ tags:
 
 This release brings formatter updates, null-aware elements for collections, new cross-platform development capabilities, a better way to find trending packages on pub.dev, availability of hot reload on the web, and more! We’re also hoping there are a few developers out there who are interested in joining our FFigen and JNIgen early access program.
 
-![Announcing Dart 3.8](images/1cTcqAst5m1Vn6k71VWgTrQ.gif)*Announcing Dart 3.8*
+<DashImage src="images/1cTcqAst5m1Vn6k71VWgTrQ.gif" alt="Announcing Dart 3.8" caption="Announcing Dart 3.8" />
+
 
 ## Formatter updates
 
@@ -153,7 +154,8 @@ Doc imports support the same URI styles as regular Dart imports, including the `
 
 The [pub.dev landing page](https://pub.dev/) replaces the “Most Popular Packages” section with the “Trending Packages” section. This new section showcases packages that have recently demonstrated notable growth in adoption and community interest.
 
-![Trending packages section on pub.dev](images/1hwpiNbr2JrUE8cROV3KagQ.png)*Trending packages section on pub.dev*
+<DashImage src="images/1hwpiNbr2JrUE8cROV3KagQ.png" alt="Trending packages section on pub.dev" caption="Trending packages section on pub.dev" />
+
 
 ## Hot reload on the web (experimental)
 
@@ -161,7 +163,8 @@ Stateful hot reload is now available on the web when you use the Dart Developmen
 
 Work is still iterating on this feature, but Dart 3.8 provides the first opportunity to try it, starting with Flutter apps. See the [Flutter blog post](https://medium.com/flutter/whats-new-in-flutter-3-32-40c1086bab6e) for instructions on how to enable hot reload.
 
-![Dart stateful hot reload for web](images/0NB_4jaD3XtdHpCQm.png)*Dart stateful hot reload for web*
+<DashImage src="images/0NB_4jaD3XtdHpCQm.png" alt="Dart stateful hot reload for web" caption="Dart stateful hot reload for web" />
+
 
 This was a multiyear effort that included changing the runtime type representation, redesigning class hierarchies, and updating the way code loads into the page. The goal is to reach full parity with the VM’s existing hot reload implementation. In almost all cases, the feature should already be indistinguishable from what you are used to from the VM. You can find all known issues in the [issue tracker](https://github.com/orgs/dart-lang/projects/107/views/1?filterQuery=-status%3ADone).
 

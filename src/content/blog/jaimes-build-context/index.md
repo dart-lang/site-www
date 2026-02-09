@@ -1,13 +1,10 @@
 ---
 title: "Jaime’s build context: A Flutter developer’s thoughts about Antigravity + Tips!"
-date: 2025-12-09
-author: "Jaime Wren"
 description: "Hi, I'm Jaime Wren, a long-time developer tooling software engineer on the Flutter team. I've seen many questions about BuildContext, so I thought I'd share my thoughts."
-layout: docs
-sidenav: ""
+publishDate: 2025-12-09
+author: jwren
 image: jaimes-build-context-banner.jpeg
-category: spotlight
-github_handle: "jwren"
+category: other
 ---
 
 ![Antigravity in IDE](jaimes-build-context-banner.jpeg)

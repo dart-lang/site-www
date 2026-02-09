@@ -4,7 +4,9 @@
 
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/components/file_tree.dart';
+import 'package:jaspr_content/components/post_break.dart';
 import 'package:jaspr_content/jaspr_content.dart' hide BlogLayout;
+
 import 'package:jaspr_content/theme.dart';
 import 'package:path/path.dart' as path;
 
@@ -12,6 +14,7 @@ import 'main.server.options.dart'; // Generated. Do not remove or edit.
 import 'src/archive/archive_table.dart';
 import 'src/components/blog/blog_index.dart';
 import 'src/components/common/card.dart';
+import 'src/components/common/dash_image.dart';
 import 'src/components/common/tabs.dart';
 import 'src/components/common/youtube_embed.dart';
 import 'src/components/pages/changelog/changelog_index.dart';
@@ -106,6 +109,7 @@ List<CustomComponent> get _embeddableComponents => [
   const Quiz(),
   const SummaryCard(),
   const TutorialOutline(),
+  const PostBreak(),
   CustomComponent(
     pattern: RegExp('ArchiveTable'),
     builder: (_, attrs, _) => ArchiveTable.fromAttributes(attrs),
@@ -129,5 +133,9 @@ List<CustomComponent> get _embeddableComponents => [
   CustomComponent(
     pattern: RegExp('BlogIndex', caseSensitive: false),
     builder: (_, _, _) => const BlogIndex(),
+  ),
+  CustomComponent(
+    pattern: RegExp('DashImage', caseSensitive: false),
+    builder: (_, attrs, _) => DashImage.fromAttributes(attrs),
   ),
 ];

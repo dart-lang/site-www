@@ -12,7 +12,8 @@ tags:
 ---
 
 
-![Announcing Dart 3.10](images/1AyAyohCAvBT-ta-nJPrkEg.png)*Announcing Dart 3.10*
+<DashImage src="images/1AyAyohCAvBT-ta-nJPrkEg.png" alt="Announcing Dart 3.10" caption="Announcing Dart 3.10" />
+
 
 This release continues our focus on improving the core developer experience. The new **dot shorthands** (**`.`**) feature will help you write more readable and less verbose code. We’re also introducing a powerful new **analyzer plugin system** that allows you to create custom static analysis rules that integrate directly into your IDE. And we’re excited to announce that **build hooks** are now stable!
 
@@ -100,7 +101,8 @@ When you release a new major version of a package (like 1.0.0 or 0.2.0), it’s 
 
 To help, we’ve introduced a new lint: [**`remove_deprecations_in_breaking_versions`**](https://dart.dev/tools/linter-rules/remove_deprecations_in_breaking_versions/). This lint detects leftover deprecated elements when a package’s version is updated to a new major breaking version. By flagging these cases, the lint helps ensure that your package’s API remains modern and easy for your users to understand.
 
-![**`remove_deprecations_in_breaking_versions lint example`**](images/1keU2TVVnlbe0e0UFtj3mwA.png)***`remove_deprecations_in_breaking_versions lint example`***
+<DashImage src="images/1keU2TVVnlbe0e0UFtj3mwA.png" alt="**`remove_deprecations_in_breaking_versions lint example`**" caption="**`remove_deprecations_in_breaking_versions lint example`**" />
+
 
 ### @Deprecated annotation ⬆️
 
@@ -128,11 +130,13 @@ Additionally, you can now signal that an optional parameter will become required
 
 Managing your favorite packages on pub.dev just got a major upgrade. You can do this through the Search feature or the [Likes tab](https://pub.dev/my-liked-packages) on your profile, where you can now search, sort, and filter your liked packages with the same familiar controls you use for regular searches. This includes sorting by likes, pub points, and popularity. We’ve also improved the UI for unliking packages, making it easier than ever to keep your list of liked packages tidy and up-to-date.
 
-![Search, sort, and unlike support for your favorite packages in your Likes tab](images/1cOONo9VV-HsJPA0WMv1COQ.png)*Search, sort, and unlike support for your favorite packages in your Likes tab*
+<DashImage src="images/1cOONo9VV-HsJPA0WMv1COQ.png" alt="Search, sort, and unlike support for your favorite packages in your Likes tab" caption="Search, sort, and unlike support for your favorite packages in your Likes tab" />
+
 
 If you choose to search for your liked packages with the Search feature, simply add `is:liked-by-me` to your query.
 
-![Search, but only include packages you like](images/1cO5K265sp2QbF-vNgcpFzQ.png)*Search, but only include packages you like*
+<DashImage src="images/1cO5K265sp2QbF-vNgcpFzQ.png" alt="Search, but only include packages you like" caption="Search, but only include packages you like" />
+
 
 ### Enable or disable manual publishing 🆕
 
@@ -142,7 +146,8 @@ By disabling manual publishing, you prevent package updates using personal crede
 
 You can control this feature in your package’s **Admin** tab using the “Enable manual publishing” checkbox.
 
-![Enable or disable manual publishing in the Admin tab](images/1qBE5Jhe138ktNrcBIy5L1w.png)*Enable or disable manual publishing in the Admin tab*
+<DashImage src="images/1qBE5Jhe138ktNrcBIy5L1w.png" alt="Enable or disable manual publishing in the Admin tab" caption="Enable or disable manual publishing in the Admin tab" />
+
 
 ## Wrap up
 

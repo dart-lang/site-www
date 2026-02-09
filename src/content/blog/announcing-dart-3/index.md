@@ -5,7 +5,7 @@ And a peek into the future."
 publishDate: 2023-05-10
 author: "mit-mit"
 image: images/12XwxNKHrKb3SGaWEyqg2nA.png
-category: other
+category: announcements
 tags:
   - dart
   - dartlang
@@ -17,13 +17,15 @@ tags:
 
 Hello from Google I/O 2023. Today, live from Mountain View, we’re announcing Dart 3 — the largest Dart release to date! Dart 3 contains three major advancements. First, we’ve completed the journey to 100% sound null safety. Second, we’ve added major new language features for records, patterns, and class modifiers. Third, we’re giving a preview of the future, where we broaden our platform support with native code for the web via Wasm compilation. Let’s get into the details.
 
-![](images/12XwxNKHrKb3SGaWEyqg2nA.png)
+<DashImage src="images/12XwxNKHrKb3SGaWEyqg2nA.png" />
+
 
 ## 100% sound null safety
 
 Over the last four years, we’ve evolved Dart into a fast, portable, and modern language. Now with Dart 3, it is a 100% sound null safe language! As we’ve [discussed before](https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa), we don’t believe any other programming language has ever added sound null safety to an existing language. So, it’s been quite a journey.
 
-![](images/1KPbxBAjFYPCSk2OqwjKs7A.png)
+<DashImage src="images/1KPbxBAjFYPCSk2OqwjKs7A.png" />
+
 
 With 100% null safety in Dart, we have a *sound* type system. You can trust that if a type says a value isn’t `null`, then it never can be `null`. This avoids certain classes of coding errors, like null pointer exceptions. It also allows our compilers and runtimes to optimize code in ways it couldn’t without null safety. This design choice involved a tradeoff. Though migrations became a bit harder, we believe we made the right choice for Dart.
 

@@ -16,7 +16,8 @@ tags:
 
 ### Pattern matching and exhaustive switches come together to enable functional style data models that blend seamlessly with Dart’s object-oriented core.
 
-![Diff of a Dart 3 refactor using functional style features within Dart’s internal code base](images/1IWd8aRO__OzDkJVsjfoe2A.png)*Diff of a Dart 3 refactor using functional style features within Dart’s internal code base*
+<DashImage src="images/1IWd8aRO__OzDkJVsjfoe2A.png" alt="Diff of a Dart 3 refactor using functional style features within Dart’s internal code base" caption="Diff of a Dart 3 refactor using functional style features within Dart’s internal code base" />
+
 
 *Today we’re releasing Dart 3.1, our first stable release since the major [Dart 3.0](https://medium.com/dartlang/announcing-dart-3-53f065a10635) release in May. Dart 3.1 contains a handful of minor updates and a few API adjustments to further use class modifiers introduced in 3.0 (which you can read more about in the [changelog](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#310)). Mostly, though, we’ve been spending our time on new roadmap items that we hope to see reach beta and stable over the coming releases. Stay tuned for more about that in the future!*
 
@@ -30,7 +31,8 @@ But *“how should I model this data?”* is usually not something we consciousl
 
 If you’re using an OO language, you’ll model data with class hierarchies and operations on subtypes. If you’re using certain functional languages, the equivalent to the class hierarchy model is the [algebraic data type](https://en.wikipedia.org/wiki/Algebraic_data_type) model, whose equivalent to operating on subtypes is switching over them with [pattern matching](https://en.wikipedia.org/wiki/Pattern_matching).
 
-![Simplified side-by-side comparison of the object-oriented class hierarchy model and the functional algebraic data type model](images/1mA116alArq7XKrm_PSCjyw.png)*Simplified side-by-side comparison of the object-oriented class hierarchy model and the functional algebraic data type model*
+<DashImage src="images/1mA116alArq7XKrm_PSCjyw.png" alt="Simplified side-by-side comparison of the object-oriented class hierarchy model and the functional algebraic data type model" caption="Simplified side-by-side comparison of the object-oriented class hierarchy model and the functional algebraic data type model" />
+
 
 Dart is an object-oriented language, but has been steadily incorporating functional features over time, allowing for a more multi-paradigm approach to data modeling. Most recently, Dart 3 added [pattern matching](https://dart.dev/language/patterns), new functionality on [switch](https://dart.dev/language/patterns#switch-statements-and-expressions), and [sealed types](https://dart.dev/language/class-modifiers#sealed). These features make it possible to implement algebraic data types in Dart, allowing you to write functional style code while continuing to maximize the capabilities of Dart’s object-oriented core.
 
@@ -99,7 +101,8 @@ Notice that the `for` loop is now common between each case. Each type’s `decla
 
 Now, the refactored structure uses deeply nested object patterns for each case, to upcast `metadata` to its supertype, `InterfaceElement`. This makes a single shared `for` loop iterating over `metadata` type safe across the cases.
 
-![Annotated depiction of the syntax for a deeply nested object and variable patterns](images/1qYQb8DZyeJDFD-VKEb4P6Q.png)*Annotated depiction of the syntax for a deeply nested object and variable patterns*
+<DashImage src="images/1qYQb8DZyeJDFD-VKEb4P6Q.png" alt="Annotated depiction of the syntax for a deeply nested object and variable patterns" caption="Annotated depiction of the syntax for a deeply nested object and variable patterns" />
+
 
 Switching over object patterns matters to Dart’s algebraic data type implementation because of its ability to concisely test subtypes and destructure values. A nice side effect is the simultaneous assurances that can be provided by a single line of code. To reiterate, each case pattern in this refactor is simultaneously verifying:
 

@@ -15,7 +15,8 @@ tags:
 
 The [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) program focuses on engaging new developers worldwide with open source software development. Google sponsors contributors to work with a mentoring open source organization on a 12-week programming project during the summer. Over the past 19 years, more than 20,000 contributors have participated in Google Summer of Code.
 
-![](images/0vm7AfKyip_pXJGCd.png)
+<DashImage src="images/0vm7AfKyip_pXJGCd.png" />
+
 
 In 2024, Dart participated as a mentoring organization in Google Summer of Code for a fifth consecutive year. This year we received 50 project proposals from prospective participants around the world. Today, we spotlight some of the projects we mentored this summer. The contributors describe their projects in this post.
 
@@ -69,7 +70,8 @@ Dart, as a language that can be compiled to various targets, includes capabiliti
 
 The problem arises when you use a library that has many exports, too many to write by hand. This problem is solved with [`ffigen`](https://pub.dev/packages/ffigen) (a previous GSoC project), a tool that generates the bindings using just the library’s header files. To do that you would have to install `ffigen`, set up all the proper dependencies and requirements, then (likely) iterate again and again. This isn’t exactly the definition of seamless and easy. So FFIgenPad came into being.
 
-![](images/0sB2hJW3ZkMCeF9Mp.png)
+<DashImage src="images/0sB2hJW3ZkMCeF9Mp.png" />
+
 
 Another goal of the project was to test out the `dart2wasm` compiler (you can find my experiments in [this blogpost](https://thecomputerm.hashnode.dev/dirty-deeds-done-dart-cheap-experiments-with-dart2wasm)). Sure, we could have run `ffigen` on a server and stuck a UI on it. Instead, I made sure that FFIgenPad runs fully on the browser by compiling both `libclang` and `ffigen` to WebAssembly (why use a server for computation when you can use the client’s system).
 

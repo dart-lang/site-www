@@ -1,45 +1,66 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import '../../models/blog.dart';
+
 class BlogCard extends StatelessComponent {
   const BlogCard({
-    required this.title,
-    required this.date,
-    required this.description,
-    required this.href,
-    this.image,
-    this.author,
+    required this.post,
+    required this.url,
     this.isFeatured = false,
+    this.className,
     super.key,
   });
 
-  final String title;
-  final String date;
-  final String description;
-  final String href;
-  final String? image;
-  final String? author;
+  final Post post;
+  final String url;
   final bool isFeatured;
+  final String? className;
 
   @override
   Component build(BuildContext context) {
-    return div(
-      classes: 'blog-card ${isFeatured ? 'featured' : ''}',
+    final author = context.getAuthor(post.authorId!)!;
+    return a(
+      href: url,
+      classes: 'blog-card ${isFeatured ? 'featured' : ''} ${className ?? ''}',
+      attributes: {'data-category': post.category},
       [
-        if (image != null)
+        if (post.image != null)
           div(classes: 'blog-card-image', [
-            img(src: image!, alt: title),
+            img(src: post.image!, alt: post.title),
           ]),
         div(classes: 'blog-card-content', [
-          a(href: href, [
-            h3(classes: 'blog-card-title', [.text(title)]),
+          h3(classes: 'blog-card-title', [
+            .text(post.title),
           ]),
-          p(classes: 'blog-card-description', [.text(description)]),
+          p(classes: 'blog-card-description', [
+            .text(post.description),
+          ]),
           div(classes: 'blog-card-meta', [
             div(classes: 'blog-card-author-row', [
-              span(classes: 'author', [.text(author ?? 'Unknown')]),
-              const span(classes: 'separator', [.text('·')]),
-              span(classes: 'date', [.text(date)]),
+              if (author.image != null)
+                img(
+                  classes: 'blog-card-avatar',
+                  src: '/images/content/blog/authors/${author.image}',
+                  alt: author.name,
+                )
+              else if (author.github?.avatarUrl case final avatarUrl?)
+                img(
+                  classes: 'blog-card-avatar',
+                  src: avatarUrl,
+                  alt: author.name,
+                ),
+              span(classes: 'author', [
+                .text(author.name),
+              ]),
+              const span(classes: 'separator', [.text(' · ')]),
+              span(classes: 'date', [
+                .text(post.formattedDate),
+              ]),
+              const span(classes: 'separator', [.text(' · ')]),
+              span(classes: 'reading-time', [
+                .text(post.readingTime),
+              ]),
             ]),
           ]),
         ]),

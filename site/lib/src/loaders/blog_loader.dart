@@ -6,30 +6,14 @@ class BlogDataLoader implements DataLoader {
   Future<void> loadData(Page page) async {
     if (!page.path.startsWith('blog/')) return;
 
+    // Set the layout to 'blog'.
     page.apply(
       data: {
         'page': {'layout': 'blog'},
       },
     );
 
-    final handle =
-        page.data.page['author']
-            as String?; // The 'author' field in frontmatter is the username/handle
-
-    // Check for author data from YAML (loaded into page.data['authors'])
-    final authors = page.data['authors'] as Map<String, dynamic>?;
-
-    if (handle != null && authors != null && authors.containsKey(handle)) {
-      final authorData = authors[handle] as Map<String, dynamic>;
-
-      // Pass this data to the page for the layout to use
-      page.apply(data: {'author_data': authorData});
-    } else if (handle != null) {
-      // Fallback or explicit github handle handling if needed,
-      // but for now we assume the author field maps to a yaml entry.
-      // The previous logic used 'github_handle' but get-post.js sets 'author' to the username/handle.
-    }
-
+    // Set the image path relative to the content directory.
     final image = page.data.page['image'] as String?;
     if (image != null && !image.startsWith('http') && !image.startsWith('/')) {
       page.apply(
@@ -42,5 +26,14 @@ class BlogDataLoader implements DataLoader {
         },
       );
     }
+
+    final content = page.content;
+    final wordCount = RegExp(r'\w+').allMatches(content).length;
+    final readingTime = (wordCount / 250).ceil();
+    page.apply(
+      data: {
+        'page': {'readingTime': '$readingTime min read'},
+      },
+    );
   }
 }

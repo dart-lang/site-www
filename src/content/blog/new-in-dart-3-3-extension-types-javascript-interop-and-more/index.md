@@ -4,7 +4,7 @@ description: "Dart 3.3 has landed, and it’s a game-changer for performance and
 publishDate: 2024-02-15
 author: "kevmoo"
 image: images/1p4TBp0I66rJTq0LvnSuE7g.png
-category: other
+category: announcements
 tags:
   - dart-programming-language
   - webassembly
@@ -12,7 +12,8 @@ tags:
 ---
 
 
-![](images/1p4TBp0I66rJTq0LvnSuE7g.png)
+<DashImage src="images/1p4TBp0I66rJTq0LvnSuE7g.png" />
+
 
 **Dart 3.3 has landed, and it’s a game-changer for performance and cross-platform development!** Get ready to supercharge your apps with **Extension Types**, revolutionizing performance optimization and how you interact with native code. Plus, our revamped **JavaScript interop** model introduces robust type safety and a developer-friendly way to tap into the power of the web platform. All this paves the way for **WebAssembly** support. Oh, and **Google AI in your Dart apps**? Yes, please! It’s all here in Dart 3.3. Let’s dive in!
 
@@ -75,4 +76,4 @@ We’ve created a[ migration guide](https://dart.dev/go/package-web) to help aut
 
 Google has released the Google AI Dart SDK to beta. You can build generative AI features into your Dart or Flutter app. These apps use Gemini, Google’s latest family of AI models. Take a look at the [package:google_generative_ai](https://pub.dev/packages/google_generative_ai). Learn how to build with the Google AI Dart SDK in [this blog post](https://medium.com/flutter/harness-gemini-in-your-dart-and-flutter-apps-00573e560381) or jump straight into the [quickstart](https://ai.google.dev/tutorials/dart_quickstart).
 
-![](images/00DiCLVhk_ipZIHKd.png)
+<DashImage src="images/00DiCLVhk_ipZIHKd.png" />

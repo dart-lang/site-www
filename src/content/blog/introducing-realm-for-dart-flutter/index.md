@@ -13,7 +13,8 @@ tags:
 
 We’re excited to see MongoDB announce the general availability (GA) of Realm for Dart and Flutter today! Realm is a reactive, object-oriented, cross-platform database, popular among app developers. In other words, perfect for Dart and Flutter. So, over the past year we’ve collaborated with MongoDB to bring Realm to Dart and Flutter. Checkout the [blog post](https://www.mongodb.com/developer/products/realm/announcing-realm-flutter-sdk/) by MongoDB for details on what Realm offers, how it’s improved from their earlier previews, and what they have planned for the future. We think Realm will be a great match for Dart & Flutter developers.
 
-![Writing books to a Realm data store using Dart](images/1cAi4WO4IfN5Sp6WE6Ex8Ig.png)*Writing books to a Realm data store using Dart*
+<DashImage src="images/1cAi4WO4IfN5Sp6WE6Ex8Ig.png" alt="Writing books to a Realm data store using Dart" caption="Writing books to a Realm data store using Dart" />
+
 
 In this companion post, we’ll take a peek behind the scenes to learn how Realm for Dart & Flutter is built, as a practical example of how to build new Dart-based developer SDKs.
 

@@ -354,11 +354,14 @@ async function processParagraph(p, slug, images, options = {}) {
       const imgsrc = MEDIUM_IMG_CDN + (imgwidth || 2000) + '/' + p.metadata.id
       images.push(imgsrc)
       const fileName = (options.imageMap && options.imageMap[normalizeId(p.metadata.id)]) || normalizeId(p.metadata.id)
-      let imgText = '\n![' + processedText + '](images/' + fileName + ')'
-      if (processedText) {
-        imgText += '*' + processedText + '*'
+
+      let dashImageTag = '\n<DashImage src="images/' + fileName + '"' // Open tag
+      if (processedText && processedText.trim().length > 0) {
+        const caption = processedText.replace(/"/g, '&quot;')
+        dashImageTag += ' alt="' + caption + '" caption="' + caption + '"'
       }
-      processedText = imgText
+      dashImageTag += ' />\n' // Close tag
+      processedText = dashImageTag
       break
     case 6:
       markup = '> '

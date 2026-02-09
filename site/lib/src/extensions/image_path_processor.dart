@@ -14,7 +14,9 @@ class ImagePathProcessor implements PageExtension {
 
   List<Node> _processNodes(List<Node> nodes, Page page) {
     return nodes.map((node) {
-      if (node is ElementNode && node.tag.toLowerCase() == 'img') {
+      if (node is ElementNode &&
+          (node.tag.toLowerCase() == 'img' ||
+              node.tag.toLowerCase() == 'dashimage')) {
         final src = node.attributes['src'];
         if (src != null && !src.startsWith('http') && !src.startsWith('/')) {
           // It's a relative path. Rewrite it.
