@@ -235,6 +235,13 @@ create a `build.dart` script similar to the following:
 [`BuildInput`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput-class.html
 [`BuildOutputBuilder`]: {{site.pub-api}}/hooks/latest/hooks/BuildOutputBuilder-class.html
 
+:::note
+When naming your dynamic libraries, ensure the name is consistent across all
+target architectures and SDKs. On Apple platforms, Flutter's build system
+relies on consistent filenames to correctly generate frameworks and
+XCFrameworks. For more details, see [Binding to native code (Flutter)][].
+:::
+
 ### Automatically bundled assets {: #generate-assets }
 
 The hooks are run automatically when invoking the `run`, `build`, or `test`
@@ -252,6 +259,14 @@ only output assets in their own package. `CBuilder` in
 the build hook in the previous example outputs the asset ID
 `package:native_add_library/native_add_library.dart`, and is
 based on the `packageName` and `assetName`.
+
+:::tip
+As a best practice, use the Dart library URI where you intend to use the code
+assets as the asset ID. While you can use any asset ID that starts with
+your package name, using the library URI enables Dart to automatically
+connect the asset at run time without needing to specify an `assetId`
+in the `@Native` annotation.
+:::
 
 The following example illustrates how to bind to the native
 C function `add` from `native_add_library.c` and call it:
@@ -340,9 +355,11 @@ See the following links for more information:
 * [Code assets package][]
 * [Code assets library reference][]
 * [C interop][]
+* [Binding to native code (Flutter)][]
 
 [Hooks package]: {{site.pub-pkg}}/hooks
 [Hooks library reference]: {{site.pub-api}}/hooks/latest/hooks/
 [Code assets package]: {{site.pub-pkg}}/code_assets
 [Code assets library reference]: {{site.pub-api}}/code_assets/latest/code_assets/
 [C interop]: /interop/c-interop
+[Binding to native code (Flutter)]: {{site.flutter-docs}}/platform-integration/bind-native-code
