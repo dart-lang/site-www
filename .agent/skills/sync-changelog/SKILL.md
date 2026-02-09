@@ -21,7 +21,7 @@ you can assume a patch version of `0`.
 For example, `3.11` implies `3.11.0`.
 
 If necessary, you can validate what versions are available to sync
-by checking the [SDK changelog](https://raw.githubusercontent.com/dart-lang/sdk/refs/heads/main/CHANGELOG.md)
+by checking the [SDK changelog](https://raw.githubusercontent.com/dart-lang/sdk/main/CHANGELOG.md)
 and checking what h2 headers (`##`) are present.
 
 ## Sync and verify SDK changelog entries
@@ -149,6 +149,6 @@ and checking what h2 headers (`##`) are present.
 ## Troubleshooting
 
 -   If no entries are found, verify the version exists in the
-    [SDK changelog](https://raw.githubusercontent.com/dart-lang/sdk/refs/heads/main/CHANGELOG.md).
+    [SDK changelog](https://raw.githubusercontent.com/dart-lang/sdk/main/CHANGELOG.md).
 -   If entries are missing or malformed, check the tool logic in
     `tool/dash_site/lib/src/commands/sync_changelog.dart`.
