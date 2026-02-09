@@ -91,13 +91,19 @@ module.exports = async function (mediumURL, params = {}) {
         }
       }
 
+      const safeName = (authorData.name || '').replace(/"/g, '\\"')
+      const safeBio = (authorData.bio || '').replace(/"/g, '\\"').replace(/\n/g, ' ')
+      const safeGithubUsername = (authorData.github && authorData.github.username) ? authorData.github.username.replace(/"/g, '\\"') : ''
+      const safeGithubHandle = authorData.github ? authorData.github.handle : ''
+      const safeGithubAvatar = authorData.github ? authorData.github.avatar_url : ''
+
       const authorYaml =
-        `name: "${authorData.name.replace(/"/g, '\\"')}"
+        `name: "${safeName}"
 username: "${authorData.username}"
-bio: "${authorData.bio.replace(/"/g, '\\"').replace(/\n/g, ' ')}"
+bio: "${safeBio}"
 image: "${authorData.image}"
 twitter: "${authorData.twitter}"
-github: ${authorData.github ? `\n  handle: "${authorData.github.handle}"\n  username: "${authorData.github.username.replace(/"/g, '\\"')}"\n  avatar_url: "${authorData.github.avatar_url}"` : 'null'}
+github: ${authorData.github ? `\n  handle: "${safeGithubHandle}"\n  username: "${safeGithubUsername}"\n  avatar_url: "${safeGithubAvatar}"` : 'null'}
 `
       const authorsDir = path.join(__dirname, '..', '..', 'src', 'data', 'authors')
       try {
