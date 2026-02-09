@@ -25,6 +25,7 @@ if (require.main !== module) {
     )
     .option('--frontmatter', 'enable markdown frontmatter')
     .option('-L, --limit <n>', 'Limit the number of posts to process')
+    .option('--skip <n>', 'Skip the first n posts')
     .option('-d, --debug', 'Show debugging info')
     .on('--help', function () {
       console.log('  Examples:')
@@ -32,6 +33,7 @@ if (require.main !== module) {
       console.log('    $ mediumexporter -O content mediumurl')
       console.log('    $ mediumexporter --hugo mediumurl')
       console.log('    $ mediumexporter --limit 3')
+      console.log('    $ mediumexporter --limit 3 --skip 2')
       console.log('')
     })
 
@@ -71,6 +73,14 @@ if (require.main !== module) {
     postData.sort((a, b) => b.firstPublishedAt - a.firstPublishedAt)
     let filesToProcess = postData.map(p => p.file)
 
+    if (program.skip) {
+      const skip = parseInt(program.skip, 10)
+      if (!isNaN(skip)) {
+        filesToProcess = filesToProcess.slice(skip)
+        console.log(`Skipping first ${skip} posts.`)
+      }
+    }
+
     if (program.limit) {
       const limit = parseInt(program.limit, 10)
       if (!isNaN(limit)) {
@@ -79,10 +89,7 @@ if (require.main !== module) {
       }
     }
 
-    const browser = await puppeteer.launch({ headless: 'new' })
-    const page = await browser.newPage()
-    // Navigate to a valid page context to ensure fetch works (avoiding about:blank CORS issues)
-    await page.goto('https://medium.com', { waitUntil: 'domcontentloaded' })
+    const browser = await puppeteer.launch({ headless: false })
 
     const { logHeader, logItem, logSuccess, logError, BLUE, BOLD } = require('./lib/utils')
 
@@ -92,11 +99,12 @@ if (require.main !== module) {
       i++
       const filePath = path.join(postsDir, file)
       logHeader(`(${i}/${total}) Processing ${file}...`)
+
       try {
         await getPost(filePath, {
           ...program,
           frontmatter: true,
-          puppeteerPage: page
+          puppeteerBrowser: browser
         })
       } catch (err) {
         logError(`Error processing ${file}: ${err}`)

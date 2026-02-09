@@ -11,7 +11,7 @@ extension type Post(Map<String, dynamic> data) {
   DateTime get dateObject => DateTime.parse(publishDate);
   String get formattedDate => DateFormat.yMMMd().format(dateObject);
 
-  String? get authorId => data['author'] as String?;
+  String get authorId => data['author'] as String;
 
   String get readingTime => data['readingTime'] as String? ?? '5 min read';
   String get category => data['category'] as String? ?? 'other';
@@ -32,7 +32,11 @@ extension type AuthorGithub(Map<String, dynamic> data) {
 }
 
 extension GetAuthor on BuildContext {
-  Author? getAuthor(String id) {
-    return (page.data['authors'] as Map<String, dynamic>)[id] as Author?;
+  Author getAuthor(String id) {
+    final author = (page.data['authors'] as Map<String, dynamic>)[id];
+    if (author == null) {
+      throw Exception('Author not found: $id');
+    }
+    return author as Author;
   }
 }

@@ -22,9 +22,32 @@ function normalizeId(id) {
   return id ? id.replace(/\*/g, '') : id
 }
 
+// Helper for robust fetching with timeout
+async function fetchWithTimeout(url, type = 'text', timeout = 15000, options = {}) {
+  const timeoutPromise = new Promise((_, reject) =>
+    setTimeout(() => reject(new Error(`Request timed out for ${url}`)), timeout)
+  )
+
+  const fetchPromise = async () => {
+    try {
+      const res = await r2.get(url, options).response;
+      if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText} for ${url}`);
+      if (type === 'buffer') return res.buffer();
+      if (type === 'json') return res.json();
+      return res.text();
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  return Promise.race([fetchPromise(), timeoutPromise])
+}
+
 async function downloadImages(images, options = {}) {
   const articleImages = {}
   ensureDir(CACHE_DIR)
+
+  let page = null;
 
   for (const image of images) {
     let sourceId = image.split('/')[image.split('/').length - 1]
@@ -41,12 +64,22 @@ async function downloadImages(images, options = {}) {
       file = existingCacheFile
     } else {
       fetched = true
+
+      if (options.puppeteerBrowser && page == null) {
+        try {
+          page = await options.puppeteerBrowser.newPage();
+          await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+          await page.goto('https://medium.com', { waitUntil: 'domcontentloaded', timeout: 5000 })
+        } catch (e) {
+          logError(`Failed to initialize puppeteer page for images: ${e.message}`, 2);
+          if (page) await page.close();
+          page = null;
+        }
+      }
+
       for (let attempt = 0; attempt < maxRetries; attempt++) {
         try {
-          if (options.puppeteerPage) {
-            const page = options.puppeteerPage
-            await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
-
+          if (page) {
             // Use puppeteer to fetch the image buffer via fetch API (avoids download prompt)
             const base64 = await page.evaluate(async (url) => {
               const response = await fetch(url)
@@ -67,14 +100,8 @@ async function downloadImages(images, options = {}) {
             }
             response = Buffer.from(matches[2], 'base64')
           } else {
-            // Download image with 10s timeout
-            const timeoutPromise = new Promise((_, reject) =>
-              setTimeout(() => reject(new Error('Request timed out')), 10000)
-            )
-            const responsePromise = r2.get(image).response
-
-            const res = await Promise.race([responsePromise, timeoutPromise])
-            response = await res.buffer()
+            // Download image with robust timeout
+            response = await fetchWithTimeout(image, 'buffer', 15000);
           }
 
           // Check if the response is actually an HTML error page (Cloudflare)
@@ -105,7 +132,7 @@ async function downloadImages(images, options = {}) {
             response = null
           } else {
             // Wait before next attempt
-            await new Promise(resolve => setTimeout(resolve, 2000 * (attempt + 1)))
+            await new Promise(resolve => setTimeout(resolve, 5000 * (attempt + 1)))
           }
         }
       }
@@ -124,6 +151,11 @@ async function downloadImages(images, options = {}) {
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
   }
+
+  if (page) {
+    await page.close();
+  }
+
   return articleImages
 }
 
@@ -134,7 +166,7 @@ async function loadMediumPost(mediumURL, options = {}) {
   if (mediumURL.match(/^http/i)) {
     mediumURL = mediumURL.replace(/#.*$/, '')
     mediumURL = `${mediumURL}?format=json`
-    const response = await r2.get(mediumURL).text
+    const response = await fetchWithTimeout(mediumURL, 'text', 15000); // Use robust timeout
     const json = JSON.parse(response.substr(response.indexOf('{')))
     mentionedUsers = json.payload.mentionedUsers
     return json
@@ -162,7 +194,7 @@ function processSection(s, slug, images, options = {}) {
 
 // TODO: why is this not used?
 async function getYouTubeEmbed(iframesrc) {
-  const body = await r2.get(iframesrc).text
+  const body = await fetchWithTimeout(iframesrc, 'text', 15000);
   const tokens = body.match(/youtube.com%2Fembed%2F([^%]+)%3F/)
   if (tokens && tokens.length > 1) {
     const videoId = tokens[1]
@@ -188,17 +220,24 @@ async function getMediaEmbed(iframesrc, iframeMetadata, options = {}) {
       try {
         logItem(`media ${iframesrc} (attempt ${attempt + 1})`, 2, YELLOW)
         const url = iframesrc + '?format=json'
-        if (options.puppeteerPage) {
-          const page = options.puppeteerPage
-          await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+        let page = null;
 
-          // Add random delay to seem more human
-          await new Promise(resolve => setTimeout(resolve, Math.random() * 2000 + 1000))
+        if (options.puppeteerBrowser) {
+          try {
+            page = await options.puppeteerBrowser.newPage()
+            await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+            // Add random delay to seem more human
+            await new Promise(resolve => setTimeout(resolve, Math.random() * 2000 + 1000))
 
-          await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 })
-          response = await page.evaluate(() => document.body.innerText)
+            await page.goto(url, { waitUntil: 'networkidle2', timeout: 5000 })
+            response = await page.evaluate(() => document.body.innerText)
+          } catch (e) {
+            throw e;
+          } finally {
+            if (page) await page.close();
+          }
         } else {
-          response = await r2.get(url).text
+          response = await fetchWithTimeout(url, 'text', 15000);
         }
 
         const jsonStart = response.indexOf('{')
@@ -275,10 +314,7 @@ async function getMediaEmbed(iframesrc, iframeMetadata, options = {}) {
           gistCode = fs.readFileSync(cacheFile, 'utf8')
         } else {
           try {
-            // Fetch with simple retry/timeout if needed, but r2 default might suffice for now
-            // or replicate the image download pattern if robust fetch is needed.
-            // For now, simple fetch + save.
-            gistCode = await r2.get(file.raw_url).text
+            gistCode = await fetchWithTimeout(file.raw_url, 'text', 10000);
             fs.writeFileSync(cacheFile, gistCode)
           } catch (err) {
             logError(`Failed to download gist ${file.filename}: ${err}`, 3)
@@ -543,12 +579,6 @@ async function fetchAuthor(mediumUser, options = {}) {
           const url = `https://api.github.com/search/users?q=${encodeURIComponent(q)}&per_page=1`
           // Basic headers, ideally add auth token if rate limits hit
           const headers = { 'User-Agent': 'MediumExporter/1.0' }
-
-          if (options.puppeteerPage) {
-            // Use puppeteer if available to avoid some rate limits or network issues?
-            // Actually search api is public. Let's use r2 for simplicity unless blocked.
-            // But valid User-Agent is important.
-          }
 
           const res = await r2.get(url, { headers }).json
           if (res.items && res.items.length > 0) {

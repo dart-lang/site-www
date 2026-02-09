@@ -64,7 +64,7 @@ module.exports = async function (mediumURL, params = {}) {
         const imgUrl = `${MEDIUM_IMG_CDN}400/${author.imageId}`
         const imageMap = await utils.downloadImages([imgUrl], {
           imageFolder: authorsImgDir,
-          puppeteerPage: options.puppeteerPage
+          puppeteerBrowser: options.puppeteerBrowser
         })
         const imageId = utils.normalizeId(author.imageId)
         if (imageMap[imageId]) {
@@ -72,7 +72,7 @@ module.exports = async function (mediumURL, params = {}) {
         }
       }
 
-      const cleanUsername = author.username.replace(/_\d+$/, '')
+      const cleanUsername = author.username.replaceAll('.', '_').replace(/_\d+$/, '')
 
       // Generate Author YAML
       const authorData = {
@@ -118,7 +118,7 @@ github: ${authorData.github ? `\n  handle: "${authorData.github.handle}"\n  user
     // Use github handle (or username) as the reference key
     if (authors.length > 0) {
       const primary = authors[0]
-      story.author = primary.github ? primary.github.handle : primary.username.replace(/_\d+$/, '')
+      story.author = primary.github ? primary.github.handle : primary.username.replaceAll('.', '_').replace(/_\d+$/, '')
     }
   }
 
@@ -158,7 +158,7 @@ github: ${authorData.github ? `\n  handle: "${authorData.github.handle}"\n  user
     imageMap = await utils.downloadImages(images, {
       featuredImage: story.featuredImage,
       imageFolder: imagesFolder,
-      puppeteerPage: options.puppeteerPage
+      puppeteerBrowser: options.puppeteerBrowser
     })
   }
 
