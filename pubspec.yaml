@@ -3,7 +3,7 @@ publish_to: none
 homepage: https://dart.dev
 
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 workspace:
   - examples
