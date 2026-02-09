@@ -1,10 +1,10 @@
 ---
 title: "Google Summer of Code 2025 Results"
 description: "The Google Summer of Code (GSoC) program focuses on engaging new developers worldwide with open source software development. Google…"
-date: 2025-09-29
-author: "Daco Harkes"
+publishDate: 2025-10-20
+author: "dcharkes"
 image: images/1AWu8hJLDQzrZqv7BxH3byA.png
-category: flutter
+category: other
 tags:
   - flutter
   - dart
@@ -13,8 +13,6 @@ tags:
   - programming
 ---
 
-
-## Google Summer of Code 2025 Results
 
 The [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) program focuses on engaging new developers worldwide with open source software development. Google sponsors contributors to work with a mentoring open source organization on a 12-week programming project during the summer. Over the past 20 years, more than 20,000 contributors have participated in Google Summer of Code.
 

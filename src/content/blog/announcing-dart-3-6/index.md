@@ -1,18 +1,16 @@
 ---
 title: "Announcing Dart 3.6"
 description: "Welcome to Dart 3.6! Today is our last release of the year, alongside Flutter 3.27. We’re excited to share a new feature in the language…"
-date: 2024-12-10
-author: "Marya Belanger"
+publishDate: 2024-12-11
+author: "mbelanger"
 image: images/0pojZOcfCeFztkEzK.png
-category: dart
+category: other
 tags:
   - dart
   - dartlang
   - flutter
 ---
 
-
-## Announcing Dart 3.6
 
 Welcome to Dart 3.6! Today is our last release of the year, alongside [Flutter 3.27](https://medium.com/flutter/whats-new-in-flutter-3-27-28341129570c). We’re excited to share a new feature in the language,* digit separators*. We also have several new features in the pub ecosystem: *pub download counts*, and the highly anticipated* pub workspaces*!
 

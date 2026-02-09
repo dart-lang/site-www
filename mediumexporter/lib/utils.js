@@ -31,27 +31,49 @@ async function downloadImages(images, options = {}) {
     let file = sanitize(normalizeId(sourceId))
     const maxRetries = 3
     let response
-
-    console.log('image', image, file)
+    let fetched = false
 
     // Better cache check: find any file in cache starting with sourceId (ignoring extension for now if we don't know it)
     const existingCacheFile = fs.readdirSync(CACHE_DIR).find(f => f.startsWith(file))
     if (existingCacheFile) {
-      console.log('Using cached image:', existingCacheFile)
+      logItem(`Using cached image: ${existingCacheFile}`, 2, DIM)
       response = fs.readFileSync(path.join(CACHE_DIR, existingCacheFile))
       file = existingCacheFile
     } else {
+      fetched = true
       for (let attempt = 0; attempt < maxRetries; attempt++) {
         try {
           if (options.puppeteerPage) {
             const page = options.puppeteerPage
             await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
 
-            // Use puppeteer to fetch the image buffer
-            const viewSource = await page.goto(image, { waitUntil: 'networkidle2', timeout: 30000 })
-            response = await viewSource.buffer()
+            // Use puppeteer to fetch the image buffer via fetch API (avoids download prompt)
+            const base64 = await page.evaluate(async (url) => {
+              const response = await fetch(url)
+              if (!response.ok) throw new Error(`HTTP ${response.status}`)
+              const blob = await response.blob()
+              return new Promise((resolve, reject) => {
+                const reader = new FileReader()
+                reader.onloadend = () => resolve(reader.result)
+                reader.onerror = reject
+                reader.readAsDataURL(blob)
+              })
+            }, image)
+
+            // Parse base64
+            const matches = base64.match(/^data:(.+?);base64,(.+)$/)
+            if (!matches) {
+              throw new Error('Invalid base64 response from fetch')
+            }
+            response = Buffer.from(matches[2], 'base64')
           } else {
-            const res = await r2.get(image).response
+            // Download image with 10s timeout
+            const timeoutPromise = new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('Request timed out')), 10000)
+            )
+            const responsePromise = r2.get(image).response
+
+            const res = await Promise.race([responsePromise, timeoutPromise])
             response = await res.buffer()
           }
 
@@ -76,9 +98,9 @@ async function downloadImages(images, options = {}) {
           fs.writeFileSync(path.join(CACHE_DIR, file), response)
           break // Success
         } catch (err) {
-          console.error(`Attempt ${attempt + 1} to download image ${file} failed: ${err.message}`)
+          logError(`Attempt ${attempt + 1} to download image ${file} failed: ${err.message}`, 2)
           if (attempt === maxRetries - 1) {
-            console.error(`Failed to download image ${file} after ${maxRetries} attempts.`)
+            logError(`Failed to download image ${file} after ${maxRetries} attempts.`, 2)
             logFailure(image)
             response = null
           } else {
@@ -91,8 +113,16 @@ async function downloadImages(images, options = {}) {
 
     if (!response) continue
 
+    if (options.imageFolder && !fs.existsSync(options.imageFolder)) {
+      fs.mkdirSync(options.imageFolder, { recursive: true })
+    }
     fs.writeFileSync(`${options.imageFolder}/${file}`, response)
     articleImages[normalizeId(sourceId)] = file
+
+    // Add a small delay between images to be nice to the server and avoid easy blocking
+    if (fetched) {
+      await new Promise(resolve => setTimeout(resolve, 1000))
+    }
   }
   return articleImages
 }
@@ -151,12 +181,12 @@ async function getMediaEmbed(iframesrc, iframeMetadata, options = {}) {
 
   // Check cache first
   if (fs.existsSync(cacheFile)) {
-    console.log('Using cached media JSON:', resourceId)
+    logItem(`Using cached media JSON: ${resourceId}`, 2, DIM)
     response = fs.readFileSync(cacheFile, 'utf8')
   } else {
     for (let attempt = 0; attempt < maxRetries; attempt++) {
       try {
-        console.log(`media ${iframesrc} (attempt ${attempt + 1})`)
+        logItem(`media ${iframesrc} (attempt ${attempt + 1})`, 2, YELLOW)
         const url = iframesrc + '?format=json'
         if (options.puppeteerPage) {
           const page = options.puppeteerPage
@@ -182,7 +212,7 @@ async function getMediaEmbed(iframesrc, iframeMetadata, options = {}) {
           throw new Error('No JSON found in response after multiple attempts')
         }
       } catch (err) {
-        console.error(`Attempt ${attempt + 1} failed: ${err.message}`)
+        logError(`Attempt ${attempt + 1} failed: ${err.message}`, 2)
         if (attempt === maxRetries - 1) {
           logFailure(iframesrc)
           return `[Embed error after ${maxRetries} attempts: ${err.message}]`
@@ -204,15 +234,57 @@ async function getMediaEmbed(iframesrc, iframeMetadata, options = {}) {
     }
 
     const scriptsrc = `https://api.github.com/gists/${gist.gistId}`
-    console.log('gistsrc', scriptsrc)
-    let gistJson = await r2.get(scriptsrc).json
+    logItem(`Gist source: ${scriptsrc}`, 2, DIM)
+
+    const GISTS_CACHE_DIR = path.join(__dirname, '..', 'artifacts', 'cache', 'gists')
+    ensureDir(GISTS_CACHE_DIR)
+
+    // Cache the gist metadata (file list)
+    const gistMetaCache = path.join(GISTS_CACHE_DIR, `${gist.gistId}.json`)
+    let gistJson
+
+    if (fs.existsSync(gistMetaCache)) {
+      logItem(`Using cached gist metadata: ${gist.gistId}`, 2, DIM)
+      gistJson = JSON.parse(fs.readFileSync(gistMetaCache, 'utf8'))
+    } else {
+      try {
+        gistJson = await r2.get(scriptsrc).json
+        fs.writeFileSync(gistMetaCache, JSON.stringify(gistJson, null, 2))
+      } catch (err) {
+        logError(`Failed to fetch gist metadata ${gist.gistId}: ${err}`, 2)
+        return `[Gist error: ${err.message}]`
+      }
+    }
+
     let mdSoureCode = ''
+
     for (const key in gistJson.files) {
       if (gistJson.files.hasOwnProperty(key)) {
         const file = gistJson.files[key]
-        const language = file.language.toLowerCase()
-        console.log('gistCode', file.raw_url)
-        let gistCode = await r2.get(file.raw_url).text
+        const language = (file.language || 'text').toLowerCase()
+        logItem(`Gist file: ${file.filename}`, 3, DIM)
+
+        // Cache per gist
+        const gistDir = path.join(GISTS_CACHE_DIR, gist.gistId)
+        ensureDir(gistDir)
+        const cacheFile = path.join(gistDir, file.filename)
+
+        let gistCode
+        if (fs.existsSync(cacheFile)) {
+          logItem(`Using cached gist: ${gist.gistId}/${file.filename}`, 3, DIM)
+          gistCode = fs.readFileSync(cacheFile, 'utf8')
+        } else {
+          try {
+            // Fetch with simple retry/timeout if needed, but r2 default might suffice for now
+            // or replicate the image download pattern if robust fetch is needed.
+            // For now, simple fetch + save.
+            gistCode = await r2.get(file.raw_url).text
+            fs.writeFileSync(cacheFile, gistCode)
+          } catch (err) {
+            logError(`Failed to download gist ${file.filename}: ${err}`, 3)
+            continue
+          }
+        }
 
         mdSoureCode += '\n```' + language + '\n'
         mdSoureCode += gistCode.replace(/\t/g, '  ')
@@ -398,10 +470,154 @@ function createMarkupsArray(markups) {
   return markups_array
 }
 
+// Logging Helpers
+const RESET = '\x1b[0m'
+const RED = '\x1b[31m'
+const GREEN = '\x1b[32m'
+const YELLOW = '\x1b[33m'
+const BLUE = '\x1b[34m'
+const DIM = '\x1b[2m'
+const BOLD = '\x1b[1m'
+
+function log(msg, indent = 0, color = null) {
+  const prefix = ' '.repeat(indent)
+  const coloredMsg = color ? `${color}${msg}${RESET}` : msg
+  console.log(`${prefix}${coloredMsg}`)
+}
+
+function logHeader(msg) {
+  log(msg, 0, BOLD + BLUE)
+}
+
+function logItem(msg, indent = 1, color = null) {
+  log(msg, indent * 2, color)
+}
+
+function logSuccess(msg, indent = 1) {
+  log(`✓ ${msg}`, indent * 2, GREEN)
+}
+
+function logError(msg, indent = 1) {
+  console.error(`${' '.repeat(indent * 2)}${RED}✗ ${msg}${RESET}`)
+}
+
+const AUTHORS_CACHE_DIR = path.join(__dirname, '..', 'artifacts', 'cache', 'authors')
+const GITHUB_MAPPING_FILE = path.join(__dirname, '..', 'artifacts', 'username-to-github.json')
+
+function getGithubMapping() {
+  if (fs.existsSync(GITHUB_MAPPING_FILE)) {
+    return JSON.parse(fs.readFileSync(GITHUB_MAPPING_FILE, 'utf8'))
+  }
+  return {}
+}
+
+function saveGithubMapping(mapping) {
+  ensureDir(path.dirname(GITHUB_MAPPING_FILE))
+  fs.writeFileSync(GITHUB_MAPPING_FILE, JSON.stringify(mapping, null, 2))
+}
+
+async function fetchAuthor(mediumUser, options = {}) {
+  ensureDir(AUTHORS_CACHE_DIR)
+
+  const mapping = getGithubMapping()
+  let githubHandle = mapping[mediumUser.username]
+
+  // Step 2: Check Cache / Fetch Github for handle if not mapped
+  if (githubHandle === undefined) {
+    const searchCacheFile = path.join(AUTHORS_CACHE_DIR, `${mediumUser.username}_search.json`)
+    let searchResults
+
+    if (fs.existsSync(searchCacheFile)) {
+      logItem(`Using cached github search for ${mediumUser.username}`, 2, DIM)
+      searchResults = JSON.parse(fs.readFileSync(searchCacheFile, 'utf8'))
+    } else {
+      logItem(`Searching Github for ${mediumUser.username}...`, 2, YELLOW)
+      try {
+        // Try username first, then name
+        const queries = [mediumUser.username, mediumUser.name]
+        for (const q of queries) {
+          if (!q) continue
+          const url = `https://api.github.com/search/users?q=${encodeURIComponent(q)}&per_page=1`
+          // Basic headers, ideally add auth token if rate limits hit
+          const headers = { 'User-Agent': 'MediumExporter/1.0' }
+
+          if (options.puppeteerPage) {
+            // Use puppeteer if available to avoid some rate limits or network issues?
+            // Actually search api is public. Let's use r2 for simplicity unless blocked.
+            // But valid User-Agent is important.
+          }
+
+          const res = await r2.get(url, { headers }).json
+          if (res.items && res.items.length > 0) {
+            searchResults = res
+            break
+          }
+          // Wait a bit between queries to be nice
+          await new Promise(resolve => setTimeout(resolve, 1000))
+        }
+
+        if (!searchResults) {
+          searchResults = { items: [] } // No results found
+        }
+
+        fs.writeFileSync(searchCacheFile, JSON.stringify(searchResults, null, 2))
+
+      } catch (err) {
+        logError(`Failed to search github for ${mediumUser.username}: ${err.message}`, 2)
+        searchResults = { items: [] }
+      }
+    }
+
+    if (searchResults && searchResults.items && searchResults.items.length > 0) {
+      githubHandle = searchResults.items[0].login
+      logSuccess(`Found github handle: ${githubHandle}`, 2)
+    } else {
+      githubHandle = "" // Mark as not found
+      logItem(`No github handle found for ${mediumUser.username}`, 2, DIM)
+    }
+
+    mapping[mediumUser.username] = githubHandle
+    saveGithubMapping(mapping)
+  }
+
+  let githubData = null
+  if (githubHandle) {
+    const githubCacheFile = path.join(AUTHORS_CACHE_DIR, `${githubHandle}_github.json`)
+    if (fs.existsSync(githubCacheFile)) {
+      logItem(`Using cached github user data for ${githubHandle}`, 2, DIM)
+      githubData = JSON.parse(fs.readFileSync(githubCacheFile, 'utf8'))
+    } else {
+      logItem(`Fetching Github user data for ${githubHandle}...`, 2, YELLOW)
+      try {
+        const url = `https://api.github.com/users/${githubHandle}`
+        const headers = { 'User-Agent': 'MediumExporter/1.0' }
+        const res = await r2.get(url, { headers }).json
+        githubData = res
+        fs.writeFileSync(githubCacheFile, JSON.stringify(githubData, null, 2))
+      } catch (err) {
+        logError(`Failed to fetch github user ${githubHandle}: ${err.message}`, 2)
+      }
+    }
+  }
+
+  return {
+    ...mediumUser,
+    github: githubData ? {
+      handle: githubData.login,
+      username: githubData.name || githubData.login,
+      avatar_url: githubData.avatar_url
+    } : null
+  }
+}
+
 module.exports = exports = {
   downloadImages,
   loadMediumPost,
   processParagraph,
   processSection,
-  normalizeId
+  normalizeId,
+  fetchAuthor,
+  // Export Logger
+  log, logHeader, logItem, logSuccess, logError,
+  RESET, RED, GREEN, YELLOW, BLUE, DIM, BOLD
 }

@@ -1,10 +1,10 @@
 ---
 title: "Dart in Google Summer of Code 2024"
 description: "The Google Summer of Code (GSoC) program focuses on bringing student developers from around the world into open source software…"
-date: 2024-02-22
-author: "Jonas Finnemann Jensen"
+publishDate: 2024-03-05
+author: "jonasfj"
 image: images/169jdaJUqgu_phIVF4w-7_A.png
-category: dartlang
+category: other
 tags:
   - dartlang
   - flutter
@@ -12,8 +12,6 @@ tags:
   - google-summer-of-code
 ---
 
-
-## Dart in Google Summer of Code 2024
 
 ![](images/169jdaJUqgu_phIVF4w-7_A.png)
 

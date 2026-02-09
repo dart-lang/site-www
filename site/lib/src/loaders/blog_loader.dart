@@ -1,14 +1,7 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
-
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as p;
 
 class BlogDataLoader implements DataLoader {
-  // Simple memory cache for GitHub users to avoid hitting rate limits.
-  final githubCache = <String, Map<String, String>>{};
-
   @override
   Future<void> loadData(Page page) async {
     if (!page.path.startsWith('blog/')) return;
@@ -19,46 +12,22 @@ class BlogDataLoader implements DataLoader {
       },
     );
 
-    var authorName = page.data.page['author'] as String? ?? 'Dart Team';
-    // String? avatarUrl;
-    // String? profileUrl;
-    final handle = page.data.page['github_handle'] as String?;
+    final handle =
+        page.data.page['author']
+            as String?; // The 'author' field in frontmatter is the username/handle
 
-    if (handle != null) {
-      // profileUrl = 'https://github.com/$handle';
-      // avatarUrl = 'https://github.com/$handle.png';
+    // Check for author data from YAML (loaded into page.data['authors'])
+    final authors = page.data['authors'] as Map<String, dynamic>?;
 
-      // Try to fetch real name if not in cache
-      if (githubCache.containsKey(handle)) {
-        authorName = githubCache[handle]!['name']!;
-      } else {
-        try {
-          // Note: In a real CI/CD environment, you'd want a GITHUB_TOKEN here.
-          // For local dev/static sites, unauthenticated requests usually suffice
-          // for small volume.
-          final url = Uri.parse('https://api.github.com/users/$handle');
-          final response = await http.get(
-            url,
-            headers: {
-              // User-Agent is required by GitHub API
-              'User-Agent': 'Dart-Blog-Loader',
-              'Accept': 'application/vnd.github.v3+json',
-            },
-          );
+    if (handle != null && authors != null && authors.containsKey(handle)) {
+      final authorData = authors[handle] as Map<String, dynamic>;
 
-          if (response.statusCode == 200) {
-            final data = jsonDecode(response.body) as Map<String, dynamic>;
-            if (data['name'] != null) {
-              authorName = data['name'] as String;
-            }
-          }
-          // Cache the result (even if failed, to avoid retrying)
-          githubCache[handle] = {'name': authorName};
-        } catch (e) {
-          print('Failed to fetch GitHub data for $handle: $e');
-          // Fallback is already set to default or whatever we have
-        }
-      }
+      // Pass this data to the page for the layout to use
+      page.apply(data: {'author_data': authorData});
+    } else if (handle != null) {
+      // Fallback or explicit github handle handling if needed,
+      // but for now we assume the author field maps to a yaml entry.
+      // The previous logic used 'github_handle' but get-post.js sets 'author' to the username/handle.
     }
 
     final image = page.data.page['image'] as String?;

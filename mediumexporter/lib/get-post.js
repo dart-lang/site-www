@@ -1,4 +1,5 @@
 const utils = require('./utils')
+const { logItem, logError, logSuccess, DIM, YELLOW } = utils
 const path = require('path')
 const fs = require('fs')
 const r2 = require('r2')
@@ -12,7 +13,7 @@ function createFolder(path) {
     }
   } catch (err) {
     // may exist already, ignore
-    console.error(err)
+    logError(err, 1)
   }
   return
 }
@@ -29,8 +30,7 @@ module.exports = async function (mediumURL, params = {}) {
 
   story.title = s.title
   story.subtitle = s.virtuals.subtitle ? s.virtuals.subtitle.trim() : ''
-  story.author = s.displayAuthor
-  story.date = new Date(s.createdAt).toJSON()
+  story.publishDate = new Date(s.firstPublishedAt).toJSON()
   story.slug = s.slug
   story.url = s.canonicalUrl
   story.images = []
@@ -45,18 +45,80 @@ module.exports = async function (mediumURL, params = {}) {
   // If the author's not available, get it from somewhere else
   let authors = []
   if (json.payload.references && json.payload.references.User) {
-    Object.keys(json.payload.references.User).forEach(k => {
+    for (const k of Object.keys(json.payload.references.User)) {
       let u = json.payload.references.User[k]
+      const author = await utils.fetchAuthor(u, options)
+
       authors.push({
-        name: u.name,
-        username: u.username,
-        userId: u.userId
+        name: author.name,
+        username: author.username,
+        userId: author.userId,
+        github: author.github
       })
-    })
+
+      // Download Author Image
+      let localImage = ''
+      if (author.imageId) {
+        const authorsImgDir = path.join(__dirname, '..', '..', 'src', 'content', 'blog', 'authors')
+        const MEDIUM_IMG_CDN = 'https://cdn-images-1.medium.com/max/'
+        const imgUrl = `${MEDIUM_IMG_CDN}400/${author.imageId}`
+        const imageMap = await utils.downloadImages([imgUrl], {
+          imageFolder: authorsImgDir,
+          puppeteerPage: options.puppeteerPage
+        })
+        const imageId = utils.normalizeId(author.imageId)
+        if (imageMap[imageId]) {
+          localImage = imageMap[imageId]
+        }
+      }
+
+      const cleanUsername = author.username.replace(/_\d+$/, '')
+
+      // Generate Author YAML
+      const authorData = {
+        name: author.name,
+        username: cleanUsername,
+        bio: author.bio || '',
+        image: localImage,
+        twitter: author.twitterScreenName || ''
+      }
+
+      if (author.github) {
+        authorData.github = {
+          handle: author.github.handle,
+          username: author.github.username,
+          avatar_url: author.github.avatar_url
+        }
+      }
+
+      const authorYaml =
+        `name: "${authorData.name.replace(/"/g, '\\"')}"
+username: "${authorData.username}"
+bio: "${authorData.bio.replace(/"/g, '\\"').replace(/\n/g, ' ')}"
+image: "${authorData.image}"
+twitter: "${authorData.twitter}"
+github: ${authorData.github ? `\n  handle: "${authorData.github.handle}"\n  username: "${authorData.github.username.replace(/"/g, '\\"')}"\n  avatar_url: "${authorData.github.avatar_url}"` : 'null'}
+`
+      const authorsDir = path.join(__dirname, '..', '..', 'src', 'data', 'authors')
+      try {
+        if (!fs.existsSync(authorsDir)) {
+          fs.mkdirSync(authorsDir, { recursive: true })
+        }
+
+        // Use github handle as filename if available, otherwise fallback to medium username
+        const filename = authorData.github ? authorData.github.handle : cleanUsername
+        fs.writeFileSync(path.join(authorsDir, `${filename}.yaml`), authorYaml)
+      } catch (err) {
+        logError(`Failed to write author yaml for ${author.username}: ${err}`, 1)
+      }
+    }
+
     story.authors = authors
 
-    if (!story.author) {
-      story.author = authors[0].name
+    // Use github handle (or username) as the reference key
+    if (authors.length > 0) {
+      const primary = authors[0]
+      story.author = primary.github ? primary.github.handle : primary.username.replace(/_\d+$/, '')
     }
   }
 
@@ -114,6 +176,10 @@ module.exports = async function (mediumURL, params = {}) {
 
   let lastParagraph = null
   story.paragraphs = story.paragraphs.filter((p, idx) => {
+    // Filter out title and subtitle if they appear at the start
+    if (idx === 0 && p.text === story.title) return false
+    if (idx < 2 && story.subtitle && p.text === story.subtitle) return false
+
     if (p.type === 8 && lastParagraph && lastParagraph.type === 8) {
       lastParagraph.text += '\n\n' + p.text
       return false
@@ -147,7 +213,7 @@ module.exports = async function (mediumURL, params = {}) {
     outputText = '---\n'
     outputText += `title: "${story.title.replace(/"/g, '\\"')}"\n`
     outputText += `description: "${story.subtitle.replace(/"/g, '\\"')}"\n`
-    outputText += `date: ${story.date.slice(0, 10)}\n`
+    outputText += `publishDate: ${story.publishDate.slice(0, 10)}\n`
     outputText += `author: "${story.author}"\n`
 
     if (story.featuredImage) {
@@ -159,8 +225,8 @@ module.exports = async function (mediumURL, params = {}) {
 
     const tags = story.tags || []
     if (tags.length > 0) {
-      // Use first tag as category
-      outputText += `category: ${tags[0]}\n`
+      const category = tags.includes('announcements') ? 'announcements' : 'other'
+      outputText += `category: ${category}\n`
       outputText += 'tags:\n'
       for (const tag of tags) {
         outputText += `  - ${tag}\n`

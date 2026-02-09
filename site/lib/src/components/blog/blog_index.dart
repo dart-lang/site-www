@@ -15,20 +15,20 @@ class BlogIndex extends StatelessComponent {
         .where((page) => page.url.startsWith('/blog/'))
         .sortedBy(
           (page) =>
-              DateTime.tryParse(page.data.page['date'] as String? ?? '') ??
+              DateTime.tryParse(
+                page.data.page['publishDate'] as String? ?? '',
+              ) ??
               DateTime(1970),
         )
         .reversed
         .map(
           (page) => {
             'title': page.data.page['title'] ?? 'Untitled',
-            'date': page.data.page['date'] ?? '',
+            'publishDate': page.data.page['publishDate'] ?? '',
             'description': page.data.page['description'] ?? '',
             'href': page.url,
             'image': page.data.page['image'],
             'author': page.data.page['author'],
-            // 'avatar': avatarUrl,
-            // 'author_url': profileUrl,
             'category':
                 (page.data.page['category'] as String?)?.toLowerCase() ?? 'all',
           },

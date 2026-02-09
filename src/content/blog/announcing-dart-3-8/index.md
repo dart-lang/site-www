@@ -1,10 +1,10 @@
 ---
 title: "Announcing Dart 3.8"
 description: "This release brings formatter updates, null-aware elements for collections, new cross-platform development capabilities, a better way to…"
-date: 2025-05-13
-author: "Amanda Fitch"
+publishDate: 2025-05-20
+author: "antfitch"
 image: images/1cTcqAst5m1Vn6k71VWgTrQ.gif
-category: dart
+category: announcements
 tags:
   - dart
   - flutter
@@ -12,8 +12,6 @@ tags:
   - announcements
 ---
 
-
-## Announcing Dart 3.8
 
 This release brings formatter updates, null-aware elements for collections, new cross-platform development capabilities, a better way to find trending packages on pub.dev, availability of hot reload on the web, and more! We’re also hoping there are a few developers out there who are interested in joining our FFigen and JNIgen early access program.
 

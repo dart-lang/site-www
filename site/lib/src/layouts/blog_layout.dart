@@ -6,10 +6,8 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../components/blog/author_card.dart';
 import '../components/common/breadcrumbs.dart';
-import '../components/layout/toc.dart';
-import '../components/layout/trailing_content.dart';
-import '../models/on_this_page_model.dart';
 import '../util.dart';
 import 'dash_layout.dart';
 
@@ -28,45 +26,44 @@ class BlogLayout extends DashLayout {
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
     final pageTitle = pageData['title'] as String? ?? 'Untitled';
-    final tocData = OnThisPageData.fromPage(page);
+
+    final authorData = page.data['author_data'] as Map<String, dynamic>?;
 
     return super.buildBody(
       page,
-      Component.fragment(
-        [
-          if (tocData == null)
-            const Document.body(attributes: {'data-toc': 'false'})
-          else
-            NarrowTableOfContents(
-              tocData,
-              currentTitle: pageTitle,
-            ),
-          ?buildBanner(page),
-          div(classes: 'after-leading-content', [
-            if (tocData != null)
-              aside(id: 'side-menu', [
-                WideTableOfContents(tocData),
-              ]),
-            article([
-              div(classes: 'content', [
-                div(id: 'site-content-title', [
-                  h1(id: 'document-title', [
-                    if (pageData['underscore_breaker_titles'] == true)
-                      ...splitByUnderscore(pageTitle)
-                    else
-                      .text(pageTitle),
-                  ]),
-                  if (pageData['showBreadcrumbs'] != false)
-                    const PageBreadcrumbs(),
+      .fragment([
+        const Document.body(attributes: {'data-toc': 'false'}),
+        ?buildBanner(page),
+        div(classes: 'after-leading-content', [
+          article([
+            div(classes: 'content', [
+              div(id: 'site-content-title', [
+                if (pageData['showBreadcrumbs'] != false)
+                  const PageBreadcrumbs(),
+                h1(id: 'document-title', [
+                  if (pageData['underscore_breaker_titles'] == true)
+                    ...splitByUnderscore(pageTitle)
+                  else
+                    .text(pageTitle),
                 ]),
-
-                child,
-                const TrailingContent(),
+                if (pageData['description'] != null)
+                  p(classes: 'subtitle', [
+                    .text(pageData['description'] as String),
+                  ]),
               ]),
+              if (authorData != null)
+                AuthorCard(
+                  name: authorData['name'] as String,
+                  bio: authorData['bio'] as String,
+                  image: authorData['image'] as String?,
+                  twitter: authorData['twitter'] as String?,
+                  github: authorData['github'] as Map<String, dynamic>?,
+                ),
+              child,
             ]),
           ]),
-        ],
-      ),
+        ]),
+      ]),
     );
   }
 }

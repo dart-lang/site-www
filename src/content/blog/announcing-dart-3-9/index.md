@@ -1,20 +1,16 @@
 ---
 title: "Announcing Dart 3.9"
 description: "Hello, Dart developers! The latest stable version, Dart 3.9, is officially here!"
-date: 2025-08-07
-author: "Amanda Fitch"
+publishDate: 2025-08-14
+author: "antfitch"
 image: images/1VIHR_FuzQzulhqczfx8eAA.gif
-category: dart
+category: other
 tags:
   - dart
   - flutter
   - mcp-server
 ---
 
-
-## Announcing Dart 3.9
-
-Hello, Dart developers! The latest stable version, **Dart 3.9**, is officially here!
 
 This release is all about making your work easier and your apps more efficient. With key updates to null safety, performance boosts to the Dart CLI, and the exciting addition of the Dart and Flutter MCP Server to empower your AI assistants, there’s a lot to love. Read on to discover everything that’s new in Dart 3.9.
 

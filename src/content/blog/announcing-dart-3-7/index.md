@@ -1,10 +1,10 @@
 ---
 title: "Announcing Dart 3.7"
 description: "It’s a new year, and time for a new Dart stable release. Welcome to Dart 3.7!"
-date: 2025-02-11
-author: "Marya Belanger"
+publishDate: 2025-02-12
+author: "mbelanger"
 image: images/1tdCaUfGrIk42FIuu2qs9Yw.gif
-category: dart
+category: announcements
 tags:
   - dart
   - dartlang
@@ -12,10 +12,6 @@ tags:
   - announcements
 ---
 
-
-## Announcing Dart 3.7
-
-It’s a new year, and time for a new Dart stable release. Welcome to Dart 3.7!
 
 The theme for this release is *developer productivity*. We’ve made the Dart language more consistent by tweaking how it handles wildcard variables. There’s also a brand new style in the Dart formatter, new quick fixes and lints in the analyzer, and several cool new features on pub.dev. Let’s get into the details!
 

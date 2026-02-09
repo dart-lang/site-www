@@ -6,7 +6,10 @@ class ImagePathProcessor implements PageExtension {
 
   @override
   Future<List<Node>> apply(Page page, List<Node> nodes) async {
-    return _processNodes(nodes, page);
+    if (page.path.startsWith('blog/')) {
+      return _processNodes(nodes, page);
+    }
+    return nodes;
   }
 
   List<Node> _processNodes(List<Node> nodes, Page page) {

@@ -1,8 +1,8 @@
 ---
 title: "Announcing Dart 3.10"
 description: "Today, we’re excited to announce the release of Dart 3.10!"
-date: 2025-11-10
-author: "Amanda Fitch"
+publishDate: 2025-11-12
+author: "antfitch"
 image: images/1AyAyohCAvBT-ta-nJPrkEg.png
 category: announcements
 tags:
@@ -11,10 +11,6 @@ tags:
   - releases
 ---
 
-
-## Announcing Dart 3.10
-
-Today, we’re excited to announce the release of Dart 3.10!
 
 ![Announcing Dart 3.10](images/1AyAyohCAvBT-ta-nJPrkEg.png)*Announcing Dart 3.10*
 

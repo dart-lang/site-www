@@ -18,10 +18,8 @@ class _BlogListState extends State<BlogList> {
 
   static const categories = [
     'all',
-    'spotlight',
-    'events',
-    'releases',
-    'tutorials',
+    'announcements',
+    'other',
   ];
 
   @override
@@ -63,13 +61,11 @@ class _BlogListState extends State<BlogList> {
       if (featured != null)
         BlogCard(
           title: (featured['title'] as String?) ?? 'Untitled',
-          date: (featured['date'] as String?) ?? '',
+          date: (featured['publishDate'] as String?) ?? '',
           description: (featured['description'] as String?) ?? '',
           href: (featured['href'] as String?) ?? '#',
           image: featured['image'] as String?,
           author: featured['author'] as String?,
-          avatar: featured['avatar'] as String?,
-          authorUrl: featured['author_url'] as String?,
           isFeatured: true,
         ),
 
@@ -78,13 +74,11 @@ class _BlogListState extends State<BlogList> {
           for (final post in others)
             BlogCard(
               title: (post['title'] as String?) ?? 'Untitled',
-              date: (post['date'] as String?) ?? '',
+              date: (post['publishDate'] as String?) ?? '',
               description: (post['description'] as String?) ?? '',
               href: (post['href'] as String?) ?? '#',
               image: post['image'] as String?,
               author: post['author'] as String?,
-              avatar: post['avatar'] as String?,
-              authorUrl: post['author_url'] as String?,
             ),
         ])
       else if (filteredPosts.isEmpty)

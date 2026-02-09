@@ -1,10 +1,10 @@
 ---
 title: "Gemini for DartPad"
 description: "Say hello to Gemini in DartPad!"
-date: 2025-04-07
-author: "Amanda Fitch"
+publishDate: 2025-04-08
+author: "antfitch"
 image: images/1nI_hhzL5l94Pvdtlzs32oA.png
-category: dartpad
+category: announcements
 tags:
   - dartpad
   - gemini
@@ -13,8 +13,6 @@ tags:
   - announcements
 ---
 
-
-## Gemini for DartPad
 
 ### DartPad gets a Gemini boost
 

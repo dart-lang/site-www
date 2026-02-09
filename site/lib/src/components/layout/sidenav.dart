@@ -61,10 +61,11 @@ final class DashSideNav extends StatelessComponent {
           iconId: 'docs',
           active: activeEntry == ActiveNavEntry.docs,
         ),
-        const _TopNavItem(
-          href: 'https://blog.dart.dev',
+        _TopNavItem(
+          href: '/blog',
           label: 'Blog',
           iconId: 'newsmode',
+          active: activeEntry == ActiveNavEntry.blog,
         ),
         _TopNavItem(
           href: '/community',

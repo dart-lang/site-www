@@ -1,18 +1,16 @@
 ---
 title: "History of JS interop in Dart"
 description: "Support for Wasm just landed in the current Flutter beta, thanks to an exciting JavaScript interop milestone reached in Dart 3.3. To…"
-date: 2024-03-27
-author: "Sigmund Cherem"
+publishDate: 2024-03-28
+author: "sigmundch"
 image: images/1dhBQqKXU46sGKjx36LNf0w.jpeg
-category: dart
+category: other
 tags:
   - dart
   - dartlang
   - interoperability
 ---
 
-
-## History of JS interop in Dart
 
 ### Support for Wasm just landed in the current Flutter beta, thanks to an exciting JavaScript interop milestone reached in Dart 3.3. To celebrate, we’re taking a look back at the decade-long journey of Dart and JS interoperability.
 

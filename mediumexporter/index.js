@@ -81,10 +81,17 @@ if (require.main !== module) {
 
     const browser = await puppeteer.launch({ headless: 'new' })
     const page = await browser.newPage()
+    // Navigate to a valid page context to ensure fetch works (avoiding about:blank CORS issues)
+    await page.goto('https://medium.com', { waitUntil: 'domcontentloaded' })
 
+    const { logHeader, logItem, logSuccess, logError, BLUE, BOLD } = require('./lib/utils')
+
+    let i = 0
+    const total = filesToProcess.length
     for (const file of filesToProcess) {
+      i++
       const filePath = path.join(postsDir, file)
-      console.log(`Processing ${file}...`)
+      logHeader(`(${i}/${total}) Processing ${file}...`)
       try {
         await getPost(filePath, {
           ...program,
@@ -92,9 +99,11 @@ if (require.main !== module) {
           puppeteerPage: page
         })
       } catch (err) {
-        console.error(`Error processing ${file}:`, err)
+        logError(`Error processing ${file}: ${err}`)
       }
     }
+
+    logItem(`Processed ${i} posts.`)
 
     await browser.close()
   }

@@ -1,13 +1,11 @@
 ---
 title: "Announcing Dart 3.5, and an update on the Dart roadmap"
 description: "It’s time for another of our quarterly Dart SDK releases. We have improvements in interoperability, new features in our pub.dev package…"
-date: 2024-08-02
-author: "Michael Thomsen"
+publishDate: 2024-08-06
+author: "mit-mit"
 image: images/1PVj9TIzP50I00tavJqAg_Q.gif
 ---
 
-
-## Announcing Dart 3.5, and an update on the Dart roadmap
 
 It’s time for another of our quarterly Dart SDK releases. We have improvements in interoperability, new features in our pub.dev package manager, and we’ve graduated our new web integration APIs to stable and version 1.0.
 

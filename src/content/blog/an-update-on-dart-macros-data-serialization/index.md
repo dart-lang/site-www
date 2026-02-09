@@ -1,12 +1,10 @@
 ---
 title: "An update on Dart macros & data serialization"
 description: "We have invested significant time and resources to prototype macros over the past couple years. Unfortunately, each time we solved a major…"
-date: 2025-01-29
-author: "Vijay Menon"
+publishDate: 2025-01-29
+author: "vijaysmenon"
 ---
 
-
-## An update on Dart macros & data serialization
 
 We have invested significant time and resources to prototype [macros](https://dart.dev/language/macros) over the past couple years. Unfortunately, each time we solved a major technical hurdle, we saw new ones pop up. At this point, we are not seeing macros converging anytime soon toward a feature we are comfortable shipping, with the quality and developer-time performance we want.
 

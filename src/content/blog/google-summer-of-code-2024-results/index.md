@@ -1,10 +1,10 @@
 ---
 title: "Google Summer of Code 2024 Results"
 description: "Results from Dart contributors in Google Summer of Code 2024."
-date: 2024-09-30
-author: "Jonas Finnemann Jensen"
+publishDate: 2024-10-14
+author: "jonasfj"
 image: images/0vm7AfKyip_pXJGCd.png
-category: dartlang
+category: other
 tags:
   - dartlang
   - flutter
@@ -12,8 +12,6 @@ tags:
   - google-summer-of-code
 ---
 
-
-## Google Summer of Code 2024 Results
 
 The [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) program focuses on engaging new developers worldwide with open source software development. Google sponsors contributors to work with a mentoring open source organization on a 12-week programming project during the summer. Over the past 19 years, more than 20,000 contributors have participated in Google Summer of Code.
 

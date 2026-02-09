@@ -1,10 +1,10 @@
 ---
 title: "Announcing Dart 3.4"
 description: "Dart 3.4 is out today! This release showcases the joint efforts of Dart and Flutter together in the Flutter 3.22 / Dart 3.4 / IO24 post, so…"
-date: 2024-05-13
-author: "Michael Thomsen"
+publishDate: 2024-05-14
+author: "mit-mit"
 image: images/0hAcsCFLU0Ze7pej6.png
-category: dart
+category: other
 tags:
   - dart
   - dartlang
@@ -12,8 +12,6 @@ tags:
   - webassembly
 ---
 
-
-## Announcing Dart 3.4
 
 Dart 3.4 is out today! This release showcases the joint efforts of Dart and Flutter together in the [Flutter 3.22 / Dart 3.4 / IO24](https://medium.com/flutter/io24-5e211f708a37) post, so make sure to get the full scoop there. This post introduces our support for WebAssembly, and then details one of the major roadmap items for the Dart language this year: *macros.*
 
@@ -69,7 +67,7 @@ So, how does it work? Where did the `toJson()` method (and the companion `fromJs
 
 All this happens without delay. The integrated experience supports our existing developer workflows, such as hot reload, as this screencast illustrates:
 
-![Screencast showing the experience of using a macro: Initially no toJson code completion exists, but after adding [@JsonCodable](http://twitter.com/JsonCodable) to the class, the toJson code completion shows up immediately.](images/0aOAKYwKdjXURuZN9)*Screencast showing the experience of using a macro: Initially no toJson code completion exists, but after adding [@JsonCodable](http://twitter.com/JsonCodable) to the class, the toJson code completion shows up immediately.*
+![Screencast showing the experience of using a macro: Initially no toJson code completion exists, but after adding [@JsonCodable](http://twitter.com/JsonCodable) to the class, the toJson code completion shows up immediately.](images/0aOAKYwKdjXURuZN9.gif)*Screencast showing the experience of using a macro: Initially no toJson code completion exists, but after adding [@JsonCodable](http://twitter.com/JsonCodable) to the class, the toJson code completion shows up immediately.*
 
 ## Long term macro goals
 
