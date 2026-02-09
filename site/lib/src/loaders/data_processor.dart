@@ -25,7 +25,7 @@ final class DataProcessor implements DataLoader {
       page.apply(
         data: {
           'page': {
-            'date': ?_lastModifiedDateForPath(inputPath),
+            'date': _lastModifiedDateForPath(inputPath),
             'inputPath': inputPath,
             if (page.data.page['sitemap'] == null)
               'sitemap': {
@@ -88,5 +88,7 @@ final Map<String, DateTime> _lastModifiedPerPath = () {
 }();
 
 extension on DateTime {
-  String get formatted => '$year-$month-$day';
+  // Formats the date as YYYY-MM-DD. This format is required for valid sitemaps.
+  String get formatted =>
+      '$year-${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
 }
