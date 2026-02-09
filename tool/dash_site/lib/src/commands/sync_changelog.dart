@@ -254,6 +254,8 @@ final class SyncChangelog extends Command<int> {
 
   /// Generates a YAML string from the given changelog [entries].
   static String _generateYamlString(List<_ChangelogEntry> entries) {
+    // TODO: Investigate using `package:yaml_edit` as a
+    //  more robust editing solution.
     final newYaml = StringBuffer();
 
     // Returns [value] as a plain scalar if it only contains simple characters,
