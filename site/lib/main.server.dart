@@ -15,6 +15,7 @@ import 'src/archive/archive_table.dart';
 import 'src/components/blog/blog_index.dart';
 import 'src/components/common/card.dart';
 import 'src/components/common/dash_image.dart';
+import 'src/components/common/github_embed.dart';
 import 'src/components/common/tabs.dart';
 import 'src/components/common/youtube_embed.dart';
 import 'src/components/pages/changelog/changelog_index.dart';
@@ -137,5 +138,9 @@ List<CustomComponent> get _embeddableComponents => [
   CustomComponent(
     pattern: RegExp('DashImage', caseSensitive: false),
     builder: (_, attrs, _) => DashImage.fromAttributes(attrs),
+  ),
+  CustomComponent(
+    pattern: RegExp('GithubEmbed', caseSensitive: false),
+    builder: (_, attrs, _) => GithubEmbed.fromAttributes(attrs),
   ),
 ];

@@ -64,7 +64,7 @@ Sometimes it’s obvious, but mostly it’s just a perspective shift. Think abou
 
 In this example, the program structure is focused on the `bake` operation. Whatever types `bake` operates on are simply different possible outputs of the same function; `bake` is independent of the types it operates on.
 
-This is the **algebraic data type model **(named “algebraic” after mathematical set theory). It’s the core organizational model of functional languages, in the same way class hierarchies are core to OO languages. Algebraic data types separate behavior from data by grouping behavior for all types together by operation.
+This is the **algebraic data type model** (named “algebraic” after mathematical set theory). It’s the core organizational model of functional languages, in the same way class hierarchies are core to OO languages. Algebraic data types separate behavior from data by grouping behavior for all types together by operation.
 
 And now, it’s possible to cohesively implement algebraic data types with Dart 3!
 

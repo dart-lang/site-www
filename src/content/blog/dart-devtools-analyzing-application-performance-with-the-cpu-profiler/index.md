@@ -179,7 +179,7 @@ Even after processing done by the profiler, the [CPU samples response](https://g
 
 Now that you’re familiar with what sampling CPU profilers are and how they work, let’s debug the performance of our `grep` implementation. Let’s run the code again with `--observe` and open up the Dart DevTools CPU Profiler tab:
 
-***Note:** You don’t need to use the `--observe `flag when testing a Flutter app in DevTools.*
+***Note:** You don’t need to use the `--observe` flag when testing a Flutter app in DevTools.*
 
 ```shell
 $ dart — observe grep.dart hummingbird_encyclopedia.txt 'Hummingbird'

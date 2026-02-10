@@ -58,7 +58,7 @@ As a bonus, we also built a codelab on how to test Flutter apps. You can see a d
 
 The [intl_translation](https://pub.dev/packages/intl_translation) package supports only the ARB file format, which is not widely used outside of Dart. The [intl_translation_format](https://pub.dev/packages/intl_translation_format) package, created during GSoC 2020, builds on intl_translation, adding a `TranslationFormat` class that can support widely varying formats. Developers can add support for additional formats in their own packages and in just a few lines create command-line tools for extraction and generation that integrate with the existing tools. With these, existing translations in other formats, even proprietary ones, can be imported into a Dart project easily and new messages originating in Dart code can be integrated into existing translation tools and workflows.
 
-As a demonstration of these capabilities, the new packages include support for several formats. In addition to ARB, it supports **XLIFF v1.2 (iOS), XLIFF v2.0,** and** JSON with ICU** messages. [Experimental libraries](https://github.com/jamesblasco/intl_translation_format_experiments) show how support for other formats, and even translations that can be updated at runtime, could be implemented.
+As a demonstration of these capabilities, the new packages include support for several formats. In addition to ARB, it supports **XLIFF v1.2 (iOS), XLIFF v2.0,** and **JSON with ICU** messages. [Experimental libraries](https://github.com/jamesblasco/intl_translation_format_experiments) show how support for other formats, and even translations that can be updated at runtime, could be implemented.
 
 ### Platform channels in a mobile app and a federated plugin
 

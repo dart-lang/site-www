@@ -338,6 +338,17 @@ async function getMediaEmbed(iframesrc, iframeMetadata, options = {}) {
   // Fallback for other external links (CodePen, etc.)
   if (json.payload.value.href) {
     let href = json.payload.value.href
+
+    // Check for YouTube
+    if (href.includes('youtube.com') || href.includes('youtu.be')) {
+      const match = href.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i)
+      if (match && match[1]) {
+        const videoId = match[1]
+        const title = (json.payload.value.title || '').replace(/"/g, '&quot;')
+        return `\n<YoutubeEmbed id="${videoId}" title="${title}" fullwidth="true"/>\n`
+      }
+    }
+
     // CodePen specific: change /pen/ to /embed/
     if (href.includes('codepen.io') && href.includes('/pen/')) {
       href = href.replace('/pen/', '/embed/')
@@ -352,7 +363,7 @@ async function getMediaEmbed(iframesrc, iframeMetadata, options = {}) {
 }
 
 async function processParagraph(p, slug, images, options = {}) {
-  const markups_array = createMarkupsArray(p.markups)
+  const markups_array = createMarkupsArray(p.markups, p.text)
   let processedText = p.text || ''
 
   if (markups_array.length > 0) {
@@ -424,6 +435,28 @@ async function processParagraph(p, slug, images, options = {}) {
     case 13:
       markup = '\n### '
       break
+    case 14: // mixtape / github embed
+      if (p.mixtapeMetadata && p.mixtapeMetadata.href && p.mixtapeMetadata.href.includes('github.com')) {
+        const repoMatch = p.mixtapeMetadata.href.match(/github\.com\/([^\/]+\/[^\/]+)/)
+        if (repoMatch) {
+          const repo = repoMatch[1]
+          const lines = (p.text || '').split('\n')
+          const title = (lines.length > 1 ? lines[1] : lines[0]).replace(/github\.com$/, '').trim().replace(/"/g, '&quot;')
+
+          let imageAttr = ''
+          if (p.mixtapeMetadata.thumbnailImageId) {
+            const imgsrc = MEDIUM_IMG_CDN + '800/' + p.mixtapeMetadata.thumbnailImageId
+            images.push(imgsrc)
+            const fileName = (options.imageMap && options.imageMap[normalizeId(p.mixtapeMetadata.thumbnailImageId)]) || normalizeId(p.mixtapeMetadata.thumbnailImageId)
+            imageAttr = ` image="images/${fileName}"`
+          }
+
+          processedText = `\n<GithubEmbed repo="${repo}" title="${title}"${imageAttr} />\n`
+          break
+        }
+      }
+      markup = '\n'
+      break
     case 15: // caption for section image
       processedText = '*' + processedText + '*'
       break
@@ -447,8 +480,9 @@ function addMarkup(markups_array, open, close, start, end) {
   return markups_array
 }
 
-function createMarkupsArray(markups) {
+function createMarkupsArray(markups, text) {
   if (!markups || markups.length == 0) return []
+  text = text || ''
 
   // Sort markups: outermost (larger span) first.
   // If spans are equal, use priority: Link (3) > Bold (1) > Italic (2) > Code (10)
@@ -467,12 +501,21 @@ function createMarkupsArray(markups) {
   const markups_array = []
   for (let j = 0; j < sortedMarkups.length; j++) {
     const m = sortedMarkups[j]
+    let start = m.start
+    let end = m.end
+
+    // For formatting tags, exclude leading/trailing whitespace
+    if (m.type === 1 || m.type === 2 || m.type === 10) {
+      while (start < end && /\s/.test(text[start])) start++
+      while (end > start && /\s/.test(text[end - 1])) end--
+    }
+
     switch (m.type) {
       case 1: // bold
-        addMarkup(markups_array, '**', '**', m.start, m.end)
+        addMarkup(markups_array, '**', '**', start, end)
         break
       case 2: // italic
-        addMarkup(markups_array, '*', '*', m.start, m.end)
+        addMarkup(markups_array, '*', '*', start, end)
         break
       case 3: // anchor tag
         if (m.userId) {
@@ -499,7 +542,7 @@ function createMarkupsArray(markups) {
         }
         break
       case 10: // code
-        addMarkup(markups_array, '`', '`', m.start, m.end)
+        addMarkup(markups_array, '`', '`', start, end)
         break
       default:
         console.error('Unknown markup type ' + m.type, m)

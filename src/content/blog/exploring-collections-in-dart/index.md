@@ -281,7 +281,7 @@ Widget build(BuildContext context) {
 ```
 
 
-The first snippet converts the `Article` class into a collection of `ArticleWidget` objects using `map()`, and then applies the spread operator to expand them into the surrounding list. In the second example, the *collection for *operator lets you express this a little more succinctly.
+The first snippet converts the `Article` class into a collection of `ArticleWidget` objects using `map()`, and then applies the spread operator to expand them into the surrounding list. In the second example, the *collection for* operator lets you express this a little more succinctly.
 
 ### A larger build() method
 

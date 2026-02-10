@@ -63,7 +63,7 @@ import 'package:js/js.dart' as JS; // LINT`
 
 ## Redundant lints
 
-Most lints are extremely fast to compute, but they’re not quite free. So a lint needs to pull its weight; it needs to offer enough value. For example, we rejected the [empty_statements](https://dart-lang.github.io/linter/lints/empty_statements.html) lint on the grounds that using `dartfmt `makes empty statements easy to spot. They’re unlikely to get written by mistake, and so the lint is redundant.
+Most lints are extremely fast to compute, but they’re not quite free. So a lint needs to pull its weight; it needs to offer enough value. For example, we rejected the [empty_statements](https://dart-lang.github.io/linter/lints/empty_statements.html) lint on the grounds that using `dartfmt` makes empty statements easy to spot. They’re unlikely to get written by mistake, and so the lint is redundant.
 
 ```
 `// empty_statements; considered redundant with dartfmt.
@@ -109,8 +109,8 @@ These numbers give us a good starting point for discussion.
 If, for example, all of Google’s Dart code contains only five violations of the lint, then each had better be a serious bug; otherwise, it’s unlikely that the lint is pulling its weight. The [recursive_getters](https://dart-lang.github.io/linter/lints/recursive_getters.html) lint was a rare example of a lint catching a very small number of serious issues; a getter that calls itself is a stack overflow waiting to happen.
 
 ```
-`// recursive_getters; definitely not what you meant to write!
-`int get field => field; // LINT
+`// recursive_getters; definitely not what you meant to write!`
+int get field => field; // LINT
 ```
 
 

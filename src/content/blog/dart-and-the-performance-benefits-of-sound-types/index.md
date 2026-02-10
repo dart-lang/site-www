@@ -17,7 +17,7 @@ tags:
 <DashImage src="images/1WOmw6jN-nt82uXjGCqRC4g.png" alt="Code generated from the same Dart method in Dart 1.24, 2.0, and 2.12 (left to right) has gotten smaller. To see why (and to see the actual generated code), keep reading." caption="Code generated from the same Dart method in Dart 1.24, 2.0, and 2.12 (left to right) has gotten smaller. To see why (and to see the actual generated code), keep reading." />
 
 
-We’ve strengthened Dart’s type system over the past few years. The original Dart language (Dart 1) had an unsound, optional type system (similar to typed JavaScript dialects such as Microsoft’s TypeScript or Facebook’s Flow). Dart 2 introduced a stricter, [*sound *type system](https://dart.dev/guides/language/type-system). Over the past two years, we’ve been working on extending the type system further, via [*sound null safety*](https://dart.dev/null-safety).
+We’ve strengthened Dart’s type system over the past few years. The original Dart language (Dart 1) had an unsound, optional type system (similar to typed JavaScript dialects such as Microsoft’s TypeScript or Facebook’s Flow). Dart 2 introduced a stricter, [*sound* type system](https://dart.dev/guides/language/type-system). Over the past two years, we’ve been working on extending the type system further, via [*sound null safety*](https://dart.dev/null-safety).
 
 While a sound type system provides developers with greater confidence, it also enables our compilers to safely use types to optimize generated code. With soundness, our tools guarantee that types are correct via a combination of static and (when needed) runtime checking. Without soundness, type checking can only go so far, and static types may be incorrect at runtime.
 

@@ -17,7 +17,7 @@ tags:
 
 Today is a major milestone for the Dart team with the tech preview of our null safety work. Null safety helps you avoid a class of bugs that are often hard to spot, and as an added bonus enables a range of performance improvements. We’re now releasing an early tech preview, and we’re looking forward to your feedback.
 
-This post describes the Dart team’s plans for rolling out null safety. It also explains what we mean by *sound *null safety and* *why that’s different from approaches that many other languages take.
+This post describes the Dart team’s plans for rolling out null safety. It also explains what we mean by *sound* null safety and **why that’s different from approaches that many other languages take.
 
 ## Why null safety?
 

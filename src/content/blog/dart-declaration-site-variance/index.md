@@ -89,7 +89,7 @@ Since the Dart team proposed to add explicit variance modifiers to the language,
 
 Dart will have variance modifiers that can be applied to type parameters in classes and mixins. The syntax is similar to variance modifiers in C#.
 
-You can use the keywords `out`, `in`*, *and `inout`to declare a covariant, contravariant, and invariant type parameter respectively. This is used with generic types as such:
+You can use the keywords `out`, `in`*,* and `inout`to declare a covariant, contravariant, and invariant type parameter respectively. This is used with generic types as such:
 
 ```dart
 class MyContravariantClass<in T> {}

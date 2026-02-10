@@ -17,7 +17,7 @@ In December, we gave a glimpse into the future with our first blog post discussi
 <DashImage src="images/0evGHZJd_7cahb08X.png" />
 
 
-Our mission for Dart is to create the best programming language for building high-quality apps across any app platform. Dart is **approachable**, easy to learn, avoids unnecessary complexity, and is internally consistent. Dart is **productive; **app developers are under constant pressure to deliver apps with ever changing requirements, in less time, yet with uncompromised quality and finish. So, we built Dart with a deep focus on enabling fast development, rapid iteration, and high quality. And Dart is **portable**, spanning the widest set of platforms, to enable you to deploy apps to the devices of today and tomorrow.
+Our mission for Dart is to create the best programming language for building high-quality apps across any app platform. Dart is **approachable**, easy to learn, avoids unnecessary complexity, and is internally consistent. Dart is **productive;** app developers are under constant pressure to deliver apps with ever changing requirements, in less time, yet with uncompromised quality and finish. So, we built Dart with a deep focus on enabling fast development, rapid iteration, and high quality. And Dart is **portable**, spanning the widest set of platforms, to enable you to deploy apps to the devices of today and tomorrow.
 
 We’ve worked on establishing these qualities over many years. With Dart 3, we intend to take another big step, refining and expanding on approachability, productivity, and portability in significant ways.
 

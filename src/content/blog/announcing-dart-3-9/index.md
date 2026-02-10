@@ -66,7 +66,7 @@ The Dart and Flutter MCP Server is now available on the stable channel of the Da
 
 ### **Faster Dart CLI**
 
-Previously, when you ran some [Dart CLI commands](https://dart.dev/tools/dart-tool) like `dart analyze`** **and `dart fix`, your computer had to compile the code for the [analysis server](https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/README.md) just before running it. Now, these tools use an Ahead-Of-Time (AOT) compiled snapshot of the analysis server, which means the server has been pre-compiled into fast, native machine code.
+Previously, when you ran some [Dart CLI commands](https://dart.dev/tools/dart-tool) like `dart analyze` ****and `dart fix`, your computer had to compile the code for the [analysis server](https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/README.md) just before running it. Now, these tools use an Ahead-Of-Time (AOT) compiled snapshot of the analysis server, which means the server has been pre-compiled into fast, native machine code.
 
 Results vary depending on the source code, but we ran some common commands on a sample package and got some interesting results. Some short commands like `dart format` now complete in a fraction of the time and longer running ones like `dart analyze` got nearly 50% faster.
 

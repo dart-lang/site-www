@@ -17,7 +17,7 @@ tags:
 <DashImage src="images/1G4044qvxp8yBjmGVHVLEyw.png" alt="Many asynchronous Dart APIs return futures." caption="Many asynchronous Dart APIs return futures." />
 
 
-One of the most basic APIs that Dart has for asynchronous programming is *futures — *objects of type [`Future`](https://api.dartlang.org/stable/dart-async/Future-class.html). For the most part, Dart’s futures are very similar to the *future* or *promise* APIs found in other languages.
+One of the most basic APIs that Dart has for asynchronous programming is *futures —* objects of type [`Future`](https://api.dartlang.org/stable/dart-async/Future-class.html). For the most part, Dart’s futures are very similar to the *future* or *promise* APIs found in other languages.
 
 This article discusses the concepts behind Dart futures and tells you how to use the `Future` API. It also discusses the Flutter `FutureBuilder` widget, which helps you update a Flutter UI asynchronously, based on the state of a future.
 
@@ -25,7 +25,7 @@ Thanks to Dart language features like [async-await](https://dart.dev/codelabs/as
 > This article is the second one based on the *Flutter in Focus* video series *Asynchronous Programming in Dart*. The first article, [Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a), covered the foundations of Dart’s support for background work.
 > If you prefer to learn by watching or listening, everything in this article is covered in the following video*.*
 
-<iframe src="https://www.youtube.com/watch?v=OTS-ap9_aXc" width="854" height="480" frameborder="0" allowfullscreen></iframe>
+<YoutubeEmbed id="OTS-ap9_aXc" title="Dart Futures - Flutter in Focus" fullwidth="true"/>
 
 
 You can think of futures as little gift boxes for data. Somebody hands you one of these gift boxes, which starts off closed. A little while later the box pops open, and inside there’s either a value or an error.
@@ -206,7 +206,7 @@ _fetchNameForId(12)
 Back to our first example, what happens if that initial future doesn’t complete with a value — what if it completes with an error? The `then()` method expects a value. You need a way to register another callback in case of an error.
 
 The answer is to use [`catchError()`](https://api.dartlang.org/stable/dart-async/Future/catchError.html). It works just like `then()`, except that it takes an error instead of a value, and it executes if the future completes with an error. Just like `then()`, the `catchError()` method returns a future of its own, so you can build a whole chain of `then()` and `catchError()`methods that wait on one another.
-> **Note: **You don’t need to call `then()` or `catchError()` if you use the async-await language feature. Instead, you await the completed value, and you use try-catch-finally to handle errors. For details, see the Dart language tour’s [asynchrony support section](https://dart.dev/guides/language/language-tour#asynchrony-support).
+> **Note:** You don’t need to call `then()` or `catchError()` if you use the async-await language feature. Instead, you await the completed value, and you use try-catch-finally to handle errors. For details, see the Dart language tour’s [asynchrony support section](https://dart.dev/guides/language/language-tour#asynchrony-support).
 
 Here’s an example of using `catchError()` to handle the case where a future completes with an error:
 
@@ -350,9 +350,9 @@ This article talked about what futures represent and how you can use the `Future
 
 If you’d like to learn more about using futures—with the option of using runnable examples and interactive exercises to test your understanding—check out the asynchronous codelab on [futures, async, and await](https://dart.dev/codelabs/async-await).
 
-Or go on to the next video in the *Asynchronous Programming in Dart *series. It talks about *streams*, which are a lot like futures in that they can provide either values or errors. But where futures just give you one result and stop, streams just keep right on going.
+Or go on to the next video in the *Asynchronous Programming in Dart* series. It talks about *streams*, which are a lot like futures in that they can provide either values or errors. But where futures just give you one result and stop, streams just keep right on going.
 
-<iframe src="https://www.youtube.com/watch?v=nQBpOIHE4eE" width="854" height="480" frameborder="0" allowfullscreen></iframe>
+<YoutubeEmbed id="nQBpOIHE4eE" title="Dart Streams - Flutter in Focus" fullwidth="true"/>
 
 
 *Big thanks to Andrew Brogdon, who created the video that this article is based on.*

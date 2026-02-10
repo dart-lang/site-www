@@ -46,7 +46,7 @@ After the migration, some issues in the code became evident, **which is the best
 <DashImage src="images/17nfnF2UAdK6zoIhX4wMG9w.png" />
 
 
-One of the issues was that some nullable strings were being passed as a list to an internal function of the [shared_preferences](https://pub.dev/packages/shared_preferences) plugin. Because these values were nullable, the tool made the whole list type `&lt;String?&gt;[]`*, *which started giving an error because the function accepted the type `&lt;String&gt;[]`*.*
+One of the issues was that some nullable strings were being passed as a list to an internal function of the [shared_preferences](https://pub.dev/packages/shared_preferences) plugin. Because these values were nullable, the tool made the whole list type `&lt;String?&gt;[]`*,* which started giving an error because the function accepted the type `&lt;String&gt;[]`*.*
 
 <DashImage src="images/1ahhIw3H8kp5WGMjDmrSzLg.png" />
 

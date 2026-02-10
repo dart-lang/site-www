@@ -28,7 +28,7 @@ Dart forms the foundation of the Flutter SDK: it not only provides the language 
 
 
 Flutter includes this new Dart tool in the Flutter SDK. Starting with today’s [Flutter 1.22 SDK](https://medium.com/flutter/announcing-flutter-1-22-stable-44f146009e5f), the `&lt;flutter-sdk&gt;/bin` directory (which you likely have in `PATH`) contains both `flutter` and `dart` commands. If you do both Flutter and general-purpose Dart development, you get both developer experiences from a single Flutter SDK, without needing to install anything else.
-> **Note: **If you want to download and install a second Dart SDK (perhaps because you require a different version), make sure the SDK of the `dart` tool you wish to default to is at the beginning of your `PATH` environment variable.
+> **Note:** If you want to download and install a second Dart SDK (perhaps because you require a different version), make sure the SDK of the `dart` tool you wish to default to is at the beginning of your `PATH` environment variable.
 
 Over the coming stable releases, we plan to add more to this `dart` tool and gradually deprecate the smaller tools (`dartdoc`, `dartfmt`, `dartanalyzer`, etc.). Next year we expect to ship Dart SDKs that contain only the single `dart` tool. We recommend that you switch over to the new tool when running Dart commands now, whether manually in the terminal or in continuous integration (*CI*) scripts, and [give us feedback](https://github.com/dart-lang/sdk/issues/new?labels=area-dart-cli) if anything is missing or not working as intended.
 
@@ -53,7 +53,7 @@ We’d like to share our guiding principles for null safety migration.
 Null safety is a fundamental change to the Dart typing system. It changes the basics of variable declarations because [we decided](https://medium.com/dartlang/announcing-sound-null-safety-defd2216a6f3) to make variables non-nullable by default:
 
 ```
-**Without null safety  **               W**ith null safety**
+**Without null safety**                 W**ith null safety**
 
 String s; // A String or null.      String s; // A String, not null.
 ```

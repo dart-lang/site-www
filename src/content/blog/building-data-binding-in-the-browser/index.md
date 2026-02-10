@@ -33,9 +33,10 @@ Behold, the four horsemen of the data-binding apocalypse:
 
 If you’re just interested in the code, it’s all available on GitHub:
 
-***One quick note **— nothing here is optimized, and I’ve taken some shortcuts to make this tutorial achievable in about an hour, which means I didn’t write any pre-processors or code generators — and instead I’ve hand-written what generated code would look like; those files end in “.g.dart”.*
-[**matanlurey/building-data-binding**
-*building-data-binding - Accompanying code for "Building Data Binding in the Browser"*github.com](https://github.com/matanlurey/building-data-binding)
+***One quick note** — nothing here is optimized, and I’ve taken some shortcuts to make this tutorial achievable in about an hour, which means I didn’t write any pre-processors or code generators — and instead I’ve hand-written what generated code would look like; those files end in “.g.dart”.*
+
+<GithubEmbed repo="matanlurey/building-data-binding" title="building-data-binding - Accompanying code for &quot;Building Data Binding in the Browser&quot;" image="images/0QVBz3DSv-QKuugcc.jpg" />
+
 
 ### Static templating
 
@@ -292,9 +293,9 @@ Element _createListItem(String item) {
 
 ```
 
-Again, pretty boring. But if I was really making a simple TODO app just like this, not too bad. Dart’s `..` or [method cascades](http://news.dartlang.org/2012/02/method-cascades-in-dart-posted-by-gilad.html) make this *relatively *terse, and I could add other basic behavior pretty easily.
+Again, pretty boring. But if I was really making a simple TODO app just like this, not too bad. Dart’s `..` or [method cascades](http://news.dartlang.org/2012/02/method-cascades-in-dart-posted-by-gilad.html) make this *relatively* terse, and I could add other basic behavior pretty easily.
 
-More or less, every other form of data/template-binding is trying to do the *above — *build some DOM, and update the DOM when something happens — but either in a (a) more performant, (b) more elegant, (c) more ergonomic, and/or (d) more modular way.
+More or less, every other form of data/template-binding is trying to do the *above —* build some DOM, and update the DOM when something happens — but either in a (a) more performant, (b) more elegant, (c) more ergonomic, and/or (d) more modular way.
 
 ## Automatic data-binding
 
@@ -335,7 +336,7 @@ So what do you think? There are some advantages and disadvantages here:
 
 * You’re able to encapsulate much/all of your view logic in a single file.
 
-* While non-standard, this is *fairly *readable to even non-coders with as little as some sort of “cheat-sheet” that explains additions to the HTML specification for your templating language.
+* While non-standard, this is *fairly* readable to even non-coders with as little as some sort of “cheat-sheet” that explains additions to the HTML specification for your templating language.
 
 * You didn’t write any actual code — so a framework with a good ahead-of-time preprocessor can “compile” this, potentially efficiently, to JavaScript/DOM invocations.
 
@@ -547,8 +548,9 @@ This is actually not too different from what we did above in *static template bi
 * Unlike something like Angular (though it has its own problems), you can’t really “inspect” the code outputted by this function, that is, you have to be very familiar with idiosyncrasies of the framework when optimizing lists of thousands of items, lazy scrolling, so on and so forth.
 
 I promised I’d write a simple library for a reactive-style data-binding framework, but I decided by the end of this article it had already been done better by my colleague Yegor with his framework “Butterfly”:
-[**yjbanov/butterfly**
-*butterfly - A web framework for Dart based on Flutter's widget model*github.com](https://github.com/yjbanov/butterfly)
+
+<GithubEmbed repo="yjbanov/butterfly" title="butterfly - A web framework for Dart based on Flutter's widget model" image="images/0mC9GWhN0QE2u20u0.jpg" />
+
 
 ```dart
 // Copyright 2016 Google Inc. All Rights Reserved.

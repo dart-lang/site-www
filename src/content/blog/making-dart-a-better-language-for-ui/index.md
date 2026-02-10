@@ -112,7 +112,7 @@ MaterialApp(
 
 It’s got parentheses and square brackets instead of angle brackets, but is otherwise not too far from a “markup” language. It’s surprising how well this works. Dart’s syntax is based on JavaScript, which got it from Java, which got it from C. Along the way, we added the square bracket list literal syntax and named parameters, but those are fairly minor.
 
-C was designed for implementing command-line operating systems on the PDP-11. The fact that its notation scales not *too *badly to building graphical UIs on mobile devices is either a testament to Ritchie’s design taste, or our collective Stockholm Syndrome around C syntax. Either way, it works… mostly.
+C was designed for implementing command-line operating systems on the PDP-11. The fact that its notation scales not *too* badly to building graphical UIs on mobile devices is either a testament to Ritchie’s design taste, or our collective Stockholm Syndrome around C syntax. Either way, it works… mostly.
 
 In the example here, there’s no interesting runtime *logic* required to build the UI. Everything fits nicely into a single nested expression. But let’s say, for whatever reason, you don’t want to show the “This is Flutter” part of the text on Tuesdays. (Perhaps you need to make room on screen for the “Taco Tuesday!” banner.)
 
@@ -236,7 +236,7 @@ Statements are executed but don’t produce any result value. Instead, they are 
 var wat = for (var i = 0; i < 10; i++) print(i);
 ```
 
-A `for` statement doesn't produce a value, so it doesn't make sense to stuff one in a variable initializer. There *are *[languages that unify expressions and statements](https://en.wikipedia.org/wiki/Expression-oriented_programming_language) and allow code like this. They define each statement to execute in some way and *also* produce a value. But Dart isn't one of those languages.
+A `for` statement doesn't produce a value, so it doesn't make sense to stuff one in a variable initializer. There *are* [languages that unify expressions and statements](https://en.wikipedia.org/wiki/Expression-oriented_programming_language) and allow code like this. They define each statement to execute in some way and *also* produce a value. But Dart isn't one of those languages.
 
 Expressions evaluate to a single result value. You can use them in places where a value is useful. There are also “[expression statements](https://www.eskimo.com/~scs/cclass/notes/sx3a.html)” — an expression followed by a semicolon — which are statements that contain a single expression. Handy since many expressions do also happen to have side effects and are useful even when their result isn’t needed.
 
@@ -440,7 +440,7 @@ A simple `if` inside a `for`, just like you'd do if you were writing imperative 
 
 * A `for` element produces the concatenation of all of the values produced by its body element each time the body is executed.
 
-This enables some patterns that I think are cool. An obvious problem you run into is wanting to include or omit *multiple *values based on a single condition. So, say in our previous example we wanted to skip both the title and the search box on Android. You can do that by wrapping a spread in an `if`:
+This enables some patterns that I think are cool. An obvious problem you run into is wanting to include or omit *multiple* values based on a single condition. So, say in our previous example we wanted to skip both the title and the search box on Android. You can do that by wrapping a spread in an `if`:
 
 ```dart
 Widget build(BuildContext context) {

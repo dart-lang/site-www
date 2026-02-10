@@ -21,11 +21,11 @@ tags:
 
 This article covers one of the fundamentals of reactive programming: streams, which are objects of type [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 
-If you’ve read the [previous article on futures](https://medium.com/dartlang/dart-asynchronous-programming-futures-96937f831137), you might remember that **each future represents a single value** (either an error or data) that it delivers **asynchronously**. Streams work similarly, but instead of a single thing, **a stream can deliver zero or more values and errors **over **time.**
+If you’ve read the [previous article on futures](https://medium.com/dartlang/dart-asynchronous-programming-futures-96937f831137), you might remember that **each future represents a single value** (either an error or data) that it delivers **asynchronously**. Streams work similarly, but instead of a single thing, **a stream can deliver zero or more values and errors** over **time.**
 > This article is the third one based on the *Flutter in Focus* video series *Asynchronous Programming in Dart*. The first article, [Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a), covered the foundations of Dart’s support for background work. The second one, [Futures](https://medium.com/dartlang/dart-asynchronous-programming-futures-96937f831137), discussed the `Future` class.
 > If you prefer to learn by watching or listening, everything in this article is covered in the following video.
 
-<iframe src="https://www.youtube.com/watch?v=nQBpOIHE4eE" width="854" height="480" frameborder="0" allowfullscreen></iframe>
+<YoutubeEmbed id="nQBpOIHE4eE" title="Dart Streams - Flutter in Focus" fullwidth="true"/>
 
 
 If you think about the way a single value relates to an [iterator](https://dart.dev/codelabs/iterables) of the same type, that’s how a future relates to a stream.
@@ -256,9 +256,9 @@ You can learn more about streams from the Dart and Flutter documentation:
 
 * On [flutter.dev](https://flutter.dev), see [Work with WebSockets](https://flutter.dev/docs/cookbook/networking/web-sockets), which features an example that uses `StreamBuilder`.
 
-Or go on to the next video in the *Asynchronous Programming in Dart *series. It talks about `async` and `await`, which are two keywords that Dart offers to help you keep your asynchronous code tight and easy to read.
+Or go on to the next video in the *Asynchronous Programming in Dart* series. It talks about `async` and `await`, which are two keywords that Dart offers to help you keep your asynchronous code tight and easy to read.
 
-<iframe src="https://www.youtube.com/watch?v=SmTCmDMi4BY" width="854" height="480" frameborder="0" allowfullscreen></iframe>
+<YoutubeEmbed id="SmTCmDMi4BY" title="Async/Await - Flutter in Focus" fullwidth="true"/>
 
 
 *Big thanks to Andrew Brogdon, who created the video that this article is based on.*

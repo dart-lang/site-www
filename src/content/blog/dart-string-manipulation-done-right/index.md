@@ -110,7 +110,7 @@ Expected: ‘Hi ’
 ```
 
 
-The `characters` package can handle this case with ease, as it provides high-level methods such as [`skipLast(int count)`](https://pub.dev/documentation/characters/latest/characters/Characters/skipLast.html)*. *We can rewrite this snippet into the following code:
+The `characters` package can handle this case with ease, as it provides high-level methods such as [`skipLast(int count)`](https://pub.dev/documentation/characters/latest/characters/Characters/skipLast.html)*.* We can rewrite this snippet into the following code:
 
 ```dart
 String skipLastChar(String text) {

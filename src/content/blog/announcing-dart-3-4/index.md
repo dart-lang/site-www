@@ -95,6 +95,6 @@ As always, this release contains all of the continuous developments that go into
 
 * Removed incomplete and inconsistent tooling from the dart:cli library to pay down technical debt in the Dart VM.
 
-* Addressed a handful of inadequacies to improve the new* *`dart:js_interop` library.
+* Addressed a handful of inadequacies to improve the new *`*dart:js_interop` library.
 
 Check out the [Changelog](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#340) for the full story! Don’t forget to read the joint [Dart and Flutter blog post](https://medium.com/flutter/io24-5e211f708a37) for this release for the full story of our joint efforts!

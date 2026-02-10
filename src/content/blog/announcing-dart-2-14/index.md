@@ -35,7 +35,7 @@ Many developers — and the pub.dev site [scoring](https://pub.dev/help/scoring)
 
 This might sound a bit messy, and indeed it was. But with today’s releases we’re happy to announce that we now have a brand new set of lint collections that implement the style guide, and that the Dart and Flutter SDKs have been updated to use these rule sets by default for new projects. The rule sets are:
 
-* [`package:lints/core.yaml`:](https://github.com/dart-lang/lints/blob/main/lib/core.yaml)** **The main rules from the Dart style guide that we believe all Dart code should follow. The pub.dev scoring engine has been updated to use these instead of pedantic.
+* [`package:lints/core.yaml`:](https://github.com/dart-lang/lints/blob/main/lib/core.yaml) ****The main rules from the Dart style guide that we believe all Dart code should follow. The pub.dev scoring engine has been updated to use these instead of pedantic.
 
 * [`package:lints/recommended.yaml`](https://github.com/dart-lang/lints/blob/main/lib/recommended.yaml)**:** The core rules, plus additional recommended rules. This set is recommended for all general Dart code.
 

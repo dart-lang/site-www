@@ -21,7 +21,7 @@ Today we’re launching a brand new [pub.dev](https://pub.dev) site. It features
 
 ## Finding the best packages for your needs
 
-With* *nearly 7,000 new packages published over the past year, you have no shortage of options when looking for packages to extend the functionality of your apps. But with so many packages to choose from, naturally you want the most liked, highest quality, and most popular packages to bubble to the surface. To support better package search results, we’ve redesigned the scoring system in pub.dev around three dimensions:
+With **nearly 7,000 new packages published over the past year, you have no shortage of options when looking for packages to extend the functionality of your apps. But with so many packages to choose from, naturally you want the most liked, highest quality, and most popular packages to bubble to the surface. To support better package search results, we’ve redesigned the scoring system in pub.dev around three dimensions:
 
 <DashImage src="images/0OmvIh_FRHtJDrSIk.png" alt="*The three scoring dimensions for a pub package*" caption="*The three scoring dimensions for a pub package*" />
 

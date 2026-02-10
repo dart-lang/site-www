@@ -151,7 +151,7 @@ Rather, we have the clever option of making `void` a sister type of `Object`. Af
 <DashImage src="images/01ZUU5fNh-kmpPzMU.jpg" />
 
 
-By making `void` a sibling of `Object`, we leave ourselves no* requirements* that a `void` value go *completely* unused. We try our best to keep `void` to itself, but we deliberately relax these restrictions in a few places for the sake of backwards compatibility:
+By making `void` a sibling of `Object`, we leave ourselves no *requirements* that a `void` value go *completely* unused. We try our best to keep `void` to itself, but we deliberately relax these restrictions in a few places for the sake of backwards compatibility:
 
 ```
 dynamic f() => voidFn(); // this is legal
@@ -168,7 +168,7 @@ Making `void` a sibling of `Object` also means that `void` can be used as a type
 ```
 
 
-And lastly, it may seem useless to ever type a parameter as `void`, especially since it’s a form of `Object`. However, `void` values can be* passed to *`void`* locations*:
+And lastly, it may seem useless to ever type a parameter as `void`, especially since it’s a form of `Object`. However, `void` values can be *passed to* `void` *locations*:
 
 ```
 f(void x) { … }
@@ -235,7 +235,7 @@ Foo foo = cond ? val : undefined();
 
 In the example usage line, the program can safely run and store `val` when `cond` is true. And when `cond` is false, the program will throw an exception during `undefined()`. It is safe to “store” the result of `undefined()` in foo, regardless of the type of `foo`, because that store will never actually happen!
 
-`undefined()`** **here does not return anything. But the lesson here is not that we can make `foo` empty…it’s that the bottom type is empty like an empty promise. It’s emptier than empty. It just never happens.
+`undefined()` ****here does not return anything. But the lesson here is not that we can make `foo` empty…it’s that the bottom type is empty like an empty promise. It’s emptier than empty. It just never happens.
 
 One thing I must be careful to state is that you can and, depending on the usage, often should return `void` from these functions in practice. Usually code like `return loopForever()` is more likely to be a mistake than a useful pattern. However, the choice is yours to make.
 
@@ -263,7 +263,7 @@ void f(⊥ x) {}
 ```
 
 
-This is almost the opposite of the `undefined()` example. Rather than a function that never returns, we have declared a function that can’t be called! No actual value is assignable to that parameter `x`. You can’t pass in a `Person` because it’s *not also a *`Car`, and you can’t pass in a `Car` because it’s not also a `Person`. The only thing you could pass in is the absurd type itself:
+This is almost the opposite of the `undefined()` example. Rather than a function that never returns, we have declared a function that can’t be called! No actual value is assignable to that parameter `x`. You can’t pass in a `Person` because it’s *not also a* `Car`, and you can’t pass in a `Car` because it’s not also a `Person`. The only thing you could pass in is the absurd type itself:
 
 ```
 f(undefined());
@@ -272,7 +272,7 @@ f(undefined());
 
 But as we just covered before, `undefined()` never returns, so `f()` is still never actually called in this case!
 
-Typing a parameter as ⊥ may seem useless, but it has esoteric value because all functions that *can* be called are subtypes of functions that *can’t* be.* *(Think about it: a function that *can* be called doesn’t *have* to be. And if a function is not called, it cannot produce runtime errors.)
+Typing a parameter as ⊥ may seem useless, but it has esoteric value because all functions that *can* be called are subtypes of functions that *can’t* be. **(Think about it: a function that *can* be called doesn’t *have* to be. And if a function is not called, it cannot produce runtime errors.)
 
 If you’re still with me, take a deep breath and pat yourself on the back.
 
@@ -344,7 +344,7 @@ Essentially, by making some function `f()` return a `Future&lt;Null&gt;`, you ar
 <DashImage src="images/04NDBhLva40BBuX0f.jpg" />
 
 
-Why else might you use `Future&lt;Null&gt;` instead of `Future&lt;void&gt;`? It all goes back to that mind-boggling bottom type. You might consider `Future&lt;Null&gt; `for futures that must be awaitable but that never complete, or that always complete with an error. This is directly comparable to why a function would return `Null`.
+Why else might you use `Future&lt;Null&gt;` instead of `Future&lt;void&gt;`? It all goes back to that mind-boggling bottom type. You might consider `Future&lt;Null&gt;` for futures that must be awaitable but that never complete, or that always complete with an error. This is directly comparable to why a function would return `Null`.
 
 The same logic applies to `Stream&lt;Null&gt;`: Use this for a `Stream` that never sends any events. This is directly comparable to why a read-only empty list may be typed as `List&lt;Null&gt;`.
 

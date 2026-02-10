@@ -162,7 +162,7 @@ I said above that you can write `eventualInteger.onError(...)`. This works becau
 
 * The extension `Ext` is imported or declared in the current library scope (the extension is *accessible*).
 
-* The extension declares a member with base-name `method`, *and *the static type of `expr` is a subtype of the `on` type of the `Ext` declaration (the extension is *applicable*).
+* The extension declares a member with base-name `method`, *and* the static type of `expr` is a subtype of the `on` type of the `Ext` declaration (the extension is *applicable*).
 
 If there is more than one accessible and applicable extension for a member invocation, there are rules about which one will win the conflict. In some cases, there’s no way to pick a winner, and then it’s just a compile-time error. These rules depend only on the extension declaration’s `on` type, not on member declaration. (Dart does not have “overloading” — multiple methods with the same name and different signatures, which you choose between based on the argument structure or types — and extension methods do not provide a back-door to get overloading.)
 
@@ -213,7 +213,7 @@ You do that by *hiding* the conflicting extension (or extension*s,* if you are r
 
 ## Summary
 
-Dart will get *extension methods *in an upcoming release *— *a pretty way to call static functions.
+Dart will get *extension methods* in an upcoming release *—* a pretty way to call static functions.
 
 You can define extension members for **instance methods**, **operators**, **setters** and **getters**, but **not fields**.
 

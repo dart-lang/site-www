@@ -4,6 +4,12 @@ import 'package:path/path.dart' as p;
 class ImagePathProcessor implements PageExtension {
   const ImagePathProcessor();
 
+  static final imageAttributes = {
+    'img': 'src',
+    'dashimage': 'src',
+    'githubembed': 'image',
+  };
+
   @override
   Future<List<Node>> apply(Page page, List<Node> nodes) async {
     if (page.path.startsWith('blog/')) {
@@ -15,9 +21,8 @@ class ImagePathProcessor implements PageExtension {
   List<Node> _processNodes(List<Node> nodes, Page page) {
     return nodes.map((node) {
       if (node is ElementNode &&
-          (node.tag.toLowerCase() == 'img' ||
-              node.tag.toLowerCase() == 'dashimage')) {
-        final src = node.attributes['src'];
+          imageAttributes.containsKey(node.tag.toLowerCase())) {
+        final src = node.attributes[imageAttributes[node.tag.toLowerCase()]!];
         if (src != null && !src.startsWith('http') && !src.startsWith('/')) {
           // It's a relative path. Rewrite it.
           // page.path is likely "blog/test-folder-post/test-folder-post.md" or similar.
@@ -32,7 +37,10 @@ class ImagePathProcessor implements PageExtension {
 
           return ElementNode(
             node.tag,
-            {...node.attributes, 'src': newSrc},
+            {
+              ...node.attributes,
+              imageAttributes[node.tag.toLowerCase()]!: newSrc,
+            },
             node.children,
           );
         }

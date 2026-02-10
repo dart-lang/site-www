@@ -18,7 +18,7 @@ Dart, despite being a single-threaded language, offers support for futures, stre
 
 If you prefer to learn by watching or listening, everything in this article is covered in the following video, which is part of the *Flutter in Focus* video series *Asynchronous Programming in Dart:*
 
-<iframe src="https://www.youtube.com/watch?v=vl_AaCgudcY" width="854" height="480" frameborder="0" allowfullscreen></iframe>
+<YoutubeEmbed id="vl_AaCgudcY" title="Isolates and Event Loops - Flutter in Focus" fullwidth="true"/>
 
 
 Still here? Let’s talk about isolates.

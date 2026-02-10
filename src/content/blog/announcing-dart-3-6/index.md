@@ -12,7 +12,7 @@ tags:
 ---
 
 
-Welcome to Dart 3.6! Today is our last release of the year, alongside [Flutter 3.27](https://medium.com/flutter/whats-new-in-flutter-3-27-28341129570c). We’re excited to share a new feature in the language,* digit separators*. We also have several new features in the pub ecosystem: *pub download counts*, and the highly anticipated* pub workspaces*!
+Welcome to Dart 3.6! Today is our last release of the year, alongside [Flutter 3.27](https://medium.com/flutter/whats-new-in-flutter-3-27-28341129570c). We’re excited to share a new feature in the language, *digit separators*. We also have several new features in the pub ecosystem: *pub download counts*, and the highly anticipated *pub workspaces*!
 
 <DashImage src="images/0pojZOcfCeFztkEzK.png" alt="Dart 3.6" caption="Dart 3.6" />
 

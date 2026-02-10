@@ -22,7 +22,7 @@ Today we’re announcing a new feature on [pub.dev](https://pub.dev) (the Dart p
 
 App developers building apps with [Flutter](https://flutter.dev) tell us that having a rich selection of high-quality packages is critical to their productivity, allowing them to reuse common components and access popular SDKs and libraries. We’re seeing an immense amount of growth in the [pub.dev](https://pub.dev/) ecosystem, with thousands of packages published over the past year, and hundreds of thousands of developers using pub.dev every month to browse and search for new package content.
 
-One of the most important selection criteria we hear from package users is *who published the package. *Verified publishers strengthen this signal by verifying the identity of the publisher, and by clearly listing the publisher identity in package search results and on package detail pages (note the blue badge next to dart.dev in the screenshots below).
+One of the most important selection criteria we hear from package users is *who published the package.* Verified publishers strengthen this signal by verifying the identity of the publisher, and by clearly listing the publisher identity in package search results and on package detail pages (note the blue badge next to dart.dev in the screenshots below).
 
 <DashImage src="images/0LQMWHLFUi6F7nPO1.png" alt="*Package search result showing a package that was published by a verified publisher*" caption="*Package search result showing a package that was published by a verified publisher*" />
 

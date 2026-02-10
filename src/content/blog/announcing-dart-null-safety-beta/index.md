@@ -18,7 +18,7 @@ tags:
 
 Today we’re announcing that **sound null safety is available in beta** for Dart and Flutter. Null safety is our latest major productivity feature, intended to [help you avoid null errors](https://dart.dev/null-safety), a class of bugs that are often hard to spot. If you’re looking for a quick summary of why we’re excited about null safety, check out this new video:
 
-<iframe src="https://www.youtube.com/watch?v=iYhOU9AuaFs" width="854" height="480" frameborder="0" allowfullscreen></iframe>
+<YoutubeEmbed id="iYhOU9AuaFs" title="Null safety in Dart - Introduction" fullwidth="true"/>
 
 
 With null safety graduating to beta, **it’s time to start community migration** of the thousands of packages available on [pub.dev](https://pub.dev/). We’ve migrated the Dart core libraries, the Flutter framework, and [more than 40](https://pub.dev/packages?q=&prerelease-null-safe=1) Dart and Flutter packages. With that we hope to see the community embrace null safety by migrating their packages.
@@ -41,8 +41,8 @@ environment:
 To experience this, try to create a small null-safe hello app (for example, using `dart create`) containing code like shown below. You can then try to run the app both before and after changing the SDK constraint and running `dart pub get`, and experience how the program behavior changes. (Make sure to use an SDK that reports 2.12 in `dart --version`.)
 
 ```
-***bin/hello.dart:
-***...
+***bin/hello.dart:***
+...
 void main() {
   var hello = 'Hello Dart developers';
   if (someCondition) {

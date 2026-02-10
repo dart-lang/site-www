@@ -1,7 +1,7 @@
 builders:
   stylesHashBuilder:
-    import: 'package:dart_dev_site/builders.dart'
-    builder_factories: [ 'stylesHashBuilder' ]
+    import: "package:dart_dev_site/builders.dart"
+    builder_factories: ["stylesHashBuilder"]
     build_extensions:
       "web/assets/css/main.css":
         - "lib/src/style_hash.dart"
@@ -9,14 +9,14 @@ builders:
     build_to: source
 
   contentAssetsBuilder:
-    import: 'package:dart_dev_site/builders.dart'
-    builder_factories: [ 'contentAssetsBuilder' ]
+    import: "package:dart_dev_site/builders.dart"
+    builder_factories: ["contentAssetsBuilder"]
     build_extensions:
-      'src/content/{{}}.png': ['web/images/content/{{}}.png']
-      'src/content/{{}}.jpg': ['web/images/content/{{}}.jpg']
-      'src/content/{{}}.jpeg': ['web/images/content/{{}}.jpeg']
-      'src/content/{{}}.gif': ['web/images/content/{{}}.gif']
-      'src/content/{{}}.svg': ['web/images/content/{{}}.svg']
+      "src/content/{{}}.png": ["web/images/content/{{}}.png"]
+      "src/content/{{}}.jpg": ["web/images/content/{{}}.jpg"]
+      "src/content/{{}}.jpeg": ["web/images/content/{{}}.jpeg"]
+      "src/content/{{}}.gif": ["web/images/content/{{}}.gif"]
+      "src/content/{{}}.svg": ["web/images/content/{{}}.svg"]
     auto_apply: root_package
     build_to: source
 
@@ -37,12 +37,13 @@ targets:
               # Use -O2 to catch more potential runtime issues, it is not much
               # slower than -O4: https://github.com/dart-lang/site-www/pull/6953#discussion_r2453318668
               args: [-O2, -Djaspr.flags.release=true]
-      dart_dev_site:stylesHashBuilder: 
+      dart_dev_site:stylesHashBuilder:
         dev_options:
           fixed_hash: true
       dart_dev_site:contentAssetsBuilder:
         options: {}
     sources:
+      - $package$
       - lib/**
       - web/**
       - src/content/**

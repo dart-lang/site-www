@@ -29,7 +29,7 @@ If you have questions specific to Dart and GSoC, ask them on [our dedicated mail
 
 For more information about Google Summer of Code, watch the video below. Or read the [student guide for Google Summer of Code](https://google.github.io/gsocguides/student/).
 
-<iframe src="https://www.youtube.com/watch?v=S6IP_6HG2QE" width="854" height="480" frameborder="0" allowfullscreen></iframe>
+<YoutubeEmbed id="S6IP_6HG2QE" title="What is Google Summer of Code?" fullwidth="true"/>
 
 
 We look forward to hearing from you!

@@ -106,7 +106,7 @@ String describeDate(DateTime dt) =>
 ```
 
 
-A powerful feature of patterns is the ability to check for “exhaustiveness”, This feature ensures that the switch handles all the possible cases. In the previous example, we’re handling all possible values of weekday, which is an `int`. We exhaust all possible values through the combination of match statements for the specific values `1`, `6 `or `7`, and then using a default case `_` for the remaining cases. To enable this check for user-defined data hierarchies, such as a class hierarchy, use the new `sealed` modifier on the top of the class hierarchy as in the following example:
+A powerful feature of patterns is the ability to check for “exhaustiveness”, This feature ensures that the switch handles all the possible cases. In the previous example, we’re handling all possible values of weekday, which is an `int`. We exhaust all possible values through the combination of match statements for the specific values `1`, `6` or `7`, and then using a default case `_` for the remaining cases. To enable this check for user-defined data hierarchies, such as a class hierarchy, use the new `sealed` modifier on the top of the class hierarchy as in the following example:
 
 ```dart
 sealed class Animal { … }
@@ -206,7 +206,7 @@ Our work on compiling Dart to Wasm modules has two high-level goals for web apps
 
 * **Load time:** we hope that we can deliver deployment payloads with Wasm that the browser can load faster, thus improving the time it takes to get to the point where the user can interact with the web app.
 
-* **Performance: **Web apps powered by JavaScript require just-in-time compilation to achieve good performance. Wasm modules are more low-level and closer to machine code, so we think they can deliver higher performance with less jank and more consistent frame rates.
+* **Performance:** Web apps powered by JavaScript require just-in-time compilation to achieve good performance. Wasm modules are more low-level and closer to machine code, so we think they can deliver higher performance with less jank and more consistent frame rates.
 
 * **Semantic consistency**: Dart takes pride in being highly consistent between our supported platforms. However, on the web, there are a few exceptions to this. For example, Dart web currently differs in how[ numbers are represented](https://dart.dev/guides/language/numbers). With Wasm modules, we’d be able to treat the web like a “native” platform with semantics similar to other native targets.
 

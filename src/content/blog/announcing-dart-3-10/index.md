@@ -91,7 +91,7 @@ To learn more about creating your own custom rules, see the documentation for [w
 
 Integrating native code (like C++, Rust, or Swift) into a Dart package has often required managing complex, platform-specific build files like CMake or Gradle. With Dart 3.10, this process is now dramatically simpler.
 
-We’re excited to announce that **build hooks **(formerly known as native assets) are now stable. You can use these hooks to compile native code or download native assets (like dynamic libraries) and bundle them directly with your Dart package. This powerful capability lets you reuse existing native code or libraries from within your package and eliminates the need to write separate build files such as SPM, Gradle, or CMake for different operating systems.
+We’re excited to announce that **build hooks** (formerly known as native assets) are now stable. You can use these hooks to compile native code or download native assets (like dynamic libraries) and bundle them directly with your Dart package. This powerful capability lets you reuse existing native code or libraries from within your package and eliminates the need to write separate build files such as SPM, Gradle, or CMake for different operating systems.
 
 To learn more, see the documentation for [writing a build hook](https://dart.dev/tools/hooks), or watch the [Flutter Build show episode](https://www.youtube.com/watch?v=AxNF5dj8HWQ) on build hooks.
 

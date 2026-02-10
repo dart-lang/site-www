@@ -64,19 +64,19 @@ If you select **Source Action…**, it opens a second menu:
 <DashImage src="images/0iRZIzPrwKl7jEYNY.png" />
 
 
-Selecting **Fix All **causes fixes to be applied to all the diagnostics in the editor, producing the following:
+Selecting **Fix All** causes fixes to be applied to all the diagnostics in the editor, producing the following:
 
 <DashImage src="images/0FDf16dDPwfPg_dET.png" />
 
 
-You can also invoke the **Fix All** command from the command palette, which you can open by selecting **Command Palette… **from the **View** menu, or by using the keyboard shortcut (`F1` on any platform, `Control+Shift+P` on Windows and Linux, or `Command+Shift+P` on macOS). You can filter the list by typing the name of the command. The command palette looks something like this:
+You can also invoke the **Fix All** command from the command palette, which you can open by selecting **Command Palette…** from the **View** menu, or by using the keyboard shortcut (`F1` on any platform, `Control+Shift+P` on Windows and Linux, or `Command+Shift+P` on macOS). You can filter the list by typing the name of the command. The command palette looks something like this:
 
 <DashImage src="images/0Jrz3MRfYVtcXrb9C.png" />
 
 
 ## Fixing all the diagnostics in a directory
 
-The most complete tool we have for fixing diagnostics is the `[dart fix](https://dart.dev/tools/dart-fix) `command-line tool. It can fix all the diagnostics in a given directory, which means that you can use it to fix everything in your package or application.
+The most complete tool we have for fixing diagnostics is the `[dart fix](https://dart.dev/tools/dart-fix)` command-line tool. It can fix all the diagnostics in a given directory, which means that you can use it to fix everything in your package or application.
 
 Of course, there are a couple of caveats. It doesn’t fix every diagnostic, because it applies the same quick fixes that are available in the IDE, and there aren’t quick fixes for every diagnostic. It also doesn’t apply quick fixes for diagnostics when there are multiple equally valid ways of fixing the problem, because it can’t know which fix you prefer to apply. These caveats also apply to the **Fix All** command described in the previous section.
 
@@ -88,7 +88,7 @@ Second, consider the case where you’re updating from one release of Flutter to
 
 That’s where the [`dart fix`](https://dart.dev/tools/dart-fix) command comes in. It can apply quick fixes for multiple diagnostics in multiple files.
 
-The command has two modes. The *dry-run *mode tells you how many changes it can apply and which diagnostics it can fix, but without modifying any files. The *apply *mode applies the changes.
+The command has two modes. The *dry-run* mode tells you how many changes it can apply and which diagnostics it can fix, but without modifying any files. The *apply* mode applies the changes.
 
 You can provide the path to the directory containing the files to be fixed, but if you omit the directory it recursively fixes all the files in the current directory and its subdirectories.
 

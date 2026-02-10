@@ -33,7 +33,7 @@ DartPad handles the pubspec details for you, so all you need is the import state
 
 ## How package support works
 
-Here’s a quick overview of how package support works in DartPad. The DartPad server takes the set of supported packages and uses` **flutter pub get**` to fetch the latest compatible version of each package. Then the server uses these package versions during analysis and compilation of your DartPad script.
+Here’s a quick overview of how package support works in DartPad. The DartPad server takes the set of supported packages and uses `**flutter pub get**` to fetch the latest compatible version of each package. Then the server uses these package versions during analysis and compilation of your DartPad script.
 
 This release also supports the most popular Firebase packages, so you can access a suite of backend services without ever leaving DartPad. All necessary Firebase JavaScript SDKs are loaded into the output panel before running the compiled app.
 

@@ -125,7 +125,7 @@ void main() {
 
 ## void
 
-Lastly, we have `void`, the newest type in Dart 2. In Dart 1 `void` was only usable as the return type of a function (such as `void main()`), but in Dart 2 it has been *generalized, *and is usable elsewhere, for example `Future&lt;void&gt;`.
+Lastly, we have `void`, the newest type in Dart 2. In Dart 1 `void` was only usable as the return type of a function (such as `void main()`), but in Dart 2 it has been *generalized,* and is usable elsewhere, for example `Future&lt;void&gt;`.
 
 A `void` type is semantically similar to `Object`(it could be anything), except with additional restrictions — a `void` type cannot be used for anything (even `==` or `hashCode`), and it is invalid to assign something to a `void` type:
 
@@ -138,7 +138,7 @@ void main() {
 ```
 
 
-In *practice, *I use `void` to mean “anything and I don’t care about the elements” or, more commonly, to mean “omitted”, such as in `Future&lt;void&gt;` or `Stream&lt;void&gt;`:
+In *practice,* I use `void` to mean “anything and I don’t care about the elements” or, more commonly, to mean “omitted”, such as in `Future&lt;void&gt;` or `Stream&lt;void&gt;`:
 
 ```
 /// Clear the cache.

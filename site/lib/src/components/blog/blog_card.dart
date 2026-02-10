@@ -19,7 +19,7 @@ class BlogCard extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final author = context.getAuthor(post.authorId!)!;
+    final author = context.getAuthor(post.authorId);
     return a(
       href: url,
       classes: 'blog-card ${isFeatured ? 'featured' : ''} ${className ?? ''}',
