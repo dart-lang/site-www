@@ -2,7 +2,7 @@
 title: "Gradual null safety migration for large Dart projects"
 description: "Dart null-safety migration is a 1-2 hour effort for a simple, small package but can be a months-long marathon for a large project. Ideally…"
 publishDate: 2022-03-31
-author: "polina-c"
+author: polina-c
 image: images/16-SfhIoFLl1NPaNi8Ld8Og.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - dart
   - flutter
   - flutter-app-development
+layout: blog
 ---
 
 

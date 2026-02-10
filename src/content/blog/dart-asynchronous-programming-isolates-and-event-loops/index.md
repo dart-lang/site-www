@@ -2,7 +2,7 @@
 title: "Dart asynchronous programming: Isolates and event loops"
 description: "Dart, despite being a single-threaded language, offers support for futures, streams, background work, and all the other things you need to…"
 publishDate: 2019-07-25
-author: "kwalrath"
+author: kwalrath
 image: images/1t-mHg6JrdkKCs65UvD70-Q.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - asynchronous-programming
   - event-loop
   - flutter
+layout: blog
 ---
 
 

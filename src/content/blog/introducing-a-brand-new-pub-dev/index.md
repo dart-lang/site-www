@@ -2,7 +2,7 @@
 title: "Introducing a brand new pub.dev"
 description: "Redesigned for high-quality, multiplatform packages"
 publishDate: 2020-07-15
-author: "mit-mit"
+author: mit-mit
 image: images/0efALL34OP6a4tcxh.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - package-management
   - google
   - development
+layout: blog
 ---
 
 

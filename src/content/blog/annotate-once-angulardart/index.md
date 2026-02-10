@@ -2,7 +2,7 @@
 title: "Annotate Once: AngularDart"
 description: "Introducing Component Inheritance"
 publishDate: 2017-08-31
-author: "leonsenft"
+author: leonsenft
 image: images/1JLI4Zv7yp3j6qSzoaGEehw.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - programming
   - angulardart
   - components
+layout: blog
 ---
 
 

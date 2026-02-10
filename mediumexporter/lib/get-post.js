@@ -220,7 +220,7 @@ github: ${authorData.github ? `\n  handle: "${safeGithubHandle}"\n  username: "$
     outputText += `title: "${story.title.replace(/"/g, '\\"')}"\n`
     outputText += `description: "${story.subtitle.replace(/"/g, '\\"')}"\n`
     outputText += `publishDate: ${story.publishDate.slice(0, 10)}\n`
-    outputText += `author: "${story.author}"\n`
+    outputText += `author: ${story.author}\n`
 
     if (story.featuredImage) {
       const featImgFile = imageMap[story.featuredImage] || utils.normalizeId(story.featuredImage)
@@ -245,6 +245,7 @@ github: ${authorData.github ? `\n  handle: "${safeGithubHandle}"\n  username: "$
         outputText += `  - ${tag}\n`
       }
     }
+    outputText += `layout: blog\n`
     outputText += '---\n\n'
   }
   outputText += story.markdown.join('\n')

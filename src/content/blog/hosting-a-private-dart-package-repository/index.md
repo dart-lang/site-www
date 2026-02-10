@@ -2,7 +2,7 @@
 title: "Hosting a private Dart package repository"
 description: "Improvements in Dart 2.15 for secure enterprise package hosting"
 publishDate: 2022-03-16
-author: "jonasfj"
+author: jonasfj
 image: images/1hv1Nujq4-g2-y2uLuLYVqA.png
 category: other
 tags:
@@ -10,6 +10,7 @@ tags:
   - package-repository
   - jfrog-artifactory
   - cloudsmith
+layout: blog
 ---
 
 

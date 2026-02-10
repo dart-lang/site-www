@@ -2,7 +2,7 @@
 title: "Google Summer of Code 2024 Results"
 description: "Results from Dart contributors in Google Summer of Code 2024."
 publishDate: 2024-10-14
-author: "jonasfj"
+author: jonasfj
 image: images/0vm7AfKyip_pXJGCd.png
 category: other
 tags:
@@ -10,6 +10,7 @@ tags:
   - flutter
   - open-source
   - google-summer-of-code
+layout: blog
 ---
 
 

@@ -2,7 +2,7 @@
 title: "3 cool Dart patterns"
 description: "Try these three useful Dart programming patterns in your next Flutter app."
 publishDate: 2020-05-20
-author: "JoseAlba"
+author: JoseAlba
 image: images/0alx_hKg5fP3b1b22.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - coding
   - conditional-statements
   - iife
+layout: blog
 ---
 
 

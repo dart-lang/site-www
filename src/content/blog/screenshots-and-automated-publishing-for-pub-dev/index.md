@@ -2,7 +2,7 @@
 title: "Screenshots and automated publishing for pub.dev"
 description: "We have a couple of new features available on pub.dev starting today: You can now declare screenshots for a package, enabling a more visual…"
 publishDate: 2023-01-18
-author: "jonasfj"
+author: jonasfj
 image: images/169KfhhHmmvZ6BLvypXjx2A.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - pubdev
   - package
   - package-management
+layout: blog
 ---
 
 

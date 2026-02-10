@@ -2,13 +2,14 @@
 title: "Announcing Dart support for GitHub Actions"
 description: "GitHub Actions is a popular offering for continuous integration (CI) for GitHub repos. Today, we’re announcing an official setup-dart…"
 publishDate: 2021-03-24
-author: "mit-mit"
+author: mit-mit
 image: images/15E8_aBC9TBl9oBUwN3jAJw.png
 category: announcements
 tags:
   - dart
   - continuous-integration
   - github-actions
+layout: blog
 ---
 
 

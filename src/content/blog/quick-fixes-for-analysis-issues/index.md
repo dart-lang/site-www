@@ -2,9 +2,10 @@
 title: "Quick fixes for analysis issues"
 description: "Resolving diagnostics with a single click"
 publishDate: 2022-03-04
-author: "bwilkerson"
+author: bwilkerson
 image: images/0PHnbrlzf5BzJAyp8.png
 category: other
+layout: blog
 ---
 
 

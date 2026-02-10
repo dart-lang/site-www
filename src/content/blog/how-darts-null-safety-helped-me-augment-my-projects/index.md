@@ -2,13 +2,14 @@
 title: "How Dart’s null safety helped me augment my projects"
 description: "I migrated a running app and a published package to null safety, and it was awesome!"
 publishDate: 2021-06-23
-author: "wal33d"
+author: wal33d
 image: images/1HlInW7jXUifJIGBK1YEQEw.jpeg
 category: other
 tags:
   - flutter
   - dart
   - null-safety
+layout: blog
 ---
 
 > **About the author:** Waleed Arshad is a core mobile technologist, a passionate cross-platform developer, and the first person from Pakistan to become a Google Developer Expert for Flutter. After graduating from FAST Karachi, he has been working in the industry for more than five years and is currently working in the Developer Experience team for Flutter at Tendermint. He also leads Pakistan’s Flutter community.

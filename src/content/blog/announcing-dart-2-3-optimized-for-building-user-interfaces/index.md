@@ -2,7 +2,7 @@
 title: "Announcing Dart 2.3: Optimized for building user interfaces"
 description: "Today we’re announcing the stable release of the Dart 2.3 SDK, with new language features that improve your coding experience when…"
 publishDate: 2019-05-08
-author: "mit-mit"
+author: mit-mit
 image: images/0iKWVPoE5aSiCI-mW.png
 category: announcements
 tags:
@@ -11,6 +11,7 @@ tags:
   - programming-languages
   - ui
   - announcements
+layout: blog
 ---
 
 

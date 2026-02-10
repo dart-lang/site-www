@@ -2,13 +2,14 @@
 title: "Dart diagnostic messages"
 description: "Understanding error and warning messages from the Dart analyzer"
 publishDate: 2021-11-11
-author: "bwilkerson"
+author: bwilkerson
 image: images/1kUNsHzJZkZNRysNJmbNTdw.png
 category: other
 tags:
   - dart
   - programming
   - tooling
+layout: blog
 ---
 
 

@@ -2,7 +2,7 @@
 title: "Dart asynchronous programming: Futures"
 description: "One of the most basic APIs that Dart has for asynchronous programming is futures — objects of type Future. For the most part, Dart’s…"
 publishDate: 2019-09-18
-author: "kwalrath"
+author: kwalrath
 image: images/1UD63BMoIBmzoA6jo3LjCCg.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - dartlang
   - asynchronous-programming
   - flutter
+layout: blog
 ---
 
 

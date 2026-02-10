@@ -2,7 +2,7 @@
 title: "Announcing sound null safety"
 description: "Make your apps more stable and performant with Dart’s null safety"
 publishDate: 2020-06-10
-author: "filiph"
+author: filiph
 image: images/1HKl1Jf0uBNP-gReYYcgC_g.png
 category: announcements
 tags:
@@ -10,6 +10,7 @@ tags:
   - dart
   - flutter
   - announcements
+layout: blog
 ---
 
 

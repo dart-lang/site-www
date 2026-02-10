@@ -2,8 +2,9 @@
 title: "An update on Dart macros & data serialization"
 description: "We have invested significant time and resources to prototype macros over the past couple years. Unfortunately, each time we solved a major…"
 publishDate: 2025-01-29
-author: "vijaysmenon"
+author: vijaysmenon
 category: other
+layout: blog
 ---
 
 

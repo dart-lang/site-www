@@ -2,7 +2,7 @@
 title: "Quick assists for editing"
 description: "Using localized refactorings to be more productive"
 publishDate: 2022-07-13
-author: "bwilkerson"
+author: bwilkerson
 image: images/0V2JRi49yUj_MkFjS.png
 category: other
 tags:
@@ -10,6 +10,7 @@ tags:
   - linter
   - analyzer
   - dartlang
+layout: blog
 ---
 
 

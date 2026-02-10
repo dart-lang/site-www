@@ -451,7 +451,7 @@ async function processParagraph(p, slug, images, options = {}) {
             imageAttr = ` image="images/${fileName}"`
           }
 
-          processedText = `\n<GithubEmbed repo="${repo}" title="${title}"${imageAttr} />\n`
+          processedText = `\n<GitHubEmbed repo="${repo}" title="${title}"${imageAttr} />\n`
           break
         }
       }

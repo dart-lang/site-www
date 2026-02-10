@@ -4,9 +4,10 @@
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_content/jaspr_content.dart';
 
-class GithubEmbed extends StatelessComponent {
-  const GithubEmbed({
+class GitHubEmbed extends StatelessComponent {
+  const GitHubEmbed({
     required this.repo,
     required this.title,
     this.image,
@@ -17,8 +18,8 @@ class GithubEmbed extends StatelessComponent {
   final String title;
   final String? image;
 
-  static GithubEmbed fromAttributes(Map<String, String> attributes) {
-    return GithubEmbed(
+  static GitHubEmbed fromAttributes(Map<String, String> attributes) {
+    return GitHubEmbed(
       repo: attributes['repo'] ?? '',
       title: attributes['title'] ?? '',
       image: attributes['image'],
@@ -35,13 +36,13 @@ class GithubEmbed extends StatelessComponent {
       [
         div(classes: 'github-embed-content', [
           div(classes: 'github-embed-text', [
-            div(classes: 'github-embed-title', [text(repo)]),
-            div(classes: 'github-embed-description', [text(title)]),
-            div(classes: 'github-embed-footer', [text('github.com')]),
+            div(classes: 'github-embed-title', [.text(repo)]),
+            div(classes: 'github-embed-description', [.text(title)]),
+            const div(classes: 'github-embed-footer', [.text('github.com')]),
           ]),
-          if (image != null)
+          if (image case final image?)
             div(classes: 'github-embed-image', [
-              img(src: image!, alt: ''),
+              img(src: context.resolveAsset(image), alt: ''),
             ]),
         ]),
       ],

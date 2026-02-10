@@ -2,7 +2,7 @@
 title: "A brand new DartPad.dev with Flutter support"
 description: "Today, we’re announcing a major upgrade of DartPad.dev with a fresh new look-and-feel and support for the popular Flutter UI toolkit."
 publishDate: 2019-12-04
-author: "johnpryan"
+author: johnpryan
 image: images/1X7Sild_wdEFGRYaSk2C3Og.gif
 category: announcements
 tags:
@@ -10,6 +10,7 @@ tags:
   - dartpad
   - announcements
   - flutter
+layout: blog
 ---
 
 

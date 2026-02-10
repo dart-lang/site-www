@@ -2,7 +2,7 @@
 title: "Google Summer of Code 2025 Results"
 description: "The Google Summer of Code (GSoC) program focuses on engaging new developers worldwide with open source software development. Google…"
 publishDate: 2025-10-20
-author: "dcharkes"
+author: dcharkes
 image: images/1AWu8hJLDQzrZqv7BxH3byA.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - summer-internships
   - open-source
   - programming
+layout: blog
 ---
 
 

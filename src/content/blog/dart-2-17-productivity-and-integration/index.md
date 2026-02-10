@@ -2,7 +2,7 @@
 title: "Dart 2.17: Productivity and integration"
 description: "Language features. Productivity tools. Deeper & broader platform integration."
 publishDate: 2022-05-11
-author: "mit-mit"
+author: mit-mit
 image: images/1eJKM-4rFprGXyxNd5w2m-Q.png
 category: announcements
 tags:
@@ -11,6 +11,7 @@ tags:
   - programming
   - dartlang
   - productivity
+layout: blog
 ---
 
 

@@ -2,7 +2,7 @@
 title: "Announcing Dart 2 Stable and the Dart Web Platform"
 description: "Signals the rebirth of Dart as a mainstream programming language for mobile and web development"
 publishDate: 2018-08-07
-author: "kevmoo"
+author: kevmoo
 image: images/0YX3CcH4He_IIEhzx.png
 category: announcements
 tags:
@@ -11,6 +11,7 @@ tags:
   - programming-languages
   - web-development
   - announcements
+layout: blog
 ---
 
 

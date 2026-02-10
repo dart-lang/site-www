@@ -2,13 +2,14 @@
 title: "Announcing Dart 2.13"
 description: "New type aliases language feature, improved Dart FFI"
 publishDate: 2021-05-19
-author: "mit-mit"
+author: mit-mit
 image: images/1qMQKtkRNuvBjORjoJrN2bQ.png
 category: announcements
 tags:
   - dart
   - announcements
   - programming
+layout: blog
 ---
 
 

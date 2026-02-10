@@ -2,13 +2,14 @@
 title: "Dart 2.16: Improved tooling and platform handling"
 description: "Supporting Flutter for Windows with package platform tagging and a new search experience for pub.dev"
 publishDate: 2022-02-03
-author: "mit-mit"
+author: mit-mit
 image: images/0PJwhbfaIwRq3sSJi.png
 category: announcements
 tags:
   - dart
   - announcements
   - programming
+layout: blog
 ---
 
 

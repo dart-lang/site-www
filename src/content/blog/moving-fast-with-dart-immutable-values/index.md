@@ -2,13 +2,14 @@
 title: "Moving Fast with Dart Immutable Values"
 description: "Dart’s built_value provides powerful, convenient immutable values for Dart. The values might be immutable, but the package hasn’t been…"
 publishDate: 2017-06-30
-author: "davidmorgan"
+author: davidmorgan
 category: other
 tags:
   - programming
   - dart
   - dartlang
   - immutable
+layout: blog
 ---
 
 

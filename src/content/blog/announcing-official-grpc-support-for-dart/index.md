@@ -2,7 +2,7 @@
 title: "Announcing official gRPC support for Dart"
 description: "gRPC is a high performance, open source RPC framework. It offers simple service definitions, is built on http/2, and has support for…"
 publishDate: 2018-03-23
-author: "mit-mit"
+author: mit-mit
 category: announcements
 tags:
   - programming
@@ -10,6 +10,7 @@ tags:
   - flutter
   - grpc
   - announcements
+layout: blog
 ---
 
 

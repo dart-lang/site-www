@@ -2,7 +2,7 @@
 title: "Dart in Google Summer of Code 2025"
 description: "We’re excited to announce that the Dart project will mentor contributors (for the sixth time!) in Google Summer of Code 2025."
 publishDate: 2025-03-27
-author: "jonasfj"
+author: jonasfj
 image: images/1qcDWuPt-Y_v3Qu5XdDH_uw.png
 category: other
 tags:
@@ -10,6 +10,7 @@ tags:
   - dartlang
   - google-summer-of-code
   - open-source
+layout: blog
 ---
 
 

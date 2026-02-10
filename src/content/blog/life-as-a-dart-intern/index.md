@@ -2,13 +2,14 @@
 title: "Life as a Dart intern"
 description: "In this companion post to “Dart declaration-site variance”, hear about an intern‘s experience with Google’s Dart team."
 publishDate: 2019-12-19
-author: "kallentu"
+author: kallentu
 image: images/06Ct-NyRGmYp_bmgp.png
 category: other
 tags:
   - programming
   - intern
   - dart
+layout: blog
 ---
 
 

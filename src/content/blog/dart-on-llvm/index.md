@@ -2,7 +2,7 @@
 title: "Dart-on-LLVM"
 description: "This is a story about an experiment to compile the Dart language using the LLVM compiler framework. On its face this is pretty pointless…"
 publishDate: 2017-01-11
-author: "erikcorry"
+author: erikcorry
 image: images/1DN03P0ofCSyHM6UwB42Nyg.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - dart
   - dartlang
   - llvm
+layout: blog
 ---
 
 

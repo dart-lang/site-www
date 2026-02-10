@@ -2,13 +2,14 @@
 title: "Introducing Dart 3 alpha"
 description: "Preview the most productive, portable, and approachable version of Dart yet. Now available for early testing and experimentation."
 publishDate: 2023-01-25
-author: "mit-mit"
+author: mit-mit
 image: images/0evGHZJd_7cahb08X.png
 category: other
 tags:
   - dart
   - dartlang
   - flutter
+layout: blog
 ---
 
 

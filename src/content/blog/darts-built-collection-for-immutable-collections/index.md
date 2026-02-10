@@ -2,7 +2,7 @@
 title: "Dart’s built_collection for Immutable Collections"
 description: "A month ago I spoke at the Dart Developer Summit about object models with source_gen (video). I mentioned some packages and techniques that…"
 publishDate: 2016-11-24
-author: "davidmorgan"
+author: davidmorgan
 category: other
 tags:
   - programming
@@ -10,6 +10,7 @@ tags:
   - dart
   - immutability
   - clean-code
+layout: blog
 ---
 
 

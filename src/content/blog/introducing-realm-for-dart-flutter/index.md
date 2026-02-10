@@ -2,12 +2,13 @@
 title: "Introducing Realm for Dart & Flutter"
 description: "A case study in using Dart platform primitives to build a rich multi-platform library for Dart and Flutter apps."
 publishDate: 2023-02-09
-author: "mit-mit"
+author: mit-mit
 image: images/1cAi4WO4IfN5Sp6WE6Ex8Ig.png
 category: other
 tags:
   - dart
   - realm
+layout: blog
 ---
 
 

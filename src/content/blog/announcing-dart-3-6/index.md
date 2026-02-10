@@ -2,13 +2,14 @@
 title: "Announcing Dart 3.6"
 description: "Welcome to Dart 3.6! Today is our last release of the year, alongside Flutter 3.27. We’re excited to share a new feature in the language…"
 publishDate: 2024-12-11
-author: "mbelanger"
+author: mbelanger
 image: images/0pojZOcfCeFztkEzK.png
 category: announcements
 tags:
   - dart
   - dartlang
   - flutter
+layout: blog
 ---
 
 

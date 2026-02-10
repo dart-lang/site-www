@@ -2,13 +2,14 @@
 title: "Announcing Dart 3.10"
 description: "Today, we’re excited to announce the release of Dart 3.10!"
 publishDate: 2025-11-12
-author: "antfitch"
+author: antfitch
 image: images/1AyAyohCAvBT-ta-nJPrkEg.png
 category: announcements
 tags:
   - announcements
   - dart
   - releases
+layout: blog
 ---
 
 

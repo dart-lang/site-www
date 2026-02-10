@@ -2,7 +2,7 @@
 title: "Students: Join a Dart project for Google Summer of Code 2020"
 description: "Google Summer of Code is a global program focused on bringing student developers into open source software development. Students are…"
 publishDate: 2020-02-27
-author: "jonasfj"
+author: jonasfj
 image: images/1s8NsJv2UhKO1omeN7hX9wQ.jpeg
 category: other
 tags:
@@ -10,6 +10,7 @@ tags:
   - flutter
   - open-source
   - google-summer-of-code
+layout: blog
 ---
 
 

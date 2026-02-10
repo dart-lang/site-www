@@ -2,7 +2,7 @@
 title: "Dart’s built_value for Immutable Object Models"
 description: "Last week I wrote about built_collection. I finished by remarking that to really make use of immutable collections, you need immutable…"
 publishDate: 2016-11-30
-author: "davidmorgan"
+author: davidmorgan
 category: other
 tags:
   - programming
@@ -10,6 +10,7 @@ tags:
   - dartlang
   - immutability
   - clean-code
+layout: blog
 ---
 
 

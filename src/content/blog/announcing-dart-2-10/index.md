@@ -2,7 +2,7 @@
 title: "Announcing Dart 2.10"
 description: "A new, unified dart tool for all core tasks. Also, an update on null safety timelines and migration principles."
 publishDate: 2020-10-01
-author: "mit-mit"
+author: mit-mit
 image: images/19wrenixSu1viOYLF1nWhAw.jpeg
 category: announcements
 tags:
@@ -10,6 +10,7 @@ tags:
   - null-safety
   - dart
   - flutter
+layout: blog
 ---
 
 

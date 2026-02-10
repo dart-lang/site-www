@@ -2,7 +2,7 @@
 title: "An intro to immutability with Dart"
 description: "It’s impossible to deny that immutability is a hot topic in programming, especially front-end programming. Libraries like Immutable.js and…"
 publishDate: 2017-04-24
-author: "matanlurey"
+author: matanlurey
 category: other
 tags:
   - javascript
@@ -10,6 +10,7 @@ tags:
   - dart
   - dartlang
   - immutable
+layout: blog
 ---
 
 

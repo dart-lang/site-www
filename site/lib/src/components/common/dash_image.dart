@@ -1,5 +1,6 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../markdown/markdown_parser.dart';
 
@@ -33,7 +34,7 @@ class DashImage extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return figure([
-      img(src: src, alt: alt),
+      img(src: context.resolveAsset(src), alt: alt),
       if (caption != null && caption!.isNotEmpty)
         figcaption([
           DashMarkdown(content: caption!, inline: true),

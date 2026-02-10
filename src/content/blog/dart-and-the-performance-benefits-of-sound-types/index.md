@@ -2,13 +2,14 @@
 title: "Dart and the performance benefits of sound types"
 description: "Using soundness and null safety to generate faster, smaller code."
 publishDate: 2021-01-19
-author: "vijaysmenon"
+author: vijaysmenon
 image: images/1x0UcFY8XwG-3vHe5hYxyQw.png
 category: other
 tags:
   - dart
   - programming-languages
   - performance
+layout: blog
 ---
 
 

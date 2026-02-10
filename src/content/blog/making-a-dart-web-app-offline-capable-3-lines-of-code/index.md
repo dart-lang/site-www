@@ -2,7 +2,7 @@
 title: "Making a Dart web app offline-capable: 3 lines of code"
 description: "Have you ever tried to load a web application (maybe a game or a measurement converter) and couldn’t use it because the network was down…"
 publishDate: 2017-03-28
-author: "isoos"
+author: isoos
 image: images/1GsjtYvVghuA63qhhRdyfPQ.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - dartlang
   - progressive-web-app
   - offline
+layout: blog
 ---
 
 

@@ -2,13 +2,14 @@
 title: "Announcing Dart 2.15"
 description: "Fast concurrency, constructor tear-offs, improved enums, and more"
 publishDate: 2021-12-08
-author: "mit-mit"
+author: mit-mit
 image: images/196RfgLO4RYR2ReAs8t6x5w.png
 category: announcements
 tags:
   - dart
   - announcements
   - programming
+layout: blog
 ---
 
 

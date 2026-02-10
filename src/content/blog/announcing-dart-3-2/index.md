@@ -2,12 +2,13 @@
 title: "Announcing Dart 3.2"
 description: "Improved language & developer experience, and an update on web apps & Wasm"
 publishDate: 2023-11-15
-author: "mit-mit"
+author: mit-mit
 image: images/1u5YRn1uMmXf94b2aPbcLRQ.png
 category: announcements
 tags:
   - dart
   - dartlang
+layout: blog
 ---
 
 

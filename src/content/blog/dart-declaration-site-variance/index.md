@@ -2,7 +2,7 @@
 title: "Dart declaration-site variance"
 description: "A deep dive into an experimental feature"
 publishDate: 2019-12-19
-author: "kallentu"
+author: kallentu
 image: images/0XcEdm2vmIBW8Wovr.png
 category: other
 tags:
@@ -10,6 +10,7 @@ tags:
   - variance
   - programming-languages
   - dartlang
+layout: blog
 ---
 
 

@@ -2,7 +2,7 @@
 title: "Announcing Windows support for Dart on Travis CI"
 description: "Today, we’re announcing that Travis CI on Windows supports the Dart SDK, so you can run Dart build and test jobs on all major desktop OS’s."
 publishDate: 2019-04-15
-author: "mit-mit"
+author: mit-mit
 image: images/1Zh0PvesZNUKCljlerYe4Sg.png
 category: announcements
 tags:
@@ -11,6 +11,7 @@ tags:
   - travis-ci
   - flutter
   - announcements
+layout: blog
 ---
 
 

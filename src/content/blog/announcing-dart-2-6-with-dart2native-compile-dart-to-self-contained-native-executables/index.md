@@ -2,7 +2,7 @@
 title: "Announcing Dart 2.6 with dart2native: Compile Dart to self-contained, native executables"
 description: "Announcing Dart 2.6, featuring dart2native for compiling Dart apps to self-contained, native executables for Windows, macOS, and Linux"
 publishDate: 2019-11-05
-author: "mit-mit"
+author: mit-mit
 image: images/0lY0iF-neazyL0aE-.gif
 category: announcements
 tags:
@@ -11,6 +11,7 @@ tags:
   - programming
   - compilers
   - announcements
+layout: blog
 ---
 
 

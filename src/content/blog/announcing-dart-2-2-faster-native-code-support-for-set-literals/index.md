@@ -2,7 +2,7 @@
 title: "Announcing Dart 2.2: Faster native code, support for set literals"
 description: "Today, we’re announcing the stable release of the Dart 2.2 SDK, an incremental update to Dart 2 that offers improved performance of…"
 publishDate: 2019-02-26
-author: "mit-mit"
+author: mit-mit
 image: images/1saXdrIB-SjU2EL7gLGPUsA.png
 category: announcements
 tags:
@@ -10,6 +10,7 @@ tags:
   - dart
   - flutter
   - announcements
+layout: blog
 ---
 
 

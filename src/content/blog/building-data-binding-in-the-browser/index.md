@@ -2,7 +2,7 @@
 title: "Building data binding in the browser"
 description: "Data binding, or updating the view (usually UI) from your application’s code is probably the holy grail of browser-based web frameworks —…"
 publishDate: 2017-07-04
-author: "matanlurey"
+author: matanlurey
 image: images/1QUn_zBM0SBDRG4TtMBiM2A.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - react
   - framework
   - angular
+layout: blog
 ---
 
 
@@ -35,7 +36,7 @@ If you’re just interested in the code, it’s all available on GitHub:
 
 ***One quick note** — nothing here is optimized, and I’ve taken some shortcuts to make this tutorial achievable in about an hour, which means I didn’t write any pre-processors or code generators — and instead I’ve hand-written what generated code would look like; those files end in “.g.dart”.*
 
-<GithubEmbed repo="matanlurey/building-data-binding" title="building-data-binding - Accompanying code for &quot;Building Data Binding in the Browser&quot;" image="images/0QVBz3DSv-QKuugcc.jpg" />
+<GitHubEmbed repo="matanlurey/building-data-binding" title="building-data-binding - Accompanying code for &quot;Building Data Binding in the Browser&quot;" image="images/0QVBz3DSv-QKuugcc.jpg" />
 
 
 ### Static templating
@@ -549,7 +550,7 @@ This is actually not too different from what we did above in *static template bi
 
 I promised I’d write a simple library for a reactive-style data-binding framework, but I decided by the end of this article it had already been done better by my colleague Yegor with his framework “Butterfly”:
 
-<GithubEmbed repo="yjbanov/butterfly" title="butterfly - A web framework for Dart based on Flutter's widget model" image="images/0mC9GWhN0QE2u20u0.jpg" />
+<GitHubEmbed repo="yjbanov/butterfly" title="butterfly - A web framework for Dart based on Flutter's widget model" image="images/0mC9GWhN0QE2u20u0.jpg" />
 
 
 ```dart

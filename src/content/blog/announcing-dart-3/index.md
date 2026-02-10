@@ -3,13 +3,14 @@ title: "Announcing Dart 3"
 description: "100% sound null safety. Records, patterns, and class modifiers. 
 And a peek into the future."
 publishDate: 2023-05-10
-author: "mit-mit"
+author: mit-mit
 image: images/12XwxNKHrKb3SGaWEyqg2nA.png
 category: announcements
 tags:
   - dart
   - dartlang
   - releases
+layout: blog
 ---
 
 

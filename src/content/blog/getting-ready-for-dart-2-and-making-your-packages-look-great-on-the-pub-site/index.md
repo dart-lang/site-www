@@ -2,12 +2,13 @@
 title: "Getting ready for Dart 2, and making your packages look great on the Pub site!"
 description: "We have a new release of Pub, the package repository for Dart! This time around we focused on preparing for the Dart 2 stable release."
 publishDate: 2018-07-20
-author: "mit-mit"
+author: mit-mit
 image: images/0Fq4FHYc9N5aHmYBK.png
 category: other
 tags:
   - github
   - dartlang
+layout: blog
 ---
 
 

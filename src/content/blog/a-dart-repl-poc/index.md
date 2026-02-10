@@ -2,7 +2,7 @@
 title: "A Dart REPL PoC"
 description: "Hacking with Dart"
 publishDate: 2017-01-17
-author: "BlackHC"
+author: BlackHC
 image: images/0lOBcrb2bYgKV6VYT.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - python
   - google
   - software-development
+layout: blog
 ---
 
 

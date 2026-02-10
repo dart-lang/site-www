@@ -2,7 +2,7 @@
 title: "Evolving the Dart REPL PoC"
 description: "Hacking with Dart"
 publishDate: 2017-04-19
-author: "BlackHC"
+author: BlackHC
 image: images/0VisHHMp_ARvFA08w.jpg
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - programming
   - software-development
   - prototyping
+layout: blog
 ---
 
 

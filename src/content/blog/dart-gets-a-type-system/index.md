@@ -2,13 +2,14 @@
 title: "Dart gets a Type System"
 description: "Rejoice, all ye faithful, for Dart 2.0 is coming, and it has types."
 publishDate: 2017-07-04
-author: "davidmorgan"
+author: davidmorgan
 image: images/0C4V5HBaOprKmpRUh.jpg
 category: other
 tags:
   - programming
   - dartlang
   - dart
+layout: blog
 ---
 
 

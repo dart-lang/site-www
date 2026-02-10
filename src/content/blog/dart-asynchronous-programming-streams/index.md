@@ -2,7 +2,7 @@
 title: "Dart asynchronous programming: Streams"
 description: "This article covers one of the fundamentals of reactive programming: streams, which are objects of type Stream."
 publishDate: 2020-02-11
-author: "kwalrath"
+author: kwalrath
 image: images/1Q2-Ac9rjIDSuXzbrQqGkVA.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - dartlang
   - asynchronous-programming
   - flutter
+layout: blog
 ---
 
 

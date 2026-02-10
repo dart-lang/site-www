@@ -2,7 +2,7 @@
 title: "Dart DevTools: Analyzing application performance with the CPU Profiler"
 description: "Whether you’re a backend developer writing a command line tool using Dart, or a UX engineer building applications with Flutter, program performance is critical to the success of your project. Command line tools should minimize latency and apps should be responsive and snappy with no dropped frames. As developers, we try our best to write performant code but sometimes it’s not clear why our code isn’t performing as well as we would expect."
 publishDate: 2023-06-12
-author: "bkonyi"
+author: bkonyi
 image: images/04btaxCBW8Btx71RM.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - dart-devtools
   - flutterdevtools
   - cpu-profiling
+layout: blog
 ---
 
 

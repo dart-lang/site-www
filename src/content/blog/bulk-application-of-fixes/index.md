@@ -2,7 +2,7 @@
 title: "Bulk application of fixes"
 description: "Fixing multiple analysis issues in one step"
 publishDate: 2022-05-05
-author: "bwilkerson"
+author: bwilkerson
 image: images/0URmNnWSjGRGOorjv.png
 category: other
 tags:
@@ -10,6 +10,7 @@ tags:
   - linter
   - analyzer
   - dartlang
+layout: blog
 ---
 
 

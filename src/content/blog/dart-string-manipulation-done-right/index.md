@@ -2,7 +2,7 @@
 title: "Dart string manipulation done right 👉"
 description: "Does your app use emojis or support multiple languages? Dart just introduced a new way to safely handle them in string manipulation."
 publishDate: 2020-06-30
-author: "taodong"
+author: taodong
 image: images/1H_-SP7V6x1cQpGM_6DUReg.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - programming-languages
   - string-manipulation
   - developer-experience
+layout: blog
 ---
 
 

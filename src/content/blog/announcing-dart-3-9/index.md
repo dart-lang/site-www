@@ -2,13 +2,14 @@
 title: "Announcing Dart 3.9"
 description: "Hello, Dart developers! The latest stable version, Dart 3.9, is officially here!"
 publishDate: 2025-08-14
-author: "antfitch"
+author: antfitch
 image: images/1VIHR_FuzQzulhqczfx8eAA.gif
 category: announcements
 tags:
   - dart
   - flutter
   - mcp-server
+layout: blog
 ---
 
 

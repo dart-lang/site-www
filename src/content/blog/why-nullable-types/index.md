@@ -2,13 +2,14 @@
 title: "Why nullable types?"
 description: "Null in Dart code indicates that a variable has no value, but some languages don’t allow null. Learn why both approaches work."
 publishDate: 2020-12-07
-author: "munificent"
+author: munificent
 image: images/1ihpy1Ngzg7SczCKkuh_WhQ.jpeg
 category: other
 tags:
   - dart
   - programming-languages
   - developer-experience
+layout: blog
 ---
 
 

@@ -2,7 +2,7 @@
 title: "Google Maps with AngularDart"
 description: "In this article we will integrate Google Maps with an AngularDart application. The app itself will be very simple: it calculates the great…"
 publishDate: 2017-02-23
-author: "isoos"
+author: isoos
 image: images/1hLce2qgbJEkxjOlOr8jn9g.png
 category: other
 tags:
@@ -11,6 +11,8 @@ tags:
   - dart
   - javascript
   - google-maps
+skipTemplateRendering: true
+layout: blog
 ---
 
 
@@ -50,13 +52,13 @@ Your key will be enabled and ready to use in a couple of seconds:
 Note your API key. We’ll use it when we fetch the Maps JavaScript library:
 
 ```
-[https://maps.googleapis.com/maps/api/js?key=**KEY_GOES_HERE**](https://maps.googleapis.com/maps/api/js?key=KEY_GOES_HERE)
+https://maps.googleapis.com/maps/api/js?key=KEY_GOES_HERE
 ```
 
 
 In JavaScript, to create a map instance and place a marker on it, we’d use the following code:
 
-```
+```js
 var hostElement = document.getElementById('map-id');
 var map = new google.maps.Map(hostElement, {
   zoom: 2,

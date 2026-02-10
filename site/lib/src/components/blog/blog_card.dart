@@ -1,5 +1,6 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../models/blog.dart';
 
@@ -41,7 +42,7 @@ class BlogCard extends StatelessComponent {
               if (author.image != null)
                 img(
                   classes: 'blog-card-avatar',
-                  src: '/images/content/blog/authors/${author.image}',
+                  src: context.resolveAsset('/blog/authors/${author.image}'),
                   alt: author.name,
                 )
               else if (author.github?.avatarUrl case final avatarUrl?)

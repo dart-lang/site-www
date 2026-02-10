@@ -2,7 +2,7 @@
 title: "Announcing package support for DartPad"
 description: "Create robust code snippets with popular packages in DartPad"
 publishDate: 2021-11-15
-author: "zoeyfan"
+author: zoeyfan
 image: images/05iMRgkKlQGK6fJx3.png
 category: announcements
 tags:
@@ -11,6 +11,7 @@ tags:
   - firebase
   - programming
   - announcements
+layout: blog
 ---
 
 

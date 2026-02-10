@@ -2,13 +2,14 @@
 title: "The road to Dart 3: A fully sound, null safe language"
 description: "Preparing for the next major release, where Dart only supports sound null safety"
 publishDate: 2022-12-08
-author: "mit-mit"
+author: mit-mit
 image: images/05XfWLgEBx4iJvuqA.png
 category: other
 tags:
   - dart
   - dartlang
   - null-safety
+layout: blog
 ---
 
 

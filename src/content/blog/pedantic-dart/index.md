@@ -2,13 +2,14 @@
 title: "Pedantic Dart"
 description: "Over at Dart’s package:pedantic, we’ve been slowly gathering a list of precisely correct lints you can apply to your Dart code."
 publishDate: 2019-05-22
-author: "davidmorgan"
+author: davidmorgan
 image: images/1QCajckOeBhRaLzi0RoFqig.png
 category: other
 tags:
   - dart
   - dartlang
   - static-analysis
+layout: blog
 ---
 
 

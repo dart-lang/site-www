@@ -2,13 +2,14 @@
 title: "Dart extension method fundamentals"
 description: "Read about the design considerations behind extension methods, a new feature landing in a future Dart SDK release"
 publishDate: 2019-11-05
-author: "lrhn"
+author: lrhn
 image: images/1D57vLbx-SwCUSnLXA9zHRQ.png
 category: other
 tags:
   - dartlang
   - programming-languages
   - extension-method
+layout: blog
 ---
 
 

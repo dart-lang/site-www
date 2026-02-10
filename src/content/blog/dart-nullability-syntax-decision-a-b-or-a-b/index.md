@@ -2,7 +2,7 @@
 title: "Dart nullability syntax decision: a?[b] or a?.[b]"
 description: "Dart is in the process of redesigning its type system so that individual types will be either nullable (expressions of that type can have…"
 publishDate: 2019-08-26
-author: "kwalrath"
+author: kwalrath
 image: images/1se-VT1aPyHd3J2VYDzDW5g.png
 category: other
 tags:
@@ -11,6 +11,7 @@ tags:
   - dartlang
   - dart
   - syntax
+layout: blog
 ---
 
 > Update (3/2021): Thanks to your feedback, the Dart team [decided to use the a?[b] syntax](https://github.com/dart-lang/language/issues/376#issuecomment-576924506).

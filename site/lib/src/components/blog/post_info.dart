@@ -1,5 +1,6 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../models/blog.dart';
 import 'client/share_button.dart';
@@ -30,7 +31,7 @@ class PostInfo extends StatelessComponent {
     final authorInfo = div(classes: 'post-info-author', [
       if (author.image != null)
         img(
-          src: '/images/content/blog/authors/${author.image}',
+          src: context.resolveAsset('/blog/authors/${author.image}'),
           alt: author.name,
           width: 32,
           height: 32,
