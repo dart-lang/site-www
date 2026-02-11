@@ -18,7 +18,8 @@ Here are some of this site's most visited pages:
     A brief, example-based introduction to the Dart language.
   </Card>
   <Card title="Effective Dart" link="/effective-dart">
-    Best practices for building consistent, maintainable, efficient Dart code.
+    Best practices for building
+    consistent, maintainable, and efficient Dart code.
   </Card>
   <Card title="Library documentation" link="/libraries">
     An example-based introduction to the major features in
