@@ -86,6 +86,15 @@ extension ArgResultExtensions on ArgResults? {
   /// Assuming its type is [T], get the value specified for
   /// the argument named [key], or the [defaultValue] if not specified.
   T get<T>(String key, T defaultValue) => this?[key] as T? ?? defaultValue;
+
+  /// Assuming its type is [T], get the value specified for
+  /// the argument named [key], or throw a [StateError] if not specified.
+  T getOrThrow<T>(String key) {
+    if (this?[key] case final value?) {
+      return value as T;
+    }
+    throw StateError('Missing required argument: $key');
+  }
 }
 
 /// A collection of the paths of all Dart projects with
