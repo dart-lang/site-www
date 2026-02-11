@@ -7,7 +7,7 @@
     Added support for Unix domain sockets (`AF_UNIX`) on Windows. Support is
     restricted to the subset of features supported by the OS. Windows currently
     does not support the following features for `AF_UNIX` sockets: datagram
-    sockets, ancillary data or abstract socket addresses. Unix domain sockets are
+    sockets, ancillary data, or abstract socket addresses. Unix domain sockets are
     represented in the filesystem using _reparse points_ which leads to some
     discrepancies in the behavior of `dart:io` APIs: for example
     `File(socketPath).existsSync()` will return `true` on POSIX operating systems,
