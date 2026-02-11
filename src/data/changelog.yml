@@ -220,7 +220,7 @@
   area: Tools
   subArea: Pub
   description: |
-    Added the new commmand `dart pub cache gc` for reclaiming disk space from your pub
+    Added the new command `dart pub cache gc` for reclaiming disk space from your pub
     cache.
     It works by removing packages from your pub cache that are not referenced by
     any of your current projects.
