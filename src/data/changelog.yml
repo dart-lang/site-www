@@ -205,10 +205,12 @@
   description: |
     "Glob" support has been added for pub workspaces.
     Now to include all packages inside `pkgs/` in the workspace, simply write:
+
     ```yaml
     workspace:
       - pkgs/*
     ```
+
     Supported if the Dart SDK constraint of the containing package is 3.11.0 or
     higher.
   tags:
