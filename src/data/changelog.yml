@@ -204,7 +204,7 @@
   area: Tools
   subArea: Pub
   description: |
-    "Glob" support for pub workspaces.
+    "Glob" support has been added for pub workspaces.
     Now to include all packages inside `pkgs/` in the workspace, simply write:
     ```yaml
     workspace:
