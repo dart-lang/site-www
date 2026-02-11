@@ -84,7 +84,7 @@
   area: Tools
   subArea: Analyzer
   description: |
-    Various fixes are made for the `call` method on a Function object, like "go
+    Various fixes were made for the `call` method on a Function object, like "go
     to definition," and completion.
   tags:
     - fixed
