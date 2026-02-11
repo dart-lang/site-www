@@ -71,7 +71,7 @@
   subArea: Analyzer
   description: |
     Analysis via analyzer plugins is now faster on subsequent runs, as the
-    analysis server will now re-use an existing AOT snapshot of the plugins
+    analysis server will now re-use an existing AOT snapshot of the plugin's
     entrypoint. This saves a constant amount of time at the start of each IDE
     session and `dart analyze` run, on the order of 10 seconds.
   tags:
