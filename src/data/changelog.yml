@@ -238,8 +238,9 @@
   description: |
     When running a dry run of `dart pub publish` with the `--dry-run` flag,
     you can now ignore warnings with the `--ignore-warnings` flag.
-    Given this flag, `dart pub publish --dry-run` will only exit non-zero if your
-    project validation has errors.
+
+    When you specify this flag, the dry run will only exit with
+    a non-zero exit code if package validation has errors.
   tags:
     - new
   link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
