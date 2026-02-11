@@ -234,7 +234,7 @@
   area: Tools
   subArea: Pub
   description: |
-    New flag `dart pub publish --dry-run --ignore-warnings`
+    There is a new flag: `dart pub publish --dry-run --ignore-warnings`.
     Given this flag, `dart pub publish --dry-run` will only exit non-zero if your
     project validation has errors.
   tags:
