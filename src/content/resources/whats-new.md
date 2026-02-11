@@ -45,7 +45,7 @@ check out the [3.11 announcement][] and the
 
 
 [3.11 announcement]: https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088
-[3-11-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+[3-11-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110
 [learn]: /learn
 [Glossary]: /resources/glossary
 [IntelliJ & Android Studio page]: /tools/jetbrains-plugin
