@@ -116,7 +116,7 @@
   area: Tools
   subArea: Analyzer
   description: |
-    Various fixes added for IDE features with regards to "Dot Shorthand" syntax.
+    Fixed various issues with support for the "dot shorthands" syntax in IDEs.
   tags:
     - fixed
   link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
