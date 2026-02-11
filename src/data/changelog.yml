@@ -149,7 +149,7 @@
   area: Tools
   subArea: Analyzer
   description: |
-    A new lint rule is offered: `simplify_variable_pattern`, which encourages
+    A new lint rule was added: `simplify_variable_pattern`, which encourages
     using the pattern shorthand for variables and property names of the same
     name.
   tags:
