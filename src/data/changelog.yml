@@ -137,7 +137,7 @@
   area: Tools
   subArea: Analyzer
   description: |
-    Fixes to the 'Extract Widget' refactoring.
+    Fixes to the "Extract Widget" refactoring.
   tags:
     - fixed
   link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
