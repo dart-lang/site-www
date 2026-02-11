@@ -37,7 +37,8 @@ check out the [3.11 announcement][] and the
 *   Added documentation about the environment variables available 
     to Dart's [build hooks][].
 *   Included "Format on save" setup instructions for IDEs 
-    on the [dart format][] page. (Thank you, [Anushree Bondia](https://github.com/Anushreebasics).)
+    on the [dart format][] page.
+    (Thank you, [Anushree Bondia](https://github.com/Anushreebasics).)
 *   Expanded the [Glossary][] with new terms including "dependency graph",
     "AOT", "JIT", "interop", and "scope".
     (Thank you, [IldySilva](https://github.com/IldySilva) 
