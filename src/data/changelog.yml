@@ -95,7 +95,7 @@
   area: Tools
   subArea: Analyzer
   description: |
-    Various fixes are made for the `error` and `stackTrace` parameters of
+    Various fixes were made for the `error` and `stackTrace` parameters of
     try/catch statements.
   tags:
     - fixed
