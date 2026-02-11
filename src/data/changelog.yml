@@ -62,7 +62,7 @@
   description: |
     The "Fix all in workspace" command now supports a progress indicator.
   tags:
-    - fixed
+    - new
   link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
 # --------------------------------------------------
 - version: 3.11.0
