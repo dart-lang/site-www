@@ -215,6 +215,7 @@
     higher.
   tags:
     - new
+    - versioned
   link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
 # --------------------------------------------------
 - version: 3.11.0
