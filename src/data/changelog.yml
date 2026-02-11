@@ -106,7 +106,7 @@
   area: Tools
   subArea: Analyzer
   description: |
-    Various fixes are made for syntax highlighting, navigation, code completion,
+    Various fixes were made for syntax highlighting, navigation, code completion,
     hovers, quick fixes, assists, "rename" refactoring, and "go to imports."
   tags:
     - fixed
