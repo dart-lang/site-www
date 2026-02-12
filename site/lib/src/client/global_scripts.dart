@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:meta/meta.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -27,39 +28,49 @@ void setUpSite() {
 
 void _setUpHeadingLinkCopy() {
   final anchors = web.document.querySelectorAll(
-    'a.heading-link[data-heading-id]',
+    'a.heading-link[href]',
   );
 
   for (var i = 0; i < anchors.length; i++) {
     final anchor = anchors.item(i) as web.HTMLAnchorElement;
+
+    // Store the original text before any click handlers modify it.
+    final originalText = anchor.textContent;
+
+    @awaitNotRequired
+    Future<void> copyAnchorToClipboard(String url) async {
+      try {
+        await web.window.navigator.clipboard.writeText(url).toDart;
+        // TODO: Replace this with a tooltip of some sort.
+        anchor.textContent = 'Link copied!';
+
+        Future<void>.delayed(const Duration(milliseconds: 1200), () {
+          anchor.textContent = originalText;
+        });
+      } catch (_) {
+        anchor.textContent = 'Failed to copy';
+      }
+    }
 
     anchor.addEventListener(
       'click',
       ((web.Event event) {
         event.preventDefault();
 
-        final href = anchor.getAttribute('href');
-        if (href == null || !href.startsWith('#')) return;
+        final fragment = anchor.hash;
+        if (!fragment.startsWith('#')) return;
 
-        final headingId = href.substring(1);
+        final headingId = fragment.substring(1);
         if (headingId.isEmpty) return;
 
         final url = Uri.parse(
           web.window.location.href,
         ).replace(fragment: headingId).toString();
 
-        // Copy URL to clipboard (if available)
-        web.window.navigator.clipboard.writeText(url);
-
-        // Update the URL hash without triggering a jump
+        // Update the URL hash without triggering a scroll jump.
         web.window.history.replaceState(null, '', '#$headingId');
 
-        // Temporary visual feedback
-        final originalText = anchor.textContent;
-        anchor.textContent = 'Copied!';
-        Future<void>.delayed(const Duration(milliseconds: 1200), () {
-          anchor.textContent = originalText;
-        });
+        copyAnchorToClipboard(url);
       }).toJS,
     );
   }
