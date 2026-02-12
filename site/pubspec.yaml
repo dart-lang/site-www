@@ -4,7 +4,7 @@ homepage: https://dart.dev
 
 resolution: workspace
 environment:
-  sdk: ^3.10.0
+  sdk: ^3.11.0
 
 dependencies:
   build: ^4.0.3
@@ -16,7 +16,7 @@ dependencies:
   http: ^1.6.0
   # Used for formatting dates in the SDK archive.
   intl: ^0.20.2
-  jaspr: ^0.22.0
+  jaspr: ^0.22.2
   jaspr_content: ^0.4.5
   # Used as our template engine.
   liquify: 1.3.1
@@ -40,8 +40,8 @@ dev_dependencies:
       ref: e2534e272132813a1cdcf6ea71a6fd9c904a69fb
   build_runner: ^2.10.4
   build_web_compilers: ^4.4.6
-  jaspr_builder: ^0.22.0
-  jaspr_test: ^0.22.0
+  jaspr_builder: ^0.22.2
+  jaspr_test: ^0.22.2
   lints: ^6.0.0
   sass: ^1.94.2
   sass_builder: ^2.4.0

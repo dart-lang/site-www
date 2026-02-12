@@ -79,7 +79,7 @@ class _LintRuleCard extends StatelessComponent {
       ],
       content: [
         if (lint.description.isNotEmpty)
-          DashMarkdown(content: lint.description, inline: true),
+          DashMarkdown(content: lint.description),
       ],
       actions: CardActions(
         leading: _statusIcons,

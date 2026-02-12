@@ -1,7 +1,6 @@
 text: >-
-  Dart 3.10 is taking off with dot shorthands,
-  stable build hooks, nuanced deprecation annotations, and more!
+  Dart 3.11 is live! 
 link:
   text: "Learn more"
-  url: "https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088"
+  url: "https://blog.dart.dev/announcing-dart-3-11-b6529be4203a"
   newTab: true
