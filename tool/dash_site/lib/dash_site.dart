@@ -19,6 +19,7 @@ import 'src/commands/generate_effective_dart_toc.dart';
 import 'src/commands/generate_lints.dart';
 import 'src/commands/refresh_excerpts.dart';
 import 'src/commands/serve.dart';
+import 'src/commands/sync_changelog.dart';
 import 'src/commands/test_dart.dart';
 import 'src/commands/verify_firebase_json.dart';
 
@@ -49,5 +50,6 @@ final class DashSiteCommandRunner extends CommandRunner<int> {
     addCommand(CheckAllCommand());
     addCommand(BuildSiteCommand());
     addCommand(ServeSiteCommand());
+    addCommand(SyncChangelog());
   }
 }

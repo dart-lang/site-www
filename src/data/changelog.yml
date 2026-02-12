@@ -1,6 +1,252 @@
 # --------------------------------------------------
 - version: 3.11.0
-  releaseDate: TBD
+  releaseDate: 2026-02-11
+  area: Libraries
+  subArea: "`dart:io`"
+  description: |
+    Added support for Unix domain sockets (`AF_UNIX`) on Windows. Support is
+    restricted to the subset of features supported by the OS. Windows currently
+    does not support the following features for `AF_UNIX` sockets: datagram
+    sockets, ancillary data, or abstract socket addresses. Unix domain sockets are
+    represented in the filesystem using _reparse points_ which leads to some
+    discrepancies in the behavior of `dart:io` APIs: for example
+    `File(socketPath).existsSync()` will return `true` on POSIX operating systems,
+    but `false` on Windows. Use `FileSystemEntity.typeSync()` instead to get
+    portable behavior.
+  tags:
+    - new
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Libraries
+  subArea: "`dart:js_interop`"
+  description: |
+    Added a constructor to `JSSymbol`, as well as `JSSymbol.key`,
+    `JSSymbol.description`, and static methods for all well-known ECMAScript
+    symbols.
+  tags:
+    - new
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Libraries
+  subArea: "`dart:js_util`"
+  description: |
+    dart2wasm no longer supports `dart:js_util`. Any code that imports
+    `dart:js_util` will no longer compile with dart2wasm. Consequently, code that
+    depends on `package:js` will no longer compile with dart2wasm either. The name
+    `dart.library.js_util` is no longer a key in dart2wasm compilation
+    environments, including in conditional imports and exports.
+  tags:
+    - breaking
+    - removed
+  link: "https://github.com/dart-lang/sdk/issues/61550"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The Insights pages (aka the "Analysis Server Diagnostics" pages) now show
+    data regarding the "Message Scheduler."
+  tags:
+    - changed
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The "Fix all in workspace" command now supports a progress indicator.
+  tags:
+    - new
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Analysis via analyzer plugins is now faster on subsequent runs, as the
+    analysis server will now re-use an existing AOT snapshot of the plugin's
+    entrypoint. This saves a constant amount of time at the start of each IDE
+    session and `dart analyze` run, on the order of 10 seconds.
+  tags:
+    - changed
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Various fixes were made for the `call` method on a Function object, like "go
+    to definition," and completion.
+  tags:
+    - fixed
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Various fixes were made for the `error` and `stackTrace` parameters of
+    try/catch statements.
+  tags:
+    - fixed
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Various fixes were made for syntax highlighting, navigation, code completion,
+    hovers, quick fixes, assists, "rename" refactoring, and "go to imports."
+  tags:
+    - fixed
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Fixed various issues with support for the "dot shorthands" syntax in IDEs.
+  tags:
+    - fixed
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Improvements to LSP format-on-type, to not format in undesirable cases.
+  tags:
+    - fixed
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Fixes to the "Extract Widget" refactoring.
+  tags:
+    - fixed
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    A new lint rule was added: `simplify_variable_pattern`, which encourages
+    using the pattern shorthand for variables and property names of the same
+    name.
+  tags:
+    - new
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The `avoid_null_checks_in_equality_operators` lint rule is now deprecated.
+  tags:
+    - deprecated
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The `prefer_final_parameters` lint rule is now deprecated.
+  tags:
+    - deprecated
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The `use_if_null_to_convert_nulls_to_bools` lint rule is now deprecated.
+  tags:
+    - deprecated
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: "Dart Development Compiler (dartdevc)"
+  description: |
+    The async timing of the `Future` returned by `deferred_prefix.loadLibrary()`
+    is now consistent regardless of whether proper deferred imports are supported in the
+    runtime environment or not. This makes the timing more consistent with dart2js
+    where the loads are always an async operation.
+  tags:
+    - changed
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Pub
+  description: |
+    "Glob" support has been added for pub workspaces.
+    Now to include all packages inside `pkgs/` in the workspace, simply write:
+
+    ```yaml
+    workspace:
+      - pkgs/*
+    ```
+
+    Supported if the Dart SDK constraint of the containing package is 3.11.0 or
+    higher.
+  tags:
+    - new
+    - versioned
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Pub
+  description: |
+    Added the new command `dart pub cache gc` for reclaiming disk space from your pub
+    cache.
+    It works by removing packages from your pub cache that are not referenced by
+    any of your current projects.
+  tags:
+    - new
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
+  area: Tools
+  subArea: Pub
+  description: |
+    When running a dry run of `dart pub publish` with the `--dry-run` flag,
+    you can now ignore warnings with the `--ignore-warnings` flag.
+
+    When you specify this flag, the dry run will only exit with
+    a non-zero exit code if package validation has errors.
+  tags:
+    - new
+  link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
+# --------------------------------------------------
+- version: 3.11.0
+  releaseDate: 2026-02-11
   area: SDK
   subArea: Platform Updates
   description: |
@@ -9,10 +255,10 @@
     `dart:js_interop`.
   tags:
     - changed
-  link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#311
+  link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110
 # --------------------------------------------------
 - version: 3.11.0
-  releaseDate: TBD
+  releaseDate: 2026-02-11
   area: Tools
   subArea: Wasm compilation
   description: |
