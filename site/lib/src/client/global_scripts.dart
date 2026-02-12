@@ -49,7 +49,7 @@ void _setUpHeadingLinkCopy() {
         ).replace(fragment: headingId).toString();
 
         // Copy URL to clipboard (if available)
-        web.window.navigator.clipboard?.writeText(url);
+        web.window.navigator.clipboard.writeText(url);
 
         // Update the URL hash without triggering a jump
         web.window.history.replaceState(null, '', '#$headingId');
