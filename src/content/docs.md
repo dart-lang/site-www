@@ -13,16 +13,25 @@ the [What's new][] page.
 
 Here are some of this site's most visited pages:
 
-{% comment %}
-To update these cards, edit src/_data/docs_cards.yml.
-{% endcomment %}
-
 <div class="card-grid">
-{% for card in docs_cards -%}
-  <Card title="{{card.name}}" link="{{card.url}}">
-
-  {{card.description}}
-
+  <Card title="Language tour" link="/language">
+    A brief, example-based introduction to the Dart language.
   </Card>
-{% endfor -%}
+  <Card title="Effective Dart" link="/effective-dart">
+    Best practices for building
+    consistent, maintainable, and efficient Dart code.
+  </Card>
+  <Card title="Library documentation" link="/libraries">
+    An example-based introduction to the major features in
+    the Dart SDK's core libraries.
+  </Card>
+  <Card title="Dart SDK" link="/tools/sdk">
+    What's in the SDK, and how to install it.
+  </Card>
+  <Card title="Learn Dart" link="/learn">
+    Resources and tutorials to get started with Dart.
+  </Card>
+  <Card title="Packages" link="/tools/pub/packages">
+    Everything you need to know about the package ecosystem.
+  </Card>
 </div>
