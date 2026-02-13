@@ -315,15 +315,6 @@ abstract class ErrorCodeInfo {
     for (final value in [problemMessage, correctionMessage]) {
       if (value is! String) continue;
       for (final Match match in _placeholderPattern.allMatches(value)) {
-        // CFE supports a bunch of formatting options that analyzer doesn't;
-        // make sure none of those are used.
-        if (match.group(0) != '#${match.group(1)}') {
-          throw Exception(
-            'Template string ${json.encode(value)} contains unsupported '
-            'placeholder pattern ${json.encode(match.group(0))}',
-          );
-        }
-
         mapping[match.group(0)!] ??= mapping.length;
       }
     }
