@@ -89,7 +89,7 @@ Future<void> generate() async {
   final messages = await Messages.retrieve();
   final generator = DocumentationGenerator(
     messages,
-    lintNames: await allLintNames,
+    lintNames: (await allLintNames).map((name) => name.toLowerCase()).toSet(),
   );
 
   generator._writeDiagnosticDataFile();
@@ -199,10 +199,8 @@ final class DocumentationGenerator {
       _extractAllDocs(classEntry.key, classEntry.value);
     }
 
-    _extractAllDocs(
-      'ParserErrorCode',
-      messages.cfeToAnalyzerErrorCodeTables.analyzerCodeToInfo,
-    );
+    _extractAllDocs('FrontEnd', messages.frontEndMessages);
+    _extractAllDocs('FrontEnd', messages.sharedMessages);
   }
 
   /// Writes the condenses data representation of
@@ -212,17 +210,13 @@ final class DocumentationGenerator {
 
     final errorCodes = infoByName.entries.sortedBy((e) => e.key);
     for (final MapEntry(key: _, value: info) in errorCodes) {
-      final formattedDiagnostic = info.name.toLowerCase().trim();
-
       final condensedInfo = {
-        'id': formattedDiagnostic,
+        'id': info.name,
         'description': info.formattedProblemMessages.trimRight(),
         if (info.hasDocumentation) 'documentation': info.formattedDocumentation,
         'hasDocumentation': info.hasDocumentation,
         'fromLint': info.isFromLint,
-        'previousNames': info.previousNames
-            .map((name) => name.toLowerCase().trim())
-            .toList(growable: false),
+        'previousNames': info.previousNames.toList(growable: false),
       };
 
       condensedDiagnostics.add(condensedInfo);
@@ -242,7 +236,9 @@ final class DocumentationGenerator {
       if (errorCodeInfo is AliasErrorCodeInfo) {
         continue;
       }
-      final name = errorCodeInfo.sharedName ?? errorName;
+      final name = _camelCaseToDiagnosticNameFormat(
+        errorCodeInfo.sharedName ?? errorName,
+      );
       var info = infoByName[name];
       final message = convertTemplate(
         errorCodeInfo.computePlaceholderToIndexMap(),
@@ -260,14 +256,13 @@ final class DocumentationGenerator {
       }
       final previousName = errorCodeInfo.previousName;
       if (previousName != null) {
-        info.addPreviousName(previousName);
+        info.addPreviousName(previousName.toLowerCase());
       }
       final docs = _extractDoc('$className.$errorName', errorCodeInfo);
       if (docs.isNotEmpty) {
         if (info.documentation != null) {
-          throw StateError(
-            'Documentation defined multiple times for ${info.name}',
-          );
+          // Only use the first non-empty documentation.
+          continue;
         }
         info.documentation = docs;
       }
@@ -289,3 +284,12 @@ final class DocumentationGenerator {
     ].join('\n');
   }
 }
+
+final RegExp _upperCasePattern = RegExp('[A-Z]');
+
+/// Convert a `lowerCamelCase` diagnostic [name] to
+/// be formatted as `lowercase_with_underscores`.
+String _camelCaseToDiagnosticNameFormat(String name) => name
+    .replaceAllMapped(_upperCasePattern, (m) => '_${m[0]}')
+    .toLowerCase()
+    .trim();
