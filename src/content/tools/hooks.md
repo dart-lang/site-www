@@ -235,12 +235,21 @@ create a `build.dart` script similar to the following:
 [`BuildInput`]: {{site.pub-api}}/hooks/latest/hooks/BuildInput-class.html
 [`BuildOutputBuilder`]: {{site.pub-api}}/hooks/latest/hooks/BuildOutputBuilder-class.html
 
+:::note
+When naming your dynamic libraries, ensure the name is
+consistent across all target architectures and SDKs.
+On Apple platforms, Flutter's build system relies on
+consistent filenames to correctly generate frameworks and XCFrameworks.
+For more details, check out [Binding to native code][flutter-native]
+on the Flutter documentation site.
+:::
+
 ### Automatically bundled assets {: #generate-assets }
 
 The hooks are run automatically when invoking the `run`, `build`, or `test`
 commands. The resulting assets are stored in the output directory specified in
 the hook input. The Dart SDK then automatically bundles those assets with
-your Dart app so that that they can be accessed at run time.
+your Dart app so that they can be accessed at run time.
 
 ### Use assets {: #reference-assets }
 
@@ -252,6 +261,15 @@ only output assets in their own package. `CBuilder` in
 the build hook in the previous example outputs the asset ID
 `package:native_add_library/native_add_library.dart`, and is
 based on the `packageName` and `assetName`.
+
+:::tip
+As a best practice, use the Dart library URI where you
+intend to use the code asset as the asset ID.
+While you can use any asset ID that starts with your package name,
+using the library URI enables Dart to
+automatically connect the asset at run time without
+needing to specify an `assetId` in the `@Native` annotation.
+:::
 
 The following example illustrates how to bind to the native
 C function `add` from `native_add_library.c` and call it:
@@ -340,9 +358,11 @@ See the following links for more information:
 * [Code assets package][]
 * [Code assets library reference][]
 * [C interop][]
+* [Binding to native code in Flutter apps][flutter-native]
 
 [Hooks package]: {{site.pub-pkg}}/hooks
 [Hooks library reference]: {{site.pub-api}}/hooks/latest/hooks/
 [Code assets package]: {{site.pub-pkg}}/code_assets
 [Code assets library reference]: {{site.pub-api}}/code_assets/latest/code_assets/
 [C interop]: /interop/c-interop
+[flutter-native]: {{site.flutter-docs}}/platform-integration/bind-native-code

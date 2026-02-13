@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:meta/meta.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -13,6 +14,7 @@ import 'package:universal_web/web.dart' as web;
 /// These are temporary until they can be integrated with their
 /// relevant Jaspr components.
 void setUpSite() {
+  _setUpHeadingLinkCopy();
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpTabs();
@@ -22,6 +24,56 @@ void setUpSite() {
   _setUpReleaseTags();
   _setUpTooltips();
   _setUpSteppers();
+}
+
+void _setUpHeadingLinkCopy() {
+  final anchors = web.document.querySelectorAll(
+    'a.heading-link[href]',
+  );
+
+  for (var i = 0; i < anchors.length; i++) {
+    final anchor = anchors.item(i) as web.HTMLAnchorElement;
+
+    // Store the original text before any click handlers modify it.
+    final originalText = anchor.textContent;
+
+    @awaitNotRequired
+    Future<void> copyAnchorToClipboard(String url) async {
+      try {
+        await web.window.navigator.clipboard.writeText(url).toDart;
+        // TODO: Replace this with a tooltip of some sort.
+        anchor.textContent = 'Link copied!';
+
+        Future<void>.delayed(const Duration(milliseconds: 1200), () {
+          anchor.textContent = originalText;
+        });
+      } catch (_) {
+        anchor.textContent = 'Failed to copy';
+      }
+    }
+
+    anchor.addEventListener(
+      'click',
+      ((web.Event event) {
+        event.preventDefault();
+
+        final fragment = anchor.hash;
+        if (!fragment.startsWith('#')) return;
+
+        final headingId = fragment.substring(1);
+        if (headingId.isEmpty) return;
+
+        final url = Uri.parse(
+          web.window.location.href,
+        ).replace(fragment: headingId).toString();
+
+        // Update the URL hash without triggering a scroll jump.
+        web.window.history.replaceState(null, '', '#$headingId');
+
+        copyAnchorToClipboard(url);
+      }).toJS,
+    );
+  }
 }
 
 void _setUpSidenav() {
