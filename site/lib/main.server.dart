@@ -4,13 +4,18 @@
 
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/components/file_tree.dart';
-import 'package:jaspr_content/jaspr_content.dart';
+import 'package:jaspr_content/components/post_break.dart';
+import 'package:jaspr_content/jaspr_content.dart' hide BlogLayout;
+
 import 'package:jaspr_content/theme.dart';
 import 'package:path/path.dart' as path;
 
 import 'main.server.options.dart'; // Generated. Do not remove or edit.
 import 'src/archive/archive_table.dart';
+import 'src/components/blog/blog_index.dart';
 import 'src/components/common/card.dart';
+import 'src/components/common/dash_image.dart';
+import 'src/components/common/github_embed.dart';
 import 'src/components/common/tabs.dart';
 import 'src/components/common/youtube_embed.dart';
 import 'src/components/pages/changelog/changelog_index.dart';
@@ -18,10 +23,13 @@ import 'src/components/tutorial/quiz.dart';
 import 'src/components/tutorial/summary_card.dart';
 import 'src/components/tutorial/tutorial_outline.dart';
 import 'src/extensions/registry.dart';
+import 'src/layouts/blog_layout.dart';
 import 'src/layouts/doc_layout.dart';
 import 'src/layouts/homepage_layout.dart';
 import 'src/layouts/learn_layout.dart';
+import 'src/loaders/blog_loader.dart';
 import 'src/loaders/data_processor.dart';
+import 'src/loaders/filtered_filesystem_loader.dart';
 import 'src/markdown/markdown_parser.dart';
 import 'src/pages/custom_pages.dart';
 import 'src/pages/diagnostic_index.dart';
@@ -40,13 +48,17 @@ void main() {
 Component get _dartDevSite => ContentApp.custom(
   eagerlyLoadAllPages: true,
   loaders: [
-    FilesystemLoader(path.join(siteSrcDirectoryPath, 'content')),
+    FilteredFilesystemLoader(
+      path.join(siteSrcDirectoryPath, 'content'),
+      extensions: const {'.md', '.html'},
+    ),
     MemoryLoader(pages: allMemoryPages),
   ],
   configResolver: PageConfig.all(
     dataLoaders: [
       FilesystemDataLoader(path.join(siteSrcDirectoryPath, 'data')),
       DataProcessor(),
+      BlogDataLoader(),
     ],
     templateEngine: DashTemplateEngine(
       partialDirectoryPath: path.canonicalize(
@@ -60,7 +72,12 @@ Component get _dartDevSite => ContentApp.custom(
     rawOutputPattern: RegExp(r'.*\.(txt|json)$'),
     extensions: allNodeProcessingExtensions,
     components: _embeddableComponents,
-    layouts: const [DocLayout(), HomepageLayout(), LearnLayout()],
+    layouts: const [
+      DocLayout(),
+      HomepageLayout(),
+      LearnLayout(),
+      BlogLayout(),
+    ],
     theme: const ContentTheme.none(),
     secondaryOutputs: [
       const RobotsTxtOutput(),
@@ -93,6 +110,7 @@ List<CustomComponent> get _embeddableComponents => [
   const Quiz(),
   const SummaryCard(),
   const TutorialOutline(),
+  const PostBreak(),
   CustomComponent(
     pattern: RegExp('ArchiveTable'),
     builder: (_, attrs, _) => ArchiveTable.fromAttributes(attrs),
@@ -112,5 +130,17 @@ List<CustomComponent> get _embeddableComponents => [
   CustomComponent(
     pattern: RegExp('ChangelogIndex', caseSensitive: false),
     builder: (_, _, _) => const ChangelogIndex(),
+  ),
+  CustomComponent(
+    pattern: RegExp('BlogIndex', caseSensitive: false),
+    builder: (_, _, _) => const BlogIndex(),
+  ),
+  CustomComponent(
+    pattern: RegExp('DashImage', caseSensitive: false),
+    builder: (_, attrs, _) => DashImage.fromAttributes(attrs),
+  ),
+  CustomComponent(
+    pattern: RegExp('GithubEmbed', caseSensitive: false),
+    builder: (_, attrs, _) => GithubEmbed.fromAttributes(attrs),
   ),
 ];
