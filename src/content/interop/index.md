@@ -23,3 +23,18 @@ noindex: true
     Learn how to interop with the web and other JavaScript code from Dart.
   </Card>
 </div>
+
+## Community interop
+
+In addition to the first-class interop support listed above, the Dart community
+has created packages that enable interop with additional languages and platforms:
+<div class="card-grid">
+  <Card title="Rust interop" link="https://pub.dev/packages/flutter_rust_bridge">
+    Interact with Rust from Dart using flutter_rust_bridge.
+  </Card>
+  <Card title="Go interop" link="https://pub.dev/packages?q=go+interop">
+    Integrate Go code with Dart.
+  </Card>
+</div>
+For additional community-built interop solutions, search
+[pub.dev](https://pub.dev) for packages related to your interop needs.
