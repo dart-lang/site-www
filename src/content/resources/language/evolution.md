@@ -59,7 +59,7 @@ the release includes several improvements to
 analyzer and editor support for the
 [dot shorthand][] syntax introduced in Dart 3.10.
 
-[dot shorthands]: /language/dot-shorthands
+[dot shorthand]: /language/dot-shorthands
 
 ### Dart 3.10
 _Released 12 November 2025_
