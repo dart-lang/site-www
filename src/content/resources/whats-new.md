@@ -64,7 +64,7 @@ check out the [3.10 announcement][] and the
 [3.10 SDK changelog][3-10-changelog].
 
 [3.10 announcement]: https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088
-[3-10-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+[3-10-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3100
 
 ### Documentation updates {:.no_toc}
 
