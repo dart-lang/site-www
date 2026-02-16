@@ -3,7 +3,7 @@ title: Dart language evolution
 shortTitle: Language evolution
 breadcrumb: Legacy
 description: Notable changes and additions to the Dart programming language.
-lastVerified: 2024-08-04
+lastVerified: 2026-02-16
 ---
 
 :::warning
@@ -49,6 +49,17 @@ on the Dart language GitHub repo.
 
 
 ## Changes in each release
+
+### Dart 3.11
+_Released 9 February 2026_
+| [Dart 3.11 announcement](https://blog.dart.dev/announcing-dart-3-11-b6529be4203a)
+
+While Dart 3.11 introduces no new language features,
+the release includes several improvements to
+analyzer and editor support for the
+[dot shorthand][] syntax introduced in Dart 3.10.
+
+[dot shorthands]: /language/dot-shorthands
 
 ### Dart 3.10
 _Released 12 November 2025_
