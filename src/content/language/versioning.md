@@ -39,9 +39,13 @@ environment:
   sdk: '>=2.18.0 <3.0.0'
 ```
 
+To learn how and why the Dart team developed this versioning method,
+check out the [language versioning specification][].
+
 [null safety]: /null-safety
 [Migrating to null safety]: /null-safety/migration-guide
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
+[language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 
 ## Language version numbers
 
@@ -106,11 +110,7 @@ except within the `@dart` and version strings.
 As the previous example shows,
 other comments can appear before the `@dart` comment.
 
-To learn how and why the Dart team developed this versioning method,
-check out the [language versioning specification][].
-
 [Dart library]: /tools/pub/create-packages#organizing-a-package
-[language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 
 ## Language-versioned changes
 
@@ -135,7 +135,3 @@ check out the [Dart language funnel][] project on GitHub.
 [language documentation]: /language
 [language specification]: /resources/language/spec
 [Dart language funnel]: https://github.com/orgs/dart-lang/projects/90
-
-
-To learn how and why the Dart team developed this versioning method,
-check out the [language versioning specification][].
