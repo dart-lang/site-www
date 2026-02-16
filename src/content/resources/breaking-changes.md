@@ -14,7 +14,7 @@ lastVerified: 2025-08-13
 :::warning
 **This page has been deprecated.**
 See the [Changelog](/changelog) for changes to the language and SDK,
-and [Language versioning](/language/versions) for how versioning is used
+and [Language versioning](/language/versioning) for how versioning is used
 with Dart and the SDK.
 :::
 

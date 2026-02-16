@@ -9,8 +9,6 @@
       permalink: /language/operators
     - title: Comments
       permalink: /language/comments
-    - title: Language versioning
-      permalink: /language/versions
     - divider
     - title: Types
       children:
@@ -102,6 +100,8 @@
           permalink: /null-safety/faq
     - title: Keywords
       permalink: /language/keywords
+    - title: Language versioning
+      permalink: /language/versioning
 
 - title: Core libraries
   expanded: false
