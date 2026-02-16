@@ -44,9 +44,9 @@ shared resolution for all your packages.
 
 Pub workspaces can also be nested. A package that is part of a workspace can
 define its own workspace by including a `workspace` section in its
-`pubspec.yaml` file. This allows hierarchical organization of large repositories,
-where a workspace can contain packages that themselves manage additional packages
-as a separate workspace.
+`pubspec.yaml` file. This allows for a hierarchical organization of large
+repositories, where a package within a workspace can itself define a nested
+workspace.
 
 Using workspaces for large repositories reduces the amount of memory
 required for analysis, hence improving performance.
