@@ -1,7 +1,7 @@
 ---
 title: What's new
 description: A list of what's new on dart.dev and related sites.
-lastVerified: 2025-08-08
+lastVerified: 2026-02-10
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -9,14 +9,50 @@ To see what's new in Flutter, visit the
 [Flutter what's new page.][flutter-whats-new]
 
 For a list of Dart language changes in each Dart SDK, see the 
-[language evolution page][evolution].
+[Dart changelog][dart-changelog].
 To stay on top of announcements, including breaking changes,
 join the [Dart announcements Google group][dart-announce]
 and follow the [Dart blog][].
 
 [flutter-whats-new]: {{site.flutter-docs}}/whats-new
+[dart-changelog]: /changelog
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://blog.dart.dev
+
+## 3.11 release
+
+_Released on: February 11, 2026_
+
+This section lists notable changes made from November 13, 2025,
+through February 11, 2026 to [dart.dev](https://dart.dev/docs).
+For details about the 3.11 release of Dart,
+check out the [3.11 announcement][] and the
+[3.11 SDK changelog][3-11-changelog].
+
+### Documentation updates {:.no_toc}
+
+*   Launched a new [getting started experience][learn] for learning Dart.
+*   Updated the [IntelliJ & Android Studio page][] following the transition 
+    of the Dart plugin to the Dart team.
+*   Added documentation about the environment variables available 
+    to Dart's [build hooks][].
+*   Included "Format on save" setup instructions for IDEs 
+    on the [dart format][] page.
+    (Thank you, [Anushree Bondia](https://github.com/Anushreebasics).)
+*   Expanded the [Glossary][] with new terms including "dependency graph",
+    "AOT", "JIT", "interop", and "scope".
+    (Thank you, [IldySilva](https://github.com/IldySilva) 
+    and [Anushree Bondia](https://github.com/Anushreebasics).)
+
+
+[3.11 announcement]: https://blog.dart.dev/announcing-dart-3-11-b6529be4203a
+[3-11-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110
+[learn]: /learn
+[Glossary]: /resources/glossary
+[IntelliJ & Android Studio page]: /tools/jetbrains-plugin
+[build hooks]: /tools/hooks
+[dart format]: /tools/dart-format
+
 
 ## 3.10 release
 
@@ -57,6 +93,7 @@ check out the [3.10 announcement][] and the
 [`dart install`]: /tools/dart-install
 [`@Deprecated` annotation]: /language/metadata
 [Glossary]: /resources/glossary
+[IntelliJ & Android Studio page]: /tools/jetbrains-plugin
 [Jaspr migration]: https://jaspr.site
 [Table of Contents extension]: https://github.com/dart-lang/site-www/pull/6886
 [Glossary filtering]: https://github.com/dart-lang/site-www/pull/6945
@@ -685,7 +722,7 @@ we made the following changes:
 - Added a page for the new [`dart info`][] command 
   that helps with tooling diagnostics.
 - Overhauled the [`dart pub add`][] documentation
-  to cover its new [source descriptor][] syntax.
+  to cover its new [package descriptor][] syntax.
 - Surfaced preview Linux RISC-V (RV64GC) builds on the
   beta channel in the [SDK archive][].
 - Began a new site-wide [glossary][] to contain 
@@ -712,7 +749,7 @@ we made the following changes:
 [unnamed extensions]: /language/extension-methods#unnamed-extensions
 [`dart info`]: /tools/dart-info
 [`dart pub add`]: /tools/pub/cmd/pub-add
-[source descriptor]: /tools/pub/cmd/pub-add#source-descriptor
+[package descriptor]: /tools/pub/dependencies#package-descriptors
 [SDK archive]: /get-dart/archive
 [glossary]: /resources/glossary
 [JS static interop support]: /interop/js-interop
