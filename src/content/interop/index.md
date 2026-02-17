@@ -32,9 +32,10 @@ has created packages that enable interop with additional languages and platforms
   <Card title="Rust interop" link="https://pub.dev/packages/flutter_rust_bridge">
     Interact with Rust from Dart using flutter_rust_bridge.
   </Card>
-  <Card title="Go interop" link="https://pub.dev/packages?q=go+interop">
-    Integrate Go code with Dart.
+  <Card title="Go interop" link="https://pub.dev/packages/synurang">
+    Interact with Go from Dart using synurang.
   </Card>
 </div>
+
 For additional community-built interop solutions, search
 [pub.dev](https://pub.dev) for packages related to your interop needs.
