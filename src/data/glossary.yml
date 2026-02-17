@@ -1602,7 +1602,7 @@
       When you change one piece of code,
       the sound type system enables Dart tooling to
       warn you about other code that broke.
-    - **Better ahead-of-time (AOT) compilation.**
+    - **Better [ahead-of-time (AOT)](#aot) compilation.**
       Sound types help the compiler generate
       smaller, more efficient native code.
 
