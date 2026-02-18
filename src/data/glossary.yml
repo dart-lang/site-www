@@ -958,6 +958,51 @@
   alternate:
     - "with mixin"
 
+- term: "Null safety"
+  short_description: |-
+    A feature of Dart's type system where variables can't
+    contain `null` unless their type explicitly permits it.
+  long_description: |-
+    Null safety in Dart is a language feature that helps
+    prevent errors caused by unintentional access of `null` values.
+
+    With null safety, types are non-nullable by default:
+    a variable can't contain `null` unless you
+    declare its type as nullable with a `?` suffix.
+
+    ```dart
+    int count = 42;   // Can't be null.
+    int? maybeCount;  // Can be null (and is initialized to null by default).
+    ```
+
+    Dart's null safety is [_sound_](#sound).
+    If the type system determines that a variable has a non-nullable type,
+    that variable is guaranteed to never be `null` at runtime.
+    This soundness guarantee is enforced through
+    a combination of static analysis and runtime checks,
+    and it enables compiler optimizations
+    that produce smaller and more efficient code.
+  related_links:
+    - text: "Sound null safety"
+      link: "/null-safety"
+      type: "doc"
+    - text: "Understanding null safety"
+      link: "/null-safety/understanding-null-safety"
+      type: "doc"
+    - text: "Sound"
+      link: "#sound"
+      type: "term"
+    - text: "Late"
+      link: "#late"
+      type: "term"
+  labels:
+    - "language"
+    - "type system"
+    - "null safety"
+  alternate:
+    - "Sound null safety"
+    - "Null safe"
+
 - term: "Late"
   id: "late"
   short_description: |-
@@ -1569,6 +1614,65 @@
   alternate:
     - "Lexical scope"
 
+- term: "Sound"
+  short_description: |-
+    A guarantee from the type system that an expression's runtime value
+    always matches its static type.
+  long_description: |-
+    A type system is _sound_ when it guarantees that a program
+    can never get into a state where an expression evaluates to a value
+    that doesn't match the expression's static type.
+    For example, if an expression's static type is `String`,
+    the runtime value is guaranteed to be a `String` when evaluated.
+
+    Dart's type system is sound.
+    It enforces this guarantee through a combination of
+    static checking (compile-time errors) and runtime checks:
+
+    - **Static checks** catch most type errors at compile time,
+      such as assigning a `String` to a variable with an `int` type.
+    - **Runtime checks** handle cases the compiler can't verify statically,
+      such as casts with `as` and covariant generic type arguments.
+
+    Soundness gives you several practical benefits:
+
+    - **Type-related bugs surface at compile time.**
+      A sound type system forces code to be unambiguous about its types,
+      so type-related bugs that might be tricky to
+      find at runtime are caught early.
+    - **More readable code.**
+      You can rely on a value actually having its declared type.
+      In sound Dart, types can't lie.
+    - **More maintainable code.**
+      When you change one piece of code,
+      the sound type system enables Dart tooling to
+      warn you about other code that broke.
+    - **Better [ahead-of-time (AOT)](#aot) compilation.**
+      Sound types help the compiler generate
+      smaller, more efficient native code.
+
+    Soundness doesn't mean that Dart catches _every_ bug.
+    You can still write code with logic errors, off-by-one mistakes,
+    and other problems that the type system doesn't address.
+    It just means that the types themselves are always trustworthy.
+  related_links:
+    - text: "The Dart type system"
+      link: "/language/type-system"
+      type: "doc"
+    - text: "Null safety"
+      link: "/null-safety"
+      type: "doc"
+    - text: "Type safety on Wikipedia"
+      link: "https://en.wikipedia.org/wiki/Type_safety"
+      type: "external"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "Soundness"
+    - "Sound type system"
+    - "Type safety"
+
 - term: "Subclass"
   short_description: |-
     A class that inherits the implementation of another class.
@@ -1766,6 +1870,80 @@
     - "optimization"
   alternate:
     - "Dead-code elimination"
+
+- term: "Top type"
+  short_description: |-
+    A type that is a supertype of every other type,
+    including `Object?`.
+  long_description: |-
+    A **top type** is any type that is a supertype of `Object?`.
+    Because `Object?` is itself a supertype of every other Dart type,
+    a top type sits at the very top of the type hierarchy,
+    so you can assign any value to a variable with a top type.
+
+    Dart has many top types,
+    but the primary ones are the following three:
+
+    - **`Object?`** -
+      The nullable supertype of all types.
+      Every value in Dart, including `null`, is an `Object?`.
+
+    - **`dynamic`** -
+      A special type that disables static type checking.
+      Like `Object?`, it accepts any value,
+      but it also allows you to access _any_ member
+      on it without a compile-time error.
+      The check is deferred to runtime instead.
+
+    - **`void`** -
+      A type that indicates its value is not intended to be used.
+      You can assign any value to `void`,
+      but you can't use the result without a cast.
+
+    Beyond these primary three, there are other composite top types.
+    `FutureOr<T>` is a top type whenever `T` is a top type,
+    and adding `?` to certain types produces a top type as well.
+    For example, `FutureOr<Object?>`, `FutureOr<Object>?`,
+    and `dynamic?` are all top types.
+
+    In contrast to `Object?`, the non-nullable `Object` type is
+    the supertype of all _non-nullable_ types but is not a true top type
+    because it isn't a supertype of `Null`.
+
+    The top type is the converse of the [bottom type](#bottom-type).
+    While a top type is a supertype of everything,
+    the bottom type (`Never` in Dart) is a subtype of everything.
+
+    ```dart
+    Object? a = 42;        // OK: int is a subtype of Object?.
+    Object? b = 'hello';   // OK: String is a subtype of Object?.
+    Object? c = null;      // OK: Null is a subtype of Object?.
+    dynamic d = [1, 2, 3]; // OK: List<int> is a subtype of dynamic.
+    void e = true;         // OK: bool is a subtype of void.
+    ```
+  related_links:
+    - text: "The Dart type system"
+      link: "/language/type-system"
+      type: "doc"
+    - text: "Bottom type"
+      link: "#bottom-type"
+      type: "term"
+    - text: "Top and bottom types in Dart"
+      link: "/null-safety/understanding-null-safety#top-and-bottom"
+      type: "doc"
+    - text: "Syntactic characterization of top types in Dart"
+      link: "https://github.com/dart-lang/language/blob/main/accepted/2.12/nnbd/feature-specification.md#helper-predicates"
+      type: "external"
+    - text: "Top type on Wikipedia"
+      link: "https://en.wikipedia.org/wiki/Any_type"
+      type: "external"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "Any type"
+    - "Universal type"
+    - "Universal supertype"
 
 - term: "Type alias"
   short_description: |-
