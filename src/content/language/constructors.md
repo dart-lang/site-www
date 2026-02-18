@@ -5,8 +5,8 @@ prevpage:
   url: /language/classes
   title: Classes
 nextpage:
-  url: /language/methods
-  title: Methods
+  url: /language/primary-constructors
+  title: Primary constructors
 ---
 
 Constructors are special functions that create instances of classes.

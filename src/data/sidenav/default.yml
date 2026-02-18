@@ -54,6 +54,8 @@
           permalink: /language/classes
         - title: Constructors
           permalink: /language/constructors
+        - title: Primary constructors
+          permalink: /language/primary-constructors
         - title: Methods
           permalink: /language/methods
         - title: Extend a class
