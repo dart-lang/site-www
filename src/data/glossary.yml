@@ -1612,7 +1612,7 @@
 
     ```dart
     List<num> numbers = <int>[1, 2, 3]; // Explicitly typed as `List<num>`.
-    numbers.add(1.5); // Throws a TypeError because `1.5` is not an int.
+    numbers.add(1.5); // Throws a TypeError because `1.5` isn't an int.
     ```
 
     This contrasts with some other programming languages, such as Java,
