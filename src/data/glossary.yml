@@ -1871,6 +1871,80 @@
   alternate:
     - "Dead-code elimination"
 
+- term: "Top type"
+  short_description: |-
+    A type that is a supertype of every other type,
+    including `Object?`.
+  long_description: |-
+    A **top type** is any type that is a supertype of `Object?`.
+    Because `Object?` is itself a supertype of every other Dart type,
+    a top type sits at the very top of the type hierarchy,
+    so you can assign any value to a variable with a top type.
+
+    Dart has many top types,
+    but the primary ones are the following three:
+
+    - **`Object?`** -
+      The nullable supertype of all types.
+      Every value in Dart, including `null`, is an `Object?`.
+
+    - **`dynamic`** -
+      A special type that disables static type checking.
+      Like `Object?`, it accepts any value,
+      but it also allows you to access _any_ member
+      on it without a compile-time error.
+      The check is deferred to runtime instead.
+
+    - **`void`** -
+      A type that indicates its value is not intended to be used.
+      You can assign any value to `void`,
+      but you can't use the result without a cast.
+
+    Beyond these primary three, there are other composite top types.
+    `FutureOr<T>` is a top type whenever `T` is a top type,
+    and adding `?` to certain types produces a top type as well.
+    For example, `FutureOr<Object?>`, `FutureOr<Object>?`,
+    and `dynamic?` are all top types.
+
+    In contrast to `Object?`, the non-nullable `Object` type is
+    the supertype of all _non-nullable_ types but is not a true top type
+    because it isn't a supertype of `Null`.
+
+    The top type is the converse of the [bottom type](#bottom-type).
+    While a top type is a supertype of everything,
+    the bottom type (`Never` in Dart) is a subtype of everything.
+
+    ```dart
+    Object? a = 42;        // OK: int is a subtype of Object?.
+    Object? b = 'hello';   // OK: String is a subtype of Object?.
+    Object? c = null;      // OK: Null is a subtype of Object?.
+    dynamic d = [1, 2, 3]; // OK: List<int> is a subtype of dynamic.
+    void e = true;         // OK: bool is a subtype of void.
+    ```
+  related_links:
+    - text: "The Dart type system"
+      link: "/language/type-system"
+      type: "doc"
+    - text: "Bottom type"
+      link: "#bottom-type"
+      type: "term"
+    - text: "Top and bottom types in Dart"
+      link: "/null-safety/understanding-null-safety#top-and-bottom"
+      type: "doc"
+    - text: "Syntactic characterization of top types in Dart"
+      link: "https://github.com/dart-lang/language/blob/main/accepted/2.12/nnbd/feature-specification.md#helper-predicates"
+      type: "external"
+    - text: "Top type on Wikipedia"
+      link: "https://en.wikipedia.org/wiki/Any_type"
+      type: "external"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "Any type"
+    - "Universal type"
+    - "Universal supertype"
+
 - term: "Type alias"
   short_description: |-
     A user-defined name for an existing type.
