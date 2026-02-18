@@ -1569,6 +1569,65 @@
   alternate:
     - "Lexical scope"
 
+- term: "Sound"
+  short_description: |-
+    A guarantee from the type system that an expression's runtime value
+    always matches its static type.
+  long_description: |-
+    A type system is _sound_ when it guarantees that a program
+    can never get into a state where an expression evaluates to a value
+    that doesn't match the expression's static type.
+    For example, if an expression's static type is `String`,
+    the runtime value is guaranteed to be a `String` when evaluated.
+
+    Dart's type system is sound.
+    It enforces this guarantee through a combination of
+    static checking (compile-time errors) and runtime checks:
+
+    - **Static checks** catch most type errors at compile time,
+      such as assigning a `String` to a variable with an `int` type.
+    - **Runtime checks** handle cases the compiler can't verify statically,
+      such as casts with `as` and covariant generic type arguments.
+
+    Soundness gives you several practical benefits:
+
+    - **Type-related bugs surface at compile time.**
+      A sound type system forces code to be unambiguous about its types,
+      so type-related bugs that might be tricky to
+      find at runtime are caught early.
+    - **More readable code.**
+      You can rely on a value actually having its declared type.
+      In sound Dart, types can't lie.
+    - **More maintainable code.**
+      When you change one piece of code,
+      the sound type system enables Dart tooling to
+      warn you about other code that broke.
+    - **Better [ahead-of-time (AOT)](#aot) compilation.**
+      Sound types help the compiler generate
+      smaller, more efficient native code.
+
+    Soundness doesn't mean that Dart catches _every_ bug.
+    You can still write code with logic errors, off-by-one mistakes,
+    and other problems that the type system doesn't address.
+    It just means that the types themselves are always trustworthy.
+  related_links:
+    - text: "The Dart type system"
+      link: "/language/type-system"
+      type: "doc"
+    - text: "Null safety"
+      link: "/null-safety"
+      type: "doc"
+    - text: "Type safety on Wikipedia"
+      link: "https://en.wikipedia.org/wiki/Type_safety"
+      type: "external"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "Soundness"
+    - "Sound type system"
+    - "Type safety"
+
 - term: "Subclass"
   short_description: |-
     A class that inherits the implementation of another class.
