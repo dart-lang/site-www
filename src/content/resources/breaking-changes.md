@@ -3,7 +3,7 @@ title: Breaking changes and deprecations
 breadcrumb: Legacy
 description: A list of breaking changes by release in Dart.
 maxTocDepth: 2
-lastVerified: 2025-08-13
+lastVerified: 2026-02-16
 ---
 
 {% assign versioned = '<span class="tag-label language-versioned-tag">Language versioned</span>' %}
@@ -87,21 +87,32 @@ don't include the section header.
 
 ## 3.11.0
 
-:::note Tentative
-The following changes are expected to be included in the 3.11 stable release,
-but the final list might change before then.
-To reduce the potential impact of these changes, consider
-accounting for them before the 3.11 release.
-:::
-
 ### Tools
+
+#### Analyzer
+
+- {{deprecated}}
+  The [`avoid_null_checks_in_equality_operators`][] lint rule
+  is deprecated and should be removed from `analysis_options.yaml` files.
+
+- {{deprecated}}
+  The [`prefer_final_parameters`][] lint rule
+  is deprecated and should be removed from `analysis_options.yaml` files.
+
+- {{deprecated}}
+  The [`use_if_null_to_convert_nulls_to_bools`][] lint rule
+  is deprecated and should be removed from `analysis_options.yaml` files.
+
+[`avoid_null_checks_in_equality_operators`]: /tools/linter-rules/avoid_null_checks_in_equality_operators
+[`prefer_final_parameters`]: /tools/linter-rules/prefer_final_parameters
+[`use_if_null_to_convert_nulls_to_bools`]: /tools/linter-rules/use_if_null_to_convert_nulls_to_bools
 
 #### Wasm compilation (`dart compile wasm`)
 
 - {{removed}}
   Code that imports `dart:js_util` or `package:js` now
   [results in a compilation error][61550] when compiling to WebAssembly.
-  
+
   Invoking any API from these libraries will result in a runtime error.
   Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
 
