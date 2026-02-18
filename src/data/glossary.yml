@@ -1873,14 +1873,16 @@
 
 - term: "Top type"
   short_description: |-
-    A type that is a supertype of all other types.
-    In Dart, `Object?`, `dynamic`, and `void` are top types.
+    A type that is a supertype of every other type,
+    including `Object?`.
   long_description: |-
-    A **top type** is a type that sits at the top of the type hierarchy.
-    Every other type is a [subtype](#subtype) of a top type,
+    A **top type** is any type that is a supertype of `Object?`.
+    Because `Object?` is itself a supertype of every other Dart type,
+    a top type sits at the very top of the type hierarchy,
     so you can assign any value to a variable with a top type.
 
-    Dart has three top types:
+    Dart has many top types,
+    but the primary ones are the following three:
 
     - **`Object?`** -
       The nullable supertype of all types.
@@ -1898,8 +1900,14 @@
       You can assign any value to `void`,
       but you can't use the result without a cast.
 
-    In contrast, the non-nullable `Object` type is the supertype of
-    all _non-nullable_ types but is not a true top type
+    Beyond these primary three, there are other composite top types.
+    `FutureOr<T>` is a top type whenever `T` is a top type,
+    and adding `?` to certain types produces a top type as well.
+    For example, `FutureOr<Object?>`, `FutureOr<Object>?`,
+    and `dynamic?` are all top types.
+
+    In contrast to `Object?`, the non-nullable `Object` type is
+    the supertype of all _non-nullable_ types but is not a true top type
     because it isn't a supertype of `Null`.
 
     The top type is the converse of the [bottom type](#bottom-type).
@@ -1920,10 +1928,13 @@
     - text: "Bottom type"
       link: "#bottom-type"
       type: "term"
-    - text: "Top and bottom types"
+    - text: "Top and bottom types in Dart"
       link: "/null-safety/understanding-null-safety#top-and-bottom"
       type: "doc"
-    - text: "Any type on Wikipedia"
+    - text: "Syntactic characterization of top types in Dart"
+      link: "https://github.com/dart-lang/language/blob/main/accepted/2.12/nnbd/feature-specification.md#helper-predicates"
+      type: "external"
+    - text: "Top type on Wikipedia"
       link: "https://en.wikipedia.org/wiki/Any_type"
       type: "external"
   labels:
