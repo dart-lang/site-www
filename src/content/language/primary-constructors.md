@@ -15,18 +15,20 @@ Primary constructors are a conciseness feature that allows you to express a clas
 
 Consider this traditional class with two fields and a constructor:
 
+<?code-excerpt "language/lib/primary_constructors/point.dart (point)"?>
 ```dart
 // Current syntax.
 class Point {
   int x;
   int y;
-  
+
   Point(this.x, this.y);
 }
 ```
 
 A primary constructor allows you to define the same class much more concisely:
 
+<?code-excerpt "language/lib/primary_constructors/point.dart (point-primary)" replace="/PointPrimary/Point/g"?>
 ```dart
 // Using a primary constructor.
 class Point(var int x, var int y);
@@ -46,6 +48,7 @@ Similarly, a regular (non-declaring) formal parameter can no longer use the synt
 
 A primary constructor can have a body and/or an initializer list. These elements are placed in the class body.
 
+<?code-excerpt "language/lib/primary_constructors/modifier_class.dart (modifier-class)"?>
 ```dart
 // Using a primary constructor.
 class ModifierClass(this.x) {
@@ -60,6 +63,7 @@ An empty body of a class, mixin class, or extension type (`{}`) can be replaced 
 
 Super parameters can be declared in the same way as in a constructor today:
 
+<?code-excerpt "language/lib/primary_constructors/super_parameters.dart (super-parameters)"?>
 ```dart
 class A(final int a);
 
