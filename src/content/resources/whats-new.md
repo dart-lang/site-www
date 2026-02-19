@@ -8,7 +8,7 @@ This page describes what's new on the Dart website and blog.
 To see what's new in Flutter, visit the
 [Flutter what's new page.][flutter-whats-new]
 
-For a list of Dart language changes in each Dart SDK, see the 
+For a list of Dart language changes in each Dart SDK, see the
 [Dart changelog][dart-changelog].
 To stay on top of announcements, including breaking changes,
 join the [Dart announcements Google group][dart-announce]
@@ -29,30 +29,29 @@ For details about the 3.11 release of Dart,
 check out the [3.11 announcement][] and the
 [3.11 SDK changelog][3-11-changelog].
 
+[3.11 announcement]: https://blog.dart.dev/announcing-dart-3-11-b6529be4203a
+[3-11-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110
+
 ### Documentation updates {:.no_toc}
 
 *   Launched a new [getting started experience][learn] for learning Dart.
-*   Updated the [IntelliJ & Android Studio page][] following the transition 
+*   Updated the [IntelliJ & Android Studio page][] following the transition
     of the Dart plugin to the Dart team.
-*   Added documentation about the environment variables available 
+*   Added documentation about the environment variables available
     to Dart's [build hooks][].
-*   Included "Format on save" setup instructions for IDEs 
+*   Included "Format on save" setup instructions for IDEs
     on the [dart format][] page.
     (Thank you, [Anushree Bondia](https://github.com/Anushreebasics).)
 *   Expanded the [Glossary][] with new terms including "dependency graph",
     "AOT", "JIT", "interop", and "scope".
-    (Thank you, [IldySilva](https://github.com/IldySilva) 
+    (Thank you, [IldySilva](https://github.com/IldySilva)
     and [Anushree Bondia](https://github.com/Anushreebasics).)
 
-
-[3.11 announcement]: https://blog.dart.dev/announcing-dart-3-11-b6529be4203a
-[3-11-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110
 [learn]: /learn
 [Glossary]: /resources/glossary
 [IntelliJ & Android Studio page]: /tools/jetbrains-plugin
 [build hooks]: /tools/hooks
 [dart format]: /tools/dart-format
-
 
 ## 3.10 release
 
@@ -63,6 +62,9 @@ through November 12, 2025 to [dart.dev](https://dart.dev/docs).
 For details about the 3.10 release of Dart,
 check out the [3.10 announcement][] and the
 [3.10 SDK changelog][3-10-changelog].
+
+[3.10 announcement]: https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088
+[3-10-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3100
 
 ### Documentation updates {:.no_toc}
 
@@ -75,6 +77,13 @@ check out the [3.10 announcement][] and the
     "closurization", "callback", "tree shaking", and "native asset".
     (Thank you, [IldySilva](https://github.com/IldySilva))
 
+[dot shorthands]: /language/dot-shorthands
+[analyzer plugin]: /tools/analyzer-plugins
+[`dart build`]: /tools/dart-build
+[`dart install`]: /tools/dart-install
+[`@Deprecated` annotation]: /language/metadata
+[Glossary]: /resources/glossary
+
 ### Site improvements {:.no_toc}
 
 *   Migrated core site infrastructure to the [Jaspr framework][Jaspr migration]
@@ -85,21 +94,20 @@ check out the [3.10 announcement][] and the
     card-based layout.
 *   Started compiling client-side Dart code to [Wasm][Wasm compilation].
 
-[3.10 announcement]: https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088
-[3-10-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
-[dot shorthands]: /language/dot-shorthands
-[analyzer plugin]: /tools/analyzer-plugins
-[`dart build`]: /tools/dart-build
-[`dart install`]: /tools/dart-install
-[`@Deprecated` annotation]: /language/metadata
-[Glossary]: /resources/glossary
-[IntelliJ & Android Studio page]: /tools/jetbrains-plugin
 [Jaspr migration]: https://jaspr.site
 [Table of Contents extension]: https://github.com/dart-lang/site-www/pull/6886
 [Glossary filtering]: https://github.com/dart-lang/site-www/pull/6945
 [Glossary tooltips]: https://github.com/dart-lang/site-www/pull/6969
 [Community page redesign]: https://github.com/dart-lang/site-www/pull/6900
 [Wasm compilation]: https://github.com/dart-lang/site-www/pull/6953
+
+### Articles added to the Dart blog {:.no_toc}
+
+We published the following articles on the Dart blog:
+
+* [Google Summer of Code 2025 Results][blog-10-21-25]
+
+[blog-10-21-25]: https://blog.dart.dev/google-summer-of-code-2025-results-596cf0a43422
 
 ## 3.9 release
 
@@ -266,8 +274,8 @@ check out the [3.7 announcement][] and the [SDK changelog][3-7-changelog].
 In addition to bug fixes and incremental improvements,
 we made the following changes to this site:
 
-* Introduced the new type system algoritm, [inference using bounds][].
-* Added links to our new [Bluesky][] account. 
+* Introduced the new type system algorithm, [inference using bounds][].
+* Added links to our new [Bluesky][] account.
 * Updated the [`dart format`][] page to reflect the new formatter style,
   including the new [configurable line length][] feature.
 * Documented the new [shared analysis options][] feature.
@@ -276,13 +284,14 @@ we made the following changes to this site:
 * Introduced details of [stray files][] to the Workspaces page.
 * Added the new language feature [wildcard variables][] to the Variables page.
 * Moved [covariant explanation][] to the better-suited Type system page.
-* Changed references to [legacy JS interop][] libraries explicitly to "deprecated". 
-* Removed the experimental macros page, since the team [indefinitely paused][]
-  work on the feature.
-* Added a [warning][map-warn] that destructuring a Map pattern by a non-existent key will
-  throw a `StateError`.
-* Revamped the [linter rules][] page with new cards, search format, and color-coded
-  icons on the individual lint pages ([for example][]).
+* Changed references to the [legacy JS interop][]
+  libraries to be explicitly "deprecated".
+* Removed the experimental macros page, since the team
+  [indefinitely paused][] work on the feature.
+* Added a [warning][map-warn] that destructuring a Map pattern by
+  a non-existent key will throw a `StateError`.
+* Revamped the [linter rules][] page with new cards, search format, and
+  color-coded icons on the individual lint pages ([for example][]).
 * Redesigned the layout implementation and sidenav for efficiency.
 * Removed the officially-deprecated `dart:html` library page.
 
