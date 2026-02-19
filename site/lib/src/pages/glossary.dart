@@ -240,7 +240,7 @@ final class GlossaryCard extends StatelessComponent {
       ],
       collapsedContent: [
         if (entry.shortDescription.isNotEmpty)
-          DashMarkdown(content: entry.shortDescription, inline: true),
+          DashMarkdown(content: entry.shortDescription),
       ],
       expandedContent: [
         if (entry.longDescription case final longDescription?)
