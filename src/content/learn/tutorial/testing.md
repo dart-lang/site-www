@@ -285,21 +285,8 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
           final String articleJson = await File(catExtractJson).readAsString();
           final Map<String, Object?> articleMap =
               jsonDecode(articleJson) as Map<String, Object?>;
-
-          final Map<String, Object?> pagesMap =
-            (articleMap['query'] as Map)['pages'] as Map<String, Object?>;
-
-          // The 'pagesMap' contains a single key (e.g., '6678').
-          // We get the first (and only) value from that map.
-          final Map<String, Object?> catArticleMap =
-              pagesMap.values.first as Map<String, Object?>;
-
-          final Article article = Article(
-            title: catArticleMap['title'] as String,
-            extract: catArticleMap['extract'] as String,
-          );
-
-          expect(article.title.toLowerCase(), 'cat');
+          final List<Article> articles = Article.listFromJson(articleMap);
+          expect(articles.first.title.toLowerCase(), 'cat');
         });
       });
     }
@@ -308,8 +295,8 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     This `test` function does the following:
 
     -   Reads the contents of the `cat_extract.json` file.
-    -   Decodes the JSON string into a `List<Object?>`.
-    -   Creates the `Article` object from the list using
+    -   Decodes the JSON string into a `Map<String, Object?>`.
+    -   Creates the `List<Article>` object from the map using
         the `Article.listFromJson` constructor.
     -   Uses the `expect` function to assert that
         the `title` property of the first article is equal to `'cat'`.
@@ -332,25 +319,12 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
         });
 
         test('deserialize Cat article example data from json file into '
-              'an Article object', () async {
+            'an Article object', () async {
           final String articleJson = await File(catExtractJson).readAsString();
           final Map<String, Object?> articleMap =
               jsonDecode(articleJson) as Map<String, Object?>;
-
-          final Map<String, Object?> pagesMap =
-              (articleMap['query'] as Map)['pages'] as Map<String, Object?>;
-
-          // The 'pagesMap' contains a single key (e.g., '6678').
-          // We get the first (and only) value from that map.
-          final Map<String, Object?> catArticleMap =
-              pagesMap.values.first as Map<String, Object?>;
-
-          final Article article = Article(
-            title: catArticleMap['title'] as String,
-            extract: catArticleMap['extract'] as String,
-          );
-
-          expect(article.title.toLowerCase(), 'cat');
+          final List<Article> articles = Article.listFromJson(articleMap);
+          expect(articles.first.title.toLowerCase(), 'cat');
         });
 
         test('deserialize Open Search results example data from json file '
