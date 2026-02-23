@@ -186,10 +186,12 @@ List<MemoryPage> get _lintMemoryPages {
               }
             }
 
+            final releasedInVersion = lint.releasedInVersion;
             final unreleasedLint =
                 lint.sinceDartSdk == 'Unreleased' ||
                 lint.sinceDartSdk.contains('-wip') ||
-                Version.parse('${lint.sinceDartSdk}.0') > runningDartVersion;
+                releasedInVersion == null ||
+                releasedInVersion > runningDartVersion;
 
             return Component.fragment(
               [
