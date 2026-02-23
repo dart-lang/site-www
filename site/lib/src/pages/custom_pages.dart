@@ -9,7 +9,6 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart' show Component;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as path;
-import 'package:pub_semver/pub_semver.dart' show Version;
 
 import '../components/common/tags.dart';
 import '../markdown/markdown_parser.dart';
