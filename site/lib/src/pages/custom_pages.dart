@@ -9,11 +9,13 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart' show Component;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as path;
+import 'package:pub_semver/pub_semver.dart' show Version;
 
 import '../components/common/tags.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/diagnostic_model.dart';
 import '../models/lints.dart';
+import '../utils/server_only_utils.dart';
 import 'glossary.dart';
 
 /// All pages that should be loaded from memory rather than
@@ -184,43 +186,47 @@ List<MemoryPage> get _lintMemoryPages {
               }
             }
 
+            final unreleasedLint =
+                lint.sinceDartSdk == 'Unreleased' ||
+                lint.sinceDartSdk.contains('-wip') ||
+                Version.parse('${lint.sinceDartSdk}.0') > runningDartVersion;
+
             return Component.fragment(
               [
                 Tags([
-                  if (lint.sinceDartSdk == 'Unreleased' ||
-                      lint.sinceDartSdk.contains('-wip'))
+                  if (unreleasedLint)
                     const Tag(
                       'Unreleased',
                       icon: 'pending',
-                      color: 'orange',
+                      color: TagColor.orange,
                       title: 'Lint is unreleased or work in progress.',
                     )
                   else if (lint.state == 'experimental')
                     const Tag(
                       'Experimental',
                       icon: 'science',
-                      color: 'orange',
+                      color: TagColor.orange,
                       title: 'Lint is experimental.',
                     )
                   else if (lint.state == 'deprecated')
                     const Tag(
                       'Deprecated',
                       icon: 'report',
-                      color: 'orange',
+                      color: TagColor.orange,
                       title: 'Lint is deprecated.',
                     )
                   else if (lint.state == 'removed')
                     const Tag(
                       'Removed',
                       icon: 'error',
-                      color: 'red',
+                      color: TagColor.red,
                       title: 'Lint has been removed.',
                     )
                   else
                     const Tag(
                       'Stable',
                       icon: 'verified_user',
-                      color: 'green',
+                      color: TagColor.green,
                       title: 'Lint is stable.',
                     ),
 
@@ -249,6 +255,17 @@ List<MemoryPage> get _lintMemoryPages {
                       'Fix available',
                       icon: 'build',
                       title: 'Lint has one or more quick fixes available.',
+                    ),
+                  if (lint.sinceDartSdk != '2.0')
+                    Tag(
+                      'Released in Dart ${lint.sinceDartSdk}',
+                      icon: 'merge_type',
+                      color: TagColor.grey,
+                      title: unreleasedLint
+                          ? 'This lint is set to be '
+                                'available in Dart ${lint.sinceDartSdk}'
+                          : 'This lint was originally '
+                                'available in Dart ${lint.sinceDartSdk}.',
                     ),
                 ]),
                 DashMarkdown(
