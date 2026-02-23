@@ -297,7 +297,7 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     -   Reads the contents of the `cat_extract.json` file.
     -   Decodes the JSON string into a `Map<String, Object?>`.
     -   Creates the `List<Article>` object from the map using
-        the `Article.listFromJson` constructor.
+        the `Article.listFromJson` static method.
     -   Uses the `expect` function to assert that
         the `title` property of the first article is equal to `'cat'`.
 
