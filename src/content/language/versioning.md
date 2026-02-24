@@ -1,15 +1,12 @@
 ---
 title: Language versioning
-description: The different comment types in Dart.
-prevpage:
-  url: /language/comments
-  title: Comments
-nextpage:
-  url: /language/built-in-types
-  title: Built-in types
+description: >-
+  Learn how language versioning in Dart enables evolution of the language
+  and how to configure the language versions of your project and its libraries.
 ---
 
 ## Overview
+
 A single Dart SDK can simultaneously support
 multiple versions of the Dart language.
 The compiler determines what version the code is targeting,
@@ -29,10 +26,10 @@ alongside null-safe code.
 This decision enabled migration from non-null-safe to null-safe code.
 To review an example of how an app or package can migrate to a new
 language version with an incompatible feature, check out
-[Migrating to null safety](/null-safety/migration-guide).
+[Migrating to null safety][].
 
 Each package has a default language version equal to the **lower bound**
-of the SDK constraint in the `pubspec.yaml` file.
+of the [SDK constraint][] in the `pubspec.yaml` file.
 
 **For example:** The following entry in a `pubspec.yaml` file
 indicates that this package defaults to the Dart 2.18 language version.
@@ -41,6 +38,14 @@ indicates that this package defaults to the Dart 2.18 language version.
 environment:
   sdk: '>=2.18.0 <3.0.0'
 ```
+
+To learn how and why the Dart team developed this versioning method,
+check out the [language versioning specification][].
+
+[null safety]: /null-safety
+[Migrating to null safety]: /null-safety/migration-guide
+[SDK constraint]: /tools/pub/pubspec#sdk-constraints
+[language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 
 ## Language version numbers
 
@@ -53,8 +58,8 @@ Patches should not change the language except for bug fixes.
 To illustrate: Dart 2.18.3 serves as the latest release of the
 Dart 2.18 SDK language version.
 
-Each Dart SDK supports all of the language versions within
-its major version number.
+Each Dart SDK release supports its own language version and
+all previous versions within the same major version number.
 That means that Dart SDK 2.18.3 supports language versions
 2.0 through 2.18 inclusive, but not Dart 1.x.
 
@@ -70,7 +75,7 @@ Deriving the language version from the SDK version implies the following:
   For example: The 2.18.3 release _remains_ language version 2.18.
   It must remain compatible with 2.18.2, 2.18.1, and 2.18.0.
 
-## Per-library language version selection
+## Per-library language version selection {: #library-override}
 
 By default, every Dart file in a package uses the same language version.
 Dart identifies the default language version as the
@@ -94,7 +99,8 @@ For example:
 // Description of what's in this file.
 // @dart = 2.17
 import 'dart:math';
-...
+
+// ...
 ```
 
 The `@dart` string must be in a `//` comment (not `///` or `/*`),
@@ -104,41 +110,28 @@ except within the `@dart` and version strings.
 As the previous example shows,
 other comments can appear before the `@dart` comment.
 
-To learn how and why the Dart team developed this versioning method,
-check out the [language versioning specification][].
+[Dart library]: /tools/pub/create-packages#organizing-a-package
 
-This page lists notable changes and additions to the
-Dart programming language.
+## Language-versioned changes
 
-* To learn specific details about the most recent supported language version,
-  check out the [language documentation][] or the [language specification][].
-* For a full history of changes to the Dart language and SDK,
-  see the [Changelog][].
+Language versioning helps Dart and its tooling evolve over time.
+Besides potentially breaking syntax and semantic language changes,
+new features and tooling changes might also be gated behind a language version.
+For example, `dart format` might format Dart code differently depending on
+the language version of the library it is formatting.
 
-To use a language feature introduced after 2.0,
-set an [SDK constraint][] no lower than
-the release when Dart first supported that feature.
-
-**For example:** To use null safety, introduced in 2.12,
-set `2.12.0` as the lower constraint in the `pubspec.yaml` file.
-
-```yaml
-environment:
-  sdk: '>=2.12.0 <3.0.0'
-```
+To find what changes each language version introduced,
+you can reference the filterable [Dart changelog][].
+To learn specific details about each language version and its features,
+check out the [language documentation][] and the [language specification][].
 
 :::tip
-To review the features being discussed, investigated, and
-added to the Dart language,
-check out the [language funnel][] tracker
-on the Dart language GitHub repo.
+To review new Dart features and changes being
+discussed, designed, and implemented,
+check out the [Dart language funnel][] project on GitHub.
 :::
 
-[SDK constraint]: /tools/pub/pubspec#sdk-constraints
-[Dart library]: /tools/pub/create-packages#organizing-a-package
-[language funnel]: {{site.repo.dart.lang}}/projects/1
-[language specification]: /resources/language/spec
+[Dart changelog]: /changelog
 [language documentation]: /language
-[language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
-[null safety]: /null-safety
-[Changelog]: /changelog
+[language specification]: /resources/language/spec
+[Dart language funnel]: https://github.com/orgs/dart-lang/projects/90
