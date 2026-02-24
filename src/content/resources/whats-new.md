@@ -809,9 +809,9 @@ we made the following changes to this site:
   * [Korean version of this site (한국어)](https://dart-ko.dev/)
   * [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
 * Updated null safety content in preparation of Dart 3:
-  * Changed the version constraints in the [migration guide][] for Dart 3 compatibility.
+  * Changed the version constraints in the migration guide for Dart 3 compatibility.
   * Added Dart 3 full sound null safety overview to the [Sound null safety][] page.
-  * Emphasized Dart 3's incompatibility with [unsound null safety][] in a note.
+  * Emphasized Dart 3's incompatibility with unsound null safety in a note.
 * Introduced the new Learning Dart as a Swift developer guide. _(Now removed)_
 * Replaced an Effective Dart section with more general guidance on [booleans and equality operators][]. 
 * Documented [content-hashing][] across the pub docs.
@@ -840,8 +840,6 @@ we made the following changes to this site:
 [Fetch data from the internet]: /server/fetch-data
 [Automated publishing of packages to pub.dev]: /tools/pub/automated-publishing
 [community resources]: /community
-[migration guide]: /null-safety/migration-guide
-[unsound null safety]: /null-safety/unsound-null-safety
 [booleans and equality operators]: /effective-dart/usage#dont-use-true-or-false-in-equality-operations
 [content-hashing]: /resources/glossary#pub-content-hash
 [Zones]: /libraries/async/zones
@@ -1301,10 +1299,10 @@ For details about the 2.12 release, see [Announcing Dart 2.12][].
 
 In addition to bug fixes and incremental improvements, we made the following changes to this site:
 
-* Updated and fleshed out null safety docs. Notably:
-  * Provided a [migration guide][].
-  * Added a [FAQ][ns-faq].
-  * Created [Unsound null safety][].
+* Updated and fleshed out null safety docs _(now [archived][ns-archive])_:
+  * Provided a migration guide.
+  * Added a FAQ.
+  * Created unsound null safety documentation.
   * Simplified the [null safety homepage][].
 * Refreshed [Effective Dart][], updating code to be null safe and
   changing rules to reflect new guidance.
@@ -1328,9 +1326,7 @@ In addition to bug fixes and incremental improvements, we made the following cha
 We also switched from Travis CI to GitHub Actions, and we made multiple CSS changes to improve site legibility.
 
 [Announcing Dart 2.12]: https://blog.dart.dev/announcing-dart-2-12-499a6e689c87
-[migration guide]: /null-safety/migration-guide
-[ns-faq]: /null-safety/faq
-[Unsound null safety]: /null-safety/unsound-null-safety
+[ns-archive]: https://github.com/dart-community/migrate-to-null-safety
 [null safety homepage]: /null-safety
 [Overview page]: /overview
 [Effective Dart]: /effective-dart
