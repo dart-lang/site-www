@@ -178,7 +178,7 @@
       { "source": "/go/cloud", "destination": "/server/google-cloud?utm_source=go-link&utm_medium=referral&utm_campaign=go-cloud", "type": 301 },
       { "source": "/go/json-codable", "destination": "https://blog.dart.dev/an-update-on-dart-macros-data-serialization-06d3037d4f12", "type": 301 },
       { "source": "/go/content-hashes", "destination": "/resources/glossary#pub-content-hash", "type": 301 },
-      { "source": "/go/core-lints", "destination": "https://github.com/dart-lang/lints", "type": 301 },
+      { "source": "/go/core-lints", "destination": "https://pub.dev/packages/lints", "type": 301 },
       { "source": "/go/dart-fix", "destination": "/tools/dart-fix", "type": 301 },
       { "source": "/go/dart2js-info", "destination": "https://github.com/dart-lang/sdk/tree/main/pkg/dart2js_info", "type": 301 },
       { "source": "/go/dartdoc-options-file", "destination": "https://github.com/dart-lang/dartdoc#dartdoc_optionsyaml", "type": 301 },
