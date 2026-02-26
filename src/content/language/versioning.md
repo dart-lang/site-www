@@ -25,8 +25,8 @@ Dart uses language versioning to permit non-null-safe code to run
 alongside null-safe code.
 This decision enabled migration from non-null-safe to null-safe code.
 To review an example of how an app or package can migrate to a new
-language version with an incompatible feature, check out
-[Migrating to null safety][].
+language version with an incompatible feature, check out this article on
+[Gradual null safety migration for large Dart projects][].
 
 Each package has a default language version equal to the **lower bound**
 of the [SDK constraint][] in the `pubspec.yaml` file.
@@ -43,7 +43,7 @@ To learn how and why the Dart team developed this versioning method,
 check out the [language versioning specification][].
 
 [null safety]: /null-safety
-[Migrating to null safety]: /null-safety/migration-guide
+[Gradual null safety migration for large Dart projects]: https://blog.dart.dev/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 
