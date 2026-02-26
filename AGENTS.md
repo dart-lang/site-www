@@ -29,8 +29,7 @@ it uses [Jaspr Content](https://docs.jaspr.site/content).
 - `site/`:
   The Jaspr and Jaspr Content based site implementation.
 - `tool/dash_site/`:
-  Contributor CLI tool which implements a variety of commands for
-  site development and maintenance, including building and serving the site.
+  CLI tool for site development and maintenance.
 
 ## Common commands
 
