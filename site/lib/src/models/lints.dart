@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as p;
+import 'package:pub_semver/pub_semver.dart' show Version;
 
 import '../util.dart';
 
@@ -48,4 +49,15 @@ extension type LintDetails(Map<String, Object?> details) {
   String get fixStatus => details['fixStatus'] as String;
   String get docs => details['details'] as String;
   String get sinceDartSdk => details['sinceDartSdk'] as String;
+  Version? get releasedInVersion {
+    try {
+      final rawVersion = sinceDartSdk.split('.').length == 2
+          ? '$sinceDartSdk.0'
+          : sinceDartSdk;
+      return Version.parse(rawVersion);
+    } on FormatException {
+      // Assume the lint isn't released if the format isn't understood.
+    }
+    return null;
+  }
 }
