@@ -1,8 +1,8 @@
 # AGENTS.md
 
-This file provides background information and guidelines to
-agentic coding tools when working with them to
-work on or understand code and content in this repository.
+This file provides important project context and guidelines to
+agentic tools when working with them on content and code
+for the Dart programming language website.
 
 ## Project overview
 
