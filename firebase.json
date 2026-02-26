@@ -204,7 +204,7 @@
       { "source": "/go/non-promo-write", "destination": "/tools/non-promotion-reasons#write", "type": 301 },
 
       { "source": "/go/next-gen-js-interop", "destination": "/interop/js-interop", "type": 301 },
-      { "source": "/go/null-safety-migration", "destination": "/null-safety/migration-guide", "type": 301 },
+      { "source": "/go/null-safety-migration", "destination": "https://github.com/dart-community/migrate-to-null-safety/blob/main/docs/migrate.md", "type": 301 },
       { "source": "/go/downgrade-testing", "destination": "/tools/pub/dependencies#test-with-downgraded-dependencies", "type": 301 },
       { "source": "/go/package-discontinue", "destination": "/tools/pub/publishing#discontinue", "type": 301 },
       { "source": "/go/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
@@ -218,7 +218,7 @@
       { "source": "/go/sdk-version-pinning**", "destination": "https://github.com/dart-lang/sdk/blob/main/docs/Flutter-Pinned-Packages.md", "type": 301 },
       { "source": "/go/pub-security-advisories", "destination": "/tools/pub/security-advisories", "type": 301 },
       { "source": "/go/test-docs/:page*", "destination": "https://github.com/dart-lang/test/blob/master/pkgs/test/doc/:page*", "type": 301 },
-      { "source": "/go/unsound-null-safety", "destination": "/null-safety/unsound-null-safety", "type": 301 },
+      { "source": "/go/unsound-null-safety", "destination": "https://github.com/dart-community/migrate-to-null-safety/blob/main/docs/unsound.md", "type": 301 },
 
       { "source": "/googleapis", "destination": "https://github.com/dart-lang/googleapis", "type": 301 },
       { "source": "/guides/environment-declarations", "destination": "/libraries/core/environment-declarations", "type": 301 },
@@ -364,7 +364,10 @@
       { "source": "/mailing-list", "destination": "https://groups.google.com/a/dartlang.org/forum/#!forum/misc", "type": 301 },
       { "source": "/mobile", "destination": "/multiplatform-apps", "type": 301 },
       { "source": "/news{,/**}", "destination": "https://blog.dart.dev", "type": 301 },
+      { "source": "/null-safety/faq", "destination": "https://github.com/dart-community/migrate-to-null-safety/blob/main/docs/faq.md", "type": 301 },
+      { "source": "/null-safety/migration-guide", "destination": "https://github.com/dart-community/migrate-to-null-safety/blob/main/docs/migrate.md", "type": 301 },
       { "source": "/null-safety/tour", "destination": "/null-safety/understanding-null-safety", "type": 301 },
+      { "source": "/null-safety/unsound-null-safety", "destination": "https://github.com/dart-community/migrate-to-null-safety/blob/main/docs/unsound.md", "type": 301 },
       { "source": "/observatory{,/**}", "destination": "/tools/dart-devtools", "type": 301 },
       { "source": "/packages", "destination": "https://pub.dev", "type": 301 },
       { "source": "/platforms", "destination": "/overview#platform", "type": 301 },
