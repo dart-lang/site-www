@@ -35,10 +35,10 @@ Use this skill when a new release has occurred and you need to update `src/conte
     > - Minor tweaks not relevant to the broader documentation experience (e.g., "Surfaced lint release versions", "Made heading anchors copy the full URL to the clipboard").
     >
     > **DO include specific, high-impact changes, for example:**
-    > - Migrated core site infrastructure to the [Jaspr framework][Jaspr migration] for an improved contributor experience.
-    > - Enhanced the Glossary with new [filtering by label][Glossary filtering] and [tooltips][Glossary tooltips].
-    > - Redesigned the [Community page][Community page redesign] with a modern card-based layout.
-    > - Started compiling client-side Dart code to [Wasm][Wasm compilation].
+    > - Migrated core site infrastructure to the [Jaspr framework](https://jaspr.site) for an improved contributor experience.
+    > - Enhanced the Glossary with new [filtering by label](https://github.com/dart-lang/site-www/pull/6945) and [tooltips](https://github.com/dart-lang/site-www/pull/6969).
+    > - Redesigned the [Community page](https://github.com/dart-lang/site-www/pull/6900) with a modern card-based layout.
+    > - Started compiling client-side Dart code to [Wasm](https://github.com/dart-lang/site-www/pull/6953).
     >
     > _Look at the 3.10 and older release sections for more examples._
 
