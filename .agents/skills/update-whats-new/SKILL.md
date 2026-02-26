@@ -57,7 +57,7 @@ Use this skill when a new release has occurred and you need to update `src/conte
     -   Add an entry under the appropriate subsection (e.g., `### Documentation updates {:.no_toc}`).
     -   Write a concise explanation of the change.
     -   Add a crosslink to the relevant section or new page.
-    -   If a third-party contributor was involved in the commit (indicated by the PR or author info), thank them by including their GitHub handle in parentheses (e.g., `(Thank you, [username](https://github.com/username).)`).
+    -   If a third-party contributor was involved in the commit (indicated by the PR or author info), thank them by including their GitHub handle in parentheses (e.g., `(Thank you, [username](https://github.com/username).)`). **Note: Only include third-party contributors; do not include Dart and Flutter team members like Daco and Parker.**
 
 6.  **Format glossary terms for hover tooltips**
     If any new glossary terms were added, format their markdown references to include the fragment anchor to the term. This enables a hover tooltip for the reader.
