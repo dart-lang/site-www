@@ -57,11 +57,11 @@ since the previous release.
     > - Migrated core site infrastructure to the
     >   [Jaspr framework](https://jaspr.site)
     >   for an improved contributor experience.
-    > - Enhanced the Glossary with by adding support for
+    > - Enhanced the Glossary by adding support for
     >   [filtering by label](https://github.com/dart-lang/site-www/pull/6945)
     >   and [tooltips](https://github.com/dart-lang/site-www/pull/6969).
     > - Redesigned the
-    >   [Community page]( https://github.com/dart-lang/site-www/pull/6900)
+    >   [Community page](https://github.com/dart-lang/site-www/pull/6900)
     >   with a modern card-based layout.
     > - Started compiling the website's client-side Dart code to
     >   [WebAssembly](https://github.com/dart-lang/site-www/pull/6953).
@@ -128,7 +128,7 @@ since the previous release.
     Include links for the release announcement and
     the SDK changelog entries for that version.
     Ask the developer for the announcement blog link,
-    or if it's not available yet, user a placeholder.
+    or if it's not available yet, use a placeholder.
     Also include a link to the release's corresponding
     changelog entries as done in past releases.
 

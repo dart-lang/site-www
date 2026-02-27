@@ -27,7 +27,7 @@ as a `SKILL.md` file with YAML frontmatter and Markdown instructions:
 
 - [`update-whats-new`](skills/update-whats-new/SKILL.md)
 
-  Update the "What's new" page at `src/content/resources/whats-news.md` with
+  Update the "What's new" page at `src/content/resources/whats-new.md` with
   important changes to the website since the previous release.
 
 ### Using a skill
