@@ -28,6 +28,14 @@ abstract class DashLayout extends PageLayoutBase {
 
   String get defaultSidenav => 'default';
 
+  /// Returns page-specific URLs to eagerly speculate on, in addition to
+  /// the document-level rules that match all internal links.
+  ///
+  /// Override in subclasses to provide page-specific URLs for
+  /// eager prerendering and prefetching.
+  ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) =>
+      const (prerender: {}, prefetch: {});
+
   @override
   @mustCallSuper
   Iterable<Component> buildHead(Page page) {
@@ -166,6 +174,9 @@ ga('create', 'UA-26406144-4', 'auto');
 ga('send', 'pageview');
 </script>
 '''),
+      // Add speculation rules and prefetch fallback links for
+      // URLs provided by subclass overrides of speculationUrls.
+      ..._buildSpeculationRulesHead(page),
     ];
   }
 
@@ -267,5 +278,67 @@ if (storedTheme === 'auto-mode') {
     }
 
     return null;
+  }
+
+  /// Builds the speculation rules `<script>` and `<link rel="prefetch">`
+  /// fallback tags for the given [page].
+  ///
+  /// Includes page-specific list rules from [speculationUrls] and
+  /// document rules that prefetch internal links on hover (`moderate`)
+  /// and prerender them on click (`conservative`).
+  ///
+  /// Add the `no-prerender` class to a link to
+  /// exclude it from document-level prerendering.
+  List<Component> _buildSpeculationRulesHead(Page page) {
+    final (:prerender, :prefetch) = speculationUrls(page);
+
+    // Exclude prerendered URLs from the prefetch list since
+    // prerendering is a superset of prefetching.
+    final prefetchOnly = prefetch.difference(prerender);
+
+    // Document rules to match same-origin links across the page.
+    const internalLink = {'href_matches': '/*'};
+    const notNoPrerender = {
+      'not': {'selector_matches': '.no-prerender'},
+    };
+
+    final rules = jsonEncode({
+      'prefetch': [
+        // Prefetch internal links on hover.
+        {
+          'where': internalLink,
+          'eagerness': 'moderate',
+        },
+        // Prefetch specific URLs from the page eagerly.
+        if (prefetchOnly.isNotEmpty)
+          {
+            'urls': [...prefetchOnly],
+          },
+      ],
+      'prerender': [
+        // Prerender internal links on click,
+        // unless the link has the 'no-prerender' class.
+        {
+          'where': {
+            'and': [internalLink, notNoPrerender],
+          },
+          'eagerness': 'conservative',
+        },
+        // Prerender specific URLs from the page eagerly.
+        if (prerender.isNotEmpty)
+          {
+            'urls': [...prerender],
+            'eagerness': 'eager',
+          },
+      ],
+    });
+
+    return [
+      RawText('<script type="speculationrules">$rules</script>'),
+      // Fall back to prefetch link tags for browsers without
+      // Speculation Rules API support.
+      for (final url in {...prerender, ...prefetch})
+        link(rel: 'prefetch', href: url),
+    ];
   }
 }

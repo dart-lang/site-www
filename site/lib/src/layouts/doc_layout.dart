@@ -25,6 +25,15 @@ class DocLayout extends DashLayout {
   bool get showTocDefault => true;
 
   @override
+  ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) {
+    final pageData = page.data.page;
+    return (
+      prerender: {?_urlFromPageInfo(pageData['nextpage'])},
+      prefetch: {?_urlFromPageInfo(pageData['prevpage'])},
+    );
+  }
+
+  @override
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
     final pageTitle = pageData['title'] as String;
@@ -105,5 +114,14 @@ class DocLayout extends DashLayout {
     return (url: pageUrl, title: pageTitle);
   }
 
+  return null;
+}
+
+/// Extracts and returns the `url` value from a page info map,
+/// or `null` if [data] is not a map or has no `url` entry.
+String? _urlFromPageInfo(Object? data) {
+  if (data case {'url': final String url}) {
+    return url;
+  }
   return null;
 }
