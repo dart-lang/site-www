@@ -21,9 +21,14 @@ as a `SKILL.md` file with YAML frontmatter and Markdown instructions:
 
 ### Available skills
 
-| Skill | Description |
-| --- | --- |
-| [`sync-changelog`](skills/sync-changelog/SKILL.md) | Sync the changelog from the Dart SDK repo to update `src/data/changelog.yml`. |
+- [`sync-changelog`](skills/sync-changelog/SKILL.md)
+
+  Sync the changelog from the Dart SDK repo to update `src/data/changelog.yml`.
+
+- [`update-whats-new`](skills/update-whats-new/SKILL.md)
+
+  Update the "What's new" page at `src/content/resources/whats-news.md` with
+  important changes to the website since the previous release.
 
 ### Using a skill
 
