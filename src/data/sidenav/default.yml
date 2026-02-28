@@ -9,8 +9,6 @@
       permalink: /language/operators
     - title: Comments
       permalink: /language/comments
-    - title: Language versioning
-      permalink: /language/versions
     - divider
     - title: Types
       children:
@@ -92,16 +90,12 @@
       children:
         - title: Sound null safety
           permalink: /null-safety
-        - title: Migrating to null safety
-          permalink: /null-safety/migration-guide
         - title: Understanding null safety
           permalink: /null-safety/understanding-null-safety
-        - title: Unsound null safety
-          permalink: /null-safety/unsound-null-safety
-        - title: FAQ
-          permalink: /null-safety/faq
-    - title: Keywords
+    - title: Dart keywords
       permalink: /language/keywords
+    - title: Language versioning
+      permalink: /language/versioning
 
 - title: Core libraries
   expanded: false
