@@ -1,0 +1,75 @@
+{
+  "name": "mediumexporter",
+  "version": "1.0.0",
+  "description": "Export posts from medium.com to markdown",
+  "author": "Xavier Damman (@xdamman)",
+  "contributors": [
+    "Patrick Heneise (https://github.com/patrickheneise)"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "commander": "^2.19.0",
+    "puppeteer": "^24.36.1",
+    "r2": "^2.0.1",
+    "rss-parser": "^3.6.2",
+    "sanitize-filename": "^1.6.1",
+    "underscore.string": "^3.3.5"
+  },
+  "devDependencies": {
+    "codecov": "^3.1.0",
+    "eslint": "^5.13.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.1",
+    "nyc": "^13.1.0",
+    "prettier": "^1.16.3",
+    "proxyquire": "^2.1.0",
+    "semantic-release": "^15.13.3",
+    "sinon": "^7.2.3",
+    "tap": "^12.5.1"
+  },
+  "scripts": {
+    "test": "tap --coverage --jobs-auto './test/**/*-test.js'",
+    "codecov": "tap --coverage-report=lcov && codecov",
+    "semantic-release": "semantic-release",
+    "lint": "eslint --ignore-path .gitignore --ext .js index.js lib test",
+    "lint-autofix": "eslint --ignore-path .gitignore --ext .js lib index.js test --fix",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,json,md}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "test/testpost.json"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xdamman/mediumexporter.git"
+  },
+  "keywords": [
+    "medium",
+    "markdown"
+  ],
+  "preferGlobal": true,
+  "bin": {
+    "mediumexporter": "index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/xdamman/mediumexporter/issues"
+  },
+  "homepage": "https://github.com/xdamman/mediumexporter#readme"
+}

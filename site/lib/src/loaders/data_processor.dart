@@ -20,11 +20,15 @@ final class DataProcessor implements DataLoader {
       final sourcePath = path.canonicalize(
         path.join(pageLoader.directory, page.path),
       );
-
       final inputPath = path.relative(sourcePath, from: '..');
+
+      final wordCount = RegExp(r'\w+').allMatches(page.content).length;
+      final readingTime = (wordCount / 250).ceil();
+
       page.apply(
         data: {
           'page': {
+            'readingTime': '$readingTime min read',
             'date': ?_lastModifiedDateForPath(inputPath),
             'inputPath': inputPath,
             if (page.data.page['sitemap'] == null)

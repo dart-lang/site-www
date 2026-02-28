@@ -25,7 +25,8 @@ article {
       }
     }
 
-    td, th {
+    td,
+    th {
       border: none;
       border-top: 1px solid var(--site-inset-borderColor);
       padding: .75rem;
@@ -73,7 +74,7 @@ article {
       top: 0.75rem;
       right: 0.75rem;
 
-      > button {
+      >button {
         color: var(--site-base-fgColor-alt);
       }
 
@@ -89,6 +90,7 @@ article {
   h4,
   h5,
   h6 {
+
     // Push # link targets clear of page header.
     &[id] {
       scroll-margin-top: calc(var(--site-header-height) + var(--site-subheader-height) + 1.25rem);
@@ -109,7 +111,12 @@ article {
     margin-block-end: 0.75rem;
     align-items: center;
 
-    > h1, h2, h3, h4, h5, h6 {
+    >h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin: 0;
     }
 
@@ -167,19 +174,44 @@ article {
   }
 
   .content {
-    > p {
-      > i.material-symbols, > span.material-symbols {
+    >p {
+
+      >i.material-symbols,
+      >span.material-symbols {
         vertical-align: bottom;
         user-select: none;
       }
     }
 
-    > lite-youtube {
+    >lite-youtube {
       margin-block-end: 1rem;
     }
   }
 
   lite-youtube:not(.full-width) {
     max-width: 560px;
+  }
+
+  figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-block: 2rem;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--site-radius);
+    }
+
+    .figure-caption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--site-base-fgColor-alt);
+      text-align: center;
+      font-style: italic;
+    }
   }
 }

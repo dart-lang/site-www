@@ -6,6 +6,8 @@ import 'dart:convert';
 import 'package:build/build.dart';
 import 'package:crypto/crypto.dart';
 
+Builder stylesHashBuilder(BuilderOptions options) => StylesHashBuilder(options);
+
 class StylesHashBuilder implements Builder {
   const StylesHashBuilder(this.options);
 
