@@ -1581,6 +1581,62 @@
   alternate:
     - "matching contexts"
 
+- term: "Reified generics"
+  short_description: |-
+    The preservation of generic type arguments at runtime,
+    enabling type checks against the full generic type,
+    such as with `is List<String>`.
+  long_description: |-
+    In Dart, generic type arguments are _reified_,
+    which means they keep track of their type arguments at runtime.
+    This lets you inspect and check the full generic type of an object,
+    not just its raw type without type arguments.
+
+    For example, you can check whether a list is
+    specifically a [subtype](#subtype) of `List<String>`:
+
+    ```dart
+    final names = ['Dart', 'Flutter', 'Jaspr'];
+    print(names is List<String>); // Prints: true
+    print(names is List<int>);    // Prints: false
+    ```
+
+    Reified generics also enable Dart's runtime type checks
+    for [covariant](#variance) generic types.
+    To ensure [soundness](#sound), when you add an element to a list,
+    Dart validates at runtime that the element matches
+    the list's actual type argument.
+    For example, if you try to add a `double` to a `List<int>`,
+    because `double` is not a subtype of `int`,
+    Dart throws an error at runtime:
+
+    ```dart
+    List<num> numbers = <int>[1, 2, 3]; // Explicitly typed as `List<num>`.
+    numbers.add(1.5); // Throws a TypeError because `1.5` isn't an int.
+    ```
+
+    This contrasts with some other programming languages, such as Java,
+    where type arguments are removed before execution using _type erasure_.
+    So in those languages, while you can test whether an object is a `List`,
+    you can't test whether it's a `List<String>`.
+  related_links:
+    - text: "Generics"
+      link: "/language/generics"
+      type: "doc"
+    - text: "Variance"
+      link: "#variance"
+      type: "term"
+    - text: "Generic programming on Wikipedia"
+      link: "https://en.wikipedia.org/wiki/Generic_programming"
+      type: "external"
+  labels:
+    - "language"
+    - "type system"
+    - "generics"
+  alternate:
+    - "Reification"
+    - "Reified"
+
 - term: "Scope"
   short_description: |-
     The region of a program where a name (such as a variable, function, or class)
