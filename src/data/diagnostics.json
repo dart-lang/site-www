@@ -406,6 +406,13 @@
     "previousNames": []
   },
   {
+    "id": "anonymous_method_wrong_parameter_type",
+    "description": "_The receiver type '{0}' must be assignable to the formal parameter type '{1}' of an anonymous method._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "argument_must_be_a_constant",
     "description": "_Argument '{0}' must be a constant._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when an invocation of either\n`Pointer.asFunction` or `DynamicLibrary.lookupFunction` has an `isLeaf`\nargument whose value isn't a constant expression.\n\nThe analyzer also produces this diagnostic when an invocation of either\n`Pointer.fromFunction` or `NativeCallable.isolateLocal` has an\n`exceptionalReturn` argument whose value isn't a constant expression.\n\nFor more information about FFI, see [C interop using dart:ffi][ffi].\n\n## Example\n\nThe following code produces this diagnostic because the value of the\n`isLeaf` argument is a parameter, and hence isn't a constant:\n\n```dart\nimport 'dart:ffi';\n\nint Function(int) fromPointer(\n    Pointer<NativeFunction<Int8 Function(Int8)>> p, bool isLeaf) {\n  return p.asFunction(isLeaf: [!isLeaf!]);\n}\n```\n\n## Common fixes\n\nIf there's a suitable constant that can be used, then replace the argument\nwith a constant:\n\n```dart\nimport 'dart:ffi';\n\nconst isLeaf = false;\n\nint Function(int) fromPointer(Pointer<NativeFunction<Int8 Function(Int8)>> p) {\n  return p.asFunction(isLeaf: isLeaf);\n}\n```\n\nIf there isn't a suitable constant, then replace the argument with a\nboolean literal:\n\n```dart\nimport 'dart:ffi';\n\nint Function(int) fromPointer(Pointer<NativeFunction<Int8 Function(Int8)>> p) {\n  return p.asFunction(isLeaf: true);\n}\n```\n\n[ffi]: /interop/c-interop\n",
@@ -568,6 +575,13 @@
     "description": "_Methods can't be assigned a value._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when the target of an assignment is a\nmethod.\n\n## Example\n\nThe following code produces this diagnostic because `f` can't be assigned a\nvalue because it's a method:\n\n```dart\nclass C {\n  void f() {}\n\n  void g() {\n    [!f!] = null;\n  }\n}\n```\n\n## Common fixes\n\nRewrite the code so that there isn't an assignment to a method.\n",
     "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "assignment_to_primary_constructor_parameter",
+    "description": "_A primary constructor parameter can't be assigned to in an initializer._",
+    "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
@@ -7296,7 +7310,7 @@
   },
   {
     "id": "invalid_runtime_check_with_js_interop_types",
-    "description": "_Cast from '{0}' to '{1}' casts a Dart value to a JS interop type, which might not be platform-consistent._\n\n_Cast from '{0}' to '{1}' casts a JS interop value to a Dart type, which might not be platform-consistent._\n\n_Cast from '{0}' to '{1}' casts a JS interop value to an incompatible JS interop type, which might not be platform-consistent._\n\n_Runtime check between '{0}' and '{1}' checks whether a Dart value is a JS interop type, which might not be platform-consistent._\n\n_Runtime check between '{0}' and '{1}' checks whether a JS interop value is a Dart type, which might not be platform-consistent._\n\n_Runtime check between '{0}' and '{1}' involves a non-trivial runtime check between two JS interop types that might not be platform-consistent._\n\n_Runtime check between '{0}' and '{1}' involves a runtime check between a JS interop value and an unrelated JS interop type that will always be true and won't check the underlying type._",
+    "description": "_Cast from '{0}' to '{1}' casts a Dart value to a JS interop type, which might not be platform-consistent._\n\n_Cast from '{0}' to '{1}' casts a JS interop value to a Dart type, which might not be platform-consistent._\n\n_Cast from '{0}' to '{1}' casts a JS interop value to an incompatible JS interop type, which might not be platform-consistent._\n\n_Catch clause with type '{0}' checks whether the caught value is a JS interop type, which might not be platform-consistent._\n\n_Runtime check between '{0}' and '{1}' checks whether a Dart value is a JS interop type, which might not be platform-consistent._\n\n_Runtime check between '{0}' and '{1}' checks whether a JS interop value is a Dart type, which might not be platform-consistent._\n\n_Runtime check between '{0}' and '{1}' involves a non-trivial runtime check between two JS interop types that might not be platform-consistent._\n\n_Runtime check between '{0}' and '{1}' involves a runtime check between a JS interop value and an unrelated JS interop type that will always be true and won't check the underlying type._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when an `is` test has either:\n- a JS interop type on the right-hand side, whether directly or as a type\n  argument to another type, or\n- a JS interop value on the left-hand side.\n\n## Examples\n\nThe following code produces this diagnostic because the JS interop type\n`JSBoolean` is on the right-hand side of an `is` test:\n\n```dart\nimport 'dart:js_interop';\n\nbool f(Object b) => [!b is JSBoolean!];\n```\n\nThe following code produces this diagnostic because the JS interop type\n`JSString` is used as a type argument on the right-hand side of an `is`\ntest:\n\n```dart\nimport 'dart:js_interop';\n\nbool f(List<Object> l) => [!l is List<JSString>!];\n```\n\nThe following code produces this diagnostic because the JS interop value\n`a` is on the left-hand side of an `is` test:\n\n```dart\nimport 'dart:js_interop';\n\nbool f(JSAny a) => [!a is String!];\n```\n\n## Common fixes\n\nUse a JS interop helper, such as `isA`, to check the underlying type of\nJS interop values:\n\n```dart\nimport 'dart:js_interop';\n\nvoid f(Object b) => b.jsify()?.isA<JSBoolean>();\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
@@ -11576,8 +11590,22 @@
     "previousNames": []
   },
   {
+    "id": "record_use_classes_must_be_final",
+    "description": "_Classes marked with '@RecordUse' must be final._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "record_use_outside_of_package",
     "description": "_`RecordUse` annotations are only supported in libraries with a `package:` URI._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "record_use_subtyping_not_supported",
+    "description": "_Class '{0}' is marked with '@RecordUse' and cannot be used as a supertype._",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -11800,7 +11828,7 @@
   {
     "id": "remove_deprecations_in_breaking_versions",
     "description": "_Remove deprecated elements in breaking versions._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic in packages that have a \"breaking\"\nversion number (`x.0.0` or `0.x.0`) for every declaration that has a\n`@Deprecated` annotation.\n\n## Example\n\nGiven a package with a `pubspec.yaml` file containing:\n\n```yaml\nname: p\nversion: 2.0.0\nenvironment:\n  sdk: ^3.9.0\n```\n\nThe following code produces this diagnostic because the function `f` is\nannotated with `@deprecated`:\n\n```dart\n@[!deprecated!]\nvoid f() {}\n\nvoid g() {}\n```\n\n## Common fixes\n\n* If the declaration should be removed in the next release of the package,\nthen remove the declaration:\n\n```dart\nvoid g() {}\n```\n\n* If you are not making a breaking change, then use a minor or patch\n  version increment for the package:\n\n```yaml\nname: p\nversion: 1.0.1\nenvironment:\n  sdk: ^3.9.0\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic in packages that have a \"breaking\"\nversion number (`x.0.0` or `0.x.0`) for every declaration that has a\n`@Deprecated` annotation.\n\n## Example\n\nGiven a package with a `pubspec.yaml` file containing:\n\n```yaml\nname: p\nversion: 2.0.0\nenvironment:\n  sdk: ^3.9.0\n```\n\nThe following code produces this diagnostic because the function `f` is\nannotated with `@deprecated`:\n\n```dart\n@[!deprecated!]\nvoid f() {}\n\nvoid g() {}\n```\n\n## Common fixes\n\nIf the declaration should be removed in the next release of the package,\nthen remove the declaration:\n\n```dart\nvoid g() {}\n```\n\nIf you are not making a breaking change, then use a\nminor or patch version increment for the package:\n\n```yaml\nname: p\nversion: 1.0.1\nenvironment:\n  sdk: ^3.9.0\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -12836,6 +12864,13 @@
     "previousNames": []
   },
   {
+    "id": "tearoff_with_must_be_const_parameter",
+    "description": "_The function '{0}' has a parameter marked as '@mustBeConst' and can't be torn off._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "test_types_in_equals",
     "description": "_Missing type test for '{0}' in '=='._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when an override of the `==`\noperator doesn't include a type test on the value of the parameter.\n\n## Example\n\nThe following code produces this diagnostic because `other` is not type\ntested:\n\n```dart\nclass C {\n  final int f;\n\n  C(this.f);\n\n  @override\n  bool operator ==(Object other) {\n    return ([!other as C!]).f == f;\n  }\n}\n```\n\n## Common fixes\n\nPerform an `is` test as part of computing the return value:\n\n```dart\nclass C {\n  final int f;\n\n  C(this.f);\n\n  @override\n  bool operator ==(Object other) {\n    return other is C && other.f == f;\n  }\n}\n```\n",
@@ -13342,7 +13377,7 @@
   },
   {
     "id": "undefined_named_parameter",
-    "description": "_The named parameter '{0}' isn't defined._",
+    "description": "_The named parameter '\\_{0}' should use the corresponding public name '{0}' at the callsite._\n\n_The named parameter '{0}' isn't defined._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a method or function invocation\nhas a named argument, but the method or function being invoked doesn't\ndefine a parameter with the same name.\n\n## Example\n\nThe following code produces this diagnostic because `m` doesn't declare a\nnamed parameter named `a`:\n\n```dart\nclass C {\n  m({int? b}) {}\n}\n\nvoid f(C c) {\n  c.m([!a!]: 1);\n}\n```\n\n## Common fixes\n\nIf the argument name is mistyped, then replace it with the correct name.\nThe example above can be fixed by changing `a` to `b`:\n\n```dart\nclass C {\n  m({int? b}) {}\n}\n\nvoid f(C c) {\n  c.m(b: 1);\n}\n```\n\nIf a subclass adds a parameter with the name in question, then cast the\nreceiver to the subclass:\n\n```dart\nclass C {\n  m({int? b}) {}\n}\n\nclass D extends C {\n  m({int? a, int? b}) {}\n}\n\nvoid f(C c) {\n  (c as D).m(a: 1);\n}\n```\n\nIf the parameter should be added to the function, then add it:\n\n```dart\nclass C {\n  m({int? a, int? b}) {}\n}\n\nvoid f(C c) {\n  c.m(a: 1);\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -14476,6 +14511,13 @@
     "description": "_Typedefs can't be declared to be 'var'._",
     "hasDocumentation": false,
     "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "var_with_no_type_annotation",
+    "description": "_Avoid declaring parameters with `var` and no type annotation._",
+    "hasDocumentation": false,
+    "fromLint": true,
     "previousNames": []
   },
   {
