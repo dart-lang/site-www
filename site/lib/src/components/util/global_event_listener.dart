@@ -41,6 +41,33 @@ class _GlobalClickListenerState extends State<GlobalEventListener> {
   }
 
   @override
+  void didUpdateComponent(GlobalEventListener oldComponent) {
+    super.didUpdateComponent(oldComponent);
+    if (kIsWeb) {
+      if (component.onClick != oldComponent.onClick) {
+        unawaited(_clickSubscription?.cancel());
+        if (component.onClick case final onClick?) {
+          _clickSubscription = web.EventStreamProviders.clickEvent
+              .forTarget(web.document)
+              .listen(onClick);
+        } else {
+          _clickSubscription = null;
+        }
+      }
+      if (component.onKeyDown != oldComponent.onKeyDown) {
+        unawaited(_keyDownSubscription?.cancel());
+        if (component.onKeyDown case final onKeyDown?) {
+          _keyDownSubscription = web.EventStreamProviders.keyDownEvent
+              .forTarget(web.document)
+              .listen(onKeyDown);
+        } else {
+          _keyDownSubscription = null;
+        }
+      }
+    }
+  }
+
+  @override
   void dispose() {
     unawaited(_clickSubscription?.cancel());
     unawaited(_keyDownSubscription?.cancel());
