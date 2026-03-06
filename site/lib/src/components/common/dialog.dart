@@ -4,7 +4,9 @@
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:universal_web/web.dart' as web;
 
+import '../util/global_event_listener.dart';
 import 'button.dart';
 
 /// A modal dialog component with a standard layout.
@@ -23,6 +25,15 @@ class Dialog extends StatelessComponent {
     super.key,
   });
 
+  void _closeAndBlur() {
+    if (kIsWeb) {
+      if (web.document.activeElement case final web.HTMLElement activeElement) {
+        activeElement.blur();
+      }
+    }
+    onClose();
+  }
+
   /// Callback triggered when closing the dialog (via button or overlay click).
   final VoidCallback onClose;
 
@@ -40,28 +51,35 @@ class Dialog extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return div(
-      classes: 'legend-overlay ${visible ? 'show' : ''} ${classes ?? ''}',
-      events: {
-        'click': (e) {
-          if (e.target == e.currentTarget) {
-            onClose();
-          }
+    return GlobalEventListener(
+      div(
+        classes: 'legend-overlay ${visible ? 'show' : ''} ${classes ?? ''}',
+        events: {
+          'click': (e) {
+            if (e.target == e.currentTarget) {
+              _closeAndBlur();
+            }
+          },
         },
-      },
-      [
-        div(classes: 'legend-dialog', [
-          div(classes: 'legend-header', [
-            h3([Component.text(title)]),
-            Button(
-              icon: 'close',
-              classes: ['close-button'],
-              onClick: onClose,
-            ),
+        [
+          div(classes: 'legend-dialog', [
+            div(classes: 'legend-header', [
+              h3([Component.text(title)]),
+              Button(
+                icon: 'close',
+                classes: ['close-button'],
+                onClick: _closeAndBlur,
+              ),
+            ]),
+            div(classes: 'legend-content', children),
           ]),
-          div(classes: 'legend-content', children),
-        ]),
-      ],
+        ],
+      ),
+      onKeyDown: (event) {
+        if (visible && event.key == 'Escape') {
+          _closeAndBlur();
+        }
+      },
     );
   }
 }
