@@ -246,15 +246,19 @@
       - title: Web interop
         permalink: /interop/js-interop/package-web
 
+- title: AI
+  expanded: false
+  children:
+    - title: Dart and Flutter MCP Server
+      permalink: https://docs.flutter.dev/ai/mcp-server
+    - title: Genkit for Dart
+      permalink: https://genkit-dev-astro--pr-236-t3e6jfnr.web.app/docs/dart/get-started/
+
 - title: Tools & techniques
   expanded: false
   children:
   - title: Overview
     permalink: /tools
-  - title: AI
-    children:
-        - title: Dart and Flutter MCP Server
-          permalink: https://docs.flutter.dev/ai/mcp-server
   - title: Editors & debuggers
     children:
       - title: IntelliJ & Android Studio
