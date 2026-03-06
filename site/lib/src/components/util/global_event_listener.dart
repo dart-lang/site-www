@@ -44,27 +44,35 @@ class _GlobalClickListenerState extends State<GlobalEventListener> {
   void didUpdateComponent(GlobalEventListener oldComponent) {
     super.didUpdateComponent(oldComponent);
     if (kIsWeb) {
-      if (component.onClick != oldComponent.onClick) {
-        unawaited(_clickSubscription?.cancel());
-        if (component.onClick case final onClick?) {
-          _clickSubscription = web.EventStreamProviders.clickEvent
-              .forTarget(web.document)
-              .listen(onClick);
-        } else {
-          _clickSubscription = null;
-        }
-      }
-      if (component.onKeyDown != oldComponent.onKeyDown) {
-        unawaited(_keyDownSubscription?.cancel());
-        if (component.onKeyDown case final onKeyDown?) {
-          _keyDownSubscription = web.EventStreamProviders.keyDownEvent
-              .forTarget(web.document)
-              .listen(onKeyDown);
-        } else {
-          _keyDownSubscription = null;
-        }
-      }
+      _clickSubscription = _updateListener(
+        component.onClick,
+        oldComponent.onClick,
+        _clickSubscription,
+        web.EventStreamProviders.clickEvent,
+      );
+      _keyDownSubscription = _updateListener(
+        component.onKeyDown,
+        oldComponent.onKeyDown,
+        _keyDownSubscription,
+        web.EventStreamProviders.keyDownEvent,
+      );
     }
+  }
+
+  StreamSubscription<T>? _updateListener<T extends web.Event>(
+    void Function(T)? newCallback,
+    void Function(T)? oldCallback,
+    StreamSubscription<T>? subscription,
+    web.EventStreamProvider<T> provider,
+  ) {
+    if (newCallback != oldCallback) {
+      unawaited(subscription?.cancel());
+      if (newCallback case final callback?) {
+        return provider.forTarget(web.document).listen(callback);
+      }
+      return null;
+    }
+    return subscription;
   }
 
   @override
