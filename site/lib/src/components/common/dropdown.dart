@@ -20,10 +20,10 @@ final class Dropdown extends StatefulComponent {
   final List<Component> children;
 
   @override
-  State<Dropdown> createState() => _DropdownState();
+  State<Dropdown> createState() => DropdownState();
 }
 
-final class _DropdownState extends State<Dropdown> {
+final class DropdownState extends State<Dropdown> {
   bool _expanded = false;
 
   void toggle({bool? to}) {

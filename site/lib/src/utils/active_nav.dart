@@ -16,6 +16,7 @@ ActiveNavEntry? activeNavEntry(String pageUrlPath) {
     'community' => ActiveNavEntry.community,
     'learn' || 'get-started' => ActiveNavEntry.learn,
     'get-dart' => ActiveNavEntry.getDart,
+    'blog' => ActiveNavEntry.blog,
     'deprecated' ||
     'docs' ||
     'effective-dart' ||
@@ -39,4 +40,5 @@ enum ActiveNavEntry {
   getDart,
   docs,
   learn,
+  blog,
 }

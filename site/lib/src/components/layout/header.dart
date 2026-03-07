@@ -72,11 +72,14 @@ class DashHeader extends StatelessComponent {
           ]),
           li([
             a(
-              href: 'https://blog.dart.dev',
+              href: '/blog',
               classes: [
                 'nav-link',
+                if (activeEntry == ActiveNavEntry.blog) 'active',
               ].toClasses,
-              [const .text('Blog')],
+              [
+                const span([.text('Blog')]),
+              ],
             ),
           ]),
           li([

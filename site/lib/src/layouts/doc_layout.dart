@@ -10,7 +10,6 @@ import '../components/common/page_header.dart';
 import '../components/common/prev_next.dart';
 import '../components/layout/toc.dart';
 import '../components/layout/trailing_content.dart';
-import '../extensions/header_extractor.dart';
 import '../models/on_this_page_model.dart';
 import 'dash_layout.dart';
 
@@ -27,9 +26,10 @@ class DocLayout extends DashLayout {
   @override
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
+
     final pageTitle = pageData['title'] as String;
     final pageDescription = (pageData['description'] as String?)?.trim();
-    final tocData = _tocForPage(page);
+    final tocData = showTocDefault ? OnThisPageData.fromPage(page) : null;
 
     return super.buildBody(
       page,
@@ -57,9 +57,7 @@ class DocLayout extends DashLayout {
                   splitTitleByUnderscores:
                       pageData['underscore_breaker_titles'] as bool? ?? false,
                 ),
-
                 child,
-
                 PrevNext(
                   previousPage: _pageInfoFromObject(pageData['prevpage']),
                   nextPage: _pageInfoFromObject(pageData['nextpage']),
@@ -71,29 +69,6 @@ class DocLayout extends DashLayout {
         ],
       ),
     );
-  }
-
-  OnThisPageData? _tocForPage(Page page) {
-    if (!showTocDefault) {
-      return null;
-    }
-
-    final pageData = page.data.page;
-    final showToc = pageData['showToc'] as bool? ?? true;
-
-    // If 'showToc' was explicitly set to false, hide the toc.
-    if (!showToc) return null;
-
-    final onThisPageData = OnThisPageData.fromContentHeaders(
-      page.data['contentHeaders'] as List<ContentHeader>? ?? const [],
-      minLevel: pageData['minTocDepth'] as int? ?? 2,
-      maxLevel: pageData['maxTocDepth'] as int? ?? 3,
-    );
-
-    // If there are less than 2 top-level entries, hide the toc.
-    if (onThisPageData.topLevelEntries.length < 2) return null;
-
-    return onThisPageData;
   }
 }
 
