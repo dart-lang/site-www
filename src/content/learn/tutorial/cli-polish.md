@@ -174,7 +174,7 @@ allow for flexible output handling.
             }
           }
         } on Exception catch (exception) {
-          if(onError != null) {
+          if (onError != null) {
             onError!(exception);
           } else {
             rethrow;
