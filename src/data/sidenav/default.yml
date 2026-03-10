@@ -121,7 +121,7 @@
     - title: Asynchronous programming
       children:
         - title: Tutorial
-          permalink: /libraries/async/async-await
+          permalink: /libraries/async/async-awt
         - title: Futures and error handling
           permalink: /libraries/async/futures-error-handling
         - title: Using streams
@@ -246,7 +246,7 @@
       - title: Web interop
         permalink: /interop/js-interop/package-web
 
-- title: AI
+- title: Build with AI
   expanded: false
   children:
     - title: Dart and Flutter MCP server
