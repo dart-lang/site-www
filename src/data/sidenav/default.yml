@@ -252,7 +252,7 @@
     - title: Dart and Flutter MCP server
       permalink: https://docs.flutter.dev/ai/mcp-server
     - title: Genkit for Dart
-      permalink: https://genkit-dev-astro--pr-236-t3e6jfnr.web.app/docs/dart/get-started/
+      permalink: https://genkit.dev/docs/dart/get-started/
 
 - title: Tools & techniques
   expanded: false
