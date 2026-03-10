@@ -290,7 +290,7 @@ void main() async {
 ```
 
 [`StreamTransformer`]: {{site.dart-api}}/dart-async/StreamTransformer-class.html
-[`transform`]: /dart-async/Stream/transform.html
+[`transform`]: {{site.dart-api}}/dart-async/Stream/transform.html
 
 ## Character encodings
 
