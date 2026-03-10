@@ -121,7 +121,7 @@
     - title: Asynchronous programming
       children:
         - title: Tutorial
-          permalink: /libraries/async/async-awt
+          permalink: /libraries/async/async-await
         - title: Futures and error handling
           permalink: /libraries/async/futures-error-handling
         - title: Using streams
