@@ -55,13 +55,15 @@ codecs for several common formats.
 It also provides top-level variables with
 default-configured codec instances for convenience:
 
-| Codec class       | Encodes from | Encodes to      | Default instance |
-|-------------------|--------------|-----------------|------------------|
-| [`JsonCodec`][]   | Dart objects | JSON string     | [`json`][]       |
-| [`Utf8Codec`][]   | `String`     | UTF-8 bytes     | [`utf8`][]       |
-| [`AsciiCodec`][]  | `String`     | ASCII bytes     | [`ascii`][]      |
-| [`Latin1Codec`][] | `String`     | Latin-1 bytes   | [`latin1`][]     |
-| [`Base64Codec`][] | Bytes        | Base64 `String` | [`base64`][]     |
+| Codec class       | Encodes from | Encodes to    | Default instance |
+|-------------------|--------------|---------------|------------------|
+| [`JsonCodec`][]   | Objects      | JSON string   | [`json`][]       |
+| [`Utf8Codec`][]   | String       | UTF-8 bytes   | [`utf8`][]       |
+| [`AsciiCodec`][]  | String       | ASCII bytes   | [`ascii`][]      |
+| [`Latin1Codec`][] | String       | Latin-1 bytes | [`latin1`][]     |
+| [`Base64Codec`][] | Bytes        | Base64 string | [`base64`][]     |
+
+{:.table .table-striped}
 
 The `dart:io` library additionally provides a few compression codecs:
 
@@ -70,26 +72,28 @@ The `dart:io` library additionally provides a few compression codecs:
 | [`GZipCodec`][] | Bytes        | GZip-compressed bytes | [`gzip`][]       |
 | [`ZLibCodec`][] | Bytes        | ZLib-compressed bytes | [`zlib`][]       |
 
+{:.table .table-striped}
+
 Besides the provided codecs and their converters,
 `dart:convert` also provides the [`HtmlEscape`][] converter,
 a converter that escapes HTML special characters, and [`LineSplitter`][],
 a stream transformer that splits strings into individual lines.
 
 [`JsonCodec`]: {{site.dart-api}}/dart-convert/JsonCodec-class.html
-[`json`]: {{site.dart-api}}/dart-convert/json.html
+[`json`]: {{site.dart-api}}/dart-convert/json-constant.html
 [`Utf8Codec`]: {{site.dart-api}}/dart-convert/Utf8Codec-class.html
-[`utf8`]: {{site.dart-api}}/dart-convert/utf8.html
+[`utf8`]: {{site.dart-api}}/dart-convert/utf8-constant.html
 [`AsciiCodec`]: {{site.dart-api}}/dart-convert/AsciiCodec-class.html
-[`ascii`]: {{site.dart-api}}/dart-convert/ascii.html
+[`ascii`]: {{site.dart-api}}/dart-convert/ascii-constant.html
 [`Latin1Codec`]: {{site.dart-api}}/dart-convert/Latin1Codec-class.html
-[`latin1`]: {{site.dart-api}}/dart-convert/latin1.html
+[`latin1`]: {{site.dart-api}}/dart-convert/latin1-constant.html
 [`Base64Codec`]: {{site.dart-api}}/dart-convert/Base64Codec-class.html
-[`base64`]: {{site.dart-api}}/dart-convert/base64.html
+[`base64`]: {{site.dart-api}}/dart-convert/base64-constant.html
 
 [`GZipCodec`]: {{site.dart-api}}/dart-io/GZipCodec-class.html
-[`gzip`]: {{site.dart-api}}/dart-io/gzip.html
+[`gzip`]: {{site.dart-api}}/dart-io/gzip-constant.html
 [`ZLibCodec`]: {{site.dart-api}}/dart-io/ZLibCodec-class.html
-[`zlib`]: {{site.dart-api}}/dart-io/zlib.html
+[`zlib`]: {{site.dart-api}}/dart-io/zlib-constant.html
 
 [`HtmlEscape`]: {{site.dart-api}}/dart-convert/HtmlEscape-class.html
 [`LineSplitter`]: {{site.dart-api}}/dart-convert/LineSplitter-class.html
