@@ -19,6 +19,20 @@ class HomepageLayout extends DashLayout {
   List<String> get defaultBodyClasses => ['sidenav-hidden', 'no-toc'];
 
   @override
+  ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) =>
+      (
+        prerender: const {},
+        // Prefetch pages commonly navigated to from the homepage,
+        // mostly entries from the top navigation menu.
+        prefetch: const {
+          '/overview',
+          '/docs',
+          '/learn',
+          '/get-dart',
+        },
+      );
+
+  @override
   Component buildBody(Page page, Component child) {
     return super.buildBody(
       page,
