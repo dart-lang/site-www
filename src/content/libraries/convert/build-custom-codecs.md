@@ -626,6 +626,10 @@ This helps your sink continue to work correctly if
 new members are added to super types in the future.
 :::
 
+[`StringConversionSink`]: {{site.dart-api}}/dart-convert/StringConversionSink-class.html
+[`ByteConversionSink`]: {{site.dart-api}}/dart-convert/ByteConversionSink-class.html
+[`ChunkedConversionSink`]: {{site.dart-api}}/dart-convert/ChunkedConversionSink-class.html
+
 ### Respect data ownership in sinks
 
 Data passed to a sink's `add` method shouldn't be
@@ -678,5 +682,5 @@ This makes the codec easy to discover and use.
   an introduction to using the built-in codecs and converters.
 
 [library-api-docs]: {{site.dart-api}}/dart-convert
-[pkg-convert]: {{site.pub-pkg}}/convert
+[`package:convert`]: {{site.pub-pkg}}/convert
 [Converters and codecs]: /libraries/convert/converters-and-codecs
