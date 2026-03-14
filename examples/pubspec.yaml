@@ -19,6 +19,7 @@ workspace:
   - html
   - iterables
   - language
+  - libraries
   - misc
   - non_promotion
   - type_system
