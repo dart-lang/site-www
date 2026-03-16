@@ -376,7 +376,7 @@ void main() async {
 
 For serialization of application-level data and objects,
 where you want to convert between Dart model classes and JSON,
-the `fromJson`/`toJson` convention supported by packages such as
+the `fromJson` and `toJson` convention supported by packages such as
 [`package:json_serializable`][] is the idiomatic approach in Dart apps.
 These tools generate simple factory constructors and methods
 that work directly with `Map<String, Object?>`.
@@ -392,7 +392,7 @@ such as with bytes, strings, or compressed data,
 the codec pattern is a natural fit.
 If the conversion is about how data is _structured_,
 such as mapping JSON fields to Dart class properties,
-use `fromJson`/`toJson`.
+use a pattern like `fromJson` and `toJson`.
 
 If you do want to build your own codecs and converters,
 check out [Build custom codecs and converters][].
