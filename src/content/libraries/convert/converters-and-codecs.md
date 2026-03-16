@@ -309,7 +309,7 @@ void main() async {
 
 ## Character encodings
 
-The `Encoding` base class is specialized for character-encoding codecs,
+The [`Encoding`][] base class is specialized for character-encoding codecs,
 where its subclasses encode and decode strings to lists of bytes.
 It adds a `name` property and a static `getByName` method
 for looking up built-in, supported encodings by their [IANA name][]:
@@ -368,6 +368,7 @@ void main() async {
 }
 ```
 
+[`Encoding`]: {{site.dart-api}}/dart-convert/Encoding-class.html
 [`decodeStream`]: {{site.dart-api}}/dart-convert/Encoding/decodeStream.html
 [`package:charset`]: {{site.pub-pkg}}/charset
 [iana name]: https://www.iana.org/assignments/character-sets/character-sets.xhtml
@@ -385,7 +386,7 @@ The `Codec` and `Converter` classes serve a different purpose.
 They're designed for data format transformations:
 encoding schemes, compression, character sets, and
 other conversions where streaming support, bidirectional symmetry,
-and composability through `fuse()` matter.
+and composability through `fuse` matter.
 
 If the conversion is about how data is _represented_,
 such as with bytes, strings, or compressed data,

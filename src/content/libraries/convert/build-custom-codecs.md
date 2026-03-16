@@ -45,8 +45,8 @@ Build a custom `Codec` or `Converter` when your conversion:
 
 For one-directional or internal conversions,
 a purpose-built function is often simpler.
-For application-level JSON serialization,
-the `fromJson`/`toJson` convention with code generation is more idiomatic.
+For application-level object serialization,
+the `fromJson` and `toJson` convention with code generation is more idiomatic.
 For more insight on when to use each approach,
 check out [Codecs versus `fromJson` and `toJson`][when-to-use-codecs].
 
@@ -202,7 +202,7 @@ enabling consumers to use the codec with the [`Stream.transform`][] method.
 
 The basic `convert` method processes all input at once.
 To support streaming, override the
-`startChunkedConversion` method in your converter.
+[`startChunkedConversion`][] method in your converter.
 This method receives a downstream output sink and
 returns an upstream input sink.
 The chunked conversion then follows this sequence:
@@ -255,10 +255,10 @@ When `isLast` is `true`, the sink closes the output without
 requiring a separate `close` call.
 
 :::note
-`StringConversionSink` is a base class that
+[`StringConversionSink`][] is a base class that
 implements `add`, `addSlice`, and `close` in terms of each other.
-You only need to override `addSlice()`.
-For byte-oriented converters, use `ByteConversionSink` instead.
+You only need to override the `addSlice` method.
+For byte-oriented converters, use [`ByteConversionSink`][] instead.
 :::
 
 Next, override `startChunkedConversion` in your encoder
@@ -306,19 +306,27 @@ class CaesarDecoder extends Converter<String, String> {
 ```
 
 With chunked conversion implemented,
-the converter automatically works as a `StreamTransformer`
-through the inherited `bind` method.
+the converter automatically works as a [`StreamTransformer`][]
+through the inherited [`bind`][] method.
+
+[`startChunkedConversion`]: {{site.dart-api}}/dart-convert/Converter/startChunkedConversion.html
+[`StringConversionSink`]: {{site.dart-api}}/dart-convert/StringConversionSink-class.html
+[`ByteConversionSink`]: {{site.dart-api}}/dart-convert/ByteConversionSink-class.html
+[`StreamTransformer`]: {{site.dart-api}}/dart-async/StreamTransformer-class.html
+[`bind`]: {{site.dart-api}}/dart-async/StreamTransformer/bind.html
 
 ### Chunked conversion type versus synchronous type
 
 The chunked (streaming) type signature of a converter
 doesn't always match the synchronous `convert` signature.
-For example, `LineSplitter` synchronously converts
+For example, [`LineSplitter`][] synchronously converts
 all lines in a `String` to a `List<String>` at once,
 but in chunked mode it converts `String` chunks to `String` chunks
 where each output chunk is a single line.
 The chunked type is determined by
 what's most useful as a `StreamTransformer`.
+
+[`LineSplitter`]: {{site.dart-api}}/dart-convert/LineSplitter-class.html
 
 ## Use your codec with streams
 
@@ -383,7 +391,7 @@ that edge cases are handled, and that chunked conversion produces
 the same results as single-pass conversion.
 
 To test chunked conversion without setting up a stream,
-you can use the `ChunkedConversionSink.withCallback` factory constructor:
+you can use the [`ChunkedConversionSink.withCallback`][] factory constructor:
 
 <?code-excerpt "test/convert/build_custom_codecs_test_example.dart (test-codec)" replace="/libraries\/convert\/build_custom_codecs/your_package\/your_package/g;"?>
 ```dart
@@ -450,6 +458,8 @@ void main() {
   });
 }
 ```
+
+[`ChunkedConversionSink.withCallback`]: {{site.dart-api}}/dart-convert/ChunkedConversionSink/ChunkedConversionSink.withCallback.html
 
 ## Complete example
 
@@ -604,7 +614,7 @@ and follows the pattern set by the built-in codecs.
 If a codec supports configuration options,
 add named parameters to both the constructor (for defaults)
 and the `encode` and `decode` methods (for per-call overrides).
-`JsonCodec` demonstrates this pattern,
+[`JsonCodec`][] demonstrates this pattern,
 where its constructor accepts a default `reviver`,
 and its `decode` method accepts one that overrides it per call:
 
@@ -631,14 +641,19 @@ class JsonCodec extends Codec<Object?, String> {
 }
 ```
 
+[`JsonCodec`]: {{site.dart-api}}/dart-convert/JsonCodec-class.html
+
 ### Override fuse for optimized composition
 
 If your codec is commonly composed with another specific codec,
-override the `fuse` method to return an optimized implementation.
-The built-in `JsonCodec` does this: when fused with `Utf8Codec`,
+override the [`fuse`][] method to return an optimized implementation.
+The built-in [`JsonCodec`][] does this: when fused with [`Utf8Codec`][],
 it returns a codec that uses [`JsonUtf8Encoder`][] to
 bypass the intermediate string representation.
 
+[`fuse`]: {{site.dart-api}}/dart-convert/Codec/fuse.html
+[`JsonCodec`]: {{site.dart-api}}/dart-convert/JsonCodec-class.html
+[`Utf8Codec`]: {{site.dart-api}}/dart-convert/Utf8Codec-class.html
 [`JsonUtf8Encoder`]: {{site.dart-api}}/dart-convert/JsonUtf8Encoder-class.html
 
 ### Choose the right sink base class
