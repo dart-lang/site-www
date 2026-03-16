@@ -5,6 +5,9 @@ description: >-
   to encode, decode, and transform data.
 ---
 
+<?code-excerpt path-base="libraries"?>
+<?code-excerpt plaster="none"?>
+
 The [`dart:convert`][] library provides a framework for
 encoding, decoding, and transforming data in Dart.
 At its core are two abstractions:
@@ -105,6 +108,7 @@ a stream transformer that splits strings into individual lines.
 Every codec provides [`encode`][] and [`decode`][] convenience methods.
 These delegate to the codec's [`encoder`][] and [`decoder`][] converters:
 
+<?code-excerpt "lib/convert/converters_and_codecs.dart (encode-decode)" replace="/encodeDecodeExample/main/g"?>
 ```dart
 import 'dart:convert';
 
@@ -127,6 +131,7 @@ such as [`base64Decode`][] being a shorthand for [`base64.decode`][].
 You can also use the [`encoder`][] and [`decoder`][] properties
 to access the underlying converters:
 
+<?code-excerpt "lib/convert/converters_and_codecs.dart (encoder-decoder)" replace="/encoderDecoderExample/main/g"?>
 ```dart
 import 'dart:convert';
 
@@ -144,6 +149,7 @@ a default configuration of the underlying converters.
 If you want to customize them, you can
 create custom instances of the converters and codecs:
 
+<?code-excerpt "lib/convert/converters_and_codecs.dart (custom-config)" replace="/customConfigExample/main/g"?>
 ```dart
 import 'dart:convert';
 
@@ -182,11 +188,12 @@ One of the most powerful features of codecs is composition.
 The [`fuse`][codec-fuse] method on `Codec` combines two codecs into one,
 potentially eliminating the intermediate representation:
 
+<?code-excerpt "lib/convert/converters_and_codecs.dart (fuse-codec)" replace="/fuseCodecExample/main/g;"?>
 ```dart
 import 'dart:convert';
 
 // Create a codec that goes directly from Dart objects to UTF-8 bytes.
-final jsonUtf8 = json.fuse(utf8);
+final Codec<Object?, List<int>> jsonUtf8 = json.fuse(utf8);
 
 void main() {
   // Encode directly to bytes without an intermediate string.
@@ -210,6 +217,7 @@ than encoding in two separate steps.
 Converters also have a [`fuse`][converter-fuse] method for
 composing one-way transformations:
 
+<?code-excerpt "lib/convert/converters_and_codecs.dart (fuse-converter)" replace="/fuseConverterExample/main/g"?>
 ```dart
 import 'dart:convert';
 
@@ -234,6 +242,7 @@ that shouldn't be loaded entirely into memory at once.
 
 Use the [`transform`][] method to apply a converter to a stream:
 
+<?code-excerpt "lib/convert/converters_and_codecs_io.dart (stream-lines)" replace="/streamLinesExample/main/g"?>
 ```dart
 import 'dart:convert';
 import 'dart:io';
@@ -242,9 +251,9 @@ void main() async {
   // Read a file as a stream of bytes, decode UTF-8 into a string,
   // then split the single string into lines.
   final lines = File('data.txt')
-    .openRead()
-    .transform(utf8.decoder)
-    .transform(const LineSplitter());
+      .openRead() //
+      .transform(utf8.decoder)
+      .transform(const LineSplitter());
 
   await for (final line in lines) {
     print(line);
@@ -255,6 +264,7 @@ void main() async {
 You can build longer transformating pipelines by
 chaining multiple `transform` calls or by fusing converters first:
 
+<?code-excerpt "lib/convert/converters_and_codecs_io.dart (stream-json)" replace="/streamJsonExample/main/g"?>
 ```dart
 import 'dart:convert';
 import 'dart:io';
@@ -262,9 +272,9 @@ import 'dart:io';
 void main() async {
   // Read a JSON file and decode it in a single streaming pipeline.
   final stream = File('data.json')
-    .openRead()
-    .transform(utf8.decoder)
-    .transform(json.decoder);
+      .openRead() //
+      .transform(utf8.decoder)
+      .transform(json.decoder);
 
   await for (final value in stream) {
     print(value);
@@ -276,16 +286,17 @@ Streaming conversion is especially useful with compression.
 The following example decompresses and decodes a gzipped text file
 without loading the entire file into memory:
 
+<?code-excerpt "lib/convert/converters_and_codecs_io.dart (stream-gzip)" replace="/streamGzipExample/main/g"?>
 ```dart
 import 'dart:convert';
 import 'dart:io';
 
 void main() async {
   final lines = File('log.gz')
-    .openRead()
-    .transform(gzip.decoder)
-    .transform(utf8.decoder)
-    .transform(const LineSplitter());
+      .openRead()
+      .transform(gzip.decoder)
+      .transform(utf8.decoder)
+      .transform(const LineSplitter());
 
   await for (final line in lines) {
     print(line);
@@ -303,6 +314,7 @@ where its subclasses encode and decode strings to lists of bytes.
 It adds a `name` property and a static `getByName` method
 for looking up built-in, supported encodings by their [IANA name][]:
 
+<?code-excerpt "lib/convert/converters_and_codecs.dart (encoding-lookup)" replace="/encodingLookupExample/main/g"?>
 ```dart
 import 'dart:convert';
 
@@ -327,6 +339,7 @@ In contrast to `Stream.transform` which returns a `Stream<String>`,
 the `decodeStream` method reads a byte stream and
 returns a single decoded `String` (wrapped in a `Future`).
 
+<?code-excerpt "lib/convert/converters_and_codecs_io.dart (decode-stream)" replace="/decodeStreamExample/main/g"?>
 ```dart
 import 'dart:convert';
 import 'dart:io';
@@ -343,6 +356,7 @@ Many `dart:io` APIs accept an `Encoding` parameter,
 making it straightforward to read and write files with
 different character encodings:
 
+<?code-excerpt "lib/convert/converters_and_codecs_io.dart (encoding-param)" replace="/encodingParamExample/main/g"?>
 ```dart
 import 'dart:convert';
 import 'dart:io';
