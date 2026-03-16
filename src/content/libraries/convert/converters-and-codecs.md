@@ -101,8 +101,6 @@ a stream transformer that splits strings into individual lines.
 [`HtmlEscape`]: {{site.dart-api}}/dart-convert/HtmlEscape-class.html
 [`LineSplitter`]: {{site.dart-api}}/dart-convert/LineSplitter-class.html
 
-## Built-in converters
-
 ## Encode and decode data
 
 Every codec provides [`encode`][] and [`decode`][] convenience methods.
@@ -261,7 +259,7 @@ void main() async {
 }
 ```
 
-You can build longer transformating pipelines by
+You can build longer transformation pipelines by
 chaining multiple `transform` calls or by fusing converters first:
 
 <?code-excerpt "lib/convert/converters_and_codecs_io.dart (stream-json)" replace="/streamJsonExample/main/g"?>

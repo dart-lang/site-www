@@ -160,7 +160,7 @@ void useCodecExample() {
   print(decoded); // hello
 
   // The `inverted` getter returns a new codec that
-  // applies converts in the inverse direction of the codec.
+  // converts in the inverse direction of the original codec.
   final inverted = cipher.inverted;
   print(inverted.encode('khoor')); // hello
 }

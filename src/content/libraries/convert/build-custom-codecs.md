@@ -169,7 +169,7 @@ class CaesarCodec extends Codec<String, String> {
 ```
 
 The codec inherits the `encode` and `decode` methods from `Codec`
-that delegate to the overriden encoder and decoder.
+that delegate to the overridden encoder and decoder.
 It also inherits the `fuse` method and `inverted` getter:
 
 <?code-excerpt "lib/convert/build_custom_codecs.dart (use-codec)" replace="/useCodecExample/main/g"?>
@@ -184,7 +184,7 @@ void main() {
   print(decoded); // hello
 
   // The `inverted` getter returns a new codec that
-  // applies converts in the inverse direction of the codec.
+  // converts in the inverse direction of the original codec.
   final inverted = cipher.inverted;
   print(inverted.encode('khoor')); // hello
 }
@@ -735,7 +735,7 @@ This makes the codec easy to discover and use.
 - For examples of well-implemented codecs and converters,
   such as `HexCodec` and its `HexEncoder` and `HexDecoder`,
   reference the implementation of [`package:convert`][].
-- If you haven't yet, read the [Converters and codecs][] for
+- If you haven't yet, check out [Converters and codecs][] for
   an introduction to using the built-in codecs and converters.
 
 [library-api-docs]: {{site.dart-api}}/dart-convert
