@@ -109,7 +109,7 @@ Every codec provides [`encode`][] and [`decode`][] convenience methods.
 These delegate to the codec's [`encoder`][] and [`decoder`][] converters:
 
 <?code-excerpt "lib/convert/converters_and_codecs.dart (encode-decode)" replace="/encodeDecodeExample/main/g"?>
-```dart
+```dart highlightLines=5,9
 import 'dart:convert';
 
 void main() {
@@ -132,7 +132,7 @@ You can also use the [`encoder`][] and [`decoder`][] properties
 to access the underlying converters:
 
 <?code-excerpt "lib/convert/converters_and_codecs.dart (encoder-decoder)" replace="/encoderDecoderExample/main/g"?>
-```dart
+```dart highlightLines=4,7
 import 'dart:convert';
 
 void main() {
@@ -150,7 +150,7 @@ If you want to customize them, you can
 create custom instances of the converters and codecs:
 
 <?code-excerpt "lib/convert/converters_and_codecs.dart (custom-config)" replace="/customConfigExample/main/g"?>
-```dart
+```dart highlightLines=5-6,14-15
 import 'dart:convert';
 
 void main() {
@@ -189,7 +189,7 @@ The [`fuse`][codec-fuse] method on `Codec` combines two codecs into one,
 potentially eliminating the intermediate representation:
 
 <?code-excerpt "lib/convert/converters_and_codecs.dart (fuse-codec)" replace="/fuseCodecExample/main/g;"?>
-```dart
+```dart highlightLines=4,8,12
 import 'dart:convert';
 
 // Create a codec that goes directly from Dart objects to UTF-8 bytes.
@@ -218,7 +218,7 @@ Converters also have a [`fuse`][converter-fuse] method for
 composing one-way transformations:
 
 <?code-excerpt "lib/convert/converters_and_codecs.dart (fuse-converter)" replace="/fuseConverterExample/main/g"?>
-```dart
+```dart highlightLines=5-6
 import 'dart:convert';
 
 void main() {
@@ -243,7 +243,7 @@ that shouldn't be loaded entirely into memory at once.
 Use the [`transform`][] method to apply a converter to a stream:
 
 <?code-excerpt "lib/convert/converters_and_codecs_io.dart (stream-lines)" replace="/streamLinesExample/main/g"?>
-```dart
+```dart highlightLines=7-10
 import 'dart:convert';
 import 'dart:io';
 
@@ -265,7 +265,7 @@ You can build longer transformating pipelines by
 chaining multiple `transform` calls or by fusing converters first:
 
 <?code-excerpt "lib/convert/converters_and_codecs_io.dart (stream-json)" replace="/streamJsonExample/main/g"?>
-```dart
+```dart highlightLines=6-9
 import 'dart:convert';
 import 'dart:io';
 
@@ -287,7 +287,7 @@ The following example decompresses and decodes a gzipped text file
 without loading the entire file into memory:
 
 <?code-excerpt "lib/convert/converters_and_codecs_io.dart (stream-gzip)" replace="/streamGzipExample/main/g"?>
-```dart
+```dart highlightLines=5-9
 import 'dart:convert';
 import 'dart:io';
 
@@ -315,7 +315,7 @@ It adds a `name` property and a static `getByName` method
 for looking up built-in, supported encodings by their [IANA name][]:
 
 <?code-excerpt "lib/convert/converters_and_codecs.dart (encoding-lookup)" replace="/encodingLookupExample/main/g"?>
-```dart
+```dart highlightLines=4
 import 'dart:convert';
 
 void main() {
@@ -340,7 +340,7 @@ the `decodeStream` method reads a byte stream and
 returns a single decoded `String` (wrapped in a `Future`).
 
 <?code-excerpt "lib/convert/converters_and_codecs_io.dart (decode-stream)" replace="/decodeStreamExample/main/g"?>
-```dart
+```dart highlightLines=6-7
 import 'dart:convert';
 import 'dart:io';
 
@@ -357,7 +357,7 @@ making it straightforward to read and write files with
 different character encodings:
 
 <?code-excerpt "lib/convert/converters_and_codecs_io.dart (encoding-param)" replace="/encodingParamExample/main/g"?>
-```dart
+```dart highlightLines=7
 import 'dart:convert';
 import 'dart:io';
 

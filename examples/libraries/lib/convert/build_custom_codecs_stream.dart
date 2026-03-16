@@ -8,13 +8,13 @@ import 'build_custom_codecs.dart';
 
 // #docregion stream-transform
 void streamTransformExample() async {
-  const caesar = CaesarCodec(3);
+  const cipher = CaesarCodec(3);
 
   // Encrypt a file as a stream.
   final encrypted = File('message.txt')
       .openRead() //
       .transform(utf8.decoder)
-      .transform(caesar.encoder);
+      .transform(cipher.encoder);
 
   await for (final chunk in encrypted) {
     stdout.write(chunk);
@@ -24,10 +24,10 @@ void streamTransformExample() async {
 
 // #docregion fuse-pipeline
 void fusePipelineExample() async {
-  const caesar = CaesarCodec(3);
+  const cipher = CaesarCodec(3);
 
   // Create a codec that encrypts, then compresses.
-  final encryptAndCompress = caesar.fuse(utf8).fuse(gzip);
+  final encryptAndCompress = cipher.fuse(utf8).fuse(gzip);
 
   // Write encrypted, compressed data.
   final output = File('message.gz').openWrite();

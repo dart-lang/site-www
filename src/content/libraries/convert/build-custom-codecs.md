@@ -118,7 +118,7 @@ but creating a separate class keeps the intent clear and
 lets you customize behavior if needed:
 
 <?code-excerpt "lib/convert/build_custom_codecs.dart (basic-decoder)" plaster="none"?>
-```dart
+```dart highlightLines=14-15
 /// Decodes a Caesar-cipher-encoded string by
 /// shifting each letter backward in the alphabet.
 class CaesarDecoder extends Converter<String, String> {
@@ -147,24 +147,24 @@ with a decoder (`Converter<T, S>`).
 Extend `Codec` and implement the [`encoder`][] and [`decoder`][] getters:
 
 <?code-excerpt "lib/convert/build_custom_codecs.dart (caesar-codec)"?>
-```dart
+```dart highlightLines=14,17
 /// A codec that encodes and decodes strings using a
 /// [Caesar cipher](https://wikipedia.org/wiki/Caesar_cipher).
 class CaesarCodec extends Codec<String, String> {
   /// The number of positions to shift each letter.
   final int shift;
 
-  @override
-  CaesarEncoder get encoder => CaesarEncoder(shift);
-
-  @override
-  CaesarDecoder get decoder => CaesarDecoder(shift);
-
   /// Creates a Caesar cipher codec with the given [shift].
   const CaesarCodec(this.shift);
 
   /// Creates a [CaesarCodec] that uses ROT13 encoding.
   const CaesarCodec.rot13() : shift = 13;
+
+  @override
+  CaesarEncoder get encoder => CaesarEncoder(shift);
+
+  @override
+  CaesarDecoder get decoder => CaesarDecoder(shift);
 }
 ```
 
@@ -175,17 +175,17 @@ It also inherits the `fuse` method and `inverted` getter:
 <?code-excerpt "lib/convert/build_custom_codecs.dart (use-codec)" replace="/useCodecExample/main/g"?>
 ```dart
 void main() {
-  const caesar = CaesarCodec(3);
+  const cipher = CaesarCodec(3);
 
-  final encoded = caesar.encode('hello');
+  final encoded = cipher.encode('hello');
   print(encoded); // khoor
 
-  final decoded = caesar.decode(encoded);
+  final decoded = cipher.decode(encoded);
   print(decoded); // hello
 
   // The `inverted` getter returns a new codec that
   // applies converts in the inverse direction of the codec.
-  final inverted = caesar.inverted;
+  final inverted = cipher.inverted;
   print(inverted.encode('khoor')); // hello
 }
 ```
@@ -264,24 +264,10 @@ For byte-oriented converters, use `ByteConversionSink` instead.
 Next, override `startChunkedConversion` in your encoder
 to return an instance of your sink:
 
-<?code-excerpt "lib/convert/build_custom_codecs.dart (caesar-encoder)"?>
-```dart
-/// Encodes a string by shifting each letter forward in the alphabet.
+<?code-excerpt "lib/convert/build_custom_codecs.dart (chunked-encoder)"?>
+```dart highlightLines=4-13
 class CaesarEncoder extends Converter<String, String> {
-  /// The number of positions to shift each letter forward.
-  final int shift;
-
-  /// Creates an encoder that shifts each letter by [shift] positions.
-  const CaesarEncoder(this.shift);
-
-  @override
-  String convert(String input) {
-    final buffer = StringBuffer();
-    for (final codeUnit in input.codeUnits) {
-      buffer.writeCharCode(_shiftCodeUnit(codeUnit, shift));
-    }
-    return buffer.toString();
-  }
+  // ···
 
   @override
   StringConversionSink startChunkedConversion(Sink<String> sink) {
@@ -299,6 +285,25 @@ class CaesarEncoder extends Converter<String, String> {
 
 Apply the same approach to `CaesarDecoder`,
 using `26 - shift` as the shift value in its sink.
+
+<?code-excerpt "lib/convert/build_custom_codecs.dart (chunked-decoder)"?>
+```dart highlightLines=4-13
+class CaesarDecoder extends Converter<String, String> {
+  // ···
+
+  @override
+  StringConversionSink startChunkedConversion(Sink<String> sink) {
+    // Wrap the output sink if it isn't already
+    // a StringConversionSink.
+    // ignore: close_sinks
+    final stringSink = sink is StringConversionSink
+        ? sink
+        : StringConversionSink.from(sink);
+    return _CaesarEncoderSink(26 - shift, stringSink);
+  }
+
+}
+```
 
 With chunked conversion implemented,
 the converter automatically works as a `StreamTransformer`
@@ -321,19 +326,19 @@ Once your converters support chunked conversion,
 you can use them with the [`transform`][] method on `Stream`:
 
 <?code-excerpt "lib/convert/build_custom_codecs_stream.dart (stream-transform)" replace="/streamTransformExample/main/g"?>
-```dart
+```dart highlightLines=9-12
 import 'dart:convert';
 import 'dart:io';
 
 // ···
 void main() async {
-  const caesar = CaesarCodec(3);
+  const cipher = CaesarCodec(3);
 
   // Encrypt a file as a stream.
   final encrypted = File('message.txt')
       .openRead() //
       .transform(utf8.decoder)
-      .transform(caesar.encoder);
+      .transform(cipher.encoder);
 
   await for (final chunk in encrypted) {
     stdout.write(chunk);
@@ -344,17 +349,16 @@ void main() async {
 You can also compose your codec with others using [`fuse`][codec-fuse]
 to build data pipelines:
 
-<?code-excerpt "lib/convert/build_custom_codecs_stream.dart (fuse-pipeline)" replace="/fusePipelineExample/main/g"?>
-```dart
+<?code-excerpt "lib/convert/build_custom_codecs_stream.dart (fuse-pipeline)" replace="/fusePipelineExample/main/g" plaster="none"?>
+```dart highlightLines=8
 import 'dart:convert';
 import 'dart:io';
 
-// ···
 void main() async {
-  const caesar = CaesarCodec(3);
+  const cipher = CaesarCodec(3);
 
   // Create a codec that encrypts, then compresses.
-  final encryptAndCompress = caesar.fuse(utf8).fuse(gzip);
+  final encryptAndCompress = cipher.fuse(utf8).fuse(gzip);
 
   // Write encrypted, compressed data.
   final output = File('message.gz').openWrite();
@@ -452,23 +456,9 @@ void main() {
 The following example brings together all the pieces from this guide,
 implementing a complete Caesar cipher codec:
 
-<?code-excerpt "lib/convert/build_custom_codecs_complete.dart (complete)"?>
+<?code-excerpt "lib/convert/build_custom_codecs_complete.dart"?>
 ```dart
 import 'dart:convert';
-
-/// Shifts the specified [codeUnit] by
-/// [shift] positions in the alphabet.
-///
-/// Only shifts lowercase ASCII letters (a-z).
-/// All other characters are returned unchanged.
-int _shiftCodeUnit(int codeUnit, int shift) {
-  const a = 0x61;
-  const z = 0x7A;
-  if (codeUnit >= a && codeUnit <= z) {
-    return a + (codeUnit - a + shift) % 26;
-  }
-  return codeUnit;
-}
 
 /// A [StringConversionSink] that applies a Caesar cipher shift
 /// and forwards the result to [_output].
@@ -513,6 +503,8 @@ class CaesarEncoder extends Converter<String, String> {
 
   @override
   StringConversionSink startChunkedConversion(Sink<String> sink) {
+    // Wrap the output sink if it isn't already
+    // a StringConversionSink.
     // ignore: close_sinks
     final stringSink = sink is StringConversionSink
         ? sink
@@ -541,6 +533,8 @@ class CaesarDecoder extends Converter<String, String> {
 
   @override
   StringConversionSink startChunkedConversion(Sink<String> sink) {
+    // Wrap the output sink if it isn't already
+    // a StringConversionSink.
     // ignore: close_sinks
     final stringSink = sink is StringConversionSink
         ? sink
@@ -555,17 +549,17 @@ class CaesarCodec extends Codec<String, String> {
   /// The number of positions to shift each letter.
   final int shift;
 
-  @override
-  CaesarEncoder get encoder => CaesarEncoder(shift);
-
-  @override
-  CaesarDecoder get decoder => CaesarDecoder(shift);
-
   /// Creates a Caesar cipher codec with the given [shift].
   const CaesarCodec(this.shift);
 
   /// Creates a [CaesarCodec] that uses ROT13 encoding.
   const CaesarCodec.rot13() : shift = 13;
+
+  @override
+  CaesarEncoder get encoder => CaesarEncoder(shift);
+
+  @override
+  CaesarDecoder get decoder => CaesarDecoder(shift);
 }
 
 void main() {
@@ -576,6 +570,20 @@ void main() {
 
   final decoded = codec.decode(encoded);
   print(decoded); // the quick brown fox
+}
+
+/// Shifts the specified [codeUnit] by
+/// [shift] positions in the alphabet.
+///
+/// Only shifts lowercase ASCII letters (a-z).
+/// All other characters are returned unchanged.
+int _shiftCodeUnit(int codeUnit, int shift) {
+  const a = 0x61;
+  const z = 0x7A;
+  if (codeUnit >= a && codeUnit <= z) {
+    return a + (codeUnit - a + shift) % 26;
+  }
+  return codeUnit;
 }
 ```
 
@@ -600,7 +608,7 @@ and the `encode` and `decode` methods (for per-call overrides).
 where its constructor accepts a default `reviver`,
 and its `decode` method accepts one that overrides it per call:
 
-```dart
+```dart highlightLines=5,10-12,15-17
 class JsonCodec extends Codec<Object?, String> {
   // ...
 
@@ -698,7 +706,7 @@ Following the convention of the built-in codecs, consider
 exposing commonly used configurations as `const` top-level instances:
 
 <?code-excerpt "lib/convert/build_custom_codecs.dart (top-level-instance)"?>
-```dart
+```dart highlightLines=2
 /// A [CaesarCodec] with the standard shift of 13 (ROT13).
 const rot13 = CaesarCodec.rot13();
 ```

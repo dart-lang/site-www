@@ -1,19 +1,4 @@
-// #docregion complete
 import 'dart:convert';
-
-/// Shifts the specified [codeUnit] by
-/// [shift] positions in the alphabet.
-///
-/// Only shifts lowercase ASCII letters (a-z).
-/// All other characters are returned unchanged.
-int _shiftCodeUnit(int codeUnit, int shift) {
-  const a = 0x61;
-  const z = 0x7A;
-  if (codeUnit >= a && codeUnit <= z) {
-    return a + (codeUnit - a + shift) % 26;
-  }
-  return codeUnit;
-}
 
 /// A [StringConversionSink] that applies a Caesar cipher shift
 /// and forwards the result to [_output].
@@ -58,6 +43,8 @@ class CaesarEncoder extends Converter<String, String> {
 
   @override
   StringConversionSink startChunkedConversion(Sink<String> sink) {
+    // Wrap the output sink if it isn't already
+    // a StringConversionSink.
     // ignore: close_sinks
     final stringSink = sink is StringConversionSink
         ? sink
@@ -86,6 +73,8 @@ class CaesarDecoder extends Converter<String, String> {
 
   @override
   StringConversionSink startChunkedConversion(Sink<String> sink) {
+    // Wrap the output sink if it isn't already
+    // a StringConversionSink.
     // ignore: close_sinks
     final stringSink = sink is StringConversionSink
         ? sink
@@ -100,17 +89,17 @@ class CaesarCodec extends Codec<String, String> {
   /// The number of positions to shift each letter.
   final int shift;
 
-  @override
-  CaesarEncoder get encoder => CaesarEncoder(shift);
-
-  @override
-  CaesarDecoder get decoder => CaesarDecoder(shift);
-
   /// Creates a Caesar cipher codec with the given [shift].
   const CaesarCodec(this.shift);
 
   /// Creates a [CaesarCodec] that uses ROT13 encoding.
   const CaesarCodec.rot13() : shift = 13;
+
+  @override
+  CaesarEncoder get encoder => CaesarEncoder(shift);
+
+  @override
+  CaesarDecoder get decoder => CaesarDecoder(shift);
 }
 
 void main() {
@@ -123,4 +112,16 @@ void main() {
   print(decoded); // the quick brown fox
 }
 
-// #enddocregion complete
+/// Shifts the specified [codeUnit] by
+/// [shift] positions in the alphabet.
+///
+/// Only shifts lowercase ASCII letters (a-z).
+/// All other characters are returned unchanged.
+int _shiftCodeUnit(int codeUnit, int shift) {
+  const a = 0x61;
+  const z = 0x7A;
+  if (codeUnit >= a && codeUnit <= z) {
+    return a + (codeUnit - a + shift) % 26;
+  }
+  return codeUnit;
+}

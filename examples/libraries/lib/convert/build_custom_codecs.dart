@@ -28,7 +28,9 @@ class _CaesarEncoderSink extends StringConversionSinkBase {
 
 // #docregion basic-encoder, caesar-encoder
 /// Encodes a string by shifting each letter forward in the alphabet.
+// #docregion chunked-encoder
 class CaesarEncoder extends Converter<String, String> {
+  // #enddocregion chunked-encoder
   /// The number of positions to shift each letter forward.
   final int shift;
 
@@ -45,7 +47,8 @@ class CaesarEncoder extends Converter<String, String> {
   }
   // #enddocregion basic-encoder
 
-  // #docregion start-chunked-conversion
+  // #docregion chunked-encoder
+
   @override
   StringConversionSink startChunkedConversion(Sink<String> sink) {
     // Wrap the output sink if it isn't already
@@ -57,10 +60,9 @@ class CaesarEncoder extends Converter<String, String> {
     return _CaesarEncoderSink(shift, stringSink);
   }
 
-  // #enddocregion start-chunked-conversion
   // #docregion basic-encoder
 }
-// #enddocregion caesar-encoder
+// #enddocregion caesar-encoder, chunked-encoder
 
 // #docregion shift-code-unit
 /// Shifts the specified [codeUnit] by
@@ -81,7 +83,9 @@ int _shiftCodeUnit(int codeUnit, int shift) {
 // #docregion basic-decoder
 /// Decodes a Caesar-cipher-encoded string by
 /// shifting each letter backward in the alphabet.
+// #docregion chunked-decoder
 class CaesarDecoder extends Converter<String, String> {
+  //#enddocregion chunked-decoder
   /// The number of positions to shift each letter backward.
   final int shift;
 
@@ -99,8 +103,12 @@ class CaesarDecoder extends Converter<String, String> {
   }
   // #enddocregion basic-decoder
 
+  // #docregion chunked-decoder
+
   @override
   StringConversionSink startChunkedConversion(Sink<String> sink) {
+    // Wrap the output sink if it isn't already
+    // a StringConversionSink.
     // ignore: close_sinks
     final stringSink = sink is StringConversionSink
         ? sink
@@ -110,7 +118,7 @@ class CaesarDecoder extends Converter<String, String> {
 
   // #docregion basic-decoder
 }
-// #enddocregion basic-decoder
+// #enddocregion basic-decoder, chunked-decoder
 
 // #docregion caesar-codec
 /// A codec that encodes and decodes strings using a
@@ -119,17 +127,17 @@ class CaesarCodec extends Codec<String, String> {
   /// The number of positions to shift each letter.
   final int shift;
 
-  @override
-  CaesarEncoder get encoder => CaesarEncoder(shift);
-
-  @override
-  CaesarDecoder get decoder => CaesarDecoder(shift);
-
   /// Creates a Caesar cipher codec with the given [shift].
   const CaesarCodec(this.shift);
 
   /// Creates a [CaesarCodec] that uses ROT13 encoding.
   const CaesarCodec.rot13() : shift = 13;
+
+  @override
+  CaesarEncoder get encoder => CaesarEncoder(shift);
+
+  @override
+  CaesarDecoder get decoder => CaesarDecoder(shift);
 }
 // #enddocregion caesar-codec
 
@@ -143,17 +151,17 @@ void useEncoderExample() {
 
 // #docregion use-codec
 void useCodecExample() {
-  const caesar = CaesarCodec(3);
+  const cipher = CaesarCodec(3);
 
-  final encoded = caesar.encode('hello');
+  final encoded = cipher.encode('hello');
   print(encoded); // khoor
 
-  final decoded = caesar.decode(encoded);
+  final decoded = cipher.decode(encoded);
   print(decoded); // hello
 
   // The `inverted` getter returns a new codec that
   // applies converts in the inverse direction of the codec.
-  final inverted = caesar.inverted;
+  final inverted = cipher.inverted;
   print(inverted.encode('khoor')); // hello
 }
 // #enddocregion use-codec
