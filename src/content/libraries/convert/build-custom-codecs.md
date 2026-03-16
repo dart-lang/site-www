@@ -21,7 +21,7 @@ shifts each letter by a fixed number of positions in the alphabet.
 
 :::tip
 To learn more about codecs and converters and the built-in ones,
-check out [Converters and codecs][].
+check out [Use Converters and codecs][].
 :::
 
 [`dart:convert`]: {{site.dart-api}}/dart-convert
@@ -31,7 +31,7 @@ check out [Converters and codecs][].
 
 [Caesar cipher]: https://wikipedia.org/wiki/Caesar_cipher
 
-[Converters and codecs]: /libraries/convert/converters-and-codecs
+[Use converters and codecs]: /libraries/convert/converters-and-codecs
 
 ## When to build a custom codec
 
@@ -735,9 +735,9 @@ This makes the codec easy to discover and use.
 - For examples of well-implemented codecs and converters,
   such as `HexCodec` and its `HexEncoder` and `HexDecoder`,
   reference the implementation of [`package:convert`][].
-- If you haven't yet, check out [Converters and codecs][] for
+- If you haven't yet, check out [Use converters and codecs][] for
   an introduction to using the built-in codecs and converters.
 
 [library-api-docs]: {{site.dart-api}}/dart-convert
 [`package:convert`]: {{site.pub-pkg}}/convert
-[Converters and codecs]: /libraries/convert/converters-and-codecs
+[Use converters and codecs]: /libraries/convert/converters-and-codecs
