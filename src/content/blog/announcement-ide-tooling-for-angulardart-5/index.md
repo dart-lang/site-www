@@ -22,7 +22,7 @@ Dart is a statically typed language which we know and love, and Dart 2 will be e
 
 So, to further improve this productive and safe developer experience, we are announcing new IDE tools for preserving that type-safety inside your templates! It supports AngularDart 5, and works out of the box with IntelliJ/WebStorm. It can also be configured to work in VSCode, vim, and more.
 
-You can skip straight to [setup](#a8cb) now if you’re already sold, or follow along for a tour of what our new IDE integration offers you!
+You can skip straight to [setup](#how-to-use) now if you’re already sold, or follow along for a tour of what our new IDE integration offers you!
 
 ## Errors
 
