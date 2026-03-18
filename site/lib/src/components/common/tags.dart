@@ -5,6 +5,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import '../../util.dart';
 import 'material_icon.dart';
 
 /// A display of multiple categorical or descriptive tags.
@@ -28,16 +29,16 @@ class Tag extends StatelessComponent {
     this.icon,
     this.title,
     this.label,
-    this.color,
     this.link,
+    this.color = TagColor.blue,
   });
 
   final String content;
   final String? icon;
   final String? title;
   final String? label;
-  final String? color;
   final String? link;
+  final TagColor color;
 
   @override
   Component build(BuildContext context) {
@@ -49,20 +50,30 @@ class Tag extends StatelessComponent {
       'title': ?title,
       'aria-label': ?(label ?? title),
     };
+    final classes = ['tag-label', color.name].toClasses;
 
     if (link case final link?) {
       return a(
         href: link,
-        classes: 'tag-label',
+        classes: classes,
         attributes: attributes,
         children,
       );
     }
 
     return div(
-      classes: 'tag-label',
+      classes: classes,
       attributes: attributes,
       children,
     );
   }
+}
+
+/// A supported background color for a [Tag].
+enum TagColor {
+  blue,
+  green,
+  orange,
+  red,
+  grey,
 }

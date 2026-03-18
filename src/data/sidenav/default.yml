@@ -9,8 +9,6 @@
       permalink: /language/operators
     - title: Comments
       permalink: /language/comments
-    - title: Language versioning
-      permalink: /language/versions
     - divider
     - title: Types
       children:
@@ -92,16 +90,12 @@
       children:
         - title: Sound null safety
           permalink: /null-safety
-        - title: Migrating to null safety
-          permalink: /null-safety/migration-guide
         - title: Understanding null safety
           permalink: /null-safety/understanding-null-safety
-        - title: Unsound null safety
-          permalink: /null-safety/unsound-null-safety
-        - title: FAQ
-          permalink: /null-safety/faq
-    - title: Keywords
+    - title: Dart keywords
       permalink: /language/keywords
+    - title: Language versioning
+      permalink: /language/versioning
 
 - title: Core libraries
   expanded: false
@@ -252,15 +246,12 @@
       - title: Web interop
         permalink: /interop/js-interop/package-web
 
+
 - title: Tools & techniques
   expanded: false
   children:
   - title: Overview
     permalink: /tools
-  - title: AI
-    children:
-        - title: Dart and Flutter MCP Server
-          permalink: https://docs.flutter.dev/ai/mcp-server
   - title: Editors & debuggers
     children:
       - title: IntelliJ & Android Studio
@@ -348,6 +339,14 @@
       permalink: /learn
     - title: Tutorial
       permalink: /learn/tutorial
+
+- title: Build with AI
+  expanded: false
+  children:
+    - title: Dart and Flutter MCP server
+      permalink: https://docs.flutter.dev/ai/mcp-server
+    - title: Genkit for Dart
+      permalink: https://genkit.dev/docs/dart/get-started/
 
 - title: Stay up to date
   expanded: false

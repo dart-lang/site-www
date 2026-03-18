@@ -148,13 +148,13 @@ $ dart run bin/my_app.dart
 
 #### Migration
 
-Before beginning any migration to Dart 3, 
-ensure your app or package has been 100% migrated to enable null safety. 
-This requires a Dart `2.19` SDK, not a Dart 3 SDK. 
+Before beginning any migration to Dart 3,
+ensure your app or package has been 100% migrated to enable null safety.
+This requires a Dart `2.19` SDK, not a Dart 3 SDK.
 To learn how to first migrate your app or package to support null safety,
 check out the [null safety migration guide][].
 
-[null safety migration guide]: /null-safety/migration-guide
+[null safety migration guide]: https://github.com/dart-community/migrate-to-null-safety/blob/main/docs/migrate.md#migrate-to-null-safety
 
 ### Colon-syntax for default values
 
@@ -557,11 +557,13 @@ These commands will fail.
 
 #### Migration
 
-Use Dart 2.19 to [migrate to null safety](/null-safety/migration-guide).
+Use Dart 2.19 to [migrate to null safety][].
+
+[migrate to null safety]: https://github.com/dart-community/migrate-to-null-safety/blob/main/docs/migrate.md#migrate-to-null-safety
 
 ### Analyzer config
 
-The [analyzer configuration options][] for 
+The [analyzer configuration options][] for
 enabling stricter checking have changed.
 
 [analyzer configuration options]: /tools/analysis#enabling-additional-type-checks
