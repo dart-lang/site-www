@@ -152,7 +152,7 @@ To prevent precompilation, use `--no-precompile`.
 
 By default, pub also retrieves the dependencies of the
 [`example/` directory][example-dir] of the package (`--example`).
-To skip getting example dependencies, use `--no-example`.
+To skip retrieving example dependencies, use `--no-example`.
 
 [example-dir]: /tools/pub/package-layout#examples
 
