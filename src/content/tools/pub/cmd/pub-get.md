@@ -148,6 +148,14 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
+### `--[no-]example`
+
+By default, pub also retrieves the dependencies of the
+[`example/` directory][example-dir] of the package (`--example`).
+To skip getting example dependencies, use `--no-example`.
+
+[example-dir]: /tools/pub/package-layout#examples
+
 ### `--enforce-lockfile`
 
 Enforce the resolution of the current `pubspec.lock`.
