@@ -3,13 +3,6 @@
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
 
-<a href="https://studio.firebase.google.com/import?url=https%3A%2F%2Fgithub.com%2Fdart-lang%2Fsite-www">
-  <img
-    height="32"
-    alt="Open in Firebase Studio"
-    src="https://cdn.firebasestudio.dev/btn/open_blue_32.svg">
-</a>
-
 The documentation site for the [Dart programming language](https://dart.dev), 
 built with [Jaspr][] and hosted on [Firebase][].
 
