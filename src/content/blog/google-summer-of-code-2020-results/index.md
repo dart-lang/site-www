@@ -5,11 +5,6 @@ publishDate: 2020-09-02
 author: jonasfj
 image: images/15VxyyQ1juWjwtTbSkwzzXA.jpeg
 category: other
-tags:
-  - dartlang
-  - flutter
-  - open-source
-  - google-summer-of-code
 layout: blog
 ---
 

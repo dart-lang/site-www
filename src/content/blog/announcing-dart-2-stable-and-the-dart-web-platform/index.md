@@ -4,13 +4,7 @@ description: "Signals the rebirth of Dart as a mainstream programming language f
 publishDate: 2018-08-07
 author: kevmoo
 image: images/0YX3CcH4He_IIEhzx.png
-category: announcements
-tags:
-  - flutter
-  - dart
-  - programming-languages
-  - web-development
-  - announcements
+category: releases
 layout: blog
 ---
 

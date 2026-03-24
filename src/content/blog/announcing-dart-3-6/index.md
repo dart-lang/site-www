@@ -4,11 +4,7 @@ description: "Welcome to Dart 3.6! Today is our last release of the year, alongs
 publishDate: 2024-12-11
 author: mbelanger
 image: images/0pojZOcfCeFztkEzK.png
-category: announcements
-tags:
-  - dart
-  - dartlang
-  - flutter
+category: releases
 layout: blog
 ---
 

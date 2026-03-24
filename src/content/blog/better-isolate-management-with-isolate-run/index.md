@@ -4,13 +4,7 @@ description: "Dart 2.19 introduces a new function that makes implementing concur
 publishDate: 2023-01-24
 author: mbelanger
 image: images/0Bt-V4nlGjNKquFhK.png
-category: other
-tags:
-  - dart
-  - concurrency
-  - dartlang
-  - asynchronous-programming
-  - flutter
+category: deep-dive
 layout: blog
 ---
 

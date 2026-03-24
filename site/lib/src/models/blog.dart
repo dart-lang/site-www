@@ -14,7 +14,7 @@ extension type Post(Map<String, dynamic> data) {
   String get authorId => data['author'] as String;
 
   String get readingTime => data['readingTime'] as String? ?? '5 min read';
-  String get category => data['category'] as String? ?? 'other';
+  String? get category => data['category'] as String?;
 }
 
 extension type Author(Map<String, dynamic> data) {

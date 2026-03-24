@@ -4,11 +4,7 @@ description: "Supporting Flutter for Windows with package platform tagging and a
 publishDate: 2022-02-03
 author: mit-mit
 image: images/0PJwhbfaIwRq3sSJi.png
-category: announcements
-tags:
-  - dart
-  - announcements
-  - programming
+category: releases
 layout: blog
 ---
 

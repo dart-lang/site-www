@@ -4,11 +4,7 @@ description: "Sound null safety and Dart FFI ship to the stable channel."
 publishDate: 2021-03-03
 author: mit-mit
 image: images/0Inj4APQIAA4gVCxK.png
-category: announcements
-tags:
-  - dart
-  - announcements
-  - programming
+category: releases
 layout: blog
 ---
 

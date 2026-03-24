@@ -4,12 +4,7 @@ description: "Starting today, GitHub supports Dart in its Advisory Database, dep
 publishDate: 2022-10-06
 author: mit-mit
 image: images/1MdOSko9W_PJA0KwuQ_mu6w.png
-category: other
-tags:
-  - dart
-  - dartlang
-  - gi̇thub
-  - security
+category: announcements
 layout: blog
 ---
 

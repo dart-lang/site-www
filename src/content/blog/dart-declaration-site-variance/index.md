@@ -4,12 +4,7 @@ description: "A deep dive into an experimental feature"
 publishDate: 2019-12-19
 author: kallentu
 image: images/0XcEdm2vmIBW8Wovr.png
-category: other
-tags:
-  - programming
-  - variance
-  - programming-languages
-  - dartlang
+category: deep-dive
 layout: blog
 ---
 

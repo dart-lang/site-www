@@ -5,9 +5,6 @@ publishDate: 2018-07-20
 author: mit-mit
 image: images/0Fq4FHYc9N5aHmYBK.png
 category: other
-tags:
-  - github
-  - dartlang
 layout: blog
 ---
 

@@ -5,12 +5,6 @@ publishDate: 2022-03-31
 author: polina-c
 image: images/16-SfhIoFLl1NPaNi8Ld8Og.png
 category: other
-tags:
-  - null-safety
-  - migration
-  - dart
-  - flutter
-  - flutter-app-development
 layout: blog
 ---
 

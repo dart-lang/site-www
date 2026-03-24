@@ -5,9 +5,6 @@ publishDate: 2021-05-12
 author: timsneath
 image: images/1TnLjhbuMnphc4ZlsuSdtog.png
 category: other
-tags:
-  - angulardart
-  - dart
 layout: blog
 ---
 

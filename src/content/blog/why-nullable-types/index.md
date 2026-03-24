@@ -5,10 +5,6 @@ publishDate: 2020-12-07
 author: munificent
 image: images/1ihpy1Ngzg7SczCKkuh_WhQ.jpeg
 category: other
-tags:
-  - dart
-  - programming-languages
-  - developer-experience
 layout: blog
 ---
 

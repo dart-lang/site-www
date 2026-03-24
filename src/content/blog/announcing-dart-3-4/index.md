@@ -4,12 +4,7 @@ description: "Dart 3.4 is out today! This release showcases the joint efforts of
 publishDate: 2024-05-14
 author: mit-mit
 image: images/0hAcsCFLU0Ze7pej6.png
-category: announcements
-tags:
-  - dart
-  - dartlang
-  - wasm
-  - webassembly
+category: releases
 layout: blog
 ---
 

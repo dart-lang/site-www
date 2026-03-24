@@ -4,13 +4,7 @@ description: "Pattern matching and exhaustive switches come together to enable f
 publishDate: 2023-08-16
 author: mbelanger
 image: images/1IWd8aRO__OzDkJVsjfoe2A.png
-category: announcements
-tags:
-  - dart
-  - announcements
-  - dartlang
-  - releases
-  - functional-programming
+category: releases
 layout: blog
 ---
 

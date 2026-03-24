@@ -5,10 +5,6 @@ publishDate: 2019-12-19
 author: kallentu
 image: images/06Ct-NyRGmYp_bmgp.png
 category: other
-tags:
-  - programming
-  - intern
-  - dart
 layout: blog
 ---
 

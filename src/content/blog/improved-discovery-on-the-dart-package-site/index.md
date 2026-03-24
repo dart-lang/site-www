@@ -4,10 +4,7 @@ description: "Back in July we talked about our changes to the Dart package site 
 publishDate: 2018-09-24
 author: mit-mit
 image: images/1wh9C-VJUKEYz4l2zpUkg4A.png
-category: other
-tags:
-  - dart
-  - flutter
+category: announcements
 layout: blog
 ---
 

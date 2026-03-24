@@ -4,13 +4,7 @@ description: "Announcing the preview launch of Genkit Dart, an open-source AI fr
 publishDate: 2026-03-10
 author: chrisraygill
 image: images/1haDapHjWrIlyQsYO-zLlLQ.jpeg
-category: other
-tags:
-  - ai
-  - flutter
-  - agents
-  - generative-ai-tools
-  - dart
+category: announcements
 layout: blog
 ---
 

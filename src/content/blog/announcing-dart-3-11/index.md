@@ -4,13 +4,7 @@ description: "Hello, Dart developers! The latest stable version, Dart 3.11, is o
 publishDate: 2026-02-11
 author: conooi
 image: images/129dKLBxAMepAi2od91c3TA.png
-category: announcements
-tags:
-  - dart
-  - flutter
-  - programming-languages
-  - releases
-  - dartlang
+category: releases
 layout: blog
 ---
 

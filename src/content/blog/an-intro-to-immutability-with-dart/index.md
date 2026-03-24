@@ -4,12 +4,6 @@ description: "It’s impossible to deny that immutability is a hot topic in prog
 publishDate: 2017-04-24
 author: matanlurey
 category: other
-tags:
-  - javascript
-  - functional-programming
-  - dart
-  - dartlang
-  - immutable
 layout: blog
 ---
 

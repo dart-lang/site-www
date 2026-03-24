@@ -4,11 +4,7 @@ description: "Apple Silicon support, and improved productivity with default lint
 publishDate: 2021-09-08
 author: mit-mit
 image: images/1qlsMfajTUkBw1APUpjcCZg.png
-category: announcements
-tags:
-  - announcements
-  - dart
-  - programming
+category: releases
 layout: blog
 ---
 

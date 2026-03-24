@@ -4,13 +4,7 @@ description: "Today, we’re announcing the stable release of Dart 2.1, an updat
 publishDate: 2018-11-15
 author: mit-mit
 image: images/1xZHP-8eEl6qJCCTKXyQZ8w.png
-category: announcements
-tags:
-  - dart
-  - flutter
-  - programming
-  - programming-languages
-  - announcements
+category: releases
 layout: blog
 ---
 

@@ -35,7 +35,6 @@ class BlogIndex extends StatelessComponent {
             BlogCard(
               post: Post(posts[i].data.page),
               url: posts[i].url,
-              isFeatured: i == 0,
               className: i == 0
                   ? 'layout-featured'
                   : (i < 5 ? 'layout-grid' : 'layout-list'),

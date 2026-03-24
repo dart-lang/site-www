@@ -4,13 +4,7 @@ description: "We have a couple of new features available on pub.dev starting tod
 publishDate: 2023-01-18
 author: jonasfj
 image: images/169KfhhHmmvZ6BLvypXjx2A.png
-category: other
-tags:
-  - dartlang
-  - github-actions
-  - pubdev
-  - package
-  - package-management
+category: announcements
 layout: blog
 ---
 

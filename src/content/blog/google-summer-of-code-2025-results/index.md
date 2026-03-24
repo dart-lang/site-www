@@ -5,12 +5,6 @@ publishDate: 2025-10-20
 author: dcharkes
 image: images/1AWu8hJLDQzrZqv7BxH3byA.png
 category: other
-tags:
-  - flutter
-  - dart
-  - summer-internships
-  - open-source
-  - programming
 layout: blog
 ---
 

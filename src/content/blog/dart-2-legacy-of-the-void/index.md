@@ -4,13 +4,7 @@ description: "One of the questions I see the most asked on StackOverflow, Gitter
 publishDate: 2018-08-30
 author: matanlurey
 image: images/1qGU6soDvCW0RFfDX8vpUow.png
-category: other
-tags:
-  - programming
-  - dart
-  - flutter
-  - dartlang
-  - type-safety
+category: deep-dive
 layout: blog
 ---
 

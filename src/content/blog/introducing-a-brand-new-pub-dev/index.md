@@ -4,13 +4,7 @@ description: "Redesigned for high-quality, multiplatform packages"
 publishDate: 2020-07-15
 author: mit-mit
 image: images/0efALL34OP6a4tcxh.png
-category: other
-tags:
-  - dart
-  - flutter
-  - package-management
-  - google
-  - development
+category: announcements
 layout: blog
 ---
 

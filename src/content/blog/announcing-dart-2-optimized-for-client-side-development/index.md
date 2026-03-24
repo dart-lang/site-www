@@ -4,13 +4,7 @@ description: "Today, we’re announcing Dart 2, a reboot of the language to be u
 publishDate: 2018-02-22
 author: asandholm
 image: images/1E9T7YsI_ZU8gk4CewQg_QA.jpeg
-category: announcements
-tags:
-  - dartlang
-  - flutter
-  - mobile-app-development
-  - web-development
-  - announcements
+category: releases
 layout: blog
 ---
 

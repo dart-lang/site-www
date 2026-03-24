@@ -4,11 +4,7 @@ description: "Dart 3.3 has landed, and it’s a game-changer for performance and
 publishDate: 2024-02-15
 author: kevmoo
 image: images/1p4TBp0I66rJTq0LvnSuE7g.png
-category: announcements
-tags:
-  - dart-programming-language
-  - webassembly
-  - javascript
+category: releases
 layout: blog
 ---
 

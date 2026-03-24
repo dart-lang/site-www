@@ -5,10 +5,6 @@ publishDate: 2022-12-08
 author: mit-mit
 image: images/05XfWLgEBx4iJvuqA.png
 category: other
-tags:
-  - dart
-  - dartlang
-  - null-safety
 layout: blog
 ---
 

@@ -4,12 +4,7 @@ description: "Faster package tools, new tool for ensuring dependencies never go 
 publishDate: 2020-05-06
 author: mit-mit
 image: images/1JrrSSD8LCLMkAUIV8RJlkw.png
-category: announcements
-tags:
-  - dart
-  - flutter
-  - dependency-management
-  - announcements
+category: releases
 layout: blog
 ---
 

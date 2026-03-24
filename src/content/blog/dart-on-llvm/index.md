@@ -4,13 +4,7 @@ description: "This is a story about an experiment to compile the Dart language u
 publishDate: 2017-01-11
 author: erikcorry
 image: images/1DN03P0ofCSyHM6UwB42Nyg.png
-category: other
-tags:
-  - programming
-  - javascript
-  - dart
-  - dartlang
-  - llvm
+category: deep-dive
 layout: blog
 ---
 

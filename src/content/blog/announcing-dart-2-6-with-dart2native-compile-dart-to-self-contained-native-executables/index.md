@@ -4,13 +4,7 @@ description: "Announcing Dart 2.6, featuring dart2native for compiling Dart apps
 publishDate: 2019-11-05
 author: mit-mit
 image: images/0lY0iF-neazyL0aE-.gif
-category: announcements
-tags:
-  - dart
-  - native-code
-  - programming
-  - compilers
-  - announcements
+category: releases
 layout: blog
 ---
 

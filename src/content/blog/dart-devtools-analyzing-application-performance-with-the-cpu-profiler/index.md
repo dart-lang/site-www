@@ -4,13 +4,7 @@ description: "Whether you’re a backend developer writing a command line tool u
 publishDate: 2023-06-12
 author: bkonyi
 image: images/04btaxCBW8Btx71RM.png
-category: other
-tags:
-  - dart
-  - flutter
-  - dart-devtools
-  - flutterdevtools
-  - cpu-profiling
+category: deep-dive
 layout: blog
 ---
 

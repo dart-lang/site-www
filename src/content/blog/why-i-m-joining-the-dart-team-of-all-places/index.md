@@ -5,10 +5,6 @@ publishDate: 2016-01-07
 author: filiph
 image: images/19XE0rGIm0oY0GOs5onZyvQ.jpeg
 category: other
-tags:
-  - dart
-  - google
-  - programming-languages
 layout: blog
 ---
 

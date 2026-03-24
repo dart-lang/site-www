@@ -4,13 +4,7 @@ description: "One of the most basic APIs that Dart has for asynchronous programm
 publishDate: 2019-09-18
 author: kwalrath
 image: images/1UD63BMoIBmzoA6jo3LjCCg.png
-category: other
-tags:
-  - programming
-  - programming-languages
-  - dartlang
-  - asynchronous-programming
-  - flutter
+category: deep-dive
 layout: blog
 ---
 

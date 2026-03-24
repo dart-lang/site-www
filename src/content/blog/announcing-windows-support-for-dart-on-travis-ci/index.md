@@ -5,12 +5,6 @@ publishDate: 2019-04-15
 author: mit-mit
 image: images/1Zh0PvesZNUKCljlerYe4Sg.png
 category: announcements
-tags:
-  - continuous-integration
-  - dart
-  - travis-ci
-  - flutter
-  - announcements
 layout: blog
 ---
 

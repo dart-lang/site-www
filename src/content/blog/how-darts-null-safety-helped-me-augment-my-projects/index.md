@@ -5,10 +5,6 @@ publishDate: 2021-06-23
 author: wal33d
 image: images/1HlInW7jXUifJIGBK1YEQEw.jpeg
 category: other
-tags:
-  - flutter
-  - dart
-  - null-safety
 layout: blog
 ---
 

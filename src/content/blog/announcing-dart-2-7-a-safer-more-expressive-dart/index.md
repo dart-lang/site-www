@@ -4,12 +4,7 @@ description: "Today we’re announcing the stable release of the Dart 2.7 SDK, w
 publishDate: 2019-12-11
 author: mit-mit
 image: images/0G-I1kyYJFCTCiAUk.png
-category: announcements
-tags:
-  - dartlang
-  - mobile
-  - programming
-  - announcements
+category: releases
 layout: blog
 ---
 

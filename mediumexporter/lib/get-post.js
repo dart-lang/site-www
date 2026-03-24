@@ -232,19 +232,38 @@ github: ${authorData.github ? `\n  handle: "${safeGithubHandle}"\n  username: "$
     const tags = story.tags || []
     let category = 'other'
 
-    if (tags.includes('announcements')) {
-      category = 'announcements'
-    } else if (story.title.startsWith('Announcing Dart') || story.title.startsWith('New in Dart')) {
-      category = 'announcements'
+    const categoriesPath = path.join(__dirname, '..', 'artifacts', 'post-categories.json')
+    const categories = JSON.parse(fs.readFileSync(categoriesPath, 'utf8'))
+
+    if (categories[story.slug]) {
+      category = categories[story.slug]
+    } else {
+      if (story.title.startsWith('Announcing Dart')) {
+        category = 'releases'
+      } else if (tags.includes('programming')) {
+        category = 'deep-dive'
+      } else if (tags.includes('announcements') || story.title.startsWith('New in Dart')) {
+        category = 'announcements'
+      }
+
+      // Write back to json
+      categories[story.slug] = category
+      const sortedCategories = Object.keys(categories)
+        .sort()
+        .reduce((acc, key) => {
+          acc[key] = categories[key]
+          return acc
+        }, {})
+      fs.writeFileSync(categoriesPath, JSON.stringify(sortedCategories, null, 2))
     }
 
     outputText += `category: ${category}\n`
-    if (tags.length > 0) {
-      outputText += 'tags:\n'
-      for (const tag of tags) {
-        outputText += `  - ${tag}\n`
-      }
-    }
+    // if (tags.length > 0) {
+    //   outputText += 'tags:\n'
+    //   for (const tag of tags) {
+    //     outputText += `  - ${tag}\n`
+    //   }
+    // }
     outputText += `layout: blog\n`
     outputText += '---\n\n'
   }

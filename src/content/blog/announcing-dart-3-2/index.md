@@ -4,10 +4,7 @@ description: "Improved language & developer experience, and an update on web app
 publishDate: 2023-11-15
 author: mit-mit
 image: images/1u5YRn1uMmXf94b2aPbcLRQ.png
-category: announcements
-tags:
-  - dart
-  - dartlang
+category: releases
 layout: blog
 ---
 

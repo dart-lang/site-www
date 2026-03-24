@@ -4,13 +4,7 @@ description: "Language features. Productivity tools. Deeper & broader platform i
 publishDate: 2022-05-11
 author: mit-mit
 image: images/1eJKM-4rFprGXyxNd5w2m-Q.png
-category: announcements
-tags:
-  - dart
-  - announcements
-  - programming
-  - dartlang
-  - productivity
+category: releases
 layout: blog
 ---
 

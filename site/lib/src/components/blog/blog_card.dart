@@ -8,14 +8,12 @@ class BlogCard extends StatelessComponent {
   const BlogCard({
     required this.post,
     required this.url,
-    this.isFeatured = false,
     this.className,
     super.key,
   });
 
   final Post post;
   final String url;
-  final bool isFeatured;
   final String? className;
 
   @override
@@ -23,8 +21,8 @@ class BlogCard extends StatelessComponent {
     final author = context.getAuthor(post.authorId);
     return a(
       href: url,
-      classes: 'blog-card ${isFeatured ? 'featured' : ''} ${className ?? ''}',
-      attributes: {'data-category': post.category},
+      classes: 'blog-card ${className ?? ''}',
+      attributes: {'data-category': post.category ?? 'other'},
       [
         if (post.image != null)
           div(classes: 'blog-card-image', [

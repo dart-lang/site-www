@@ -4,13 +4,7 @@ description: "Having thoroughly covered the basics of the “built” packages I
 publishDate: 2016-12-14
 author: davidmorgan
 image: images/1pRJK2IRC697oavw5OBXkQA.png
-category: other
-tags:
-  - dart
-  - dartlang
-  - front-end-development
-  - programming
-  - web-development
+category: deep-dive
 layout: blog
 ---
 

@@ -4,12 +4,7 @@ description: "This release brings formatter updates, null-aware elements for col
 publishDate: 2025-05-20
 author: antfitch
 image: images/1cTcqAst5m1Vn6k71VWgTrQ.gif
-category: announcements
-tags:
-  - dart
-  - flutter
-  - dartlang
-  - announcements
+category: releases
 layout: blog
 ---
 

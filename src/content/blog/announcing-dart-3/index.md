@@ -5,11 +5,7 @@ And a peek into the future."
 publishDate: 2023-05-10
 author: mit-mit
 image: images/12XwxNKHrKb3SGaWEyqg2nA.png
-category: announcements
-tags:
-  - dart
-  - dartlang
-  - releases
+category: releases
 layout: blog
 ---
 

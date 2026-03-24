@@ -4,13 +4,7 @@ description: "This article covers one of the fundamentals of reactive programmin
 publishDate: 2020-02-11
 author: kwalrath
 image: images/1Q2-Ac9rjIDSuXzbrQqGkVA.png
-category: other
-tags:
-  - programming
-  - programming-languages
-  - dartlang
-  - asynchronous-programming
-  - flutter
+category: deep-dive
 layout: blog
 ---
 

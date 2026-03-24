@@ -5,11 +5,6 @@ publishDate: 2020-06-10
 author: filiph
 image: images/1HKl1Jf0uBNP-gReYYcgC_g.png
 category: announcements
-tags:
-  - programming-languages
-  - dart
-  - flutter
-  - announcements
 layout: blog
 ---
 

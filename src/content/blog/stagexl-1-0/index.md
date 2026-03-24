@@ -5,12 +5,6 @@ publishDate: 2016-12-03
 author: bp74
 image: images/1oPIKFEq7-9ndX53muruOsQ.jpeg
 category: other
-tags:
-  - flash
-  - dartlang
-  - webgl
-  - html5
-  - javascript
 layout: blog
 ---
 

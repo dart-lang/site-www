@@ -4,13 +4,7 @@ description: "Does your app use emojis or support multiple languages? Dart just 
 publishDate: 2020-06-30
 author: taodong
 image: images/1H_-SP7V6x1cQpGM_6DUReg.png
-category: other
-tags:
-  - dart
-  - flutter
-  - programming-languages
-  - string-manipulation
-  - developer-experience
+category: deep-dive
 layout: blog
 ---
 

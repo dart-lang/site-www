@@ -5,12 +5,6 @@ publishDate: 2017-02-23
 author: isoos
 image: images/1hLce2qgbJEkxjOlOr8jn9g.png
 category: other
-tags:
-  - web-development
-  - dartlang
-  - dart
-  - javascript
-  - google-maps
 skipTemplateRendering: true
 layout: blog
 ---

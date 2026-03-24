@@ -5,11 +5,6 @@ publishDate: 2019-10-10
 author: mit-mit
 image: images/0DfmB09PD2DK-pvTz.png
 category: announcements
-tags:
-  - dart
-  - flutter
-  - package-management
-  - announcements
 layout: blog
 ---
 

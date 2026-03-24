@@ -4,11 +4,7 @@ description: "If you have ever called add(), addAll(), map(), or toList() to bui
 publishDate: 2020-09-15
 author: johnpryan
 image: images/1NLasdGsxG6bBzWYfe_9UJA.jpeg
-category: other
-tags:
-  - dart
-  - data-structures
-  - programming-languages
+category: deep-dive
 layout: blog
 ---
 

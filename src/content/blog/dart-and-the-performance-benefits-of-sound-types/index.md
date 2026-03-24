@@ -5,10 +5,6 @@ publishDate: 2021-01-19
 author: vijaysmenon
 image: images/1x0UcFY8XwG-3vHe5hYxyQw.png
 category: other
-tags:
-  - dart
-  - programming-languages
-  - performance
 layout: blog
 ---
 

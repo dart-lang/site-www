@@ -5,12 +5,6 @@ publishDate: 2021-07-27
 author: mit-mit
 image: images/1UqHnD9vyTvndgJpz8gOv7Q.png
 category: other
-tags:
-  - dart
-  - wasm
-  - computer-science
-  - interoperability
-  - webassembly
 layout: blog
 ---
 

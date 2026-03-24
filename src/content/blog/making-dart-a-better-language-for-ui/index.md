@@ -5,12 +5,6 @@ publishDate: 2019-03-19
 author: munificent
 image: images/14PIeARfthvxtn0cvBB5MPw.jpeg
 category: other
-tags:
-  - programming
-  - dart
-  - flutter
-  - programming-languages
-  - ui
 layout: blog
 ---
 

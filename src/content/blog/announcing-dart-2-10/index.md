@@ -4,12 +4,7 @@ description: "A new, unified dart tool for all core tasks. Also, an update on nu
 publishDate: 2020-10-01
 author: mit-mit
 image: images/19wrenixSu1viOYLF1nWhAw.jpeg
-category: announcements
-tags:
-  - announcements
-  - null-safety
-  - dart
-  - flutter
+category: releases
 layout: blog
 ---
 

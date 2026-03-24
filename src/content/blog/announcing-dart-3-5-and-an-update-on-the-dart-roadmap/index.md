@@ -4,7 +4,7 @@ description: "It’s time for another of our quarterly Dart SDK releases. We hav
 publishDate: 2024-08-06
 author: mit-mit
 image: images/1PVj9TIzP50I00tavJqAg_Q.gif
-category: announcements
+category: releases
 layout: blog
 ---
 

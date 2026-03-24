@@ -4,12 +4,7 @@ description: "It’s a new year, and time for a new Dart stable release. Welcome
 publishDate: 2025-02-12
 author: mbelanger
 image: images/1tdCaUfGrIk42FIuu2qs9Yw.gif
-category: announcements
-tags:
-  - dart
-  - dartlang
-  - flutter
-  - announcements
+category: releases
 layout: blog
 ---
 

@@ -5,12 +5,6 @@ publishDate: 2020-05-20
 author: JoseAlba
 image: images/0alx_hKg5fP3b1b22.png
 category: other
-tags:
-  - dart
-  - flutter
-  - coding
-  - conditional-statements
-  - iife
 layout: blog
 ---
 

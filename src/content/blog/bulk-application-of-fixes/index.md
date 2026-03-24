@@ -5,11 +5,6 @@ publishDate: 2022-05-05
 author: bwilkerson
 image: images/0URmNnWSjGRGOorjv.png
 category: other
-tags:
-  - dart
-  - linter
-  - analyzer
-  - dartlang
 layout: blog
 ---
 

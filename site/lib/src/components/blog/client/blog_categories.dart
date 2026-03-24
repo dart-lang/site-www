@@ -2,6 +2,30 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
+enum BlogCategory {
+  releases('releases'),
+  announcements('announcements'),
+  deepDive('deep-dive'),
+  other('other');
+
+  const BlogCategory(this.slug);
+  final String slug;
+
+  String get displayName => switch (this) {
+    BlogCategory.releases => 'Releases',
+    BlogCategory.announcements => 'Announcements',
+    BlogCategory.deepDive => 'Deep Dive',
+    BlogCategory.other => 'Other',
+  };
+
+  static BlogCategory fromSlug(String? slug) {
+    return BlogCategory.values.firstWhere(
+      (c) => c.slug == slug,
+      orElse: () => BlogCategory.other,
+    );
+  }
+}
+
 @client
 class BlogCategories extends StatefulComponent {
   const BlogCategories({super.key});
@@ -11,13 +35,7 @@ class BlogCategories extends StatefulComponent {
 }
 
 class _BlogCategoriesState extends State<BlogCategories> {
-  String selectedCategory = 'all';
-
-  static const categories = [
-    'announcements',
-    'other',
-    'all',
-  ];
+  BlogCategory? selectedCategory;
 
   @override
   void initState() {
@@ -29,16 +47,16 @@ class _BlogCategoriesState extends State<BlogCategories> {
 
   void _updateCategoryFromUrl() {
     final uri = Uri.parse(web.window.location.href);
-    final category = uri.queryParameters['category'] ?? 'all';
-    if (categories.contains(category)) {
-      setState(() {
-        selectedCategory = category;
-      });
-      _applyLayout(category);
-    }
+    final slug = uri.queryParameters['category'];
+    final category = slug == null ? null : BlogCategory.fromSlug(slug);
+
+    setState(() {
+      selectedCategory = category;
+    });
+    _applyLayout(category);
   }
 
-  void _selectCategory(String category) {
+  void _selectCategory(BlogCategory? category) {
     if (category == selectedCategory) return;
 
     setState(() {
@@ -46,40 +64,44 @@ class _BlogCategoriesState extends State<BlogCategories> {
     });
 
     final uri = Uri.parse(web.window.location.href);
-    final newUri = uri.replace(queryParameters: {'category': category});
+    final newUri = uri.replace(
+      queryParameters: category == null ? {} : {'category': category.slug},
+    );
     web.window.history.pushState(null, '', newUri.toString());
 
     _applyLayout(category);
   }
 
-  void _applyLayout(String category) {
+  void _applyLayout(BlogCategory? category) {
     final container = web.document.getElementById('blog-container');
     if (container != null) {
-      container.setAttribute('data-selected', category);
+      if (category == null) {
+        container.removeAttribute('data-selected');
+      } else {
+        container.setAttribute('data-selected', category.slug);
+      }
 
       final cards = container.querySelectorAll('.blog-card');
-      var visibleCount = 0;
+      final showFeatured =
+          category == null ||
+          category == BlogCategory.releases ||
+          category == BlogCategory.announcements;
+      var visibleCount = showFeatured ? 0 : 1;
 
       for (var i = 0; i < cards.length; i++) {
         final card = cards.item(i) as web.Element;
         final cardCategory = card.getAttribute('data-category');
 
-        final isVisible = category == 'all' || cardCategory == category;
+        final isVisible = category == null || cardCategory == category.slug;
 
         // Remove existing layout classes
-        card.classList.remove('featured');
         card.classList.remove('layout-featured');
         card.classList.remove('layout-grid');
         card.classList.remove('layout-list');
 
-        // Ensure display is cleared/set (styles in CSS might handle this via data-selected, but ensuring reset here)
-        // Actually, existing CSS handles display:none via data-selected.
-        // We just need to manage layout classes for visible items.
-
         if (isVisible) {
           if (visibleCount == 0) {
             card.classList.add('layout-featured');
-            card.classList.add('featured');
           } else if (visibleCount < 5) {
             card.classList.add('layout-grid');
           } else {
@@ -94,7 +116,18 @@ class _BlogCategoriesState extends State<BlogCategories> {
   @override
   Component build(BuildContext context) {
     return div(classes: 'blog-categories', [
-      for (final category in categories)
+      button(
+        classes: [
+          'blog-category-chip',
+          if (selectedCategory == null) 'active',
+        ].join(' '),
+        onClick: () => _selectCategory(null),
+        [
+          const .text('All'),
+        ],
+      ),
+      const span(classes: 'category-separator', []),
+      for (final category in BlogCategory.values)
         button(
           classes: [
             'blog-category-chip',
@@ -102,7 +135,7 @@ class _BlogCategoriesState extends State<BlogCategories> {
           ].join(' '),
           onClick: () => _selectCategory(category),
           [
-            .text(category[0].toUpperCase() + category.substring(1)),
+            .text(category.displayName),
           ],
         ),
     ]);

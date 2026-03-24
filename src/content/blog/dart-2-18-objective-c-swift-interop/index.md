@@ -4,12 +4,7 @@ description: "Enhanced interoperability, platform-specific networking, improved 
 publishDate: 2022-08-30
 author: mit-mit
 image: images/0byFoNx1wnEaO0S6N.png
-category: announcements
-tags:
-  - dart
-  - announcements
-  - interop
-  - null-safety
+category: releases
 layout: blog
 ---
 

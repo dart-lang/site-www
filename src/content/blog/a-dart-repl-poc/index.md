@@ -4,13 +4,7 @@ description: "Hacking with Dart"
 publishDate: 2017-01-17
 author: BlackHC
 image: images/0lOBcrb2bYgKV6VYT.png
-category: other
-tags:
-  - programming
-  - javascript
-  - python
-  - google
-  - software-development
+category: deep-dive
 layout: blog
 ---
 

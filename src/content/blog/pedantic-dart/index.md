@@ -5,10 +5,6 @@ publishDate: 2019-05-22
 author: davidmorgan
 image: images/1QCajckOeBhRaLzi0RoFqig.png
 category: other
-tags:
-  - dart
-  - dartlang
-  - static-analysis
 layout: blog
 ---
 

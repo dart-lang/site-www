@@ -1,5 +1,8 @@
 (async () => {
     const links = [
+        "https://blog.dart.dev/announcing-genkit-dart-build-full-stack-ai-apps-with-dart-and-flutter-2a5c90a27aab",
+        "https://blog.dart.dev/dart-in-google-summer-of-code-2026-150489064c30",
+        "https://blog.dart.dev/announcing-dart-3-11-b6529be4203a",
         "https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088",
         "https://blog.dart.dev/google-summer-of-code-2025-results-596cf0a43422",
         "https://blog.dart.dev/announcing-dart-3-9-ba49e8f38298",
@@ -103,7 +106,7 @@
         "https://blog.dart.dev/darts-built-value-for-immutable-object-models-83e2497922d4",
         "https://blog.dart.dev/darts-built-collection-for-immutable-collections-db662f705eff",
         "https://blog.dart.dev/stagexl-1-0-a9c5ff22a534",
-        "https://blog.dart.dev/why-i-m-joining-the-dart-team-of-all-places-d0b9f83a3b66"
+        "https://blog.dart.dev/why-i-m-joining-the-dart-team-of-all-places-d0b9f83a3b66",
     ];
 
     const download = (content, filename) => {

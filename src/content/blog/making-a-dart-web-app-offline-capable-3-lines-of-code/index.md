@@ -5,12 +5,6 @@ publishDate: 2017-03-28
 author: isoos
 image: images/1GsjtYvVghuA63qhhRdyfPQ.png
 category: other
-tags:
-  - dart
-  - service-worker
-  - dartlang
-  - progressive-web-app
-  - offline
 layout: blog
 ---
 

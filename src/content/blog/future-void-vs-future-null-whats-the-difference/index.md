@@ -4,13 +4,7 @@ description: "One of the nice upgrades we were able to do in Dart 2 (in addition
 publishDate: 2018-10-30
 author: mfairhurst
 image: images/0x0J9DBRyATjtQn42.jpg
-category: other
-tags:
-  - type-theory
-  - dart
-  - dartlang
-  - programming-languages
-  - design-patterns
+category: deep-dive
 layout: blog
 ---
 

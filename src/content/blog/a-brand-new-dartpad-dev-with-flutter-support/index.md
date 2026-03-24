@@ -5,11 +5,6 @@ publishDate: 2019-12-04
 author: johnpryan
 image: images/1X7Sild_wdEFGRYaSk2C3Og.gif
 category: announcements
-tags:
-  - dart
-  - dartpad
-  - announcements
-  - flutter
 layout: blog
 ---
 

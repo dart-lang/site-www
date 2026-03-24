@@ -5,12 +5,6 @@ publishDate: 2019-08-26
 author: kwalrath
 image: images/1se-VT1aPyHd3J2VYDzDW5g.png
 category: other
-tags:
-  - programming
-  - programming-languages
-  - dartlang
-  - dart
-  - syntax
 layout: blog
 ---
 

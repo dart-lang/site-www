@@ -4,11 +4,7 @@ description: "Understanding error and warning messages from the Dart analyzer"
 publishDate: 2021-11-11
 author: bwilkerson
 image: images/1kUNsHzJZkZNRysNJmbNTdw.png
-category: other
-tags:
-  - dart
-  - programming
-  - tooling
+category: deep-dive
 layout: blog
 ---
 

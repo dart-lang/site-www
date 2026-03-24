@@ -4,12 +4,6 @@ description: "gRPC is a high performance, open source RPC framework. It offers s
 publishDate: 2018-03-23
 author: mit-mit
 category: announcements
-tags:
-  - programming
-  - dart
-  - flutter
-  - grpc
-  - announcements
 layout: blog
 ---
 

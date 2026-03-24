@@ -4,12 +4,7 @@ description: "A deep dive into API design and native calling conventions."
 publishDate: 2021-06-08
 author: dcharkes
 image: images/0SfIpbC1E-Ysaewzs.png
-category: other
-tags:
-  - dart
-  - compilers
-  - programming
-  - ffi
+category: deep-dive
 layout: blog
 ---
 

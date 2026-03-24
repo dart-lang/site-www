@@ -4,12 +4,7 @@ description: "Today we’re announcing the stable release of the Dart 2.5 SDK, w
 publishDate: 2019-09-10
 author: mit-mit
 image: images/0EzNuk5GmPG3-yjT4.png
-category: announcements
-tags:
-  - programming
-  - dart
-  - flutter
-  - announcements
+category: releases
 layout: blog
 ---
 

@@ -4,11 +4,7 @@ description: "Support for Wasm just landed in the current Flutter beta, thanks t
 publishDate: 2024-03-28
 author: sigmundch
 image: images/1dhBQqKXU46sGKjx36LNf0w.jpeg
-category: other
-tags:
-  - dart
-  - dartlang
-  - interoperability
+category: deep-dive
 layout: blog
 ---
 

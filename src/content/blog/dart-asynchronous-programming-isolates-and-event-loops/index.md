@@ -4,13 +4,7 @@ description: "Dart, despite being a single-threaded language, offers support for
 publishDate: 2019-07-25
 author: kwalrath
 image: images/1t-mHg6JrdkKCs65UvD70-Q.png
-category: other
-tags:
-  - dart
-  - dartlang
-  - asynchronous-programming
-  - event-loop
-  - flutter
+category: deep-dive
 layout: blog
 ---
 

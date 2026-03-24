@@ -4,11 +4,7 @@ description: "Preview the most productive, portable, and approachable version of
 publishDate: 2023-01-25
 author: mit-mit
 image: images/0evGHZJd_7cahb08X.png
-category: other
-tags:
-  - dart
-  - dartlang
-  - flutter
+category: announcements
 layout: blog
 ---
 

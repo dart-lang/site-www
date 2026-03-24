@@ -4,13 +4,7 @@ description: "Data binding, or updating the view (usually UI) from your applicat
 publishDate: 2017-07-04
 author: matanlurey
 image: images/1QUn_zBM0SBDRG4TtMBiM2A.png
-category: other
-tags:
-  - javascript
-  - dart
-  - react
-  - framework
-  - angular
+category: deep-dive
 layout: blog
 ---
 

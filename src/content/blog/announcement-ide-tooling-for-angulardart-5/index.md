@@ -4,13 +4,7 @@ description: "Dart is a statically typed language which we know and love, and Da
 publishDate: 2018-03-27
 author: mfairhurst
 image: images/1_8_-jlg2S62p_a8plKAtgg.png
-category: other
-tags:
-  - angular
-  - angulardart
-  - dart
-  - dartlang
-  - intellij
+category: announcements
 layout: blog
 ---
 
