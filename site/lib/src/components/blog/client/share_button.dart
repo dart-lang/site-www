@@ -47,7 +47,7 @@ class ShareButton extends StatelessComponent {
                       },
                       [
                         const MaterialIcon('content_copy'),
-                        const .text('Copy Link'),
+                        const .text('Copy link'),
                       ],
                     );
                   },

@@ -21,7 +21,7 @@ class PostInfo extends StatelessComponent {
     final githubUrl = author.github?.handle != null
         ? 'https://github.com/${author.github!.handle}'
         : null;
-    final twitterUrl = author.twitter != null
+    final twitterUrl = author.twitter != null && author.twitter!.isNotEmpty
         ? 'https://twitter.com/${author.twitter}'
         : null;
 

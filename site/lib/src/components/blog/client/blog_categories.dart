@@ -2,6 +2,8 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
+import '../../../util.dart';
+
 enum BlogCategory {
   releases('releases'),
   announcements('announcements'),
@@ -116,26 +118,30 @@ class _BlogCategoriesState extends State<BlogCategories> {
   @override
   Component build(BuildContext context) {
     return div(classes: 'blog-categories', [
-      button(
+      div(
         classes: [
           'blog-category-chip',
           if (selectedCategory == null) 'active',
-        ].join(' '),
-        onClick: () => _selectCategory(null),
+        ].toClasses,
         [
-          const .text('All'),
+          button(
+            onClick: () => _selectCategory(null),
+            [const .text('All')],
+          ),
         ],
       ),
       const span(classes: 'category-separator', []),
       for (final category in BlogCategory.values)
-        button(
+        div(
           classes: [
             'blog-category-chip',
             if (category == selectedCategory) 'active',
-          ].join(' '),
-          onClick: () => _selectCategory(category),
+          ].toClasses,
           [
-            .text(category.displayName),
+            button(
+              onClick: () => _selectCategory(category),
+              [.text(category.displayName)],
+            ),
           ],
         ),
     ]);
