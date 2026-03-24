@@ -217,8 +217,8 @@ You can define extension members for **instance methods**, **operators**, **sett
 You can invoke extension methods either explicitly or — when there’s no conflict with an interface member or another extension — implicitly:
 
 ```
-`Ext1(list).bubbleSort() // Explicit, like it's a wrapper class.
-list.bubbleSort()       // Implicitly, like it extends the type.`
+Ext1(list).bubbleSort() // Explicit, like it's a wrapper class.
+list.bubbleSort()       // Implicitly, like it extends the type.
 ```
 
 

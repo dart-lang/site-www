@@ -57,11 +57,11 @@ However, the type system is a little more flexible than with option types. The t
 When we have a value of a nullable type and we want to see if there is an actual value or `null` there, we check the value imperatively just like we would naturally do in C or Java:
 
 ```
-`foo(int? i) {
+foo(int? i) {
   if (i != null) {
     print(i + 1);
   }
-}`
+}
 ```
 
 
@@ -84,9 +84,9 @@ There is a deeper way to approach this question based on differences between how
 With the first approach, a value of option type has a runtime representation distinct from the underlying value. Say we chose option types in Dart, and you created one and then upcast it to `Object`:
 
 ```
-`var optionalInt = Some(3);
+var optionalInt = Some(3);
 Object obj = optionalInt;
-print(obj is int); // false`
+print(obj is int); // false
 ```
 
 
@@ -95,9 +95,9 @@ Note the last line. An `Option&lt;int&gt;` value, even when present, is *not* th
 That’s not how nullable types work:
 
 ```
-`var nullableInt = 3 as int?;
+var nullableInt = 3 as int?;
 Object obj = nullableInt;
-print(obj is int); // true`
+print(obj is int); // true
 ```
 
 
@@ -106,14 +106,14 @@ Nullable types exist in the *static type system*, but the runtime representation
 You can ask if a value is of a nullable type:
 
 ```
-`print(obj is int?);`
+print(obj is int?);
 ```
 
 
 But the `is int?` expression is equivalent to:
 
 ```
-`print(obj is int || obj is Null);`
+print(obj is int || obj is Null);
 ```
 
 
@@ -126,7 +126,7 @@ Let’s say we have some network service that gives out resource strings when gi
 In Dart before null safety, we might use a map like so:
 
 ```
-`Map<int, String> cache;`
+Map<int, String> cache;
 ```
 
 
@@ -141,17 +141,17 @@ Because there’s only a single `null` value in the entire system, we don’t ha
 Now, if Dart were built around option types, the cache would look like:
 
 ```
-`Map<int, Option<String>> cache;`
+Map<int, Option<String>> cache;
 ```
 
 
 And the subscript operator would return an optional value:
 
 ```
-`class Map<K, V> {
+class Map<K, V> {
   Option<V> operator [](K key) => ...
   ...
-}`
+}
 ```
 
 
@@ -174,21 +174,21 @@ Another way of thinking about “expressiveness” is how much *effort* it takes
 An advantage of having no distinct representation for nullable types is that values can flow from non-nullable to nullable contexts much more easily. Let’s say you have a function that accepts an optional integer parameter. With option types, the signature would look something like:
 
 ```
-`takesMaybeInt(Option<int> optionalInt) {}`
+takesMaybeInt(Option<int> optionalInt) {}
 ```
 
 
 To call this function with a known integer, it must be wrapped in an option first:
 
 ```
-`takesMaybeInt(Some(3));`
+takesMaybeInt(Some(3));
 ```
 
 
 With nullable types, since there is no representation difference, you can pass a value of the underlying type directly:
 
 ```
-`takesMaybeInt(3);`
+takesMaybeInt(3);
 ```
 
 

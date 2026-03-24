@@ -27,10 +27,10 @@ Still with me? Great. Now, let’s dig into why you can’t just enable all 146 
 Some lints don’t make sense any more. An example is [super_goes_last](https://dart-lang.github.io/linter/lints/super_goes_last.html), which requires that `super` be placed last if it appears in a list of initializers. It was actually such a useful lint that with Dart 2 it became a requirement of the language, so the lint is no longer needed.
 
 ```
-`// super_goes_last; now included in Dart 2, no need for a lint.
+// super_goes_last; now included in Dart 2, no need for a lint.
 View(Style style, List children)
     : super(style), // LINT
-      _children = children {`
+      _children = children {
 ```
 
 
@@ -39,10 +39,10 @@ View(Style style, List children)
 Some lints are not actually intended for public consumption. In particular, a number of lints that are designed for use within the Flutter SDK directly contradict the [Dart style guide](https://dart.dev/guides/language/effective-dart). An example is [always_specify_types](https://dart-lang.github.io/linter/lints/always_specify_types.html); over-specifying types means you lose the benefits of type inference. The style guide [carefully explains](https://dart.dev/guides/language/effective-dart/design#types) how to strike a good balance between type annotations and type inference.
 
 ```
-`// always_specify_types; do not use; breaks with recommended style!
+// always_specify_types; do not use; breaks with recommended style!
 var foo = 10; // LINT
 final bar = new Bar(); // LINT
-const quux = 20; // LINT`
+const quux = 20; // LINT
 ```
 
 
@@ -51,10 +51,10 @@ const quux = 20; // LINT`
 Evaluating lints involves arbitrary computation over a complex data structure — your source code. How do you know they won’t slow you down? Of course, every effort is made when adding lints to keep them efficient; but surprises can happen. The [library_prefixes](https://dart-lang.github.io/linter/lints/library_prefixes.html) lint had a performance bug that only surfaced in very obscure cases; now fixed, of course.
 
 ```
-`// library_prefixes; performance issue was fixed, now good to go!
+// library_prefixes; performance issue was fixed, now good to go!
 import 'dart:math' as Math; // LINT
 import 'dart:json' as JSON; // LINT
-import 'package:js/js.dart' as JS; // LINT`
+import 'package:js/js.dart' as JS; // LINT
 ```
 
 
@@ -63,8 +63,8 @@ import 'package:js/js.dart' as JS; // LINT`
 Most lints are extremely fast to compute, but they’re not quite free. So a lint needs to pull its weight; it needs to offer enough value. For example, we rejected the [empty_statements](https://dart-lang.github.io/linter/lints/empty_statements.html) lint on the grounds that using `dartfmt` makes empty statements easy to spot. They’re unlikely to get written by mistake, and so the lint is redundant.
 
 ```
-`// empty_statements; considered redundant with dartfmt.
-if (complicated.expression.foo()) ; // LINT`
+// empty_statements; considered redundant with dartfmt.
+if (complicated.expression.foo()) ; // LINT
 ```
 
 
@@ -73,11 +73,11 @@ if (complicated.expression.foo()) ; // LINT`
 Some lints are not precise enough to be enforced. For example, omitting types for local variables in Dart is [good style](https://dart.dev/guides/language/effective-dart/design#avoid-type-annotating-initialized-local-variables), but only *most of the time*. It’s a recommendation, not a hard rule. That makes the corresponding lint [omit_local_variable_types](https://dart-lang.github.io/linter/lints/omit_local_variable_types.html) too strict to be enforced everywhere.
 
 ```
-`// omit_local_variable_types; too strict. Local variable types
+// omit_local_variable_types; too strict. Local variable types
 // are good style where they improve readability.
 void myMethod() {
   MyType bar = expression.methodCall().otherMethodCall(); // LINT
-}`
+}
 ```
 
 
@@ -86,10 +86,10 @@ void myMethod() {
 Some lints push the code in a direction that’s not *wrong*, but is nonetheless unusual. An example is [prefer_final_locals](https://dart-lang.github.io/linter/lints/prefer_final_locals.html), which requires that local variables be declared, if possible, as `final`. This is a style that some developers prefer, but it’s not what *most* Dart developers prefer, and so by default the lint should be off.
 
 ```
-`// prefer_final_locals; inconsistent with common style.
+// prefer_final_locals; inconsistent with common style.
 void myMethod() {
-  var label = 'foo'; // LINT` 
-`}`
+  var label = 'foo'; // LINT 
+}
 ```
 
 
@@ -106,7 +106,7 @@ These numbers give us a good starting point for discussion.
 If, for example, all of Google’s Dart code contains only five violations of the lint, then each had better be a serious bug; otherwise, it’s unlikely that the lint is pulling its weight. The [recursive_getters](https://dart-lang.github.io/linter/lints/recursive_getters.html) lint was a rare example of a lint catching a very small number of serious issues; a getter that calls itself is a stack overflow waiting to happen.
 
 ```
-`// recursive_getters; definitely not what you meant to write!`
+// recursive_getters; definitely not what you meant to write!
 int get field => field; // LINT
 ```
 
@@ -116,11 +116,11 @@ If, on the other hand, we find many violations of the lint, the question turns a
 The [unrelated_type_equality_checks](https://dart-lang.github.io/linter/lints/unrelated_type_equality_checks.html) lint is a good example. This lint requires that, before you are allowed to compare two objects, they must be of compatible static types. So you’re not allowed to check if `3` and `foo` are equal; it’s assumed that because one is an `int`and the other is a `String` that this question doesn’t even make sense.
 
 ```
-`// unrelated_type_equality_checks; or, don't ask stupid questions!
+// unrelated_type_equality_checks; or, don't ask stupid questions!
 void someFunction() {
   var x = '1';
   if (x == 1) print('surprise!'); // LINT
-}`
+}
 ```
 
 
@@ -129,10 +129,10 @@ This sounds good, but it’s not correct for two reasons.
 It fails in theory because of `implements`; an object can be of more than one type, and so two objects that appear statically to be unrelated might turn out at runtime to implement the same type, and be perfectly valid to compare.
 
 ```
-`// unrelated_type_equality_checks; objects _can_ hold surprises.
+// unrelated_type_equality_checks; objects _can_ hold surprises.
 void checkForSurprise(Foo foo, Bar bar) {
   if (foo == bar) print('surprise!'); // LINT
-}`
+}
 
 abstract class Foo {}
 abstract class Bar {}

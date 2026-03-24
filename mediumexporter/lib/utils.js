@@ -363,7 +363,10 @@ async function getMediaEmbed(iframesrc, iframeMetadata, options = {}) {
 }
 
 async function processParagraph(p, slug, images, options = {}) {
-  const markups_array = createMarkupsArray(p.markups, p.text)
+  const filteredMarkups = p.type === 8
+    ? (p.markups || []).filter(m => m.type !== 10)
+    : p.markups
+  const markups_array = createMarkupsArray(filteredMarkups, p.text)
   let processedText = p.text || ''
 
   if (markups_array.length > 0) {
