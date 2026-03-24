@@ -6,6 +6,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../components/blog/client/blog_categories.dart';
 import '../components/blog/post_info.dart';
 import '../components/common/breadcrumbs.dart';
 import '../models/blog.dart';
@@ -27,6 +28,7 @@ class BlogLayout extends DashLayout {
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
     final pageTitle = pageData['title'] as String? ?? 'Untitled';
+    final pageCategory = BlogCategory.fromSlug(pageData['category'] as String?);
 
     final isPost = page.url.startsWith('/blog/');
 
@@ -34,13 +36,29 @@ class BlogLayout extends DashLayout {
       page,
       .fragment([
         const Document.body(attributes: {'data-toc': 'false'}),
-        ?buildBanner(page),
         div(classes: 'after-leading-content', [
           article([
             div(classes: 'content ${isPost ? 'post-content' : ''}', [
               div(id: 'site-content-title', [
-                if (pageData['showBreadcrumbs'] != false)
-                  const PageBreadcrumbs(),
+                if (isPost)
+                  PageBreadcrumbs(
+                    crumbs: [
+                      const BreadcrumbItem(
+                        title: 'The Dart Blog',
+                        url: '/blog',
+                      ),
+                      if (pageCategory != BlogCategory.other) ...[
+                        BreadcrumbItem(
+                          title: pageCategory.displayName,
+                          url: '/blog?category=${pageCategory.slug}',
+                        ),
+                      ],
+                      BreadcrumbItem(
+                        title: pageTitle.split(':').first,
+                        url: page.url,
+                      ),
+                    ],
+                  ),
                 h1(id: 'document-title', [
                   if (pageData['underscore_breaker_titles'] == true)
                     ...splitByUnderscore(pageTitle)
