@@ -38,18 +38,30 @@ abstract class DashLayout extends PageLayoutBase {
 
   @override
   @mustCallSuper
+  // ignore: must_call_super
   Iterable<Component> buildHead(Page page) {
     final pageData = page.data.page;
     final siteData = page.data.site;
+
     final pageTitle = (pageData['title'] ?? siteData['title']) as String;
+    final pageDescription = pageData['description'] as String?;
+    final pageImage = pageData['image'] as String?;
+
+    final titleBase = pageData['titleBase'] ?? siteData['titleBase'];
+    final windowTitle = titleBase != null
+        ? '$pageTitle | $titleBase'
+        : pageTitle;
+
+    final canonicalUrl = pageData['canonical'] as String?;
 
     return [
-      ...super.buildHead(page),
+      Component.element(tag: 'title', children: [Component.text(windowTitle)]),
+      meta(name: 'description', content: pageDescription),
+
       if (pageData['noindex'] case final noIndex?
           when noIndex == true || noIndex == 'true')
         const meta(name: 'robots', content: 'noindex'),
-      if (pageData['canonical'] case final String canonicalUrl
-          when canonicalUrl.isNotEmpty)
+      if (canonicalUrl case final canonicalUrl?)
         link(rel: 'canonical', href: canonicalUrl),
       if (pageData['redirectTo'] case final String redirectTo
           when redirectTo.isNotEmpty)
@@ -78,26 +90,31 @@ abstract class DashLayout extends PageLayoutBase {
         href: '/assets/img/touch-icon-ipad-retina.png',
         attributes: {'sizes': '167x167'},
       ),
-      const meta(name: 'twitter:card', content: 'summary'),
+
+      meta(
+        name: 'twitter:card',
+        content: pageImage != null ? 'summary_large_image' : 'summary',
+      ),
       const meta(name: 'twitter:site', content: '@dart_lang'),
       meta(name: 'twitter:title', content: pageTitle),
-      meta(
-        name: 'twitter:description',
-        content: '${pageData['description']}',
-      ),
+      if (pageDescription case final String desc)
+        meta(name: 'twitter:description', content: desc),
+      if (pageImage case final String img)
+        meta(name: 'twitter:image', content: img),
 
       meta(attributes: {'property': 'og:title', 'content': pageTitle}),
+      if (pageDescription case final String desc)
+        meta(attributes: {'property': 'og:description', 'content': desc}),
       meta(
         attributes: {
-          'property': 'og:description',
-          'content': '${pageData['description']}',
+          'property': 'og:url',
+          'content': canonicalUrl ?? page.path,
         },
       ),
-      meta(attributes: {'property': 'og:url', 'content': page.path}),
-      const meta(
+      meta(
         attributes: {
           'property': 'og:image',
-          'content': '/assets/img/logo/dart-logo-for-shares.png',
+          'content': pageImage ?? '/assets/img/logo/dart-logo-for-shares.png',
         },
       ),
 

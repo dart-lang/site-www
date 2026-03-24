@@ -156,13 +156,6 @@
     overflow: hidden;
   }
 
-  &.layout-featured,
-  &.layout-list {
-    &:hover .blog-card-title {
-      color: var(--site-primary-color);
-    }
-  }
-
   &.layout-featured {
     grid-column: 1 / -1;
 

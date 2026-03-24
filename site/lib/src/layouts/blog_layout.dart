@@ -25,6 +25,19 @@ class BlogLayout extends DashLayout {
   String get defaultSidenav => 'blog';
 
   @override
+  Iterable<Component> buildHead(Page page) {
+    final isPost = page.url.startsWith('/blog/');
+    if (isPost && page.data.page['titleBase'] == null) {
+      page.apply(
+        data: {
+          'page': {'titleBase': 'The Dart Blog'},
+        },
+      );
+    }
+    return super.buildHead(page);
+  }
+
+  @override
   Component buildBody(Page page, Component child) {
     final pageData = page.data.page;
     final pageTitle = pageData['title'] as String? ?? 'Untitled';
