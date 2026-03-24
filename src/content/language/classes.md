@@ -238,9 +238,9 @@ class ProfileMark {
 If you need to assign the value of a `final` instance variable
 after the constructor body starts, you can use one of the following:
 
-* Determine the value in a [factory constructor][],
+* Compute the value in a [factory constructor][],
   then pass it to a generative constructor that
-  assigns the value to the `final` instance variable.
+  initializes the `final` instance variable.
 * Use `late final`, but [_be careful:_][late-final-ivar]
   a `late final` without an initializer adds a setter to the API.
 
