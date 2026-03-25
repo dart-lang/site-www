@@ -39,18 +39,17 @@ class PostInfo extends StatelessComponent {
       h3(classes: 'post-info-name', [Component.text(author.name)]),
     ]);
 
-    final children = [
-      if (linkUrl != null)
-        a(href: linkUrl, target: Target.blank, [authorInfo])
-      else
-        authorInfo,
-      span(classes: 'post-info-meta', [
-        Component.text(' · ${post.formattedDate}'),
-        Component.text(' · ${post.readingTime}'),
+    return div(classes: 'post-info', [
+      div(classes: 'post-info-main', [
+        if (linkUrl != null)
+          a(href: linkUrl, target: Target.blank, [authorInfo])
+        else
+          authorInfo,
+        span(classes: 'post-info-meta', [
+          Component.text('${post.formattedDate} · ${post.readingTime}'),
+        ]),
       ]),
       ShareButton(url: url, title: post.title),
-    ];
-
-    return div(classes: 'post-info', children);
+    ]);
   }
 }

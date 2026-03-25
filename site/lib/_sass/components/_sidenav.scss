@@ -17,6 +17,10 @@ $sidenav-wide-layout: 1024px;
   background-color: var(--site-base-bgColor);
   z-index: var(--site-z-side);
 
+  &.empty {
+    display: none;
+  }
+
   @at-root body.open_menu {
     overflow-y: hidden;
 
@@ -79,7 +83,8 @@ $sidenav-wide-layout: 1024px;
       margin-top: 0.5rem;
     }
 
-    a, button {
+    a,
+    button {
       background: none;
       border: none;
       text-wrap: pretty;
@@ -108,7 +113,7 @@ $sidenav-wide-layout: 1024px;
 
       &.nav-link {
 
-        > div {
+        >div {
           display: inline-block;
 
           .material-symbols {
@@ -127,7 +132,7 @@ $sidenav-wide-layout: 1024px;
           transition: transform .3s ease-in-out;
         }
 
-        + ul {
+        +ul {
           display: none;
         }
 
@@ -144,7 +149,7 @@ $sidenav-wide-layout: 1024px;
             transform: rotate(180deg);
           }
 
-          + ul {
+          +ul {
             display: block;
           }
         }
@@ -160,9 +165,10 @@ $sidenav-wide-layout: 1024px;
     }
   }
 
-  > ul {
+  >ul {
+
     // Only apply styles to top-level entries.
-    > li {
+    >li {
       font-size: 1rem;
     }
 

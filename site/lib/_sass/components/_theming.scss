@@ -1,11 +1,11 @@
 #theme-switcher {
   position: relative;
 
-  > .dropdown-content {
+  >.dropdown-content {
     right: -0.5rem;
-    background-color: var(--site-chrome-bgColor);
-    color: var(--site-chrome-fgColor);
-    border: var(--site-chrome-borderColor) 1px solid;
+    background-color: var(--header-bg, var(--site-chrome-bgColor));
+    color: var(--header-fg, var(--site-chrome-fgColor));
+    border: var(--header-border, var(--site-chrome-borderColor)) 1px solid;
     box-shadow: none;
 
     .material-symbols {

@@ -2,6 +2,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
+import '../../common/button.dart';
 import '../../common/dropdown.dart';
 import '../../common/material_icon.dart';
 
@@ -24,12 +25,9 @@ class ShareButton extends StatelessComponent {
       id: 'share-menu-${url.hashCode}',
       children: [
         const DropdownToggle(
-          button(
-            classes: 'share-button-trigger',
-            type: ButtonType.button,
-            [
-              MaterialIcon('share'),
-            ],
+          Button(
+            icon: 'share',
+            title: 'Share this post',
           ),
         ),
         DropdownContent(

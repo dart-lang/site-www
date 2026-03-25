@@ -29,7 +29,7 @@ final class DashSideNav extends StatelessComponent {
   Component build(BuildContext context) {
     final activeEntry = activeNavEntry(context.page.url);
 
-    return div(id: 'sidenav', [
+    return div(id: 'sidenav', classes: navEntries.isEmpty ? 'empty' : '', [
       const form(
         action: '/search/',
         classes: 'site-header-search form-inline',

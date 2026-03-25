@@ -23,9 +23,15 @@ class DashHeader extends StatelessComponent {
     final layout = context.page.data.page['layout'];
     final activeEntry = activeNavEntry(pageUrlPath);
 
-    return header(id: 'site-header', classes: 'always-dark-mode', [
+    final isBlog = activeEntry == ActiveNavEntry.blog;
+    final classes = [
+      if (!isBlog) 'always-dark-mode',
+      if (isBlog) 'variant-gray',
+    ].toClasses;
+
+    return header(id: 'site-header', classes: classes, [
       nav(classes: 'navbar', [
-        const a(
+        a(
           id: 'site-primary-logo',
           classes: 'site-wordmark',
           href: '/',
@@ -34,16 +40,34 @@ class DashHeader extends StatelessComponent {
             'title': 'Go to the Dart homepage',
           },
           [
-            img(
+            const img(
               src: '/assets/img/logo/dart-192.svg',
               alt: 'Dart logo',
               attributes: {'width': '192'},
             ),
-            span(
+            const span(
               classes: 'name',
               attributes: {'translate': 'no'},
               [.text('Dart')],
             ),
+            ?switch (activeEntry) {
+              ActiveNavEntry.docs => const span(
+                classes: 'subtype',
+                attributes: {'translate': 'no'},
+                [.text('Docs')],
+              ),
+              ActiveNavEntry.blog => const span(
+                classes: 'subtype',
+                attributes: {'translate': 'no'},
+                [.text('Blog')],
+              ),
+              ActiveNavEntry.learn => const span(
+                classes: 'subtype',
+                attributes: {'translate': 'no'},
+                [.text('Learn')],
+              ),
+              _ => null,
+            },
           ],
         ),
 
@@ -155,6 +179,7 @@ class DashHeader extends StatelessComponent {
                 MaterialIcon('search'),
               ],
             ),
+
             if (layout != 'homepage') const ThemeSwitcher(),
             const SiteSwitcher(),
             const MenuToggle(),

@@ -2,14 +2,17 @@
 /// a loaded YAML or JSON structure.
 ///
 /// Expects data in the format used by `src/_data/sidenav.yml`.
-List<NavEntry> navEntriesFromData(List<Object?> data) => [
-  for (final item in data)
-    switch (item) {
-      'divider' => const NavEntry.divider(),
-      Map<String, Object?>() => NavEntry._fromMap(item),
-      _ => throw ArgumentError('Invalid nav entry format: $item'),
-    },
-];
+List<NavEntry> navEntriesFromData(List<Object?>? data) {
+  if (data == null) return [];
+  return [
+    for (final item in data)
+      switch (item) {
+        'divider' => const NavEntry.divider(),
+        Map<String, Object?>() => NavEntry._fromMap(item),
+        _ => throw ArgumentError('Invalid nav entry format: $item'),
+      },
+  ];
+}
 
 /// An individual entry in the sidenav.
 sealed class NavEntry {

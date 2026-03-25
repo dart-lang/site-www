@@ -208,14 +208,11 @@ ga('send', 'pageview');
     final bodyClass = pageData['bodyClass'] as String?;
     final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
 
-    final pageSidenav = pageData['sidenav'] as String? ?? defaultSidenav;
-    final sideNavEntries = switch (page.data['sidenav']) {
-      final Map<String, Object?> sidenavs => switch (sidenavs[pageSidenav]) {
-        final List<Object?> sidenavData => navEntriesFromData(sidenavData),
-        _ => null,
-      },
-      _ => null,
-    };
+    final sidenav = page.data['sidenav'] as Map<String, Object?>?;
+    final pageSidenavKey = pageData['sidenav'] as String? ?? defaultSidenav;
+    final sideNavEntries = navEntriesFromData(
+      sidenav?[pageSidenavKey] as List<Object?>?,
+    );
 
     final obsolete = pageData['obsolete'] == true;
 
@@ -263,11 +260,10 @@ if (storedTheme === 'auto-mode') {
         const DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [
-            if (sideNavEntries != null)
-              DashSideNav(
-                navEntries: sideNavEntries,
-                currentPageUrl: pageUrl,
-              ),
+            DashSideNav(
+              navEntries: sideNavEntries,
+              currentPageUrl: pageUrl,
+            ),
             main_(
               id: 'page-content',
               classes: [
