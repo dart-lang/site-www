@@ -1,5 +1,5 @@
 ---
-name: prepare-to-stage
+name: stage-site-locally
 description: >-
   Stages the Dart site locally for PR validation. Includes formatting Dart code,
   syncing excerpts, building the site, checking for broken links, and serving
