@@ -128,6 +128,13 @@
           permalink: /libraries/async/using-streams
         - title: Creating streams
           permalink: /libraries/async/creating-streams
+    - title: Converters and codecs
+      permalink: /libraries/dart-convert
+      children:
+        - title: Use converters and codecs
+          permalink: /libraries/convert/converters-and-codecs
+        - title: Build custom codecs and converters
+          permalink: /libraries/convert/build-custom-codecs
 
 - title: Effective Dart
   expanded: false
