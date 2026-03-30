@@ -239,11 +239,11 @@ establishing an inheritance relationship.
 
     The `runner` property is of type `CommandRunner`,
     which you will define later in `command_runner_base.dart`.
-    
+
     Notice the [**`late`**](/language/variables#late-variables) keyword.
-    It tells Dart that you promise to initialize this variable 
-    before it's ever accessed, allowing you to declare 
-    a non-nullable variable without assigning it immediately. 
+    It tells Dart that you promise to initialize this variable
+    before it's ever accessed, allowing you to declare
+    a non-nullable variable without assigning it immediately.
     This is helpful when a variable's initialization
     depends on other objects (like a command being added to a runner).
 
@@ -261,11 +261,11 @@ establishing an inheritance relationship.
     In Dart, prefixing a variable or field name with an underscore (`_`)
     makes it *private*,
     meaning it can't be accessed from outside its library.
-    
-    Instead of allowing direct access, you expose the list through a read-only 
+
+    Instead of allowing direct access, you expose the list through a read-only
     unmodifiable view ([`UnmodifiableSetView`][unmodifiable-set-view]).
-    This approach is a core part 
-    of encapsulation: the practice of restricting direct access to a class's 
+    This approach is a core part
+    of encapsulation: the practice of restricting direct access to a class's
     internal state to prevent unintended interference.
 
     The `UnmodifiableSetView` class is part of Dart's core collection library.
@@ -350,9 +350,9 @@ establishing an inheritance relationship.
 
     Finally, every command must have behavior—logic to execute when called.
     You'll define an abstract `run` method that concrete commands must implement.
-    
-    Because a command might be either synchronous or asynchronous, its `run` 
-    method returns the **`FutureOr`** type from `dart:async`, allowing it to 
+
+    Because a command might be either synchronous or asynchronous, its `run`
+    method returns the **`FutureOr`** type from `dart:async`, allowing it to
     return either a raw value or a `Future`. This is your final required import.
 
     Update the imports at the top of your file to include `dart:async`:
@@ -451,7 +451,7 @@ establishing an inheritance relationship.
     This class represents the results of parsing command-line arguments.
     It holds the detected command, any argument to that command, and
     a map of the specified options.
-    
+
     It also provides convenient helper methods (`flag`, `hasOption`, `getOption`)
     using standard iterable methods you've seen previously.
 
@@ -509,15 +509,15 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
     ```
 
     This updated class incorporates your new object-oriented structure:
-    
-    - **`_commands` map:** A private map linking command names (like `help`) to 
-      their concrete `Command` object instances. It's safe-guarded by an 
+
+    - **`_commands` map:** A private map linking command names (like `help`) to
+      their concrete `Command` object instances. It's safe-guarded by an
       `UnmodifiableSetView`.
-    - **`addCommand()`:** Registers a command and assigns `this` runner to the 
-      command's `runner` property. This fulfills the `late` initialization 
+    - **`addCommand()`:** Registers a command and assigns `this` runner to the
+      command's `runner` property. This fulfills the `late` initialization
       promise made earlier in the `Command` class.
-    - **`parse()` and `run()`:** Evaluates the user's input, identifies the 
-      corresponding `Command` from the map, and uses `await` to call the 
+    - **`parse()` and `run()`:** Evaluates the user's input, identifies the
+      corresponding `Command` from the map, and uses `await` to call the
       command's `run()` method.
 
 1.  Open `command_runner/lib/command_runner.dart`, and
@@ -600,17 +600,17 @@ prints usage information.
     ```
 
     This `HelpCommand` class demonstrates the benefits of inheritance:
-    
+
     - **Constructors and parent methods:** By defining a constructor method
       (`HelpCommand() { ... }`), the command executes its setup logic upon creation.
-      It invokes the `addFlag` and `addOption` methods written in its parent 
-      `Command` class to populate its specific options, without needing to know 
+      It invokes the `addFlag` and `addOption` methods written in its parent
+      `Command` class to populate its specific options, without needing to know
       how the internal `_options` list works.
-    - **Method Overriding:** It prominently uses the `@override` annotation 
-      to fulfill the contract defined by its abstract parent. It provides 
+    - **Method Overriding:** It prominently uses the `@override` annotation
+      to fulfill the contract defined by its abstract parent. It provides
       its specific name, description, and the mandatory `run` logic.
-    - **State access:** In `run()`, it accesses its parent's `runner` property 
-      to iterate over all registered commands and aggregate their usage 
+    - **State access:** In `run()`, it accesses its parent's `runner` property
+      to iterate over all registered commands and aggregate their usage
       strings into one helpful message.
 
 ### Task 4: Update cli.dart to use the new CommandRunner
