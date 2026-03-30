@@ -10,8 +10,10 @@ layout: learn
 
 In this chapter, you'll explore the
 power of object-oriented programming (OOP) in Dart.
-You'll learn how to create classes and define relationships between them,
-including **inheritance** and **abstract classes**.
+You'll learn how to create [classes](/language/classes) and
+define relationships between them, including
+[**inheritance**](/language/extend) and
+[**abstract classes**](/language/class-modifiers#abstract).
 You'll also build a foundation for creating well-structured CLI applications.
 
 <SummaryCard>
@@ -82,15 +84,18 @@ establishing an inheritance relationship.
     enum OptionType { flag, option }
     ```
 
-    This `enum` represents the type of option, which can be either a **`flag`**
+    This [`enum`](/language/enums) represents the type of option,
+    which can be either a **`flag`**
     (a boolean option) or a regular **`option`** (an option that takes a value).
     Enums are useful for representing a fixed set of possible values.
 
 1.  Define an `abstract class` called `Argument`.
 
     Start by defining the basic structure of your `Argument` class.
-    You'll declare it as `abstract`, which means it serves as a blueprint that
-    other classes can extend, but it can't be instantiated on its own.
+    You'll declare it as [`abstract`](/language/class-modifiers#abstract),
+    which means it serves as a blueprint that
+    other classes can extend, but it can't be instantiated on its own
+    (meaning you can't create an object directly from it).
 
     Below the `enum` you just added, paste in the following code:
 
@@ -116,7 +121,8 @@ establishing an inheritance relationship.
       can be a `bool` (for flags) or a `String`.
     - **`valueHelp`** is an optional `String` to
       give a hint about the expected value.
-    - The **`usage`** getter will provide a string showing how
+    - The **`usage`** [getter](/resources/glossary#getter) will provide a
+      string showing how
       to use the argument.
 
     With the `Argument` class fully defined,
@@ -170,9 +176,16 @@ establishing an inheritance relationship.
     }
     ```
 
-    The **`extends`** keyword establishes the inheritance relationship.
-    The constructor uses `@override` to provide concrete implementations for
-    the properties defined in `Argument`.
+    The [**`extends`**](/language/extend) keyword establishes the inheritance relationship.
+    The class uses the [`@override`](/language/extend#overriding-members) annotation
+    on its properties and getters to indicate it is replacing the
+    placeholder members defined in `Argument`.
+
+    The `@override` annotation tells the Dart analyzer that
+    you are intentionally overriding an inherited member.
+    If that member doesn't exist in the superclass
+    (due to a typo or a change in the superclass),
+    the analyzer will flag an error.
     It also adds `type` (using the `OptionType` enum) and an
     optional `abbr` for a short-form of the option.
     The `usage` getter is implemented to provide clear instructions to the user.
@@ -181,7 +194,7 @@ establishing an inheritance relationship.
     you'll define the `Command` class, another type of argument that will
     represent the main actions a user can perform in your CLI application.
 
-1.  Define an `abstract class` called `Command` that also `extends` `Argument`.
+1.  Define an [`abstract class`](/language/class-modifiers#abstract) called `Command` that also `extends` `Argument`.
 
     The `Command` class will represent an executable action.
     Since it provides a template for other commands to follow,
@@ -226,6 +239,14 @@ establishing an inheritance relationship.
 
     The `runner` property is of type `CommandRunner`,
     which you will define later in `command_runner_base.dart`.
+    
+    Notice the [**`late`**](/language/variables#late-variables) keyword.
+    It tells Dart that you promise to initialize this variable 
+    before it's ever accessed, allowing you to declare 
+    a non-nullable variable without assigning it immediately. 
+    This is helpful when a variable's initialization
+    depends on other objects (like a command being added to a runner).
+
     To make Dart aware of this class, you must import its defining file.
     Add the following import to the
     top of `command_runner/lib/src/arguments.dart`:
@@ -234,10 +255,20 @@ establishing an inheritance relationship.
     import '../command_runner.dart';
     ```
 
-    Next, to give commands their own set of options, you'll use a
-    private list and expose a read-only, **unmodifiable view** of it.
-    This uses the `UnmodifiableSetView` class, which is
-    part of Dart's core collection library.
+    Next, you'll give commands their own set of options.
+    To prevent other parts of your code from unexpectedly modifying
+    these options, you'll store them in a [private](/language/libraries) list (`_options`).
+    In Dart, prefixing a variable or field name with an underscore (`_`)
+    makes it *private*,
+    meaning it can't be accessed from outside its library.
+    
+    Instead of allowing direct access, you expose the list through a read-only 
+    unmodifiable view ([`UnmodifiableSetView`][unmodifiable-set-view]).
+    This approach is a core part 
+    of encapsulation: the practice of restricting direct access to a class's 
+    internal state to prevent unintended interference.
+
+    The `UnmodifiableSetView` class is part of Dart's core collection library.
     To use it, you must import that library.
 
     Update the imports at the top of your file to include `dart:collection`:
@@ -266,8 +297,10 @@ establishing an inheritance relationship.
     }
     ```
 
-    To make adding options easier, we'll provide
-    two helper methods, `addFlag` and `addOption`.
+    Because `_options` is private, external code can't add options directly.
+    To allow commands to define their options, you'll provide two internal
+    helper methods: `addFlag` and `addOption`. These methods will instantiate
+    the appropriate `Option` objects and add them to the private list.
 
     ```dart
     abstract class Command extends Argument {
@@ -315,12 +348,12 @@ establishing an inheritance relationship.
     }
     ```
 
-    Finally, every command must have logic to execute.
-    The `run` method should be flexible, allowing it to return a value either
-    immediately (synchronously) or after a delay (asynchronously).
-    The `FutureOr<Object?>` type from `dart:async` serves this purpose.
-    This means the method must return a value (of any type or `null`) either
-    synchronously or asynchronously. This is your final required import.
+    Finally, every command must have behavior—logic to execute when called.
+    You'll define an abstract `run` method that concrete commands must implement.
+    
+    Because a command might be either synchronous or asynchronous, its `run` 
+    method returns the **`FutureOr`** type from `dart:async`, allowing it to 
+    return either a raw value or a `Future`. This is your final required import.
 
     Update the imports at the top of your file to include `dart:async`:
 
@@ -418,8 +451,9 @@ establishing an inheritance relationship.
     This class represents the results of parsing command-line arguments.
     It holds the detected command, any argument to that command, and
     a map of the specified options.
-    It also provides convenient helper methods like
-    `flag`, `hasOption`, and `getOption`.
+    
+    It also provides convenient helper methods (`flag`, `hasOption`, `getOption`)
+    using standard iterable methods you've seen previously.
 
     Now you have defined the basic structure for handling
     commands, arguments, and options in your command-line application.
@@ -474,10 +508,17 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
     }
     ```
 
-    This updated `CommandRunner` class now
-    uses the `Command` class from the `Argument` hierarchy.
-    It includes methods for adding commands, parsing arguments, and
-    running the appropriate command based on user input.
+    This updated class incorporates your new object-oriented structure:
+    
+    - **`_commands` map:** A private map linking command names (like `help`) to 
+      their concrete `Command` object instances. It's safe-guarded by an 
+      `UnmodifiableSetView`.
+    - **`addCommand()`:** Registers a command and assigns `this` runner to the 
+      command's `runner` property. This fulfills the `late` initialization 
+      promise made earlier in the `Command` class.
+    - **`parse()` and `run()`:** Evaluates the user's input, identifies the 
+      corresponding `Command` from the map, and uses `await` to call the 
+      command's `run()` method.
 
 1.  Open `command_runner/lib/command_runner.dart`, and
     add the following exports:
@@ -558,10 +599,19 @@ prints usage information.
     }
     ```
 
-    This `HelpCommand` class extends `Command` and
-    implements the `run` method to print usage information.
-    It also uses the `addFlag` and `addOption` methods to
-    define its own options for controlling the output.
+    This `HelpCommand` class demonstrates the benefits of inheritance:
+    
+    - **Constructors and parent methods:** By defining a constructor method
+      (`HelpCommand() { ... }`), the command executes its setup logic upon creation.
+      It invokes the `addFlag` and `addOption` methods written in its parent 
+      `Command` class to populate its specific options, without needing to know 
+      how the internal `_options` list works.
+    - **Method Overriding:** It prominently uses the `@override` annotation 
+      to fulfill the contract defined by its abstract parent. It provides 
+      its specific name, description, and the mandatory `run` logic.
+    - **State access:** In `run()`, it accesses its parent's `runner` property 
+      to iterate over all registered commands and aggregate their usage 
+      strings into one helpful message.
 
 ### Task 4: Update cli.dart to use the new CommandRunner
 
@@ -583,7 +633,9 @@ Modify `cli/bin/cli.dart` to use the new `CommandRunner` and `HelpCommand`.
     ```
 
     This code creates a `CommandRunner` instance,
-    adds the `HelpCommand` to it using method cascading (`..addCommand`), and
+    adds the `HelpCommand` to it using a
+    [method cascade](/language/operators#cascade-notation) (`..addCommand`)
+    which lets you call a method on an object directly after creating it, and
     then runs the command runner with the command-line arguments.
 
 ### Task 5: Run the application
@@ -649,3 +701,5 @@ handle errors and exceptions in your Dart code.
 You'll create a custom exception class and
 add error handling to your `CommandRunner` to
 make your application more robust.
+
+[unmodifiable-set-view]: https://api.dart.dev/dart-collection/UnmodifiableSetView-class.html
