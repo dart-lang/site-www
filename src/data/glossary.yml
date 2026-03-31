@@ -2095,9 +2095,7 @@
     - text: "Late"
       link: "#late"
       type: "term"
-    - text: "LateInitializationError"
-      link: "https://api.dart.dev/stable/dart-core/LateInitializationError-class.html"
-      type: "api"
+
   labels:
     - "language"
     - "variables"
