@@ -2541,6 +2541,19 @@
     "sinceDartSdk": "2.16"
   },
   {
+    "name": "simple_directive_paths",
+    "description": "Use simple directive paths.",
+    "categories": [
+      "style"
+    ],
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "hasFix",
+    "details": "**PREFER** simple directive paths.\n\nUsing simple directive paths (avoiding redundant `./` or backtracking `../`\nsegments) makes the code cleaner, more consistent, and easier to read. It\nalso reduces the risk of confusion when resolving paths relative to the\nsource file.\n\n**BAD:**\n```dart\nimport '../src/bar.dart';\n```\n\n**GOOD:**\n```dart\nimport 'bar.dart';\n```",
+    "sinceDartSdk": "3.12"
+  },
+  {
     "name": "simplify_variable_pattern",
     "description": "Avoid unnecessary member names in variable patterns.",
     "categories": [
