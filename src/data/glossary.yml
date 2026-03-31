@@ -2058,10 +2058,6 @@
     A variable is _uninitialized_ when it has been declared but
     has not yet been assigned a value.
 
-    Dart's [definite assignment][] analysis tracks whether a local variable
-    is definitely assigned before it's used, and reports a compile-time error
-    if you read a variable that might be uninitialized.
-
     Non-nullable variables must be initialized before they are read,
     either at the point of declaration or through all possible
     execution paths before the first use:
