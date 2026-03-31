@@ -6,6 +6,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../components/blog/blog_next_posts.dart';
 import '../components/blog/client/blog_categories.dart';
 import '../components/blog/post_info.dart';
 import '../components/common/breadcrumbs.dart';
@@ -89,6 +90,11 @@ class BlogLayout extends DashLayout {
                   url: page.url,
                 ),
               child,
+              if (isPost)
+                BlogNextPosts(
+                  currentPage: page,
+                  category: pageCategory,
+                ),
             ]),
           ]),
         ]),

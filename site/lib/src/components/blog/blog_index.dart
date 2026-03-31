@@ -11,22 +11,25 @@ import '../../models/blog.dart';
 import 'blog_card.dart';
 import 'client/blog_categories.dart';
 
+extension PostIndex on BuildContext {
+  List<({String url, Post post})> get blogPosts => pages
+      .where((page) => page.url.startsWith('/blog/'))
+      .sortedBy(
+        (page) =>
+            DateTime.tryParse(page.data.page['publishDate'] as String? ?? '') ??
+            DateTime(1970),
+      )
+      .reversed
+      .map((page) => (url: page.url, post: Post(page.data.page)))
+      .toList();
+}
+
 class BlogIndex extends StatelessComponent {
   const BlogIndex({super.key});
 
   @override
   Component build(BuildContext context) {
-    final posts = context.pages
-        .where((page) => page.url.startsWith('/blog/'))
-        .sortedBy(
-          (page) =>
-              DateTime.tryParse(
-                page.data.page['publishDate'] as String? ?? '',
-              ) ??
-              DateTime(1970),
-        )
-        .reversed
-        .toList();
+    final posts = context.blogPosts;
 
     return div(classes: 'blog-index', [
       const BlogCategories(),
@@ -37,7 +40,7 @@ class BlogIndex extends StatelessComponent {
         [
           for (var i = 0; i < posts.length; i++)
             BlogCard(
-              post: Post(posts[i].data.page),
+              post: posts[i].post,
               url: posts[i].url,
               className: i == 0
                   ? 'layout-featured'
