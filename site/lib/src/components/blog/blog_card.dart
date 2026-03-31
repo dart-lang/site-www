@@ -39,6 +39,7 @@ class BlogCard extends StatelessComponent {
           p(classes: 'blog-card-description', [
             .text(post.description),
           ]),
+          const span(classes: 'blog-card-spacer', []),
           div(classes: 'blog-card-meta', [
             div(classes: 'blog-card-author-row', [
               if (author.image != null)

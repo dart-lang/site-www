@@ -1,6 +1,6 @@
 ---
 title: "The Dart Blog"
-description: "The official blog of the Dart team."
+description: "Dart is an approachable, portable, and productive language for high-quality apps on any platform."
 layout: blog
 showBreadcrumbs: false
 ---

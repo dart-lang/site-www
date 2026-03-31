@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-extension type Post(Map<String, dynamic> data) {
+extension type Post(Map<String, Object?> data) {
   String get title => data['title'] as String;
   String get description => data['description'] as String;
   String? get image => data['image'] as String?;
@@ -21,7 +21,7 @@ extension type Post(Map<String, dynamic> data) {
   String? get category => data['category'] as String?;
 }
 
-extension type Author(Map<String, dynamic> data) {
+extension type Author(Map<String, Object?> data) {
   String get name => data['name'] as String;
   String? get bio => data['bio'] as String?;
   String? get image => data['image'] as String?;
@@ -29,7 +29,7 @@ extension type Author(Map<String, dynamic> data) {
   AuthorGithub? get github => data['github'] as AuthorGithub?;
 }
 
-extension type AuthorGithub(Map<String, dynamic> data) {
+extension type AuthorGithub(Map<String, Object?> data) {
   String get handle => data['handle'] as String;
   String? get name => data['username'] as String?;
   String? get avatarUrl => data['avatar_url'] as String?;
@@ -37,7 +37,7 @@ extension type AuthorGithub(Map<String, dynamic> data) {
 
 extension GetAuthor on BuildContext {
   Author getAuthor(String id) {
-    final author = (page.data['authors'] as Map<String, dynamic>)[id];
+    final author = (page.data['authors'] as Map<String, Object?>)[id];
     if (author == null) {
       throw Exception('Author not found: $id');
     }

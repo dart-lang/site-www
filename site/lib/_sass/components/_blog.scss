@@ -110,6 +110,7 @@
   background-color: var(--site-bg-color, transparent);
   padding: 1.5rem 0;
   border-bottom: 1px solid var(--site-outline);
+  overflow: hidden;
 
   &,
   &:hover,
@@ -143,6 +144,16 @@
         color: var(--site-primary-color);
       }
     }
+  }
+
+  .blog-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-card-spacer {
+    flex: 1;
   }
 
   .blog-card-description {
@@ -427,5 +438,21 @@
 
   .postbreak span {
     background-color: var(--site-base-fgColor);
+  }
+}
+
+.more-from-dart {
+  margin: 4rem 0;
+  padding-top: 4rem;
+  border-top: 1px solid var(--site-outline);
+
+  h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  .blog-posts-grid {
+    margin-top: 2rem;
   }
 }

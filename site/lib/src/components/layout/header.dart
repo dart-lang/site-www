@@ -31,46 +31,48 @@ class DashHeader extends StatelessComponent {
 
     return header(id: 'site-header', classes: classes, [
       nav(classes: 'navbar', [
-        a(
-          id: 'site-primary-logo',
-          classes: 'site-wordmark',
-          href: '/',
-          attributes: {
-            'aria-label': 'Go to the Dart homepage',
-            'title': 'Go to the Dart homepage',
-          },
-          [
-            const img(
-              src: '/assets/img/logo/dart-192.svg',
-              alt: 'Dart logo',
-              attributes: {'width': '192'},
-            ),
-            const span(
-              classes: 'name',
-              attributes: {'translate': 'no'},
-              [.text('Dart')],
-            ),
-            ?switch (activeEntry) {
-              ActiveNavEntry.docs => const span(
-                classes: 'subtype',
-                attributes: {'translate': 'no'},
-                [.text('Docs')],
-              ),
-              ActiveNavEntry.blog => const span(
-                classes: 'subtype',
-                attributes: {'translate': 'no'},
-                [.text('Blog')],
-              ),
-              ActiveNavEntry.learn => const span(
-                classes: 'subtype',
-                attributes: {'translate': 'no'},
-                [.text('Learn')],
-              ),
-              _ => null,
+        span(id: 'site-primary-logo', classes: 'site-wordmark', [
+          const a(
+            href: '/',
+            attributes: {
+              'aria-label': 'Go to the Dart homepage',
+              'title': 'Go to the Dart homepage',
             },
-          ],
-        ),
-
+            [
+              img(
+                src: '/assets/img/logo/dart-192.svg',
+                alt: 'Dart logo',
+                attributes: {'width': '192'},
+              ),
+              span(
+                classes: 'name',
+                attributes: {'translate': 'no'},
+                [.text('Dart')],
+              ),
+            ],
+          ),
+          ?switch (activeEntry) {
+            ActiveNavEntry.docs => const a(
+              href: '/docs',
+              classes: 'subtype',
+              attributes: {'translate': 'no'},
+              [.text('Docs')],
+            ),
+            ActiveNavEntry.blog => const a(
+              href: '/blog',
+              classes: 'subtype',
+              attributes: {'translate': 'no'},
+              [.text('Blog')],
+            ),
+            ActiveNavEntry.learn => const a(
+              href: '/learn',
+              classes: 'subtype',
+              attributes: {'translate': 'no'},
+              [.text('Learn')],
+            ),
+            _ => null,
+          },
+        ]),
         ul(classes: 'nav-items', [
           li([
             a(

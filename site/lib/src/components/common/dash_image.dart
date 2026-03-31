@@ -37,6 +37,11 @@ class DashImage extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
+    if (alt == null) {
+      print(
+        '[WARNING] DashImage is missing an "alt" attribute for ${context.page.url}:$src',
+      );
+    }
     return figure([
       img(src: context.resolveAsset(src), alt: alt),
       if (caption != null && caption!.isNotEmpty)

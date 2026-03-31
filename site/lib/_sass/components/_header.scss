@@ -166,38 +166,37 @@
   }
 
   #site-primary-logo {
-    color: var(--header-fg);
-    text-decoration: none;
     border-radius: 0.25rem;
     padding: 0;
 
-    >img {
+    &,
+    & a {
+      color: var(--header-fg);
+      text-decoration: none;
+    }
+
+    img {
       width: 2.25rem;
       margin-right: 0;
     }
 
-    &:hover {
-      color: var(--header-highlight);
-      text-decoration: none;
-    }
 
-    >span {
-      &.name {
-        display: none;
+    .name {
+      display: none;
 
-        @media (min-width: 200px) {
-          display: unset;
-        }
-      }
-
-      &.subtype {
-        margin-left: 0;
-
-        @media (min-width: 420px) {
-          margin-left: 0.4rem;
-        }
+      @media (min-width: 200px) {
+        display: unset;
       }
     }
+
+    .subtype {
+      margin-left: 0;
+
+      @media (min-width: 420px) {
+        margin-left: 0.4rem;
+      }
+    }
+
   }
 }
 
