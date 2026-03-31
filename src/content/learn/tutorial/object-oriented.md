@@ -452,8 +452,12 @@ establishing an inheritance relationship.
     It holds the detected command, any argument to that command, and
     a map of the specified options.
 
-    It also provides convenient helper methods (`flag`, `hasOption`, `getOption`)
-    using standard iterable methods you've seen previously.
+    - **The `flag()` method:** Iterates over the keys of the `options` map,
+      filtering for those where `type` is `OptionType.flag`. It uses explicit type 
+      casting (`as bool`) because we know flags are boolean values.
+    - **Record types:** The `getOption` method returns a **record** type
+      `(option: ..., input: ...)`, which lets you group multiple values together 
+      without creating a full class.
 
     Now you have defined the basic structure for handling
     commands, arguments, and options in your command-line application.
@@ -510,14 +514,20 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
 
     This updated class incorporates your new object-oriented structure:
 
-    - **`_commands` map:** A private map linking command names (like `help`) to
-      their concrete `Command` object instances. It's safe-guarded by an
-      `UnmodifiableSetView`.
-    - **`addCommand()`:** Registers a command and assigns `this` runner to the
-      command's `runner` property. This fulfills the `late` initialization
+    - **Spread operator (`...`):** In the `commands` getter, the spread operator 
+      unpacks the values of the `_commands` map into a new set. This ensures 
+      the return value is a copy, preventing external code from modifying your data.
+    - **Null assertion (`!`):** In the `run()` method, `results.command!.run(...)` 
+      uses the null assertion operator to tell the Dart analyzer that you are 
+      sure `results.command` is not null. It's safe here because you just checked if 
+      it wasn't null in the preceding `if` statement.
+    - **`_commands` map:** A private map linking command names to their concrete 
+      `Command` object instances. It's safe-guarded by an `UnmodifiableSetView`.
+    - **`addCommand()`:** Registers a command and assigns `this` runner to the 
+      command's `runner` property. This fulfills the `late` initialization 
       promise made earlier in the `Command` class.
-    - **`parse()` and `run()`:** Evaluates the user's input, identifies the
-      corresponding `Command` from the map, and uses `await` to call the
+    - **`parse()` and `run()`:** Evaluates the user's input, identifies the 
+      corresponding `Command` from the map, and uses `await` to call the 
       command's `run()` method.
 
 1.  Open `command_runner/lib/command_runner.dart`, and
