@@ -2077,7 +2077,7 @@
     ```
 
     To defer initialization of a non-nullable variable,
-    use the [`late`][] keyword. A `late` variable is uninitialized
+    use the `late` keyword. A `late` variable is uninitialized
     until its first assignment, and accessing it before it's assigned
     throws a `LateInitializationError` at runtime:
 
@@ -2089,6 +2089,15 @@
     - text: "Variables"
       link: "/language/variables"
       type: "doc"
+    - text: "Definite assignment"
+      link: "#definite-assignment"
+      type: "term"
+    - text: "Late"
+      link: "#late"
+      type: "term"
+    - text: "LateInitializationError"
+      link: "https://api.dart.dev/stable/dart-core/LateInitializationError-class.html"
+      type: "api"
   labels:
     - "language"
     - "variables"
