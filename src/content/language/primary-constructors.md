@@ -26,7 +26,7 @@ Consider this traditional class with two fields and a constructor:
 
 <?code-excerpt "language/lib/primary_constructors/point.dart (point)"?>
 ```dart
-// Traditional syntax
+// Current syntax.
 class Point {
   int x;
   int y;
@@ -39,7 +39,7 @@ Using a primary constructor makes the same class much more concise:
 
 <?code-excerpt "language/lib/primary_constructors/point.dart (point-primary)" replace="/PointPrimary/Point/g"?>
 ```dart
-// Using a primary constructor
+// Using a primary constructor.
 class Point(var int x, var int y);
 ```
 
