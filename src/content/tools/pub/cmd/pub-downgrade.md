@@ -109,6 +109,14 @@ For options that apply to all pub commands, see
 
 Reports what dependencies would change but doesn't change any.
 
+### `--[no-]example`
+
+By default, pub also downgrades the dependencies of the
+[`example/` directory][example-dir] of the package (`--example`).
+To skip downgrading example dependencies, use `--no-example`.
+
+[example-dir]: /tools/pub/package-layout#examples
+
 ### `--tighten`
 
 :::version-note

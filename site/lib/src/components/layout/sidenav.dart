@@ -72,10 +72,11 @@ final class DashSideNav extends StatelessComponent {
           iconId: 'public',
           active: activeEntry == ActiveNavEntry.community,
         ),
-        const _TopNavItem(
-          href: 'https://dart.dev',
-          label: 'Try Dart',
-          iconId: 'code_blocks',
+        _TopNavItem(
+          href: '/learn',
+          label: 'Learn Dart',
+          iconId: 'play_lesson',
+          active: activeEntry == ActiveNavEntry.learn,
         ),
         _TopNavItem(
           href: '/get-dart',

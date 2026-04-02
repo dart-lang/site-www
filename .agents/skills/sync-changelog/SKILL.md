@@ -56,7 +56,8 @@ and checking what h2 headers (`##`) are present.
     Check `src/data/changelog.yml` to ensure new entries are correct.
 
     -   Review the diff: `git diff src/data/changelog.yml`
-    -   Ensure formatting is consistent and the new entries are prepended correctly.
+    -   Ensure formatting is consistent and
+        the new entries are prepended correctly.
 
 3.  **Filter and prune entries**
 
@@ -110,7 +111,7 @@ and checking what h2 headers (`##`) are present.
 
     ```yaml
     - version: 3.11.0
-      ...
+      # ...
       description: |
         Added support for Unix domain sockets...
       tags:
@@ -131,7 +132,7 @@ and checking what h2 headers (`##`) are present.
 
     ```yaml
     - version: 3.11.0
-      ...
+      # ...
       link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110
     ```
 

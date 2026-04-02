@@ -199,7 +199,6 @@ final class DocumentationGenerator {
       _extractAllDocs(classEntry.key, classEntry.value);
     }
 
-    _extractAllDocs('FrontEnd', messages.frontEndMessages);
     _extractAllDocs('FrontEnd', messages.sharedMessages);
   }
 
