@@ -94,8 +94,7 @@ establishing an inheritance relationship.
     Start by defining the basic structure of your `Argument` class.
     You'll declare it as [`abstract`](/language/class-modifiers#abstract),
     which means it serves as a blueprint that
-    other classes can extend, but it can't be instantiated on its own
-    (meaning you can't create an object directly from it).
+    other classes can extend, but it can't be [instantiated](/resources/glossary#instantiate) on its own.
 
     Below the `enum` you just added, paste in the following code:
 
@@ -181,11 +180,6 @@ establishing an inheritance relationship.
     on its properties and getters to indicate it is replacing the
     placeholder members defined in `Argument`.
 
-    The `@override` annotation tells the Dart analyzer that
-    you are intentionally overriding an inherited member.
-    If that member doesn't exist in the superclass
-    (due to a typo or a change in the superclass),
-    the analyzer will flag an error.
     It also adds `type` (using the `OptionType` enum) and an
     optional `abbr` for a short-form of the option.
     The `usage` getter is implemented to provide clear instructions to the user.
@@ -257,10 +251,9 @@ establishing an inheritance relationship.
 
     Next, you'll give commands their own set of options.
     To prevent other parts of your code from unexpectedly modifying
-    these options, you'll store them in a [private](/language/libraries) list (`_options`).
+    these options, you'll store them in a [private](/resources/glossary#library-private) list (`_options`).
     In Dart, prefixing a variable or field name with an underscore (`_`)
-    makes it *private*,
-    meaning it can't be accessed from outside its library.
+    makes it library-private.
 
     Instead of allowing direct access, you expose the list through a read-only
     unmodifiable view ([`UnmodifiableSetView`][unmodifiable-set-view]).
@@ -348,7 +341,7 @@ establishing an inheritance relationship.
     }
     ```
 
-    Finally, every command must have behavior—logic to execute when called.
+    Finally, every command must have logic to execute when called.
     You'll define an abstract `run` method that concrete commands must implement.
 
     Because a command might be either synchronous or asynchronous, its `run`
@@ -452,10 +445,10 @@ establishing an inheritance relationship.
     It holds the detected command, any argument to that command, and
     a map of the specified options.
 
-    - **The `flag()` method:** Iterates over the keys of the `options` map,
+    - The `flag()` method: Iterates over the keys of the `options` map,
       filtering for those where `type` is `OptionType.flag`. It uses explicit type 
       casting (`as bool`) because we know flags are boolean values.
-    - **Record types:** The `getOption` method returns a **record** type
+    - Record types: The `getOption` method returns a record type
       `(option: ..., input: ...)`, which lets you group multiple values together 
       without creating a full class.
 
@@ -512,15 +505,20 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
     }
     ```
 
-    This updated class incorporates your new object-oriented structure:
+    This updated class incorporates your new object-oriented structure.
+    It uses the spread operator (`...`) in the `commands` getter to
+    unpack the values of the `_commands` map into a new set.
+    This ensures the return value is a copy,
+    preventing external code from modifying your data.
 
-    - **Spread operator (`...`):** In the `commands` getter, the spread operator 
-      unpacks the values of the `_commands` map into a new set. This ensures 
-      the return value is a copy, preventing external code from modifying your data.
-    - **Null assertion (`!`):** In the `run()` method, `results.command!.run(...)` 
-      uses the null assertion operator to tell the Dart analyzer that you are 
-      sure `results.command` is not null. It's safe here because you just checked if 
-      it wasn't null in the preceding `if` statement.
+    In the `run()` method, `results.command!.run(...)` uses the
+    null assertion operator (`!`) to tell the Dart analyzer that you are
+    sure `results.command` is not null.
+    It's safe here because you just checked if it wasn't null
+    in the preceding `if` statement.
+
+    Here are the key implementation details:
+
     - **`_commands` map:** A private map linking command names to their concrete 
       `Command` object instances. It's safe-guarded by an `UnmodifiableSetView`.
     - **`addCommand()`:** Registers a command and assigns `this` runner to the 
@@ -609,19 +607,10 @@ prints usage information.
     }
     ```
 
-    This `HelpCommand` class demonstrates the benefits of inheritance:
-
-    - **Constructors and parent methods:** By defining a constructor method
-      (`HelpCommand() { ... }`), the command executes its setup logic upon creation.
-      It invokes the `addFlag` and `addOption` methods written in its parent
-      `Command` class to populate its specific options, without needing to know
-      how the internal `_options` list works.
-    - **Method Overriding:** It prominently uses the `@override` annotation
-      to fulfill the contract defined by its abstract parent. It provides
-      its specific name, description, and the mandatory `run` logic.
-    - **State access:** In `run()`, it accesses its parent's `runner` property
-      to iterate over all registered commands and aggregate their usage
-      strings into one helpful message.
+    The `HelpCommand` class demonstrates the benefits of inheritance.
+    It uses its parent's methods to set up its options,
+    overrides the abstract `run` method,
+    and accesses the `runner` state to generate the usage message.
 
 ### Task 4: Update cli.dart to use the new CommandRunner
 

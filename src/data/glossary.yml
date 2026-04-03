@@ -837,6 +837,21 @@
     - "Read-only"
     - "Unchangeable"
 
+- term: "Instantiate"
+  short_description: |-
+    Creating a concrete instance (object) of a class or blueprint.
+  long_description: |-
+    Instantiating a class means creating a working object from it in memory.
+    In Dart, you do this by calling a constructor (e.g., `final myItem = Item()`).
+    Abstract classes cannot be instantiated directly.
+  related_links:
+    - text: "Classes in Dart"
+      link: "/language/classes"
+      type: "doc"
+  labels:
+    - "language"
+    - "object-oriented"
+
 - term: "Interop"
   short_description: |-
     The ability for Dart code to interact with code written in other languages.
@@ -1091,6 +1106,20 @@
   labels:
     - "language"
     - "libraries"
+
+- term: "Library-private"
+  short_description: |-
+    Accessibility restricted to the library (file) where it is defined.
+  long_description: |-
+    In Dart, privacy is scoped to the library rather than the class.
+    Any identifier prefixed with an underscore (e.g., `_myVariable`) is library-private.
+  related_links:
+    - text: "Libraries and imports"
+      link: "/language/libraries"
+      type: "doc"
+  labels:
+    - "language"
+    - "encapsulation"
 
 - term: "Lockfile"
   short_description: |-
