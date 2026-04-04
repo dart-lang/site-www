@@ -140,6 +140,7 @@ and checking what h2 headers (`##`) are present.
 
     Review the changelog entries for any Markdown or YAML syntax issues
     as well as typos or grammatical errors.
+    Enforce Sentence case for the title of the entry (e.g., "Type promotion" instead of "Type Promotion"). If a word is not a proper noun and it isn't the first word, do not capitalize it.
     If found, fix them before continuing on.
 
 7.  **Request user review**

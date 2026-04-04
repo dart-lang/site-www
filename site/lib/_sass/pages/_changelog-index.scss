@@ -680,6 +680,10 @@ body.dark-mode {
       color: var(--site-primary-color);
     }
 
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
     .material-symbols-outlined {
       font-size: 1.25rem;
       line-height: 1;

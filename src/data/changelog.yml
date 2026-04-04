@@ -126,7 +126,8 @@
   area: Tools
   subArea: Analyzer
   description: |
-    Improvements to LSP format-on-type, to not format in undesirable cases.
+    Added improvements to LSP format-on-type, to not format in undesirable
+    cases.
   tags:
     - fixed
   link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
@@ -188,7 +189,7 @@
 - version: 3.11.0
   releaseDate: 2026-02-11
   area: Tools
-  subArea: "Dart Development Compiler (dartdevc)"
+  subArea: "Dart development compiler (dartdevc)"
   description: |
     The async timing of the `Future` returned by `deferred_prefix.loadLibrary()`
     is now consistent regardless of whether proper deferred imports are supported in the
@@ -248,10 +249,10 @@
 - version: 3.11.0
   releaseDate: 2026-02-11
   area: SDK
-  subArea: Platform Updates
+  subArea: Platform updates
   description: |
-    Dart 3.11 adds support for Unix domain sockets on Windows in `dart:io`. It
-    also removes support for `dart:js_util` in dart2wasm, requiring migration to
+    Added support for Unix domain sockets on Windows in `dart:io`.
+    Also removed support for `dart:js_util` in dart2wasm, requiring migration to
     `dart:js_interop`.
   tags:
     - changed
@@ -274,9 +275,9 @@
 - version: 3.10.0
   releaseDate: 2025-11-12
   area: Language
-  subArea: Dot Shorthands
+  subArea: Dot shorthands
   description: |
-    Dart 3.10 introduces dot shorthands for enums and other static members,
+    Introduced dot shorthands for enums and other static members,
     allowing you to omit the type name when the context makes it clear. It also
     improves type inference for `sync*` and `async*` generator functions,
     eliminating spurious `null` from their return types. The analyzer now
@@ -290,7 +291,7 @@
 - version: 3.10.0
   releaseDate: 2025-11-12
   area: Language
-  subArea: Generator Functions
+  subArea: Generator functions
   description: |
     `sync*` and `async*` generator functions without a specified return now
     correctly infer return types as non-nullable when no `null` value is
@@ -505,9 +506,9 @@
 - version: 3.9.0
   releaseDate: 2025-08-13
   area: SDK
-  subArea: Type Promotion
+  subArea: Type promotion
   description: |
-    Dart 3.9 assumes null safety for type promotion, reachability, and definite
+    Assumes null safety for type promotion, reachability, and definite
     assignment. The analysis server now uses an AOT-compiled snapshot for
     improved performance. New lints `switch_on_type` and `unnecessary_unawaited`
     were added, along with a new `@awaitNotRequired` annotation.
@@ -531,7 +532,7 @@
 - version: 3.9.0
   releaseDate: 2025-08-13
   area: Tools
-  subArea: Command Line
+  subArea: Command line
   description: |
     Some subcommands of the `dart` tool, such as `dart analyze` and `dart fix`
     now run AOT-compiled snapshots of the underlying tools. There should be no
@@ -604,8 +605,8 @@
   area: SDK
   subArea: Null-aware Elements
   description: |
-    Dart 3.8 introduces null-aware elements for collections, making it easier to
-    conditionally add elements based on nullability. It also adds
+    Introduced null-aware elements for collections, making it easier to
+    conditionally add elements based on nullability. Also added
     `Iterable.withIterator`, `HttpClientBearerCredentials`, and various analyzer
     improvements including new quick fixes and lints.
   tags:
@@ -700,7 +701,7 @@
 - version: 3.7.3
   releaseDate: 2025-04-16
   area: SDK
-  subArea: Analysis Server
+  subArea: Analysis server
   description: |
     This patch release fixes a performance regression in the analysis server.
   tags:
@@ -733,11 +734,11 @@
 - version: 3.7.0
   releaseDate: 2025-02-12
   area: SDK
-  subArea: Wildcard Variables
+  subArea: Wildcard variables
   description: |
-    Dart 3.7 introduces wildcard variables, a new "tall" style for the dart
-    formatter, and officially deprecates older web libraries in favor of
-    `package:web` and `dart:js_interop`. It also includes numerous analyzer
+    Introduced wildcard variables, a new "tall" style for the dart
+    formatter, and officially deprecated older web libraries in favor of
+    `package:web` and `dart:js_interop`. Also included numerous analyzer
     improvements and new lints.
   tags:
     - changed
@@ -746,7 +747,7 @@
 - version: 3.7.0
   releaseDate: 2025-02-12
   area: Language
-  subArea: Wildcard Variables
+  subArea: Wildcard variables
   description: |
     Wildcard variables are now supported. A wildcard variable is a local
     variable or parameter named `_`. Wildcard variables are non-binding, so they
@@ -764,7 +765,7 @@
 - version: 3.7.0
   releaseDate: 2025-02-12
   area: Language
-  subArea: Type Promotion
+  subArea: Type promotion
   description: |
     Reachability analysis now accounts for if a field is type promoted to `Null`
     using `is` or `as`. This makes the type system more self-consistent, because
@@ -777,7 +778,7 @@
 - version: 3.7.0
   releaseDate: 2025-02-12
   area: Libraries
-  subArea: Web Libraries
+  subArea: Web libraries
   description: |
     The `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`,
     `dart:web_gl`, and `dart:js` libraries are officially deprecated. They are
@@ -877,7 +878,7 @@
 - version: 3.6.1
   releaseDate: 2025-01-08
   area: SDK
-  subArea: Pub Get, Dart2Wasm, Analysis Options
+  subArea: Pub get, dart2wasm, analysis options
   description: |
     This patch release fixes issues with `pub get` in workspaces, AOT/dart2wasm
     compilation crashes, and analysis options discovery in workspaces.
@@ -888,12 +889,12 @@
 - version: 3.6.0
   releaseDate: 2024-12-11
   area: SDK
-  subArea: Digit Separators
+  subArea: Digit separators
   description: |
-    Dart 3.6 introduces digit separators for number literals, improves `throw`
-    expression type inference, and adds support for pub workspaces. It also
-    includes new `JSArray` constructors and methods in `dart:js_interop`, and
-    several new lints and assists.
+    Introduced digit separators for number literals, improves `throw`
+    expression type inference, and adds support for pub workspaces. Also added
+    new `JSArray` constructors and methods in `dart:js_interop`, and several
+    new lints and assists.
   tags:
     - changed
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#360
@@ -901,7 +902,7 @@
 - version: 3.6.0
   releaseDate: 2024-12-11
   area: Language
-  subArea: Digit Separators
+  subArea: Digit separators
   description: |
     Added support for digit separator underscores (`_`) to the language. Digit
     separators improve readability of long number literals.
@@ -916,7 +917,7 @@
 - version: 3.6.0
   releaseDate: 2024-12-11
   area: Language
-  subArea: Type Inference
+  subArea: Type inference
   description: |
     The context used by Dart to perform type inference on the operand of a throw
     expression has been changed from the "unknown type" to `Object`. This makes
@@ -1061,11 +1062,11 @@
 - version: 3.5.0
   releaseDate: 2024-08-06
   area: SDK
-  subArea: Sound Null Safety Only
+  subArea: Sound null safety only
   description: |
-    Dart 3.5 aligns type inference for `await` and if-null expressions with the
-    analyzer. It also updates `dart:core` `DateTime` on web to store
-    microseconds, makes `SecurityContext` final, and removes unsound null safety
+    Aligned type inference for `await` and if-null expressions with the
+    analyzer. Also updated `dart:core` `DateTime` on web to store
+    microseconds, made `SecurityContext` final, and removed unsound null safety
     support in the VM.
   tags:
     - changed
@@ -1074,7 +1075,7 @@
 - version: 3.5.0
   releaseDate: 2024-08-06
   area: Language
-  subArea: Type Inference
+  subArea: Type inference
   description: |
     When the context for an `await` expression is `dynamic`, the context for the
     operand of expression is now `FutureOr<_>`. This has been changed to match
@@ -1087,7 +1088,7 @@
 - version: 3.5.0
   releaseDate: 2024-08-06
   area: Language
-  subArea: Type Inference
+  subArea: Type inference
   description: |
     When the context for an entire if-null expression (`e1 ?? e2`) is `dynamic`,
     the context for `e2` is now the static type of `e1`. This has been changed
@@ -1169,7 +1170,7 @@
 - version: 3.5.0
   releaseDate: 2024-08-06
   area: Runtime
-  subArea: Sound Null Safety Only
+  subArea: Sound null safety only
   description: |
     The Dart VM no longer supports unsound null safety.
     - The `--no-sound-null-safety` CLI option has been removed.
@@ -1239,11 +1240,11 @@
 - version: 3.4.0
   releaseDate: 2024-05-14
   area: SDK
-  subArea: Type Analysis Improvements
+  subArea: Type analysis improvements
   description: |
-    Dart 3.4 improves type analysis for conditional expressions, if-null, and
-    switch expressions. It also adds `ExternalDartReference` to
-    `dart:js_interop`, deprecates unmodifiable typed data views, and removes
+    Improved type analysis for conditional expressions, if-null, and
+    switch expressions. Also added `ExternalDartReference` to
+    `dart:js_interop`, deprecated unmodifiable typed data views, and removed
     `waitFor` from `dart:cli`.
   tags:
     - changed
@@ -1252,7 +1253,7 @@
 - version: 3.4.0
   releaseDate: 2024-05-14
   area: Language
-  subArea: Type Analysis
+  subArea: Type analysis
   description: |
     Added improvements to the type analysis of conditional expressions, if-null
     expressions and assignments, and switch expressions.
@@ -1273,7 +1274,7 @@
 - version: 3.4.0
   releaseDate: 2024-05-14
   area: Language
-  subArea: Type Inference
+  subArea: Type inference
   description: |
     The type schema used by the Dart compilers to perform type inference on the
     operand of a null-aware spread operator (`...?`) in `map` and `set` literals
@@ -1452,10 +1453,10 @@
 - version: 3.3.0
   releaseDate: 2024-02-15
   area: SDK
-  subArea: Extension Types
+  subArea: Extension types
   description: |
-    Dart 3.3 introduces extension types for zero-cost wrappers, improves private
-    field promotion, and adds new features to `dart:ffi` and `dart:js_interop`,
+    Introduced extension types for zero-cost wrappers, improved private
+    field promotion, and added new features to `dart:ffi` and `dart:js_interop`,
     including `Native.addressOf` and `importModule`.
   tags:
     - changed
@@ -1482,7 +1483,7 @@
 - version: 3.3.0
   releaseDate: 2024-02-15
   area: Language
-  subArea: Extension Types
+  subArea: Extension types
   description: |
     Added support for extension types. Extension types are a new feature in Dart
     that allow zero-cost wrapping of an existing type. They are similar to
@@ -1510,7 +1511,7 @@
 - version: 3.3.0
   releaseDate: 2024-02-15
   area: Language
-  subArea: Private Field Promotion
+  subArea: Private field promotion
   description: |
     Abstract getters are now promotable under the rules of private final field
     promotion, if there are no conflicting declarations.
@@ -1739,7 +1740,7 @@
 - version: 3.2.1
   releaseDate: 2023-11-22
   area: SDK
-  subArea: Dart Doc
+  subArea: Dart doc
   description: |
     This patch release fixes bugs in `dart doc` generation, JSON array parsing
     causing segfaults in `flutter test`, and upgrades DevTools.
@@ -1750,11 +1751,11 @@
 - version: 3.2.0
   releaseDate: 2023-11-15
   area: SDK
-  subArea: Private Field Promotion
+  subArea: Private field promotion
   description: |
-    Dart 3.2 introduces private field promotion, allowing private final fields
-    to be promoted to non-nullable types. It also includes breaking changes to
-    refutable patterns split points, disables `waitFor` by default, and changes
+    Introduced private field promotion, allowing private final fields
+    to be promoted to non-nullable types. Also includes breaking changes to
+    refutable patterns split points, disabled `waitFor` by default, and changed
     `utf8.encode` return type to `Uint8List`.
   tags:
     - changed
@@ -1763,7 +1764,7 @@
 - version: 3.2.0
   releaseDate: 2023-11-15
   area: Language
-  subArea: Private Field Promotion
+  subArea: Private field promotion
   description: |
     Expanded type promotion to work on private final fields. Previously only
     available for local variables and parameters, now private final fields can
@@ -1802,7 +1803,7 @@
 - version: 3.2.0
   releaseDate: 2023-11-15
   area: Language
-  subArea: Type Promotion
+  subArea: Type promotion
   description: |
     Corrected inconsistencies in type promotion behavior of if-case statements
     where the value being matched against throws an exception.
@@ -2075,8 +2076,8 @@
   area: SDK
   subArea: "`dart:async`, `dart:io`"
   description: |
-    Dart 3.1 adds breaking changes to `dart:async` and `dart:io` class
-    modifiers, introduces `NativeCallable` for FFI, and makes various updates to
+    Added breaking changes to `dart:async` and `dart:io` class
+    modifiers, introduced `NativeCallable` for FFI, and made various updates to
     `dart:core` and `dart:js_interop`.
   tags:
     - changed
@@ -2185,7 +2186,7 @@
 - version: 3.0.4
   releaseDate: 2023-06-07
   area: SDK
-  subArea: Dart Format
+  subArea: Dart format
   description: |
     This patch release fixes `dart format` for nullable record types with no
     fields and errors when using records in web development mode.
@@ -2232,8 +2233,8 @@
   area: SDK
   subArea: Dart 3
   description: |
-    Dart 3.0 introduces major language features including records, patterns,
-    class modifiers, and 100% sound null safety. It also includes many other
+    Introduced major language features including records, patterns,
+    class modifiers, and 100% sound null safety. Also includes many other
     improvements and breaking changes across the platform.
   tags:
     - changed
@@ -2264,7 +2265,7 @@
 - version: 3.0.0
   releaseDate: 2023-05-10
   area: Language
-  subArea: Class Modifiers
+  subArea: Class modifiers
   description: |
     Added support for class modifiers, a new set of keywords that let you
     control how a class or mixin can be used.
@@ -2275,7 +2276,7 @@
 - version: 3.0.0
   releaseDate: 2023-05-10
   area: Language
-  subArea: Switch Expressions
+  subArea: Switch expressions
   description: |
     Added support for switch expressions, a new form of multi-way branching
     allowed where expressions are expected.
@@ -2310,7 +2311,7 @@
 - version: 3.0.0
   releaseDate: 2023-05-10
   area: Language
-  subArea: Class Modifiers
+  subArea: Class modifiers
   description: |
     Class declarations from libraries that have been upgraded to Dart 3.0 can no
     longer be used as mixins by default.
@@ -2323,7 +2324,7 @@
 - version: 3.0.0
   releaseDate: 2023-05-10
   area: Language
-  subArea: Named Parameters
+  subArea: Named parameters
   description: |
     It is now a compile time error if a colon (`:`) is used as the separator
     before the default value of an optional named parameter. Use an equal sign
@@ -2337,7 +2338,7 @@
 - version: 3.0.0
   releaseDate: 2023-05-10
   area: Language
-  subArea: Control Flow
+  subArea: Control flow
   description: |
     It is now a compile-time error if a `continue` statement targets a label
     that is not attached to a loop statement (`for`, `do`, and `while`) or a
@@ -2521,7 +2522,7 @@
 - version: 3.0.0
   releaseDate: 2023-05-10
   area: Language
-  subArea: Language Versioning
+  subArea: Language versioning
   description: |
     The 3.0 release of the Dart SDK dropped support for [language
     versions](/resources/language/evolution#language-versioning) before 2.12.
@@ -2564,7 +2565,7 @@
 - version: 2.19.3
   releaseDate: 2023-03-01
   area: SDK
-  subArea: Analysis Server
+  subArea: Analysis server
   description: |
     This patch release updates DDC configuration and limits the number of
     plugins per analysis context to prevent extreme memory usage in the Analysis
@@ -2600,9 +2601,9 @@
 - version: 2.19.0
   releaseDate: 2023-01-24
   area: SDK
-  subArea: Unnamed Libraries
+  subArea: Unnamed libraries
   description: |
-    Dart 2.19 introduces support for unnamed libraries, improved flow analysis
+    Introduced support for unnamed libraries, improved flow analysis
     for unreachable code, and reports compile-time errors for cyclic
     dependencies during top-level type inference.
   tags:
@@ -2612,7 +2613,7 @@
 - version: 2.19.0
   releaseDate: 2023-01-25
   area: Language
-  subArea: Unnamed Libraries
+  subArea: Unnamed libraries
   description: |
     Added support for unnamed libraries. Library directives, used for appending
     library-level doc comments and annotations, can and should now be written
@@ -2630,7 +2631,7 @@
 - version: 2.19.0
   releaseDate: 2023-01-25
   area: Language
-  subArea: Flow Analysis
+  subArea: Flow analysis
   description: |
     Added more flow analysis flags for unreachable code cases.
   tags:
@@ -2639,7 +2640,7 @@
 - version: 2.19.0
   releaseDate: 2023-01-25
   area: Language
-  subArea: Flow Analysis
+  subArea: Flow analysis
   description: |
     Flagged additional code as unreachable due to types `Null` and `Never`.
   tags:
@@ -2649,7 +2650,7 @@
 - version: 2.19.0
   releaseDate: 2023-01-25
   area: Language
-  subArea: Private Names
+  subArea: Private names
   description: |
     Don't delegate inaccessible private names to `noSuchMethod`.
   tags:
@@ -2659,7 +2660,7 @@
 - version: 2.19.0
   releaseDate: 2023-01-25
   area: Language
-  subArea: Type Inference
+  subArea: Type inference
   description: |
     Report a compile-time error for all cyclic dependencies during top-level
     type inference.
@@ -2803,7 +2804,7 @@
 - version: 2.18.4
   releaseDate: 2022-11-02
   area: SDK
-  subArea: Hot Reload
+  subArea: Hot reload
   description: |
     This patch release fixes crashes during hot reload.
   tags:
@@ -2813,7 +2814,7 @@
 - version: 2.18.3
   releaseDate: 2022-10-19
   area: SDK
-  subArea: Code Coverage
+  subArea: Code coverage
   description: |
     This patch release fixes a regression in code coverage computation.
   tags:
@@ -2834,7 +2835,7 @@
 - version: 2.18.1
   releaseDate: 2022-09-14
   area: SDK
-  subArea: Type Inference
+  subArea: Type inference
   description: |
     This patch release fixes a crash caused by incorrect type inference.
   tags:
@@ -2844,11 +2845,11 @@
 - version: 2.18.0
   releaseDate: 2022-08-30
   area: SDK
-  subArea: Type Inference
+  subArea: Type inference
   description: |
-    Dart 2.18 enhances type inference for generic invocations with function
-    literals, introduces breaking changes in `dart:io` networking APIs, and
-    removes standalone tools like `dart2js` and `dartanalyzer`.
+    Enhanced type inference for generic invocations with function
+    literals, introduced breaking changes in `dart:io` networking APIs, and
+    removed standalone tools like `dart2js` and `dartanalyzer`.
   tags:
     - changed
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2180
@@ -2856,7 +2857,7 @@
 - version: 2.18.0
   releaseDate: 2022-08-30
   area: Language
-  subArea: Type Inference
+  subArea: Type inference
   description: |
     Enhanced type inference. This change allows information flow between
     arguments in generic function calls. Before 2.18, if you didn't specify an
@@ -3002,9 +3003,9 @@
 - version: 2.17.0
   releaseDate: 2022-05-11
   area: SDK
-  subArea: Enhanced Enums
+  subArea: Enhanced enums
   description: |
-    Dart 2.17 introduces enhanced enums with members, super-initializer
+    Introduced enhanced enums with members, super-initializer
     parameters, named arguments anywhere, and updates to `dart:core` and
     `dart:ffi`.
   tags:
@@ -3014,7 +3015,7 @@
 - version: 2.17.0
   releaseDate: 2022-05-11
   area: Language
-  subArea: Enhanced Enums
+  subArea: Enhanced enums
   description: |
     Added support for enhanced enums with members. Enhanced enums allow enum
     declarations to define members including fields, constructors, methods,
@@ -3026,7 +3027,7 @@
 - version: 2.17.0
   releaseDate: 2022-05-11
   area: Language
-  subArea: Super Parameters
+  subArea: Super parameters
   description: |
     Added support for super-initializer parameters. Super parameters allow you
     to avoid having to manually pass each parameter into the super invocation of
@@ -3039,10 +3040,10 @@
 - version: 2.17.0
   releaseDate: 2022-05-11
   area: Language
-  subArea: Named Parameters
+  subArea: Named parameters
   description: |
     Added support for named arguments anywhere. Named arguments can now be
-    freely interleaved with positional arguments. As of Dart 2.17, you can write
+    freely interleaved with positional arguments. You can write
     the following code:
 
     ```dart
@@ -3134,7 +3135,7 @@
 - version: 2.16.2
   releaseDate: 2022-03-24
   area: SDK
-  subArea: Flutter Web
+  subArea: Flutter web
   description: |
     This patch release fixes a dart2js crash when building some Flutter web
     apps.
@@ -3156,10 +3157,10 @@
 - version: 2.16.0
   releaseDate: 2022-02-03
   area: SDK
-  subArea: Tooling Updates
+  subArea: Tooling updates
   description: |
-    Dart 2.16 adds `Error.throwWithStackTrace`, `Abi` specific integers in FFI,
-    improves `dart pub` with concurrency and new commands, and deprecates
+    Added `Error.throwWithStackTrace`, `Abi` specific integers in FFI,
+    improved `dart pub` with concurrency and new commands, and deprecated
     standalone tools in favor of `dart` commands.
   tags:
     - changed
@@ -3243,9 +3244,9 @@
 - version: 2.15.0
   releaseDate: 2021-12-08
   area: SDK
-  subArea: Constructor Tear-offs
+  subArea: Constructor tear-offs
   description: |
-    Dart 2.15 introduces constructor tear-offs, generic type literals, explicit
+    Introduced constructor tear-offs, generic type literals, explicit
     generic method instantiations, and improvements to `dart:core` enums and
     developer tools.
   tags:
@@ -3255,7 +3256,7 @@
 - version: 2.15.0
   releaseDate: 2021-12-08
   area: Language
-  subArea: Constructor Tear-offs
+  subArea: Constructor tear-offs
   description: |
     Improved support for function pointers, known as _tear-offs._ In particular,
     constructor tear-offs are now supported.
@@ -3386,10 +3387,10 @@
 - version: 2.14.0
   releaseDate: 2021-09-09
   area: SDK
-  subArea: Triple Shift
+  subArea: Triple shift
   description: |
-    Dart 2.14 introduces the triple-shift operator `>>>`, removes restrictions
-    on type arguments for annotations, and adds new features to `dart:core` and
+    Introduced the triple-shift operator `>>>`, removed restrictions
+    on type arguments for annotations, and added new features to `dart:core` and
     `dart:ffi`.
   tags:
     - changed
@@ -3413,7 +3414,7 @@
   description: |
     Removed restrictions on type arguments for annotations. You can pass type
     arguments to annotations and use a generic function type as a type argument.
-    As of Dart 2.14, you can write the following code:
+    As of this release, you can write the following code:
 
     ```dart
     @TypeHelper<int>(42, "The meaning")
@@ -3491,7 +3492,7 @@
 - version: 2.14.0
   releaseDate: 2021-09-08
   area: Tools
-  subArea: Dart Dev Compiler
+  subArea: Dart dev compiler
   description: |
     Changed subtyping relations of `package:js` classes to be more correct and
     consistent with Dart2JS.
@@ -3534,9 +3535,9 @@
 - version: 2.13.0
   releaseDate: 2021-05-18
   area: SDK
-  subArea: Type Aliases
+  subArea: Type aliases
   description: |
-    Dart 2.13 introduces non-function type aliases, improvements to
+    Introduced non-function type aliases, improvements to
     `dart:collection` classes, and FFI support for packed structs and inline
     arrays.
   tags:
@@ -3546,7 +3547,7 @@
 - version: 2.13.0
   releaseDate: 2021-05-19
   area: Language
-  subArea: Type Aliases
+  subArea: Type aliases
   description: |
     Added support for type aliases for any type, not just functions. Type
     aliases used to work only for function types but now work for any type. You
@@ -3622,9 +3623,9 @@
 - version: 2.12.0
   releaseDate: 2021-03-03
   area: SDK
-  subArea: Sound Null Safety
+  subArea: Sound null safety
   description: |
-    Dart 2.12 introduces sound null safety, stable FFI, and many other new
+    Introduced sound null safety, stable FFI, and many other new
     features and improvements across the platform.
   tags:
     - changed
@@ -3633,7 +3634,7 @@
 - version: 2.12.0
   releaseDate: 2021-03-03
   area: Language
-  subArea: Null Safety
+  subArea: Null safety
   description: |
     Null safety is now enabled by default in all code that has not opted out.
     When you opt into null safety, types in your code are non-nullable by
@@ -3790,7 +3791,7 @@
   area: SDK
   subArea: Unified C API
   description: |
-    Dart 2.10 introduces a unified C API for the VM, `Dart_FinalizableHandle`s,
+    Introduced a unified C API for the VM, `Dart_FinalizableHandle`s,
     and deferred loading of types in `dart2js`.
   tags:
     - changed
@@ -3839,7 +3840,7 @@
 - version: 2.9.0
   releaseDate: 2020-08-05
   area: SDK
-  subArea: Platform Updates
+  subArea: Platform updates
   description: |
     Updates `dart:io` with `exit` returning `Never` and `OSError` implementing
     `Exception`. Improves `dart:html` `CssClassSet` methods to return `false`
@@ -3961,7 +3962,7 @@
 - version: 2.8.1
   releaseDate: 2020-05-06
   area: SDK
-  subArea: Null Safety Prep
+  subArea: Null safety prep
   description: |
     Prepares for non-nullable types with several breaking changes to core
     library APIs.
@@ -3972,7 +3973,7 @@
 - version: 2.8.1
   releaseDate: 2020-05-06
   area: Language
-  subArea: Type Inference
+  subArea: Type inference
   description: |
     Fixed an implementation bug where local variable inference would incorrectly
     use the promoted type of a type variable.
@@ -4160,7 +4161,7 @@
 - version: 2.8.1
   releaseDate: 2020-05-06
   area: Tools
-  subArea: Dart Dev Compiler
+  subArea: Dart dev compiler
   description: |
     We fixed several inconsistencies between DDC and Dart2JS so that users less
     frequently encounter code that is accepted by one compiler but then fails in
@@ -4171,7 +4172,7 @@
 - version: 2.8.1
   releaseDate: 2020-05-06
   area: Tools
-  subArea: Dart Dev Compiler
+  subArea: Dart dev compiler
   description: |
     Deleted the legacy (analyzer based) version of DDC.
   tags:
@@ -4182,7 +4183,7 @@
 - version: 2.8.1
   releaseDate: 2020-05-06
   area: Tools
-  subArea: Dart Dev Compiler
+  subArea: Dart dev compiler
   description: |
     Functions passed to JavaScript using the recommended `package:js` interop
     specification must now be wrapped with a call to `allowInterop`.
@@ -4193,7 +4194,7 @@
 - version: 2.8.1
   releaseDate: 2020-05-06
   area: Tools
-  subArea: Dart Dev Compiler
+  subArea: Dart dev compiler
   description: |
     Constructors in `@JS()` classes must be marked with `external`.
   tags:
@@ -4268,7 +4269,7 @@
 - version: 2.7.0
   releaseDate: 2019-12-11
   area: SDK
-  subArea: Extension Methods
+  subArea: Extension methods
   description: |
     Introduces official support for extension methods. Adds new constructors to
     `TypedData` in `dart:typed_data`. Improves Dart VM field initialization on
@@ -4280,7 +4281,7 @@
 - version: 2.7.0
   releaseDate: 2019-12-11
   area: Language
-  subArea: Extension Methods
+  subArea: Extension methods
   description: |
     Added support for extension methods. enabling you to add functionality to
     any type, even types you don't control with the brevity and auto-complete
@@ -4318,7 +4319,7 @@
 - version: 2.7.0
   releaseDate: 2019-12-11
   area: Language
-  subArea: Extension Methods
+  subArea: Extension methods
   description: |
     Static extension members are accessible when imported with a prefix.
   tags:
@@ -4349,7 +4350,7 @@
 - version: 2.6.0
   releaseDate: 2019-11-05
   area: SDK
-  subArea: Static Extensions Preview
+  subArea: Static extensions preview
   description: |
     Introduces a preview of static extension members. Changes inference for
     `Null` values in `FutureOr` contexts. Updates `dart:ffi` with static
@@ -4361,7 +4362,7 @@
 - version: 2.6.0
   releaseDate: 2019-11-05
   area: Language
-  subArea: Type Inference
+  subArea: Type inference
   description: |
     Changed inference when using `Null` values in a `FutureOr` context. Namely,
     constraints of the forms similar to `Null` <: `FutureOr<T>` now yield `Null`
@@ -4433,7 +4434,7 @@
 - version: 2.5.0
   releaseDate: 2019-09-10
   area: SDK
-  subArea: Constant Expressions
+  subArea: Constant expressions
   description: |
     Expands the set of operations allowed in constant expressions, including
     casts, type tests, and collection features.
@@ -4454,7 +4455,7 @@
 - version: 2.5.0
   releaseDate: 2019-09-10
   area: Libraries
-  subArea: Type System
+  subArea: Type system
   description: |
     Various methods and properties across various core libraries, which used to
     declare a return type of `List<int>`, were updated to declare a return type
@@ -4522,7 +4523,7 @@
 - version: 2.4.0
   releaseDate: 2019-06-27
   area: Language
-  subArea: Type System
+  subArea: Type system
   description: |
     Covariance of type variables used in super-interfaces is now enforced.
 
@@ -4540,7 +4541,7 @@
 - version: 2.4.0
   releaseDate: 2019-06-27
   area: Language
-  subArea: Async Support
+  subArea: Async support
   description: |
     You can now use `async` as an identifier in asynchronous and generator
     functions.
@@ -4605,7 +4606,7 @@
 - version: 2.3.0
   releaseDate: 2019-05-08
   area: Language
-  subArea: Spread Operator
+  subArea: Spread operator
   description: |
     Added support for the spread operator (`...` and `...?`) in collection
     literals. The spread operator enables unpacking the elements from one list
@@ -4629,7 +4630,7 @@
 - version: 2.3.0
   releaseDate: 2019-05-08
   area: Language
-  subArea: Collection If
+  subArea: Collection if
   description: |
     Added support for collection if in collection literals. The collection if
     operator enables adding elements conditionally. The following example adds a
@@ -4651,7 +4652,7 @@
 - version: 2.3.0
   releaseDate: 2019-05-08
   area: Language
-  subArea: Collection For
+  subArea: Collection for
   description: |
     Added support for collection for in collection literals. The collection for
     operator enables building repeated elements. The following example adds one
@@ -4673,7 +4674,7 @@
 - version: 2.2.0
   releaseDate: 2019-02-26
   area: SDK
-  subArea: Set Literals
+  subArea: Set literals
   description: |
     Introduces set literals using `{}`. Renames `klass` getter to `classNode` in
     Kernel AST API. Updates `Link` implementation on Windows to use true
@@ -4685,7 +4686,7 @@
 - version: 2.2.0
   releaseDate: 2019-02-26
   area: Language
-  subArea: Set Literals
+  subArea: Set literals
   description: |
     Added support for set literals using `{}`.
 
@@ -4765,7 +4766,7 @@
 - version: 2.1.0
   releaseDate: 2018-11-15
   area: Language
-  subArea: Number Types
+  subArea: Number types
   description: |
     Added support for `int`-to-`double` conversion, allowing developers to set
     `double` values using integer literals. This feature removed the annoyance
@@ -4788,7 +4789,7 @@
 - version: 2.1.0
   releaseDate: 2018-11-15
   area: Language
-  subArea: Static Errors
+  subArea: Static errors
   description: |
     A number of static errors that should have been detected and reported were
     not supported in 2.0.0. These are reported now, which means existing
@@ -4820,7 +4821,7 @@
 - version: 2.0.0
   releaseDate: 2018-08-07
   area: SDK
-  subArea: Sound Type System
+  subArea: Sound type system
   description: |
     Introduces a sound static type system (formerly strong mode). Makes `new`
     keyword optional and `const` optional in const contexts. Changes `async`
@@ -4833,7 +4834,7 @@
 - version: 2.0.0
   releaseDate: 2018-02-22
   area: Language
-  subArea: Type System
+  subArea: Type system
   description: |
     Replaced the unsound optional static type system with a sound static type
     system using type inference and runtime checks, formerly called strong mode.
@@ -4843,7 +4844,7 @@
 - version: 2.0.0
   releaseDate: 2018-02-22
   area: Language
-  subArea: Async Functions
+  subArea: Async functions
   description: |
     Functions marked `async` now run synchronously until the first `await`
     statement.
@@ -4864,7 +4865,7 @@
 - version: 2.0.0
   releaseDate: 2018-02-22
   area: Libraries
-  subArea: Type System
+  subArea: Type system
   description: |
     Implemented a new sound type system. Before Dart 2.0, types weren't fully
     sound, and Dart relied heavily on runtime type checking. Dart 1.x code had

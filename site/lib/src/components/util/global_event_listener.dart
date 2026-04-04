@@ -41,6 +41,41 @@ class _GlobalClickListenerState extends State<GlobalEventListener> {
   }
 
   @override
+  void didUpdateComponent(GlobalEventListener oldComponent) {
+    super.didUpdateComponent(oldComponent);
+    if (kIsWeb) {
+      _clickSubscription = _updateListener(
+        component.onClick,
+        oldComponent.onClick,
+        _clickSubscription,
+        web.EventStreamProviders.clickEvent,
+      );
+      _keyDownSubscription = _updateListener(
+        component.onKeyDown,
+        oldComponent.onKeyDown,
+        _keyDownSubscription,
+        web.EventStreamProviders.keyDownEvent,
+      );
+    }
+  }
+
+  StreamSubscription<T>? _updateListener<T extends web.Event>(
+    void Function(T)? newCallback,
+    void Function(T)? oldCallback,
+    StreamSubscription<T>? subscription,
+    web.EventStreamProvider<T> provider,
+  ) {
+    if (newCallback != oldCallback) {
+      unawaited(subscription?.cancel());
+      if (newCallback case final callback?) {
+        return provider.forTarget(web.document).listen(callback);
+      }
+      return null;
+    }
+    return subscription;
+  }
+
+  @override
   void dispose() {
     unawaited(_clickSubscription?.cancel());
     unawaited(_keyDownSubscription?.cancel());
