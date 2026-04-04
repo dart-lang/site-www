@@ -2051,6 +2051,60 @@
     - "typedef"
     - "alias"
 
+- term: "Uninitialized"
+  short_description: |-
+    A variable that has been declared but has not yet been assigned a value.
+  long_description: |-
+    A variable is _uninitialized_ when it has been declared but
+    has not yet been assigned a value.
+
+    Non-nullable variables must be initialized before they are read,
+    either at the point of declaration or through all possible
+    execution paths before the first use:
+
+    ```dart
+    void f() {
+      int x;
+      print(x); // Error: variable 'x' must be assigned before it can be used.
+    }
+    ```
+
+    Nullable variables that aren't explicitly initialized default to `null`:
+
+    ```dart
+    int? count; // Implicitly initialized to null.
+    print(count); // Prints: null
+    ```
+
+    To defer initialization of a non-nullable variable,
+    use the `late` keyword. A `late` variable is uninitialized
+    until its first assignment, and accessing it before it's assigned
+    throws a `LateInitializationError` at runtime:
+
+    ```dart
+    late String name;
+    print(name); // Throws LateInitializationError if not yet assigned.
+    ```
+  related_links:
+    - text: "Variables"
+      link: "/language/variables"
+      type: "doc"
+    - text: "Definite assignment"
+      link: "#definite-assignment"
+      type: "term"
+    - text: "Late"
+      link: "#late"
+      type: "term"
+
+  labels:
+    - "language"
+    - "variables"
+    - "null safety"
+    - "flow analysis"
+  alternate:
+    - "Unassigned"
+    - "Not initialized"
+
 - term: "Variance and variance positions"
   id: "variance"
   short_description: |-
