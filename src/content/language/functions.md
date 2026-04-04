@@ -61,6 +61,7 @@ that indicates whether the `atomicNumber` falls into the noble gas range.
 
 ## Parameters
 
+
 A function can have any number of _required positional_ parameters. These can be
 followed either by _named_ parameters or by _optional positional_ parameters
 (but not both).
@@ -210,6 +211,14 @@ assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 ```
 
 <a id="the-main-function" aria-hidden="true"></a>
+
+### Parameter modifiers
+
+In Dart 3.13 and later, you cannot use modifiers like `final` or `var` for normal function parameters.
+These keywords are now reserved exclusively for [primary constructors](/language/primary-constructors) to declare instance fields.
+
+If you wish to enforce immutability for function parameters,
+use lints like [`parameter_assignments`](https://dart.dev/tools/linter-rules/parameter_assignments) instead of the `final` keyword in the signature.
 
 ## The main() function {:#main}
 

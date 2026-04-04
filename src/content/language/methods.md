@@ -2,8 +2,8 @@
 title: Methods
 description: Learn about methods in Dart.
 prevpage:
-  url: /language/constructors
-  title: Constructors
+  url: /language/primary-constructors
+  title: Primary constructors
 nextpage:
   url: /language/extend
   title: Extend a class

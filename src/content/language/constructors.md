@@ -5,8 +5,8 @@ prevpage:
   url: /language/classes
   title: Classes
 nextpage:
-  url: /language/methods
-  title: Methods
+  url: /language/primary-constructors
+  title: Primary constructors
 ---
 
 Constructors are special functions that create instances of classes.
@@ -262,6 +262,36 @@ var buffers = charCodes.map((code) => StringBuffer(code));
 For more discussion, watch this Decoding Flutter video on tear-offs.
 
 <YouTubeEmbed id="OmCaloD7sis" title="Dart Tear-offs | Decoding Flutter"></YouTubeEmbed>
+
+## Concise constructor syntax
+
+In Dart 3.13 and later, you can omit the class name when declaring a generative or factory constructor inside the class body.
+Instead, use the modifier `new` or `factory` directly:
+
+-   `new` or `new named`
+-   `factory` or `factory named`
+
+Unlike traditional named constructors (such as `Point.origin()`),
+concise named constructors do not use a dot between the keyword (modifier) and the name.
+
+```dart
+class Point {
+  double x, y;
+
+  // Concise unnamed generative constructor
+  new(this.x, this.y);
+
+  // Concise named generative constructor
+  new origin() : x = 0, y = 0;
+
+  // Concise named factory constructor
+  factory fromMap(Map<String, double> map) => Point(map['x']!, map['y']!);
+}
+```
+
+This syntax reduces verbosity and makes refactoring class names easier.
+For an even more concise syntax where you define fields and constructors in a single line,
+see [Primary constructors](/language/primary-constructors).
 
 ## Instance variable initialization
 
