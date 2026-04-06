@@ -12,8 +12,8 @@ In this chapter, you'll explore the
 power of object-oriented programming (OOP) in Dart.
 You'll learn how to create [classes](/language/classes) and
 define relationships between them, including
-[**inheritance**](/language/extend) and
-[**abstract classes**](/language/class-modifiers#abstract).
+[inheritance](/language/extend) and
+[abstract classes](/language/class-modifiers#abstract).
 You'll also build a foundation for creating well-structured CLI applications.
 
 <SummaryCard>
@@ -255,8 +255,8 @@ establishing an inheritance relationship.
     In Dart, prefixing a variable or field name with an underscore (`_`)
     makes it library-private.
 
-    Instead of allowing direct access, you expose the list through a read-only
-    unmodifiable view ([`UnmodifiableSetView`][unmodifiable-set-view]).
+    Instead of allowing direct access, you expose the options through a
+    read-only unmodifiable view ([`UnmodifiableSetView`][unmodifiable-set-view]).
     This approach is a core part
     of encapsulation: the practice of restricting direct access to a class's
     internal state to prevent unintended interference.
@@ -519,8 +519,9 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
 
     Here are the key implementation details:
 
-    - **`_commands` map:** A private map linking command names to their concrete 
-      `Command` object instances. It's safe-guarded by an `UnmodifiableSetView`.
+    - **`_commands` map:** A private map linking command names to their
+      concrete `Command` object instances. Its values are exposed via an
+      `UnmodifiableSetView`.
     - **`addCommand()`:** Registers a command and assigns `this` runner to the 
       command's `runner` property. This fulfills the `late` initialization 
       promise made earlier in the `Command` class.
