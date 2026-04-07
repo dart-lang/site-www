@@ -123,6 +123,15 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
+### `--[no-]example`
+
+By default, after adding the specified dependencies,
+pub also retrieves the dependencies of the
+[`example/` directory][example-dir] of the package (`--example`).
+To skip retrieving example dependencies, use `--no-example`.
+
+[example-dir]: /tools/pub/package-layout#examples
+
 ## In a workspace
 
 In a [Pub workspace](/tools/pub/workspaces) `dart pub add` will add
