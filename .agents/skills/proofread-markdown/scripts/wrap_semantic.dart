@@ -41,12 +41,9 @@ String wrapContent(String content) {
       continue;
     }
 
-    // Don't wrap empty lines, headings, or lists (heuristic)
+    // Don't wrap empty lines or headings (heuristic)
     if (line.trim().isEmpty ||
-        line.trim().startsWith('#') ||
-        line.trim().startsWith('-') ||
-        line.trim().startsWith('*') ||
-        RegExp(r'^\d+\.').hasMatch(line.trim())) {
+        line.trim().startsWith('#')) {
       result.add(line);
       continue;
     }
@@ -63,51 +60,92 @@ String wrapContent(String content) {
 }
 
 List<String> wrapLine(String line) {
+  // Extract leading whitespace
+  final match = RegExp(r'^(\s*)').firstMatch(line);
+  final leadingWhitespace = match?.group(1) ?? '';
+  
+  // Check for list bullet
+  final contentAfterWs = line.substring(leadingWhitespace.length);
+  final listMatch = RegExp(r'^([-*]|\d+\.)\s+').firstMatch(contentAfterWs);
+  
+  String firstLinePrefix;
+  String subsequentLinePrefix;
+  String contentToWrap;
+  
+  if (listMatch != null) {
+    // It's a list item
+    final prefixLength = leadingWhitespace.length + listMatch.end;
+    firstLinePrefix = line.substring(0, prefixLength);
+    subsequentLinePrefix = ' ' * prefixLength;
+    contentToWrap = line.substring(prefixLength);
+  } else {
+    // Normal indented text
+    firstLinePrefix = leadingWhitespace;
+    subsequentLinePrefix = leadingWhitespace;
+    contentToWrap = contentAfterWs;
+  }
+  
+  // Wrap the content with available width
+  final availableWidth = 80 - firstLinePrefix.length;
+  final wrappedChunks = _wrapText(contentToWrap, availableWidth);
+  
   final result = <String>[];
-  var currentLine = line;
+  if (wrappedChunks.isEmpty) {
+    result.add(firstLinePrefix);
+  } else {
+    result.add(firstLinePrefix + wrappedChunks[0]);
+    for (var i = 1; i < wrappedChunks.length; i++) {
+      result.add(subsequentLinePrefix + wrappedChunks[i]);
+    }
+  }
+  return result;
+}
 
-  while (currentLine.length > 80) {
+List<String> _wrapText(String text, int width) {
+  final result = <String>[];
+  var currentText = text.trim();
+  
+  while (currentText.length > width) {
     var splitIndex = -1;
-
-    // 1. Try to find a sentence break (. ! ?) within the first 80 chars.
-    for (var i = 80; i > 0; i--) {
-      if (i < currentLine.length &&
-          (currentLine[i] == '.' || currentLine[i] == '!' || currentLine[i] == '?') &&
-          (i + 1 == currentLine.length || currentLine[i + 1] == ' ')) {
+    
+    // 1. Try sentence break
+    for (var i = width; i > 0; i--) {
+      if (i < currentText.length &&
+          (currentText[i] == '.' || currentText[i] == '!' || currentText[i] == '?') &&
+          (i + 1 == currentText.length || currentText[i + 1] == ' ')) {
         splitIndex = i + 1;
         break;
       }
     }
-
-    // 2. Try to find a clause break (, ;) within the first 80 chars.
+    
+    // 2. Try clause break
     if (splitIndex == -1) {
-      for (var i = 80; i > 0; i--) {
-        if (i < currentLine.length &&
-            (currentLine[i] == ',' || currentLine[i] == ';') &&
-            (i + 1 == currentLine.length || currentLine[i + 1] == ' ')) {
+      for (var i = width; i > 0; i--) {
+        if (i < currentText.length &&
+            (currentText[i] == ',' || currentText[i] == ';') &&
+            (i + 1 == currentText.length || currentText[i + 1] == ' ')) {
           splitIndex = i + 1;
           break;
         }
       }
     }
-
-    // 3. Fall back to space.
+    
+    // 3. Fall back to space
     if (splitIndex == -1) {
-      splitIndex = currentLine.lastIndexOf(' ', 80);
+      splitIndex = currentText.lastIndexOf(' ', width);
     }
-
-    // 4. Force break if no space found (very long word).
+    
+    // 4. Force break
     if (splitIndex == -1) {
-      splitIndex = 80;
+      splitIndex = width;
     }
-
-    result.add(currentLine.substring(0, splitIndex).trimRight());
-    currentLine = currentLine.substring(splitIndex).trimLeft();
+    
+    result.add(currentText.substring(0, splitIndex).trimRight());
+    currentText = currentText.substring(splitIndex).trimLeft();
   }
-
-  if (currentLine.isNotEmpty) {
-    result.add(currentLine);
+  
+  if (currentText.isNotEmpty) {
+    result.add(currentText);
   }
-
   return result;
 }
