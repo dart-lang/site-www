@@ -21,7 +21,8 @@ class DashImage extends StatelessComponent {
   final String? caption;
 
   static DashImage fromAttributes(Map<String, String> attributes) {
-    if (attributes['src'] == null) {
+    final imageSrc = attributes['src'];
+    if (imageSrc == null) {
       throw ArgumentError.value(
         attributes,
         'src',
@@ -29,7 +30,7 @@ class DashImage extends StatelessComponent {
       );
     }
     return DashImage(
-      src: attributes['src']!,
+      src: imageSrc,
       alt: attributes['alt'],
       caption: attributes['caption'],
     );
@@ -39,14 +40,15 @@ class DashImage extends StatelessComponent {
   Component build(BuildContext context) {
     if (alt == null) {
       print(
-        '[WARNING] DashImage is missing an "alt" attribute for ${context.page.url}:$src',
+        '[WARNING] DashImage is missing an "alt" attribute for '
+        '${context.page.url}:$src',
       );
     }
     return figure([
       img(src: context.resolveAsset(src), alt: alt),
-      if (caption != null && caption!.isNotEmpty)
+      if (caption case final caption? when caption.isNotEmpty)
         figcaption([
-          DashMarkdown(content: caption!, inline: true),
+          DashMarkdown(content: caption, inline: true),
         ], classes: 'figure-caption'),
     ]);
   }
