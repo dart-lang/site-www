@@ -29,7 +29,7 @@ final class DashSideNav extends StatelessComponent {
   Component build(BuildContext context) {
     final activeEntry = activeNavEntry(context.page.url);
 
-    return div(id: 'sidenav', [
+    return div(id: 'sidenav', classes: navEntries.isEmpty ? 'empty' : '', [
       const form(
         action: '/search/',
         classes: 'site-header-search form-inline',
@@ -61,10 +61,11 @@ final class DashSideNav extends StatelessComponent {
           iconId: 'docs',
           active: activeEntry == ActiveNavEntry.docs,
         ),
-        const _TopNavItem(
-          href: 'https://blog.dart.dev',
+        _TopNavItem(
+          href: '/blog',
           label: 'Blog',
           iconId: 'newsmode',
+          active: activeEntry == ActiveNavEntry.blog,
         ),
         _TopNavItem(
           href: '/community',

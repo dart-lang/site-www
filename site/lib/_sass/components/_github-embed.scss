@@ -1,0 +1,70 @@
+.github-embed {
+    display: block;
+    border: 1px solid var(--site-outline);
+    border-radius: 2px;
+    margin: 2rem 0;
+    text-decoration: none !important;
+    color: inherit !important;
+    overflow: hidden;
+    transition: background-color 0.2s ease;
+    background-color: var(--site-bg-color);
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    .github-embed-content {
+        display: flex;
+        flex-direction: row;
+        min-height: 160px;
+    }
+
+    .github-embed-text {
+        flex: 1;
+        padding: 1.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+
+    .github-embed-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--site-base-fgColor);
+        margin-bottom: 0.25rem;
+    }
+
+    .github-embed-description {
+        font-size: 1rem;
+        color: var(--site-base-fgColor-alt);
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .github-embed-footer {
+        font-size: 0.875rem;
+        color: var(--site-base-fgColor-alt);
+        margin-top: 0.75rem;
+    }
+
+    .github-embed-image {
+        width: 200px;
+        flex-shrink: 0;
+        background-color: #f0f0f0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 600px) {
+            display: none;
+        }
+    }
+}
