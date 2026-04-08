@@ -2079,11 +2079,11 @@
     To defer initialization of a non-nullable variable,
     use the `late` keyword. A `late` variable is uninitialized
     until its first assignment, and accessing it before it's assigned
-    throws a `LateInitializationError` at runtime:
+    throws a late initialization error at run time:
 
     ```dart
     late String name;
-    print(name); // Throws LateInitializationError if not yet assigned.
+    print(name); // Throws a late initialization error if not yet assigned.
     ```
   related_links:
     - text: "Variables"
