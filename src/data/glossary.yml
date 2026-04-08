@@ -2095,7 +2095,6 @@
     - text: "Late"
       link: "#late"
       type: "term"
-
   labels:
     - "language"
     - "variables"
