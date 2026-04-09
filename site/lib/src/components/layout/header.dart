@@ -23,30 +23,56 @@ class DashHeader extends StatelessComponent {
     final layout = context.page.data.page['layout'];
     final activeEntry = activeNavEntry(pageUrlPath);
 
-    return header(id: 'site-header', classes: 'always-dark-mode', [
-      nav(classes: 'navbar', [
-        const a(
-          id: 'site-primary-logo',
-          classes: 'site-wordmark',
-          href: '/',
-          attributes: {
-            'aria-label': 'Go to the Dart homepage',
-            'title': 'Go to the Dart homepage',
-          },
-          [
-            img(
-              src: '/assets/img/logo/dart-192.svg',
-              alt: 'Dart logo',
-              attributes: {'width': '192'},
-            ),
-            span(
-              classes: 'name',
-              attributes: {'translate': 'no'},
-              [.text('Dart')],
-            ),
-          ],
-        ),
+    final isBlog = activeEntry == ActiveNavEntry.blog;
+    final classes = [
+      if (!isBlog) 'always-dark-mode',
+      if (isBlog) 'variant-gray',
+    ].toClasses;
 
+    return header(id: 'site-header', classes: classes, [
+      nav(classes: 'navbar', [
+        span(id: 'site-primary-logo', classes: 'site-wordmark', [
+          const a(
+            href: '/',
+            attributes: {
+              'aria-label': 'Go to the Dart homepage',
+              'title': 'Go to the Dart homepage',
+            },
+            [
+              img(
+                src: '/assets/img/logo/dart-192.svg',
+                alt: 'Dart logo',
+                attributes: {'width': '192'},
+              ),
+              span(
+                classes: 'name',
+                attributes: {'translate': 'no'},
+                [.text('Dart')],
+              ),
+            ],
+          ),
+          ?switch (activeEntry) {
+            ActiveNavEntry.docs => const a(
+              href: '/docs',
+              classes: 'subtype',
+              attributes: {'translate': 'no'},
+              [.text('Docs')],
+            ),
+            ActiveNavEntry.blog => const a(
+              href: '/blog',
+              classes: 'subtype',
+              attributes: {'translate': 'no'},
+              [.text('Blog')],
+            ),
+            ActiveNavEntry.learn => const a(
+              href: '/learn',
+              classes: 'subtype',
+              attributes: {'translate': 'no'},
+              [.text('Learn')],
+            ),
+            _ => null,
+          },
+        ]),
         ul(classes: 'nav-items', [
           li([
             a(
@@ -72,11 +98,14 @@ class DashHeader extends StatelessComponent {
           ]),
           li([
             a(
-              href: 'https://blog.dart.dev',
+              href: '/blog',
               classes: [
                 'nav-link',
+                if (activeEntry == ActiveNavEntry.blog) 'active',
               ].toClasses,
-              [const .text('Blog')],
+              [
+                const span([.text('Blog')]),
+              ],
             ),
           ]),
           li([
@@ -152,6 +181,7 @@ class DashHeader extends StatelessComponent {
                 MaterialIcon('search'),
               ],
             ),
+
             if (layout != 'homepage') const ThemeSwitcher(),
             const SiteSwitcher(),
             const MenuToggle(),

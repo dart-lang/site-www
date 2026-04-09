@@ -8,6 +8,10 @@ import 'package:jaspr/client.dart';
 
 import 'package:dart_dev_site/src/archive/archive_table.dart'
     deferred as _archive_table;
+import 'package:dart_dev_site/src/components/blog/client/blog_categories.dart'
+    deferred as _blog_categories;
+import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
+    deferred as _share_button;
 import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     deferred as _collapse_button;
 import 'package:dart_dev_site/src/components/common/client/cookie_notice.dart'
@@ -61,6 +65,17 @@ ClientOptions get defaultClientOptions => ClientOptions(
     'archive_table': ClientLoader(
       (p) => _archive_table.ArchiveTable(channel: p['channel'] as String),
       loader: _archive_table.loadLibrary,
+    ),
+    'blog_categories': ClientLoader(
+      (p) => _blog_categories.BlogCategories(),
+      loader: _blog_categories.loadLibrary,
+    ),
+    'share_button': ClientLoader(
+      (p) => _share_button.ShareButton(
+        url: p['url'] as String,
+        title: p['title'] as String,
+      ),
+      loader: _share_button.loadLibrary,
     ),
     'collapse_button': ClientLoader(
       (p) => _collapse_button.CollapseButton(
