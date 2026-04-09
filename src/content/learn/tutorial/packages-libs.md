@@ -147,7 +147,7 @@ you can use a [path dependency][].
     isn't intended to be published to pub.dev,
     add `publish_to: none` after the `name` field.
     This helps avoid accidental publishing and
-    prevents errors about adding path dependencies.
+    prevents analyzer warnings about adding path dependencies.
 
     ```yaml highlightLines=2
     name: cli
