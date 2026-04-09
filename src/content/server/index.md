@@ -45,6 +45,31 @@ For additional options, see [#server packages on pub.dev][server-pkgs].
 
 [server-pkgs]: {{site.pub-pkg}}?q=topic%3Aserver
 
+## Firebase functions
+
+You can write Cloud Functions for Firebase using Dart,
+enabling full-stack development with a single language.
+This allows you to reuse your knowledge and tools
+to build secure backend services, call external APIs,
+and respond to Firebase triggers.
+
+With Firebase functions in Dart, you can:
+*   Share code and logic between your Flutter app and your backend.
+*   Perform secure admin actions triggered by Firebase services.
+*   Call services outside of Firebase from a secure backend.
+*   Use standard Firebase CLI tools, local emulation, and hot reloading.
+
+For getting started guides and reference documentation,
+see the published packages:
+
+*   [Placeholder for Firebase Functions package]({{site.pub-pkg}}/)
+*   [Placeholder for Firebase Admin SDK package]({{site.pub-pkg}}/)
+
+For examples and to view the source code,
+see the GitHub repository:
+
+*   [firebase/firebase-functions-dart](https://github.com/firebase/firebase-functions-dart)
+
 ## Samples
 
 [A simple Dart HTTP server][simple-sample]
