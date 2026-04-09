@@ -93,7 +93,7 @@ establishing an inheritance relationship.
 
     Start by defining the basic structure of your `Argument` class.
     You'll declare it as [`abstract`](/language/class-modifiers#abstract),
-    which means it serves as a blueprint that
+    which means it serves as a base class that
     other classes can extend, but it can't be [instantiated](/resources/glossary#instantiate) on its own.
 
     Below the `enum` you just added, paste in the following code:
@@ -203,7 +203,7 @@ establishing an inheritance relationship.
 
     The **`abstract`** keyword means that
     `Command` can't be instantiated directly.
-    It serves as a blueprint for other classes.
+    It serves as a base class for other classes.
 
     Now, add the core properties.
     A command needs a `name` and `description`.
@@ -345,7 +345,7 @@ establishing an inheritance relationship.
     You'll define an abstract `run` method that concrete commands must implement.
 
     Because a command might be either synchronous or asynchronous, its `run`
-    method returns the **`FutureOr`** type from `dart:async`, allowing it to
+    method returns the [`FutureOr`][future-or] type from `dart:async`, allowing it to
     return either a raw value or a `Future`. This is your final required import.
 
     Update the imports at the top of your file to include `dart:async`:
@@ -512,7 +512,7 @@ Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
     preventing external code from modifying your data.
 
     In the `run()` method, `results.command!.run(...)` uses the
-    null assertion operator (`!`) to tell the Dart analyzer that you are
+    not-null assertion operator (`!`) to tell the Dart analyzer that you are
     sure `results.command` is not null.
     It's safe here because you just checked if it wasn't null
     in the preceding `if` statement.
@@ -666,7 +666,7 @@ items:
   - title: Designed and understood abstract classes
     icon: schema
     details: >-
-      You created an abstract `Argument` class as a blueprint that
+      You created an abstract `Argument` class as a base class that
       can't be instantiated directly.
       Abstract classes define a contract that subclasses must fulfill,
       ensuring consistency across your class hierarchy.
@@ -702,4 +702,5 @@ You'll create a custom exception class and
 add error handling to your `CommandRunner` to
 make your application more robust.
 
-[unmodifiable-set-view]: https://api.dart.dev/dart-collection/UnmodifiableSetView-class.html
+[unmodifiable-set-view]: {{site.dart-api}}/dart-collection/UnmodifiableSetView-class.html
+[future-or]: {{site.dart-api}}/dart-async/FutureOr-class.html
