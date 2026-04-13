@@ -35,6 +35,14 @@ a Google Doc, formatting it, and placing it in the correct directory.
       guidelines in [semantic_breaks.md](../proofread-markdown/references/semantic_breaks.md).
 - [ ] Ensure there is a blank line after each heading.
 
-### 3. Review
+### 3. Add the author
+
+- [ ] Ask the user to provide the author's github handle. Search in
+      `src/data/authors/` for the handle. If the author is not found, create a
+      new author YAML file. Add the image and any other metadata you can find
+      from the user's github profile.
+- [ ] Update the frontmatter for the blog post with the author's handle.
+
+### 4. Review
 
 - [ ] Don't create a PR until the user has looked over the article.
