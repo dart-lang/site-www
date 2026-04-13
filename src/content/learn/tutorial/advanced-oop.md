@@ -126,7 +126,7 @@ methods for applying colors to text.
       /// Change text color for all future output (until reset)
       /// ```dart
       /// print('hello'); // prints in terminal default color
-      /// print('ConsoleColor.red.enableForeground');
+      /// print(ConsoleColor.red.enableForeground);
       /// print('hello'); // prints in red color
       /// ```
       String get enableForeground => '$ansiEscapeLiteral[38;2;$r;$g;${b}m';
