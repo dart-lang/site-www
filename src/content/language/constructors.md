@@ -326,24 +326,6 @@ class PointB {
 }
 ```
 
-Private fields can't be used as named initializing formals.
-
-{% comment %}
-Don't attach the following example to a code excerpt.
-It doesn't work on purpose and will cause errors in CI.
-{% endcomment %}
-
-```dart
-class PointB {
-// ...
-
-  PointB.namedPrivate({required double x, required double y})
-      : _x = x,
-        _y = y;
-
-// ...
-}
-```
 
 This also works with named variables.
 
@@ -390,6 +372,39 @@ class PointD {
   String toString() {
     return 'PointD($x,$y)';
   }
+}
+```
+
+### Private named parameters
+
+You can use initializing formal parameters with private fields,
+even when they are named parameters.
+When you prefix a named parameter with `this._`,
+the compiler automatically exposes the public name (without the `_`)
+for the argument at the call site,
+while maintaining the private name for the field.
+
+:::version-note
+Using private named parameters as initializing formals
+requires a [language version][] of at least 3.X
+(or the `private-named-parameters` experiment flag).
+:::
+
+<?code-excerpt "point_alt.dart (initialize-private-named)" plaster="none"?>
+```dart
+class PointPrivate {
+  final double? _x;
+  final double? _y;
+
+  PointPrivate.namedPrivate({this._x, this._y});
+
+  @override
+  String toString() => 'PointPrivate($_x, $_y)';
+}
+
+void testPrivate() {
+  var p = PointPrivate.namedPrivate(x: 1.0, y: 2.0);
+  print(p);
 }
 ```
 

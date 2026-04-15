@@ -96,3 +96,20 @@ class PointD {
 }
 
 // #enddocregion initialize-null
+
+// #docregion initialize-private-named
+class PointPrivate {
+  final double? _x;
+  final double? _y;
+
+  PointPrivate.namedPrivate({this._x, this._y});
+
+  @override
+  String toString() => 'PointPrivate($_x, $_y)';
+}
+
+void testPrivate() {
+  var p = PointPrivate.namedPrivate(x: 1.0, y: 2.0);
+  print(p);
+}
+// #enddocregion initialize-private-named
