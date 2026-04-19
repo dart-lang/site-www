@@ -41,7 +41,6 @@ There are some downsides to this setup:
 
 Pub allows you to organize your repository as a _workspace_ using a single
 shared resolution for all your packages.
-
 Using workspaces for large repositories reduces the amount of memory
 required for analysis, hence improving performance.
 
