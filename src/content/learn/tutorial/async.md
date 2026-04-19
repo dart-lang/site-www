@@ -47,7 +47,7 @@ Before you can make HTTP requests,
 you need to add the `http` package as a
 dependency to your project.
 
-1.  Open the `dartpedia/pubspec.yaml` file within your project.
+1.  Open the `dartpedia/cli/pubspec.yaml` file within your project.
     This file is called the **pubspec**, and it manages your
     Dart project's metadata, dependencies (like the `http` package), and assets.
 1.  Locate the `dependencies` section.

@@ -28,20 +28,40 @@ abstract class DashLayout extends PageLayoutBase {
 
   String get defaultSidenav => 'default';
 
+  /// Returns page-specific URLs to eagerly speculate on, in addition to
+  /// the document-level rules that match all internal links.
+  ///
+  /// Override in subclasses to provide page-specific URLs for
+  /// eager prerendering and prefetching.
+  ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) =>
+      const (prerender: {}, prefetch: {});
+
   @override
   @mustCallSuper
+  // ignore: must_call_super
   Iterable<Component> buildHead(Page page) {
     final pageData = page.data.page;
     final siteData = page.data.site;
+
     final pageTitle = (pageData['title'] ?? siteData['title']) as String;
+    final pageDescription = pageData['description'] as String?;
+    final pageImage = pageData['image'] as String?;
+
+    final titleBase = pageData['titleBase'] ?? siteData['titleBase'];
+    final windowTitle = titleBase != null
+        ? '$pageTitle | $titleBase'
+        : pageTitle;
+
+    final canonicalUrl = pageData['canonical'] as String?;
 
     return [
-      ...super.buildHead(page),
+      Component.element(tag: 'title', children: [Component.text(windowTitle)]),
+      meta(name: 'description', content: pageDescription),
+
       if (pageData['noindex'] case final noIndex?
           when noIndex == true || noIndex == 'true')
         const meta(name: 'robots', content: 'noindex'),
-      if (pageData['canonical'] case final String canonicalUrl
-          when canonicalUrl.isNotEmpty)
+      if (canonicalUrl case final canonicalUrl?)
         link(rel: 'canonical', href: canonicalUrl),
       if (pageData['redirectTo'] case final String redirectTo
           when redirectTo.isNotEmpty)
@@ -70,26 +90,31 @@ abstract class DashLayout extends PageLayoutBase {
         href: '/assets/img/touch-icon-ipad-retina.png',
         attributes: {'sizes': '167x167'},
       ),
-      const meta(name: 'twitter:card', content: 'summary'),
+
+      meta(
+        name: 'twitter:card',
+        content: pageImage != null ? 'summary_large_image' : 'summary',
+      ),
       const meta(name: 'twitter:site', content: '@dart_lang'),
       meta(name: 'twitter:title', content: pageTitle),
-      meta(
-        name: 'twitter:description',
-        content: '${pageData['description']}',
-      ),
+      if (pageDescription case final String desc)
+        meta(name: 'twitter:description', content: desc),
+      if (pageImage case final String img)
+        meta(name: 'twitter:image', content: img),
 
       meta(attributes: {'property': 'og:title', 'content': pageTitle}),
+      if (pageDescription case final String desc)
+        meta(attributes: {'property': 'og:description', 'content': desc}),
       meta(
         attributes: {
-          'property': 'og:description',
-          'content': '${pageData['description']}',
+          'property': 'og:url',
+          'content': canonicalUrl ?? page.path,
         },
       ),
-      meta(attributes: {'property': 'og:url', 'content': page.path}),
-      const meta(
+      meta(
         attributes: {
           'property': 'og:image',
-          'content': '/assets/img/logo/dart-logo-for-shares.png',
+          'content': pageImage ?? '/assets/img/logo/dart-logo-for-shares.png',
         },
       ),
 
@@ -118,6 +143,11 @@ abstract class DashLayout extends PageLayoutBase {
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
+      ),
+      const link(
+        rel: 'stylesheet',
+        href:
+            'https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap',
       ),
       link(
         rel: 'stylesheet',
@@ -166,6 +196,9 @@ ga('create', 'UA-26406144-4', 'auto');
 ga('send', 'pageview');
 </script>
 '''),
+      // Add speculation rules and prefetch fallback links for
+      // URLs provided by subclass overrides of speculationUrls.
+      ..._buildSpeculationRulesHead(page),
     ];
   }
 
@@ -175,14 +208,11 @@ ga('send', 'pageview');
     final bodyClass = pageData['bodyClass'] as String?;
     final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
 
-    final pageSidenav = pageData['sidenav'] as String? ?? defaultSidenav;
-    final sideNavEntries = switch (page.data['sidenav']) {
-      final Map<String, Object?> sidenavs => switch (sidenavs[pageSidenav]) {
-        final List<Object?> sidenavData => navEntriesFromData(sidenavData),
-        _ => null,
-      },
-      _ => null,
-    };
+    final sidenav = page.data['sidenav'] as Map<String, Object?>?;
+    final pageSidenavKey = pageData['sidenav'] as String? ?? defaultSidenav;
+    final sideNavEntries = navEntriesFromData(
+      sidenav?[pageSidenavKey] as List<Object?>?,
+    );
 
     final obsolete = pageData['obsolete'] == true;
 
@@ -230,11 +260,10 @@ if (storedTheme === 'auto-mode') {
         const DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [
-            if (sideNavEntries != null)
-              DashSideNav(
-                navEntries: sideNavEntries,
-                currentPageUrl: pageUrl,
-              ),
+            DashSideNav(
+              navEntries: sideNavEntries,
+              currentPageUrl: pageUrl,
+            ),
             main_(
               id: 'page-content',
               classes: [
@@ -267,5 +296,67 @@ if (storedTheme === 'auto-mode') {
     }
 
     return null;
+  }
+
+  /// Builds the speculation rules `<script>` and `<link rel="prefetch">`
+  /// fallback tags for the given [page].
+  ///
+  /// Includes page-specific list rules from [speculationUrls] and
+  /// document rules that prefetch internal links on hover (`moderate`)
+  /// and prerender them on click (`conservative`).
+  ///
+  /// Add the `no-prerender` class to a link to
+  /// exclude it from document-level prerendering.
+  List<Component> _buildSpeculationRulesHead(Page page) {
+    final (:prerender, :prefetch) = speculationUrls(page);
+
+    // Exclude prerendered URLs from the prefetch list since
+    // prerendering is a superset of prefetching.
+    final prefetchOnly = prefetch.difference(prerender);
+
+    // Document rules to match same-origin links across the page.
+    const internalLink = {'href_matches': '/*'};
+    const notNoPrerender = {
+      'not': {'selector_matches': '.no-prerender'},
+    };
+
+    final rules = jsonEncode({
+      'prefetch': [
+        // Prefetch internal links on hover.
+        {
+          'where': internalLink,
+          'eagerness': 'moderate',
+        },
+        // Prefetch specific URLs from the page eagerly.
+        if (prefetchOnly.isNotEmpty)
+          {
+            'urls': [...prefetchOnly],
+          },
+      ],
+      'prerender': [
+        // Prerender internal links on click,
+        // unless the link has the 'no-prerender' class.
+        {
+          'where': {
+            'and': [internalLink, notNoPrerender],
+          },
+          'eagerness': 'conservative',
+        },
+        // Prerender specific URLs from the page eagerly.
+        if (prerender.isNotEmpty)
+          {
+            'urls': [...prerender],
+            'eagerness': 'eager',
+          },
+      ],
+    });
+
+    return [
+      RawText('<script type="speculationrules">$rules</script>'),
+      // Fall back to prefetch link tags for browsers without
+      // Speculation Rules API support.
+      for (final url in {...prerender, ...prefetch})
+        link(rel: 'prefetch', href: url),
+    ];
   }
 }

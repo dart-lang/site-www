@@ -265,6 +265,9 @@ add the necessary code, including the logging and error handling.
       String get description => 'Search for Wikipedia articles.';
 
       @override
+      bool get requiresArgument => true;
+
+      @override
       String get name => 'search';
 
       @override
@@ -302,6 +305,9 @@ add the necessary code, including the logging and error handling.
 
       @override
       String get description => 'Search for Wikipedia articles.';
+
+      @override
+      bool get requiresArgument => true;
 
       @override
       String get name => 'search';
@@ -357,6 +363,9 @@ add the necessary code, including the logging and error handling.
 
       @override
       String get description => 'Search for Wikipedia articles.';
+
+      @override
+      bool get requiresArgument => true;
 
       @override
       String get name => 'search';
@@ -425,6 +434,9 @@ add the necessary code, including the logging and error handling.
 
       @override
       String get description => 'Search for Wikipedia articles.';
+
+      @override
+      bool get requiresArgument => true;
 
       @override
       String get name => 'search';

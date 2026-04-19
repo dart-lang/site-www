@@ -122,8 +122,7 @@ enum ChangelogTag {
   ),
   deprecated('deprecated', 'Deprecated', 'Feature scheduled for removal'),
   removed('removed', 'Removed', 'Feature no longer available'),
-  none('none', 'None', '')
-  ;
+  none('none', 'None', '');
 
   const ChangelogTag(this.id, this.label, this.description);
 
