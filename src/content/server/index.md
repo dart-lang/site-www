@@ -50,11 +50,11 @@ For additional options, see [#server packages on pub.dev][server-pkgs].
 Write Cloud Functions for Firebase using Dart to enable full-stack development,
 reuse code between your client and backend, and respond to Firebase triggers.
 
-[Firebase Functions package]({{site.pub-pkg}}/)
-: Placeholder for the core package to write backend functions and APIs in Dart.
+[Firebase Functions package]({{site.pub-pkg}}/firebase_functions)
+: The core package to write backend functions and APIs in Dart.
 
-[Firebase Admin SDK package]({{site.pub-pkg}}/)
-: Placeholder for the toolkit to perform secure admin actions.
+[Firebase Admin SDK package]({{site.pub-pkg}}/firebase_admin_sdk)
+: The toolkit to perform secure admin actions.
 
 [firebase/firebase-functions-dart](https://github.com/firebase/firebase-functions-dart)
 : GitHub repository with quickstart guides, examples, and source code.
