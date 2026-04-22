@@ -265,7 +265,12 @@ For more discussion, watch this Decoding Flutter video on tear-offs.
 
 ## Instance variable initialization
 
-Dart can initialize variables in three ways.
+Dart provides several ways to initialize instance variables.
+You can assign values in the declaration,
+use initializing formal parameters,
+or use an initializer list.
+For private fields,
+Dart also supports a dedicated syntax using private named parameters.
 
 ### Initialize instance variables in the declaration
 
@@ -377,17 +382,19 @@ class PointD {
 
 ### Private named parameters
 
-You can use initializing formal parameters with private fields,
+You can use initializing formal parameters directly with private fields,
 even when they are named parameters.
 When you prefix a named parameter with `this._`,
 the compiler automatically exposes the public name (without the `_`)
 for the argument at the call site,
 while maintaining the private name for the field.
 
+Like standard named parameters,
+you can mark them as `required` or assign them default values.
+
 :::version-note
 Using private named parameters as initializing formals
-requires a [language version][] of at least 3.X
-(or the `private-named-parameters` experiment flag).
+requires a [language version][] of at least 3.12.
 :::
 
 <?code-excerpt "point_alt.dart (initialize-private-named)" plaster="none"?>
@@ -405,6 +412,49 @@ class PointPrivate {
 void testPrivate() {
   var p = PointPrivate.namedPrivate(x: 1.0, y: 2.0);
   print(p);
+}
+```
+
+#### Constraints
+
+* **No conflicts:** The derived public name cannot conflict
+  with any other parameter name in the same constructor,
+  including positional parameters.
+* **Syntax restriction:** This syntax relaxation only applies
+  to named parameters that are initializing formals (`this._field`)
+  or field parameters in primary constructors.
+  It does not apply to standard named parameters.
+
+#### Usage in initializer lists
+
+Within the constructor's initializer list,
+you refer to the parameter using its private name:
+
+<?code-excerpt "point_alt.dart (initialize-private-named-assert)" plaster="none"?>
+```dart
+class PointPrivateAssert {
+  final double _x;
+
+  PointPrivateAssert({required this._x}) : assert(_x >= 0);
+}
+```
+
+#### Interaction with super parameters
+
+When extending a class that uses private named parameters,
+subclasses use the public name for
+[super-initializer parameters](#super-parameters).
+
+<?code-excerpt "point_alt.dart (initialize-private-named-super)" plaster="none"?>
+```dart
+class Tool {
+  final int _price;
+  Tool({required this._price});
+}
+
+class Hammer extends Tool {
+  // Forwards to the public 'price' argument
+  Hammer({required super.price});
 }
 ```
 

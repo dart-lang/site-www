@@ -113,3 +113,24 @@ void testPrivate() {
   print(p);
 }
 // #enddocregion initialize-private-named
+
+// #docregion initialize-private-named-assert
+class PointPrivateAssert {
+  final double _x;
+
+  PointPrivateAssert({required this._x}) : assert(_x >= 0);
+}
+// #enddocregion initialize-private-named-assert
+
+// #docregion initialize-private-named-super
+class Tool {
+  final int _price;
+  Tool({required this._price});
+}
+
+class Hammer extends Tool {
+  // Forwards to the public 'price' argument
+  Hammer({required super.price});
+}
+// #enddocregion initialize-private-named-super
+
