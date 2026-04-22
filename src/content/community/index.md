@@ -17,7 +17,7 @@ our [code of conduct](/community/code-of-conduct).
     Low-traffic announcements of new releases, breaking changes,
     and other important news. Recommended!
   </Card>
-  <Card title="Dart blog" link="https://blog.dart.dev">
+  <Card title="Dart blog" link="/blog">
     The latest news and insights from a diverse group of Dart users.
   </Card>
   <Card title="@dart_lang" link="https://twitter.com/dart_lang">

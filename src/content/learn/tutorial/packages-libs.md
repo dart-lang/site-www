@@ -133,11 +133,9 @@ Now that you've created the `command_runner` package and
 added a placeholder `CommandRunner` class, you need to
 tell your `cli` application that it depends on `command_runner`.
 Because the `command_runner` package is located locally within your project,
-you can use a path dependency.
+you can use a [path dependency][].
 
 1.  Open the `cli/pubspec.yaml` file.
-
-1.  Locate the `dependencies` section. Add the following lines:
 
     :::note
     Make sure you open the correct `/dartpedia/cli/pubspec.yaml` file.
@@ -145,7 +143,21 @@ you can use a path dependency.
     `/dartpedia/command_runner/pubspec.yaml` file.
     :::
 
-    ```yaml
+1.  Because the `cli` package is an application package and
+    isn't intended to be published to pub.dev,
+    add `publish_to: none` after the `name` field.
+    This helps avoid accidental publishing and
+    prevents analyzer warnings about adding path dependencies.
+
+    ```yaml highlightLines=2
+    name: cli
+    publish_to: none
+    # ...
+    ```
+
+1.  Locate the `dependencies` section. Add the following lines:
+
+    ```yaml highlightLines=3-4
     dependencies:
       http: ^1.3.0 # Keep your existing http dependency
       command_runner:
@@ -159,6 +171,8 @@ you can use a path dependency.
 
 1.  Run `dart pub get` in the `/dartpedia/cli` directory of your terminal to
     fetch the new dependency.
+
+[path dependency]: /tools/pub/dependencies#path-packages
 
 ### Task 4: Import and use the `command_runner` package
 
