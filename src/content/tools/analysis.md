@@ -86,7 +86,7 @@ at the root of the package, in the same directory as the pubspec file.
 
 Here's a sample analysis options file:
 
-<?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" remove="enable-experiment" retain="/^$|\w+:|- cancel/" remove="https:"?>
+<?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="https:"?>
 ```yaml title="analysis_options.yaml"
 include: package:lints/recommended.yaml
 
