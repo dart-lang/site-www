@@ -303,7 +303,8 @@ class _ErrorCodeDocumentationParser {
           }
           uri = line.substring(_uriDirectivePrefix.length, line.length - 1);
         } else {
-          problem('Unrecognized directive ${json.encode(line)}');
+          // Silently ignore unrecognized directives.
+          // problem('Unrecognized directive ${json.encode(line)}');
         }
       } else {
         codeLines.add(line);
