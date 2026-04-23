@@ -59,7 +59,7 @@ To get started, see the
 : Access Firebase services securely from backend servers or Cloud Functions.
   Use it to manage data, send notifications, or verify auth tokens.
 
-[firebase/firebase-functions-dart][firebase-repo]
+[Firebase Functions for Dart repository][firebase-repo]
 : GitHub repository with quickstart guides, examples, and source code.
 
 [firebase-docs]: https://firebase.google.com/docs/functions/start-dart
