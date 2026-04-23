@@ -99,17 +99,17 @@ class PointD {
 
 // #docregion initialize-private-named
 class PointPrivate {
-  final double? _x;
-  final double? _y;
+  final double? _x; // Nullable field
+  final double _y;  // Non-nullable field
 
-  PointPrivate.namedPrivate({this._x, this._y});
+  PointPrivate({this._x, this._y = 0.0});
 
   @override
   String toString() => 'PointPrivate($_x, $_y)';
 }
 
 void testPrivate() {
-  var p = PointPrivate.namedPrivate(x: 1.0, y: 2.0);
+  var p = PointPrivate(x: 1.0, y: 2.0);
   print(p);
 }
 // #enddocregion initialize-private-named
@@ -133,4 +133,5 @@ class Hammer extends Tool {
   Hammer({required super.price});
 }
 // #enddocregion initialize-private-named-super
+
 

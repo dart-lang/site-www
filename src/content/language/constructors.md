@@ -382,48 +382,81 @@ class PointD {
 
 ### Private named parameters
 
-You can use initializing formal parameters directly with private fields,
-even when they are named parameters.
-When you prefix a named parameter with `this._`,
-the compiler automatically exposes the public name (without the `_`)
-for the argument at the call site,
-while maintaining the private name for the field.
-
-Like standard named parameters,
-you can mark them as `required` or assign them default values.
-
 :::version-note
 Using private named parameters as initializing formals
 requires a [language version][] of at least 3.12.
 :::
 
+In Dart, fields starting with an underscore are private to their library.
+To initialize a private field using a named parameter,
+you previously had to write manual assignment boilerplate
+in the initializer list:
+
+<?code-excerpt "point_private_old.dart (initialize-private-named-before)" plaster="none"?>
+```dart
+class Point {
+  final double _x;
+  Point({required double x}) : _x = x;
+}
+```
+
+You can initialize private fields directly
+in the constructor parameter list.
+When you prefix the named parameter with `this._`,
+the compiler automatically strips the underscore for the caller,
+allowing them to use a clean, public name:
+
+<?code-excerpt "point_private_new.dart (initialize-private-named-after)" plaster="none"?>
+```dart
+class Point {
+  final double _x;
+  Point({required this._x});
+}
+```
+
+In both cases,
+the caller uses the public name `x` at the call site:
+
+<?code-excerpt "point_private_new.dart (initialize-private-named-usage)" plaster="none"?>
+```dart
+var p = Point(x: 1.0);
+```
+
+Like regular named parameters, you can make private named parameters optional or required.
+You can also provide explicit default values.
+
+In the following example, the `_x` parameter is optional and defaults to `null`.
+The `_y` parameter is also optional but uses an explicit default value of `0.0`:
+
 <?code-excerpt "point_alt.dart (initialize-private-named)" plaster="none"?>
 ```dart
 class PointPrivate {
-  final double? _x;
-  final double? _y;
+  final double? _x; // Nullable field
+  final double _y;  // Non-nullable field
 
-  PointPrivate.namedPrivate({this._x, this._y});
+  PointPrivate({this._x, this._y = 0.0});
 
   @override
   String toString() => 'PointPrivate($_x, $_y)';
 }
 
 void testPrivate() {
-  var p = PointPrivate.namedPrivate(x: 1.0, y: 2.0);
+  var p = PointPrivate(x: 1.0, y: 2.0);
   print(p);
 }
 ```
 
 #### Constraints
 
-* **No conflicts:** The derived public name cannot conflict
-  with any other parameter name in the same constructor,
-  including positional parameters.
-* **Syntax restriction:** This syntax relaxation only applies
-  to named parameters that are initializing formals (`this._field`)
-  or field parameters in primary constructors.
-  It does not apply to standard named parameters.
+* **No conflicts:** Neither the private name nor the generated public name
+  can match any other parameter name in the same constructor.
+* **Initializing formals only:** Named parameters in Dart generally
+  cannot be private. This feature is an exception that only applies
+  to named parameters that are initializing formals (`this._field`).
+  You cannot use private names for regular named parameters.
+* **Valid public name:** The private name must map to a valid public identifier.
+  For example, `this._` or `this._2x` are invalid
+  because they don't have valid public counterparts.
 
 #### Usage in initializer lists
 
@@ -442,8 +475,12 @@ class PointPrivateAssert {
 #### Interaction with super parameters
 
 When extending a class that uses private named parameters,
-subclasses use the public name for
-[super-initializer parameters](#super-parameters).
+subclasses use the public name for [super parameters](/resources/glossary#super-parameter).
+
+In the following example, the `Tool` class defines the private field `_price`.
+Even though the field is private, the compiler exposes the parameter name publicly.
+To pass the value along,
+the `Hammer` subclass uses the public `price` identifier:
 
 <?code-excerpt "point_alt.dart (initialize-private-named-super)" plaster="none"?>
 ```dart
