@@ -95,6 +95,7 @@ analyzer:
   language:
     strict-casts: true
     strict-raw-types: true
+  enable-experiment:
 
 linter:
   rules:
