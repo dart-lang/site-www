@@ -490,7 +490,7 @@ class Tool {
 }
 
 class Hammer extends Tool {
-  // Forwards to the public `price` parameter:
+  // Forwards to the public 'price' argument
   Hammer({required super.price});
 }
 ```
