@@ -37,7 +37,7 @@ Examples of Dart servers implemented to run on Cloud Run are
 For more information about using Cloud Run, see the documentation for
 [building and deploying a service in other languages][cr].
 
-## Cloud Functions for Firebase
+### Cloud Functions for Firebase
 
 Write Cloud Functions for Firebase using Dart to enable full-stack development,
 reuse code between your client and backend, and respond to Firebase triggers.
