@@ -49,7 +49,7 @@ To get started, see the
 
 [Firebase Admin SDK package]({{site.pub-pkg}}/firebase_admin_sdk)
 : Access Firebase services securely from backend servers or Cloud Functions.
-  Use it to manage data, send notifications, or verify auth tokens.
+  Use it to manage data, send notifications, or verify authentication tokens.
 
 [Firebase Functions for Dart repository][firebase-repo]
 : GitHub repository with quickstart guides, examples, and source code.
