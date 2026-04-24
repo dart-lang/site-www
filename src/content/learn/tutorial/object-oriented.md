@@ -594,7 +594,7 @@ prints usage information.
       String get description => 'Prints usage information to the command line.';
 
       @override
-      String? get help => 'Prints this usage information';
+      String get help => 'Prints this usage information';
 
       @override
       FutureOr<Object?> run(ArgResults args) async {
