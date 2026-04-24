@@ -1923,15 +1923,19 @@
 
 - term: "Super parameter"
   short_description: |-
-    A constructor parameter that automatically passes an argument to the superclass constructor.
+    A constructor parameter that automatically passes
+    an argument to the superclass constructor.
   long_description: |-
-    A **super parameter** is a syntax shorthand that simplifies passing parameters
-    from a subclass constructor up to a superclass constructor.
+    A **super parameter** is a syntax shorthand that simplifies
+    passing parameters from a subclass constructor
+    up to a superclass constructor.
 
-    Instead of manually declaring the parameter and passing it in the initializer list,
+    Instead of manually declaring the parameter
+    and passing it in the initializer list,
     you can prefix the parameter name with `super.`.
 
-    For example, in `Hammer({required super.price})`, the `price` value is passed
+    For example, in `Hammer({required super.price})`,
+    the `price` value is passed
     along directly to the superclass constructor.
   related_links:
     - text: "Super parameters"

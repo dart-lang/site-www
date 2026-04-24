@@ -269,8 +269,6 @@ Dart provides several ways to initialize instance variables.
 You can assign values in the declaration,
 use initializing formal parameters,
 or use an initializer list.
-For private fields,
-Dart also supports a dedicated syntax using private named parameters.
 
 ### Initialize instance variables in the declaration
 
@@ -389,7 +387,7 @@ requires a [language version][] of at least 3.12.
 
 In Dart, fields starting with an underscore are private to their library.
 To initialize a private field using a named parameter,
-you previously had to write manual assignment boilerplate
+you can write manual assignment boilerplate
 in the initializer list:
 
 <?code-excerpt "point_private_old.dart (initialize-private-named-before)" plaster="none"?>
@@ -400,7 +398,7 @@ class Point {
 }
 ```
 
-You can initialize private fields directly
+You can also initialize private fields directly
 in the constructor parameter list.
 When you prefix the named parameter with `this._`,
 the compiler automatically strips the underscore for the caller,
@@ -422,11 +420,12 @@ the caller uses the public name `x` at the call site:
 var p = Point(x: 1.0);
 ```
 
-Like regular named parameters, you can make private named parameters optional or required.
+Like regular [named parameters](/language/functions#named-parameters), you can
+make private named parameters optional or required.
 You can also provide explicit default values.
 
 In the following example, the `_x` parameter is optional and defaults to `null`.
-The `_y` parameter is also optional but uses an explicit default value of `0.0`:
+The `_y` parameter is also optional but has an explicit default value of `0.0`:
 
 <?code-excerpt "point_alt.dart (initialize-private-named)" plaster="none"?>
 ```dart
@@ -451,9 +450,9 @@ void testPrivate() {
 * **No conflicts:** Neither the private name nor the generated public name
   can match any other parameter name in the same constructor.
 * **Initializing formals only:** Named parameters in Dart generally
-  cannot be private. This feature is an exception that only applies
+  can't be private. This capability is an exception that only applies
   to named parameters that are initializing formals (`this._field`).
-  You cannot use private names for regular named parameters.
+  You can't use private identifiers for regular named parameters.
 * **Valid public name:** The private name must map to a valid public identifier.
   For example, `this._` or `this._2x` are invalid
   because they don't have valid public counterparts.
@@ -461,7 +460,7 @@ void testPrivate() {
 #### Usage in initializer lists
 
 Within the constructor's initializer list,
-you refer to the parameter using its private name:
+reference the parameter using its private name:
 
 <?code-excerpt "point_alt.dart (initialize-private-named-assert)" plaster="none"?>
 ```dart
@@ -475,10 +474,11 @@ class PointPrivateAssert {
 #### Interaction with super parameters
 
 When extending a class that uses private named parameters,
-subclasses use the public name for [super parameters](/resources/glossary#super-parameter).
+subclasses use the public name for [super parameters][].
 
 In the following example, the `Tool` class defines the private field `_price`.
-Even though the field is private, the compiler exposes the parameter name publicly.
+Even though the field is private,
+its corresponding named parameter is public (`price` not `_price`).
 To pass the value along,
 the `Hammer` subclass uses the public `price` identifier:
 
@@ -490,10 +490,12 @@ class Tool {
 }
 
 class Hammer extends Tool {
-  // Forwards to the public 'price' argument
+  // Forwards to the public `price` parameter:
   Hammer({required super.price});
 }
 ```
+
+[super parameters]: /resources/glossary#super-parameter
 
 ### Use an initializer list
 

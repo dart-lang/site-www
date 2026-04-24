@@ -5,8 +5,6 @@ analyzer:
   language:
     strict-casts: true
     strict-raw-types: true
-  enable-experiment:
-    - private-named-parameters
 
 linter:
   # Rules and documentation: https://dart.dev/lints
