@@ -204,9 +204,78 @@ The syntax of a `switch` expression differs from `switch` statement syntax:
 Switch expressions require a [language version][] of at least 3.0.
 :::
 
-### Exhaustiveness checking
+#### Real-world example: JSON validation
 
-Exhaustiveness checking is a feature that reports a
+Switch expressions shine when combined with [map patterns][] for tasks like
+JSON validation and destructuring.
+
+**Before (Pre-Dart 3):**
+Replacing long, imperative `if-else` chains:
+
+```dart
+// Imperative, verbose JSON validation
+Question fromJson(Map<String, dynamic> json) {
+  if (json.containsKey('type') && json['type'] == 'textQuestion') {
+    if (json.containsKey('questionBody') && json['questionBody'] is String) {
+      // ... more validation ...
+      return TextQuestion( /* ... */ );
+    }
+  }
+  throw FormatException('Invalid JSON');
+}
+```
+
+**After (Dart 3):**
+A concise, declarative switch expression:
+
+```dart
+// Dart 3: Switch expression with Map Patterns
+Question fromJson(Map<String, dynamic> json) {
+  return switch (json) {
+    {
+      'type': 'textQuestion',
+      'questionBody': String body,
+      'category': String cat,
+      'id': String id
+    } => 
+      TextQuestion(body: body, category: cat, id: id),
+      
+    {
+      'type': 'imageQuestion',
+      'imagePath': String path,
+      // ...
+    } => 
+      ImageQuestion(imagePath: path, /* ... */ ),
+      
+    _ => throw FormatException('JSON did not match expected patterns'),
+  };
+}
+```
+
+### Switching over object patterns
+
+You can switch over instances of classes and immediately extract their
+properties (destructuring) using [object patterns][], which is highly useful in
+Flutter widget `build` methods.
+
+```dart
+// Returning specific Widgets based on subclass types and their properties
+(QuestionWidget, AnswerWidget) getWidgets(Question question) {
+  return switch (question) {
+    TextQuestion(answer: MultipleChoiceAnswer answer) => (
+        TextQuestionWidget(question),
+        MultipleChoiceWidget(answer),
+      ),
+    ImageQuestion(answer: BooleanAnswer answer) => (
+        ImageQuestionWidget(question),
+        BooleanAnswerWidget(answer),
+      ),
+    // ...
+  };
+}
+```
+
+### Exhaustiveness checking
 compile-time error if it's possible for a value to enter a switch but
 not match any of the cases.
 
@@ -256,6 +325,33 @@ this `switch` expression would be incomplete.
 Exhaustiveness checking would inform you of the missing subtype.
 This allows you to use Dart in a somewhat 
 [functional algebraic datatype style](https://en.wikipedia.org/wiki/Algebraic_data_type). 
+
+Exhaustiveness is incredibly powerful when managing complex UI states
+represented by [records][] of booleans. If a developer adds a new state or misses
+a combination, the compiler will catch it. You can use [wildcard `_`][]
+to ignore values that don't matter for a specific case.
+
+```dart
+Color getButtonColor() {
+  // Create a Record of current UI states
+  final state = (isActive, isPressed, isHovered, isSelected, isCorrect);
+  
+  return switch (state) {
+    (true, true, _, _, _) => pressedColor,
+    (true, false, true, _, _) => hoveredColor,
+    (true, false, false, false, _) => initialColor,
+    (false, _, _, true, false) => incorrectAnswerColor,
+    (false, _, _, true, true) => correctAnswerColor,
+    (false, _, _, false, _) => inactiveColor,
+  };
+}
+```
+
+:::note
+If you forget a case (for example, if you comment out the `inactiveColor` case),
+the Dart compiler will explicitly warn you:
+`The type '(bool, bool, bool, bool, bool)' is not exhaustively matched by the switch cases...`
+:::
 
 <a id="when"></a>
 ## Guard clause
@@ -308,3 +404,6 @@ than exiting the entire switch.
 [destructure]: /language/patterns#destructuring
 [section on switch]: /language/patterns#switch-statements-and-expressions
 [logical-or patterns]: /language/patterns#or-pattern-switch
+[map patterns]: /language/pattern-types#map
+[object patterns]: /language/pattern-types#object
+[records]: /language/records
