@@ -212,13 +212,18 @@ JSON validation and destructuring.
 **Before (Pre-Dart 3):**
 Replacing long, imperative `if-else` chains:
 
+<?code-excerpt "language/lib/control_flow/branches_extras.dart (json-validation-before)"?>
 ```dart
 // Imperative, verbose JSON validation
 Question fromJson(Map<String, dynamic> json) {
   if (json.containsKey('type') && json['type'] == 'textQuestion') {
     if (json.containsKey('questionBody') && json['questionBody'] is String) {
       // ... more validation ...
-      return TextQuestion( /* ... */ );
+      return TextQuestion(
+        body: json['questionBody'] as String,
+        category: '',
+        id: '',
+      );
     }
   }
   throw FormatException('Invalid JSON');
@@ -228,25 +233,24 @@ Question fromJson(Map<String, dynamic> json) {
 **After (Dart 3):**
 A concise, declarative switch expression:
 
+<?code-excerpt "language/lib/control_flow/branches_extras.dart (json-validation-after)"?>
 ```dart
 // Dart 3: Switch expression with Map Patterns
-Question fromJson(Map<String, dynamic> json) {
+Question fromJsonWithSwitch(Map<String, dynamic> json) {
   return switch (json) {
     {
       'type': 'textQuestion',
       'questionBody': String body,
       'category': String cat,
-      'id': String id
-    } => 
+      'id': String id,
+    } =>
       TextQuestion(body: body, category: cat, id: id),
-      
     {
       'type': 'imageQuestion',
       'imagePath': String path,
       // ...
-    } => 
-      ImageQuestion(imagePath: path, /* ... */ ),
-      
+    } =>
+      ImageQuestion(imagePath: path),
     _ => throw FormatException('JSON did not match expected patterns'),
   };
 }
@@ -258,19 +262,20 @@ You can switch over instances of classes and immediately extract their
 properties (destructuring) using [object patterns][], which is highly useful in
 Flutter widget `build` methods.
 
+<?code-excerpt "language/lib/control_flow/branches_extras.dart (object-patterns)"?>
 ```dart
 // Returning specific Widgets based on subclass types and their properties
 (QuestionWidget, AnswerWidget) getWidgets(Question question) {
   return switch (question) {
     TextQuestion(answer: MultipleChoiceAnswer answer) => (
-        TextQuestionWidget(question),
-        MultipleChoiceWidget(answer),
-      ),
+      TextQuestionWidget(question),
+      MultipleChoiceWidget(answer),
+    ),
     ImageQuestion(answer: BooleanAnswer answer) => (
-        ImageQuestionWidget(question),
-        BooleanAnswerWidget(answer),
-      ),
-    // ...
+      ImageQuestionWidget(question),
+      BooleanAnswerWidget(answer),
+    ),
+    _ => throw UnimplementedError(),
   };
 }
 ```
@@ -331,20 +336,20 @@ represented by [records][] of booleans. If a developer adds a new state or misse
 a combination, the compiler will catch it. You can use [wildcard `_`][]
 to ignore values that don't matter for a specific case.
 
+<?code-excerpt "language/lib/control_flow/branches_extras.dart (exhaustiveness-ui-state)"?>
 ```dart
-Color getButtonColor() {
-  // Create a Record of current UI states
-  final state = (isActive, isPressed, isHovered, isSelected, isCorrect);
-  
-  return switch (state) {
-    (true, true, _, _, _) => pressedColor,
-    (true, false, true, _, _) => hoveredColor,
-    (true, false, false, false, _) => initialColor,
-    (false, _, _, true, false) => incorrectAnswerColor,
-    (false, _, _, true, true) => correctAnswerColor,
-    (false, _, _, false, _) => inactiveColor,
-  };
-}
+// Create a Record of current UI states
+final state = (isActive, isPressed, isHovered, isSelected, isCorrect);
+
+return switch (state) {
+  (true, true, _, _, _) => pressedColor,
+  (true, false, true, _, _) => hoveredColor,
+  (true, false, false, false, _) => initialColor,
+  (false, _, _, true, false) => incorrectAnswerColor,
+  (false, _, _, true, true) => correctAnswerColor,
+  (false, _, _, false, _) => inactiveColor,
+  _ => initialColor,
+};
 ```
 
 :::note
