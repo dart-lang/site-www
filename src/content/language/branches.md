@@ -281,6 +281,8 @@ Flutter widget `build` methods.
 ```
 
 ### Exhaustiveness checking
+
+Exhaustiveness checking is a feature that reports a
 compile-time error if it's possible for a value to enter a switch but
 not match any of the cases.
 
