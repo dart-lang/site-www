@@ -1,26 +1,26 @@
 // ignore_for_file: unused_local_variable
 
-abstract class Question {}
+sealed class Question {}
 
 class TextQuestion extends Question {
   final String body;
   final String category;
   final String id;
-  final Answer? answer;
+  final Answer answer;
 
   TextQuestion({
     required this.body,
     required this.category,
     required this.id,
-    this.answer,
+    required this.answer,
   });
 }
 
 class ImageQuestion extends Question {
   final String imagePath;
-  final Answer? answer;
+  final Answer answer;
 
-  ImageQuestion({required this.imagePath, this.answer});
+  ImageQuestion({required this.imagePath, required this.answer});
 }
 
 abstract class Answer {}
@@ -49,6 +49,8 @@ class BooleanAnswerWidget extends AnswerWidget {
 
 abstract class AnswerWidget {}
 
+class DefaultAnswerWidget extends AnswerWidget {}
+
 // #docregion json-validation-before
 // Imperative, verbose JSON validation
 Question fromJson(Map<String, dynamic> json) {
@@ -59,6 +61,7 @@ Question fromJson(Map<String, dynamic> json) {
         body: json['questionBody'] as String,
         category: '',
         id: '',
+        answer: MultipleChoiceAnswer(),
       );
     }
   }
@@ -76,13 +79,18 @@ Question fromJsonWithSwitch(Map<String, dynamic> json) {
       'category': String cat,
       'id': String id,
     } =>
-      TextQuestion(body: body, category: cat, id: id),
+      TextQuestion(
+        body: body,
+        category: cat,
+        id: id,
+        answer: MultipleChoiceAnswer(),
+      ),
     {
       'type': 'imageQuestion',
       'imagePath': String path,
       // ...
     } =>
-      ImageQuestion(imagePath: path),
+      ImageQuestion(imagePath: path, answer: BooleanAnswer()),
     _ => throw FormatException('JSON did not match expected patterns'),
   };
 }
@@ -96,11 +104,12 @@ Question fromJsonWithSwitch(Map<String, dynamic> json) {
       TextQuestionWidget(question),
       MultipleChoiceWidget(answer),
     ),
+    TextQuestion() => (TextQuestionWidget(question), DefaultAnswerWidget()),
     ImageQuestion(answer: BooleanAnswer answer) => (
       ImageQuestionWidget(question),
       BooleanAnswerWidget(answer),
     ),
-    _ => throw UnimplementedError(),
+    ImageQuestion() => (ImageQuestionWidget(question), DefaultAnswerWidget()),
   };
 }
 // #enddocregion object-patterns

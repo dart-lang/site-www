@@ -223,6 +223,7 @@ Question fromJson(Map<String, dynamic> json) {
         body: json['questionBody'] as String,
         category: '',
         id: '',
+        answer: MultipleChoiceAnswer(),
       );
     }
   }
@@ -244,13 +245,18 @@ Question fromJsonWithSwitch(Map<String, dynamic> json) {
       'category': String cat,
       'id': String id,
     } =>
-      TextQuestion(body: body, category: cat, id: id),
+      TextQuestion(
+        body: body,
+        category: cat,
+        id: id,
+        answer: MultipleChoiceAnswer(),
+      ),
     {
       'type': 'imageQuestion',
       'imagePath': String path,
       // ...
     } =>
-      ImageQuestion(imagePath: path),
+      ImageQuestion(imagePath: path, answer: BooleanAnswer()),
     _ => throw FormatException('JSON did not match expected patterns'),
   };
 }
@@ -271,11 +277,12 @@ Flutter widget `build` methods.
       TextQuestionWidget(question),
       MultipleChoiceWidget(answer),
     ),
+    TextQuestion() => (TextQuestionWidget(question), DefaultAnswerWidget()),
     ImageQuestion(answer: BooleanAnswer answer) => (
       ImageQuestionWidget(question),
       BooleanAnswerWidget(answer),
     ),
-    _ => throw UnimplementedError(),
+    ImageQuestion() => (ImageQuestionWidget(question), DefaultAnswerWidget()),
   };
 }
 ```
