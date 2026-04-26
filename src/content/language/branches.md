@@ -344,11 +344,10 @@ final state = (isActive, isPressed, isHovered, isSelected, isCorrect);
 return switch (state) {
   (true, true, _, _, _) => pressedColor,
   (true, false, true, _, _) => hoveredColor,
-  (true, false, false, false, _) => initialColor,
+  (true, false, false, _, _) => initialColor,
   (false, _, _, true, false) => incorrectAnswerColor,
   (false, _, _, true, true) => correctAnswerColor,
   (false, _, _, false, _) => inactiveColor,
-  _ => initialColor,
 };
 ```
 
