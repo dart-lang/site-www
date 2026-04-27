@@ -431,7 +431,7 @@ The `_y` parameter is also optional but has an explicit default value of `0.0`:
 ```dart
 class PointPrivate {
   final double? _x; // Nullable field
-  final double _y;  // Non-nullable field
+  final double _y; // Non-nullable field
 
   PointPrivate({this._x, this._y = 0.0});
 
