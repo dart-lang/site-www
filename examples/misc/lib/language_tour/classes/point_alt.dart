@@ -100,7 +100,7 @@ class PointD {
 // #docregion initialize-private-named
 class PointPrivate {
   final double? _x; // Nullable field
-  final double _y;  // Non-nullable field
+  final double _y; // Non-nullable field
 
   PointPrivate({this._x, this._y = 0.0});
 
@@ -133,5 +133,3 @@ class Hammer extends Tool {
   Hammer({required super.price});
 }
 // #enddocregion initialize-private-named-super
-
-
