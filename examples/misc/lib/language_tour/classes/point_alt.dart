@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 /// Example of:
 ///
 /// - A constructor initializing fields in the body "the long way"
