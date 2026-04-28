@@ -62,6 +62,7 @@ If you omit the modifier,
 it is a **non-declaring parameter** and does not create an implicit field.
 Use non-declaring parameters for custom initialization logic.
 
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (declaring-parameters)"?>
 ```dart
 class Point(var int x, var int y); // Declares both fields x and y
 class User(String name); // String name is a non-declaring parameter (no field)
@@ -77,6 +78,7 @@ Initialize fields directly from constructor parameters without a separate initia
 
 
 
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (initializer-scope)"?>
 ```dart
 class DeltaPoint(final int x, int delta) {
   final int y = x + delta; // Accesses 'x' and 'delta' parameters directly!
@@ -91,6 +93,7 @@ If you need to validate input or perform complex initialization,
 use a **body part** for the primary constructor inside the class definition.
 It uses the `this` keyword:
 
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (constructor-bodies)" replace="/PointWithBody/Point/g"?>
 ```dart
 class Point(var int x, var int y) {
   this : assert(x >= 0 && y >= 0) {
@@ -105,6 +108,7 @@ The body part can specify an initializer list after `this` and/or a normal funct
 
 If you want to use a public parameter to initialize a private field, use a non-declaring parameter in the primary constructor header and declare the private field in the class body:
 
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (private-fields)" replace="/UserWithPrivateField/User/g"?>
 ```dart
 class User(String name) { // 'name' is public
   final String _name = name; // '_name' is private
@@ -115,6 +119,7 @@ class User(String name) { // 'name' is public
 
 An empty body of a class, mixin class, or extension type (`{}`) can be replaced by `;` when using a primary constructor.
 
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (empty-bodies)" replace="/EmptyBodyPoint/Point/g"?>
 ```dart
 class Point(var int x, var int y);
 ```
@@ -123,6 +128,7 @@ class Point(var int x, var int y);
 
 Super parameters can be declared in the same way as in traditional constructors today:
 
+<?code-excerpt "language/lib/primary_constructors/super_parameters.dart"?>
 ```dart
 class A(final int a);
 
