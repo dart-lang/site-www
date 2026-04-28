@@ -162,7 +162,7 @@ run `dart run dash_site refresh-excerpts`.
 To learn more about creating, editing, and using code excerpts,
 check out the [excerpt updater package documentation][].
 
-[excerpt updater package documentation]: https://github.com/dart-lang/site-shared/tree/main/pkgs/excerpter#readme
+[excerpt updater package documentation]: https://github.com/flutter/website/tree/main/packages/excerpter#readme
 
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg

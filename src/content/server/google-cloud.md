@@ -37,17 +37,25 @@ Examples of Dart servers implemented to run on Cloud Run are
 For more information about using Cloud Run, see the documentation for
 [building and deploying a service in other languages][cr].
 
-### Functions Framework for Dart
+### Cloud Functions for Firebase
 
-The Functions Framework is a FaaS (Function as a Service) framework
-that makes it easy to write Dart functions
-instead of server applications for handling web requests.
-Using the framework, you can create functions that handle HTTP requests
-and [CloudEvents][] and deploy them to Google Cloud.
+Write Cloud Functions for Firebase using Dart to enable full-stack development,
+reuse code between your client and backend, and respond to Firebase triggers.
+To get started, see the
+[Cloud Functions for Firebase documentation][firebase-docs].
 
-The [Dart Functions Framework][] is a community-supported project. 
+[Firebase Functions package]({{site.pub-pkg}}/firebase_functions)
+: The core package to write backend functions and APIs in Dart.
 
-For more information, see [the README][functions docs].
+[Firebase Admin SDK package]({{site.pub-pkg}}/firebase_admin_sdk)
+: Access Firebase services securely from backend servers or Cloud Functions.
+  Use it to manage data, send notifications, or verify authentication tokens.
+
+[Firebase Functions for Dart repository][firebase-repo]
+: GitHub repository with quickstart guides, examples, and source code.
+
+[firebase-docs]: https://firebase.google.com/docs/functions/start-dart
+[firebase-repo]: https://github.com/firebase/firebase-functions-dart
 
 ## Other solutions
 
