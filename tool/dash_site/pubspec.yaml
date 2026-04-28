@@ -11,9 +11,9 @@ dependencies:
   collection: ^1.19.1
   excerpter:
     git:
-      url: https://github.com/dart-lang/site-shared
-      path: pkgs/excerpter
-      ref: e2534e272132813a1cdcf6ea71a6fd9c904a69fb
+      url: https://github.com/flutter/website
+      path: packages/excerpter
+      ref: 6d50799f4dc347398863b83f5dc46d1da8f6c5cd
   fbh_front_matter: ^0.0.1
   html_unescape: ^2.0.0
   http: ^1.6.0
@@ -29,6 +29,6 @@ dependencies:
 dev_dependencies:
   analysis_defaults:
     git:
-      url: https://github.com/dart-lang/site-shared
-      path: pkgs/analysis_defaults
-      ref: e2534e272132813a1cdcf6ea71a6fd9c904a69fb
+      url: https://github.com/flutter/website
+      path: packages/analysis_defaults
+      ref: 6d50799f4dc347398863b83f5dc46d1da8f6c5cd

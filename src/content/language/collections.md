@@ -369,8 +369,8 @@ map entry element:
 ```
 
 In the following example, the result for the
-null-aware element `?a` is not added to a list called
-`items` because `a` is `null`:
+null-aware element `?absentValue` is not added to a list called
+`items` because `absentValue` is `null`:
 
 <?code-excerpt "misc/test/language_tour/collections/null_aware_element_a.dart (code-sample)"?>
 ```dart
