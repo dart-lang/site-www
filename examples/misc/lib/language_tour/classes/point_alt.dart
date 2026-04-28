@@ -132,4 +132,5 @@ class Hammer extends Tool {
   // Forwards to the public 'price' argument
   Hammer({required super.price});
 }
+
 // #enddocregion initialize-private-named-super
