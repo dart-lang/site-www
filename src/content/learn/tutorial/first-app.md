@@ -155,9 +155,10 @@ Next, modify the code that generated `Hello world: 42!`.
 
 1.  Check to make sure that your `bin/cli.dart` looks like this:
 
-    ```dart title="bin/cli.dart"
+    <?code-excerpt "fwe/dartpedia/bin/cli_ch1_step1.dart (step1)"?>
+    ```dart
     import 'package:cli/cli.dart' as cli;
-
+    
     void main(List<String> arguments) {
       print('Hello world: ${cli.calculate()}!');
     }
@@ -167,9 +168,11 @@ Next, modify the code that generated `Hello world: 42!`.
     Delete the first line (you don't need this import statement), and
     change the `print` statement to display a simple greeting:
 
-    ```dart title="bin/cli.dart" highlightLines=1,4
+    <?code-excerpt "fwe/dartpedia/bin/cli_ch1_step2.dart (highlight)"?>
+    ```dart
+    // ignore: unused_import
     import 'package:cli/cli.dart' as cli; // Delete this entire line
-
+    
     void main(List<String> arguments) {
       print('Hello, Dart!'); // Change this line
     }
