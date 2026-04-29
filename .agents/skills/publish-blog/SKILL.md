@@ -1,5 +1,5 @@
 ---
-name: publish_blog
+name: publish-blog
 description: Publish a new article to the Dart blog from a Google Doc.
 ---
 
