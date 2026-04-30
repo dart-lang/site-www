@@ -3,7 +3,7 @@
 [![Build Status SVG][]][Repo on GitHub Actions]
 [![OpenSSF Scorecard SVG][]][Scorecard Results]
 
-The documentation site for the [Dart programming language](https://dart.dev), 
+The documentation site for the [Dart programming language](https://dart.dev),
 built with [Jaspr][] and hosted on [Firebase][].
 
 We welcome contributions of all kinds!
@@ -35,7 +35,7 @@ If you want or need to build the site, follow the steps below.
 
 For changes beyond simple text and CSS tweaks,
 we recommend running the site locally to
-enable an edit-refresh cycle. 
+enable an edit-refresh cycle.
 
 ### Get the prerequisites
 
