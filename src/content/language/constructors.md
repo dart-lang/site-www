@@ -382,7 +382,7 @@ class PointD {
 
 :::version-note
 Using private named parameters as initializing formals
-requires a [language version][] of at least 3.12.
+requires a language version of at least 3.12.
 :::
 
 In Dart, fields starting with an underscore are private to their library.
