@@ -106,12 +106,17 @@
         "type": 301
       },
       {
-        "regex": "\/(.*)-([0-9a-f]{11,12})",
+        "regex": "\/(.*)-([0-9a-f]{11,12})\/?",
         "destination": "https://dart.dev/blog/:1",
         "type": 301
       },
       {
-        "regex": "\/(.*)",
+        "source": "/",
+        "destination": "https://dart.dev/blog",
+        "type": 301
+      },
+      {
+        "regex": "\/(.+)",
         "destination": "https://dart.dev/blog/:1",
         "type": 301
       }
