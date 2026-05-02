@@ -68,7 +68,7 @@ article {
       min-width: 0;
       max-width: 100%;
       word-break: normal;
-      overflow-wrap: normal;
+      overflow-wrap: break-word;
 
       @media (max-width: 390px) {
         font-size: 2.375rem;
