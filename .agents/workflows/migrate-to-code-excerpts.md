@@ -19,7 +19,6 @@ This workflow guides the agent in converting hardcoded markdown code snippets in
 The code extracted from the markdown will likely fail initial analysis due to missing imports, undefined variables, or context assumed from previous chapters.
 1. Do NOT modify the markdown file yet.
 2. Run the analyzer on the new example project:
-// turbo
 3. `cd <example_dir> && dart pub get && dart analyze` (or `flutter analyze`).
 4. Read the CLI errors.
 5. Fix the errors in the `.dart` files (e.g., add needed imports, mock variables, fix scopes).
@@ -33,6 +32,5 @@ The code extracted from the markdown will likely fail initial analysis due to mi
    - Keep any necessary markdown styling commands (e.g., `replace`, `highlight`).
 
 ## Step 4: Sync and Verify
-// turbo
 1. Sync the excerpts into the markdown using the site tool: `dart run dash_site refresh-excerpts`
 2. Review the modified markdown file to ensure the `dash_site` command successfully injected the verified code into the docs and didn't break the page formatting.
