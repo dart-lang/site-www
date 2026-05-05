@@ -151,7 +151,7 @@ use the `factory` keyword:
   * a new instance of a subtype
 
 * You need to perform non-trivial work prior to constructing an instance.
-  This could include checking arguments or doing any other processing
+  This can include checking arguments or doing any other processing
   that can't be handled in the initializer list.
 
 :::tip
@@ -215,10 +215,10 @@ class to use whenever someone makes a call to the redirecting constructor.
 factory Listenable.merge(List<Listenable> listenables) = _MergingListenable
 ```
 
-It might appear that ordinary factory constructors
-could create and return instances of other classes.
-This would make redirecting factories unnecessary.
-Redirecting factories have several advantages:
+You might think that ordinary factory constructors can create
+and return instances of other classes,
+making redirecting factories unnecessary.
+However, redirecting factories have several advantages:
 
 * An abstract class might provide a constant constructor
   that uses the constant constructor of another class.
@@ -265,14 +265,16 @@ For more discussion, watch this Decoding Flutter video on tear-offs.
 
 ## Concise constructor syntax
 
-In Dart 3.13 and later, you can omit the class name when declaring a generative or factory constructor inside the class body.
+In Dart 3.13 and later, you can omit the class name
+when declaring a generative or factory constructor inside the class body.
 Instead, use the modifier `new` or `factory` directly:
 
 -   `new` or `new named`
 -   `factory` or `factory named`
 
 Unlike traditional named constructors (such as `Point.origin()`),
-concise named constructors do not use a dot between the keyword (modifier) and the name.
+concise named constructors do not use a dot
+between the keyword (modifier) and the name.
 
 ```dart
 class Point {
@@ -290,12 +292,22 @@ class Point {
 ```
 
 This syntax reduces verbosity and makes refactoring class names easier.
-For an even more concise syntax where you define fields and constructors in a single line,
+
+:::note
+With this syntax, a method named `factory` with no return type
+(like `factory() {}`) is interpreted as an unnamed factory constructor.
+:::
+
+For an even more concise syntax
+where you define fields and constructors in a single line,
 see [Primary constructors](/language/primary-constructors).
 
 ## Instance variable initialization
 
-Dart can initialize variables in three ways.
+Dart provides several ways to initialize instance variables.
+You can assign values in the declaration,
+use initializing formal parameters,
+or use an initializer list.
 
 ### Initialize instance variables in the declaration
 
@@ -356,24 +368,6 @@ class PointB {
 }
 ```
 
-Private fields can't be used as named initializing formals.
-
-{% comment %}
-Don't attach the following example to a code excerpt.
-It doesn't work on purpose and will cause errors in CI.
-{% endcomment %}
-
-```dart
-class PointB {
-// ...
-
-  PointB.namedPrivate({required double x, required double y})
-      : _x = x,
-        _y = y;
-
-// ...
-}
-```
 
 This also works with named variables.
 
@@ -405,7 +399,7 @@ create a [factory constructor](#factory-constructors)
 or [static method][] with that logic.
 You can then pass the computed values to a normal constructor.
 
-The constructor parameters could be set as nullable and not be initialized.
+You can set constructor parameters as nullable to avoid initializing them.
 
 <?code-excerpt "point_alt.dart (initialize-null)" plaster="none"?>
 ```dart
@@ -422,6 +416,125 @@ class PointD {
   }
 }
 ```
+
+### Private named parameters
+
+:::version-note
+Using private named parameters as initializing formals
+requires a language version of at least 3.12.
+:::
+
+In Dart, fields starting with an underscore are private to their library.
+To initialize a private field using a named parameter,
+you can write manual assignment boilerplate
+in the initializer list:
+
+<?code-excerpt "point_private_old.dart (initialize-private-named-before)" plaster="none"?>
+```dart
+class Point {
+  final double _x;
+  Point({required double x}) : _x = x;
+}
+```
+
+You can also initialize private fields directly
+in the constructor parameter list.
+When you prefix the named parameter with `this._`,
+the compiler automatically strips the underscore for the caller,
+allowing them to use a clean, public name:
+
+<?code-excerpt "point_private_new.dart (initialize-private-named-after)" plaster="none"?>
+```dart
+class Point {
+  final double _x;
+  Point({required this._x});
+}
+```
+
+In both cases,
+the caller uses the public name `x` at the call site:
+
+<?code-excerpt "point_private_new.dart (initialize-private-named-usage)" plaster="none"?>
+```dart
+var p = Point(x: 1.0);
+```
+
+Like regular [named parameters](/language/functions#named-parameters), you can
+make private named parameters optional or required.
+You can also provide explicit default values.
+
+In the following example, the `_x` parameter is optional and defaults to `null`.
+The `_y` parameter is also optional but has an explicit default value of `0.0`:
+
+<?code-excerpt "point_alt.dart (initialize-private-named)" plaster="none"?>
+```dart
+class PointPrivate {
+  final double? _x; // Nullable field
+  final double _y; // Non-nullable field
+
+  PointPrivate({this._x, this._y = 0.0});
+
+  @override
+  String toString() => 'PointPrivate($_x, $_y)';
+}
+
+void testPrivate() {
+  var p = PointPrivate(x: 1.0, y: 2.0);
+  print(p);
+}
+```
+
+#### Constraints
+
+* **No conflicts:** Neither the private name nor the generated public name
+  can match any other parameter name in the same constructor.
+* **Initializing formals only:** Named parameters in Dart generally
+  can't be private. This capability is an exception that only applies
+  to named parameters that are initializing formals (`this._field`).
+  You can't use private identifiers for regular named parameters.
+* **Valid public name:** The private name must map to a valid public identifier.
+  For example, `this._` or `this._2x` are invalid
+  because they don't have valid public counterparts.
+
+#### Usage in initializer lists
+
+Within the constructor's initializer list,
+reference the parameter using its private name:
+
+<?code-excerpt "point_alt.dart (initialize-private-named-assert)" plaster="none"?>
+```dart
+class PointPrivateAssert {
+  final double _x;
+
+  PointPrivateAssert({required this._x}) : assert(_x >= 0);
+}
+```
+
+#### Interaction with super parameters
+
+When extending a class that uses private named parameters,
+subclasses use the public name for [super parameters][].
+
+In the following example, the `Tool` class defines the private field `_price`.
+Even though the field is private,
+its corresponding named parameter is public (`price` not `_price`).
+To pass the value along,
+the `Hammer` subclass uses the public `price` identifier:
+
+<?code-excerpt "point_alt.dart (initialize-private-named-super)" plaster="none"?>
+```dart
+class Tool {
+  final int _price;
+  Tool({required this._price});
+}
+
+class Hammer extends Tool {
+  // Forwards to the public 'price' argument
+  Hammer({required super.price});
+}
+```
+
+[super parameters]: /resources/glossary#super-parameter
 
 ### Use an initializer list
 

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 /// Example of:
 ///
 /// - A constructor initializing fields in the body "the long way"
@@ -96,3 +98,41 @@ class PointD {
 }
 
 // #enddocregion initialize-null
+
+// #docregion initialize-private-named
+class PointPrivate {
+  final double? _x; // Nullable field
+  final double _y; // Non-nullable field
+
+  PointPrivate({this._x, this._y = 0.0});
+
+  @override
+  String toString() => 'PointPrivate($_x, $_y)';
+}
+
+void testPrivate() {
+  var p = PointPrivate(x: 1.0, y: 2.0);
+  print(p);
+}
+// #enddocregion initialize-private-named
+
+// #docregion initialize-private-named-assert
+class PointPrivateAssert {
+  final double _x;
+
+  PointPrivateAssert({required this._x}) : assert(_x >= 0);
+}
+// #enddocregion initialize-private-named-assert
+
+// #docregion initialize-private-named-super
+class Tool {
+  final int _price;
+  Tool({required this._price});
+}
+
+class Hammer extends Tool {
+  // Forwards to the public 'price' argument
+  Hammer({required super.price});
+}
+
+// #enddocregion initialize-private-named-super

@@ -402,6 +402,7 @@
       { "source": "/to/language-version-override", "destination": "/language/versioning#library-override", "type": 301 },
       { "source": "/to/main-function", "destination": "/language/functions#main", "type": 301 },
       { "source": "/to/mcp-server", "destination": "https://docs.flutter.dev/ai/mcp-server", "type": 301 },
+      { "source": "/to/null-aware-elements", "destination": "/language/collections#null-aware-element", "type": 301 },
       { "source": "/to/package-discontinue", "destination": "/tools/pub/publishing#discontinue", "type": 301 },
       { "source": "/to/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
       { "source": "/to/pub-cache", "destination": "/tools/pub/cmd/pub-cache", "type": 301 },
