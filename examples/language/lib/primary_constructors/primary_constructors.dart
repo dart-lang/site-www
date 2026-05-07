@@ -1,6 +1,6 @@
 // #docregion declaring-parameters
 class Point(var int x, var int y); // Declares both fields x and y
-class User(String name); // String name is a non-declaring parameter (no field)
+class User(String name); // Does not declare a field
 // #enddocregion declaring-parameters
 
 // #docregion initializer-scope
@@ -18,7 +18,7 @@ class PointWithBody(var int x, var int y) {
 // #enddocregion constructor-bodies
 
 // #docregion private-fields
-class UserWithPrivateField(String name) { // 'name' is public
+class UserWithPrivateField(String name) { // 'name' is a parameter
   final String _name = name; // '_name' is private
 }
 // #enddocregion private-fields

@@ -215,9 +215,9 @@ class to use whenever someone makes a call to the redirecting constructor.
 factory Listenable.merge(List<Listenable> listenables) = _MergingListenable
 ```
 
-You might think that ordinary factory constructors can create
-and return instances of other classes,
-making redirecting factories unnecessary.
+Since ordinary factory constructors can create
+and return instances of other classes as well,
+redirecting factories seem unnecessary.
 However, redirecting factories have several advantages:
 
 * An abstract class might provide a constant constructor
@@ -266,8 +266,8 @@ For more discussion, watch this Decoding Flutter video on tear-offs.
 ## Concise constructor syntax
 
 In Dart 3.13 and later, you can omit the class name
-when declaring a generative or factory constructor inside the class body.
-Instead, use the modifier `new` or `factory` directly:
+when declaring a generative or factory constructor inside the class body
+by using the modifier `new` or `factory` directly:
 
 -   `new` or `new named`
 -   `factory` or `factory named`
@@ -276,6 +276,7 @@ Unlike traditional named constructors (such as `Point.origin()`),
 concise named constructors do not use a dot
 between the keyword (modifier) and the name.
 
+<?code-excerpt "concise_syntax.dart (concise-syntax)"?>
 ```dart
 class Point {
   double x, y;
@@ -286,8 +287,8 @@ class Point {
   // Concise named generative constructor
   new origin() : x = 0, y = 0;
 
-  // Concise named factory constructor
-  factory fromMap(Map<String, double> map) => Point(map['x']!, map['y']!);
+  // Equivalent to factory Point.clone(Point other)
+  factory clone(Point other) => Point(other.x, other.y);
 }
 ```
 

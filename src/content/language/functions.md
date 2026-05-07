@@ -61,7 +61,6 @@ that indicates whether the `atomicNumber` falls into the noble gas range.
 
 ## Parameters
 
-
 A function can have any number of _required positional_ parameters. These can be
 followed either by _named_ parameters or by _optional positional_ parameters
 (but not both).

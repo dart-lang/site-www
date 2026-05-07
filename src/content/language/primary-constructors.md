@@ -52,26 +52,23 @@ To ensure this constructor executes on every new instance,
 a class, mixin class, or enum with a primary constructor
 cannot have any other non-redirecting generative constructors.
 
-## Declare parameters
+## Parameter declarations
 
-Placing a parameter list just after the class name
-specifies both a constructor and instance variables.
-Parameters with the `var` or `final` modifier, called **declaring parameters**,
-implicitly induce a field.
+Parameters in primary constructors with the `var` or `final` modifier,
+called **declaring parameters**, implicitly induce a field.
 
-Omitting the modifier creates a **non-declaring parameter**,
-which does not induce an implicit field.
-Use non-declaring parameters for custom initialization logic.
-
-Because `final` and `var` modifiers on parameters are reserved exclusively
-for declaring parameters in primary constructors,
-you cannot use them on parameters in other kinds of functions.
+If you omit the modifier, the parameter does not create a field.
+It behaves just like a parameter in a traditional constructor.
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (declaring-parameters)"?>
 ```dart
 class Point(var int x, var int y); // Declares both fields x and y
-class User(String name); // String name is a non-declaring parameter (no field)
+class User(String name); // Does not declare a field
 ```
+
+Because `final` and `var` modifiers on parameters are reserved exclusively
+for declaring parameters in primary constructors,
+you cannot use them on parameters in other kinds of functions.
 
 For extension types, the primary constructor must have exactly one parameter.
 This parameter is always a declaring parameter, even if you omit the modifier.
@@ -119,27 +116,40 @@ class Point(var int x, var int y) {
 
 This block can specify an initializer list after `this` and/or a function body.
 
-## Private named parameters
+## Initialize private fields
 
-To use a public parameter to initialize a private field,
-use a non-declaring parameter in the primary constructor header
-and declare the private field in the class body:
+To initialize a private field using a named parameter,
+you can write manual assignment boilerplate in a traditional constructor:
 
-<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (private-fields)" replace="/UserWithPrivateField/User/g"?>
+<?code-excerpt "language/lib/primary_constructors/private_named_parameters.dart (private-named-old)" replace="/UserOld/User/g"?>
 ```dart
-class User(String name) { // 'name' is public
-  final String _name = name; // '_name' is private
+// Variant not using a private named parameter.
+class User({required String name}) {
+  String _name = name;
 }
 ```
 
-Dart also supports private named parameters in traditional constructors.
-To learn more, visit
-[Private named parameters](/language/constructors#private-named-parameters).
+With primary constructors and the private named parameters feature,
+you can declare the private field directly in the constructor header.
+When you use a private name (with a leading underscore) for a named parameter,
+the compiler automatically makes the parameter name public for the caller
+by removing the underscore:
+
+<?code-excerpt "language/lib/primary_constructors/private_named_parameters.dart (private-named-new)" replace="/UserNew/User/g"?>
+```dart
+// Variant using a private named parameter.
+class User({required var String _name});
+```
+
+In both cases, the caller uses the public name `name`
+at the call site: `User(name: 'John Doe')`.
 
 ## Empty bodies
 
-An empty body of a class, mixin class, or extension type (`{}`)
-can be replaced by `;` when using a primary constructor.
+An empty body of a class, mixin class, extension, or extension type (`{}`)
+can be replaced by a semicolon (`;`).
+While this is true in general for these declarations, it is particularly
+useful when using a primary constructor to keep the entire declaration on a single line.
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (empty-bodies)" replace="/EmptyBodyPoint/Point/g"?>
 ```dart
@@ -148,8 +158,7 @@ class Point(var int x, var int y);
 
 ## Super parameters
 
-Super parameters can be declared in the same way
-as in traditional constructors today:
+Super parameters work just like they do in traditional constructors:
 
 <?code-excerpt "language/lib/primary_constructors/super_parameters.dart"?>
 ```dart
@@ -160,11 +169,12 @@ class B(super.a) extends A;
 
 ## Constraints and breaking changes
 
-To avoid unexpected compiler errors and understand the impact of this feature,
-keep these constraints and edge cases in mind:
+Keep these constraints and potential errors in mind
+when using primary constructors:
 
-*   **No `late` or `external` fields**: The `late` and `external` modifiers
-    are not allowed on parameters in the primary constructor header.
+*   **Declaring parameters cannot be `late` or `external`**:
+    The `late` and `external` modifiers are not allowed
+    on parameters in the primary constructor header.
     To use these modifiers, declare the fields in the class body as usual.
 *   **Name collisions**: Declaring a parameter in the primary constructor
     with the same name as a method or another field in the class body
@@ -173,18 +183,24 @@ keep these constraints and edge cases in mind:
 :::warning
 **Important breaking changes and edge cases:**
 
-*   **Restriction on `final` in normal function parameters**:
+*   **Restriction on `final` and `var` in normal function parameters**:
     With primary constructors,
-    using `final` on formal parameters in normal functions
+    using `final` or `var` on formal parameters in normal functions
     becomes a compile-time error.
-    It is reserved exclusively for declaring parameters in primary constructors.
-    To enforce immutable parameters as a style choice,
-    use the [avoid_final_parameters](https://dart.dev/tools/linter-rules/avoid_final_parameters)
-    or [parameter_assignments](https://dart.dev/tools/linter-rules/parameter_assignments) linter rules.
+    They are reserved exclusively for declaring parameters
+    in primary constructors.
+    Note that the lints `avoid_final_parameters` and `var_with_no_type_annotation`
+    only work in Dart 3.12 and below.
+    To enforce immutable parameters as a style choice in Dart 3.13 and later,
+    use the
+    [parameter_assignments](https://dart.dev/tools/linter-rules/parameter_assignments)
+    linter rule.
 *   **The `factory` method edge case**:
     If you have a method named `factory` with no return type
     (for example, `factory() {}`),
-    it will be parsed as a factory constructor after primary constructors ship.
-    Ensure your methods have explicit return types to avoid this conflict.
+    the compiler parses it as a factory constructor
+    after primary constructors ship.
+    Make sure such methods have explicit return types
+    to avoid this conflict.
 :::
 
