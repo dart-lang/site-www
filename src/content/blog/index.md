@@ -5,4 +5,10 @@ layout: blog
 showBreadcrumbs: false
 ---
 
+:::tip 🎉 Welcome to our new home!
+We've moved the Dart Blog from Medium to our own site to bring you a better,
+more integrated reading experience. Bookmark this page to stay up-to-date with
+everything Dart!
+:::
+
 <BlogIndex />
