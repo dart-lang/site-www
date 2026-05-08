@@ -3,7 +3,7 @@ class Point {
   double x, y;
 
   // Concise unnamed generative constructor
-  new(this.x, this.y);
+  new (this.x, this.y);
 
   // Concise named generative constructor
   new origin() : x = 0, y = 0;

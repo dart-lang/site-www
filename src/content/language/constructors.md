@@ -282,7 +282,7 @@ class Point {
   double x, y;
 
   // Concise unnamed generative constructor
-  new(this.x, this.y);
+  new (this.x, this.y);
 
   // Concise named generative constructor
   new origin() : x = 0, y = 0;
@@ -296,7 +296,7 @@ This syntax reduces verbosity and makes refactoring class names easier.
 
 :::note
 With this syntax, a method named `factory` with no return type
-(like `factory() {}`) is interpreted as an unnamed factory constructor.
+(like `factory () {}`) is interpreted as an unnamed factory constructor.
 :::
 
 For an even more concise syntax

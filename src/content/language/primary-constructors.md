@@ -115,6 +115,10 @@ class Point(var int x, var int y) {
 ```
 
 This block can specify an initializer list after `this` and/or a function body.
+It also supports forms with just an initializer list followed by a semicolon
+(for example, `this : assert(x >= 0);`),
+and you can apply metadata annotations to it
+(for example, `@metadata this;`).
 
 ## Initialize private fields
 

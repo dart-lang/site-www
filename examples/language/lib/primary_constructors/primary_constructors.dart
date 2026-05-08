@@ -39,7 +39,7 @@ enum Color(final String hex) {
 class LegacyClass {
   // In current Dart, this is a method named 'factory'.
   // In Dart 3.13+, this will be parsed as a factory constructor!
-  factory() {
+  factory () {
     print('Method named factory');
   }
 }
