@@ -208,7 +208,7 @@ class Novice extends Musician { // Use Musician as a class
 ```
 
 Any restrictions that apply to classes or mixins also apply to mixin classes:
- 
+
 - Mixins can't have `extends` or `with` clauses, so neither can a `mixin class`.
 - Classes can't have an `on` clause, so neither can a `mixin class`.
 

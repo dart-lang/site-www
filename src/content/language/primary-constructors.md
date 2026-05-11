@@ -52,7 +52,7 @@ To ensure this constructor executes on every new instance,
 a class, mixin class, or enum with a primary constructor
 cannot have any other non-redirecting generative constructors.
 
-## Parameter declarations
+## Field declarations in parameters
 
 Parameters in primary constructors with the `var` or `final` modifier,
 called **declaring parameters**, implicitly induce a field.
