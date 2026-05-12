@@ -118,7 +118,7 @@ and checking what h2 headers (`##`) are present.
         - new  # Changed from 'changed' because it adds a new feature.
     ```
 
-5.  **Ensure presence of links**
+5.  **Ensure the presence of links**
 
     Ensure every entry has a valid URL set as its `link` field.
     If no specific issue or PR link is available in the description,
@@ -138,8 +138,15 @@ and checking what h2 headers (`##`) are present.
 
 6.  **Fix any formatting or typo issues**
 
-    Review the changelog entries for any Markdown or YAML syntax issues
-    as well as typos or grammatical errors.
+    Review the changelog entries for issues such as:
+
+    -   Markdown or YAML syntax issues.
+    -   Typos or grammatical errors.
+    -   `subArea` fields that aren't in sentence case.
+        For example, use "Type promotion" instead of "Type Promotion".
+        If a word isn't a proper noun, and it isn't the first word,
+        don't capitalize it.
+
     If found, fix them before continuing on.
 
 7.  **Request user review**
