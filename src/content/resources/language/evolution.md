@@ -37,7 +37,7 @@ environment:
 
 [2.12]: #dart-2-12
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
-[language versioned]: #language-versioning
+[language versioned]: /language/versioning
 [Breaking changes]: /resources/breaking-changes
 
 :::tip
@@ -351,7 +351,7 @@ The 3.0 release of the Dart SDK dropped support for
 [Switch expressions]: /language/branches#switch-expressions
 [If-case clauses]: /language/branches#if-case
 [`mixin`]: /language/mixins#class-mixin-or-mixin-class
-[language versions]: #language-versioning
+[language versions]: /language/versioning
 
 ### Dart 2.19
 _Released 25 January 2023_

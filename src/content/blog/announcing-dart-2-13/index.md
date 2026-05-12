@@ -138,7 +138,7 @@ environment:
 ```
 
 
-This feature is backward compatible, thanks to [language versioning](https://dart.dev/guides/language/evolution#language-versioning). Packages with lower SDK constraints under 2.13 can safely refer to type aliases defined in 2.13 packages, even though pre-2.13 packages can’t define their own type aliases.
+This feature is backward compatible, thanks to [language versioning](https://dart.dev/language/versioning). Packages with lower SDK constraints under 2.13 can safely refer to type aliases defined in 2.13 packages, even though pre-2.13 packages can’t define their own type aliases.
 
 ## Dart 2.13 FFI changes
 

@@ -18,7 +18,7 @@ This release brings formatter updates, null-aware elements for collections, new 
 
 In the previous release, Dart included a largely rewritten formatter that supported a new [“tall” style](https://github.com/dart-lang/dart_style/issues/1253). The Dart 3.8 release incorporates additional feedback, fixes bug reports, and adds other improvements.
 
-Note that if you upgrade to the Dart 3.8 SDK, your formatting won’t change until you change your package’s pubspec to opt in to the latest language version.
+Note that if you upgrade to the Dart 3.8 SDK, your formatting won’t change until you change your package’s pubspec to opt in to the latest [language version](https://dart.dev/language/versioning).
 
 ### **Trailing commas and taller code**
 

@@ -49,7 +49,7 @@ class Container {
 
 This limitation was due to several complex cases where flow analysis could not safely determine when or how a field might change. In the case of field promotion on a class, for example, it could be an issue if a subclass overrides a field with a getter, which sometimes returns null.
 
-In Dart 3.2, we’ve improved our flow analysis engine and are now able to type promote **private final fields**. Now, the code snippet above passes without errors. This leverages the understanding that for a private & final field, the value never changes after the initial assignment, so checking it just once is considered safe. Private final field promotion is available starting with Dart 3.2, and will be applied to projects that have a Dart SDK [lower bound](https://dart.dev/guides/language/evolution#language-versioning) of 3.2 or higher.
+In Dart 3.2, we’ve improved our flow analysis engine and are now able to type promote **private final fields**. Now, the code snippet above passes without errors. This leverages the understanding that for a private & final field, the value never changes after the initial assignment, so checking it just once is considered safe. Private final field promotion is available starting with Dart 3.2, and will be applied to projects that have a Dart SDK [lower bound](https://dart.dev/language/versioning) of 3.2 or higher.
 
 ## New code analysis options in package:lints 3.0
 

@@ -327,7 +327,7 @@ enable the [`unnecessary_underscores`][] lint.
 :::
 
 [wildcards]: /language/variables#wildcard-variables
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [`no_wildcard_variable_uses`]: /tools/linter-rules/no_wildcard_variable_uses
 [`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores
 

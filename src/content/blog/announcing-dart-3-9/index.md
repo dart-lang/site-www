@@ -86,7 +86,7 @@ dependencies:
 ```
 
 
-Starting from language version 3.9, the `flutter` constraint upper bound is now respected in your root package (the `dart` constraint was already respected). Setting a narrow dart or flutter constraint can be useful to ensure a team of developers all use the same SDK version when jointly developing an app (see [issue #95472](https://github.com/flutter/flutter/issues/95472) for details).
+Starting from [language version](https://dart.dev/language/versioning) 3.9, the `flutter` constraint upper bound is now respected in your root package (the `dart` constraint was already respected). Setting a narrow dart or flutter constraint can be useful to ensure a team of developers all use the same SDK version when jointly developing an app (see [issue #95472](https://github.com/flutter/flutter/issues/95472) for details).
 
 For example, in a root pubspec like this `pub get` will fail if invoked with a version of the Flutter SDK that is not 3.33.0:
 
