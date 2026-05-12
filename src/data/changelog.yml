@@ -126,8 +126,8 @@
   area: Tools
   subArea: Analyzer
   description: |
-    Added improvements to LSP format-on-type, to not format in undesirable
-    cases.
+    Implemented LSP format-on-type improvements to
+    not format in undesirable cases.
   tags:
     - fixed
   link: "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110"
@@ -508,10 +508,11 @@
   area: SDK
   subArea: Type promotion
   description: |
-    Assumes null safety for type promotion, reachability, and definite
-    assignment. The analysis server now uses an AOT-compiled snapshot for
-    improved performance. New lints `switch_on_type` and `unnecessary_unawaited`
-    were added, along with a new `@awaitNotRequired` annotation.
+    Dart's type system now assumes null safety for
+    type promotion, reachability, and definite assignment.
+    The analysis server is now AOT compiled for improved performance.
+    New lints `switch_on_type` and `unnecessary_unawaited` were added,
+    along with a new `@awaitNotRequired` annotation.
   tags:
     - changed
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#390
@@ -603,7 +604,7 @@
 - version: 3.8.0
   releaseDate: 2025-05-20
   area: SDK
-  subArea: Null-aware Elements
+  subArea: Null-aware elements
   description: |
     Introduced null-aware elements for collections, making it easier to
     conditionally add elements based on nullability. Also added
@@ -738,7 +739,7 @@
   description: |
     Introduced wildcard variables, a new "tall" style for the dart
     formatter, and officially deprecated older web libraries in favor of
-    `package:web` and `dart:js_interop`. Also included numerous analyzer
+    `package:web` and `dart:js_interop`. Also implemented numerous analyzer
     improvements and new lints.
   tags:
     - changed
@@ -1240,7 +1241,7 @@
 - version: 3.4.0
   releaseDate: 2024-05-14
   area: SDK
-  subArea: Type analysis improvements
+  subArea: Type analysis
   description: |
     Improved type analysis for conditional expressions, if-null, and
     switch expressions. Also added `ExternalDartReference` to
@@ -2234,7 +2235,7 @@
   subArea: Dart 3
   description: |
     Introduced major language features including records, patterns,
-    class modifiers, and 100% sound null safety. Also includes many other
+    class modifiers, and 100% sound null safety. Also made many other
     improvements and breaking changes across the platform.
   tags:
     - changed
