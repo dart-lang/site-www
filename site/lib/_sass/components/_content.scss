@@ -55,7 +55,7 @@ article {
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
-
+      min-width: 0;
       background-color: var(--site-raised-bgColor);
       padding: 1rem;
       border-radius: var(--site-radius);
@@ -63,6 +63,17 @@ article {
 
     h1 {
       text-wrap: pretty;
+      min-width: 0;
+      max-width: 100%;
+      word-break: normal;
+      overflow-wrap: break-word;
+
+      @media (max-width: 390px) {
+        font-size: 2.375rem;
+      }
+      @media (max-width: 350px) {
+        font-size: 2rem;
+      }
     }
 
     .page-description {

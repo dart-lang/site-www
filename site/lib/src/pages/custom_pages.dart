@@ -156,6 +156,7 @@ List<MemoryPage> get _lintMemoryPages {
               'title': lint.name,
               'underscore_breaker_titles': true,
               'description': 'Learn about the ${lint.name} linter rule.',
+              'bodyClass': 'highlight-diagnostics',
               // If this lint has a version not fully lower case,
               // specify that version as the canonical destination.
               if (lintId != lint.id)
