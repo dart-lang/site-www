@@ -6,6 +6,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
+import '../../util.dart';
 import '../util/global_event_listener.dart';
 import 'button.dart';
 
@@ -40,7 +41,7 @@ class Dialog extends StatelessComponent {
     }
   }
 
-  /// Callback triggered when closing the dialog (via button or overlay click).
+  /// Callback triggered when closing the dialog.
   final VoidCallback onClose;
 
   /// The title displayed in the dialog header.
@@ -59,7 +60,7 @@ class Dialog extends StatelessComponent {
   Component build(BuildContext context) {
     return GlobalEventListener(
       div(
-        classes: 'legend-overlay ${visible ? 'show' : ''} ${classes ?? ''}',
+        classes: ['legend-overlay', if (visible) 'show', ?classes].toClasses,
         events: {
           'click': (e) {
             if (e.target == e.currentTarget) {
@@ -70,7 +71,7 @@ class Dialog extends StatelessComponent {
         [
           div(classes: 'legend-dialog', [
             div(classes: 'legend-header', [
-              h3([Component.text(title)]),
+              h3([.text(title)]),
               Button(
                 icon: 'close',
                 classes: ['close-button'],
