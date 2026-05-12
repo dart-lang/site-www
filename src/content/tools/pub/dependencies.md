@@ -370,7 +370,7 @@ remains compatible with a given version of Package A?
 
 To let developers know version compatibility, specify version constraints.
 You want to allow the widest range of versions possible
-to give your package users' flexibility.
+to give your package users flexibility.
 The range should exclude versions that don't work or haven't been tested.
 
 The Dart community uses semantic versioning<sup id="fnref:semver"><a
