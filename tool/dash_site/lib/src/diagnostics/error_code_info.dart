@@ -18,16 +18,12 @@ final class Messages {
   /// shared `messages.yaml` file.
   final Map<String, FrontEndErrorCodeInfo> sharedMessages;
 
-  /// Decoded messages from the front end's `messages.yaml` file.
-  final Map<String, FrontEndErrorCodeInfo> frontEndMessages;
-
   /// A set of tables mapping between front end and analyzer error codes.
   final CfeToAnalyzerErrorCodeTables cfeToAnalyzerErrorCodeTables;
 
   Messages._({
     required this.analyzerMessages,
     required this.linterMessages,
-    required this.frontEndMessages,
     required this.sharedMessages,
     required this.cfeToAnalyzerErrorCodeTables,
   });
@@ -41,8 +37,6 @@ final class Messages {
     final analysisServerMessages = _decodeAnalyzerMessagesYaml(
       rawAnalysisServerYaml,
     );
-    final rawFrontEndYaml = await _loadSdkYaml('pkg/front_end/messages.yaml');
-    final frontEndMessages = _decodeCfeMessagesYaml(rawFrontEndYaml);
     final rawSharedYaml = await _loadSdkYaml(
       'pkg/_fe_analyzer_shared/messages.yaml',
     );
@@ -53,9 +47,7 @@ final class Messages {
     return Messages._(
       analyzerMessages: {...analyzerMessages, ...analysisServerMessages},
       linterMessages: linterMessages,
-      frontEndMessages: frontEndMessages,
       cfeToAnalyzerErrorCodeTables: CfeToAnalyzerErrorCodeTables._({
-        ...frontEndMessages,
         ...sharedMessages,
       }),
       sharedMessages: sharedMessages,

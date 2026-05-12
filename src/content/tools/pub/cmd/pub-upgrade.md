@@ -131,6 +131,14 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
+### `--[no-]example`
+
+By default, pub also upgrades the dependencies of the
+[`example/` directory][example-dir] of the package (`--example`).
+To skip upgrading example dependencies, use `--no-example`.
+
+[example-dir]: /tools/pub/package-layout#examples
+
 ### `--major-versions`
 
 Gets the packages that [`dart pub outdated`][] lists as _resolvable_,

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "dart-dev"
+  },
+  "targets": {
+    "dart-dev": {
+      "hosting": {
+        "blog": [
+          "dart-blog"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

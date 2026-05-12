@@ -40,7 +40,7 @@ There are some downsides to this setup:
   separate analysis contexts for each package, increasing memory usage.
 
 Pub allows you to organize your repository as a _workspace_ using a single
-shared resolution for all your packages. 
+shared resolution for all your packages.
 Using workspaces for large repositories reduces the amount of memory
 required for analysis, hence improving performance.
 
@@ -145,6 +145,44 @@ workspace:
 ```
 
 You can use a glob pattern that automatically picks up new packages.
+
+## Nested workspaces
+
+You can nest workspaces to organize packages
+hierarchically in large repositories.
+A workspace member can declare its own `workspace` field,
+just like the root `pubspec.yaml`.
+
+For example, if a `server` package splits its implementation
+into `auth` and `api` sub-packages,
+list them in the `workspace` field of the `server` package:
+
+```yaml title="packages/server/pubspec.yaml" highlightLines=7-9
+name: server
+
+resolution: workspace
+environment:
+  sdk: ^3.6.0
+
+workspace:
+  - auth
+  - api
+```
+
+Then mark each sub-package as using workspace resolution:
+
+```yaml title="packages/server/auth/pubspec.yaml" highlightLines=3
+name: auth
+
+resolution: workspace
+environment:
+  sdk: ^3.6.0
+```
+
+The root `pubspec.yaml` only needs to list `packages/server`.
+Pub discovers `auth` and `api` through the `workspace` entry of
+the `server` package and includes them in the
+single, shared dependency resolution.
 
 ## Stray files
 

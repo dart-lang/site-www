@@ -369,8 +369,8 @@ map entry element:
 ```
 
 In the following example, the result for the
-null-aware element `?a` is not added to a list called
-`items` because `a` is `null`:
+null-aware element `?absentValue` is not added to a list called
+`items` because `absentValue` is `null`:
 
 <?code-excerpt "misc/test/language_tour/collections/null_aware_element_a.dart (code-sample)"?>
 ```dart
@@ -597,7 +597,7 @@ var typeInfo = [
   if (data case String s) 'Data is a string: $s',
   if (data case bool b) 'Data is a boolean: $b',
   if (data case double d) 'Data is a double: $d',
-]; // [Data is an integer: 123, Data is a double: 123]
+]; // [Data is an integer: 123]
 ```
 
 <?code-excerpt "misc/test/language_tour/collections/if_case_operator_in_collection_d.dart (code_sample)"?>

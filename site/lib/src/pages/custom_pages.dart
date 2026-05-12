@@ -58,7 +58,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
   return [
     for (final diagnostic in diagnostics.where((d) => d.hasDocumentation)) ...[
       MemoryPage.builder(
-        path: path.join(
+        path: path.posix.join(
           'tools',
           'diagnostics',
           '${diagnostic.id}.md',
@@ -106,7 +106,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
       ),
       for (final previousDiagnosticName in diagnostic.previousNames)
         MemoryPage.builder(
-          path: path.join(
+          path: path.posix.join(
             'tools',
             'diagnostics',
             '$previousDiagnosticName.md',
@@ -146,7 +146,7 @@ List<MemoryPage> get _lintMemoryPages {
     for (final lint in lintRules)
       for (final lintId in {lint.id, lint.id.toLowerCase()})
         MemoryPage.builder(
-          path: path.join(
+          path: path.posix.join(
             'tools',
             'linter-rules',
             '$lintId.md',
@@ -156,6 +156,7 @@ List<MemoryPage> get _lintMemoryPages {
               'title': lint.name,
               'underscore_breaker_titles': true,
               'description': 'Learn about the ${lint.name} linter rule.',
+              'bodyClass': 'highlight-diagnostics',
               // If this lint has a version not fully lower case,
               // specify that version as the canonical destination.
               if (lintId != lint.id)

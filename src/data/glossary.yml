@@ -764,6 +764,24 @@
   alternate:
     - "Procedure"
 
+- term: "Getter"
+  short_description: |-
+    A special method that provides read access to an object's properties.
+  long_description: |-
+    Getters and setters are special methods that
+    provide read and write access to an object's properties.
+    Recall that each instance variable has an implicit getter,
+    plus an implicit setter if appropriate.
+    You can create additional properties by implementing getters and setters,
+    using the `get` and `set` keywords.
+  related_links:
+    - text: "Getters and setters"
+      link: "/language/methods#getters-and-setters"
+      type: "doc"
+  labels:
+    - "language"
+    - "methods"
+
 - term: "Immediate dependency"
   short_description: |-
     A dependency that a Dart package directly uses.
@@ -836,6 +854,23 @@
   alternate:
     - "Read-only"
     - "Unchangeable"
+
+- term: "Instantiate"
+  short_description: |-
+    Creating a concrete instance (object) of a class.
+  long_description: |-
+    Instantiating a class means creating an object of that 
+    class's type in memory.
+    In Dart, you do this by calling a constructor,
+    such as `final myItem = Item()`.
+    Abstract classes can't be instantiated directly.
+  related_links:
+    - text: "Classes in Dart"
+      link: "/language/classes"
+      type: "doc"
+  labels:
+    - "language"
+    - "object-oriented"
 
 - term: "Interop"
   short_description: |-
@@ -1091,6 +1126,20 @@
   labels:
     - "language"
     - "libraries"
+
+- term: "Library-private"
+  short_description: |-
+    Accessibility restricted to the [library](#library) where it is defined.
+  long_description: |-
+    In Dart, privacy is scoped to the library rather than the class.
+    Any identifier prefixed with an underscore, such as `_myVariable`, is library-private.
+  related_links:
+    - text: "Libraries and imports"
+      link: "/language/libraries"
+      type: "doc"
+  labels:
+    - "language"
+    - "encapsulation"
 
 - term: "Lockfile"
   short_description: |-
@@ -1872,6 +1921,33 @@
     - "subtyping"
     - "subtype polymorphism"
 
+- term: "Super parameter"
+  short_description: |-
+    A constructor parameter that automatically passes
+    an argument to the superclass constructor.
+  long_description: |-
+    A **super parameter** is a syntax shorthand that simplifies
+    passing parameters from a subclass constructor
+    up to a superclass constructor.
+
+    Instead of manually declaring the parameter
+    and passing it in the initializer list,
+    you can prefix the parameter name with `super.`.
+
+    For example, in `Hammer({required super.price})`,
+    the `price` value is passed
+    along directly to the superclass constructor.
+  related_links:
+    - text: "Super parameters"
+      link: "/language/constructors#super-parameters"
+      type: "doc"
+  labels:
+    - "language"
+    - "constructors"
+    - "syntax"
+  alternate:
+    - "Super-initializer parameter"
+
 - term: "Transitive dependency"
   short_description: |-
     A dependency that a package indirectly uses because
@@ -2050,6 +2126,59 @@
   alternate:
     - "typedef"
     - "alias"
+
+- term: "Uninitialized"
+  short_description: |-
+    A variable that has been declared but has not yet been assigned a value.
+  long_description: |-
+    A variable is _uninitialized_ when it has been declared but
+    has not yet been assigned a value.
+
+    Non-nullable variables must be initialized before they are read,
+    either at the point of declaration or through all possible
+    execution paths before the first use:
+
+    ```dart
+    void f() {
+      int x;
+      print(x); // Error: variable 'x' must be assigned before it can be used.
+    }
+    ```
+
+    Nullable variables that aren't explicitly initialized default to `null`:
+
+    ```dart
+    int? count; // Implicitly initialized to null.
+    print(count); // Prints: null
+    ```
+
+    To defer initialization of a non-nullable variable,
+    use the `late` keyword. A `late` variable is uninitialized
+    until its first assignment, and accessing it before it's assigned
+    throws a late initialization error at run time:
+
+    ```dart
+    late String name;
+    print(name); // Throws a late initialization error if not yet assigned.
+    ```
+  related_links:
+    - text: "Variables"
+      link: "/language/variables"
+      type: "doc"
+    - text: "Definite assignment"
+      link: "#definite-assignment"
+      type: "term"
+    - text: "Late"
+      link: "#late"
+      type: "term"
+  labels:
+    - "language"
+    - "variables"
+    - "null safety"
+    - "flow analysis"
+  alternate:
+    - "Unassigned"
+    - "Not initialized"
 
 - term: "Variance and variance positions"
   id: "variance"
@@ -2317,3 +2446,4 @@
   labels:
     - "pub"
     - "packages"
+

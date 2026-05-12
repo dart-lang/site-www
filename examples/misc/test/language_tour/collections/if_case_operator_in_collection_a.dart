@@ -8,12 +8,9 @@ void main() {
     if (data case String s) 'Data is a string: $s',
     if (data case bool b) 'Data is a boolean: $b',
     if (data case double d) 'Data is a double: $d',
-  ]; // [Data is an integer: 123, Data is a double: 123]
+  ]; // [Data is an integer: 123]
   // #enddocregion code_sample
 
   print(typeInfo);
-  expect(
-    typeInfo,
-    equals(['Data is an integer: 123', 'Data is a double: 123']),
-  );
+  expect(typeInfo, equals(['Data is an integer: 123']));
 }
