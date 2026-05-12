@@ -28,7 +28,9 @@ class Dialog extends StatelessComponent {
 
   void _handleClose() {
     if (kIsWeb) {
-      if (web.document.activeElement case final web.HTMLElement activeElement) {
+      // Blur focus if it's currently inside the dialog.
+      if (web.document.activeElement case final web.HTMLElement activeElement
+          when activeElement.closest('.legend-dialog') != null) {
         activeElement.blur();
       }
     }
