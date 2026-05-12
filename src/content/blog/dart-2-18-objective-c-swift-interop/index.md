@@ -250,7 +250,7 @@ The following graph shows the unsound vs. sound null safety executions of `flutt
 
 Supporting both unsound and sound null safety adds overhead and complexity.
 
-First, Dart developers need to learn and understand both modes. Whenever reading a piece of Dart code, check the [language version](https://dart.dev/guides/language/evolution#language-versioning) to see if types are non-null by default (Dart 2.12 and later) or nullable by default (Dart 2.11 and earlier).
+First, Dart developers need to learn and understand both modes. Whenever reading a piece of Dart code, check the [language version](https://dart.dev/language/versioning) to see if types are non-null by default (Dart 2.12 and later) or nullable by default (Dart 2.11 and earlier).
 
 Second, supporting both modes in our compilers and runtimes slows down evolving the Dart SDK to support new features.
 

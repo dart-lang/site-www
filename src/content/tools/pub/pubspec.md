@@ -506,7 +506,7 @@ the version when the feature was introduced.
 For details, check out [Language versioning][].
 :::
 
-[Language versioning]: /resources/language/evolution#language-versioning
+[Language versioning]: /language/versioning
 
 For example, the following constraint says that this package
 works with any Dart SDK that's version 3.0.0 or higher:

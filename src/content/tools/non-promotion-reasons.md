@@ -1211,4 +1211,4 @@ void f(int? i, int? j) {
 }
 ```
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning

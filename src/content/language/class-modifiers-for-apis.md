@@ -34,7 +34,7 @@ and how they affect users of your libraries.
 ## The `mixin` modifier on classes
 
 The most important modifier to be aware of is `mixin`.
-Language versions prior to Dart 3.0 allow any class to be used as a mixin
+[Language versions][] prior to Dart 3.0 allow any class to be used as a mixin
 in another class's `with` clause, _UNLESS_ the class:
 
 *   Declares any non-factory constructors.
@@ -58,6 +58,8 @@ If you update your package to Dart 3.0 and don't change any of your code,
 you may not see any errors.
 But you may inadvertently break users of your package
 if they were using your classes as mixins.
+
+[Language versions]: /language/versioning
 
 ### Migrating classes as mixins
 

@@ -669,5 +669,5 @@ The following resources have further information on sound Dart:
 
 
 [analysis]: /tools/analysis
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [null safety]: /null-safety

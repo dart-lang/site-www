@@ -28,7 +28,7 @@ For Dart, we chose the path of sound null safety. This involved a tradeoff. In a
 
 It’s been three years since we introduced null safety to the Dart language in [Dart 2.12](https://dart.dev/guides/language/evolution#dart-212). As mentioned in the previous section, we recognize the impact needed to migrate existing Dart packages and apps. To help migration, Dart has supported running your app code in three ways. It can run without null safety, in a mixed mode with partial null safety, or with full sound null safety. Full sound null safety occurs when 100% of the code, including all dependencies, has been migrated. This gave Dart developers time to migrate existing code one step at a time. However, having support for several modes added overhead and complexity.
 
-First, Dart developers need to be aware of all three modes. Whenever you read a piece of Dart code, you must check the language version to see if types are non-null by default, nullable by default, or some combination thereof.
+First, Dart developers need to be aware of all three modes. Whenever you read a piece of Dart code, you must check the [language version](https://dart.dev/language/versioning) to see if types are non-null by default, nullable by default, or some combination thereof.
 
 Second, supporting all three modes in our compilers and runtimes slows down evolving the Dart SDK. This support increases the cost and complexity of adding new features.
 

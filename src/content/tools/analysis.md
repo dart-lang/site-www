@@ -691,7 +691,7 @@ Use the following resources to learn more about static analysis in Dart:
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [linter rules]: /tools/linter-rules
 [type-system]: /language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code

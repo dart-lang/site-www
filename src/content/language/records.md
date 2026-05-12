@@ -343,7 +343,7 @@ for the code using it as a reference, that the value being aliased is a record.
 Extension types, also, offer little protection.
 Only a class can provide full abstraction and encapsulation.
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
 [`dart:async` documentation]: /libraries/dart-async#handling-errors-for-multiple-futures
