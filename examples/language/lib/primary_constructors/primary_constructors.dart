@@ -1,11 +1,17 @@
+// ignore_for_file: unused_field
+
 // #docregion declaring-parameters
-class Point(var int x, var int y); // Declares both fields x and y
-class User(String name); // Does not declare a field
+// Declares both fields x and y.
+class Point(var int x, var int y);
+
+// Doesn't declare a field.
+class User(String name);
 // #enddocregion declaring-parameters
 
 // #docregion initializer-scope
 class DeltaPoint(final int x, int delta) {
-  final int y = x + delta; // Accesses 'x' and 'delta' parameters directly!
+  // Accesses 'x' and 'delta' parameters directly!
+  final int y = x + delta;
 }
 // #enddocregion initializer-scope
 
@@ -18,8 +24,9 @@ class PointWithBody(var int x, var int y) {
 // #enddocregion constructor-bodies
 
 // #docregion private-fields
-class UserWithPrivateField(String name) { // 'name' is a parameter
-  final String _name = name; // '_name' is private
+// 'name' is a parameter.
+class UserWithPrivateField(String name) {
+  final String _name = name; // '_name' is private.
 }
 // #enddocregion private-fields
 
@@ -33,21 +40,5 @@ enum Color(final String hex) {
   green('#00FF00'),
   blue('#0000FF');
 }
+
 // #enddocregion enums
-
-// #docregion factory-edge-case
-class LegacyClass {
-  // In current Dart, this is a method named 'factory'.
-  // In Dart 3.13+, this will be parsed as a factory constructor!
-  factory () {
-    print('Method named factory');
-  }
-}
-// #enddocregion factory-edge-case
-
-// #docregion final-parameter-restriction
-// In current Dart this is valid. In Dart 3.13+ it becomes an error.
-void processUser(final User user) { 
-  print(user.name);
-}
-// #enddocregion final-parameter-restriction

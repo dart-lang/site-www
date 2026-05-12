@@ -4,4 +4,5 @@ class ModifierClass(this.x) {
   late int x;
   external double d;
 }
+
 // #enddocregion modifier-class

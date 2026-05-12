@@ -62,8 +62,11 @@ It behaves just like a parameter in a traditional constructor.
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (declaring-parameters)"?>
 ```dart
-class Point(var int x, var int y); // Declares both fields x and y
-class User(String name); // Does not declare a field
+// Declares both fields x and y.
+class Point(var int x, var int y);
+
+// Doesn't declare a field.
+class User(String name);
 ```
 
 Because `final` and `var` modifiers on parameters are reserved exclusively
@@ -92,7 +95,8 @@ in a traditional constructor's initializer list.
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (initializer-scope)"?>
 ```dart
 class DeltaPoint(final int x, int delta) {
-  final int y = x + delta; // Accesses 'x' and 'delta' parameters directly!
+  // Accesses 'x' and 'delta' parameters directly!
+  final int y = x + delta;
 }
 ```
 
