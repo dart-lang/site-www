@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:collection/collection.dart';
 import 'package:intl/intl.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
@@ -52,11 +53,23 @@ final class AtomFeedOutput implements SecondaryOutput {
   @visibleForTesting
   String renderAtomFeed(Page blogIndex, List<Page> pages) {
     final pageData = blogIndex.data;
-    final base = Uri.parse(pageData.site['url'] as String);
-    final feedUrl = base.resolve(blogAtomFeedPath).toString();
-    final blogUrl = base.resolve('/blog').toString();
-    final (:entries, :feedUpdated) = _entriesFor(base, pages);
-    final feedInfo = Post(pageData.page);
+    final siteUrl = pageData.site['url'];
+    if (siteUrl is! String) {
+      throw Exception('Site URL not configured in site data.');
+    }
+
+    final siteBaseUrl = Uri.parse(siteUrl);
+    final feedUrl = siteBaseUrl.resolve(blogAtomFeedPath).toString();
+    final blogUrl = siteBaseUrl.resolve('/blog').toString();
+    final feedTitle = pageData.page['title'];
+    if (feedTitle is! String) {
+      throw Exception('Blog index title not configured in page data.');
+    }
+    final feedDescription = pageData.page['description'];
+    if (feedDescription is! String) {
+      throw Exception('Blog index description not configured in page data.');
+    }
+    final (:entries, :feedUpdated) = _entriesFor(siteBaseUrl, pages);
 
     final builder = XmlBuilder();
     builder.processing('xml', 'version="1.0" encoding="utf-8"');
@@ -65,8 +78,8 @@ final class AtomFeedOutput implements SecondaryOutput {
       namespaces: const {_atomNamespace: ''},
       nest: () {
         builder
-          ..writeTextElement('title', feedInfo.title)
-          ..writeTextElement('subtitle', feedInfo.description)
+          ..writeTextElement('title', feedTitle)
+          ..writeTextElement('subtitle', feedDescription)
           ..element('id', nest: feedUrl)
           ..writeLink(
             rel: 'self',
@@ -89,7 +102,7 @@ final class AtomFeedOutput implements SecondaryOutput {
   /// The entries to write to the feed alongside the
   /// latest `updated` timestamp across them.
   ({List<_AtomEntry> entries, DateTime feedUpdated}) _entriesFor(
-    Uri base,
+    Uri siteBaseUrl,
     List<Page> pages,
   ) {
     final entries = <_AtomEntry>[];
@@ -98,11 +111,10 @@ final class AtomFeedOutput implements SecondaryOutput {
     for (final page in pages) {
       if (!page.url.startsWith('/blog/')) continue;
       final pageData = page.data.page;
-      if (pageData['publishDate'] is! String || pageData['atom'] == false) {
-        continue;
-      }
+      if (pageData['atom'] == false) continue;
+      final post = Post.tryParse(pageData);
+      if (post == null) continue;
 
-      final post = Post(pageData);
       final published = _atomDateFormat.parseStrict(post.publishDate, true);
       final updated = switch (pageData['updatedDate']) {
         final String updatedDate => _latest(
@@ -114,7 +126,7 @@ final class AtomFeedOutput implements SecondaryOutput {
 
       entries.add(
         _AtomEntry(
-          url: base.resolve(page.url).toString(),
+          url: siteBaseUrl.resolve(page.url).toString(),
           title: post.title,
           summary: post.description,
           author: page.getAuthor(post.authorId).name,
@@ -127,11 +139,16 @@ final class AtomFeedOutput implements SecondaryOutput {
     }
 
     if (feedUpdated == null) {
-      throw StateError('No blog posts qualified for the Atom feed.');
+      print(
+        'Warning: No blog posts qualified for the Atom feed. '
+        'Generated an empty feed.',
+      );
     }
 
-    entries.sort();
-    return (entries: entries, feedUpdated: feedUpdated);
+    return (
+      entries: entries.sorted(),
+      feedUpdated: feedUpdated ?? DateTime.utc(1970),
+    );
   }
 }
 
