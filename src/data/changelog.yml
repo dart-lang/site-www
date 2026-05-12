@@ -892,8 +892,8 @@
   area: SDK
   subArea: Digit separators
   description: |
-    Introduced digit separators for number literals, improves `throw`
-    expression type inference, and adds support for pub workspaces. Also added
+    Introduced digit separators for number literals, improved `throw`
+    expression type inference, and added support for pub workspaces. Also added
     new `JSArray` constructors and methods in `dart:js_interop`, and several
     new lints and assists.
   tags:
@@ -1755,7 +1755,7 @@
   subArea: Private field promotion
   description: |
     Introduced private field promotion, allowing private final fields
-    to be promoted to non-nullable types. Also includes breaking changes to
+    to be promoted to non-nullable types. Also included breaking changes to
     refutable patterns split points, disabled `waitFor` by default, and changed
     `utf8.encode` return type to `Uint8List`.
   tags:
@@ -2605,7 +2605,7 @@
   subArea: Unnamed libraries
   description: |
     Introduced support for unnamed libraries, improved flow analysis
-    for unreachable code, and reports compile-time errors for cyclic
+    for unreachable code, and reported compile-time errors for cyclic
     dependencies during top-level type inference.
   tags:
     - changed
