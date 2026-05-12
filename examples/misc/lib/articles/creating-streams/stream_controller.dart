@@ -134,7 +134,7 @@ void useWhere() {
   var mappedStream = counterStream
       // #docregion use-where
       .where((int x) => x.isEven) // Retain only even integer events.
-      .expand((var x) => [x, x]) // Duplicate each event.
+      .expand((x) => [x, x]) // Duplicate each event.
       .take(5) // Stop after the first five events.
   // #enddocregion use-where
   ;
@@ -180,7 +180,7 @@ void useExpand() {
   var counterStream2 = timedCounterGenerator(
     const Duration(seconds: 1),
     15,
-  ).expand((var x) => [x, x]); // Duplicate each event.
+  ).expand((x) => [x, x]); // Duplicate each event.
   counterStream2.listen(print);
 }
 

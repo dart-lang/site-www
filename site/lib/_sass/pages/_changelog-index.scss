@@ -538,7 +538,6 @@ body.dark-mode {
       }
 
       .read-more {
-        margin-bottom: 0.8rem;
         text-align: right;
 
         a {
@@ -678,6 +677,10 @@ body.dark-mode {
 
     &:hover {
       color: var(--site-primary-color);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
     }
 
     .material-symbols-outlined {
