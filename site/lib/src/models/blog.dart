@@ -3,7 +3,6 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:intl/intl.dart';
-import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 extension type Post(Map<String, Object?> data) {
@@ -35,9 +34,9 @@ extension type AuthorGithub(Map<String, Object?> data) {
   String? get avatarUrl => data['avatar_url'] as String?;
 }
 
-extension GetAuthor on BuildContext {
+extension GetAuthor on Page {
   Author getAuthor(String id) {
-    final author = (page.data['authors'] as Map<String, Object?>)[id];
+    final author = (data['authors'] as Map<String, Object?>)[id];
     if (author == null) {
       throw Exception('Author not found: $id');
     }

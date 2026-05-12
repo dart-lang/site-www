@@ -21,7 +21,7 @@ class PostInfo extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final author = context.getAuthor(post.authorId);
+    final author = context.page.getAuthor(post.authorId);
     final githubUrl = author.github?.handle != null
         ? 'https://github.com/${author.github!.handle}'
         : null;
