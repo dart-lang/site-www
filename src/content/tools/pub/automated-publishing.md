@@ -266,10 +266,10 @@ on:
 jobs:
   publish:
     permissions:
-      id-token: write # Required for authentication using OIDC
+      id-token: write # Required for authentication using OIDC.
     uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
     with:
-      # Specify the github actions deployment environment
+      # Specify the GitHub Action deployment environment.
       environment: pub.dev
       # working-directory: path/to/package/within/repository
 ```

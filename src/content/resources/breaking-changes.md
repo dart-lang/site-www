@@ -155,7 +155,7 @@ don't include the section header.
 - The `JSUint16ArrayToInt16List` extension has been
   renamed to `JSUint16ArrayToUint16List`.
 
-- The `Function.toJSCaptureThis` function now results in addditional
+- The `Function.toJSCaptureThis` function now results in additional
   compile-time checks to match `Function.toJS`.
   If the function doesn't have a statically known type,
   has unsupported types in its signature, includes type parameters,
@@ -306,15 +306,15 @@ don't include the section header.
 
 ### Libraries
 
-#### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl`, `dart:js`
+#### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audio`, `dart:web_gl`, `dart:js`
 
 - {{deprecated}} These legacy web libraries are officially deprecated.
   They are expected to be removed in a future release.
   Project should migrate to use [`package:web`][] and `dart:js_interop`.
-  To learn more, check out [Migrate to package:web][].
+  To learn more, check out [Migrate to `package:web`][].
 
 [`package:web`]: {{site.pub-pkg}}/web
-[Migrate to package:web]: /interop/js-interop/package-web
+[Migrate to `package:web`]: /interop/js-interop/package-web
 
 #### `dart:js`, `dart:js_util`, `package:js`
 
@@ -500,15 +500,15 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
 [52121]: {{site.repo.dart.sdk}}/issues/52121
 
-#### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audo`, `dart:web_gl`
+#### `dart:html`, `dart:indexed:db`, `dart:svg`, `dart:web_audio`, `dart:web_gl`
 
 - {{deprecated}} These libraries are now marked as legacy and
   will see less support in the future.
   New projects should prefer to use [`package:web`][] and `dart:js_interop`.
-  To learn more, check out [Migrate to package:web][].
+  To learn more, check out [Migrate to `package:web`][].
 
 [`package:web`]: {{site.pub-pkg}}/web
-[Migrate to package:web]: /interop/js-interop/package-web
+[Migrate to `package:web`]: /interop/js-interop/package-web
 
 #### `dart:js`
 
@@ -580,7 +580,7 @@ when running `dart format` with a Dart 3.6 SDK or later:
 
   * `patterns`
   * `records`
-  * `class-modifers`
+  * `class-modifiers`
   * `sealed-class`
 
 ### Language

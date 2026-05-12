@@ -7,7 +7,7 @@ description: >-
 ---
 
 The [Dart SDK][] contains [dart:io][] and other libraries
-that provide low-level command-line & server APIs.
+that provide low-level command-line and server APIs.
 
 [Dart SDK]: /tools/sdk
 [dart:io]: {{site.dart-api}}/dart-io/dart-io-library.html

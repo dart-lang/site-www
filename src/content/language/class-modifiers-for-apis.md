@@ -17,7 +17,7 @@ If you are the author of a library package,
 these modifiers give you more control over what users are allowed to do
 with the types that your package exports.
 This can make it easier to evolve your package,
-and easier to know if a change to your code may break users.
+and easier to know if a change to your code might break users.
 
 [class modifiers]: /language/class-modifiers
 [mixin]: /language/mixins
@@ -55,8 +55,8 @@ class UseAsSuperclass extends Both {}
 ```
 
 If you update your package to Dart 3.0 and don't change any of your code,
-you may not see any errors.
-But you may inadvertently break users of your package
+you might not see any errors.
+But you might inadvertently break users of your package
 if they were using your classes as mixins.
 
 ### Migrating classes as mixins
@@ -77,9 +77,10 @@ Here are a few questions to help decide. The first is pragmatic:
     [could be used as a mixin](#the-mixin-modifier-on-classes).
     This exactly preserves the existing behavior of your API.
 
-On the other hand, if you want to take this opportunity to rethink the
-affordances your API offers, then you may want to *not* turn it into a `mixin
-class`. Consider these two design questions:
+On the other hand, if you want to take this opportunity to
+rethink the affordances your API offers,
+then you might want to *not* turn it into a `mixin class`.
+Consider these two design questions:
 
 *   **Do you want users to be able to construct instances of it directly?**
     In other words, is the class deliberately not abstract?
@@ -104,7 +105,7 @@ you can stop if you don't want to make other changes
 to what your package allows users to do.
 
 Note that if you do continue and use any of the modifiers described below,
-it is potentially a breaking change to your package's API which necessitates
+it is potentially a breaking change to your package's API that necessitates
 a major version increment.
 
 ## The `interface` modifier
@@ -113,7 +114,7 @@ Dart doesn't have a separate syntax for declaring pure interfaces.
 Instead, you declare an abstract class that happens to contain only
 abstract methods.
 When a user sees that class in your package's API,
-they may not know if it contains code they can reuse by extending the class,
+they might not know if it contains code they can reuse by extending the class,
 or whether it is instead meant to be used as an interface.
 
 You can clarify that by putting the [`interface`](/language/class-modifiers#interface)
@@ -121,8 +122,8 @@ modifier on the class.
 That allows the class to be used in an `implements` clause,
 but prevents it from being used in `extends`.
 
-Even when the class *does* have non-abstract methods, you may want to prevent
-users from extending it.
+Even when the class *does* have non-abstract methods,
+you might want to prevent users from extending it.
 Inheritance is one of the most powerful kinds of coupling in software,
 because it enables code reuse.
 But that coupling is also [dangerous and fragile][].
@@ -230,7 +231,8 @@ In return, you have the fewest restrictions as the class maintainer.
 You can add new methods, turn constructors into factory constructors, etc.
 without worrying about breaking any downstream users.
 
-<a id="the-sealed-modifer"></a>
+<a id="the-sealed-modifer" aria-hidden="true"></a>
+
 ## The `sealed` modifier
 
 The last modifier, [`sealed`](/language/class-modifiers#sealed), is special.

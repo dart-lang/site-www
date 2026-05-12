@@ -169,7 +169,7 @@ In any case, you’d want to put `spawn` in a `try` block to check if sending th
 
 ```
 
-Providing a bare minimum of error handling ensures that the result port is always closed, and `_spawnAndReceieve` always completes, no matter how the spawned isolate exits. You could also make things *nicer*, for example, by catching and sending errors and stack traces back as actual objects, not just strings like the `onError` handler.
+Providing a bare minimum of error handling ensures that the result port is always closed, and `_spawnAndReceive` always completes, no matter how the spawned isolate exits. You could also make things *nicer*, for example, by catching and sending errors and stack traces back as actual objects, not just strings like the `onError` handler.
 
 Error handling obviously introduces a lot of variation, and with it the mental overhead of deciding how to approach it and what to factor for. It’s understandable that it’s commonly left out of primitive isolate setup.
 

@@ -269,7 +269,7 @@ Core rules
 
 Recommended rules
 : Help identify additional issues
-  that may lead to problems when running or consuming Dart code,
+  that might lead to problems when running or consuming Dart code,
   and enforce a single, idiomatic style and format.
   We recommend that all Dart code use these rules,
   which are a superset of the core rules.

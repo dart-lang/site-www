@@ -89,7 +89,7 @@ Want to learn more? [Read the Dart language tour about final and const](https://
 Of course, *const* is a bit restrictive — you must be able to create a class at compile-time — so you couldn’t for example read a database and create *const* objects at runtime. We’ve recently introduced the “immutable” annotation with [package:meta](https://pub.dartlang.org/packages/meta):
 
 ```dart
-import 'pacakge:meta/meta.dart';
+import 'package:meta/meta.dart';
 
 // Error: This class inherits from a class marked as @immutable, and therefore 
 // should be immutable (all instance fields must be final).

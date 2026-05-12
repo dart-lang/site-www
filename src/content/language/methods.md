@@ -55,7 +55,7 @@ Dart allows you to define operators with the following names:
 {:.table}
 
 :::note
-You may have noticed that some [operators][], like `!=`, aren't in
+You might have noticed that some [operators][], like `!=`, aren't in
 the list of names. These operators aren't instance methods.
 Their behavior is built in to Dart.
 :::

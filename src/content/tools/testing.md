@@ -22,7 +22,7 @@ using the [`dart test`][] command
 
 The Dart testing docs focus on three kinds of testing, out of the
 [many kinds of testing](https://en.wikipedia.org/wiki/Software_testing)
-that you may be familiar with: unit, component, and end-to-end
+that you might be familiar with: unit, component, and end-to-end
 (a form of integration testing). Testing terminology varies,
 but these are the terms and concepts that you are likely to
 encounter when using Dart technologies:
@@ -97,8 +97,8 @@ Use the following resources to learn more about testing Flutter apps:
 
 ## Other tools and resources
 
-You may also find the following resources useful for developing and
-debugging Dart applications.
+You might also find the following resources useful for
+developing and debugging Dart applications.
 
 ### IDE
 

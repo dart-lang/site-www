@@ -13,24 +13,27 @@ nextpage:
 Patterns require a [language version][] of at least 3.0.
 :::
 
-Patterns are a syntactic category in the Dart language, like statements and expressions.
-A pattern represents the shape of a set of values that it may match against actual
-values.
+Patterns are a syntactic category in the Dart language,
+like statements and expressions.
+A pattern represents the shape of a set of values that
+it might match against actual values.
 
 This page describes:
+
 - What patterns do.
 - Where patterns are allowed in Dart code.
 - What the common use cases for patterns are.
 
-To learn about the different kinds of patterns, visit the [pattern types][types]
-page.
+To learn about the different kinds of patterns,
+visit the [pattern types][types] page.
 
 ## What patterns do
 
-In general, a pattern may **match** a value, **destructure** a value, or both,
+In general, a pattern can **match** a value, **destructure** a value, or both,
 depending on the context and shape of the pattern.
 
 First, _pattern matching_ allows you to check whether a given value:
+
 - Has a certain shape.
 - Is a certain constant.
 - Is equal to something else.
@@ -292,7 +295,7 @@ var age = info.$2;
 
 You can destructure the fields of a record that a function returns into local
 variables using a [variable declaration](#variable-declaration) or
-[assigment pattern](#variable-assignment), and a [record pattern][record]
+[assignment pattern](#variable-assignment), and a [record pattern][record]
 as its subpattern:
 
 <?code-excerpt "language/lib/patterns/destructuring.dart (destructure-multiple-returns-2)"?>

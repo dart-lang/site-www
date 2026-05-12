@@ -240,7 +240,7 @@ For more information, see [Package dependencies](/tools/pub/dependencies).
 
 ### Executables
 
-A package may expose one or more of its scripts as executables that
+A package might expose one or more of its scripts as executables that
 can be run directly from the command line. To make a script publicly
 available, list it under the `executables` field.
 Entries are listed as key/value pairs:

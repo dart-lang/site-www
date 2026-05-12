@@ -318,10 +318,10 @@ for more information.
 
 ### Non-`native` APIs
 
-`dart:html` classes may also contain APIs that have a non-trivial
-implementation. These members may or may not exist in the `package:web`
+`dart:html` classes might also contain APIs that have a non-trivial
+implementation. These members might or might not exist in the `package:web`
 [helpers](#helpers). If your code relies on the specifics of that
-implementation, you may be able to copy the necessary code.
+implementation, you might be able to copy the necessary code.
 However, if you think that's not tractable or if that code would be beneficial
 for other users as well, consider filing an issue or uploading a pull request to
 [`package:web`][dart-lang/web] to support that member.

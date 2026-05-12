@@ -303,12 +303,13 @@ dependencies:
 
 The `collection` package is then updated to 2.5.0.
 The 2.5.0 version of `collection` includes a new method called `sortBackwards()`.
-`bookshelf` may call `sortBackwards()`,
+`bookshelf` might call `sortBackwards()`,
 because it's part of the API exposed by `widgets`,
 despite `bookshelf` having only a transitive dependency on `collection`.
 
-Because `widgets` has an API that is not reflected in its version number,
-the app that uses the `bookshelf` package and calls `sortBackwards()` may crash.
+Because `widgets` has an API that's not reflected in its version number,
+the app that uses the `bookshelf` package and calls `sortBackwards()`
+might crash.
 
 Exporting an API causes that API to be treated as if it is
 defined in the package itself, but it can't increase the version number when
@@ -376,7 +377,7 @@ You might run into one of the following problems:
 
 ### You can have disjoint constraints
 
-Lets say your app uses `widgets` and
+Let's say your app uses `widgets` and
 `templates` and both use `collection`. But `widgets` asks for a version
 of it between `1.0.0` and `2.0.0` and `templates` wants something
 between `3.0.0` and `4.0.0`. Those ranges don't even overlap. There's no
@@ -399,10 +400,10 @@ dependency graph and then solve all of the constraints and pick versions_.
 But it doesn't actually work that way. How could you build up the _whole_
 dependency graph before you've picked _any_ versions? _The pubspecs
 themselves are version-specific._ Different versions of the same package
-may have different sets of dependencies.
+might have different sets of dependencies.
 
 As you're selecting versions of packages, they are changing the shape of
-the dependency graph itself. As the graph changes, that may change
+the dependency graph itself. As the graph changes, that might change
 constraints, which can cause you to select different versions, and then you
 go right back around in a circle.
 

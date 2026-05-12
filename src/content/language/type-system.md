@@ -369,7 +369,7 @@ type of that variable).
 
 Local variable types are inferred from their initializer, if any.
 Subsequent assignments are not taken into account.
-This may mean that too precise a type may be inferred.
+This might mean that too precise a type is inferred.
 If so, you can add a type annotation.
 
 <?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-error)"?>
@@ -539,9 +539,9 @@ a supertype of `Cat`.
 Animal c = Cat();
 ```
 
-But replacing `Cat c` with `MaineCoon c` breaks type safety, because the
-superclass may provide a type of Cat with different behaviors, such
-as `Lion`:
+But replacing `Cat c` with `MaineCoon c` breaks type safety,
+because the superclass might provide a type of `Cat` with different behaviors,
+such as `Lion`:
 
 <?code-excerpt "lib/strong_analysis.dart (MaineCoon-Cat-err)"?>
 ```dart tag=fails-sa
