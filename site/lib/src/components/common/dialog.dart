@@ -25,13 +25,19 @@ class Dialog extends StatelessComponent {
     super.key,
   });
 
-  void _closeAndBlur() {
+  void _handleClose() {
     if (kIsWeb) {
       if (web.document.activeElement case final web.HTMLElement activeElement) {
         activeElement.blur();
       }
     }
     onClose();
+  }
+
+  void _handleKeyDown(web.KeyboardEvent event) {
+    if (event.key == 'Escape') {
+      _handleClose();
+    }
   }
 
   /// Callback triggered when closing the dialog (via button or overlay click).
@@ -57,7 +63,7 @@ class Dialog extends StatelessComponent {
         events: {
           'click': (e) {
             if (e.target == e.currentTarget) {
-              _closeAndBlur();
+              _handleClose();
             }
           },
         },
@@ -68,18 +74,14 @@ class Dialog extends StatelessComponent {
               Button(
                 icon: 'close',
                 classes: ['close-button'],
-                onClick: _closeAndBlur,
+                onClick: _handleClose,
               ),
             ]),
             div(classes: 'legend-content', children),
           ]),
         ],
       ),
-      onKeyDown: (event) {
-        if (visible && event.key == 'Escape') {
-          _closeAndBlur();
-        }
-      },
+      onKeyDown: visible ? _handleKeyDown : null,
     );
   }
 }
