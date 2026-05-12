@@ -113,7 +113,7 @@ such as the following:
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
 ```dart
 .where((int x) => x.isEven) // Retain only even integer events.
-.expand((var x) => [x, x]) // Duplicate each event.
+.expand((x) => [x, x]) // Duplicate each event.
 .take(5) // Stop after the first five events.
 ```
 
