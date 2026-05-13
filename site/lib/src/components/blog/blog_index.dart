@@ -8,6 +8,8 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../models/blog.dart';
+import '../../pages/atom_feed.dart';
+import '../common/material_icon.dart';
 import 'blog_card.dart';
 import 'client/blog_categories.dart';
 
@@ -35,7 +37,21 @@ class BlogIndex extends StatelessComponent {
     final posts = context.blogPosts;
 
     return div(classes: 'blog-index', [
-      const BlogCategories(),
+      const div(classes: 'blog-index-toolbar', [
+        BlogCategories(),
+        a(
+          href: blogAtomFeedPath,
+          classes: 'blog-feed-link',
+          attributes: {
+            'type': blogAtomMimeType,
+            'title': blogAtomSubscribeTitle,
+          },
+          [
+            MaterialIcon('rss_feed'),
+            span(classes: 'blog-feed-link-label', [.text('Subscribe')]),
+          ],
+        ),
+      ]),
       div(
         id: 'blog-container',
         classes: 'blog-posts-grid',

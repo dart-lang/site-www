@@ -44,7 +44,7 @@ class BlogLayout extends DashLayout {
         rel: 'alternate',
         href: blogAtomFeedPath,
         attributes: {
-          'type': 'application/atom+xml',
+          'type': blogAtomMimeType,
           'title': _blogTitle,
         },
       ),

@@ -13,6 +13,12 @@ import '../models/blog.dart';
 /// The site-relative path the [AtomFeedOutput] publishes the blog feed at.
 const String blogAtomFeedPath = '/blog/feed.xml';
 
+/// The MIME type of the published Atom feed.
+const String blogAtomMimeType = 'application/atom+xml';
+
+/// The title used for links pointing readers at the blog Atom feed.
+const String blogAtomSubscribeTitle = 'Subscribe to the Dart Blog Atom feed';
+
 const String _feedAuthor = 'Dart Team';
 const String _atomNamespace = 'http://www.w3.org/2005/Atom';
 
@@ -38,7 +44,7 @@ final class AtomFeedOutput implements SecondaryOutput {
     builder: (context) {
       context.setHeader(
         'Content-Type',
-        'application/atom+xml; charset=utf-8',
+        '$blogAtomMimeType; charset=utf-8',
       );
       context.setStatusCode(
         200,
@@ -83,7 +89,7 @@ final class AtomFeedOutput implements SecondaryOutput {
           ..element('id', nest: feedUrl)
           ..writeLink(
             rel: 'self',
-            type: 'application/atom+xml',
+            type: blogAtomMimeType,
             href: feedUrl,
           )
           ..writeLink(rel: 'alternate', type: 'text/html', href: blogUrl)
