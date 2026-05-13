@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/1NLasdGsxG6bBzWYfe_9UJA.jpeg" />
+<DashImage src="images/1NLasdGsxG6bBzWYfe_9UJA.jpeg" alt="Person pointing at a pineapple on a produce stand." />
 
 
 If you have ever called `add()`, `addAll()`, `map()`, or `toList()` to build a list or map, you might want to check out *collection if*, *collection for*, and *spreads*. Last year, Dart [added these features in version 2.3](https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff).

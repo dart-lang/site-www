@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/1qMQKtkRNuvBjORjoJrN2bQ.png" />
+<DashImage src="images/1qMQKtkRNuvBjORjoJrN2bQ.png" alt="Dart 2.13 release banner highlighting type aliases, faster FFI, null safety, and Docker support." />
 
 
 *By Kevin Moore & Michael Thomsen*

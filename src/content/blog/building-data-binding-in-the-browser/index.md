@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/1QUn_zBM0SBDRG4TtMBiM2A.png" alt="Data binding as popularized by the Angular (MVC-style). Lots of arrows and pictures. That’s always a good sign." caption="Data binding as popularized by the Angular (MVC-style). Lots of arrows and pictures. That’s always a good sign." />
+<DashImage src="images/1QUn_zBM0SBDRG4TtMBiM2A.png" alt="A diagram showing the MVC-style data binding popularized by Angular." caption="Data binding as popularized by the Angular (MVC-style). Lots of arrows and pictures. That’s always a good sign." />
 
 
 *Data binding*, or updating the view (usually UI) from your application’s code is probably the *holy grail* of browser-based web frameworks — the reason they exist, and the reason [web standards have tried to shift](https://developers.google.com/web/fundamentals/getting-started/primers/customelements) in order to make it easier to “use the platform”.
@@ -243,7 +243,7 @@ And that’s it. You can use similar techniques to render HTML in the browser, o
 
 Luckily [dart:html](https://webdev.dartlang.org/tutorials/low-level-html/connect-dart-html) is a high-level library provided by the Dart SDK, and even in JavaScript modern-day browsers are full featured enough not to need a library for simple data-binding. What if I want to bring my new “Sunday TODO list” — and be able to check-off (delete) items as I finish them?
 
-<DashImage src="images/1ggiMuy98lvPyUWVcf-HOFA.png" alt="The world’s greatest UI" caption="The world’s greatest UI" />
+<DashImage src="images/1ggiMuy98lvPyUWVcf-HOFA.png" alt="TODO list application built in the tutorial." caption="The world’s greatest UI" />
 
 
 Enter *manual* data binding. Instead of relying on any framework or specific library, I will just create HTML elements, and listen to events in order to know when to update the DOM, all myself.
