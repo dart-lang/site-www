@@ -15,7 +15,7 @@ nextpage:
 Dot shorthands require a [language version][] of at least 3.10.
 :::
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 
 ## Overview
 

@@ -173,5 +173,5 @@ Check out the [formatter FAQ][] for more context behind formatting decisions.
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dart-guidelines]: /effective-dart/style#formatting
 [`analysis_options.yaml`]: /tools/analysis
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ

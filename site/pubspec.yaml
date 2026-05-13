@@ -41,7 +41,7 @@ dev_dependencies:
       path: packages/analysis_defaults
       ref: 6d50799f4dc347398863b83f5dc46d1da8f6c5cd
   build_runner: ^2.13.1
-  build_web_compilers: ^4.4.17
+  build_web_compilers: ^4.4.19
   dart_skills_lint:
     git:
       url: https://github.com/flutter/skills

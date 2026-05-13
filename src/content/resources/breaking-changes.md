@@ -64,7 +64,7 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 [breaking change policy]: {{site.repo.dart.sdk}}/blob/main/docs/process/breaking-changes.md
 [changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md
 [sdk]: /get-dart
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [Dart announce]: {{site.announce}}
 
 {% comment %}
@@ -287,7 +287,7 @@ don't include the section header.
   The formatter made changes and fixes that result in new output when
   formatting code with a [language version][] of 3.8 or greater.
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 
 ## 3.7.0
 
@@ -347,7 +347,7 @@ don't include the section header.
   All usages should be migrated to the new `--page-width` option.
 
 [new style]: {{site.repo.dart.org}}/dart_style/issues/1253
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [configure your analysis options]: /tools/analysis
 [`dart fix`]: /tools/dart-fix
 

@@ -346,7 +346,7 @@ check out the [Class modifiers reference][].
 [Class modifiers reference]: /language/modifier-reference
 
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [class, mixin, or mixin class]: /language/mixins#class-mixin-or-mixin-class
 [mixin]: /language/mixins
 [fragile base class problem]: https://en.wikipedia.org/wiki/Fragile_base_class

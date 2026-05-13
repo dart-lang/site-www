@@ -422,7 +422,7 @@ class PointD {
 
 :::version-note
 Using private named parameters as initializing formals
-requires a language version of at least 3.12.
+requires a [language version][] of at least 3.12.
 :::
 
 In Dart, fields starting with an underscore are private to their library.
@@ -744,7 +744,7 @@ class Vector3d extends Vector2d {
 }
 ```
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [using constructors]: /language/classes#using-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
 [static method]: /language/classes#static-methods

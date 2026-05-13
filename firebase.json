@@ -392,7 +392,7 @@
       { "source": "/server/tools{,/**}", "destination": "/tools", "type": 301 },
       { "source": "/stable{,/**}", "destination": "https://api.dart.dev", "type": 301 },
       { "source": "/support{,/**}", "destination": "/community", "type": 301 },
-
+      { "source": "/to/changelog", "destination": "/changelog", "type": 301 },
       { "source": "/to/cross-compilation", "destination": "/tools/dart-compile#cross-compilation", "type": 301 },
       { "source": "/to/doc-comment-references", "destination": "/tools/doc-comments/references", "type": 301 },
       { "source": "/to/dot-shorthands", "destination": "/language/dot-shorthands", "type": 301 },

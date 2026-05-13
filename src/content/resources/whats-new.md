@@ -752,7 +752,7 @@ we made the following changes:
 [sound null safety]: /null-safety
 [Dart 3 migration guide]: /resources/dart-3-migration
 [language evolution]: /resources/language/evolution
-[language versioning]: /resources/language/evolution#language-versioning
+[language versioning]: /language/versioning
 [compilation environment declarations]: /libraries/core/environment-declarations
 [Java interop]: /interop/java-interop
 [unnamed extensions]: /language/extension-methods#unnamed-extensions
