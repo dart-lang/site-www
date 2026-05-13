@@ -11,13 +11,13 @@ import '../../markdown/markdown_parser.dart';
 class DashImage extends StatelessComponent {
   const DashImage({
     required this.src,
-    this.alt,
+    required this.alt,
     this.caption,
     super.key,
   });
 
   final String src;
-  final String? alt;
+  final String alt;
   final String? caption;
 
   static DashImage fromAttributes(Map<String, String> attributes) {
@@ -29,21 +29,23 @@ class DashImage extends StatelessComponent {
         'DashImage requires a "src" attribute',
       );
     }
+    final alt = attributes['alt'];
+    if (alt == null || alt.trim().isEmpty) {
+      throw ArgumentError.value(
+        alt,
+        'alt',
+        'DashImage requires a non-empty "alt" attribute',
+      );
+    }
     return DashImage(
       src: imageSrc,
-      alt: attributes['alt'],
+      alt: alt,
       caption: attributes['caption'],
     );
   }
 
   @override
   Component build(BuildContext context) {
-    if (alt == null) {
-      print(
-        '[WARNING] DashImage is missing an "alt" attribute for '
-        '${context.page.url}:$src',
-      );
-    }
     return figure([
       img(src: context.resolveAsset(src), alt: alt),
       if (caption case final caption? when caption.isNotEmpty)

@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/1qGU6soDvCW0RFfDX8vpUow.png" alt="A semi-accurate depiction of the [universe](https://en.wikipedia.org/wiki/Bo%C3%B6tes_void) of void-like types in Dart2" caption="A semi-accurate depiction of the [universe](https://en.wikipedia.org/wiki/Bo%C3%B6tes_void) of void-like types in Dart2" />
+<DashImage src="images/1qGU6soDvCW0RFfDX8vpUow.png" alt="Map of cosmic superclusters and voids, with the Boötes Void and other voids circled." caption="A semi-accurate depiction of the [universe](https://en.wikipedia.org/wiki/Bo%C3%B6tes_void) of void-like types in Dart 2" />
 
 
 One of the questions I see the most asked on StackOverflow, Gitter, and even Google-internal support channels is the difference between the following built-in types in Dart 2: `Object`, `dynamic`, `void`, and `Null`.
