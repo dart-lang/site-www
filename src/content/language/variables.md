@@ -363,5 +363,5 @@ multiple binding underscores (`__`,`___`, etc.) to avoid name collisions.
 [Lists]: /language/collections#lists
 [Maps]: /language/collections#maps
 [Classes]: /language/classes
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [`unnecessary_underscores`]: /tools/linter-rules/unnecessary_underscores

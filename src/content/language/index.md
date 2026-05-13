@@ -591,7 +591,7 @@ This site's code follows the conventions in the
 [The main() function]: /language/functions#the-main-function
 [ns]: /null-safety
 [`Object`]: {{site.dart-api}}/dart-core/Object-class.html
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [ObjectVsDynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Libraries and imports]: /language/libraries
 [conditional expression]: /language/operators#conditional-expressions

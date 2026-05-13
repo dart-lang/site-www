@@ -99,7 +99,7 @@ void writeArgumentList(
 ```
 
 
-This is a large change both to the tool, the output it produces, and how it behaves. To make the transition as smooth as possible, the formatting style you get depends on the [language version](https://dart.dev/guides/language/evolution) of the code you’re formatting. If the language version is 3.6 or earlier, the code is formatted with the old style. If it’s 3.7 or later, it gets the new style.
+This is a large change both to the tool, the output it produces, and how it behaves. To make the transition as smooth as possible, the formatting style you get depends on the [language version](https://dart.dev/language/versioning) of the code you’re formatting. If the language version is 3.6 or earlier, the code is formatted with the old style. If it’s 3.7 or later, it gets the new style.
 
 When you upgrade your package to use Dart 3.7 by bumping the SDK constraint in your package’s pubspec (and running `dart pub get`!), you are opting in to the new formatting style.
 

@@ -407,7 +407,7 @@ var itemsE = {absentKey: absentValue}; // {null: null}
 var itemsF = {?absentKey: ?absentValue}; // {}
 ```
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 
 ### Spread elements {: #spread-element }
 

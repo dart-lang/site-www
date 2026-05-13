@@ -10,6 +10,7 @@ the Dart SDK and Dart language, organized by release.
 We use tags to classify changes, such as
 `New` for features, `Fixed` for bugs, and `Breaking` for incompatible changes.
 Some changes are `Language versioned`,
-meaning they only take effect when you upgrade your code's language version.
+meaning they only take effect when you
+upgrade your code's [language version](/language/versioning).
 
 <ChangelogIndex />

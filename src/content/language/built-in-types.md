@@ -440,4 +440,4 @@ Symbol literals are compile-time constants.
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [`Symbol`]: {{site.dart-api}}/dart-core/Symbol-class.html
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning

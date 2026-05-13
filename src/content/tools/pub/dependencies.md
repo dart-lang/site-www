@@ -128,7 +128,7 @@ dependencies:
 ```
 :::
 
-[SDK version]: /resources/language/evolution#language-versioning
+[SDK version]: /language/versioning
 
 ### Git packages
 

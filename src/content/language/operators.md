@@ -549,5 +549,5 @@ For more information about the `.`, `?.`, and `..` operators, see
 [Operators]: /language/methods#operators
 [library prefixes]: /language/libraries#specifying-a-library-prefix
 [if-else]: /language/branches#if
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [Classes]: /language/classes
