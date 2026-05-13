@@ -7,6 +7,8 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../models/blog.dart';
+import '../../pages/atom_feed.dart';
+import '../common/button.dart';
 import 'client/share_button.dart';
 
 class PostInfo extends StatelessComponent {
@@ -21,7 +23,7 @@ class PostInfo extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final author = context.getAuthor(post.authorId);
+    final author = context.page.getAuthor(post.authorId);
     final githubUrl = author.github?.handle != null
         ? 'https://github.com/${author.github!.handle}'
         : null;
@@ -53,7 +55,15 @@ class PostInfo extends StatelessComponent {
           Component.text('${post.formattedDate} · ${post.readingTime}'),
         ]),
       ]),
-      ShareButton(url: url, title: post.title),
+      div(classes: 'post-info-actions', [
+        const Button(
+          icon: 'rss_feed',
+          href: blogAtomFeedPath,
+          title: blogAtomSubscribeTitle,
+          attributes: {'type': blogAtomMimeType},
+        ),
+        ShareButton(url: url, title: post.title),
+      ]),
     ]);
   }
 }
