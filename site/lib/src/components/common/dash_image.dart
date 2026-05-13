@@ -32,7 +32,7 @@ class DashImage extends StatelessComponent {
     final alt = attributes['alt'];
     if (alt == null || alt.trim().isEmpty) {
       throw ArgumentError.value(
-        attributes,
+        alt,
         'alt',
         'DashImage requires a non-empty "alt" attribute',
       );
