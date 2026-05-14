@@ -49,7 +49,7 @@ The new `platforms` tag is intended for cases where you are developing a Dart pa
 
 Responding to developer requests, we’ve created better support for searching for packages on pub.dev. The main goal for the changes launching today is to help you identify, and search for, the set of supported platforms. Here’s a view of the new search experience:
 
-<DashImage src="images/0PJwhbfaIwRq3sSJi.png" alt="Pub.dev search interface with sidebar containing Platforms, SDKs, and Advanced search filters" caption="Pub.dev search interface with sidebar containing Platforms, SDKs, and Advanced search filters" />
+<DashImage src="images/0PJwhbfaIwRq3sSJi.png" alt="pub.dev search interface with sidebar filters for platforms, SDKs, and advanced search." caption="Pub.dev search interface with sidebar containing Platforms, SDKs, and Advanced search filters" />
 
 
 The new search UI has a search filter sidebar on the left, which you can use to constrain your package search:

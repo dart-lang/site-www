@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/14PIeARfthvxtn0cvBB5MPw.jpeg" />
+<DashImage src="images/14PIeARfthvxtn0cvBB5MPw.jpeg" alt="Close-up of Dart UI code showing a Widget build method." />
 
 
 On the [Dart](https://www.dartlang.org/) team, we are busy implementing a handful of language changes that I’m really excited about. They all relate to collection literals, the built-in syntax for creating lists, maps, and sets:

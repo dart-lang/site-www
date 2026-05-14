@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/0XcEdm2vmIBW8Wovr.png" />
+<DashImage src="images/0XcEdm2vmIBW8Wovr.png" alt="Graphic showing Dart declaration-site variance." />
 
 
 Declaration-site variance was my internship project on the Dart team, and I’ve documented my personal experience on the team in the article [Life as a Dart intern](https://medium.com/dartlang/life-as-a-dart-intern-a62cb8db2414). As the primary implementer of the [declaration-site variance feature](https://github.com/dart-lang/language/issues/524), I want to share the usages and benefits of sound variance.

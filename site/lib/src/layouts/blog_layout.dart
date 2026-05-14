@@ -11,12 +11,15 @@ import '../components/blog/client/blog_categories.dart';
 import '../components/blog/post_info.dart';
 import '../components/common/breadcrumbs.dart';
 import '../models/blog.dart';
+import '../pages/atom_feed.dart';
 import '../util.dart';
 import 'dash_layout.dart';
 
 /// The Jaspr Content layout to use for blog pages,
 /// adding elements such as breadcrumbs.
 class BlogLayout extends DashLayout {
+  static const String _blogTitle = 'The Dart Blog';
+
   const BlogLayout();
 
   @override
@@ -31,11 +34,21 @@ class BlogLayout extends DashLayout {
     if (isPost && page.data.page['titleBase'] == null) {
       page.apply(
         data: {
-          'page': {'titleBase': 'The Dart Blog'},
+          'page': {'titleBase': _blogTitle},
         },
       );
     }
-    return super.buildHead(page);
+    return [
+      ...super.buildHead(page),
+      const link(
+        rel: 'alternate',
+        href: blogAtomFeedPath,
+        attributes: {
+          'type': blogAtomMimeType,
+          'title': _blogTitle,
+        },
+      ),
+    ];
   }
 
   @override
@@ -58,7 +71,7 @@ class BlogLayout extends DashLayout {
                   PageBreadcrumbs(
                     crumbs: [
                       const BreadcrumbItem(
-                        title: 'The Dart Blog',
+                        title: _blogTitle,
                         url: '/blog',
                       ),
                       if (pageCategory != BlogCategory.other) ...[

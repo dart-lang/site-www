@@ -37,6 +37,7 @@ import 'src/layouts/homepage_layout.dart';
 import 'src/layouts/learn_layout.dart';
 import 'src/loaders/data_processor.dart';
 import 'src/markdown/markdown_parser.dart';
+import 'src/pages/atom_feed.dart';
 import 'src/pages/custom_pages.dart';
 import 'src/pages/diagnostic_index.dart';
 import 'src/pages/lint_index.dart';
@@ -142,6 +143,7 @@ Future<void> main() async {
       ],
       theme: const ContentTheme.none(),
       secondaryOutputs: [
+        const AtomFeedOutput(),
         const RobotsTxtOutput(),
         MarkdownOutput(
           createHeader: (page) {

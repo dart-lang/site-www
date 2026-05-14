@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/1s8NsJv2UhKO1omeN7hX9wQ.jpeg" />
+<DashImage src="images/1s8NsJv2UhKO1omeN7hX9wQ.jpeg" alt="The Google Summer of Code logo." />
 
 
 [Google Summer of Code](https://summerofcode.withgoogle.com/) (*GSoC*) is a global program focused on bringing student developers into open source software development. Students are sponsored by Google to work with a mentoring open source organization on a 3-month programming project during the summer. Over the past 15 years more than 15,000 students have participated in Google Summer of Code.
