@@ -25,7 +25,7 @@ In the remainder of this post we’ll discuss our experiments with Wasm and Dart
 
 2) **Dart to Wasm interop**: Support for calling from Dart code to compiled Wasm modules (issues [37355](https://github.com/dart-lang/sdk/issues/37355) & [37882](https://github.com/dart-lang/sdk/issues/37882)).
 
-<DashImage src="images/1UqHnD9vyTvndgJpz8gOv7Q.png" alt="Illustration of the two potential uses of Wasm with Dart" caption="Illustration of the two potential uses of Wasm with Dart" />
+<DashImage src="images/1UqHnD9vyTvndgJpz8gOv7Q.png" alt="Diagram comparing Dart to Wasm compilation with Dart to Wasm interop through the Dart VM runtime." caption="Illustration of the two potential uses of Wasm with Dart" />
 
 
 ## Compiling Dart to Wasm

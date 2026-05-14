@@ -123,4 +123,4 @@ Other Dart language changes and features:
 
 * [Dart language specification](https://dart.dev/guides/language/spec)
 
-<DashImage src="images/1se-VT1aPyHd3J2VYDzDW5g.png" alt="A function that accepts a null argument and can return null." caption="A function that accepts a null argument and can return null." />
+<DashImage src="images/1se-VT1aPyHd3J2VYDzDW5g.png" alt="A function declaration demonstrating a nullable return type and a nullable argument." caption="A function that accepts a null argument and can return null." />

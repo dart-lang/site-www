@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/1RaLW5kA_2I2WmYz5sx0srA.png" />
+<DashImage src="images/1RaLW5kA_2I2WmYz5sx0srA.png" alt="Google Summer of Code logo with Dash, the Dart and Flutter mascot, wearing a hat and holding a board with code on it." />
 
 
 Google Summer of Code (GSoC) is a global program focused on bringing student developers into open source software development. Students are sponsored by Google to work with a mentoring open source organization on a 10-week programming project during the summer. Over the past 16 years, more than 16,000 students have participated in Google Summer of Code.

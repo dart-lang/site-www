@@ -19,12 +19,12 @@ One of the core objectives of pub.dev is to make it easy to find the right packa
 
 Thumbnails of screenshots now appear in the search results and you can also filter the search to only list packages with screenshots.
 
-<DashImage src="images/1B2bqbwEtObMoGQTm8B-FVQ.png" />
+<DashImage src="images/1B2bqbwEtObMoGQTm8B-FVQ.png" alt="Pub.dev search results filtered by has:screenshot, showing package screenshot thumbnails beside results." />
 
 
 The screenshot thumbnail is also shown on the package page, and clicking the thumbnail triggers an image carousel with all the screenshots.
 
-<DashImage src="images/169KfhhHmmvZ6BLvypXjx2A.png" />
+<DashImage src="images/169KfhhHmmvZ6BLvypXjx2A.png" alt="Image carousel displaying screenshots on a package page." />
 
 
 ### Declaring screenshots in `pubspec.yaml`
@@ -55,7 +55,7 @@ Thousands of Dart community members publish packages on pub.dev, for the benefit
 
 * The publishing process is authenticated by a token signed by GitHub, ensuring no credentials have to be stored on disk.
 
-<DashImage src="images/1dqxBy1vvLW108xdpqLLZ5Q.png" />
+<DashImage src="images/1dqxBy1vvLW108xdpqLLZ5Q.png" alt="GitHub Actions run for Publish to pub.dev showing a successful dart pub publish command for testpkg 1.1.5." />
 
 
 ### Making automated publishing secure

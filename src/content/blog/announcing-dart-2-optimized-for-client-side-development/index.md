@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/1E9T7YsI_ZU8gk4CewQg_QA.jpeg" />
+<DashImage src="images/1E9T7YsI_ZU8gk4CewQg_QA.jpeg" alt="A plush version of Dash, the blue mascot of Dart and Flutter. She has a long, brown beak and a tag attached that says 'Dart'." />
 
 
 Today, we’re announcing [Dart 2](http://dartlang.org), a reboot of the language to embrace our vision of Dart: as a language uniquely optimized for client-side development for web and mobile.
