@@ -3,7 +3,7 @@ title: "Announcing Dart 3.7"
 description: "It’s a new year, and time for a new Dart stable release. Welcome to Dart 3.7!"
 publishDate: 2025-02-12
 author: mbelanger
-image: images/1tdCaUfGrIk42FIuu2qs9Yw.gif
+image: images/1tdCaUfGrIk42FIuu2qs9Yw.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 The theme for this release is *developer productivity*. We’ve made the Dart language more consistent by tweaking how it handles wildcard variables. There’s also a brand new style in the Dart formatter, new quick fixes and lints in the analyzer, and several cool new features on pub.dev. Let’s get into the details!
 
-<DashImage src="images/1tdCaUfGrIk42FIuu2qs9Yw.gif" alt="Dart 3.7 release banner with the Dart logo and an animated bullseye icon." caption="Announcing Dart 3.7" />
+<DashImage src="images/1tdCaUfGrIk42FIuu2qs9Yw.webp" alt="Dart 3.7 release banner with the Dart logo and an animated bullseye icon." caption="Announcing Dart 3.7" />
 
 
 ## Macros update
@@ -166,17 +166,17 @@ In December we launched [download counts for packages](https://medium.com/dartla
 
 Today, we are extending that with support for viewing download counts per package version. It’s now possible to get an indication of how many consumers of a package have upgraded to the latest version (or just the latest major version). These insights are meant to help package authors gauge the value of back-porting fixes to older major versions of a package.
 
-<DashImage src="images/067af_RLHqiWxsXXL.png" alt="Chart showing weekly downloads for a specific package version." caption="Weekly downloads chart, with versions separated" />
+<DashImage src="images/067af_RLHqiWxsXXL.webp" alt="Chart showing weekly downloads for a specific package version." caption="Weekly downloads chart, with versions separated" />
 
 
-<DashImage src="images/0Cctb0O4F1D-0YYHY.png" alt="Another chart showing weekly downloads but stacked by version." caption="Weekly downloads chart, with versions stacked" />
+<DashImage src="images/0Cctb0O4F1D-0YYHY.webp" alt="Another chart showing weekly downloads but stacked by version." caption="Weekly downloads chart, with versions stacked" />
 
 
 **Dark mode for pub.dev**
 
 Dark mode for pub.dev has long been a [popular request](https://github.com/dart-lang/pub-dev/issues/4416), and as of today it’s now possible to toggle pub.dev to dark mode. This toggle affects both package pages and package API documentation hosted on pub.dev.
 
-<DashImage src="images/0j4Vh_XoLle5-RMQ2.png" alt="Screenshot showing the dark mode toggle and UI on pub.dev." caption="Dark mode for pub.dev" />
+<DashImage src="images/0j4Vh_XoLle5-RMQ2.webp" alt="Screenshot showing the dark mode toggle and UI on pub.dev." caption="Dark mode for pub.dev" />
 
 
 **Topics for pub.dev**
@@ -185,7 +185,7 @@ Last year, we launched support for [topics](https://pub.dev/topics) on pub.dev. 
 
 Users browsing pub.dev can click on topics to browse related packages. We previously introduced the ability to search for topics on pub.dev, using [search keywords](https://pub.dev/help/search) (like “topic:widget”), but finding these keywords has not always been easy. So, we’ve launched an IDE-like auto-completer for search keywords on pub.dev. You can trigger it by pressing ctrl+space, or automatically trigger it when you type a matching prefix like “topic:” or “license:”.
 
-<DashImage src="images/0kd0l2oZq_mg9g8YO.png" alt="Screenshot showing the IDE-like auto-completer for search keywords on pub.dev." caption="Topics search keywords" />
+<DashImage src="images/0kd0l2oZq_mg9g8YO.webp" alt="Screenshot showing the IDE-like auto-completer for search keywords on pub.dev." caption="Topics search keywords" />
 
 
 ## Wrap up
