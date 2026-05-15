@@ -61,7 +61,11 @@ class BlogIndex extends StatelessComponent {
             BlogCard(
               post: posts[i].post,
               url: posts[i].url,
-              isFeatured: i == 0,
+              priority: switch (i) {
+                0 => BlogCardPriority.featured,
+                < 5 => BlogCardPriority.high,
+                _ => BlogCardPriority.normal,
+              },
               className: i == 0
                   ? 'layout-featured'
                   : (i < 5 ? 'layout-grid' : 'layout-list'),

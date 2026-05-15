@@ -13,14 +13,14 @@ class BlogCard extends StatelessComponent {
     required this.post,
     required this.url,
     this.className,
-    this.isFeatured = false,
+    this.priority = BlogCardPriority.low,
     super.key,
   });
 
   final Post post;
   final String url;
   final String? className;
-  final bool isFeatured;
+  final BlogCardPriority priority;
 
   @override
   Component build(BuildContext context) {
@@ -30,15 +30,21 @@ class BlogCard extends StatelessComponent {
       classes: 'blog-card ${className ?? ''}',
       attributes: {'data-category': post.category ?? 'other'},
       [
-        if (post.image != null)
+        if (post.image case final postImage?)
           div(classes: 'blog-card-image', [
             img(
-              src: post.image!,
+              src: postImage,
               alt: post.title,
-              loading: isFeatured ? MediaLoading.eager : MediaLoading.lazy,
+              loading: switch (priority) {
+                .featured => MediaLoading.eager,
+                .high => null,
+                .normal => MediaLoading.lazy,
+              },
               attributes: {
-                if (isFeatured) 'fetchpriority': 'high',
-                if (!isFeatured) 'decoding': 'async',
+                if (priority == .featured)
+                  'fetchpriority': 'high'
+                else if (priority == .normal)
+                  'decoding': 'async',
               },
             ),
           ]),
@@ -81,4 +87,20 @@ class BlogCard extends StatelessComponent {
       ],
     );
   }
+}
+
+/// Priority levels for blog cards.
+///
+/// Used to configure loading behavior of their content, particularly images.
+enum BlogCardPriority {
+  /// A featured blog card.
+  featured,
+
+  /// A high-priority blog card.
+  ///
+  /// Often the first 5 or so cards.
+  high,
+
+  /// A normal-priority blog card.
+  normal,
 }
