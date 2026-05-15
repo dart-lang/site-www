@@ -13,12 +13,14 @@ class BlogCard extends StatelessComponent {
     required this.post,
     required this.url,
     this.className,
+    this.isFeatured = false,
     super.key,
   });
 
   final Post post;
   final String url;
   final String? className;
+  final bool isFeatured;
 
   @override
   Component build(BuildContext context) {
@@ -30,7 +32,15 @@ class BlogCard extends StatelessComponent {
       [
         if (post.image != null)
           div(classes: 'blog-card-image', [
-            img(src: post.image!, alt: post.title),
+            img(
+              src: post.image!,
+              alt: post.title,
+              loading: isFeatured ? MediaLoading.eager : MediaLoading.lazy,
+              attributes: {
+                if (isFeatured) 'fetchpriority': 'high',
+                if (!isFeatured) 'decoding': 'async',
+              },
+            ),
           ]),
         div(classes: 'blog-card-content', [
           h3(classes: 'blog-card-title', [
