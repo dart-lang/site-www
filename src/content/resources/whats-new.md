@@ -71,7 +71,7 @@ check out the [3.12 announcement][] and the
 [pub workspaces]: /tools/pub/workspaces#nested-workspaces
 [`--no-example`]: /tools/pub/cmd/pub-get#no-example
 [package descriptors]: /tools/pub/dependencies#package-descriptors
-[code asset dylib names]: /tools/hooks#code-assets
+[code asset dylib names]: /tools/hooks#create-hook
 [Dart team publishers]: /resources/dart-team-packages
 [object-oriented programming tutorial]: /learn/tutorial/object-oriented
 [Glossary]: /resources/glossary
