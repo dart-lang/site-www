@@ -59,7 +59,7 @@ To get started, see the
 
 ## Other solutions
 
-Depending on your needs, you may also want to consider running Dart on the
+Depending on your needs, you might also want to consider running Dart on the
 following Google Cloud compute platforms.
 
 ### Compute Engine

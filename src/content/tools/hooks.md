@@ -51,8 +51,7 @@ planned. To learn more, see the following.
 
 With build hooks, a package can do things such as
 compile or download native assets such as C or Rust libraries.
-Afterwards, these assets can be called from the Dart code of
-a package.
+Afterwards, these assets can be called from the Dart code of a package.
 
 A package's build hook is automatically invoked by the
 Dart SDK at an appropriate time during the build process.

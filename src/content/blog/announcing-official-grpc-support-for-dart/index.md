@@ -25,7 +25,7 @@ protoc --dart_out=grpc:generated -Iprotos protos/greeter.proto
 ```
 
 
-This will produce a GreeterServiceBase class in the `generated` diretory, which you then subclass to add the actual service implementation:
+This will produce a GreeterServiceBase class in the `generated` directory, which you then subclass to add the actual service implementation:
 
 
 ## Calling the server with a gRPC client

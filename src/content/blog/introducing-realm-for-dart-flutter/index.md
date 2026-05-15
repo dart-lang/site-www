@@ -80,7 +80,7 @@ You may notice that this output looks a lot like the output from the core dart a
 
 * The [`args`](https://pub.dev/documentation/args/latest/args/args-library.html) library has rich support for parsing raw command line arguments into options and flags
 
-* The [`command_runner`](https://pub.dev/documentation/args/latest/command_runner/command_runner-library.html) libraryprovides a structure for commands supported by the tool (e.g. install)
+* The [`command_runner`](https://pub.dev/documentation/args/latest/command_runner/command_runner-library.html) library provides a structure for commands supported by the tool (e.g. install)
 
 ## Generating the Realm model
 

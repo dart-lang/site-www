@@ -151,7 +151,7 @@ void main() {
 
 ## 7. Prettier and customizable toString output
 
-Before `1.0.0` built_value’s `toString` output was rather flat. Now, by default it’s indended, so it’s easy to read:
+Before `1.0.0` built_value’s `toString` output was rather flat. Now, by default it’s indented, so it’s easy to read:
 
 ```
 CompoundValue {

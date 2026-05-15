@@ -54,7 +54,7 @@ TODO (srujzs): Should we add a tree diagram instead for JS types?
 ## Conversions
 
 To use a value from one domain to another, you will likely want to *convert* the
-value to the corresponding type of the other domain. For example, you may want
+value to the corresponding type of the other domain. For example, you might want
 to convert a Dart `List<JSString>` into a JS array of strings, which is
 represented by the JS type `JSArray<JSString>`, so that you can pass the array
 to a JS interop API.
@@ -92,13 +92,14 @@ Generally, the conversion table looks like the following:
 {:.table .table-striped}
 
 :::warning
-Compiling to JavaScript vs [Wasm][] can introduce inconsistencies in both
-performance and semantics for conversions. Conversions may have different costs
-depending on the compiler, so prefer to only convert values if you need to.
+Compiling to JavaScript versus [Wasm][] can introduce inconsistencies in
+both performance and semantics for conversions.
+Conversions might have different costs depending on the compiler,
+so prefer to only convert values if you need to.
 
-Conversions also may or may not produce a new value. This doesn’t matter for
+Conversions also might or might not produce a new value. This doesn't matter for
 immutable values like numbers, but does matter for types like `List`. Depending
-on the implementation, a conversion to `JSArray` may return a reference, a
+on the implementation, a conversion to `JSArray` might return a reference, a
 proxy, or a clone of the original list. To avoid this, do not rely on any
 relation between the `List` and `JSArray` and only rely on their contents being
 the same. Typed array conversions have a similar limitation. Look up the
@@ -154,12 +155,12 @@ be a compatible interop type or a primitive.
 If you use a Dart primitive like `String`, an implicit conversion happens in the
 compiler to convert that value from a JS value to a Dart value. If performance
 is critical and you don’t need to examine the contents of the string, then using
-`JSString` instead to avoid the conversion cost may make sense like in the
+`JSString` instead to avoid the conversion cost might make sense like in the
 second example.
 
 ## Compatibility, type checks, and casts
 
-The runtime type of JS types may differ based on the compiler. This affects
+The runtime type of JS types might differ based on the compiler. This affects
 runtime type-checking and casts. Therefore, almost always avoid `is` checks
 where the value is an interop type or where the target type is an interop type:
 
@@ -214,8 +215,10 @@ TODO: Add a link to and an example using `isA` once it's in a dev release. Users
 should prefer that method if it's available.
 {% endcomment %}
 
-Dart may add lints to make runtime checks with JS interop types easier to avoid.
-See issue [#4841] for more details.
+To avoid invalid type checks with JS interop types,
+enable the [`invalid_runtime_check_with_js_interop_types`][] lint rule.
+
+[`invalid_runtime_check_with_js_interop_types`]: /tools/linter-rules/invalid_runtime_check_with_js_interop_types
 
 ## `null` vs `undefined`
 
@@ -276,7 +279,6 @@ See [`toExternalReference`] and [`toDartObject`] to convert to and from an
 [`typeofEquals`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
 [`instanceOfString`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
 [`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
-[#4841]: {{site.repo.dart.org}}/linter/issues/4841
 [#54025]: {{site.repo.dart.sdk}}/issues/54025
 [`JSBoxedDartObject`]: {{site.dart-api}}/dart-js_interop/JSBoxedDartObject-extension-type.html
 [`ExternalDartReference`]: {{site.dart-api}}/dart-js_interop/ExternalDartReference-extension-type.html

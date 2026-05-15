@@ -80,7 +80,7 @@ Here are some possible causes and fixes:
 
 If the code is using language or library features no longer supported
 in the latest stable release of Dart,
-the code may no longer analyze or run without errors.
+the code might no longer analyze or run without errors.
 
 * If possible, update the code to work with the latest Dart release,
   as DartPad only supports the **stable** and **beta** channels.

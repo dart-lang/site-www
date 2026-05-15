@@ -263,7 +263,7 @@ Instead, the typical workflow is:
 ### SDK packages
 
 The SDK source is used for any SDKs that are shipped along with packages,
-which may themselves be dependencies.
+which might themselves be dependencies.
 Currently, Flutter is the only SDK that is supported.
 
 The syntax looks like this:
@@ -535,7 +535,7 @@ Using a dependency override involves some risk. For example,
 using an override to specify a version outside the range that the
 package claims to support, or using an override to specify
 a local copy of a package that has unexpected behaviors,
-may break your application.
+might break your application.
 :::
 
 Only the dependency overrides in a **package's own pubspec**
@@ -578,7 +578,7 @@ Be proactive in managing your dependencies.
 Ensure that your packages depend on the freshest versions of packages
 when possible.
 If your package depends on a stale package,
-that stale package may depend on other stale packages in its dependency tree.
+that stale package might depend on other stale packages in its dependency tree.
 Stale versions of packages can have a negative impact on
 the stability, performance, and quality of your app.
 

@@ -429,7 +429,7 @@ Isolates can only communicate *synchronously* outside of pure Dart,
 using C code via [FFI] to do so. 
 Attempting synchronous communication between isolates
 by synchronous blocking in FFI calls
-may result in deadlock if the number of isolates is over the limit,
+might result in deadlock if the number of isolates is over the limit,
 unless special care is taken.
 The limit is not hardcoded to a particular number,
 it's calculated based on the Dart VM heap size available to the Dart application.
