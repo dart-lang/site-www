@@ -51,6 +51,7 @@ workspace:
  - pkg/a
  - pkg/b
  - pkg/c
+
 # After
 name: workspace
 environment:
