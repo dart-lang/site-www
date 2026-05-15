@@ -1,4 +1,243 @@
 # --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Libraries
+  subArea: '`dart:core`'
+  description: |
+    The Dart VM `RegExp` implementation now supports modifier spans and duplicate
+    named capture groups.
+  tags:
+    - new
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Libraries
+  subArea: '`dart:js_interop`'
+  description: |
+    Moved `isA` from `JSAnyUtilityExtension` to `NullableObjectUtilExtension`
+    to support type-checking any `Object?`. In addition, `isA<JSObject>()`
+    correctly evaluates JS objects that lack prototypes, and `isA<JSAny>()`
+    robustly verifies that a value is a valid JS value. Because
+    `NullableObjectUtilExtension` applies to the broader `Object?` supertype
+    rather than `JSAny?`, this migration is backwards-compatible for most code.
+    This change breaks existing code only if you explicitly referenced the
+    `JSAnyUtilityExtension` name by applying the extension directly or by
+    importing it with `show`/`hide` directives.
+    
+    [#56905]: https://github.com/dart-lang/sdk/issues/56905
+  tags:
+    - breaking
+  link: 'https://github.com/dart-lang/sdk/issues/56905'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Libraries
+  subArea: '`dart:js_interop`'
+  description: |
+    `isA<JSExportedDartFunction>()` now checks whether the function is a JS
+    wrapper function returned by `Function.toJS` or `Function.toJSCaptureThis`.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Libraries
+  subArea: '`dart:js_interop`'
+  description: |
+    Added `JSIterableProtocol`, `JSIterable`, `JSIteratorProtocol`, `JSIterator`,
+    and `JSIteratorResult` types to model JavaScript's iteration protocols.
+    `JSArray` and `JSString` now implement `JSIterable`.
+  tags:
+    - new
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Libraries
+  subArea: '`dart:js_interop`'
+  description: |
+    Added extension types to provide `Iterable.toJSIterable`,
+    `JSIterable.toDartIterable`, `Iterator.toJSIterator`, and
+    `JSIterator.toDartIterator`.
+  tags:
+    - new
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The new `simple_directive_paths` lint flags unnecessarily complex `import`
+    and `export` paths, such as paths containing redundant `./` or backtracking
+    `../` segments. The associated quick fix simplifies these paths automatically.
+    
+    Use `dart fix --code=simple_directive_paths` (with either `--dry-run` or
+    `--apply`) to bulk fix existing lint violations across your project.
+  tags:
+    - new
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The `prefer_initializing_formals` lint rule now reports named parameters
+    that qualify as [private named parameters](/language/constructors#private-named-parameters),
+    if the package pubspec enables the language feature (for example, `sdk: ^3.12.0`).
+    
+    Use `dart fix --code=prefer_initializing_formals` (with either `--dry-run` or
+    `--apply`) to bulk fix existing lint violations.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Analyzer
+  description: |
+    `dart fix` now supports fixing `avoid_final_parameters` lint violations
+    using `dart fix --code=avoid_final_parameters` (with either `--dry-run` or
+    `--apply`).
+  tags:
+    - new
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The analyzer now warns when tearing off a function that has a `@mustBeConst`
+    annotated parameter.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The `invalid_runtime_check_with_js_interop_types` rule now checks for JS
+    interop types within catch clauses and instructs you to use `isA` for type
+    checks instead.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Added initial support for 'print debugging' via new sections
+    in the "Plugins" Insights (Diagnostics) page.
+    When a plugin computes lint and warning diagnostics,
+    the analysis server now redirects `print` calls and presents the messages
+    in the appropriate plugin's section on the Plugins page.
+  tags:
+    - new
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Improved support for extension types in many existing lint rules.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Analyzer
+  description: |
+    Improved support for null-aware elements in existing lint rules.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Analyzer
+  description: |
+    The analysis server starts up faster due to improved caching of analysis
+    options files. The exact speedup depends on the number of analysis options
+    files in your workspace and the number of included files,
+    with the greatest improvements seen on systems with slower disk access.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Pub
+  description: |
+    `dart pub cache repair` now by default only repairs the packages referenced
+    by your current project's `pubspec.lock`.
+    To repair all packages, use the `--all` flag.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Pub
+  description: |
+    `dart pub add` and `dart pub unpack` now accept `@` as an alternative to `:`
+    for separating a package name from its version constraint.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: Pub
+  description: |
+    Git dependencies now support LFS.
+  tags:
+    - new
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: dart2wasm
+  description: |
+    Updated the deferred loading module loader API to support batched fetching of
+    deferred modules. The embedder now uses `loadDeferredModules` instead of
+    `loadDeferredModule`. This new callback accepts an array of module names
+    rather than a single module name. In addition, all module loading functions
+    must accept an `instantiator` callback and pass the loaded results to it.
+  tags:
+    - changed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
+- version: 3.12.0
+  releaseDate: 2026-05-20
+  area: Tools
+  subArea: dart2js
+  description: |
+    `JSExportedDartFunction.toDart` sometimes incorrectly returned the original
+    Dart function even if the wrapper JS function was cast from a call to the
+    deprecated `allowInterop`. To be consistent with DDC and dart2wasm,
+    it now throws if the wrapper JS function wasn't a result of `Function.toJS` or
+    `Function.toJSCaptureThis`.
+  tags:
+    - fixed
+  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120'
+# --------------------------------------------------
 - version: 3.11.0
   releaseDate: 2026-02-11
   area: Libraries
