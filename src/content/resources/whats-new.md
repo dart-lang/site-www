@@ -1,7 +1,7 @@
 ---
 title: What's new
 description: A list of what's new on dart.dev and related sites.
-lastVerified: 2026-05-13
+lastVerified: 2026-05-20
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -34,9 +34,9 @@ check out the [3.12 announcement][] and the
 
 ### Documentation updates {:.no_toc}
 
+* Added documentation for the new [private named parameters][] language feature.
 * Added documentation for the experimental [primary constructors][] language
   feature.
-* Added documentation for the new [private named parameters][] language feature.
 * Created a dedicated [language versioning][] page and updated links across
   the site.
 * Documented Dart support for [Firebase Functions][] and the Admin SDK.
