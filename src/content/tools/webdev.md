@@ -62,14 +62,13 @@ This tool can compile in two ways: one that makes debugging easier
 (`serve`) and one that makes for small, fast code (`build`).
 
 The development compiler supports incremental updates and produces
-[Asynchronous Module Definition (AMD) modules.](https://github.com/amdjs/amdjs-api/blob/master/AMD.md#amd).
+[Asynchronous Module Definition (AMD) modules][amd-modules].
 With [`webdev serve`](#serve), you can edit your Dart files, refresh in
 Chrome, and see your edits in short order. This speed comes from
 compiling updated modules, not all the packages that your app requires.
 
 The first compilation takes the longest as it compiles the entire app.
-While [`serve`](#serve) command runs, successive builds should compile
-faster.
+While [`serve`](#serve) command runs, successive builds should compile faster.
 
 The production compiler generates a single, minified JavaScript file.
 
@@ -87,6 +86,8 @@ This section describes how to use the following commands:
 You can customize your build using build configuration files. 
 To learn more about build configuration files, see the 
 [build_web_compilers][] package.
+
+[amd-modules]: https://github.com/amdjs/amdjs-api/blob/master/AMD.md#amd
 
 ### webdev serve {:#serve}
 

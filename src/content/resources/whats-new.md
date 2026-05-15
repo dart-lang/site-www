@@ -957,7 +957,7 @@ we made the following changes to this site:
 * Updated the documentation for updating and installing Dart:
   * Documented how to switch between Dart versions
     with Homebrew within the macOS [install instructions][get-dart-install].
-  * Updated the linux [installation instructions][get-dart-install]
+  * Updated the Linux [installation instructions][get-dart-install]
     to use [SecureApt][] and follow the latest best practices.
   * Added support for downloading experimental, Linux RISC-V (RV64GC) builds
     from the [Dart SDK archive][].

@@ -248,8 +248,9 @@ You can use a [wildcard pattern](#wildcard) as a variable pattern.
 
 `foo, _`
 
-Identifier patterns may behave like a [constant pattern](#constant) or like a
-[variable pattern](#variable), depending on the context where they appear:
+Identifier patterns behave like a
+[constant pattern](#constant) or like a [variable pattern](#variable),
+depending on the context where they appear:
 
 - [Declaration][] context: declares a new variable with identifier name:
   `var (a, b) = (1, 2);`

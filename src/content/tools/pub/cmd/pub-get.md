@@ -30,7 +30,7 @@ To map packages back to the system cache,
 this command creates a `package_config.json` file
 in the `.dart_tool/` directory.
 
-Once the dependencies are acquired, they may be referenced in Dart code.
+Once the dependencies are acquired, they might be referenced in Dart code.
 For example, if a package depends on `test`:
 
 ```dart

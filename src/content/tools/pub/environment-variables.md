@@ -13,7 +13,7 @@ Environment variables allow you to customize pub to suit your needs.
   By default, this directory is located under
   `$HOME/.pub-cache` (on macOS and Linux),
   or in `%LOCALAPPDATA%\Pub\Cache` (on Windows). (The precise location of the
-  cache may vary depending on the Windows version.)
+  cache might vary depending on the Windows version.)
   You can use the `PUB_CACHE` environment
   variable to specify another location. For more information, see
   [The system package cache](/tools/pub/cmd/pub-get#the-system-package-cache).
