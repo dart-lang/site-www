@@ -612,9 +612,9 @@ resemble the following:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.10.4
-  lints: ^6.0.0
-  test: ^1.26.3
+  build_runner: ^2.14.1
+  lints: ^6.1.0
+  test: ^1.31.1
 ```
 
 This YAML sets the `dev_dependencies` to the latest patch versions.
