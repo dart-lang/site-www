@@ -13,7 +13,7 @@ class BlogCard extends StatelessComponent {
     required this.post,
     required this.url,
     this.className,
-    this.priority = BlogCardPriority.low,
+    this.priority = BlogCardPriority.normal,
     super.key,
   });
 
