@@ -43,7 +43,7 @@ removing the errors inherent in cross-language implementation.
 > By sharing data models and validation rules in a common Dart package,
 > you can ensure your frontend and backend stay synchronized.
 
-Eliminating the 'Double-Doc Tax' is a major productivity win.
+Eliminating the "Double-Doc Tax" is a major productivity win.
 By using the `firebase_functions` package and sharing your models,
 you stop wasting time syncing teams and start building features.
 
