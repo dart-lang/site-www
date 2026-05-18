@@ -3,12 +3,12 @@ title: "The Flutter missing link: Why full-stack Dart changes everything"
 description: "With Cloud Functions for Firebase support for Dart, we can treat the entire stack as a single, unified application."
 publishDate: 2026-05-18
 author: kevmoo
-image: images/image1.png
+image: images/image1.webp
 category: announcements
 layout: blog
 ---
 
-<DashImage src="images/image1.png" alt="Two blue bird mascots, one wearing sunglasses and playing a black electric guitar connected to a glowing Firebase amplifier, and another wearing headphones operating a music synthesizer board in a clean studio environment." caption="The Flutter missing link" />
+<DashImage src="images/image1.webp" alt="Two blue bird mascots, one wearing sunglasses and playing a black electric guitar connected to a glowing Firebase amplifier, and another wearing headphones operating a music synthesizer board in a clean studio environment." caption="The Flutter missing link" />
 
 For years, Flutter developers have inhabited a divided architectural reality.
 You build a high-performance, beautiful frontend using Dart,
@@ -29,7 +29,7 @@ application.
 
 ## One language to rule them all
 
-<DashImage src="images/image2.png" alt="Infographic titled 'DART PACKAGE DEPENDENCY STRUCTURE' showing 'package:server' representing the backend cloud and 'package:app' representing the frontend mobile/web both depending on a central 'package:shared' package containing shared models and validation logic." caption="Dart package dependency structure" />
+<DashImage src="images/image2.webp" alt="Infographic titled 'DART PACKAGE DEPENDENCY STRUCTURE' showing 'package:server' representing the backend cloud and 'package:app' representing the frontend mobile/web both depending on a central 'package:shared' package containing shared models and validation logic." caption="Dart package dependency structure" />
 
 The most transformative aspect of this shift is the "Shared Package" pattern.
 By moving your business logic and data models into a standalone Dart package,
@@ -99,7 +99,7 @@ Local Emulator Suite.
 The suite provides a complete offline environment where the backend experience
 finally feels "native" to the Dart developer.
 
-<DashImage src="images/firebase-emulator-suite.png" alt="Firebase Local Emulator Suite UI in a web browser showing active emulators for Authentication, Firestore, and Functions, demonstrating a green status indicating that the local developer server is running and ready for end-to-end backend emulator testing." caption="Firebase Local Emulator Suite provides offline backend verification" />
+<DashImage src="images/firebase-emulator-suite.webp" alt="Firebase Local Emulator Suite UI in a web browser showing active emulators for Authentication, Firestore, and Functions, demonstrating a green status indicating that the local developer server is running and ready for end-to-end backend emulator testing." caption="Firebase Local Emulator Suite provides offline backend verification" />
 
 This enables you to test your end-to-end application,
 including Firestore and Auth interactions,
@@ -138,6 +138,7 @@ paving the way for a highly productive workflow and unlocking new possibilities
 for Dart on the server.
 
 To get started with building your first Dart Cloud Functions,
-check out this Firebase [documentation](https://firebase.google.com/docs/functions/start-dart).
+check out the
+[Cloud Functions for Firebase documentation](https://firebase.google.com/docs/functions/start-dart).
 If you would like to deploy a Dart Cloud Function using Cloud Run instead,
 check out this [sample app](https://github.com/dart-lang/samples/tree/main/server/simple).
