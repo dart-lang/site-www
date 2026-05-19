@@ -17,7 +17,7 @@
 - version: 3.12.0
   releaseDate: 2026-05-18
   area: Libraries
-  subArea: '`dart:core`'
+  subArea: "`dart:core`"
   description: |
     The Dart VM `RegExp` implementation now supports modifier spans and duplicate
     named capture groups.
@@ -28,7 +28,7 @@
 - version: 3.12.0
   releaseDate: 2026-05-18
   area: Libraries
-  subArea: '`dart:js_interop`'
+  subArea: "`dart:js_interop`"
   description: |
     Moved `isA` from `JSAnyUtilityExtension` to `NullableObjectUtilExtension`
     to support type-checking any `Object?`. In addition, `isA<JSObject>()`
@@ -46,7 +46,7 @@
 - version: 3.12.0
   releaseDate: 2026-05-18
   area: Libraries
-  subArea: '`dart:js_interop`'
+  subArea: "`dart:js_interop`"
   description: |
     `isA<JSExportedDartFunction>()` now checks whether the function is a JS
     wrapper function returned by `Function.toJS` or `Function.toJSCaptureThis`.
@@ -57,7 +57,7 @@
 - version: 3.12.0
   releaseDate: 2026-05-18
   area: Libraries
-  subArea: '`dart:js_interop`'
+  subArea: "`dart:js_interop`"
   description: |
     Added `JSIterableProtocol`, `JSIterable`, `JSIteratorProtocol`, `JSIterator`,
     and `JSIteratorResult` types to model JavaScript's iteration protocols.
@@ -69,7 +69,7 @@
 - version: 3.12.0
   releaseDate: 2026-05-18
   area: Libraries
-  subArea: '`dart:js_interop`'
+  subArea: "`dart:js_interop`"
   description: |
     Added extension types to provide `Iterable.toJSIterable`,
     `JSIterable.toDartIterable`, `Iterator.toJSIterator`, and
