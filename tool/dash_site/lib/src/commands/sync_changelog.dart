@@ -342,10 +342,10 @@ enum _ChangelogTag {
   changed(words: [], phrases: []);
 
   const _ChangelogTag({
-    String? yamlName,
+    this._yamlName,
     required this.words,
     required this.phrases,
-  }) : _yamlName = yamlName;
+  });
 
   /// The name written to the YAML output.
   String get yamlName => _yamlName ?? name;
