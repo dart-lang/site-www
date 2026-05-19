@@ -454,7 +454,7 @@ void testParity(Example x) {
 **Message:**
 
 ```plaintext
-'_overriden' couldn't be promoted because there is a conflicting getter in class 'Override'.
+'_overridden' couldn't be promoted because there is a conflicting getter in class 'Override'.
 ```
 
 **Solution**:
@@ -610,8 +610,8 @@ void f(Example x) {
 }
 ```
 
-If the fields are unrelated, then rename one of the fields, so
-they don't conflict.
+If the fields are unrelated,
+then rename one of the fields so they don't conflict.
 Read the [Note about unrelated classes](#note-about-unrelated-classes). 
 
 
@@ -759,7 +759,7 @@ void f(bool b, int? i, int? j) {
 ```
 
 In straight-line control flow cases like these (no loops),
-flow analysis takes into account the right hand side of the assignment
+flow analysis takes into account the right-hand side of the assignment
 when deciding whether to demote.
 As a result, another way to fix this code is
 to change the type of `j` to `int`.
@@ -925,7 +925,7 @@ try {
 ### Subtype mismatch
 
 **The cause:**
-You're trying to promote to a type isn't a subtype of
+You're trying to promote to a type that isn't a subtype of
 the variable's current promoted type
 (or wasn't a subtype at the time of the promotion attempt).
 
@@ -1030,7 +1030,7 @@ Flow analysis reasons that as soon as the definition of `foo` is reached,
 it might get called at any time,
 therefore it's no longer safe to promote `i` at all.
 As with loops, this demotion happens regardless of
-the type of the right hand side of the assignment.
+the type of the right-hand side of the assignment.
 
 **Solution**:
 
@@ -1106,7 +1106,7 @@ when `foo` might get called,
 so it might get called after the assignment at (2),
 and thus the promotion might no longer be valid.
 As with loops, this demotion happens regardless of the type of
-the right hand side of the assignment.
+the right-hand side of the assignment.
 
 **Solution**:
 

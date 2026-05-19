@@ -15,7 +15,8 @@ Specifically:
 * Listen. Consider and acknowledge people's points before responding.
 
 If any member of the community violates this code of conduct,
-the maintainers of the Dart project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.
+the maintainers of the Dart project may take action, removing issues, comments,
+and PRs or blocking accounts as deemed appropriate.
 We will not tolerate harassment from anyone in the Dart community,
 even outside of Dart's public communication channels.
 

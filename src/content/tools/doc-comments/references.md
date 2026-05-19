@@ -43,7 +43,7 @@ Doc comment references enable several IDE features:
 
 :::tip
 The [`comment_references`][] lint rule can help to
-ensure that doc comment references are valid, avoiding typos and mis-uses.
+ensure that doc comment references are valid, avoiding typos and misuses.
 Keeping doc comment references valid ensures that these IDE features
 are enabled for each reference.
 :::

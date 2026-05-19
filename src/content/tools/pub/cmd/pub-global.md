@@ -151,7 +151,7 @@ locate the file for your platform and add it.
 {:.table .table-striped}
 
 <sup><strong>*</strong></sup> The exact location of the system cache
-may vary for different versions of Windows.
+might vary for different versions of Windows.
 
 You can now directly invoke the command:
 
@@ -161,7 +161,7 @@ $ [!webdev serve!]
 ```
 
 If the script still fails to run from the command line, the
-package may not be [configured](#configuring-package-executables) for
+package might not be [configured](#configuring-package-executables) for
 this feature. You can still run the script using `dart pub global run`.
 
 ### Running a script using `dart pub global run`

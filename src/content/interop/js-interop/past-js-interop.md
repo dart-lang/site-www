@@ -81,15 +81,17 @@ At runtime, these classes were erased to a type that is similar to
 class JSType {}
 ```
 
-Users of `package:js` will find the syntax and semantics of `dart:js_interop`
-familiar. You may be able to migrate to `dart:js_interop` by replacing the class
-definition with an extension type and have it work in many cases.
+Users of `package:js` will find the
+syntax and semantics of `dart:js_interop` familiar.
+You might be able to migrate to `dart:js_interop` by
+replacing the class definition with an extension type and
+have it work in many cases.
 
 There are significant differences, however:
 
 - `package:js` types could not be used to interop with browser APIs.
   `dart:js_interop` types can.
-- `package:js` allowed dynamic dispatch. This meant that if you casted the
+- `package:js` allowed dynamic dispatch. This meant that if you cast the
   `package:js` type to `dynamic` and called an interop member on it, it would
   forward to the right member. This is no longer possible with
   `dart:js_interop`.

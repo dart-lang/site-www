@@ -140,7 +140,8 @@ This is the perfect place to introduce people to your code.
 For guidance on how to write a great README, see
 [Writing package pages](/tools/pub/writing-package-pages).
 
-<a id="changelogmd"></a>
+<a id="changelogmd" aria-hidden="true"></a>
+
 ## CHANGELOG.md {:#changelog}
 
 <FileTree>
@@ -427,11 +428,11 @@ Typically, these use the [test]({{site.pub-pkg}}/test) package.
 
 </FileTree>
 
-Flutter app packages may also have special integration tests, which use the
+Flutter app packages might also have special integration tests, which use the
 [integration_test]({{site.flutter-docs}}/cookbook/testing/integration/introduction)
 package. These tests live in their own `integration_test` directory.
 
-Other packages may choose to follow a similar pattern, to separate their slower
+Other packages might choose to follow a similar pattern, to separate their slower
 integration tests from their unit tests, but note that by default `dart test`
 will not run these tests. You will have to explicitly run them with
 `dart test integration_test`.
@@ -444,7 +445,7 @@ will not run these tests. You will have to explicitly run them with
 
 </FileTree>
 
-Packages that have performance critical code may also include *benchmarks*.
+Packages that have performance-critical code might also include *benchmarks*.
 These test the API not for correctness but for speed (or memory use, or maybe
 other empirical metrics).
 
@@ -507,7 +508,7 @@ the pub.dev site creates an **Example** tab to display the first file it finds
 For example, if your package has many files under its `example` directory,
 including a file named `README.md`,
 then your package's Example tab displays the contents of `example/README.md`
-(parsed as [Markdown.)][Markdown]
+(parsed as [Markdown][]).
 
 {% comment %}
 To see how the example file is chosen,
