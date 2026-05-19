@@ -21,10 +21,10 @@ and follow the [Dart blog][].
 
 ## 3.12 release
 
-_Released on: May 20, 2026_
+_Released on: May 18, 2026_
 
 This section lists notable changes made from February 12, 2026,
-through May 20, 2026 to [dart.dev](https://dart.dev/docs).
+through May 18, 2026 to [dart.dev](https://dart.dev/docs).
 For details about the 3.12 release of Dart,
 check out the [3.12 announcement][] and the
 [3.12 SDK changelog][3-12-changelog].
@@ -46,9 +46,8 @@ check out the [3.12 announcement][] and the
 * Centralized documentation for pub [package descriptors][].
 * Added documentation for constraints on [code asset dylib names][] for build
   hooks.
-* Added a [Dart team publishers][] page to the side navigation.
-* Updated the [object-oriented programming tutorial][] and enhanced its
-  formatting.
+* Updated the [object-oriented programming lesson][] of the tutorial and
+  enhanced its formatting.
 * Expanded the [Glossary][] with new terms including "top type", "null safety",
   "sound", "reified generics", and "uninitialized".
   (Thank you, [IldySilva][].)
@@ -62,18 +61,16 @@ check out the [3.12 announcement][] and the
   migrating all historical posts from Medium.
 * Implemented page prefetching and prerendering for faster navigation across
   the site.
-* Removed the legacy Firebase Studio integration.
 
 [primary constructors]: /language/primary-constructors
 [private named parameters]: /language/constructors#private-named-parameters
 [language versioning]: /language/versioning
-[Firebase Functions]: /server/google-cloud#cloud-functions
+[Firebase Functions]: /server/google-cloud#cloud-functions-for-firebase
 [pub workspaces]: /tools/pub/workspaces#nested-workspaces
 [`--no-example`]: /tools/pub/cmd/pub-get#no-example
 [package descriptors]: /tools/pub/dependencies#package-descriptors
 [code asset dylib names]: /tools/hooks#create-hook
-[Dart team publishers]: /resources/dart-team-packages
-[object-oriented programming tutorial]: /learn/tutorial/object-oriented
+[object-oriented programming lesson]: /learn/tutorial/object-oriented
 [Glossary]: /resources/glossary
 [top type]: /resources/glossary#top-type
 [null safety]: /resources/glossary#null-safety
