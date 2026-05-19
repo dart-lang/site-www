@@ -3,7 +3,7 @@ title: Breaking changes and deprecations
 breadcrumb: Legacy
 description: A list of breaking changes by release in Dart.
 maxTocDepth: 2
-lastVerified: 2026-02-16
+lastVerified: 2026-05-19
 ---
 
 {% assign versioned = '<span class="tag-label language-versioned-tag">Language versioned</span>' %}
@@ -68,8 +68,8 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 [Dart announce]: {{site.announce}}
 
 {% comment %}
-Create new section from these headers for each release.
-If no changes exist in a section (e.g. Language, `dart:async`, etc.),
+Create a new section from these headers for each release.
+If no changes exist in a section (such as Language, `dart:async`, etc.),
 don't include the section header.
 
 ## x.x.x
@@ -84,6 +84,116 @@ don't include the section header.
 
 #### (Dart VM, Pub, Linter, `dart2js`, etc)
 {% endcomment %}
+
+## 3.13.0
+
+:::note Tentative
+Dart 3.13 hasn't been released yet.
+The following list is preliminary and might change before release.
+:::
+
+### Libraries
+
+#### `dart:io`
+
+- `NetworkInterface.addresses` [now returns `List<InterfaceAddress>`][63216]
+  instead of `List<InternetAddress>`.
+  The new `InterfaceAddress` subtype of `InternetAddress`
+  exposes a `prefixLength` field and a `broadcast` getter.
+  Code that implements `NetworkInterface` and overrides `addresses`
+  must update the return type.
+
+[63216]: {{site.repo.dart.sdk}}/issues/63216
+
+#### `dart:js_interop`
+
+- `JSFunction` and `JSExportedDartFunction` are [now generic][54557].
+  `JSExportedDartFunction<T>.toDart` now casts
+  the original wrapped function to the type argument `T`,
+  and `isA<JSExportedDartFunction<T>>` now also
+  checks that the wrapped function is a `T`.
+  The runtime types of `JSFunction` and `JSExportedDartFunction` don't change.
+
+[54557]: {{site.repo.dart.sdk}}/issues/54557
+
+### Tools
+
+#### Formatter (`dart format`)
+
+- Stopped adding a blank line before a comment at
+  the end of a compilation unit or braced body.
+- Extension type representation clauses are now formatted the same way
+  primary constructor formal parameter lists are formatted.
+- When [trailing commas are preserved][trailing-commas],
+  no longer insert a newline before the `;` in an enum with members
+  unless there is a trailing comma.
+- Fixed a bug where some collections or arguments might split unnecessarily.
+
+- {{versioned}}
+  Parameter lists can now be block formatted.
+- {{versioned}}
+  `as`, `is`, and `is!` expressions can now be block formatted.
+- {{versioned}}
+  Blank lines are added around `mixin` and `extension type` declarations
+  if they don't have a `;` body.
+
+[trailing-commas]: /tools/analysis#trailing_commas
+
+### Runtime
+
+- {{removed}}
+  The built-in fallback root certificates used when
+  system certificates can't be found are no longer included.
+  If the system certificates can't be found,
+  use the `--root-certs-file` or `--root-certs-cache` options
+  to provide fallback certificates to the standalone Dart VM.
+
+## 3.12.0
+
+### Libraries
+
+#### `dart:js_interop`
+
+- The `isA` extension method has
+  [moved from `JSAnyUtilityExtension` to `NullableObjectUtilExtension`][56905]
+  to support type-checking any `Object?`.
+  This change is only breaking if you referred to the extension name directly,
+  either by applying the extension directly or through `show`/`hide` directives.
+- `isA<JSObject>()` now correctly handles JS objects with no prototypes,
+  and `isA<JSAny>()` does a non-trivial check that the value is a JS value.
+- `isA<JSExportedDartFunction>()` now checks whether the function is
+  actually a JS wrapper function that's returned from
+  `Function.toJS` or `Function.toJSCaptureThis`.
+
+[56905]: {{site.repo.dart.sdk}}/issues/56905
+
+### Tools
+
+#### Pub
+
+- `dart pub cache repair` now only repairs the packages referenced
+  by the current project's `pubspec.lock` file by default.
+  To repair all packages in the pub cache as in previous releases,
+  pass the new `--all` flag.
+
+#### Wasm compiler (dart2wasm)
+
+- The deferred loading module loader API has been updated to allow
+  batched fetching of deferred modules.
+  The embedder now takes `loadDeferredModules` instead of `loadDeferredModule`,
+  where the new function should expect an array of module names
+  rather than individual module names.
+  All the module loading functions must now also accept an `instantiator`
+  callback to which they should pass the loaded results.
+
+#### Production JavaScript compiler (dart2js)
+
+- `JSExportedDartFunction.toDart` now throws if the wrapper JS function
+  wasn't a result of `Function.toJS` or `Function.toJSCaptureThis`,
+  to be consistent with DDC and dart2wasm.
+  Previously, it would sometimes incorrectly return the
+  original Dart function even if the wrapper JS function was
+  cast from a call to the deprecated `allowInterop` function.
 
 ## 3.11.0
 

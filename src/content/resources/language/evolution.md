@@ -3,7 +3,7 @@ title: Dart language evolution
 shortTitle: Language evolution
 breadcrumb: Legacy
 description: Notable changes and additions to the Dart programming language.
-lastVerified: 2026-02-16
+lastVerified: 2026-05-19
 ---
 
 :::warning
@@ -49,6 +49,35 @@ on the Dart language GitHub repo.
 
 
 ## Changes in each release
+
+### Dart 3.12
+_Released 18 May 2026_
+
+Dart 3.12 introduces [private named parameters][], which let you
+initialize private fields directly through [initializing formal parameters][].
+Previously, initializing a private field through a named parameter
+required manual assignment in the constructor's initializer list.
+
+Now, when an initializing formal parameter refers to a private field,
+Dart strips the leading underscore (`_`) to derive the parameter's public name,
+so callers use the unprefixed name at the call site:
+
+```dart
+class Point {
+  final int _x;
+  final int _y;
+
+  Point({required this._x, required this._y});
+}
+
+void main() {
+  // Callers use the public, unprefixed names of the parameters.
+  final point = Point(x: 1, y: 2);
+}
+```
+
+[initializing formal parameters]: /language/constructors#use-initializing-formal-parameters
+[private named parameters]: /language/constructors#private-named-parameters
 
 ### Dart 3.11
 _Released 9 February 2026_
