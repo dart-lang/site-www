@@ -5,34 +5,66 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+/// A segment of text in the site banner, which can optionally be a link.
+@immutable
+final class BannerSpan {
+  final String text;
+  final String? url;
+  final bool newTab;
+
+  const BannerSpan({
+    required this.text,
+    this.url,
+    this.newTab = false,
+  });
+
+  factory BannerSpan.fromMap(Map<Object?, Object?> map) {
+    return BannerSpan(
+      text: map['text'] as String,
+      url: map['url'] as String?,
+      newTab: map['newTab'] as bool? ?? false,
+    );
+  }
+}
+
 /// The information to display in the site banner,
 /// as configured in the `src/data/banner.yml` file.
 @immutable
 final class BannerContent {
-  final String text;
-  final String linkText;
-  final String linkUri;
-  final bool newTab;
+  final List<BannerSpan> spans;
 
   const BannerContent({
-    required this.text,
-    required this.linkText,
-    required this.linkUri,
-    this.newTab = false,
+    required this.spans,
   });
 
   factory BannerContent.fromMap(Map<String, Object?> bannerData) {
+    if (bannerData['spans'] case final List<Object?> spansList) {
+      return BannerContent(
+        spans: spansList
+            .map((s) => BannerSpan.fromMap(s as Map<Object?, Object?>))
+            .toList(),
+      );
+    }
+
+    // Fallback for backward compatibility
     final text = bannerData['text'] as String;
-    final link = bannerData['link'] as Map<Object?, Object?>;
-    final linkText = link['text'] as String;
-    final linkUri = link['url'] as String;
-    final newTab = link['newTab'] as bool? ?? false;
+    final link = bannerData['link'] as Map<Object?, Object?>?;
+    if (link != null) {
+      return BannerContent(
+        spans: [
+          BannerSpan(text: text),
+          const BannerSpan(text: ' '),
+          BannerSpan(
+            text: link['text'] as String,
+            url: link['url'] as String,
+            newTab: link['newTab'] as bool? ?? false,
+          ),
+        ],
+      );
+    }
 
     return BannerContent(
-      text: text,
-      linkText: linkText,
-      linkUri: linkUri,
-      newTab: newTab,
+      spans: [BannerSpan(text: text)],
     );
   }
 }
@@ -49,13 +81,15 @@ class DashBanner extends StatelessComponent {
     attributes: {'role': 'alert'},
     [
       p([
-        .text(content.text),
-        const .text(' '),
-        a(
-          href: content.linkUri,
-          target: content.newTab ? Target.blank : null,
-          [.text(content.linkText)],
-        ),
+        for (final span in content.spans)
+          if (span.url != null)
+            a(
+              href: span.url!,
+              target: span.newTab ? Target.blank : null,
+              [.text(span.text)],
+            )
+          else
+            .text(span.text),
       ]),
     ],
   );
