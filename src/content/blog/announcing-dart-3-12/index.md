@@ -14,7 +14,7 @@ This year at Google I/O 2026, the Flutter and Dart teams are celebrating a power
 
 Dart 3.12 brings this theme to life. We are making the language more approachable and productive. Concise new primitives like private named parameters, alongside experimental support for primary constructors, make everyday coding cleaner. But we didn't stop at the syntax level. New features like Agentic Hot Reload and the addition of Genkit to the Dart ecosystem ensure you can build high-performance, AI-ready, and agentic apps that reach users anywhere. This is true whether you code alone or pair-program with an AI agent.
 
-So run `flutter upgrade` and follow along to explore the new features in Dart 3.12. But remember, a more powerful Dart is only half the story. When you're ready to see how these features translate into beautiful UI, check out the [What's new in Flutter](https://blog.flutter.dev/whats-new-in-flutter-3-44-b0cc1ad3c527) blog post.
+So [update Dart](https://dart.dev/get-dart) or run [`flutter upgrade`](https://docs.flutter.dev/install/upgrade) and follow along to explore the new features in Dart 3.12. But remember, a more powerful Dart is only half the story. When you're ready to see how these features translate into beautiful UI, check out the [What's new in Flutter](https://blog.flutter.dev/whats-new-in-flutter-3-44-b0cc1ad3c527) blog post.
 
 ## Language updates
 
@@ -49,7 +49,7 @@ class Hummingbird {
 
 This was tedious. All the initializer list is doing is removing the `_`. It added unnecessary boilerplate to simple classes.
 
-In Dart 3.12, the language can do that for you. We now let you write private named initializing formals:
+In Dart 3.12, the language can do that for you. Dart now lets you write private named initializing formals:
 
 ```dart
 class Hummingbird {
@@ -69,9 +69,9 @@ void main() {
 }
 ```
 
-**Learn more**: [Private named parameters documentation](https://dart.dev/language/constructors#private-named-parameters).
+**Learn more**: [Private named parameters documentation](https://dart.dev/language/constructors#private-named-parameters)
 
-### Primary constructors (experimental phase)
+### Primary constructors (experimental phase) {:#primary-constructors}
 
 We are excited to offer an early look at one of the most requested syntax features in Dart. Primary constructors represent a major step forward for class conciseness. They eliminate the need to repeat field names and types across your class body and parameter lists.
 
@@ -106,17 +106,17 @@ class Dog extends Pet;
 
 Primary constructors are launching as an experimental preview in Dart 3.12. Because this is a foundational shift in how Dart classes are defined, your real-world feedback is crucial. You can enable the feature using the `primary-constructors` [flag](https://dart.dev/tools/experiment-flags) when running your project:
 
-```shell
+```console
 dart run --enable-experiment=primary-constructors bin/main.dart
 ```
 
 If you encounter any issues or have feedback on the design, please file an issue on the [Dart SDK repository](https://github.com/dart-lang/sdk) (and feel free to cc `@kallentu`). We look forward to hearing your thoughts!
 
-**Learn more**: [Primary constructors documentation](https://dart.dev/language/primary-constructors).
+**Learn more**: [Primary constructors documentation](https://dart.dev/language/primary-constructors)
 
 ## Ecosystem updates
 
-### Genkit Dart preview
+### Genkit Dart preview {:#genkit-dart}
 
 We're excited to announce the preview launch of Genkit Dart, an open-source framework for building full-stack, AI-powered agentic Dart and Flutter apps on any platform. It provides everything you need for AI apps out of the box:
 
@@ -136,13 +136,13 @@ import 'package:genkit_anthropic/genkit_anthropic.dart';
 void main() async {
   final ai = Genkit(plugins: [googleAI(), anthropic()]);
 
-  // Call Google Gemini.
+  // Call a Gemini model from Google.
   final geminiResponse = await ai.generate(
     model: googleAI.gemini('gemini-flash-latest'),
     prompt: 'Hello from Gemini',
   );
 
-  // Call Anthropic Claude.
+  // Call a Claude model from Anthropic.
   final claudeResponse = await ai.generate(
     model: anthropic.model('claude-opus-4.6'),
     prompt: 'Hello from Claude',
@@ -152,9 +152,9 @@ void main() async {
 
 Chat with the Genkit team on [Discord](https://discord.gg/qXt5zzQKpc) and report any issues on [GitHub](https://github.com/genkit-ai/genkit-dart).
 
-**Learn more**: [Genkit Dart Quickstart Guide](https://genkit.dev/docs/dart/get-started/).
+**Learn more**: [Get started with Genkit for Dart](https://genkit.dev/docs/dart/get-started/)
 
-### Cloud Functions for Firebase and experimental Dart support
+### Cloud Functions for Firebase and experimental Dart support {:#cloud-functions}
 
 We are also thrilled to highlight the recent announcement of experimental support for Dart in Cloud Functions for Firebase. For years, extending a Flutter app to the cloud meant context-switching into other backend languages and duplicating data structures.
 
@@ -174,7 +174,7 @@ Behind the scenes, the Dart Tooling Daemon automatically exposes the connection 
 
 With zero configuration, this integration streamlines your daily workflows. You can simply prompt your coding agent to fix a bug, change a UI widget, or diagnose a crash. The agent will autonomously modify your code, fetch live runtime diagnostics, and hot reload the app in real time.
 
-<DashImage src="images/agentic-hot-reload.webp" alt="An animation demonstrating the Dart MCP server hot reloading a Flutter star counter app after the Gemini CLI changes the theme and star animation. The split-screen setup shows the driving macOS terminal on the left and the resulting Android emulator on the right." />
+<DashImage src="images/agentic-hot-reload.webp" caption="Agentic hot reload powered by the Dart MCP server." alt="An animation demonstrating the Dart MCP server hot reloading a Flutter star counter app after the Gemini CLI changes the theme and star animation. The split-screen setup shows the driving macOS terminal on the left and the resulting Android emulator on the right." />
 
 ### Analysis server performance diagnostics
 
@@ -184,11 +184,11 @@ Developers experiencing slow analysis times or unresponsive completion can use t
 
 ## Pub updates
 
-### Native Git LFS support in `pub`
+### Native Git LFS support in `pub` {:#git-lfs-support}
 
 Using packages with large files is now simpler than ever. As of Dart 3.12, `dart pub` natively supports git dependencies with Git Large File Storage (LFS).
 
-You do not need any custom configurations in your `pubspec.yaml` file. As long as `git lfs` is installed on your machine, the pub client handles everything automatically:
+You don't need any custom configurations in your `pubspec.yaml` file. As long as `git lfs` is installed on your machine, the pub client handles everything automatically:
 
 ```yaml
 dependencies:
@@ -202,6 +202,6 @@ This is a major improvement for teams versioning large media assets, data models
 
 Dart 3.12 represents a major milestone in removing developer friction. From concise syntax additions to seamless agentic AI workflows and a stronger AI ecosystem, this release is built to support you. Every feature is designed to make your everyday development clean and efficient.
 
-We are excited to see what you build with these new capabilities. We hope you run `flutter upgrade` today to try out these updates. If you are testing our experimental features like primary constructors, please share your feedback. Together, we will keep building a language that brings developer joy to everyone, everyday, and everywhere.
+We are excited to see what you build with these new capabilities. We hope you [update Dart](https://dart.dev/get-dart) or [upgrade Flutter](https://docs.flutter.dev/install/upgrade) today to try out these updates. If you are testing our experimental features like primary constructors, please share your feedback. Together, we will keep building a language that brings developer joy to everyone, everyday, and everywhere.
 
-**Learn more**: [Dart SDK changelog](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120).
+**Learn more**: [Dart SDK changelog](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120)
