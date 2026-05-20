@@ -42,6 +42,11 @@ abstract class DashLayout extends PageLayoutBase {
   Iterable<Component> buildHead(Page page) {
     final pageData = page.data.page;
     final siteData = page.data.site;
+    final siteUrl = siteData['url'];
+    if (siteUrl is! String) {
+      throw Exception('Site URL not configured in site data.');
+    }
+    final siteBaseUrl = Uri.parse(siteUrl);
 
     final pageTitle = (pageData['title'] ?? siteData['title']) as String;
     final pageDescription = pageData['description'] as String?;
@@ -53,6 +58,11 @@ abstract class DashLayout extends PageLayoutBase {
         : pageTitle;
 
     final canonicalUrl = pageData['canonical'] as String?;
+    final socialPageUrl = _absoluteUrl(siteBaseUrl, page.url);
+    final socialImageUrl = _absoluteUrl(
+      siteBaseUrl,
+      pageImage ?? '/assets/img/logo/dart-logo-for-shares.png',
+    );
 
     return [
       Component.element(tag: 'title', children: [Component.text(windowTitle)]),
@@ -99,8 +109,8 @@ abstract class DashLayout extends PageLayoutBase {
       meta(name: 'twitter:title', content: pageTitle),
       if (pageDescription case final String desc)
         meta(name: 'twitter:description', content: desc),
-      if (pageImage case final String img)
-        meta(name: 'twitter:image', content: img),
+      if (pageImage != null)
+        meta(name: 'twitter:image', content: socialImageUrl),
 
       meta(attributes: {'property': 'og:title', 'content': pageTitle}),
       if (pageDescription case final String desc)
@@ -108,13 +118,13 @@ abstract class DashLayout extends PageLayoutBase {
       meta(
         attributes: {
           'property': 'og:url',
-          'content': canonicalUrl ?? page.path,
+          'content': socialPageUrl,
         },
       ),
       meta(
         attributes: {
           'property': 'og:image',
-          'content': pageImage ?? '/assets/img/logo/dart-logo-for-shares.png',
+          'content': socialImageUrl,
         },
       ),
 
@@ -360,3 +370,9 @@ if (storedTheme === 'auto-mode') {
     ];
   }
 }
+
+/// Resolves [url] against [siteBaseUrl] to produce an absolute URL.
+///
+/// If [url] already has a scheme, it's returned unchanged.
+String _absoluteUrl(Uri siteBaseUrl, String url) =>
+    Uri.parse(url).hasScheme ? url : siteBaseUrl.resolve(url).toString();
