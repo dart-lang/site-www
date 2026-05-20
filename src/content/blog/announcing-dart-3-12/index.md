@@ -14,6 +14,8 @@ Dart 3.12 brings this theme to life. We are making the language more approachabl
 
 So run `flutter upgrade` and follow along to explore the new features in Dart 3.12. But remember, a more powerful Dart is only half the story. When you're ready to see how these features translate into beautiful UI, check out the [What's new in Flutter](https://blog.flutter.dev/whats-new-in-flutter-3-44-b0cc1ad3c527) blog post.
 
+<DashImage src="images/dart-3-12-cover.webp" alt="Dart 3.12 release banner with the Dart logo and a bullseye icon." caption="Announcing Dart 3.12" />
+
 ## Language updates
 
 ### Private named parameters
