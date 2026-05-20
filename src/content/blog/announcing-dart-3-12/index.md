@@ -12,7 +12,7 @@ This year at Google I/O 2026, the Flutter and Dart teams are celebrating a power
 
 Dart 3.12 brings this theme to life. We are making the language more approachable and productive. Concise new primitives like private named parameters, alongside experimental support for primary constructors, make everyday coding cleaner. But we didn't stop at the syntax level. New features like Agentic Hot Reload and the addition of Genkit to the Dart ecosystem ensure you can build high-performance, AI-ready, and agentic apps that reach users anywhere. This is true whether you code alone or pair-program with an AI agent.
 
-So run `flutter upgrade` and follow along to explore the new features in Dart 3.12. But remember, a more powerful Dart is only half the story. When you're ready to see how these features translate into beautiful UI, check out the What's new in Flutter [need to add link] blog post.
+So run `flutter upgrade` and follow along to explore the new features in Dart 3.12. But remember, a more powerful Dart is only half the story. When you're ready to see how these features translate into beautiful UI, check out the [What's new in Flutter](https://blog.flutter.dev/whats-new-in-flutter-3-44-b0cc1ad3c527) blog post.
 
 ## Language updates
 
@@ -108,7 +108,7 @@ Primary constructors are launching as an experimental preview in Dart 3.12. Beca
 dart run --enable-experiment=primary-constructors bin/main.dart
 ```
 
-If you encounter any issues or have feedback on the design, please file an issue on the [Dart SDK repository](https://github.com/dart-lang/sdk) (and feel free to cc @kallentu). We look forward to hearing your thoughts!
+If you encounter any issues or have feedback on the design, please file an issue on the [Dart SDK repository](https://github.com/dart-lang/sdk) (and feel free to cc `@kallentu`). We look forward to hearing your thoughts!
 
 **Learn more**: [Primary constructors documentation](https://dart.dev/language/primary-constructors).
 
