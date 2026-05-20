@@ -8,13 +8,13 @@ category: releases
 layout: blog
 ---
 
+<DashImage src="images/dart-3-12-cover.webp" alt="Dart 3.12 release banner with the Dart logo and a bullseye icon." caption="Announcing Dart 3.12" />
+
 This year at Google I/O 2026, the Flutter and Dart teams are celebrating a powerful theme: Everywhere, everyday, built by everyone, for everyone.
 
 Dart 3.12 brings this theme to life. We are making the language more approachable and productive. Concise new primitives like private named parameters, alongside experimental support for primary constructors, make everyday coding cleaner. But we didn't stop at the syntax level. New features like Agentic Hot Reload and the addition of Genkit to the Dart ecosystem ensure you can build high-performance, AI-ready, and agentic apps that reach users anywhere. This is true whether you code alone or pair-program with an AI agent.
 
 So run `flutter upgrade` and follow along to explore the new features in Dart 3.12. But remember, a more powerful Dart is only half the story. When you're ready to see how these features translate into beautiful UI, check out the [What's new in Flutter](https://blog.flutter.dev/whats-new-in-flutter-3-44-b0cc1ad3c527) blog post.
-
-<DashImage src="images/dart-3-12-cover.webp" alt="Dart 3.12 release banner with the Dart logo and a bullseye icon." caption="Announcing Dart 3.12" />
 
 ## Language updates
 
