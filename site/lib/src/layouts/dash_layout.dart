@@ -58,7 +58,7 @@ abstract class DashLayout extends PageLayoutBase {
         : pageTitle;
 
     final canonicalUrl = pageData['canonical'] as String?;
-    final socialPageUrl = _absoluteUrl(siteBaseUrl, page.url);
+    final socialPageUrl = _absoluteUrl(siteBaseUrl, canonicalUrl ?? page.url);
     final socialImageUrl = _absoluteUrl(
       siteBaseUrl,
       pageImage ?? '/assets/img/logo/dart-logo-for-shares.png',
