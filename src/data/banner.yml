@@ -1,6 +1,4 @@
 text: >-
-  Dart and Flutter are back at Google I/O on May 19-20!
-link:
-  text: "Register now"
-  url: "https://io.google/2026/?utm_source=dart&utm_medium=embedded_marketing&utm_campaign=flutter"
-  newTab: true
+  Supercharge your productivity with Dart 3.12!<br>
+  Watch [What's new in Flutter](https://www.youtube.com/live/3TfGKugPlpE){:target="_blank"}
+  and read the [announcement](/blog/announcing-dart-3-12){:target="_blank"}.
