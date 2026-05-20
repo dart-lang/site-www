@@ -3,13 +3,13 @@ title: "Google Summer of Code 2020 results"
 description: "The Dart team mentored 5 student developers this summer, as part of GSoC 2020. Read about the student projects."
 publishDate: 2020-09-02
 author: jonasfj
-image: images/15VxyyQ1juWjwtTbSkwzzXA.jpeg
+image: images/15VxyyQ1juWjwtTbSkwzzXA.webp
 category: other
 layout: blog
 ---
 
 
-<DashImage src="images/15VxyyQ1juWjwtTbSkwzzXA.jpeg" />
+<DashImage src="images/15VxyyQ1juWjwtTbSkwzzXA.webp" alt="The Google Summer of Code logo." />
 
 
 [Google Summer of Code (GSoC)](https://summerofcode.withgoogle.com/) is a global program focused on bringing student developers into open source software development. Students are sponsored by Google to work with a mentoring open source organization on a 3-month programming project during the summer.

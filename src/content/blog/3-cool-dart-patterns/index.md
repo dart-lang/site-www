@@ -3,7 +3,7 @@ title: "3 cool Dart patterns"
 description: "Try these three useful Dart programming patterns in your next Flutter app."
 publishDate: 2020-05-20
 author: JoseAlba
-image: images/0alx_hKg5fP3b1b22.png
+image: images/0alx_hKg5fP3b1b22.webp
 category: other
 layout: blog
 ---
@@ -21,7 +21,7 @@ With the Flutter framework, you use the Dart programming language to create beau
 
 This article shows you how to use each pattern, finishing with an embedded Pen where you can play with the code.
 
-<DashImage src="images/0alx_hKg5fP3b1b22.png" alt="This screenshot shows the code I will discuss and the UI it produces." caption="This screenshot shows the code I will discuss and the UI it produces." />
+<DashImage src="images/0alx_hKg5fP3b1b22.webp" alt="A split screen showing a restaurant menu app UI on the right and the Dart code producing it on the left." caption="This screenshot shows the code I will discuss and the UI it produces." />
 
 
 ## Conditionally assigning a value

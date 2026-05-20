@@ -3,7 +3,7 @@ title: "Dart 2.18: Objective-C & Swift interop"
 description: "Enhanced interoperability, platform-specific networking, improved type inference, and an important update on our null safety language…"
 publishDate: 2022-08-30
 author: mit-mit
-image: images/0byFoNx1wnEaO0S6N.png
+image: images/0byFoNx1wnEaO0S6N.webp
 category: releases
 layout: blog
 ---
@@ -15,7 +15,7 @@ layout: blog
 
 *Finally, we have the latest null safety migration status numbers and an important roadmap update on our path towards a fully null safe Dart. Please read to the end!*
 
-<DashImage src="images/0byFoNx1wnEaO0S6N.png" />
+<DashImage src="images/0byFoNx1wnEaO0S6N.webp" alt="Dart 2.18 release banner highlighting Objective-C and Swift interop, platform-specific HTTP, and the roadmap." />
 
 
 ## Introducing Dart to Objective-C & Swift interop
@@ -210,7 +210,7 @@ In conjunction with the 2.18 release, we’ve made two changes on the `pub.dev` 
 
 Individuals often maintain packages published on `pub.dev` in their spare time. This can be costly, both in terms of time and finances. To facilitate sponsorships we now support a new `funding` tag in the `pubspec`, which can be used by package publishers to list links to one or more ways of sponsoring the package. These links are then shown on `pub.dev` in the sidebar:
 
-<DashImage src="images/0FteRd2cVBg3Zq7JO.png" />
+<DashImage src="images/0FteRd2cVBg3Zq7JO.webp" alt="A screenshot displaying a sponsorship link section in the sidebar on pub.dev." />
 
 
 To learn more, see the [`pubspec` documentation](https://dart.dev/tools/pub/pubspec#funding).
@@ -243,7 +243,7 @@ Second, most app developers work in codebases with full null safety migration. T
 
 The following graph shows the unsound vs. sound null safety executions of `flutter run`. Before the introduction of null safety, there were none of either. A rapid growth of unsound null safety followed. As apps started migrating to null safety, the developers made a partial migration. Some parts still needed to be migrated. Over time, we see a very healthy growth of sound null safety sessions. By the end of last month, there were four times more sound null safety sessions compared to unsound ones. We hope that, over the next few quarters, we’ll see the sound null safety approach 100%!
 
-<DashImage src="images/0emVp4pmfOhLhiBJ4.png" />
+<DashImage src="images/0emVp4pmfOhLhiBJ4.webp" alt="A chart demonstrating the growth of sound null safety executions versus unsound ones over time." />
 
 
 ## An important null safety roadmap update

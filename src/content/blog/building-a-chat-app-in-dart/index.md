@@ -3,7 +3,7 @@ title: "Building a Chat App in Dart"
 description: "Having thoroughly covered the basics of the “built” packages I’m now ready to up the ante by showing them in action."
 publishDate: 2016-12-14
 author: davidmorgan
-image: images/1pRJK2IRC697oavw5OBXkQA.png
+image: images/1pRJK2IRC697oavw5OBXkQA.webp
 category: deep-dive
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 I wrote this code in a day and a half to use as an example in my [talk at the Dart summit (video)](https://www.youtube.com/watch?v=TMeJxWltoVo). It was designed to show off built_value and source_gen, but it also shows something about Dart: that you can do a *lot* with just the SDK and the core packages from [dart-lang](http://github.com/dart-lang).
 
-<DashImage src="images/1pRJK2IRC697oavw5OBXkQA.png" alt="The built_value chat example in action." caption="The built_value chat example in action." />
+<DashImage src="images/1pRJK2IRC697oavw5OBXkQA.webp" alt="Example chat app built with the built_value package running in a browser." caption="The built_value chat example in action." />
 
 
 ## Getting the Code

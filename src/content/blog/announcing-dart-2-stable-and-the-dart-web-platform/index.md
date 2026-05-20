@@ -3,7 +3,7 @@ title: "Announcing Dart 2 Stable and the Dart Web Platform"
 description: "Signals the rebirth of Dart as a mainstream programming language for mobile and web development"
 publishDate: 2018-08-07
 author: kevmoo
-image: images/0YX3CcH4He_IIEhzx.png
+image: images/0YX3CcH4He_IIEhzx.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Today, we’re announcing the immediate availability of the stable release of Dart 2, including a rewrite of the Dart web platform that offers a unique combination of productivity, performance and scalability.
 
-<DashImage src="images/1xV5sN0ycM2OxY5BbGDhdmg.png" />
+<DashImage src="images/1xV5sN0ycM2OxY5BbGDhdmg.webp" alt="The Dart logo." />
 
 
 Flutter developers are already enjoying many of the benefits of Dart 2, since Flutter has been bundling prerelease versions of the Dart 2 SDK for several months. However, the stable release of Dart 2 is another important milestone towards the stable release of Flutter, due to the tight coupling between framework and language. If you haven’t already installed Flutter, [start here](https://flutter.io/get-started/install/).
@@ -24,14 +24,14 @@ Dart 2 marks the rebirth of Dart as a mainstream programming language focused on
 
 Over the last year, Dart has seen dramatic growth. Our own analytics suggest a ten-fold growth in external usage. In the last quarter, Dart was [one of the fastest growing languages on GitHub](https://madnight.github.io/githut/#/pull_requests/2018/2), as measured by pull requests; the growth of [StackOverflow questions](http://sotagtrends.com/?tags=[dart,perl,haskell,rust]&relative=false) also provides a vivid demonstration of Dart’s momentum:
 
-<DashImage src="images/0s3bqLPad7xh_nFH-.png" />
+<DashImage src="images/0s3bqLPad7xh_nFH-.webp" alt="Graph of Dart-related Stack Overflow questions over time." />
 
 
 Internally, Dart is one of a handful of languages Google uses for web application development, with millions of lines of code from dozens of different projects including Google Ads, Google Shopping and our own internal infrastructure teams.
 
 In fact, you might already be using Dart without realizing it: the popular [Sass stylesheet preprocessor](https://sass-lang.com/) was recently [rewritten in Dart](http://sass.logdown.com/posts/7045860-dart-sass-100-is-released) to make it faster, more portable, and easier to write. Sass is now distributed as a standalone executable on Homebrew and Chocolatey, and compiled to pure JavaScript on npm. Dart makes it easy to install applications anywhere without external dependencies, and to slot into the workflows of both people who use Dart and people who don’t.
 
-<DashImage src="images/0YX3CcH4He_IIEhzx.png" />
+<DashImage src="images/0YX3CcH4He_IIEhzx.webp" alt="Dart highlights a client-optimized language, rich frameworks, and flexible tooling for building native experiences across screens." />
 
 
 Dart 2 is focused on three areas: strengthening and tightening the language, developing our support for web and mobile frameworks, and bringing some of the tooling and components that support Google’s usage of Dart to the outside world. The rest of this post will explore these themes.
@@ -78,12 +78,12 @@ One major area of focus for this release has been improving the amount of code t
 
 To showcase the improvements in Dart’s web platform, we built out a [Dart-based client implementation for the HackerNews site](https://hnpwa.dartlang.org/) as a Progressive Web App; this is published along with other sample implementations at the popular [HNPWA site](https://hnpwa.com/). Using best practices for building Dart web apps, we were able to ship a full-featured experience that is fully interactive in one second on modern devices and under five seconds on a modest mobile device on a slow 3G network. This is competitive even with lightweight web frameworks that are optimized for smaller apps.
 
-<DashImage src="images/1Zf8U7ODhydytCsOn6_pQcw.png" alt="[hnpwa.dartlang.org](https://hnpwa.dartlang.org/)" caption="[hnpwa.dartlang.org](https://hnpwa.dartlang.org/)" />
+<DashImage src="images/1Zf8U7ODhydytCsOn6_pQcw.webp" alt="Hacker News clone built with Dart." caption="[hnpwa.dartlang.org](https://hnpwa.dartlang.org/)" />
 
 
 Our framework investments extend to our [core components](https://pub.dartlang.org/packages/angular_components), which we’ve also updated. You now have access to 100 new classes, including a number of date, time, and menu [Material components](https://material.io/). You can explore all of our components in the [component gallery](https://dart-lang.github.io/angular_components_example/).
 
-<DashImage src="images/0drInYm1m0XD2vGZS.gif" alt="*Material Date Picker — one of the rich components available for your web application*" caption="*Material Date Picker — one of the rich components available for your web application*" />
+<DashImage src="images/0drInYm1m0XD2vGZS.webp" alt="Animation demonstrating the Material Date Picker component." caption="*Material Date Picker — one of the rich components available for your web application*" />
 
 
 ## Flexible Tooling for Dart 2

@@ -3,7 +3,7 @@ title: "Announcing Dart 3.6"
 description: "Welcome to Dart 3.6! Today is our last release of the year, alongside Flutter 3.27. We’re excited to share a new feature in the language…"
 publishDate: 2024-12-11
 author: mbelanger
-image: images/0pojZOcfCeFztkEzK.png
+image: images/0pojZOcfCeFztkEzK.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Welcome to Dart 3.6! Today is our last release of the year, alongside [Flutter 3.27](https://medium.com/flutter/whats-new-in-flutter-3-27-28341129570c). We’re excited to share a new feature in the language, *digit separators*. We also have several new features in the pub ecosystem: *pub download counts*, and the highly anticipated *pub workspaces*!
 
-<DashImage src="images/0pojZOcfCeFztkEzK.png" alt="Dart 3.6" caption="Dart 3.6" />
+<DashImage src="images/0pojZOcfCeFztkEzK.webp" alt="Dart 3.6 release banner with the Dart logo, a bullseye icon, and blue vertical bars." caption="Dart 3.6" />
 
 
 ## Pub workspaces
@@ -46,7 +46,7 @@ For more information including fully detailed instructions and edge cases covera
 
 We listened to [your requests](https://github.com/dart-lang/pub-dev/issues/2714) for more precise metrics on pub.dev, and now download counts are here! The download count replaces the previous “popularity score” on individual package pages. Along with the new metric, you will also find a sparkline chart on each page, showing weekly downloads over time.
 
-<DashImage src="images/0KJoC5ioNl7lXms0P.png" alt="A screenshot highlighting the new download count and sparkline graph on pub.dev" caption="A screenshot highlighting the new download count and sparkline graph on pub.dev" />
+<DashImage src="images/0KJoC5ioNl7lXms0P.webp" alt="The new download count and sparkline graph displayed on pub.dev." caption="A screenshot highlighting the new download count and sparkline graph on pub.dev" />
 
 
 You can learn more about download counts in the [pub.dev scoring documentation](https://pub.dev/help/scoring).

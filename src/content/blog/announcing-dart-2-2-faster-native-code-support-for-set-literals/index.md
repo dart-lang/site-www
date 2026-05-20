@@ -3,7 +3,7 @@ title: "Announcing Dart 2.2: Faster native code, support for set literals"
 description: "Today, we’re announcing the stable release of the Dart 2.2 SDK, an incremental update to Dart 2 that offers improved performance of…"
 publishDate: 2019-02-26
 author: mit-mit
-image: images/1saXdrIB-SjU2EL7gLGPUsA.png
+image: images/1saXdrIB-SjU2EL7gLGPUsA.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Today, we’re announcing the stable release of the Dart 2.2 SDK, an incremental update to Dart 2 that offers improved performance of [ahead-of-time (AOT) compiled](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) native code and a new set literal language feature.
 
-<DashImage src="images/1saXdrIB-SjU2EL7gLGPUsA.png" />
+<DashImage src="images/1saXdrIB-SjU2EL7gLGPUsA.webp" alt="Dart 2.2 release banner highlighting improved AOT performance and set literal language support." />
 
 
 ## Dart performance improvements for Flutter developers

@@ -3,7 +3,7 @@ title: "Announcing Dart 2.7: A safer, more expressive Dart"
 description: "Today we’re announcing the stable release of the Dart 2.7 SDK, with additional new capabilities for developers. It’s been a busy year for…"
 publishDate: 2019-12-11
 author: mit-mit
-image: images/0G-I1kyYJFCTCiAUk.png
+image: images/0G-I1kyYJFCTCiAUk.webp
 category: releases
 layout: blog
 ---
@@ -13,7 +13,7 @@ Today we’re announcing the stable release of the Dart 2.7 SDK, with additional
 
 Dart 2.7 adds support for extension methods, plus a new package for handling strings with special characters. We have an update on null safety (type-safe nullable and non-nullable types) and a brand new null safety playground experience in DartPad. At the ecosystem level, pub.dev has a new *Like* feature for giving feedback to packages that you appreciate. Dart 2.7 is available today as an SDK download from [dart.dev](http://dart.dev), and it’s also built into today’s [Flutter 1.12 release](https://medium.com/@csells_18027/flutter-1-12-release-blog-22c256ba525d).
 
-<DashImage src="images/0G-I1kyYJFCTCiAUk.png" />
+<DashImage src="images/0G-I1kyYJFCTCiAUk.webp" alt="Dart 2.7 release banner highlighting extension methods, the characters package in preview, and the null safety preview." />
 
 
 ## Extension methods
@@ -202,7 +202,7 @@ If we run this code it crashes with a null pointer exception while describing th
 
 Let’s try to paste this code into our new [null safety playground](https://nullsafety.dartpad.dev), a special build of DartPad that contains a technical preview of the static analysis part of the null safety feature. Without even running the code, we can see three issues:
 
-<DashImage src="images/0YFTJUSwsYzsHTY4b.png" alt="DartPad with null safety showing three analysis errors related to nulls" caption="DartPad with null safety showing three analysis errors related to nulls" />
+<DashImage src="images/0YFTJUSwsYzsHTY4b.webp" alt="DartPad with null safety showing three diagnostics related to null." caption="DartPad with null safety showing three analysis errors related to nulls" />
 
 
 By fixing these analysis errors, we can begin to take advantage of null safety. Try making the following edits in the null safety playground (eventually getting to [this safe code](https://gist.github.com/mit-mit/c210bfb088545e69ba9231ee459615ba)):
@@ -236,7 +236,7 @@ We’ll have more to say about null safety in the coming months, including more 
 
 Also launching on pub.dev today is a new ***Like* feature** for packages. This introduces a new “human signal” for indicating which packages you’re fond of. To like a package, simply click the thumbs-up icon that’s next to the package detail information:
 
-<DashImage src="images/0xCGEGkntNxnM1XAh.png" alt="*pub.dev package detail page with new Like-feature voting button*" caption="*pub.dev package detail page with new Like-feature voting button*" />
+<DashImage src="images/0xCGEGkntNxnM1XAh.webp" alt="Pub.dev package detail page with new Like-feature voting button." caption="*pub.dev package detail page with new Like-feature voting button*" />
 
 
 Currently we don’t factor the number of likes into our overall scoring model, but we plan on doing so in a later release. We also plan on giving our general search UI and list pages a visual overhaul that will highlight the like-ability of a package.

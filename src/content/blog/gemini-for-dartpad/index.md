@@ -3,7 +3,7 @@ title: "Gemini for DartPad"
 description: "Say hello to Gemini in DartPad!"
 publishDate: 2025-04-08
 author: antfitch
-image: images/1nI_hhzL5l94Pvdtlzs32oA.png
+image: images/1nI_hhzL5l94Pvdtlzs32oA.webp
 category: announcements
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 ### DartPad gets a Gemini boost
 
-<DashImage src="images/1nI_hhzL5l94Pvdtlzs32oA.png" />
+<DashImage src="images/1nI_hhzL5l94Pvdtlzs32oA.webp" alt="DartPad with Gemini logo on a dark background." />
 
 
 Hi developers!
@@ -32,35 +32,35 @@ Let’s go over these cool new features in detail.
 
 DartPad users can now leverage Gemini to generate new Dart or Flutter code snippets directly from a natural language prompt.
 
-<DashImage src="images/1fkZRgeIbh-ZiF2ETOn-uDg.gif" alt="Create Dart & Flutter code from an AI prompt" caption="Create Dart & Flutter code from an AI prompt" />
+<DashImage src="images/1fkZRgeIbh-ZiF2ETOn-uDg.webp" alt="An animation demonstrating Gemini in DartPad creating Dart and Flutter code from a natural language prompt." caption="Create Dart & Flutter code from an AI prompt" />
 
 
 ## Use images to aid in code generation
 
 You can also add images to your prompts. The images can be used to aid in code generation.
 
-<DashImage src="images/1iGBCoFPCUhjawwPIJ0o6mQ.gif" alt="Use images to aid in code generation" caption="Use images to aid in code generation" />
+<DashImage src="images/1iGBCoFPCUhjawwPIJ0o6mQ.webp" alt="An animation showing a user providing an image to Gemini in DartPad to generate a Flutter app layout." caption="Use images to aid in code generation" />
 
 
 ## Refactor existing code from a prompt
 
 Beyond generating entirely new snippets, Gemini in DartPad can help you iterate and modify your existing code.
 
-<DashImage src="images/1VtwjjXJKH_Ag0yFBcPZV1g.gif" alt="Refactor existing code from a prompt" caption="Refactor existing code from a prompt" />
+<DashImage src="images/1VtwjjXJKH_Ag0yFBcPZV1g.webp" alt="An animation of using Gemini in DartPad to refactor an existing snippet of code." caption="Refactor existing code from a prompt" />
 
 
 ## Suggest code fixes for analysis errors
 
 Building upon DartPad’s existing capability to display diagnostic messages from the Dart Analyzer, we’ve integrated Gemini to help address issues that might arise in your code. If your code snippet has errors flagged in the analysis panel, you can simply select the Gemini icon in the analysis panel, review the suggested change, and accept it if you agree.
 
-<DashImage src="images/1N_XSofVUfkszjq-byDEAoA.gif" alt="Suggest code fixes for analysis errors" caption="Suggest code fixes for analysis errors" />
+<DashImage src="images/1N_XSofVUfkszjq-byDEAoA.webp" alt="An animation illustrating Gemini in DartPad suggesting a fix for a static analysis error." caption="Suggest code fixes for analysis errors" />
 
 
 ## Suggest code fixes for run-time errors
 
 DartPad can also provide error fix suggestions for run-time errors.
 
-<DashImage src="images/1Ej5VLgICUX-WYgBhQgydhg.gif" alt="Suggest code fixes for run-time errors" caption="Suggest code fixes for run-time errors" />
+<DashImage src="images/1Ej5VLgICUX-WYgBhQgydhg.webp" alt="An animation displaying Gemini in DartPad offering a solution to fix a runtime exception." caption="Suggest code fixes for run-time errors" />
 
 
 ## In conclusion

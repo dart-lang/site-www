@@ -3,7 +3,7 @@ title: "Bulk application of fixes"
 description: "Fixing multiple analysis issues in one step"
 publishDate: 2022-05-05
 author: bwilkerson
-image: images/0URmNnWSjGRGOorjv.png
+image: images/0URmNnWSjGRGOorjv.webp
 category: other
 layout: blog
 ---
@@ -17,28 +17,28 @@ There are several ways to fix multiple diagnostics, depending on just how many d
 
 Have you ever refactored your code by moving a class to a different file? If so, it’s fairly likely that some imports were only needed because of references in the class being moved, which leaves you with unused imports:
 
-<DashImage src="images/0URmNnWSjGRGOorjv.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/0URmNnWSjGRGOorjv.webp" alt="A code snippet in Visual Studio Code showing unused import warnings." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/03QaE0FunXWpPp2Az.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/03QaE0FunXWpPp2Az.webp" alt="A code snippet in IntelliJ IDEA showing unused import warnings." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 For any fix that can be applied more than once within the same file, the tooling offers an option to apply it everywhere in the file.
 
 These fixes show up in the same places as other fixes and are usually labeled similarly to the single location fixes, but with some phrase like “in file” added. For example, here’s how this fix appears in your IDE:
 
-<DashImage src="images/0p2Pf06L6A4JSX7IS.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/0p2Pf06L6A4JSX7IS.webp" alt="A context menu in Visual Studio Code offering to remove all unused imports in the file." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/0S4UnOqdx-h0U55jU.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/0S4UnOqdx-h0U55jU.webp" alt="A context menu in IntelliJ IDEA offering to remove all unused imports in the file." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 Selecting the “in-file” fix does exactly what you’d expect — it removes all unused imports in the file:
 
-<DashImage src="images/0dHw4rjdxTR0liZX8.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/0dHw4rjdxTR0liZX8.webp" alt="The code snippet in Visual Studio Code after removing unused imports." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/0Wk6qnyUlNr3qN0GQ.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/0Wk6qnyUlNr3qN0GQ.webp" alt="The code snippet in IntelliJ IDEA after removing unused imports." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 ## Fixing all the diagnostics in a file
@@ -47,27 +47,27 @@ That’s great, but it only fixes a single kind of diagnostic, and it requires y
 
 And in [Visual Studio Code](https://code.visualstudio.com/), it can. You can apply fixes for all the diagnostics within a single file. To see how, we’ll use the same example as above:
 
-<DashImage src="images/0mr1A2XnnRCaamU22.png" />
+<DashImage src="images/0mr1A2XnnRCaamU22.webp" alt="A code editor showing multiple unused import warnings marked with blue squiggly lines." />
 
 
 If you right click to open the context menu, you’ll see the following:
 
-<DashImage src="images/03klKEJk5p40lCPbO.png" />
+<DashImage src="images/03klKEJk5p40lCPbO.webp" alt="The right-click context menu in Visual Studio Code with 'Source Action...' highlighted." />
 
 
 If you select **Source Action…**, it opens a second menu:
 
-<DashImage src="images/0iRZIzPrwKl7jEYNY.png" />
+<DashImage src="images/0iRZIzPrwKl7jEYNY.webp" alt="The 'Source Action...' menu in Visual Studio Code displaying 'Sort Members', 'Organize Imports', and 'Fix All' options." />
 
 
 Selecting **Fix All** causes fixes to be applied to all the diagnostics in the editor, producing the following:
 
-<DashImage src="images/0FDf16dDPwfPg_dET.png" />
+<DashImage src="images/0FDf16dDPwfPg_dET.webp" alt="The code editor after selecting 'Fix All', showing the unused imports have been successfully removed." />
 
 
 You can also invoke the **Fix All** command from the command palette, which you can open by selecting **Command Palette…** from the **View** menu, or by using the keyboard shortcut (`F1` on any platform, `Control+Shift+P` on Windows and Linux, or `Command+Shift+P` on macOS). You can filter the list by typing the name of the command. The command palette looks something like this:
 
-<DashImage src="images/0Jrz3MRfYVtcXrb9C.png" />
+<DashImage src="images/0Jrz3MRfYVtcXrb9C.webp" alt="The Visual Studio Code command palette with 'fix' typed into the search bar, showing the 'Fix All' command." />
 
 
 ## Fixing all the diagnostics in a directory

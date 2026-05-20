@@ -3,7 +3,7 @@ title: "Announcing Dart 2.8"
 description: "Faster package tools, new tool for ensuring dependencies never go stale"
 publishDate: 2020-05-06
 author: mit-mit
-image: images/1JrrSSD8LCLMkAUIV8RJlkw.png
+image: images/1JrrSSD8LCLMkAUIV8RJlkw.webp
 category: releases
 layout: blog
 ---
@@ -15,7 +15,7 @@ The Dart platform comes with built-in support for package management via the [pu
 
 Dart 2.8 also brings a set of small breaking changes in the Dart language and libraries. These changes lay the groundwork for our first version of the null safety feature.
 
-<DashImage src="images/1JrrSSD8LCLMkAUIV8RJlkw.png" alt="Announcing Dart 2.8: Faster package tools, new tool for ensuring dependencies never go stale" caption="Announcing Dart 2.8: Faster package tools, new tool for ensuring dependencies never go stale" />
+<DashImage src="images/1JrrSSD8LCLMkAUIV8RJlkw.webp" alt="Dart 2.8 release banner highlighting the pub outdated tool and pub tool performance." caption="Announcing Dart 2.8: Faster package tools, new tool for ensuring dependencies never go stale" />
 
 
 ## Breaking changes paving the way for null safety
@@ -38,7 +38,7 @@ In an informal benchmark of running `flutter pub get` on a new project created w
 
 ## Managing dependencies with `pub outdated`
 
-<DashImage src="images/1av2bRfpUdU2Fk4s8xRPnhA.gif" />
+<DashImage src="images/1av2bRfpUdU2Fk4s8xRPnhA.webp" alt="A terminal animation recording showing the output of the pub outdated command." />
 
 
 Dependencies in Dart code are captured in the [pubspec](https://kw-staging-dartlang-2.firebaseapp.com/tools/pub/pubspec) file. When you retrieve packages from [pub.dev](https://pub.dev/) by running the `pub get` command, the pub version solver (which uses the [PubGrub](https://medium.com/@nex3/pubgrub-2fb6470504f) algorithm) runs a process to determine the latest possible set of versions of all your dependencies that satisfies the constraints listed in your pubspec. Note that pub uses a single-version scheme where each package is included in a single-version-only in your app; this is an important optimization to ensure that your app size is as small as possible.

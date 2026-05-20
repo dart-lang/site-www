@@ -3,7 +3,7 @@ title: "Announcing Dart 2.1: Improved performance & usability"
 description: "Today, we’re announcing the stable release of Dart 2.1, an update to Dart 2 that new language features and performance improvements"
 publishDate: 2018-11-15
 author: mit-mit
-image: images/1xZHP-8eEl6qJCCTKXyQZ8w.png
+image: images/1xZHP-8eEl6qJCCTKXyQZ8w.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Today, we’re announcing the stable release of Dart 2.1, an update to Dart 2 that offers smaller code size, faster type checks, better usability for type errors, and new language features to improve productivity when building user experiences.
 
-<DashImage src="images/1xZHP-8eEl6qJCCTKXyQZ8w.png" />
+<DashImage src="images/1xZHP-8eEl6qJCCTKXyQZ8w.webp" alt="Dart 2.1 release banner listing faster tools, smaller output, compile-time type checking, int-to-double inference, and new mixin syntax." />
 
 
 ## Landing Dart 2
@@ -26,12 +26,12 @@ Since the [launch of Dart 2](https://medium.com/dartlang/dart-2-stable-and-the-d
 
 New Flutter developers are often tripped up by analysis errors like these when specifying padding, setting font sizes, etc.:
 
-<DashImage src="images/19hItMsF9iM2BHzbuJkHNbg.png" />
+<DashImage src="images/19hItMsF9iM2BHzbuJkHNbg.webp" alt="Code showing integer values passed to EdgeInsets.symmetric, with analysis errors because the API expects doubles." />
 
 
 From a system point of view, these errors make sense: The API expects one type (a double), and the developer specifies a value of a different type (an int). However, from a usability point of view it seems a bit foolish: There is a trivial conversion from int to double, so why not just do that? Dart 2.1 now [infers where an int can be silently evaluated as a double](https://github.com/dart-lang/language/issues/4):
 
-<DashImage src="images/1bJV4DQzBey1fc64nerTprg.png" />
+<DashImage src="images/1bJV4DQzBey1fc64nerTprg.webp" alt="Code showing EdgeInsets.symmetric with integer values accepted for horizontal and vertical padding." />
 
 
 ## Dart 2.1 language support for mixins
@@ -40,19 +40,19 @@ We also [improved Dart’s support for mixins](https://github.com/dart-lang/lang
 
 One example of extending non-Object classes is from Flutter’s [animation APIs](https://flutter.io/tutorials/animation/#rendering-animations), where the `SingleTickerProviderStateMixin` — a framework class that provides a ticker for advancing an animation by a single frame — [declares a mixin](https://github.com/flutter/flutter/blob/master/packages/flutter/lib/src/widgets/ticker_provider.dart#L66) that implements the general TickerProvider interface. Animations are only applicable to stateful widgets (as the position in the animation is considered state). The new mixin support allows us to express this by declaring that only classes that extend the Flutter State class can use the mixin:
 
-<DashImage src="images/0uUIuZJgNCevxAkZQ.png" />
+<DashImage src="images/0uUIuZJgNCevxAkZQ.webp" alt="Code declaring SingleTickerProviderStateMixin as a mixin on State that implements TickerProvider." />
 
 
 ## Dart 2.1 compile-time type checks
 
 Dart 2’s sound type system protects you during development, telling you when you violate the contract specified by the types. For example, let’s say you’re creating a state class for Flutter. This class is expected to extend the framework `State` class. A `State` class expects to be passed the `StatefulWidget` that it contains the state for.
 
-<DashImage src="images/1Y_8yHDINe7LtvmyFmCqWzw.png" />
+<DashImage src="images/1Y_8yHDINe7LtvmyFmCqWzw.webp" alt="Code snippet showing a Flutter state class extending the framework State class." />
 
 
 Now, should you make a programming mistake and — say — pass it a descendant of `StatelessWidget` instead of `StatefulWidget`, the type information enables the tools to catch the mistake and show you a warning immediately:
 
-<DashImage src="images/1Ym0nqsHWlTscD140Urk0xw.png" />
+<DashImage src="images/1Ym0nqsHWlTscD140Urk0xw.webp" alt="IDE screenshot showing an error because MyHomePage doesn't extend StatefulWidget." />
 
 
 These *edit-time* type checks were added in Dart 2.0 (powered by the [Dart Analyzer](https://www.dartlang.org/tools/analyzer)). However, there is another place where you might expect these type checks, namely at *compile time*, when you do a Flutter release build. These checks were incomplete in Dart 2.0, which could lead to usability issues where bad source code could compile without producing any errors. In Dart 2.1, these checks are complete, and the Analyzer and Dart compiler contain the same checks.

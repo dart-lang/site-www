@@ -3,7 +3,7 @@ title: "Making a Dart web app offline-capable: 3 lines of code"
 description: "Have you ever tried to load a web application (maybe a game or a measurement converter) and couldn’t use it because the network was down…"
 publishDate: 2017-03-28
 author: isoos
-image: images/1GsjtYvVghuA63qhhRdyfPQ.png
+image: images/1GsjtYvVghuA63qhhRdyfPQ.webp
 category: other
 layout: blog
 ---
@@ -13,7 +13,7 @@ Have you ever tried to load a web application (maybe a game or a measurement con
 
 For most apps and games, this can be done with 3 lines of Dart code and 1 command in the terminal. In this short article I’ll guide you through the steps, and make sure that you can always play [Pop, Pop, Win!](https://isoos.github.io/offline_pop_pop_win/)
 
-<DashImage src="images/1GsjtYvVghuA63qhhRdyfPQ.png" alt="[Pop, Pop, Win!](https://dart-lang.github.io/sample-pop_pop_win/) — a [Minesweeper implementation](https://github.com/dart-lang/sample-pop_pop_win) in Dart" caption="[Pop, Pop, Win!](https://dart-lang.github.io/sample-pop_pop_win/) — a [Minesweeper implementation](https://github.com/dart-lang/sample-pop_pop_win) in Dart" />
+<DashImage src="images/1GsjtYvVghuA63qhhRdyfPQ.webp" alt="Pop, Pop, Win! game board with numbered tiles, balloons, five bombs left, and a 24.5 second timer." caption="[Pop, Pop, Win!](https://dart-lang.github.io/sample-pop_pop_win/) — a [Minesweeper implementation](https://github.com/dart-lang/sample-pop_pop_win) in Dart" />
 
 
 ## Service workers
@@ -34,7 +34,7 @@ As a background processing thread, a service worker can help with:
 
 The important feature for our offline gaming experience is this: we would like to play Pop, Pop, Win!, and not meet this dinosaur:
 
-<DashImage src="images/1cufcmiyxW8k4ku1-Y_zsvg.png" alt="Fun fact: you can play with that dinosaur by pushing the up arrow key." caption="Fun fact: you can play with that dinosaur by pushing the up arrow key." />
+<DashImage src="images/1cufcmiyxW8k4ku1-Y_zsvg.webp" alt="The Chrome offline dinosaur game indicating no internet connection." caption="Fun fact: you can play with that dinosaur by pushing the up arrow key." />
 
 
 ## Progressive web app with Dart

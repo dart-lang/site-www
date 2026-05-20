@@ -3,14 +3,14 @@ title: "How Dart’s null safety helped me augment my projects"
 description: "I migrated a running app and a published package to null safety, and it was awesome!"
 publishDate: 2021-06-23
 author: wal33d
-image: images/1HlInW7jXUifJIGBK1YEQEw.jpeg
+image: images/1HlInW7jXUifJIGBK1YEQEw.webp
 category: other
 layout: blog
 ---
 
 > **About the author:** Waleed Arshad is a core mobile technologist, a passionate cross-platform developer, and the first person from Pakistan to become a Google Developer Expert for Flutter. After graduating from FAST Karachi, he has been working in the industry for more than five years and is currently working in the Developer Experience team for Flutter at Tendermint. He also leads Pakistan’s Flutter community.
 
-<DashImage src="images/1HlInW7jXUifJIGBK1YEQEw.jpeg" />
+<DashImage src="images/1HlInW7jXUifJIGBK1YEQEw.webp" alt="Close-up of a code editor diff showing a Flutter SDK version constraint changed for null safety." />
 
 
 With the launch of Flutter 2, null safety was made available to Flutter’s stable channel. This post talks about my personal experiences with migrating my apps and packages to null safety, along with creating null-safe apps from scratch. In short, the results were amazing!
@@ -30,27 +30,27 @@ The application was an experimental COVID-19 stats app, and its code is fully op
 
 It was really cool to see all the code changes the migration tool did in my project — code changes like adding question marks in nullables and adding exclamation points where the migration tool detected that the value was never going to be null.
 
-<DashImage src="images/14-Gy0ZFl5Sgn2Cw-LLn2lA.png" />
+<DashImage src="images/14-Gy0ZFl5Sgn2Cw-LLn2lA.webp" alt="Diff from the null safety migration tool adding nullable markers to GlobalInfo, double, and HomeCountry fields." />
 
 
 The following is an example of the migration tool automatically adding question marks and exclamation points . `_homeCountry` is a nullable property of a class named `HomeCountry` (which is also nullable). Therefore, to guard access to one of the properties of `_homeCountry`, the tool added the question mark operator.
 
-<DashImage src="images/1Cg1Ol3w_bIs6IIh734CBug.png" />
+<DashImage src="images/1Cg1Ol3w_bIs6IIh734CBug.webp" alt="Code snippet showing the migration tool automatically adding question marks to nullable properties." />
 
 
 After the migration, some issues in the code became evident, **which is the best part**.
 
-<DashImage src="images/17nfnF2UAdK6zoIhX4wMG9w.png" />
+<DashImage src="images/17nfnF2UAdK6zoIhX4wMG9w.webp" alt="Code snippet revealing an issue exposed after migrating to null safety." />
 
 
 One of the issues was that some nullable strings were being passed as a list to an internal function of the [shared_preferences](https://pub.dev/packages/shared_preferences) plugin. Because these values were nullable, the tool made the whole list type `&lt;String?&gt;[]`*,* which started giving an error because the function accepted the type `&lt;String&gt;[]`*.*
 
-<DashImage src="images/1ahhIw3H8kp5WGMjDmrSzLg.png" />
+<DashImage src="images/1ahhIw3H8kp5WGMjDmrSzLg.webp" alt="Analyzer error about passing nullable strings to a function expecting non-nullable strings." />
 
 
 A simple solution to this problem was to remove the question mark and make the list type match the type of the function parameter. When I did that, the analyzer started saying that a nullable type (`String?`) can’t be assigned to a non-nullable type (`String`).
 
-<DashImage src="images/1zHYqxaqdHWBdAILhoNMMrQ.png" />
+<DashImage src="images/1zHYqxaqdHWBdAILhoNMMrQ.webp" alt="Dart HomeCountry class with non-nullable String fields and required constructor parameters." />
 
 
 To resolve the problem, I made each property of `HomeCountry` class non-nullable and added a `required` keyword in the constructor. That meant it was now necessary to pass the arguments while initializing `HomeCountry`. I didn’t have to change the `setHomeCountry` function because the variables being passed to the list were now non-nullable.
@@ -59,19 +59,19 @@ This change prevented me from mistakenly sending a null value to shared preferen
 
 Another thing null safety found was a bug that could cause a crash at runtime. See the following code snippet:
 
-<DashImage src="images/1_uvcdlH2M7GvaW3tpgnTng.png" />
+<DashImage src="images/1_uvcdlH2M7GvaW3tpgnTng.webp" alt="IDE warning on list index access because a nullable list might be null before indexing." />
 
 
 Because `list` was a nullable variable, reading its index-based elements could cause a crash. After migrating to null safety, I couldn’t compile the app because there was no null check before reading the values in this list.
 
 Ultimately, I added a null check to make the code compile and to prevent the app from crashing at this place in the code. It’s amazing how migrating helped me find an actual bug!
 
-<DashImage src="images/1_a3XuVgmXlj9byIGPb-olg.png" alt="The code for setState is now valid because list isn’t null." caption="The code for setState is now valid because list isn’t null." />
+<DashImage src="images/1_a3XuVgmXlj9byIGPb-olg.webp" alt="Code snippet showing a null check added to make the setState code valid." caption="The code for setState is now valid because list isn’t null." />
 
 
 I also happened to migrate a very small package, which you can find on [pub.dev](https://pub.dev/), called [progress_indicators](https://pub.dev/packages/progress_indicators). I was astonished to see how the migration tool added `late` keywords instead of question marks when it concluded that those variables were initialized before being used.
 
-<DashImage src="images/1Nfm_rVVsyCGnCLqWE1pvbQ.png" />
+<DashImage src="images/1Nfm_rVVsyCGnCLqWE1pvbQ.webp" alt="Code snippet showing the migration tool using late keywords for initialized variables." />
 
 
 ### Writing new code in a null-safe environment

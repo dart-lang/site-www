@@ -3,7 +3,7 @@ title: "Dart asynchronous programming: Streams"
 description: "This article covers one of the fundamentals of reactive programming: streams, which are objects of type Stream."
 publishDate: 2020-02-11
 author: kwalrath
-image: images/1Q2-Ac9rjIDSuXzbrQqGkVA.png
+image: images/1Q2-Ac9rjIDSuXzbrQqGkVA.webp
 category: deep-dive
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 ***Note**: You might want to check out a [version of this article where the code is updated to be null safe](https://medium.com/dartlang/dart-asynchronous-programming-streams-dab952023ed7). (The video has not changed.)*
 
-<DashImage src="images/17v26fZu7zzY0QSBQAwj42Q.gif" alt="A simple Flutter app that displays data from a stream" caption="A simple Flutter app that displays data from a stream" />
+<DashImage src="images/17v26fZu7zzY0QSBQAwj42Q.webp" alt="Flutter app screen titled Streams are awesome showing the waiting state before stream data arrives." caption="A simple Flutter app that displays data from a stream" />
 
 
 This article covers one of the fundamentals of reactive programming: streams, which are objects of type [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
@@ -25,14 +25,14 @@ If you’ve read the [previous article on futures](https://medium.com/dartlang/d
 
 If you think about the way a single value relates to an [iterator](https://dart.dev/codelabs/iterables) of the same type, that’s how a future relates to a stream.
 
-<DashImage src="images/1q9cqGB5uXOX3tNw07SoJnQ.png" />
+<DashImage src="images/1q9cqGB5uXOX3tNw07SoJnQ.webp" alt="Table comparing int, Future of int, Iterator of int, and Stream of int by value count and delivery timing." />
 
 
 Just like with futures, the key is deciding in advance, “Here’s what to do when a piece of data is ready, and when there’s an error, and when the stream completes.”
 
 *Also* just like with futures, the Dart event loop is still running the show.
 
-<DashImage src="images/0UVy8BLEUm4CifwDE.png" alt="Streams work with the Dart event loop." caption="Streams work with the Dart event loop." />
+<DashImage src="images/0UVy8BLEUm4CifwDE.webp" alt="Three queued stream events approaching a gear with circular arrows representing the Dart event loop." caption="Streams work with the Dart event loop." />
 
 
 If you’re using the `File` class’s [`openRead()`](https://api.dart.dev/stable/dart-io/File/openRead.html) method to read data from a file, for example, that method returns a stream.
@@ -162,7 +162,7 @@ myReduxStore.onChange
 
 There are a bunch of additional methods built into Dart that you can use to shape and modify your streams. Plus, when you’re ready for even more advanced stuff, there’s the [async package](https://pub.dev/packages/async) maintained by the Dart team and available on [pub.dev](https://pub.dev). It has classes that can merge two streams together, cache results, and perform other types of stream-based wizardry.
 
-<DashImage src="images/1WTHZRJjgF4qQvSDvY0Z9ow.png" alt="Try the async package for more stream-based wizardry." caption="Try the async package for more stream-based wizardry." />
+<DashImage src="images/1WTHZRJjgF4qQvSDvY0Z9ow.webp" alt="Pub.dev page for async 2.4.0 showing utility classes for asynchronous computations." caption="Try the async package for more stream-based wizardry." />
 
 
 For even more stream magic, take a look at the [stream_transform package](https://pub.dev/packages/stream_transform).
@@ -258,4 +258,4 @@ Or go on to the next video in the *Asynchronous Programming in Dart* series. It 
 
 *Big thanks to Andrew Brogdon, who created the video that this article is based on.*
 
-<DashImage src="images/1Q2-Ac9rjIDSuXzbrQqGkVA.png" />
+<DashImage src="images/1Q2-Ac9rjIDSuXzbrQqGkVA.webp" alt="Flutter app titled Streams are awesome showing Done after the stream completes." />

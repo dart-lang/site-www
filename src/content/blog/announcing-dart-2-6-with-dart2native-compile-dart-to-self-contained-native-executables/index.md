@@ -3,7 +3,7 @@ title: "Announcing Dart 2.6 with dart2native: Compile Dart to self-contained, na
 description: "Announcing Dart 2.6, featuring dart2native for compiling Dart apps to self-contained, native executables for Windows, macOS, and Linux"
 publishDate: 2019-11-05
 author: mit-mit
-image: images/0lY0iF-neazyL0aE-.gif
+image: images/0lY0iF-neazyL0aE-.webp
 category: releases
 layout: blog
 ---
@@ -13,7 +13,7 @@ Dart already offers [an extensive set of compilers](https://dart.dev/platforms) 
 
 Today we’re announcing **`dart2native`**, an extension of our existing compiler set, with the ability to compile Dart programs to self-contained executables containing ahead-of-time-compiled machine code. With dart2native, you can create tools for the command line on **macOS, Windows, or Linux** using Dart. This feature’s announcement picture [was implemented](https://gist.github.com/mit-mit/faec2bfc1d1cef7cd09df917e531c5c0) using the feature itself :-)
 
-<DashImage src="images/0lY0iF-neazyL0aE-.gif" />
+<DashImage src="images/0lY0iF-neazyL0aE-.webp" alt="An animation of a bash terminal showing the command line interface." />
 
 
 ## Dart Native and the dart2native compiler
@@ -78,7 +78,7 @@ Using Dart core libraries, `dart:ffi`, and the dart_console library, we can crea
 
 With the new `dart2native` compiler we can easily package this, and we end up with a 7MB self-contained code editor. Here’s a demo of compiling the editor, and then using the compiled editor to edit its own source code to fix a bug:
 
-<DashImage src="images/0f5pvUnbesO4mGZmW.gif" alt="The kilo editor written in Dart and compiled to an executable with dart2native editing it’s own source code" caption="The kilo editor written in Dart and compiled to an executable with dart2native editing it’s own source code" />
+<DashImage src="images/0f5pvUnbesO4mGZmW.webp" alt="The kilo editor written in Dart and compiled to an executable with dart2native editing its own source code." caption="The kilo editor written in Dart and compiled to an executable with dart2native editing it’s own source code" />
 
 
 ## Building services with dart2native

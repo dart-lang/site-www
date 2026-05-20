@@ -3,7 +3,7 @@ title: "Google Maps with AngularDart"
 description: "In this article we will integrate Google Maps with an AngularDart application. The app itself will be very simple: it calculates the great…"
 publishDate: 2017-02-23
 author: isoos
-image: images/1hLce2qgbJEkxjOlOr8jn9g.png
+image: images/1hLce2qgbJEkxjOlOr8jn9g.webp
 category: other
 skipTemplateRendering: true
 layout: blog
@@ -24,7 +24,7 @@ Along the way you will:
 
 This article is roughly four times longer than the code. If you want, just go look at the complete [**source code**](https://github.com/isoos/google_maps_angular_dart) and the final [**demo**](https://isoos.github.io/google_maps_angular_dart/).
 
-<DashImage src="images/1hLce2qgbJEkxjOlOr8jn9g.png" alt="Screenshot of the demo" caption="Screenshot of the demo" />
+<DashImage src="images/1hLce2qgbJEkxjOlOr8jn9g.webp" alt="Google Maps demo showing markers near Paris and Rome with a calculated distance of 1095 km." caption="Screenshot of the demo" />
 
 
 ## Google Maps JavaScript API
@@ -35,12 +35,12 @@ To start developing with the Google Maps API, you must register a free API key t
 
 Visit the [JavaScript API page](https://developers.google.com/maps/documentation/javascript/), and at the top of the page, click `GET A KEY`. Create a name for your project and click `CREATE AND ENABLE API`:
 
-<DashImage src="images/1cPMKvi22U5csti4Dubb-4A.png" />
+<DashImage src="images/1cPMKvi22U5csti4Dubb-4A.webp" alt="A dialog box with the title 'Enable Google Maps JavaScript API' and a text field with 'My Dart Map Project' entered." />
 
 
 Your key will be enabled and ready to use in a couple of seconds:
 
-<DashImage src="images/18Opaixc6Ardgd0wYKyvKNw.png" />
+<DashImage src="images/18Opaixc6Ardgd0wYKyvKNw.webp" alt="A success message 'You're all set!' in the Google Maps API console showing that the API key is ready to use." />
 
 
 Note your API key. We’ll use it when we fetch the Maps JavaScript library:
@@ -205,7 +205,7 @@ class MapControl **implements AfterViewInit** {
 
 Tip: use the IDE to write the method bodies for you. For example, in IntelliJ, hit `CMD + N` (or `CTRL + N`), and select the “Implement Methods…” menu item. It will allow you to select the missing methods and you need to worry only about the method body:
 
-<DashImage src="images/1V9N-6dAV8vZjuT6cI1Sftw.png" />
+<DashImage src="images/1V9N-6dAV8vZjuT6cI1Sftw.webp" alt="A context menu in IntelliJ IDEA showing 'Generate' options like 'Constructor', 'Getter', and 'Implement Methods...'." />
 
 
 As the following code shows, the Dart API is very similar to to the JavaScript one, with the added benefit that it is type checked.
@@ -345,7 +345,7 @@ void _updateDistance() {
 
 Have you ever wondered how far do you live from a relative, a famous location or a landmark? It is time to try out the application and check it for yourself. It turns out that my home is 9815 km from Google Headquarters in Mountain View:
 
-<DashImage src="images/1AOtq_2d-f5cETtXb-ixzYA.png" alt="The distance between Googleplex in Mountain View, California and the author’s home in Budapest, Hungary" caption="The distance between Googleplex in Mountain View, California and the author’s home in Budapest, Hungary" />
+<DashImage src="images/1AOtq_2d-f5cETtXb-ixzYA.webp" alt="Map showing the distance between Googleplex in Mountain View, California and the author's home in Budapest, Hungary." caption="The distance between Googleplex in Mountain View, California and the author’s home in Budapest, Hungary" />
 
 
 ## Polishing the application

@@ -3,7 +3,7 @@ title: "Why nullable types?"
 description: "Null in Dart code indicates that a variable has no value, but some languages don’t allow null. Learn why both approaches work."
 publishDate: 2020-12-07
 author: munificent
-image: images/1ihpy1Ngzg7SczCKkuh_WhQ.jpeg
+image: images/1ihpy1Ngzg7SczCKkuh_WhQ.webp
 category: other
 layout: blog
 ---
@@ -202,4 +202,4 @@ Dart is an imperative language where people already use `if` statements to check
 
 For more information about nullability in Dart, check out the [Where to learn more](https://dart.dev/null-safety#where-to-learn-more) section of the [Dart null safety docs](https://dart.dev/null-safety).
 
-<DashImage src="images/1ihpy1Ngzg7SczCKkuh_WhQ.jpeg" alt="One of these puzzle pieces is null." caption="One of these puzzle pieces is null." />
+<DashImage src="images/1ihpy1Ngzg7SczCKkuh_WhQ.webp" alt="Puzzle with one missing piece." caption="One of these puzzle pieces is null." />

@@ -3,7 +3,7 @@ title: "Announcing Dart 3.5, and an update on the Dart roadmap"
 description: "It’s time for another of our quarterly Dart SDK releases. We have improvements in interoperability, new features in our pub.dev package…"
 publishDate: 2024-08-06
 author: mit-mit
-image: images/1PVj9TIzP50I00tavJqAg_Q.gif
+image: images/1PVj9TIzP50I00tavJqAg_Q.webp
 category: releases
 layout: blog
 ---
@@ -13,7 +13,7 @@ It’s time for another of our quarterly Dart SDK releases. We have improvements
 
 A large portion of our time has been dedicated to larger, multi-quarter efforts, so with that we also have an update on our Dart roadmap, with details on what we hope to make progress on in the coming quarters.
 
-<DashImage src="images/1PVj9TIzP50I00tavJqAg_Q.gif" alt="Dart 3.5 release image." caption="Dart 3.5 release image." />
+<DashImage src="images/1PVj9TIzP50I00tavJqAg_Q.webp" alt="Dart 3.5 release banner with the Dart logo and a bullseye icon." caption="Dart 3.5 release image." />
 
 
 ## New capabilities in Dart 3.5

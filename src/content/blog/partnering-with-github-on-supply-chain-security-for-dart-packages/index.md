@@ -3,7 +3,7 @@ title: "Partnering with GitHub on supply chain security for Dart packages"
 description: "Starting today, GitHub supports Dart in its Advisory Database, dependency graph, and Dependabot. This means GitHub now offers comprehensive…"
 publishDate: 2022-10-06
 author: mit-mit
-image: images/1MdOSko9W_PJA0KwuQ_mu6w.png
+image: images/1MdOSko9W_PJA0KwuQ_mu6w.webp
 category: announcements
 layout: blog
 ---
@@ -20,10 +20,10 @@ Imagine you’re building a fantastic new Flutter app. You’re using lots of re
 
 This is where Dependabot comes in. If you manage your source code in GitHub repository, the dependency graph and Dependabot monitor your pubspec dependencies and lets you know if you’re missing an update. The Dependabot submits a pull request to update `pubspec.yaml` to the latest version of the package on your behalf. This all comes about through new Dart-specific improvements in GitHub.
 
-<DashImage src="images/1MdOSko9W_PJA0KwuQ_mu6w.png" alt="Dependabot sending a PR to bump (update) a package dependency to a more recent version." caption="Dependabot sending a PR to bump (update) a package dependency to a more recent version." />
+<DashImage src="images/1MdOSko9W_PJA0KwuQ_mu6w.webp" alt="Dependabot pull request to update a Dart package dependency." caption="Dependabot sending a PR to bump (update) a package dependency to a more recent version." />
 
 
-<DashImage src="images/1AVm9C0qX5t-FhYp8lJzU4Q.png" alt="Dependency Graph showing the set of dependencies for a Dart package." caption="Dependency Graph showing the set of dependencies for a Dart package." />
+<DashImage src="images/1AVm9C0qX5t-FhYp8lJzU4Q.webp" alt="GitHub dependency graph listing dependencies for a Dart package." caption="Dependency Graph showing the set of dependencies for a Dart package." />
 
 
 ## An advisory database for Dart packages
@@ -32,7 +32,7 @@ This scenario relies on a high quality, open database of security advisories tha
 
 Starting today, you can now select the **Pub** ecosystem when creating advisories for published Dart packages.
 
-<DashImage src="images/1oPBNmrTaMOB_etyNOp9JJA.png" alt="Creating a new security advisory for a Dart package published on pub.dev" caption="Creating a new security advisory for a Dart package published on pub.dev" />
+<DashImage src="images/1oPBNmrTaMOB_etyNOp9JJA.webp" alt="GitHub draft security advisory form with the ecosystem dropdown open and Pub selected." caption="Creating a new security advisory for a Dart package published on pub.dev" />
 
 
 If you publish packages on [pub.dev](https://pub.dev/), we recommend two new best practices.

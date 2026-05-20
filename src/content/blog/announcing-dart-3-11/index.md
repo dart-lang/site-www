@@ -3,7 +3,7 @@ title: "Announcing Dart 3.11"
 description: "Hello, Dart developers! The latest stable version, Dart 3.11, is officially here!"
 publishDate: 2026-02-11
 author: conooi
-image: images/129dKLBxAMepAi2od91c3TA.png
+image: images/129dKLBxAMepAi2od91c3TA.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 This release focuses heavily on responsiveness and tooling improvements that you’ll feel in your daily workflow. From a smarter analysis server to new pub client capabilities and enhanced AI support, Dart 3.11 is built to keep you in the flow. Read on to learn more.
 
-<DashImage src="images/129dKLBxAMepAi2od91c3TA.png" alt="Announcing Dart 3.11" caption="Announcing Dart 3.11" />
+<DashImage src="images/129dKLBxAMepAi2od91c3TA.webp" alt="Dart 3.11 release banner with the Dart logo and a bullseye icon." caption="Announcing Dart 3.11" />
 
 
 ## Language updates
@@ -51,6 +51,7 @@ workspace:
  - pkg/a
  - pkg/b
  - pkg/c
+
 # After
 name: workspace
 environment:

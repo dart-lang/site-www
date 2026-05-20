@@ -3,13 +3,13 @@ title: "StageXL 1.0"
 description: "A fast 2D rendering engine for HTML5 and Dart."
 publishDate: 2016-12-03
 author: bp74
-image: images/1oPIKFEq7-9ndX53muruOsQ.jpeg
+image: images/1oPIKFEq7-9ndX53muruOsQ.webp
 category: other
 layout: blog
 ---
 
 
-<DashImage src="images/1oPIKFEq7-9ndX53muruOsQ.jpeg" />
+<DashImage src="images/1oPIKFEq7-9ndX53muruOsQ.webp" alt="StageXL 1.0 release artwork." />
 
 
 After more than 4 years in development and available since the early beta versions of Dart, we are proud to announce the release of StageXL 1.0. [StageXL](http://www.stagexl.org/) is a fast and universal 2D render engine for games and applications on the web. This article talks about the most important features and applications of this library.
@@ -88,7 +88,7 @@ The StageXL library provides everything you need to render graphics, play audio,
 
 **[StageXL_BitmapFont](https://github.com/bp74/StageXL_BitmapFont):** [Bitmap fonts](http://kvazars.com/littera/) are created with specialized tools or even designed in PhotoShop to render fancy looking texts. The glyphs are stored on a texture to render texts very efficiently at runtime. The StageXL bitmap font library also supports features like [distance fields](http://www.stagexl.org/show/bitmapfont/distance_field/example.html) for sharp edges when scaling or rotating the text. ([demo](http://www.stagexl.org/show/bitmapfont/texture_atlas/example.html))
 
-<DashImage src="images/1mImI5oveZ9ohWbaxmFXarg.jpeg" alt="Spine animations rendered with StageXL ([demo](http://www.stagexl.org/show/spine/texture-atlas/example.html))" caption="Spine animations rendered with StageXL ([demo](http://www.stagexl.org/show/spine/texture-atlas/example.html))" />
+<DashImage src="images/1mImI5oveZ9ohWbaxmFXarg.webp" alt="Spine animations rendered with StageXL." caption="Spine animations rendered with StageXL ([demo](http://www.stagexl.org/show/spine/texture-atlas/example.html))" />
 
 
 ## **Links**

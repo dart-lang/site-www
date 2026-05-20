@@ -3,7 +3,7 @@ title: "Future<void> vs Future<Null>, what’s the difference?"
 description: "One of the nice upgrades we were able to do in Dart 2 (in addition to better static checking, runtime type safety, optional new/const…"
 publishDate: 2018-10-30
 author: mfairhurst
-image: images/0x0J9DBRyATjtQn42.jpg
+image: images/0x0J9DBRyATjtQn42.webp
 category: deep-dive
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 One of the nice upgrades we were able to do in [Dart 2](https://medium.com/dartlang/dart-2-stable-and-the-dart-web-platform-3775d5f8eac7) (in addition to better static checking, runtime type safety, optional new/const, core library improvements, and more) is to formalize `void` in a way that’s both more useful and less error-prone. This is especially clean in async programming where you can write `Future&lt;void&gt;` for asynchronous functions that don’t return an answer when their work completes. Before this you probably used `Future&lt;Null&gt;`, so common questions we get asked are: What’s the difference between `Future&lt;void&gt;` and `Future&lt;Null&gt;`? Which should I use, and when?
 
-<DashImage src="images/0x0J9DBRyATjtQn42.jpg" />
+<DashImage src="images/0x0J9DBRyATjtQn42.webp" alt="Retro meme of a man gesturing beside the text 'VOID*'." />
 
 
 Since my goal here is to be useful, I’m going to start with a TLDR.
@@ -120,7 +120,7 @@ Foo f = await voidFuture();
 
 At this point, the average developer probably knows everything they need to know about `void` in order to effectively use it.
 
-<DashImage src="images/0_2MNvj3It63IUFUH.gif" />
+<DashImage src="images/0_2MNvj3It63IUFUH.webp" alt="Robot reaction GIF with the subtitle 'Congratulations. You are being rescued'." />
 
 
 If you are still following along, however, there are a few more interesting nuggets.
@@ -143,7 +143,7 @@ We don’t want to make this override illegal, because it’s safe, useful, and 
 
 Rather, we have the clever option of making `void` a sister type of `Object`. After all, it may hold any value, and all values are `Objects`. This is not something we designed, it’s just reality. Recognizing that reality makes it something we can then leverage.
 
-<DashImage src="images/01ZUU5fNh-kmpPzMU.jpg" />
+<DashImage src="images/01ZUU5fNh-kmpPzMU.webp" alt="Meme text: 'Brace yourselves. Backwards compatibility is coming'." />
 
 
 By making `void` a sibling of `Object`, we leave ourselves no *requirements* that a `void` value go *completely* unused. We try our best to keep `void` to itself, but we deliberately relax these restrictions in a few places for the sake of backwards compatibility:
@@ -216,7 +216,7 @@ What is the best return type for these two functions?
 
 It depends. Because the function never returns, the return type doesn’t really matter. You can use any type — even the absurd bottom type, which can be used in various ways in various languages.
 
-<DashImage src="images/0TkwIX5BsrbSzHfLr.jpg" />
+<DashImage src="images/0TkwIX5BsrbSzHfLr.webp" alt="Meme text: 'You can't have a runtime error in code that never runs'." />
 
 
 C++ has this as `noreturn`. Rust has `!`, and Scala has `Nothing`. But my favorite example comes from Haskell, which has a very commonly used `undefined` function that aborts the program. It returns, you guessed it, the bottom type.
@@ -248,7 +248,7 @@ List<int> intList = <⊥>[];
 
 There are even more interesting cases when you look at what’s called “contravariant” placement of the bottom type.
 
-<DashImage src="images/0OyVAekp1iwSQyfur.jpg" />
+<DashImage src="images/0OyVAekp1iwSQyfur.webp" alt="Meme close-up of a person gesturing with the word 'Contravariance'." />
 
 
 Let’s say we define a function that has a ⊥ parameter:
@@ -336,7 +336,7 @@ Foo foo = await futureNull(); // no error!
 
 Essentially, by making some function `f()` return a `Future&lt;Null&gt;`, you are making `await f()` a synonym of `null` in your program! That’s dangerous because you can use `null` as if it were absolutely anything, absolutely any type. I don’t think that’s what most people want.
 
-<DashImage src="images/04NDBhLva40BBuX0f.jpg" />
+<DashImage src="images/04NDBhLva40BBuX0f.webp" alt="Meme text: 'Null is not the type you are looking for'." />
 
 
 Why else might you use `Future&lt;Null&gt;` instead of `Future&lt;void&gt;`? It all goes back to that mind-boggling bottom type. You might consider `Future&lt;Null&gt;` for futures that must be awaitable but that never complete, or that always complete with an error. This is directly comparable to why a function would return `Null`.
@@ -349,7 +349,7 @@ Imagine that Dart did not have `null` as an escape hatch for all values. Would y
 
 All of these usages have weak guarantees because the value `null` itself is an escape hatch for why you otherwise would be most likely to use the `Null` type itself. However, do not make the mistake of thinking that the *value* is the escape hatch itself, rather than the bunker. One is safe and sturdy and the other is to save you the effort of digging upwards through reinforced concrete when the bunker catches on fire with you in it.
 
-<DashImage src="images/0yepcr98D1YlpsRJF.jpg" />
+<DashImage src="images/0yepcr98D1YlpsRJF.webp" alt="Meme text: 'I don't always use null in my Dart code, but when I do, I leave a long comment explaining why.'" />
 
 
 In summary, here are the main uses of typing something as `Null`:
@@ -370,7 +370,7 @@ I talked a lot about the bottom type, but I didn’t get into its opposite at al
 
 It may seem strange that words like “nothing” and “empty” in English can mean two such dissimilar things in type theory. Both are suitable descriptions of the exact opposite top and bottom types, and therefore, of `Null` and `void`. It may seem strange that two opposite types are appealing candidates for the same job! It may seem frustrating that Dart has so many weird quirks and edge cases, now that you’re reading up on which to use.
 
-<DashImage src="images/0ybPT9jlu0yGAnu2v.jpg" />
+<DashImage src="images/0ybPT9jlu0yGAnu2v.webp" alt="An illustration showing frustration with quirks and edge cases in type theory." />
 
 
 Our mistake, I think, was in ever recommending `Null` to be used like `void` in the first place. It would at the time have been a disservice to users to withhold what was useful advice, given Dart 1 semantics. But we accidentally made a *very* esoteric type *very* commonly used.

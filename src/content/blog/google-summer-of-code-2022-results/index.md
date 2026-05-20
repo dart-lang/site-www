@@ -3,7 +3,7 @@ title: "Google Summer of Code 2022 Results"
 description: "The Google Summer of Code (GSoC) program focuses on engaging new developers worldwide with open source software development. Google…"
 publishDate: 2022-11-03
 author: jonasfj
-image: images/1tzmsHv4_tAl7Nil6XZaANw.png
+image: images/1tzmsHv4_tAl7Nil6XZaANw.webp
 category: other
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 The [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) program focuses on engaging new developers worldwide with open source software development. Google sponsors students to work with a mentoring open source organization on a 12-week programming project during the summer. Over the past 17 years, more than 18,000 contributors have participated in Google Summer of Code.
 
-<DashImage src="images/1tzmsHv4_tAl7Nil6XZaANw.png" />
+<DashImage src="images/1tzmsHv4_tAl7Nil6XZaANw.webp" alt="The logos for Google Summer of Code and Dart side-by-side." />
 
 
 In 2022, Dart have participated as mentoring organization in Google Summer of Code for a third consecutive year. Following our [call for proposals in March](https://medium.com/dartlang/contributors-for-google-summer-of-code-2022-17e777f043f0), we received 50 project proposals from prospective participants around the world. Today, we spotlight some of the projects we mentored this summer. The contributors describe their projects in this post.
@@ -54,7 +54,7 @@ A package maintainer must assign an appropriate version to each Dart package rel
 
 Bugs can arise from incorrect assumptions in these areas. My project sought to identify and investigate a subset of these bugs.
 
-<DashImage src="images/187NMdHXboVklByFDhR9d2Q.png" alt="An incorrect dependency constraint caused by improper versioning of `package:foo`" caption="An incorrect dependency constraint caused by improper versioning of `package:foo`" />
+<DashImage src="images/187NMdHXboVklByFDhR9d2Q.webp" alt="Diagram showing an incorrect dependency constraint caused by improper versioning of package:foo." caption="An incorrect dependency constraint caused by improper versioning of `package:foo`" />
 
 
 The project provides tools that summarize a portion of the public API of a given version of a given package. This summary identifies any other packages dependent on the given package that might have an incorrect version constraint. Our use case covered where a package used a symbol defined in one of its dependencies, but the same symbol did not include the lowest allowed version of that dependency.

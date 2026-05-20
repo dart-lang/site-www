@@ -37,7 +37,7 @@ In this chapter, you will improve the robustness of
 your `command_runner` package by implementing error handling.
 You'll create a custom exception class
 and add error handling to the `CommandRunner` to
-gracefully manage errors that may occur during command execution.
+gracefully manage errors that might occur during command execution.
 
 ### Task 1: Create a custom ArgumentException
 

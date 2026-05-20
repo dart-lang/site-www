@@ -3,7 +3,7 @@ title: "Hosting a private Dart package repository"
 description: "Improvements in Dart 2.15 for secure enterprise package hosting"
 publishDate: 2022-03-16
 author: jonasfj
-image: images/1hv1Nujq4-g2-y2uLuLYVqA.png
+image: images/1hv1Nujq4-g2-y2uLuLYVqA.webp
 category: other
 layout: blog
 ---
@@ -13,7 +13,7 @@ Our recent Dart 2.15 release added support for private package repositories. A p
 
 This feature has already been adopted by [Cloudsmith](https://help.cloudsmith.io/docs/dart-repository) and [JFrog Artifactory](https://jfrog.com/blog/how-to-use-pub-repositories-in-artifactory/) who offer custom package repositories as a service:
 
-<DashImage src="images/1-xVF9afKxXP0_RTKs1pyxA.png" alt="Private Dart repositories are now offered by both Cloudsmith and JFrog Artifactory." caption="Private Dart repositories are now offered by both Cloudsmith and JFrog Artifactory." />
+<DashImage src="images/1-xVF9afKxXP0_RTKs1pyxA.webp" alt="Logos for Cloudsmith and JFrog Artifactory." caption="Private Dart repositories are now offered by both Cloudsmith and JFrog Artifactory." />
 
 
 ## Why use a custom package repository?
@@ -169,14 +169,14 @@ As previously mentioned, custom package repositories are available as a service 
 
 Cloudsmith has been offering private and public Dart package repositories since 2020. [Cloudsmith recently announced](https://cloudsmith.com/resources/blog/improvements-to-dart-package-support) support for token authentication with their Dart package repository offering. For more information, check out the [Cloudsmith documentation](https://help.cloudsmith.io/docs/dart-repository).
 
-<DashImage src="images/1hv1Nujq4-g2-y2uLuLYVqA.png" alt="A private Dart package repository hosted by Cloudsmith." caption="A private Dart package repository hosted by Cloudsmith." />
+<DashImage src="images/1hv1Nujq4-g2-y2uLuLYVqA.webp" alt="The Cloudsmith web interface showing a private Dart package repository." caption="A private Dart package repository hosted by Cloudsmith." />
 
 
 ### Dart support in JFrog Artifactory
 
 JFrog Artifactory recently [announced support for custom Dart package repositories](https://jfrog.com/blog/how-to-use-pub-repositories-in-artifactory), including support for layered repositories and mirroring packages from the public package repository on [pub.dev](https://pub.com). For more information, check out the [JFrog Artifactory documentation](https://www.jfrog.com/confluence/display/JFROG/Pub+Repositories).
 
-<DashImage src="images/1JeK8mYxYCn-XoeHUCJlPEg.png" alt="A custom Dart package repository managed by JFrog." caption="A custom Dart package repository managed by JFrog." />
+<DashImage src="images/1JeK8mYxYCn-XoeHUCJlPEg.webp" alt="The JFrog Artifactory web interface showing a custom Dart package repository." caption="A custom Dart package repository managed by JFrog." />
 
 
 ### Closing comments

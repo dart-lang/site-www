@@ -3,7 +3,7 @@ title: "Introducing Dart 3 alpha"
 description: "Preview the most productive, portable, and approachable version of Dart yet. Now available for early testing and experimentation."
 publishDate: 2023-01-25
 author: mit-mit
-image: images/0evGHZJd_7cahb08X.png
+image: images/0evGHZJd_7cahb08X.webp
 category: announcements
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 In December, we gave a glimpse into the future with our first blog post discussing Dart 3. Today — live from the [Flutter Forward](https://flutter.dev/events/flutter-forward) developer event in Nairobi, Kenya — we’re sharing the broader vision for Dart’s next major release, and our first preview build, **Dart 3 alpha**.
 
-<DashImage src="images/0evGHZJd_7cahb08X.png" />
+<DashImage src="images/0evGHZJd_7cahb08X.webp" alt="Dart 3 alpha release banner with the Dart logo." />
 
 
 Our mission for Dart is to create the best programming language for building high-quality apps across any app platform. Dart is **approachable**, easy to learn, avoids unnecessary complexity, and is internally consistent. Dart is **productive;** app developers are under constant pressure to deliver apps with ever changing requirements, in less time, yet with uncompromised quality and finish. So, we built Dart with a deep focus on enabling fast development, rapid iteration, and high quality. And Dart is **portable**, spanning the widest set of platforms, to enable you to deploy apps to the devices of today and tomorrow.
@@ -142,7 +142,7 @@ To leverage code that has already migrated to use null safety, we’ve implement
 
 For packages published on the [pub.dev](https://pub.dev/) repository, we’ve run analysis with Dart 3 alpha, and tagged packages that pass with a **“Dart 3 ready”** tag. This signifies that the package is likely to work with Dart 3 when it launches to stable later this year.
 
-<DashImage src="images/0dB-NsWj2y3JljZZh.png" />
+<DashImage src="images/0dB-NsWj2y3JljZZh.webp" alt="A Dart 3 ready badge displayed on a package page." />
 
 
 ### Dart 3 tools cleanup

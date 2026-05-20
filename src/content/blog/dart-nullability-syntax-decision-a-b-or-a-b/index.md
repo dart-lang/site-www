@@ -3,7 +3,7 @@ title: "Dart nullability syntax decision: a?[b] or a?.[b]"
 description: "Dart is in the process of redesigning its type system so that individual types will be either nullable (expressions of that type can have…"
 publishDate: 2019-08-26
 author: kwalrath
-image: images/1se-VT1aPyHd3J2VYDzDW5g.png
+image: images/1se-VT1aPyHd3J2VYDzDW5g.webp
 category: other
 layout: blog
 ---
@@ -123,4 +123,4 @@ Other Dart language changes and features:
 
 * [Dart language specification](https://dart.dev/guides/language/spec)
 
-<DashImage src="images/1se-VT1aPyHd3J2VYDzDW5g.png" alt="A function that accepts a null argument and can return null." caption="A function that accepts a null argument and can return null." />
+<DashImage src="images/1se-VT1aPyHd3J2VYDzDW5g.webp" alt="A function declaration demonstrating a nullable return type and a nullable argument." caption="A function that accepts a null argument and can return null." />

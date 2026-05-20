@@ -3,7 +3,7 @@ title: "Why I’m joining the Dart team, of all places"
 description: "Two weeks ago, I transferred to the Dart team. For many, this was an obvious career move but there were some people who were genuinely surprised about it."
 publishDate: 2016-01-07
 author: filiph
-image: images/19XE0rGIm0oY0GOs5onZyvQ.jpeg
+image: images/19XE0rGIm0oY0GOs5onZyvQ.webp
 category: other
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 **UPDATE May 2018:** It’s 2 years later and this article still gets hundreds of reads a month. I should note some of the things below are outdated. For example, when I say “soon, you’ll be able to write Dart code for native Android and iOS apps” below — that’s already [very much possible](https://flutter.io/). So, enjoy this historical piece.
 
-<DashImage src="images/1BMKEJA3Ej-Yxa6lx7mct7A.png" alt="One of the well-meaning responses." caption="One of the well-meaning responses." />
+<DashImage src="images/1BMKEJA3Ej-Yxa6lx7mct7A.webp" alt="Social media comment by Aleš Pecha saying, 'Wow, hope you won't be riding a dead horse then ;)'." caption="One of the well-meaning responses." />
 
 
 Responses ranged from mild astonishment to friendly teasing to outright negativity. I don’t blame them: to many people, Dart is a strange animal. You can find plenty of smart developers on the internet who strongly believe Dart won’t be successful or that it has already failed.
@@ -22,7 +22,7 @@ So, here are a couple of reasons why I believe in Dart’s bright future. Obviou
 
 ## **1. Dart is a big deal at Google**
 
-<DashImage src="images/19XE0rGIm0oY0GOs5onZyvQ.jpeg" alt="Obligatory Zoolander reference." caption="Obligatory Zoolander reference." />
+<DashImage src="images/19XE0rGIm0oY0GOs5onZyvQ.webp" alt="Meme from the movie Zoolander humorously emphasizing that Dart is a big deal." caption="Obligatory Zoolander reference." />
 
 
 I can’t share the actual numbers (yet?) but there is a lot of Dart code being written at Google. Many lines of code. Every day.

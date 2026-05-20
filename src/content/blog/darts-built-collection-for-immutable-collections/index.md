@@ -12,7 +12,7 @@ A month ago I spoke at the [Dart Developer Summit](https://events.dartlang.org/2
 
 First up: [built_collection](https://github.com/google/built_collection.dart).
 
-The built_collection package provides SDK-like collections with immutability. Immutablity for:
+The built_collection package provides SDK-like collections with immutability. Immutability for:
 
 * Simplicity, convenience. An immutable collection can be passed around without worrying about who might modify it.
 

@@ -7,7 +7,7 @@ description: Learn more about pub workspaces, a way to manage package monorepos.
 When working on a project, you might develop multiple Dart packages in the same
 version control repository (a _monorepo_).
 
-For example you might have a directory layout like: 
+For example, you might have a directory layout like: 
 
 <FileTree>
 

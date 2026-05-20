@@ -3,13 +3,13 @@ title: "Building data binding in the browser"
 description: "Data binding, or updating the view (usually UI) from your application’s code is probably the holy grail of browser-based web frameworks —…"
 publishDate: 2017-07-04
 author: matanlurey
-image: images/1QUn_zBM0SBDRG4TtMBiM2A.png
+image: images/1QUn_zBM0SBDRG4TtMBiM2A.webp
 category: deep-dive
 layout: blog
 ---
 
 
-<DashImage src="images/1QUn_zBM0SBDRG4TtMBiM2A.png" alt="Data binding as popularized by the Angular (MVC-style). Lots of arrows and pictures. That’s always a good sign." caption="Data binding as popularized by the Angular (MVC-style). Lots of arrows and pictures. That’s always a good sign." />
+<DashImage src="images/1QUn_zBM0SBDRG4TtMBiM2A.webp" alt="A diagram showing the MVC-style data binding popularized by Angular." caption="Data binding as popularized by the Angular (MVC-style). Lots of arrows and pictures. That’s always a good sign." />
 
 
 *Data binding*, or updating the view (usually UI) from your application’s code is probably the *holy grail* of browser-based web frameworks — the reason they exist, and the reason [web standards have tried to shift](https://developers.google.com/web/fundamentals/getting-started/primers/customelements) in order to make it easier to “use the platform”.
@@ -30,7 +30,7 @@ If you’re just interested in the code, it’s all available on GitHub:
 
 ***One quick note** — nothing here is optimized, and I’ve taken some shortcuts to make this tutorial achievable in about an hour, which means I didn’t write any pre-processors or code generators — and instead I’ve hand-written what generated code would look like; those files end in “.g.dart”.*
 
-<GitHubEmbed repo="matanlurey/building-data-binding" title="building-data-binding - Accompanying code for &quot;Building Data Binding in the Browser&quot;" image="images/0QVBz3DSv-QKuugcc.jpg" />
+<GitHubEmbed repo="matanlurey/building-data-binding" title="building-data-binding - Accompanying code for &quot;Building Data Binding in the Browser&quot;" image="images/0QVBz3DSv-QKuugcc.webp" />
 
 
 ### Static templating
@@ -243,7 +243,7 @@ And that’s it. You can use similar techniques to render HTML in the browser, o
 
 Luckily [dart:html](https://webdev.dartlang.org/tutorials/low-level-html/connect-dart-html) is a high-level library provided by the Dart SDK, and even in JavaScript modern-day browsers are full featured enough not to need a library for simple data-binding. What if I want to bring my new “Sunday TODO list” — and be able to check-off (delete) items as I finish them?
 
-<DashImage src="images/1ggiMuy98lvPyUWVcf-HOFA.png" alt="The world’s greatest UI" caption="The world’s greatest UI" />
+<DashImage src="images/1ggiMuy98lvPyUWVcf-HOFA.webp" alt="TODO list application built in the tutorial." caption="The world’s greatest UI" />
 
 
 Enter *manual* data binding. Instead of relying on any framework or specific library, I will just create HTML elements, and listen to events in order to know when to update the DOM, all myself.
@@ -544,7 +544,7 @@ This is actually not too different from what we did above in *static template bi
 
 I promised I’d write a simple library for a reactive-style data-binding framework, but I decided by the end of this article it had already been done better by my colleague Yegor with his framework “Butterfly”:
 
-<GitHubEmbed repo="yjbanov/butterfly" title="butterfly - A web framework for Dart based on Flutter's widget model" image="images/0mC9GWhN0QE2u20u0.jpg" />
+<GitHubEmbed repo="yjbanov/butterfly" title="butterfly - A web framework for Dart based on Flutter's widget model" image="images/0mC9GWhN0QE2u20u0.webp" />
 
 
 ```dart

@@ -3,7 +3,7 @@ title: "Dart asynchronous programming: Isolates and event loops"
 description: "Dart, despite being a single-threaded language, offers support for futures, streams, background work, and all the other things you need to…"
 publishDate: 2019-07-25
 author: kwalrath
-image: images/1t-mHg6JrdkKCs65UvD70-Q.png
+image: images/1t-mHg6JrdkKCs65UvD70-Q.webp
 category: deep-dive
 layout: blog
 ---
@@ -22,21 +22,21 @@ Still here? Let’s talk about isolates.
 
 An *isolate* is what all Dart code runs in. It’s like a little space on the machine with its own, private chunk of memory and a single thread running an event loop.
 
-<DashImage src="images/1xtjhmzoLQEmh7Od1BkroVg.png" alt="An isolate has its own memory and a single thread of execution that runs an event loop." caption="An isolate has its own memory and a single thread of execution that runs an event loop." />
+<DashImage src="images/1xtjhmzoLQEmh7Od1BkroVg.webp" alt="Single isolate card containing a memory grid above circular event-loop arrows." caption="An isolate has its own memory and a single thread of execution that runs an event loop." />
 
 
 In a lot of other languages like C++, you can have multiple threads sharing the same memory and running whatever code you want. In Dart, though, each thread is in its own isolate with its own memory, and the thread just processes events (more on that in a minute).
 
 Many Dart apps run all their code in a single isolate, but you can have more than one if you need it. If you have a computation to perform that’s so enormous it could cause you to drop frames if it were run in the main isolate, then you can use [Isolate.spawn()](https://api.dartlang.org/stable/dart-isolate/Isolate/spawn.html) or [Flutter’s compute() function](https://flutter.dev/docs/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate). Both of those functions create a separate isolate to do the number crunching, leaving your main isolate free to — say— rebuild and render the widget tree.
 
-<DashImage src="images/1MnJQG2bdbcqmEwu1lSL52Q.png" alt="Two isolates, each with its own memory and thread of execution." caption="Two isolates, each with its own memory and thread of execution." />
+<DashImage src="images/1MnJQG2bdbcqmEwu1lSL52Q.webp" alt="Two separate isolate cards, each with its own memory grid and event-loop arrows." caption="Two isolates, each with its own memory and thread of execution." />
 
 
 The new isolate gets its own event loop and its own memory, which the original isolate — even though it’s the parent of this new one — isn’t allowed to access. That’s the source of the name *isolate*: these little spaces are kept *isolated* from one another.
 
 In fact, the only way that isolates can work together is by passing messages back and forth. One isolate sends a message to the other, and the receiving isolate processes that message using its event loop.
 
-<DashImage src="images/1kxDfLtL2ySN1yiY1nmcTrA.png" alt="Isolates can send messages to other isolates." caption="Isolates can send messages to other isolates." />
+<DashImage src="images/1kxDfLtL2ySN1yiY1nmcTrA.webp" alt="Two isolate cards with a message marker entering the second isolate's event loop." caption="Isolates can send messages to other isolates." />
 
 
 This lack of shared memory might sound kind of strict, especially if you’re coming from a language like Java or C++, but it has some key benefits for Dart coders.
@@ -53,7 +53,7 @@ Your app can’t predict when these events will happen or in what order, and it 
 
 The whole time the app is running — you’re tapping on the screen, things are downloading, a timer goes off — that event loop is just going around and around, processing those events one at a time.
 
-<DashImage src="images/1t-mHg6JrdkKCs65UvD70-Q.png" alt="The event loop processes one event at a time." caption="The event loop processes one event at a time." />
+<DashImage src="images/1t-mHg6JrdkKCs65UvD70-Q.webp" alt="Queued events moving one at a time toward a gear with circular event-loop arrows." caption="The event loop processes one event at a time." />
 
 
 When there’s a break in the action, the thread just hangs out, waiting for the next event. It can trigger the garbage collector, get some coffee, whatever.

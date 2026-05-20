@@ -3,13 +3,13 @@ title: "Getting ready for Dart 2, and making your packages look great on the Pub
 description: "We have a new release of Pub, the package repository for Dart! This time around we focused on preparing for the Dart 2 stable release."
 publishDate: 2018-07-20
 author: mit-mit
-image: images/0Fq4FHYc9N5aHmYBK.png
+image: images/0Fq4FHYc9N5aHmYBK.webp
 category: other
 layout: blog
 ---
 
 
-<DashImage src="images/1zpVgP0W04QFmqqaJO9fzhg.png" />
+<DashImage src="images/1zpVgP0W04QFmqqaJO9fzhg.webp" alt="The Dart logo alongside 'Dart Packages'." />
 
 
 ## Migrating your packages to Dart 2
@@ -28,12 +28,12 @@ We strongly encourage all package authors to do this work, and we will be pushin
 
 To help with this migration we have updated the analysis tab of the Pub site to make the results of code analysis easier to read. First, at the top of the analysis page we added progress bars allowing you to quickly see the status of the package:
 
-<DashImage src="images/0LatYAFujtrM2yebc.png" alt="Package scores shown on the Pub site" caption="Package scores shown on the Pub site" />
+<DashImage src="images/0LatYAFujtrM2yebc.webp" alt="Pub site package scores represented by progress bars." caption="Package scores shown on the Pub site" />
 
 
 Below the progress bars are detailed analysis results, grouped by severity: errors (red icon), warnings (yellow icon), and suggested issues (blue icon), as shown in the following screenshot:
 
-<DashImage src="images/0Fq4FHYc9N5aHmYBK.png" alt="Analysis issues shown on the Pub site" caption="Analysis issues shown on the Pub site" />
+<DashImage src="images/0Fq4FHYc9N5aHmYBK.webp" alt="Pub site analysis issues grouped by severity." caption="Analysis issues shown on the Pub site" />
 
 
 ## Updated analysis scores

@@ -3,7 +3,7 @@ title: "Announcing Dart 2.10"
 description: "A new, unified dart tool for all core tasks. Also, an update on null safety timelines and migration principles."
 publishDate: 2020-10-01
 author: mit-mit
-image: images/19wrenixSu1viOYLF1nWhAw.jpeg
+image: images/19wrenixSu1viOYLF1nWhAw.webp
 category: releases
 layout: blog
 ---
@@ -13,14 +13,14 @@ layout: blog
 
 Today we’re announcing a new release of Dart, version 2.10 (*two-dot-ten*). This release features a new, unified Dart developer tool: a single tool for all your developer needs like creating projects, analyzing and formatting code, running tests, and compiling apps. We also have an update on the null safety roadmap and timelines, and a discussion of the principles for migrating existing code to null safety.
 
-<DashImage src="images/19wrenixSu1viOYLF1nWhAw.jpeg" />
+<DashImage src="images/19wrenixSu1viOYLF1nWhAw.webp" alt="Dart 2.10 release banner highlighting the unified Dart tool and null safety update." />
 
 
 ## A new, unified Dart developer tool
 
 Dart forms the foundation of the Flutter SDK: it not only provides the language and runtimes that power Flutter apps, but also supports many core developer tasks like formatting, analyzing, and testing code. However, while Flutter has a single, general-purpose developer tool (the `flutter` command), Dart has historically had many smaller developer tools (for example, `dartfmt` and `dartanalyzer`). Dart 2.10 has a new, unified `dart` developer tool that’s very similar to the `flutter` tool. This new tool supports all common tasks, such as creating new projects and packages; analyzing and formatting code; and running, compiling, and testing projects. To use the tool, simply run the `dart` command:
 
-<DashImage src="images/1y-udLgjneGgP-y8UATZrlw.png" alt="Learn about the 2.10 dart tool by running dart help." caption="Learn about the 2.10 dart tool by running dart help." />
+<DashImage src="images/1y-udLgjneGgP-y8UATZrlw.webp" alt="Terminal help output for the Dart 2.10 dart tool." caption="Learn about the 2.10 dart tool by running dart help." />
 
 
 Flutter includes this new Dart tool in the Flutter SDK. Starting with today’s [Flutter 1.22 SDK](https://medium.com/flutter/announcing-flutter-1-22-stable-44f146009e5f), the `&lt;flutter-sdk&gt;/bin` directory (which you likely have in `PATH`) contains both `flutter` and `dart` commands. If you do both Flutter and general-purpose Dart development, you get both developer experiences from a single Flutter SDK, without needing to install anything else.
@@ -69,7 +69,7 @@ When your dependencies are ready and you choose to do the migration, you can use
 
 The migration tool is interactive, so you can review the nullability properties that the tool has inferred. If you disagree with any of the tool’s conclusions, you can add nullability hints to change the inference. For example, if you want to make an API non-nullable even though some refactoring will be needed, you can tell the tool and rerun the migration analysis. Adding a few migration hints can have a huge impact on migration quality.
 
-<DashImage src="images/0wqrweNI-0SK9DB0z.png" />
+<DashImage src="images/0wqrweNI-0SK9DB0z.webp" alt="The interactive dart migrate tool interface showing proposed code changes." />
 
 
 ### Get full benefit with full use

@@ -3,7 +3,7 @@ title: "Announcing sound null safety"
 description: "Make your apps more stable and performant with Dart’s null safety"
 publishDate: 2020-06-10
 author: filiph
-image: images/1HKl1Jf0uBNP-gReYYcgC_g.png
+image: images/1HKl1Jf0uBNP-gReYYcgC_g.webp
 category: announcements
 layout: blog
 ---
@@ -47,7 +47,7 @@ void main() {
 
 The null safety feature makes this problem go away:
 
-<DashImage src="images/1HKl1Jf0uBNP-gReYYcgC_g.png" />
+<DashImage src="images/1HKl1Jf0uBNP-gReYYcgC_g.webp" alt="DartPad with null safety showing errors for passing null to a list of files and including a null item in the list." />
 
 
 With null safety, you can reason about your code with more confidence. No more pesky runtime null dereferencing errors. Instead, you get static errors as you code.
@@ -201,7 +201,7 @@ If all goes well, we plan to release null safety as a stable feature before the 
 
 The quickest way to try null safety today is through [nullsafety.dartpad.dev](https://nullsafety.dartpad.dev/3d9c1769de7912c654bc5d132aff60ac), a version of DartPad with null safety enabled. Open the **Learn with Snippets** drop-down to find a series of learning exercises that walk through the new syntax and basics of null safety.
 
-<DashImage src="images/07alHbKGJ1FoeNqII.png" />
+<DashImage src="images/07alHbKGJ1FoeNqII.webp" alt="DartPad with the null safety experiment enabled and interactive code snippets." />
 
 
 You can also try null safety in small command-line apps. (We haven’t migrated larger frameworks like Flutter yet.) Start by downloading a copy of the [dev-channel Dart SDK](https://github.com/dart-lang/samples/blob/master/null_safety/calculate_lix/README.md#dart-preview-sdk-installation), and then get a copy of [this sample Dart CLI app](https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix) ([GitHub repo](https://github.com/dart-lang/samples), [zip archive](https://github.com/dart-lang/samples/archive/master.zip)). The sample app’s [README file](https://github.com/dart-lang/samples/blob/master/null_safety/calculate_lix/README.md) has instructions for running the app with the null safety experiment flag. Other files in the sample provide launch configurations that enable debugging in VS Code and Android Studio.

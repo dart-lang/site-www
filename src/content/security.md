@@ -74,7 +74,7 @@ mailing list.
 ## Best practices
 
 * **Keep current with the latest Dart SDK releases.**
-  We regularly update Dart, and these updates may fix security
+  We regularly update Dart, and these updates might fix security
   defects discovered in previous versions.
   Check the [Dart changelog][]
   for security-related updates.

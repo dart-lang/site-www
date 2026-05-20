@@ -3,13 +3,13 @@ title: "A Dart REPL PoC"
 description: "Hacking with Dart"
 publishDate: 2017-01-17
 author: BlackHC
-image: images/0lOBcrb2bYgKV6VYT.png
+image: images/0lOBcrb2bYgKV6VYT.webp
 category: deep-dive
 layout: blog
 ---
 
 
-<DashImage src="images/0lOBcrb2bYgKV6VYT.png" />
+<DashImage src="images/0lOBcrb2bYgKV6VYT.webp" alt="An origami hummingbird in Dart's original color scheme." />
 
 
 [Python](https://www.python.org/)’s interactive mode is great. [Dart](http://dartlang.org/) does not have an interactive mode at the moment, but it is really good for prototyping ideas quickly, so let’s see if we can hack something together!
@@ -20,7 +20,7 @@ The interactive mode in languages like Python or Ruby has helped make them very 
 
 This is what Python’s interactive mode looks like:
 
-<DashImage src="images/1sqspbSjstPhKIsIbZBDq-Q.gif" alt="Good ol’ Python REPL" caption="Good ol’ Python REPL" />
+<DashImage src="images/1sqspbSjstPhKIsIbZBDq-Q.webp" alt="A user interacts with the Python REPL." caption="Good ol’ Python REPL" />
 
 
 Dart does not support evaluating statements in a global scope like Python, so there is no obvious way to do it correctly. In Dart, statements have to be inside functions and the main function is the entry point of a program. Just like in C++ or C#. Personally, I prefer this as it makes it easier to figure out what is happening when a program runs. But… I’d still really want an interactive mode. It would allow me to play around with ideas and try things out even faster. So let’s see if we can create a REPL as a proof of concept!
@@ -35,7 +35,7 @@ Dart’s debugging capabilities are exposed through its [VM service](https://git
 
 Now what we can do is: our REPL can connect to its own VM service to evaluate expressions that it reads from the terminal! That sounds crazy…
 
-<DashImage src="images/0wtt2rUBIRxHnPUHv.jpg" />
+<DashImage src="images/0wtt2rUBIRxHnPUHv.webp" alt="Person smiling while holding a banana, overlaid with the text 'You are so crazy lol'." />
 
 
 … but it works! I have written a [quick spike](https://github.com/BlackHC/dart_repl/blob/ca3518074c94f48ce5be872b15b58556133a474c/bin/repl.dart) and indeed it works. Dart supports [asynchronous programming](https://www.dartlang.org/tutorials/language/futures), which comes in really handy as it keeps the program from blocking itself when talking to its own VM service.
@@ -43,7 +43,7 @@ Now what we can do is: our REPL can connect to its own VM service to evaluate ex
 
 With the question of feasibility settled, it is easy to write a proper proof of concept. To evaluate expressions that go beyond `1 + 1`, we need to support variables. Now variables cannot easily be created because a variable declaration is not an expression in Dart. In Python, you can just declare a variable on the fly by assigning to it. In Dart, we can simulate dynamic fields by overloading `n[oSuchMethod](https://www.dartlang.org/articles/language/emulating-functions#interactions-with-mirrors-and-nosuchmethod)` to create elements in a dictionary on the fly. I call this class `Scope` and when we [evaluate expressions within an instance](https://www.dartdocs.org/documentation/vm_service_client/0.2.3/vm_service_client/VMInstanceRef/evaluate.html) of it, the fields can be accessed like globals.
 
-<DashImage src="images/02PUDlyPF7rchkNmA.jpg" />
+<DashImage src="images/02PUDlyPF7rchkNmA.webp" alt="Confused person holding their head, overlaid with the text 'What do these words mean'." />
 
 
 The code is actually more straight-forward:
@@ -96,19 +96,19 @@ class Scope {
 
 With this, we can already do stuff like `a = 3`and `b = a*3`:
 
-<DashImage src="images/12tDjwpxSxslDUfiv8enwow.gif" alt="Simple expressions: DONE" caption="Simple expressions: DONE" />
+<DashImage src="images/12tDjwpxSxslDUfiv8enwow.webp" alt="A user evaluates simple expressions in the Dart REPL." caption="Simple expressions: DONE" />
 
 
 One limitation, we quickly run into is, that we can only access symbols that have been imported in the file that declares the `Scope` class. `import ‘…’;` cannot be evaluated using the VM service. So no `dart:io` if we don’t import it explicitly, and no custom libraries :(
 
 Oh wait! Dart can spawn new isolates (independent workers) using a URI with [Isolate.spawnUri](https://api.dartlang.org/stable/1.21.1/dart-isolate/Isolate/spawnUri.html). Users could specify additional imports on the command-line, and the REPL could generate source code to include these imports and then spawn a new isolate using the generated code that has the imports available for the user.
 
-<DashImage src="images/0bgs2vFlKPkZsFbSO.jpg" />
+<DashImage src="images/0bgs2vFlKPkZsFbSO.webp" alt="Person leaning forward in conversation, overlaid with the text 'That's not enough. We have to go deeper'." />
 
 
 And it works \o/
 
-<DashImage src="images/1eh9q0mNToXK0R_QiYdrylw.gif" alt="Custom imports: DONE" caption="Custom imports: DONE" />
+<DashImage src="images/1eh9q0mNToXK0R_QiYdrylw.webp" alt="A user successfully imports custom libraries in the Dart REPL." caption="Custom imports: DONE" />
 
 
 ## Supporting more Dart
@@ -162,7 +162,7 @@ bool isStatements(String code) => _tryParse(code, (Parser parser, Token token) {
 
 And thus, that is also solved.
 
-<DashImage src="images/1uemGA2TzYypx2RmooQfwmg.gif" alt="Statements and expressions: DONE" caption="Statements and expressions: DONE" />
+<DashImage src="images/1uemGA2TzYypx2RmooQfwmg.webp" alt="A user evaluates both statements and expressions in the Dart REPL." caption="Statements and expressions: DONE" />
 
 
 ## More imports
@@ -190,14 +190,14 @@ Future<PackageResolver> mergePackageConfigs(String otherPackageRoot) async {
 
 With all this, we have a full workflow implemented:
 
-<DashImage src="images/1KKIJauKlylkVMaLvhJQq9w.gif" alt="Import any library from another package: DONE" caption="Import any library from another package: DONE" />
+<DashImage src="images/1KKIJauKlylkVMaLvhJQq9w.webp" alt="A user imports a library from another package in the Dart REPL." caption="Import any library from another package: DONE" />
 
 
 ## What’s next?
 
 This was a long post… The whole proof of concept clocks in at **451 lines of code**, so almost as long as this post.
 
-<DashImage src="images/0Xn430bpRfeDmM9uF.jpg" />
+<DashImage src="images/0Xn430bpRfeDmM9uF.webp" alt="Grumpy Cat meme with the text 'THE END IS NEAR - GOOD'." />
 
 
 The code can be found on [https://github.com/BlackHC/dart_repl](https://github.com/BlackHC/dart_repl/tree/master/lib). You can give it a go easily if you have Dart installed:
@@ -208,10 +208,10 @@ pub global run dart_repl
 ```
 
 
-I really enjoyed creating this proof of concept in my spare time. All the pieces just fell into place within a couple of hours. IDE support for Dart in Intellij is excellent, and there are a ton of documentation and articles around now. Check out [Natalie Weizenbaum](https://twitter.com/nex3)’s Unboxing Packages series for example: [http://news.dartlang.org/2016/04/unboxing-packages-async-part-3.html](http://news.dartlang.org/2016/04/unboxing-packages-async-part-3.html) et al. Low-level hacking in Dart is fun, and there are great libraries to get creative with. [`code_builder`](https://github.com/dart-lang/code_builder) is looking very promising and [`built_collection`](https://github.com/google/built_collection.dart) is providing immutable collections. [David Morgan](https://twitter.com/__davidmorgan__) has also been publishing articles on [immutable collections](https://medium.com/dartlang/darts-built-collection-for-immutable-collections-db662f705eff#.kj3ubd2xj) in Dart.
+I really enjoyed creating this proof of concept in my spare time. All the pieces just fell into place within a couple of hours. IDE support for Dart in IntelliJ is excellent, and there are a ton of documentation and articles around now. Check out [Natalie Weizenbaum](https://twitter.com/nex3)’s Unboxing Packages series for example: [http://news.dartlang.org/2016/04/unboxing-packages-async-part-3.html](http://news.dartlang.org/2016/04/unboxing-packages-async-part-3.html) et al. Low-level hacking in Dart is fun, and there are great libraries to get creative with. [`code_builder`](https://github.com/dart-lang/code_builder) is looking very promising and [`built_collection`](https://github.com/google/built_collection.dart) is providing immutable collections. [David Morgan](https://twitter.com/__davidmorgan__) has also been publishing articles on [immutable collections](https://medium.com/dartlang/darts-built-collection-for-immutable-collections-db662f705eff#.kj3ubd2xj) in Dart.
 
 For `dart_repl`, it would be nice to import additional libraries at runtime without restarts. The Dart team has recently added support for hot reloading to the VM. This mainly provides a better experience in [Flutter](https://flutter.io/) for mobile app developers. Maybe, this could be used for adhoc imports and for defining functions and classes in the REPL, too.
 
 In general, Dart could be great for research and for researchers, and I would absolutely love to see Jupyter support for Dart. One would only have to implement its kernel interface to make such a Dart REPL compatible with it… :) That should be easy, right?
 
-<DashImage src="images/00_DI8nuDDB5VwIbc.jpg" />
+<DashImage src="images/00_DI8nuDDB5VwIbc.webp" alt="Closing meme about the Dart REPL proof of concept with the text 'You Deserve A Cookie'." />

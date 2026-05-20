@@ -3,13 +3,13 @@ title: "Annotate Once: AngularDart"
 description: "Introducing Component Inheritance"
 publishDate: 2017-08-31
 author: leonsenft
-image: images/1JLI4Zv7yp3j6qSzoaGEehw.png
+image: images/1JLI4Zv7yp3j6qSzoaGEehw.webp
 category: deep-dive
 layout: blog
 ---
 
 
-<DashImage src="images/1JLI4Zv7yp3j6qSzoaGEehw.png" />
+<DashImage src="images/1JLI4Zv7yp3j6qSzoaGEehw.webp" alt="A blue origami hummingbird pollinating an orange flower." />
 
 
 AngularDart allows developers to create [components and directives](https://webdev.dartlang.org/angular/guide/architecture) by annotating class definitions with metadata. This metadata instructs the compiler to generate code necessary for dependency injection, template construction, data binding, and more.

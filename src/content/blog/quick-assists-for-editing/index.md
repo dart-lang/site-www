@@ -3,7 +3,7 @@ title: "Quick assists for editing"
 description: "Using localized refactorings to be more productive"
 publishDate: 2022-07-13
 author: bwilkerson
-image: images/0V2JRi49yUj_MkFjS.png
+image: images/0V2JRi49yUj_MkFjS.webp
 category: other
 layout: blog
 ---
@@ -21,18 +21,18 @@ You likely spend a fair bit of time declaring and initializing local variables. 
 
 If you start with the code below and place the cursor anywhere in the expression, then the lightbulb icon appears near the left edge of the editor. If you hover over it you can then click to open a menu containing the available quick assists.
 
-<DashImage src="images/0V2JRi49yUj_MkFjS.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/0V2JRi49yUj_MkFjS.webp" alt="Visual Studio Code showing the quick assist menu to extract a local variable." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/0SH7NIMTeCdgyE2Uf.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/0SH7NIMTeCdgyE2Uf.webp" alt="IntelliJ IDEA showing the quick assist menu to extract a local variable." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 Choosing the assist inserts a variable declaration, using the expression as the initializer, and selects the name of the variable so that you can either choose one of the suggested names or type your own name:
 
-<DashImage src="images/0zkIBfG56juJk2AuT.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/0zkIBfG56juJk2AuT.webp" alt="Visual Studio Code after extracting a local variable." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/0jfAvjus6m7-TCP4S.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/0jfAvjus6m7-TCP4S.webp" alt="IntelliJ IDEA after extracting a local variable." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 Pressing the enter/return key accepts the entered name.
@@ -41,18 +41,18 @@ Pressing the enter/return key accepts the entered name.
 
 If you frequently use expression bodied functions, then you’ve likely needed to convert one into a block bodied function at some point. There’s an assist for that too. For example, if you have code like the following and you place the cursor inside the arrow, you’ll see the following options:
 
-<DashImage src="images/0hp1u0YSRQsoNMaJl.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/0hp1u0YSRQsoNMaJl.webp" alt="Visual Studio Code showing the quick assist to convert an expression body to a block body." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/0Ca5bRUzZ-Y4dHkw2.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/0Ca5bRUzZ-Y4dHkw2.webp" alt="IntelliJ IDEA showing the quick assist to convert an expression body to a block body." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 Selecting “Convert to block body” rewrites the function body to look like this:
 
-<DashImage src="images/0mU7Y97eTeCILB1sr.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/0mU7Y97eTeCILB1sr.webp" alt="Visual Studio Code after converting to a block body." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/0miez1wvKHge96Ggl.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/0miez1wvKHge96Ggl.webp" alt="IntelliJ IDEA after converting to a block body." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 And, yes, there’s another assist that converts from a block body to an expression body.
@@ -74,10 +74,10 @@ void f(int a, int b, int c, int d) {
 
 and realized that you could combine the two conditions, there’s an assist for that. Put the cursor on the inner `if` and open the menu:
 
-<DashImage src="images/06C745jOIAaB-k0f-.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/06C745jOIAaB-k0f-.webp" alt="Visual Studio Code showing the quick assist to join an if statement with an outer if statement." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/09mRjNGVqm82qAeg0.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/09mRjNGVqm82qAeg0.webp" alt="IntelliJ IDEA showing the quick assist to join an if statement with an outer if statement." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 Selecting “Join ‘if’ statement with outer ‘if’ statement” rewrites the code to look like this:
@@ -110,18 +110,18 @@ class B extends A {
 
 where the constructor in the subclass passes some parameters to the superclass without modifying them, there’s a cleaner way to write the code. Put the cursor on the name of the constructor `B` and open the menu:
 
-<DashImage src="images/0PGLOLXQPGGTZFTCE.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/0PGLOLXQPGGTZFTCE.webp" alt="Visual Studio Code showing the quick assist to convert to using super parameters." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/0pfrf--11lE_B1oTf.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/0pfrf--11lE_B1oTf.webp" alt="IntelliJ IDEA showing the quick assist to convert to using super parameters." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 Selecting “Convert to using super parameters” rewrites the code to look like this:
 
-<DashImage src="images/0Lr2HLGu31CqL5JLd.png" alt="[Visual Studio Code](https://code.visualstudio.com/)" caption="[Visual Studio Code](https://code.visualstudio.com/)" />
+<DashImage src="images/0Lr2HLGu31CqL5JLd.webp" alt="Visual Studio Code after converting to super parameters." caption="[Visual Studio Code](https://code.visualstudio.com/)" />
 
 
-<DashImage src="images/0nHsQKP9Wtm1UZn6-.png" alt="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
+<DashImage src="images/0nHsQKP9Wtm1UZn6-.webp" alt="IntelliJ IDEA after converting to super parameters." caption="[IntelliJ IDEA](https://www.jetbrains.com/idea/)" />
 
 
 There are more assists available than we can cover in a single article. The next time you find yourself about to perform an edit that you do all the time, check out the context actions to see whether there’s an assist to make the task easier.

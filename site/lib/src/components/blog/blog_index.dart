@@ -8,20 +8,25 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../models/blog.dart';
+import '../../pages/atom_feed.dart';
+import '../common/material_icon.dart';
 import 'blog_card.dart';
 import 'client/blog_categories.dart';
 
 extension PostIndex on BuildContext {
-  List<({String url, Post post})> get blogPosts => pages
-      .where((page) => page.url.startsWith('/blog/'))
-      .sortedBy(
-        (page) =>
-            DateTime.tryParse(page.data.page['publishDate'] as String? ?? '') ??
-            DateTime(1970),
-      )
-      .reversed
-      .map((page) => (url: page.url, post: Post(page.data.page)))
-      .toList();
+  List<({String url, Post post})> get blogPosts {
+    final posts = <({String url, Post post})>[
+      for (final page in pages)
+        if (page.url.startsWith('/blog/'))
+          if (Post.tryParse(page.data.page) case final post?)
+            (url: page.url, post: post),
+    ];
+
+    return posts
+        .sortedBy((entry) => entry.post.dateObject)
+        .reversed
+        .toList(growable: false);
+  }
 }
 
 class BlogIndex extends StatelessComponent {
@@ -32,7 +37,21 @@ class BlogIndex extends StatelessComponent {
     final posts = context.blogPosts;
 
     return div(classes: 'blog-index', [
-      const BlogCategories(),
+      const div(classes: 'blog-index-toolbar', [
+        BlogCategories(),
+        a(
+          href: blogAtomFeedPath,
+          classes: 'blog-feed-link',
+          attributes: {
+            'type': blogAtomMimeType,
+            'title': blogAtomSubscribeTitle,
+          },
+          [
+            MaterialIcon('rss_feed'),
+            span(classes: 'blog-feed-link-label', [.text('Subscribe')]),
+          ],
+        ),
+      ]),
       div(
         id: 'blog-container',
         classes: 'blog-posts-grid',
@@ -42,6 +61,11 @@ class BlogIndex extends StatelessComponent {
             BlogCard(
               post: posts[i].post,
               url: posts[i].url,
+              priority: switch (i) {
+                0 => BlogCardPriority.featured,
+                < 5 => BlogCardPriority.high,
+                _ => BlogCardPriority.normal,
+              },
               className: i == 0
                   ? 'layout-featured'
                   : (i < 5 ? 'layout-grid' : 'layout-list'),

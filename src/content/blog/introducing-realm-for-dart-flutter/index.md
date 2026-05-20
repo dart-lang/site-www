@@ -3,7 +3,7 @@ title: "Introducing Realm for Dart & Flutter"
 description: "A case study in using Dart platform primitives to build a rich multi-platform library for Dart and Flutter apps."
 publishDate: 2023-02-09
 author: mit-mit
-image: images/1cAi4WO4IfN5Sp6WE6Ex8Ig.png
+image: images/1cAi4WO4IfN5Sp6WE6Ex8Ig.webp
 category: announcements
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 We’re excited to see MongoDB announce the general availability (GA) of Realm for Dart and Flutter today! Realm is a reactive, object-oriented, cross-platform database, popular among app developers. In other words, perfect for Dart and Flutter. So, over the past year we’ve collaborated with MongoDB to bring Realm to Dart and Flutter. Checkout the [blog post](https://www.mongodb.com/developer/products/realm/announcing-realm-flutter-sdk/) by MongoDB for details on what Realm offers, how it’s improved from their earlier previews, and what they have planned for the future. We think Realm will be a great match for Dart & Flutter developers.
 
-<DashImage src="images/1cAi4WO4IfN5Sp6WE6Ex8Ig.png" alt="Writing books to a Realm data store using Dart" caption="Writing books to a Realm data store using Dart" />
+<DashImage src="images/1cAi4WO4IfN5Sp6WE6Ex8Ig.webp" alt="Code snippet demonstrating how to write books to a Realm data store using Dart." caption="Writing books to a Realm data store using Dart" />
 
 
 In this companion post, we’ll take a peek behind the scenes to learn how Realm for Dart & Flutter is built, as a practical example of how to build new Dart-based developer SDKs.
@@ -80,7 +80,7 @@ You may notice that this output looks a lot like the output from the core dart a
 
 * The [`args`](https://pub.dev/documentation/args/latest/args/args-library.html) library has rich support for parsing raw command line arguments into options and flags
 
-* The [`command_runner`](https://pub.dev/documentation/args/latest/command_runner/command_runner-library.html) libraryprovides a structure for commands supported by the tool (e.g. install)
+* The [`command_runner`](https://pub.dev/documentation/args/latest/command_runner/command_runner-library.html) library provides a structure for commands supported by the tool (e.g. install)
 
 ## Generating the Realm model
 

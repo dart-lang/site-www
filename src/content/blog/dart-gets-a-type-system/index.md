@@ -3,13 +3,13 @@ title: "Dart gets a Type System"
 description: "Rejoice, all ye faithful, for Dart 2.0 is coming, and it has types."
 publishDate: 2017-07-04
 author: davidmorgan
-image: images/0C4V5HBaOprKmpRUh.jpg
+image: images/0C4V5HBaOprKmpRUh.webp
 category: announcements
 layout: blog
 ---
 
 
-<DashImage src="images/0C4V5HBaOprKmpRUh.jpg" />
+<DashImage src="images/0C4V5HBaOprKmpRUh.webp" alt="Two people jumping in silhouette at sunset." />
 
 
 This is Dart’s first major breaking change — hence the “2” — and it’s precisely *because* it’s a breaking change that it’s such an important development. Let’s dig into why that is. First, some Dart 1 code:

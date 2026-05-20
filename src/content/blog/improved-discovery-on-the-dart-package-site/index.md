@@ -3,7 +3,7 @@ title: "Improved discovery on the Dart package site"
 description: "Back in July we talked about our changes to the Dart package site (http://pub.dartlang.org), which included better support for analyzing…"
 publishDate: 2018-09-24
 author: mit-mit
-image: images/1wh9C-VJUKEYz4l2zpUkg4A.png
+image: images/1wh9C-VJUKEYz4l2zpUkg4A.webp
 category: announcements
 layout: blog
 ---
@@ -15,23 +15,23 @@ Back in July we talked about [our changes](https://medium.com/dartlang/getting-r
 
 The vast majority of recent & popular packages have been [migrated to support Dart 2](https://www.dartlang.org/dart-2#migration), so they are ready for [Flutter](https://flutter.io/) and [AngularDart](https://webdev.dartlang.org/angular) 5 apps. However some packages — mostly older ones not being maintained — still don’t support Dart 2. To make sure you can easily spot these, we now add Dart 2 incompatibility tags to the overview and package detail pages.
 
-<DashImage src="images/1wh9C-VJUKEYz4l2zpUkg4A.png" alt="Packages incompatible with Dart 2 are clearly marked ‘Dart 2 incompatible’" caption="Packages incompatible with Dart 2 are clearly marked ‘Dart 2 incompatible’" />
+<DashImage src="images/1wh9C-VJUKEYz4l2zpUkg4A.webp" alt="Packages incompatible with Dart 2 are clearly marked 'Dart 2 incompatible'." caption="Packages incompatible with Dart 2 are clearly marked ‘Dart 2 incompatible’" />
 
 
-Also, we anticipate that we will be archiving/discontinuing these incompatible packages in a future version of the package site, so if you are an author of a package marked ‘Dart 2 incompatible’, please consider migrating it soon!
+Also, we anticipate that we will be archiving/discontinuing these incompatible packages in a future version of the package site, so if you are an author of a package marked 'Dart 2 incompatible', please consider migrating it soon!
 
 ## Support for core libraries
 
 Dart comes with a rich set of core (standard) libraries. Developers have told us that it can be hard to remember if a particular utility function is in a core library or in a package. To help you find the API you need, searches on pub.dartlang.org now include not just published packages, but also core libraries. Search results from core libraries have **sdk** in the score circle, and the annotation **Dart core library**. If you click the entry, you go directly to the library API documentation.
 
-<DashImage src="images/1Q9oEytibPnPy23qiSliyyQ.png" alt="Search hits in SDK core libraries are included among the results" caption="Search hits in SDK core libraries are included among the results" />
+<DashImage src="images/1Q9oEytibPnPy23qiSliyyQ.webp" alt="Pub search results for json showing dart:convert above package results and marked with an sdk score badge." caption="Search hits in SDK core libraries are included among the results" />
 
 
 ## Package update feed
 
 Pub has provided an Atom feed for a while; to make this more discoverable we’ve added a direct link in the site footer.
 
-<DashImage src="images/01rSptJGr3iaTKqvb.png" />
+<DashImage src="images/01rSptJGr3iaTKqvb.webp" alt="The footer of the pub.dev website showing links to 'Dart language', 'Terms', 'Privacy', 'Help', and an RSS icon." />
 
 
 ## Scoring changes

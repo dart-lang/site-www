@@ -3,7 +3,7 @@ title: "Google Summer of Code 2021 results"
 description: "The Dart team received 92 GSoC project proposals from students around the world. Here are the results of the 3 projects we accepted."
 publishDate: 2021-10-14
 author: jonasfj
-image: images/1QswESHAF6CO9UNYCcRVKXA.png
+image: images/1QswESHAF6CO9UNYCcRVKXA.webp
 category: other
 layout: blog
 ---
@@ -33,7 +33,7 @@ After the beta release of desktop support in Flutter 2, we needed a sample app t
 
 For more details, visit [GSoC ’21: Creating a desktop sample for Flutter](https://medium.com/flutter/gsoc-21-creating-a-desktop-sample-for-flutter-7d77e74812d6).
 
-<DashImage src="images/1QswESHAF6CO9UNYCcRVKXA.png" alt="Flutter linting tool" caption="Flutter linting tool" />
+<DashImage src="images/1QswESHAF6CO9UNYCcRVKXA.webp" alt="The Flutter linting tool shows various lint rules and their descriptions." caption="Flutter linting tool" />
 
 
 ## License detection for pub.dev
@@ -54,7 +54,7 @@ Given the LICENSE file from a package, pana uses three steps to detect the SPDX 
 
 1. **Determine confidence scores:** This step ****estimates a confidence score (between [0,1] ) to the substrings found. First the substring is diffed, using [levenshtain word diff](https://github.com/google/diff-match-patch/wiki/Line-or-Word-Diffs#word-mode), against the SPDX corpus license in which it was detected. Then license is considered a match if the confidence calculated as follows is above the set threshold:
 
-<DashImage src="images/1wB7F9CgvSn7yt2Rgoj75pw.png" />
+<DashImage src="images/1wB7F9CgvSn7yt2Rgoj75pw.webp" alt="A formula for calculating the confidence score of a license match." />
 
 
 We hope this gives you some idea of the license detection process. If you want to play with the license detector, you can find it in the [pana repository](https://github.com/dart-lang/pana/tree/master/bin).

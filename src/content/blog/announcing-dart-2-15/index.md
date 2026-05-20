@@ -3,7 +3,7 @@ title: "Announcing Dart 2.15"
 description: "Fast concurrency, constructor tear-offs, improved enums, and more"
 publishDate: 2021-12-08
 author: mit-mit
-image: images/196RfgLO4RYR2ReAs8t6x5w.png
+image: images/196RfgLO4RYR2ReAs8t6x5w.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Today we’re releasing version 2.15 of the Dart SDK, featuring fast concurrency with worker isolates, a new constructor tear-off language feature, improved enum support in the dart:core library, new features for package publishers, and more.
 
-<DashImage src="images/196RfgLO4RYR2ReAs8t6x5w.png" />
+<DashImage src="images/196RfgLO4RYR2ReAs8t6x5w.webp" alt="Dart 2.15 release banner highlighting concurrency, constructor tear-offs, and pub tools." />
 
 
 ## Fast concurrency with worker isolates
@@ -178,7 +178,7 @@ On rare occasions this detection might have false positives, flagging potential 
 
 Second, we’ve added another feature for publishers that supports retracting a package version that’s already been published. When a faulty package version is published, we usually recommend publishing a new version with a minor increment that fixes the unintended issue. In rare cases — for example when you don’t have such a fix yet, or where you accidentally published a new major version but intended to publish a new minor version — you can use the new [package retraction feature](https://dart.dev/go/package-retraction) as a last resort. This functionality is available in the Admin UI on pub.dev:
 
-<DashImage src="images/19KDYm1R4x6D4S-mzL-QE2g.png" />
+<DashImage src="images/19KDYm1R4x6D4S-mzL-QE2g.webp" alt="The pub.dev Admin interface showing the option to retract a package version." />
 
 
 When a package version is retracted, the pub client no longer resolves to that version in `pub get` or `pub upgrade`. If any developers have already resolved to the retracted version (and it’s thus in their `pubspec.lock` file), they’ll see a warning the next time they run `pub`:

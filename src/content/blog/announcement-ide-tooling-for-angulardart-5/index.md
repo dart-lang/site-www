@@ -3,13 +3,13 @@ title: "Announcement: IDE Tooling for AngularDart 5"
 description: "Dart is a statically typed language which we know and love, and Dart 2 will be even more strictly typed. That is why it makes such a great…"
 publishDate: 2018-03-27
 author: mfairhurst
-image: images/1_8_-jlg2S62p_a8plKAtgg.png
+image: images/1_8_-jlg2S62p_a8plKAtgg.webp
 category: announcements
 layout: blog
 ---
 
 
-<DashImage src="images/1ZrNw6Wd0ZqQibsfXS8Gsng.png" />
+<DashImage src="images/1ZrNw6Wd0ZqQibsfXS8Gsng.webp" alt="IDE showing an AngularDart HTML template with diagnostics." />
 
 
 Dart is a statically typed language which we know and love, and Dart 2 will be even more strictly typed. That is why it makes such a great platform for the Angular framework, where components are mostly statically linked together in templates to create performant UIs.
@@ -24,63 +24,63 @@ The new analysis plugin will find many type errors inside your templates for you
 
 Here’s a misspelled member, so you don’t have to play human-spellchecker!
 
-<DashImage src="images/0Ia1RMoPF9nmaAsIJ.png" />
+<DashImage src="images/0Ia1RMoPF9nmaAsIJ.webp" alt="Template diagnostic for the misspelled length getter in an IDE." />
 
 
 And mismatched types on a component input are no longer a problem either.
 
-<DashImage src="images/0LJKT0LftQFRjuKaN.png" />
+<DashImage src="images/0LJKT0LftQFRjuKaN.webp" alt="IDE showing an error for mismatched types on a component input." />
 
 
 We can also give you errors related to `$event` variable types,
 
-<DashImage src="images/04UKHl3KVHtpV6Ysx.png" />
+<DashImage src="images/04UKHl3KVHtpV6Ysx.webp" alt="KeyboardEvent diagnostic for a misspelled event property in an IDE." />
 
 
 And we check the content you transclude inside your directives. This is one example of where we catch not only type errors but also dead code.
 
-<DashImage src="images/02nWPvm2BGmt1SGMZ.png" />
+<DashImage src="images/02nWPvm2BGmt1SGMZ.webp" alt="IDE showing an error for transcluded content inside a directive." />
 
 
 And we could go on! We catch a slew of other types of errors, both in templates, and component definitions.
 
 In addition to being highlighted in your editor, the full listing of errors is displayed in the Dart Analysis panel.
 
-<DashImage src="images/1u34uyVu2qy_7p1xfxHFnCA.png" />
+<DashImage src="images/1u34uyVu2qy_7p1xfxHFnCA.webp" alt="The Dart Analysis panel in an IDE showing 2 errors and 5 warnings, including 'Expected element decorator after whitespace'." />
 
 
 ## Autocomplete
 
 We didn’t just stop at validation! While much of the work was getting our analysis to be performant and fully well-behaved in regards to the compiler, much of the value comes from using that resolved template state to deliver you the goodness of regular Dart autocompletion in your templates:
 
-<DashImage src="images/1Qh5P6t4ccwezdMLWjAWw9Q.png" />
+<DashImage src="images/1Qh5P6t4ccwezdMLWjAWw9Q.webp" alt="IDE showing code completion for list methods in a template." />
 
 
 But we can complete more than regular Dart members — how about inputs, outputs, and HTML tags?
 
 Tags? Check.
 
-<DashImage src="images/1d3wuZHY5Ja52fe00u2jgSQ.png" />
+<DashImage src="images/1d3wuZHY5Ja52fe00u2jgSQ.webp" alt="IDE showing autocompletion for HTML tags." />
 
 
 Attributes? Check.
 
-<DashImage src="images/1UlT5D-O_rajaFS_MCyHWsA.png" />
+<DashImage src="images/1UlT5D-O_rajaFS_MCyHWsA.webp" alt="IDE showing code completion for HTML attributes such as title bindings and abort events in a template." />
 
 
 Stars? Check.
 
-<DashImage src="images/13QMba2E4BETXmoi-5bG6gQ.png" />
+<DashImage src="images/13QMba2E4BETXmoi-5bG6gQ.webp" alt="IDE showing code completion for AngularDart structural directives such as ngFor and ngIf in a template." />
 
 
 Attributes within stars? Check.
 
-<DashImage src="images/1Ep9sEzWfe9Kife8HyMjvKw.png" />
+<DashImage src="images/1Ep9sEzWfe9Kife8HyMjvKw.webp" alt="An IDE showing code completion for template inputs like 'template:' and 'trackBy:'." />
 
 
 Bonus points: Suggested tags *with* attributes within component transclusions!
 
-<DashImage src="images/1_8_-jlg2S62p_a8plKAtgg.png" />
+<DashImage src="images/1_8_-jlg2S62p_a8plKAtgg.webp" alt="IDE showing suggested tags with attributes inside component transclusions." />
 
 
 *Transclusions are a famously advanced topic within angular, so if you think you know what exactly it is that we’re suggesting, pat yourself on the back for knowing AngularDart very well.*
@@ -91,7 +91,7 @@ Suffice it to say, component APIs are much easier to follow when using our plugi
 
 Support here varies a lot more by editor, but within IntelliJ you can click through parts of Dart expressions. In other editors you may be able to navigate on even more entities such as tags and inputs/outputs.
 
-<DashImage src="images/1ceQlGeSCVnfOJqtHEITljQ.png" />
+<DashImage src="images/1ceQlGeSCVnfOJqtHEITljQ.webp" alt="IDE showing template expression navigation to relevant definitions." />
 
 
 ## How To Use

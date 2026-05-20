@@ -87,7 +87,7 @@ Get answers and connect with Dart developers.
   <Card title="General discussions" link="{{page.group}}/d/forum/misc">
     Discuss miscellaneous Dart topics.
   </Card>
-  <Card title="Dart analyzer" link="{{page.group}}/d/forum/analyzer-discuss>">
+  <Card title="Dart analyzer" link="{{page.group}}/d/forum/analyzer-discuss">
     Get help understanding the Dart analyzer.
   </Card>
 </div>

@@ -3,7 +3,7 @@ title: "Announcing verified publishers on pub.dev"
 description: "Today we’re announcing a new ‘verified publishers’ feature on pub.dev,  the Dart package repository"
 publishDate: 2019-10-10
 author: mit-mit
-image: images/0DfmB09PD2DK-pvTz.png
+image: images/0DfmB09PD2DK-pvTz.webp
 category: announcements
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Today we’re announcing a new feature on [pub.dev](https://pub.dev) (the Dart package repository): *verified publishers*. When you *use* a package that has a verified publisher, you can be sure that the publisher is who they claim to be. When you *publish* packages as a verified publisher, you get the bonus of easier package administration.
 
-<DashImage src="images/0DfmB09PD2DK-pvTz.png" />
+<DashImage src="images/0DfmB09PD2DK-pvTz.webp" alt="Release banner reading 'Announcing verified publishers for pub.dev' with a shield checkmark icon." />
 
 
 ## Increasing trust for package consumers
@@ -20,17 +20,17 @@ App developers building apps with [Flutter](https://flutter.dev) tell us that ha
 
 One of the most important selection criteria we hear from package users is *who published the package.* Verified publishers strengthen this signal by verifying the identity of the publisher, and by clearly listing the publisher identity in package search results and on package detail pages (note the blue badge next to dart.dev in the screenshots below).
 
-<DashImage src="images/0LQMWHLFUi6F7nPO1.png" alt="*Package search result showing a package that was published by a verified publisher*" caption="*Package search result showing a package that was published by a verified publisher*" />
+<DashImage src="images/0LQMWHLFUi6F7nPO1.webp" alt="Package search result showing a package that was published by a verified publisher." caption="*Package search result showing a package that was published by a verified publisher*" />
 
 
-<DashImage src="images/0GJcMpmN8bNi6H5_g.png" alt="*Package detail page showing a package that was published by a verified publisher*" caption="*Package detail page showing a package that was published by a verified publisher*" />
+<DashImage src="images/0GJcMpmN8bNi6H5_g.webp" alt="Package detail page showing a package that was published by a verified publisher." caption="*Package detail page showing a package that was published by a verified publisher*" />
 
 
 When you click the publisher, you can see a few more details, including a contact email for the publisher, a link to the publisher homepage, and a short description of the publisher. The publisher description is provided by the publisher, offering a small branding opportunity.
 
 You can also view a list of all packages published by the publisher. Below is an example from the new [dart.dev publisher](https://pub.dev/publishers/dart.dev/packages).
 
-<DashImage src="images/0Q24NUEox8eA10hVB.png" alt="*Sample package list for a publisher*" caption="*Sample package list for a publisher*" />
+<DashImage src="images/0Q24NUEox8eA10hVB.webp" alt="Package list for the verified dart.dev publisher." caption="*Sample package list for a publisher*" />
 
 
 ### Publisher verification process

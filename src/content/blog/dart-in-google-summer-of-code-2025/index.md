@@ -3,13 +3,13 @@ title: "Dart in Google Summer of Code 2025"
 description: "We’re excited to announce that the Dart project will mentor contributors (for the sixth time!) in Google Summer of Code 2025."
 publishDate: 2025-03-27
 author: jonasfj
-image: images/1qcDWuPt-Y_v3Qu5XdDH_uw.png
+image: images/1qcDWuPt-Y_v3Qu5XdDH_uw.webp
 category: other
 layout: blog
 ---
 
 
-<DashImage src="images/1qcDWuPt-Y_v3Qu5XdDH_uw.png" />
+<DashImage src="images/1qcDWuPt-Y_v3Qu5XdDH_uw.webp" alt="Google Summer of Code logo with Dash, the Dart and Flutter mascot, wearing a hat and holding a board with code on it." />
 
 
 The [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) program focuses on bringing student developers from around the world into open source software development. Google sponsors students to work with a mentoring open source organization on a 12 week (or longer) programming project during the summer. Over the past 20 years, more than 21,000 contributors have participated in Google Summer of Code.

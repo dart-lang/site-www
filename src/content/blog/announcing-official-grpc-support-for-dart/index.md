@@ -8,7 +8,7 @@ layout: blog
 ---
 
 
-<DashImage src="images/1tWFciSm58uLmvp8i_t3WaQ.png" />
+<DashImage src="images/1tWFciSm58uLmvp8i_t3WaQ.webp" alt="The gRPC logo." />
 
 
 gRPC is a high performance, open source RPC framework. It offers simple service definitions, is built on http/2, and has support for bi-directional streaming and fully integrated pluggable authentication. The gRPC framework supports a [wide range of languages](https://grpc.io/docs/), and we are happy to announce that support for the Dart language is now available in beta!Dart gRPC support works with the Dart SDK, version 1.24.3 or higher, and currently supports the [Flutter](https://flutter.io/) and [VM/Server](https://www.dartlang.org/dart-vm) platforms.
@@ -25,7 +25,7 @@ protoc --dart_out=grpc:generated -Iprotos protos/greeter.proto
 ```
 
 
-This will produce a GreeterServiceBase class in the `generated` diretory, which you then subclass to add the actual service implementation:
+This will produce a GreeterServiceBase class in the `generated` directory, which you then subclass to add the actual service implementation:
 
 
 ## Calling the server with a gRPC client

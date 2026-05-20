@@ -3,7 +3,7 @@ title: "Announcing Dart 2.14"
 description: "Apple Silicon support, and improved productivity with default lints, better tools, and new language features"
 publishDate: 2021-09-08
 author: mit-mit
-image: images/1qlsMfajTUkBw1APUpjcCZg.png
+image: images/1qlsMfajTUkBw1APUpjcCZg.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Today we’re releasing version 2.14 of the Dart SDK, the next release in our ongoing journey to make the best platform for building apps through a unique combination of portability, productivity, and robustness. This time around we have better support for Apple Silicon, and a number of productivity enhancements such as standard lints for catching errors as you write your code through code style analysis, a faster pub tool, better formatting of code with cascades, and a few small language features.
 
-<DashImage src="images/1qlsMfajTUkBw1APUpjcCZg.png" />
+<DashImage src="images/1qlsMfajTUkBw1APUpjcCZg.webp" alt="Dart 2.14 release banner highlighting Apple Silicon, shared lints, better tools, and language updates." />
 
 
 ## Apple Silicon support in the Dart SDK

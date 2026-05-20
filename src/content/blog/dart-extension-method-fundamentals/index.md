@@ -3,7 +3,7 @@ title: "Dart extension method fundamentals"
 description: "Read about the design considerations behind extension methods, a new feature landing in a future Dart SDK release"
 publishDate: 2019-11-05
 author: lrhn
-image: images/1D57vLbx-SwCUSnLXA9zHRQ.png
+image: images/1D57vLbx-SwCUSnLXA9zHRQ.webp
 category: other
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 ## Dart Extension Methods Fundamentals
 
-<DashImage src="images/1D57vLbx-SwCUSnLXA9zHRQ.png" />
+<DashImage src="images/1D57vLbx-SwCUSnLXA9zHRQ.webp" alt="Code snippet with extension method names and stack trace comments next to the Dart logo." />
 
 
 In a future release, the Dart language is adding a new feature, *extension methods*, which allows you to (pretend to) add new members to existing types. An extension method can be invoked just like a normal method, `o.extensionMethod(42)`, even though it really is just a static function.

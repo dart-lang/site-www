@@ -3,13 +3,13 @@ title: "Dart declaration-site variance"
 description: "A deep dive into an experimental feature"
 publishDate: 2019-12-19
 author: kallentu
-image: images/0XcEdm2vmIBW8Wovr.png
+image: images/0XcEdm2vmIBW8Wovr.webp
 category: deep-dive
 layout: blog
 ---
 
 
-<DashImage src="images/0XcEdm2vmIBW8Wovr.png" />
+<DashImage src="images/0XcEdm2vmIBW8Wovr.webp" alt="Graphic showing Dart declaration-site variance." />
 
 
 Declaration-site variance was my internship project on the Dart team, and I’ve documented my personal experience on the team in the article [Life as a Dart intern](https://medium.com/dartlang/life-as-a-dart-intern-a62cb8db2414). As the primary implementer of the [declaration-site variance feature](https://github.com/dart-lang/language/issues/524), I want to share the usages and benefits of sound variance.

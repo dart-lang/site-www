@@ -3,7 +3,7 @@ title: "AngularDart, Flutter, and the web: Spring update"
 description: "Adjusting our investment for Dart’s open source web frameworks"
 publishDate: 2021-05-12
 author: timsneath
-image: images/1TnLjhbuMnphc4ZlsuSdtog.png
+image: images/1TnLjhbuMnphc4ZlsuSdtog.webp
 category: other
 layout: blog
 ---
@@ -26,7 +26,7 @@ Angular itself continues to grow quickly. In the last year, [weekly downloads ha
 
 For developers who want to use Dart, we think Flutter’s web support will be an exciting choice. As an early example, [PropOps](https://propops.com/en/) — a tech startup in the real estate space—has had great success building a line-of-business app with Flutter, as the screenshots below demonstrate:
 
-<DashImage src="images/1TnLjhbuMnphc4ZlsuSdtog.png" alt="PropOps: a cloud-based property management tool, built with Flutter’s web support." caption="PropOps: a cloud-based property management tool, built with Flutter’s web support." />
+<DashImage src="images/1TnLjhbuMnphc4ZlsuSdtog.webp" alt="Screenshots of PropOps, a cloud-based property management tool built with Flutter's web support." caption="PropOps: a cloud-based property management tool, built with Flutter’s web support." />
 
 
 In the next few weeks, we’ll deliver a stable external release of AngularDart with null safety; at that point, it will shift into maintenance mode. If a committed consortium or community group wants to take over leadership of the project and continue to evolve it, we’re interested in hearing from them.

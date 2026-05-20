@@ -3,13 +3,13 @@ title: "Making Dart a Better Language for UI"
 description: "On the Dart team, we are busy implementing a handful of language changes that I’m really excited about. They all relate to collection…"
 publishDate: 2019-03-19
 author: munificent
-image: images/14PIeARfthvxtn0cvBB5MPw.jpeg
+image: images/14PIeARfthvxtn0cvBB5MPw.webp
 category: other
 layout: blog
 ---
 
 
-<DashImage src="images/14PIeARfthvxtn0cvBB5MPw.jpeg" />
+<DashImage src="images/14PIeARfthvxtn0cvBB5MPw.webp" alt="Close-up of Dart UI code showing a Widget build method." />
 
 
 On the [Dart](https://www.dartlang.org/) team, we are busy implementing a handful of language changes that I’m really excited about. They all relate to collection literals, the built-in syntax for creating lists, maps, and sets:

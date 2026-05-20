@@ -3,7 +3,7 @@ title: "Dart diagnostic messages"
 description: "Understanding error and warning messages from the Dart analyzer"
 publishDate: 2021-11-11
 author: bwilkerson
-image: images/1kUNsHzJZkZNRysNJmbNTdw.png
+image: images/1kUNsHzJZkZNRysNJmbNTdw.webp
 category: deep-dive
 layout: blog
 ---
@@ -13,17 +13,17 @@ Have you ever seen an error message and wondered what it means and what you shou
 
 Let’s take a fairly common example. There’s a problem in the following code:
 
-<DashImage src="images/1KDUXUtf0E8hb0kZBeIUdSA.png" />
+<DashImage src="images/1KDUXUtf0E8hb0kZBeIUdSA.webp" alt="A Dart code snippet showing a compilation error for an unchecked use of a nullable value." />
 
 
 In IntelliJ IDEA, the message is visible in the Dart Analysis view:
 
-<DashImage src="images/1mjwyDt_bsYpTZBPwLbFhwg.png" />
+<DashImage src="images/1mjwyDt_bsYpTZBPwLbFhwg.webp" alt="Dart Analysis view in IntelliJ IDEA displaying an unchecked use of nullable value diagnostic message." />
 
 
 In Visual Studio Code, the problem message appears in the Problems panel:
 
-<DashImage src="images/1XTJeTrWGGKzxfQv41qVfug.png" />
+<DashImage src="images/1XTJeTrWGGKzxfQv41qVfug.webp" alt="A screenshot showing the Problems panel in Visual Studio Code with the problem message." />
 
 
 It seems odd that there’s a problem because we just checked that `values` isn’t `null`on the line above.
@@ -34,7 +34,7 @@ The message tells us what’s wrong, but it doesn’t really help us understand 
 
 If you hover over the highlighted text you can get more information:
 
-<DashImage src="images/1m2K6XXsAfB7gK0oBPGNwag.png" />
+<DashImage src="images/1m2K6XXsAfB7gK0oBPGNwag.webp" alt="A screenshot displaying hover text over the diagnostic message with context and correction information." />
 
 
 The hover includes the message we saw above (which we call the *problem message*), but it also includes other useful information:
@@ -49,7 +49,7 @@ The context message includes the URL of additional documentation related to type
 
 Although the Dart Analysis view displays only the problem message, double-clicking the message navigates you to the text with the red squiggly underline where the problem is being reported. For other useful features, bring up the context menu:
 
-<DashImage src="images/1KUQaTyshPTkO9eF0Rdxe2w.png" />
+<DashImage src="images/1KUQaTyshPTkO9eF0Rdxe2w.webp" alt="IDE context menu showing Jump to Source and Open Documentation options." />
 
 
 With the context menu, you can navigate to either the location where the diagnostic was reported (using **Jump to Source**, which works just like double-clicking the problem message) or to the declaration of `values` (using the menu item labeled by the context message). Selecting **Open Documentation** opens the external documentation about the diagnostic.
@@ -58,7 +58,7 @@ With the context menu, you can navigate to either the location where the diagnos
 
 In Visual Studio Code there are two ways to see the extra information. The first is to expand the entry in the Problems panel:
 
-<DashImage src="images/1qsXBZQMBgk6W5WaUBOQ_bA.png" />
+<DashImage src="images/1qsXBZQMBgk6W5WaUBOQ_bA.webp" alt="A screenshot showing an expanded entry in the Problems panel displaying context and correction messages." />
 
 
 The first line is the message we saw before (which we call the *problem message*). Double-clicking either the first or second line navigates you to the text with the red squiggly underline where the problem is.
@@ -69,7 +69,7 @@ The third line is a *context message* that explains why the null comparison wasn
 
 You can also see this information by hovering over the highlighted text, which causes hover text to be opened:
 
-<DashImage src="images/1kUNsHzJZkZNRysNJmbNTdw.png" />
+<DashImage src="images/1kUNsHzJZkZNRysNJmbNTdw.webp" alt="A screenshot demonstrating hover text in Visual Studio Code revealing additional problem details." />
 
 
 The hover text contains the same information as the Problems panel. It contains a link to take you to the external documentation and another link to navigate to the declaration of `values`.
@@ -78,7 +78,7 @@ The hover text contains the same information as the Problems panel. It contains 
 
 The command-line analyzer `dart analyze` can display the same information as the IDEs, but you need to use the`--verbose`flag to see all of it.
 
-<DashImage src="images/1GtSPY3IoZDeGkfkolrXO7A.png" />
+<DashImage src="images/1GtSPY3IoZDeGkfkolrXO7A.webp" alt="A terminal output screenshot demonstrating the detailed diagnostic messages provided by the dart analyze --verbose command." />
 
 
 ### Summary

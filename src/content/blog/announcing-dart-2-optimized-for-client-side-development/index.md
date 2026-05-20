@@ -3,13 +3,13 @@ title: "Announcing Dart 2: Optimized for Client-Side Development"
 description: "Today, we’re announcing Dart 2, a reboot of the language to be uniquely optimized for client-side development for web and mobile."
 publishDate: 2018-02-22
 author: asandholm
-image: images/1E9T7YsI_ZU8gk4CewQg_QA.jpeg
+image: images/1E9T7YsI_ZU8gk4CewQg_QA.webp
 category: releases
 layout: blog
 ---
 
 
-<DashImage src="images/1E9T7YsI_ZU8gk4CewQg_QA.jpeg" />
+<DashImage src="images/1E9T7YsI_ZU8gk4CewQg_QA.webp" alt="A plush version of Dash, the blue mascot of Dart and Flutter. She has a long, brown beak and a tag attached that says 'Dart'." />
 
 
 Today, we’re announcing [Dart 2](http://dartlang.org), a reboot of the language to embrace our vision of Dart: as a language uniquely optimized for client-side development for web and mobile.

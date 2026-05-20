@@ -3,7 +3,7 @@ title: "Announcing Dart 2.12"
 description: "Sound null safety and Dart FFI ship to the stable channel."
 publishDate: 2021-03-03
 author: mit-mit
-image: images/0Inj4APQIAA4gVCxK.png
+image: images/0Inj4APQIAA4gVCxK.webp
 category: releases
 layout: blog
 ---
@@ -11,14 +11,14 @@ layout: blog
 
 Today we’re announcing Dart 2.12, featuring stable versions of [sound null safety](https://dart.dev/null-safety) and [Dart FFI](https://dart.dev/guides/libraries/c-interop). Null safety is our latest major productivity feature, intended to help you avoid null errors, a class of bugs that are often hard to spot, as detailed in [this video introduction](https://www.youtube.com/watch?v=iYhOU9AuaFs&feature=emb_logo). FFI is an interoperability mechanism that lets you invoke existing code written in the C programming language, such as calling Windows [Win32 APIs](https://pub.dev/packages/win32). Dart 2.12 is available today.
 
-<DashImage src="images/0Inj4APQIAA4gVCxK.png" />
+<DashImage src="images/0Inj4APQIAA4gVCxK.webp" alt="Dart 2.12 release banner highlighting sound null safety and Dart FFI." />
 
 
 ## The Dart platform’s unique capabilities
 
 Before we look at sound null safety and FFI in detail, let’s discuss how they fit into our goals with the Dart platform. Programming languages tend to share a lot of capabilities. For example, many languages support object-oriented programming or running on the web. What really sets languages apart is their unique combination of capabilities.
 
-<DashImage src="images/0msUXfhSNTNzP4wkf.png" />
+<DashImage src="images/0msUXfhSNTNzP4wkf.webp" alt="A graphic showing three key pillars of the Dart platform: Portable, Productive, and Robust." />
 
 
 Dart’s unique capabilities span three dimensions:
@@ -53,7 +53,7 @@ if (globals.platform.isMacOS) {
 
 Can you spot the error? Because `version` can be null, both `major` and `minor` can be null also. This bug might seem easy to spot here in isolation, but in practice code like this slips through all the time, even with a rigorous code review process like the one used in the Flutter repo. With null safety, static analysis catches this issue immediately. ([Try it live in DartPad](https://dartpad.dev/0e9797be7488d8ec6c3fca92b7f2740f?null_safety=true).)
 
-<DashImage src="images/0jl-o2KmcMjj777Iu.png" alt="Screenshot of analysis output in an IDE" caption="Screenshot of analysis output in an IDE" />
+<DashImage src="images/0jl-o2KmcMjj777Iu.webp" alt="IDE analysis output for Dart null safety issues." caption="Screenshot of analysis output in an IDE" />
 
 
 That was a pretty simple error. During our early use of null safety in code internally at Google, we’ve seen much more intricate errors be caught. Some of these were bugs that were known for years, but where the teams hadn’t been able to find the cause without the additional static checks from null safety. Here are a few examples:
@@ -99,7 +99,7 @@ int definitelyInt(int? aNullableInt) {
 
 We’ve also added a new keyword, `required`. When a named parameter is marked as `required` (which happens a lot in Flutter widget APIs) and the caller forgets to provide the argument, then an analysis error occurs:
 
-<DashImage src="images/0U_WEQJAarjskU1k2.png" />
+<DashImage src="images/0U_WEQJAarjskU1k2.webp" alt="DartPad analysis error for a missing required parameter." />
 
 
 ## Incremental migration to null safety
@@ -108,7 +108,7 @@ Because null safety is such a fundamental change to our typing system, it would 
 
 To help you migrate existing code to null safety, we’re providing a migration tool and a [migration guide](https://dart.dev/null-safety/migration-guide). The tool starts by analyzing all of your existing code. Then you can interactively review the nullability properties that the tool has inferred. If you disagree with any of the tool’s conclusions, you can add nullability hints to change the inference. Adding a few migration hints can have a huge impact on migration quality.
 
-<DashImage src="images/0srLwqVUDeF49J_B9.png" />
+<DashImage src="images/0srLwqVUDeF49J_B9.webp" alt="Interactive dart migrate tool showing proposed null safety changes." />
 
 
 For now, new packages and apps created with [`dart create`](https://dart.dev/tools/dart-tool) and [`flutter create`](https://flutter.dev/docs/reference/flutter-cli) don’t enable sound null safety. We expect to change that in a future stable release, when we see that most of the ecosystem has migrated. You can easily [enable null safety](https://dart.dev/null-safety#create) in a newly created package or app using `dart migrate`.

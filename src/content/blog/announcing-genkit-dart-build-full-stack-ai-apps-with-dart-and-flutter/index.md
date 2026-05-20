@@ -3,7 +3,7 @@ title: "Announcing Genkit Dart: Build full-stack AI apps with Dart and Flutter"
 description: "Announcing the preview launch of Genkit Dart, an open-source AI framework for building full-stack, AI-powered apps for any platform."
 publishDate: 2026-03-10
 author: chrisraygill
-image: images/1haDapHjWrIlyQsYO-zLlLQ.jpeg
+image: images/1haDapHjWrIlyQsYO-zLlLQ.webp
 category: announcements
 layout: blog
 ---
@@ -13,7 +13,7 @@ The Dart and Flutter communities have always pushed the boundaries of what’s p
 
 We are thrilled to announce the preview launch of [**Genkit Dart**](https://genkit.dev/docs/dart/get-started/), an open-source AI framework for Dart and Flutter developers. Already available for TypeScript, Go, and Python, Genkit now empowers you to build **high-quality, full-stack, AI-powered applications for any platform**.
 
-<DashImage src="images/1haDapHjWrIlyQsYO-zLlLQ.jpeg" alt="Announcing Genkit Dart (Preview)" caption="Announcing Genkit Dart (Preview)" />
+<DashImage src="images/1haDapHjWrIlyQsYO-zLlLQ.webp" alt="Graphic for the announcement of Genkit Dart Preview." caption="Announcing Genkit Dart (Preview)" />
 
 
 ## Why choose Genkit Dart?
@@ -238,7 +238,7 @@ genkit start -- dart run bin/server.dart
 
 Here is a look at testing a more advanced version of our Trip Planner flow in the Developer UI:
 
-<DashImage src="images/1xFu0Liex2708NAi02DsTTg.png" alt="Showing the Genkit Developer UI running a flow" caption="Showing the Genkit Developer UI running a flow" />
+<DashImage src="images/1xFu0Liex2708NAi02DsTTg.webp" alt="Genkit Developer UI running a flow." caption="Showing the Genkit Developer UI running a flow" />
 
 
 ## AI coding assistance

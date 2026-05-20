@@ -3,7 +3,7 @@ title: "Life as a Dart intern"
 description: "In this companion post to “Dart declaration-site variance”, hear about an intern‘s experience with Google’s Dart team."
 publishDate: 2019-12-19
 author: kallentu
-image: images/06Ct-NyRGmYp_bmgp.png
+image: images/06Ct-NyRGmYp_bmgp.webp
 category: other
 layout: blog
 ---
@@ -33,7 +33,7 @@ I started each workday at 9 am. Scrambled eggs, sausages, kale, and orange juice
 
 I often worked on different components in parallel with one another. It kept me busy and I enjoyed organizing goals. Every morning I would create a new document that would list out what I wanted to accomplish, breaking down the goals into manageable tasks.
 
-<DashImage src="images/06Ct-NyRGmYp_bmgp.png" alt="A typical to-do list" caption="A typical to-do list" />
+<DashImage src="images/06Ct-NyRGmYp_bmgp.webp" alt="October 31 to-do list for variance work with many tasks crossed out and links to landed changes." caption="A typical to-do list" />
 
 
 At night, the Google office in Aarhus, Denmark, was active. Knowing that I had to work with a couple of engineers from Denmark, I often wrote up my questions, finalized them and sent them off late at night in Seattle. Code review times shifted forward 9 hours, but fortunately the time offset also let me proofread my own work more often before it was critiqued.

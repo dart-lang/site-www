@@ -3,7 +3,7 @@ title: "Implementing structs by value in Dart FFI"
 description: "A deep dive into API design and native calling conventions."
 publishDate: 2021-06-08
 author: dcharkes
-image: images/0SfIpbC1E-Ysaewzs.png
+image: images/0SfIpbC1E-Ysaewzs.webp
 category: deep-dive
 layout: blog
 ---
@@ -345,7 +345,7 @@ Getting any of this wrong will likely lead to segmentation faults at runtime. So
 
 Because the documentation is very terse, we figured out many corner cases through the compiler explorer [godbolt.org](https://godbolt.org). The compiler explorer shows C code and compiled assembly [side by side](https://godbolt.org/z/17jzjv):
 
-<DashImage src="images/0SfIpbC1E-Ysaewzs.png" />
+<DashImage src="images/0SfIpbC1E-Ysaewzs.webp" alt="Compiler Explorer showing C code and compiled assembly side by side." />
 
 
 The preceding screenshot shows that on Windows x86 `sizeof(Struct3Bytes)` is 3 bytes, because 3 is moved into the return register `eax`.

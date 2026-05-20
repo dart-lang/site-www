@@ -3,7 +3,7 @@ title: "Announcing Dart 2.3: Optimized for building user interfaces"
 description: "Today we’re announcing the stable release of the Dart 2.3 SDK, with new language features that improve your coding experience when…"
 publishDate: 2019-05-08
 author: mit-mit
-image: images/0iKWVPoE5aSiCI-mW.png
+image: images/0iKWVPoE5aSiCI-mW.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Today we’re announcing the stable release of the Dart 2.3 SDK, with new language features that improve your coding experience when developing user interfaces, new tooling support for developing Flutter UI, and two new websites: [dart.dev](https://dart.dev) & [pub.dev](https://pub.dev).
 
-<DashImage src="images/0iKWVPoE5aSiCI-mW.png" />
+<DashImage src="images/0iKWVPoE5aSiCI-mW.webp" alt="Dart 2.3 release banner highlighting UI language support, IDE support, and the new dart.dev and pub.dev websites." />
 
 
 ## Dart’s momentum
@@ -73,14 +73,14 @@ We’d also like to extend our gratitude to the developers who participated in t
 
 In keeping with Dart 2.3’s UI theme, we’ve also added a new UI Guides feature to our IDE support. UI Guides are horizontal and vertical lines drawn within UI code, making it much easier to see the tree structure of Flutter UI build() methods. Here’s an example (from a Calculator app) where the UI Guides clearly illustrate that the UI is built from an Expanded Column containing several KeyRows, each of which contains NumberKeys.
 
-<DashImage src="images/1CsGJu4iSvHzspALjfbQRfA.png" alt="IDE with UI Guides visualizing the tree structure of UI code" caption="IDE with UI Guides visualizing the tree structure of UI code" />
+<DashImage src="images/1CsGJu4iSvHzspALjfbQRfA.webp" alt="IDE with Flutter UI Guides visualizing the tree structure of UI code." caption="IDE with UI Guides visualizing the tree structure of UI code" />
 
 
 UI Guides are available in [version 35.2](https://plugins.jetbrains.com/plugin/9212-flutter) of the IntelliJ IDEA and Android Studio plugin. To enable the feature, choose the setting *Preferences &gt; Languages & Frameworks &gt; Flutter &gt; UI Guides*. We hope to offer similar support in VS Code in a later release.
 
 Finally, we’ve observed that developers often use code completion in their IDE as a way of exploring APIs. Code completion has worked well for exploring the APIs in the libraries that you’ve already imported, but it hasn’t been available for APIs in libraries that aren’t yet imported. Our tools can now support the latter use case: you can invoke code completion on any prefix, and you’ll see completions for all APIs in the current package, the packages it directly depends on, and the SDK. If you choose a completion from a not-yet-imported library (marked *Auto import*, as the following animation shows), then the tool adds the import statement for you.
 
-<DashImage src="images/0fqBkEGgVtWMT1QRy.gif" alt="Animation showing code completion & automatic import adding" caption="Animation showing code completion & automatic import adding" />
+<DashImage src="images/0fqBkEGgVtWMT1QRy.webp" alt="An animated GIF showing code completion and automatic import insertion in an IDE." caption="Animation showing code completion & automatic import adding" />
 
 
 This new auto-import feature is available in VS Code with the [v2.26 plugin](https://dartcode.org/releases/v2-26/), in IntelliJ 2019.1, and the upcoming Android Studio 3.5 release.
@@ -89,7 +89,7 @@ This new auto-import feature is available in VS Code with the [v2.26 plugin](htt
 
 Last, but certainly not least, we’ve been very busy the last few months building a new website for the Dart platform: [dart.dev](https://dart.dev)
 
-<DashImage src="images/1ydTSALWV77UbB3WHKsy9cg.png" alt="Redesigned [https://dart.dev](https://dart.dev) homepage" caption="Redesigned [https://dart.dev](https://dart.dev) homepage" />
+<DashImage src="images/1ydTSALWV77UbB3WHKsy9cg.webp" alt="Redesigned dart.dev homepage." caption="Redesigned [https://dart.dev](https://dart.dev) homepage" />
 
 
 This new site features an entirely new landing page, focused on explaining the core benefits of the Dart platform. We’ve also updated the documentation pages to have better navigation and more visual appeal. Lastly, we’ve done a huge reorganization of all content to make discovery easier, and added new pages for core content that was missing before.

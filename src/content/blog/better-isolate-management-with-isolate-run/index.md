@@ -3,13 +3,13 @@ title: "Better isolate management with Isolate.run()"
 description: "Dart 2.19 introduces a new function that makes implementing concurrency as simple as a single line of code."
 publishDate: 2023-01-24
 author: mbelanger
-image: images/0Bt-V4nlGjNKquFhK.png
+image: images/0Bt-V4nlGjNKquFhK.webp
 category: deep-dive
 layout: blog
 ---
 
 
-<DashImage src="images/0Bt-V4nlGjNKquFhK.png" alt="A benchmark test showcasing the speed of the new Isolate.run() function" caption="A benchmark test showcasing the speed of the new Isolate.run() function" />
+<DashImage src="images/0Bt-V4nlGjNKquFhK.webp" alt="A benchmark test showcasing the speed of the new Isolate.run() function." caption="A benchmark test showcasing the speed of the new Isolate.run() function" />
 
 
 All Dart code runs in isolates. Whether you implement multiple isolates to enable [concurrency](https://dart.dev/guides/language/concurrency) in your Dart programs is up to you. *How* you can implement multiple isolates is up to us on the Dart team, and in Dart 2.19, we’ve made a huge upgrade to the process that we’re excited to share. Meet `Isolate.run()`!
@@ -22,7 +22,7 @@ To appreciate how much of an improvement `run()` is, this article breaks down th
 
 Isolates are a fairly straightforward concept. An [isolate](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a) is essentially a single thread of execution in Dart. They let you execute parts of your code in parallel. You can start new parallel executions (as many as you want) and tell them what to do, right from `main` (the main thread, or [main isolate](https://dart.dev/guides/language/concurrency#the-main-isolate)). Isolates don’t share memory; instead, they pass messages back and forth to communicate. So, you don’t have to worry about typical multithreading problems, like race conditions, or mutexes and locks.
 
-<DashImage src="images/0eCogwJXZtpbg5Hbq.png" />
+<DashImage src="images/0eCogwJXZtpbg5Hbq.webp" alt="A diagram illustrating how isolates communicate through message passing without sharing memory." />
 
 
 Sounds great! But how do you use them? Before `Isolate.run()`, that’s where things became tricky.
@@ -169,7 +169,7 @@ In any case, you’d want to put `spawn` in a `try` block to check if sending th
 
 ```
 
-Providing a bare minimum of error handling ensures that the result port is always closed, and `_spawnAndReceieve` always completes, no matter how the spawned isolate exits. You could also make things *nicer*, for example, by catching and sending errors and stack traces back as actual objects, not just strings like the `onError` handler.
+Providing a bare minimum of error handling ensures that the result port is always closed, and `_spawnAndReceive` always completes, no matter how the spawned isolate exits. You could also make things *nicer*, for example, by catching and sending errors and stack traces back as actual objects, not just strings like the `onError` handler.
 
 Error handling obviously introduces a lot of variation, and with it the mental overhead of deciding how to approach it and what to factor for. It’s understandable that it’s commonly left out of primitive isolate setup.
 

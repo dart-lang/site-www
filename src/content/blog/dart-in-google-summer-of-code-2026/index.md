@@ -3,13 +3,13 @@ title: "Dart in Google Summer of Code 2026"
 description: "We’re excited to announce that the Dart project will mentor contributors for the seventh time in Google Summer of Code 2026!"
 publishDate: 2026-03-05
 author: jonasfj
-image: images/1iPTqUuppL1UCAJ8OWAcWhg.png
+image: images/1iPTqUuppL1UCAJ8OWAcWhg.webp
 category: other
 layout: blog
 ---
 
 
-<DashImage src="images/1iPTqUuppL1UCAJ8OWAcWhg.png" />
+<DashImage src="images/1iPTqUuppL1UCAJ8OWAcWhg.webp" alt="Dash relaxes under a beach umbrella with a laptop while a Google Summer of Code sun icon hangs overhead." />
 
 
 The [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) program focuses on bringing student developers from around the world into open source software development. Google sponsors students to work with a mentoring open source organization on a 12-week (or longer) programming project during the summer. Over the past 21 years, more than 22,000 contributors have participated in Google Summer of Code.

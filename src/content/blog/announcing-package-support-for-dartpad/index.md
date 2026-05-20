@@ -3,7 +3,7 @@ title: "Announcing package support for DartPad"
 description: "Create robust code snippets with popular packages in DartPad"
 publishDate: 2021-11-15
 author: zoeyfan
-image: images/05iMRgkKlQGK6fJx3.png
+image: images/05iMRgkKlQGK6fJx3.webp
 category: announcements
 layout: blog
 ---
@@ -23,7 +23,7 @@ Start using a package by adding an import statement for it at the top of the cod
 
 DartPad handles the pubspec details for you, so all you need is the import statement. You can use suggested completions to change fonts and then rerun the app, just like you would in an IDE.
 
-<DashImage src="images/05iMRgkKlQGK6fJx3.png" />
+<DashImage src="images/05iMRgkKlQGK6fJx3.webp" alt="DartPad example using the google_fonts package." />
 
 
 ## How package support works
@@ -34,7 +34,7 @@ This release also supports the most popular Firebase packages, so you can access
 
 Here’s a [simple chat app](https://dartpad.dev/?id=d57c6c898dabb8c6fb41018588b8cf73&null_safety=true) that uses Firebase:
 
-<DashImage src="images/05QSzuPZeeo3tb0R1.png" />
+<DashImage src="images/05QSzuPZeeo3tb0R1.webp" alt="Basic chat app built with Firebase in DartPad." />
 
 
 This multi-user chat app is implemented with only client-side Dart code running (and written) in the browser, and uses the Firestore database to share messages between users. While it might seem dangerous to open your database directly to users, it’s actually secured by only allowing chat messages that use a very specific set of words. Read the comments in [the code](https://gist.github.com/flutterdevrelgists/d57c6c898dabb8c6fb41018588b8cf73) to learn more about how it works.
@@ -45,7 +45,7 @@ To expand the chat app, you could implement sign-in to identify who said what by
 
 This first phase of the rollout supports a defined set of popular packages. To see what packages are available (and in what version), click the info icon at the lower right corner of the screen.
 
-<DashImage src="images/0GiZCsPVISutlBMSG.png" />
+<DashImage src="images/0GiZCsPVISutlBMSG.webp" alt="A screenshot showing the info icon in DartPad that lists available packages." />
 
 
 ## Give it a try!

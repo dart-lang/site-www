@@ -3,13 +3,13 @@ title: "Gradual null safety migration for large Dart projects"
 description: "Dart null-safety migration is a 1-2 hour effort for a simple, small package but can be a months-long marathon for a large project. Ideally…"
 publishDate: 2022-03-31
 author: polina-c
-image: images/16-SfhIoFLl1NPaNi8Ld8Og.png
+image: images/16-SfhIoFLl1NPaNi8Ld8Og.webp
 category: other
 layout: blog
 ---
 
 
-<DashImage src="images/16-SfhIoFLl1NPaNi8Ld8Og.png" />
+<DashImage src="images/16-SfhIoFLl1NPaNi8Ld8Og.webp" alt="Dart logo stamped with the words 'Null Safe'." />
 
 
 [Dart null-safety migration](https://dart.dev/null-safety/migration-guide) is a 1-2 hour effort for a simple, small package but can be a months-long marathon for a large project. Ideally, you want to migrate your project gradually — during the marathon you want to keep your project growable, maintainable, and easy to release.

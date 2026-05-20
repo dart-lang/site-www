@@ -3,7 +3,7 @@ title: "Dart string manipulation done right 👉"
 description: "Does your app use emojis or support multiple languages? Dart just introduced a new way to safely handle them in string manipulation."
 publishDate: 2020-06-30
 author: taodong
-image: images/1H_-SP7V6x1cQpGM_6DUReg.png
+image: images/1H_-SP7V6x1cQpGM_6DUReg.webp
 category: deep-dive
 layout: blog
 ---
@@ -13,7 +13,7 @@ Like many other programming languages designed before emojis started to dominate
 
 Consider this example:
 
-<DashImage src="images/1H_-SP7V6x1cQpGM_6DUReg.png" />
+<DashImage src="images/1H_-SP7V6x1cQpGM_6DUReg.webp" alt="Diagram showing how the string 'Hello 👋' is mapped to UTF-16 code units." />
 
 
 In the string “Hello👋”, each user-perceivable character is mapped to a single code unit except the waving hand emoji 👋. An immediate consequence of this mapping is confusion over the length of this string. Will the output of the following line of code be 6 or 7?

@@ -3,7 +3,7 @@ title: "A brand new DartPad.dev with Flutter support"
 description: "Today, we’re announcing a major upgrade of DartPad.dev with a fresh new look-and-feel and support for the popular Flutter UI toolkit."
 publishDate: 2019-12-04
 author: johnpryan
-image: images/1X7Sild_wdEFGRYaSk2C3Og.gif
+image: images/1X7Sild_wdEFGRYaSk2C3Og.webp
 category: announcements
 layout: blog
 ---
@@ -11,31 +11,31 @@ layout: blog
 
 Today we’re announcing a major upgrade of [DartPad.dev](https://dartpad.dev) with a fresh new look-and-feel and support for the popular [Flutter](https://flutter.dev/) UI toolkit. DartPad is our online editor that runs Dart programs directly in your browser, and now it runs Flutter apps too.
 
-<DashImage src="images/1X7Sild_wdEFGRYaSk2C3Og.gif" />
+<DashImage src="images/1X7Sild_wdEFGRYaSk2C3Og.webp" alt="The DartPad interface running a Flutter application." />
 
 
 ## Make something today
 
 To create a new Flutter project, click the **New Pad** button and choose **Flutter**.
 
-<DashImage src="images/1Sd404nMeJmYEgbPpE7HN7g.gif" />
+<DashImage src="images/1Sd404nMeJmYEgbPpE7HN7g.webp" alt="An animation showing how to create a new Flutter project in DartPad." />
 
 
 This adds some starter code to the editor and runs it. Any time that DartPad sees that you’re using `package:flutter`, a panel comes up to display the UI. Or use the **Samples** menu to find a Flutter sample.
 
-<DashImage src="images/1CONdjdCgZJH6oN7B4tjA5w.png" />
+<DashImage src="images/1CONdjdCgZJH6oN7B4tjA5w.webp" alt="The DartPad samples menu displaying various Dart and Flutter examples." />
 
 
 ## Features
 
 All of Flutter’s core libraries, like [cupertino](https://api.flutter.dev/flutter/cupertino/cupertino-library.html) and [material](https://api.flutter.dev/flutter/material/material-library.html), are available to use, and DartPad can display their documentation. Select a symbol to see the documentation in the bottom panel.
 
-<DashImage src="images/1pjBKPqejQhVga2yXYWWigw.gif" />
+<DashImage src="images/1pjBKPqejQhVga2yXYWWigw.webp" alt="An animation showing documentation for the AppBar widget displayed in DartPad's bottom panel." />
 
 
 DartPad formats code using the Dart formatter ([dartfmt](https://github.com/dart-lang/dart_style)), offers assists, provides fixes, suggests auto-completions, and shows errors and warnings.
 
-<DashImage src="images/1f-DNPnkA6gB5wkT_TVVpSQ.gif" />
+<DashImage src="images/1f-DNPnkA6gB5wkT_TVVpSQ.webp" alt="An animation of DartPad's code completion and code assist support." />
 
 
 When you’re ready to share your snippet, you can [create a GitHub gist](https://help.github.com/en/github/writing-on-github/creating-gists) and put the gist ID in a URL like this: `https://dartpad.dev/&lt;GistID&gt;`. You can share this link in a bug report, in a StackOverflow question, or on your social media platform of choice. Check out the [sharing guide](https://github.com/dart-lang/dart-pad/wiki/Sharing-Guide) for more details.

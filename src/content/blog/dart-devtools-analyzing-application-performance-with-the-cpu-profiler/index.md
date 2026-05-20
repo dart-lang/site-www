@@ -3,7 +3,7 @@ title: "Dart DevTools: Analyzing application performance with the CPU Profiler"
 description: "Whether you’re a backend developer writing a command line tool using Dart, or a UX engineer building applications with Flutter, program performance is critical to the success of your project. Command line tools should minimize latency and apps should be responsive and snappy with no dropped frames. As developers, we try our best to write performant code but sometimes it’s not clear why our code isn’t performing as well as we would expect."
 publishDate: 2023-06-12
 author: bkonyi
-image: images/04btaxCBW8Btx71RM.png
+image: images/04btaxCBW8Btx71RM.webp
 category: deep-dive
 layout: blog
 ---
@@ -149,7 +149,7 @@ Once a thread has been interrupted, the CPU profiler [collects a sample](https:/
 
 The collected stack trace consists of a list of program counters (PCs), which correspond to the return addresses of each Dart and native function found on the stack. These PCs are collected through a process known as “walking the stack”. While performing a [stack walk](https://github.com/dart-lang/sdk/blob/bbacf39e9c1085650b5f2a180285792ad0dd76d9/runtime/vm/profiler.cc#L208), the stack walker uses the top frame’s frame pointer (FP) and the known layout of each stack frame to find and record the PC associated with the function as well as the FP of the previous stack frame. The stack walker repeats this process, using the previous frame’s FP as a starting point, until it reaches the end of the stack as shown in Figure 1.
 
-<DashImage src="images/1manGRq62JBgJER8ufYlAfA.png" alt="***Figure 1: An example of stack trace collection on an ARM64 system. The stack walker starts at `FP(N+1)`, retrieves the program counter (PC) from address FP(N+1) + 0x10, and adds it to the stack trace as Frame 0. The stack walker then looks up FP(N) from address FP(N+1) + 0x8, repeating the same procedure using FP(N) to look up details for Frame 1.***" caption="***Figure 1: An example of stack trace collection on an ARM64 system. The stack walker starts at `FP(N+1)`, retrieves the program counter (PC) from address FP(N+1) + 0x10, and adds it to the stack trace as Frame 0. The stack walker then looks up FP(N) from address FP(N+1) + 0x8, repeating the same procedure using FP(N) to look up details for Frame 1.***" />
+<DashImage src="images/1manGRq62JBgJER8ufYlAfA.webp" alt="A diagram showing an example of stack trace collection on an ARM64 system." caption="***Figure 1: An example of stack trace collection on an ARM64 system. The stack walker starts at `FP(N+1)`, retrieves the program counter (PC) from address FP(N+1) + 0x10, and adds it to the stack trace as Frame 0. The stack walker then looks up FP(N) from address FP(N+1) + 0x8, repeating the same procedure using FP(N) to look up details for Frame 1.***" />
 
 
 Each collected sample is stored in the VM’s sample buffer, a [circular buffer](https://en.wikipedia.org/wiki/Circular_buffer) that can store a limited number of CPU samples. This allows for the VM to avoid the need for additional allocations at runtime, which can negatively impact performance or [cause bad things to happen if done in the signal handler](https://en.wikipedia.org/wiki/Signal_(IPC)#Risks).
@@ -184,7 +184,7 @@ The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/o
 ```
 
 
-<DashImage src="images/04btaxCBW8Btx71RM.png" />
+<DashImage src="images/04btaxCBW8Btx71RM.webp" alt="Dart DevTools CPU Profiler showing StringBase plus taking most of the CPU time." />
 
 
 Yikes! Of all the samples collected in a period of 11.6 seconds, the isolate spent more than 90% of its CPU time executing `_StringBase.+`. It’s likely that this is related to our performance issues, but it might not be obvious what block of code in our `grep` function is the source of the slowdown. Luckily, we can further narrow down the location of the expensive calls to `_StringBase.+` using **user tags.**
@@ -239,12 +239,12 @@ void grep(File file, String pattern) {
 
 Now, let’s re-run our program and open up the CPU Profiler. To see our categorized profile, select the **Group by: User Tag** option from the dropdown:
 
-<DashImage src="images/0zxcsj31nCh14rLYa.png" />
+<DashImage src="images/0zxcsj31nCh14rLYa.webp" alt="The Group by dropdown in the CPU Profiler with User Tag selected." />
 
 
 When we expand the **Text Matching** tag, we confirm that the `_StringBase.+` method is called in our text-matching loop:
 
-<DashImage src="images/0ai9S8-Y8c_94rr6p.png" />
+<DashImage src="images/0ai9S8-Y8c_94rr6p.webp" alt="Text Matching tag expanded in the CPU Profiler, showing the StringBase plus method call." />
 
 
 With this information, we should be able to take a closer look at our code and identify the issue:
@@ -332,7 +332,7 @@ $ dart grep.dart hummingbird_encyclopedia.txt 'Hummingbird'
 
 Using `StringBuffer`, we can find all the instances of `'Hummingbird'` in about **45 seconds**. That’s much better and almost the same as the Unix `grep` implementation! Let’s take another look at the CPU profiler to see if we can improve performance further:
 
-<DashImage src="images/0dL9EpPsSbaU-Bem-.png" />
+<DashImage src="images/0dL9EpPsSbaU-Bem-.webp" alt="The CPU Profiler shows time spent primarily on printing matches rather than text matching." />
 
 
 A quick glance at the profile tells us that we spend most of our time printing matches and that the actual matching only takes about 200ms. We should focus on the code that falls under the `'Print Output'` tag:

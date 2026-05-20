@@ -3,7 +3,7 @@ title: "Announcing Dart support for GitHub Actions"
 description: "GitHub Actions is a popular offering for continuous integration (CI) for GitHub repos. Today, we’re announcing an official setup-dart…"
 publishDate: 2021-03-24
 author: mit-mit
-image: images/15E8_aBC9TBl9oBUwN3jAJw.png
+image: images/15E8_aBC9TBl9oBUwN3jAJw.webp
 category: announcements
 layout: blog
 ---
@@ -13,7 +13,7 @@ layout: blog
 
 If you author a Dart package for pub.dev, we encourage you to enable CI testing with Github Actions for your repo, to give you (and package users) a signal about whether your package is healthy. CI jobs on GitHub Actions are [free for public repos](https://github.com/pricing).
 
-<DashImage src="images/15E8_aBC9TBl9oBUwN3jAJw.png" />
+<DashImage src="images/15E8_aBC9TBl9oBUwN3jAJw.webp" alt="GitHub Marketplace page for the Setup Dart SDK action." />
 
 
 ## Introducing setup-dart
@@ -23,12 +23,12 @@ If you have a GitHub repository with a Dart app in it, you can enable CI testing
 
 Next, open the GitHub web UI, and click the **Actions** tab:
 
-<DashImage src="images/0IA24lXOJ0Zy1uwXF.png" />
+<DashImage src="images/0IA24lXOJ0Zy1uwXF.webp" alt="The Actions tab in the GitHub web UI." />
 
 
 Just below the the introduction, you should see a section suggesting a workflow for a Dart repository:
 
-<DashImage src="images/0tz1_DLk4qI1MpI4z.png" />
+<DashImage src="images/0tz1_DLk4qI1MpI4z.webp" alt="A suggested Dart workflow in the GitHub Actions UI." />
 
 
 Click the **Set up this workflow** button, and you’ll be taken to the GitHub UI for adding a new `.github/workflow/dart.yml` file. This is a YAML file that defines the GitHub Actions workflow to run in the repo. Let’s review each of the components suggested by the template [workflow](https://github.com/dart-lang/characters/blob/master/.github/workflows/test-package.yml) file.
@@ -113,7 +113,7 @@ matrix:
 
 The result of this matrix is nine separately run jobs:
 
-<DashImage src="images/0Wm1ERed37w-oyoDq.png" />
+<DashImage src="images/0Wm1ERed37w-oyoDq.webp" alt="Nine separately run test jobs resulting from the GitHub Actions matrix." />
 
 
 Now that everything is passing, you might want to [add a status badge](https://docs.github.com/en/actions/managing-workflow-runs/adding-a-workflow-status-badge) to your `README.md` file to display the test status.

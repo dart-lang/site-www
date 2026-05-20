@@ -4,7 +4,7 @@ publish_to: none
 
 resolution: workspace
 environment:
-  sdk: ^3.11.0
+  sdk: ^3.12.0-0
 
 dependencies:
   args: ^2.7.0
@@ -20,7 +20,7 @@ dependencies:
   intl: ^0.20.2
   io: ^1.0.5
   linkcheck: ^3.1.0
-  markdown: ^7.3.0
+  markdown: ^7.3.1
   path: ^1.9.1
   pub_semver: ^2.2.0
   yaml: ^3.1.3

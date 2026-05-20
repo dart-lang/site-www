@@ -3,7 +3,7 @@ title: "Dart-on-LLVM"
 description: "This is a story about an experiment to compile the Dart language using the LLVM compiler framework. On its face this is pretty pointless…"
 publishDate: 2017-01-11
 author: erikcorry
-image: images/1DN03P0ofCSyHM6UwB42Nyg.png
+image: images/1DN03P0ofCSyHM6UwB42Nyg.webp
 category: deep-dive
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 This is a story about an experiment to compile the [Dart](https://www.dartlang.org/) language using the [LLVM](http://llvm.org/) compiler framework. On its face this is pretty pointless, since
 
-<DashImage src="images/1DN03P0ofCSyHM6UwB42Nyg.png" />
+<DashImage src="images/1DN03P0ofCSyHM6UwB42Nyg.webp" alt="The Dart logo next to a metallic screw and a mechanical dragon (LLVM logo)." />
 
 
 Dart already has an excellent [virtual machine](https://www.dartlang.org/dart-vm/tools/dart-vm) which uses [just-in-time](https://en.wikipedia.org/wiki/Just-in-time_compilation) compilation to get excellent performance. Since Dart is dynamically typed (more precisely, it’s [optionally typed](https://www.dartlang.org/articles/language/optional-types)), a JIT compiler is a natural fit — it can use the types available at runtime to perform optimizations that a static compiler can’t do.
@@ -26,7 +26,7 @@ This is because, once the optimizer had munged your code, you no longer had any 
 
 New winds are blowing in LLVM-land, though. Recently, LLVM has grown some GC support in the form of the experimental [*Statepoint*](http://llvm.org/docs/Statepoints.html) feature. This has been used by various brave groups, including the people behind the [LLV8](https://github.com/ispras/llv8/wiki) experiment and [Azul](http://llvm.org/devmtg/2015-10/slides/DasReames-LLVMForAManagedLanguage.pdf), who are using it for a new top-tier compiler for their JVM.
 
-<DashImage src="images/1g6p0yM6fD_UD3rfsOWGQ-A.png" />
+<DashImage src="images/1g6p0yM6fD_UD3rfsOWGQ-A.webp" alt="The V8 engine logo next to a metallic screw and a mechanical dragon (LLVM logo)." />
 
 
 It appears that building a real VM based on LLVM has gone from being “mission impossible” to being merely “[mission difficult](https://www.youtube.com/watch?v=gJGJMi-sUS8)”. At the same time, [strong mode](https://github.com/dart-lang/dev_compiler/blob/master/STRONG_MODE.md) makes Dart more statically typed, and less dynamic. Also, we at Google are building [Flutter](https://www.youtube.com/watch?v=Mx-AllVZ1VY&t=0m29s) for iOS, where JIT compilation is banned. Both these developments align Dart better with the LLVM project’s goals and trade-offs.
@@ -63,12 +63,12 @@ The existing Dartino LLVM experiment was forked from Dartino a while back, when 
 
 We did not cherry pick the compacting old-generation support from newer Dartino versions.
 
-<DashImage src="images/1VqmfjhoN9cMWH0vz37zU6A.jpeg" />
+<DashImage src="images/1VqmfjhoN9cMWH0vz37zU6A.webp" alt="A miniature model of a street with two toy garbage trucks and toy people, symbolizing garbage collection." />
 
 
 ## Architecture
 
-<DashImage src="images/1pyM5bJo-_-i8Leum4yHPOQ.png" />
+<DashImage src="images/1pyM5bJo-_-i8Leum4yHPOQ.webp" alt="A flowchart diagram of the Dart-on-LLVM compilation pipeline from Dart source to Dartino bytecodes, LLVM bitcode, assembler, and machine code." />
 
 
 The above pipeline shows the path from Dart source to machine code. In a real implementation, the first parts would be replaced by something based on the ‘[kernel](https://github.com/dart-lang/sdk/tree/master/pkg/kernel)’ format (preparsed Dart source frontend).
@@ -136,12 +136,12 @@ The compiler still has to handle a lot of dynamic-language issues, which it does
 
 One difference to the real DartVM is that we don’t check for stack overflows and we don’t check for thread interruptions on loop back edges. Based on experience from V8 we guesstimate that fixing this could cost about 10% performance.
 
-<DashImage src="images/1_B_KUgeFwaeUxC97GBIHPw.png" />
+<DashImage src="images/1_B_KUgeFwaeUxC97GBIHPw.webp" alt="A bar chart comparing DeltaBlue, Richards, and Mini-Splay benchmark results for LLVM AOT, Dart AOT, and DartVM JIT." />
 
 
 We compare against the regular JITing DartVM, and the new ahead-of-time support that has been added to the DartVM for [Flutter](https://flutter.io/). Benchmarks are [from Dartino](https://github.com/dartino/sdk/tree/master/benchmarks).
 
-<DashImage src="images/1uB5TngqsrAvvzu_fr8KCdg.png" />
+<DashImage src="images/1uB5TngqsrAvvzu_fr8KCdg.webp" alt="A bar chart comparing 'Hello World' total run time for LLVM AOT, Dart AOT, and DartVM JIT." />
 
 
 Running a short lived program like Hello World shows mainly the time to do startup. The JIT-based system spends time compiling code, and both the non-LLVM solutions here are deserializing a data heap on startup.
@@ -165,14 +165,14 @@ For this study we have not been especially focused on getting 100% Dart compatib
 
 * Dart exception handling is fully implemented apart from the no-such-method related exceptions. For this we used the exception handling support built into LLVM, which looks adequate for the task and well aligned to Dart’s exception model (which is at heart not so different from C++, for which LLVM was designed).
 
-<DashImage src="images/14bthU0tgek2j09dJuKn-aQ.png" />
+<DashImage src="images/14bthU0tgek2j09dJuKn-aQ.webp" alt="A pie chart showing that 88.4% of Dartino tests are passing." />
 
 
 In all, we pass almost 90% of the tests that Dartino could pass. Of the ones we fail, the biggest reasons are problems with the compiler front-end and problems handling no-such-method events.
 
 Of the ca 11.6% tests that fail, here is a breakdown of why they fail:
 
-<DashImage src="images/1f_vtnoVYGfdXXqPUaGrOGw.png" />
+<DashImage src="images/1f_vtnoVYGfdXXqPUaGrOGw.webp" alt="Pie chart of failing Dartino tests: Dart2JS at 40.1%, NoSuchMethod at 37.4%, Async at 15.4%, and smaller categories." />
 
 
 ## Conclusions

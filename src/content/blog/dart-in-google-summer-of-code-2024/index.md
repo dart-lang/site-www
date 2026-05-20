@@ -3,13 +3,13 @@ title: "Dart in Google Summer of Code 2024"
 description: "The Google Summer of Code (GSoC) program focuses on bringing student developers from around the world into open source software…"
 publishDate: 2024-03-05
 author: jonasfj
-image: images/169jdaJUqgu_phIVF4w-7_A.png
+image: images/169jdaJUqgu_phIVF4w-7_A.webp
 category: other
 layout: blog
 ---
 
 
-<DashImage src="images/169jdaJUqgu_phIVF4w-7_A.png" />
+<DashImage src="images/169jdaJUqgu_phIVF4w-7_A.webp" alt="Google Summer of Code logo with Dash, the Dart and Flutter mascot, wearing a hat and holding a board with code on it." />
 
 
 The Google Summer of Code (GSoC) program focuses on bringing student developers from around the world into open source software development. Google sponsors students to work with a mentoring open source organization on a 12 week (or longer) programming project during the summer. Over the past 19 years, more than 20,000 contributors have participated in Google Summer of Code.

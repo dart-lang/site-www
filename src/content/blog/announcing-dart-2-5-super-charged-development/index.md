@@ -3,7 +3,7 @@ title: "Announcing Dart 2.5: Super-charged development"
 description: "Today we’re announcing the stable release of the Dart 2.5 SDK, which includes technical previews of two major new developer features: ML…"
 publishDate: 2019-09-10
 author: mit-mit
-image: images/0EzNuk5GmPG3-yjT4.png
+image: images/0EzNuk5GmPG3-yjT4.webp
 category: releases
 layout: blog
 ---
@@ -15,7 +15,7 @@ This release is another step toward our vision of the best client-optimized lang
 
 Speaking of our ambition to create the best client-optimized language, it was great to see the new [IEEE Spectrum Top Programming Language](https://spectrum.ieee.org/computing/software/the-top-programming-languages-2019) 2019 ratings come out this past week with Dart now included. Dart enters the IEEE Spectrum programming language ratings as #16. It’s also #10 under trending, and #6 when filtering to languages for mobile (behind Java, C, C++, C#, and Swift).
 
-<DashImage src="images/0EzNuk5GmPG3-yjT4.png" />
+<DashImage src="images/0EzNuk5GmPG3-yjT4.webp" alt="Dart ranks #16 in IEEE Spectrum's top programming languages for 2019." />
 
 
 ## Preview: ML Complete, code completions ranked by machine learning
@@ -24,15 +24,15 @@ One of the core advantages of typed programming languages is that additional inf
 
 As APIs grow, exploration becomes difficult, as the list of possible completions gets too long to browse through alphabetically. We’ve been working hard over the past year to apply machine learning to the problem. Simplified, this works by training a model of likely member occurrences based on a given context by analyzing a [large corpus of GitHub](https://console.cloud.google.com/marketplace/details/github/github-repos) open-source Dart code. This model — powered by [TensorFlow Lite](https://www.tensorflow.org/lite) — can then be used to predict the likely next symbol as the developer is editing. We’re calling this new feature *ML Complete*. Here’s an example of developing a new `MyHome` widget using the [Flutter](https://flutter.dev) framework:
 
-<DashImage src="images/0a3q1D4T6uoftk8SJ.gif" alt="Sample developer experience creating a Flutter widget using ML Complete" caption="Sample developer experience creating a Flutter widget using ML Complete" />
+<DashImage src="images/0a3q1D4T6uoftk8SJ.webp" alt="A developer creates a Flutter widget using ML Complete." caption="Sample developer experience creating a Flutter widget using ML Complete" />
 
 
 Let’s take a deeper look at how this works. Imagine that you’re writing a small program to calculate the time that’s one day from the current time. Using ML Complete you get the experience on the left, below. First, notice how it’s able to offer a completion to `DateTime.now()` based on the variable having the name now. Next, notice how we get a completion on the variable name tomorrow, and finally `add(…)` is the second offered completion on now. In the non-ML Complete experience on the right, we have to manually start typing `DateTime`, we get no completions on the `tomorrow` variable name, and the `add(…)` method is much further down the list.
 
-<DashImage src="images/1rA4mVfedEzJCN_ayVymm1A.gif" />
+<DashImage src="images/1rA4mVfedEzJCN_ayVymm1A.webp" alt="A developer calculates the time one day from the current time using ML Complete." />
 
 
-<DashImage src="images/1cmHliNwHDwjNV-fdMScWMA.gif" alt="Code completion experience with ML Complete (left) and without (right)" caption="Code completion experience with ML Complete (left) and without (right)" />
+<DashImage src="images/1cmHliNwHDwjNV-fdMScWMA.webp" alt="Code completion experience with ML Complete on the left and without on the right." caption="Code completion experience with ML Complete (left) and without (right)" />
 
 
 ## How to try out ML Complete
@@ -102,7 +102,7 @@ cmdP.free();
 
 This code executes the system command, causing the system-default browser to open dart.dev:
 
-<DashImage src="images/0-S9fZutz89QcrwEw.gif" alt="*Executing the system command via dart:ffi to open the default browser*" caption="*Executing the system command via dart:ffi to open the default browser*" />
+<DashImage src="images/0-S9fZutz89QcrwEw.webp" alt="A developer executes a system command via dart:ffi to open the default browser." caption="*Executing the system command via dart:ffi to open the default browser*" />
 
 
 ## Calling C-based frameworks and components

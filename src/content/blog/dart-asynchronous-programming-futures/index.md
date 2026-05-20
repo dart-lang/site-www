@@ -3,13 +3,13 @@ title: "Dart asynchronous programming: Futures"
 description: "One of the most basic APIs that Dart has for asynchronous programming is futures — objects of type Future. For the most part, Dart’s…"
 publishDate: 2019-09-18
 author: kwalrath
-image: images/1UD63BMoIBmzoA6jo3LjCCg.png
+image: images/1UD63BMoIBmzoA6jo3LjCCg.webp
 category: deep-dive
 layout: blog
 ---
 
 
-<DashImage src="images/1G4044qvxp8yBjmGVHVLEyw.png" alt="Many asynchronous Dart APIs return futures." caption="Many asynchronous Dart APIs return futures." />
+<DashImage src="images/1G4044qvxp8yBjmGVHVLEyw.webp" alt="Dart code stores the result of http.get('http://example.com') in myFuture." caption="Many asynchronous Dart APIs return futures." />
 
 
 One of the most basic APIs that Dart has for asynchronous programming is *futures —* objects of type [`Future`](https://api.dartlang.org/stable/dart-async/Future-class.html). For the most part, Dart’s futures are very similar to the *future* or *promise* APIs found in other languages.
@@ -35,12 +35,12 @@ So a future can be in one of 3 states:
 
 Most of the code you’re about to see revolves around dealing with these three states. You receive a future, and you need to decide what to do until the box opens, what to do when it opens with a value, and what to do if there’s an error. You’ll see that 1–2–3 pattern a lot.
 
-<DashImage src="images/1UD63BMoIBmzoA6jo3LjCCg.png" alt="The 3 states of a future" caption="The 3 states of a future" />
+<DashImage src="images/1UD63BMoIBmzoA6jo3LjCCg.webp" alt="Flowchart with Uncompleted branching to Completed with data and Completed with error." caption="The 3 states of a future" />
 
 
 You might remember the event loop (pictured below) from our [article about the Dart event loop](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a). A good thing to know about futures is that they’re really just an API built to make using the event loop easier.
 
-<DashImage src="images/0xlxALlxjazVifRep.png" alt="The Dart event loop processes one event at a time." caption="The Dart event loop processes one event at a time." />
+<DashImage src="images/0xlxALlxjazVifRep.webp" alt="Queued events moving toward a gear with circular arrows representing the Dart event loop." caption="The Dart event loop processes one event at a time." />
 
 
 The Dart code you write is executed by a single thread. The whole time your app is running, that one little thread just keeps going around and around, picking up events from the event queue and processing them.

@@ -3,7 +3,7 @@ title: "Announcing Dart 3.9"
 description: "Hello, Dart developers! The latest stable version, Dart 3.9, is officially here!"
 publishDate: 2025-08-14
 author: antfitch
-image: images/1VIHR_FuzQzulhqczfx8eAA.gif
+image: images/1VIHR_FuzQzulhqczfx8eAA.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 This release is all about making your work easier and your apps more efficient. With key updates to null safety, performance boosts to the Dart CLI, and the exciting addition of the Dart and Flutter MCP Server to empower your AI assistants, there’s a lot to love. Read on to discover everything that’s new in Dart 3.9.
 
-<DashImage src="images/1VIHR_FuzQzulhqczfx8eAA.gif" alt="Announcing Dart 3.9" caption="Announcing Dart 3.9" />
+<DashImage src="images/1VIHR_FuzQzulhqczfx8eAA.webp" alt="Dart 3.9 release banner with the Dart logo and an animated bullseye icon." caption="Announcing Dart 3.9" />
 
 
 ## Language updates
@@ -58,7 +58,7 @@ With the Dart and Flutter MCP Server, you can ask an AI assistant to:
 
 The Dart and Flutter MCP Server is now available on the stable channel of the Dart SDK.
 
-<DashImage src="images/13K1rgoDtIBWbIFZPp1VCEQ.gif" alt="*Fixing a layout issue, enabled by the Dart and Flutter MCP Server (parts of this recording have been sped up)*" caption="*Fixing a layout issue, enabled by the Dart and Flutter MCP Server (parts of this recording have been sped up)*" />
+<DashImage src="images/13K1rgoDtIBWbIFZPp1VCEQ.webp" alt="Animation demonstrating an AI assistant fixing a layout issue using the Dart and Flutter MCP Server." caption="*Fixing a layout issue, enabled by the Dart and Flutter MCP Server (parts of this recording have been sped up)*" />
 
 
 ### **Faster Dart CLI**
@@ -67,7 +67,7 @@ Previously, when you ran some [Dart CLI commands](https://dart.dev/tools/dart-to
 
 Results vary depending on the source code, but we ran some common commands on a sample package and got some interesting results. Some short commands like `dart format` now complete in a fraction of the time and longer running ones like `dart analyze` got nearly 50% faster.
 
-<DashImage src="images/1NkNNA4xfB08k9FjtIHSTEw.png" alt="Example performance results after the Dart CLI update" caption="Example performance results after the Dart CLI update" />
+<DashImage src="images/1NkNNA4xfB08k9FjtIHSTEw.webp" alt="Chart showing performance improvements for Dart CLI commands, such as faster format and analyze." caption="Example performance results after the Dart CLI update" />
 
 
 ### **pub client updates**

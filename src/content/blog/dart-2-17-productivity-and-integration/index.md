@@ -3,7 +3,7 @@ title: "Dart 2.17: Productivity and integration"
 description: "Language features. Productivity tools. Deeper & broader platform integration."
 publishDate: 2022-05-11
 author: mit-mit
-image: images/1eJKM-4rFprGXyxNd5w2m-Q.png
+image: images/1eJKM-4rFprGXyxNd5w2m-Q.webp
 category: releases
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Today at [Google I/O](https://io.google/2022/products/flutter/), we announced a new Dart SDK, version 2.17. This release builds on our core themes of leading productivity and platform portability. It offers new language features: enums with member support, improved parameter forwarding to super classes, and more flexibility for named parameters. We have improved tools with a new major version of `package:lints` — our tool support for checking Dart code against our best practices — and a broad update of core library API documentation with rich code samples. For improved platform integration we have new templates for using `dart:ffi` (native C interop) in Flutter plugins, experimental support for RISC-V processors, and support for signing macOS and Windows executables.
 
-<DashImage src="images/1eJKM-4rFprGXyxNd5w2m-Q.png" />
+<DashImage src="images/1eJKM-4rFprGXyxNd5w2m-Q.webp" alt="A stylized graphic with the text 'Dart 2.17', representing the new release." />
 
 
 ## New language features for improved productivity
@@ -66,7 +66,7 @@ void main() {
 
 A complete example of these two approaches is illustrated below; we find the new Dart 2.17 version much easier to read and maintain.
 
-<DashImage src="images/0hGKUdu4DT9v2IZGj.png" />
+<DashImage src="images/0hGKUdu4DT9v2IZGj.webp" alt="Code snippets comparing enums before and after Dart 2.17, showing improved readability." />
 
 
 ### Super initializers
@@ -75,14 +75,14 @@ When you have a class inheritance hierarchy, a common pattern is to pass some co
 
 Several Dart community members helped make this happen. GitHub user @roy-sianez filed a [language issue](https://github.com/dart-lang/language/issues/1855) regarding this about half a year ago; suggesting something similar to what GitHub user [@apps](http://twitter.com/apps)-transround had [suggested earlier](https://github.com/dart-lang/language/issues/493#issuecomment-879624528): that we could perhaps resolve this by introducing a new construct to express that a parameter was specified in the super class. We thought that was a great idea, so this has been added to Dart 2.17. As you can see from the following example, this is especially relevant for Flutter widget code. In fact, when we applied the new feature to the Flutter framework, we saw a total reduction of [nearly two thousand lines of code](https://github.com/flutter/flutter/pull/100905/files)!
 
-<DashImage src="images/0ypTj-6zzDBoqnpRL.png" />
+<DashImage src="images/0ypTj-6zzDBoqnpRL.webp" alt="A code comparison demonstrating the new super constructor parameter syntax in Dart 2.17." />
 
 
 ### Named args everywhere
 
 Lastly, we’ve refined how named arguments work when you invoke a method. Previously, these had to appear last in the list of arguments to the method. This was annoying in cases where you’d prefer to place a positional argument last to make the code more readable. For example, see the following invocation of the `List&lt;T&gt;.generate` constructor — before, the growable argument had to be placed last, making it easy to miss below the large positional argument containing the generator itself. Now you can order them as you prefer, allowing you to place the small named arguments first and the generator last.
 
-<DashImage src="images/0gMf1J56vEgV96z1l.png" />
+<DashImage src="images/0gMf1J56vEgV96z1l.webp" alt="A code snippet showing named arguments placed anywhere in the argument list in Dart 2.17." />
 
 
 For further examples of these three features in actions, see our updated samples for [enums](https://github.com/dart-lang/samples/blob/master/enhanced_enums/lib/members.dart), [super initializers](https://github.com/dart-lang/samples/blob/master/parameters/lib/super_initalizer.dart), and [named parameters](https://github.com/dart-lang/samples/blob/master/parameters/lib/named_parameters.dart).
