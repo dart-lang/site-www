@@ -1,7 +1,7 @@
 ---
 title: What's new
 description: A list of what's new on dart.dev and related sites.
-lastVerified: 2026-02-10
+lastVerified: 2026-05-20
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -18,6 +18,72 @@ and follow the [Dart blog][].
 [dart-changelog]: /changelog
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: https://blog.dart.dev
+
+## 3.12 release
+
+_Released on: May 18, 2026_
+
+This section lists notable changes made from February 12, 2026,
+through May 18, 2026 to [dart.dev](https://dart.dev/docs).
+For details about the 3.12 release of Dart,
+check out the [3.12 announcement][] and the
+[3.12 SDK changelog][3-12-changelog].
+
+[3.12 announcement]: https://blog.dart.dev/announcing-dart-3-12
+[3-12-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120
+
+### Documentation updates {:.no_toc}
+
+* Added documentation for the new [private named parameters][] language feature.
+* Added documentation for the experimental [primary constructors][] language
+  feature.
+* Created a dedicated [language versioning][] page and updated links across
+  the site.
+* Documented Dart support for [Firebase Functions][] and the Admin SDK.
+* Documented that [pub workspaces][] can be nested.
+  (Thank you, [Soufian El-Fouzari][SoufianElfouzari].)
+* Documented the [`--no-example`][] option of pub commands.
+* Centralized documentation for pub [package descriptors][].
+* Added documentation for constraints on [code asset dylib names][] for build
+  hooks.
+* Updated the [object-oriented programming lesson][] of the tutorial and
+  enhanced its formatting.
+* Expanded the [Glossary][] with new terms including "top type", "null safety",
+  "sound", "reified generics", and "uninitialized".
+  (Thank you, [IldySilva][].)
+* Added more [community interop solutions][] to the documentation.
+  (Thank you, [ANUSHREE BONDIA][Anushreebasics].)
+* Removed and archived the legacy [null safety migration][] documentation.
+
+### Site improvements {:.no_toc}
+
+* Added a dedicated space for the [Dart blog][Dart blog space] at `/blog`,
+  migrating all historical posts from Medium.
+* Implemented page prefetching and prerendering for faster navigation across
+  the site.
+
+[primary constructors]: /language/primary-constructors
+[private named parameters]: /language/constructors#private-named-parameters
+[language versioning]: /language/versioning
+[Firebase Functions]: /server/google-cloud#cloud-functions-for-firebase
+[pub workspaces]: /tools/pub/workspaces#nested-workspaces
+[`--no-example`]: /tools/pub/cmd/pub-get#no-example
+[package descriptors]: /tools/pub/dependencies#package-descriptors
+[code asset dylib names]: /tools/hooks#create-hook
+[object-oriented programming lesson]: /learn/tutorial/object-oriented
+[Glossary]: /resources/glossary
+[top type]: /resources/glossary#top-type
+[null safety]: /resources/glossary#null-safety
+[sound]: /resources/glossary#sound
+[reified generics]: /resources/glossary#reified-generics
+[uninitialized]: /resources/glossary#uninitialized
+[community interop solutions]: /interop#community-interop
+[null safety migration]: https://github.com/dart-community/migrate-to-null-safety
+[Dart blog space]: /blog
+
+[SoufianElfouzari]: https://github.com/SoufianElfouzari
+[IldySilva]: https://github.com/IldySilva
+[Anushreebasics]: https://github.com/Anushreebasics
 
 ## 3.11 release
 

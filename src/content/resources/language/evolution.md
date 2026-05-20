@@ -52,6 +52,7 @@ on the Dart language GitHub repo.
 
 ### Dart 3.12
 _Released 18 May 2026_
+| [Dart 3.12 announcement](https://blog.dart.dev/announcing-dart-3-12)
 
 Dart 3.12 introduces [private named parameters][], which let you
 initialize private fields directly through [initializing formal parameters][].
