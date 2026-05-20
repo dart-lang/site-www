@@ -1,9 +1,4 @@
-spans:
-  - text: "Supercharge your productivity with Dart 3.12! Read the "
-  - text: "blog post"
-    url: "/blog/announcing-dart-3-12"
-  - text: " and watch "
-  - text: "What's new in Flutter"
-    url: "https://www.youtube.com/live/3TfGKugPlpE?si=SL0qEantRLK1mkO6"
-    newTab: true
-  - text: "."
+text: >-
+  Supercharge your productivity with Dart 3.12!<br>
+  Watch [What's new in Flutter](https://www.youtube.com/live/3TfGKugPlpE){:target="_blank"}
+  and read the [announcement](/blog/announcing-dart-3-12){:target="_blank"}.

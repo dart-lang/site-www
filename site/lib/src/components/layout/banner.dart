@@ -5,68 +5,23 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
-/// A segment of text in the site banner, which can optionally be a link.
-@immutable
-final class BannerSpan {
-  final String text;
-  final String? url;
-  final bool newTab;
-
-  const BannerSpan({
-    required this.text,
-    this.url,
-    this.newTab = false,
-  });
-
-  factory BannerSpan.fromMap(Map<Object?, Object?> map) {
-    return BannerSpan(
-      text: map['text'] as String,
-      url: map['url'] as String?,
-      newTab: map['newTab'] as bool? ?? false,
-    );
-  }
-}
+import '../../markdown/markdown_parser.dart';
 
 /// The information to display in the site banner,
 /// as configured in the `src/data/banner.yml` file.
+///
+/// The [text] is rendered as inline Markdown, so it can include
+/// links (such as `[label](url)`) and inline attributes
+/// (such as `{:target="_blank"}` to open a link in a new tab).
 @immutable
 final class BannerContent {
-  final List<BannerSpan> spans;
+  /// The raw banner text, rendered as inline Markdown.
+  final String text;
 
-  const BannerContent({
-    required this.spans,
-  });
+  const BannerContent({required this.text});
 
-  factory BannerContent.fromMap(Map<String, Object?> bannerData) {
-    if (bannerData['spans'] case final List<Object?> spansList) {
-      return BannerContent(
-        spans: spansList
-            .map((s) => BannerSpan.fromMap(s as Map<Object?, Object?>))
-            .toList(),
-      );
-    }
-
-    // Fallback for backward compatibility
-    final text = bannerData['text'] as String;
-    final link = bannerData['link'] as Map<Object?, Object?>?;
-    if (link != null) {
-      return BannerContent(
-        spans: [
-          BannerSpan(text: text),
-          const BannerSpan(text: ' '),
-          BannerSpan(
-            text: link['text'] as String,
-            url: link['url'] as String,
-            newTab: link['newTab'] as bool? ?? false,
-          ),
-        ],
-      );
-    }
-
-    return BannerContent(
-      spans: [BannerSpan(text: text)],
-    );
-  }
+  factory BannerContent.fromMap(Map<String, Object?> bannerData) =>
+      BannerContent(text: bannerData['text'] as String);
 }
 
 /// The site-wide banner.
@@ -80,17 +35,7 @@ class DashBanner extends StatelessComponent {
     id: 'site-banner',
     attributes: {'role': 'alert'},
     [
-      p([
-        for (final span in content.spans)
-          if (span.url != null)
-            a(
-              href: span.url!,
-              target: span.newTab ? Target.blank : null,
-              [.text(span.text)],
-            )
-          else
-            .text(span.text),
-      ]),
+      p([DashMarkdown(content: content.text, inline: true)]),
     ],
   );
 }
