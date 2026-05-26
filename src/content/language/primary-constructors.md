@@ -17,7 +17,6 @@ Primary constructors require a [language version][] of at least 3.13.
 
 [language version]: /language/versioning
 
-
 ## Overview
 
 Primary constructors provide a concise way to declare a class's fields

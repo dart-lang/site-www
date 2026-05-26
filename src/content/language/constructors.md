@@ -319,8 +319,6 @@ to the concise constructor syntax (for a class named `LongClassName`):
 | `const factory LongClassName() = D;`      | `const factory() = D;`      |
 | `const factory LongClassName.name() = D;` | `const factory name() = D;`  |
 
-
-
 For an even more concise syntax
 where you define fields and constructors in a single line,
 see [Primary constructors](/language/primary-constructors).
