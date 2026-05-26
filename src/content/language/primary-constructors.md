@@ -216,5 +216,3 @@ when using primary constructors:
 :::
 
 [`parameter_assignments`]: /tools/linter-rules/parameter_assignments
-
-
