@@ -213,11 +213,14 @@ assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 
 ### Parameter modifiers
 
-In Dart 3.13 and later, you cannot use modifiers like `final` or `var` for normal function parameters.
-These keywords are now reserved exclusively for [primary constructors](/language/primary-constructors) to declare instance fields.
+In Dart 3.13 and later,
+you can't use modifiers like `final` or `var` for normal function parameters.
+These keywords are now reserved exclusively for
+[primary constructors][] to declare instance fields.
 
 If you wish to enforce immutability for function parameters,
-use lints like [`parameter_assignments`](https://dart.dev/tools/linter-rules/parameter_assignments) instead of the `final` keyword in the signature.
+use lints like [`parameter_assignments`][] instead
+of the `final` keyword in the signature.
 
 ## The main() function {:#main}
 
@@ -701,5 +704,7 @@ is not `final`) an external setter.
 [conditional expression]: /language/operators#conditional-expressions
 [Flutter]: {{site.flutter}}
 [trailing commas]: /language/collections#lists
+[primary constructors]: /language/primary-constructors
+[`parameter_assignments`]: /tools/linter-rules/parameter_assignments
 
 

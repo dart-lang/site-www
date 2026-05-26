@@ -1,6 +1,8 @@
 ---
 title: Primary constructors
-description: Create classes concisely by declaring parameters and fields in the class header.
+description: >-
+  Create classes concisely by
+  declaring parameters and fields in the class header.
 prevpage:
   url: /language/constructors
   title: Constructors
@@ -21,8 +23,8 @@ Primary constructors provide a concise way to declare a class's fields
 and its main constructor in a single line.
 They reduce the boilerplate of declaring fields, passing parameters,
 and assigning them in the constructor body.
-This shorthand is purely "syntax sugar"
-and does not introduce new runtime semantics.
+This shorthand changes how you write the declaration,
+but it doesn't change runtime behavior.
 
 ### Before and after
 
@@ -120,11 +122,11 @@ class Point(var int x, var int y) {
 }
 ```
 
-This block can specify an initializer list after `this` and/or a function body.
-It also supports forms with just an initializer list followed by a semicolon
-(for example, `this : assert(x >= 0);`),
-and you can apply metadata annotations to it
-(for example, `@metadata this;`).
+The block can specify an initializer list after `this` and/or a function body.
+To provide only an initializer list,
+end it with a semicolon, such as `this : assert(x >= 0);`.
+You can also annotate the block with metadata,
+such as `@metadata this;`.
 
 ## Initialize private fields
 
@@ -158,8 +160,9 @@ at the call site: `User(name: 'John Doe')`.
 
 An empty body of a class, mixin class, extension, or extension type (`{}`)
 can be replaced by a semicolon (`;`).
-While this is true in general for these declarations, it is particularly
-useful when using a primary constructor to keep the entire declaration on a single line.
+While this is true in general for these declarations,
+it is particularly useful when using a primary constructor to
+keep the entire declaration on a single line.
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (empty-bodies)" replace="/EmptyBodyPoint/Point/g"?>
 ```dart
@@ -202,9 +205,7 @@ when using primary constructors:
     Note that the lints `avoid_final_parameters` and `var_with_no_type_annotation`
     only work in Dart 3.12 and below.
     To enforce immutable parameters as a style choice in Dart 3.13 and later,
-    use the
-    [parameter_assignments](https://dart.dev/tools/linter-rules/parameter_assignments)
-    linter rule.
+    use the [`parameter_assignments`][] linter rule.
 *   **The `factory` method edge case**:
     If you have a method named `factory` with no return type
     (for example, `factory() {}`),
@@ -214,3 +215,4 @@ when using primary constructors:
     to avoid this conflict.
 :::
 
+[`parameter_assignments`]: /tools/linter-rules/parameter_assignments
