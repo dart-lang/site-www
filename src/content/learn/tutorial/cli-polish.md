@@ -89,8 +89,8 @@ understand how to use your CLI application.
           (command) => command.name == input,
           orElse: () {
             throw ArgumentException(
-              'Input ${input} is not a known command.',
-              name
+              'Input $input is not a known command.',
+              name,
             );
           },
         );
