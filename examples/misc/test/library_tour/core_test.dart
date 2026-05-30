@@ -375,7 +375,7 @@ void main() {
       var keys = hawaiianBeaches.keys;
 
       assert(keys.length == 3);
-      assert(Set.from(keys).contains('Oahu'));
+      assert(keys.contains('Oahu'));
 
       // Get all the values as an unordered collection
       // (an Iterable of Lists).
