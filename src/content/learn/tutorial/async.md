@@ -51,12 +51,12 @@ dependency to your project.
     This file is called the **pubspec**, and it manages your
     Dart project's metadata, dependencies (like the `http` package), and assets.
 1.  Locate the `dependencies` section.
-1.  Add `http: ^1.3.0` (or the latest stable version) under `dependencies`.
+1.  Add `http: ^1.4.0` (or the latest stable version) under `dependencies`.
     The `^` symbol allows compatible versions to be used.
 
     ```yaml
     dependencies:
-      http: ^1.3.0
+      http: ^1.4.0
     ```
 
 1.  Save the `pubspec.yaml` file.
