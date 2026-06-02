@@ -2,7 +2,8 @@
 title: "The Flutter missing link: Why full-stack Dart changes everything"
 description: "With Cloud Functions for Firebase support for Dart, we can treat the entire stack as a single, unified application."
 publishDate: 2026-05-18
-author: kevmoo
+authors:
+  - kevmoo
 image: images/dart-firebase-functions-cover.webp
 category: announcements
 layout: blog

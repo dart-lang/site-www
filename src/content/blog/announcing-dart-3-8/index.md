@@ -2,7 +2,8 @@
 title: "Announcing Dart 3.8"
 description: "This release brings formatter updates, null-aware elements for collections, new cross-platform development capabilities, a better way to…"
 publishDate: 2025-05-20
-author: antfitch
+authors:
+  - antfitch
 image: images/1cTcqAst5m1Vn6k71VWgTrQ.webp
 category: releases
 layout: blog

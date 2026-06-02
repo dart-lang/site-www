@@ -35,7 +35,7 @@ void main() {
           'description': 'Use Dart',
           'publishDate': '2026-04-01',
           'updatedDate': '2026-04-03',
-          'author': 'author-a',
+          'authors': ['author-a'],
           'category': 'releases',
         },
         authors: {
@@ -50,10 +50,11 @@ void main() {
           'description': 'More news.',
           'publishDate': '2026-04-10',
           'updatedDate': '2026-04-11',
-          'author': 'author-b',
+          'authors': ['author-b', 'author-c'],
         },
         authors: {
           'author-b': {'name': 'Author Two'},
+          'author-c': {'name': 'Author Three'},
         },
       ),
       _page(
@@ -109,12 +110,13 @@ void main() {
       newerEntry.getElement('published')?.innerText,
       '2026-04-10T00:00:00.000Z',
     );
+    expect(_authorNames(newerEntry), ['Author Two', 'Author Three']);
 
     final olderEntry = entries[1];
     expect(olderEntry.getElement('title')?.innerText, 'Older <Post>');
     expect(
-      olderEntry.getElement('author')?.getElement('name')?.innerText,
-      'Author One',
+      _authorNames(olderEntry),
+      ['Author One'],
     );
     expect(
       olderEntry.getElement('updated')?.innerText,
@@ -160,7 +162,7 @@ void main() {
           'title': 'B post',
           'description': 'B.',
           'publishDate': '2026-04-01',
-          'author': 'dash',
+          'authors': ['dash'],
         },
         authors: authors,
       ),
@@ -171,7 +173,7 @@ void main() {
           'title': 'A post',
           'description': 'A.',
           'publishDate': '2026-04-01',
-          'author': 'dash',
+          'authors': ['dash'],
         },
         authors: authors,
       ),
@@ -190,6 +192,11 @@ void main() {
 XmlElement _firstLinkWithRel(XmlElement feed, String rel) => feed
     .findElements('link')
     .firstWhere((element) => element.getAttribute('rel') == rel);
+
+List<String> _authorNames(XmlElement entry) => entry
+    .findElements('author')
+    .map((author) => author.getElement('name')!.innerText)
+    .toList();
 
 Page _page({
   required String path,

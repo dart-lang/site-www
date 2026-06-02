@@ -2,7 +2,8 @@
 title: "Future<void> vs Future<Null>, what’s the difference?"
 description: "One of the nice upgrades we were able to do in Dart 2 (in addition to better static checking, runtime type safety, optional new/const…"
 publishDate: 2018-10-30
-author: mfairhurst
+authors:
+  - mfairhurst
 image: images/0x0J9DBRyATjtQn42.webp
 category: deep-dive
 layout: blog

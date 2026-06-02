@@ -2,7 +2,8 @@
 title: "Google Summer of Code 2022 Results"
 description: "The Google Summer of Code (GSoC) program focuses on engaging new developers worldwide with open source software development. Google…"
 publishDate: 2022-11-03
-author: jonasfj
+authors:
+  - jonasfj
 image: images/1tzmsHv4_tAl7Nil6XZaANw.webp
 category: other
 layout: blog

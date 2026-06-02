@@ -2,7 +2,8 @@
 title: "Why I’m joining the Dart team, of all places"
 description: "Two weeks ago, I transferred to the Dart team. For many, this was an obvious career move but there were some people who were genuinely surprised about it."
 publishDate: 2016-01-07
-author: filiph
+authors:
+  - filiph
 image: images/19XE0rGIm0oY0GOs5onZyvQ.webp
 category: other
 layout: blog

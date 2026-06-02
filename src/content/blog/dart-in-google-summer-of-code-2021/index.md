@@ -2,7 +2,8 @@
 title: "Dart in Google Summer of Code 2021"
 description: "Get ready to apply!"
 publishDate: 2021-03-17
-author: jonasfj
+authors:
+  - jonasfj
 image: images/1RaLW5kA_2I2WmYz5sx0srA.webp
 category: other
 layout: blog

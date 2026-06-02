@@ -2,7 +2,8 @@
 title: "Announcing Dart 2.7: A safer, more expressive Dart"
 description: "Today we’re announcing the stable release of the Dart 2.7 SDK, with additional new capabilities for developers. It’s been a busy year for…"
 publishDate: 2019-12-11
-author: mit-mit
+authors:
+  - mit-mit
 image: images/0G-I1kyYJFCTCiAUk.webp
 category: releases
 layout: blog

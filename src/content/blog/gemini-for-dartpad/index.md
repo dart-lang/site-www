@@ -2,7 +2,8 @@
 title: "Gemini for DartPad"
 description: "Say hello to Gemini in DartPad!"
 publishDate: 2025-04-08
-author: antfitch
+authors:
+  - antfitch
 image: images/1nI_hhzL5l94Pvdtlzs32oA.webp
 category: announcements
 layout: blog

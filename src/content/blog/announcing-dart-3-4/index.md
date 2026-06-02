@@ -2,7 +2,8 @@
 title: "Announcing Dart 3.4"
 description: "Dart 3.4 is out today! This release showcases the joint efforts of Dart and Flutter together in the Flutter 3.22 / Dart 3.4 / IO24 post, so…"
 publishDate: 2024-05-14
-author: mit-mit
+authors:
+  - mit-mit
 image: images/0hAcsCFLU0Ze7pej6.webp
 category: releases
 layout: blog

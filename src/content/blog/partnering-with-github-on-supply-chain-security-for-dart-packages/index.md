@@ -2,7 +2,8 @@
 title: "Partnering with GitHub on supply chain security for Dart packages"
 description: "Starting today, GitHub supports Dart in its Advisory Database, dependency graph, and Dependabot. This means GitHub now offers comprehensive…"
 publishDate: 2022-10-06
-author: mit-mit
+authors:
+  - mit-mit
 image: images/1MdOSko9W_PJA0KwuQ_mu6w.webp
 category: announcements
 layout: blog

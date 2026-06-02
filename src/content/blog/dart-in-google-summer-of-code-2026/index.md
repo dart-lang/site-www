@@ -2,7 +2,8 @@
 title: "Dart in Google Summer of Code 2026"
 description: "We’re excited to announce that the Dart project will mentor contributors for the seventh time in Google Summer of Code 2026!"
 publishDate: 2026-03-05
-author: jonasfj
+authors:
+  - jonasfj
 image: images/1iPTqUuppL1UCAJ8OWAcWhg.webp
 category: other
 layout: blog

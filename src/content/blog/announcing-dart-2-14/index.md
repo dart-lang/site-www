@@ -2,7 +2,8 @@
 title: "Announcing Dart 2.14"
 description: "Apple Silicon support, and improved productivity with default lints, better tools, and new language features"
 publishDate: 2021-09-08
-author: mit-mit
+authors:
+  - mit-mit
 image: images/1qlsMfajTUkBw1APUpjcCZg.webp
 category: releases
 layout: blog

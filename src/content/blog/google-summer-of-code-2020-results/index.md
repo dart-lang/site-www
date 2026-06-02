@@ -2,7 +2,8 @@
 title: "Google Summer of Code 2020 results"
 description: "The Dart team mentored 5 student developers this summer, as part of GSoC 2020. Read about the student projects."
 publishDate: 2020-09-02
-author: jonasfj
+authors:
+  - jonasfj
 image: images/15VxyyQ1juWjwtTbSkwzzXA.webp
 category: other
 layout: blog

@@ -2,7 +2,8 @@
 title: "Announcing Dart 2.8"
 description: "Faster package tools, new tool for ensuring dependencies never go stale"
 publishDate: 2020-05-06
-author: mit-mit
+authors:
+  - mit-mit
 image: images/1JrrSSD8LCLMkAUIV8RJlkw.webp
 category: releases
 layout: blog

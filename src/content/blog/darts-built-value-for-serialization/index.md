@@ -2,7 +2,8 @@
 title: "Dart’s built_value for Serialization"
 description: "Last week I introduced built_value for immutable object models. We saw how to define object models in built_value; they’re immutable, easy…"
 publishDate: 2016-12-07
-author: davidmorgan
+authors:
+  - davidmorgan
 category: deep-dive
 layout: blog
 ---

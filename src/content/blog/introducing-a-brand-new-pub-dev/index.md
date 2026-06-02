@@ -2,7 +2,8 @@
 title: "Introducing a brand new pub.dev"
 description: "Redesigned for high-quality, multiplatform packages"
 publishDate: 2020-07-15
-author: mit-mit
+authors:
+  - mit-mit
 image: images/0efALL34OP6a4tcxh.webp
 category: announcements
 layout: blog

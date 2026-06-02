@@ -2,7 +2,8 @@
 title: "Announcement: IDE Tooling for AngularDart 5"
 description: "Dart is a statically typed language which we know and love, and Dart 2 will be even more strictly typed. That is why it makes such a great…"
 publishDate: 2018-03-27
-author: mfairhurst
+authors:
+  - mfairhurst
 image: images/1_8_-jlg2S62p_a8plKAtgg.webp
 category: announcements
 layout: blog

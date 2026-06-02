@@ -2,7 +2,8 @@
 title: "Announcing verified publishers on pub.dev"
 description: "Today we’re announcing a new ‘verified publishers’ feature on pub.dev,  the Dart package repository"
 publishDate: 2019-10-10
-author: mit-mit
+authors:
+  - mit-mit
 image: images/0DfmB09PD2DK-pvTz.webp
 category: announcements
 layout: blog

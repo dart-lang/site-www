@@ -2,7 +2,8 @@
 title: "3 cool Dart patterns"
 description: "Try these three useful Dart programming patterns in your next Flutter app."
 publishDate: 2020-05-20
-author: JoseAlba
+authors:
+  - JoseAlba
 image: images/0alx_hKg5fP3b1b22.webp
 category: other
 layout: blog

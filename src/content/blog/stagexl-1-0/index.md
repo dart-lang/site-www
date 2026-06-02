@@ -2,7 +2,8 @@
 title: "StageXL 1.0"
 description: "A fast 2D rendering engine for HTML5 and Dart."
 publishDate: 2016-12-03
-author: bp74
+authors:
+  - bp74
 image: images/1oPIKFEq7-9ndX53muruOsQ.webp
 category: other
 layout: blog

@@ -2,7 +2,8 @@
 title: "Announcing Dart 2.12"
 description: "Sound null safety and Dart FFI ship to the stable channel."
 publishDate: 2021-03-03
-author: mit-mit
+authors:
+  - mit-mit
 image: images/0Inj4APQIAA4gVCxK.webp
 category: releases
 layout: blog

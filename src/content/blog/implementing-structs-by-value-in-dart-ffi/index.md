@@ -2,7 +2,8 @@
 title: "Implementing structs by value in Dart FFI"
 description: "A deep dive into API design and native calling conventions."
 publishDate: 2021-06-08
-author: dcharkes
+authors:
+  - dcharkes
 image: images/0SfIpbC1E-Ysaewzs.webp
 category: deep-dive
 layout: blog

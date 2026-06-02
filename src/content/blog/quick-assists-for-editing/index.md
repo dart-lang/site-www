@@ -2,7 +2,8 @@
 title: "Quick assists for editing"
 description: "Using localized refactorings to be more productive"
 publishDate: 2022-07-13
-author: bwilkerson
+authors:
+  - bwilkerson
 image: images/0V2JRi49yUj_MkFjS.webp
 category: other
 layout: blog

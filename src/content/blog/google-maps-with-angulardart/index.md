@@ -2,7 +2,8 @@
 title: "Google Maps with AngularDart"
 description: "In this article we will integrate Google Maps with an AngularDart application. The app itself will be very simple: it calculates the great…"
 publishDate: 2017-02-23
-author: isoos
+authors:
+  - isoos
 image: images/1hLce2qgbJEkxjOlOr8jn9g.webp
 category: other
 skipTemplateRendering: true

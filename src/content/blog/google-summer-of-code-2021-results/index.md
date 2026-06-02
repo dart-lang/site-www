@@ -2,7 +2,8 @@
 title: "Google Summer of Code 2021 results"
 description: "The Dart team received 92 GSoC project proposals from students around the world. Here are the results of the 3 projects we accepted."
 publishDate: 2021-10-14
-author: jonasfj
+authors:
+  - jonasfj
 image: images/1QswESHAF6CO9UNYCcRVKXA.webp
 category: other
 layout: blog

@@ -2,7 +2,8 @@
 title: "Better isolate management with Isolate.run()"
 description: "Dart 2.19 introduces a new function that makes implementing concurrency as simple as a single line of code."
 publishDate: 2023-01-24
-author: mbelanger
+authors:
+  - mbelanger
 image: images/0Bt-V4nlGjNKquFhK.webp
 category: deep-dive
 layout: blog

@@ -2,7 +2,8 @@
 title: "Dart asynchronous programming: Streams"
 description: "This article covers one of the fundamentals of reactive programming: streams, which are objects of type Stream."
 publishDate: 2020-02-11
-author: kwalrath
+authors:
+  - kwalrath
 image: images/1Q2-Ac9rjIDSuXzbrQqGkVA.webp
 category: deep-dive
 layout: blog

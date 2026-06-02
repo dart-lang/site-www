@@ -2,7 +2,8 @@
 title: "Announcing Dart 3.7"
 description: "It’s a new year, and time for a new Dart stable release. Welcome to Dart 3.7!"
 publishDate: 2025-02-12
-author: mbelanger
+authors:
+  - mbelanger
 image: images/1tdCaUfGrIk42FIuu2qs9Yw.webp
 category: releases
 layout: blog

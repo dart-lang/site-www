@@ -2,7 +2,8 @@
 title: "Announcing Dart 3.11"
 description: "Hello, Dart developers! The latest stable version, Dart 3.11, is officially here!"
 publishDate: 2026-02-11
-author: conooi
+authors:
+  - conooi
 image: images/129dKLBxAMepAi2od91c3TA.webp
 category: releases
 layout: blog

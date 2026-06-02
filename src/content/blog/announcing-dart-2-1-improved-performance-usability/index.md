@@ -2,7 +2,8 @@
 title: "Announcing Dart 2.1: Improved performance & usability"
 description: "Today, we’re announcing the stable release of Dart 2.1, an update to Dart 2 that new language features and performance improvements"
 publishDate: 2018-11-15
-author: mit-mit
+authors:
+  - mit-mit
 image: images/1xZHP-8eEl6qJCCTKXyQZ8w.webp
 category: releases
 layout: blog

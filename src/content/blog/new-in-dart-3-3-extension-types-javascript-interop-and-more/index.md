@@ -2,7 +2,8 @@
 title: "New in Dart 3.3: Extension Types, JavaScript Interop, and More"
 description: "Dart 3.3 has landed, and it’s a game-changer for performance and cross-platform development! Get ready to supercharge your apps with…"
 publishDate: 2024-02-15
-author: kevmoo
+authors:
+  - kevmoo
 image: images/1p4TBp0I66rJTq0LvnSuE7g.webp
 category: releases
 layout: blog

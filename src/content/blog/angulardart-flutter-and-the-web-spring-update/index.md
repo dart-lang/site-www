@@ -2,7 +2,8 @@
 title: "AngularDart, Flutter, and the web: Spring update"
 description: "Adjusting our investment for Dart’s open source web frameworks"
 publishDate: 2021-05-12
-author: timsneath
+authors:
+  - timsneath
 image: images/1TnLjhbuMnphc4ZlsuSdtog.webp
 category: other
 layout: blog

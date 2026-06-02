@@ -2,7 +2,8 @@
 title: "Building data binding in the browser"
 description: "Data binding, or updating the view (usually UI) from your application’s code is probably the holy grail of browser-based web frameworks —…"
 publishDate: 2017-07-04
-author: matanlurey
+authors:
+  - matanlurey
 image: images/1QUn_zBM0SBDRG4TtMBiM2A.webp
 category: deep-dive
 layout: blog

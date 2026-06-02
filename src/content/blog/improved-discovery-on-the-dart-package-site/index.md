@@ -2,7 +2,8 @@
 title: "Improved discovery on the Dart package site"
 description: "Back in July we talked about our changes to the Dart package site (http://pub.dartlang.org), which included better support for analyzing…"
 publishDate: 2018-09-24
-author: mit-mit
+authors:
+  - mit-mit
 image: images/1wh9C-VJUKEYz4l2zpUkg4A.webp
 category: announcements
 layout: blog

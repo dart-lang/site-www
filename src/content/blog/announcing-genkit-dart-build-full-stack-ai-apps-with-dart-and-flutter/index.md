@@ -2,7 +2,8 @@
 title: "Announcing Genkit Dart: Build full-stack AI apps with Dart and Flutter"
 description: "Announcing the preview launch of Genkit Dart, an open-source AI framework for building full-stack, AI-powered apps for any platform."
 publishDate: 2026-03-10
-author: chrisraygill
+authors:
+  - chrisraygill
 image: images/1haDapHjWrIlyQsYO-zLlLQ.webp
 category: announcements
 layout: blog

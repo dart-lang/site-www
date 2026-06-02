@@ -2,7 +2,8 @@
 title: "Preparing the Dart and Flutter ecosystem for null safety"
 description: "Null safety is now API stable. Publish your stable packages now!"
 publishDate: 2021-02-16
-author: kevmoo
+authors:
+  - kevmoo
 image: images/1VTEwPWrLp7D0teLcI-HALw.webp
 category: announcements
 layout: blog

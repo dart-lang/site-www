@@ -2,7 +2,8 @@
 title: "Experimenting with Dart and Wasm"
 description: "Compiling Dart to Wasm, and calling Wasm modules from Dart"
 publishDate: 2021-07-27
-author: mit-mit
+authors:
+  - mit-mit
 image: images/1UqHnD9vyTvndgJpz8gOv7Q.webp
 category: other
 layout: blog

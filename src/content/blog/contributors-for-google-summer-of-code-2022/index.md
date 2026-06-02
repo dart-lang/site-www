@@ -2,7 +2,8 @@
 title: "Contributors for Google Summer of Code 2022"
 description: "Google Summer of Code (GSoC) is a global program focused on bringing student developers into open source software development. Students are…"
 publishDate: 2022-04-07
-author: jonasfj
+authors:
+  - jonasfj
 image: images/1YkWeEU6ii0k_DW0bmrD0Ig.webp
 category: other
 layout: blog

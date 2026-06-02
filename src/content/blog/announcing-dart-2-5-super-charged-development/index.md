@@ -2,7 +2,8 @@
 title: "Announcing Dart 2.5: Super-charged development"
 description: "Today we’re announcing the stable release of the Dart 2.5 SDK, which includes technical previews of two major new developer features: ML…"
 publishDate: 2019-09-10
-author: mit-mit
+authors:
+  - mit-mit
 image: images/0EzNuk5GmPG3-yjT4.webp
 category: releases
 layout: blog

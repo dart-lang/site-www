@@ -24,7 +24,21 @@ class BlogCard extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final author = context.page.getAuthor(post.authorId);
+    final authors = context.page.authorsFor(post);
+    final authorNames = _formatAuthorNames(authors);
+
+    final avatars = [
+      for (final author in authors)
+        if (author.image case final authorImagePath?)
+          img(
+            classes: 'blog-card-avatar',
+            src: context.resolveAsset('/blog/authors/$authorImagePath'),
+            alt: author.name,
+          )
+        else if (author.github?.avatarUrl case final avatarUrl?)
+          img(classes: 'blog-card-avatar', src: avatarUrl, alt: author.name),
+    ];
+
     return a(
       href: url,
       classes: 'blog-card ${className ?? ''}',
@@ -58,20 +72,10 @@ class BlogCard extends StatelessComponent {
           const span(classes: 'blog-card-spacer', []),
           div(classes: 'blog-card-meta', [
             div(classes: 'blog-card-author-row', [
-              if (author.image != null)
-                img(
-                  classes: 'blog-card-avatar',
-                  src: context.resolveAsset('/blog/authors/${author.image}'),
-                  alt: author.name,
-                )
-              else if (author.github?.avatarUrl case final avatarUrl?)
-                img(
-                  classes: 'blog-card-avatar',
-                  src: avatarUrl,
-                  alt: author.name,
-                ),
+              if (avatars.isNotEmpty)
+                div(classes: 'blog-card-avatars', avatars),
               span(classes: 'author', [
-                .text(author.name),
+                .text(authorNames),
               ]),
               const span(classes: 'separator', [.text(' · ')]),
               span(classes: 'date', [
@@ -103,4 +107,19 @@ enum BlogCardPriority {
 
   /// A normal-priority blog card.
   normal,
+}
+
+/// Joins the names of [authors] into a
+/// single human-readable string for the card's byline.
+String _formatAuthorNames(Iterable<Author> authors) {
+  final authorNames = authors
+      .map((author) => author.name)
+      .toList(growable: false);
+
+  return switch (authorNames) {
+    [] => '',
+    [final name] => name,
+    [final first, final second] => '$first and $second',
+    [...final initial, final last] => '${initial.join(', ')}, and $last',
+  };
 }

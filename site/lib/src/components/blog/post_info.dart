@@ -11,6 +11,10 @@ import '../../pages/atom_feed.dart';
 import '../common/button.dart';
 import 'client/share_button.dart';
 
+/// The header with post information to show at the top of a blog post.
+///
+/// Displays the authors, publish date, and reading time of the [post],
+/// alongside actions to subscribe to the blog feed and share the post.
 class PostInfo extends StatelessComponent {
   const PostInfo({
     required this.post,
@@ -18,41 +22,23 @@ class PostInfo extends StatelessComponent {
     super.key,
   });
 
+  /// The post to display information about.
   final Post post;
+
+  /// The URL of the post being shared.
   final String url;
 
   @override
   Component build(BuildContext context) {
-    final author = context.page.getAuthor(post.authorId);
-    final githubUrl = author.github?.handle != null
-        ? 'https://github.com/${author.github!.handle}'
-        : null;
-    final twitterUrl = author.twitter != null && author.twitter!.isNotEmpty
-        ? 'https://twitter.com/${author.twitter}'
-        : null;
-
-    // Fallback to twitter if github is not present
-    final linkUrl = githubUrl ?? twitterUrl;
-
-    final authorInfo = div(classes: 'post-info-author', [
-      if (author.image != null)
-        img(
-          src: context.resolveAsset('/blog/authors/${author.image}'),
-          alt: author.name,
-          width: 32,
-          height: 32,
-        ),
-      h3(classes: 'post-info-name', [Component.text(author.name)]),
-    ]);
+    final authors = context.page.authorsFor(post);
 
     return div(classes: 'post-info', [
       div(classes: 'post-info-main', [
-        if (linkUrl != null)
-          a(href: linkUrl, target: Target.blank, [authorInfo])
-        else
-          authorInfo,
+        div(classes: 'post-info-authors', [
+          for (final author in authors) _AuthorInfo(author: author),
+        ]),
         span(classes: 'post-info-meta', [
-          Component.text('${post.formattedDate} · ${post.readingTime}'),
+          .text('${post.formattedDate} · ${post.readingTime}'),
         ]),
       ]),
       div(classes: 'post-info-actions', [
@@ -65,5 +51,45 @@ class PostInfo extends StatelessComponent {
         ShareButton(url: url, title: post.title),
       ]),
     ]);
+  }
+}
+
+/// A single author's avatar and name within a [PostInfo] byline.
+///
+/// Links to the author's [Author.profileUrl] when one is available.
+class _AuthorInfo extends StatelessComponent {
+  const _AuthorInfo({required this.author});
+
+  /// The author to display.
+  final Author author;
+
+  @override
+  Component build(BuildContext context) {
+    final info = div(classes: 'post-info-author', [
+      if (author.image case final authorImagePath?)
+        img(
+          src: context.resolveAsset('/blog/authors/$authorImagePath'),
+          alt: author.name,
+          width: 32,
+          height: 32,
+        ),
+      h3(
+        classes: 'post-info-name',
+        attributes: {'translate': 'no'},
+        [.text(author.name)],
+      ),
+    ]);
+
+    if (author.profileUrl case final profileUrl?) {
+      return a(
+        href: profileUrl,
+        classes: 'post-info-author-link',
+        target: Target.blank,
+        attributes: const {'rel': 'noopener'},
+        [info],
+      );
+    }
+
+    return info;
   }
 }

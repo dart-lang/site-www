@@ -2,7 +2,8 @@
 title: "Dart 2.18: Objective-C & Swift interop"
 description: "Enhanced interoperability, platform-specific networking, improved type inference, and an important update on our null safety language…"
 publishDate: 2022-08-30
-author: mit-mit
+authors:
+  - mit-mit
 image: images/0byFoNx1wnEaO0S6N.webp
 category: releases
 layout: blog

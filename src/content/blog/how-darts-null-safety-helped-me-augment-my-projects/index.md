@@ -2,7 +2,8 @@
 title: "How Dart’s null safety helped me augment my projects"
 description: "I migrated a running app and a published package to null safety, and it was awesome!"
 publishDate: 2021-06-23
-author: wal33d
+authors:
+  - wal33d
 image: images/1HlInW7jXUifJIGBK1YEQEw.webp
 category: other
 layout: blog

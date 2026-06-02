@@ -2,7 +2,8 @@
 title: "Hosting a private Dart package repository"
 description: "Improvements in Dart 2.15 for secure enterprise package hosting"
 publishDate: 2022-03-16
-author: jonasfj
+authors:
+  - jonasfj
 image: images/1hv1Nujq4-g2-y2uLuLYVqA.webp
 category: other
 layout: blog

@@ -2,7 +2,8 @@
 title: "Building a Chat App in Dart"
 description: "Having thoroughly covered the basics of the “built” packages I’m now ready to up the ante by showing them in action."
 publishDate: 2016-12-14
-author: davidmorgan
+authors:
+  - davidmorgan
 image: images/1pRJK2IRC697oavw5OBXkQA.webp
 category: deep-dive
 layout: blog

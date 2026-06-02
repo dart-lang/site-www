@@ -2,7 +2,8 @@
 title: "Exploring collections in Dart"
 description: "If you have ever called add(), addAll(), map(), or toList() to build a list or map, you might want to check out collection if, collection…"
 publishDate: 2020-09-15
-author: johnpryan
+authors:
+  - johnpryan
 image: images/1NLasdGsxG6bBzWYfe_9UJA.webp
 category: deep-dive
 layout: blog

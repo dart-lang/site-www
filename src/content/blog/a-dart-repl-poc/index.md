@@ -2,7 +2,8 @@
 title: "A Dart REPL PoC"
 description: "Hacking with Dart"
 publishDate: 2017-01-17
-author: BlackHC
+authors:
+  - BlackHC
 image: images/0lOBcrb2bYgKV6VYT.webp
 category: deep-dive
 layout: blog

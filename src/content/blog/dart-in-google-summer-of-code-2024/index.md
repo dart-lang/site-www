@@ -2,7 +2,8 @@
 title: "Dart in Google Summer of Code 2024"
 description: "The Google Summer of Code (GSoC) program focuses on bringing student developers from around the world into open source software…"
 publishDate: 2024-03-05
-author: jonasfj
+authors:
+  - jonasfj
 image: images/169jdaJUqgu_phIVF4w-7_A.webp
 category: other
 layout: blog

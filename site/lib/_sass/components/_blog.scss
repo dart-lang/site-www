@@ -293,8 +293,20 @@
   gap: 0.75rem;
   margin-top: auto;
 
-  >* {
-    white-space: nowrap;
+  > * {
+    min-width: 0;
+  }
+
+  .blog-card-avatars {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    // Fan the overlapping avatars out on hover so each full image shows,
+    // keeping the first in place and sliding the rest to the right.
+    &:hover .blog-card-avatar:not(:first-child) {
+      margin-left: 0.25rem;
+    }
   }
 
   .blog-card-avatar {
@@ -303,23 +315,31 @@
     border-radius: 50%;
     object-fit: cover;
     background-color: var(--site-outline);
+    border: 2px solid var(--site-base-bgColor);
+    transition: margin-left 0.2s ease;
+
+    &:not(:first-child) {
+      margin-left: -0.5rem;
+    }
   }
 
   .blog-card-author-row {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.25rem;
   }
 
-  .author,
-  .author-link {
+  .author {
     font-weight: 600;
     color: var(--site-base-fgColor);
     text-decoration: none;
   }
 
-  .author-link:hover {
-    text-decoration: underline;
+  .separator,
+  .date,
+  .reading-time {
+    white-space: nowrap;
   }
 }
 
@@ -343,7 +363,7 @@
     }
   }
 
-  >a {
+  .post-info-author-link {
     text-decoration: none;
     color: inherit;
     display: block;
@@ -353,11 +373,17 @@
     }
   }
 
+  .post-info-authors {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
   .post-info-author {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-right: 0.25rem;
   }
 
   img {

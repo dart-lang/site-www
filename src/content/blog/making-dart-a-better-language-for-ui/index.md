@@ -2,7 +2,8 @@
 title: "Making Dart a Better Language for UI"
 description: "On the Dart team, we are busy implementing a handful of language changes that I’m really excited about. They all relate to collection…"
 publishDate: 2019-03-19
-author: munificent
+authors:
+  - munificent
 image: images/14PIeARfthvxtn0cvBB5MPw.webp
 category: other
 layout: blog

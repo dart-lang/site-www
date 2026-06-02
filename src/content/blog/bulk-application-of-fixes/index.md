@@ -2,7 +2,8 @@
 title: "Bulk application of fixes"
 description: "Fixing multiple analysis issues in one step"
 publishDate: 2022-05-05
-author: bwilkerson
+authors:
+  - bwilkerson
 image: images/0URmNnWSjGRGOorjv.webp
 category: other
 layout: blog

@@ -2,7 +2,8 @@
 title: "Announcing Dart 2: Optimized for Client-Side Development"
 description: "Today, we’re announcing Dart 2, a reboot of the language to be uniquely optimized for client-side development for web and mobile."
 publishDate: 2018-02-22
-author: asandholm
+authors:
+  - asandholm
 image: images/1E9T7YsI_ZU8gk4CewQg_QA.webp
 category: releases
 layout: blog

@@ -2,7 +2,8 @@
 title: "Dart 3.1 & a retrospective on functional style programming in Dart 3"
 description: "Pattern matching and exhaustive switches come together to enable functional style data models that blend seamlessly with Dart’s…"
 publishDate: 2023-08-16
-author: mbelanger
+authors:
+  - mbelanger
 image: images/1IWd8aRO__OzDkJVsjfoe2A.webp
 category: releases
 layout: blog

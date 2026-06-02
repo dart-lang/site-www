@@ -2,7 +2,8 @@
 title: "Dart declaration-site variance"
 description: "A deep dive into an experimental feature"
 publishDate: 2019-12-19
-author: kallentu
+authors:
+  - kallentu
 image: images/0XcEdm2vmIBW8Wovr.webp
 category: deep-dive
 layout: blog

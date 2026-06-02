@@ -2,7 +2,8 @@
 title: "Dart 2: Legacy of the `void`"
 description: "One of the questions I see the most asked on StackOverflow, Gitter, and even Google-internal support channels is the difference between the…"
 publishDate: 2018-08-30
-author: matanlurey
+authors:
+  - matanlurey
 image: images/1qGU6soDvCW0RFfDX8vpUow.webp
 category: deep-dive
 layout: blog
