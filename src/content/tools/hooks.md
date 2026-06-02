@@ -334,7 +334,7 @@ Only end-users—the authors of the root app or package consuming
 the dependencies—can configure user-defines.
 Dependencies cannot supply their own default user-defines.
 
-The configured values under `pubspec.yaml` can be any JSON-compatible type,
+The configured values under `user_defines` can be any JSON-compatible type,
 such as booleans, strings, numbers, nested maps, or lists.
 User-defines are filtered per package.
 A hook inside `my_package` can only access keys configured under
@@ -357,12 +357,14 @@ To access configured user-defines in your `build.dart` or `link.dart` hook scrip
 use the `input.userDefines` object:
 
 1. Read raw values using the bracket operator, such as `input.userDefines['key']`.
-1. Resolve relative paths using the `path()` method, such as `input.userDefines.path('key')`.
+1. Resolve relative paths to a `Uri`
+   using the `path()` method,
+   such as `input.userDefines.path('key')`.
    This resolves the relative path against the directory of the `pubspec.yaml`
    where the user-define is declared.
 
 If the hook reads a resolved file or directory,
-register it as a dependency in `HookOutputBuilder` using
+register it as a dependency using
 `output.dependencies.add()`.
 This ensures that the build system invalidates the cache and
 re-runs the hook when the file changes.
