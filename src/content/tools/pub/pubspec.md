@@ -99,6 +99,10 @@ A pubspec can have the following fields:
 : Optional. List of ignored security advisories.
   [_Learn more._](#ignored_advisories)
 
+`hooks`
+: Optional. Configure package-specific hooks, such as native build or link hooks.
+  [_Learn more._](#hooks)
+
 Pub ignores all other fields.
 
 :::flutter-note
@@ -485,6 +489,24 @@ ignored_advisories:
 
 For more information, check out
 [Security advisories](/tools/pub/security-advisories).
+
+### Hooks
+
+To configure package-specific hooks, such as native build or link hooks,
+use the `hooks` field.
+Under the `hooks` field,
+you can configure parameters that customize how hooks run.
+
+For example:
+
+```yaml
+hooks:
+  user_defines:
+    my_package:
+      enable_experimental: true
+```
+
+For more information, check out the [Hooks](/tools/hooks) page.
 
 ### SDK constraints
 

@@ -319,6 +319,84 @@ void main() {
 }
 ```
 
+## Hook configuration {: #hook-configuration }
+
+You can pass custom parameters or local file paths to build and link hooks
+from your project's build environment.
+Configure these parameters under the `hooks` key in your `pubspec.yaml` file.
+Currently, this block supports only the `user_defines` option.
+
+### Configure user-defines {: #configure-user-defines }
+
+Configure custom parameters inside the root package `pubspec.yaml` file,
+or in the workspace `pubspec.yaml` file if you use a workspace.
+Only end-users—the authors of the root app or package consuming
+the dependencies—can configure user-defines.
+Dependencies cannot supply their own default user-defines.
+
+The configured values under `pubspec.yaml` can be any JSON-compatible type,
+such as booleans, strings, numbers, nested maps, or lists.
+User-defines are filtered per package.
+A hook inside `my_package` can only access keys configured under
+`hooks.user_defines.my_package`.
+It cannot access defines of other packages.
+
+Here is an example of configuring user-defines:
+
+```yaml title="pubspec.yaml"
+hooks:
+  user_defines:
+    my_package:
+      enable_experimental: true
+      custom_lib: assets/libnative.so
+```
+
+### Access user-defines in a hook {: #access-user-defines }
+
+To access configured user-defines in your `build.dart` or `link.dart` hook script,
+use the `input.userDefines` object:
+
+1. Read raw values using the bracket operator, such as `input.userDefines['key']`.
+1. Resolve relative paths using the `path()` method, such as `input.userDefines.path('key')`.
+   This resolves the relative path against the directory of the `pubspec.yaml`
+   where the user-define is declared.
+
+If the hook reads a resolved file or directory,
+register it as a dependency in `HookOutputBuilder` using
+`output.dependencies.add()`.
+This ensures that the build system invalidates the cache and
+re-runs the hook when the file changes.
+
+Here is an example hook script using user-defines:
+
+```dart title="hooks/build.dart"
+import 'dart:io';
+import 'package:hooks/hooks.dart';
+
+void main(List<String> args) async {
+  await build(args, (input, output) async {
+    final experimental = input.userDefines['enable_experimental'];
+    if (experimental is! bool?) {
+      throw const FormatException(
+        'hooks.user_defines.my_package.enable_experimental must be a '
+        'boolean (or omitted)',
+      );
+    }
+
+    if (experimental == true) {
+      print('Experimental features enabled.');
+    }
+
+    final customLibUri = input.userDefines.path('custom_lib');
+    if (customLibUri != null) {
+      final file = File.fromUri(customLibUri);
+      output.dependencies.add(file.uri);
+      // Use the file...
+    }
+  });
+}
+```
+
 ## Example projects
 
 There are several example projects to help you get started
