@@ -495,7 +495,7 @@ For more information, check out
 To configure package-specific hooks, such as native build or link hooks,
 use the `hooks` field.
 Under the `hooks` field,
-you can configure parameters that customize how hooks run.
+configure parameters that customize how hooks run.
 
 For example:
 

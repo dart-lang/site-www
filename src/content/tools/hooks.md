@@ -321,7 +321,7 @@ void main() {
 
 ## Hook configuration {: #hook-configuration }
 
-You can pass custom parameters or local file paths to build and link hooks
+Pass custom parameters or local file paths to build and link hooks
 from your project's build environment.
 Configure these parameters under the `hooks` key in your `pubspec.yaml` file.
 Currently, this block supports only the `user_defines` option.
@@ -339,7 +339,7 @@ such as booleans, strings, numbers, nested maps, or lists.
 User-defines are filtered per package.
 A hook inside `my_package` can only access keys configured under
 `hooks.user_defines.my_package`.
-It cannot access defines of other packages.
+It cannot access the user-defines of other packages.
 
 Here is an example of configuring user-defines:
 
@@ -361,7 +361,7 @@ use the `input.userDefines` object:
    using the `path()` method,
    such as `input.userDefines.path('key')`.
    This resolves the relative path against the directory of the `pubspec.yaml`
-   where the user-define is declared.
+   where the user-defines are declared.
 
 If the hook reads a resolved file or directory,
 register it as a dependency using
