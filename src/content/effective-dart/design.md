@@ -322,6 +322,7 @@ caller, and performance and robustness boundaries change over time. Most of the
 time, name your members based on *what* they do for the caller, not *how* they
 do it.
 
+<a id="avoid-starting-a-method-name-with-get" aria-hidden="true"></a>
 
 ### AVOID starting a function or method name with `get`
 
