@@ -326,8 +326,9 @@ do it.
 
 ### AVOID starting a function or method name with `get`
 
-In most cases, the method or function should be a getter with `get` removed
-from the name. For example, instead of a method named `getBreakfastOrder()`,
+In most cases, the method or function should be
+a getter with `get` removed from the name.
+For example, instead of a method named `getBreakfastOrder()`,
 define a getter named `breakfastOrder`.
 
 Even if the member does need to be a method because it takes arguments or
