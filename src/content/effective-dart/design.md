@@ -322,12 +322,14 @@ caller, and performance and robustness boundaries change over time. Most of the
 time, name your members based on *what* they do for the caller, not *how* they
 do it.
 
+<a id="avoid-starting-a-method-name-with-get" aria-hidden="true"></a>
 
-### AVOID starting a method name with `get`
+### AVOID starting a function or method name with `get`
 
-In most cases, the method should be a getter with `get` removed from the name.
-For example, instead of a method named `getBreakfastOrder()`, define a getter
-named `breakfastOrder`.
+In most cases, the method or function should be
+a getter with `get` removed from the name.
+For example, instead of a method named `getBreakfastOrder()`,
+define a getter named `breakfastOrder`.
 
 Even if the member does need to be a method because it takes arguments or
 otherwise isn't a good fit for a getter, you should still avoid `get`. Like the
