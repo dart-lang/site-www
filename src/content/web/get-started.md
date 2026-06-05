@@ -120,8 +120,8 @@ Let's customize the app you just created.
    ```dart
    Iterable<String> thingsTodo() sync* { /* ... */ }
 
-   [!HTMLLIElement newLI(String itemText) =>!]
-     [!(document.createElement('li') as HTMLLIElement)..text = itemText;!]
+   [!web.HTMLLIElement newLI(String itemText) =>!]
+     [!(web.document.createElement('li') as web.HTMLLIElement)..textContent = itemText;!]
     
    void main() { /* ... */ }
    ```
@@ -132,11 +132,11 @@ Let's customize the app you just created.
    ```dart
    Iterable<String> thingsTodo() sync* { /* ... */ }
 
-   HTMLLIElement newLI(String itemText) =>
-     (document.createElement('li') as HTMLLIElement)..text = itemText;
+   web.HTMLLIElement newLI(String itemText) =>
+     (web.document.createElement('li') as web.HTMLLIElement)..textContent = itemText;
 
    void main() {
-    final output = querySelector('#output');
+    final output = web.document.querySelector('#output');
     [!for (final item in thingsTodo()) {!]
       [!output?.appendChild(newLI(item));!]
     [!}!]
