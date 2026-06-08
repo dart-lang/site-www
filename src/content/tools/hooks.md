@@ -187,13 +187,13 @@ native assets (such as C or Rust libraries), which are then
 made available to be called from the Dart code of a package,
 create a `build.dart` script similar to the following:
 
-1.  In your Dart project, create or open `hooks/build.dart`. 
+1.  In your Dart project, create or open `hook/build.dart`. 
 
 1.  In the `main` method, call the `build` function from
     `package:hooks/hooks.dart` and use the appropriate
     toolchain to compile the native library. For example:
 
-    ```dart title="hooks/build.dart" highlightLines=6
+    ```dart title="hook/build.dart" highlightLines=6
     import 'package:hooks/hooks.dart';
     import 'package:logging/logging.dart';
     import 'package:native_toolchain_c/native_toolchain_c.dart';
@@ -332,16 +332,17 @@ Configure custom parameters inside the root package `pubspec.yaml` file,
 or in the workspace `pubspec.yaml` file if you use a workspace.
 Only end-users—the authors of the root app or package consuming
 the dependencies—can configure user-defines.
-Dependencies cannot supply their own default user-defines.
+Dependencies can't supply their own default user-defines.
 
 The configured values under `user_defines` can be any JSON-compatible type,
 such as booleans, strings, numbers, nested maps, or lists.
 User-defines are filtered per package.
 A hook inside `my_package` can only access keys configured under
 `hooks.user_defines.my_package`.
-It cannot access the user-defines of other packages.
+It can't access the user-defines of other packages.
 
-Here is an example of configuring user-defines:
+The following is an example of passing two user-defines
+to the hooks of the `my_package` package:
 
 ```yaml title="pubspec.yaml"
 hooks:
@@ -353,7 +354,8 @@ hooks:
 
 ### Access user-defines in a hook {: #access-user-defines }
 
-To access configured user-defines in your `build.dart` or `link.dart` hook script,
+To access configured user-defines in your
+`build.dart` or `link.dart` hook script,
 use the `input.userDefines` object:
 
 1. Read raw values using the bracket operator, such as `input.userDefines['key']`.
@@ -369,9 +371,10 @@ register it as a dependency using
 This ensures that the build system invalidates the cache and
 re-runs the hook when the file changes.
 
-Here is an example hook script using user-defines:
+The following is an example hook script that accesses the
+`enable_experimental` and `custom_lib` user-defines:
 
-```dart title="hooks/build.dart"
+```dart title="hook/build.dart"
 import 'dart:io';
 import 'package:hooks/hooks.dart';
 
@@ -385,7 +388,7 @@ void main(List<String> args) async {
       );
     }
 
-    if (experimental == true) {
+    if (experimental ?? false) {
       print('Experimental features enabled.');
     }
 

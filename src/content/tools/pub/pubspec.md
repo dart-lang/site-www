@@ -506,7 +506,10 @@ hooks:
       enable_experimental: true
 ```
 
-For more information, check out the [Hooks](/tools/hooks) page.
+To learn more about configuring hooks,
+check out [Hook configuration][].
+
+[Hook configuration]: /tools/hooks#hook-configuration
 
 ### SDK constraints
 
