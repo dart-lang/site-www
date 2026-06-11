@@ -187,13 +187,13 @@ native assets (such as C or Rust libraries), which are then
 made available to be called from the Dart code of a package,
 create a `build.dart` script similar to the following:
 
-1.  In your Dart project, create or open `hooks/build.dart`. 
+1.  In your Dart project, create or open `hook/build.dart`. 
 
 1.  In the `main` method, call the `build` function from
     `package:hooks/hooks.dart` and use the appropriate
     toolchain to compile the native library. For example:
 
-    ```dart title="hooks/build.dart" highlightLines=6
+    ```dart title="hook/build.dart" highlightLines=6
     import 'package:hooks/hooks.dart';
     import 'package:logging/logging.dart';
     import 'package:native_toolchain_c/native_toolchain_c.dart';
@@ -315,6 +315,89 @@ import 'package:test/test.dart';
 void main() {
   test('invoke native function', () {
     expect(add(24, 18), 42);
+  });
+}
+```
+
+## Hook configuration {: #hook-configuration }
+
+Pass custom parameters or local file paths to build and link hooks
+from your project's build environment.
+Configure these parameters under the `hooks` key in your `pubspec.yaml` file.
+Currently, this block supports only the `user_defines` option.
+
+### Configure user-defines {: #configure-user-defines }
+
+Configure custom parameters inside the root package `pubspec.yaml` file,
+or in the workspace `pubspec.yaml` file if you use a workspace.
+Only end-users—the authors of the root app or package consuming
+the dependencies—can configure user-defines.
+Dependencies can't supply their own default user-defines.
+
+The configured values under `user_defines` can be any JSON-compatible type,
+such as booleans, strings, numbers, nested maps, or lists.
+User-defines are filtered per package.
+A hook inside `my_package` can only access keys configured under
+`hooks.user_defines.my_package`.
+It can't access the user-defines of other packages.
+
+The following is an example of passing two user-defines
+to the hooks of the `my_package` package:
+
+```yaml title="pubspec.yaml"
+hooks:
+  user_defines:
+    my_package:
+      enable_experimental: true
+      custom_lib: assets/libnative.so
+```
+
+### Access user-defines in a hook {: #access-user-defines }
+
+To access configured user-defines in your
+`build.dart` or `link.dart` hook script,
+use the `input.userDefines` object:
+
+1. Read raw values using the bracket operator, such as `input.userDefines['key']`.
+1. Resolve relative paths to a `Uri`
+   using the `path()` method,
+   such as `input.userDefines.path('key')`.
+   This resolves the relative path against the directory of the `pubspec.yaml`
+   where the user-defines are declared.
+
+If the hook reads a resolved file or directory,
+register it as a dependency using
+`output.dependencies.add()`.
+This ensures that the build system invalidates the cache and
+re-runs the hook when the file changes.
+
+The following is an example hook script that accesses the
+`enable_experimental` and `custom_lib` user-defines:
+
+```dart title="hook/build.dart"
+import 'dart:io';
+import 'package:hooks/hooks.dart';
+
+void main(List<String> args) async {
+  await build(args, (input, output) async {
+    final experimental = input.userDefines['enable_experimental'];
+    if (experimental is! bool?) {
+      throw const FormatException(
+        'hooks.user_defines.my_package.enable_experimental must be a '
+        'boolean (or omitted)',
+      );
+    }
+
+    if (experimental ?? false) {
+      print('Experimental features enabled.');
+    }
+
+    final customLibUri = input.userDefines.path('custom_lib');
+    if (customLibUri != null) {
+      final file = File.fromUri(customLibUri);
+      output.dependencies.add(file.uri);
+      // Use the file...
+    }
   });
 }
 ```
