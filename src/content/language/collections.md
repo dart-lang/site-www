@@ -44,7 +44,7 @@ but it can help prevent copy-paste errors.
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
 ```dart
-var list = ['Car', 'Boat', 'Plane'];
+var list = ['Car', 'Boat', 'Plane',];
 ```
 
 Lists use zero-based indexing, where 0 is the index of the first element
