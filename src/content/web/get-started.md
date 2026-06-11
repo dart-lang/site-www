@@ -103,7 +103,7 @@ Let's customize the app you just created.
    Iterable<String> thingsTodo() sync* {
      const actions = ['Walk', 'Wash', 'Feed'];
      const pets = ['cats', 'dogs'];
-   
+
      for (final action in actions) {
        for (final pet in pets) {
          if (pet != 'cats' || action == 'Feed') {
@@ -117,29 +117,31 @@ Let's customize the app you just created.
 2. Add the `newLI()` function (as shown below).
    It creates a new `LIElement` containing the specified `String`.
 
-   ```dart
+   ```dart highlightLines=3-5
    Iterable<String> thingsTodo() sync* { /* ... */ }
 
-   [!web.HTMLLIElement newLI(String itemText) =>!]
-     [!(web.document.createElement('li') as web.HTMLLIElement)..textContent = itemText;!]
-    
+   web.HTMLLIElement newLI(String itemText) =>
+       (web.document.createElement('li') as web.HTMLLIElement)
+         ..textContent = itemText;
+
    void main() { /* ... */ }
    ```
 
 3. In the `main()` function, append content to the `output` element
    using `appendChild` and the values from `thingsTodo()`:
 
-   ```dart
+   ```dart highlightLines=9-11
    Iterable<String> thingsTodo() sync* { /* ... */ }
 
    web.HTMLLIElement newLI(String itemText) =>
-     (web.document.createElement('li') as web.HTMLLIElement)..textContent = itemText;
+       (web.document.createElement('li') as web.HTMLLIElement)
+         ..textContent = itemText;
 
    void main() {
-    final output = web.document.querySelector('#output');
-    [!for (final item in thingsTodo()) {!]
-      [!output?.appendChild(newLI(item));!]
-    [!}!]
+     final output = web.document.querySelector('#output');
+     for (final item in thingsTodo()) {
+       output?.appendChild(newLI(item));
+     }
    }
    ```
 
@@ -154,10 +156,10 @@ Let's customize the app you just created.
 6. Optionally, improve the formatting by editing `web/styles.css`,
    then reload the app to check your changes.
 
-   ```css
+   ```css highlightLines=3
    #output {
      padding: 20px;
-     [!text-align: left;!]
+     text-align: left;
    }
    ```
 
