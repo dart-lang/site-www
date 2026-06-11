@@ -96,11 +96,11 @@ Once your app has compiled, the browser should display
 
 Let's customize the app you just created.
 
-1. Copy the `thingsTodo()` function from the following snippet
+1. Copy the `thingsToDo()` function from the following snippet
    to the `web/main.dart` file:
 
    ```dart
-   Iterable<String> thingsTodo() sync* {
+   Iterable<String> thingsToDo() sync* {
      const actions = ['Walk', 'Wash', 'Feed'];
      const pets = ['cats', 'dogs'];
 
@@ -118,7 +118,7 @@ Let's customize the app you just created.
    It creates a new `LIElement` containing the specified `String`.
 
    ```dart highlightLines=3-5
-   Iterable<String> thingsTodo() sync* { /* ... */ }
+   Iterable<String> thingsToDo() sync* { /* ... */ }
 
    web.HTMLLIElement newLI(String itemText) =>
        (web.document.createElement('li') as web.HTMLLIElement)
@@ -128,10 +128,10 @@ Let's customize the app you just created.
    ```
 
 3. In the `main()` function, append content to the `output` element
-   using `appendChild` and the values from `thingsTodo()`:
+   using `appendChild` and the values from `thingsToDo()`:
 
    ```dart highlightLines=9-11
-   Iterable<String> thingsTodo() sync* { /* ... */ }
+   Iterable<String> thingsToDo() sync* { /* ... */ }
 
    web.HTMLLIElement newLI(String itemText) =>
        (web.document.createElement('li') as web.HTMLLIElement)
@@ -139,7 +139,7 @@ Let's customize the app you just created.
 
    void main() {
      final output = web.document.querySelector('#output');
-     for (final item in thingsTodo()) {
+     for (final item in thingsToDo()) {
        output?.appendChild(newLI(item));
      }
    }
