@@ -179,8 +179,8 @@ you can use a [path dependency][].
 Now that you've added `command_runner` as a dependency,
 you can import it into your `cli` application and
 replace your existing argument-handling logic with
-the new `CommandRunner` class. This step also
-fixes the program exit behavior discussed at the end of Chapter 3.
+the new `CommandRunner` class. This step also 
+fixes an issue where the program can exit before asynchronous operations complete.
 
 1.  Open the `cli/bin/cli.dart` file.
 
@@ -245,7 +245,8 @@ fixes the program exit behavior discussed at the end of Chapter 3.
     Highlights from the preceding code:
 
     - `void main(List<String> arguments) async` directly
-      addresses the program not exiting cleanly issue from Chapter 3.
+      addresses an issue where the program can exit before
+      all asynchronous tasks have completed.
       Notice that `main` is now declared `async`.
       This is essential because `runner.run()` returns a `Future`, and
       `main` must `await` its completion to ensure the program waits
