@@ -182,19 +182,19 @@ This function will house the core logic for handling the `wikipedia` command.
     update its signature to be `async` as it will now
     perform asynchronous operations.
 
-    Your `searchWikipedia` function should now look like this (initial part):
+    Your `searchWikipedia` function should now look like this:
 
     ```dart
     // ... (your existing main function)
 
     void searchWikipedia(List<String>? arguments) async { // Added 'async'
-      final String? articleTitle;
+      final String articleTitle;
 
       // If the user didn't pass in arguments, request an article title.
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
-        articleTitle = stdin.readLineSync(); // Await input from the user
-        // You'll add error handling for null input here in a moment
+        // Await input and provide a default empty string if the input is null.
+        articleTitle = stdin.readLineSync() ?? '';
       } else {
         // Otherwise, join the arguments into the CLI into a single string
         articleTitle = arguments.join(' ');
@@ -215,12 +215,15 @@ This function will house the core logic for handling the `wikipedia` command.
       This is essential because it will call `getWikipediaArticle`, which
       is an `async` function itself and will need to `await` its result.
 
-1.  **Add `null` and empty string checks for user input:**
-    Inside `searchWikipedia`, refine the `if` block that
-    handles the case where no arguments are provided.
-    If `stdin.readLineSync()` returns `null` (for example,
-    if the user presses Ctrl+D/Ctrl+Z) or an empty string,
-    print a message and exit the function.
+1.  **Reject `null` or empty string input:**
+    Right now, if the user runs `dart bin/cli.dart search` and
+    provides an empty string or presses Ctrl+D/Ctrl+Z,
+    `stdin.readLineSync()` returns `null` and `?? ''`
+    falls back to an empty string. The CLI then makes a pretend request
+    to Wikipedia with an empty string as the article title.
+
+    Replace the `?? ''` fallback with a check that prints a message
+    and exits the function when no valid input is given.
 
     ```dart
     void searchWikipedia(List<String>? arguments) async {
@@ -228,7 +231,8 @@ This function will house the core logic for handling the `wikipedia` command.
 
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
-        final inputFromStdin = stdin.readLineSync(); // Read input
+        // Read input without the `?? ''` fallback
+        final inputFromStdin = stdin.readLineSync();
         if (inputFromStdin == null || inputFromStdin.isEmpty) {
           print('No article title provided. Exiting.');
           return; // Exit the function if no valid input
@@ -245,16 +249,13 @@ This function will house the core logic for handling the `wikipedia` command.
     ```
 
 1.  **Call `getWikipediaArticle` and print the result:**
-    Now, modify the `searchWikipedia` function to
-    call your new `getWikipediaArticle` function and print the result.
-    Then, replace the previous placeholder `print` statements
-    with the actual API call.
+    Replace the two placeholder `print` lines at the end of `searchWikipedia`
+    with a call to `getWikipediaArticle` and a single `print` of the result.
 
     ```dart
-    // ... (beginning of searchWikipedia function, after determining articleTitle)
-
     void searchWikipedia(List<String>? arguments) async {
       final String articleTitle;
+
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
         final inputFromStdin = stdin.readLineSync();
