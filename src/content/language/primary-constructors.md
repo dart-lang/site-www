@@ -50,9 +50,18 @@ class Point(var int x, var int y);
 Declaring a parameter in the primary constructor with `var` or `final`
 implicitly induces an instance variable for that parameter.
 
-To ensure this constructor executes on every new instance,
+Any other constructors declared inside the class body are referred to as
+**in-body constructors**.
+
+To ensure the primary constructor executes on every new instance,
 a class, mixin class, or enum with a primary constructor
-cannot have any other non-redirecting generative constructors.
+cannot have any other non-redirecting generative in-body constructors.
+
+:::note
+If you want to declare traditional constructors in the class body more concisely
+without repeating the class name, see
+[Concise constructor syntax](/language/constructors#concise-constructor-syntax).
+:::
 
 ## Field declarations in parameters
 
@@ -104,6 +113,40 @@ class DeltaPoint(final int x, int delta) {
 
 This makes refactoring between traditional and primary constructors
 simpler and safer.
+
+### Primary constructor scopes
+
+Because primary constructor parameters are available in different parts
+of the class declaration, Dart manages their visibility using two distinct
+scopes:
+
+*   **Primary initializer scope**: Applies to non-late field initializers
+    in the class body and the primary constructor's initializer list (after
+    `this :`). In this scope, referencing a parameter name (like `x`) refers
+    directly to the constructor parameter.
+*   **Primary parameter scope**: Applies to the body block of the primary
+    constructor (inside `{ ... }`). In this scope, referencing a parameter
+    name refers to the *induced instance variable* (field) rather than the
+    parameter itself.
+
+This distinction ensures that any updates to instance variables are correctly
+reflected in the constructor body, while initializers still have access
+to the original parameters.
+
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (scoping-shadowing)"?>
+```dart
+class ScopingDemo(var String x) {
+  // In a field initializer, 'x' refers to the parameter 'x'.
+  late final String captureAtDeclaration = x;
+  late final String captureInInitializer;
+
+  // In the initializer list, 'x' refers to the parameter 'x'.
+  this : captureInInitializer = x {
+    // Inside the body, 'x' refers to the instance variable!
+    print(x);
+  }
+}
+```
 
 ## Add constructor bodies
 
@@ -159,23 +202,99 @@ at the call site: `User(name: 'John Doe')`.
 An empty body of a class, mixin class, extension, or extension type (`{}`)
 can be replaced by a semicolon (`;`).
 While this is true in general for these declarations, it is particularly
-useful when using a primary constructor to keep the entire declaration on a single line.
+useful when using a primary constructor to keep the entire declaration
+on a single line.
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (empty-bodies)" replace="/EmptyBodyPoint/Point/g"?>
 ```dart
 class Point(var int x, var int y);
 ```
 
+## Constant primary constructors
+
+Just like traditional constructors, a primary constructor can be constant
+if the class and its fields allow it. To declare a constant primary constructor,
+place the `const` modifier before the class name in the class header:
+
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (const-constructor)"?>
+```dart
+class const ConstPoint(final int x, final int y) {
+  final int z;
+  // A constant primary constructor can have an initializer list, but no body block.
+  this : z = x + y;
+}
+```
+
+Constant primary constructors have two important constraints:
+
+*   They **cannot have a body block** (that is, `{ ... }` is a compile-time
+    error, even if it is empty). They can only use an initializer list
+    followed by a semicolon.
+*   Any non-late instance variables in the class body must have initializing
+    expressions that are **potentially constant**.
+
+## Named primary constructors
+
+You can also declare a primary constructor as a **named constructor** by
+appending a dot (`.`) and a name after the class name in the class header:
+
+<?code-excerpt "language/lib/primary_constructors/point.dart (point-named)" replace="/PointNamed/Point/g"?>
+```dart
+// A named primary constructor.
+class Point.custom(var int x, var int y);
+```
+
+This is particularly useful when you want to define a private primary
+constructor (such as `Point._`) to restrict direct instantiation and force
+callers to use factory methods or other constructors:
+
+<?code-excerpt "language/lib/primary_constructors/point.dart (point-private)" replace="/PointPrivate/Point/g"?>
+```dart
+// A private named primary constructor.
+class Point._(var int x, var int y);
+```
+
 ## Super parameters
 
 Super parameters work just like they do in traditional constructors:
 
-<?code-excerpt "language/lib/primary_constructors/super_parameters.dart"?>
+<?code-excerpt "language/lib/primary_constructors/super_parameters.dart (super-parameters)"?>
 ```dart
 class A(final int a);
 
 class B(super.a) extends A;
 ```
+
+This is particularly useful for reducing boilerplate in Flutter widgets
+and other hierarchical class structures:
+
+<?code-excerpt "language/lib/primary_constructors/super_parameters.dart (widget-example)"?>
+```dart
+class MyWidget({super.key, required final String title})
+    extends StatelessWidget;
+```
+
+## Enums
+
+You can use primary constructors to declare
+[enhanced enums](/language/enums#declaring-enhanced-enums) much more concisely.
+
+By using a primary constructor, you can define the enum's fields and its
+constructor in a single line, eliminating the usual boilerplate of declaring
+fields, parameters, and initializing them:
+
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (enums)"?>
+```dart
+enum Color(final String hex) {
+  red('#FF0000'),
+  green('#00FF00'),
+  blue('#0000FF');
+}
+```
+
+Primary constructors in enums are **implicitly constant**. While you can
+optionally write the `const` modifier before the enum name or the primary
+constructor name, it is redundant and can be omitted.
 
 ## Constraints and breaking changes
 
@@ -189,6 +308,31 @@ when using primary constructors:
 *   **Name collisions**: Declaring a parameter in the primary constructor
     with the same name as a method or another field in the class body
     results in a compile-time error.
+*   **No assignments to primary parameters**:
+    Primary constructor parameters are read-only within the primary initializer
+    scope. Assigning to them (for example, `x = 5` or `x++`) in a field
+    initializer or the primary constructor's initializer list is a
+    compile-time error.
+*   **Double initialization**:
+    You cannot initialize an instance variable both in its declaration
+    and in the primary constructor's initializer list (or as an initializing
+    formal parameter), even if the field is mutable. Doing so results
+    in a compile-time error.
+*   **Body part constraints**:
+    *   A primary constructor body part (the `this` block) cannot use the
+        `async`, `async*`, or `sync*` modifiers, and it cannot use the
+        expression body arrow (`=>`) syntax.
+    *   You cannot write a `this` block if the class header does not declare
+        a primary constructor.
+    *   A class can have at most one primary constructor body part.
+*   **Mixin class primary constructors must be trivial**:
+    A mixin class can only declare a primary constructor if it has
+    no parameters, no initializer list, and no body.
+*   **Covariant parameters**:
+    You can only use the `covariant` modifier on a primary constructor
+    parameter if it is a declaring parameter (uses the `var` modifier).
+    Using `covariant` on `final` or non-declaring parameters is a
+    compile-time error because they do not induce a setter.
 
 :::warning
 **Important breaking changes and edge cases:**
@@ -199,8 +343,8 @@ when using primary constructors:
     becomes a compile-time error.
     They are reserved exclusively for declaring parameters
     in primary constructors.
-    Note that the lints `avoid_final_parameters` and `var_with_no_type_annotation`
-    only work in Dart 3.12 and below.
+    Note that the lints `avoid_final_parameters` and
+    `var_with_no_type_annotation` only work in Dart 3.12 and below.
     To enforce immutable parameters as a style choice in Dart 3.13 and later,
     use the
     [parameter_assignments](https://dart.dev/tools/linter-rules/parameter_assignments)
@@ -213,4 +357,5 @@ when using primary constructors:
     Make sure such methods have explicit return types
     to avoid this conflict.
 :::
+
 
