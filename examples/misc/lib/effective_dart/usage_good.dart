@@ -331,7 +331,7 @@ class Team {
 
       var players = await team.roster;
       return players.where((player) => player.isActive).length;
-    } on DownloadException catch (e, _) {
+    } on DownloadException catch (e) {
       log.error(e);
       return 0;
     }

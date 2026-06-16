@@ -96,14 +96,14 @@ Once your app has compiled, the browser should display
 
 Let's customize the app you just created.
 
-1. Copy the `thingsTodo()` function from the following snippet
+1. Copy the `thingsToDo()` function from the following snippet
    to the `web/main.dart` file:
 
    ```dart
-   Iterable<String> thingsTodo() sync* {
+   Iterable<String> thingsToDo() sync* {
      const actions = ['Walk', 'Wash', 'Feed'];
      const pets = ['cats', 'dogs'];
-   
+
      for (final action in actions) {
        for (final pet in pets) {
          if (pet != 'cats' || action == 'Feed') {
@@ -117,29 +117,31 @@ Let's customize the app you just created.
 2. Add the `newLI()` function (as shown below).
    It creates a new `LIElement` containing the specified `String`.
 
-   ```dart
-   Iterable<String> thingsTodo() sync* { /* ... */ }
+   ```dart highlightLines=3-5
+   Iterable<String> thingsToDo() sync* { /* ... */ }
 
-   [!HTMLLIElement newLI(String itemText) =>!]
-     [!(document.createElement('li') as HTMLLIElement)..text = itemText;!]
-    
+   web.HTMLLIElement newLI(String itemText) =>
+       (web.document.createElement('li') as web.HTMLLIElement)
+         ..textContent = itemText;
+
    void main() { /* ... */ }
    ```
 
 3. In the `main()` function, append content to the `output` element
-   using `appendChild` and the values from `thingsTodo()`:
+   using `appendChild` and the values from `thingsToDo()`:
 
-   ```dart
-   Iterable<String> thingsTodo() sync* { /* ... */ }
+   ```dart highlightLines=9-11
+   Iterable<String> thingsToDo() sync* { /* ... */ }
 
-   HTMLLIElement newLI(String itemText) =>
-     (document.createElement('li') as HTMLLIElement)..text = itemText;
+   web.HTMLLIElement newLI(String itemText) =>
+       (web.document.createElement('li') as web.HTMLLIElement)
+         ..textContent = itemText;
 
    void main() {
-    final output = querySelector('#output');
-    [!for (final item in thingsTodo()) {!]
-      [!output?.appendChild(newLI(item));!]
-    [!}!]
+     final output = web.document.querySelector('#output');
+     for (final item in thingsToDo()) {
+       output?.appendChild(newLI(item));
+     }
    }
    ```
 
@@ -154,10 +156,10 @@ Let's customize the app you just created.
 6. Optionally, improve the formatting by editing `web/styles.css`,
    then reload the app to check your changes.
 
-   ```css
+   ```css highlightLines=3
    #output {
      padding: 20px;
-     [!text-align: left;!]
+     text-align: left;
    }
    ```
 
