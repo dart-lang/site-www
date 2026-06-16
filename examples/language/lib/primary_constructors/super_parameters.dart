@@ -21,4 +21,3 @@ class B(super.a) extends A;
 class MyWidget({super.key, required final String title})
     extends StatelessWidget;
 // #enddocregion widget-example
-

@@ -89,4 +89,3 @@ enum VehiclePrimary(
       carbonFootprint - other.carbonFootprint;
 }
 // #enddocregion enhanced-primary
-

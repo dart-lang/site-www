@@ -22,4 +22,3 @@ class PointNamed.custom(var int x, var int y);
 // A private named primary constructor.
 class PointPrivate._(var int x, var int y);
 // #enddocregion point-private
-

@@ -62,6 +62,4 @@ enum Color(final String hex) {
   green('#00FF00'),
   blue('#0000FF');
 }
-
 // #enddocregion enums
-
