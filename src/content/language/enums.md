@@ -105,7 +105,7 @@ enum Vehicle implements Comparable<Vehicle> {
 In Dart 3.13 and later, you can declare enhanced enums even more concisely
 using [primary constructors](/language/primary-constructors):
 
-<?code-excerpt "misc/lib/language_tour/classes/enum.dart (enhanced-primary)" replace="/VehiclePrimary/Vehicle/g"?>
+<?code-excerpt "language/lib/primary_constructors/enum.dart (enhanced-primary)"?>
 ```dart
 enum Vehicle(
   final int tires,
@@ -121,8 +121,7 @@ enum Vehicle(
   bool get isTwoWheeled => this == Vehicle.bicycle;
 
   @override
-  int compareTo(Vehicle other) =>
-      carbonFootprint - other.carbonFootprint;
+  int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
 }
 ```
 :::

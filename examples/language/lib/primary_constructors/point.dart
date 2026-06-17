@@ -6,6 +6,7 @@ class Point {
 
   Point(this.x, this.y);
 }
+
 // #enddocregion point
 
 // #docregion point-primary
