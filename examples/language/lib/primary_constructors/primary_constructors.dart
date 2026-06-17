@@ -6,6 +6,7 @@ class Point(var int x, var int y);
 
 // Doesn't declare a field.
 class User(String name);
+
 // #enddocregion declaring-parameters
 
 // #docregion initializer-scope
@@ -13,6 +14,7 @@ class DeltaPoint(final int x, int delta) {
   // Accesses 'x' and 'delta' parameters directly!
   final int y = x + delta;
 }
+
 // #enddocregion initializer-scope
 
 // #docregion constructor-bodies
@@ -21,6 +23,7 @@ class PointWithBody(var int x, var int y) {
     print('Point initialized at ($x, $y)');
   }
 }
+
 // #enddocregion constructor-bodies
 
 // #docregion private-fields
@@ -28,24 +31,27 @@ class PointWithBody(var int x, var int y) {
 class UserWithPrivateField(String name) {
   final String _name = name; // '_name' is private.
 }
+
 // #enddocregion private-fields
 
 // #docregion empty-bodies
 class EmptyBodyPoint(var int x, var int y);
+
 // #enddocregion empty-bodies
 
 // #docregion scoping-shadowing
 class ScopingDemo(var String x) {
-  // In a field initializer, 'x' refers to the parameter 'x'.
-  late final String captureAtDeclaration = x;
-  late final String captureInInitializer;
+  // In a non-late field initializer, 'x' refers to the parameter 'x'.
+  final String fieldAtDeclaration = x;
+  final String fieldInInitializer;
 
   // In the initializer list, 'x' refers to the parameter 'x'.
-  this : captureInInitializer = x {
+  this : fieldInInitializer = x {
     // Inside the body, 'x' refers to the instance variable!
-    print(x); 
+    print(x);
   }
 }
+
 // #enddocregion scoping-shadowing
 
 // #docregion const-constructor
@@ -54,6 +60,7 @@ class const ConstPoint(final int x, final int y) {
   // A constant primary constructor can have an initializer list, but no body block.
   this : z = x + y;
 }
+
 // #enddocregion const-constructor
 
 // #docregion enums

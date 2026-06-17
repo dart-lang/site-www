@@ -1,23 +1,5 @@
-abstract class Widget {
-  final Key? key;
-  const Widget({this.key});
-}
-
-abstract class Key {
-  const Key();
-}
-
-abstract class StatelessWidget extends Widget {
-  const StatelessWidget({super.key});
-}
-
 // #docregion super-parameters
-class A(final int a);
+class Person(final String name, final int age);
 
-class B(super.a) extends A;
+class Employee(super.name, super.age, final String role) extends Person;
 // #enddocregion super-parameters
-
-// #docregion widget-example
-class MyWidget({super.key, required final String title})
-    extends StatelessWidget;
-// #enddocregion widget-example

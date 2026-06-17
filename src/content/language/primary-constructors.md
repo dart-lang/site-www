@@ -138,12 +138,12 @@ to the original parameters.
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (scoping-shadowing)"?>
 ```dart
 class ScopingDemo(var String x) {
-  // In a field initializer, 'x' refers to the parameter 'x'.
-  late final String captureAtDeclaration = x;
-  late final String captureInInitializer;
+  // In a non-late field initializer, 'x' refers to the parameter 'x'.
+  final String fieldAtDeclaration = x;
+  final String fieldInInitializer;
 
   // In the initializer list, 'x' refers to the parameter 'x'.
-  this : captureInInitializer = x {
+  this : fieldInInitializer = x {
     // Inside the body, 'x' refers to the instance variable!
     print(x);
   }
@@ -258,23 +258,20 @@ class Point._(var int x, var int y);
 
 ## Super parameters
 
-Super parameters work just like they do in traditional constructors:
+Super parameters work just like they do in traditional constructors,
+allowing you to forward parameters to the superclass constructor:
 
 <?code-excerpt "language/lib/primary_constructors/super_parameters.dart (super-parameters)"?>
 ```dart
-class A(final int a);
+class Person(final String name, final int age);
 
-class B(super.a) extends A;
+class Employee(super.name, super.age, final String role) extends Person;
 ```
 
-This is particularly useful for reducing boilerplate in Flutter widgets
-and other hierarchical class structures:
-
-<?code-excerpt "language/lib/primary_constructors/super_parameters.dart (widget-example)"?>
-```dart
-class MyWidget({super.key, required final String title})
-    extends StatelessWidget;
-```
+This is particularly useful for reducing boilerplate
+in hierarchical class structures,
+as it eliminates the need to manually write initializer lists
+or duplicate parameter declarations.
 
 ## Enums
 
@@ -310,7 +307,7 @@ when using primary constructors:
 *   **Name collisions**: Declaring a parameter in the primary constructor
     with the same name as a method or another field in the class body
     results in a compile-time error.
-*   **No assignments to primary parameters**:
+*   **No assignments to primary constructor parameters**:
     Primary constructor parameters are read-only within the primary initializer
     scope. Assigning to them (for example, `x = 5` or `x++`) in a field
     initializer or the primary constructor's initializer list is a
