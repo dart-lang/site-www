@@ -6,7 +6,7 @@ a, button {
   cursor: pointer;
   background: none;
   border: none;
-  font-weight: 400;
+  font-weight: var(--site-fontWeight-normal);
 
   &.filled-button, &.icon-button, &.text-button, &.outlined-button, &.outlined-button-cta {
     // Reset style of buttons.
