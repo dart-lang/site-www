@@ -188,7 +188,7 @@ This function will house the core logic for handling the `wikipedia` command.
     // ... (your existing main function)
 
     void searchWikipedia(List<String>? arguments) async { // Added 'async'
-      final String? articleTitle;
+      final String articleTitle;
 
       // If the user didn't pass in arguments, request an article title.
       if (arguments == null || arguments.isEmpty) {
