@@ -193,7 +193,7 @@ This function will house the core logic for handling the `wikipedia` command.
       // If the user didn't pass in arguments, request an article title.
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
-        // Await input and provide a default empty string if the input is null.
+        // Read input and provide a default empty string if the input is null.
         articleTitle = stdin.readLineSync() ?? '';
       } else {
         // Otherwise, join the arguments into the CLI into a single string
