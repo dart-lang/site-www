@@ -50,7 +50,7 @@ $sidenav-wide-layout: 1024px;
   }
 
   .nav-header {
-    font-weight: bolder;
+    font-weight: var(--site-fontWeight-bold);
     padding: 0.25rem 0.4rem 0;
     color: var(--site-base-fgColor-lighter);
   }

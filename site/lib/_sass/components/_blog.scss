@@ -313,7 +313,7 @@
 
   .author,
   .author-link {
-    font-weight: 600;
+    font-weight: var(--site-fontWeight-bold);
     color: var(--site-base-fgColor);
     text-decoration: none;
   }
@@ -371,14 +371,14 @@
   .post-info-name {
     margin: 0;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: var(--site-fontWeight-bold);
     line-height: 1.2;
   }
 
   .post-info-meta {
     font-size: 0.95rem;
     color: var(--site-base-fgColor-alt);
-    font-weight: 400;
+    font-weight: var(--site-fontWeight-normal);
     white-space: nowrap;
 
     &::before {
@@ -451,7 +451,7 @@
   color: var(--site-base-fgColor-alt);
   margin-top: 0;
   margin-bottom: 2rem;
-  font-weight: 400;
+  font-weight: var(--site-fontWeight-normal);
 }
 
 .post-content {
@@ -466,7 +466,7 @@
   h5,
   h6 {
     font-family: var(--site-ui-fontFamily);
-    font-weight: 700;
+    font-weight: var(--site-fontWeight-bold);
   }
 
   .postbreak span {
