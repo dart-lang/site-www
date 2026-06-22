@@ -64,6 +64,12 @@ class BlogCard extends StatelessComponent {
                     src: context.resolveAsset('/blog/authors/${author.image}'),
                     alt: author.name,
                     classes: 'blog-card-avatar',
+                  )
+                else if (author.github?.avatarUrl case final avatarUrl?)
+                  img(
+                    src: avatarUrl,
+                    alt: author.name,
+                    classes: 'blog-card-avatar',
                   ),
               span(classes: 'author', [
                 for (final author in authors)
