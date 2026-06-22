@@ -57,7 +57,8 @@ class ScopingDemo(var String x) {
 // #docregion const-constructor
 class const ConstPoint(final int x, final int y) {
   final int z;
-  // A constant primary constructor can have an initializer list, but no body block.
+  // A constant primary constructor can have an initializer list,
+  // but can't have a body block.
   this : z = x + y;
 }
 

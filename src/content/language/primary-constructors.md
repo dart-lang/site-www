@@ -222,18 +222,25 @@ place the `const` modifier before the class name in the class header:
 ```dart
 class const ConstPoint(final int x, final int y) {
   final int z;
-  // A constant primary constructor can have an initializer list, but no body block.
+  // A constant primary constructor can have an initializer list,
+  // but can't have a body block.
   this : z = x + y;
 }
 ```
 
-Constant primary constructors have two important constraints:
+Constant primary constructors have these important constraints:
 
-*   They **cannot have a body block** (that is, `{ ... }` is a compile-time
-    error, even if it is empty). They can only use an initializer list
-    followed by a semicolon.
-*   Any non-late instance variables in the class body must have initializing
-    expressions that are **potentially constant**.
+*   They **can't have a body block**.
+    That is, `{ ... }` is a compile-time error, even if it is empty.
+    They can only use an initializer list followed by a semicolon.
+*   Like any class with a generative const constructor,
+    every instance variable must be `final`, can't be `late`,
+    and must be definitely initialized by a declaring parameter,
+    field initializer, or the primary constructor's initializer list.
+*   The initializer expressions for each
+    instance variable must be **potentially constant**.
+    This includes field initializers and
+    expressions in the primary constructor's initializer list.
 
 ## Named primary constructors
 
