@@ -24,7 +24,7 @@ class BlogCard extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final author = context.page.getAuthor(post.authorId);
+    final authors = context.page.getAuthors(post.authorIds);
     return a(
       href: url,
       classes: 'blog-card ${className ?? ''}',
@@ -57,30 +57,27 @@ class BlogCard extends StatelessComponent {
           ]),
           const span(classes: 'blog-card-spacer', []),
           div(classes: 'blog-card-meta', [
-            div(classes: 'blog-card-author-row', [
-              if (author.image != null)
-                img(
-                  classes: 'blog-card-avatar',
-                  src: context.resolveAsset('/blog/authors/${author.image}'),
-                  alt: author.name,
-                )
-              else if (author.github?.avatarUrl case final avatarUrl?)
-                img(
-                  classes: 'blog-card-avatar',
-                  src: avatarUrl,
-                  alt: author.name,
-                ),
+            div(classes: 'blog-card-authors', [
+              for (final author in authors)
+                if (author.image != null)
+                  img(
+                    src: context.resolveAsset('/blog/authors/${author.image}'),
+                    alt: author.name,
+                    classes: 'blog-card-avatar',
+                  ),
               span(classes: 'author', [
-                .text(author.name),
+                for (final author in authors)
+                  span([
+                    .text(author.name),
+                  ]),
               ]),
-              const span(classes: 'separator', [.text(' · ')]),
-              span(classes: 'date', [
-                .text(post.formattedDate),
-              ]),
-              const span(classes: 'separator', [.text(' · ')]),
-              span(classes: 'reading-time', [
-                .text(post.readingTime),
-              ]),
+            ]),
+            span(classes: 'date', [
+              .text(post.formattedDate),
+            ]),
+            const span(classes: 'separator', [.text(' · ')]),
+            span(classes: 'reading-time', [
+              .text(post.readingTime),
             ]),
           ]),
         ]),

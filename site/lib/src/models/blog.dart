@@ -10,7 +10,7 @@ extension type Post(Map<String, Object?> data) {
     if (data['title'] is! String ||
         data['description'] is! String ||
         data['publishDate'] is! String ||
-        data['author'] is! String) {
+        (data['author'] is! String && data['author'] is! List)) {
       return null;
     }
     return Post(data);
@@ -24,7 +24,13 @@ extension type Post(Map<String, Object?> data) {
   DateTime get dateObject => DateTime.parse(publishDate);
   String get formattedDate => DateFormat.yMMMd().format(dateObject);
 
-  String get authorId => data['author'] as String;
+  List<String> get authorIds => switch (data['author']) {
+    final String authorId => [authorId],
+    final List<Object?> authorIds => authorIds.cast<String>(),
+    _ => throw ArgumentError(
+      'Post author is neither a string nor a list of strings for "$title".',
+    ),
+  };
 
   String get readingTime => data['readingTime'] as String? ?? '5 min read';
   String? get category => data['category'] as String?;
@@ -36,6 +42,16 @@ extension type Author(Map<String, Object?> data) {
   String? get image => data['image'] as String?;
   String? get twitter => data['twitter'] as String?;
   AuthorGithub? get github => data['github'] as AuthorGithub?;
+
+  String? get linkUrl {
+    if (github?.handle case final handle?) {
+      return 'https://github.com/$handle';
+    }
+    if (twitter case final twitterHandle?) {
+      return 'https://twitter.com/$twitterHandle';
+    }
+    return null;
+  }
 }
 
 extension type AuthorGithub(Map<String, Object?> data) {
@@ -60,4 +76,12 @@ extension GetAuthor on Page {
     }
     return Author(author);
   }
+
+  List<Author> getAuthors(List<String> ids) {
+    return [for (final id in ids) getAuthor(id)];
+  }
+}
+
+extension AuthorNames on List<Author> {
+  String get allNames => map((a) => a.name).join(', ');
 }
