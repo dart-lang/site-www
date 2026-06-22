@@ -61,7 +61,8 @@ extension type AuthorGithub(Map<String, Object?> data) {
 }
 
 extension GetAuthor on Page {
-  Author getAuthor(String id) {
+  /// Returns the author with the specified [id].
+  Author authorById(String id) {
     final authors = data['authors'];
     if (authors is! Map<String, Object?>) {
       throw Exception('Authors data not found or invalid.');
@@ -77,12 +78,14 @@ extension GetAuthor on Page {
     return Author(author);
   }
 
-  List<Author> getAuthors(List<String> ids) {
-    return [for (final id in ids) getAuthor(id)];
-  }
+  /// Returns the authors with the specified [ids].
+  List<Author> authorsByIds(List<String> ids) => [
+    for (final id in ids) authorById(id),
+  ];
 }
 
 extension AuthorNames on List<Author> {
+  /// The author names joined with commas for compact metadata displays.
   String get allNames => map((a) => a.name).join(', ');
 }
 

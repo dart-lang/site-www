@@ -24,7 +24,7 @@ class BlogCard extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final authors = context.page.getAuthors(post.authorIds);
+    final authors = context.page.authorsByIds(post.authorIds);
     return a(
       href: url,
       classes: 'blog-card ${className ?? ''}',

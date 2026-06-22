@@ -23,7 +23,7 @@ class PostInfo extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final authors = context.page.getAuthors(post.authorIds);
+    final authors = context.page.authorsByIds(post.authorIds);
 
     return div(classes: 'post-info', [
       div(classes: 'post-info-main', [
