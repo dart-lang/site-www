@@ -60,6 +60,13 @@ class _AuthorInfo extends StatelessComponent {
             alt: author.name,
             width: 32,
             height: 32,
+          )
+        else if (author.github?.avatarUrl case final avatarUrl?)
+          img(
+            src: avatarUrl,
+            alt: author.name,
+            width: 32,
+            height: 32,
           ),
       h3(classes: 'post-info-name', [
         for (final author in authors)
