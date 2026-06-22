@@ -217,10 +217,14 @@ This function will house the core logic for handling the `wikipedia` command.
 
 1.  **Reject `null` or empty string input:**
     Right now, if the user runs `dart bin/cli.dart search` and
-    provides an empty string or presses Ctrl+D/Ctrl+Z,
-    `stdin.readLineSync()` returns `null` and `?? ''`
-    falls back to an empty string. The CLI then makes a pretend request
-    to Wikipedia with an empty string as the article title.
+    presses <kbd>Enter</kbd> without typing a title,
+    `stdin.readLineSync()` returns an empty string.
+    If the user presses <kbd>Control</kbd>+<kbd>D</kbd> or
+    <kbd>Control</kbd>+<kbd>Z</kbd> to send an end-of-file (EOF) signal,
+    `stdin.readLineSync()` returns `null`,
+    and `?? ''` falls back to an empty string.
+    In either case, the CLI makes a pretend request to Wikipedia
+    with an empty string as the article title.
 
     Replace the `?? ''` fallback with a check that prints a message
     and exits the function when no valid input is given.
