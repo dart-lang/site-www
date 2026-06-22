@@ -20,6 +20,7 @@ void setUpSite() {
   _setUpTabs();
   _setUpGallery();
   _setUpExpandableCards();
+  _setUpPlatformKeys();
   _setUpTableOfContents();
   _setUpReleaseTags();
   _setUpTooltips();
@@ -313,6 +314,18 @@ enum _ClientOperatingSystem {
     }
 
     return fallback;
+  }
+}
+
+void _setUpPlatformKeys() {
+  final specialKey = switch (_ClientOperatingSystem.fromUserAgent()) {
+    .macos => 'Command',
+    _ => 'Control',
+  };
+  final keys = web.document.querySelectorAll('kbd.special-key');
+  for (var i = 0; i < keys.length; i += 1) {
+    final element = keys.item(i) as web.Element;
+    element.textContent = specialKey;
   }
 }
 
