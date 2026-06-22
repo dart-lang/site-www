@@ -10,7 +10,10 @@ extension type Post(Map<String, Object?> data) {
     if (data['title'] is! String ||
         data['description'] is! String ||
         data['publishDate'] is! String ||
-        (data['author'] is! String && data['author'] is! List)) {
+        (data['author'] is! String &&
+            (data['author'] is! List ||
+                (data['author'] as List).isEmpty ||
+                (data['author'] as List).any((e) => e is! String)))) {
       return null;
     }
     return Post(data);
