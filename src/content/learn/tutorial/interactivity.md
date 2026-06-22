@@ -372,7 +372,7 @@ As you build this functionality, you'll work with
         // Await input and provide a default empty string if the input is null.
         articleTitle = stdin.readLineSync() ?? '';
       } else {
-        // Otherwise, join the arguments into the CLI into a single string
+        // Otherwise, join the arguments into a single string.
         articleTitle = arguments.join(' ');
       }
 
