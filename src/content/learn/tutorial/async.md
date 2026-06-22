@@ -196,7 +196,7 @@ This function will house the core logic for handling the `wikipedia` command.
         // Read input and provide a default empty string if the input is null.
         articleTitle = stdin.readLineSync() ?? '';
       } else {
-        // Otherwise, join the arguments into the CLI into a single string
+        // Otherwise, join the arguments into a single string.
         articleTitle = arguments.join(' ');
       }
 
@@ -235,14 +235,15 @@ This function will house the core logic for handling the `wikipedia` command.
 
       if (arguments == null || arguments.isEmpty) {
         print('Please provide an article title.');
-        // Read input without the `?? ''` fallback
+        // Read input without the `?? ''` fallback.
         final inputFromStdin = stdin.readLineSync();
         if (inputFromStdin == null || inputFromStdin.isEmpty) {
           print('No article title provided. Exiting.');
-          return; // Exit the function if no valid input
+          return; // Exit the function if there's no valid input.
         }
         articleTitle = inputFromStdin;
       } else {
+        // Otherwise, join the arguments into a single string.
         articleTitle = arguments.join(' ');
       }
 
@@ -274,7 +275,7 @@ This function will house the core logic for handling the `wikipedia` command.
 
       print('Looking up articles about "$articleTitle". Please wait.');
 
-      // Call the API and await the result
+      // Call the API and await the result.
       var articleContent = await getWikipediaArticle(articleTitle);
       print(articleContent); // Print the full article response (raw JSON for now)
     }
