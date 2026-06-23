@@ -135,7 +135,9 @@ final class AtomFeedOutput implements SecondaryOutput {
           url: siteBaseUrl.resolve(page.url).toString(),
           title: post.title,
           summary: post.description,
-          author: page.authorsByIds(post.authorIds).allNames,
+          authors: [
+            for (final author in page.authorsByIds(post.authorIds)) author.name,
+          ],
           category: post.category,
           published: published,
           updated: updated,
@@ -167,7 +169,7 @@ final class _AtomEntry implements Comparable<_AtomEntry> {
     required this.url,
     required this.title,
     required this.summary,
-    required this.author,
+    required this.authors,
     required this.published,
     required this.updated,
     this.category,
@@ -182,8 +184,8 @@ final class _AtomEntry implements Comparable<_AtomEntry> {
   /// The post's description, written to `<summary>`.
   final String summary;
 
-  /// The display name of the post's author.
-  final String author;
+  /// The display names of the post's authors.
+  final List<String> authors;
 
   /// The time the post was first published.
   final DateTime published;
@@ -213,9 +215,11 @@ final class _AtomEntry implements Comparable<_AtomEntry> {
           ..writeLink(rel: 'alternate', type: 'text/html', href: url)
           ..element('id', nest: url)
           ..element('updated', nest: updated.toIso8601String())
-          ..element('published', nest: published.toIso8601String())
-          ..writeAuthor(author)
-          ..writeTextElement('summary', summary);
+          ..element('published', nest: published.toIso8601String());
+        for (final author in authors) {
+          builder.writeAuthor(author);
+        }
+        builder.writeTextElement('summary', summary);
         if (category case final category?) {
           builder.element('category', attributes: {'term': category});
         }

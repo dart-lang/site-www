@@ -110,17 +110,11 @@ void main() {
       newerEntry.getElement('published')?.innerText,
       '2026-04-10T00:00:00.000Z',
     );
-    expect(
-      newerEntry.getElement('author')?.getElement('name')?.innerText,
-      'Author Two, Author Three',
-    );
+    expect(_authorNames(newerEntry), ['Author Two', 'Author Three']);
 
     final olderEntry = entries[1];
     expect(olderEntry.getElement('title')?.innerText, 'Older <Post>');
-    expect(
-      olderEntry.getElement('author')?.getElement('name')?.innerText,
-      'Author One',
-    );
+    expect(_authorNames(olderEntry), ['Author One']);
     expect(
       olderEntry.getElement('updated')?.innerText,
       '2026-04-03T00:00:00.000Z',
@@ -195,6 +189,12 @@ void main() {
 XmlElement _firstLinkWithRel(XmlElement feed, String rel) => feed
     .findElements('link')
     .firstWhere((element) => element.getAttribute('rel') == rel);
+
+List<String> _authorNames(XmlElement entry) => entry
+    .findElements('author')
+    .map((author) => author.getElement('name')?.innerText)
+    .nonNulls
+    .toList();
 
 Page _page({
   required String path,

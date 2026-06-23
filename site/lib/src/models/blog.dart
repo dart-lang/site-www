@@ -84,11 +84,6 @@ extension GetAuthor on Page {
   ];
 }
 
-extension AuthorNames on List<Author> {
-  /// The author names joined with commas for compact metadata displays.
-  String get allNames => map((a) => a.name).join(', ');
-}
-
 /// Whether [author] is a valid author configuration:
 /// either a single author ID or a non-empty list of author IDs.
 bool _isValidAuthorProperty(Object? author) {
