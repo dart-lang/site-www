@@ -93,17 +93,32 @@ You can use the `final` modifier, but it is an error to use `var`.
 Mixin classes can only have a primary constructor
 with no parameters, body, or initializer list.
 
+<a id="primary-initializer-scope" aria-hidden="true"></a>
 
-## Primary initializer scope
+## Primary constructor scopes
 
-When you use a primary constructor, the parameters you declare
-in the class header become directly available
-for initializing non-late fields in the class body.
+When you use a primary constructor,
+the parameters you declare in the class header are
+available in different parts of the class declaration.
+Dart manages their visibility using two distinct scopes:
 
-This eliminates the need for a separate initializer list
-when calculating values for other fields.
-It works just as if you were initializing variables
-in a traditional constructor's initializer list.
+*   **Primary initializer scope**:
+    Applies to non-late field initializers in the class body and
+    to the primary constructor's initializer list (after `this :`).
+    In this scope, a parameter name like `x` refers
+    directly to the constructor parameter.
+*   **Primary parameter scope**:
+    Applies to the body block of the primary constructor (inside `{ ... }`).
+    In this scope, a declaring parameter's name
+    refers to the _induced instance variable_ (field),
+    while a non-declaring parameter's name still
+    refers to the constructor parameter.
+
+The primary initializer scope makes the header parameters directly
+available for initializing non-late fields,
+which removes the need for a separate initializer list.
+It works just as if you were initializing
+variables in a traditional constructor's initializer list:
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (initializer-scope)"?>
 ```dart
@@ -113,42 +128,33 @@ class DeltaPoint(final int x, int delta) {
 }
 ```
 
-This makes refactoring between traditional and primary constructors
-simpler and safer.
-
-### Primary constructor scopes
-
-Because primary constructor parameters are available in different parts
-of the class declaration, Dart manages their visibility using two distinct
-scopes:
-
-*   **Primary initializer scope**: Applies to non-late field initializers
-    in the class body and the primary constructor's initializer list (after
-    `this :`). In this scope, referencing a parameter name (like `x`) refers
-    directly to the constructor parameter.
-*   **Primary parameter scope**: Applies to the body block of the primary
-    constructor (inside `{ ... }`). In this scope, referencing a parameter
-    name refers to the *induced instance variable* (field) rather than the
-    parameter itself.
-
-This distinction ensures that any updates to instance variables are correctly
-reflected in the constructor body, while initializers still have access
-to the original parameters.
+The primary parameter scope ensures that
+any updates to instance variables are
+correctly reflected in the constructor body,
+while initializers still have access to the original parameters.
+The following example shows how the
+same name `x` resolves differently in each scope:
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (scoping-shadowing)"?>
 ```dart
-class ScopingDemo(var String x) {
+class ScopingDemo(var String x, String suffix) {
   // In a non-late field initializer, 'x' refers to the parameter 'x'.
   final String fieldAtDeclaration = x;
   final String fieldInInitializer;
 
   // In the initializer list, 'x' refers to the parameter 'x'.
   this : fieldInInitializer = x {
-    // Inside the body, 'x' refers to the instance variable!
-    print(x);
+    // Inside the body, 'x' refers to the induced instance variable,
+    // so assigning to it updates the field.
+    x = x.toUpperCase();
+    // 'suffix' induces no field, so it still refers to the parameter.
+    print('$x$suffix');
   }
 }
 ```
+
+This consistent behavior makes refactoring between
+traditional and primary constructors simpler and safer.
 
 ## Add constructor bodies
 

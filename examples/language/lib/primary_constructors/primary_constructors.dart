@@ -40,15 +40,18 @@ class EmptyBodyPoint(var int x, var int y);
 // #enddocregion empty-bodies
 
 // #docregion scoping-shadowing
-class ScopingDemo(var String x) {
+class ScopingDemo(var String x, String suffix) {
   // In a non-late field initializer, 'x' refers to the parameter 'x'.
   final String fieldAtDeclaration = x;
   final String fieldInInitializer;
 
   // In the initializer list, 'x' refers to the parameter 'x'.
   this : fieldInInitializer = x {
-    // Inside the body, 'x' refers to the instance variable!
-    print(x);
+    // Inside the body, 'x' refers to the induced instance variable,
+    // so assigning to it updates the field.
+    x = x.toUpperCase();
+    // 'suffix' induces no field, so it still refers to the parameter.
+    print('$x$suffix');
   }
 }
 
