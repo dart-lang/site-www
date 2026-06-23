@@ -23,7 +23,7 @@ class PostInfo extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final authors = context.page.getAuthors(post.authorIds);
+    final authors = context.page.authorsByIds(post.authorIds);
 
     return div(classes: 'post-info', [
       div(classes: 'post-info-main', [
@@ -54,9 +54,9 @@ class _AuthorInfo extends StatelessComponent {
   Component build(BuildContext context) {
     return div(classes: 'post-info-author', [
       for (final author in authors)
-        if (author.image != null)
+        if (author.image case final authorImage?)
           img(
-            src: context.resolveAsset('/blog/authors/${author.image}'),
+            src: context.resolveAsset('/blog/authors/$authorImage'),
             alt: author.name,
             width: 32,
             height: 32,

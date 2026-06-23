@@ -10,10 +10,7 @@ extension type Post(Map<String, Object?> data) {
     if (data['title'] is! String ||
         data['description'] is! String ||
         data['publishDate'] is! String ||
-        (data['author'] is! String &&
-            (data['author'] is! List ||
-                (data['author'] as List).isEmpty ||
-                (data['author'] as List).any((e) => e is! String)))) {
+        !_isValidAuthorProperty(data['author'])) {
       return null;
     }
     return Post(data);
@@ -64,7 +61,8 @@ extension type AuthorGithub(Map<String, Object?> data) {
 }
 
 extension GetAuthor on Page {
-  Author getAuthor(String id) {
+  /// Returns the author with the specified [id].
+  Author authorById(String id) {
     final authors = data['authors'];
     if (authors is! Map<String, Object?>) {
       throw Exception('Authors data not found or invalid.');
@@ -80,11 +78,27 @@ extension GetAuthor on Page {
     return Author(author);
   }
 
-  List<Author> getAuthors(List<String> ids) {
-    return [for (final id in ids) getAuthor(id)];
-  }
+  /// Returns the authors with the specified [ids].
+  List<Author> authorsByIds(List<String> ids) => [
+    for (final id in ids) authorById(id),
+  ];
 }
 
 extension AuthorNames on List<Author> {
+  /// The author names joined with commas for compact metadata displays.
   String get allNames => map((a) => a.name).join(', ');
+}
+
+/// Whether [author] is a valid author configuration:
+/// either a single author ID or a non-empty list of author IDs.
+bool _isValidAuthorProperty(Object? author) {
+  return switch (author) {
+    final String authorId => authorId.isNotEmpty,
+    final List<Object?> authorIds =>
+      authorIds.isNotEmpty &&
+          authorIds.every(
+            (authorId) => authorId is String && authorId.isNotEmpty,
+          ),
+    _ => false,
+  };
 }

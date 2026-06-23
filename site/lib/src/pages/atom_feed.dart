@@ -135,7 +135,7 @@ final class AtomFeedOutput implements SecondaryOutput {
           url: siteBaseUrl.resolve(page.url).toString(),
           title: post.title,
           summary: post.description,
-          author: page.getAuthors(post.authorIds).allNames,
+          author: page.authorsByIds(post.authorIds).allNames,
           category: post.category,
           published: published,
           updated: updated,

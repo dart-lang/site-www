@@ -50,10 +50,11 @@ void main() {
           'description': 'More news.',
           'publishDate': '2026-04-10',
           'updatedDate': '2026-04-11',
-          'author': 'author-b',
+          'author': ['author-b', 'author-c'],
         },
         authors: {
           'author-b': {'name': 'Author Two'},
+          'author-c': {'name': 'Author Three'},
         },
       ),
       _page(
@@ -108,6 +109,10 @@ void main() {
     expect(
       newerEntry.getElement('published')?.innerText,
       '2026-04-10T00:00:00.000Z',
+    );
+    expect(
+      newerEntry.getElement('author')?.getElement('name')?.innerText,
+      'Author Two, Author Three',
     );
 
     final olderEntry = entries[1];

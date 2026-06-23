@@ -7,6 +7,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../models/blog.dart';
+import '../../util.dart';
 
 class BlogCard extends StatelessComponent {
   const BlogCard({
@@ -24,10 +25,10 @@ class BlogCard extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final authors = context.page.getAuthors(post.authorIds);
+    final authors = context.page.authorsByIds(post.authorIds);
     return a(
       href: url,
-      classes: 'blog-card ${className ?? ''}',
+      classes: ['blog-card', ?className].toClasses,
       attributes: {'data-category': post.category ?? 'other'},
       [
         if (post.image case final postImage?)
@@ -59,9 +60,9 @@ class BlogCard extends StatelessComponent {
           div(classes: 'blog-card-meta', [
             div(classes: 'blog-card-authors', [
               for (final author in authors)
-                if (author.image != null)
+                if (author.image case final authorImage?)
                   img(
-                    src: context.resolveAsset('/blog/authors/${author.image}'),
+                    src: context.resolveAsset('/blog/authors/$authorImage'),
                     alt: author.name,
                     classes: 'blog-card-avatar',
                   )
