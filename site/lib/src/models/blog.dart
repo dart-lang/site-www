@@ -44,10 +44,10 @@ extension type Author(Map<String, Object?> data) {
   AuthorGithub? get github => data['github'] as AuthorGithub?;
 
   String? get linkUrl {
-    if (github?.handle case final handle?) {
-      return 'https://github.com/$handle';
+    if (github?.handle case final githubHandle? when githubHandle.isNotEmpty) {
+      return 'https://github.com/$githubHandle';
     }
-    if (twitter case final twitterHandle?) {
+    if (twitter case final twitterHandle? when twitterHandle.isNotEmpty) {
       return 'https://twitter.com/$twitterHandle';
     }
     return null;
