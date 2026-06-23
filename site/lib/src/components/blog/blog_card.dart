@@ -78,12 +78,14 @@ class BlogCard extends StatelessComponent {
                   ]),
               ]),
             ]),
-            span(classes: 'date', [
-              .text(post.formattedDate),
-            ]),
-            const span(classes: 'separator', [.text(' · ')]),
-            span(classes: 'reading-time', [
-              .text(post.readingTime),
+            div([
+              span(classes: 'date', [
+                .text(post.formattedDate),
+              ]),
+              const span(classes: 'separator', [.text(' · ')]),
+              span(classes: 'reading-time', [
+                .text(post.readingTime),
+              ]),
             ]),
           ]),
         ]),
