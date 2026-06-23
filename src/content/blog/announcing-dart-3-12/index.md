@@ -2,7 +2,10 @@
 title: "Announcing Dart 3.12"
 description: "Supercharging developer productivity at Google I/O 2026"
 publishDate: 2026-05-20
-author: conooi
+author:
+  - conooi
+  - kevmoo
+  - antfitch
 image: images/dart-3-12-cover.webp
 category: releases
 layout: blog
