@@ -298,9 +298,9 @@ enum Color(final String hex) {
 }
 ```
 
-Primary constructors in enums are **implicitly constant**. While you can
-optionally write the `const` modifier before the enum name or the primary
-constructor name, it is redundant and can be omitted.
+Primary constructors in enums are **implicitly constant**.
+While you can optionally write the `const` modifier before the enum name
+(such as in `enum const Color`), it is redundant and can be omitted.
 
 ## Constraints and breaking changes
 
@@ -336,7 +336,7 @@ when using primary constructors:
     no parameters, no initializer list, and no body.
 *   **Covariant parameters**:
     You can only use the `covariant` modifier on a primary constructor
-    parameter if it is a declaring parameter (uses the `var` modifier).
+    parameter if it is a mutable declaring parameter (uses the `var` modifier).
     Using `covariant` on `final` or non-declaring parameters is a
     compile-time error because they do not induce a setter.
 
