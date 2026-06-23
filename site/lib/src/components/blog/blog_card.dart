@@ -7,6 +7,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../../models/blog.dart';
+import '../../util.dart';
 
 class BlogCard extends StatelessComponent {
   const BlogCard({
@@ -24,10 +25,10 @@ class BlogCard extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final author = context.page.getAuthor(post.authorId);
+    final authors = context.page.authorsByIds(post.authorIds);
     return a(
       href: url,
-      classes: 'blog-card ${className ?? ''}',
+      classes: ['blog-card', ?className].toClasses,
       attributes: {'data-category': post.category ?? 'other'},
       [
         if (post.image case final postImage?)
@@ -57,23 +58,31 @@ class BlogCard extends StatelessComponent {
           ]),
           const span(classes: 'blog-card-spacer', []),
           div(classes: 'blog-card-meta', [
-            div(classes: 'blog-card-author-row', [
-              if (author.image != null)
-                img(
-                  classes: 'blog-card-avatar',
-                  src: context.resolveAsset('/blog/authors/${author.image}'),
-                  alt: author.name,
-                )
-              else if (author.github?.avatarUrl case final avatarUrl?)
-                img(
-                  classes: 'blog-card-avatar',
-                  src: avatarUrl,
-                  alt: author.name,
-                ),
+            div(classes: 'blog-card-authors', [
+              for (final author in authors)
+                if (author.image case final authorImage?)
+                  img(
+                    src: context.resolveAsset('/blog/authors/$authorImage'),
+                    alt: author.name,
+                    classes: 'blog-card-avatar',
+                  )
+                else if (author.github?.avatarUrl case final avatarUrl?)
+                  img(
+                    src: avatarUrl,
+                    alt: author.name,
+                    classes: 'blog-card-avatar',
+                  ),
               span(classes: 'author', [
-                .text(author.name),
+                for (final (index, author) in authors.indexed) ...[
+                  span(classes: 'author-name', [
+                    .text(author.name),
+                  ]),
+                  if (index < authors.length - 1)
+                    const span(classes: 'author-separator', [.text(', ')]),
+                ],
               ]),
-              const span(classes: 'separator', [.text(' · ')]),
+            ]),
+            div([
               span(classes: 'date', [
                 .text(post.formattedDate),
               ]),

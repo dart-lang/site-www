@@ -290,11 +290,14 @@
   color: var(--site-base-fgColor-alt);
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.25rem 0.75rem;
   margin-top: auto;
+  flex-wrap: wrap;
 
-  >* {
-    white-space: nowrap;
+  .blog-card-authors {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
   }
 
   .blog-card-avatar {
@@ -303,23 +306,26 @@
     border-radius: 50%;
     object-fit: cover;
     background-color: var(--site-outline);
+
+    &:not(:first-child) {
+      margin-left: -18px;
+      border: 1px solid var(--site-base-bgColor);
+      box-sizing: content-box;
+    }
   }
 
-  .blog-card-author-row {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  .author,
-  .author-link {
+  .author {
     font-weight: var(--site-fontWeight-bold);
     color: var(--site-base-fgColor);
     text-decoration: none;
-  }
 
-  .author-link:hover {
-    text-decoration: underline;
+    .author-name {
+      white-space: nowrap;
+    }
+
+    .author-separator {
+      white-space: normal;
+    }
   }
 }
 
@@ -335,7 +341,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.25rem;
+    gap: 0.25rem 0.75rem;
 
     @media (max-width: 540px) {
       flex-direction: column;
@@ -358,14 +364,21 @@
     align-items: center;
     gap: 0.75rem;
     margin-right: 0.25rem;
-  }
 
-  img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+
+      &:not(:first-child) {
+        margin-left: -28px;
+        border: 1px solid var(--site-base-bgColor);
+        box-sizing: content-box;
+      }
+    }
   }
 
   .post-info-name {
@@ -373,6 +386,19 @@
     font-size: 1rem;
     font-weight: var(--site-fontWeight-bold);
     line-height: 1.2;
+
+    a, span {
+      color: var(--site-base-fgColor);
+      font-weight: var(--site-fontWeight-bold);
+    }
+
+    .post-info-author-name {
+      white-space: nowrap;
+    }
+
+    .post-info-author-separator {
+      white-space: normal;
+    }
   }
 
   .post-info-meta {
@@ -380,11 +406,6 @@
     color: var(--site-base-fgColor-alt);
     font-weight: var(--site-fontWeight-normal);
     white-space: nowrap;
-
-    &::before {
-      content: ' · ';
-      margin-right: 0.25rem;
-    }
 
     @media (max-width: 540px) {
       &::before {
