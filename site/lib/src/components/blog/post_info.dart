@@ -69,13 +69,16 @@ class _AuthorInfo extends StatelessComponent {
             height: 32,
           ),
       h3(classes: 'post-info-name', [
-        for (final author in authors)
-          span([
+        for (final (index, author) in authors.indexed) ...[
+          span(classes: 'post-info-author-name', [
             if (author.linkUrl case final linkUrl?)
               a(href: linkUrl, target: Target.blank, [.text(author.name)])
             else
               .text(author.name),
           ]),
+          if (index < authors.length - 1)
+            const span(classes: 'post-info-author-separator', [.text(', ')]),
+        ],
       ]),
     ]);
   }

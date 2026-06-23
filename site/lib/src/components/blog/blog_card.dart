@@ -73,10 +73,13 @@ class BlogCard extends StatelessComponent {
                     classes: 'blog-card-avatar',
                   ),
               span(classes: 'author', [
-                for (final author in authors)
-                  span([
+                for (final (index, author) in authors.indexed) ...[
+                  span(classes: 'author-name', [
                     .text(author.name),
                   ]),
+                  if (index < authors.length - 1)
+                    const span(classes: 'author-separator', [.text(', ')]),
+                ],
               ]),
             ]),
             div([

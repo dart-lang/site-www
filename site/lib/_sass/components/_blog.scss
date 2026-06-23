@@ -319,13 +319,11 @@
     color: var(--site-base-fgColor);
     text-decoration: none;
 
-    span {
+    .author-name {
       white-space: nowrap;
     }
 
-    span:not(:last-child)::after {
-      content: ', ';
-      margin-right: 0.25rem;
+    .author-separator {
       white-space: normal;
     }
   }
@@ -388,15 +386,17 @@
     font-size: 1rem;
     font-weight: var(--site-fontWeight-bold);
     line-height: 1.2;
-    color: var(--site-base-fgColor-alt);
 
-    span {
+    a {
+      color: var(--site-base-fgColor);
+      font-weight: var(--site-fontWeight-bold);
+    }
+
+    .post-info-author-name {
       white-space: nowrap;
     }
 
-    span:not(:last-child)::after {
-      content: ', ';
-      margin-right: 0.25rem;
+    .post-info-author-separator {
       white-space: normal;
     }
   }
