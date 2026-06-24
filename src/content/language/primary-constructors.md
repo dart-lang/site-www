@@ -15,8 +15,6 @@ nextpage:
 Primary constructors require a [language version][] of at least 3.13.
 :::
 
-[language version]: /language/versioning
-
 ## Overview
 
 Primary constructors provide a concise way to declare a class's fields
@@ -382,5 +380,5 @@ when using primary constructors:
     to avoid this conflict.
 :::
 
-[`parameter_assignments`]: /tools/linter-rules/parameter_assignments
 [language version]: /language/versioning
+[`parameter_assignments`]: /tools/linter-rules/parameter_assignments
