@@ -24,7 +24,7 @@ by enabling it in the `analysis_options.yaml`
 file at the root of your package or workspace.
 
 You can search for analyzer plugins on
-[pub.dev]({{site.pub}}/packages?q=dependency%3Aanalysis_server_plugin).
+[pub.dev]({{site.pub-pkg}}?q=dependency%3Aanalysis_server_plugin).
 
 ### Enable a plugin
 
@@ -194,10 +194,10 @@ functionality:
 * [Writing assists][]
 * [Testing rules][]
 
-[Writing rules]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server_plugin/doc/writing_rules.md
-[Writing fixes]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server_plugin/doc/writing_fixes.md
-[Writing assists]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server_plugin/doc/writing_assists.md
-[Testing rules]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server_plugin/doc/testing_rules.md
+[Writing rules]: {{site.repo.dart.sdk}}/blob/main/pkg/analysis_server_plugin/doc/writing_rules.md
+[Writing fixes]: {{site.repo.dart.sdk}}/blob/main/pkg/analysis_server_plugin/doc/writing_fixes.md
+[Writing assists]: {{site.repo.dart.sdk}}/blob/main/pkg/analysis_server_plugin/doc/writing_assists.md
+[Testing rules]: {{site.repo.dart.sdk}}/blob/main/pkg/analysis_server_plugin/doc/testing_rules.md
 
 Check the Dart Analysis Server for many examples of rules,
 fixes, and, assists:
@@ -206,9 +206,9 @@ fixes, and, assists:
 * [Dart Analysis Server's fixes][]
 * [Dart Analysis Server's assists][]
 
-[Dart Analysis Server's rules]: https://github.com/dart-lang/sdk/tree/main/pkg/linter/lib/src/rules
-[Dart Analysis Server's fixes]: https://github.com/dart-lang/sdk/tree/main/pkg/analysis_server/lib/src/services/correction/dart
-[Dart Analysis Server's assists]: https://github.com/dart-lang/sdk/tree/main/pkg/analysis_server/lib/src/services/correction/dart
+[Dart Analysis Server's rules]: {{site.repo.dart.sdk}}/tree/main/pkg/linter/lib/src/rules
+[Dart Analysis Server's fixes]: {{site.repo.dart.sdk}}/tree/main/pkg/analysis_server/lib/src/services/correction/dart
+[Dart Analysis Server's assists]: {{site.repo.dart.sdk}}/tree/main/pkg/analysis_server/lib/src/services/correction/dart
 
 ### Debug a plugin
 
@@ -226,4 +226,4 @@ here are the recommended ways to debug it:
   your plugin's code.
 
 
-[analyzer diagnostics pages]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/tutorial/instrumentation.md#open-the-analyzer-diagnostics-pages
+[analyzer diagnostics pages]: {{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/doc/tutorial/instrumentation.md#open-the-analyzer-diagnostics-pages
