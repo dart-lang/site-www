@@ -90,7 +90,7 @@ you can't use them on parameters in other kinds of functions.
 
 For extension types, the primary constructor must have exactly one parameter.
 This parameter is always a declaring parameter, even if you omit the modifier.
-You can use the `final` modifier, but it is an error to use `var`.
+You can use the `final` modifier, but it's an error to use `var`.
 
 Mixin classes can only have a primary constructor
 with no parameters, body, or initializer list.
@@ -212,7 +212,7 @@ at the call site: `User(name: 'John Doe')`.
 An empty body of a class, mixin class, extension, or extension type (`{}`)
 can be replaced by a semicolon (`;`).
 While this is true in general for these declarations,
-it is particularly useful when using a primary constructor to
+it's particularly useful when using a primary constructor to
 keep the entire declaration on a single line.
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (empty-bodies)" replace="/EmptyBodyPoint/Point/g"?>
@@ -241,7 +241,7 @@ class const ConstPoint(final int x, final int y) {
 Constant primary constructors have these important constraints:
 
 *   **No body block**:
-    Having a `{ ... }` body is a compile-time error, even if it is empty.
+    Having a `{ ... }` body is a compile-time error, even if it's empty.
     A constant primary constructor can only use
     an initializer list followed by a semicolon.
 *   **Definitely initialized final fields**:
@@ -267,8 +267,8 @@ a name after the class name in the class header:
 class Point.custom(var int x, var int y);
 ```
 
-A common pattern is to
-define a private primary constructor (such as `Point._`) that
+A common pattern is to define a
+private primary constructor (such as `Point._`) that
 restricts direct instantiation and
 forces callers to use factory methods or other constructors:
 
@@ -315,7 +315,7 @@ enum Color(final String hex) {
 
 Primary constructors in enums are **implicitly constant**.
 While you can optionally write the `const` modifier before the enum name
-(such as in `enum const Color`), it is redundant and can be omitted.
+(such as in `enum const Color`), it's redundant and can be omitted.
 
 [enhanced enums]: /language/enums#declaring-enhanced-enums
 
@@ -353,8 +353,9 @@ when using primary constructors:
     A mixin class can only declare a primary constructor if it has
     no parameters, no initializer list, and no body.
 *   **Covariant parameters**:
-    You can only use the `covariant` modifier on a primary constructor
-    parameter if it is a mutable declaring parameter (uses the `var` modifier).
+    You can only use the `covariant` modifier on a
+    primary constructor parameter if it's a
+    mutable declaring parameter (uses the `var` modifier).
     Using `covariant` on `final` or non-declaring parameters is a
     compile-time error because they don't induce a setter.
 
