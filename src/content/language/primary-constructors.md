@@ -369,7 +369,8 @@ when using primary constructors:
     They are reserved exclusively for
     declaring parameters in primary constructors.
     Note that the lints `avoid_final_parameters` and
-    `var_with_no_type_annotation` only work in Dart 3.12 and below.
+    `var_with_no_type_annotation` only work with
+    a [language version][] of 3.12 or lower.
     To enforce immutable parameters as a style choice in Dart 3.13 and later,
     use the [`parameter_assignments`][] linter rule.
 *   **The `factory` method edge case**:
@@ -382,3 +383,4 @@ when using primary constructors:
 :::
 
 [`parameter_assignments`]: /tools/linter-rules/parameter_assignments
+[language version]: /language/versioning
