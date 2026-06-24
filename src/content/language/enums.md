@@ -102,8 +102,9 @@ enum Vehicle implements Comparable<Vehicle> {
 ```
 
 :::tip
-In Dart 3.13 and later, you can declare enhanced enums even more concisely
-using [primary constructors](/language/primary-constructors):
+In Dart 3.13 and later,
+you can declare enhanced enums even more concisely
+using [primary constructors][]:
 
 <?code-excerpt "language/lib/primary_constructors/enum.dart (enhanced-primary)"?>
 ```dart
@@ -125,6 +126,9 @@ enum Vehicle(
 }
 ```
 :::
+
+[language version]: /language/versioning
+[primary constructors]: /language/primary-constructors
 
 ## Using enums
 
@@ -200,6 +204,5 @@ print(Vehicle.car.carbonFootprint);
 [mixins]: /language/mixins
 [generative constructors]: /language/constructors#constant-constructors
 [Factory constructors]: /language/constructors#factory-constructors
-[language version]: /language/versioning
 [static variable]: /language/classes#class-variables-and-methods
 [switch statements]: /language/branches#switch

@@ -52,18 +52,20 @@ class Point(var int x, var int y);
 Declaring a parameter in the primary constructor with `var` or `final`
 implicitly induces an instance variable for that parameter.
 
-Any other constructors declared inside the class body are referred to as
-**in-body constructors**.
+Any other constructors declared inside the class body are
+referred to as **in-body constructors**.
 
 To ensure the primary constructor executes on every new instance,
 a class, mixin class, or enum with a primary constructor
-cannot have any other non-redirecting generative in-body constructors.
+can't have any other non-redirecting generative in-body constructors.
 
 :::note
-If you want to declare traditional constructors in the class body more concisely
-without repeating the class name, see
-[Concise constructor syntax](/language/constructors#concise-constructor-syntax).
+If you want to declare traditional constructors in
+the class body more concisely without repeating the class name,
+check out [Concise constructor syntax][].
 :::
+
+[Concise constructor syntax]: /language/constructors#concise-constructor-syntax
 
 ## Field declarations in parameters
 
@@ -220,8 +222,10 @@ class Point(var int x, var int y);
 
 ## Constant primary constructors
 
-Just like traditional constructors, a primary constructor can be constant
-if the class and its fields allow it. To declare a constant primary constructor,
+Just like traditional constructors,
+a primary constructor can be constant
+if the class and its fields allow it.
+To declare a constant primary constructor,
 place the `const` modifier before the class name in the class header:
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (const-constructor)"?>
@@ -250,8 +254,9 @@ Constant primary constructors have these important constraints:
 
 ## Named primary constructors
 
-You can also declare a primary constructor as a **named constructor** by
-appending a dot (`.`) and a name after the class name in the class header:
+You can also declare a primary constructor as
+a **named constructor** by appending a dot (`.`) and
+a name after the class name in the class header:
 
 <?code-excerpt "language/lib/primary_constructors/point.dart (point-named)" replace="/PointNamed/Point/g"?>
 ```dart
@@ -259,9 +264,10 @@ appending a dot (`.`) and a name after the class name in the class header:
 class Point.custom(var int x, var int y);
 ```
 
-This is particularly useful when you want to define a private primary
-constructor (such as `Point._`) to restrict direct instantiation and force
-callers to use factory methods or other constructors:
+This is particularly useful when you want to
+define a private primary constructor (such as `Point._`) to
+restrict direct instantiation and force callers to
+use factory methods or other constructors:
 
 <?code-excerpt "language/lib/primary_constructors/point.dart (point-private)" replace="/PointPrivate/Point/g"?>
 ```dart
@@ -289,11 +295,12 @@ or duplicate parameter declarations.
 ## Enums
 
 You can use primary constructors to declare
-[enhanced enums](/language/enums#declaring-enhanced-enums) much more concisely.
+[enhanced enums][] much more concisely.
 
-By using a primary constructor, you can define the enum's fields and its
-constructor in a single line, eliminating the usual boilerplate of declaring
-fields, parameters, and initializing them:
+By using a primary constructor,
+you can define the enum's fields and its constructor in a single line,
+eliminating the usual boilerplate of
+declaring fields, parameters, and initializing them:
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (enums)"?>
 ```dart
@@ -308,6 +315,8 @@ Primary constructors in enums are **implicitly constant**.
 While you can optionally write the `const` modifier before the enum name
 (such as in `enum const Color`), it is redundant and can be omitted.
 
+[enhanced enums]: /language/enums#declaring-enhanced-enums
+
 ## Constraints and breaking changes
 
 Keep these constraints and potential errors in mind
@@ -317,25 +326,26 @@ when using primary constructors:
     The `late` and `external` modifiers are not allowed
     on parameters in the primary constructor header.
     To use these modifiers, declare the fields in the class body as usual.
-*   **Name collisions**: Declaring a parameter in the primary constructor
+*   **Name collisions**:
+    Declaring a parameter in the primary constructor
     with the same name as a method or another field in the class body
     results in a compile-time error.
 *   **No assignments to primary constructor parameters**:
-    Primary constructor parameters are read-only within the primary initializer
-    scope. Assigning to them (for example, `x = 5` or `x++`) in a field
-    initializer or the primary constructor's initializer list is a
-    compile-time error.
+    Primary constructor parameters are read-only
+    within the primary initializer scope.
+    Assigning to them (for example, `x = 5` or `x++`) in a field initializer or
+    the primary constructor's initializer list is a compile-time error.
 *   **Double initialization**:
-    You cannot initialize an instance variable both in its declaration
-    and in the primary constructor's initializer list (or as an initializing
-    formal parameter), even if the field is mutable. Doing so results
-    in a compile-time error.
+    You cannot initialize an instance variable both in
+    its declaration and in the primary constructor's initializer list
+    (or as an initializing formal parameter), even if the field is mutable.
+    Doing so results in a compile-time error.
 *   **Body part constraints**:
-    *   A primary constructor body part (the `this` block) cannot use the
-        `async`, `async*`, or `sync*` modifiers, and it cannot use the
-        expression body arrow (`=>`) syntax.
-    *   You cannot write a `this` block if the class header does not declare
-        a primary constructor.
+    *   A primary constructor body part (the `this` block) cannot
+        use the `async`, `async*`, or `sync*` modifiers, and it
+        cannot use the expression body arrow (`=>`) syntax.
+    *   You cannot write a `this` block if the class header
+        does not declare a primary constructor.
     *   A class can have at most one primary constructor body part.
 *   **Mixin class primary constructors must be trivial**:
     A mixin class can only declare a primary constructor if it has
@@ -353,8 +363,8 @@ when using primary constructors:
     With primary constructors,
     using `final` or `var` on formal parameters in normal functions
     becomes a compile-time error.
-    They are reserved exclusively for declaring parameters
-    in primary constructors.
+    They are reserved exclusively for
+    declaring parameters in primary constructors.
     Note that the lints `avoid_final_parameters` and
     `var_with_no_type_annotation` only work in Dart 3.12 and below.
     To enforce immutable parameters as a style choice in Dart 3.13 and later,
