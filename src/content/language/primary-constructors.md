@@ -240,15 +240,18 @@ class const ConstPoint(final int x, final int y) {
 
 Constant primary constructors have these important constraints:
 
-*   They **can't have a body block**.
-    That is, `{ ... }` is a compile-time error, even if it is empty.
-    They can only use an initializer list followed by a semicolon.
-*   Like any class with a generative const constructor,
+*   **No body block**:
+    Having a `{ ... }` body is a compile-time error, even if it is empty.
+    A constant primary constructor can only use
+    an initializer list followed by a semicolon.
+*   **Definitely initialized final fields**:
+    Like any class with a generative const constructor,
     every instance variable must be `final`, can't be `late`,
     and must be definitely initialized by a declaring parameter,
     field initializer, or the primary constructor's initializer list.
-*   The initializer expressions for each
-    instance variable must be **potentially constant**.
+*   **Potentially constant initializers**:
+    The initializing expressions for each instance variable
+    must be able to be evaluated at compile time.
     This includes field initializers and
     expressions in the primary constructor's initializer list.
 
@@ -264,10 +267,10 @@ a name after the class name in the class header:
 class Point.custom(var int x, var int y);
 ```
 
-This is particularly useful when you want to
-define a private primary constructor (such as `Point._`) to
-restrict direct instantiation and force callers to
-use factory methods or other constructors:
+A common pattern is to
+define a private primary constructor (such as `Point._`) that
+restricts direct instantiation and
+forces callers to use factory methods or other constructors:
 
 <?code-excerpt "language/lib/primary_constructors/point.dart (point-private)" replace="/PointPrivate/Point/g"?>
 ```dart
@@ -287,12 +290,11 @@ class Person(final String name, final int age);
 class Employee(super.name, super.age, final String role) extends Person;
 ```
 
-This is particularly useful for reducing boilerplate
-in hierarchical class structures,
-as it eliminates the need to manually write initializer lists
+This reduces boilerplate in hierarchical class structures,
+eliminating the need to manually write initializer lists
 or duplicate parameter declarations.
 
-## Enums
+## Enum primary constructors
 
 You can use primary constructors to declare
 [enhanced enums][] much more concisely.
@@ -333,7 +335,7 @@ when using primary constructors:
 *   **No assignments to primary constructor parameters**:
     Primary constructor parameters are read-only
     within the primary initializer scope.
-    Assigning to them (for example, `x = 5` or `x++`) in a field initializer or
+    Assigning to them (such as with `x = 5` or `x++`) in a field initializer or
     the primary constructor's initializer list is a compile-time error.
 *   **Double initialization**:
     You can't initialize an instance variable both in
