@@ -29,4 +29,4 @@ noindex: true
 In addition to the first-class interop support listed above, the Dart community
 has created packages that enable interop with additional languages and platforms.
 For additional community-built interop solutions,
-search [pub.dev](https://pub.dev) for packages related to your interop needs.
+search [pub.dev]({{site.pub}}) for packages related to your interop needs.
