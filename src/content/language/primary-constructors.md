@@ -72,7 +72,7 @@ check out [Concise constructor syntax][].
 Parameters in primary constructors with the `var` or `final` modifier,
 called **declaring parameters**, implicitly induce a field.
 
-If you omit the modifier, the parameter does not create a field.
+If you omit the modifier, the parameter doesn't create a field.
 It behaves just like a parameter in a traditional constructor.
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (declaring-parameters)"?>
@@ -86,7 +86,7 @@ class User(String name);
 
 Because `final` and `var` modifiers on parameters are reserved exclusively
 for declaring parameters in primary constructors,
-you cannot use them on parameters in other kinds of functions.
+you can't use them on parameters in other kinds of functions.
 
 For extension types, the primary constructor must have exactly one parameter.
 This parameter is always a declaring parameter, even if you omit the modifier.
@@ -322,8 +322,8 @@ While you can optionally write the `const` modifier before the enum name
 Keep these constraints and potential errors in mind
 when using primary constructors:
 
-*   **Declaring parameters cannot be `late` or `external`**:
-    The `late` and `external` modifiers are not allowed
+*   **Declaring parameters can't be `late` or `external`**:
+    The `late` and `external` modifiers aren't allowed
     on parameters in the primary constructor header.
     To use these modifiers, declare the fields in the class body as usual.
 *   **Name collisions**:
@@ -336,16 +336,16 @@ when using primary constructors:
     Assigning to them (for example, `x = 5` or `x++`) in a field initializer or
     the primary constructor's initializer list is a compile-time error.
 *   **Double initialization**:
-    You cannot initialize an instance variable both in
+    You can't initialize an instance variable both in
     its declaration and in the primary constructor's initializer list
     (or as an initializing formal parameter), even if the field is mutable.
     Doing so results in a compile-time error.
 *   **Body part constraints**:
-    *   A primary constructor body part (the `this` block) cannot
+    *   A primary constructor body part (the `this` block) can't
         use the `async`, `async*`, or `sync*` modifiers, and it
-        cannot use the expression body arrow (`=>`) syntax.
-    *   You cannot write a `this` block if the class header
-        does not declare a primary constructor.
+        can't use the expression body arrow (`=>`) syntax.
+    *   You can't write a `this` block if the class header
+        doesn't declare a primary constructor.
     *   A class can have at most one primary constructor body part.
 *   **Mixin class primary constructors must be trivial**:
     A mixin class can only declare a primary constructor if it has
@@ -354,7 +354,7 @@ when using primary constructors:
     You can only use the `covariant` modifier on a primary constructor
     parameter if it is a mutable declaring parameter (uses the `var` modifier).
     Using `covariant` on `final` or non-declaring parameters is a
-    compile-time error because they do not induce a setter.
+    compile-time error because they don't induce a setter.
 
 :::warning
 **Important breaking changes and edge cases:**
