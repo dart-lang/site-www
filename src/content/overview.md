@@ -34,6 +34,11 @@ Dart provides the language and runtimes that power Flutter apps,
 but Dart also supports many core developer tasks like
 formatting, analyzing, and testing code.
 
+:::tip New to programming?
+If you are completely new to coding and development, some of the concepts on this page might feel a bit advanced. We recommend starting with a foundational introduction:
+* Check out the [Codelabs Dart tutorials](https://codelabs.developers.google.com/?cat=Dart) for step-by-step guided basics.
+* Take a look at the introductory [Language Tour](/language) to learn fundamental syntax at your own pace.
+:::
 
 ## Dart: The language {:#language}
 
