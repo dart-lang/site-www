@@ -243,13 +243,10 @@ the new `CommandRunner` class.
 
     Highlights from the preceding code:
 
-    - `void main(List<String> arguments) async` directly
-      addresses an issue where the program can exit before
-      all asynchronous tasks have completed.
-      Notice that `main` is now declared `async`.
-      This is essential because `runner.run()` returns a `Future`, and
-      `main` must `await` its completion to ensure the program waits
-       for all asynchronous tasks to finish before exiting.
+    - Declaring `main` as `async` lets it use `await`.
+     Because `runner.run()` returns a `Future`,
+     awaiting it makes `main` explicitly wait for the runner's completion,
+     ensuring clear logic order and improving error propagation.
     - `var runner = CommandRunner();` creates an instance of the
       `CommandRunner` class from your new `command_runner` package.
     - `await runner.run(arguments);` calls the `run` method on the
