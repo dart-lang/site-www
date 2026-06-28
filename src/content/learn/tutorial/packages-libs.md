@@ -179,8 +179,7 @@ you can use a [path dependency][].
 Now that you've added `command_runner` as a dependency,
 you can import it into your `cli` application and
 replace your existing argument-handling logic with
-the new `CommandRunner` class. This step also 
-fixes an issue where the program can exit before asynchronous operations complete.
+the new `CommandRunner` class.
 
 1.  Open the `cli/bin/cli.dart` file.
 
