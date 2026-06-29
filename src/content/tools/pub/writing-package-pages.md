@@ -320,7 +320,7 @@ final like = 'this';
 
 A recent UX study found that
 many users use the within-page search feature
-(`Control+F` or `Command+F`)
+(<kbd class="special-key">Cmd/Ctrl</kbd>+<kbd>F</kbd>)
 to search for the feature they are looking for.
 Thus, be sure to mention important terms in the README,
 so that users can find them. 
