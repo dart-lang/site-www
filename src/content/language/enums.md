@@ -43,6 +43,10 @@ to help prevent copy-paste errors.
 
 ## Declaring enhanced enums
 
+:::version-note
+Enhanced enums require a [language version][] of at least 2.17.
+:::
+
 Dart also allows enum declarations to declare classes
 with fields, methods, and const constructors
 which are limited to a fixed number of known constant instances.
@@ -97,9 +101,34 @@ enum Vehicle implements Comparable<Vehicle> {
 }
 ```
 
-:::version-note
-Enhanced enums require a [language version][] of at least 2.17.
+:::tip
+In Dart 3.13 and later,
+you can declare enhanced enums even more concisely
+using [primary constructors][]:
+
+<?code-excerpt "language/lib/primary_constructors/enum.dart (enhanced-primary)"?>
+```dart
+enum Vehicle(
+  final int tires,
+  final int passengers,
+  final int carbonPerKilometer,
+) implements Comparable<Vehicle> {
+  car(4, 5, 400),
+  bus(6, 50, 800),
+  bicycle(2, 1, 0);
+
+  int get carbonFootprint => (carbonPerKilometer / passengers).round();
+
+  bool get isTwoWheeled => this == Vehicle.bicycle;
+
+  @override
+  int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
+}
+```
 :::
+
+[language version]: /language/versioning
+[primary constructors]: /language/primary-constructors
 
 ## Using enums
 
@@ -175,6 +204,5 @@ print(Vehicle.car.carbonFootprint);
 [mixins]: /language/mixins
 [generative constructors]: /language/constructors#constant-constructors
 [Factory constructors]: /language/constructors#factory-constructors
-[language version]: /language/versioning
 [static variable]: /language/classes#class-variables-and-methods
 [switch statements]: /language/branches#switch
