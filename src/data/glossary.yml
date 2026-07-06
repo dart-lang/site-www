@@ -1433,17 +1433,22 @@
 
 - term: "Potentially constant"
   short_description: |-
-    An expression that can be evaluated at compile time if all constructor parameters
-    and type parameters of the enclosing constant constructor are replaced by constant values.
+    An expression that can be evaluated at compile time
+    if all constructor parameters of the enclosing constant constructor
+    are replaced by constant values,
+    and all type parameters are replaced by concrete types.
   long_description: |-
-    A **potentially constant expression** is an expression that is valid in contexts
-    where a constant is required, such as initializer lists of constant constructors,
-    even though it might not be a compile-time constant itself because it references
-    constructor parameters or type parameters.
+    A **potentially constant expression** is an expression
+    that is valid in contexts where a constant is required,
+    such as initializer lists of constant constructors,
+    even though it might not be a compile-time constant itself
+    because it references constructor parameters or type parameters.
 
-    If all constructor parameters and type parameters of the enclosing constant
-    constructor are replaced by constant values of the appropriate type, a potentially
-    constant expression becomes a compile-time constant expression.
+    If all constructor parameters of the enclosing constant constructor
+    are replaced by constant values of the appropriate type,
+    and all type parameters are replaced by concrete types,
+    a potentially constant expression
+    becomes a compile-time constant expression.
 
     For example, in the following class:
 
@@ -1455,11 +1460,14 @@
     }
     ```
 
-    The initializing expressions `a` and `a + 1` are potentially constant expressions.
-    They are not constant expressions because the value of `a` depends on how the
-    constructor is called. However, if the constructor is invoked with `const ConstPoint(3)`,
-    the parameter `a` is replaced by the constant `3`, making `3` and `3 + 1` constant
-    expressions.
+    The initializing expressions `a` and `a + 1`
+    are potentially constant expressions.
+    They are not constant expressions
+    because the value of `a` depends on how the constructor is called.
+
+    However, if the constructor is invoked with `const ConstPoint(3)`,
+    the parameter `a` is replaced by the constant `3`,
+    making `3` and `3 + 1` constant expressions.
   related_links:
     - text: "Constant constructors"
       link: "/language/constructors#constant-constructors"
