@@ -354,7 +354,7 @@ Modify `cli/bin/cli.dart` to use the new error handling in `CommandRunner`.
     The callback checks whether the error is an `Error` or an `Exception`.
     Because an `Error` indicates a programmer bug, the callback rethrows it.
     This lets the application crash so you can fix the bug.
-    For an `Exception` (which represents a recoverable failure),
+    For an `Exception` (that represents a recoverable failure),
     the callback prints it to the console to handle it gracefully.
 
 ### Task 4: Update command_runner library exports
