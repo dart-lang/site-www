@@ -31,6 +31,30 @@ Before you begin this chapter, ensure you:
   working Dart development environment with the `dartpedia` project.
 - Understand basic programming concepts like functions and classes.
 
+## Errors versus exceptions
+
+Before you start writing code to handle failures,
+you need to understand the two main types of failures in Dart:
+**errors** and **exceptions**.
+
+- **Exceptions** represent conditions that you might expect to happen,
+  and that your program can recover from.
+  Examples include invalid user input,
+  a missing file, or a network timeout.
+  Your code can catch and handle exceptions to keep running.
+- **Errors** represent failure conditions that indicate programmer bugs.
+  Examples include calling a method on a `null` object,
+  passing an invalid index to a list, or
+  failing to initialize a variable.
+  You do not catch errors.
+  Instead, you let them crash the application,
+  which helps you find and fix the underlying bug.
+
+In Dart, all exceptions implement the `Exception` class,
+while all errors implement the `Error` class.
+When you design your API, use subclasses of `Exception` for conditions
+that callers can catch and handle.
+
 ## Tasks
 
 In this chapter, you will improve the robustness of
@@ -328,8 +352,10 @@ Modify `cli/bin/cli.dart` to use the new error handling in `CommandRunner`.
     If an error occurs during the execution of a command,
     the `onError` callback function is called with the error object.
     The callback checks whether the error is an `Error` or an `Exception`.
-    If it's an `Error`, it's rethrown.
-    If it's an `Exception`, it's printed to the console.
+    Because an `Error` indicates a programmer bug, the callback rethrows it.
+    This lets the application crash so you can fix the bug.
+    For an `Exception` (which represents a recoverable failure),
+    the callback prints it to the console to handle it gracefully.
 
 ### Task 4: Update command_runner library exports
 
@@ -383,9 +409,9 @@ items:
     icon: error
     details: >-
       You learned that subtypes of `Error` indicate
-      programming bugs and shouldn't be caught,
+      programming bugs and are not intended to be caught,
       while subtypes of `Exception` represent
-      recoverable failures that your code should handle gracefully.
+      recoverable failures that your code can handle gracefully.
   - title: Used try-catch blocks to handle failures
     icon: shield
     details: >-
