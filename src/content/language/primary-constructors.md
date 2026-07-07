@@ -247,9 +247,9 @@ Constant primary constructors have these important constraints:
     every instance variable must be `final`, can't be `late`,
     and must be definitely initialized by a declaring parameter,
     field initializer, or the primary constructor's initializer list.
-*   **Potentially constant initializers**:
+*   **[Potentially constant][] initializers**:
     The initializing expressions for each instance variable
-    must be able to be evaluated at compile time.
+    must be potentially constant.
     This includes field initializers and
     expressions in the primary constructor's initializer list.
 
@@ -382,3 +382,4 @@ when using primary constructors:
 
 [language version]: /language/versioning
 [`parameter_assignments`]: /tools/linter-rules/parameter_assignments
+[potentially constant]: /resources/glossary#potentially-constant
