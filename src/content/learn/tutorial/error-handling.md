@@ -42,7 +42,7 @@ you need to understand the two main types of failures in Dart:
   Examples include invalid user input,
   a missing file, or a network timeout.
   Your code can catch and handle exceptions to keep running.
-- **Errors** represent failure conditions that indicate programmer bugs.
+- **Errors** represent failure conditions that indicate bugs in the code.
   Examples include calling a method on a `null` object,
   passing an invalid index to a list, or
   failing to initialize a variable.
