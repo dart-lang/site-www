@@ -45,7 +45,7 @@ you need to understand the two main types of failures in Dart:
 - **Errors** represent failure conditions that indicate bugs in the code.
   Examples include calling a method on a `null` object,
   passing an invalid index to a list, or
-  failing to initialize a variable.
+  failing to initialize a late variable before use.
   You don't catch errors.
   Instead, you let them crash the application,
   which helps you find and fix the underlying bug.
