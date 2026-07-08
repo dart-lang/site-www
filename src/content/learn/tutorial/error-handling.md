@@ -46,7 +46,7 @@ you need to understand the two main types of failures in Dart:
   Examples include calling a method on a `null` object,
   passing an invalid index to a list, or
   failing to initialize a variable.
-  You do not catch errors.
+  You don't catch errors.
   Instead, you let them crash the application,
   which helps you find and fix the underlying bug.
 
