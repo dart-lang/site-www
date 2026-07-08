@@ -37,7 +37,7 @@ Before you start writing code to handle failures,
 you need to understand the two main types of failures in Dart:
 **errors** and **exceptions**.
 
-- **Exceptions** represent conditions that you might expect to happen,
+- **Exceptions** represent conditions that you might expect to happen
   and that your program can recover from.
   Examples include invalid user input,
   a missing file, or a network timeout.
