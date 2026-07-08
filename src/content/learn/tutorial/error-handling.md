@@ -353,7 +353,8 @@ Modify `cli/bin/cli.dart` to use the new error handling in `CommandRunner`.
     If an error occurs during the execution of a command,
     the `onError` callback function is called with the error object.
     The callback checks whether the error is an `Error` or an `Exception`.
-    Because an `Error` indicates a programmer bug, the callback rethrows it.
+    Because an `Error` indicates a bug in the code,
+    the callback rethrows it.
     This lets the application crash so you can fix the bug.
     For an `Exception`, which represents a recoverable failure,
     the callback handles it gracefully by
