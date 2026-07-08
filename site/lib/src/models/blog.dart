@@ -10,7 +10,7 @@ extension type Post(Map<String, Object?> data) {
     if (data['title'] is! String ||
         data['description'] is! String ||
         data['publishDate'] is! String ||
-        data['author'] is! String) {
+        !_isValidAuthorProperty(data['author'])) {
       return null;
     }
     return Post(data);
@@ -24,7 +24,13 @@ extension type Post(Map<String, Object?> data) {
   DateTime get dateObject => DateTime.parse(publishDate);
   String get formattedDate => DateFormat.yMMMd().format(dateObject);
 
-  String get authorId => data['author'] as String;
+  List<String> get authorIds => switch (data['author']) {
+    final String authorId => [authorId],
+    final List<Object?> authorIds => authorIds.cast<String>(),
+    _ => throw ArgumentError(
+      'Post author is neither a string nor a list of strings for "$title".',
+    ),
+  };
 
   String get readingTime => data['readingTime'] as String? ?? '5 min read';
   String? get category => data['category'] as String?;
@@ -36,6 +42,16 @@ extension type Author(Map<String, Object?> data) {
   String? get image => data['image'] as String?;
   String? get twitter => data['twitter'] as String?;
   AuthorGithub? get github => data['github'] as AuthorGithub?;
+
+  String? get linkUrl {
+    if (github?.handle case final githubHandle? when githubHandle.isNotEmpty) {
+      return 'https://github.com/$githubHandle';
+    }
+    if (twitter case final twitterHandle? when twitterHandle.isNotEmpty) {
+      return 'https://twitter.com/$twitterHandle';
+    }
+    return null;
+  }
 }
 
 extension type AuthorGithub(Map<String, Object?> data) {
@@ -45,7 +61,8 @@ extension type AuthorGithub(Map<String, Object?> data) {
 }
 
 extension GetAuthor on Page {
-  Author getAuthor(String id) {
+  /// Returns the author with the specified [id].
+  Author authorById(String id) {
     final authors = data['authors'];
     if (authors is! Map<String, Object?>) {
       throw Exception('Authors data not found or invalid.');
@@ -60,4 +77,23 @@ extension GetAuthor on Page {
     }
     return Author(author);
   }
+
+  /// Returns the authors with the specified [ids].
+  List<Author> authorsByIds(List<String> ids) => [
+    for (final id in ids) authorById(id),
+  ];
+}
+
+/// Whether [author] is a valid author configuration:
+/// either a single author ID or a non-empty list of author IDs.
+bool _isValidAuthorProperty(Object? author) {
+  return switch (author) {
+    final String authorId => authorId.isNotEmpty,
+    final List<Object?> authorIds =>
+      authorIds.isNotEmpty &&
+          authorIds.every(
+            (authorId) => authorId is String && authorId.isNotEmpty,
+          ),
+    _ => false,
+  };
 }

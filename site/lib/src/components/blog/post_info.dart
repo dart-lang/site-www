@@ -23,34 +23,11 @@ class PostInfo extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final author = context.page.getAuthor(post.authorId);
-    final githubUrl = author.github?.handle != null
-        ? 'https://github.com/${author.github!.handle}'
-        : null;
-    final twitterUrl = author.twitter != null && author.twitter!.isNotEmpty
-        ? 'https://twitter.com/${author.twitter}'
-        : null;
-
-    // Fallback to twitter if github is not present
-    final linkUrl = githubUrl ?? twitterUrl;
-
-    final authorInfo = div(classes: 'post-info-author', [
-      if (author.image != null)
-        img(
-          src: context.resolveAsset('/blog/authors/${author.image}'),
-          alt: author.name,
-          width: 32,
-          height: 32,
-        ),
-      h3(classes: 'post-info-name', [Component.text(author.name)]),
-    ]);
+    final authors = context.page.authorsByIds(post.authorIds);
 
     return div(classes: 'post-info', [
       div(classes: 'post-info-main', [
-        if (linkUrl != null)
-          a(href: linkUrl, target: Target.blank, [authorInfo])
-        else
-          authorInfo,
+        _AuthorInfo(authors: authors),
         span(classes: 'post-info-meta', [
           Component.text('${post.formattedDate} · ${post.readingTime}'),
         ]),
@@ -63,6 +40,45 @@ class PostInfo extends StatelessComponent {
           attributes: {'type': blogAtomMimeType},
         ),
         ShareButton(url: url, title: post.title),
+      ]),
+    ]);
+  }
+}
+
+class _AuthorInfo extends StatelessComponent {
+  const _AuthorInfo({required this.authors});
+
+  final List<Author> authors;
+
+  @override
+  Component build(BuildContext context) {
+    return div(classes: 'post-info-author', [
+      for (final author in authors)
+        if (author.image case final authorImage?)
+          img(
+            src: context.resolveAsset('/blog/authors/$authorImage'),
+            alt: author.name,
+            width: 32,
+            height: 32,
+          )
+        else if (author.github?.avatarUrl case final avatarUrl?)
+          img(
+            src: avatarUrl,
+            alt: author.name,
+            width: 32,
+            height: 32,
+          ),
+      h3(classes: 'post-info-name', [
+        for (final (index, author) in authors.indexed) ...[
+          span(classes: 'post-info-author-name', [
+            if (author.linkUrl case final linkUrl?)
+              a(href: linkUrl, target: Target.blank, [.text(author.name)])
+            else
+              .text(author.name),
+          ]),
+          if (index < authors.length - 1)
+            const span(classes: 'post-info-author-separator', [.text(', ')]),
+        ],
       ]),
     ]);
   }
