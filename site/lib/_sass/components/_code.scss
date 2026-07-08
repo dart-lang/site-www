@@ -10,6 +10,24 @@
   white-space: nowrap;
 }
 
+main kbd {
+  font-family: var(--site-code-fontFamily);
+  font-size: 0.875em;
+  font-weight: 500;
+  line-height: 1.25em;
+  padding: 0 0.25rem;
+  background-color: var(--site-inset-bgColor-translucent);
+  border: 1.5px solid var(--site-inset-borderColor);
+  border-bottom-width: 2.5px;
+  border-radius: 0.35rem;
+  box-shadow: inset 0 1px 1px rgb(var(--site-interaction-base-values) / 5%);
+
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: normal;
+  word-spacing: -0.25em;
+}
+
 pre {
   margin: 0 0 1rem;
   font-size: 0.9375rem;
