@@ -53,8 +53,8 @@ you need to understand the two main types of failures in Dart:
 In Dart, any non-null object can be thrown as an exception.
 However, by convention, exceptions implement `Exception`,
 while errors extend or implement `Error`.
-When you design your API, use subclasses of `Exception` for conditions
-that callers can catch and handle.
+When you design an API, throw subtypes of `Exception` for
+conditions that callers can catch and handle.
 
 ## Tasks
 
