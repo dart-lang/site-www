@@ -29,9 +29,9 @@ These include syntax highlighting, package resolution, hot reload, and others.
 
 1. Launch **VS Code**.
 
-1. Click **Extensions** in the **Activity Bar**.  
+1. Click **Extensions** in the **Activity Bar**.
    You can also press
-   <kbd>Control</kbd> / <kbd>Command</kbd> +
+   <kbd class="special-key">Cmd/Ctrl</kbd> +
    <kbd>Shift</kbd> + <kbd>X</kbd>.
 
 1. In the Search box, type `Dart`.
