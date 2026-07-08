@@ -410,7 +410,7 @@ items:
     icon: error
     details: >-
       You learned that subtypes of `Error` indicate
-      programming bugs and are not intended to be caught,
+      programming bugs and aren't intended to be caught,
       while subtypes of `Exception` represent
       recoverable failures that your code can handle gracefully.
   - title: Used try-catch blocks to handle failures
