@@ -24,7 +24,7 @@ We follow the Google Developer Documentation Style Guide.
 - [ ] Use active voice.
 - [ ] Use present tense.
 - [ ] Use second person ("you"). No "we".
-- [ ] Contractions are okay.
+- [ ] Use contractions.
 
 ### 3. Check word choice
 
