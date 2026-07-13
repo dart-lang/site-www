@@ -46,8 +46,7 @@ Example project with a build hook:
 
 ## Hooks
 
-Currently, build hooks and link hooks are available, but more are
-planned. To learn more, see the following.
+Currently, build hooks and link hooks are available. To learn more, see the following.
 
 ### Build hooks {:.no_toc}
 
