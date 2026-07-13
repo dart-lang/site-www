@@ -24,6 +24,7 @@ We follow the Google Developer Documentation Style Guide.
 - [ ] Use active voice.
 - [ ] Use present tense.
 - [ ] Use second person ("you"). No "we".
+- [ ] Use contractions.
 
 ### 3. Check word choice
 
@@ -39,3 +40,10 @@ We follow the Google Developer Documentation Style Guide.
 ### 5. Use less words in sections with steps
 
 - [ ] If a section has steps in it, be brief. Keep it short, simple, and accurate.
+
+### 6. Format links
+
+- [ ] Use link definitions (reference-style links) instead of inline links.
+- [ ] Use site-relative paths (for example, `/resources/whats-new`)
+  instead of full absolute URLs (for example,
+  `https://dart.dev/resources/whats-new`) for internal site links.
