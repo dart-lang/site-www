@@ -56,7 +56,15 @@ Once your package is published to pub.dev (or pushed to a Git repository), users
 $ dart install my_package
 ```
 
-This will resolve dependencies, run any build hooks, AOT-compile the executable, and place the resulting binary into their `DART_DATA_HOME/install/bin` directory.
+This will resolve dependencies, run any build hooks, AOT-compile the executable, and place the resulting binary into their `$DART_DATA_HOME/install/bin` directory.
+
+Depending on the platform, the default location is:
+
+| Platform | Default path |
+|---|---|
+| **macOS** | `$HOME/Library/Application Support/Dart/install/bin` |
+| **Linux** | `$HOME/.local/share/dart/install/bin` (or `$XDG_DATA_HOME/dart/install/bin`) |
+| **Windows** | `%LOCALAPPDATA%\Dart\install\bin` |
 
 ### Migrating users from pub global
 
