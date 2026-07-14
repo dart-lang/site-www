@@ -29,9 +29,6 @@ $ dart install webdev
 Use the same command to update `webdev`. 
 Update `webdev` when you update your Dart SDK or when `webdev` commands fail in a way you can't explain.
 
-
-
-
 ### Depending on build_* packages
 
 To use `webdev`, you must be in the root directory of a package that
