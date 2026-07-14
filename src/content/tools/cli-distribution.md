@@ -11,7 +11,7 @@ A Dart CLI tool is a standalone command-line application distributed via the Pub
 
 ## Writing entrypoints
 
-When a user installs a tool via `dart install`, Pub looks for the entrypoints defined in your package's `pubspec.yaml` file. 
+When a user installs a tool via [`dart install`][], Pub looks for the entrypoints defined in your package's `pubspec.yaml` file. 
 
 Create a Dart script in the `bin/` directory of your package. For example, `bin/my_tool.dart`:
 
@@ -50,7 +50,7 @@ By writing a `hook/build.dart` script, you can instruct the Dart SDK to compile 
 
 ## Distribution
 
-Once your package is published to pub.dev (or pushed to a Git repository), users can install it globally using the `dart install` command:
+Once your package is published to pub.dev (or pushed to a Git repository), users can install it globally using the [`dart install`][] command:
 
 ```console
 $ dart install my_package
@@ -61,3 +61,5 @@ This will resolve dependencies, run any build hooks, AOT-compile the executable,
 ### Migrating users from pub global
 
 If you maintain an existing Dart CLI package, you should update your documentation (such as your `README.md`) to recommend `dart install` instead of the legacy `dart pub global activate` command. `dart install` produces faster, self-contained applications that are uncoupled from the host Dart SDK version.
+
+[`dart install`]: /tools/dart-install
