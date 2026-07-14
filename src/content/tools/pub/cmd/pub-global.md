@@ -3,6 +3,12 @@ title: dart pub global
 description: Use dart pub global to run Dart scripts hosted on the pub.dev site from the command line.
 ---
 
+:::version-note
+**Legacy command:** Support for `dart pub global` is considered legacy. [`dart install`][] is the recommended, AOT-compiled alternative that produces self-contained binaries, supports native build hooks (`hook/build.dart`), and launches faster. Note that `dart install` requires **Dart 3.10 or later**.
+
+**Migration note:** `dart install` binaries are placed in `DART_DATA_HOME/install/bin/` (instead of `~/.pub-cache/bin/`). Ensure your `PATH` is updated appropriately. Additionally, because `dart install` creates native executables, you can no longer pass Dart VM options at runtime.
+:::
+
 _Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 Pub's `global` option allows you to run Dart scripts from the
