@@ -85,14 +85,12 @@ you must load them with an HTTP server.
 To serve the files, use any HTTP server.
 Consider using [`package:dhttpd`][] from pub.dev.
 
-To use `package:dhttpd`, activate it globally, then run it
+To use `package:dhttpd`, run it directly from pub.dev
 and specify the path of your generated docs.
-The following commands activate the package,
-then runs it to serve the API docs located at `doc/api`:
+The following command serves the API docs located at `doc/api`:
 
 ```console
-$ dart pub global activate dhttpd
-$ dart pub global run dhttpd --path doc/api
+$ dart run dhttpd@ --path doc/api
 ```
 
 To then read the generated docs in your browser,
