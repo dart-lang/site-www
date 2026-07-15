@@ -1211,4 +1211,118 @@ void f(int? i, int? j) {
 }
 ```
 
+### Variable can't be promoted due to an 'await' or 'yield' {:#suspension}
+
+**The cause:**
+Flow analysis drops type promotion when execution suspends
+across an `await` expression or `yield` statement.
+
+For this promotion failure to occur,
+all of the following conditions are met:
+
+1. A function or method contains a write to a local variable or parameter.
+1. That function contains an inner function or closure
+   that promotes the variable.
+1. The inner function suspends itself using `await` or `yield`,
+   letting the outer function continue execution.
+1. The inner function attempts to use the local variable again
+   after the suspension.
+
+In earlier releases, the final access of the local variable
+retained its promoted type.
+However, that behavior was unsound:
+while the inner function is suspended,
+the outer function can continue running and modify the variable's value.
+To guarantee soundness,
+flow analysis drops the promotion when the inner function suspends.
+
+**Example:**
+
+The compiler drops a promotion across suspension points,
+even if it's clear that retaining the promotion is safe.
+
+```dart tag=bad
+import 'dart:async';
+
+Future<void> example(String? extraInfo) async {
+  extraInfo ??= 'No extra info'; // (3)
+  unawaited(() async {
+    log('Doing some asynchronous task...');
+    log(extraInfo!); // (1)
+    await longTask(); // (2)
+    log('Done!');
+    log(extraInfo); // (4) ERROR
+  }());
+}
+
+Future<void> longTask() async {
+  await Future<void>.delayed(const Duration(seconds: 10));
+}
+
+void log(String s) {
+  print(s);
+}
+```
+
+In this example, the analyzer and compiler reason that
+while the inner closure is suspended at `(2)`,
+the outer function can reach `(3)`
+and write a value to `extraInfo` that invalidates the promotion.
+To be safe, flow analysis drops the promotion.
+As a result, at `(4)`, `extraInfo` reverts to `String?`,
+which isn't compatible with `log(String s)`,
+producing a compile-time error.
+
+**Message:**
+
+When this situation occurs, the compiler or analyzer emits
+an error and context message:
+
+```plaintext
+example.dart:10:9: Error: The argument type 'String?' can't be assigned to the parameter type 'String'.
+    log(extraInfo);
+        ^
+example.dart:8:5: Context: Variable 'extraInfo' could not be promoted due to an 'await' or 'yield'.
+Try checking the type of the variable after the 'await' or 'yield'.  See http://dart.dev/go/non-promo-suspension
+    await longTask();
+    ^
+```
+
+**Solution:**
+
+To fix this compile-time error,
+re-verify the variable's type or add an explicit null check
+after the suspension point.
+
+Add an extra null check or `!`
+at the post-suspension call site:
+
+<?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" replace="/extraInfo!/[!extraInfo!]/g"?>
+```dart tag=good
+import 'dart:async';
+// ···
+Future<void> example(String? extraInfo) async {
+  extraInfo ??= 'No extra info';
+  unawaited(() async {
+    log('Doing some asynchronous task...');
+    log([!extraInfo!]);
+    await longTask();
+    log('Done!');
+    log([!extraInfo!]);
+  }());
+}
+
+Future<void> longTask() async {
+  await Future<void>.delayed(const Duration(seconds: 10));
+}
+
+void log(String s) {
+  print(s);
+}
+```
+
+Alternatively, assign the variable to a `final` local variable
+prior to suspension,
+or re-check `extraInfo != null` after the `await` expression.
+
 [language version]: /language/versioning

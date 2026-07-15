@@ -10,6 +10,31 @@ import 'dart:math';
 import 'package:mockito/mockito.dart';
 // #enddocregion mock
 
+// #docregion suspension
+import 'dart:async';
+// #enddocregion suspension
+
+// #docregion suspension
+Future<void> example(String? extraInfo) async {
+  extraInfo ??= 'No extra info';
+  unawaited(() async {
+    log('Doing some asynchronous task...');
+    log(extraInfo!);
+    await longTask();
+    log('Done!');
+    log(extraInfo!);
+  }());
+}
+
+Future<void> longTask() async {
+  await Future<void>.delayed(const Duration(seconds: 10));
+}
+
+void log(String s) {
+  print(s);
+}
+// #enddocregion suspension
+
 class C1 {
   int? i;
   void f() {
