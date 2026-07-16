@@ -1264,16 +1264,15 @@ void log(String s) {
 }
 ```
 
-In this example, because `extraInfo` is written to at `(3)`,
-it is not effectively final.
-Flow analysis conservatively assumes that any write-captured variable
-could be modified while the closure is suspended at `(2)`,
-even though in this specific control flow,
-the write at `(3)` always occurs before the closure runs.
-To be safe, flow analysis drops the promotion.
-As a result, at `(4)`, `extraInfo` reverts to `String?`,
-which isn't compatible with `log(String s)`,
-producing a compile-time error.
+In this example, assigning a value to `extraInfo` at `(3)`
+means it isn't effectively final.
+Flow analysis conservatively assumes
+that any modified variable captured by a closure
+might change while the closure is suspended at `(2)`,
+even though the assignment at `(3)` always happens before the closure runs.
+To ensure soundness, flow analysis drops the promotion.
+As a result, at `(4)`, `extraInfo` demotes back to `String?`,
+which isn't compatible with `log(String s)` and produces a compile-time error.
 
 **Message:**
 
