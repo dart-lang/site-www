@@ -1299,7 +1299,7 @@ after the suspension point.
 Add an extra null check or `!`
 at the post-suspension call site:
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" replace="/extraInfo!/[!extraInfo!!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" replace="/(Done!'\);\n +log\()extraInfo!/$1[!extraInfo!!]/g"?>
 ```dart tag=good
 import 'dart:async';
 // ···
@@ -1307,7 +1307,7 @@ Future<void> example(String? extraInfo) async {
   extraInfo ??= 'No extra info';
   unawaited(() async {
     log('Doing some asynchronous task...');
-    log([!extraInfo!!]);
+    log(extraInfo!);
     await longTask();
     log('Done!');
     log([!extraInfo!!]);
