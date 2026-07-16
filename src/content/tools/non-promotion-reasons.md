@@ -1218,7 +1218,7 @@ Flow analysis drops type promotion when execution suspends
 across an `await` expression or `yield` statement.
 
 For this promotion failure to occur,
-all of the following conditions are met:
+all of the following conditions must be met:
 
 1. A function or method contains a write to a local variable or parameter.
 1. That function contains an inner function or closure
@@ -1233,7 +1233,7 @@ retained its promoted type.
 However, that behavior was unsound:
 while the inner function is suspended,
 the outer function can continue running and modify the variable's value.
-To guarantee soundness,
+Starting in Dart 3.13, to guarantee soundness,
 flow analysis drops the promotion when the inner function suspends.
 
 **Example:**
@@ -1264,10 +1264,12 @@ void log(String s) {
 }
 ```
 
-In this example, the analyzer and compiler reason that
-while the inner closure is suspended at `(2)`,
-the outer function can reach `(3)`
-and write a value to `extraInfo` that invalidates the promotion.
+In this example, because `extraInfo` is written to at `(3)`,
+it is not effectively final.
+Flow analysis conservatively assumes that any write-captured variable
+could be modified while the closure is suspended at `(2)`,
+even though in this specific control flow,
+the write at `(3)` always occurs before the closure runs.
 To be safe, flow analysis drops the promotion.
 As a result, at `(4)`, `extraInfo` reverts to `String?`,
 which isn't compatible with `log(String s)`,
@@ -1297,7 +1299,7 @@ after the suspension point.
 Add an extra null check or `!`
 at the post-suspension call site:
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" replace="/extraInfo!/[!extraInfo!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" replace="/extraInfo!/[!extraInfo!!]/g"?>
 ```dart tag=good
 import 'dart:async';
 // ···
@@ -1305,10 +1307,10 @@ Future<void> example(String? extraInfo) async {
   extraInfo ??= 'No extra info';
   unawaited(() async {
     log('Doing some asynchronous task...');
-    log([!extraInfo!]);
+    log([!extraInfo!!]);
     await longTask();
     log('Done!');
-    log([!extraInfo!]);
+    log([!extraInfo!!]);
   }());
 }
 
