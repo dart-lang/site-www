@@ -1550,6 +1550,23 @@ set foo(Foo value) {
 }
 ```
 
+The `[]=` operator behaves like a setter for return types,
+so this guideline applies to it as well:
+
+<?code-excerpt "design_bad.dart (avoid_return_types_on_setters_bracket)"?>
+```dart tag=bad
+void operator []=(K key, V value) {
+  /* ... */
+}
+```
+
+<?code-excerpt "design_good.dart (avoid_return_types_on_setters_bracket)"?>
+```dart tag=good
+operator []=(K key, V value) {
+  /* ... */
+}
+```
+
 
 ### DON'T use the legacy typedef syntax
 
