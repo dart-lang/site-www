@@ -1,9 +1,15 @@
 @TestOn('vm')
 library;
 
+import 'dart:io';
+
 import 'package:dart_skills_lint/dart_skills_lint.dart';
 import 'package:logging/logging.dart';
 import 'package:test/test.dart';
+
+final String _configFilePath = Directory.current.path.endsWith('site')
+    ? 'dart_skills_lint.yaml'
+    : 'site/dart_skills_lint.yaml';
 
 void main() {
   test('Run skills linter', () async {
@@ -15,14 +21,10 @@ void main() {
     );
 
     try {
-      final isValid = await validateSkills(
-        skillDirPaths: ['../.agents/skills'],
-        resolvedRules: {
-          'check-relative-paths': AnalysisSeverity.error,
-          'check-absolute-paths': AnalysisSeverity.error,
-          'check-trailing-whitespace': AnalysisSeverity.error,
-        },
+      final config = await ConfigParser.loadConfig(
+        path: _configFilePath,
       );
+      final isValid = await validateSkills(config: config);
       expect(
         isValid,
         isTrue,
