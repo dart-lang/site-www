@@ -46,7 +46,7 @@ dev_dependencies:
     git:
       url: https://github.com/flutter/skills
       path: tool/dart_skills_lint
-      ref: 66db75d9f221741c33c70d3e641bdfe7bbcfe2f0
+      ref: 3d375fed1b5f6bfe2881a601a4b6d91588594ff6
   jaspr_builder: ^0.23.1
   jaspr_test: ^0.23.1
   lints: ^6.1.0
