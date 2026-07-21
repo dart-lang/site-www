@@ -105,9 +105,11 @@ void miscDeclAnalyzedButNotTested() {
   }
 
   {
+    // dart format off
     // #docregion trailing-commas
     var list = ['Car', 'Boat', 'Plane',];
     // #enddocregion trailing-commas
+    // dart format on
   }
 
   {
