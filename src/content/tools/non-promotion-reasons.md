@@ -1228,8 +1228,8 @@ the following conditions must be met:
 1. The inner function attempts to use the local variable again
    after the suspension.
 
-In earlier SDK releases, using the local variable after the suspension point
-(item 4 above) retained its promoted type.
+In earlier SDK releases, using the local variable after the suspension
+retained its promoted type.
 However, that behavior was unsound:
 while the inner function is suspended,
 the outer function can continue running and modify the variable's value.
