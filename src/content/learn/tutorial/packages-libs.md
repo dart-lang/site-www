@@ -127,13 +127,6 @@ handle the command-line argument parsing logic.
       this method might perform asynchronous operations,
       but doesn't return a value.
 
-    :::tip
-    Be sure to save both `command_runner/lib/command_runner.dart` and
-    `command_runner/lib/src/command_runner_base.dart` in your code editor.
-    If `command_runner_base.dart` still has the placeholder `Awesome` class,
-    Dart reports a `Method not found: 'CommandRunner'` error when running `cli.dart`.
-    :::
-
 ### Task 3: Add `command_runner` as a dependency
 
 Now that you've created the `command_runner` package and
@@ -294,6 +287,13 @@ is working correctly at this stage.
     CommandRunner received arguments: [wikipedia, Computer_programming]
     ```
 
+    :::tip Troubleshooting
+    If Dart reports a `Method not found: 'CommandRunner'` error
+    when running `cli.dart`, ensure
+    `command_runner/lib/src/command_runner_base.dart` was updated with
+    the `CommandRunner` class from [Task 2][].
+    :::
+
     :::important Important note on functionality
     You'll notice that the article-fetching functionality (from Chapter 3) is
     no longer active. This is expected!
@@ -302,6 +302,8 @@ is working correctly at this stage.
     The next chapters will focus on rebuilding and
     enhancing that core application logic within the `command_runner` package.
     :::
+
+[Task 2]: #task-2-implement-the-commandrunner-class
 
 ## Review
 
