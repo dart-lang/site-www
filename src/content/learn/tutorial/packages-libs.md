@@ -79,7 +79,7 @@ handle the command-line argument parsing logic.
 1.  Open the `command_runner/lib/command_runner.dart` file.
     Remove any existing placeholder code and add the following:
 
-    ```dart
+    ```dart title="command_runner/lib/command_runner.dart"
     /// A simple command runner to handle command-line arguments.
     ///
     /// More extensive documentation for this library goes here.
@@ -108,7 +108,7 @@ handle the command-line argument parsing logic.
     add the following `CommandRunner` class to
     `command_runner/lib/src/command_runner_base.dart`:
 
-    ```dart
+    ```dart title="command_runner/lib/src/command_runner_base.dart"
     class CommandRunner {
       /// Runs the command-line application logic with the given arguments.
       Future<void> run(List<String> input) async {
@@ -149,7 +149,7 @@ you can use a [path dependency][].
     This helps avoid accidental publishing and
     prevents analyzer warnings about adding path dependencies.
 
-    ```yaml highlightLines=2
+    ```yaml title="cli/pubspec.yaml" highlightLines=2
     name: cli
     publish_to: none
     # ...
@@ -157,7 +157,7 @@ you can use a [path dependency][].
 
 1.  Locate the `dependencies` section. Add the following lines:
 
-    ```yaml highlightLines=3-4
+    ```yaml title="cli/pubspec.yaml" highlightLines=3-4
     dependencies:
       http: ^1.3.0 # Keep your existing http dependency
       command_runner:
@@ -203,7 +203,7 @@ fixes the program exit behavior discussed at the end of Chapter 3.
     **Your `cli/bin/cli.dart` file (from Chapter 3) should
     currently look like this:**
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     import 'dart:io';
     import 'package:http/http.dart' as http;
     import 'package:command_runner/command_runner.dart';
@@ -229,9 +229,9 @@ fixes the program exit behavior discussed at the end of Chapter 3.
     ```
 
     **Now, replace the entire contents of `cli/bin/cli.dart`
-    (except for the `http` import) with the following updated version:
+    (except for the `http` import) with the following updated version:**
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     import 'dart:io';
     import 'package:http/http.dart' as http;
     import 'package:command_runner/command_runner.dart';
@@ -257,7 +257,7 @@ fixes the program exit behavior discussed at the end of Chapter 3.
 
     Removed functions:
 
-    - The `printUsage`, `searchWikipedia`, an` getWikipediaArticle` functions
+    - The `printUsage`, `searchWikipedia`, and `getWikipediaArticle` functions
       are now completely removed from `cli/bin/cli.dart`.
       Their logic will be redesigned and moved into
       the `command_runner` package in future chapters,
@@ -287,14 +287,23 @@ is working correctly at this stage.
     CommandRunner received arguments: [wikipedia, Computer_programming]
     ```
 
-    :::important Important note on functionality
-    You'll notice that the article-fetching functionality (from Chapter 3) is
-    no longer active. This is expected!
-    In this chapter, you've refactored the project structure by
-    moving the command-handling responsibility.
-    The next chapters will focus on rebuilding and
-    enhancing that core application logic within the `command_runner` package.
+    :::tip Troubleshooting
+    If Dart reports a `Method not found: 'CommandRunner'` error
+    when running `cli.dart`, ensure
+    `command_runner/lib/src/command_runner_base.dart` was updated with
+    the `CommandRunner` class from [Task 2][].
     :::
+
+:::important Important note on functionality
+You'll notice that the article-fetching functionality (from Chapter 3) is
+no longer active. This is expected!
+In this chapter, you've refactored the project structure by
+moving the command-handling responsibility.
+The next chapters will focus on rebuilding and
+enhancing that core application logic within the `command_runner` package.
+:::
+
+[Task 2]: #task-2-implement-the-commandrunner-class
 
 ## Review
 
