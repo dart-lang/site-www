@@ -1211,7 +1211,7 @@ void f(int? i, int? j) {
 }
 ```
 
-### Variable can't be promoted due to an 'await' or 'yield' {:#suspension}
+### Promotion lost across an `await` or `yield` {:#suspension}
 
 **The cause:**
 Flow analysis drops type promotion when execution suspends
@@ -1228,8 +1228,8 @@ all of the following conditions must be met:
 1. The inner function attempts to use the local variable again
    after the suspension.
 
-In earlier releases, the final access of the local variable
-retained its promoted type.
+In earlier SDK releases, using the local variable after the suspension point
+(item 4 above) retained its promoted type.
 However, that behavior was unsound:
 while the inner function is suspended,
 the outer function can continue running and modify the variable's value.
@@ -1292,11 +1292,8 @@ Try checking the type of the variable after the 'await' or 'yield'.  See http://
 **Solution:**
 
 To fix this compile-time error,
-re-verify the variable's type or add an explicit null check
-after the suspension point.
-
-Add an extra null check or `!`
-at the post-suspension call site:
+re-verify the variable's non-null type, add an explicit null check,
+or use a null assertion (`!`) after the suspension point:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" replace="/(Done!'\);\n +log\()extraInfo!/$1[!extraInfo!!]/g"?>
 ```dart tag=good
