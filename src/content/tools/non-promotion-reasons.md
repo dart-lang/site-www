@@ -1218,7 +1218,7 @@ Flow analysis drops type promotion when execution suspends
 across an `await` expression or `yield` statement.
 
 For this promotion failure to occur,
-all of the following conditions must be met:
+the following conditions must be met:
 
 1. A function or method contains a write to a local variable or parameter.
 1. That function contains an inner function or closure
@@ -1245,13 +1245,13 @@ even if it's clear that retaining the promotion is safe.
 import 'dart:async';
 
 Future<void> example(String? extraInfo) async {
-  extraInfo ??= 'No extra info'; // (3)
+  extraInfo ??= 'No extra info'; // (1)
   unawaited(() async {
     log('Doing some asynchronous task...');
-    log(extraInfo!); // (1)
+    log(extraInfo!);
     await longTask(); // (2)
     log('Done!');
-    log(extraInfo); // (4) ERROR
+    log(extraInfo); // (3) ERROR
   }());
 }
 
@@ -1264,14 +1264,14 @@ void log(String s) {
 }
 ```
 
-In this example, assigning a value to `extraInfo` at `(3)`
+In this example, assigning a value to `extraInfo` at `(1)`
 means it isn't effectively final.
 Flow analysis conservatively assumes
 that any modified variable captured by a closure
 might change while the closure is suspended at `(2)`,
-even though the assignment at `(3)` always happens before the closure runs.
+even though the assignment at `(1)` always happens before the closure runs.
 To ensure soundness, flow analysis drops the promotion.
-As a result, at `(4)`, `extraInfo` demotes back to `String?`,
+As a result, at `(3)`, `extraInfo` demotes back to `String?`,
 which isn't compatible with `log(String s)` and produces a compile-time error.
 
 **Message:**
@@ -1295,10 +1295,10 @@ To fix this compile-time error,
 re-verify the variable's non-null type, add an explicit null check,
 or use a null assertion (`!`) after the suspension point:
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" replace="/(Done!'\);\n +log\()extraInfo!/$1[!extraInfo!!]/g"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" plaster="" replace="/(Done!'\);\n +log\()extraInfo!/$1[!extraInfo!!]/g"?>
 ```dart tag=good
 import 'dart:async';
-// ···
+
 Future<void> example(String? extraInfo) async {
   extraInfo ??= 'No extra info';
   unawaited(() async {
