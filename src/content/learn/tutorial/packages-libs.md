@@ -229,7 +229,7 @@ fixes the program exit behavior discussed at the end of Chapter 3.
     ```
 
     **Now, replace the entire contents of `cli/bin/cli.dart`
-    (except for the `http` import) with the following updated version:
+    (except for the `http` import) with the following updated version:**
 
     ```dart title="cli/bin/cli.dart"
     import 'dart:io';
@@ -294,14 +294,14 @@ is working correctly at this stage.
     the `CommandRunner` class from [Task 2][].
     :::
 
-    :::important Important note on functionality
-    You'll notice that the article-fetching functionality (from Chapter 3) is
-    no longer active. This is expected!
-    In this chapter, you've refactored the project structure by
-    moving the command-handling responsibility.
-    The next chapters will focus on rebuilding and
-    enhancing that core application logic within the `command_runner` package.
-    :::
+:::important Important note on functionality
+You'll notice that the article-fetching functionality (from Chapter 3) is
+no longer active. This is expected!
+In this chapter, you've refactored the project structure by
+moving the command-handling responsibility.
+The next chapters will focus on rebuilding and
+enhancing that core application logic within the `command_runner` package.
+:::
 
 [Task 2]: #task-2-implement-the-commandrunner-class
 
