@@ -1385,6 +1385,65 @@ class Point {
 }
 ```
 
+### PREFER using concise constructor syntax
+
+{% render 'linter-rule-mention.md', rules:'unnecessary_type_name_in_constructor' %}
+
+When declaring constructors inside the class body,
+use the concise constructor syntax instead of repeating the class name.
+Use `factory` for factory constructors
+and `new` for all other constructors.
+
+For a complete reference of the concise syntax forms,
+see the [concise constructor syntax table][].
+
+[concise constructor syntax table]: /language/constructors#concise-constructor-syntax
+
+:::note
+This guideline only applies to code at language version 3.13 or higher
+where the concise constructor syntax is available.
+:::
+
+<?code-excerpt "usage_good.dart (abbreviated-constructor-syntax)"?>
+```dart tag=good
+class Logger {
+  final String name;
+
+  factory(String name) => _cache[name] ??= Logger._internal(name);
+
+  new _internal(this.name);
+  new fromJson(Map<String, Object?> json) : name = json['name'] as String;
+
+  static final Map<String, Logger> _cache = {};
+}
+```
+
+<?code-excerpt "usage_bad.dart (abbreviated-constructor-syntax)"?>
+```dart tag=bad
+class Logger {
+  final String name;
+
+  factory Logger(String name) => _cache[name] ??= Logger._internal(name);
+
+  Logger._internal(this.name);
+  Logger.fromJson(Map<String, Object?> json) : name = json['name'] as String;
+
+  static final Map<String, Logger> _cache = {};
+}
+```
+
+Repeating the class name is redundant
+and makes refactoring harder if the class is renamed.
+Using `new` and `factory` keeps constructor declarations concise
+and consistent.
+
+:::note
+This guideline applies only to constructor *declarations*.
+For constructor *invocations*,
+see the [DON'T use `new`](#dont-use-new) guideline below.
+:::
+
+
 ### DON'T use `new`
 
 {% render 'linter-rule-mention.md', rules:'unnecessary_new' %}
