@@ -1399,10 +1399,13 @@ see the [concise constructor syntax table][].
 
 [concise constructor syntax table]: /language/constructors#concise-constructor-syntax
 
-:::note
-This guideline only applies to code at language version 3.13 or higher
+:::version-note
+This guideline only applies to libraries with a
+[language version][] of at least 3.13,
 where the concise constructor syntax is available.
 :::
+
+[language version]: /language/versioning
 
 <?code-excerpt "usage_good.dart (abbreviated-constructor-syntax)"?>
 ```dart tag=good
