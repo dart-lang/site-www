@@ -1440,7 +1440,7 @@ and consistent.
 :::note
 This guideline applies only to constructor *declarations*.
 For constructor *invocations*,
-see the [DON'T use `new`](#dont-use-new) guideline below.
+see the [DON'T use `new`](#dont-use-new) guideline.
 :::
 
 
