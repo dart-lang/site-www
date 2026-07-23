@@ -335,6 +335,31 @@ callbacks in the current zone.
 If this matters for your application, you can still use zones, but you will have
 to [write them yourself][zones] by binding the callback. See [#54507] for more
 details.
+
+For example, when passing a callback to a DOM event listener,
+manually bind it to the current zone before converting it with `.toJS`:
+
+<?code-excerpt "misc/lib/interop/zones_example.dart (before)"?>
+```dart
+// Before: Callback lost zone context
+element.addEventListener(
+  'click',
+  (web.Event event) {
+    // ... relies on zone-local values
+  }.toJS,
+);
+```
+
+<?code-excerpt "misc/lib/interop/zones_example.dart (after)"?>
+```dart
+element.addEventListener(
+  'click',
+  Zone.current.bindUnaryCallback((web.Event event) {
+    // ... zone-local values are preserved
+  }).toJS,
+);
+```
+
 There is no conversion API or [helper](#helpers) available yet to
 automatically do this.
 
