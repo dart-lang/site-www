@@ -344,7 +344,7 @@ For example, when passing a callback to a DOM event listener, manually bind it t
 element.addEventListener(
   'click',
   (web.Event event) {
-    // ... relies on zone variables
+    // ... relies on zone-local values
   }.toJS,
 );
 ```
@@ -354,7 +354,7 @@ element.addEventListener(
 element.addEventListener(
   'click',
   Zone.current.bindUnaryCallback((web.Event event) {
-    // ... zone variables are preserved
+    // ... zone-local values are preserved
   }).toJS,
 );
 ```

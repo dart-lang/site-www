@@ -14,7 +14,7 @@ void main() {
   element.addEventListener(
     'click',
     (web.Event event) {
-      // ... relies on zone variables
+      // ... relies on zone-local values
     }.toJS,
   );
   // #enddocregion before
@@ -24,7 +24,7 @@ void main() {
   element.addEventListener(
     'click',
     Zone.current.bindUnaryCallback((web.Event event) {
-      // ... zone variables are preserved
+      // ... zone-local values are preserved
     }).toJS,
   );
   // #enddocregion after
