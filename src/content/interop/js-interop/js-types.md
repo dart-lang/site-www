@@ -164,6 +164,8 @@ The runtime type of JS types might differ based on the compiler. This affects
 runtime type-checking and casts. Therefore, almost always avoid `is` checks
 where the value is an interop type or where the target type is an interop type:
 
+On WebAssembly, all JS interop types (such as `JSString`, `JSArray`, and user-defined extension types) share a single underlying runtime representation (typically `externref`). Because Dart's extension types are erased at compile time, a runtime check like `value is JSString` cannot distinguish a string from any other JS object, and will evaluate to `true` for almost any JS object, leading to silent bugs.
+
 ```dart tag=bad
 void f(JSAny a) {
   if (a is String) { … }
@@ -210,10 +212,7 @@ void f(JSAny a) {
 Depending on the type parameter, it'll transform the call into the appropriate
 type-check for that type.
 
-{% comment %}
-TODO: Add a link to and an example using `isA` once it's in a dev release. Users
-should prefer that method if it's available.
-{% endcomment %}
+
 
 To avoid invalid type checks with JS interop types,
 enable the [`invalid_runtime_check_with_js_interop_types`][] lint rule.
