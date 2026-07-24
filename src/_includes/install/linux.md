@@ -15,7 +15,7 @@ You need steps 1 to 3 only for the first install.
 1. Update the package index files and install the secure HTTP package.
 
    ```console
-   $ sudo apt-get update && sudo apt-get install apt-transport-https
+   $ sudo apt-get update && sudo apt-get install apt-transport-https gpg
    ```
 
 1. Download and add the Google Linux GPG public key.
