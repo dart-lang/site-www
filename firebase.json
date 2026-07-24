@@ -356,6 +356,7 @@
       { "source": "/language/specification", "destination": "/resources/language/spec", "type": 301 },
       { "source": "/language/versions", "destination": "/language/versioning", "type": 301 },
       { "source": "/libraries/async", "destination": "/libraries/dart-async", "type": 301 },
+      { "source": "/libraries/convert", "destination": "/libraries/dart-convert", "type": 301 },
       { "source": "/libraries/serialization", "destination": "/libraries/serialization/json", "type": 301 },
       { "source": "/linter/lints/:lint*", "destination": "/tools/linter-rules/:lint", "type": 301 },
       { "source": "/lints", "destination": "/tools/linter-rules", "type": 301 },
