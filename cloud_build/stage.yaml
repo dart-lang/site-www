@@ -1,6 +1,13 @@
 steps:
   - name: gcr.io/flutter-dev-230821/firebase-ghcli
-    # Build the site, deploy it to staging, then comment the link on the PR.
+    # Build the site from the PR checkout.
+    #
+    # SECURITY: This step intentionally has NO `secretEnv`. The `dart run`
+    # below executes code from the pull-request branch, which is untrusted.
+    # Secrets (GH_PAT_TOKEN) are only made available to the separate
+    # deploy/comment step that runs repo-trusted shell. The corresponding
+    # trigger MUST be configured to read this cloudbuild file from the base
+    # branch (not the PR head) for this isolation to hold.
     entrypoint: '/bin/bash'
     args:
       - '-c'
@@ -9,7 +16,23 @@ steps:
 
         dart pub get
         dart run dash_site build
-
+    env:
+      - 'PR_NUMBER=$_PR_NUMBER'
+      - 'HEAD_BRANCH=$_HEAD_BRANCH'
+      - 'PROJECT_ID=$PROJECT_ID'
+      - 'COMMIT_SHA=$COMMIT_SHA'
+      - 'REPO_FULL_NAME=$REPO_FULL_NAME'
+  - name: gcr.io/flutter-dev-230821/firebase-ghcli
+    # Deploy the built _site to a staging channel and comment the URL on the PR.
+    #
+    # TODO(security): stage_site_and_comment_on_github.sh is still read from
+    # the PR working tree below. Follow-up: inline its body here (or fetch it
+    # from a pinned trusted ref) so the PAT-bearing step runs zero PR-supplied
+    # code. Tracked in the accompanying VulnHunt report.
+    entrypoint: '/bin/bash'
+    args:
+      - '-c'
+      - |-
         cloud_build/scripts/stage_site_and_comment_on_github.sh
     secretEnv: ['GH_PAT_TOKEN']
     env:
