@@ -689,6 +689,47 @@
     - "pub"
     - "packages"
 
+- term: "Dot shorthand"
+  short_description: |-
+    A syntax shorthand that lets you omit the type name
+    when accessing constructors or static members, including enum values.
+  long_description: |-
+    A **dot shorthand** is a language feature that allows for more concise
+    code by omitting the type name when accessing constructors or
+    static members, including enum values.
+
+    This feature is only allowed when the expected type of the expression
+    can be uniquely inferred from the surrounding context
+    (the [context type](#context-type)).
+
+    For example, instead of writing `Status.running`, you can write `.running`
+    if the context type is already known to be `Status`:
+
+    ```dart highlightLines=8
+    enum Status { running, stopped }
+
+    void updateStatus(Status s) {
+      print('Status updated to: $s');
+    }
+
+    void main() {
+      updateStatus(.running); // Resolves to Status.running
+    }
+    ```
+  related_links:
+    - text: "Dot shorthands"
+      link: "/language/dot-shorthands"
+      type: "doc"
+    - text: "Context type"
+      link: "#context-type"
+      type: "term"
+  labels:
+    - "language"
+    - "syntax"
+  alternate:
+    - "Static access shorthand"
+    - "dot-shorthand"
+
 - term: "Entrypoint"
   short_description: |-
     A Dart library that is directly invoked by a Dart implementation.
@@ -746,6 +787,27 @@
   labels:
     - "pub"
     - "packages"
+
+- term: "Extension type"
+  short_description: |-
+    A compile-time wrapper that provides a zero-cost abstraction
+    over an underlying type.
+  long_description: |-
+    An **extension type** introduces a static, compile-time-only wrapper
+    around an underlying representation type.
+
+    Because an extension type is erased at compile time, it imposes zero
+    runtime memory or CPU cost while providing a distinct, type-safe API.
+  related_links:
+    - text: "Extension types"
+      link: "/language/extension-types"
+      type: "doc"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "extension-type"
+    - "zero-cost wrapper"
 
 - term: "Function"
   short_description: |-
@@ -1511,6 +1573,79 @@
     - "understanding diagnostics"
   alternate:
     - "potentially nullable"
+
+- term: "Primary constructor"
+  short_description: |-
+    A concise syntax to declare a main constructor directly in the header
+    of a class, enum, or extension type.
+  long_description: |-
+    A **primary constructor** is a syntax shorthand that declares a main
+    constructor directly in the definition header of a class, enum, or
+    extension type.
+
+    Primary constructors reduce the boilerplate of parameter declarations
+    and field initialization by allowing declaring parameters (`final` or `var`)
+    and initializing formals (`this.field`) directly in the header.
+
+    Declaring a parameter with the `var` or `final` modifier
+    implicitly creates and initializes that field:
+
+    ```dart
+    class Point(var int x, var int y);
+    ```
+  related_links:
+    - text: "Primary constructors"
+      link: "/language/primary-constructors"
+      type: "doc"
+  labels:
+    - "language"
+    - "constructors"
+    - "syntax"
+  alternate:
+    - "primary-constructor"
+
+- term: "Private named parameter"
+  short_description: |-
+    A named constructor parameter with a private name in the declaration
+    and a public name at call sites.
+  long_description: |-
+    A **private named parameter** is a named parameter whose name
+    is private.
+
+    It is only allowed when the parameter is initializing (such as `this._x`)
+    or declaring (such as `final T _x` or `var T _x`). Initializing parameters
+    occur in traditional or primary constructors, while declaring parameters
+    only occur in primary constructors.
+
+    An initializing parameter initializes the instance variable with the
+    given private name. A declaring parameter both implicitly declares
+    and initializes an instance variable with the given private name.
+
+    At call sites, arguments are passed to private named parameters by
+    specifying the corresponding public name (omitting the leading underscore):
+
+    ```dart
+    class Point {
+      final double _x;
+      final double _y;
+
+      // Callers use the public names 'x' and 'y'.
+      Point.named({required this._x, required this._y});
+    }
+
+    void main() {
+      var p = Point.named(x: 10, y: 20); // Initializes '_x' and '_y'.
+    }
+    ```
+  related_links:
+    - text: "Private named parameters"
+      link: "/language/constructors#private-named-parameters"
+      type: "doc"
+  labels:
+    - "language"
+    - "constructors"
+  alternate:
+    - "private-named-parameters"
 
 - term: "Public library"
   short_description: |-
@@ -2331,6 +2466,34 @@
     - "covariant"
     - "contravariance"
     - "contravariant"
+
+- term: "WebAssembly (Wasm)"
+  short_description: |-
+    A binary instruction format that enables
+    high-performance execution of code on web browsers.
+  long_description: |-
+    **WebAssembly** (commonly abbreviated to **Wasm**) is a portable binary
+    format designed as a compilation target for programming languages, enabling
+    close-to-native execution speeds on the web.
+
+    Dart supports compiling code directly to WebAssembly (using the
+    `dart compile wasm` tool). Compiling Dart to Wasm can be especially
+    beneficial for Flutter web apps, improving frame rates, startup times,
+    and application size compared to standard JavaScript compilation.
+  related_links:
+    - text: "WebAssembly (Wasm) compilation"
+      link: "/web/wasm"
+      type: "doc"
+    - text: "WebAssembly"
+      link: "https://webassembly.org/"
+      type: "external"
+  labels:
+    - "web"
+    - "compilation"
+    - "deployment"
+  alternate:
+    - "Wasm"
+    - "dart2wasm"
 
 - term: "Wildcard"
   id: "wildcard"
