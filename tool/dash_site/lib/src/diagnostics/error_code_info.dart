@@ -237,6 +237,8 @@ class CfeToAnalyzerErrorCodeTables {
         analyzerCode = analyzerCodeLong.substring(
           'CompileTimeErrorCode.'.length,
         );
+      } else if (!analyzerCodeLong.contains('.')) {
+        analyzerCode = analyzerCodeLong;
       } else {
         // Ignore error codes that start with other types.
         continue;
