@@ -747,6 +747,52 @@
     - "pub"
     - "packages"
 
+- term: "Extension type"
+  short_description: |-
+    A compile-time abstraction that wraps an underlying type with a custom
+    interface without runtime allocation overhead.
+  long_description: |-
+    An **extension type** is a zero-cost compile-time wrapper around an
+    underlying type (known as the *representation type*).
+    It introduces a new static interface for that type while erasing
+    to the representation type at run time.
+
+    Extension types are useful for:
+    - **Type safety**: Giving distinct static identities to primitive values
+      (for example, wrapping an `int` as an `IdNumber`).
+    - **Interoperability**: Wrapping JS objects or C pointers with type-safe
+      Dart APIs without wrapper object allocation.
+    - **API modification**: Tailoring or restricting an existing type's
+      interface.
+
+    ### Example
+
+    ```dart
+    extension type IdNumber(int id) {
+      bool get isValid => id > 0;
+    }
+
+    void main() {
+      final user = IdNumber(42);
+      print(user.isValid); // Static call on extension type interface.
+      print(user.id);      // Access underlying representation.
+    }
+    ```
+  related_links:
+    - text: "Extension types"
+      link: "/language/extension-types"
+      type: "doc"
+    - text: "Extension methods"
+      link: "/language/extension-methods"
+      type: "doc"
+  labels:
+    - "language"
+    - "type system"
+  alternate:
+    - "Representation type"
+    - "Extension types"
+    - "Inline class"
+
 - term: "Function"
   short_description: |-
     An umbrella term to refer to top-level functions, local functions,
