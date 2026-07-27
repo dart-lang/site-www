@@ -6,11 +6,11 @@ description: >-
 ---
 
 [Type promotion][] occurs when flow analysis can soundly confirm
-that a variable with a type `T` actually refers to an object of a subtype
-`S` of `T`. The type of this variable will then be promoted to `S`.
+that a variable of type `T` actually refers to an object of a subtype
+`S` of `T`. The variable is then promoted to `S`.
 As a special case, the variable may have a [nullable type][], and
 flow analysis may confirm that it is *not null*. The variable is then
-promoted to have the corresponding non-nullable type.
+promoted to the corresponding non-nullable type.
 Many circumstances can weaken a type's soundness,
 causing type promotion to fail.
 
