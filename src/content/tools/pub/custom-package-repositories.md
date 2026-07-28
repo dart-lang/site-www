@@ -235,6 +235,12 @@ your own custom package repository:
   </a>
 </li>
 <li>
+  <a href="https://publy.dev/docs/getting-started">
+    <img src="/assets/img/tools/publy.svg" alt="Publy logo">
+    <span>Publy</span>
+  </a>
+</li>
+<li>
   <a href="https://glpub.dev/">
     <img src="/assets/img/tools/glpub.png" alt="GLPub logo">
     <span>GLPub.dev</span>
