@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, unused_element
 // ignore_for_file: prefer_function_declarations_over_variables
 // ignore_for_file: prefer_if_null_operators
+// ignore_for_file: unnecessary_non_null_assertion
 
 // #docregion not-field, conflicting-getter
 import 'dart:math';
@@ -9,6 +10,31 @@ import 'dart:math';
 // #docregion mock
 import 'package:mockito/mockito.dart';
 // #enddocregion mock
+
+// #docregion suspension
+import 'dart:async';
+// #enddocregion suspension
+
+// #docregion suspension
+Future<void> example(String? extraInfo) async {
+  extraInfo ??= 'No extra info';
+  unawaited(() async {
+    log('Doing some asynchronous task...');
+    log(extraInfo!);
+    await longTask();
+    log('Done!');
+    log(extraInfo!);
+  }());
+}
+
+Future<void> longTask() async {
+  await Future<void>.delayed(const Duration(seconds: 10));
+}
+
+void log(String s) {
+  print(s);
+}
+// #enddocregion suspension
 
 class C1 {
   int? i;
