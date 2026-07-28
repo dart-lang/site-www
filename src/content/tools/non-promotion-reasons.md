@@ -1296,7 +1296,7 @@ Try checking the type of the variable after the 'await' or 'yield'.  See http://
 
 To fix this compile-time error,
 re-verify the variable's non-null type, add an explicit null check,
-or use a null assertion (`!`) after the suspension point:
+or use a not-null assertion (`!`) after the suspension point:
 
 <?code-excerpt "non_promotion/lib/non_promotion.dart (suspension)" plaster="" replace="/(Done!'\);\n +log\()extraInfo!/$1[!extraInfo!!]/g"?>
 ```dart tag=good
