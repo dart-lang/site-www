@@ -153,6 +153,8 @@
       permalink: /tools/pub/packages
     - title: Creating packages
       permalink: /tools/pub/create-packages
+    - title: Distributing CLI tools
+      permalink: /tools/cli-distribution
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Writing package pages

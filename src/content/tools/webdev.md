@@ -20,17 +20,15 @@ $ dart pub add build_runner build_web_compilers --dev
 
 ### Installing and updating webdev
 
-Use `dart pub` to install `webdev` for [all users][].
+Use `dart install` to install `webdev` globally.
 
 ```console
-$ dart pub global activate webdev
+$ dart install webdev
 ```
 
 Use the same command to update `webdev`. 
-Update `webdev` when you update your Dart SDK or when `webdev` commands fail in a way you can't explain.
-
-[all users]: /tools/pub/cmd/pub-global
-
+Update `webdev` when you update your Dart SDK,
+or when `webdev` commands fail in a way you can't explain.
 
 ### Depending on build_* packages
 

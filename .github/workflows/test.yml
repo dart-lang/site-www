@@ -33,7 +33,7 @@ jobs:
             experimental: true
     continue-on-error: ${{ matrix.experimental }}
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
       - uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260
@@ -57,7 +57,7 @@ jobs:
     name: Check Markdown content
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
       - uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260
@@ -72,7 +72,7 @@ jobs:
     name: Check if code excerpts are up to date
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
       - uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260
@@ -87,7 +87,7 @@ jobs:
     name: Check if text can be replaced with site variables
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
       - uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260
@@ -102,7 +102,7 @@ jobs:
     name: Validate Firebase configuration
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
       - uses: dart-lang/setup-dart@65eb853c7ba17dde3be364c3d2858773e7144260
