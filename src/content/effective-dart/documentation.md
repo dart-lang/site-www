@@ -226,8 +226,8 @@ class RadioButtonWidget extends Widget {
 }
 ```
 
-Only add doc comments when providing context, caveats, or usage details not immediately obvious
-from the surrounding context.
+Only add doc comments when providing context, caveats, or usage details
+not immediately obvious from the surrounding context.
 
 <a id="prefer-starting-function-or-method-comments-with-third-person-verbs" aria-hidden="true"></a>
 
