@@ -226,11 +226,8 @@ class RadioButtonWidget extends Widget {
 }
 ```
 
-If you really don't have anything interesting to say
-that can't be inferred from the declaration itself,
-then omit the doc comment.
-It's better to say nothing
-than waste a reader's time telling them something they already know.
+Only add doc comments when providing context, caveats, or usage details not immediately obvious
+from the surrounding context.
 
 <a id="prefer-starting-function-or-method-comments-with-third-person-verbs" aria-hidden="true"></a>
 
