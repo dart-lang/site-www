@@ -18,7 +18,7 @@ Today we’re announcing Dart 3.2, featuring a new language feature for non-null
 
 ## Non-null promotion for private final fields
 
-It’s been a few years since we introduced [sound null safety]({{site.dart-blog}}/announcing-dart-2-12) in Dart 2.12. With null safety, you can declare which types are nullable (may contain a value, or `null`) and which are non-nullable (always contain a value). Null safety combined with [flow analysis](https://dart.dev/null-safety/understanding-null-safety#flow-analysis) detects when nullable variables can be “promoted” to their safer, non-null types:
+It’s been a few years since we introduced [sound null safety](/blog/announcing-dart-2-12) in Dart 2.12. With null safety, you can declare which types are nullable (may contain a value, or `null`) and which are non-nullable (always contain a value). Null safety combined with [flow analysis](https://dart.dev/null-safety/understanding-null-safety#flow-analysis) detects when nullable variables can be “promoted” to their safer, non-null types:
 
 ```dart
 int definitelyInt(int? aNullableInt) {

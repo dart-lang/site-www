@@ -30,7 +30,7 @@ Over the coming stable releases, we plan to add more to this `dart` tool and gra
 
 ## Looking forward to null safety
 
-We’ve experienced a strong interest in null safety since we launched our [first technical preview]({{site.dart-blog}}/announcing-sound-null-safety) a few months back. We’re all looking forward to null safety as a tool for avoiding hard-to-spot null errors, and as an added bonus the performance improvements that we expect to see with sound null safety. If you’re keen to learn more, we recommend our new [Understanding null safety](https://dart.dev/null-safety/understanding-null-safety) page. If you prefer a short video, check out [the null safety video](https://www.youtube.com/watch?v=ZxSyZHq8gUg&feature=youtu.be&list=PLjxrf2q8roU1rBlI9vz01K2324nzIhYgp&t=322) from the [Flutter Day event](https://events.withgoogle.com/flutter-day/#content) a few months ago.
+We’ve experienced a strong interest in null safety since we launched our [first technical preview](/blog/announcing-sound-null-safety) a few months back. We’re all looking forward to null safety as a tool for avoiding hard-to-spot null errors, and as an added bonus the performance improvements that we expect to see with sound null safety. If you’re keen to learn more, we recommend our new [Understanding null safety](https://dart.dev/null-safety/understanding-null-safety) page. If you prefer a short video, check out [the null safety video](https://www.youtube.com/watch?v=ZxSyZHq8gUg&feature=youtu.be&list=PLjxrf2q8roU1rBlI9vz01K2324nzIhYgp&t=322) from the [Flutter Day event](https://events.withgoogle.com/flutter-day/#content) a few months ago.
 
 When might null safety be ready to use? Here is the current timeline:
 
@@ -46,7 +46,7 @@ We’d like to share our guiding principles for null safety migration.
 
 ### Adopt when you’re ready
 
-Null safety is a fundamental change to the Dart typing system. It changes the basics of variable declarations because [we decided]({{site.dart-blog}}/announcing-sound-null-safety) to make variables non-nullable by default:
+Null safety is a fundamental change to the Dart typing system. It changes the basics of variable declarations because [we decided](/blog/announcing-sound-null-safety) to make variables non-nullable by default:
 
 ```
 **Without null safety**                 W**ith null safety**

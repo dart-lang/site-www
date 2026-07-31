@@ -235,7 +235,7 @@ Dart has a strong focus on simplicity and learnability. We’re constantly tryin
 
 ## Null safety update
 
-We’re very pleased to see the wide usage of null safety since its beta release in November 2020 and the [Dart 2.12]({{site.dart-blog}}/announcing-dart-2-12) release in March 2021.
+We’re very pleased to see the wide usage of null safety since its beta release in November 2020 and the [Dart 2.12](/blog/announcing-dart-2-12) release in March 2021.
 
 First, app developers of most all the popular packages on `pub.dev` migrated to null safety. Analysis shows that 100% of the top-250 and 98% of the top-1,000 most used packages support null safety.
 

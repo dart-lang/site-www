@@ -86,7 +86,7 @@ In many cases direct interop is used to call into APIs that are present in the o
 
 ## Dart language & macros
 
-Most of our time in the Dart language and compiler teams is currently spent on making progress on the very large language feature macros, which we introduced in the [Dart 3.4 blog post]({{site.dart-blog}}/announcing-dart-3-4). As we said at the time, this is a huge undertaking, with the potential to cause regressions in some of our core use cases such as hot reload, so we’re taking a thorough approach, and will likely need several quarters of further work before we can share details of the next step.
+Most of our time in the Dart language and compiler teams is currently spent on making progress on the very large language feature macros, which we introduced in the [Dart 3.4 blog post](/blog/announcing-dart-3-4). As we said at the time, this is a huge undertaking, with the potential to cause regressions in some of our core use cases such as hot reload, so we’re taking a thorough approach, and will likely need several quarters of further work before we can share details of the next step.
 
 In addition to macros, we’re also concurrently exploring a number of other smaller language features, as documented in the [Dart language funnel](https://github.com/orgs/dart-lang/projects/90/views/1).
 

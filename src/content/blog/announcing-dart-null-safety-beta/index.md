@@ -134,7 +134,7 @@ For full details on migration and versioning, see the [migration guide](https://
 
 ## The benefits of sound null safety
 
-Our previous blog posts for the technical previews of null safety [in Dart]({{site.dart-blog}}/announcing-sound-null-safety) and [in Flutter]({{site.flutter-blog}}/dart-sound-null-safety-technical-preview-2) have discussed the benefits of null safety via a number of examples. Now that null safety is nearing completion, we’re seeing several real-world examples of this benefit.
+Our previous blog posts for the technical previews of null safety [in Dart](/blog/announcing-sound-null-safety) and [in Flutter]({{site.flutter-blog}}/dart-sound-null-safety-technical-preview-2) have discussed the benefits of null safety via a number of examples. Now that null safety is nearing completion, we’re seeing several real-world examples of this benefit.
 
 ### Safer code
 

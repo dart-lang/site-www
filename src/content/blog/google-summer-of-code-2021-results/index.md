@@ -11,7 +11,7 @@ layout: blog
 
 [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) is a global program focused on bringing student developers into open source software development. Students are sponsored by Google to work with a mentoring open source organization on a 10-week programming project during the summer. Over the past 16 years more than 16,000 students have participated in Google Summer of Code.
 
-2021 is the second time that the Dart organization participated in Google Summer of Code as a mentoring organization. Following our [call for student proposals in March]({{site.dart-blog}}/dart-in-google-summer-of-code-2021) we received 92 project proposals from students around the world, out of which we were thrilled to accept 3 projects. Today, we are excited to share our results, as described by the students who worked on these projects.
+2021 is the second time that the Dart organization participated in Google Summer of Code as a mentoring organization. Following our [call for student proposals in March](/blog/dart-in-google-summer-of-code-2021) we received 92 project proposals from students around the world, out of which we were thrilled to accept 3 projects. Today, we are excited to share our results, as described by the students who worked on these projects.
 
 ## Cronet-based HTTP client for Dart
 
@@ -59,4 +59,4 @@ Given the LICENSE file from a package, pana uses three steps to detect the SPDX 
 
 We hope this gives you some idea of the license detection process. If you want to play with the license detector, you can find it in the [pana repository](https://github.com/dart-lang/pana/tree/master/bin).
 
-*Huge thanks to everyone who applied for Google Summer of Code 2021 with Dart, to the students who completed projects this year, and to the mentors who helped make this an awesome summer of code. If you’re interested in hearing more about Dart in Google Summer of Code, check out [our 2020 post]({{site.dart-blog}}/google-summer-of-code-2020-results).*
+*Huge thanks to everyone who applied for Google Summer of Code 2021 with Dart, to the students who completed projects this year, and to the mentors who helped make this an awesome summer of code. If you’re interested in hearing more about Dart in Google Summer of Code, check out [our 2020 post](/blog/google-summer-of-code-2020-results).*

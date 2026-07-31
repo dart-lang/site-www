@@ -17,7 +17,7 @@ and follow the [Dart blog][].
 [flutter-whats-new]: {{site.flutter-docs}}/whats-new
 [dart-changelog]: /changelog
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
-[Dart blog]: {{site.dart-blog}}
+[Dart blog]: /blog
 
 ## 3.12 release
 
@@ -29,7 +29,7 @@ For details about the 3.12 release of Dart,
 check out the [3.12 announcement][] and the
 [3.12 SDK changelog][3-12-changelog].
 
-[3.12 announcement]: {{site.dart-blog}}/announcing-dart-3-12
+[3.12 announcement]: /blog/announcing-dart-3-12
 [3-12-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3120
 
 ### Documentation updates {:.no_toc}
@@ -95,7 +95,7 @@ For details about the 3.11 release of Dart,
 check out the [3.11 announcement][] and the
 [3.11 SDK changelog][3-11-changelog].
 
-[3.11 announcement]: {{site.dart-blog}}/announcing-dart-3-11
+[3.11 announcement]: /blog/announcing-dart-3-11
 [3-11-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3110
 
 ### Documentation updates {:.no_toc}
@@ -129,7 +129,7 @@ For details about the 3.10 release of Dart,
 check out the [3.10 announcement][] and the
 [3.10 SDK changelog][3-10-changelog].
 
-[3.10 announcement]: {{site.dart-blog}}/announcing-dart-3-10
+[3.10 announcement]: /blog/announcing-dart-3-10
 [3-10-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3100
 
 ### Documentation updates {:.no_toc}
@@ -173,7 +173,7 @@ We published the following articles on the Dart blog:
 
 * [Google Summer of Code 2025 Results][blog-10-21-25]
 
-[blog-10-21-25]: {{site.dart-blog}}/google-summer-of-code-2025-results
+[blog-10-21-25]: /blog/google-summer-of-code-2025-results
 
 ## 3.9 release
 
@@ -210,7 +210,7 @@ we made the following changes to docs on this site:
 [Enabled breadcrumbs by default]: {{site.repo.this}}/pull/6767
 [glossary]: /resources/glossary
 
-[3.9 announcement]: {{site.dart-blog}}/announcing-dart-3-9
+[3.9 announcement]: /blog/announcing-dart-3-9
 [3-9-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#390
 
 ## 3.8 release
@@ -304,7 +304,7 @@ we made the following structural changes to this site:
 
   <img src="/assets/img/whats-new/3-8-diagnostic-docs.png" alt="Learn more button" style="width:50%">
 
-[3.8 announcement]: {{site.dart-blog}}/announcing-dart-3-8
+[3.8 announcement]: /blog/announcing-dart-3-8
 [3-8-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#380
 [3-8-c-elements]: /language/collections#collection-elements
 [3-8-null-aware]: /language/collections#null-aware-element
@@ -332,7 +332,7 @@ through February 12, 2025.
 For details about the 3.7 release of Dart,
 check out the [3.7 announcement][] and the [SDK changelog][3-7-changelog].
 
-[3.7 announcement]: {{site.dart-blog}}/announcing-dart-3-7
+[3.7 announcement]: /blog/announcing-dart-3-7
 [3-7-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#370
 
 ### Docs updated or added to dart.dev {:.no_toc}
@@ -371,7 +371,7 @@ we made the following changes to this site:
 [wildcard variables]: /language/variables#wildcard-variables
 [covariant explanation]: /language/type-system#covariant-keyword
 [legacy JS interop]: /interop/js-interop/past-js-interop
-[indefinitely paused]: {{site.dart-blog}}/an-update-on-dart-macros-data-serialization
+[indefinitely paused]: /blog/an-update-on-dart-macros-data-serialization
 [map-warn]: /language/pattern-types#map
 
 ## 3.6 release
@@ -383,7 +383,7 @@ through December 11, 2024.
 For details about the 3.6 release of Dart,
 check out the [3.6 announcement][] and the [SDK changelog][3-6-changelog].
 
-[3.6 announcement]: {{site.dart-blog}}/announcing-dart-3-6
+[3.6 announcement]: /blog/announcing-dart-3-6
 [3-6-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#360
 
 ### Docs updated or added to dart.dev {:.no_toc}
@@ -446,7 +446,7 @@ through August 6, 2024.
 For details about the 3.5 release of Dart,
 check out the [3.5 announcement][] and the [SDK changelog][3-5-changelog].
 
-[3.5 announcement]: {{site.dart-blog}}/announcing-dart-3-5-and-an-update-on-the-dart-roadmap
+[3.5 announcement]: /blog/announcing-dart-3-5-and-an-update-on-the-dart-roadmap
 [3-5-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#350---2024-08-06
 
 ### Docs updated or added to dart.dev {:.no_toc}
@@ -496,7 +496,7 @@ through May 14, 2024.
 For details about the 3.4 release,
 check out [3.4 blog post][] and the [SDK changelog][3-4-changelog].
 
-[3.4 blog post]: {{site.dart-blog}}/announcing-dart-3-4
+[3.4 blog post]: /blog/announcing-dart-3-4
 [3-4-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#340---2024-05-14
 
 ### Docs updated or added to dart.dev {:.no_toc}
@@ -522,7 +522,7 @@ we made the following changes to this site:
 * Updated the site for new [linter rules][] and [diagnostic messages][],
   for example adding docs for the new [`@mustBeConst`][] annotation diagnostic.
 
-[Macros]: {{site.dart-blog}}/an-update-on-dart-macros-data-serialization
+[Macros]: /blog/an-update-on-dart-macros-data-serialization
 [Wasm]: /web/wasm
 [Constructors]: /language/constructors/
 [Renames]: /interop/js-interop/package-web/#renames
@@ -545,8 +545,8 @@ We published the following articles on the Dart blog:
 * [History of JS interop in Dart][blog-3-28-24]
 * [Dart in Google Summer of Code 2024][blog-3-5-24]
 
-[blog-3-28-24]: {{site.dart-blog}}/history-of-js-interop-in-dart
-[blog-3-5-24]: {{site.dart-blog}}/dart-in-google-summer-of-code-2024
+[blog-3-28-24]: /blog/history-of-js-interop-in-dart
+[blog-3-5-24]: /blog/dart-in-google-summer-of-code-2024
 
 ## 3.3 release
 
@@ -557,7 +557,7 @@ through February 15, 2024.
 For details about the 3.3 release,
 check out [3.3 blog post][] and the [SDK changelog][3-3-changelog].
 
-[3.3 blog post]: {{site.dart-blog}}/new-in-dart-3-3-extension-types-javascript-interop-and-more
+[3.3 blog post]: /blog/new-in-dart-3-3-extension-types-javascript-interop-and-more
 [3-3-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#330
 
 ### Docs updated or added to dart.dev {:.no_toc}
@@ -628,7 +628,7 @@ through November 15, 2023.
 For details about the 3.2 release,
 check out [3.2 blog post][] and the [SDK changelog][3-2-changelog].
 
-[3.2 blog post]: {{site.dart-blog}}/announcing-dart-3-2
+[3.2 blog post]: /blog/announcing-dart-3-2
 [3-2-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#320---2023-11-15
 
 ### Docs updated or added to dart.dev {:.no_toc}
@@ -688,7 +688,7 @@ check out
 [Dart 3.1 & a retrospective on functional style programming in Dart 3][]
 and the [SDK changelog][3-1-changelog].
 
-[Dart 3.1 & a retrospective on functional style programming in Dart 3]: {{site.dart-blog}}/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3
+[Dart 3.1 & a retrospective on functional style programming in Dart 3]: /blog/dart-3-1-a-retrospective-on-functional-style-programming-in-dart-3
 [3-1-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#310---2023-08-16
 
 ### Docs updated or added to dart.dev {:.no_toc}
@@ -741,7 +741,7 @@ We published the following article on the Dart blog:
 
 * [Dart DevTools: Analyzing application performance with the CPU Profiler][blog-6-12-23]
 
-[blog-6-12-23]: {{site.dart-blog}}/dart-devtools-analyzing-application-performance-with-the-cpu-profiler
+[blog-6-12-23]: /blog/dart-devtools-analyzing-application-performance-with-the-cpu-profiler
 
 ## 3.0 release
 
@@ -753,7 +753,7 @@ For details about the major 3.0 release,
 check out [Announcing Dart 3][],
 and the [SDK changelog][3-0-changelog].
 
-[Announcing Dart 3]: {{site.dart-blog}}/announcing-dart-3
+[Announcing Dart 3]: /blog/announcing-dart-3
 [3-0-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#300---2023-05-10
 
 ### Docs updated or added to dart.dev {:.no_toc}
@@ -836,7 +836,7 @@ We published the following article on the Dart blog:
 
 * [Introducing Realm for Dart & Flutter][blog-2-09-23]
 
-[blog-2-09-23]: {{site.dart-blog}}/introducing-realm-for-dart-flutter
+[blog-2-09-23]: /blog/introducing-realm-for-dart-flutter
 
 ### Videos released by the Dart team {:.no_toc}
 
@@ -861,7 +861,7 @@ For details about the 2.19 + 3.0 alpha releases,
 see [Introducing Dart 3 alpha][],
 and the [SDK changelog][2-19-changelog].
 
-[Introducing Dart 3 alpha]: {{site.dart-blog}}/introducing-dart-3-alpha
+[Introducing Dart 3 alpha]: /blog/introducing-dart-3-alpha
 [2-19-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#2190---2023-01-24
 
 ### Docs updated or added to dart.dev {:.no_toc}
@@ -936,11 +936,11 @@ We published the following articles on the Dart blog:
 * [Google Summer of Code 2022 Results][blog-11-3-22]
 * [Partnering with GitHub on supply chain security for Dart packages][blog-10-6-22]
 
-[blog-1-24-23]: {{site.dart-blog}}/better-isolate-management-with-isolate-run
-[blog-1-18-23]: {{site.dart-blog}}/screenshots-and-automated-publishing-for-pub-dev
-[blog-12-8-22]: {{site.dart-blog}}/the-road-to-dart-3-a-fully-sound-null-safe-language
-[blog-11-3-22]: {{site.dart-blog}}/google-summer-of-code-2022-results
-[blog-10-6-22]: {{site.dart-blog}}/partnering-with-github-on-supply-chain-security-for-dart-packages
+[blog-1-24-23]: /blog/better-isolate-management-with-isolate-run
+[blog-1-18-23]: /blog/screenshots-and-automated-publishing-for-pub-dev
+[blog-12-8-22]: /blog/the-road-to-dart-3-a-fully-sound-null-safe-language
+[blog-11-3-22]: /blog/google-summer-of-code-2022-results
+[blog-10-6-22]: /blog/partnering-with-github-on-supply-chain-security-for-dart-packages
 
 
 ## 2.18 release
@@ -953,7 +953,7 @@ For details about the 2.18 release,
 see [Dart 2.18: Objective-C & Swift interop][],
 and the [SDK changelog][2-18-changelog].
 
-[Dart 2.18: Objective-C & Swift interop]: {{site.dart-blog}}/dart-2-18-objective-c-swift-interop
+[Dart 2.18: Objective-C & Swift interop]: /blog/dart-2-18-objective-c-swift-interop
 [2-18-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#2180---2022-08-30
 
 In addition to bug fixes and incremental improvements,
@@ -994,7 +994,7 @@ through May 11, 2022.
 For details about the 2.17 release,
 see [Dart 2.17: Productivity and integration][].
 
-[Dart 2.17: Productivity and integration]: {{site.dart-blog}}/dart-2-17-productivity-and-integration
+[Dart 2.17: Productivity and integration]: /blog/dart-2-17-productivity-and-integration
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -1112,12 +1112,12 @@ We published the following articles on the Dart blog:
 * [Hosting a private Dart package repository][blog-3-16-22]
 * [Quick fixes for analysis issues][blog-3-4-22]
 
-[blog-5-5-22]: {{site.dart-blog}}/bulk-application-of-fixes
-[blog-4-14-22]: {{site.dart-blog}}/dart-asynchronous-programming-streams
-[blog-4-7-22]: {{site.dart-blog}}/contributors-for-google-summer-of-code-2022
-[blog-3-31-22]: {{site.dart-blog}}/gradual-null-safety-migration-for-large-dart-projects
-[blog-3-16-22]: {{site.dart-blog}}/hosting-a-private-dart-package-repository
-[blog-3-4-22]: {{site.dart-blog}}/quick-fixes-for-analysis-issues
+[blog-5-5-22]: /blog/bulk-application-of-fixes
+[blog-4-14-22]: /blog/dart-asynchronous-programming-streams
+[blog-4-7-22]: /blog/contributors-for-google-summer-of-code-2022
+[blog-3-31-22]: /blog/gradual-null-safety-migration-for-large-dart-projects
+[blog-3-16-22]: /blog/hosting-a-private-dart-package-repository
+[blog-3-4-22]: /blog/quick-fixes-for-analysis-issues
 
 ## 2.16 release
 
@@ -1128,7 +1128,7 @@ through February 3, 2022.
 For details about the 2.16 release, 
 see [Dart 2.16: Improved tooling and platform handling][].
 
-[Dart 2.16: Improved tooling and platform handling]: {{site.dart-blog}}/dart-2-16-improved-tooling-and-platform-handling
+[Dart 2.16: Improved tooling and platform handling]: /blog/dart-2-16-improved-tooling-and-platform-handling
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -1172,7 +1172,7 @@ This section lists notable changes made from September 9, 2021,
 through December 8, 2021.
 For details about the 2.15 release, see [Announcing Dart 2.15][].
 
-[Announcing Dart 2.15]: {{site.dart-blog}}/announcing-dart-2-15
+[Announcing Dart 2.15]: /blog/announcing-dart-2-15
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -1221,7 +1221,7 @@ This section lists notable changes made from May 20, 2021,
 through September 8, 2021.
 For details about the 2.14 release, see [Announcing Dart 2.14][].
 
-[Announcing Dart 2.14]: {{site.dart-blog}}/announcing-dart-2-14
+[Announcing Dart 2.14]: /blog/announcing-dart-2-14
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -1270,9 +1270,9 @@ We published the following articles on the Dart blog:
 * [How Dart's null safety helped me augment my projects][blog-6-23-21]
 * [Implementing structs by value in Dart FFI][blog-6/8-21]
 
-[blog-7-27-21]: {{site.dart-blog}}/experimenting-with-dart-and-wasm
-[blog-6-23-21]: {{site.dart-blog}}/how-darts-null-safety-helped-me-augment-my-projects
-[blog-6/8-21]: {{site.dart-blog}}/implementing-structs-by-value-in-dart-ffi
+[blog-7-27-21]: /blog/experimenting-with-dart-and-wasm
+[blog-6-23-21]: /blog/how-darts-null-safety-helped-me-augment-my-projects
+[blog-6/8-21]: /blog/implementing-structs-by-value-in-dart-ffi
 
 
 ## 2.13 release
@@ -1283,7 +1283,7 @@ This section lists notable changes made from March 4, 2021,
 through May 19, 2021.
 For details about the 2.13 release, see [Announcing Dart 2.13][].
 
-[Announcing Dart 2.13]: {{site.dart-blog}}/announcing-dart-2-13
+[Announcing Dart 2.13]: /blog/announcing-dart-2-13
 
 ### Docs updated or added to dart.dev {:.no_toc}
 
@@ -1347,9 +1347,9 @@ We published the following articles on the Dart blog:
 * [Announcing Dart support for GitHub Actions][blog-3-24-21]
 * [Dart in Google Summer of Code 2021][blog-3-13-21]
 
-[blog-5-12-21]: {{site.dart-blog}}/angulardart-flutter-and-the-web-spring-update
-[blog-3-24-21]: {{site.dart-blog}}/announcing-dart-support-for-github-actions
-[blog-3-13-21]: {{site.dart-blog}}/dart-in-google-summer-of-code-2021
+[blog-5-12-21]: /blog/angulardart-flutter-and-the-web-spring-update
+[blog-3-24-21]: /blog/announcing-dart-support-for-github-actions
+[blog-3-13-21]: /blog/dart-in-google-summer-of-code-2021
 
 
 ## 2.12 release
@@ -1391,7 +1391,7 @@ In addition to bug fixes and incremental improvements, we made the following cha
 
 We also switched from Travis CI to GitHub Actions, and we made multiple CSS changes to improve site legibility.
 
-[Announcing Dart 2.12]: {{site.dart-blog}}/announcing-dart-2-12
+[Announcing Dart 2.12]: /blog/announcing-dart-2-12
 [ns-archive]: https://github.com/dart-community/migrate-to-null-safety
 [null safety homepage]: /null-safety
 [Overview page]: /overview
@@ -1424,10 +1424,10 @@ We published the following articles on the Dart blog:
 * [Announcing Dart null safety beta][blog-11-19-20]
   invited developers to start planning their migration to null safety.
 
-[blog-2-16-21]: {{site.dart-blog}}/preparing-the-dart-and-flutter-ecosystem-for-null-safety
-[blog-1-19-21]: {{site.dart-blog}}/dart-and-the-performance-benefits-of-sound-types
-[blog-12-7-20]: {{site.dart-blog}}/why-nullable-types
-[blog-11-19-20]: {{site.dart-blog}}/announcing-dart-null-safety-beta
+[blog-2-16-21]: /blog/preparing-the-dart-and-flutter-ecosystem-for-null-safety
+[blog-1-19-21]: /blog/dart-and-the-performance-benefits-of-sound-types
+[blog-12-7-20]: /blog/why-nullable-types
+[blog-11-19-20]: /blog/announcing-dart-null-safety-beta
 
 ## 2.10 release
 
@@ -1437,7 +1437,7 @@ This section lists notable changes made from
 July 1 through October 1, 2020.
 For details about the 2.10 release, see [Announcing Dart 2.10.][210-ann]
 
-[210-ann]: {{site.dart-blog}}/announcing-dart-2-10
+[210-ann]: /blog/announcing-dart-2-10
 
 <div class="no_toc_section">
 
@@ -1512,8 +1512,8 @@ All articles in the Dart blog are free to read.
 
 </div>
 
-[Dart blog]: {{site.dart-blog}}
-[Exploring collections in Dart]: {{site.dart-blog}}/exploring-collections-in-dart
-[Google Summer of Code 2020 results]: {{site.dart-blog}}/google-summer-of-code-2020-results
-[Introducing a brand new pub.dev]: {{site.dart-blog}}/introducing-a-brand-new-pub-dev
+[Dart blog]: /blog
+[Exploring collections in Dart]: /blog/exploring-collections-in-dart
+[Google Summer of Code 2020 results]: /blog/google-summer-of-code-2020-results
+[Introducing a brand new pub.dev]: /blog/introducing-a-brand-new-pub-dev
 [pub.dev]: {{site.pub}}

@@ -19,7 +19,7 @@ Hello from Google I/O 2023. Today, live from Mountain View, we’re announcing D
 
 ## 100% sound null safety
 
-Over the last four years, we’ve evolved Dart into a fast, portable, and modern language. Now with Dart 3, it is a 100% sound null safe language! As we’ve [discussed before]({{site.dart-blog}}/the-road-to-dart-3-a-fully-sound-null-safe-language), we don’t believe any other programming language has ever added sound null safety to an existing language. So, it’s been quite a journey.
+Over the last four years, we’ve evolved Dart into a fast, portable, and modern language. Now with Dart 3, it is a 100% sound null safe language! As we’ve [discussed before](/blog/the-road-to-dart-3-a-fully-sound-null-safe-language), we don’t believe any other programming language has ever added sound null safety to an existing language. So, it’s been quite a journey.
 
 <DashImage src="images/1KPbxBAjFYPCSk2OqwjKs7A.webp" alt="Dart 3 null safety timeline from the July 2020 technical preview to the May 2023 stable release." />
 

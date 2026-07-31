@@ -62,7 +62,7 @@ The new search UI has a search filter sidebar on the left, which you can use to 
 
 ## Null safety update
 
-It’s been a few releases since we last talked about null safety, the major language addition that launched a year ago in [Dart 2.12]({{site.dart-blog}}/announcing-dart-2-12). We’ve been astonished by the speed at which the Dart ecosystem has migrated packages to support null safety: As of today, 100% of the top 250 packages — and 96% of the top 1000 — support null safety! Thanks to all package authors who’ve contributed to this great achievement.
+It’s been a few releases since we last talked about null safety, the major language addition that launched a year ago in [Dart 2.12](/blog/announcing-dart-2-12). We’ve been astonished by the speed at which the Dart ecosystem has migrated packages to support null safety: As of today, 100% of the top 250 packages — and 96% of the top 1000 — support null safety! Thanks to all package authors who’ve contributed to this great achievement.
 
 We’ve also seen good progress on apps migrating to sound null safety (the state where the app code and all package dependencies have migrated). From our analytics, 71% of all run sessions in the Flutter tool now have fully sound null safety. If you’re an app developer and still haven’t migrated, now is a great time.
 

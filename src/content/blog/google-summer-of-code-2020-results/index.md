@@ -14,7 +14,7 @@ layout: blog
 
 [Google Summer of Code (GSoC)](https://summerofcode.withgoogle.com/) is a global program focused on bringing student developers into open source software development. Students are sponsored by Google to work with a mentoring open source organization on a 3-month programming project during the summer.
 
-In [February we were thrilled to announce]({{site.dart-blog}}/students-join-a-dart-project-for-google-summer-of-code-2020) that the Dart team would be a mentoring organization in GSoC 2020. We ended up [mentoring 5 projects](https://summerofcode.withgoogle.com/organizations/6544944065413120/), picked from more than 170 applications from students around the world. Today we’re excited to share our results, as described by the students who worked on the projects.
+In [February we were thrilled to announce](/blog/students-join-a-dart-project-for-google-summer-of-code-2020) that the Dart team would be a mentoring organization in GSoC 2020. We ended up [mentoring 5 projects](https://summerofcode.withgoogle.com/organizations/6544944065413120/), picked from more than 170 applications from students around the world. Today we’re excited to share our results, as described by the students who worked on the projects.
 
 ### Generating dart:ffi bindings for Dart-C interop with package:ffigen
 
