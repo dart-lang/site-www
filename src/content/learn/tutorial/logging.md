@@ -170,12 +170,12 @@ creating a new file for the logger and setting up the necessary imports.
     -   It listens for log records and writes them to the log file.
 
 1. Create a new file called `cli/lib/cli.dart` and export `logger.dart`.
-   This makes the `initFileLogger` available to other parts of your app.
+   This makes `initFileLogger` available to other parts of your app.
+   (You'll add exports for the CLI commands in the following tasks once they're created).
 
    ```dart title="cli/lib/cli.dart"
-    export 'src/commands/get_article.dart';
-    export 'src/commands/search.dart';
-    export 'src/logger.dart';
+   // ...
+   export 'src/logger.dart';
    ```
 
 ### Task 3: Use the logger in `cli.dart`
@@ -574,15 +574,33 @@ uses a `try/catch` block to handle potential network or data errors.
       handle network errors (`HttpException`) and
       data parsing errors (`FormatException`), logging them for debugging.
 
+3.  Now update `cli/lib/cli.dart` to export your new command files:
+
+    ```dart title="cli/lib/cli.dart"
+    export 'src/commands/get_article.dart';
+    export 'src/commands/search.dart';
+    export 'src/logger.dart';
+    ```
 
 ### Task 6: Run the application and check the logs
 
-Now that you've added logging to your application,
-run it and check the log file to see the results.
+Now that you've implemented the CLI commands, wired up `CommandRunner` in `bin/cli.dart`, and configured logging, test your application from the terminal.
 
-1.  Run the application with a command that might produce an error.
-    For example, try searching for an article that
-    doesn't exist or that causes a `FormatException`.
+1.  Run the CLI application to search for an article:
+
+    ```bash
+    dart run bin/cli.dart search "Dart programming"
+    ```
+
+    You should see terminal output listing Wikipedia articles matching your search term.
+
+1.  Try running the command with the `--im-feeling-lucky` flag:
+
+    ```bash
+    dart run bin/cli.dart search "Dart" --im-feeling-lucky
+    ```
+
+1.  Run the application with a query that produces an error or warning to test logging:
 
     ```bash
     dart run bin/cli.dart search blahblahblahblah
@@ -591,7 +609,7 @@ run it and check the log file to see the results.
 1.  Check the `logs` directory in your project.
     You should see a file with the current date and the name `errors.txt`.
 
-1.  Open the log file and verify that the error message is logged.
+1.  Open the log file and verify that the error message is logged:
 
     ```text
     [2025-02-20 16:23:45.678 - errors] WARNING: HttpException: HttpException: , uri = https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=blahblahblahblah
