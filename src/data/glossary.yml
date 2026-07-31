@@ -1764,7 +1764,7 @@
     specific diagnostic.
   related_links:
     - text: "Quick fixes for analysis issues"
-      link: "https://blog.dart.dev/quick-fixes-for-analysis-issues-c10df084971a"
+      link: "/blog/quick-fixes-for-analysis-issues"
       type: "article"
     - text: "Diagnostic messages"
       link: "/tools/diagnostic-messages"
@@ -2659,4 +2659,3 @@
   labels:
     - "pub"
     - "packages"
-

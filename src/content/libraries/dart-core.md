@@ -1084,7 +1084,7 @@ Support for weak references and finalizers was added in Dart 2.17.
 [dart:core]: {{site.dart-api}}/dart-core/dart-core-library.html
 [dart:ffi]: /interop/c-interop
 [double]: {{site.dart-api}}/dart-core/double-class.html
-[garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
+[garbage-collected]: {{site.flutter-blog}}/flutter-dont-fear-the-garbage-collector
 [int]: {{site.dart-api}}/dart-core/int-class.html
 [num]: {{site.dart-api}}/dart-core/num-class.html
 [toStringAsFixed()]: {{site.dart-api}}/dart-core/num/toStringAsFixed.html

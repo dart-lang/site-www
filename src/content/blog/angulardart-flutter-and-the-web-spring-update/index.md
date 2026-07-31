@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-Two months ago, we delivered our [first stable release of web support](https://medium.com/flutter/flutter-web-support-hits-the-stable-milestone-d6b84e83b425) for Flutter. This was a major milestone for client development as a whole, combining Flutter’s established UI framework, Dart’s industrial-strength JavaScript toolchain, and the underlying power of the web platform to deliver consistency across mobile devices and browsers.
+Two months ago, we delivered our [first stable release of web support]({{site.flutter-blog}}/flutter-web-support-hits-the-stable-milestone) for Flutter. This was a major milestone for client development as a whole, combining Flutter’s established UI framework, Dart’s industrial-strength JavaScript toolchain, and the underlying power of the web platform to deliver consistency across mobile devices and browsers.
 
 Since that release, we’ve been excited to see developers start to use Flutter on the web. Even at this early stage, more than 10% of `flutter build` commands target the web, demonstrating that web apps are already being deployed using Flutter. Inside Google, a number of teams are starting to rely on Flutter’s web support. And we use it heavily ourselves for Flutter development, both for [DartPad](https://dartpad.dev/e0a2e942e85fde2cd39b2741ff0c49e5?null_safety=true) and for [DevTools](https://flutter.dev/docs/development/tools/devtools/overview), our suite of performance and debugging tools.
 

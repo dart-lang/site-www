@@ -71,6 +71,6 @@ We’ve created a[ migration guide](https://dart.dev/go/package-web) to help aut
 
 ## One more thing: Introducing the Google AI Dart SDK
 
-Google has released the Google AI Dart SDK to beta. You can build generative AI features into your Dart or Flutter app. These apps use Gemini, Google’s latest family of AI models. Take a look at the [package:google_generative_ai](https://pub.dev/packages/google_generative_ai). Learn how to build with the Google AI Dart SDK in [this blog post](https://medium.com/flutter/harness-gemini-in-your-dart-and-flutter-apps-00573e560381) or jump straight into the [quickstart](https://ai.google.dev/tutorials/dart_quickstart).
+Google has released the Google AI Dart SDK to beta. You can build generative AI features into your Dart or Flutter app. These apps use Gemini, Google’s latest family of AI models. Take a look at the [package:google_generative_ai](https://pub.dev/packages/google_generative_ai). Learn how to build with the Google AI Dart SDK in [this blog post]({{site.flutter-blog}}/harness-the-gemini-api-in-your-dart-and-flutter-apps) or jump straight into the [quickstart](https://ai.google.dev/tutorials/dart_quickstart).
 
 <DashImage src="images/00DiCLVhk_ipZIHKd.webp" alt="Build with Gemini wordmark on a black background." />

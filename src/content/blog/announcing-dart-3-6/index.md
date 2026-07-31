@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-Welcome to Dart 3.6! Today is our last release of the year, alongside [Flutter 3.27](https://medium.com/flutter/whats-new-in-flutter-3-27-28341129570c). We’re excited to share a new feature in the language, *digit separators*. We also have several new features in the pub ecosystem: *pub download counts*, and the highly anticipated *pub workspaces*!
+Welcome to Dart 3.6! Today is our last release of the year, alongside [Flutter 3.27]({{site.flutter-blog}}/whats-new-in-flutter-3-27). We’re excited to share a new feature in the language, *digit separators*. We also have several new features in the pub ecosystem: *pub download counts*, and the highly anticipated *pub workspaces*!
 
 <DashImage src="images/0pojZOcfCeFztkEzK.webp" alt="Dart 3.6 release banner with the Dart logo, a bullseye icon, and blue vertical bars." caption="Dart 3.6" />
 
@@ -69,4 +69,4 @@ To use digit separators, you’ll need to bump the minimum SDK in your package t
 
 ## Closing
 
-That’s all for today. For the full story of what the Dart team has been up to this quarter, check out the [Changelog for 3.6.0](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#360). And don’t forget to visit the [Flutter 3.27 release blog](https://medium.com/flutter/whats-new-in-flutter-3-27-28341129570c) post for even more updates. See you next year!
+That’s all for today. For the full story of what the Dart team has been up to this quarter, check out the [Changelog for 3.6.0](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#360). And don’t forget to visit the [Flutter 3.27 release blog]({{site.flutter-blog}}/whats-new-in-flutter-3-27) post for even more updates. See you next year!

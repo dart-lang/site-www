@@ -283,5 +283,5 @@ For more information about extension methods, see the following:
 * [Extension methods sample][sample]
 
 [specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
-[article]: https://blog.dart.dev/extension-methods-2d466cd8b308
+[article]: {{site.dart-blog}}/dart-extension-method-fundamentals
 [sample]: {{site.repo.dart.samples}}/tree/main/extension_methods
