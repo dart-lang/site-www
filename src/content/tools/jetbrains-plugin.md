@@ -91,7 +91,9 @@ To work on an existing Dart application, open the project in the IDE and enable 
 
 #### Enable Dart support
 
-1. Open **Settings** (`Cmd` + `,`) and choose **Dart** under **Languages and Frameworks**. This will open the Dart page.
+1. Open **Settings** (<kbd>Cmd</kbd> + <kbd>,</kbd>) and
+   choose **Dart** under **Languages and Frameworks**.
+   This will open the Dart page.
 2. Check **Enable Dart support for the project &lt;project name&gt;**.
 3. Verify the **Dart SDK Path**.
    The IDE usually detects this automatically.
@@ -116,7 +118,8 @@ add the additional project's root folder as a content root or as a new module.
 
 You can customize Dart syntax highlighting to match your preferences.
 
-1. Open **Settings** (`Cmd` + `,`) and go to **Editor | Color Scheme | Dart**.
+1. Open **Settings** (<kbd>Cmd</kbd> + <kbd>,</kbd>) and
+   go to **Editor | Color Scheme | Dart**.
 2. Select a color scheme, or customize the default settings as described in
    [Colors and fonts](https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html).
 

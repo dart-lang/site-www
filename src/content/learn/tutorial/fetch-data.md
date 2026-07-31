@@ -102,7 +102,7 @@ You'll create three files:
           return Summary.fromJson(jsonData);
         } else {
           throw HttpException(
-            '[WikipediaDart.getRandomArticle] '
+            '[WikipediaApiClient.getRandomArticleSummary] '
             'statusCode=${response.statusCode}, body=${response.body}',
           );
         }
@@ -128,7 +128,7 @@ You'll create three files:
           return Summary.fromJson(jsonData);
         } else {
           throw HttpException(
-            '[WikipediaDart.getArticleSummary] '
+            '[WikipediaApiClient.getArticleSummaryByTitle] '
             'statusCode=${response.statusCode}, body=${response.body}',
           );
         }
@@ -179,7 +179,7 @@ You'll create three files:
           return SearchResults.fromJson(jsonData);
         } else {
           throw HttpException(
-            '[WikimediaApiClient.getArticleByTitle] '
+            '[WikipediaApiClient.search] '
             'statusCode=${response.statusCode}, '
             'body=${response.body}',
           );
@@ -232,7 +232,7 @@ You'll create three files:
           return Article.listFromJson(jsonData);
         } else {
           throw HttpException(
-            '[ApiClient.getArticleByTitle] '
+            '[WikipediaApiClient.getArticleByTitle] '
             'statusCode=${response.statusCode}, '
             'body=${response.body}',
           );

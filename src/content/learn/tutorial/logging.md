@@ -215,6 +215,7 @@ create a logger instance and log messages to a file.
                 }
                 if (error is Exception) {
                   errorLogger.warning(error);
+                  print(error);
                 }
               },
             )
@@ -323,10 +324,10 @@ add the necessary code, including the logging and error handling.
       FutureOr<String> run(ArgResults args) async {
         if (requiresArgument &&
             (args.commandArg == null || args.commandArg!.isEmpty)) {
-          return 'Please include a search term';
+          throw ArgumentException('Please include a search term', name);
         }
 
-        final buffer = StringBuffer('Search results:');
+        final buffer = StringBuffer('Search results:\n');
         final SearchResults results = await search(args.commandArg!);
 
         for (var result in results.results) {
@@ -381,10 +382,10 @@ add the necessary code, including the logging and error handling.
       FutureOr<String> run(ArgResults args) async {
         if (requiresArgument &&
             (args.commandArg == null || args.commandArg!.isEmpty)) {
-          return 'Please include a search term';
+          throw ArgumentException('Please include a search term', name);
         }
 
-        final buffer = StringBuffer('Search results:');
+        final buffer = StringBuffer('Search results:\n');
         final SearchResults results = await search(args.commandArg!);
 
         if (args.flag('im-feeling-lucky')) {
@@ -452,10 +453,10 @@ add the necessary code, including the logging and error handling.
       FutureOr<String> run(ArgResults args) async {
         if (requiresArgument &&
             (args.commandArg == null || args.commandArg!.isEmpty)) {
-          return 'Please include a search term';
+          throw ArgumentException('Please include a search term', name);
         }
 
-        final buffer = StringBuffer('Search results:');
+        final buffer = StringBuffer('Search results:\n');
         try {
           final SearchResults results = await search(args.commandArg!);
 

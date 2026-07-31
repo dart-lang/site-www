@@ -1,5 +1,6 @@
 // #docregion enum
 enum Color { red, green, blue }
+
 // #enddocregion enum
 
 void main() {

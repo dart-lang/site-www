@@ -3,8 +3,9 @@
 body {
   font-family: var(--site-body-fontFamily);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: var(--site-fontWeight-normal);
   line-height: 1.5;
+  font-optical-sizing: auto;
   background-color: var(--site-base-bgColor);
   color: var(--site-base-fgColor);
 
@@ -23,7 +24,7 @@ section {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--site-ui-fontFamily);
-  font-weight: 400;
+  font-weight: var(--site-fontWeight-normal);
   line-height: 1.2;
   color: var(--site-base-fgColor);
 }

@@ -30,7 +30,7 @@ check out the [3.12 announcement][] and the
 [3.12 SDK changelog][3-12-changelog].
 
 [3.12 announcement]: https://blog.dart.dev/announcing-dart-3-12
-[3-12-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3120
+[3-12-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3120
 
 ### Documentation updates {:.no_toc}
 
@@ -96,7 +96,7 @@ check out the [3.11 announcement][] and the
 [3.11 SDK changelog][3-11-changelog].
 
 [3.11 announcement]: https://blog.dart.dev/announcing-dart-3-11-b6529be4203a
-[3-11-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110
+[3-11-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3110
 
 ### Documentation updates {:.no_toc}
 
@@ -130,7 +130,7 @@ check out the [3.10 announcement][] and the
 [3.10 SDK changelog][3-10-changelog].
 
 [3.10 announcement]: https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088
-[3-10-changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3100
+[3-10-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3100
 
 ### Documentation updates {:.no_toc}
 
@@ -161,11 +161,11 @@ check out the [3.10 announcement][] and the
 *   Started compiling client-side Dart code to [Wasm][Wasm compilation].
 
 [Jaspr migration]: https://jaspr.site
-[Table of Contents extension]: https://github.com/dart-lang/site-www/pull/6886
-[Glossary filtering]: https://github.com/dart-lang/site-www/pull/6945
-[Glossary tooltips]: https://github.com/dart-lang/site-www/pull/6969
-[Community page redesign]: https://github.com/dart-lang/site-www/pull/6900
-[Wasm compilation]: https://github.com/dart-lang/site-www/pull/6953
+[Table of Contents extension]: {{site.repo.this}}/pull/6886
+[Glossary filtering]: {{site.repo.this}}/pull/6945
+[Glossary tooltips]: {{site.repo.this}}/pull/6969
+[Community page redesign]: {{site.repo.this}}/pull/6900
+[Wasm compilation]: {{site.repo.this}}/pull/6953
 
 ### Articles added to the Dart blog {:.no_toc}
 

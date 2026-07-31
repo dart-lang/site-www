@@ -211,7 +211,7 @@ body.dark-mode {
     color: var(--site-base-fgColor-alt);
     background-color: var(--site-raised-bgColor);
     font-family: var(--site-ui-fontFamily);
-    font-weight: 700;
+    font-weight: var(--site-fontWeight-bold);
     font-size: 1rem;
     padding: .75rem;
     border-bottom: 1px solid var(--site-inset-borderColor);
@@ -224,7 +224,7 @@ body.dark-mode {
       margin-top: 1rem;
       margin-bottom: 0.5rem;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: var(--site-fontWeight-bold);
     }
 
     .version-group {
@@ -233,7 +233,7 @@ body.dark-mode {
 
       summary {
         font-family: var(--site-ui-fontFamily);
-        font-weight: 400;
+        font-weight: var(--site-fontWeight-normal);
         font-size: 0.9rem;
         cursor: pointer;
         color: var(--site-base-fgColor);
@@ -309,7 +309,7 @@ body.dark-mode {
 
   h4 {
     font-size: 1.125rem;
-    font-weight: 400;
+    font-weight: var(--site-fontWeight-normal);
     margin: 1rem 0 .5rem;
     padding: 0;
   }
@@ -487,7 +487,7 @@ body.dark-mode {
         color: var(--site-onPrimary-color);
         padding: 0.25rem 0.5rem;
         border-radius: 4px;
-        font-weight: bold;
+        font-weight: var(--site-fontWeight-bold);
         font-size: 0.9rem;
       }
 
@@ -497,12 +497,12 @@ body.dark-mode {
         color: var(--site-onPrimary-color);
         padding: 0.25rem 0.5rem;
         border-radius: 4px;
-        font-weight: bold;
+        font-weight: var(--site-fontWeight-bolder);
         font-size: 0.9rem;
       }
 
       .entry-title {
-        font-weight: 600;
+        font-weight: var(--site-fontWeight-bold);
         font-size: 1rem;
         color: var(--site-base-fgColor);
       }
@@ -639,7 +639,7 @@ body.dark-mode {
       }
 
       dt {
-        font-weight: bold;
+        font-weight: var(--site-fontWeight-bold);
         grid-column: 1;
       }
 

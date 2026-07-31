@@ -84,7 +84,7 @@
           p.correct,
           p.incorrect {
             padding-top: 0.5rem;
-            font-weight: 600;
+            font-weight: var(--site-fontWeight-bold);
             margin-bottom: 0.5rem;
 
             &::before {

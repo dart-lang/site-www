@@ -36,11 +36,14 @@ To debug in Chrome:
 
 To debug in Edge:
 
-1. Update to the latest version of Edge. 
-2. Load **Developer Tools** (**[F12](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/landing/)**).
+1. Update to the latest version of Edge.
+2. Load [**Developer Tools**][edge-devtools] (<kbd>F12</kbd>).
 3. Reload the app. The **debugger** tab shows source-mapped files.
-4. Exception behavior can be controlled through **Ctrl+Shift+E**;
+4. Exception behavior can be controlled through
+   <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>;
    the default is **Break on unhandled exceptions**.
+
+[edge-devtools]: https://learn.microsoft.com/en-us/microsoft-edge/devtools/landing/
 
 ### Firefox {:#dart2js-debugging-firefox}
 

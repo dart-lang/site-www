@@ -30,7 +30,7 @@
   font-variant-ligatures: none;
   font-size: 1.75rem;
   line-height: 1.25em;
-  font-family: 'Google Sans', sans-serif;
+  font-family: var(--site-ui-fontFamily);
   user-select: none;
 
   color: var(--site-wordmark-fgColor);

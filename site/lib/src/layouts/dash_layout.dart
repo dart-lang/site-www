@@ -128,37 +128,39 @@ abstract class DashLayout extends PageLayoutBase {
         },
       ),
 
+      // Preload font and other script sources.
       const link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),
       const link(
         rel: 'preconnect',
         href: 'https://fonts.gstatic.com',
         attributes: {'crossorigin': ''},
       ),
+
+      // Set up site fonts and icons.
       const link(
         rel: 'stylesheet',
         href:
-            'https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap',
+            'https://fonts.googleapis.com/css2?'
+            'family=Google+Sans+Flex:opsz,wght@6..72,400..700'
+            '&family=Google+Sans+Code:ital,wght@0,400..700;1,400..700'
+            '&display=swap',
       ),
       const link(
         rel: 'stylesheet',
         href:
-            'https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap',
+            'https://fonts.googleapis.com/css2?'
+            'family=Roboto+Serif:ital,opsz,wght@'
+            '0,8..72,400..700;1,8..72,400..700'
+            '&display=swap',
       ),
       const link(
         rel: 'stylesheet',
         href:
-            'https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&display=swap',
+            'https://fonts.googleapis.com/css2?'
+            'family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@'
+            '24,400,0..1,0',
       ),
-      const link(
-        rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
-      ),
-      const link(
-        rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap',
-      ),
+
       link(
         rel: 'stylesheet',
         href:

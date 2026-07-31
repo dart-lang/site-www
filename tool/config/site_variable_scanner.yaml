@@ -2,7 +2,7 @@ yaml_variable_scanner:
 
   # File path for YAML variables
   yamlFilePath:
-    - path: "src/_data/site.yml" # YAML path (Glob syntax)
+    - path: "src/data/site.yaml" # YAML path (Glob syntax)
       variablePrefix: "site." # Variable prefix. e.g. `a.` -> `a.x.xx`
 
   # Ignore YAML file path
@@ -23,6 +23,7 @@ yaml_variable_scanner:
     - ^site\.showBanner$
     - ^site\.sdkVersion$
     - ^site\.og_image_vers$
+    - ^site\.base$
 
   # File path for check file contents
   #
@@ -35,6 +36,7 @@ yaml_variable_scanner:
   #
   # (Glob Syntax)
   ignoreCheckFilePath:
+    - "src/content/blog/**"
     - "src/content/tools/diagnostics/**"
 
   # Ignore text that doesn't need to match

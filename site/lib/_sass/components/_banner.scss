@@ -24,7 +24,7 @@
   }
 
   a, button {
-    font-weight: 700;
+    font-weight: var(--site-fontWeight-bold);
     white-space: nowrap;
     color: var(--site-onPrimary-color);
     font-family: var(--site-ui-fontFamily);
