@@ -244,9 +244,9 @@ the new `CommandRunner` class.
     Highlights from the preceding code:
 
     - Declaring `main` as `async` lets it use `await`.
-     Because `runner.run()` returns a `Future`,
-     awaiting it makes `main` explicitly wait for the runner's completion,
-     ensuring clear logic order and improving error propagation.
+      Because `runner.run()` returns a `Future`,
+      awaiting it makes `main` explicitly wait for the runner's completion,
+      ensuring clear logic order and improving error propagation.
     - `var runner = CommandRunner();` creates an instance of the
       `CommandRunner` class from your new `command_runner` package.
     - `await runner.run(arguments);` calls the `run` method on the
