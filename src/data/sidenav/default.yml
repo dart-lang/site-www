@@ -360,7 +360,7 @@
   expanded: false
   children:
     - title: Dart Blog
-      permalink: https://blog.dart.dev
+      permalink: /blog
     - title: Changelog
       permalink: /changelog
     - title: What's new in the docs

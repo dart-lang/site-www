@@ -112,6 +112,6 @@ After you get used to working with asynchronous code, you’ll start recognizing
 
 We took a quick look at isolates, the event loop, and the foundation of asynchronous coding in Dart. If you’re looking for more details such as how the microtask queue works, see the out-of-date, archived-but-still-beloved article [The Event Loop and Dart](https://web.archive.org/web/20170704074724/https://webdev.dartlang.org/articles/performance/event-loop).
 
-To learn more about asynchrony in Dart, check out the next article in this series, [Dart asynchronous programming: Futures](https://medium.com/dartlang/dart-asynchronous-programming-futures-96937f831137).
+To learn more about asynchrony in Dart, check out the next article in this series, [Dart asynchronous programming: Futures](/blog/dart-asynchronous-programming-futures).
 
 *Big thanks to Andrew Brogdon, who created the video that this article is based on.*

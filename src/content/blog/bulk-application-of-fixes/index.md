@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-In [Quick fixes for analysis issues](https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a) we looked at support for automatically fixing individual diagnostics while editing. Sometimes even that’s too slow and you’d really like to fix multiple diagnostics all at once. Fortunately, there’s support for that too, which we cover in this article.
+In [Quick fixes for analysis issues](/blog/quick-fixes-for-analysis-issues) we looked at support for automatically fixing individual diagnostics while editing. Sometimes even that’s too slow and you’d really like to fix multiple diagnostics all at once. Fortunately, there’s support for that too, which we cover in this article.
 
 There are several ways to fix multiple diagnostics, depending on just how many diagnostics you want to fix, and we’ll look at each one separately.
 

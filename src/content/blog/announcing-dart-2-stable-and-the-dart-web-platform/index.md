@@ -38,7 +38,7 @@ Dart 2 is focused on three areas: strengthening and tightening the language, dev
 
 ## Dart 2: A Client-Optimized Language
 
-As we [highlighted in February](https://medium.com/dartlang/announcing-dart-2-80ba01f43b6), the [Dart type system](https://www.dartlang.org/guides/language/sound-dart) is *sound*. This means that a large class of issues is found before your users run your application — during analysis and compilation. As we scaled Dart to extremely large apps within Google, the type system caught more errors early in the development cycle, leading to higher quality production code.
+As we [highlighted in February](/blog/announcing-dart-2-optimized-for-client-side-development), the [Dart type system](https://www.dartlang.org/guides/language/sound-dart) is *sound*. This means that a large class of issues is found before your users run your application — during analysis and compilation. As we scaled Dart to extremely large apps within Google, the type system caught more errors early in the development cycle, leading to higher quality production code.
 
 With Dart 2, you can’t get into a state where an expression evaluates to a value that doesn’t match the expression’s static type. This means that you can scale your codebase to millions of lines, tackle large refactoring projects, and deploy your code with confidence.
 

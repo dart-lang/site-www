@@ -33,7 +33,7 @@ Sound null safety makes the type system even more robust, and enables better per
 
 ## Sound null safety
 
-Sound null safety is the largest addition to the Dart language since the introduction of the sound type system in [Dart 2.0](https://medium.com/dartlang/announcing-dart-2-80ba01f43b6). Null safety further strengthens the type system, enabling you to catch null errors, which are a common cause of app crashes. By opting into null safety, you can catch null errors during development, preventing crashes in production.
+Sound null safety is the largest addition to the Dart language since the introduction of the sound type system in [Dart 2.0](/blog/announcing-dart-2-optimized-for-client-side-development). Null safety further strengthens the type system, enabling you to catch null errors, which are a common cause of app crashes. By opting into null safety, you can catch null errors during development, preventing crashes in production.
 
 Sound null safety was designed around [a few core principles](https://dart.dev/null-safety#null-safety-principles). Let’s revisit how these principles impact you as a developer.
 
@@ -123,7 +123,7 @@ We’ve published null-safe versions of hundreds of packages offered by the [Dar
 
 Once you’ve fully migrated, Dart’s null safety is sound. This means that Dart is 100% sure that expressions that have a non-nullable type cannot be null. When Dart analyzes your code and determines that a variable is non-nullable, that variable is *always* non-nullable. Dart shares sound null safety with Swift, but not very many other programming languages.
 
-The soundness of Dart’s null safety has another welcome implication: it means your programs can be smaller and faster. Because Dart is sure that non-nullable variables are never null, [Dart can optimize](https://medium.com/dartlang/dart-and-the-performance-benefits-of-sound-types-6ceedd5b6cdc). For example, the Dart ahead-of-time (AOT) compiler can produce smaller and faster native code, because it doesn’t need to add checks for nulls when it knows that a variable isn’t null.
+The soundness of Dart’s null safety has another welcome implication: it means your programs can be smaller and faster. Because Dart is sure that non-nullable variables are never null, [Dart can optimize](/blog/dart-and-the-performance-benefits-of-sound-types). For example, the Dart ahead-of-time (AOT) compiler can produce smaller and faster native code, because it doesn’t need to add checks for nulls when it knows that a variable isn’t null.
 
 ## Dart FFI for integrating Dart with C libraries
 

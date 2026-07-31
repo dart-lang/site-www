@@ -21,7 +21,7 @@ Thankfully my manager, being the mind reader that he was, understood how I felt 
 
 It was scary going head-first into a new project where I had little-to-no background knowledge of the work, but I knew I had support from my manager. He gave me the freedom to *try*, the freedom to *make mistakes*. It meant a lot to me.
 
-That quick chat with my manager jump-started the first month of my time here: I met my team in Fremont Seattle and was ready to throw myself into this deep unknown called *variance,* which you can read about in the article [Dart declaration-site variance](https://medium.com/dartlang/dart-declaration-site-variance-5c0e9c5f18a5).
+That quick chat with my manager jump-started the first month of my time here: I met my team in Fremont Seattle and was ready to throw myself into this deep unknown called *variance,* which you can read about in the article [Dart declaration-site variance](/blog/dart-declaration-site-variance).
 
 I had weekly variance boot camps with my manager, providing me with the theory that I had to translate into code. I remember reading the proposal of the [variance feature](https://github.com/dart-lang/language/issues/524) that I would be implementing and feeling overwhelmed at the seven milestones required to complete the project: (1) scan then parse the new keywords, (2) modify the kernel AST, (3) support variance in the subtyping algorithm, (4) add errors and warnings, (5) change the upper and lower bound calculation, (6) alter the type inference rules, and (7) work on the runtime behaviour changes.
 

@@ -16,6 +16,7 @@ repo:
     samples: https://github.com/dart-lang/samples
 branch: main
 
+flutter-blog: https://flutter.dev/blog
 flutter: https://flutter.dev
 flutter-docs: https://docs.flutter.dev
 dart-api: https://api.dart.dev

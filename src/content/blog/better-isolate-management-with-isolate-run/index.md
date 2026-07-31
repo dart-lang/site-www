@@ -14,13 +14,13 @@ layout: blog
 
 All Dart code runs in isolates. Whether you implement multiple isolates to enable [concurrency](https://dart.dev/guides/language/concurrency) in your Dart programs is up to you. *How* you can implement multiple isolates is up to us on the Dart team, and in Dart 2.19, we’ve made a huge upgrade to the process that we’re excited to share. Meet `Isolate.run()`!
 
-`run()` takes all of the complexity of setting up and managing isolates and completely abstracts it into a single function call. It’s been possible to use isolates with a handful of primitives for a while now. But, even with all [the recent performance improvements](https://medium.com/dartlang/dart-2-15-7e7a598e508a#:~:text=publishers%2C%20and%20more.-,Fast%20concurrency%20with%20worker%20isolates,-Just%20about%20all) for isolates, the process was at best, tedious, and at worst, error-prone.
+`run()` takes all of the complexity of setting up and managing isolates and completely abstracts it into a single function call. It’s been possible to use isolates with a handful of primitives for a while now. But, even with all [the recent performance improvements](/blog/announcing-dart-2-15#fast-concurrency-with-worker-isolates) for isolates, the process was at best, tedious, and at worst, error-prone.
 
 To appreciate how much of an improvement `run()` is, this article breaks down the previous method of building out the functionality piece-by-piece from low-level primitives. Then, we’ll contrast that to using `Isolate.run()`, and show you how it works on the inside. Even if you’ve never used isolates before, we’re sure that `run()` will get you excited to try them out!
 
 ### Isolates
 
-Isolates are a fairly straightforward concept. An [isolate](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a) is essentially a single thread of execution in Dart. They let you execute parts of your code in parallel. You can start new parallel executions (as many as you want) and tell them what to do, right from `main` (the main thread, or [main isolate](https://dart.dev/guides/language/concurrency#the-main-isolate)). Isolates don’t share memory; instead, they pass messages back and forth to communicate. So, you don’t have to worry about typical multithreading problems, like race conditions, or mutexes and locks.
+Isolates are a fairly straightforward concept. An [isolate](/blog/dart-asynchronous-programming-isolates-and-event-loops) is essentially a single thread of execution in Dart. They let you execute parts of your code in parallel. You can start new parallel executions (as many as you want) and tell them what to do, right from `main` (the main thread, or [main isolate](https://dart.dev/guides/language/concurrency#the-main-isolate)). Isolates don’t share memory; instead, they pass messages back and forth to communicate. So, you don’t have to worry about typical multithreading problems, like race conditions, or mutexes and locks.
 
 <DashImage src="images/0eCogwJXZtpbg5Hbq.webp" alt="A diagram illustrating how isolates communicate through message passing without sharing memory." />
 

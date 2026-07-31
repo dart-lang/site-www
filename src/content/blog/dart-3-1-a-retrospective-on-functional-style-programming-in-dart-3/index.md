@@ -14,7 +14,7 @@ layout: blog
 <DashImage src="images/1IWd8aRO__OzDkJVsjfoe2A.webp" alt="A diff of a Dart 3 refactor using functional style features within Dart's internal code base." caption="Diff of a Dart 3 refactor using functional style features within Dart’s internal code base" />
 
 
-*Today we’re releasing Dart 3.1, our first stable release since the major [Dart 3.0](https://medium.com/dartlang/announcing-dart-3-53f065a10635) release in May. Dart 3.1 contains a handful of minor updates and a few API adjustments to further use class modifiers introduced in 3.0 (which you can read more about in the [changelog](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#310)). Mostly, though, we’ve been spending our time on new roadmap items that we hope to see reach beta and stable over the coming releases. Stay tuned for more about that in the future!*
+*Today we’re releasing Dart 3.1, our first stable release since the major [Dart 3.0](/blog/announcing-dart-3) release in May. Dart 3.1 contains a handful of minor updates and a few API adjustments to further use class modifiers introduced in 3.0 (which you can read more about in the [changelog](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#310)). Mostly, though, we’ve been spending our time on new roadmap items that we hope to see reach beta and stable over the coming releases. Stay tuned for more about that in the future!*
 
 *So, in place of a traditional release post, we’re revisiting a subset of Dart 3’s major features to talk about how they can completely change, and in some cases, greatly improve the way you write and structure your Dart code.*
 

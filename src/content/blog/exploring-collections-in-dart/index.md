@@ -12,7 +12,7 @@ layout: blog
 <DashImage src="images/1NLasdGsxG6bBzWYfe_9UJA.webp" alt="Person pointing at a pineapple on a produce stand." />
 
 
-If you have ever called `add()`, `addAll()`, `map()`, or `toList()` to build a list or map, you might want to check out *collection if*, *collection for*, and *spreads*. Last year, Dart [added these features in version 2.3](https://medium.com/dartlang/announcing-dart-2-3-optimized-for-building-user-interfaces-e84919ca1dff).
+If you have ever called `add()`, `addAll()`, `map()`, or `toList()` to build a list or map, you might want to check out *collection if*, *collection for*, and *spreads*. Last year, Dart [added these features in version 2.3](/blog/announcing-dart-2-3-optimized-for-building-user-interfaces).
 
 In this article, we’ll look at collections, explore these new features, and see some interesting examples. By mastering these features, you can make your code more succinct and easier to read.
 
@@ -428,4 +428,4 @@ This is another example of how *collection if*, *collection for*, and spreads wo
 
 ## Exploring further
 
-Hopefully these tips help you write cleaner Dart code. There are even more ways to use these features than are mentioned here. If you find a nice technique, [share it with the community](https://dart.dev/community) or [mention *@dart_lang* on Twitter](https://twitter.com/dart_lang). For more details, check out [Making Dart a Better Language for UI](https://medium.com/dartlang/making-dart-a-better-language-for-ui-f1ccaf9f546c) or the initial [language proposal on GitHub](https://github.com/dart-lang/language/blob/master/accepted/2.3/unified-collections/feature-specification.md).
+Hopefully these tips help you write cleaner Dart code. There are even more ways to use these features than are mentioned here. If you find a nice technique, [share it with the community](https://dart.dev/community) or [mention *@dart_lang* on Twitter](https://twitter.com/dart_lang). For more details, check out [Making Dart a Better Language for UI](/blog/making-dart-a-better-language-for-ui) or the initial [language proposal on GitHub](https://github.com/dart-lang/language/blob/master/accepted/2.3/unified-collections/feature-specification.md).

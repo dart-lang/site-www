@@ -14,7 +14,7 @@ layout: blog
 
 [Google Summer of Code (GSoC)](https://summerofcode.withgoogle.com/) is a global program focused on bringing student developers into open source software development. Students are sponsored by Google to work with a mentoring open source organization on a 3-month programming project during the summer.
 
-In [February we were thrilled to announce](https://medium.com/dartlang/students-join-a-dart-project-for-google-summer-of-code-2020-655d39b557c2) that the Dart team would be a mentoring organization in GSoC 2020. We ended up [mentoring 5 projects](https://summerofcode.withgoogle.com/organizations/6544944065413120/), picked from more than 170 applications from students around the world. Today we’re excited to share our results, as described by the students who worked on the projects.
+In [February we were thrilled to announce](/blog/students-join-a-dart-project-for-google-summer-of-code-2020) that the Dart team would be a mentoring organization in GSoC 2020. We ended up [mentoring 5 projects](https://summerofcode.withgoogle.com/organizations/6544944065413120/), picked from more than 170 applications from students around the world. Today we’re excited to share our results, as described by the students who worked on the projects.
 
 ### Generating dart:ffi bindings for Dart-C interop with package:ffigen
 
@@ -46,7 +46,7 @@ The [sample](https://github.com/flutter/samples/tree/master/testing_app) shows d
 
 * State management testing
 
-As a bonus, we also built a codelab on how to test Flutter apps. You can see a detailed report of the work done under the project in the article [Learn testing with the new Flutter sample](https://medium.com/flutter/learn-testing-with-the-new-flutter-sample-gsoc20-work-product-e872c7f6492a).
+As a bonus, we also built a codelab on how to test Flutter apps. You can see a detailed report of the work done under the project in the article [Learn testing with the new Flutter sample]({{site.flutter-blog}}/learn-testing-with-the-new-flutter-sample-gsoc20-work-product).
 
 ### User-extensible translation file formats
 
@@ -62,7 +62,7 @@ As a demonstration of these capabilities, the new packages include support for s
 
 After researching platform channels (the Flutter API for sending messages back and forth from Dart to native code like Swift or Kotlin), we decided to cover the topic with two different samples. One is a [straightforward Android and iOS demo](https://github.com/flutter/samples/tree/master/platform_channels), while the other is a [federated plugin](https://github.com/flutter/samples/tree/master/experimental/federated_plugin) capable of building with the master channel for web and desktop as well. Between the two samples, the codebase shows off not only the details of platform channels and the codecs that can be used to move data, but also the APIs for federated plugins and techniques for calling native code on web and desktop (Windows and Linux) APIs.
 
-If you’re a developer looking to build a plugin or just access a platform API, these samples are a great place to get started learning. For more information about this project, see the article [Platform channel examples](https://medium.com/flutter/platform-channel-examples-7edeaeba4a66).
+If you’re a developer looking to build a plugin or just access a platform API, these samples are a great place to get started learning. For more information about this project, see the article [Platform channel examples]({{site.flutter-blog}}/platform-channel-examples).
 
 ### Writing package:yaml_edit to enable `pub add &lt;package&gt;`
 

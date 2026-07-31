@@ -11,7 +11,7 @@ layout: blog
 
 If you’re like me, too much of your development time is spent fixing problems (diagnostics) the analyzer finds. If you’ve ever wished it could be easier, then I have some good news for you. Many of the diagnostics the analyzer produces can be fixed automatically using quick fixes.
 
-A *quick fix* is an automated edit targeted at fixing the issue reported by a specific diagnostic. In the [Dart diagnostic messages](https://medium.com/dartlang/dart-diagnostic-messages-ae302aa398e8) article, we looked at the following code:
+A *quick fix* is an automated edit targeted at fixing the issue reported by a specific diagnostic. In the [Dart diagnostic messages](/blog/dart-diagnostic-messages) article, we looked at the following code:
 
 <DashImage src="images/0PHnbrlzf5BzJAyp8.webp" alt="Code snippet showing an error with quick fix suggestions." />
 

@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-Back in July we talked about [our changes](https://medium.com/dartlang/getting-ready-for-dart-2-and-making-your-packages-look-great-on-the-pub-site-118464d7f59d) to the Dart package site ([http://pub.dartlang.org](http://pub.dartlang.org)), which included better support for analyzing packages for potential issues. Since then we’ve focused on further improvements to discovering content on the package site.
+Back in July we talked about [our changes](/blog/getting-ready-for-dart-2-and-making-your-packages-look-great-on-the-pub-site) to the Dart package site ([http://pub.dartlang.org](http://pub.dartlang.org)), which included better support for analyzing packages for potential issues. Since then we’ve focused on further improvements to discovering content on the package site.
 
 ## Dart 2 incompatibility
 

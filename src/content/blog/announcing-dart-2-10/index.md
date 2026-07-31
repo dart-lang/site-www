@@ -23,14 +23,14 @@ Dart forms the foundation of the Flutter SDK: it not only provides the language 
 <DashImage src="images/1y-udLgjneGgP-y8UATZrlw.webp" alt="Terminal help output for the Dart 2.10 dart tool." caption="Learn about the 2.10 dart tool by running dart help." />
 
 
-Flutter includes this new Dart tool in the Flutter SDK. Starting with today’s [Flutter 1.22 SDK](https://medium.com/flutter/announcing-flutter-1-22-stable-44f146009e5f), the `&lt;flutter-sdk&gt;/bin` directory (which you likely have in `PATH`) contains both `flutter` and `dart` commands. If you do both Flutter and general-purpose Dart development, you get both developer experiences from a single Flutter SDK, without needing to install anything else.
+Flutter includes this new Dart tool in the Flutter SDK. Starting with today’s [Flutter 1.22 SDK]({{site.flutter-blog}}/announcing-flutter-1-22), the `&lt;flutter-sdk&gt;/bin` directory (which you likely have in `PATH`) contains both `flutter` and `dart` commands. If you do both Flutter and general-purpose Dart development, you get both developer experiences from a single Flutter SDK, without needing to install anything else.
 > **Note:** If you want to download and install a second Dart SDK (perhaps because you require a different version), make sure the SDK of the `dart` tool you wish to default to is at the beginning of your `PATH` environment variable.
 
 Over the coming stable releases, we plan to add more to this `dart` tool and gradually deprecate the smaller tools (`dartdoc`, `dartfmt`, `dartanalyzer`, etc.). Next year we expect to ship Dart SDKs that contain only the single `dart` tool. We recommend that you switch over to the new tool when running Dart commands now, whether manually in the terminal or in continuous integration (*CI*) scripts, and [give us feedback](https://github.com/dart-lang/sdk/issues/new?labels=area-dart-cli) if anything is missing or not working as intended.
 
 ## Looking forward to null safety
 
-We’ve experienced a strong interest in null safety since we launched our [first technical preview](https://medium.com/dartlang/announcing-sound-null-safety-defd2216a6f3) a few months back. We’re all looking forward to null safety as a tool for avoiding hard-to-spot null errors, and as an added bonus the performance improvements that we expect to see with sound null safety. If you’re keen to learn more, we recommend our new [Understanding null safety](https://dart.dev/null-safety/understanding-null-safety) page. If you prefer a short video, check out [the null safety video](https://www.youtube.com/watch?v=ZxSyZHq8gUg&feature=youtu.be&list=PLjxrf2q8roU1rBlI9vz01K2324nzIhYgp&t=322) from the [Flutter Day event](https://events.withgoogle.com/flutter-day/#content) a few months ago.
+We’ve experienced a strong interest in null safety since we launched our [first technical preview](/blog/announcing-sound-null-safety) a few months back. We’re all looking forward to null safety as a tool for avoiding hard-to-spot null errors, and as an added bonus the performance improvements that we expect to see with sound null safety. If you’re keen to learn more, we recommend our new [Understanding null safety](https://dart.dev/null-safety/understanding-null-safety) page. If you prefer a short video, check out [the null safety video](https://www.youtube.com/watch?v=ZxSyZHq8gUg&feature=youtu.be&list=PLjxrf2q8roU1rBlI9vz01K2324nzIhYgp&t=322) from the [Flutter Day event](https://events.withgoogle.com/flutter-day/#content) a few months ago.
 
 When might null safety be ready to use? Here is the current timeline:
 
@@ -46,7 +46,7 @@ We’d like to share our guiding principles for null safety migration.
 
 ### Adopt when you’re ready
 
-Null safety is a fundamental change to the Dart typing system. It changes the basics of variable declarations because [we decided](https://medium.com/dartlang/announcing-sound-null-safety-defd2216a6f3) to make variables non-nullable by default:
+Null safety is a fundamental change to the Dart typing system. It changes the basics of variable declarations because [we decided](/blog/announcing-sound-null-safety) to make variables non-nullable by default:
 
 ```
 **Without null safety**                 W**ith null safety**
@@ -80,4 +80,4 @@ Once *all* of your code — and the packages it depends on — is migrated, your
 
 The new `dart` developer tool is available today in the Dart 2.10 SDK and in the Flutter 1.22 SDK. If you already have a Flutter SDK, you can get a Dart SDK with a `dart` command simply by running `flutter upgrade`; this will give you the Flutter 1.22 SDK, which has Dart 2.10 embedded. We recommend that you switch over to the new `dart` tool immediately, and that you [give us feedback](https://github.com/dart-lang/sdk/issues/new?labels=area-dart-cli) if anything is missing or not working as intended.
 
-We’ll have more news about null safety soon — very likely within the next month, when we expect our friends in the Flutter team to have a null-safety-enabled Flutter framework ready for experimentation. Keep an eye on the [Flutter blog](https://medium.com/flutter) for an update. In the meantime you can experiment with null-safe Dart code using [DartPad with Null Safety](https://nullsafety.dartpad.dev/3d9c1769de7912c654bc5d132aff60ac), and learn more about the feature design by reading our [null safety documentation](https://dart.dev/null-safety).
+We’ll have more news about null safety soon — very likely within the next month, when we expect our friends in the Flutter team to have a null-safety-enabled Flutter framework ready for experimentation. Keep an eye on the [Flutter blog]({{site.flutter-blog}}) for an update. In the meantime you can experiment with null-safe Dart code using [DartPad with Null Safety](https://nullsafety.dartpad.dev/3d9c1769de7912c654bc5d132aff60ac), and learn more about the feature design by reading our [null safety documentation](https://dart.dev/null-safety).

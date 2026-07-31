@@ -14,7 +14,7 @@ layout: blog
 
 
 With the launch of Flutter 2, null safety was made available to Flutter’s stable channel. This post talks about my personal experiences with migrating my apps and packages to null safety, along with creating null-safe apps from scratch. In short, the results were amazing!
-> If you aren’t aware of Flutter’s null safety feature, check out the [announcement of null safety](https://medium.com/dartlang/announcing-dart-null-safety-beta-87610fee6730). If you want to fully understand null safety, check out [the Dart documentation for null safety](https://dart.dev/null-safety/understanding-null-safety).
+> If you aren’t aware of Flutter’s null safety feature, check out the [announcement of null safety](/blog/announcing-dart-null-safety-beta). If you want to fully understand null safety, check out [the Dart documentation for null safety](https://dart.dev/null-safety/understanding-null-safety).
 
 This article describes two of my experiences with null safety:
 

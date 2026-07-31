@@ -11,7 +11,7 @@ layout: blog
 
 [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) is a global program focused on bringing student developers into open source software development. Students are sponsored by Google to work with a mentoring open source organization on a 10-week programming project during the summer. Over the past 16 years more than 16,000 students have participated in Google Summer of Code.
 
-2021 is the second time that the Dart organization participated in Google Summer of Code as a mentoring organization. Following our [call for student proposals in March](https://medium.com/dartlang/dart-in-google-summer-of-code-2021-e89eaf1d177a) we received 92 project proposals from students around the world, out of which we were thrilled to accept 3 projects. Today, we are excited to share our results, as described by the students who worked on these projects.
+2021 is the second time that the Dart organization participated in Google Summer of Code as a mentoring organization. Following our [call for student proposals in March](/blog/dart-in-google-summer-of-code-2021) we received 92 project proposals from students around the world, out of which we were thrilled to accept 3 projects. Today, we are excited to share our results, as described by the students who worked on these projects.
 
 ## Cronet-based HTTP client for Dart
 
@@ -31,7 +31,7 @@ Check out [github.com/google/cronet.dart](https://github.com/google/cronet.dart)
 
 After the beta release of desktop support in Flutter 2, we needed a sample app to demonstrate how to write a Flutter app that can run on Windows, macOS, and Linux. I worked on that sample, in the form of a [Flutter linting tool that ](https://github.com/flutter/samples/tree/master/experimental/linting_tool)helps you manage lint rules for your Flutter projects. The app’s source code shows how you might implement basic desktop app techniques like reading and writing files, implementing a responsive layout, using persistent storage, and even how to work with YAML files. Also the sample might be used to test the distribution of Flutter apps to the various desktop app stores.
 
-For more details, visit [GSoC ’21: Creating a desktop sample for Flutter](https://medium.com/flutter/gsoc-21-creating-a-desktop-sample-for-flutter-7d77e74812d6).
+For more details, visit [GSoC ’21: Creating a desktop sample for Flutter]({{site.flutter-blog}}/gsoc-21-creating-a-desktop-sample-for-flutter).
 
 <DashImage src="images/1QswESHAF6CO9UNYCcRVKXA.webp" alt="The Flutter linting tool shows various lint rules and their descriptions." caption="Flutter linting tool" />
 
@@ -59,4 +59,4 @@ Given the LICENSE file from a package, pana uses three steps to detect the SPDX 
 
 We hope this gives you some idea of the license detection process. If you want to play with the license detector, you can find it in the [pana repository](https://github.com/dart-lang/pana/tree/master/bin).
 
-*Huge thanks to everyone who applied for Google Summer of Code 2021 with Dart, to the students who completed projects this year, and to the mentors who helped make this an awesome summer of code. If you’re interested in hearing more about Dart in Google Summer of Code, check out [our 2020 post](https://medium.com/dartlang/google-summer-of-code-2020-results-a38cd072c9fe).*
+*Huge thanks to everyone who applied for Google Summer of Code 2021 with Dart, to the students who completed projects this year, and to the mentors who helped make this an awesome summer of code. If you’re interested in hearing more about Dart in Google Summer of Code, check out [our 2020 post](/blog/google-summer-of-code-2020-results).*
