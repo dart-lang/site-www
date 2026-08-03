@@ -14,8 +14,7 @@ JSON is a common format for data exchange on the web, and
 you'll often encounter it when working with APIs.
 You'll learn how to convert JSON data into Dart objects,
 making it easier to work with in your application.
-You'll use the [`dart:convert` library][],
-the `jsonDecode` function, and pattern matching.
+You'll use pattern matching to destructure and validate JSON data.
 
 <SummaryCard>
 title: What you'll accomplish
