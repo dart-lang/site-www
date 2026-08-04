@@ -347,9 +347,7 @@ var uppercaseList = list.map((item) {
 }).toList();
 // Convert to list after mapping
 
-for (var item in uppercaseList) {
-  print('$item: ${item.length}');
-}
+uppercaseList.forEach((item) => print('$item: ${item.length}'));
 ```
 
 Click **Run** to execute the code.
@@ -364,9 +362,7 @@ void main() {
   }).toList();
   // Convert to list after mapping
 
-  for (var item in uppercaseList) {
-    print('$item: ${item.length}');
-  }
+  uppercaseList.forEach((item) => print('$item: ${item.length}'));
 }
 ```
 
