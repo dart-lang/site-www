@@ -43,8 +43,8 @@ restrictions:
 
 :::note
 By default, compiled applications do not use [deferred loading][].
-Deferred loading in Wasm is experimental and can be enabled using
-the hidden `--enable-deferred-loading` flag:
+Deferred loading in Wasm is experimental. To enable it, use the
+`--enable-deferred-loading` flag:
 
 ```console
 $ dart compile wasm --enable-deferred-loading ...
@@ -64,6 +64,8 @@ const instantiatedApp = await app.instantiate({}, {
 });
 instantiatedApp.invokeMain();
 ```
+
+This is available from the 3.13 Dart stable release.
 :::
 
 ### Supported packages
