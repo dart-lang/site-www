@@ -259,6 +259,10 @@ Call sites passing the removed argument will fail to compile.
 
 Call sites passing `func(paramName: value)` will fail to compile when `paramName` is changed.
 
+#### MAJOR: Reorder positional parameters
+
+Reordering positional parameters changes the expected argument positions at call sites. Even if the parameter types are identical, it causes callers to pass arguments to the wrong parameters, altering behavior or causing compile-time type errors.
+
 #### MAJOR: Narrow a parameter type (more specific / subtype)
 
 Changing a parameter from `num` to `int` breaks callers that passed `double`.
