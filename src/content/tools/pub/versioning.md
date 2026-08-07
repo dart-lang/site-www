@@ -190,6 +190,12 @@ slot: going from `0.1.2` to `0.2.0` indicates a breaking change, going to
 doesn't affect the public API.
 For simplicity's sake, avoid using `+` after the version reaches `1.0.0`.
 
+:::tip
+For a detailed guide on what constitutes a breaking change versus a minor
+or patch update across Dart language features, see
+[SemVer compatibility and breaking changes][semver-rules].
+:::
+
 We've got almost all of the pieces we need to deal with versioning and API
 evolution now. Let's see how they play together and what pub does.
 
@@ -470,6 +476,7 @@ consult the [PubGrub][pubgrub] article on Medium.
 [bundler]: https://bundler.io
 [caret-syntax]: /tools/pub/dependencies#caret-syntax
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
+[semver-rules]: /tools/pub/semver-rules
 [lockfile]: /resources/glossary#lockfile
 [content hash]: /resources/glossary#pub-content-hash
 [pubgrub]: https://medium.com/@nex3/pubgrub-2fb6470504f
