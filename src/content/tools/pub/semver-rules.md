@@ -34,100 +34,244 @@ consumers of your package:
 
 ## Top-level declarations
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add a new top-level declaration** (function, class, typedef, enum, extension, constant) | `Minor` | Adding new public symbols is backward-compatible. (While potential name conflicts with wildcard imports exist, SemVer treats this as non-breaking). |
-| **Remove a public top-level declaration** | `Major` | Any code referencing the removed symbol will fail to compile. |
-| **Rename a public top-level declaration** | `Major` | Equivalent to removing the old name and adding a new one. |
-| **Move a declaration to `lib/src/` without re-exporting** | `Major` | Makes a previously public symbol private/inaccessible. |
-| **Change the type of a top-level variable or constant** | `Major` | Callers expecting the old type will encounter type errors. |
-| **Change a top-level variable from `final` to `var`** | `Minor` | Making a read-only variable mutable is backward-compatible for existing readers. |
-| **Change a top-level variable from `var` to `final`** | `Major` | Code assigning to the variable will fail to compile. |
+### Add a new top-level declaration
+**Minor: Non-breaking**
+
+Adding a new public top-level function, class, typedef, enum, extension, or constant is backward-compatible. Existing consumer code will continue to compile and function as before.
+
+```dart
+// Added to lib/my_package.dart in a minor release:
+void newHelperFunction() {}
+```
+
+*Note:* While introducing a new top-level name can theoretically create a naming conflict with a wildcard import (`import 'package:foo/foo.dart';`) in downstream code, SemVer treats top-level additions as non-breaking.
+
+### Remove a public top-level declaration
+**Major: Breaking**
+
+Removing any public top-level declaration is a breaking change. Any downstream code referencing the removed symbol will fail to compile.
+
+### Rename a public top-level declaration
+**Major: Breaking**
+
+Renaming a public symbol is functionally equivalent to removing the original name and introducing a new one. Downstream code referencing the original name will break.
+
+### Move a declaration to `lib/src/` without re-exporting
+**Major: Breaking**
+
+Moving a declaration from the public `lib/` root to `lib/src/` (without an `export` in a public library file) makes it inaccessible to external packages, breaking all existing consumers.
+
+### Change the type of a top-level variable or constant
+**Major: Breaking**
+
+Changing the static type of a top-level variable or constant causes type errors for any callers expecting the previous type.
+
+### Change a top-level variable from `final` to `var`
+**Minor: Non-breaking**
+
+Allowing reassignment of a previously read-only top-level variable is backward-compatible for existing readers.
+
+### Change a top-level variable from `var` to `final`
+**Major: Breaking**
+
+Making a mutable variable `final` breaks any consumer assigning values to that variable.
 
 ---
 
 ## Classes, mixins, and class modifiers
 
-Dart 3 introduced **class modifiers** (`final`, `base`, `interface`, `sealed`,
-and `mixin`), allowing package authors to explicitly define how classes can be
-used by external consumers. The SemVer impact of adding or modifying members
-depends heavily on these modifiers.
+Dart 3 introduced **class modifiers** (`final`, `base`, `interface`, `sealed`, and `mixin`), allowing package authors to explicitly define how classes can be used by external consumers. The SemVer impact of adding or modifying members depends heavily on these modifiers.
 
 ### Unmodified classes (`class` and `abstract class`)
 
-By default, an unmodified class in Dart allows external packages to construct,
-extend (`extends`), and implement (`implements`) it.
+By default, an unmodified class in Dart allows external packages to construct, extend (`extends`), and implement (`implements`) it.
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add any instance method, getter, setter, or field** | `Major` | **Breaking!** Because external code could have written `class MyImpl implements Foo`, any new member in `Foo` causes existing implementations to fail compilation due to missing overrides. |
-| **Remove or rename an instance member** | `Major` | Existing callers and subclasses will fail. |
-| **Add a static member** | `Minor` | Static members are namespaced to the class and do not affect implementations or subclasses. |
-| **Remove a static member** | `Major` | Breaks call sites referencing `Class.member`. |
+#### Add an instance member to an unmodified class
+**Major: Breaking**
+
+Adding any instance method, getter, setter, or field to an unmodified `class` or `abstract class` is a breaking change. Because external libraries are permitted to write `class MyImpl implements Foo`, any new member in `Foo` breaks existing implementers due to missing overrides.
+
+```dart
+// In package:foo (v1.0.0)
+class HttpClient {
+  void get(String url) {}
+}
+
+// In package:foo (v1.1.0) - BREAKING for implementers!
+class HttpClient {
+  void get(String url) {}
+  void post(String url, Object body) {} // External `implements HttpClient` fails!
+}
+```
+
+#### Remove or rename an instance member
+**Major: Breaking**
+
+Removing or renaming an instance method, getter, setter, or field breaks all callers, extenders, and implementers.
+
+#### Add a static member to a class
+**Minor: Non-breaking**
+
+Static members are namespaced to the class (`Class.member`) and do not affect subclasses or external implementations.
+
+#### Remove or rename a static member
+**Major: Breaking**
+
+Breaks call sites referencing `Class.staticMember`.
+
+---
 
 ### `final class` and `abstract final class`
 
-A `final` class cannot be extended, implemented, or mixed in outside of the
-defining library. Consumers can only construct it (if not abstract) and call its
-members.
+A `final` class cannot be extended, implemented, or mixed in outside of the defining library. Consumers can only construct it (if not abstract) and call its members.
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add an instance method, getter, setter, or field** | `Minor` | **Non-breaking!** Since no external code can `implement` or `extend` a `final` class, adding new members is safe for consumers. |
-| **Remove or rename an instance member** | `Major` | Existing callers will break. |
+#### Add an instance member to a final class
+**Minor: Non-breaking**
+
+Since external code cannot `extend` or `implement` a `final class`, adding new instance methods, getters, setters, or fields is completely backward-compatible. Consumers only call existing members and cannot be broken by added members.
+
+```dart
+// Non-breaking in a final class:
+final class Config {
+  final String host;
+  final int port;
+  Config(this.host, this.port);
+
+  // Safe to add in a minor release:
+  bool get isSecure => port == 443;
+}
+```
+
+#### Remove or rename an instance member of a final class
+**Major: Breaking**
+
+Existing callers referencing the removed member will fail to compile.
+
+---
 
 ### `base class`
 
-A `base` class can be extended (`extends`) outside the library, but cannot be
-implemented (`implements`).
+A `base` class can be extended (`extends`) outside the library, but cannot be implemented (`implements`).
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add a concrete instance method, getter, or field** | `Minor` | **Non-breaking!** External subclasses inherit the new default implementation automatically without needing to override it. |
-| **Add an abstract method or getter** | `Major` | Existing subclasses will fail to compile because they do not implement the new abstract member. |
-| **Remove or rename an instance member** | `Major` | Breaks callers and subclasses. |
+#### Add a concrete instance member to a base class
+**Minor: Non-breaking**
+
+Because external libraries can only `extend` (not `implement`) a `base class`, subclasses automatically inherit the new default implementation without needing to override it.
+
+#### Add an abstract member to a base class
+**Major: Breaking**
+
+Subclasses in external libraries will fail to compile because they do not provide an implementation for the new abstract member.
+
+#### Remove or rename an instance member of a base class
+**Major: Breaking**
+
+Breaks both callers and extending subclasses.
+
+---
 
 ### `interface class` and `abstract interface class`
 
-An `interface` class can be implemented (`implements`) outside the library, but
-cannot be extended (`extends`).
+An `interface` class can be implemented (`implements`) outside the library, but cannot be extended (`extends`).
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add any method, getter, setter, or field** | `Major` | **Breaking!** External implementers will be missing the required implementation. |
-| **Remove or rename an instance member** | `Major` | Breaks callers and implementers. |
+#### Add any member to an interface class
+**Major: Breaking**
+
+External classes can `implement` an `interface class`. Adding any new method, getter, setter, or field requires implementers to provide the new member, breaking compilation.
+
+#### Remove or rename an instance member of an interface class
+**Major: Breaking**
+
+Breaks callers and implementers.
+
+---
 
 ### `sealed class`
 
-A `sealed` class is implicitly abstract and cannot be extended, implemented, or
-mixed in outside the library. It is designed for exhaustive pattern matching.
+A `sealed` class is implicitly abstract and cannot be extended, implemented, or mixed in outside the library. It is designed for exhaustive pattern matching.
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add a new direct subtype to a sealed family** | `Major` | **Breaking!** Any external exhaustive `switch` expression or statement on the sealed class will fail to compile due to missing cases. |
-| **Add a member to the sealed class** | `Minor` | Non-breaking because external code cannot implement or extend it. |
+#### Add a direct subtype to a sealed class family
+**Major: Breaking**
+
+Adding a new subclass to a `sealed` class is a breaking change because exhaustive `switch` statements or pattern matches in consumer code that do not have a wildcard (`_`) or `default` case will fail to compile.
+
+```dart
+sealed class Result {}
+class Success extends Result {}
+class Failure extends Result {}
+
+// Adding `class Pending extends Result {}` breaks exhaustive switches:
+// switch (result) {
+//   case Success(): ...
+//   case Failure(): ...
+//   // Error: Switch is no longer exhaustive!
+// }
+```
+
+#### Add a member to a sealed class
+**Minor: Non-breaking**
+
+External code cannot implement or extend a `sealed` class, so adding instance or static members is non-breaking.
+
+---
 
 ### `mixin` and `mixin class`
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add a concrete method or field to a `mixin`** | `Minor`* | Non-breaking for consumers using `with Mixin`. (*Note: technically breaking if a consumer used `implements Mixin`). |
-| **Add an abstract member to a `mixin`** | `Major` | Requires all applications of the mixin to provide an implementation. |
-| **Add or change the `on` type constraint** | `Major` | Tightening the `on` constraint restricts where the mixin can be applied. |
+#### Add a concrete member to a mixin
+**Minor: Non-breaking**
+
+Classes using `with MyMixin` automatically receive the concrete implementation.
+
+*Note:* Adding a member is technically breaking if an external consumer used `implements MyMixin`, but the standard and intended usage of mixins is with `with`.
+
+#### Add an abstract member to a mixin
+**Major: Breaking**
+
+Requires all classes applying the mixin to supply an implementation for the new abstract member.
+
+#### Tighten the `on` constraint on a mixin
+**Major: Breaking**
+
+Restricting the superclass requirements (for example, from `on Object` to `on Widget`) prevents existing classes that do not meet the new requirement from mixing it in.
 
 ---
 
 ## Constructors
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add a new public named constructor or factory** | `Minor` | Adding new ways to instantiate a class is backward-compatible. |
-| **Remove or rename a constructor** | `Major` | Breaks code calling `MyClass.named()`. |
-| **Add a required positional or named parameter** | `Major` | Existing construction sites will fail to compile. |
-| **Add an optional positional or named parameter** | `Minor` | Existing construction sites continue to work. |
-| **Change a `const` constructor to non-`const`** | `Major` | Breaks call sites using `const MyClass(...)`. |
-| **Change a non-`const` constructor to `const`** | `Minor` | Backward-compatible; existing non-const call sites continue to work. |
-| **Add a private constructor `Class._()` to a class with only default constructor** | `Major` | Prevents external instantiation or subclassing if no other public constructors exist. |
+### Add a new public constructor or factory
+**Minor: Non-breaking**
+
+Adding named constructors (`MyClass.named()`) or factories to an instantiable class provides new construction options without affecting existing callers.
+
+### Remove or rename a constructor
+**Major: Breaking**
+
+Breaks call sites that invoked the removed constructor.
+
+### Add a required parameter to a constructor
+**Major: Breaking**
+
+Existing constructor invocations that omit the new parameter will fail to compile.
+
+### Add an optional parameter to a constructor
+**Minor: Non-breaking**
+
+Call sites can omit optional parameters (both positional and named).
+
+### Change a `const` constructor to non-`const`
+**Major: Breaking**
+
+Breaks any call site using `const MyClass(...)`.
+
+### Change a non-`const` constructor to `const`
+**Minor: Non-breaking**
+
+Adding `const` capability does not break existing non-const call sites (`MyClass(...)`).
+
+### Add a private constructor to a class with only the default constructor
+**Major: Breaking**
+
+If a class previously had the default implicit constructor `MyClass()`, adding `MyClass._()` removes the default public constructor and prevents external instantiation or subclassing.
 
 ---
 
@@ -135,104 +279,166 @@ mixed in outside the library. It is designed for exhaustive pattern matching.
 
 ### Parameters
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add a required positional parameter** | `Major` | Existing call sites without the argument will fail to compile. |
-| **Add a required named parameter** | `Major` | Existing call sites without the named argument will fail to compile. |
-| **Add an optional positional parameter** | `Minor`* | Callers can omit it. (*Note: technically breaking if the function was torn off and assigned to an exact function type). |
-| **Add an optional named parameter** | `Minor`* | Callers can omit it. (*Note: see tear-off nuance below). |
-| **Remove any parameter (required or optional)** | `Major` | Breaks call sites passing that argument. |
-| **Rename a named parameter** | `Major` | Breaks call sites passing the argument by name (`foo: value`). |
-| **Change a parameter type to a more specific type (subtype)** | `Major` | Narrowing accepted types (e.g. from `num` to `int`) breaks callers passing other valid inputs (e.g. `double`). |
-| **Change a parameter type to a more general type (supertype)** | `Minor` / `Major` | **Minor** for callers (accepts more inputs), but **Major** if the method belongs to an interface/class that external code implements or overrides. |
-| **Change the default value of an optional parameter** | `Patch` / `Minor` | Behavioral change; does not break compilation, but callers relying on previous default behavior may be affected. |
+#### Add a required positional or named parameter
+**Major: Breaking**
+
+Existing call sites omitting the parameter will fail to compile.
+
+#### Add an optional parameter (positional or named)
+**Minor: Non-breaking**
+
+Existing call sites can omit the new optional parameter without issue.
 
 :::note Tear-offs and optional parameters
-In Dart, tearing off a method (e.g. `final fn = obj.myMethod;`) produces a
-function whose static type reflects its exact signature. Adding an optional
-parameter changes the static type of the tear-off, which can cause a type
-mismatch if the consumer assigned it to a specific `typedef`. In practice,
-adding optional parameters is standard for `Minor` releases unless a package's
-primary contract relies on specific function signatures.
+In Dart, tearing off a method (`final fn = obj.myMethod;`) produces a function whose static type reflects its exact signature. Adding an optional parameter changes the static type of the tear-off, which can cause a type mismatch if the consumer assigned it to a specific `typedef`. In practice, adding optional parameters is standard for `Minor` releases unless a package's primary contract relies on exact function signatures.
 :::
+
+#### Remove any parameter
+**Major: Breaking**
+
+Call sites passing the removed argument will fail to compile.
+
+#### Rename a named parameter
+**Major: Breaking**
+
+Call sites passing `func(paramName: value)` will fail to compile when `paramName` is changed.
+
+#### Narrow a parameter type (more specific / subtype)
+**Major: Breaking**
+
+Changing a parameter from `num` to `int` breaks callers that passed `double`.
+
+#### Widen a parameter type (more general / supertype)
+**Minor / Major**
+
+* **Minor** for top-level functions and `final` class methods, because callers can pass a wider variety of inputs.
+* **Major** for methods on an implementable class, because it changes the signature required for external overrides.
+
+#### Change the default value of an optional parameter
+**Patch / Minor**
+
+Does not break compilation or static type checks, but alters runtime behavior for callers omitting the argument.
+
+---
 
 ### Return types
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Change return type to a more specific type (subtype)** | `Minor` / `Major` | **Minor** for callers (e.g. `num` to `int` is covariant and safe for callers), but **Major** if the method is overridden in external subclasses or implementers. |
-| **Change return type to a more general type (supertype)** | `Major` | Breaks callers expecting the narrower type (e.g. changing `int` to `num`). |
-| **Change return type from `void` to a specific type** | `Minor` | Callers ignoring the return value continue to work. |
-| **Change return type from a specific type to `void`** | `Major` | Callers using the return value will fail to compile. |
+#### Narrow a return type (more specific / subtype)
+**Minor / Major**
+
+* **Minor** for callers of top-level functions and `final` class methods (for example, returning `int` instead of `num` is covariant and safe for callers).
+* **Major** if the method is overridden in external subclasses or implementers.
+
+#### Widen a return type (more general / supertype)
+**Major: Breaking**
+
+Changing a return type from `int` to `num` breaks callers expecting `int` methods and properties on the returned object.
+
+#### Change return type from `void` to a specific type
+**Minor: Non-breaking**
+
+Existing callers ignoring the return value continue to work.
+
+#### Change return type from a specific type to `void`
+**Major: Breaking**
+
+Callers using the return value will fail to compile.
+
+---
 
 ### Generics and type parameters
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add a type parameter with no default / bound** | `Major` | Existing call sites or type annotations lacking the type argument may fail or change behavior. |
-| **Tighten a type parameter bound** (e.g. `<T>` to `<T extends num>`) | `Major` | Callers using type arguments outside the new bound will fail. |
-| **Loosen a type parameter bound** (e.g. `<T extends int>` to `<T extends num>`) | `Minor` | Permits a wider range of types without breaking existing valid arguments. |
+#### Add a type parameter without a default bound
+**Major: Breaking**
+
+Call sites or type annotations lacking the type argument may fail to compile or change type inference behavior.
+
+#### Tighten a type parameter bound
+**Major: Breaking**
+
+Changing `<T extends Object>` to `<T extends num>` breaks callers using non-number type arguments.
+
+#### Loosen a type parameter bound
+**Minor: Non-breaking**
+
+Changing `<T extends int>` to `<T extends num>` permits more types while remaining compatible with existing valid usages.
 
 ---
 
 ## Enums
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add a new enum value** | `Major` | **Breaking!** Exhaustive `switch` statements and pattern matches on the enum without a `default` or wildcard `_` case will fail to compile. |
-| **Remove or rename an enum value** | `Major` | Any code referencing `MyEnum.oldValue` will break. |
-| **Add a method, getter, or field to an enhanced enum** | `Minor` | Enums cannot be extended or implemented, so adding members is safe. |
+### Add a new enum value
+**Major: Breaking**
+
+Adding a value to an `enum` breaks exhaustive `switch` statements and pattern matches in consumer code that do not include a `default` or wildcard `_` clause.
+
+### Remove or rename an enum value
+**Major: Breaking**
+
+Any code referencing `MyEnum.oldValue` will fail to compile.
+
+### Add a method, getter, or field to an enhanced enum
+**Minor: Non-breaking**
+
+Enums cannot be extended or implemented, so adding members to an enhanced enum is safe for consumers.
 
 ---
 
-## Extensions and extension types
+## Extension methods and extension types
 
 ### Extension methods (`extension on ...`)
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Add a new extension or extension method** | `Minor` | Non-breaking. (In rare cases, can introduce ambiguity if a consumer has another extension with the same name in scope). |
-| **Remove or rename an extension method** | `Major` | Call sites using the extension member will fail. |
+#### Add an extension or extension method
+**Minor: Non-breaking**
+
+Adding extension methods is backward-compatible. (In rare cases, static ambiguity can occur if consumer code has another extension with the same method name in scope).
+
+#### Remove or rename an extension method
+**Major: Breaking**
+
+Call sites invoking the extension member will fail to compile.
+
+---
 
 ### Extension types (`extension type ...`)
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Change the underlying representation type** | `Major` | Breaks all type conversions and compatibility with the underlying representation. |
-| **Add a method, getter, or setter** | `Minor` | Extension types cannot be implemented or extended with subtyping, so adding members is non-breaking. |
-| **Remove or rename a member** | `Major` | Breaks callers referencing the member. |
+#### Change the underlying representation type
+**Major: Breaking**
+
+Changes the underlying type contract and implicit constructors.
+
+#### Add a member to an extension type
+**Minor: Non-breaking**
+
+Extension types cannot be implemented or extended with subtyping, so adding members is non-breaking.
+
+#### Remove or rename a member of an extension type
+**Major: Breaking**
+
+Breaks call sites referencing the member.
 
 ---
 
 ## Dependencies and SDK constraints
 
-| Change | SemVer Bump | Notes |
-| :--- | :--- | :--- |
-| **Increase the Dart SDK constraint lower bound** | `Minor` | Safe for a minor release if within the current major Dart SDK line, provided your users have access to that SDK version. |
-| **Export a new dependency** (`export 'package:foo/foo.dart'`) | `Minor` | Adds new public API surface to your package. |
-| **Remove an exported dependency** | `Major` | Breaks consumers relying on your package re-exporting those symbols. |
-| **Update dependencies within existing constraint ranges** | `Patch` / `Minor` | Normal maintenance as long as your package's own public API is unchanged. |
+### Increase the Dart SDK constraint lower bound
+**Minor: Non-breaking**
 
----
+Increasing the SDK constraint (for example, `sdk: ^3.5.0` to `sdk: ^3.6.0`) is standard for minor releases to adopt new language features, provided consumers on supported SDKs can resolve it.
 
-## Summary quick reference
+### Export a new dependency
+**Minor: Non-breaking**
 
-| Change | SemVer Bump |
-| :--- | :--- |
-| Add new top-level class, function, enum, or extension | **Minor** |
-| Remove or rename any public top-level declaration | **Major** |
-| Add member to unmodified `class` or `abstract class` | **Major** |
-| Add member to `final class` or `sealed class` | **Minor** |
-| Add concrete member to `base class` | **Minor** |
-| Add abstract member to `base class` | **Major** |
-| Add member to `interface class` | **Major** |
-| Add new subtype to `sealed class` | **Major** |
-| Add required parameter to function, method, or constructor | **Major** |
-| Add optional parameter to function, method, or constructor | **Minor** |
-| Rename named parameter | **Major** |
-| Add value to an `enum` | **Major** |
-| Remove or rename `enum` value | **Major** |
-| Change `const` constructor to non-`const` | **Major** |
-| Tighten type bounds or parameter types | **Major** |
+Re-exporting another package's library (`export 'package:foo/foo.dart';`) exposes new public API surface.
+
+### Remove an exported dependency
+**Major: Breaking**
+
+Consumers relying on your package re-exporting those symbols will fail to compile.
+
+### Update dependencies within existing constraint ranges
+**Patch / Minor**
+
+Normal maintenance as long as your package's own public API surface is unchanged.
 
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
