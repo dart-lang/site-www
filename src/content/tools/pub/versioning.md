@@ -11,6 +11,8 @@ approach to it.
 Consider this to be advanced information.
 To learn _why_ pub was designed the way it was, keep reading.
 If you want to _use_ pub, consult the [other docs][pub].
+For a reference guide on which API changes require major, minor, or patch version bumps,
+see [SemVer compatibility rules][semver-rules].
 
 Modern software development, especially web development, leans heavily on
 reusing lots and lots of existing code. That includes code _you_ wrote in the

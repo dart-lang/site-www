@@ -19,6 +19,28 @@ For a conceptual overview of pub's version solving algorithm and lockfiles,
 see the [Package versioning](/tools/pub/versioning) guide.
 :::
 
+## Semantic versioning and `package:pub_semver`
+
+Dart's package manager, pub, follows [Semantic Versioning 2.0.0][semver] as implemented by [`package:pub_semver`][pub_semver].
+
+A standard version number is formatted as `MAJOR.MINOR.PATCH` (for example, `1.2.3`):
+
+* **`MAJOR`**: Incompatible breaking changes to the public API.
+* **`MINOR`**: Backward-compatible new functionality or features.
+* **`PATCH`**: Backward-compatible bug fixes.
+
+### Pre-1.0.0 versions
+
+While standard SemVer 2.0.0 allows any change before version `1.0.0`, pub and [`pub_semver`][pub_semver] enforce a stricter convention so that consumers can safely depend on pre-1.0.0 packages using [caret syntax](/tools/pub/dependencies#caret-syntax) (`^`):
+
+* **`0.y.z` (where $y > 0$, for example `0.2.0`):**
+  * Bumping `y` (`0.2.0` $\rightarrow$ `0.3.0`) is treated as a **breaking change** (equivalent to a major bump).
+  * Bumping `z` (`0.2.0` $\rightarrow$ `0.2.1`) is treated as a **backward-compatible change** (equivalent to a minor or patch bump).
+  * Caret syntax `^0.2.0` allows `>=0.2.0 <0.3.0`.
+* **`0.0.z` (for example `0.0.1`):**
+  * Bumping `z` (`0.0.1` $\rightarrow$ `0.0.2`) is treated as a **breaking change**.
+  * Caret syntax `^0.0.1` allows only `>=0.0.1 <0.0.2`.
+
 ## The public API boundary
 
 In Dart packages, the **public API** comprises all declarations accessible to
@@ -379,4 +401,5 @@ Consumers relying on your package re-exporting those symbols will fail to compil
 
 Normal maintenance as long as your package's own public API surface is unchanged.
 
+[pub_semver]: {{site.pub-pkg}}/pub_semver
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
