@@ -1,7 +1,7 @@
 ---
 title: What's new
 description: A list of what's new on dart.dev and related sites.
-lastVerified: 2026-05-20
+lastVerified: 2026-08-12
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -18,6 +18,84 @@ and follow the [Dart blog][].
 [dart-changelog]: /changelog
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: /blog
+
+## 3.13 release
+
+_Released on: August 12, 2026_
+
+This section lists notable changes made from May 18, 2026,
+through August 12, 2026 to [dart.dev](https://dart.dev/docs).
+For details about the 3.13 release of Dart,
+check out the [3.13 announcement][] and the
+[3.13 SDK changelog][3-13-changelog].
+
+[3.13 announcement]: /blog/announcing-dart-3-13
+[3-13-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3130
+
+### Documentation updates {:.no_toc}
+
+* Expanded documentation for the new [primary constructors][] language feature,
+  including sections on enums and constant constructors.
+* Added a new troubleshooting guide on
+  [reasons why a variable can't be promoted][non-promotion reasons]
+  to help diagnose type promotion failures.
+* Recommended declaring constructors inside classes using the new
+  [concise constructor syntax][concise constructor syntax] in Effective Dart.
+* Expanded documentation for native build hooks to cover
+  [configuring user-defines][user-defines] in `pubspec.yaml` and using
+  [link hooks][link hooks] with recorded usage for native code tree-shaking.
+* Detailed WebAssembly runtime type check behavior and added Zone-binding
+  examples to the [JavaScript and Web interop][js interop] documentation.
+* Documented experimental
+  [deferred loading support for WebAssembly][wasm deferred loading].
+* Unified Dart command-line distribution documentation
+  around [`dart install`][dart install].
+* Clarified the distinction between `Error` and `Exception` instances
+  in the [error handling tutorial][error handling tutorial].
+* Added beginner-friendly links and quick tips
+  to the [documentation overview page][overview].
+  (Thank you, [Syed Muhammad Mobasil][Mobasil-Git].)
+* Updated guidelines on [naming methods and functions][naming functions]
+  in Effective Dart.
+  (Thank you, [Polina Cherkasova][polina-c].)
+* Added [Publy][] to the list of hosted
+  [Dart package repository services][package repositories].
+  (Thank you, [Timophei Lemeshchenko][Another1dd].)
+* Expanded the [Glossary][] with new language and web terms
+  including "dot shorthand", "extension type", "primary constructor",
+  "private named parameter", "potentially constant", and
+  "WebAssembly (Wasm)".
+
+### Site improvements {:.no_toc}
+
+* Added support for displaying multiple authors
+  on [Dart blog][Dart blog space] posts and RSS/Atom feeds.
+
+[primary constructors]: /language/primary-constructors
+[non-promotion reasons]: /tools/non-promotion-reasons
+[concise constructor syntax]: /effective-dart/usage#prefer-using-concise-constructor-syntax
+[user-defines]: /tools/hooks#hook-configuration
+[link hooks]: /tools/hooks#create-link-hook
+[js interop]: /interop/js-interop/js-types
+[wasm deferred loading]: /web/wasm#deferred-loading
+[dart install]: /tools/dart-install
+[error handling tutorial]: /learn/tutorial/error-handling
+[overview]: /overview
+[naming functions]: /effective-dart/design#avoid-starting-a-function-or-method-name-with-get
+[Publy]: https://publy.dev
+[package repositories]: /tools/pub/custom-package-repositories
+[Glossary]: /resources/glossary
+[dot shorthand]: /resources/glossary#dot-shorthand
+[extension type]: /resources/glossary#extension-type
+[primary constructor]: /resources/glossary#primary-constructor
+[private named parameter]: /resources/glossary#private-named-parameter
+[potentially constant]: /resources/glossary#potentially-constant
+[WebAssembly (Wasm)]: /resources/glossary#webassembly-wasm
+[Dart blog space]: /blog
+
+[Mobasil-Git]: https://github.com/Mobasil-Git
+[polina-c]: https://github.com/polina-c
+[Another1dd]: https://github.com/Another1dd
 
 ## 3.12 release
 
