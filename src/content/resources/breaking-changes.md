@@ -131,7 +131,8 @@ don't include the section header.
   The [`one_member_abstracts`][] lint rule
   is deprecated and should be removed from `analysis_options.yaml` files.
 
-[`avoid_private_typedef_functions`]: /tools/linter-rules/one_member_abstracts
+[`avoid_private_typedef_functions`]: /tools/linter-rules/avoid_private_typedef_functions
+[`one_member_abstracts`]: /tools/linter-rules/one_member_abstracts
 
 #### Formatter (`dart format`)
 
