@@ -1012,7 +1012,7 @@ on all the changes in this section.
 [`DeferredLibrary`]: {{site.dart-api}}/stable/2.18.4/dart-async/DeferredLibrary-class.html
 [`deferred as`]: /language/libraries#lazily-loading-a-library
 [`MAX_USER_TAGS`]: {{site.dart-api}}/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
-[`maxUserTags`]: {{site.dart-api}}/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
+[`maxUserTags`]: {{site.dart-api}}/dart-developer/UserTag/maxUserTags-constant.html
 [50231]: {{site.repo.dart.sdk}}/issues/50231
 [`Metrics`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Metrics-class.html
 [`Metric`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Metric-class.html

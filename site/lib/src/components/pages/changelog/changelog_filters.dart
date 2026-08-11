@@ -129,9 +129,9 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
           icon: 'filter_list',
           classes: ['show-filters-button'],
           onClick: () {
-            final toggle =
-                web.document.getElementById('open-filter-toggle')
-                    as web.HTMLInputElement?;
+            final toggle = web.document.getElementById(
+              'open-filter-toggle',
+            ) as web.HTMLInputElement?;
             if (toggle != null) {
               toggle.checked = !toggle.checked;
             }
