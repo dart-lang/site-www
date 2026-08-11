@@ -81,7 +81,7 @@ check out the [3.13 announcement][] and the
 [dart install]: /tools/dart-install
 [error handling tutorial]: /learn/tutorial/error-handling
 [overview]: /overview
-[naming functions]: /effective-dart/design#avoid-starting-a-function-or-method-name-with-get
+[naming methods]: /effective-dart/design#avoid-starting-a-method-name-with-get
 [Publy]: https://publy.dev
 [package repositories]: /tools/pub/custom-package-repositories
 [Glossary]: /resources/glossary
