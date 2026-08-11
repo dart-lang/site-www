@@ -77,7 +77,7 @@ check out the [3.13 announcement][] and the
 [user-defines]: /tools/hooks#hook-configuration
 [link hooks]: /tools/hooks#create-link-hook
 [js interop]: /interop/js-interop/js-types
-[wasm deferred loading]: /web/wasm#deferred-loading
+[wasm deferred loading]: /web/wasm
 [dart install]: /tools/dart-install
 [error handling tutorial]: /learn/tutorial/error-handling
 [overview]: /overview
