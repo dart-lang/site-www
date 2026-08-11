@@ -87,10 +87,11 @@ don't include the section header.
 
 ## 3.13.0
 
-:::note Tentative
-Dart 3.13 hasn't been released yet.
-The following list is preliminary and might change before release.
-:::
+### Language
+
+- Type promotion in inner generator functions has been [adjusted][62889].
+
+[62889]: {{site.repo.dart.sdk}}/issues/62889
 
 ### Libraries
 
@@ -102,6 +103,8 @@ The following list is preliminary and might change before release.
   exposes a `prefixLength` field and a `broadcast` getter.
   Code that implements `NetworkInterface` and overrides `addresses`
   must update the return type.
+- `InternetAddress.lookup` no longer accepts invalid IPv4 addresses
+  that are traditionally accepted by `inet_aton`.
 
 [63216]: {{site.repo.dart.sdk}}/issues/63216
 
@@ -117,6 +120,19 @@ The following list is preliminary and might change before release.
 [54557]: {{site.repo.dart.sdk}}/issues/54557
 
 ### Tools
+
+### Analyzer
+
+- {{deprecated}}
+  The [`avoid_private_typedef_functions`][] lint rule
+  is deprecated and should be removed from `analysis_options.yaml` files.
+
+- {{deprecated}}
+  The [`one_member_abstracts`][] lint rule
+  is deprecated and should be removed from `analysis_options.yaml` files.
+
+[`avoid_private_typedef_functions`]: /tools/linter-rules/avoid_private_typedef_functions
+[`one_member_abstracts`]: /tools/linter-rules/one_member_abstracts
 
 #### Formatter (`dart format`)
 
@@ -136,6 +152,10 @@ The following list is preliminary and might change before release.
 - {{versioned}}
   Blank lines are added around `mixin` and `extension type` declarations
   if they don't have a `;` body.
+- {{versioned}}
+  Imports are now separated into sections.
+- {{versioned}}
+  Trailing commas are now added to split extension type representation clauses.
 
 [trailing-commas]: /tools/analysis#trailing_commas
 
@@ -147,6 +167,11 @@ The following list is preliminary and might change before release.
   If the system certificates can't be found,
   use the `--root-certs-file` or `--root-certs-cache` options
   to provide fallback certificates to the standalone Dart VM.
+
+#### Embedder API
+
+- `Dart_FileModifiedCallback` in `runtime/include/dart_tools_api.h` now
+  passes `int64_t since` as microseconds from epoch instead of milliseconds.
 
 ## 3.12.0
 
