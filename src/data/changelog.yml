@@ -2,12 +2,26 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Language
+  subArea: Primary constructors
+  description: |
+    Added [primary constructors](/language/primary-constructors),
+    a concise syntax for declaring a constructor and instance variables
+    in a declaration header.
+    This language feature requires a language version of 3.13 or later.
+  tags:
+    - new
+    - versioned
+  link: 'https://dart.dev/language/primary-constructors'
+# --------------------------------------------------
+- version: 3.13.0
+  releaseDate: 2026-08-12
+  area: Language
   subArea: Type promotion
   description: |
     **Breaking change**:
     Updated type promotion rules to fix unsound behavior.
     For details, see SDK issue [#62889][].
-    
+
     [#62889]: https://github.com/dart-lang/sdk/issues/62889
   tags:
     - breaking
@@ -17,7 +31,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:async`
+  subArea: '`dart:async`'
   description: |
     Added `Future.pause` as an alternative to `Future.delayed`
     without a callback.
@@ -28,7 +42,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:core`
+  subArea: '`dart:core`'
   description: |
     Added `List.unmodifiableOf`,
     providing stronger static typing than `List.unmodifiable`.
@@ -39,7 +53,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:core`
+  subArea: '`dart:core`'
   description: |
     Added `Map.unmodifiableOf`,
     providing stronger static typing than `Map.unmodifiable`.
@@ -50,7 +64,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:core`
+  subArea: '`dart:core`'
   description: |
     Added two getters on `int` for efficient bit counting:
     `trailingZeroBitCount` (ctz) and `oneBitCount` (popcount).
@@ -59,7 +73,7 @@
     On web targets,
     they operate on the least significant 32 bits.
     For details, see SDK issue [#52673][].
-    
+
     [#52673]: https://github.com/dart-lang/sdk/issues/52673
   tags:
     - new
@@ -68,7 +82,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:io`
+  subArea: '`dart:io`'
   description: |
     Fixed cookie date parsing to follow the permissive algorithm
     specified in the HTTP state management RFC.
@@ -81,7 +95,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:io`
+  subArea: '`dart:io`'
   description: |
     **Behavioral change**:
     File access and modification timestamps
@@ -90,7 +104,7 @@
     now preserve microsecond precision
     instead of truncating or rounding to millisecond accuracy.
     For details, see SDK issue [#42444][].
-    
+
     [#42444]: https://github.com/dart-lang/sdk/issues/42444
   tags:
     - fixed
@@ -99,7 +113,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:io`
+  subArea: '`dart:io`'
   description: |
     **Breaking change**:
     Added `InterfaceAddress`, a subtype of `InternetAddress`
@@ -110,7 +124,7 @@
     Classes implementing `NetworkInterface` and overriding `addresses`
     must update their return type accordingly.
     For details, see SDK issue [#63216][].
-    
+
     [#63216]: https://github.com/dart-lang/sdk/issues/63216
   tags:
     - breaking
@@ -120,7 +134,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:io`
+  subArea: '`dart:io`'
   description: |
     `InternetAddress.lookup` no longer accepts non-standard IPv4 address formats
     historically accepted by `inet_aton`.
@@ -131,7 +145,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:isolate`
+  subArea: '`dart:isolate`'
   description: |
     Added synchronous execution and event loop control APIs to `Isolate`:
     `Isolate.runSync`, `Isolate.create`, `Isolate.shutdownSync`,
@@ -144,7 +158,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:js_interop`
+  subArea: '`dart:js_interop`'
   description: |
     Made `JSFunction` and `JSExportedDartFunction` generic
     for increased static type safety.
@@ -156,7 +170,7 @@
     runtime types of `JSFunction` and `JSExportedDartFunction`
     remain unchanged.
     For details, see SDK issue [#54557][].
-    
+
     [#54557]: https://github.com/dart-lang/sdk/issues/54557
   tags:
     - changed
@@ -165,7 +179,7 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Libraries
-  subArea: `dart:js_interop`
+  subArea: '`dart:js_interop`'
   description: |
     Added `JSObject.getPrototypeOf` to `dart:js_interop`
     for retrieving JavaScript object prototypes.
@@ -242,7 +256,7 @@
     Deprecated low-value lint rules `avoid_private_typedef_functions`
     and `one_member_abstracts`.
     To continue using these rules, re-implement them with [analyzer plugins][].
-    
+
     [analyzer plugins]: https://dart.dev/tools/analyzer-plugins
   tags:
     - deprecated
@@ -358,7 +372,7 @@
     Fixed a crash in `dart format`
     when an `analysis_options.yaml` file includes a non-existent
     or unreadable file ([dart_style #1840][]).
-    
+
     [dart_style #1840]: https://github.com/dart-lang/dart_style/issues/1840
   tags:
     - fixed
@@ -372,7 +386,7 @@
     Fixed an eager splitting optimization bug
     that caused collections or argument lists to split unnecessarily
     in rare cases ([dart_style #1809][]).
-    
+
     [dart_style #1809]: https://github.com/dart-lang/dart_style/issues/1809
   tags:
     - fixed
@@ -386,10 +400,10 @@
     Prevented `dart format` from inserting an unwanted blank line
     before a comment at the end of a compilation unit or braced body
     ([dart_style #1644][]).
-    
+
     [dart_style #1644]: https://github.com/dart-lang/dart_style/issues/1644
   tags:
-    - changed
+    - fixed
   link: 'https://github.com/dart-lang/dart_style/issues/1644'
 # --------------------------------------------------
 - version: 3.13.0
@@ -400,7 +414,7 @@
     Formatted extension type representation clauses consistently
     with primary constructor formal parameter lists.
   tags:
-    - changed
+    - fixed
   link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3130'
 # --------------------------------------------------
 - version: 3.13.0
@@ -423,10 +437,11 @@
     Added trailing commas to split extension type representation clauses
     when formatting code at language version 3.13 or higher
     ([dart_style #1845][]).
-    
+
     [dart_style #1845]: https://github.com/dart-lang/dart_style/issues/1845
   tags:
     - changed
+    - versioned
   link: 'https://github.com/dart-lang/dart_style/issues/1845'
 # --------------------------------------------------
 - version: 3.13.0
@@ -437,10 +452,11 @@
     Fixed an eager splitting optimization bug
     that led the formatter to prefer suboptimal line splits
     ([dart_style #1847][]).
-    
+
     [dart_style #1847]: https://github.com/dart-lang/dart_style/issues/1847
   tags:
     - fixed
+    - versioned
   link: 'https://github.com/dart-lang/dart_style/issues/1847'
 # --------------------------------------------------
 - version: 3.13.0
@@ -450,10 +466,11 @@
   description: |
     Improved formatting to prefer splitting call chains
     for single-element targets ([dart_style #1732][]).
-    
+
     [dart_style #1732]: https://github.com/dart-lang/dart_style/issues/1732
   tags:
     - changed
+    - versioned
   link: 'https://github.com/dart-lang/dart_style/issues/1732'
 # --------------------------------------------------
 - version: 3.13.0
@@ -463,10 +480,11 @@
   description: |
     Added support for block formatting parameter lists
     ([dart_style #1693][]).
-    
+
     [dart_style #1693]: https://github.com/dart-lang/dart_style/issues/1693
   tags:
     - changed
+    - versioned
   link: 'https://github.com/dart-lang/dart_style/issues/1693'
 # --------------------------------------------------
 - version: 3.13.0
@@ -476,10 +494,11 @@
   description: |
     Added support for block formatting `as`, `is`, and `is!` expressions
     ([dart_style #1542][]).
-    
+
     [dart_style #1542]: https://github.com/dart-lang/dart_style/issues/1542
   tags:
     - changed
+    - versioned
   link: 'https://github.com/dart-lang/dart_style/issues/1542'
 # --------------------------------------------------
 - version: 3.13.0
@@ -489,10 +508,11 @@
   description: |
     Updated `dart format` to separate imports into distinct sections
     ([dart_style #1120][]).
-    
+
     [dart_style #1120]: https://github.com/dart-lang/dart_style/issues/1120
   tags:
     - changed
+    - versioned
   link: 'https://github.com/dart-lang/dart_style/issues/1120'
 # --------------------------------------------------
 - version: 3.13.0
@@ -502,10 +522,11 @@
   description: |
     Updated `dart format` to split `if-case` guards
     when the associated pattern block-splits ([dart_style #1596][]).
-    
+
     [dart_style #1596]: https://github.com/dart-lang/dart_style/issues/1596
   tags:
     - changed
+    - versioned
   link: 'https://github.com/dart-lang/dart_style/issues/1596'
 # --------------------------------------------------
 - version: 3.13.0
@@ -517,12 +538,13 @@
     preferred solutions where overflowing lines end in string literals
     or comments ([dart_style #1802][], [dart_style #1803][],
     and [dart_style #1837][]).
-    
+
     [dart_style #1802]: https://github.com/dart-lang/dart_style/issues/1802
     [dart_style #1803]: https://github.com/dart-lang/dart_style/issues/1803
     [dart_style #1837]: https://github.com/dart-lang/dart_style/issues/1837
   tags:
     - changed
+    - versioned
   link: 'https://github.com/dart-lang/dart_style/issues/1802'
 # --------------------------------------------------
 - version: 3.13.0
@@ -534,6 +556,7 @@
     without a `;` body.
   tags:
     - changed
+    - versioned
   link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3130'
 # --------------------------------------------------
 - version: 3.13.0
@@ -543,18 +566,6 @@
   description: |
     Added `dart pub workspace list` to list all workspace packages
     and their directory paths, with support for `--json` output.
-  tags:
-    - new
-  link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3130'
-# --------------------------------------------------
-- version: 3.13.0
-  releaseDate: 2026-08-12
-  area: Tools
-  subArea: Pub
-  description: |
-    Added internal `dart pub check-resolution-up-to-date` command
-    for fast, timestamp-based package resolution validation
-    without contacting remote servers.
   tags:
     - new
   link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3130'
@@ -603,7 +614,7 @@
     Use `--root-certs-file` or `--root-certs-cache` options
     to provide certificates manually.
   tags:
-    - changed
+    - removed
   link: 'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3130'
 # --------------------------------------------------
 - version: 3.13.0
