@@ -109,8 +109,10 @@ initial page load (IPL) time improvements compared to `dart2js`,
 benefiting both Flutter web apps and DOM-based web applications.
 
 As a reminder, the legacy web libraries like `dart:html` and `package:js`
-are not supported in `dart2wasm` and were deprecated in Dart 3.7.
-Upgrading your package dependencies often resolves issues automatically.
+are not supported in `dart2wasm` and were deprecated in Dart 3.7
+(and will stop working in `dart2js` in the future).
+Many packages are already migrated,
+so upgrading your package dependencies often resolves issues automatically.
 However, if your code directly uses these legacy libraries,
 check out our migration guides to adopt the supported
 [`dart:js_interop`](https://dart.dev/interop/js-interop) and
