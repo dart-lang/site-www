@@ -113,7 +113,7 @@ are not supported in `dart2wasm` and were deprecated in Dart 3.7.
 Upgrading your package dependencies often resolves issues automatically.
 However, if your code directly uses these legacy libraries,
 check out our migration guides to adopt the supported
-[interop](https://dart.dev/interop/js-interop) and
+[`dart:js_interop`](https://dart.dev/interop/js-interop) and
 [`package:web`](https://dart.dev/interop/js-interop/package-web)
 libraries today.
 
