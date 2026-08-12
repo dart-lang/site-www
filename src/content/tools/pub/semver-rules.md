@@ -473,6 +473,50 @@ Breaks call sites referencing the member.
 
 ---
 
+## Errors and exceptions
+
+In Dart, all errors and exceptions are unchecked at compile time (functions do not declare a `throws` clause in their signature). Determining the SemVer impact of changing thrown errors or exceptions depends on the distinction between [programmatic errors][effective_dart_errors] and [runtime exceptions][effective_dart_errors], as well as your documented API contract.
+
+### Documented exceptions
+
+When a library explicitly documents that a function or method throws a specific exception (for example, `/// Throws [AuthException] on invalid credentials.`):
+
+#### MAJOR: Change or remove a documented exception type
+
+Changing the thrown exception (for example, throwing `SecurityException` instead of `AuthException`) breaks downstream code with `try ... on AuthException catch (e)` handlers. The new exception will bypass the handler and crash at runtime.
+
+#### MINOR: Throw a subtype of the documented exception
+
+Throwing a more specific subtype (for example, throwing `ExpiredTokenException extends AuthException`) is backward-compatible. Existing callers catching `on AuthException` continue to catch the new subtype without changes.
+
+#### MAJOR: Throw an exception on previously succeeding inputs or states
+
+Throwing an exception in scenarios where the function previously succeeded alters control flow and breaks working consumer code.
+
+#### MINOR: Stop throwing an exception by succeeding instead
+
+Handling an edge case or providing a fallback so that a function succeeds instead of throwing is backward-compatible. Existing `try-catch` blocks will simply not be triggered.
+
+---
+
+### Programmatic errors: `Error` subclasses
+
+Subclasses of `Error` (such as `ArgumentError`, `StateError`, `RangeError`, and `AssertionError`) indicate a bug in the caller's code (contract violations or invalid arguments). Consumers should not catch `Error` types in application logic.
+
+#### MAJOR: Throw an `ArgumentError` or `StateError` on previously valid inputs
+
+Throwing an error for inputs or states that were previously valid and supported narrows the acceptable input domain, breaking existing callers.
+
+#### PATCH: Add or refine `Error` checks for invalid arguments
+
+Throwing a clear `ArgumentError` or `StateError` on invalid inputs that previously caused undefined behavior, corrupted state, or internal unhandled exceptions (such as `TypeError` or `NoSuchMethodError`) is a bug fix or hardening improvement.
+
+#### MINOR: Support previously invalid arguments without throwing an `Error`
+
+Expanding the acceptable input domain (for example, accepting negative numbers or null values where previously an `ArgumentError` was thrown) is a backward-compatible feature addition.
+
+---
+
 ## Dependencies and SDK constraints
 
 ### MINOR: Increase the Dart SDK constraint lower bound
@@ -491,5 +535,6 @@ Consumers relying on your package re-exporting those symbols will fail to compil
 
 Normal maintenance as long as your package's own public API surface is unchanged.
 
+[effective_dart_errors]: /effective-dart/usage#error-handling
 [pub_semver]: {{site.pub-pkg}}/pub_semver
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
