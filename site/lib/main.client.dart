@@ -6,6 +6,7 @@ import 'dart:js_interop';
 
 import 'package:jaspr/client.dart';
 import 'package:universal_web/web.dart' as web;
+
 import 'main.client.options.dart'; // Generated. Do not remove or edit.
 import 'src/client/global_scripts.dart';
 

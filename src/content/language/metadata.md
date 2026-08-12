@@ -84,12 +84,12 @@ members annotated with `@deprecated` or `@Deprecated`.
 [providing a deprecation message]: /tools/linter-rules/provide_deprecation_message
 [Extend a class]: /language/extend
 [Dart analyzer]: /tools/analysis
-[`@Deprecated.extend()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.extend.html
-[`@Deprecated.implement()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.implement.html
-[`@Deprecated.subclass()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.subclass.html
-[`@Deprecated.mixin()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.mixin.html
-[`@Deprecated.instantiate()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.instantiate.html
-[`@Deprecated.optional()`]: {{site.dart-api}}/beta/latest/dart-core/Deprecated/Deprecated.optional.html
+[`@Deprecated.extend()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.extend.html
+[`@Deprecated.implement()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.implement.html
+[`@Deprecated.subclass()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.subclass.html
+[`@Deprecated.mixin()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.mixin.html
+[`@Deprecated.instantiate()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.instantiate.html
+[`@Deprecated.optional()`]: {{site.dart-api}}/dart-core/Deprecated/Deprecated.optional.html
 
 ## Analyzer-supported annotations
 

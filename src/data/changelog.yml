@@ -3324,7 +3324,7 @@
     Removed the deprecated
     [`MAX_USER_TAGS`](https://api.dart.dev/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html)
     constant. Use
-    [`maxUserTags`](https://api.dart.dev/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html)
+    [`maxUserTags`](https://api.dart.dev/dart-developer/UserTag/maxUserTags-constant.html)
     instead.
   tags:
     - removed
