@@ -3,9 +3,17 @@ title: "Announcing Dart 3.13"
 description: "Bringing conciseness and simplicity to Dart codebases, tooling, and platforms."
 publishDate: 2026-08-12
 author: conooi
+image: images/dart3-13.gif
 category: releases
 layout: blog
 ---
+
+<DashImage
+  src="images/dart3-13.gif"
+  alt="Dart 3.13 release banner animation with the Dart logo."
+  caption="Announcing Dart 3.13"
+/>
+
 We are thrilled to announce Dart 3.13!
 
 In this release, we are celebrating a theme that every developer loves:
