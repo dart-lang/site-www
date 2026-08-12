@@ -53,7 +53,7 @@ Future<void> main() async {
   final assetManager = AssetManager(
     directory: contentDirectory,
     outputPrefix: 'images',
-    dataProperties: const {'page.image'},
+    dataProperties: const {'page.image', 'page.socialImage'},
     filterPages: (page) => page.path.startsWith('blog/'),
   );
 
