@@ -24,17 +24,24 @@ a Google Doc, formatting it, and placing it in the correct directory.
 - [ ] Extract the images from the `images/` folder in the zip file.
 - [ ] If the hero/cover image is an animated GIF,
       ask the author for a high-quality static image (WebP or PNG)
-      for social media previews and the blog card thumbnail.
-      If none is available, extract a static frame from the GIF.
+      for social media previews.
+      If none is available, extract a representative frame from the GIF
+      and convert it to WebP.
+      Keep the social image under 5 MB.
 - [ ] Create a new folder for the blog post in `src/content/blog/` using a
       concise title.
-- [ ] Save the markdown content to `index.md` and move the images to the
+- [ ] Save the Markdown content to `index.md` and move the images to the
       `images/` directory in that folder.
-- [ ] In the frontmatter, set `image:` to the static image path.
-      In the markdown body, reference the animated GIF using `<DashImage>`
-      so readers still see the animation on the live page.
-- [ ] Reference other images in the markdown file using `<DashImage>` or
-      standard markdown image tags as appropriate.
+- [ ] In the frontmatter, set `image:` to the image intended for blog cards.
+      If that image isn't suitable for social previews, such as when it's an
+      animated GIF or exceeds 5 MB, set `socialImage:` to a static WebP or PNG.
+      `socialImage` controls `twitter:image` and `og:image` and
+      falls back to `image` when omitted.
+- [ ] In the Markdown body,
+      reference the intended hero image using `<DashImage>`.
+      An animated GIF or static image are both ok.
+- [ ] Reference other images in the Markdown file using `<DashImage>` or
+      standard Markdown image tags as appropriate.
 
 ### 2. Format the markdown
 
