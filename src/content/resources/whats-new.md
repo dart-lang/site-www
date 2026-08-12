@@ -55,21 +55,16 @@ check out the [3.13 announcement][] and the
 * Added beginner-friendly links and quick tips
   to the [documentation overview page][overview].
   (Thank you, [Syed Muhammad Mobasil][Mobasil-Git].)
-* Updated guidelines on [naming methods and functions][naming functions]
+* Updated guidelines on [naming methods and functions][naming methods]
   in Effective Dart.
   (Thank you, [Polina Cherkasova][polina-c].)
 * Added [Publy][] to the list of hosted
   [Dart package repository services][package repositories].
   (Thank you, [Timophei Lemeshchenko][Another1dd].)
 * Expanded the [Glossary][] with new language and web terms
-  including "dot shorthand", "extension type", "primary constructor",
-  "private named parameter", "potentially constant", and
-  "WebAssembly (Wasm)".
-
-### Site improvements {:.no_toc}
-
-* Added support for displaying multiple authors
-  on [Dart blog][Dart blog space] posts and RSS/Atom feeds.
+  including "[dot shorthand][]", "[extension type][]",
+  "[primary constructor][]", "[private named parameter][]",
+  "[potentially constant][]", and "[WebAssembly (Wasm)][]".
 
 [primary constructors]: /language/primary-constructors
 [non-promotion reasons]: /tools/non-promotion-reasons
@@ -77,7 +72,7 @@ check out the [3.13 announcement][] and the
 [user-defines]: /tools/hooks#hook-configuration
 [link hooks]: /tools/hooks#create-link-hook
 [js interop]: /interop/js-interop/js-types
-[wasm deferred loading]: /web/wasm
+[wasm deferred loading]: /web/wasm#webassembly-support
 [dart install]: /tools/dart-install
 [error handling tutorial]: /learn/tutorial/error-handling
 [overview]: /overview
@@ -91,7 +86,6 @@ check out the [3.13 announcement][] and the
 [private named parameter]: /resources/glossary#private-named-parameter
 [potentially constant]: /resources/glossary#potentially-constant
 [WebAssembly (Wasm)]: /resources/glossary#webassembly-wasm
-[Dart blog space]: /blog
 
 [Mobasil-Git]: https://github.com/Mobasil-Git
 [polina-c]: https://github.com/polina-c
