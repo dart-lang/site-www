@@ -52,6 +52,7 @@ on the Dart language GitHub repo.
 
 ### Dart 3.13
 _Released 12 August 2026_
+| [Dart 3.13 announcement](/blog/announcing-dart-3-13)
 
 Dart 3.13 introduces [primary constructors][],
 a concise syntax for declaring a constructor and
