@@ -3,7 +3,7 @@ title: Dart language evolution
 shortTitle: Language evolution
 breadcrumb: Legacy
 description: Notable changes and additions to the Dart programming language.
-lastVerified: 2026-05-19
+lastVerified: 2026-08-12
 ---
 
 :::warning
@@ -49,6 +49,45 @@ on the Dart language GitHub repo.
 
 
 ## Changes in each release
+
+### Dart 3.13
+_Released 12 August 2026_
+
+Dart 3.13 introduces [primary constructors][],
+a concise syntax for declaring a constructor and instance variables
+in a declaration header:
+
+<?code-excerpt "language/lib/primary_constructors/point.dart (point-primary)" replace="/PointPrimary/Point/g"?>
+```dart
+// Using a primary constructor.
+class Point(var int x, var int y);
+```
+
+Primary constructors reduce boilerplate without introducing new semantics.
+The feature also lets you declare constructors in a class body
+with `new` or `factory` without repeating the class name.
+
+Dart 3.13 also introduces the following language-versioned changes to
+the output of [`dart format`][]:
+
+* Adds trailing commas to split extension type representation clauses.
+* Improves eager splitting to prefer more desirable layouts.
+* Prefers splitting call chains with single-element targets.
+* Allows parameter lists to use block formatting.
+* Allows `as`, `is`, and `is!` expressions to use block formatting.
+* Separates imports into sections.
+* Splits an if-case guard when its pattern uses block formatting.
+* When no formatting solution fits the page width,
+  prefers overflowing lines that end in string literals or comments.
+* Adds blank lines around `mixin` and `extension type` declarations
+  that don't have a `;` body.
+
+For more information about these and additional changes,
+see the [Dart 3.13 changelog][].
+
+[primary constructors]: /language/primary-constructors
+[`dart format`]: /tools/dart-format
+[Dart 3.13 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3130
 
 ### Dart 3.12
 _Released 18 May 2026_
