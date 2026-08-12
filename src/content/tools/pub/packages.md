@@ -51,7 +51,7 @@ two packages (`intl` and `path`) that are hosted on the pub.dev site:
 name: my_app
 
 dependencies:
-  intl: ^0.20.2
+  intl: ^0.20.3
   path: ^1.9.1
 ```
 

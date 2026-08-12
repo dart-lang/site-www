@@ -176,8 +176,7 @@ abstract class DashLayout extends PageLayoutBase {
               attributes: {if (defer == 'true' || defer == true) 'defer': ''},
             ),
       const script(
-        src:
-            'https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.8.2/lite-youtube.js',
+        src: 'https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.8.2/lite-youtube.js',
         attributes: {
           'type': 'module',
           'integrity': 'sha256-Jy0j0fUMJ2T3WxSEs2WjHLrS+3DlO7S9DItQtP55FII=',

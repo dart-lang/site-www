@@ -10,7 +10,7 @@ import 'package:path/path.dart' as path;
 import '../utils.dart';
 
 /// Dart experiments to enable when formatting Dart code.
-const List<String> _experimentsToFormatWith = ['primary-constructors'];
+const List<String> _experimentsToFormatWith = [];
 
 final class FormatDartCommand extends Command<int> {
   static const String _checkFlag = 'check';

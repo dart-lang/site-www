@@ -138,6 +138,7 @@ mypackage
 <?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g"?>
 ```dart tag=good
 import 'dart:math' as math;
+
 import 'package:angular_components/angular_components.dart' as angular_components;
 import 'package:js/js.dart' as js;
 ```
@@ -145,6 +146,7 @@ import 'package:js/js.dart' as js;
 <?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /as angular_components/as angularComponents/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g; / math/ Math/g;/as js/as JS/g"?>
 ```dart tag=bad
 import 'dart:math' as Math;
+
 import 'package:angular_components/angular_components.dart' as angularComponents;
 import 'package:js/js.dart' as JS;
 ```
