@@ -22,11 +22,18 @@ a Google Doc, formatting it, and placing it in the correct directory.
 - [ ] Extract the text content from the downloaded HTML file and convert it to
       Markdown.
 - [ ] Extract the images from the `images/` folder in the zip file.
+- [ ] If the hero/cover image is an animated GIF,
+      ask the author for a high-quality static image (WebP or PNG)
+      for social media previews and the blog card thumbnail.
+      If none is available, extract a static frame from the GIF.
 - [ ] Create a new folder for the blog post in `src/content/blog/` using a
       concise title.
 - [ ] Save the markdown content to `index.md` and move the images to the
       `images/` directory in that folder.
-- [ ] Reference the images in the markdown file using `<DashImage>` or
+- [ ] In the frontmatter, set `image:` to the static image path.
+      In the markdown body, reference the animated GIF using `<DashImage>`
+      so readers still see the animation on the live page.
+- [ ] Reference other images in the markdown file using `<DashImage>` or
       standard markdown image tags as appropriate.
 
 ### 2. Format the markdown
