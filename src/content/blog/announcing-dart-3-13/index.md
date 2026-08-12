@@ -108,20 +108,16 @@ In large applications using deferred loading, `dart2wasm` delivers significant
 initial page load (IPL) time improvements compared to `dart2js`,
 benefiting both Flutter web apps and DOM-based web applications.
 
+As a reminder, the legacy web libraries like `dart:html` and `package:js`
+are not supported in `dart2wasm` and were deprecated in Dart 3.7.
+Upgrading your package dependencies often resolves issues automatically.
+However, if your code directly uses these legacy libraries,
+check out our migration guides to adopt the supported
+[interop](https://dart.dev/interop/js-interop) and
+[`package:web`](https://dart.dev/interop/js-interop/package-web)
+libraries today.
+
 **Learn more:** [WebAssembly documentation](https://dart.dev/web/wasm).
-
-### Deprecation and removal of dart:html
-
-As part of our ongoing effort to modernize the Dart web platform
-and support WebAssembly, the legacy `dart:html` library is deprecated
-and scheduled for complete removal in a future release.
-If your code or packages still rely on `dart:html`,
-migrate to the modern JavaScript interop model using `dart:js_interop`
-and `package:web`.
-Upgrading your package dependencies often resolves legacy interop uses automatically.
-
-**Learn more:** [JS interop migration guide](https://dart.dev/interop/js-interop/package-web)
-and [JS interop usage documentation](https://dart.dev/interop/js-interop/usage)
 
 ## Core engine and runtime updates
 
