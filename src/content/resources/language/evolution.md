@@ -54,28 +54,32 @@ on the Dart language GitHub repo.
 _Released 12 August 2026_
 
 Dart 3.13 introduces [primary constructors][],
-a concise syntax for declaring a constructor and instance variables
-in a declaration header:
+a concise syntax for declaring a constructor and
+its instance variables directly in the declaration header:
 
 <?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (empty-bodies)" replace="/EmptyBodyPoint/Point/g"?>
 ```dart
 class Point(var int x, var int y);
 ```
 
-Primary constructors reduce boilerplate without introducing new semantics.
-The feature also lets you declare constructors in a class body
-with `new` or `factory` without repeating the class name.
+Primary constructors reduce the boilerplate of declaring fields,
+passing parameters, and assigning them in a constructor body.
+They change how you write a declaration, not how it behaves at runtime.
 
-Dart 3.13 also introduces the following language-versioned changes to
+Dart 3.13 also adds a [concise constructor syntax][]
+for constructors declared in the class body:
+you can write `new` or `factory` instead of repeating the class name.
+
+The release also includes the following language-versioned changes to
 the output of [`dart format`][]:
 
 * Adds trailing commas to split extension type representation clauses.
-* Improves eager splitting to prefer more desirable layouts.
+* Improves eager splitting to avoid suboptimal line splits.
 * Prefers splitting call chains with single-element targets.
 * Allows parameter lists to use block formatting.
 * Allows `as`, `is`, and `is!` expressions to use block formatting.
-* Separates imports into sections.
-* Splits an if-case guard when its pattern uses block formatting.
+* Separates imports into distinct sections.
+* Splits an `if-case` guard when its pattern uses block formatting.
 * When no formatting solution fits the page width,
   prefers overflowing lines that end in string literals or comments.
 * Adds blank lines around `mixin` and `extension type` declarations
@@ -85,6 +89,7 @@ For more information about these and additional changes,
 see the [Dart 3.13 changelog][].
 
 [primary constructors]: /language/primary-constructors
+[concise constructor syntax]: /language/constructors#concise-constructor-syntax
 [`dart format`]: /tools/dart-format
 [Dart 3.13 changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3130
 
