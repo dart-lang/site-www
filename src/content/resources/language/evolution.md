@@ -57,9 +57,8 @@ Dart 3.13 introduces [primary constructors][],
 a concise syntax for declaring a constructor and instance variables
 in a declaration header:
 
-<?code-excerpt "language/lib/primary_constructors/point.dart (point-primary)" replace="/PointPrimary/Point/g"?>
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (empty-bodies)" replace="/EmptyBodyPoint/Point/g"?>
 ```dart
-// Using a primary constructor.
 class Point(var int x, var int y);
 ```
 
