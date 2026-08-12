@@ -137,25 +137,21 @@ class DartDownloads {
     String channel,
     String revision,
     String path,
-  ) async =>
-      await _api.objects.get(
-            _dartChannel,
-            _revisionPath(channel, revision, [path]),
-            downloadOptions: storage.DownloadOptions.fullMedia,
-          )
-          as storage.Media;
+  ) async => await _api.objects.get(
+    _dartChannel,
+    _revisionPath(channel, revision, [path]),
+    downloadOptions: storage.DownloadOptions.fullMedia,
+  ) as storage.Media;
 
   Future<storage.Object> _fetchMetadata(
     String channel,
     String revision,
     String path,
-  ) async =>
-      await _api.objects.get(
-            _dartChannel,
-            _revisionPath(channel, revision, [path]),
-            downloadOptions: storage.DownloadOptions.metadata,
-          )
-          as storage.Object;
+  ) async => await _api.objects.get(
+    _dartChannel,
+    _revisionPath(channel, revision, [path]),
+    downloadOptions: storage.DownloadOptions.metadata,
+  ) as storage.Object;
 }
 
 final _jsonAsciiDecoder = json.fuse(ascii).decoder;

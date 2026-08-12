@@ -6,6 +6,7 @@ import 'foo/slider_menu.dart';
 
 // #docregion import-as
 import 'dart:math' as math;
+
 import 'package:examples/effective_dart/foo.dart' as angular_components;
 import 'package:examples/effective_dart/bar.dart' as js;
 // #enddocregion import-as
@@ -34,5 +35,4 @@ import 'src/error.dart';
 import 'src/foo_bar.dart';
 
 export 'src/error.dart';
-
 // #enddocregion export
