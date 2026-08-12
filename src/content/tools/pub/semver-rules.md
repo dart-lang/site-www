@@ -1,5 +1,5 @@
 ---
-title: SemVer compatibility and breaking changes
+title: API versioning guidelines
 breadcrumb: SemVer rules
 description: >-
   A comprehensive guide to what changes are breaking (major), non-breaking
@@ -79,9 +79,19 @@ Renaming a public symbol is functionally equivalent to removing the original nam
 
 Moving a declaration from the public `lib/` root to `lib/src/` (without an `export` in a public library file) makes it inaccessible to external packages, breaking all existing consumers.
 
-### MAJOR: Change the type of a top-level variable or constant
+### MAJOR: Widen or change the type of a `const` or `final` variable
 
-Changing the static type of a top-level variable or constant causes type errors for any callers expecting the previous type.
+Changing a `const` or `final` variable to a broader type (for example, `const int maxRetries` to `const num maxRetries`) or to an incompatible type breaks callers expecting members of the more specific type.
+
+### MINOR: Narrow the type of a `const` or `final` variable
+
+Narrowing the static type of a read-only `const` or `final` variable to a more specific subtype (for example, `const num timeout` to `const int timeout`, or `const Object key` to `const String key`) is backward-compatible. Because consumers only read the value, a more specific subtype satisfies all existing type expectations while providing additional type safety.
+
+### MAJOR: Change the type of a mutable (`var`) top-level variable
+
+For mutable variables (which can be both read from and written to), changing the static type in either direction is a breaking change:
+* Narrowing the type (e.g., `num` to `int`) breaks callers assigning a `double` into the variable.
+* Widening the type (e.g., `int` to `num`) breaks callers expecting `int` methods when reading the variable.
 
 ### MAJOR: Change a top-level variable from `var` to `final`
 
@@ -93,7 +103,41 @@ Making a mutable variable `final` breaks any consumer assigning values to that v
 
 Dart 3 introduced **class modifiers** (`final`, `base`, `interface`, `sealed`, and `mixin`), allowing package authors to explicitly define how classes can be used by consumers. The SemVer impact of adding or modifying members depends on these modifiers.
 
-### Unmodified classes (`class` and `abstract class`)
+### Changing modifiers on existing classes
+
+Changing the modifier on an already-published class alters what external packages are permitted to do with it:
+
+#### MAJOR: Change a concrete class to an abstract class
+
+Changing a concrete class to `abstract class` prevents external consumers from instantiating the class directly (`new MyClass()`), causing compile errors.
+
+#### MINOR: Change an abstract class to a concrete class
+
+Making an abstract class concrete enables external instantiation without breaking existing subclasses or implementers.
+
+#### MAJOR: Add the `base` modifier to an existing class
+
+Prevents external consumers from implementing the class (`implements MyClass`), breaking all existing external implementers.
+
+#### MAJOR: Add the `interface` modifier to an existing class
+
+Prevents external consumers from extending the class (`extends MyClass`), breaking all existing external subclasses.
+
+#### MAJOR: Add the `final` or `sealed` modifier to an existing class
+
+Prevents external consumers from extending, implementing, or mixing in the class, breaking all existing external subtypes.
+
+#### MAJOR: Remove the `mixin` modifier from a `mixin class`
+
+Prevents external consumers from using the class as a mixin (`with MyClass`).
+
+#### MINOR: Remove `base`, `interface`, or `final` from a class
+
+Loosens restrictions on consumers, granting new capabilities without invalidating existing code.
+
+---
+
+### Unmodified classes: `class` and `abstract class`
 
 An unmodified class in Dart allows external packages to construct, extend (`extends`), and implement (`implements`) it.
 
@@ -225,6 +269,31 @@ Restricting the superclass requirements (for example, from `on Object` to `on Wi
 
 ---
 
+## Type aliases (`typedef`)
+
+Type aliases (`typedef`) define names for function types, records, or existing class types.
+
+### MINOR: Add a new type alias
+
+Adding a new public `typedef` exposes a new type name without affecting existing code.
+
+### MAJOR: Remove or rename a type alias
+
+Any downstream code referencing the removed `typedef` name will fail to compile.
+
+### MAJOR: Change the aliased type in a type alias
+
+Changing the underlying type that a type alias references (for example, changing `typedef Callback = void Function(int);` to `typedef Callback = void Function(String);`) alters the expected type everywhere the alias is used, breaking consumers.
+
+### MAJOR: Replace a `typedef` with a class or vice versa
+
+Replacing a type alias with a class (or class with a type alias) of the same name is a breaking change:
+
+* **Function type alias $\rightarrow$ class:** In Dart, closure literals are function types, not class instances. Code assigning a closure (`Callback cb = (x) => ...;`) will fail to compile against `class Callback`.
+* **Class type alias $\rightarrow$ subclass:** If `typedef A = B;` is replaced with `class A extends B {}`, `B` is no longer assignable to `A` ($B \not\le A$), and bidirectional type identity is lost.
+
+---
+
 ## Constructors
 
 ### MINOR: Add a new public constructor or factory
@@ -265,7 +334,7 @@ If a class previously had the default implicit constructor `MyClass()`, adding `
 
 Existing call sites omitting the parameter will fail to compile.
 
-#### MINOR: Add an optional parameter (positional or named)
+#### MINOR: Add an optional parameter
 
 Existing call sites can omit the new optional parameter without issue.
 
@@ -285,16 +354,16 @@ Call sites passing `func(paramName: value)` will fail to compile when `paramName
 
 Reordering positional parameters changes the expected argument positions at call sites. Even if the parameter types are identical, it causes callers to pass arguments to the wrong parameters, altering behavior or causing compile-time type errors.
 
-#### MAJOR: Narrow a parameter type (more specific / subtype)
+#### MAJOR: Narrow a parameter type
 
 Changing a parameter from `num` to `int` breaks callers that passed `double`.
 
-#### MINOR / MAJOR: Widen a parameter type (more general / supertype)
+#### Widen a parameter type
 
-* **MINOR** for top-level functions and `final` class methods, because callers can pass a wider variety of inputs.
+* **MINOR** for top-level functions and `final` class methods, because callers can pass a wider variety of inputs (for example, widening a parameter from `Future<T>` to `FutureOr<T>` or from `int` to `num`).
 * **MAJOR** for methods on an implementable class, because it changes the signature required for external overrides.
 
-#### PATCH / MINOR: Change the default value of an optional parameter
+#### MINOR: Change the default value of an optional parameter
 
 Does not break compilation or static type checks, but alters runtime behavior for callers omitting the argument.
 
@@ -302,38 +371,47 @@ Does not break compilation or static type checks, but alters runtime behavior fo
 
 ### Return types
 
-#### MINOR / MAJOR: Narrow a return type (more specific / subtype)
+Return types in Dart are **covariant**: callers expect a return value conforming to at least the declared type, while subclasses overriding a method must return a subtype of the superclass method's return type.
 
-* **MINOR** for callers of top-level functions and `final` class methods (for example, returning `int` instead of `num` is covariant and safe for callers).
-* **MAJOR** if the method is overridden in external subclasses or implementers.
+#### Narrow a return type
+
+Moving down the type lattice to a more specific subtype (e.g., `num` $\rightarrow$ `int`, `Object?` $\rightarrow$ `String`, `void` $\rightarrow$ `T`, or `T` $\rightarrow$ `Never`):
+
+* **MINOR for callers of top-level functions and `final` class methods:**
+  * **Direct invocations:** Callers receive a more specific type with additional available members and tighter type safety.
+  * **Top types (`void` $\rightarrow$ `T`):** Changing a return type from `void` to a specific type is a form of narrowing from the top type. Callers ignoring the return value continue to work, and callbacks passed to `void Function(...)` continue to compile because Dart treats `T Function(...)` as a subtype of `void Function(...)` for any type `T`.
+  * **Bottom type (`T` $\rightarrow$ `Never`):** For functions that unconditionally throw or exit, narrowing the return type to `Never` is backward-compatible because `Never` is a universal subtype of all Dart types.
+* **MAJOR if the method is overridden in external subclasses or implementers:**
+  * External subclasses that declared the previous wider return type (e.g., `@override num method()` or `@override void method()`) will fail to compile with an override error, because the subclass's wider return type is not a valid subtype of the new narrower return type.
 
 #### MAJOR: Widen a return type (more general / supertype)
 
-Changing a return type from `int` to `num` breaks callers expecting `int` methods and properties on the returned object.
+Moving up the type lattice to a broader supertype (e.g., `int` $\rightarrow$ `num`, `Future<T>` $\rightarrow$ `FutureOr<T>`, or specific type `T` $\rightarrow$ `void`):
 
-#### MINOR: Change return type from `void` to a specific type
-
-Existing callers ignoring the return value continue to work.
-
-#### MAJOR: Change return type from a specific type to `void`
-
-Callers using the return value will fail to compile.
+* **MAJOR for callers:**
+  * Callers expecting specific members on the returned object (such as `int` methods, or `.then()` on a `Future<T>`) will fail to compile.
+  * Changing a return type from a specific type `T` to `void` is a form of widening to the top type, breaking any callers attempting to read or use the returned value.
+* Subclasses that already returned a narrower subtype remain valid overrides.
 
 ---
 
 ### Generics and type parameters
 
-#### MAJOR: Add a type parameter without a default bound
+#### MAJOR: Add a bound to an unconstrained type parameter
 
-Call sites or type annotations lacking the type argument may fail to compile or change type inference behavior.
+Adding a type parameter constraint (for example, changing `class Store<T>` to `class Store<T extends State>`) breaks existing consumers using type arguments that do not conform to the new bound (such as `Store<String>`).
 
 #### MAJOR: Tighten a type parameter bound
 
 Changing `<T extends Object>` to `<T extends num>` breaks callers using non-number type arguments.
 
-#### MINOR: Loosen a type parameter bound
+#### MINOR: Loosen or remove a type parameter bound
 
-Changing `<T extends int>` to `<T extends num>` permits more types while remaining compatible with existing valid usages.
+Changing `<T extends int>` to `<T extends num>` or removing a bound permits more types while remaining compatible with existing valid usages.
+
+#### MAJOR: Add a type parameter without a default bound
+
+Call sites or type annotations lacking the type argument may fail to compile or change type inference behavior.
 
 ---
 
@@ -346,6 +424,10 @@ Adding a value to an `enum` breaks exhaustive `switch` statements and pattern ma
 ### MAJOR: Remove or rename an enum value
 
 Any code referencing `MyEnum.oldValue` will fail to compile.
+
+### MAJOR: Reorder enum values
+
+Reordering enum declarations does not cause static compilation errors, but alters each value's `.index` property at runtime. If your package or downstream users serialize enums by index (such as in databases or network protocols), reordering values is a breaking runtime change.
 
 ### MINOR: Add a member to an enhanced enum
 
@@ -364,6 +446,14 @@ Adding extension methods is backward-compatible. (In rare cases, static ambiguit
 #### MAJOR: Remove or rename an extension method
 
 Call sites invoking the extension member will fail to compile.
+
+#### MAJOR: Change the extended type (`on` clause)
+
+Changing the target type of an extension (for example, `extension Helpers on String` to `extension Helpers on int`) removes the extension members from instances of the original type, breaking all existing call sites.
+
+#### MINOR: Widen the extended type
+
+Widening the extended type (for example, from `on int` to `on num`) allows the extension to be used on more types while preserving all existing call sites.
 
 ---
 
