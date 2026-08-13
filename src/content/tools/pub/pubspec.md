@@ -181,7 +181,7 @@ anymore. To make more changes, you'll need a new version.
 
 When you select a version, follow [semantic versioning.][semantic versioning]
 For a reference on which API changes in Dart require major, minor, or patch
-version bumps, see [SemVer compatibility rules][semver-rules].
+version bumps, check out [SemVer compatibility rules][semver-rules].
 
 [semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html
 [semver-rules]: /tools/pub/semver-rules
