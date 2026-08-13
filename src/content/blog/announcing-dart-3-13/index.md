@@ -290,8 +290,8 @@ in the generated documentation.
 
 <DashImage
   src="images/pub-doc-callout-example.webp"
-  alt="The cupertino_ui documentation on pub.dev displaying a &lt;callout-box&gt; with a blue border alongside an embedded {@example} code block."
-  caption="The cupertino_ui documentation on pub.dev displaying a `<callout-box>` with a blue border alongside an embedded {@example} code block."
+  alt="The cupertino_ui documentation on pub.dev displaying a 'callout-box' element with a blue border alongside an embedded '{@example}' code block."
+  caption="The cupertino_ui documentation on pub.dev displaying a `<callout-box>` with a blue border alongside an embedded `{@example}` code block."
 />
 
 Behind the scenes, pub.dev also deployed a
