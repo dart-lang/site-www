@@ -1224,7 +1224,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** use `Future.syncValue` when the argument is synchronous.\n\n**BAD:**\n```dart\nFuture<int> f() => Future.value(1);\n```\n\n**GOOD:**\n```dart\nFuture<int> f() => Future.value(1);\n```",
+    "details": "**DO** use `Future.syncValue` when the argument is synchronous.\n\n**BAD:**\n```dart\nFuture<int> f() => Future.value(1);\n```\n\n**GOOD:**\n```dart\nFuture<int> f() => Future.syncValue(1);\n```",
     "sinceDartSdk": "3.14"
   },
   {
