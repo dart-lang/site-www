@@ -7,12 +7,22 @@ description: >-
 ---
 
 When developing and publishing Dart packages, adhering to
-[Semantic Versioning][semver] is essential for maintaining a healthy
+[Semantic Versioning][semver] helps creating a healthy
 and predictable package ecosystem.
 
-This guide provides a detailed reference on how various changes to your Dart
-code affect the public API surface of your package and what version bump
-is required.
+Any Dart package provides a set of features - but with that comes also a
+contract that the user can rely on this set of features to continue working.
+Packages sometimes get changed, and there are two categories of changes:
+Adding or removing functionality. Some changes do one or the other, some do
+both.
+While removing functionality may sometimes be necessary, doing so violates the
+contract with the user. To accomodate for this, Dart uses semantic versioning
+to help a user in recognizing whether a new version of a package adheres to the
+old or is presenting a new contract.
+
+This guide provides a detailed reference on which changes to your Dart code
+affect the public API surface of your package and what version bump is
+required.
 
 :::tip
 For a conceptual overview of pub's version solving algorithm and lockfiles,
@@ -21,7 +31,8 @@ see the [Package versioning](/tools/pub/versioning) guide.
 
 ## Semantic versioning and `package:pub_semver`
 
-Dart's package manager, pub, follows [Semantic Versioning 2.0.0][semver] as implemented by [`package:pub_semver`][pub_semver].
+Dart's package manager, pub, follows [Semantic Versioning 2.0.0][semver] as
+implemented by [`package:pub_semver`][pub_semver].
 
 A standard version number is formatted as `MAJOR.MINOR.PATCH`, such as `1.2.3`:
 
@@ -31,11 +42,17 @@ A standard version number is formatted as `MAJOR.MINOR.PATCH`, such as `1.2.3`:
 
 ### Pre-1.0.0 versions
 
-While standard SemVer 2.0.0 allows any change before version `1.0.0`, pub and [`pub_semver`][pub_semver] enforce a stricter convention so that consumers can safely depend on pre-1.0.0 packages using [caret syntax](/tools/pub/dependencies#caret-syntax):
+While standard SemVer 2.0.0 allows any change before version `1.0.0`, pub and
+[`pub_semver`][pub_semver] enforce a stricter convention so that consumers can
+safely depend on pre-1.0.0 packages using
+[caret syntax](/tools/pub/dependencies#caret-syntax):
 
 * **`0.y.z` versions where $y > 0$, such as `0.2.0`:**
-  * Bumping `y` from `0.2.0` to `0.3.0` is treated as a **breaking change**, which is equivalent to a major bump.
-  * Bumping `z` from `0.2.0` to `0.2.1` is treated as a **backward-compatible change**, which is equivalent to a minor or patch bump.
+  * Bumping `y` from `0.2.0` to `0.3.0` is treated as a **breaking change**,
+    which is equivalent to a major bump.
+  * Bumping `z` from `0.2.0` to `0.2.1` is treated as a
+    **backward-compatible change**, which is equivalent to a minor or patch
+    bump.
   * Caret syntax `^0.2.0` allows `>=0.2.0 <0.3.0`.
 * **`0.0.z` versions, such as `0.0.1`:**
   * Bumping `z` from `0.0.1` to `0.0.2` is treated as a **breaking change**.
