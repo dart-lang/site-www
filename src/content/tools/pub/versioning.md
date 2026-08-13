@@ -194,7 +194,7 @@ For simplicity's sake, avoid using `+` after the version reaches `1.0.0`.
 
 :::tip
 For a detailed guide on what constitutes a breaking change versus a minor
-or patch update across Dart language features, see
+or patch update across Dart language features, check out
 [SemVer compatibility and breaking changes][semver-rules].
 :::
 
