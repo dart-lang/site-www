@@ -3,13 +3,13 @@ title: "Bringing Primary Constructors to Dart"
 description: "An inside look at the design decisions, trade-offs, and syntactic sugar behind adding primary constructors to Dart 3.13."
 publishDate: 2026-08-20
 author: munificent
-image: images/hero.webp
+image: images/dash-primary-constructors.webp
 category: deep-dive
 layout: blog
 ---
 
 <DashImage
-  src="images/hero.webp"
+  src="images/dash-primary-constructors.webp"
   alt="Illustration of Dash with blueprint drawing of primary constructor syntax."
   caption="Bringing primary constructors to Dart"
 />
