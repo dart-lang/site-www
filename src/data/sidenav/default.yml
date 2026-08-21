@@ -182,6 +182,8 @@
           permalink: /tools/pub/security-advisories
         - title: Versioning
           permalink: /tools/pub/versioning
+        - title: SemVer rules
+          permalink: /tools/pub/semver-rules
         - title: Custom package repositories
           permalink: /tools/pub/custom-package-repositories
         - title: What not to commit
