@@ -29,6 +29,7 @@ Use these packages for a wide range of projects.
 | [characters][] | Manipulates strings for user-perceived characters (Unicode grapheme clusters). | String.characters, Characters, CharacterRange |
 | [cronet_http][] | Provides access to the Android [Cronet][cronet] HTTP client using the same interface as `package:http`. | |
 | [cupertino_http][] | Provides access to Apple's [Foundation URL Loading System][furl] using the same interface as `package:http`. | |
+| [genkit][] | Builds full-stack, AI-powered applications and agentic workflows. | Genkit, googleAI, anthropic |
 | [http][] | Provides set of high-level functions and classes to simplify consuming HTTP resources. | delete(), get(), post(), read() |
 | [intl][] | Internationalization and localization facilities, with support for plurals and genders, date and number formatting and parsing, and bidirectional text. | Bidi, DateFormat, MicroMoney, TextDirection |
 | [json_serializable][] | Generates JSON manipulation code. To learn more, consult [JSON Support](/libraries/serialization/json). | @JsonSerializable |
@@ -46,6 +47,7 @@ Use these packages for a wide range of projects.
 [characters]: {{pubpkg}}/characters
 [cronet_http]: {{pubpkg}}/cronet_http
 [cupertino_http]: {{pubpkg}}/cupertino_http
+[genkit]: {{pubpkg}}/genkit
 [http]: {{pubpkg}}/http
 [intl]: {{pubpkg}}/intl
 [json_serializable]: {{pubpkg}}/json_serializable
@@ -110,3 +112,12 @@ or search the pub.dev site for [web packages][pkgsearch].
 To learn more about CLI or server packages,
 See [Command-line and server libraries and packages](/server/libraries).
 Or use the pub.dev site to [search for other packages.]({{pub}})
+
+### AI packages
+
+To learn more about building generative AI applications and agentic workflows,
+consult [Genkit Dart][genkit-docs]
+or search the pub.dev site for [AI packages][aisearch].
+
+[genkit-docs]: https://genkit.dev/docs/dart/get-started/
+[aisearch]: {{pub}}?q=topic%3Aai
