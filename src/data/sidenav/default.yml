@@ -232,6 +232,8 @@
 - title: Interoperability
   expanded: false
   children:
+  - title: Overview
+    permalink: /interop
   - title: C interop
     permalink: /interop/c-interop
   - title: Objective-C & Swift interop
@@ -351,6 +353,8 @@
 - title: Build with AI
   expanded: false
   children:
+    - title: Overview
+      permalink: /ai
     - title: Dart and Flutter MCP server
       permalink: https://docs.flutter.dev/ai/mcp-server
     - title: Genkit for Dart
