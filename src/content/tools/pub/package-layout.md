@@ -46,6 +46,8 @@ might look like:
     - src/
       - beans.dart
       - queso.dart
+  - skills/
+    - some-skill/SKILL.md
   - test/
     - enchilada_test.dart
     - tortilla_test.dart
@@ -200,9 +202,10 @@ Change all calls to `sayHello()` to instead be to `sayHi()`.
 
 ## Public directories
 
-Two directories in your package are public to other packages: `lib` and
-`bin`. You place [public libraries](#public-libraries) in `lib` and
-[public tools](#public-tools) in `bin`.
+Three directories in your package are public to other packages: `lib` and
+`bin`. You place [public libraries](#public-libraries) in `lib`,
+[public tools](#public-tools) in `bin`, and
+[Agent Skills](https://agentskills.io/) in `skills`.
 
 ### Public libraries
 
@@ -308,6 +311,18 @@ for consumers of the package to use.
 
 These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
+
+
+## Public Agent Skills
+
+Guides or other skills for AI Agents should be placed under the `skills`
+directory, using the normal [Agent Skills](https://agentskills.io/)
+structure.
+
+When you users run the [skills cli](https://pub.dev/packages/skills) it will
+search in this directory and surface all your skills for them to install.
+This makes it trivial to distribute your official skills, matched up to the
+specific version of your package that your users are actually using.
 
 
 ## Implementation files
