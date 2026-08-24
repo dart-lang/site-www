@@ -202,8 +202,8 @@ Change all calls to `sayHello()` to instead be to `sayHi()`.
 
 ## Public directories
 
-Three directories in your package are public to other packages: `lib` and
-`bin`. You place [public libraries](#public-libraries) in `lib`,
+Three directories in your package are public to other packages: `lib`, `bin`,
+and `skills`. You place [public libraries](#public-libraries) in `lib`,
 [public tools](#public-tools) in `bin`, and
 [Agent Skills](https://agentskills.io/) in `skills`.
 
@@ -319,7 +319,7 @@ Guides or other skills for AI Agents should be placed under the `skills`
 directory, using the normal [Agent Skills](https://agentskills.io/)
 structure.
 
-When you users run the [skills cli](https://pub.dev/packages/skills) it will
+When users run the [skills cli](https://pub.dev/packages/skills) it will
 search in this directory and surface all your skills for them to install.
 This makes it trivial to distribute your official skills, matched up to the
 specific version of your package that your users are actually using.
