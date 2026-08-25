@@ -10,6 +10,10 @@ Explore tools and frameworks to build AI-powered apps with Dart
 and enhance your development workflow with AI assistants.
 
 <div class="card-grid">
+  <Card title="Package skills" link="/ai/package-skills">
+    Install, manage, and use AI agent skills provided by Dart and Flutter
+    packages.
+  </Card>
   <Card title="Dart and Flutter MCP server" link="{{site.flutter-docs}}/ai/mcp-server">
     Connect AI coding assistants to your Dart and Flutter development
     environment.
