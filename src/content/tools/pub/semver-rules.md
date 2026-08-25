@@ -970,6 +970,15 @@ void setPadding(int padding) {}
 void setPadding(num padding) {} // Safe: callers can now pass int or double without breaking existing callers.
 ```
 
+:::note Tear-offs and widened parameter types
+Widening a parameter type changes the static type of a tear-off. Because
+function parameters are contravariant, tearing off a function with a widened
+parameter type (like `void Function(Object)`) can prevent assigning narrower
+callbacks into an inferred variable (like `var callback = doStuff; callback =
+(String s) {};`). In practice, such situations are rare, and widening parameter
+types on top-level functions is treated as non-breaking.
+:::
+
 #### MINOR: Change the default value of an optional parameter
 
 Does not break compilation or static type checks, but alters runtime behavior
@@ -1262,6 +1271,18 @@ extension NumberUtils on num { // Widened from `on int` to `on num`: all existin
   num doubleValue() => this * 2;
 }
 ```
+
+:::note Extension ambiguity and name collisions
+Widening an extension's target type (or adding a new extension) can
+occasionally introduce static ambiguity if a downstream consumer already has
+another extension with the same member name in scope, because Dart's extension
+resolution rules may now rank them with equal specificity.
+
+In SemVer, potential naming collisions and resolution ambiguities in downstream
+wildcard scopes are treated as non-breaking (`MINOR`), because consumers can
+disambiguate them using explicit extension invocation syntax (such as
+`NumberUtils(x).doubleValue()`) or `hide` directives.
+:::
 
 ---
 
