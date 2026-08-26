@@ -315,9 +315,8 @@ in there and organize it with subdirectories however you like.
 
 ## Public Agent Skills
 
-Guides or other skills for AI Agents should be placed under the `skills`
-directory, using the normal [Agent Skills](https://agentskills.io/)
-structure.
+Place skills and instructions for AI agents in the `skills` directory,
+following the [Agent Skills specification][agentskills].
 
 When users run the [`skills` CLI]({{site.pub-pkg}}/skills),
 it searches this directory and surfaces available skills to install.
