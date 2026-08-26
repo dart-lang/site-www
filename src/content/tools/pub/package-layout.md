@@ -47,7 +47,8 @@ might look like:
       - beans.dart
       - queso.dart
   - skills/
-    - some-skill/SKILL.md
+   - some-skill/
+      - SKILL.md
   - test/
     - enchilada_test.dart
     - tortilla_test.dart
@@ -313,7 +314,7 @@ These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
 
 
-## Public Agent Skills
+### Public agent skills
 
 Place skills and instructions for AI agents in the `skills` directory,
 following the [Agent Skills specification][agentskills].
