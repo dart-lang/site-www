@@ -231,10 +231,3 @@ run `dart skills remove`:
 $ dart skills remove shelf:routing
 ```
 
-## Next steps
-
-* Learn how to create and distribute skills for your own packages
-  in [Ship skills with pub packages](/tools/pub/package-skills).
-* Review all subcommands and flags in the
-  [`dart skills` reference](/tools/dart-skills).
-* Learn more about Dart AI tooling in [Build with AI](/ai).
