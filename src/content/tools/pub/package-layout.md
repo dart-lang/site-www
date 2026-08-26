@@ -319,10 +319,12 @@ Guides or other skills for AI Agents should be placed under the `skills`
 directory, using the normal [Agent Skills](https://agentskills.io/)
 structure.
 
-When users run the [skills cli]({{site.pub-pkg}}/skills) it will
-search in this directory and surface all your skills for them to install.
-This makes it trivial to distribute your official skills, matched up to the
-specific version of your package that your users are actually using.
+When users run the [`skills` CLI]({{site.pub-pkg}}/skills),
+it searches this directory and surfaces available skills to install.
+This makes it easy to distribute official skills
+matched to the specific package version users have installed.
+
+[agentskills]: https://agentskills.io
 
 
 ## Implementation files
