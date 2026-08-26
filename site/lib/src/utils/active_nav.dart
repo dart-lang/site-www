@@ -17,6 +17,7 @@ ActiveNavEntry? activeNavEntry(String pageUrlPath) {
     'learn' || 'get-started' => ActiveNavEntry.learn,
     'get-dart' => ActiveNavEntry.getDart,
     'blog' => ActiveNavEntry.blog,
+    'ai' ||
     'deprecated' ||
     'docs' ||
     'effective-dart' ||
