@@ -1,29 +1,28 @@
 ---
-title: Install and use package skills
-shortTitle: Package skills
+title: Package skills
 description: >-
-  Learn how to install, manage, and use AI agent skills provided by
+  Learn how to discover, install, and manage AI agent skills provided by
   Dart and Flutter packages.
 ---
 
-AI coding assistants—such as Cursor, Gemini Code Assist, VS Code,
-JetBrains AI, and Claude Code—help you write, test, and refactor Dart code.
+AI coding agents, such as Cursor, Gemini, Claude Code, Cline, and Copilot,
+help you write, test, and refactor Dart code.
 To generate accurate, idiomatic code,
-these assistants rely on context about the libraries and packages
+these agents rely on context about the libraries and packages
 your project uses.
 
 **Package skills** allow package authors to distribute standardized,
 context-rich AI agent instructions directly with their pub packages.
-Using `dart skills` (or `dart run skills@`),
+Using the [`package:skills`]({{site.pub-pkg}}/skills) tool (`dart run skills@`),
 you can discover, install, and update skills for your project dependencies,
-enabling your AI assistants to write better code with fewer hallucinations.
+enabling your AI agents to write better code with fewer hallucinations.
 
 ## What are agent skills?
 
 An agent skill is a structured set of instructions, code examples,
 and best practices packaged alongside a library.
 Skills follow the open [Agent Skills specification][agentskills],
-which standardizes how AI coding tools discover and read instructions.
+which standardizes how AI coding agents discover and read instructions.
 
 A skill typically includes:
 
@@ -48,22 +47,24 @@ which means they might:
 * Hallucinate APIs that don't exist in the specific version you're using.
 
 When you install package skills,
-your AI assistant gains immediate, authoritative knowledge
+your AI agent gains immediate, authoritative knowledge
 written and maintained by the package authors themselves.
 
-## Discover and install skills
+## Install skills for dependencies
 
-You can automatically discover skills available in your dependencies,
-or install skills from specific packages, Git repositories, and local paths.
-
-### Auto-discover skills from dependencies
-
-When you run `dart skills` (or `dart run skills@`) in a project directory,
-the tool scans your immediate dependencies in `pubspec.yaml`
-for packages that vend a `skills/` directory:
+To install and update skills provided by your project's dependencies,
+use `dart run skills@ get` (or run `dart run skills@` directly):
 
 ```console
-$ dart skills
+$ dart run skills@ get
+```
+
+When run in a project directory,
+the tool scans your immediate dependencies in `pubspec.yaml`
+for packages that vend a `skills/` directory and prompts you
+to select which skills to install:
+
+```console
 Scanning dependencies for available skills...
 ? Select skills to install:
   [x] shelf: routing - Define and handle HTTP routes
@@ -74,69 +75,55 @@ Scanning dependencies for available skills...
 Use the arrow keys and spacebar to select the skills you want to install,
 then press <kbd>Enter</kbd>.
 
-:::tip
-If your Dart SDK does not yet include `dart skills` as a built-in command,
-invoke it directly with `dart run`:
-
-```console
-$ dart run skills@
-```
-:::
-
 ### Install skills from a specific package
 
-To install skills provided by a specific package dependency,
-use `dart skills add`:
+To install or update skills from a single package dependency,
+use the `-p` (or `--package`) option:
 
 ```console
-$ dart skills add shelf
+$ dart run skills@ get -p <package_name>
 ```
 
-#### Install all skills non-interactively
+### Install a specific skill
 
-To install all skills provided by a package without an interactive prompt,
-pass the `--all` flag:
+To install a specific skill by name,
+use the `-s` (or `--skill`) option:
 
 ```console
-$ dart skills add shelf --all
+$ dart run skills@ get -p <package_name> -s <skill_name>
 ```
 
-#### Install a specific skill directly
+### Install all skills non-interactively
 
-To install a single skill by name,
-append the skill name after a colon (`:`):
+To install all available skills from all dependency sources
+without interactive prompts, pass the `-a` (or `--all`) flag:
 
 ```console
-$ dart skills add shelf:routing
+$ dart run skills@ get --all
 ```
 
-### Install from a Git repository
+## Install skills from a Git repository
 
-You can install skills directly from any Git repository,
-even if the repository is not published to pub.dev:
+You can also install skills directly from any Git repository,
+even if the repository is not published on pub.dev,
+using `dart run skills@ add`:
 
 ```console
-$ dart skills add --git https://github.com/my-org/my_package
+$ dart run skills@ add <git_repository_url>
 ```
 
-You can also specify a git ref (branch, tag, or commit) or subdirectory:
+To install all skills from the Git repository without prompting,
+add the `--all` flag:
 
 ```console
-$ dart skills add --git https://github.com/my-org/my_package --git-ref main --git-path packages/sub_package
+$ dart run skills@ add <git_repository_url> --all
 ```
 
-### Install from a local path
+Once added as a source,
+you can update skills from your configured Git repositories at any time
+by running `dart run skills@ get`.
 
-To install skills from a local directory during package development,
-use the `--path` flag:
-
-```console
-$ dart skills add --path ../local_package
-```
-
-## Where skills and metadata are stored
-
-### Installed skills (`.agents/skills/`)
+## Skill directory structure
 
 When you install skills,
 they are copied into your project's `.agents/skills/` directory:
@@ -150,37 +137,22 @@ my_project/
 │       └── dio-error-handling/
 │           ├── SKILL.md
 │           └── examples/
-├── .dart_tool/
-│   └── skills/
-│       └── manifest.json
 ├── lib/
 ├── test/
 └── pubspec.yaml
 ```
 
-Popular AI coding assistants automatically scan `.agents/skills/`
+Popular AI coding agents automatically scan `.agents/skills/`
 in your workspace.
 Once installed, the skills are immediately available
-to your assistant during code generation, refactoring, and chat.
-
-### Skill manifest and tracking (`.dart_tool/skills/`)
-
-To support updating and detecting local modifications,
-`dart skills` records metadata and content hashes of installed skills
-in the project-specific `.dart_tool/skills/` directory.
-
-:::note
-The `.dart_tool/` directory contains generated cache files and is
-ignored by Git by default.
-For more information, see [What not to commit](/tools/pub/private-files).
-:::
+to your agent during code generation, refactoring, and chat.
 
 ### Version control recommendations
 
 We recommend committing the `.agents/skills/` directory to source control.
 Checking in skills ensures that:
 
-* All team members share the same AI assistant guidelines.
+* All team members and agents share the same AI agent guidelines.
 * CI/CD workflows and automated agents have access to the same skill context.
 * Skill versions stay aligned with your project's dependency versions.
 
@@ -188,17 +160,11 @@ Checking in skills ensures that:
 
 As packages evolve, authors update their skills
 with new best practices and API changes.
-To update your installed skills to match the latest versions
+To update all installed skills to match the latest versions
 of your dependencies, run:
 
 ```console
-$ dart skills update
-```
-
-To update skills for a single package, specify the package name:
-
-```console
-$ dart skills update shelf
+$ dart run skills@ get
 ```
 
 ## Handle local modifications
@@ -206,28 +172,48 @@ $ dart skills update shelf
 One key advantage of agent skills is that you can edit them locally
 to customize instructions for your team's architecture or style.
 
-When you run `dart skills update`,
-the tool checks the content hash in `.dart_tool/skills/`
-to verify whether you have locally modified the installed `SKILL.md` files.
+When you run `dart run skills@ get`,
+`package:skills` tracks previously installed skills and detects changes
+to your local files before updating.
 
 If a local modification is detected:
-* `dart skills` alerts you that the skill has been modified locally.
+* `package:skills` alerts you that the skill has been modified locally.
 * You are prompted to choose whether to **overwrite** your local changes
   with the upstream version or **keep** your local customizations.
 
-To non-interactively overwrite local modifications during updates,
-use the `--force` flag:
+## Manage and remove skills
+
+### List installed skills
+
+To view all managed skills currently installed in your workspace,
+run `dart run skills@ list`:
 
 ```console
-$ dart skills update shelf --force
+$ dart run skills@ list
 ```
 
-## Remove installed skills
+### Prune skills from removed dependencies
 
-To remove installed skills from your `.agents/skills/` directory,
-run `dart skills remove`:
+If you remove a dependency from your `pubspec.yaml`,
+its skills might still remain in your `.agents/skills/` directory.
+To automatically remove skills for packages that are no longer dependencies,
+run `dart run skills@ prune`:
 
 ```console
-$ dart skills remove shelf:routing
+$ dart run skills@ prune
 ```
 
+### Remove specific skills
+
+To explicitly remove managed skills from your workspace,
+use `dart run skills@ remove`:
+
+```console
+$ dart run skills@ remove -p <package_name>
+```
+
+## Related links
+
+* [`package:skills` on pub.dev]({{site.pub-pkg}}/skills)
+* [Agent Skills specification][agentskills]
+* [Dart and Flutter MCP server]({{site.flutter-docs}}/ai/mcp-server)
