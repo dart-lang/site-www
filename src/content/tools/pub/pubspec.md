@@ -443,6 +443,7 @@ The field consists of a list of names. For example:
 topics:
   - network
   - http
+  - skills
 ```
 
 Pub.dev requires topics to follow these specifications:
@@ -457,6 +458,9 @@ Pub.dev requires topics to follow these specifications:
 
 When choosing topics, consider if [existing topics]({{site.pub}}/topics)
 are relevant. Tagging with existing topics helps users discover your package.
+If your package provides AI agent skills in a top-level `skills/` directory,
+include the `skills` topic to improve discoverability on pub.dev.
+To learn more, see [Ship skills with packages][].
 
 :::note
 Pub.dev merges different spellings of a topic into a canonical topic to
@@ -466,6 +470,7 @@ You can contribute to the list of canonical topics and their aliases
 by opening a pull request that edits the [`topics.yaml` file][] on GitHub.
 :::
 
+[Ship skills with packages]: /tools/pub/package-skills
 [`topics.yaml` file]: {{site.repo.dart.org}}/pub-dev/blob/master/doc/topics.yaml
 
 ### Ignored_advisories

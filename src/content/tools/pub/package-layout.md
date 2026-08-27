@@ -46,6 +46,9 @@ might look like:
     - src/
       - beans.dart
       - queso.dart
+  - skills/
+    - enchilada-cooking/
+      - SKILL.md
   - test/
     - enchilada_test.dart
     - tortilla_test.dart
@@ -553,6 +556,38 @@ of these hooks must be normal dependencies and not `dev_dependencies`.
 To learn more about how to define hooks, refer to the [build hooks][] documentation.
 
 [build hooks]: /tools/hooks
+
+## Skills
+
+<FileTree>
+
+- enchilada/
+  - skills/
+    - enchilada-cooking/
+      - SKILL.md
+
+</FileTree>
+
+Packages can provide [AI agent skills][] to teach AI coding agents
+how to use the package's APIs, architecture, and best practices.
+
+Each skill lives in a subdirectory under `skills/`
+and contains a `SKILL.md` file
+following the [Agent Skills specification][agentskills].
+To prevent naming collisions in consumer projects,
+each skill subdirectory name must begin with the package name
+followed by a hyphen (such as `enchilada-cooking`).
+
+When consumers depend on your package,
+they can install and update your skills using the `package:skills` tool
+(`dart run skills@ get`).
+
+To learn how to author, test, and publish skills with your package,
+see [Ship skills with packages][].
+
+[AI agent skills]: /ai/package-skills
+[Ship skills with packages]: /tools/pub/package-skills
+[agentskills]: https://agentskills.io
 
 ## Project-specific caching for tools
 
