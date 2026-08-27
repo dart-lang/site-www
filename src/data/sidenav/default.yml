@@ -322,6 +322,8 @@
       children:
         - title: build_runner
           permalink: /tools/build_runner
+        - title: package:skills
+          permalink: /tools/package-skills
         - title: webdev
           permalink: /tools/webdev
   - title: Static analysis
