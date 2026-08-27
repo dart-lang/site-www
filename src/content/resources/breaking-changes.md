@@ -94,7 +94,7 @@ don't include the section header.
   Dart now reserves both for
   [declaring parameters in primary constructors][primary constructors].
   Remove `final` or `var` from affected parameter declarations.
-  If you still want to avoid flag parameter reassignment,
+  If you still want to prevent parameter reassignment,
   you can use the [`parameter_assignments`][] lint rule.
 - Type promotion in inner generator functions has been [adjusted][62889].
 
