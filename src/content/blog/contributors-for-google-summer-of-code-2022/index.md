@@ -14,7 +14,7 @@ layout: blog
 
 [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) is a global program focused on bringing student developers into open source software development. Students are sponsored by Google to work with a mentoring open source organization on a 12+ week programming project during the summer. Over the past 17 years, more than 18,000 students have participated in Google Summer of Code.
 
-We’re excited to announce that Dart is a mentoring organization (for the third time!) in Google Summer of Code 2022. Check out the results posts to learn more about the great projects from [2020](https://medium.com/dartlang/google-summer-of-code-2020-results-a38cd072c9fe) and [2021](https://medium.com/dartlang/google-summer-of-code-2021-results-e514cce50fc).
+We’re excited to announce that Dart is a mentoring organization (for the third time!) in Google Summer of Code 2022. Check out the results posts to learn more about the great projects from [2020](/blog/google-summer-of-code-2020-results) and [2021](/blog/google-summer-of-code-2021-results).
 
 ### Are you interested?
 

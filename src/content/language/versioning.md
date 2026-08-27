@@ -43,7 +43,7 @@ To learn how and why the Dart team developed this versioning method,
 check out the [language versioning specification][].
 
 [null safety]: /null-safety
-[Gradual null safety migration for large Dart projects]: https://blog.dart.dev/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
+[Gradual null safety migration for large Dart projects]: /blog/gradual-null-safety-migration-for-large-dart-projects
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 

@@ -112,7 +112,7 @@ With the new Dart 3 capabilities covered, let’s turn to the breaking changes w
 
 ### Dart 3 type system: 100% sound null safety
 
-We introduced sound null safety in [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87) in 2021. In a sound typing system, you can trust the types, meaning a variable is *never* null when the types state that it isn’t. This raises productivity by catching issues during development rather than in production, and enables the Dart compilers to produce [smaller and more optimized code](https://medium.com/dartlang/dart-and-the-performance-benefits-of-sound-types-6ceedd5b6cdc). As we [discussed in December](https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa), Dart is unique in introducing 100% sound null safety to an existing language.
+We introduced sound null safety in [Dart 2.12](/blog/announcing-dart-2-12) in 2021. In a sound typing system, you can trust the types, meaning a variable is *never* null when the types state that it isn’t. This raises productivity by catching issues during development rather than in production, and enables the Dart compilers to produce [smaller and more optimized code](/blog/dart-and-the-performance-benefits-of-sound-types). As we [discussed in December](/blog/the-road-to-dart-3-a-fully-sound-null-safe-language), Dart is unique in introducing 100% sound null safety to an existing language.
 
 Since Dart 2.12, null safety has been a configuration option that could either be *on* or *off*. **In Dart 3, all code runs with sound null safety *on***. It is no longer possible to run apps without null safety or in a mixed mode with partial null safety.
 

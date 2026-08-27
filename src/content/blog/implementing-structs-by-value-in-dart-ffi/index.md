@@ -11,7 +11,7 @@ layout: blog
 
 ### A deep dive into API design and native calling conventions
 
-In the [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87) release, we extended our [C-interop feature, Dart FFI,](https://dart.dev/guides/libraries/c-interop) with the ability to [pass structs by value](https://github.com/dart-lang/sdk/issues/36730). This article talks about what it took to add this feature to the Dart SDK. If you’re interested in low-level language implementation details or in platform conventions for passing structs by value, keep reading.
+In the [Dart 2.12](/blog/announcing-dart-2-12) release, we extended our [C-interop feature, Dart FFI,](https://dart.dev/guides/libraries/c-interop) with the ability to [pass structs by value](https://github.com/dart-lang/sdk/issues/36730). This article talks about what it took to add this feature to the Dart SDK. If you’re interested in low-level language implementation details or in platform conventions for passing structs by value, keep reading.
 
 This article talks about both developing the API and figuring out the ABI (Application Binary Interface) for the struct-by-value feature. During the two years we worked on this feature (and other Dart FFI features), we discovered many constraints that required changing the API. The ABI journey was equally interesting, illustrating that you can take multiple approaches to nailing down the details of a hard problem.
 
@@ -149,7 +149,7 @@ Of course, having to write `&lt;Coordinate&gt;` on calling `load` is verbose. (H
 
 ### Extension methods to the rescue
 
-Dart 2.7 [introduced](https://medium.com/dartlang/dart-2-7-a3710ec54e97) extension methods. With extension methods, we could [pattern match](https://dart-review.googlesource.com/c/sdk/+/118992/14/sdk/lib/ffi/ffi.dart) on the type argument `T` in `Pointer&lt;T&gt;`:
+Dart 2.7 [introduced](/blog/announcing-dart-2-7-a-safer-more-expressive-dart) extension methods. With extension methods, we could [pattern match](https://dart-review.googlesource.com/c/sdk/+/118992/14/sdk/lib/ffi/ffi.dart) on the type argument `T` in `Pointer&lt;T&gt;`:
 
 ```dart
 extension StructPointer<T extends Struct> on Pointer<T> {

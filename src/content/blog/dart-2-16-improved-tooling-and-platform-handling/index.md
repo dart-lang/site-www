@@ -13,7 +13,7 @@ Today the Dart SDK version 2.16 is available. It has no new language features, b
 
 ## Dart 2.16
 
-The Dart 2.16 SDK, which launches today alongside [Flutter 2.10](https://medium.com/flutter/whats-new-in-flutter-2-10-5aafb0314b12), continues the transition from legacy Dart CLI tools (`dartfmt`, `dartdoc`, etc.) to the new combined [`dart`](https://dart.dev/tools/dart-tool) developer tool. The newly deprecated tools are `dartdoc` (use `dart doc`) and `dartanalyzer` (use `dart analyze`). In Dart 2.17 we plan on fully removing the `dartdoc`, `dartanalyzer`, and `pub` commands (deprecated in Dart 2.15; use `dart pub` or `flutter pub`). For details, see [issue #46100](https://github.com/dart-lang/sdk/issues/46100).
+The Dart 2.16 SDK, which launches today alongside [Flutter 2.10]({{site.flutter-blog}}/whats-new-in-flutter-2-10), continues the transition from legacy Dart CLI tools (`dartfmt`, `dartdoc`, etc.) to the new combined [`dart`](https://dart.dev/tools/dart-tool) developer tool. The newly deprecated tools are `dartdoc` (use `dart doc`) and `dartanalyzer` (use `dart analyze`). In Dart 2.17 we plan on fully removing the `dartdoc`, `dartanalyzer`, and `pub` commands (deprecated in Dart 2.15; use `dart pub` or `flutter pub`). For details, see [issue #46100](https://github.com/dart-lang/sdk/issues/46100).
 
 The 2.16 release also includes a fix for one security vulnerability and two small breaking changes:
 
@@ -62,7 +62,7 @@ The new search UI has a search filter sidebar on the left, which you can use to 
 
 ## Null safety update
 
-It’s been a few releases since we last talked about null safety, the major language addition that launched a year ago in [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87). We’ve been astonished by the speed at which the Dart ecosystem has migrated packages to support null safety: As of today, 100% of the top 250 packages — and 96% of the top 1000 — support null safety! Thanks to all package authors who’ve contributed to this great achievement.
+It’s been a few releases since we last talked about null safety, the major language addition that launched a year ago in [Dart 2.12](/blog/announcing-dart-2-12). We’ve been astonished by the speed at which the Dart ecosystem has migrated packages to support null safety: As of today, 100% of the top 250 packages — and 96% of the top 1000 — support null safety! Thanks to all package authors who’ve contributed to this great achievement.
 
 We’ve also seen good progress on apps migrating to sound null safety (the state where the app code and all package dependencies have migrated). From our analytics, 71% of all run sessions in the Flutter tool now have fully sound null safety. If you’re an app developer and still haven’t migrated, now is a great time.
 

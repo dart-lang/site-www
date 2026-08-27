@@ -19,7 +19,7 @@ Hello from Google I/O 2023. Today, live from Mountain View, we’re announcing D
 
 ## 100% sound null safety
 
-Over the last four years, we’ve evolved Dart into a fast, portable, and modern language. Now with Dart 3, it is a 100% sound null safe language! As we’ve [discussed before](https://medium.com/dartlang/the-road-to-dart-3-afdd580fbefa), we don’t believe any other programming language has ever added sound null safety to an existing language. So, it’s been quite a journey.
+Over the last four years, we’ve evolved Dart into a fast, portable, and modern language. Now with Dart 3, it is a 100% sound null safe language! As we’ve [discussed before](/blog/the-road-to-dart-3-a-fully-sound-null-safe-language), we don’t believe any other programming language has ever added sound null safety to an existing language. So, it’s been quite a journey.
 
 <DashImage src="images/1KPbxBAjFYPCSk2OqwjKs7A.webp" alt="Dart 3 null safety timeline from the July 2020 technical preview to the May 2023 stable release." />
 
@@ -211,7 +211,7 @@ We’re excited to announce the first preview of Dart to Wasm compilation today!
 
 ## Closing
 
-Thanks for reading until the end. We hope this post has made you excited about Dart 3, available today in both the stand-alone [Dart SDK](https://dart.dev/get-dart) and in the [Flutter 3.10 SDK](https://medium.com/flutter/whats-new-in-flutter-3-10-b21db2c38c73).
+Thanks for reading until the end. We hope this post has made you excited about Dart 3, available today in both the stand-alone [Dart SDK](https://dart.dev/get-dart) and in the [Flutter 3.10 SDK]({{site.flutter-blog}}/whats-new-in-flutter-3-10).
 
 We’ve completed a major overhaul of the Dart language with sound null safety, and core library and tools cleanup. There are major new language features that make Dart more expressive and crisp with records and patterns. For large API surfaces, class modifiers enable detailed control. We’re also including a preview of the future with our coming support for WebAssembly.
 

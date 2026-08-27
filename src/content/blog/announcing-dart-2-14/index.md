@@ -122,20 +122,20 @@ Dart 2.14 also contains a number of smaller, [previously announced](https://gith
 
 ### [#46100](https://github.com/dart-lang/sdk/issues/46100): Deprecation of stagehand, dartfmt, and dart2native
 
-In the October 2020 [Dart 2.10 blog post](https://medium.com/dartlang/announcing-dart-2-10-350823952bd5), we announced our work to combine all the Dart CLI developer tools into a single, combined `dart` tool (similar to the `flutter` tool). As part of that evolution, Dart 2.14 deprecated the former `dartfmt` and `dart2native` commands, and discontinued `stagehand`. These tools all have equivalent replacements in the [unified `dart` tool](https://dart.dev/tools/dart-tool).
+In the October 2020 [Dart 2.10 blog post](/blog/announcing-dart-2-10), we announced our work to combine all the Dart CLI developer tools into a single, combined `dart` tool (similar to the `flutter` tool). As part of that evolution, Dart 2.14 deprecated the former `dartfmt` and `dart2native` commands, and discontinued `stagehand`. These tools all have equivalent replacements in the [unified `dart` tool](https://dart.dev/tools/dart-tool).
 
 ### [#45451](https://github.com/dart-lang/sdk/issues/45451): Deprecation of VM Native Extensions
 
-We’ve deprecated the Dart VM’s Native Extensions, our older mechanism for calling native code from Dart code. Dart [FFI](https://dart.dev/guides/libraries/c-interop) (foreign function interface) is our current mechanism for this use case, and we’re actively [evolving](https://medium.com/dartlang/announcing-dart-2-13-c6d547b57067) that to be even more powerful and easy to use.
+We’ve deprecated the Dart VM’s Native Extensions, our older mechanism for calling native code from Dart code. Dart [FFI](https://dart.dev/guides/libraries/c-interop) (foreign function interface) is our current mechanism for this use case, and we’re actively [evolving](/blog/announcing-dart-2-13) that to be even more powerful and easy to use.
 
 ## Null safety update
 
-We launched sound null safety in March in the [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87) release. Null safety is Dart’s latest major productivity feature, intended to help you avoid null errors — a class of bugs that are often hard to spot.
+We launched sound null safety in March in the [Dart 2.12](/blog/announcing-dart-2-12) release. Null safety is Dart’s latest major productivity feature, intended to help you avoid null errors — a class of bugs that are often hard to spot.
 
 Since our last update, we’ve seen great progress on migrations of existing packages and apps to enable the sound checking benefits of null safety. For packages on pub.dev, 100% of the top-250 packages now support null safety, and 94% of the top-1000 support it. This means that more developers can run their apps with full [sound null safety](https://dart.dev/null-safety/unsound-null-safety#sound-and-unsound-null-safety). Analytics show that 56% of `flutter run` sessions execute with full soundness. Thanks to all developers in the ecosystem for your migration work!
 
 ## 2.14 availability and continued momentum
 
-The enhanced Dart SDK containing the above changes is available today in the Dart 2.14.1 and [Flutter 2.5](https://medium.com/flutter/whats-new-in-flutter-2-5-6f080c3f3dc) SDKs. We hope you’ll enjoy the new enhancements and features.
+The enhanced Dart SDK containing the above changes is available today in the Dart 2.14.1 and [Flutter 2.5]({{site.flutter-blog}}/whats-new-in-flutter-2-5) SDKs. We hope you’ll enjoy the new enhancements and features.
 
 Also, we want to take the opportunity to extend our thanks to the awesome Dart community. As witnessed through a number of recent updates to programming language surveys, the Dart momentum is strong. The well-respected [RedMonk ranking](https://redmonk.com/sogrady/2021/08/05/language-rankings-6-21/) mentions *“Dart’s remarkable ascent”* and places Dart in the top 20 for the first time. StackOverflow’s comprehensive [2021 Developer Survey](https://insights.stackoverflow.com/survey/2021#technology-most-loved-dreaded-and-wanted) was equally delightful to read: Dart was reported to be the 7th most Loved programming language by developers. We’re truly delighted to see the Dart platform have continued growth and momentum.

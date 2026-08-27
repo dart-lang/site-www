@@ -49,9 +49,8 @@ Future<Set<String>> get allLintNames async {
 }
 
 Future<void> fetchAndUpdate() async {
-  final formattedRuleInfo = const JsonEncoder.withIndent(
-    '  ',
-  ).convert(await _lintDocs);
+  final formattedRuleInfo = const JsonEncoder.withIndent('  ')
+      .convert(await _lintDocs);
 
   File(_outputPath).writeAsStringSync('$formattedRuleInfo\n');
 }

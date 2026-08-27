@@ -5,10 +5,11 @@ To install the Dart SDK, use [Homebrew][].
 
 1. Install Homebrew if needed.
 
-1. Add the [official tap][tap].
+1. Add and trust the [official tap][tap].
 
    ```console
    $ brew tap dart-lang/dart
+   $ brew trust dart-lang/dart
    ```
 
 1. Install the Dart SDK.

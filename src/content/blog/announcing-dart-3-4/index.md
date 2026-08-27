@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-Dart 3.4 is out today! This release showcases the joint efforts of Dart and Flutter together in the [Flutter 3.22 / Dart 3.4 / IO24](https://medium.com/flutter/io24-5e211f708a37) post, so make sure to get the full scoop there. This post introduces our support for WebAssembly, and then details one of the major roadmap items for the Dart language this year: *macros.*
+Dart 3.4 is out today! This release showcases the joint efforts of Dart and Flutter together in the [Flutter 3.22 / Dart 3.4 / IO24]({{site.flutter-blog}}/landing-flutter-3-22-and-dart-3-4-at-google-i-o-2024) post, so make sure to get the full scoop there. This post introduces our support for WebAssembly, and then details one of the major roadmap items for the Dart language this year: *macros.*
 
 <DashImage src="images/0hAcsCFLU0Ze7pej6.webp" alt="Dart 3.4 release banner with the Dart logo and a bullseye icon." />
 
@@ -93,4 +93,4 @@ As always, this release contains all of the continuous developments that go into
 
 * Addressed a handful of inadequacies to improve the new *`*dart:js_interop` library.
 
-Check out the [Changelog](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#340) for the full story! Don’t forget to read the joint [Dart and Flutter blog post](https://medium.com/flutter/io24-5e211f708a37) for this release for the full story of our joint efforts!
+Check out the [Changelog](https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#340) for the full story! Don’t forget to read the joint [Dart and Flutter blog post]({{site.flutter-blog}}/landing-flutter-3-22-and-dart-3-4-at-google-i-o-2024) for this release for the full story of our joint efforts!

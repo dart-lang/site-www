@@ -16,7 +16,7 @@ The theme for this release is *developer productivity*. We’ve made the Dart la
 
 ## Macros update
 
-We recently posted updates in the [issue tracker](https://github.com/dart-lang/language/issues/1482#issuecomment-2622895490), as well as a [blog post](https://medium.com/dartlang/an-update-on-dart-macros-data-serialization-06d3037d4f12), stating that we’re stopping work on our experimental macros feature. We’d like to thank the community for being so understanding of this unfortunate outcome.
+We recently posted updates in the [issue tracker](https://github.com/dart-lang/language/issues/1482#issuecomment-2622895490), as well as a [blog post](/blog/an-update-on-dart-macros-data-serialization), stating that we’re stopping work on our experimental macros feature. We’d like to thank the community for being so understanding of this unfortunate outcome.
 
 With this change, however, the team gains back some capacity to invest in other valuable developments. We’re already looking into [improvements to build_runner performance](https://github.com/dart-lang/build/issues/3800), we still expect to launch the [augmentations language feature](https://github.com/dart-lang/language/blob/main/working/augmentation-libraries/feature-specification.md) (perhaps in a slightly different form), and we hope to find new and more direct ways for supporting modeling data and handling [serialization and deserialization](https://github.com/dart-lang/language/issues/4232) (to and from JSON, for example).
 
@@ -142,7 +142,7 @@ You can find more details about all of these, and much more, in the full list of
 
 ## Moving forward on the Dart web platform
 
-A year ago, we introduced [new libraries and packages](https://medium.com/dartlang/dart-3-3-325bf2bf6c13) for interoperating with JavaScript and browser APIs from Dart. Going forward, the primary JavaScript library is [`dart:js_interop`](https://api.dart.dev/dart-js_interop/dart-js_interop-library.html). For browser APIs, use [`package:web`](https://pub.dev/packages/web).
+A year ago, we introduced [new libraries and packages](/blog/new-in-dart-3-3-extension-types-javascript-interop-and-more) for interoperating with JavaScript and browser APIs from Dart. Going forward, the primary JavaScript library is [`dart:js_interop`](https://api.dart.dev/dart-js_interop/dart-js_interop-library.html). For browser APIs, use [`package:web`](https://pub.dev/packages/web).
 
 As part of our continued effort to move the Dart and Flutter ecosystems to WebAssembly-compatible APIs, we are deprecating the associated legacy APIs in the Dart SDK. Seven Dart SDK libraries are deprecated in the Dart 3.7 release:
 
@@ -162,7 +162,7 @@ We plan to remove these libraries at the end of 2025. You can learn about their 
 
 ## New productivity features on the pub.dev package site
 
-In December we launched [download counts for packages](https://medium.com/dartlang/announcing-dart-3-6-778dd7a80983) on pub.dev. These show monthly downloads along with a small chart showing weekly downloads over time.
+In December we launched [download counts for packages](/blog/announcing-dart-3-6) on pub.dev. These show monthly downloads along with a small chart showing weekly downloads over time.
 
 Today, we are extending that with support for viewing download counts per package version. It’s now possible to get an indication of how many consumers of a package have upgraded to the latest version (or just the latest major version). These insights are meant to help package authors gauge the value of back-porting fixes to older major versions of a package.
 
@@ -190,4 +190,4 @@ Users browsing pub.dev can click on topics to browse related packages. We previo
 
 ## Wrap up
 
-That’s all we have today for Dart 3.7. As always, please let us know what you think! And don’t forget to check out the blog post for today’s [Flutter 3.29 release](https://medium.com/flutter/f90c380c2317) as well. See you next time!
+That’s all we have today for Dart 3.7. As always, please let us know what you think! And don’t forget to check out the blog post for today’s [Flutter 3.29 release]({{site.flutter-blog}}/whats-new-in-flutter-3-29) as well. See you next time!

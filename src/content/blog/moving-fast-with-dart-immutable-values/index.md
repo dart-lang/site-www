@@ -8,7 +8,7 @@ layout: blog
 ---
 
 
-Dart’s [built_value](https://github.com/google/built_value.dart) provides powerful, convenient immutable values for Dart. The values might be immutable, but the package hasn’t been standing still! In the six months since I [last wrote about](https://medium.com/dartlang/darts-built-value-for-immutable-object-models-83e2497922d4) built_value there have been ten major improvements to the package.
+Dart’s [built_value](https://github.com/google/built_value.dart) provides powerful, convenient immutable values for Dart. The values might be immutable, but the package hasn’t been standing still! In the six months since I [last wrote about](/blog/darts-built-value-for-immutable-object-models) built_value there have been ten major improvements to the package.
 
 I also spotted some interesting uses of built_value in the Dart community:
 

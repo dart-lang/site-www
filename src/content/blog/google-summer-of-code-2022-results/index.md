@@ -14,7 +14,7 @@ The [Google Summer of Code](https://summerofcode.withgoogle.com/) (GSoC) program
 <DashImage src="images/1tzmsHv4_tAl7Nil6XZaANw.webp" alt="The logos for Google Summer of Code and Dart side-by-side." />
 
 
-In 2022, Dart have participated as mentoring organization in Google Summer of Code for a third consecutive year. Following our [call for proposals in March](https://medium.com/dartlang/contributors-for-google-summer-of-code-2022-17e777f043f0), we received 50 project proposals from prospective participants around the world. Today, we spotlight some of the projects we mentored this summer. The contributors describe their projects in this post.
+In 2022, Dart have participated as mentoring organization in Google Summer of Code for a third consecutive year. Following our [call for proposals in March](/blog/contributors-for-google-summer-of-code-2022), we received 50 project proposals from prospective participants around the world. Today, we spotlight some of the projects we mentored this summer. The contributors describe their projects in this post.
 
 ## JNI Interop for Dart
 
@@ -61,4 +61,4 @@ The project provides tools that summarize a portion of the public API of a given
 
 The public API summary model allows for a range of other interesting static analysis applications. We did not have time to explore them during GSoC. To learn more, refer to the [API Analysis blog post](https://arseny.uk/posts/gsoc2022/) about the project, challenges we faced, results gathered from running analysis on the pub.dev ecosystem, bugs we found in real packages, and a starting point for hacking on the project yourself.
 
-*Huge thanks to everyone who applied for Google Summer of Code 2022 with Dart, to the contributors who completed projects this year, and to the mentors who helped make this an awesome summer of code. If you’re interested in hearing more about Dart in Google Summer of Code, check out [our 2021 post](https://medium.com/dartlang/google-summer-of-code-2021-results-e514cce50fc).*
+*Huge thanks to everyone who applied for Google Summer of Code 2022 with Dart, to the contributors who completed projects this year, and to the mentors who helped make this an awesome summer of code. If you’re interested in hearing more about Dart in Google Summer of Code, check out [our 2021 post](/blog/google-summer-of-code-2021-results).*

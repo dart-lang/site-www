@@ -41,7 +41,7 @@ are now supported by [`package:web`][].
 None of the legacy interop libraries are supported when compiling to [Wasm][].
 :::
 
-[Dart 3.3]: https://blog.dart.dev/dart-3-3-325bf2bf6c13
+[Dart 3.3]: /blog/new-in-dart-3-3-extension-types-javascript-interop-and-more
 [`package:web`]: {{site.pub-pkg}}/web
 [`dart:html`]: {{site.dart-api}}/dart-html/
 [`dart:indexed_db`]: {{site.dart-api}}/dart-indexed_db/

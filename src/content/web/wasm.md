@@ -41,6 +41,33 @@ restrictions:
    contain a temporary workaround. For details, see
    [webdev issue 2206]({{site.repo.dart.org}}/webdev/issues/2296).
 
+:::note
+By default, compiled applications do not use [deferred loading][].
+Deferred loading in Wasm is experimental. To enable it, use the
+`--enable-deferred-loading` flag:
+
+```console
+$ dart compile wasm --enable-deferred-loading ...
+```
+
+Enabling deferred loading requires the app loader to supply a callback
+that loads the module bytes:
+
+```js
+const app = await compileStreaming(...); // or compile(...)
+const instantiatedApp = await app.instantiate({}, {
+  loadDeferredModules: (modules, handleModuleByteSource) => {
+    return Promise.all(
+      modules.map((m) => fetch(m).then((r) => handleModuleByteSource(m, r)))
+    );
+  },
+});
+instantiatedApp.invokeMain();
+```
+
+This is available from the 3.13 Dart stable release.
+:::
+
 ### Supported packages
 
 To find Wasm-compatible packages,
@@ -103,3 +130,5 @@ You can also try out this small example [here](https://github.com/mit-mit/sandbo
 [`dart:js_interop`]: {{site.dart.api}}/{{site.dart.sdk.channel}}/dart-js_interop 
 [migrated]: /interop/js-interop/package-web/
 [dhttpd]: {{site.pub-pkg}}/dhttpd
+[deferred loading]: /language/libraries#lazily-loading-a-library
+
