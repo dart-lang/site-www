@@ -214,6 +214,7 @@ $ dart run skills@ remove -p <package_name>
 
 ## Related links
 
+* [Ship skills with packages](/tools/pub/package-skills)
 * [`package:skills` on pub.dev]({{site.pub-pkg}}/skills)
 * [Agent Skills specification][agentskills]
 * [Dart and Flutter MCP server]({{site.flutter-docs}}/ai/mcp-server)

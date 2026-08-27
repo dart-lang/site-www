@@ -163,6 +163,8 @@
       permalink: /tools/pub/workspaces
     - title: Hooks
       permalink: /tools/hooks
+    - title: Ship skills with packages
+      permalink: /tools/pub/package-skills
     - title: Package reference
       expanded: false
       children:
