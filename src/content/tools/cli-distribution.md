@@ -88,7 +88,7 @@ If your tool attempts to:
 ### Recommended solution: package:cli_util
 
 To safely discover the host Dart SDK and locate the `dart` binary under both JIT and AOT compilation,
-use [`package:cli_util`](https://pub.dev/packages/cli_util) (version `^0.6.0` or later):
+use [`package:cli_util`]({{site.pub-pkg}}/cli_util) (version `^0.6.0` or later):
 
 ```yaml
 dependencies:
@@ -105,6 +105,9 @@ import 'package:cli_util/cli_util.dart';
 void runTool() {
   // 1. Get the path to the Dart SDK root directory (or null if not found)
   final String? sdk = sdkPath;
+  if (sdk != null) {
+    print('Found Dart SDK at: $sdk');
+  }
 
   // 2. Get the path to the host `dart` executable for subprocess spawning
   final String? dart = dartExecutable;
