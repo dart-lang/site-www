@@ -99,7 +99,7 @@ don't include the section header.
 - Type promotion in inner generator functions has been [adjusted][62889].
 
 [62889]: {{site.repo.dart.sdk}}/issues/62889
-[primary constructors]: /language/primary-constructors
+[primary constructors]: /language/primary-constructors#field-declarations-in-parameters
 [`parameter_assignments`]: /tools/linter-rules/parameter_assignments
 
 ### Libraries
