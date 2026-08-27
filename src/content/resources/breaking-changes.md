@@ -89,9 +89,18 @@ don't include the section header.
 
 ### Language
 
+- {{versioned}}
+  You can no longer use `final` or `var` on non-declaring parameters.
+  Dart now reserves both for
+  [declaring parameters in primary constructors][primary constructors].
+  Remove `final` or `var` from affected parameter declarations.
+  If you still want to avoid flag parameter reassignment,
+  you can use the [`parameter_assignments`][] lint rule.
 - Type promotion in inner generator functions has been [adjusted][62889].
 
 [62889]: {{site.repo.dart.sdk}}/issues/62889
+[primary constructors]: /language/primary-constructors
+[`parameter_assignments`]: /tools/linter-rules/parameter_assignments
 
 ### Libraries
 
