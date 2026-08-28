@@ -1,155 +1,84 @@
 ---
 title: "package:skills"
-description: Reference for the package:skills command-line tool.
+description: Command-line tool for managing AI agent skills in Dart projects.
 ---
 
-The [`package:skills`]({{site.pub-pkg}}/skills) tool
-discovers, installs, and manages AI agent skills
-for Dart and Flutter packages.
+The [`package:skills`]({{site.pub-pkg}}/skills) package provides
+command-line tools to discover, install, and manage AI agent skills
+for Dart and Flutter projects.
 
-You can execute `package:skills` directly using `dart run`:
+An agent skill is a structured set of instructions, code examples,
+and best practices following the [Agent Skills specification][agentskills].
+When installed in your workspace,
+AI coding agents, such as Cursor, Gemini, Claude Code, Cline, and Copilot,
+use these skills to write accurate,
+idiomatic code tailored to your dependencies.
+
+## Running package:skills
+
+To run `package:skills`, use the `dart run skills@` command:
 
 ```console
+$ # From the root of your Dart or Flutter project:
 $ dart run skills@ get
 ```
 
-## Global options
+To view all available commands and flags, run `dart run skills@ --help`.
 
-The following options apply to all `package:skills` commands:
+## Built-in commands
 
-`-h`, `--help`
-: Print usage information.
+The `package:skills` package includes the following commands:
 
-`-C`, `--directory=<dir>`
-: Run the command as if started in the specified directory.
+get
+: Discovers and installs skills provided by dependencies in `pubspec.yaml`.
+  Supports interactive selection, installing all skills (`--all`),
+  or targeting specific packages and skills (`-p <package>`, `-s <skill>`).
 
-`--version`
-: Print the tool version and exit.
+add
+: Adds an external Git repository as a skill source and installs its skills:
 
-## Commands
+  ```console
+  $ dart run skills@ add <git_repository_url>
+  ```
 
-### `skills get`
+create
+: Scaffolds a new skill directory and template for package authors:
 
-Installs or updates skills provided by dependencies in your `pubspec.yaml`.
-Running `dart run skills@` without a command
-is shorthand for `dart run skills@ get`.
+  ```console
+  $ dart run skills@ create -n <skill_name> -d "<skill_description>"
+  ```
 
-```console
-$ dart run skills@ get [options]
-```
+list
+: Displays all managed skills currently installed in your workspace:
 
-#### Options
+  ```console
+  $ dart run skills@ list
+  ```
 
-`-p`, `--package=<name>`
-: Install or update skills from the specified packages only.
+prune
+: Automatically removes skills for packages
+  that are no longer listed as dependencies in `pubspec.yaml`:
 
-`-s`, `--skill=<name>`
-: Only install the specified skills.
+  ```console
+  $ dart run skills@ prune
+  ```
 
-`-a`, `--all`
-: Install or update all available skills without prompting.
+remove
+: Removes specific installed skills from your workspace
+  (`-p <package>`, `-s <skill>`):
 
-`--git=<url>`
-: Update skills from the specified Git repositories only.
+  ```console
+  $ dart run skills@ remove -p <package_name>
+  ```
 
-`--agent=<agent>`
-: Target a specific AI coding agent.
-  Supported values: `antigravity`, `claude`, `cline`, `codex`,
-  `copilot`, `cursor`, `opencode`, `generic`.
+## More information
 
-### `skills add`
+To learn more about package skills workflows, see:
 
-Adds a Git repository as a skill source and installs skills from it.
-
-```console
-$ dart run skills@ add <git_repository_url> [options]
-```
-
-#### Options
-
-`-s`, `--skill=<name>`
-: Install the specified skills only.
-
-`-a`, `--all`
-: Install all skills from the Git repository without prompting.
-
-`--[no-]global`
-: Install the skills globally instead of in the current workspace.
-
-`--agent=<agent>`
-: Target a specific AI coding agent.
-
-### `skills create`
-
-Scaffolds a new skill directory and starter `SKILL.md` template
-for package authors.
-
-```console
-$ dart run skills@ create -n <name> -d "<description>"
-```
-
-#### Options
-
-`-n`, `--name=<name>`
-: The name of the skill to create (without the package prefix).
-
-`-d`, `--description=<text>`
-: A short description of what the skill does and when to activate it.
-
-### `skills list`
-
-Lists all managed skills currently installed in your workspace.
-
-```console
-$ dart run skills@ list
-```
-
-### `skills prune`
-
-Removes installed skills for packages that are no longer dependencies
-in your `pubspec.yaml`.
-
-```console
-$ dart run skills@ prune [options]
-```
-
-#### Options
-
-`-a`, `--all`
-: Prune all unused packages and empty sources without prompting.
-
-`--agent=<agent>`
-: Target a specific AI coding agent.
-
-### `skills remove`
-
-Removes selected managed skills from your workspace.
-
-```console
-$ dart run skills@ remove [options]
-```
-
-#### Options
-
-`-p`, `--package=<name>`
-: Remove skills for the specified packages.
-
-`-s`, `--skill=<name>`
-: Only remove the specified skills.
-
-`-a`, `--all`
-: Remove all managed skills from the workspace.
-
-`--git=<url>`
-: Remove skills from the specified Git repositories only.
-
-`--agent=<agent>`
-: Target a specific AI coding agent.
-
-## Related links
-
-* [Package skills](/ai/package-skills)
+* [Package skills user guide](/ai/package-skills)
+  (Installing and using skills in your development workflows)
 * [Ship skills with packages](/tools/pub/package-skills)
+  (Authoring and publishing skills with your packages)
 * [`package:skills` on pub.dev]({{site.pub-pkg}}/skills)
 * [Agent Skills specification][agentskills]
 
