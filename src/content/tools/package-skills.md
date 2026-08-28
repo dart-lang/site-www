@@ -16,7 +16,7 @@ idiomatic code tailored to your dependencies.
 
 ## Running package:skills
 
-To run `package:skills`, use the `dart run skills@` command:
+You run `package:skills` using the `dart run skills@ <command>` syntax:
 
 ```console
 $ # From the root of your Dart or Flutter project:
@@ -31,7 +31,8 @@ The `package:skills` package includes the following commands:
 
 get
 : Discovers and installs skills provided by dependencies in `pubspec.yaml`.
-  Supports interactive selection, installing all skills (`--all`),
+  Supports interactive selection (<kbd>Ctrl</kbd>+<kbd>A</kbd> to toggle all),
+  installing all skills without prompting (`--all`),
   or targeting specific packages and skills (`-p <package>`, `-s <skill>`).
 
 add

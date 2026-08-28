@@ -576,6 +576,7 @@ and contains a `SKILL.md` file
 following the [Agent Skills specification][agentskills].
 To prevent naming collisions in consumer projects,
 each skill subdirectory name must begin with the package name
+(or the package name with underscores replaced by hyphens)
 followed by a hyphen (such as `enchilada-cooking`).
 
 When consumers depend on your package,

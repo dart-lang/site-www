@@ -191,28 +191,12 @@ verify that your skills can be discovered and installed properly:
 
 [path dependency]: /tools/pub/dependencies#path-packages
 
-## Publish and tag on pub.dev
+## Publish on pub.dev
 
 When you publish your package with `dart pub publish`,
 the `skills/` directory is automatically bundled into the package archive.
-
-To help developers find packages that offer AI agent skills,
-add the `skills` topic to `pubspec.yaml`:
-
-```yaml
-name: my_package
-description: A powerful package for Dart developers.
-version: 1.0.0
-
-topics:
-  - skills
-  - server
-```
-
-Packages tagged with `skills` are indexed and discoverable in the
-[skills topic on pub.dev][pub-topics].
-
-[pub-topics]: https://pub.dev/packages?q=topic%3Askills
+Once published, consumers who depend on your package can install your skills
+by running `dart run skills@ get`.
 
 ## Best practices
 

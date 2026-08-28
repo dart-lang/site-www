@@ -13,7 +13,8 @@ your project uses.
 
 **Package skills** allow package authors to distribute standardized,
 context-rich AI agent instructions directly with their pub packages.
-Using the [`package:skills`]({{site.pub-pkg}}/skills) tool (`dart run skills@`),
+Using the [`package:skills`]({{site.pub-pkg}}/skills) command-line tool
+(invoked as `dart run skills@ <command>`),
 you can discover, install, and update skills for your project dependencies,
 enabling your AI agents to write better code with fewer hallucinations.
 
@@ -32,7 +33,8 @@ A skill typically includes:
 * **Tooling & workflow scripts**: Optional helper scripts and commands
   that an agent can execute to perform tasks or validate code.
 
-Skills are stored in your project's `.agents/skills/` directory,
+Skills are stored in your project's agent directory
+(such as `.agents/skills/`),
 where AI coding tools and agents automatically discover and use them.
 
 [agentskills]: https://agentskills.io
@@ -53,7 +55,7 @@ written and maintained by the package authors themselves.
 ## Install skills for dependencies
 
 To install and update skills provided by your project's dependencies,
-use `dart run skills@ get` (or run `dart run skills@` directly):
+use `dart run skills@ get`:
 
 ```console
 $ dart run skills@ get
@@ -72,7 +74,8 @@ Scanning dependencies for available skills...
   [x] dio: error-handling - Configure retry interceptors
 ```
 
-Use the arrow keys and spacebar to select the skills you want to install,
+Use the arrow keys and spacebar to select individual skills,
+or press <kbd>Ctrl</kbd>+<kbd>A</kbd> to select or deselect all skills,
 then press <kbd>Enter</kbd>.
 
 ### Install skills from a specific package
@@ -104,8 +107,7 @@ $ dart run skills@ get --all
 
 ## Install skills from a Git repository
 
-You can also install skills directly from any Git repository,
-even if the repository is not published on pub.dev,
+You can also install skills directly from any Git repository
 using `dart run skills@ add`:
 
 ```console
@@ -126,7 +128,8 @@ by running `dart run skills@ get`.
 ## Skill directory structure
 
 When you install skills,
-they are copied into your project's `.agents/skills/` directory:
+they are copied into the directory appropriate for your AI coding agent
+(such as `.agents/skills/`):
 
 ```plaintext
 my_project/
@@ -142,19 +145,19 @@ my_project/
 └── pubspec.yaml
 ```
 
-Popular AI coding agents automatically scan `.agents/skills/`
-in your workspace.
 Once installed, the skills are immediately available
 to your agent during code generation, refactoring, and chat.
 
-### Version control recommendations
+### Version control and .gitignore
 
-We recommend committing the `.agents/skills/` directory to source control.
-Checking in skills ensures that:
+Whether you commit installed skills depends on your team's workflow:
 
-* All team members and agents share the same AI agent guidelines.
-* CI/CD workflows and automated agents have access to the same skill context.
-* Skill versions stay aligned with your project's dependency versions.
+* **If you commit your skills directory** (such as `.agents/skills/`),
+  also commit the `.config/dart_skills/` directory so all team members
+  share the same skill definitions and update tracking.
+* **If you ignore your skills directory**,
+  also add `.config/dart_skills/` to `.gitignore`.
+  Each developer can then run `dart run skills@ get` in their local workspace.
 
 ## Update installed skills
 
@@ -167,7 +170,7 @@ of your dependencies, run:
 $ dart run skills@ get
 ```
 
-## Handle local modifications
+### Handle local modifications
 
 One key advantage of agent skills is that you can edit them locally
 to customize instructions for your team's architecture or style.
@@ -195,7 +198,7 @@ $ dart run skills@ list
 ### Prune skills from removed dependencies
 
 If you remove a dependency from your `pubspec.yaml`,
-its skills might still remain in your `.agents/skills/` directory.
+its skills might still remain in your agent's skills directory.
 To automatically remove skills for packages that are no longer dependencies,
 run `dart run skills@ prune`:
 
