@@ -9,6 +9,14 @@ class User(String name);
 
 // #enddocregion declaring-parameters
 
+// #docregion declaring-parameters-error
+// Valid: Primary constructor declaring parameter.
+class PointFinal(final int x, final int y);
+
+// Compile-time error in Dart 3.13+ (extraneous_modifier):
+void printValue(int x) => print(x);
+// #enddocregion declaring-parameters-error
+
 // #docregion initializer-scope
 class DeltaPoint(final int x, int delta) {
   // Accesses 'x' and 'delta' parameters directly!

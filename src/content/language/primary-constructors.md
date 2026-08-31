@@ -82,9 +82,26 @@ class Point(var int x, var int y);
 class User(String name);
 ```
 
-Because `final` and `var` modifiers on parameters are reserved exclusively
-for declaring parameters in primary constructors,
-you can't use them on parameters in other kinds of functions.
+:::warning Breaking change: Parameter modifiers
+In Dart 3.13 and later, `final` and `var` parameter modifiers are
+reserved exclusively for declaring parameters in primary constructors.
+Using `final` or `var` on formal parameters in any other declaration—including
+top-level functions, methods, closures, and in-body constructors—produces
+a compile-time error (`extraneous_modifier`).
+
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (declaring-parameters-error)" replace="/PointFinal/Point/g; /void printValue\(int x\)/void printValue(final int x)/g"?>
+```dart
+// Valid: Primary constructor declaring parameter.
+class Point(final int x, final int y);
+
+// Compile-time error in Dart 3.13+ (extraneous_modifier):
+void printValue(final int x) => print(x);
+```
+
+To fix this error, remove the modifier or run [`dart fix`][].
+To enforce immutable parameters as a style choice in Dart 3.13 and later,
+use the [`parameter_assignments`][] lint rule instead.
+:::
 
 For extension types, the primary constructor must have exactly one parameter.
 This parameter is always a declaring parameter, even if you omit the modifier.
@@ -363,14 +380,16 @@ when using primary constructors:
 *   **Restriction on `final` and `var` in normal function parameters**:
     With primary constructors,
     using `final` or `var` on formal parameters in normal functions
-    becomes a compile-time error.
+    becomes a compile-time error (`extraneous_modifier`).
     They are reserved exclusively for
     declaring parameters in primary constructors.
+    To migrate your code, remove `final` or `var` from affected parameters,
+    or run [`dart fix`][].
     Note that the lints `avoid_final_parameters` and
     `var_with_no_type_annotation` only work with
     a [language version][] of 3.12 or lower.
     To enforce immutable parameters as a style choice in Dart 3.13 and later,
-    use the [`parameter_assignments`][] linter rule.
+    use the [`parameter_assignments`][] lint rule.
 *   **The `factory` method edge case**:
     If you have a method named `factory` with no return type
     (for example, `factory() {}`),
@@ -380,6 +399,7 @@ when using primary constructors:
     to avoid this conflict.
 :::
 
+[`dart fix`]: /tools/dart-fix
 [language version]: /language/versioning
 [`parameter_assignments`]: /tools/linter-rules/parameter_assignments
 [potentially constant]: /resources/glossary#potentially-constant
