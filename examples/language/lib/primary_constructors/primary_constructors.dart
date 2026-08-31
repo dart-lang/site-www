@@ -13,7 +13,7 @@ class User(String name);
 // Valid: Primary constructor declaring parameter.
 class PointFinal(final int x, final int y);
 
-// Compile-time error in Dart 3.13+ (extraneous_modifier):
+// Compile-time error (extraneous_modifier):
 void printValue(int x) => print(x);
 // #enddocregion declaring-parameters-error
 

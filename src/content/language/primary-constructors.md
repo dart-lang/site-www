@@ -82,33 +82,33 @@ class Point(var int x, var int y);
 class User(String name);
 ```
 
-:::warning Breaking change: Parameter modifiers
-In Dart 3.13 and later, `final` and `var` parameter modifiers are
-reserved exclusively for declaring parameters in primary constructors.
-Using `final` or `var` on formal parameters in any other declaration—including
-top-level functions, methods, closures, and in-body constructors—produces
-a compile-time error (`extraneous_modifier`).
-
-<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (declaring-parameters-error)" replace="/PointFinal/Point/g; /void printValue\(int x\)/void printValue(final int x)/g"?>
-```dart
-// Valid: Primary constructor declaring parameter.
-class Point(final int x, final int y);
-
-// Compile-time error in Dart 3.13+ (extraneous_modifier):
-void printValue(final int x) => print(x);
-```
-
-To fix this error, remove the modifier or run [`dart fix`][].
-To enforce immutable parameters as a style choice in Dart 3.13 and later,
-use the [`parameter_assignments`][] lint rule instead.
-:::
-
 For extension types, the primary constructor must have exactly one parameter.
 This parameter is always a declaring parameter, even if you omit the modifier.
 You can use the `final` modifier, but it's an error to use `var`.
 
 Mixin classes can only have a primary constructor
 with no parameters, body, or initializer list.
+
+:::warning Breaking change: Parameter modifiers
+The `final` and `var` parameter modifiers are
+reserved exclusively for declaring parameters in primary constructors.
+Using `final` or `var` on formal parameters in any other declaration
+(such as top-level functions, methods, closures, and in-body constructors)
+produces a compile-time error (`extraneous_modifier`).
+
+<?code-excerpt "language/lib/primary_constructors/primary_constructors.dart (declaring-parameters-error)" replace="/PointFinal/Point/g; /void printValue\(int x\)/void printValue(final int x)/g"?>
+```dart
+// Valid: Primary constructor declaring parameter.
+class Point(final int x, final int y);
+
+// Compile-time error (extraneous_modifier):
+void printValue(final int x) => print(x);
+```
+
+To fix this error, remove the modifier or run [`dart fix`][].
+To enforce immutable parameters as a style choice,
+use the [`parameter_assignments`][] lint rule instead.
+:::
 
 <a id="primary-initializer-scope" aria-hidden="true"></a>
 
@@ -388,7 +388,7 @@ when using primary constructors:
     Note that the lints `avoid_final_parameters` and
     `var_with_no_type_annotation` only work with
     a [language version][] of 3.12 or lower.
-    To enforce immutable parameters as a style choice in Dart 3.13 and later,
+    To enforce immutable parameters as a style choice,
     use the [`parameter_assignments`][] lint rule.
 *   **The `factory` method edge case**:
     If you have a method named `factory` with no return type
