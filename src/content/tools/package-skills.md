@@ -31,9 +31,16 @@ The `package:skills` package includes the following commands:
 
 get
 : Discovers and installs skills provided by dependencies in `pubspec.yaml`.
+  In [workspaces](/tools/pub/workspaces) and monorepos,
+  `dart run skills@ get` discovers and installs skills
+  across all workspace packages.
   Supports interactive selection (<kbd>Ctrl</kbd>+<kbd>A</kbd> to toggle all),
   installing all skills without prompting (`--all`),
-  or targeting specific packages and skills (`-p <package>`, `-s <skill>`).
+  or targeting specific packages and skills (`-p <package>`, `-s <skill>`):
+
+  ```console
+  $ dart run skills@ get
+  ```
 
 add
 : Adds an external Git repository as a skill source and installs its skills:
@@ -65,11 +72,11 @@ prune
   ```
 
 remove
-: Removes specific installed skills from your workspace
-  (`-p <package>`, `-s <skill>`):
+: Removes managed skills interactively,
+  or targets specific packages and skills (`-p <package>`, `-s <skill>`):
 
   ```console
-  $ dart run skills@ remove -p <package_name>
+  $ dart run skills@ remove
   ```
 
 ## More information
