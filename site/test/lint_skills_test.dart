@@ -3,13 +3,13 @@ library;
 
 import 'dart:io';
 
-import 'package:dart_skills_lint/dart_skills_lint.dart';
 import 'package:logging/logging.dart';
+import 'package:skills_lint/skills_lint.dart';
 import 'package:test/test.dart';
 
 final String _configFilePath = Directory.current.path.endsWith('site')
-    ? 'dart_skills_lint.yaml'
-    : 'site/dart_skills_lint.yaml';
+    ? 'skills_lint.yaml'
+    : 'site/skills_lint.yaml';
 
 void main() {
   test('Run skills linter', () async {
