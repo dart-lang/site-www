@@ -358,6 +358,12 @@ when using primary constructors:
     You can only use the `covariant` modifier on a
     primary constructor parameter if it's a
     mutable declaring parameter (uses the `var` modifier).
+*   **The `factory` method edge case**:
+    If you have a method named `factory` with no return type
+    (for example, `factory() {}`),
+    the compiler parses it as a concise factory constructor.
+    Make sure such methods have an explicit return type
+    (for example, `void factory() {}`) to avoid this conflict.
 
 ### Parameter modifier restrictions {:#parameter-modifier-restrictions}
 
@@ -384,7 +390,6 @@ If you are on a [language version][] of 3.12 or lower,
 you can enable the [`avoid_final_parameters`][] and
 [`var_with_no_type_annotation`][] lint rules to proactively find and
 remove these modifiers ahead of upgrading to Dart 3.13.
-
 
 [`avoid_final_parameters`]: /tools/linter-rules/avoid_final_parameters
 [`dart fix`]: /tools/dart-fix
