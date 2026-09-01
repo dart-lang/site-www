@@ -108,7 +108,7 @@ The sample illustrates the most common top-level entries:
   [shared analysis options](#including-shared-options)
   from other files or packages,
   such as `package:lints/recommended.yaml`.
-  Specify a single URI or a list of URIs to include multiple files.
+  Specify a single URI, or a list of URIs to include multiple files.
   Settings are merged in order, with local options taking precedence.
 - Use `analyzer:` to customize static analysis checks, such as
   [enabling stricter type checks](#enabling-additional-type-checks),
