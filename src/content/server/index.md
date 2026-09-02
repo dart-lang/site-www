@@ -49,7 +49,7 @@ For additional options, see [#server packages on pub.dev][server-pkgs].
 
 Write Cloud Functions for Firebase using Dart to enable full-stack development,
 reuse code between your client and backend, and respond to Firebase triggers.
-Dart Cloud Functions compile Ahead-of-Time (AOT) to native binaries that deploy
+Dart Cloud Functions compile ahead-of-time (AOT) to native binaries that deploy
 directly to Google Cloud infrastructure, delivering fast cold-start performance
 with minimal memory overhead.
 
