@@ -88,7 +88,8 @@ Here's a sample analysis options file:
 
 <?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="https:"?>
 ```yaml title="analysis_options.yaml"
-include: package:lints/recommended.yaml
+include:
+  - package:lints/recommended.yaml
 
 analyzer:
   exclude: [build/**]
@@ -103,18 +104,23 @@ linter:
 
 The sample illustrates the most common top-level entries:
 
-- Use <code>include: <em>url</em></code> to
-  bring in options from the specified URL—in this case,
-  from a file in the `lints` package.
-  Because YAML doesn't allow duplicate keys,
-  you can include at most one file.
-- Use the `analyzer:` entry to customize static analysis:
+- Use `include:` to import
+  [shared analysis options](#including-shared-options)
+  from other files or packages,
+  such as `package:lints/recommended.yaml`
+  or `package:flutter_lints/flutter.yaml`.
+  Specify a single URI or a list of URIs to include multiple files.
+  The analyzer merges included options in order,
+  with local options taking precedence.
+- Use `analyzer:` to customize static analysis checks, such as
   [enabling stricter type checks](#enabling-additional-type-checks),
-  [excluding files](#excluding-files),
+  [excluding files from analysis](#excluding-files),
   [ignoring specific rules](#ignoring-rules),
-  [changing the severity of rules](#changing-the-severity-of-rules), or
-  [enabling experiments](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
-- Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
+  [changing rule severity](#changing-the-severity-of-rules), or
+  [enabling experiments][analyzer-experiments].
+- Use `linter:` to configure [linter rules](#enabling-linter-rules)
+  to enforce coding standards, catch potential bugs,
+  and maintain best practices.
 
 :::warning
 **YAML is sensitive to whitespace.** 
@@ -381,8 +387,9 @@ You can specify such files using the top-level `include:` field:
 include: package:flutter_lints/recommended.yaml
 ```
 
-An included options file can be specified with a `package:` path, or a relative
-path. Multiple analysis options files can be specified in a list:
+An included options file can be specified with a
+`package:` URI or a relative path.
+To include multiple analysis options files, use a list:
 
 ```yaml title="analysis_options.yaml"
 include:
@@ -390,12 +397,22 @@ include:
   - ../team_options.yaml
 ```
 
-Options in an included file can be overridden in the including file,
-as well as by subsequent included files. 
-In other words, the options specified by an analysis options file are
-computed by first applying the options specified in each of the included files
-(by recursively applying this algorithm), in the order they appear in the list,
-and then overriding them with any locally defined options.
+When including multiple files,
+the analyzer merges options in list order:
+
+1. The first included file is evaluated,
+   including any files it recursively includes.
+1. Each subsequent included file is applied in order,
+   adding new options or overriding conflicting ones.
+1. Finally, options defined directly in the current
+   `analysis_options.yaml` file override any included options.
+
+When merging options,
+the analyzer combines compatible settings rather than
+replacing entire sections.
+For example, enabling an individual linter rule in a later file
+adds to or overrides rules from earlier files
+without discarding the rest of the included ruleset.
 
 For example, given the following options files:
 
@@ -413,9 +430,8 @@ include:
 # ...
 ```
 
-Then the combined analysis options are computed by applying the options found
-in `one.yaml`, then `two.yaml`, then `three.yaml`, and finally
-`analysis_options.yaml`.
+Then the analyzer applies options from `one.yaml`, then `two.yaml`,
+then `three.yaml`, and finally `analysis_options.yaml`.
 
 
 ## Enabling analyzer plugins (experimental) {:#plugins}
@@ -700,3 +716,4 @@ Use the following resources to learn more about static analysis in Dart:
 [`dart format`]: /tools/dart-format
 [Configuring formatter page width]: /tools/dart-format#page-width
 [Troubleshoot analyzer performance]: /tools/analyzer-performance
+[analyzer-experiments]: /tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide
