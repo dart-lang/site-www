@@ -168,8 +168,8 @@ Next, modify the code that generated `Hello world: 42!`.
     Delete the first line (you don't need this import statement), and
     change the `print` statement to display a simple greeting:
 
-    <?code-excerpt "fwe/dartpedia/bin/cli_ch1_step2.dart (highlight)" replace="/\/\/ ignore: unused_import\n//g"?>
-    ```dart title="bin/cli.dart"
+    <?code-excerpt "fwe/dartpedia/bin/cli_ch1_step2.dart (step2)"?>
+    ```dart title="bin/cli.dart" highlightLines=1,4
     import 'package:cli/cli.dart' as cli; // Delete this entire line
     
     void main(List<String> arguments) {

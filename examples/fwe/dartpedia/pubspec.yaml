@@ -1,9 +1,8 @@
 name: cli
 description: A sample command-line application.
-version: 1.0.0
+publish_to: none
 
+resolution: workspace
 environment:
-  sdk: ^3.3.0
+  sdk: ^3.13.0-0
 
-# Add regular dependencies here.
-dependencies:

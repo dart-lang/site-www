@@ -21,6 +21,11 @@ as a `SKILL.md` file with YAML frontmatter and Markdown instructions:
 
 ### Available skills
 
+- [`migrate-to-code-excerpts`](skills/migrate-to-code-excerpts/SKILL.md)
+
+  Migrate hardcoded code blocks in documentation into a compilable, testable
+  project using code excerpts.
+
 - [`sync-changelog`](skills/sync-changelog/SKILL.md)
 
   Sync the changelog from the Dart SDK repo to update `src/data/changelog.yml`.
