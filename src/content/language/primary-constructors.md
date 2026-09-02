@@ -88,8 +88,7 @@ This parameter is always a declaring parameter, even if you omit the modifier.
 Mixin classes can only have a primary constructor
 with no parameters, body, or initializer list.
 
-:::warning
-**Breaking change: Parameter modifiers**
+:::warning New parameter modifier restrictions
 Because `final` and `var` on parameters are now reserved for
 declaring parameters in primary constructors,
 you can't use them on parameters in other declarations.
