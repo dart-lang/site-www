@@ -26,29 +26,33 @@ that can help you develop command-line and server apps.
 : [Install the Dart SDK](/get-dart) to get the core Dart
   libraries and [tools](/tools).
 
-## Frameworks
+## Server architectures and frameworks {#frameworks}
 
-Server-side frameworks written in Dart include:
+Dart supports multiple backend architectures depending on your application
+requirements:
 
-[Serverpod](https://serverpod.dev)
-: A scalable app server that supports code generation,
-  authentication, real-time communication, databases, and caching.
+| Architecture / framework | Best suited for | Key advantages | Data and persistence |
+| :--- | :--- | :--- | :--- |
+| **[Cloud Functions for Firebase](https://firebase.google.com/docs/functions/start-dart)** | Serverless HTTP and callable APIs, Flutter backends | Shared code with Flutter, zero server management, fast AOT cold starts | Cloud Firestore and Cloud Storage via [`firebase_admin_sdk`]({{site.pub-pkg}}/firebase_admin_sdk) |
+| **[Serverpod](https://serverpod.dev)** | Full-stack applications requiring relational databases | Code generation, built-in authentication, database migrations | PostgreSQL, Redis |
+| **[Dart Frog](https://dart-frog.dev/)** | Fast REST APIs, modular microservices | Minimalistic routing, dependency injection, built on Shelf | Database agnostic |
+| **[Shelf]({{site.pub-pkg}}/shelf)** | Custom web servers, composable middleware | Lightweight primitive, modular architecture | Database agnostic |
 
-[Dart Frog](https://dart-frog.dev/)
-: A fast, minimalistic backend framework for Dart.
+{:.table .table-striped}
 
-More tools
-: The [Tools](/tools) page links to generally useful tools,
-  such as Dart plugins for your favorite IDE or editor.
-
+For more tools and IDE plugins, see the [Tools](/tools) page.
 For additional options, see [#server packages on pub.dev][server-pkgs].
 
 [server-pkgs]: {{site.pub-pkg}}?q=topic%3Aserver
 
-## Cloud Functions for Firebase
+## Building serverless backends with Cloud Functions for Firebase
 
 Write Cloud Functions for Firebase using Dart to enable full-stack development,
 reuse code between your client and backend, and respond to Firebase triggers.
+Dart Cloud Functions compile Ahead-of-Time (AOT) to native binaries that deploy
+directly to Google Cloud infrastructure, delivering fast cold-start performance
+with minimal memory overhead.
+
 To get started, see the
 [Cloud Functions for Firebase documentation][firebase-docs].
 
@@ -65,6 +69,24 @@ To get started, see the
 [firebase-docs]: https://firebase.google.com/docs/functions/start-dart
 [firebase-repo]: https://github.com/firebase/firebase-functions-dart
 
+### Sharing code between Flutter apps and Dart backends
+
+When you use Dart for both your Flutter client and Firebase backend, you can
+organize your workspace into a monorepo or multi-package structure with a
+shared package:
+
+```text
+my_project/
+├── packages/
+│   ├── app/           # Flutter frontend application
+│   ├── functions/     # Cloud Functions for Firebase in Dart
+│   └── shared/        # Shared models, DTOs, and validation logic
+```
+
+By placing data classes, JSON serialization logic, and validation rules in
+`package:shared`, any change to your data models propagates across both client
+and server, keeping your frontend and backend synchronized.
+
 ## Samples
 
 [A simple Dart HTTP server][simple-sample]
@@ -73,15 +95,12 @@ To get started, see the
   * Is deployable on Cloud Run.
 
 [A Dart HTTP server that uses Cloud Firestore][cloud-sample]
-: * Uses the Cloud Firestore features in the [`googleapis`][] package.
-  * Also uses the [`googleapis_auth`][], [`shelf`][], and
-    [`shelf_router`][] packages.
+: * Uses Cloud Firestore with the [`firebase_admin_sdk`][] package.
   * Is deployable on Cloud Run.
 
 [simple-sample]: {{site.repo.dart.samples}}/tree/main/server/simple
 [cloud-sample]: {{site.repo.dart.samples}}/tree/main/server/google_apis
-[`googleapis`]: {{site.pub-pkg}}/googleapis
-[`googleapis_auth`]: {{site.pub-pkg}}/googleapis_auth
+[`firebase_admin_sdk`]: {{site.pub-pkg}}/firebase_admin_sdk
 [`shelf`]: {{site.pub-pkg}}/shelf
 [`shelf_router`]: {{site.pub-pkg}}/shelf_router
 [`shelf_static`]: {{site.pub-pkg}}/shelf_static

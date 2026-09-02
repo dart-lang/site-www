@@ -57,6 +57,19 @@ To get started, see the
 [firebase-docs]: https://firebase.google.com/docs/functions/start-dart
 [firebase-repo]: https://github.com/firebase/firebase-functions-dart
 
+### Choosing between Cloud Run and Cloud Functions for Firebase
+
+When running server-side Dart on Google Cloud, consider your architectural
+needs:
+
+* **Choose Cloud Functions for Firebase** if you're building a Flutter
+  backend that requires serverless event handling, lightweight HTTP or callable
+  APIs, or tight integration with Firebase Auth and Firestore without managing
+  containers.
+* **Choose Cloud Run** if you need custom Docker containers, long-running
+  processes, WebSocket connections (such as with Serverpod), or custom
+  networking configurations.
+
 ## Other solutions
 
 Depending on your needs, you might also want to consider running Dart on the
