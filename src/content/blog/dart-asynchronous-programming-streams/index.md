@@ -9,15 +9,15 @@ layout: blog
 ---
 
 
-***Note**: You might want to check out a [version of this article where the code is updated to be null safe](https://medium.com/dartlang/dart-asynchronous-programming-streams-dab952023ed7). (The video has not changed.)*
+***Note**: You might want to check out a [version of this article where the code is updated to be null safe](/blog/dart-asynchronous-programming-streams). (The video has not changed.)*
 
 <DashImage src="images/17v26fZu7zzY0QSBQAwj42Q.webp" alt="Flutter app screen titled Streams are awesome showing the waiting state before stream data arrives." caption="A simple Flutter app that displays data from a stream" />
 
 
 This article covers one of the fundamentals of reactive programming: streams, which are objects of type [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 
-If you’ve read the [previous article on futures](https://medium.com/dartlang/dart-asynchronous-programming-futures-96937f831137), you might remember that **each future represents a single value** (either an error or data) that it delivers **asynchronously**. Streams work similarly, but instead of a single thing, **a stream can deliver zero or more values and errors** over **time.**
-> This article is the third one based on the *Flutter in Focus* video series *Asynchronous Programming in Dart*. The first article, [Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a), covered the foundations of Dart’s support for background work. The second one, [Futures](https://medium.com/dartlang/dart-asynchronous-programming-futures-96937f831137), discussed the `Future` class.
+If you’ve read the [previous article on futures](/blog/dart-asynchronous-programming-futures), you might remember that **each future represents a single value** (either an error or data) that it delivers **asynchronously**. Streams work similarly, but instead of a single thing, **a stream can deliver zero or more values and errors** over **time.**
+> This article is the third one based on the *Flutter in Focus* video series *Asynchronous Programming in Dart*. The first article, [Isolates and event loops](/blog/dart-asynchronous-programming-isolates-and-event-loops), covered the foundations of Dart’s support for background work. The second one, [Futures](/blog/dart-asynchronous-programming-futures), discussed the `Future` class.
 > If you prefer to learn by watching or listening, everything in this article is covered in the following video.
 
 <YoutubeEmbed id="nQBpOIHE4eE" title="Dart Streams - Flutter in Focus" fullwidth="true"/>

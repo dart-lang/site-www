@@ -12,7 +12,7 @@ layout: blog
 <DashImage src="images/0XcEdm2vmIBW8Wovr.webp" alt="Graphic showing Dart declaration-site variance." />
 
 
-Declaration-site variance was my internship project on the Dart team, and I’ve documented my personal experience on the team in the article [Life as a Dart intern](https://medium.com/dartlang/life-as-a-dart-intern-a62cb8db2414). As the primary implementer of the [declaration-site variance feature](https://github.com/dart-lang/language/issues/524), I want to share the usages and benefits of sound variance.
+Declaration-site variance was my internship project on the Dart team, and I’ve documented my personal experience on the team in the article [Life as a Dart intern](/blog/life-as-a-dart-intern). As the primary implementer of the [declaration-site variance feature](https://github.com/dart-lang/language/issues/524), I want to share the usages and benefits of sound variance.
 
 We’ll discuss how to use variance, why we want to use the modifiers, how the feature can build on top of classes that don’t use the modifiers, and what benefits this feature provides us.
 

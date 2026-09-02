@@ -12,7 +12,7 @@ layout: blog
 <DashImage src="images/0VisHHMp_ARvFA08w.webp" alt="Flutter logo." />
 
 
-The [Dart REPL](https://github.com/BlackHC/dart_repl) allows you to evaluate Dart expressions and statements in an [interactive shell](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop). It has been awhile since [my first post about the Dart REPL](https://medium.com/dartlang/dart-repl-poc-f327e3769b6f) (you don’t need to read it to enjoy this post), and lots of features are still missing. In particular, dynamic imports and support for top-level declarations would be very useful, so let’s look into how to support them.
+The [Dart REPL](https://github.com/BlackHC/dart_repl) allows you to evaluate Dart expressions and statements in an [interactive shell](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop). It has been awhile since [my first post about the Dart REPL](/blog/a-dart-repl-poc) (you don’t need to read it to enjoy this post), and lots of features are still missing. In particular, dynamic imports and support for top-level declarations would be very useful, so let’s look into how to support them.
 
 *Disclaimer: I do work for Google, but this post is about a personal project. I’m not on the Dart team or related. This article only contains my humble personal opinion.*
 

@@ -16,6 +16,7 @@ repo:
     samples: https://github.com/dart-lang/samples
 branch: main
 
+flutter-blog: https://flutter.dev/blog
 flutter: https://flutter.dev
 flutter-docs: https://docs.flutter.dev
 dart-api: https://api.dart.dev
@@ -41,7 +42,7 @@ showBanner: true
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
 
-sdkVersion: 3.12.2
+sdkVersion: 3.13.0
 
 # Settings for Jaspr.
 

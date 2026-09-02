@@ -18,7 +18,7 @@ Today we’re announcing Dart 2.13, featuring *type aliases* — currently our s
 
 ## Null safety update
 
-We launched [sound null safety](https://dart.dev/null-safety) in March in the [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87) release. Null safety is Dart’s latest major productivity feature, intended to help you avoid null errors — a class of bugs that are often hard to spot. With that launch we encouraged package publishers to start migrating shared packages on pub.dev to null safety.
+We launched [sound null safety](https://dart.dev/null-safety) in March in the [Dart 2.12](/blog/announcing-dart-2-12) release. Null safety is Dart’s latest major productivity feature, intended to help you avoid null errors — a class of bugs that are often hard to spot. With that launch we encouraged package publishers to start migrating shared packages on pub.dev to null safety.
 
 We’ve been extremely pleased to see how quickly null safety has been adopted! Just a few months after launch, **93% of the top-500 most popular packages on pub.dev already support null safety**. We’d like to extend our sincere thanks to all package developers for doing this work so quickly, and for helping the entire ecosystem to move forward!
 

@@ -12,7 +12,7 @@ layout: blog
 <DashImage src="images/1QCajckOeBhRaLzi0RoFqig.webp" alt="The Dart logo." />
 
 
-[Flutter](https://flutter.dev/) and [Flutter Web](https://flutter.dev/web) are generating plenty of buzz, and deservedly so; they are pushing the boundaries of UI development. Flutter is written in Dart, and Dart has just [gained a number of features](https://medium.com/dartlang/making-dart-a-better-language-for-ui-f1ccaf9f546c) under the banner “UI as Code” that will bring joy to every Flutter developer’s day. These are exciting times.
+[Flutter](https://flutter.dev/) and [Flutter Web](https://flutter.dev/web) are generating plenty of buzz, and deservedly so; they are pushing the boundaries of UI development. Flutter is written in Dart, and Dart has just [gained a number of features](/blog/making-dart-a-better-language-for-ui) under the banner “UI as Code” that will bring joy to every Flutter developer’s day. These are exciting times.
 
 But, wait! Not everything should move fast. Sometimes it pays to be meticulous, fussy, fastidious, finicky, or—dare I say it—*pedantic*. So, over at Dart’s [package:pedantic](https://github.com/dart-lang/pedantic), we’ve been slowly gathering a list of *precisely correct lints* that you can apply to your code.
 

@@ -46,7 +46,7 @@ With likes and popularity providing community-sourced, subjective measures, the 
 
 1. *Support up-to-date dependencies*: Have dependency constraints that support the latest Dart & Flutter SDKs, and the latest package dependencies
 
-We expect to add more checks and categories for pub points over time, raising the ceiling for how many points a package can have. For example, we plan to add a score for supporting [null safety](https://medium.com/dartlang/announcing-sound-null-safety-defd2216a6f3) when that feature launches. And we’re investigating how to measure maintainability (issue and pull request responsiveness), testability (automated test coverage), and community friendliness (number of contributors, maintainers, etc.). If you have an idea for a great measure, we’d love to [hear from you](https://github.com/dart-lang/pub-dev/issues)!
+We expect to add more checks and categories for pub points over time, raising the ceiling for how many points a package can have. For example, we plan to add a score for supporting [null safety](/blog/announcing-sound-null-safety) when that feature launches. And we’re investigating how to measure maintainability (issue and pull request responsiveness), testability (automated test coverage), and community friendliness (number of contributors, maintainers, etc.). If you have an idea for a great measure, we’d love to [hear from you](https://github.com/dart-lang/pub-dev/issues)!
 
 ## Supporting multiplatform apps
 

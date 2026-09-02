@@ -11,7 +11,7 @@ layout: blog
 
 Do you spend too much time performing repetitive tasks while coding? If so, then I have some good news for you. Many of the repetitive tasks can be performed automatically using a feature we call quick assists.
 
-A *quick assist* is an automated edit targeted at making a common change to the code. Unlike a quick fix, which we looked at in [Quick fixes for analysis issues](https://medium.com/dartlang/quick-fixes-for-analysis-issues-c10df084971a) and [Bulk application of fixes](https://medium.com/dartlang/bulk-application-of-fixes-e6add333c3c1), the presence of a quick assist isn’t a suggestion that you should change your code, it’s simply there to make your work easier.
+A *quick assist* is an automated edit targeted at making a common change to the code. Unlike a quick fix, which we looked at in [Quick fixes for analysis issues](/blog/quick-fixes-for-analysis-issues) and [Bulk application of fixes](/blog/bulk-application-of-fixes), the presence of a quick assist isn’t a suggestion that you should change your code, it’s simply there to make your work easier.
 
 Let’s look at a couple of examples.
 

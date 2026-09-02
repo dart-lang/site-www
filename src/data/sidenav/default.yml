@@ -153,6 +153,8 @@
       permalink: /tools/pub/packages
     - title: Creating packages
       permalink: /tools/pub/create-packages
+    - title: Distributing CLI tools
+      permalink: /tools/cli-distribution
     - title: Publishing packages
       permalink: /tools/pub/publishing
     - title: Writing package pages
@@ -161,6 +163,8 @@
       permalink: /tools/pub/workspaces
     - title: Hooks
       permalink: /tools/hooks
+    - title: Ship skills with packages
+      permalink: /tools/pub/package-skills
     - title: Package reference
       expanded: false
       children:
@@ -230,6 +234,8 @@
 - title: Interoperability
   expanded: false
   children:
+  - title: Overview
+    permalink: /interop
   - title: C interop
     permalink: /interop/c-interop
   - title: Objective-C & Swift interop
@@ -316,6 +322,8 @@
       children:
         - title: build_runner
           permalink: /tools/build_runner
+        - title: package:skills
+          permalink: /tools/package-skills
         - title: webdev
           permalink: /tools/webdev
   - title: Static analysis
@@ -349,6 +357,10 @@
 - title: Build with AI
   expanded: false
   children:
+    - title: Overview
+      permalink: /ai
+    - title: Package skills
+      permalink: /ai/package-skills
     - title: Dart and Flutter MCP server
       permalink: https://docs.flutter.dev/ai/mcp-server
     - title: Genkit for Dart
@@ -358,7 +370,7 @@
   expanded: false
   children:
     - title: Dart Blog
-      permalink: https://blog.dart.dev
+      permalink: /blog
     - title: Changelog
       permalink: /changelog
     - title: What's new in the docs

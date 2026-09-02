@@ -9,7 +9,7 @@ layout: blog
 ---
 
 
-One of the nice upgrades we were able to do in [Dart 2](https://medium.com/dartlang/dart-2-stable-and-the-dart-web-platform-3775d5f8eac7) (in addition to better static checking, runtime type safety, optional new/const, core library improvements, and more) is to formalize `void` in a way that’s both more useful and less error-prone. This is especially clean in async programming where you can write `Future&lt;void&gt;` for asynchronous functions that don’t return an answer when their work completes. Before this you probably used `Future&lt;Null&gt;`, so common questions we get asked are: What’s the difference between `Future&lt;void&gt;` and `Future&lt;Null&gt;`? Which should I use, and when?
+One of the nice upgrades we were able to do in [Dart 2](/blog/announcing-dart-2-stable-and-the-dart-web-platform) (in addition to better static checking, runtime type safety, optional new/const, core library improvements, and more) is to formalize `void` in a way that’s both more useful and less error-prone. This is especially clean in async programming where you can write `Future&lt;void&gt;` for asynchronous functions that don’t return an answer when their work completes. Before this you probably used `Future&lt;Null&gt;`, so common questions we get asked are: What’s the difference between `Future&lt;void&gt;` and `Future&lt;Null&gt;`? Which should I use, and when?
 
 <DashImage src="images/0x0J9DBRyATjtQn42.webp" alt="Retro meme of a man gesturing beside the text 'VOID*'." />
 

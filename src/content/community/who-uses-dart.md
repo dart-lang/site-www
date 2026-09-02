@@ -84,8 +84,7 @@ for building their applications:
 
 * [Workiva's][] next-generation client applications for
   their productivity suite are built with Dart.
-* [Wrike][] uses the [AngularDart][] framework to
-  develop project management tools.
+* [Wrike][] uses Dart to develop project management tools.
 * [Blossom][] is an agile project management tool built with Dart.
 * And many more!
 
@@ -94,6 +93,5 @@ please visit [our site's GitHub][] to open an issue or pull request, thanks!
 
 [Workiva's]: https://www.workiva.com/en-in
 [Wrike]: https://www.wrike.com
-[AngularDart]: https://angulardart.xyz/guide/setup
 [Blossom]: https://blossom.co
 [our site's GitHub]: {{site.repo.this}}

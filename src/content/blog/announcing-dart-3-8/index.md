@@ -157,7 +157,7 @@ The [pub.dev landing page](https://pub.dev/) replaces the “Most Popular Packag
 
 Stateful hot reload is now available on the web when you use the Dart Development Compiler (DDC). A redesign of the JS representation of Dart code lets you swap out code in a running application.
 
-Work is still iterating on this feature, but Dart 3.8 provides the first opportunity to try it, starting with Flutter apps. See the [Flutter blog post](https://medium.com/flutter/whats-new-in-flutter-3-32-40c1086bab6e) for instructions on how to enable hot reload.
+Work is still iterating on this feature, but Dart 3.8 provides the first opportunity to try it, starting with Flutter apps. See the [Flutter blog post]({{site.flutter-blog}}/whats-new-in-flutter-3-32) for instructions on how to enable hot reload.
 
 <DashImage src="images/0NB_4jaD3XtdHpCQm.webp" alt="Animation showing Dart stateful hot reload enabled for a web app in DartPad." caption="Dart stateful hot reload for web" />
 

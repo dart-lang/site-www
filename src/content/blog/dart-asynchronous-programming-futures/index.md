@@ -17,7 +17,7 @@ One of the most basic APIs that Dart has for asynchronous programming is *future
 This article discusses the concepts behind Dart futures and tells you how to use the `Future` API. It also discusses the Flutter `FutureBuilder` widget, which helps you update a Flutter UI asynchronously, based on the state of a future.
 
 Thanks to Dart language features like [async-await](https://dart.dev/codelabs/async-await), you might never need to use the `Future` API directly. But you’re almost certain to encounter futures in your Dart code. And you might want to *create* futures or *read* code that uses the `Future` API.
-> This article is the second one based on the *Flutter in Focus* video series *Asynchronous Programming in Dart*. The first article, [Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a), covered the foundations of Dart’s support for background work.
+> This article is the second one based on the *Flutter in Focus* video series *Asynchronous Programming in Dart*. The first article, [Isolates and event loops](/blog/dart-asynchronous-programming-isolates-and-event-loops), covered the foundations of Dart’s support for background work.
 > If you prefer to learn by watching or listening, everything in this article is covered in the following video*.*
 
 <YoutubeEmbed id="OTS-ap9_aXc" title="Dart Futures - Flutter in Focus" fullwidth="true"/>
@@ -38,7 +38,7 @@ Most of the code you’re about to see revolves around dealing with these three 
 <DashImage src="images/1UD63BMoIBmzoA6jo3LjCCg.webp" alt="Flowchart with Uncompleted branching to Completed with data and Completed with error." caption="The 3 states of a future" />
 
 
-You might remember the event loop (pictured below) from our [article about the Dart event loop](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a). A good thing to know about futures is that they’re really just an API built to make using the event loop easier.
+You might remember the event loop (pictured below) from our [article about the Dart event loop](/blog/dart-asynchronous-programming-isolates-and-event-loops). A good thing to know about futures is that they’re really just an API built to make using the event loop easier.
 
 <DashImage src="images/0xlxALlxjazVifRep.webp" alt="Queued events moving toward a gear with circular arrows representing the Dart event loop." caption="The Dart event loop processes one event at a time." />
 

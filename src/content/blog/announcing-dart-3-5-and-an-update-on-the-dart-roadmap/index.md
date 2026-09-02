@@ -86,7 +86,7 @@ In many cases direct interop is used to call into APIs that are present in the o
 
 ## Dart language & macros
 
-Most of our time in the Dart language and compiler teams is currently spent on making progress on the very large language feature macros, which we introduced in the [Dart 3.4 blog post](https://medium.com/dartlang/dart-3-4-bd8d23b4462a). As we said at the time, this is a huge undertaking, with the potential to cause regressions in some of our core use cases such as hot reload, so we’re taking a thorough approach, and will likely need several quarters of further work before we can share details of the next step.
+Most of our time in the Dart language and compiler teams is currently spent on making progress on the very large language feature macros, which we introduced in the [Dart 3.4 blog post](/blog/announcing-dart-3-4). As we said at the time, this is a huge undertaking, with the potential to cause regressions in some of our core use cases such as hot reload, so we’re taking a thorough approach, and will likely need several quarters of further work before we can share details of the next step.
 
 In addition to macros, we’re also concurrently exploring a number of other smaller language features, as documented in the [Dart language funnel](https://github.com/orgs/dart-lang/projects/90/views/1).
 
@@ -94,4 +94,4 @@ Since last fall, we have been rewriting the Dart formatter. The old design worke
 
 ## Closing
 
-That’s all we have for today. We welcome your feedback, both on the roadmap items discussed, and on the new features in Dart 3.5, available from [Dart.dev](https://dart.dev/get-dart) or bundled in today’s [Flutter 3.24 release](https://medium.com/flutter/whats-new-in-flutter-3-24-6c040f87d1e4).
+That’s all we have for today. We welcome your feedback, both on the roadmap items discussed, and on the new features in Dart 3.5, available from [Dart.dev](https://dart.dev/get-dart) or bundled in today’s [Flutter 3.24 release]({{site.flutter-blog}}/whats-new-in-flutter-3-24).

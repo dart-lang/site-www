@@ -20,17 +20,15 @@ $ dart pub add build_runner build_web_compilers --dev
 
 ### Installing and updating webdev
 
-Use `dart pub` to install `webdev` for [all users][].
+Use `dart install` to install `webdev` globally.
 
 ```console
-$ dart pub global activate webdev
+$ dart install webdev
 ```
 
 Use the same command to update `webdev`. 
-Update `webdev` when you update your Dart SDK or when `webdev` commands fail in a way you can't explain.
-
-[all users]: /tools/pub/cmd/pub-global
-
+Update `webdev` when you update your Dart SDK,
+or when `webdev` commands fail in a way you can't explain.
 
 ### Depending on build_* packages
 
@@ -44,9 +42,9 @@ your app's `pubspec.yaml` file:
 ```yaml
   dev_dependencies:
     # ···
-    build_runner: ^2.15.0
-    build_test: ^3.5.15
-    build_web_compilers: ^4.5.1
+    build_runner: ^2.15.1
+    build_test: ^3.5.16
+    build_web_compilers: ^4.8.5
 ```
 
 As usual after `pubspec.yaml` changes, run `dart pub get` or 

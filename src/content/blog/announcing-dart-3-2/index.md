@@ -18,7 +18,7 @@ Today we’re announcing Dart 3.2, featuring a new language feature for non-null
 
 ## Non-null promotion for private final fields
 
-It’s been a few years since we introduced [sound null safety](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87) in Dart 2.12. With null safety, you can declare which types are nullable (may contain a value, or `null`) and which are non-nullable (always contain a value). Null safety combined with [flow analysis](https://dart.dev/null-safety/understanding-null-safety#flow-analysis) detects when nullable variables can be “promoted” to their safer, non-null types:
+It’s been a few years since we introduced [sound null safety](/blog/announcing-dart-2-12) in Dart 2.12. With null safety, you can declare which types are nullable (may contain a value, or `null`) and which are non-nullable (always contain a value). Null safety combined with [flow analysis](https://dart.dev/null-safety/understanding-null-safety#flow-analysis) detects when nullable variables can be “promoted” to their safer, non-null types:
 
 ```dart
 int definitelyInt(int? aNullableInt) {
@@ -98,4 +98,4 @@ We are starting to migrate a number of internal projects to package:web and the 
 
 ## Closing
 
-That’s all we have for today. Dart 3.2 is available now from [dart.dev](https://dart.dev/get-dart), or as part of today’s [Flutter 3.16](https://medium.com/flutter/whats-new-in-flutter-3-16-dba6cb1015d1) release. Until next time, have fun with Dart!
+That’s all we have for today. Dart 3.2 is available now from [dart.dev](https://dart.dev/get-dart), or as part of today’s [Flutter 3.16]({{site.flutter-blog}}/whats-new-in-flutter-3-16) release. Until next time, have fun with Dart!

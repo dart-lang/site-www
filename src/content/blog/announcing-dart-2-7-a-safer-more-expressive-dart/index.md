@@ -176,7 +176,7 @@ A technical preview of this new package is [available on pub.dev](https://pub.de
 
 ## Null safety preview
 
-A few months ago we [announced our intent](https://medium.com/dartlang/announcing-dart-2-5-super-charged-development-328822024970#0391) to support **null safety** in Dart, adding support for accessing object references safely without triggering null reference exceptions. Today we’re giving you a way to preview null safety static analysis. Let’s look at a small motivating example:
+A few months ago we [announced our intent](/blog/announcing-dart-2-5-super-charged-development#closing-thoughts) to support **null safety** in Dart, adding support for accessing object references safely without triggering null reference exceptions. Today we’re giving you a way to preview null safety static analysis. Let’s look at a small motivating example:
 
 ```
 void main() {
@@ -245,4 +245,4 @@ Currently we don’t factor the number of likes into our overall scoring model, 
 
 On behalf of the Dart team, we’d like to thank you — and everyone in the Dart community — for your continued support! Please continue to offer us feedback, and participate in Dart [discussions and communities](https://dart.dev/community). We wouldn’t be a well-functioning open source project without the support we get from the Dart community.
 
-2019 has been an incredibly exciting year for Dart, but we’re not stopping here. We have bold plans for 2020, including shipping stable versions of features like [dart:ffi](https://dart.dev/guides/libraries/c-interop) and [null safety](https://github.com/dart-lang/language/issues/110) and introducing new features. We invite you to start using Dart 2.7 today. It’s available from [dart.dev](http://dart.dev), in today’s [Flutter 1.12](https://medium.com/@csells_18027/flutter-1-12-release-blog-22c256ba525d) release, and on the recently [redesigned DartPad](https://medium.com/dartlang/a-brand-new-dartpad-dev-with-flutter-support-16fe6027784).
+2019 has been an incredibly exciting year for Dart, but we’re not stopping here. We have bold plans for 2020, including shipping stable versions of features like [dart:ffi](https://dart.dev/guides/libraries/c-interop) and [null safety](https://github.com/dart-lang/language/issues/110) and introducing new features. We invite you to start using Dart 2.7 today. It’s available from [dart.dev](http://dart.dev), in today’s [Flutter 1.12](https://medium.com/@csells_18027/flutter-1-12-release-blog-22c256ba525d) release, and on the recently [redesigned DartPad](/blog/a-brand-new-dartpad-dev-with-flutter-support).

@@ -235,7 +235,7 @@ Dart has a strong focus on simplicity and learnability. We’re constantly tryin
 
 ## Null safety update
 
-We’re very pleased to see the wide usage of null safety since its beta release in November 2020 and the [Dart 2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87) release in March 2021.
+We’re very pleased to see the wide usage of null safety since its beta release in November 2020 and the [Dart 2.12](/blog/announcing-dart-2-12) release in March 2021.
 
 First, app developers of most all the popular packages on `pub.dev` migrated to null safety. Analysis shows that 100% of the top-250 and 98% of the top-1,000 most used packages support null safety.
 
@@ -262,4 +262,4 @@ If you’ve migrated to sound null safety, your code will work with full null sa
 
 ## Summary
 
-The new support for interop, networking, type inference, and `pub.dev` is available today. To get started, you can directly download the [Dart 2.18 release](https://dart.dev/get-dart), or get it embedded as part of today’s [Flutter 3.3](https://medium.com/flutter/announcing-flutter-3-3-at-flutter-vikings-6f213e068793) SDK release.
+The new support for interop, networking, type inference, and `pub.dev` is available today. To get started, you can directly download the [Dart 2.18 release](https://dart.dev/get-dart), or get it embedded as part of today’s [Flutter 3.3]({{site.flutter-blog}}/announcing-flutter-3-3-at-flutter-vikings) SDK release.

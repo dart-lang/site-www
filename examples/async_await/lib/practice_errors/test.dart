@@ -31,7 +31,8 @@ void main() async {
           readableErrors: {
             typoMessage: typoMessage,
             noCatch:
-                'Did you remember to call fetchNewUsername within a try/catch block?',
+                'Did you remember to call fetchNewUsername '
+                'within a try/catch block?',
           },
         ),
       )
@@ -42,7 +43,8 @@ void main() async {
           readableErrors: {
             typoMessage: typoMessage,
             noCatch:
-                'Did you remember to call fetchNewUsername within a try/catch block?',
+                'Did you remember to call fetchNewUsername '
+                'within a try/catch block?',
           },
         ),
       )
