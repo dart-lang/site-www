@@ -107,9 +107,11 @@ The sample illustrates the most common top-level entries:
 - Use `include:` to import
   [shared analysis options](#including-shared-options)
   from other files or packages,
-  such as `package:lints/recommended.yaml`.
-  Specify a single URI, or a list of URIs to include multiple files.
-  Settings are merged in order, with local options taking precedence.
+  such as `package:lints/recommended.yaml`
+  or `package:flutter_lints/flutter.yaml`.
+  Specify a single URI or a list of URIs to include multiple files.
+  The analyzer merges included options in order,
+  with local options taking precedence.
 - Use `analyzer:` to customize static analysis checks, such as
   [enabling stricter type checks](#enabling-additional-type-checks),
   [excluding files from analysis](#excluding-files),
@@ -385,9 +387,9 @@ You can specify such files using the top-level `include:` field:
 include: package:flutter_lints/recommended.yaml
 ```
 
-An included options file can be specified with a `package:` URI,
-or a relative path.
-Multiple analysis options files can be specified in a list:
+An included options file can be specified with a
+`package:` URI or a relative path.
+To include multiple analysis options files, use a list:
 
 ```yaml title="analysis_options.yaml"
 include:
@@ -395,7 +397,8 @@ include:
   - ../team_options.yaml
 ```
 
-When including multiple files, options are merged in list order:
+When including multiple files,
+the analyzer merges options in list order:
 
 1. The first included file is evaluated,
    including any files it recursively includes.
@@ -404,8 +407,9 @@ When including multiple files, options are merged in list order:
 1. Finally, options defined directly in the current
    `analysis_options.yaml` file override any included options.
 
-When options are merged, settings are combined rather than replacing
-entire sections.
+When merging options,
+the analyzer combines compatible settings rather than
+replacing entire sections.
 For example, enabling an individual linter rule in a later file
 adds to or overrides rules from earlier files
 without discarding the rest of the included ruleset.
@@ -426,9 +430,8 @@ include:
 # ...
 ```
 
-Then the combined analysis options are computed by applying the options found
-in `one.yaml`, then `two.yaml`, then `three.yaml`, and finally
-`analysis_options.yaml`.
+Then the analyzer applies options from `one.yaml`, then `two.yaml`,
+then `three.yaml`, and finally `analysis_options.yaml`.
 
 
 ## Enabling analyzer plugins (experimental) {:#plugins}
