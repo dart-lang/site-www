@@ -220,7 +220,7 @@ a compile-time error (`extraneous_modifier`).
 For code examples and migration steps, see
 [Parameter modifier restrictions][].
 
-To enforce immutable parameters as a style choice,
+To enforce non-reassignable parameters as a style choice,
 use the [`parameter_assignments`][] lint rule instead.
 
 ## The main() function {:#main}
