@@ -63,8 +63,8 @@ needs:
 
 * **Choose Cloud Functions for Firebase** if you're building a Flutter
   backend that requires serverless event handling, lightweight HTTP or callable
-  APIs, or tight integration with Firebase Auth and Firestore without managing
-  containers.
+  APIs, or tight integration with Firebase Authentication and Cloud Firestore
+  without managing containers.
 * **Choose Cloud Run** if you need custom Docker containers, long-running
   processes, WebSocket connections (such as with Serverpod), or custom
   networking configurations.
