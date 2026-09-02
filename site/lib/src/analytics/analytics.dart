@@ -16,6 +16,6 @@ abstract class Analytics {
   void sendEvent(String eventName, Map<String, Object?> parameters);
 
   void sendFeedback(bool helpful) {
-    sendEvent('feedback', {'feedback_type': helpful ? 'up' : 'down'});
+    sendEvent('inline_feedback', {'feedback_type': helpful ? 'up' : 'down'});
   }
 }
