@@ -33,10 +33,10 @@ requirements:
 
 | Architecture / framework | Best suited for | Key advantages | Data and persistence |
 | :--- | :--- | :--- | :--- |
-| **[Cloud Functions for Firebase](https://firebase.google.com/docs/functions/start-dart)** | Serverless HTTP and callable APIs, Flutter backends | Shared code with Flutter, zero server management, fast AOT cold starts | Cloud Firestore and Cloud Storage via [`firebase_admin_sdk`]({{site.pub-pkg}}/firebase_admin_sdk) |
+| **[Cloud Functions for Firebase][firebase-docs]** | Serverless HTTP and callable APIs, Flutter backends | Shared code with Flutter, zero server management, fast AOT cold starts | Cloud Firestore and Cloud Storage via [`firebase_admin_sdk`][] |
 | **[Serverpod](https://serverpod.dev)** | Full-stack applications requiring relational databases | Code generation, built-in authentication, database migrations | PostgreSQL, Redis |
 | **[Dart Frog](https://dart-frog.dev/)** | Fast REST APIs, modular microservices | Minimalistic routing, dependency injection, built on Shelf | Database agnostic |
-| **[Shelf]({{site.pub-pkg}}/shelf)** | Custom web servers, composable middleware | Lightweight primitive, modular architecture | Database agnostic |
+| **[Shelf][`shelf`]** | Custom web servers, composable middleware | Lightweight primitive, modular architecture | Database agnostic |
 
 {:.table .table-striped}
 
