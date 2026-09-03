@@ -62,10 +62,10 @@ To get started, see the
 When running server-side Dart on Google Cloud, consider your architectural
 needs:
 
-* **Choose Cloud Functions for Firebase** if you're building a Flutter
-  backend that requires serverless event handling, lightweight HTTP or callable
-  APIs, or tight integration with Firebase Authentication and Cloud Firestore
-  without managing containers.
+* **Choose Cloud Functions for Firebase** if you're building backends for
+  Flutter apps that require serverless event handling, lightweight HTTP or
+  callable APIs, or tight integration with Firebase Authentication and Cloud
+  Firestore without managing containers.
 * **Choose Cloud Run** if you need custom Docker containers, long-running
   processes, WebSocket connections (such as with Serverpod), or custom
   networking configurations.
