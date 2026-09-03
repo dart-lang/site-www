@@ -17,6 +17,8 @@ Using the [`package:skills`]({{site.pub-pkg}}/skills) command-line tool
 (invoked as `dart run skills@ <command>`),
 you can discover, install, and update skills for your project dependencies,
 enabling your AI agents to write better code with fewer hallucinations.
+To learn how to author and publish skills for your own package,
+refer to [Ship skills with packages](/tools/pub/package-skills).
 
 ## What are agent skills?
 
