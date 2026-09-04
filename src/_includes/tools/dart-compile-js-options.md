@@ -51,7 +51,12 @@ Common options include:
     :::
 
 `--no-source-maps`
-: Do not generate a source map file.
+: Don't generate a source map file.
+  By default, `dart compile js` automatically outputs a `.js.map`
+  source map file alongside the generated JavaScript code.
+  Use this flag to disable source map generation.
+  For security and privacy considerations when deploying source maps,
+  see [Web deployment][manage-source-maps].
 
 `-h` or `--help`
 : Displays help. To get information about all options, use `-hv`.
@@ -83,6 +88,7 @@ Some other handy options include:
 [`bool.fromEnvironment`]: {{site.dart-api}}/dart-core/bool/bool.fromEnvironment.html
 [`bool.hasEnvironment`]: {{site.dart-api}}/dart-core/bool/bool.hasEnvironment.html
 [Configuring apps with compilation environment declarations]: /libraries/core/environment-declarations
+[manage-source-maps]: /web/deployment#manage-source-maps-and-unneeded-build-files
 
 ###### Display options
 

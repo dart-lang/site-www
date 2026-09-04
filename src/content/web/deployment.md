@@ -33,7 +33,7 @@ reliable and responsive.
 
 * [Use deferred loading to reduce your app's initial size](#use-deferred-loading-to-reduce-your-apps-initial-size)
 * [Follow best practices for web apps](#follow-best-practices-for-web-apps)
-* [Remove unneeded build files](#remove-unneeded-build-files)
+* [Manage source maps and unneeded build files](#manage-source-maps-and-unneeded-build-files)
 
 #### Use deferred loading to reduce your app's initial size
 
@@ -53,21 +53,49 @@ Here are a few resources:
 * [Progressive Web Apps](https://web.dev/progressive-web-apps/)
 * [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
-#### Remove unneeded build files
+#### Manage source maps and unneeded build files
 
-Web compilers can produce files that are useful during development,
-such as Dart-to-JavaScript map files, but unnecessary in production.
+By default, Dart web compilers (`dart compile js` and `dart compile wasm`)
+generate source map files (`.js.map` and `.wasm.map`)
+alongside the compiled output.
+While source maps are useful for debugging,
+serving them on public web servers can expose sensitive information:
 
-To remove these files, you can run a command like the following:
+* **Unminified symbols and structure**:
+  Source maps allow browser DevTools to reconstruct original class names,
+  function names, and source logic.
+* **Developer file paths**:
+  Source maps often include absolute file system URIs
+  (such as `file:///Users/...`) from the build machine.
 
-{% comment %}
-Revise the following once https://github.com/dart-lang/angular/issues/1123 is resolved:
-{% endcomment %}
+:::warning
+To keep your original source code and local build paths private,
+don't deploy source map files to public web hosts.
+:::
 
-```console
-# From the root directory of your app:
-$ find build -type f -name "*.js.map" -exec rm {} +
-```
+Depending on your deployment strategy,
+you can handle source maps in one of two ways:
+
+* **Disable source maps at build time**:
+  If you don't need source maps for production debugging or error reporting,
+  pass the `--no-source-maps` flag to the compiler:
+
+  ```console
+  $ dart compile js --no-source-maps -O2 -o build/main.js web/main.dart
+  $ dart compile wasm --no-source-maps -o build/main.wasm web/main.dart
+  ```
+
+* **Exclude or strip map files from public hosting**:
+  If you use source maps for private error monitoring services
+  (such as Sentry or Bugsnag),
+  keep the `.map` files during compilation
+  and upload them directly to your monitoring service.
+  Then, exclude or remove them from your public web server or CDN directory:
+
+  ```console
+  # From the root directory of your app:
+  $ find build -type f \( -name "*.js.map" -o -name "*.wasm.map" \) -exec rm {} +
+  ```
 
 ## Serving your app
 

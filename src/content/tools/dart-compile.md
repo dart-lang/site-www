@@ -121,7 +121,8 @@ The following table shows the subcommands of `dart compile`.
   <tr>
     <td> <code>js</code> </td>
     <td> JavaScript </td>
-    <td> A deployable JavaScript file, 
+    <td> A deployable JavaScript file (<code>.js</code>)
+      and source map (<code>.js.map</code>), 
       compiled from the source code.
       <br><em><a href="#js">Learn more.</a></em>
     </td>
@@ -129,9 +130,9 @@ The following table shows the subcommands of `dart compile`.
   <tr>
     <td> <code>wasm</code> </td>
     <td> WebAssembly </td>
-    <td> A portable, binary instruction format for a stack-based virtual machine.
-         Currently under development.
-      <br><em><a href="/web/wasm">Learn more.</a></em>
+    <td> A WebAssembly module (<code>.wasm</code>)
+      and source map (<code>.wasm.map</code>).
+      <br><em><a href="#wasm">Learn more.</a></em>
     </td>
   </tr>
 </table>
@@ -369,6 +370,8 @@ they can have much slower startup than architecture-specific AOT output formats.
 ### JavaScript (js) {:#js}
 
 The `js` subcommand compiles Dart code to deployable JavaScript.
+By default, the compiler outputs both the JavaScript file (`.js`)
+and a source map file (`.js.map`).
 
 :::note
 Use the [`webdev` tool][webdev] rather than running the 
@@ -415,7 +418,23 @@ and let the compiler get rid of what it doesn't need.
 To learn more about building and deploying JavaScript applications,
 check out [Web deployment](/web/deployment).
 
+
+### WebAssembly (wasm) {:#wasm}
+
+The `wasm` subcommand compiles Dart code to a WebAssembly/WasmGC module.
+By default, the compiler generates both the `.wasm` module
+and a `.wasm.map` source map file.
+To disable source map generation for production builds,
+pass `--no-source-maps`.
+
+For details on compiling, serving, and deploying Wasm applications,
+see [Compiling to WebAssembly][wasm-compilation].
+To learn about security considerations when deploying source maps,
+see [Web deployment][manage-source-maps].
+
 [webdev]: /tools/webdev
 [`webdev build`]: /tools/webdev#build
 [`webdev serve`]: /tools/webdev#serve
 [Dart runtime]: /overview#runtime
+[wasm-compilation]: /web/wasm
+[manage-source-maps]: /web/deployment#manage-source-maps-and-unneeded-build-files
