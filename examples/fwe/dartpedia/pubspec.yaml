@@ -1,0 +1,8 @@
+name: cli
+description: A sample command-line application.
+publish_to: none
+
+resolution: workspace
+environment:
+  sdk: ^3.13.0-0
+
