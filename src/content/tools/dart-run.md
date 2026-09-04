@@ -3,13 +3,16 @@ title: dart run
 description: Command-line tool for running a Dart program.
 ---
 
-The `dart run` command supports running 
-a Dart program—located in a file, in the current package, 
+The `dart run` command supports running
+a Dart program—located in a file, in the current package,
 or in one of the dependencies of the current package—from the command line.
 This command provides functionality that was previously in `pub run`
 and the Dart VM tool.
-To run a program from an arbitrary location,
-use the [pub global](/tools/pub/cmd/pub-global) command.
+
+To run an executable from a package published on pub.dev without installing it
+globally, use the `dart run <package>@[<descriptor>]` syntax.
+If you use a tool frequently, consider installing it with the
+[pub global](/tools/pub/cmd/pub-global) command.
 
 ```plaintext
 dart run [options] [<DART_FILE> | <PACKAGE_TARGET>] [args]
@@ -22,6 +25,24 @@ $ dart create myapp
 $ cd myapp
 $ dart run
 ```
+
+## Running an executable from pub.dev
+
+You can run an executable directly from a package published on pub.dev
+without adding it to your current package or installing it globally.
+
+For example:
+
+```console
+$ dart run dhttpd@
+```
+
+This downloads the package if necessary, runs its default executable,
+and reuses the cached package on subsequent runs.
+
+Use this form for one-off tools and temporary utilities.
+If you use a tool regularly, consider installing it with
+[`dart pub global activate`](/tools/pub/cmd/pub-global).
 
 {% render 'tools/dart-tool-note.md' %}
 
