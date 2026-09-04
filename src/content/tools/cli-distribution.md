@@ -58,6 +58,67 @@ AOT (Ahead-of-Time) compilation means your tool starts up instantly
 without booting a Dart VM or JIT-compiling code dynamically,
 leading to much faster and more consistent execution times for your users.
 
+## Accessing the Dart SDK and spawning subprocesses
+
+When building tools that invoke other developer commands (such as `dart format`, `dart test`, or code generators),
+be mindful of the execution environment difference between JIT snapshots and AOT binaries.
+
+### The AOT Platform.resolvedExecutable gotcha
+
+Under legacy `dart pub global activate` (which ran inside the Dart JIT VM),
+`Platform.resolvedExecutable` pointed directly to the `<dart-sdk>/bin/dart` binary.
+Many legacy packages located SDK libraries by navigating relative to this path:
+
+```dart
+// ❌ UNSAFE under AOT compilation ('dart install')
+final sdkDir = path.dirname(path.dirname(Platform.resolvedExecutable));
+```
+
+Under `dart install` (and `dart compile exe`),
+`Platform.resolvedExecutable` points to **your compiled application binary**
+(for example, in `~/.dart/install/app-bundles/<package>/.../bundle/bin/<executable>`),
+**not** the Dart SDK runtime.
+
+If your tool attempts to:
+1. Locate SDK libraries relative to `Platform.resolvedExecutable`, the lookup fails
+   because the tool's application bundle does not contain SDK compiler artifacts.
+2. Spawn a subprocess using `Platform.executable` or `Platform.resolvedExecutable`,
+   it recursively executes your tool binary in an infinite loop instead of running `dart`.
+
+### Recommended solution: package:cli_util
+
+To safely discover the host Dart SDK and locate the `dart` binary under both JIT and AOT compilation,
+use [`package:cli_util`]({{site.pub-pkg}}/cli_util) (version `^0.6.0` or later):
+
+```yaml
+dependencies:
+  cli_util: ^0.6.0
+```
+
+`package:cli_util` implements a resilient 4-tier probe
+(validating active runtime path, `DART_SDK` environment variable, system `PATH` resolution including Flutter's bundled SDK, and `FLUTTER_ROOT` fallback):
+
+```dart
+import 'dart:io';
+import 'package:cli_util/cli_util.dart';
+
+void runTool() {
+  // 1. Get the path to the Dart SDK root directory (or null if not found)
+  final String? sdk = sdkPath;
+  if (sdk != null) {
+    print('Found Dart SDK at: $sdk');
+  }
+
+  // 2. Get the path to the host `dart` executable for subprocess spawning
+  final String? dart = dartExecutable;
+
+  if (dart != null) {
+    // Safely spawn a child Dart process
+    Process.runSync(dart, ['format', '.']);
+  }
+}
+```
+
 ## Adding build hooks
 
 If your CLI tool depends on native C/C++ libraries
