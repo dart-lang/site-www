@@ -37,6 +37,10 @@ Server-side frameworks written in Dart include:
 [Dart Frog](https://dart-frog.dev/)
 : A fast, minimalistic backend framework for Dart.
 
+[Genkit Dart](https://genkit.dev/docs/dart/get-started/)
+: An open-source AI framework for building full-stack,
+  AI-powered applications, server-side flows, and agentic workflows.
+
 More tools
 : The [Tools](/tools) page links to generally useful tools,
   such as Dart plugins for your favorite IDE or editor.
