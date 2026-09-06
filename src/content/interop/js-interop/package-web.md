@@ -16,7 +16,7 @@ import 'package:web/web.dart';
 
 void main() {
   final div = document.querySelector('div')!;
-  div.text = 'Text set at ${DateTime.now()}';
+  div.textContent = 'Text set at ${DateTime.now()}';
 }
 ```
 
@@ -270,9 +270,8 @@ window.addEventListener('click', callback); // Remove
 window.addEventListener('click', callback.toJS); // Add
 
 // Callbacks with parameters also use .toJS:
-button.addEventListener('click', ((Event event) {
-  final mouseEvent = event as MouseEvent;
-  print('Clicked at (${mouseEvent.clientX}, ${mouseEvent.clientY})');
+button.addEventListener('click', ((MouseEvent event) {
+  print('Clicked at (${event.clientX}, ${event.clientY})');
 }).toJS);
 ```
 
