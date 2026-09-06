@@ -220,15 +220,14 @@ element.insertAdjacentHTML('beforeend', html.toJS); // Add
 var checkbox = CheckboxInputElement(); // Remove
 var checkbox = HTMLInputElement()..type='checkbox'; // Add
 
+element.text = 'Hello'; // Remove
+element.textContent = 'Hello'; // Add
+
 element.querySelectorAll('a').classes.add('link'); // Remove
 for (final a in JSImmutableListWrapper(element.querySelectorAll('a'))) {
   a.classList.add('a');
 } // Add
 ```
-
-{% comment %}
-TODO: add more examples
-{% endcomment -%}
 
 ### Type tests
 
@@ -263,15 +262,36 @@ calling the member.
 Learn how to use interop conversion methods from the [Conversions][]
 section of the JS types page.
 
+For example, when passing callbacks to `addEventListener`,
+convert the Dart function into a `JSFunction` using `.toJS`:
+
 ```dart
 window.addEventListener('click', callback); // Remove
 window.addEventListener('click', callback.toJS); // Add
+
+// Callbacks with parameters also use .toJS:
+button.addEventListener('click', ((Event event) {
+  final mouseEvent = event as MouseEvent;
+  print('Clicked at (${mouseEvent.clientX}, ${mouseEvent.clientY})');
+}).toJS);
 ```
 
-{% comment %}
-TODO: Think of a better example. People will likely use the stream helpers
-instead of `addEventListener`.
-{% endcomment -%}
+If you prefer subscribing to DOM events using Dart `Stream`s
+rather than `addEventListener`, you can use the stream helper extensions
+from `package:web`:
+
+```dart
+// Using the stream helper extension (same API shape as dart:html):
+button.onClick.listen((event) {
+  // event is already typed as MouseEvent without needing a cast:
+  print('Clicked at (${event.clientX}, ${event.clientY})');
+});
+
+// Or using EventStreamProviders directly:
+EventStreamProviders.clickEvent.forTarget(button).listen((event) {
+  print('Clicked at (${event.clientX}, ${event.clientY})');
+});
+```
 
 Generally, you can spot which methods need a conversion because they'll be
 flagged with some variation of the exception:
