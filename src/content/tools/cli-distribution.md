@@ -58,16 +58,21 @@ AOT (Ahead-of-Time) compilation means your tool starts up instantly
 without booting a Dart VM or JIT-compiling code dynamically,
 leading to much faster and more consistent execution times for your users.
 
-## Accessing the Dart SDK and spawning subprocesses
+## Access the Dart SDK and spawn subprocesses
 
-When building tools that invoke other developer commands (such as `dart format`, `dart test`, or code generators),
-be mindful of the execution environment difference between JIT snapshots and AOT binaries.
+When building tools that invoke other developer commands
+(such as `dart format`, `dart test`, or code generators),
+be mindful of the execution environment difference
+between JIT snapshots and AOT binaries.
 
-### The AOT Platform.resolvedExecutable gotcha
+### Platform.resolvedExecutable behavior in AOT
 
-Under legacy `dart pub global activate` (which ran inside the Dart JIT VM),
-`Platform.resolvedExecutable` pointed directly to the `<dart-sdk>/bin/dart` binary.
-Many legacy packages located SDK libraries by navigating relative to this path:
+Under legacy `dart pub global activate`
+(which ran inside the Dart JIT VM),
+`Platform.resolvedExecutable` pointed directly to the
+`<dart-sdk>/bin/dart` binary.
+Many legacy packages located SDK libraries
+by navigating relative to this path:
 
 ```dart
 // ❌ UNSAFE under AOT compilation ('dart install')
@@ -76,27 +81,31 @@ final sdkDir = path.dirname(path.dirname(Platform.resolvedExecutable));
 
 Under `dart install` (and `dart compile exe`),
 `Platform.resolvedExecutable` points to **your compiled application binary**
-(for example, in `~/.dart/install/app-bundles/<package>/.../bundle/bin/<executable>`),
+(for example, in
+`~/.dart/install/app-bundles/<package>/.../bundle/bin/<executable>`),
 **not** the Dart SDK runtime.
 
-If your tool attempts to:
-1. Locate SDK libraries relative to `Platform.resolvedExecutable`, the lookup fails
-   because the tool's application bundle does not contain SDK compiler artifacts.
-2. Spawn a subprocess using `Platform.executable` or `Platform.resolvedExecutable`,
-   it recursively executes your tool binary in an infinite loop instead of running `dart`.
+If your tool relies on `Platform.resolvedExecutable` or `Platform.executable`:
+1. **SDK lookups fail**:
+   The tool's application bundle does not contain SDK compiler artifacts.
+1. **Subprocess spawning loops indefinitely**:
+   Invoking either property executes your tool binary again
+   instead of the `dart` executable.
 
 ### Recommended solution: package:cli_util
 
-To safely discover the host Dart SDK and locate the `dart` binary under both JIT and AOT compilation,
-use [`package:cli_util`]({{site.pub-pkg}}/cli_util) (version `^0.6.0` or later):
+To safely discover the host Dart SDK and locate the `dart` binary
+under both JIT and AOT compilation,
+use [`package:cli_util`][] (version `^0.6.0` or later):
 
 ```yaml
 dependencies:
   cli_util: ^0.6.0
 ```
 
-`package:cli_util` implements a resilient 4-tier probe
-(validating active runtime path, `DART_SDK` environment variable, system `PATH` resolution including Flutter's bundled SDK, and `FLUTTER_ROOT` fallback):
+`package:cli_util` checks several fallback locations to find the SDK
+(the active runtime path, the `DART_SDK` environment variable,
+system `PATH` including Flutter's bundled SDK, and `FLUTTER_ROOT`):
 
 ```dart
 import 'dart:io';
@@ -163,3 +172,4 @@ to recommend `dart install` instead of the legacy `dart pub global activate` com
 self-contained applications that are uncoupled from the host Dart SDK version.
 
 [`dart install`]: /tools/dart-install
+[`package:cli_util`]: {{site.pub-pkg}}/cli_util
