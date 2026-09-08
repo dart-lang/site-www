@@ -27,8 +27,8 @@ To run Dart in the Cloud, we recommend using serverless computing solutions.
 
 You can use Cloud Run's flexible container support,
 combined with Dart's Docker images, to run server-side Dart code.
-Creating scalable, high performance APIs and event-driven apps
-are good use cases for Cloud Run's serverless platform,
+Scalable, high-performance APIs and event-driven apps
+are good use cases for the Cloud Run serverless platform,
 which frees developers from managing infrastructure.
 
 Examples of Dart servers implemented to run on Cloud Run are
@@ -56,6 +56,19 @@ To get started, see the
 
 [firebase-docs]: https://firebase.google.com/docs/functions/start-dart
 [firebase-repo]: https://github.com/firebase/firebase-functions-dart
+
+### Choosing between Cloud Run and Cloud Functions for Firebase
+
+When running server-side Dart on Google Cloud, consider your architectural
+needs:
+
+* **Choose Cloud Functions for Firebase** if you're building backends for
+  Flutter apps that require serverless event handling, lightweight HTTP or
+  callable APIs, or tight integration with Firebase Authentication and Cloud
+  Firestore without managing containers.
+* **Choose Cloud Run** if you need custom Docker containers, long-running
+  processes, WebSocket connections (such as with Serverpod), or custom
+  networking configurations.
 
 ## Other solutions
 
