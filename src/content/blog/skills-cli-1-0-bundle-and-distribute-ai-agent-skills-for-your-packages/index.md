@@ -5,9 +5,12 @@ description: >-
   to improve discoverability.
 publishDate: 2026-09-08
 author: jakemac53
+image: images/dart-box-of-skills.webp
 category: announcements
 layout: blog
 ---
+
+<DashImage src="images/dart-box-of-skills.webp" alt="Illustration representing package skills in Dart." />
 
 Since late 2025, [Agent Skills](https://agentskills.io/) have been changing
 how users give better context to their AI agents.
