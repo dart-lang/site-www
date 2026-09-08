@@ -269,11 +269,33 @@ convert the Dart function into a `JSFunction` using `.toJS`:
 window.addEventListener('click', callback); // Remove
 window.addEventListener('click', callback.toJS); // Add
 
-// Callbacks with parameters also use .toJS:
 button.addEventListener('click', ((MouseEvent event) {
   print('Clicked at (${event.clientX}, ${event.clientY})');
 }).toJS);
 ```
+:::note
+Each call to `.toJS` creates a *new* `JSFunction` object, even if the
+underlying Dart function is identical. If you need to remove a listener
+later with `removeEventListener`, store the converted `JSFunction` in a
+variable and reuse that same reference in both calls, rather than calling
+`.toJS` again:
+
+```dart
+// Remove
+final handler = (web.MouseEvent event) {
+  print('Clicked at (${event.clientX}, ${event.clientY})');
+};
+button.addEventListener('click', handler.toJS);
+button.removeEventListener('click', handler.toJS); // Won't work! Different JSFunction
+
+// Add
+final handler = ((web.MouseEvent event) {
+  print('Clicked at (${event.clientX}, ${event.clientY})');
+}).toJS;
+button.addEventListener('click', handler);
+button.removeEventListener('click', handler); // Will Work: same reference
+```
+:::
 
 If you prefer subscribing to DOM events using Dart `Stream`s
 rather than `addEventListener`, you can use the stream helper extensions
