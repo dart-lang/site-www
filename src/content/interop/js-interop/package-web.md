@@ -268,32 +268,20 @@ convert the Dart function into a `JSFunction` using `.toJS`:
 ```dart
 window.addEventListener('click', callback); // Remove
 window.addEventListener('click', callback.toJS); // Add
-
-button.addEventListener('click', ((MouseEvent event) {
-  print('Clicked at (${event.clientX}, ${event.clientY})');
-}).toJS);
+// where callback's first parameter accepts Event.
 ```
+
 :::note
-Each call to `.toJS` creates a *new* `JSFunction` object, even if the
-underlying Dart function is identical. If you need to remove a listener
-later with `removeEventListener`, store the converted `JSFunction` in a
-variable and reuse that same reference in both calls, rather than calling
-`.toJS` again:
+Calling `.toJS` creates a new `JSFunction` each time.
+To later remove the listener with `removeEventListener`,
+store the converted `JSFunction` in a variable and pass
+that same instance to both methods:
 
 ```dart
-// Remove
-final handler = (web.MouseEvent event) {
-  print('Clicked at (${event.clientX}, ${event.clientY})');
-};
-button.addEventListener('click', handler.toJS);
-button.removeEventListener('click', handler.toJS); // Won't work! Different JSFunction
-
-// Add
-final handler = ((web.MouseEvent event) {
-  print('Clicked at (${event.clientX}, ${event.clientY})');
-}).toJS;
-button.addEventListener('click', handler);
-button.removeEventListener('click', handler); // Will Work: same reference
+final jsCallback = callback.toJS;
+window.addEventListener('click', jsCallback);
+// ...
+window.removeEventListener('click', jsCallback);
 ```
 :::
 
