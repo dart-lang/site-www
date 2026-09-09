@@ -15,7 +15,7 @@ body .glue-cookie-notification-bar {
   }
 
   .glue-cookie-notification-bar__more {
-    text-wrap: nowrap;
+    white-space: nowrap;
 
     &, &:visited {
       color: var(--site-link-fgColor);
@@ -37,7 +37,7 @@ body .glue-cookie-notification-bar {
     min-height: 40px;
     font-family: var(--site-ui-fontFamily);
     font-size: 14px;
-    text-wrap: nowrap;
+    white-space: nowrap;
 
     // Preserve the managed banner's system colors in high contrast mode.
     @media (forced-colors: none) {
