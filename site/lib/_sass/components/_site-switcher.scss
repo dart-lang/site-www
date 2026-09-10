@@ -23,6 +23,8 @@
   }
 
   .site-wordmark {
+    display: flex;
+    align-items: center;
     font-variant-ligatures: none;
     font-family: var(--site-ui-fontFamily);
     user-select: none;
@@ -30,6 +32,10 @@
 
     &.current-site {
       background-color: var(--site-primary-color-highlight);
+    }
+
+    .name {
+      margin-left: 0.5rem;
     }
 
     .subtype {
@@ -40,6 +46,7 @@
       border-radius: 0.25rem;
       color: var(--site-secondaryContainer-fgColor);
       background-color: var(--site-secondaryContainer-bgColor);
+      margin-left: 0.4rem;
       letter-spacing: normal;
     }
   }
@@ -87,4 +94,5 @@
     margin-left: 0.4rem;
     letter-spacing: normal;
   }
+
 }
