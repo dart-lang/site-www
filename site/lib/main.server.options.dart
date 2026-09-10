@@ -12,8 +12,6 @@ import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     as _share_button;
 import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     as _collapse_button;
-import 'package:dart_dev_site/src/components/common/client/cookie_notice.dart'
-    as _cookie_notice;
 import 'package:dart_dev_site/src/components/common/client/copy_button.dart'
     as _copy_button;
 import 'package:dart_dev_site/src/components/common/client/feedback.dart'
@@ -77,10 +75,6 @@ ServerOptions get defaultServerOptions => ServerOptions(
           'collapse_button',
           params: __collapse_buttonCollapseButton,
         ),
-    _cookie_notice.CookieNotice: ClientTarget<_cookie_notice.CookieNotice>(
-      'cookie_notice',
-      params: __cookie_noticeCookieNotice,
-    ),
     _copy_button.CopyButton: ClientTarget<_copy_button.CopyButton>(
       'copy_button',
       params: __copy_buttonCopyButton,
@@ -147,9 +141,6 @@ Map<String, Object?> __share_buttonShareButton(_share_button.ShareButton c) => {
 Map<String, Object?> __collapse_buttonCollapseButton(
   _collapse_button.CollapseButton c,
 ) => {'classes': c.classes, 'title': c.title};
-Map<String, Object?> __cookie_noticeCookieNotice(
-  _cookie_notice.CookieNotice c,
-) => {'alwaysDarkMode': c.alwaysDarkMode};
 Map<String, Object?> __copy_buttonCopyButton(_copy_button.CopyButton c) => {
   'buttonText': c.buttonText,
   'toCopy': c.toCopy,
