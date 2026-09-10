@@ -95,6 +95,8 @@ Usage: dart compile wasm [arguments] <dart entry point>
                             This can be an absolute or relative path.
 -v, --verbose               Print debug output during compilation
     --enable-asserts        Enable assert statements.
+    --[no-]source-maps      Generate a source map file.
+                            (defaults to on)
 -D, --define=<key=value>    Define an environment declaration. To specify multiple declarations, use multiple
                             options or use commas to separate key-value pairs.
                             For example: dart compile wasm -Da=1,b=2 main.dart
@@ -105,22 +107,35 @@ While we continue optimizing tooling to improve developer experience,
 you can try compiling Dart to Wasm today
 by following the temporary steps outlined here:
 
-1. Start with a web app: `dart create -t web mywebapp`
+1.  Start with a web app: `dart create -t web mywebapp`
 
     The template creates a small web app using [`package:web`][],
     which is necessary to run Wasm.
     Make sure your web apps are [migrated][] from `dart:html` to `package:web`.
 
-1. Compile with Wasm to a new `site` output directory: `mywebapp$ dart compile wasm web/main.dart -o site/main.wasm`
+1.  Compile with Wasm to a new `site` output directory:
 
-1. Copy over the web files: `cp web/index.html web/styles.css site/`
+    ```console
+    $ dart compile wasm web/main.dart -o site/main.wasm
+    ```
 
-1. Create a JS bootstrap file to load the Wasm code:
+    :::note
+    By default, `dart compile wasm` generates a `.wasm.map` source map file
+    alongside the `.wasm` output.
+    To disable source map generation for production builds,
+    pass `--no-source-maps`.
+    To learn about security considerations when deploying source maps,
+    see [Web deployment][manage-source-maps].
+    :::
+
+1.  Copy over the web files: `cp web/index.html web/styles.css site/`
+
+1.  Create a JS bootstrap file to load the Wasm code:
    
-   Add a new file `site/main.dart.js` and fill it with the contents of
-   this [`main.dart.js` sample](https://gist.github.com/mit-mit/0fcb1247a9444b0cadf611aa5fc6f32e).
+    Add a new file `site/main.dart.js` and fill it with the contents of
+    this [`main.dart.js` sample](https://gist.github.com/mit-mit/0fcb1247a9444b0cadf611aa5fc6f32e).
 
-1. Serve the output: `dart pub global run dhttpd` ([docs][dhttpd])
+1.  Serve the output: `dart pub global run dhttpd` ([docs][dhttpd])
 
 You can also try out this small example [here](https://github.com/mit-mit/sandbox).
 
@@ -131,4 +146,5 @@ You can also try out this small example [here](https://github.com/mit-mit/sandbo
 [migrated]: /interop/js-interop/package-web/
 [dhttpd]: {{site.pub-pkg}}/dhttpd
 [deferred loading]: /language/libraries#lazily-loading-a-library
+[manage-source-maps]: /web/deployment#manage-source-maps-and-unneeded-build-files
 
