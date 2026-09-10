@@ -69,7 +69,7 @@ serving them on public web servers can expose sensitive information:
   (such as `file:///Users/...`) from the build machine.
 
 :::warning
-To keep your original source code and local build paths private,
+To keep your symbol names, code structure, and local build paths private,
 don't deploy source map files to public web hosts.
 :::
 
