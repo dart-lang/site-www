@@ -677,6 +677,7 @@ to implicitly handle its implementation:
 ```dart tag=good
 import 'package:mockito/mockito.dart';
 
+
 class Example {
   final int? _i;
   Example(this._i);
