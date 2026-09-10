@@ -8,6 +8,6 @@ void main() {
   // ERROR: An expression statement can't begin with `.`.
   // The compiler has no type context (like a variable assignment)
   // to infer that `.log` should refer to `Logger.log`.
-  // ignore: dot_shorthand_undefined_member
+  // ignore: dot_shorthand_undefined_member, dot_shorthand_missing_context
   .log('Hello');
 }
