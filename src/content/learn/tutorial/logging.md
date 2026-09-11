@@ -438,8 +438,8 @@ Now, export the logger and commands from the `cli` library,
 then wire them up in `cli/bin/cli.dart` to
 create the complete CLI application.
 
-1.  Create a new file called `cli/lib/cli.dart` and
-    export your logger and commands:
+1.  Open the `cli/lib/cli.dart` file.
+    Replace its placeholder content with exports for your logger and commands:
 
     ```dart title="cli/lib/cli.dart"
     export 'src/commands/get_article.dart';
@@ -447,8 +447,9 @@ create the complete CLI application.
     export 'src/logger.dart';
     ```
 
-    This makes `initFileLogger`, `SearchCommand`, and `GetArticleCommand`
-    available to other parts of your application.
+    This file acts as the library's public interface,
+    exporting `initFileLogger`, `SearchCommand`, and `GetArticleCommand`
+    so that `cli/bin/cli.dart` can import them from `package:cli/cli.dart`.
 
 1.  Open the `cli/bin/cli.dart` file.
 
@@ -505,6 +506,8 @@ create the complete CLI application.
 Now that you've implemented the CLI commands,
 wired up `CommandRunner` in `bin/cli.dart`, and configured logging,
 test your application from the terminal.
+Make sure you run these commands from your `cli` directory
+(`/dartpedia/cli`).
 
 1.  Run the CLI application to search for an article:
 
@@ -550,6 +553,50 @@ test your application from the terminal.
     are also logged to this file as `WARNING` level entries,
     followed by an `INFO` entry with command usage.
     :::
+
+1.  Verify that your workspace structure matches the completed project:
+
+    ```text
+    dartpedia/
+    ├── pubspec.yaml               # Workspace root configuration
+    ├── cli/
+    │   ├── bin/
+    │   │   └── cli.dart           # Application entrypoint
+    │   ├── lib/
+    │   │   ├── cli.dart           # Library exports
+    │   │   └── src/
+    │   │       ├── commands/
+    │   │       │   ├── get_article.dart
+    │   │       │   └── search.dart
+    │   │       └── logger.dart    # Logging configuration
+    │   ├── logs/
+    │   │   └── <date>_errors.txt  # Generated error logs
+    │   └── pubspec.yaml
+    ├── command_runner/
+    │   ├── lib/
+    │   │   ├── command_runner.dart
+    │   │   └── src/
+    │   │       ├── arguments.dart
+    │   │       ├── command_runner_base.dart
+    │   │       ├── console.dart
+    │   │       ├── exceptions.dart
+    │   │       └── help_command.dart
+    │   └── pubspec.yaml
+    └── wikipedia/
+        ├── lib/
+        │   ├── wikipedia.dart
+        │   └── src/
+        │       ├── api/
+        │       │   ├── get_article.dart
+        │       │   ├── search.dart
+        │       │   └── summary.dart
+        │       └── model/
+        │           ├── article.dart
+        │           ├── search_results.dart
+        │           ├── summary.dart
+        │           └── title_set.dart
+        └── pubspec.yaml
+    ```
 
 ## Review
 
