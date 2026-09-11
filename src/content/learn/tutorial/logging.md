@@ -33,33 +33,36 @@ Before you begin this chapter, ensure you:
 
 ## Tasks
 
-In this chapter, you'll add logging to the `dartpedia` CLI application to
+In this chapter, you'll complete the `dartpedia` CLI application by
+integrating the `wikipedia` package commands and adding logging to
 help track errors and monitor its behavior.
-This will involve adding the `logging` package,
-creating a `Logger` instance, and writing log messages to a file.
+This will involve adding package dependencies,
+creating the CLI commands, configuring a `Logger` instance,
+and running your complete application.
 
-### Task 1: Add the `logging` package
+### Task 1: Add dependencies to the `cli` package
 
-First, add the `logging` package to your project's dependencies.
+First, add the `wikipedia` package (which you built in the previous chapters)
+and the `logging` package to your CLI project's dependencies.
 
 1.  Open the `cli/pubspec.yaml` file.
 
 1.  Locate the `dependencies` section.
 
-1.  Add the `logging` package to your dependencies:
+1.  Add the `wikipedia` and `logging` packages to your dependencies:
 
     ```yaml
     dependencies:
       http: ^1.3.0
       command_runner:
         path: ../command_runner
+      # Add the following lines
       wikipedia:
         path: ../wikipedia
-      # Add the following line
       logging: ^1.2.0
     ```
 
-1.  Run `dart pub get` in the `cli` directory to fetch the new dependency.
+1.  Run `dart pub get` in the `cli` directory to fetch the new dependencies.
 
 ### Task 2: Create a logger
 
@@ -169,77 +172,13 @@ creating a new file for the logger and setting up the necessary imports.
         `Level.INFO` or `Level.WARNING` in production.
     -   It listens for log records and writes them to the log file.
 
-1. Create a new file called `cli/lib/cli.dart` and export `logger.dart`.
-   This makes `initFileLogger` available to other parts of your app.
-   (You'll add exports for the CLI commands in the following tasks once they're created).
-
-   ```dart title="cli/lib/cli.dart"
-   // ...
-   export 'src/logger.dart';
-   ```
-
-### Task 3: Use the logger in `cli.dart`
-
-Now, use the `initFileLogger` function in `cli/bin/cli.dart` to
-create a logger instance and log messages to a file.
-
-1.  Open the `cli/bin/cli.dart` file.
-
-1.  Add the import for the logger:
-
-    ```dart title="cli/bin/cli.dart"
-    import 'package:cli/cli.dart';
-    import 'package:command_runner/command_runner.dart';
-    ```
-
-1.  Modify the `main` function to initialize the logger and
-    pass it to the commands:
-
-    ```dart title="cli/bin/cli.dart"
-    import 'package:cli/cli.dart';
-    import 'package:command_runner/command_runner.dart';
-
-    void main(List<String> arguments) async {
-      final errorLogger = initFileLogger('errors');
-      final app =
-          CommandRunner(
-              onOutput: (String output) async {
-                await write(output);
-              },
-              onError: (Object error) {
-                if (error is Error) {
-                  errorLogger.severe(
-                    '[Error] ${error.toString()}\n${error.stackTrace}',
-                  );
-                  throw error;
-                }
-                if (error is Exception) {
-                  errorLogger.warning(error);
-                  print(error);
-                }
-              },
-            )
-            ..addCommand(HelpCommand())
-            ..addCommand(SearchCommand(logger: errorLogger))
-            ..addCommand(GetArticleCommand(logger: errorLogger));
-
-      app.run(arguments);
-    }
-    ```
-
-    This code does the following:
-
-    -   It initializes a `Logger` instance using `initFileLogger('errors')`.
-    -   It passes the `logger` instance to `CommandRunner` and
-        individual commands.
-
-### Task 4: Create the SearchCommand command
+### Task 3: Create the SearchCommand command
 
 The core functionality of the CLI lives in its commands.
 Create the `SearchCommand` and `GetArticleCommand` files and
-add the necessary code, including the logging and error handling.
+add the necessary code, including logging and error handling.
 
-1.  Create a new file named `/cli/lib/src/commands/search.dart`.
+1.  Create a new file named `cli/lib/src/commands/search.dart`.
 
 1.  Add the imports and a basic class structure.
     This `SearchCommand` class extends `Command`, and
@@ -249,101 +188,7 @@ add the necessary code, including the logging and error handling.
     which allows the command to log events without
     needing to create its own logger.
 
-    ```dart
-    import 'dart:async';
-    import 'dart:io';
-
-    import 'package:command_runner/command_runner.dart';
-    import 'package:logging/logging.dart';
-    import 'package:wikipedia/wikipedia.dart';
-
-    class SearchCommand extends Command {
-      SearchCommand({required this.logger});
-
-      final Logger logger;
-
-      @override
-      String get description => 'Search for Wikipedia articles.';
-
-      @override
-      bool get requiresArgument => true;
-
-      @override
-      String get name => 'search';
-
-      @override
-      String get valueHelp => 'STRING';
-
-      @override
-      String get help =>
-          'Prints a list of links to Wikipedia articles that match the given term.';
-
-      @override
-      FutureOr<String> run(ArgResults args) async {
-        // The rest of the function will be added below.
-        // ...
-      }
-    }
-    ```
-
-1.  Now, add the core logic to the `run` method.
-    This code checks for a valid argument,
-    calls the `search()` function from the `wikipedia` package,
-    formats the results, and returns the results as a string.
-
-    ```dart
-    import 'dart:async';
-    import 'dart:io';
-
-    import 'package:command_runner/command_runner.dart';
-    import 'package:logging/logging.dart';
-    import 'package:wikipedia/wikipedia.dart';
-
-    class SearchCommand extends Command {
-      SearchCommand({required this.logger});
-
-      final Logger logger;
-
-      @override
-      String get description => 'Search for Wikipedia articles.';
-
-      @override
-      bool get requiresArgument => true;
-
-      @override
-      String get name => 'search';
-
-      @override
-      String get valueHelp => 'STRING';
-
-      @override
-      String get help =>
-          'Prints a list of links to Wikipedia articles that match the given term.';
-
-      @override
-      FutureOr<String> run(ArgResults args) async {
-        if (requiresArgument &&
-            (args.commandArg == null || args.commandArg!.isEmpty)) {
-          throw ArgumentException('Please include a search term', name);
-        }
-
-        final buffer = StringBuffer('Search results:\n');
-        final SearchResults results = await search(args.commandArg!);
-
-        for (var result in results.results) {
-          buffer.writeln('${result.title} - ${result.url}');
-        }
-        return buffer.toString();
-      }
-    }
-    ```
-
-1.  Next, add the "I'm feeling lucky" feature by
-    adding a flag to the constructor. Then, in the `run` method,
-    add the logic to check if the flag is set and, if so,
-    get the summary of the top search result.
-
-    ```dart
+    ```dart title="cli/lib/src/commands/search.dart"
     import 'dart:async';
     import 'dart:io';
 
@@ -380,6 +225,19 @@ add the necessary code, including the logging and error handling.
 
       @override
       FutureOr<String> run(ArgResults args) async {
+        // Command logic will be added below.
+        // ...
+        return '';
+      }
+    }
+    ```
+
+1.  Implement the command logic to search Wikipedia and format the results.
+
+    ```dart
+    // ...
+      @override
+      FutureOr<String> run(ArgResults args) async {
         if (requiresArgument &&
             (args.commandArg == null || args.commandArg!.isEmpty)) {
           throw ArgumentException('Please include a search term', name);
@@ -406,7 +264,7 @@ add the necessary code, including the logging and error handling.
         }
         return buffer.toString();
       }
-    }
+    // ...
     ```
 
 1.  Finally, wrap the main logic in a `try/catch` block.
@@ -414,7 +272,7 @@ add the necessary code, including the logging and error handling.
     could arise from network issues or data formatting problems.
     You'll use the injected `logger` to record these errors to the log file.
 
-    ```dart
+    ```dart title="cli/lib/src/commands/search.dart"
     import 'dart:async';
     import 'dart:io';
 
@@ -494,17 +352,17 @@ add the necessary code, including the logging and error handling.
     }
     ```
 
-### Task 5: Create the GetArticleCommand command
+### Task 4: Create the GetArticleCommand command
 
 Now, create the `GetArticleCommand` file and add the necessary code.
 The code is similar to the previous `SearchCommand`, as it also
 uses a `try/catch` block to handle potential network or data errors.
 
-1.  Create a new file named cli/lib/src/commands/get_article.dart.
+1.  Create a new file named `cli/lib/src/commands/get_article.dart`.
 
-1.  Add the following code to `get_article.dart`.
+1.  Add the following code to `get_article.dart`:
 
-    ```dart
+    ```dart title="cli/lib/src/commands/get_article.dart"
     import 'dart:async';
     import 'dart:io';
 
@@ -574,7 +432,14 @@ uses a `try/catch` block to handle potential network or data errors.
       handle network errors (`HttpException`) and
       data parsing errors (`FormatException`), logging them for debugging.
 
-3.  Now update `cli/lib/cli.dart` to export your new command files:
+### Task 5: Export commands and wire up `cli.dart`
+
+Now, export the logger and commands from the `cli` library,
+then wire them up in `cli/bin/cli.dart` to
+create the complete CLI application.
+
+1.  Create a new file called `cli/lib/cli.dart` and
+    export your logger and commands:
 
     ```dart title="cli/lib/cli.dart"
     export 'src/commands/get_article.dart';
@@ -582,9 +447,64 @@ uses a `try/catch` block to handle potential network or data errors.
     export 'src/logger.dart';
     ```
 
+    This makes `initFileLogger`, `SearchCommand`, and `GetArticleCommand`
+    available to other parts of your application.
+
+1.  Open the `cli/bin/cli.dart` file.
+
+1.  Add the imports for `cli` and `command_runner`:
+
+    ```dart title="cli/bin/cli.dart"
+    import 'package:cli/cli.dart';
+    import 'package:command_runner/command_runner.dart';
+    ```
+
+1.  Modify the `main` function to initialize the logger and
+    register the commands with `CommandRunner`:
+
+    ```dart title="cli/bin/cli.dart"
+    import 'package:cli/cli.dart';
+    import 'package:command_runner/command_runner.dart';
+
+    void main(List<String> arguments) async {
+      final errorLogger = initFileLogger('errors');
+      final app =
+          CommandRunner(
+              onOutput: (String output) async {
+                await write(output);
+              },
+              onError: (Object error) {
+                if (error is Error) {
+                  errorLogger.severe(
+                    '[Error] ${error.toString()}\n${error.stackTrace}',
+                  );
+                  throw error;
+                }
+                if (error is Exception) {
+                  errorLogger.warning(error);
+                  print(error);
+                }
+              },
+            )
+            ..addCommand(HelpCommand())
+            ..addCommand(SearchCommand(logger: errorLogger))
+            ..addCommand(GetArticleCommand(logger: errorLogger));
+
+      app.run(arguments);
+    }
+    ```
+
+    This code does the following:
+
+    -   Initializes a `Logger` instance using `initFileLogger('errors')`.
+    -   Passes the logger instance to `SearchCommand` and `GetArticleCommand`.
+    -   Registers all commands with `CommandRunner`.
+
 ### Task 6: Run the application and check the logs
 
-Now that you've implemented the CLI commands, wired up `CommandRunner` in `bin/cli.dart`, and configured logging, test your application from the terminal.
+Now that you've implemented the CLI commands,
+wired up `CommandRunner` in `bin/cli.dart`, and configured logging,
+test your application from the terminal.
 
 1.  Run the CLI application to search for an article:
 
@@ -592,7 +512,8 @@ Now that you've implemented the CLI commands, wired up `CommandRunner` in `bin/c
     dart run bin/cli.dart search "Dart programming"
     ```
 
-    You should see terminal output listing Wikipedia articles matching your search term.
+    You should see terminal output listing Wikipedia articles
+    matching your search term.
 
 1.  Try running the command with the `--im-feeling-lucky` flag:
 
@@ -600,14 +521,16 @@ Now that you've implemented the CLI commands, wired up `CommandRunner` in `bin/c
     dart run bin/cli.dart search "Dart" --im-feeling-lucky
     ```
 
-1.  Run the application with a query that produces an error or warning to test logging:
+1.  Run the application with a query that produces an error or
+    warning to test logging:
 
     ```bash
     dart run bin/cli.dart search blahblahblahblah
     ```
 
-1.  Check the `logs` directory in your project.
-    You should see a file with the current date and the name `errors.txt`.
+1.  Check the `cli/logs` directory in your project.
+    You should see a file named with the current date,
+    such as `<year>_<month>_<day>_errors.txt`.
 
 1.  Open the log file and verify that the error message is logged:
 
