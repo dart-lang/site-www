@@ -521,11 +521,17 @@ test your application from the terminal.
     dart run bin/cli.dart search "Dart" --im-feeling-lucky
     ```
 
-1.  Run the application with a query that produces an error or
-    warning to test logging:
+1.  Run the application without the required search argument to test
+    error logging:
 
     ```bash
-    dart run bin/cli.dart search blahblahblahblah
+    dart run bin/cli.dart search
+    ```
+
+    You should see the error printed to the terminal:
+
+    ```console
+    ArgumentException: Please include a search term
     ```
 
 1.  Check the `cli/logs` directory in your project.
@@ -535,9 +541,15 @@ test your application from the terminal.
 1.  Open the log file and verify that the error message is logged:
 
     ```text
-    [2025-02-20 16:23:45.678 - errors] WARNING: HttpException: HttpException: , uri = https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=blahblahblahblah
-    [2025-02-20 16:23:45.678 - errors] INFO: Usage: dart bin/cli.dart <command> [commandArg?] [...options?]
+    [2025-02-20 16:23:45.678 - errors] WARNING: ArgumentException: Please include a search term
     ```
+
+    :::note
+    Network errors caught by `SearchCommand` or `GetArticleCommand`
+    (such as when your device is offline or Wikipedia is unreachable)
+    are also logged to this file as `WARNING` level entries,
+    followed by an `INFO` entry with command usage.
+    :::
 
 ## Review
 
