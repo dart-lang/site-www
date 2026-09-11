@@ -7,9 +7,9 @@ description: >-
 layout: learn
 ---
 
-In this chapter, you'll learn how to
-make your application more robust by handling errors gracefully.
-You'll explore exceptions, `try/catch` blocks, and how to
+In this chapter, you make your application more robust
+by handling errors gracefully.
+You explore exceptions, `try/catch` blocks, and how to
 create custom exceptions to manage errors in a structured way.
 
 <SummaryCard>
@@ -33,36 +33,48 @@ Before you begin this chapter, ensure you:
 
 ## Errors versus exceptions
 
-Before you start writing code to handle failures,
-you need to understand the two main types of failures in Dart:
+Dart distinguishes between two main types of failures:
 **errors** and **exceptions**.
 
-- **Exceptions** represent conditions that you might expect to happen
-  and that your program can recover from.
-  Examples include invalid user input,
-  a missing file, or a network timeout.
-  Your code can catch and handle exceptions to keep running.
-- **Errors** represent failure conditions that indicate bugs in the code.
-  Examples include calling a method on a `null` object,
-  passing an invalid index to a list, or
-  failing to initialize a late variable before use.
-  You don't catch errors.
-  Instead, you let them crash the application,
-  which helps you find and fix the underlying bug.
+| Concept | `Exception` | `Error` |
+| :--- | :--- | :--- |
+| **What it indicates** | An expected runtime failure that code can recover from. | A programming bug or flaw in the code. |
+| **Common examples** | `FormatException`, `HttpException`, `SocketException`. | `RangeError`, `TypeError`, `StateError`. |
+| **Typical causes** | Invalid user input, network failure, missing file. | Off-by-one index, calling a method on `null`. |
+| **How to handle** | Catch and handle gracefully (for example, with `try/catch`). | Do not catch; fix the bug in your code. |
 
-In Dart, any non-null object can be thrown as an exception.
-However, by convention, exceptions implement `Exception`,
-while errors extend or implement `Error`.
-When you design an API, throw subtypes of `Exception` for
-conditions that callers can catch and handle.
+### Exceptions
+
+Exceptions represent conditions that you can anticipate and recover from.
+For example, when a user enters an unrecognized command-line argument,
+your application shouldn't crash with a raw stack trace.
+Instead, your code catches the exception,
+displays a friendly error message, and
+prompts the user with proper usage instructions.
+
+In Dart, custom exceptions typically implement the `Exception` class or
+extend an existing exception type like `FormatException`.
+
+### Errors
+
+Errors represent programmatic bugs in your logic that
+should be fixed during development rather than handled at runtime.
+For example, accessing an element beyond the bounds of a list throws a
+`RangeError`.
+Attempting to catch and suppress a `RangeError` hides the bug and
+can leave your application in an unpredictable state.
+Instead, let errors propagate so you can inspect the stack trace and
+fix the underlying mistake.
+
+In Dart, classes that represent bugs extend or implement `Error`.
 
 ## Tasks
 
-In this chapter, you will improve the robustness of
-your `command_runner` package by implementing error handling.
-You'll create a custom exception class
-and add error handling to the `CommandRunner` to
-gracefully manage errors that might occur during command execution.
+The following tasks apply these principles to the `command_runner` package.
+You define a custom exception class for invalid user arguments,
+use `try/catch` blocks to intercept failures, and
+configure `CommandRunner` to handle exceptions gracefully
+while letting unexpected errors propagate.
 
 ### Task 1: Create a custom ArgumentException
 
@@ -70,7 +82,7 @@ First, define a custom exception class called `ArgumentException` to
 represent errors related to command-line arguments.
 
 1.  Create the file `command_runner/lib/src/exceptions.dart`.
-    This file will contain the definition for your `ArgumentException` class.
+    This file contains the definition for your `ArgumentException` class.
 
 1.  Define a class called `ArgumentException` that `extends` `FormatException`.
 
@@ -101,7 +113,10 @@ represent errors related to command-line arguments.
     ```
 
     This class extends `FormatException`, which
-    is a built-in Dart exception class.
+    is a built-in Dart class that implements `Exception`.
+    Because invalid command-line arguments are an expected condition
+    that callers can anticipate and handle gracefully,
+    `ArgumentException` is designed as an exception rather than an `Error`.
     It includes additional properties to store the
     command and argument name associated with the error.
     This provides more context when handling the exception.
@@ -112,7 +127,7 @@ represent errors related to command-line arguments.
       The name of the argument that caused the exception.
 
 
-## Task 2: Implement error handling in CommandRunner
+### Task 2: Implement error handling in CommandRunner
 
 Next, update the `CommandRunner` class to
 handle potential errors gracefully.
@@ -139,7 +154,7 @@ throwing your new `ArgumentException` when the user provides bad input.
 
     Modify the CommandRunner to
     accept an optional `onError` function in its constructor.
-    This will allow the user of your package to
+    This allows users of your package to
     define their own error-handling logic.
 
     ```dart
@@ -166,8 +181,8 @@ throwing your new `ArgumentException` when the user provides bad input.
 1.  Update the run method to use `try`/`catch`.
 
     Wrap the logic inside the run method in a `try`/`catch` block.
-    If an exception occurs, this block will "catch" it and either
-    pass it to the `onError` callback or rethrow it if no callback was provided.
+    If an exception occurs, this block catches it and either
+    passes it to the `onError` callback or rethrows it if no callback is provided.
     `rethrow` preserves the original error and stack trace.
 
     ```dart
@@ -192,8 +207,8 @@ throwing your new `ArgumentException` when the user provides bad input.
 1.  Add validation to the `parse` method.
 
     Finally, replace the existing `parse` method in `command_runner_base.dart`
-    with the following updated version. This new version is much more robust.
-    It's filled with checks that will throw your custom `ArgumentException`
+    with the following updated version.
+    It includes checks that throw your custom `ArgumentException`
     whenever it detects invalid user input.
 
     ```dart
@@ -436,7 +451,7 @@ items:
 
 ## Next lesson
 
-In the next lesson, you'll learn about
+In the next lesson, learn about
 advanced object-oriented features in Dart,
 including enhanced enums and extensions.
-You'll improve the output formatting and add color to your CLI application.
+Improve the output formatting and add color to your CLI application.
