@@ -57,7 +57,7 @@ extend an existing exception type like `FormatException`.
 
 ### Errors
 
-Errors represent programmatic bugs in your logic that
+Errors represent bugs in your logic that
 should be fixed during development rather than handled at runtime.
 For example, accessing an element beyond the bounds of a list throws a
 `RangeError`.
@@ -114,8 +114,8 @@ represent errors related to command-line arguments.
 
     This class extends `FormatException`, which
     is a built-in Dart class that implements `Exception`.
-    Because invalid command-line arguments are an expected condition
-    that callers can anticipate and handle gracefully,
+    Invalid command-line arguments are an expected condition
+    that callers can anticipate and handle gracefully, so
     `ArgumentException` is designed as an exception rather than an `Error`.
     It includes additional properties to store the
     command and argument name associated with the error.
@@ -203,6 +203,13 @@ throwing your new `ArgumentException` when the user provides bad input.
       }
     }
     ```
+
+    Notice the use of `on Exception catch (exception)`.
+    In Dart, a bare `catch (e)` intercepts all thrown objects,
+    including `Error` instances.
+    Specifying `on Exception` ensures that your code catches only
+    recoverable exceptions,
+    allowing bugs to propagate uncaught so you can fix them.
 
 1.  Add validation to the `parse` method.
 
@@ -363,17 +370,10 @@ Modify `cli/bin/cli.dart` to use the new error handling in `CommandRunner`.
     }
     ```
 
-    This code passes in an `onError` callback function to
-    the `CommandRunner` constructor.
-    If an error occurs during the execution of a command,
-    the `onError` callback function is called with the error object.
-    The callback checks whether the error is an `Error` or an `Exception`.
-    Because an `Error` indicates a bug in the code,
-    the callback rethrows it.
-    This lets the application crash so you can fix the bug.
-    For an `Exception`, which represents a recoverable failure,
-    the callback handles it gracefully by
-    printing it to the console instead of rethrowing it.
+    This code passes an `onError` callback to `CommandRunner`.
+    The callback rethrows any `Error` so the application crashes,
+    while printing any `Exception` to the console so the user sees
+    the error message.
 
 ### Task 4: Update command_runner library exports
 
@@ -396,8 +396,10 @@ Make `ArgumentException` available to the `command_runner` library.
     // TODO: Export any libraries intended for clients of this package.
     ```
 
-    This ensures that the `ArgumentException` is
-    available to consumers of the `command_runner` package.
+    In Dart packages, files inside `lib/src/` are private implementation details.
+    Exporting `src/exceptions.dart` from `lib/command_runner.dart` exposes
+    `ArgumentException` as part of the package's public API so callers
+    (like `cli.dart`) can import and use it.
 
 ### Task 5: Test the new error handling
 

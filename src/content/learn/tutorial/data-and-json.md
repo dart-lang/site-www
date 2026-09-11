@@ -335,20 +335,24 @@ Create a Dart class to represent this summary.
     }
     ```
 
-    This code defines a `Summary` class with properties that
-    correspond to the fields in the JSON response from the Wikipedia API.
-    The `fromJson` factory constructor uses [pattern matching][] to
-    validate the JSON structure, extract the data, and
-    create a new `Summary` instance.
-    Because the `description` field is optional in Wikipedia's API,
-    the `switch` expression has two cases: one that extracts `description`
-    when present, and one that matches when it is omitted.
-    The `toString` method provides a convenient way to
-    print the contents of the `Summary` object.
+    This code defines a `Summary` class to represent the fields returned
+    by the Wikipedia summary endpoint:
 
-    > [!NOTE]
-    > Your editor might flag `import 'title_set.dart'` and `TitlesSet`
-    > as unresolved references until you create `TitlesSet` in Task 4.
+    * **`fromJson` pattern matching:** While you can access map keys
+      individually with manual casting (such as `json['pageid'] as int`),
+      the `fromJson` factory constructor uses [pattern matching][] to
+      validate the structure, confirm types, and extract values in a single
+      declarative expression.
+    * **`switch` expression:** Provides two cases to handle Wikipedia's
+      optional `description` field: one that extracts it when present,
+      and a fallback case that matches when it is omitted.
+    * **`toString`:** Provides a readable string representation of
+      the `Summary` object for debugging.
+
+    :::note
+    Your editor might flag `import 'title_set.dart'` and `TitlesSet`
+    as unresolved references until you create `TitlesSet` in Task 4.
+    :::
 
 [pattern matching]: /language/patterns
 
@@ -407,14 +411,13 @@ Create that class next.
     }
     ```
 
-    This code defines a `TitlesSet` class with properties that correspond to
-    the title information in the JSON response from the Wikipedia API.
-    Unlike `Summary`, which handles optional fields with a `switch` expression,
-    `TitlesSet` validates a single structure using an `if case` statement.
-    If the JSON map matches the pattern, the constructor creates the
-    `TitlesSet` instance; otherwise, it throws a `FormatException`.
-    The `toString` method provides a convenient way to
-    print the contents of the `TitlesSet` object.
+    This code defines a `TitlesSet` class to hold the title variants
+    returned by the Wikipedia API.
+    Unlike `Summary`, which uses a `switch` expression for optional fields,
+    `TitlesSet` has a fixed structure and validates all three fields at once
+    using an `if case` statement.
+    If the JSON map does not match the pattern, it throws a
+    `FormatException`.
 
 ### Task 5: Create the Article class
 
@@ -460,17 +463,20 @@ Create a Dart class to represent an article.
     }
     ```
 
-    This code defines an `Article` class with properties for
-    the title and extract of an article.
-    Because this method converts a JSON map into a `List<Article>` rather
-    than a single `Article` instance, it is defined as a `static` method
-    named `listFromJson`.
-    The `for` loop uses Dart's object pattern destructuring
-    (`final MapEntry(:value)`) to directly extract the `value` of each
-    entry without manual property access.
-    The `toJson` method converts the `Article` object back into a JSON map.
-    The `toString` method provides a convenient way to
-    print the contents of the `Article` object.
+    This code defines an `Article` class to represent an article's
+    title and extract:
+
+    * **`listFromJson`:** Unlike previous models that create a single instance,
+      the Wikipedia search endpoint returns multiple articles in a map.
+      Dart constructors only return a single instance, so `Article` uses
+      a `static` method named `listFromJson` to return a `List<Article>`.
+    * **Object pattern destructuring:** The `for` loop uses
+      `final MapEntry(:value)` to extract each entry's value directly
+      without manual property access.
+    * **`toJson`:** Converts an `Article` instance back into a JSON map.
+      In Dart convention, `toJson()` returns a `Map<String, Object?>`
+      that you can pass to `jsonEncode()` from `dart:convert`
+      when serializing an object to a JSON string.
 
 ### Task 6: Create the SearchResults class
 
@@ -535,14 +541,17 @@ article titles, descriptions (which are ignored), and URLs:
     }
     ```
 
-    This code defines a `SearchResults` class with a
-    list of `SearchResult` objects and a search term.
-    Because the search API returns a JSON array rather than an object,
-    `fromJson` accepts a `List<Object?>`.
-    The `if case` statement uses a list pattern `[...]` to match the array
-    positionally, using the wildcard `_` to discard the unused descriptions.
-    The `toString` method provides a convenient way to
-    print the contents of the `SearchResults` object.
+    This code defines two classes: `SearchResult` to hold an individual
+    article's title and URL, and `SearchResults` to hold the list of
+    results along with the search query:
+
+    * **`fromJson` with `List<Object?>`:** The constructor accepts
+      a `List<Object?>` rather than a `Map<String, Object?>` to match
+      the top-level JSON array returned by Wikipedia's search API.
+    * **List pattern matching:** The `if case` statement uses a list pattern
+      `[...]` to match the array positionally and extract each section.
+    * **Wildcard pattern (`_`):** The `Iterable _` pattern matches and
+      discards the descriptions array, which your application does not need.
 
 You now have typed data models to represent Wikipedia API responses.
 In upcoming chapters, you use `package:test` to test
