@@ -120,4 +120,4 @@ consult [Genkit Dart][genkit-docs]
 or search the pub.dev site for [AI packages][aisearch].
 
 [genkit-docs]: https://genkit.dev/docs/dart/get-started/
-[aisearch]: {{pub}}?q=topic%3Aai
+[aisearch]: {{site.pub-pkg}}?q=topic%3Aai
