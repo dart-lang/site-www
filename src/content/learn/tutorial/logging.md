@@ -36,7 +36,7 @@ Before you begin this chapter, ensure you:
 In this chapter, you'll complete the `dartpedia` CLI application by
 integrating the `wikipedia` package commands and adding logging to
 help track errors and monitor its behavior.
-This will involve adding package dependencies,
+This involves adding package dependencies,
 creating the CLI commands, configuring a `Logger` instance,
 and running your complete application.
 
