@@ -7,9 +7,9 @@ description: >-
 layout: learn
 ---
 
-In this chapter, you make your application more robust
+In this chapter, make your application more robust
 by handling errors gracefully.
-You explore exceptions, `try/catch` blocks, and how to
+Explore exceptions, `try/catch` blocks, and how to
 create custom exceptions to manage errors in a structured way.
 
 <SummaryCard>

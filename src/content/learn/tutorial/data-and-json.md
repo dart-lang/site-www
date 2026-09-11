@@ -8,16 +8,16 @@ description: >-
 layout: learn
 ---
 
-In this chapter, you learn how to work with
+In this chapter, learn how to work with
 [JSON (JavaScript Object Notation)][] data in Dart.
-You create data models to represent Wikipedia API responses,
+Create data models to represent Wikipedia API responses,
 use `dart:convert` to decode JSON text into Dart collections, and
 use pattern matching to extract and validate data.
 
 <SummaryCard>
 title: What you'll accomplish
 items:
-  - title: Understand JSON handling in Dart
+  - title: Learn about JSON handling in Dart
     icon: convert_to_text
   - title: Set up a multi-package workspace
     icon: workspaces
@@ -60,7 +60,7 @@ involves two steps:
 
     const String jsonString = '{"title": "Dart", "pageid": 12345}';
 
-    // jsonDecode parses the string into a Map<String, dynamic>
+    // jsonDecode parses the string, cast to a Map<String, Object?>
     final Map<String, Object?> jsonMap =
         jsonDecode(jsonString) as Map<String, Object?>;
     ```
@@ -554,7 +554,7 @@ article titles, descriptions (which are ignored), and URLs:
       discards the descriptions array, which your application does not need.
 
 You now have typed data models to represent Wikipedia API responses.
-In upcoming chapters, you use `package:test` to test
+In upcoming chapters, use `package:test` to test
 how data is deserialized and use `package:http` to fetch
 live JSON data from the API.
 
@@ -565,7 +565,7 @@ title: What you accomplished
 subtitle: Here's a summary of what you built and learned in this lesson.
 completed: true
 items:
-  - title: Understood JSON handling in Dart
+  - title: Learned about JSON handling in Dart
     icon: convert_to_text
     details: >-
       You explored how `dart:convert` and `jsonDecode()`
