@@ -40,14 +40,14 @@ Before starting this chapter:
 ## Abstract classes and inheritance
 
 In Dart, an **abstract class** is a class that cannot be instantiated
-directly (callers cannot run `CliElement()`).
+directly (calling `CliElement()` causes a compile-time error).
 Instead, it serves as a blueprint or contract that other classes extend.
 
 In a CLI, options (`--verbose`) and commands (`help`) share common
 features like a name and help description,
 but a generic "CLI element" does not make sense on its own.
 Declaring `CliElement` and `Command` as **abstract** ensures that code
-only instantiates specific, concrete objects like `Option` and `HelpCommand`.
+only instantiates specific classes like `Option` and `HelpCommand`.
 
 ```
        ┌──────────────┐
@@ -62,7 +62,7 @@ only instantiates specific, concrete objects like `Option` and `HelpCommand`.
                       │
                       ▼
                ┌─────────────┐
-               │ HelpCommand │ (concrete: can be instantiated and run)
+               │ HelpCommand │ (can be instantiated and run)
                └─────────────┘
 ```
 
@@ -116,7 +116,7 @@ Defining an abstract base class establishes a single contract for both.
     The `abstract` keyword marks `CliElement` as a base class that cannot
     be instantiated directly (`CliElement()`).
     Getters without bodies (`String get name;`) define required properties
-    that every concrete subclass must implement.
+    that every subclass must implement.
     The `defaultValue` getter uses type `Object?` so it can return either a
     `bool` (for flags) or a `String` (for options that accept values).
 
@@ -162,8 +162,9 @@ Defining an abstract base class establishes a single contract for both.
 
     The `extends` keyword establishes an inheritance relationship where `Option`
     becomes a subtype of `CliElement`.
-    The `@override` annotations tell the compiler that these properties supply
-    concrete implementations for the abstract getters declared in `CliElement`.
+    In Dart, every field has an implicit getter.
+    Declaring `@override final String name;` satisfies the abstract getter
+    `String get name;` declared in `CliElement`.
     The `abbr` and `type` fields remain specific to `Option`.
 
 ### Task 2: Define the Command abstract class
@@ -177,7 +178,7 @@ they also extend `CliElement`.
     ```dart title="command_runner/lib/src/arguments.dart"
     import 'dart:async';
     import 'dart:collection';
-    import '../command_runner.dart';
+    import 'command_runner_base.dart';
     ```
 
 1.  Start by defining the core `Command` abstract class with its properties and runner reference:
@@ -290,6 +291,23 @@ they also extend `CliElement`.
     - **`usage` getter**:
       Formats the command's name and description for CLI help output.
 
+1.  Update the `ArgResults` class at the bottom of
+    `command_runner/lib/src/arguments.dart` to reference `Command`:
+
+    ```dart title="command_runner/lib/src/arguments.dart"
+    class ArgResults {
+      Command? command;
+      String? commandArg;
+      Map<Option, Object?> options = {};
+
+      // ... existing flag, hasOption, and getOption methods ...
+    }
+    ```
+
+    In Chapter 5, `ArgResults.command` was a `String?` before `Command` existed.
+    Now that `Command` exists, changing its type to `Command?` allows the
+    command runner to store and execute the resolved `Command` object directly.
+
 ### Task 3: Update the CommandRunner class
 
 In Chapter 4, you created a placeholder `CommandRunner` in
@@ -365,7 +383,7 @@ Now, replace that placeholder with the real command coordinator.
 
 ### Task 4: Create a HelpCommand
 
-Create a concrete `HelpCommand` that extends `Command` and prints usage information.
+Create a `HelpCommand` that extends `Command` and prints usage information.
 
 1.  Create `command_runner/lib/src/help_command.dart`.
 
@@ -458,6 +476,12 @@ Test the `CommandRunner` and `HelpCommand`.
     This confirms that `CommandRunner` dispatches to `HelpCommand`
     and prints the expected usage output.
 
+    :::note
+    Always supply a command argument (such as `help`) when running this step.
+    Chapter 7 introduces error handling to manage empty or
+    invalid input gracefully.
+    :::
+
 ## Review
 
 <SummaryCard>
@@ -474,7 +498,7 @@ items:
     icon: account_tree
     details: >-
       Used `extends` to create `Option`, `Command`, and `HelpCommand` subtypes,
-      using `@override` to provide concrete implementations.
+      using `@override` to provide required implementations.
   - title: Protected internal state with encapsulation
     icon: lock
     details: >-

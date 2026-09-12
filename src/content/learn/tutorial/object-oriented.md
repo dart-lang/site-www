@@ -40,9 +40,6 @@ Before starting this chapter:
 
 ## Classes and objects in Dart
 
-A **class** is a blueprint that defines the structure and behavior of a concept in code.
-An **object** (or **instance**) is a concrete copy created from that blueprint.
-
 Classes bundle two main components together:
 
 - **State (fields)**:
@@ -113,10 +110,10 @@ The `Option` class models command-line options such as
 
     ```dart title="command_runner/lib/src/arguments.dart"
     class Option {
+      Option(this.name, {required this.type});
+
       final String name;
       final OptionType type;
-
-      Option(this.name, {required this.type});
     }
     ```
 
@@ -222,6 +219,9 @@ It maps each `Option` to its user-supplied value.
       Returns a lightweight, named record grouping both the `Option`
       and its value without declaring a separate class.
 
+    The `ArgResults` class serves as the data contract for parsed output.
+    Chapter 6 connects this class to the full `CommandRunner`.
+
 ### Task 4: Export arguments from the package
 
 Export `arguments.dart` from the package entry point to
@@ -229,13 +229,14 @@ allow other packages to import `Option` and `ArgResults`.
 
 1.  Open `command_runner/lib/command_runner.dart`.
 
-1.  Add the export statement:
+1.  Export `arguments.dart` alongside `command_runner_base.dart`:
 
     ```dart title="command_runner/lib/command_runner.dart"
     /// Support for command-line parsing and execution.
     library;
 
     export 'src/arguments.dart';
+    export 'src/command_runner_base.dart';
     ```
 
     This `export` statement makes declarations in `arguments.dart` accessible
