@@ -157,20 +157,16 @@ creating a new file for the logger and setting up the necessary imports.
     }
     ```
 
-    This code does the following:
+    The `initFileLogger` function returns a configured `Logger` instance
+    that appends timestamped records to a file in the `logs/` directory:
 
-    -   It enables hierarchical logging using
-        `hierarchicalLoggingEnabled = true`.
-    -   It creates a `Logger` instance with the given name.
-    -   It gets the project directory from the `Platform.script.path`.
-    -   It creates a `logs` directory if it doesn't exist.
-    -   It creates a log file with the current date and the logger name.
-    -   It sets the logger level to `Level.ALL`,
-        meaning it will log all messages.
-        This is useful for development and debugging, but
-        you'll likely want to use a more restrictive level like
-        `Level.INFO` or `Level.WARNING` in production.
-    -   It listens for log records and writes them to the log file.
+    - **`logger.level = Level.ALL`**:
+      Captures all messages regardless of severity during development.
+      Production apps typically use higher thresholds like
+      `Level.INFO` or `Level.WARNING`.
+    - **`logger.onRecord.listen(...)`**:
+      Subscribes to the stream of log events, formatting each entry with
+      its timestamp, logger name, and severity level before writing to disk.
 
 ### Task 3: Create the SearchCommand command
 
@@ -495,11 +491,9 @@ create the complete CLI application.
     }
     ```
 
-    This code does the following:
-
-    -   Initializes a `Logger` instance using `initFileLogger('errors')`.
-    -   Passes the logger instance to `SearchCommand` and `GetArticleCommand`.
-    -   Registers all commands with `CommandRunner`.
+    This setup initializes an `errors` file logger, passes it to
+    `SearchCommand` and `GetArticleCommand`, and registers all commands
+    with `CommandRunner`.
 
 ### Task 6: Run the application and check the logs
 
