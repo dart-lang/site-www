@@ -341,8 +341,6 @@ items:
 
 ## Next lesson
 
-In the next chapter, you'll dive into
-object-oriented programming (OOP) concepts in Dart.
-You'll learn how to create classes, define inheritance relationships,
-and build a more robust command-line argument parsing framework using
-OOP principles within your new `command_runner` package.
+The next chapter covers object-oriented programming (OOP) concepts in Dart.
+Create classes, constructors, and getters, and
+use enums to model command-line arguments within the `command_runner` package.

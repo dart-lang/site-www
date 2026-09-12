@@ -11,8 +11,10 @@ units:
         url: /learn/tutorial/async
       - title: Organize code with packages and libraries
         url: /learn/tutorial/packages-libs
-      - title: Define relationships with classes
+      - title: Define classes and objects
         url: /learn/tutorial/object-oriented
+      - title: Structure apps with inheritance
+        url: /learn/tutorial/inheritance
       - title: Handle errors gracefully
         url: /learn/tutorial/error-handling
       - title: Extend your app with enums and extensions
