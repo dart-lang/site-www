@@ -1,0 +1,86 @@
+- question: >-
+    In the `Option` class,
+    what is the purpose of the `@override` annotation?
+  options:
+    - text: >-
+        To provide a specific implementation for a method or property
+        defined in a parent class.
+      correct: true
+      explanation: >-
+        `@override` indicates that you're providing
+        a concrete implementation for an abstract member
+        or replacing an inherited implementation.
+    - text: >-
+        To create a new method that doesn't exist in the parent class.
+      correct: false
+      explanation: >-
+        `@override` doesn't create new methods.
+        New methods are created simply by defining them in the class.
+    - text: >-
+        To indicate that a method is optional.
+      correct: false
+      explanation: >-
+        `@override` doesn't affect whether methods are optional.
+        Optional parameters use different syntax entirely.
+    - text: >-
+        To make a property private.
+      correct: false
+      explanation: >-
+        Privacy is indicated by a leading underscore (`_`), not by annotations.
+        `@override` serves a different purpose related to inheritance.
+- question: >-
+    What is the difference between an `abstract` class
+    and a regular class in Dart?
+  options:
+    - text: >-
+        An `abstract` class can't be instantiated directly.
+      correct: true
+      explanation: >-
+        Abstract classes serve as blueprints that other classes extend.
+        You can't create instances of an abstract class directly.
+    - text: >-
+        An `abstract` class can't have any methods.
+      correct: false
+      explanation: >-
+        Abstract classes can have both abstract methods (without implementation)
+        and concrete methods (with implementation).
+    - text: >-
+        An `abstract` class can only have private methods.
+      correct: false
+      explanation: >-
+        Abstract classes can have methods with any visibility level.
+        The `abstract` keyword doesn't restrict visibility.
+    - text: >-
+        There is no difference between an `abstract` class and a regular class.
+      correct: false
+      explanation: >-
+        There is a significant difference.
+        Try writing `var x = MyAbstractClass();` and see what happens.
+- question: >-
+    Why does the `Command` class expose `options` through an
+    `UnmodifiableSetView` instead of allowing direct access to `_options`?
+  options:
+    - text: >-
+        To prevent external code from modifying the command's internal list of options directly.
+      correct: true
+      explanation: >-
+        Encapsulating the list and exposing an unmodifiable view prevents external
+        callers from adding, removing, or reordering options without using the
+        command's helper methods.
+    - text: >-
+        Because Dart doesn't allow classes to contain mutable lists.
+      correct: false
+      explanation: >-
+        Dart classes can contain mutable lists. The unmodifiable view is an intentional
+        design choice for encapsulation.
+    - text: >-
+        To make the options accessible from outside the library.
+      correct: false
+      explanation: >-
+        Public getters already make data accessible; the unmodifiable wrapper specifically
+        protects the collection from being mutated externally.
+    - text: >-
+        To automatically sort the options alphabetically.
+      correct: false
+      explanation: >-
+        `UnmodifiableSetView` does not sort collections; it only prevents mutations.

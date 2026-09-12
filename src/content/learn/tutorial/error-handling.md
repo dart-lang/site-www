@@ -27,7 +27,7 @@ items:
 
 Before you begin this chapter, ensure you:
 
-- Have completed Chapter 5 and have a
+- Have completed Chapter 6 and have a
   working Dart development environment with the `dartpedia` project.
 - Understand basic programming concepts like functions and classes.
 

@@ -1,61 +1,57 @@
 - question: >-
-    In the `Option` class,
-    what is the purpose of the `@override` annotation?
+    In the constructor `Option(this.name, {required this.type})`,
+    what is the purpose of the `this.name` syntax?
   options:
     - text: >-
-        To provide a specific implementation for a method or property
-        defined in a parent class.
+        It automatically assigns the constructor argument directly to the instance field `name`.
       correct: true
       explanation: >-
-        `@override` indicates that you're providing
-        a concrete implementation for an abstract member
-        or replacing an inherited implementation.
+        In Dart, `this.fieldName` in a constructor's parameter list is an
+        "initializing formal" that assigns the argument value directly to the field
+        before the constructor body runs.
     - text: >-
-        To create a new method that doesn't exist in the parent class.
+        It creates a new global variable named `name`.
       correct: false
       explanation: >-
-        `@override` doesn't create new methods.
-        New methods are created simply by defining them in the class.
+        `this.name` refers specifically to the instance field of the class,
+        not a global variable.
     - text: >-
-        To indicate that a method is optional.
+        It makes the `name` property private to the library.
       correct: false
       explanation: >-
-        `@override` doesn't affect whether methods are optional.
-        Optional parameters use different syntax entirely.
+        Privacy in Dart is designated by a leading underscore (`_name`),
+        not by `this`.
     - text: >-
-        To make a property private.
+        It marks the parameter as optional.
       correct: false
       explanation: >-
-        Privacy is indicated by a leading underscore (`_`), not by annotations.
-        `@override` serves a different purpose related to inheritance.
+        Optional parameters are enclosed in square brackets `[]` or curly braces `{}`.
+        Positional `this.name` is required.
 - question: >-
-    What is the difference between an `abstract` class
-    and a regular class in Dart?
+    What is the primary benefit of using a getter like `String get usage`
+    instead of storing a `String usage` field?
   options:
     - text: >-
-        An `abstract` class can't be instantiated directly.
+        It dynamically computes the value whenever accessed, ensuring it reflects current state without redundant storage.
       correct: true
       explanation: >-
-        Abstract classes serve as blueprints that other classes extend.
-        You can't create instances of an abstract class directly.
+        Getters behave like properties from the caller's perspective, but execute code
+        on demand to calculate their value.
     - text: >-
-        An `abstract` class can't have any methods.
+        Getters can only be accessed from within the same file.
       correct: false
       explanation: >-
-        Abstract classes can have both abstract methods (without implementation)
-        and concrete methods (with implementation).
+        Getters have the same visibility rules as normal fields and methods.
     - text: >-
-        An `abstract` class can only have private methods.
+        Getters run faster than reading a stored field.
       correct: false
       explanation: >-
-        Abstract classes can have methods with any visibility level.
-        The `abstract` keyword doesn't restrict visibility.
+        Reading a stored field is typically faster than executing logic in a getter.
     - text: >-
-        There is no difference between an `abstract` class and a regular class.
+        Getters allow the property to be modified from outside the class.
       correct: false
       explanation: >-
-        There is a significant difference.
-        Try writing `var x = MyAbstractClass();` and see what happens.
+        A getter provides read-only access unless a corresponding setter (`set usage(...)`) is also defined.
 - question: >-
     When should you use an `enum` instead of a class or a set of constants?
   options:

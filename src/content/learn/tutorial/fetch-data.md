@@ -29,7 +29,7 @@ items:
 
 Before you begin this chapter, ensure you:
 
--   Have completed Chapter 10 and have a
+-   Have completed Chapter 11 and have a
     working Dart development environment with the `dartpedia` project.
 -   Understand basic networking concepts (like APIs and HTTP requests).
 -   Understand basic data serialization formats such as JSON.
