@@ -2,6 +2,7 @@
 
 // #docregion import
 import 'dart:async';
+
 // #enddocregion import
 
 void miscDeclAnalyzedButNotTested() {
