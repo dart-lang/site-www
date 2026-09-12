@@ -85,8 +85,8 @@ class _SiteWordMarkListEntry extends StatelessComponent {
             const img(
               src: '/assets/img/logo/dart-192.svg',
               alt: 'Dart logo',
-              width: 28,
-              height: 28,
+              width: 20,
+              height: 20,
             ),
             span(
               classes: 'name',
