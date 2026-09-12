@@ -38,6 +38,24 @@ Before starting this chapter:
   such as variables, functions, and control flow.
 - Understand packages and libraries in Dart.
 
+## Classes and objects in Dart
+
+A **class** is a blueprint that defines the structure and behavior of a concept in code.
+An **object** (or **instance**) is a concrete copy created from that blueprint.
+
+Classes bundle two main components together:
+
+- **State (fields)**:
+  The data each object holds,
+  such as an option's `name` or `help` text.
+- **Behavior (methods and getters)**:
+  The actions an object can perform or properties it computes,
+  such as formatting a `usage` string.
+
+Instead of tracking loose strings or maps across an application,
+modeling command-line arguments as classes ensures compile-time type safety,
+editor autocomplete, and a consistent data structure.
+
 ## Tasks
 
 A command-line interface (CLI) is defined by the
@@ -90,8 +108,31 @@ combining state (fields) and behavior (methods and getters).
 The `Option` class models command-line options such as
 `--verbose` or `--command=search`.
 
-1.  Add the `Option` class to `command_runner/lib/src/arguments.dart`
-    below the enum:
+1.  Start by defining a minimal `Option` class with essential fields and a constructor.
+    Add the following code to `command_runner/lib/src/arguments.dart` below the enum:
+
+    ```dart title="command_runner/lib/src/arguments.dart"
+    class Option {
+      final String name;
+      final OptionType type;
+
+      Option(this.name, {required this.type});
+    }
+    ```
+
+    - **Fields (`final String name;`, `final OptionType type;`)**:
+      Variables that store the object's data.
+      Declaring them as `final` ensures they cannot change after creation.
+    - **Constructor (`Option(...)`)**:
+      Instantiates new `Option` objects.
+      The `this.name` syntax is an *initializing formal*—a Dart shortcut
+      that assigns the argument directly to the instance field before the body runs.
+    - **Named parameters (`{required this.type}`)**:
+      Parameters inside curly braces `{}` are passed by name
+      (for example, `Option('verbose', type: OptionType.flag)`).
+      The `required` keyword makes the parameter mandatory.
+
+1.  Now, expand the `Option` class with optional metadata fields and a `usage` getter:
 
     ```dart title="command_runner/lib/src/arguments.dart"
     class Option {
@@ -121,30 +162,12 @@ The `Option` class models command-line options such as
     }
     ```
 
-    Highlights from the preceding code:
-
-    - **Generative constructor (`Option(...)`)**:
-      Instantiates new `Option` objects.
-    - **Initializing formals (`this.name`, `this.type`)**:
-      Directly assigns incoming arguments to instance fields
-      before the constructor body executes, avoiding repetitive assignment code.
-    - **Named parameters (`{required this.type, ...}`)**:
-      Curly braces `{}` enclose named parameters.
-      Callers pass arguments by name in any order
-      (for example, `Option('verbose', type: OptionType.flag)`).
-    - **`required` keyword**:
-      Enforces that callers must supply the `type` parameter,
-      while other parameters remain optional.
     - **Nullable types (`String?`, `Object?`)**:
-      The question mark `?` indicates that a field can hold a value or `null`.
-      Optional attributes like `abbr` default to `null` when omitted.
-    - **`final` fields**:
-      Guarantees that field values cannot change after initialization,
-      ensuring that option definitions remain immutable.
-    - **`usage` getter**:
-      Computes the help string on demand.
-      If an abbreviation exists, it formats the output as `-$abbr,--$name: $help`.
-      Otherwise, it formats it as `--$name: $help`.
+      The question mark `?` indicates that a field is optional and can hold `null`.
+      When callers omit `help` or `abbr`, they default to `null`.
+    - **Getter (`get usage`)**:
+      A getter computes a value on demand when accessed,
+      formatting the help string based on whether an abbreviation exists.
 
 ### Task 3: Define the ArgResults class
 

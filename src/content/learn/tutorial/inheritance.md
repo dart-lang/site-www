@@ -37,29 +37,53 @@ Before starting this chapter:
   such as defining classes, constructors, fields, and getters.
 - Understand packages and libraries in Dart.
 
-## Tasks
+## Abstract classes and inheritance
 
-In Chapter 5, you created the `Option` and `ArgResults` classes.
-Now, you'll establish a shared hierarchy between commands and options,
-and expand the placeholder `CommandRunner` from Chapter 4 into
-a full-featured command parser.
+In Dart, an **abstract class** is a class that cannot be instantiated
+directly (callers cannot run `CliElement()`).
+Instead, it serves as a blueprint or contract that other classes extend.
+
+In a CLI, options (`--verbose`) and commands (`help`) share common
+features like a name and help description,
+but a generic "CLI element" does not make sense on its own.
+Declaring `CliElement` and `Command` as **abstract** ensures that code
+only instantiates specific, concrete objects like `Option` and `HelpCommand`.
 
 ```
        ┌──────────────┐
-       │  CliElement  │ (abstract)
+       │  CliElement  │ (abstract: blueprint for all CLI elements)
        └──────┬───────┘
               │
       ┌───────┴───────┐
       ▼               ▼
 ┌───────────┐   ┌───────────┐
-│  Option   │   │  Command  │ (abstract)
+│  Option   │   │  Command  │ (abstract: blueprint for commands)
 └───────────┘   └─────┬─────┘
                       │
                       ▼
                ┌─────────────┐
-               │ HelpCommand │
+               │ HelpCommand │ (concrete: can be instantiated and run)
                └─────────────┘
 ```
+
+### Share behavior with inheritance
+
+**Inheritance** allows a class to adopt properties and behavior from a parent class.
+Because both options (`Option`) and commands (`Command`) share a `name`,
+`help` text, and a formatted `usage` message,
+inheriting from a common `CliElement` parent eliminates duplicate code
+across multiple classes.
+
+Inheritance also enables **polymorphism**—the ability for the command runner
+to treat any command or option uniformly through the shared `CliElement` interface.
+
+## Tasks
+
+In Chapter 5, the `Option` and `ArgResults` classes established
+basic data structures for CLI options and parsed output.
+This chapter establishes a shared hierarchy between commands and options,
+and expands the placeholder `CommandRunner` from Chapter 4 into
+a full-featured command parser.
 
 The classes and logic in the following tasks
 create the foundation for parsing and executing CLI commands.
@@ -89,17 +113,12 @@ Defining an abstract base class establishes a single contract for both.
     }
     ```
 
-    Highlights from the preceding code:
-
-    - **`abstract class`**:
-      Declares a class that cannot be instantiated directly with `CliElement()`.
-      It serves as a shared contract for subclasses.
-    - **Abstract getters (`String get name;`)**:
-      Getters without a body define required properties that
-      every concrete subclass must implement.
-    - **`defaultValue` of type `Object?`**:
-      Allows the default value to hold either a `bool` (for flags)
-      or a `String` (for options taking a value).
+    The `abstract` keyword marks `CliElement` as a base class that cannot
+    be instantiated directly (`CliElement()`).
+    Getters without bodies (`String get name;`) define required properties
+    that every concrete subclass must implement.
+    The `defaultValue` getter uses type `Object?` so it can return either a
+    `bool` (for flags) or a `String` (for options that accept values).
 
 1.  Update the `Option` class to extend `CliElement`:
 
@@ -141,17 +160,11 @@ Defining an abstract base class establishes a single contract for both.
     }
     ```
 
-    Highlights from the preceding code:
-
-    - **`extends` keyword**:
-      Establishes an inheritance relationship where `Option` becomes a subtype
-      of `CliElement`.
-    - **`@override` annotation**:
-      Informs the compiler that this member provides a concrete implementation
-      for a member declared in the `CliElement` base class.
-    - **`abbr` and `type`**:
-      Subclass-specific properties that are unique to `Option`
-      and not part of the generic `CliElement` base.
+    The `extends` keyword establishes an inheritance relationship where `Option`
+    becomes a subtype of `CliElement`.
+    The `@override` annotations tell the compiler that these properties supply
+    concrete implementations for the abstract getters declared in `CliElement`.
+    The `abbr` and `type` fields remain specific to `Option`.
 
 ### Task 2: Define the Command abstract class
 
@@ -167,7 +180,7 @@ they also extend `CliElement`.
     import '../command_runner.dart';
     ```
 
-1.  Add the `Command` abstract class below `Option`:
+1.  Start by defining the core `Command` abstract class with its properties and runner reference:
 
     ```dart title="command_runner/lib/src/arguments.dart"
     abstract class Command extends CliElement {
@@ -188,6 +201,23 @@ they also extend `CliElement`.
 
       @override
       String? valueHelp;
+    }
+    ```
+
+    - **`abstract class Command extends CliElement`**:
+      Establishes `Command` as an abstract subtype of `CliElement`,
+      providing a template for all specific commands to follow.
+    - **`late CommandRunner runner;`**:
+      A command needs a reference to the `CommandRunner` executing it,
+      so it can access global runner state.
+      The `late` keyword promises Dart that this non-nullable variable will be
+      assigned before use (when added to the runner via `command.runner = this;`).
+
+1.  Next, add encapsulated option storage and helper methods to `Command`:
+
+    ```dart title="command_runner/lib/src/arguments.dart"
+    abstract class Command extends CliElement {
+      // ... existing properties ...
 
       final List<Option> _options = [];
 
@@ -225,6 +255,24 @@ they also extend `CliElement`.
           ),
         );
       }
+    }
+    ```
+
+    - **Encapsulation with `_options`**:
+      Prefixing `_options` with an underscore (`_`) makes it library-private,
+      preventing code outside `arguments.dart` from modifying the list directly.
+    - **`UnmodifiableSetView`**:
+      Exposes a read-only view of the command's options,
+      ensuring callers cannot mutate internal state directly.
+    - **`addFlag` and `addOption`**:
+      Provide controlled methods to create and register valid `Option` instances
+      into the command.
+
+1.  Finally, add the abstract `run` method and `usage` getter to complete `Command`:
+
+    ```dart title="command_runner/lib/src/arguments.dart"
+    abstract class Command extends CliElement {
+      // ... existing properties and helper methods ...
 
       FutureOr<Object?> run(ArgResults args);
 
@@ -235,26 +283,12 @@ they also extend `CliElement`.
     }
     ```
 
-    Highlights from the preceding code:
-
-    - **`late CommandRunner runner;`**:
-      A command needs a reference to the `CommandRunner` executing it,
-      so it can access global options and runner state.
-      The `late` keyword promises Dart that this variable will be assigned
-      before use (when registered with `runner.addCommand(this)`).
-    - **Encapsulation with `_options`**:
-      Prefixing `_options` with an underscore (`_`) makes it library-private,
-      preventing code outside `arguments.dart` from modifying the list directly.
-    - **`UnmodifiableSetView`**:
-      Exposes a read-only view of the command's options,
-      ensuring callers cannot mutate internal state directly.
-    - **`addFlag` and `addOption`**:
-      Provide controlled methods to create and register valid `Option` instances
-      into the command.
     - **`FutureOr<Object?> run(...)`**:
-      Defines an abstract method that subclasses must implement.
-      `FutureOr` allows the command to run either synchronously or
-      asynchronously (using `async/await` from Chapter 3).
+      Defines the abstract method where a command's execution logic lives.
+      `FutureOr` allows the method to return either a raw synchronous value
+      or a `Future` for asynchronous operations (connecting back to Chapter 3).
+    - **`usage` getter**:
+      Formats the command's name and description for CLI help output.
 
 ### Task 3: Update the CommandRunner class
 
@@ -376,14 +410,10 @@ Create a concrete `HelpCommand` that extends `Command` and prints usage informat
     }
     ```
 
-    Highlights from the preceding code:
-
-    - **Constructor initialization**:
-      Calls inherited helper methods `addFlag` and `addOption` to configure
-      the command's supported options.
-    - **Accessing `runner`**:
-      Reads `runner.usage` and iterates over `runner.commands` to assemble
-      the complete CLI help message dynamically.
+    The `HelpCommand` constructor calls inherited helper methods `addFlag` and
+    `addOption` to configure its supported options.
+    Its `run` method reads `runner.usage` and iterates over `runner.commands`
+    to assemble and return the complete CLI usage message dynamically.
 
 ### Task 5: Update cli.dart to use CommandRunner
 
