@@ -16,6 +16,7 @@ workspace:
   - extension_methods
   - fetch_data
   - futures
+  - fwe/dartpedia
   - html
   - iterables
   - language
