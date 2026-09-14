@@ -68,14 +68,16 @@ only instantiates specific classes like `Option` and `HelpCommand`.
 
 ### Share behavior with inheritance
 
-**Inheritance** allows a class to adopt properties and behavior from a parent class.
+**Inheritance** allows a class to adopt
+properties and behavior from a parent class.
 Because both options (`Option`) and commands (`Command`) share a `name`,
 `help` text, and a formatted `usage` message,
 inheriting from a common `CliElement` parent eliminates duplicate code
 across multiple classes.
 
 Inheritance also enables **polymorphism**—the ability for the command runner
-to treat any command or option uniformly through the shared `CliElement` interface.
+to treat any command or option uniformly
+through the shared `CliElement` interface.
 
 ## Tasks
 
@@ -181,7 +183,8 @@ they also extend `CliElement`.
     import 'command_runner_base.dart';
     ```
 
-1.  Start by defining the core `Command` abstract class with its properties and runner reference:
+1.  Start by defining the core `Command` abstract class
+    with its properties and runner reference:
 
     ```dart title="command_runner/lib/src/arguments.dart"
     abstract class Command extends CliElement {
@@ -211,8 +214,9 @@ they also extend `CliElement`.
     - **`late CommandRunner runner;`**:
       A command needs a reference to the `CommandRunner` executing it,
       so it can access global runner state.
-      The `late` keyword promises Dart that this non-nullable variable will be
-      assigned before use (when added to the runner via `command.runner = this;`).
+      The `late` keyword promises Dart that this non-nullable variable
+      is assigned before reading it
+      (when registered with `command.runner = this;`).
 
 1.  Next, add encapsulated option storage and helper methods to `Command`:
 
@@ -225,7 +229,12 @@ they also extend `CliElement`.
       UnmodifiableSetView<Option> get options =>
           UnmodifiableSetView(_options.toSet());
 
-      void addFlag(String name, {String? help, String? abbr, String? valueHelp}) {
+      void addFlag(
+        String name, {
+        String? help,
+        String? abbr,
+        String? valueHelp,
+      }) {
         _options.add(
           Option(
             name,
@@ -269,7 +278,8 @@ they also extend `CliElement`.
       Provide controlled methods to create and register valid `Option` instances
       into the command.
 
-1.  Finally, add the abstract `run` method and `usage` getter to complete `Command`:
+1.  Finally, add the abstract `run` method and
+    `usage` getter to complete `Command`:
 
     ```dart title="command_runner/lib/src/arguments.dart"
     abstract class Command extends CliElement {
@@ -310,8 +320,9 @@ they also extend `CliElement`.
 
 ### Task 3: Update the CommandRunner class
 
-In Chapter 4, you created a placeholder `CommandRunner` in
-`command_runner/lib/src/command_runner_base.dart` that simply printed arguments.
+Chapter 4 created a placeholder `CommandRunner` in
+`command_runner/lib/src/command_runner_base.dart`
+that simply printed arguments.
 Now, replace that placeholder with the real command coordinator.
 
 1.  Open `command_runner/lib/src/command_runner_base.dart`.
@@ -365,7 +376,7 @@ Now, replace that placeholder with the real command coordinator.
       fulfilling the promise made by the `late` keyword in `Command`.
     - **Null assertion operator (`!`)**:
       In `results.command!.run(results)`, the `!` asserts that `command`
-      is guaranteed non-null because of the `if (results.command != null)` check.
+      is non-null because of the preceding `if (results.command != null)` check.
 
 1.  Open `command_runner/lib/command_runner.dart` and update the exports:
 
@@ -378,8 +389,9 @@ Now, replace that placeholder with the real command coordinator.
     export 'src/help_command.dart';
     ```
 
-    These export statements make `arguments.dart`, `command_runner_base.dart`,
-    and `help_command.dart` part of the public API of the `command_runner` package.
+    These export statements make `arguments.dart`,
+    `command_runner_base.dart`, and `help_command.dart`
+    part of the public API of the `command_runner` package.
 
 ### Task 4: Create a HelpCommand
 
@@ -523,4 +535,4 @@ add error handling to `CommandRunner` to make the application more robust.
 
 [inheritance]: /language/extend
 [abstract classes]: /language/class-modifiers#abstract
-[encapsulation]: /resources/glossary#encapsulation
+[encapsulation]: /resources/glossary#library-private

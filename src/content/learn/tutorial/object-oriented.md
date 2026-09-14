@@ -105,8 +105,10 @@ combining state (fields) and behavior (methods and getters).
 The `Option` class models command-line options such as
 `--verbose` or `--command=search`.
 
-1.  Start by defining a minimal `Option` class with essential fields and a constructor.
-    Add the following code to `command_runner/lib/src/arguments.dart` below the enum:
+1.  Start by defining a minimal `Option` class
+    with essential fields and a constructor.
+    Add the following code to `command_runner/lib/src/arguments.dart`
+    below the enum:
 
     ```dart title="command_runner/lib/src/arguments.dart"
     class Option {
@@ -123,13 +125,15 @@ The `Option` class models command-line options such as
     - **Constructor (`Option(...)`)**:
       Instantiates new `Option` objects.
       The `this.name` syntax is an *initializing formal*—a Dart shortcut
-      that assigns the argument directly to the instance field before the body runs.
+      that assigns the argument directly to the instance field
+      before the constructor body runs.
     - **Named parameters (`{required this.type}`)**:
       Parameters inside curly braces `{}` are passed by name
       (for example, `Option('verbose', type: OptionType.flag)`).
       The `required` keyword makes the parameter mandatory.
 
-1.  Now, expand the `Option` class with optional metadata fields and a `usage` getter:
+1.  Now, expand the `Option` class with optional metadata fields
+    and a `usage` getter:
 
     ```dart title="command_runner/lib/src/arguments.dart"
     class Option {
@@ -160,7 +164,8 @@ The `Option` class models command-line options such as
     ```
 
     - **Nullable types (`String?`, `Object?`)**:
-      The question mark `?` indicates that a field is optional and can hold `null`.
+      The question mark `?` indicates that a field is optional
+      and can hold `null`.
       When callers omit `help` or `abbr`, they default to `null`.
     - **Getter (`get usage`)**:
       A getter computes a value on demand when accessed,
@@ -210,7 +215,8 @@ It maps each `Option` to its user-supplied value.
     - **`options` map (`Map<Option, Object?>`)**:
       Associates each `Option` instance with its parsed user input.
     - **`where()` method in `flag()`**:
-      Filters map keys to inspect only boolean flags (`option.type == OptionType.flag`),
+      Filters map keys to inspect only boolean flags
+      (`option.type == OptionType.flag`),
       ignoring options that take string arguments.
     - **Type cast (`as bool`)**:
       Tells the type checker to treat the value as a `bool` because
