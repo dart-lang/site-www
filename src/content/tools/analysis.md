@@ -341,8 +341,8 @@ linter:
     - combinators_ordering
     - comment_references
     - invalid_case_patterns
-    - one_member_abstracts
     - only_throw_errors
+    - prefer_single_quotes
 ```
 
 
