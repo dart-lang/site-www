@@ -7,7 +7,6 @@ environment:
   sdk: ^3.13.0-0
 
 dependencies:
-  build: ^4.0.7
   collection: ^1.19.1
   crypto: ^3.0.7
   # Used for accessing the SDK archive storage buckets.
