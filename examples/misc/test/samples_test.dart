@@ -15,6 +15,7 @@ import 'package:examples/samples/spacecraft.dart';
 // #docregion import
 // Importing files
 import 'path/to/my_other_file.dart';
+
 // #enddocregion import
 
 // ignore: strict_raw_type
