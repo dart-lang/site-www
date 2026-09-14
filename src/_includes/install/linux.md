@@ -12,17 +12,18 @@ You have two options to install the Dart SDK on Ubuntu or Debian:
 To install Dart with `apt-get`, perform the following steps.
 You need steps 1 to 3 only for the first install.
 
-1. Update the package index files and install the secure HTTP package.
+1. Update the package index files and
+   install the secure HTTP and GPG packages.
 
    ```console
-   $ sudo apt-get update && sudo apt-get install apt-transport-https
+   $ sudo apt-get update && sudo apt-get install apt-transport-https gpg
    ```
 
 1. Download and add the Google Linux GPG public key.
 
    ```console
    $ wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub \
-     | sudo gpg  --dearmor -o /usr/share/keyrings/dart.gpg
+     | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
    ```
 
 1. Add the Dart package repository to your Linux system.

@@ -67,15 +67,15 @@ Here is a breakdown of each part:
 The classes and logic you build in the following tasks
 create the foundation for parsing and executing commands just like this one.
 
-### Task 1: Define the argument hierarchy
+### Task 1: Define the CLI element hierarchy
 
-First, you'll define an `Argument` class,
+First, you'll define a `CliElement` class,
 an `Option` class, and a `Command` class,
 establishing an inheritance relationship.
 
 1.  Create the file `command_runner/lib/src/arguments.dart`.
     This file will
-    contain the definitions for your `Argument`, `Option`, `Command`, and
+    contain the definitions for your `CliElement`, `Option`, `Command`, and
     `ArgResults` classes.
 
 1.  Define an `enum` called `OptionType`.
@@ -89,9 +89,9 @@ establishing an inheritance relationship.
     (a boolean option) or a regular **`option`** (an option that takes a value).
     Enums are useful for representing a fixed set of possible values.
 
-1.  Define an `abstract class` called `Argument`.
+1.  Define an `abstract class` called `CliElement`.
 
-    Start by defining the basic structure of your `Argument` class.
+    Start by defining the basic structure of your `CliElement` class.
     You'll declare it as [`abstract`](/language/class-modifiers#abstract),
     which means it serves as a base class that
     other classes can extend, but it can't be [instantiated](/resources/glossary#instantiate) on its own.
@@ -100,7 +100,7 @@ establishing an inheritance relationship.
 
     ```dart title="command_runner/lib/src/arguments.dart"
     // Paste this new class below the enum you added
-    abstract class Argument {
+    abstract class CliElement {
       String get name;
       String? get help;
 
@@ -124,21 +124,21 @@ establishing an inheritance relationship.
       string showing how
       to use the argument.
 
-    With the `Argument` class fully defined,
+    With the `CliElement` class fully defined,
     you have a common interface for all types of command-line arguments.
     Next, you'll build upon this by defining `Option`,
-    a specific type of argument that extends `Argument`.
+    a specific type of CLI element that extends `CliElement`.
 
-1.  Define a class called `Option` that `extends` `Argument`.
+1.  Define a class called `Option` that `extends` `CliElement`.
 
     The `Option` class will represent command-line options like
     `--verbose` or `--output=file.txt`.
-    It will inherit from your `Argument` class.
+    It will inherit from your `CliElement` class.
 
     Add the following `Option` class to the bottom of your file:
 
     ```dart title="command_runner/lib/src/arguments.dart"
-    class Option extends Argument {
+    class Option extends CliElement {
       Option(
         this.name, {
         required this.type,
@@ -178,17 +178,17 @@ establishing an inheritance relationship.
     The [**`extends`**](/language/extend) keyword establishes the inheritance relationship.
     The class uses the [`@override`](/language/extend#overriding-members) annotation
     on its properties and getters to indicate it is replacing the
-    placeholder members defined in `Argument`.
+    placeholder members defined in `CliElement`.
 
     It also adds `type` (using the `OptionType` enum) and an
     optional `abbr` for a short-form of the option.
     The `usage` getter is implemented to provide clear instructions to the user.
 
-    With `Option` complete, you have a specialized type of argument. Next,
-    you'll define the `Command` class, another type of argument that will
+    With `Option` complete, you have a specialized type of CLI element. Next,
+    you'll define the `Command` class, another type of CLI element that will
     represent the main actions a user can perform in your CLI application.
 
-1.  Define an [`abstract class`](/language/class-modifiers#abstract) called `Command` that also `extends` `Argument`.
+1.  Define an [`abstract class`](/language/class-modifiers#abstract) called `Command` that also `extends` `CliElement`.
 
     The `Command` class will represent an executable action.
     Since it provides a template for other commands to follow,
@@ -196,7 +196,7 @@ establishing an inheritance relationship.
 
     ```dart title="command_runner/lib/src/arguments.dart"
     // Add this class below the Option class
-    abstract class Command extends Argument {
+    abstract class Command extends CliElement {
       // Properties and methods will go here
     }
     ```
@@ -210,7 +210,7 @@ establishing an inheritance relationship.
     It also needs a reference back to the `CommandRunner` that executes it.
 
     ```dart title="command_runner/lib/src/arguments.dart"
-    abstract class Command extends Argument {
+    abstract class Command extends CliElement {
       @override
       String get name;
 
@@ -274,7 +274,7 @@ establishing an inheritance relationship.
     Now, add the `options` list and getter to your `Command` class:
 
     ```dart
-    abstract class Command extends Argument {
+    abstract class Command extends CliElement {
       // ... existing properties ...
 
       @override
@@ -296,7 +296,7 @@ establishing an inheritance relationship.
     the appropriate `Option` objects and add them to the private list.
 
     ```dart
-    abstract class Command extends Argument {
+    abstract class Command extends CliElement {
       // ... existing properties and getters ...
 
       UnmodifiableSetView<Option> get options =>
@@ -360,7 +360,7 @@ establishing an inheritance relationship.
     provide the `usage` implementation to complete the `Command` class.
 
     ```dart
-    abstract class Command extends Argument {
+    abstract class Command extends CliElement {
       // ... existing properties, getters, and methods ...
 
       void addOption(
@@ -457,7 +457,7 @@ establishing an inheritance relationship.
 
 ### Task 2: Update the CommandRunner class
 
-Next, update the `CommandRunner` class to use the new `Argument` hierarchy.
+Next, update the `CommandRunner` class to use the new `CliElement` hierarchy.
 
 1.  Open the `command_runner/lib/src/command_runner_base.dart` file.
 
@@ -666,7 +666,7 @@ items:
   - title: Designed and understood abstract classes
     icon: schema
     details: >-
-      You created an abstract `Argument` class as a base class that
+      You created an abstract `CliElement` class as a base class that
       can't be instantiated directly.
       Abstract classes define a contract that subclasses must fulfill,
       ensuring consistency across your class hierarchy.
@@ -674,7 +674,7 @@ items:
     icon: account_tree
     details: >-
       You used `extends` to create `Option` and `Command` subclasses of
-      the abstract `Argument` class.
+      the abstract `CliElement` class.
       Within those subclasses, you used `@override` to
       provide concrete implementations of abstract members.
   - title: Used enums to represent fixed sets of values

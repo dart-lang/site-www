@@ -337,6 +337,7 @@ items:
 
 ## Next lesson
 
-In the next lesson, you'll complete the CLI by
-integrating the `wikipedia` package with the `cli` package.
-You'll implement the command logic and display the results to the user.
+In the next lesson, you'll complete your CLI application by
+integrating the `wikipedia` package commands with the `cli` package
+and adding logging for debugging and error monitoring.
+

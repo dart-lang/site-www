@@ -16,6 +16,22 @@
 - version: 3.13.0
   releaseDate: 2026-08-12
   area: Language
+  subArea: Parameter declarations
+  description: |
+    You can no longer use `final` or `var` on non-declaring parameters.
+    Dart now reserves both for declaring parameters in primary constructors.
+    Remove `final` or `var` from affected parameter declarations.
+    If you still want to prevent parameter reassignment,
+    you can use the [`parameter_assignments`][] lint rule.
+
+    [`parameter_assignments`]: /tools/linter-rules/parameter_assignments
+  tags:
+    - versioned
+  link: 'https://dart.dev/language/primary-constructors#field-declarations-in-parameters'
+# --------------------------------------------------
+- version: 3.13.0
+  releaseDate: 2026-08-12
+  area: Language
   subArea: Type promotion
   description: |
     **Breaking change**:

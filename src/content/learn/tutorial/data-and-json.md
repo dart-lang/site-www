@@ -8,26 +8,23 @@ description: >-
 layout: learn
 ---
 
-In this chapter, you'll learn how to work with
+In this chapter, learn how to work with
 [JSON (JavaScript Object Notation)][] data in Dart.
-JSON is a common format for data exchange on the web, and
-you'll often encounter it when working with APIs.
-You'll learn how to convert JSON data into Dart objects,
-making it easier to work with in your application.
-You'll use the [`dart:convert` library][],
-the `jsonDecode` function, and pattern matching.
+Create data models to represent Wikipedia API responses,
+use `dart:convert` to decode JSON text into Dart collections, and
+use pattern matching to extract and validate data.
 
 <SummaryCard>
 title: What you'll accomplish
 items:
-  - title: Create data model classes for JSON data
-    icon: data_object
-  - title: Use dart:convert to work with JSON data
+  - title: Learn about JSON handling in Dart
     icon: convert_to_text
-  - title: Use pattern matching to extract data from JSON objects
-    icon: bento
   - title: Set up a multi-package workspace
     icon: workspaces
+  - title: Create data model classes for JSON data
+    icon: data_object
+  - title: Use pattern matching in fromJson constructors
+    icon: bento
 </SummaryCard>
 
 [JSON (JavaScript Object Notation)]:  https://en.wikipedia.org/wiki/JSON
@@ -43,11 +40,64 @@ Before you begin this chapter, ensure you:
 
 [classes]: /language/classes
 
+## How Dart handles JSON
+
+JSON is a text-based format for
+representing structured data such as objects, arrays, numbers, and strings.
+When you interact with web APIs, responses arrive as JSON strings.
+
+In Dart, converting a JSON string into a strongly-typed data model
+involves two steps:
+
+1.  **Decode the JSON string into Dart collections.**
+    The [`dart:convert` library][] provides the `jsonDecode()` function,
+    which parses a raw JSON string into a standard Dart collection:
+    - A JSON object (`{...}`) becomes a `Map<String, dynamic>`.
+    - A JSON array (`[...]`) becomes a `List<dynamic>`.
+
+    ```dart
+    import 'dart:convert';
+
+    const String jsonString = '{"title": "Dart", "pageid": 12345}';
+
+    // jsonDecode parses the string, cast to a Map<String, Object?>
+    final Map<String, Object?> jsonMap =
+        jsonDecode(jsonString) as Map<String, Object?>;
+    ```
+
+1.  **Convert the decoded collections into custom model objects.**
+    While you can read values directly from a `Map` (like `jsonMap['title']`),
+    using raw maps throughout your application lacks type safety,
+    invites typos, and provides no IDE autocompletion.
+
+    To solve this, Dart applications define data model classes with
+    `factory` constructors, conventionally named `fromJson`, that
+    instantiate typed objects from decoded maps:
+
+    ```dart
+    class ArticleSummary {
+      final String title;
+      final int pageid;
+
+      ArticleSummary({required this.title, required this.pageid});
+
+      factory ArticleSummary.fromJson(Map<String, Object?> json) {
+        return ArticleSummary(
+          title: json['title'] as String,
+          pageid: json['pageid'] as int,
+        );
+      }
+    }
+    ```
+
+Dart also supports [pattern matching][] in `fromJson` constructors,
+allowing you to validate the shape of the JSON map and
+extract values in a single, concise step.
+
 ## Tasks
 
-In this chapter, you'll create Dart classes to
-represent the JSON data returned by the Wikipedia API.
-This will allow you to easily access and use the data in your application.
+The following tasks set up a multi-package workspace and
+create the data model classes for Wikipedia API responses.
 
 ### Task 1: Create the Wikipedia package
 
@@ -130,10 +180,45 @@ it's a good time to configure your project to use a Dart workspace.
         # ... (existing content) ...
         ```
 
+1.  **Resolve workspace dependencies.**
+
+    Run `dart pub get` in your project root to
+    resolve dependencies across all packages in the workspace:
+
+    ```bash
+    dart pub get
+    ```
+
 ### Task 3: Create the Summary class
 
 The Wikipedia API returns a JSON object containing a summary of an article.
-Let's create a Dart class to represent this summary.
+A typical response from the page summary endpoint looks like this:
+
+```json
+{
+  "titles": {
+    "canonical": "Dart_(programming_language)",
+    "normalized": "Dart (programming language)",
+    "display": "Dart (programming language)"
+  },
+  "pageid": 37194605,
+  "extract": "Dart is a client-optimized language for fast apps...",
+  "extract_html": "<p><b>Dart</b> is a client-optimized language...</p>",
+  "lang": "en",
+  "dir": "ltr",
+  "content_urls": {
+    "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Dart_(programming_language)"
+    },
+    "mobile": {
+      "page": "https://en.m.wikipedia.org/wiki/Dart_(programming_language)"
+    }
+  },
+  "description": "Programming language"
+}
+```
+
+Create a Dart class to represent this summary.
 
 1.  Create the directory `wikipedia/lib/src/model`.
 
@@ -185,8 +270,8 @@ Let's create a Dart class to represent this summary.
       /// Wikidata description for the page
       String? description;
 
-      /// Returns a new [Summary] instance
-      static Summary fromJson(Map<String, Object?> json) {
+      /// Creates a [Summary] instance from a JSON map.
+      factory Summary.fromJson(Map<String, Object?> json) {
         return switch (json) {
           {
             'titles': final Map<String, Object?> titles,
@@ -250,21 +335,31 @@ Let's create a Dart class to represent this summary.
     }
     ```
 
-    This code defines a `Summary` class with properties that
-    correspond to the fields in the JSON response from the Wikipedia API.
-    The `fromJson` method uses [pattern matching][] to
-    extract the data from the JSON object and create a new `Summary` instance.
-    The `toString` method provides a convenient way to
-    print the contents of the `Summary` object.
-    Note that the `TitlesSet` class is used in the `Summary` class,
-    so you'll need to create that next.
+    This code defines a `Summary` class to represent the fields returned
+    by the Wikipedia summary endpoint:
+
+    * **`fromJson` pattern matching:** While you can access map keys
+      individually with manual casting (such as `json['pageid'] as int`),
+      the `fromJson` factory constructor uses [pattern matching][] to
+      validate the structure, confirm types, and extract values in a single
+      declarative expression.
+    * **`switch` expression:** Provides two cases to handle Wikipedia's
+      optional `description` field: one that extracts it when present,
+      and a fallback case that matches when it is omitted.
+    * **`toString`:** Provides a readable string representation of
+      the `Summary` object for debugging.
+
+    :::note
+    Your editor might flag `import 'title_set.dart'` and `TitlesSet`
+    as unresolved references until you create `TitlesSet` in Task 4.
+    :::
 
 [pattern matching]: /language/patterns
 
 ### Task 4: Create the TitleSet class
 
 The `Summary` class uses a `TitlesSet` class to represent the title information.
-Let's create that class now.
+Create that class next.
 
 1.  Create the file `wikipedia/lib/src/model/title_set.dart`.
 
@@ -290,8 +385,8 @@ Let's create that class now.
       /// the title as it should be displayed to the user
       String display;
 
-      /// Returns a new [TitlesSet] instance and imports its values from a JSON map
-      static TitlesSet fromJson(Map<String, Object?> json) {
+      /// Creates a [TitlesSet] instance from a JSON map.
+      factory TitlesSet.fromJson(Map<String, Object?> json) {
         if (json case {
           'canonical': final String canonical,
           'normalized': final String normalized,
@@ -316,17 +411,18 @@ Let's create that class now.
     }
     ```
 
-    This code defines a `TitlesSet` class with properties that correspond to
-    the title information in the JSON response from the Wikipedia API.
-    The `fromJson` method uses pattern matching to
-    extract the data from the JSON object and create a new `TitlesSet` instance.
-    The `toString` method provides a convenient way to
-    print the contents of the `TitlesSet` object.
+    This code defines a `TitlesSet` class to hold the title variants
+    returned by the Wikipedia API.
+    Unlike `Summary`, which uses a `switch` expression for optional fields,
+    `TitlesSet` has a fixed structure and validates all three fields at once
+    using an `if case` statement.
+    If the JSON map does not match the pattern, it throws a
+    `FormatException`.
 
 ### Task 5: Create the Article class
 
 The Wikipedia API also returns a list of articles in a search result.
-Let's create a Dart class to represent an article.
+Create a Dart class to represent an article.
 
 1.  Create the file `wikipedia/lib/src/model/article.dart`.
 
@@ -367,19 +463,38 @@ Let's create a Dart class to represent an article.
     }
     ```
 
-    This code defines an `Article` class with properties for
-    the title and extract of an article.
-    The `listFromJson` method uses pattern matching to
-    extract the data from the JSON object and
-    create a list of `Article` instances.
-    The `toJson` method converts the `Article` object back into a JSON object.
-    The `toString` method provides a convenient way to
-    print the contents of the `Article` object.
+    This code defines an `Article` class to represent an article's
+    title and extract:
+
+    * **`listFromJson`:** Unlike previous models that create a single instance,
+      the Wikipedia search endpoint returns multiple articles in a map.
+      Dart constructors only return a single instance, so `Article` uses
+      a `static` method named `listFromJson` to return a `List<Article>`.
+    * **Object pattern destructuring:** The `for` loop uses
+      `final MapEntry(:value)` to extract each entry's value directly
+      without manual property access.
+    * **`toJson`:** Converts an `Article` instance back into a JSON map.
+      In Dart convention, `toJson()` returns a `Map<String, Object?>`
+      that you can pass to `jsonEncode()` from `dart:convert`
+      when serializing an object to a JSON string.
 
 ### Task 6: Create the SearchResults class
 
-Finally, let's create a class to represent the
-search results from the Wikipedia API.
+Finally, create a class to represent search results from the Wikipedia API.
+The Wikipedia search endpoint returns an array containing the search term,
+article titles, descriptions (which are ignored), and URLs:
+
+```json
+[
+  "dart",
+  ["Dart (programming language)", "Dart"],
+  ["", ""],
+  [
+    "https://en.wikipedia.org/wiki/Dart_(programming_language)",
+    "https://en.wikipedia.org/wiki/Dart"
+  ]
+]
+```
 
 1.  Create the file `wikipedia/lib/src/model/search_results.dart`.
 1.  Add the following code to `wikipedia/lib/src/model/search_results.dart`:
@@ -396,7 +511,8 @@ search results from the Wikipedia API.
       final List<SearchResult> results;
       final String? searchTerm;
 
-      static SearchResults fromJson(List<Object?> json) {
+      /// Creates a [SearchResults] instance from a JSON list.
+      factory SearchResults.fromJson(List<Object?> json) {
         final List<SearchResult> results = <SearchResult>[];
         if (json case [
           String searchTerm,
@@ -425,17 +541,22 @@ search results from the Wikipedia API.
     }
     ```
 
-    This code defines a `SearchResults` class with a
-    list of `SearchResult` objects and a search term.
-    The `fromJson` method uses pattern matching to extract the data from
-    the JSON object and create a new `SearchResults` instance.
-    The `toString` method provides a convenient way to
-    print the contents of the `SearchResults` object.
+    This code defines two classes: `SearchResult` to hold an individual
+    article's title and URL, and `SearchResults` to hold the list of
+    results along with the search query:
 
-At this point, you've created data models to represent JSON structures.
-There's nothing to test at this point.
-You'll add that application logic in the upcoming sections,
-which will enable you to test how data is deserialized from the Wikipedia API.
+    * **`fromJson` with `List<Object?>`:** The constructor accepts
+      a `List<Object?>` rather than a `Map<String, Object?>` to match
+      the top-level JSON array returned by Wikipedia's search API.
+    * **List pattern matching:** The `if case` statement uses a list pattern
+      `[...]` to match the array positionally and extract each section.
+    * **Wildcard pattern (`_`):** The `Iterable _` pattern matches and
+      discards the descriptions array, which your application does not need.
+
+You now have typed data models to represent Wikipedia API responses.
+In upcoming chapters, use `package:test` to test
+how data is deserialized and use `package:http` to fetch
+live JSON data from the API.
 
 ## Review
 
@@ -444,26 +565,13 @@ title: What you accomplished
 subtitle: Here's a summary of what you built and learned in this lesson.
 completed: true
 items:
-  - title: Created data model classes for JSON
-    icon: data_object
-    details: >-
-      You built `Summary`, `TitlesSet`, `Article`, and `SearchResults` classes
-      to represent Wikipedia API responses.
-      These typed models provide compile-time safety and
-      IDE support when working with API data.
-  - title: Used dart:convert to work with JSON data
+  - title: Learned about JSON handling in Dart
     icon: convert_to_text
     details: >-
-      You imported the `dart:convert` library and used `jsonDecode()` to
-      parse JSON strings into Dart objects, including `Map` and `List`,
-      that you can then work with programmatically.
-  - title: Used pattern matching to extract data from JSON objects
-    icon: bento
-    details: >-
-      You implemented `fromJson` factory methods using Dart's pattern matching
-      with `switch` expressions and `if case` statement.
-      This structure allowed you to validate the JSON structure and
-      extract values from the JSON objects in single, readable expressions.
+      You explored how `dart:convert` and `jsonDecode()`
+      parse JSON strings into Dart collections (`Map` and `List`), and
+      why typed models with `fromJson` factory constructors are preferred
+      over raw maps.
   - title: Set up a pub workspace
     icon: workspaces
     details: >-
@@ -472,6 +580,20 @@ items:
       To do so, you created a root `pubspec.yaml` file with
       a `workspace:` section listing your packages, then
       added `resolution: workspace` to each sub-package.
+  - title: Created data model classes for JSON
+    icon: data_object
+    details: >-
+      You built `Summary`, `TitlesSet`, `Article`, and `SearchResults` classes
+      to represent Wikipedia API responses.
+      These typed models provide compile-time safety and
+      IDE support when working with API data.
+  - title: Used pattern matching in fromJson factory constructors
+    icon: bento
+    details: >-
+      You implemented `fromJson` factory constructors using Dart's pattern
+      matching with `switch` expressions and `if case` statements.
+      This structure validates the JSON shape and
+      extracts values in concise, readable expressions.
 </SummaryCard>
 
 ## Quiz
@@ -480,7 +602,7 @@ items:
 
 ## Next lesson
 
-In the next lesson, you'll learn how to
+In the next lesson, learn how to
 test your Dart code using the `package:test` library.
-You'll write tests to ensure that your
-JSON deserialization logic is working correctly.
+Write tests to verify that your
+JSON deserialization logic works correctly.

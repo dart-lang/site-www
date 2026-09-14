@@ -92,3 +92,32 @@
       explanation: >-
         Exceptions are never silently ignored in Dart.
         If a catch block doesn't match, the exception doesn't just disappear.
+- question: >-
+    In Dart, what is the primary difference between an `Error` and an `Exception`?
+  options:
+    - text: >-
+        An `Error` indicates a programming bug that shouldn't be caught,
+        while an `Exception` represents an expected condition that code can recover from.
+      correct: true
+      explanation: >-
+        Subtypes of `Error` (such as `RangeError` or `TypeError`) indicate bugs
+        in code that you should fix. Subtypes of `Exception`
+        (such as `FormatException` or `HttpException`) represent conditions
+        that your code can anticipate and handle gracefully.
+    - text: >-
+        `Error` is thrown by the Dart runtime, while `Exception` can only be thrown by user code.
+      correct: false
+      explanation: >-
+        Both the Dart runtime and user code can throw exceptions and errors.
+    - text: >-
+        `Exception` requires a `try/catch` block, but `Error` is ignored if uncaught.
+      correct: false
+      explanation: >-
+        Uncaught errors and uncaught exceptions both terminate execution.
+        Neither is silently ignored.
+    - text: >-
+        `Error` and `Exception` are identical in Dart and can be used interchangeably.
+      correct: false
+      explanation: >-
+        Dart distinguishes between them by design:
+        errors indicate bugs, while exceptions represent recoverable failures.
