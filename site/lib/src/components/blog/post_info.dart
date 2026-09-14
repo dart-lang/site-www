@@ -54,16 +54,9 @@ class _AuthorInfo extends StatelessComponent {
   Component build(BuildContext context) {
     return div(classes: 'post-info-author', [
       for (final author in authors)
-        if (author.image case final authorImage?)
+        if (author.resolveImageUrl(context) case final imageUrl?)
           img(
-            src: context.resolveAsset('/blog/authors/$authorImage'),
-            alt: author.name,
-            width: 32,
-            height: 32,
-          )
-        else if (author.github?.avatarUrl case final avatarUrl?)
-          img(
-            src: avatarUrl,
+            src: imageUrl,
             alt: author.name,
             width: 32,
             height: 32,
@@ -71,7 +64,7 @@ class _AuthorInfo extends StatelessComponent {
       h3(classes: 'post-info-name', [
         for (final (index, author) in authors.indexed) ...[
           span(classes: 'post-info-author-name', [
-            if (author.linkUrl case final linkUrl?)
+            if (author.link case final linkUrl?)
               a(href: linkUrl, target: Target.blank, [.text(author.name)])
             else
               .text(author.name),
