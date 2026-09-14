@@ -37,7 +37,7 @@ unless copyediting was requested.
   [Manage blog authors](references/authors.md).
 
 A small prose-only correction might need no reference.
-Consult `src/data/authors/`, comparable recent posts,
+Consult `src/data/authors.yaml`, comparable recent posts,
 or implementation source when a convention is unclear.
 
 ## Code and quality checks
