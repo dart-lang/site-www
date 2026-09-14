@@ -11,9 +11,6 @@ updates:
       github-actions:
         patterns:
           - "*"
-    labels:
-      - "auto.dependencies"
-      - "auto.github-action"
 
   - package-ecosystem: "pub"
     versioning-strategy: "increase-if-necessary"
@@ -24,5 +21,3 @@ updates:
       dart-dependencies:
         patterns:
           - "*"
-    labels:
-      - "auto.dependencies"
