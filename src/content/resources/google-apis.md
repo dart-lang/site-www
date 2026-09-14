@@ -2,12 +2,11 @@
 title: Using Google APIs
 shortTitle: Google APIs
 description: Your Dart apps can use Firebase, Google client APIs, and Genkit.
-lastVerified: 2021-05-13
+lastVerified: 2026-09-14
 ---
 
 This page points to resources to help you use
 [Firebase][], [Google client APIs][], and [Genkit Dart][] from a Dart app.
-
 
 ## Firebase
 
@@ -45,7 +44,7 @@ which provides an [alternative API][gsheets-api-docs] to the
 To find wrapper packages for Google client APIs, search for
 [packages that depend on `googleapis`][gapi-packages].
 
-## Generative AI with Genkit
+## Generative AI with Genkit {:#genkit}
 
 To build AI-powered features with Google AI, Gemini, and other model providers,
 use [Genkit Dart][].

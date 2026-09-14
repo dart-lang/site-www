@@ -20,16 +20,16 @@ that can help you develop command-line and server apps.
   besides the [currently supported packages][].
   :::
 
-[currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
-
 [Dart SDK](/tools/sdk)
 : [Install the Dart SDK](/get-dart) to get the core Dart
   libraries and [tools](/tools).
 
+[currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
+
 ## Server architectures and frameworks {:#frameworks}
 
-Dart supports multiple backend architectures depending on your application
-requirements:
+Dart supports multiple backend architectures depending on
+your application requirements:
 
 | Architecture / framework | Best suited for | Key advantages | Data and persistence |
 | :--- | :--- | :--- | :--- |
@@ -40,13 +40,15 @@ requirements:
 
 {:.table .table-striped}
 
-To build full-stack, AI-powered applications, server-side flows,
-and agentic workflows, use [Genkit Dart](https://genkit.dev/docs/dart/get-started/).
-Genkit is an open-source AI framework.
+To build full-stack, AI-powered applications,
+server-side flows, and agentic workflows,
+use [Genkit Dart][] or search the pub.dev site for other [AI packages][ai-pkgs].
 
 For more tools and IDE plugins, see the [Tools](/tools) page.
 For additional options, see [#server packages on pub.dev][server-pkgs].
 
+[Genkit Dart]: https://genkit.dev/docs/dart/get-started/
+[ai-pkgs]: {{site.pub-pkg}}?q=topic%3Aai
 [server-pkgs]: {{site.pub-pkg}}?q=topic%3Aserver
 
 ## Building serverless backends with Cloud Functions for Firebase
