@@ -3,45 +3,38 @@
 Use this reference when adding or updating an author,
 or when a post's author ID doesn't resolve.
 
-Authors are defined as individual YAML files in
-`src/data/authors/<author-id>.yaml`, and
-their local profile images live in `src/content/blog/authors/`.
+Authors are defined in `src/data/authors.yaml`, and
+their local profile images live in `src/content/blog/author_images/`.
 
-The filename `<author-id>.yaml` acts as a stable content ID,
-matching the author identifier used in blog post frontmatter.
+The top-level key in `authors.yaml` is a stable content ID,
+not necessarily the author's current social handle.
 
 ## Add or resolve an author
 
 Before adding a record,
-search `src/data/authors/` by ID, display name, or GitHub handle.
+search `authors.yaml` by ID, display name, and profile URL.
 Use verified or author-provided details.
 Don't invent a name, profile, or image.
 For a new ID, choose a recognizable lowercase handle or concise stable slug,
-then create `src/data/authors/<author-id>.yaml`.
+then insert the record alphabetically by ID.
 
-`name` is required while `image`, `bio`, `twitter`, and `github` are optional:
+`name` is required while `image`, `imageUrl`, and `link` are optional:
 
 ```yaml
-name: "Author Display Name"
-username: "author-id"
-bio: ""
-image: "author-id.webp"
-twitter: ""
-github:
-  handle: "author-id"
-  username: "Author Display Name"
-  avatar_url: "https://avatars.githubusercontent.com/u/123456?v=4"
+author-id:
+  name: "Author Display Name"
+  image: "author-id.webp"
+  link: "https://github.com/author-id"
 ```
 
-- `image` names a local image file in `src/content/blog/authors/`.
-- If `image` is omitted, the site falls back to `github.avatar_url`.
-- `github.handle` or `twitter` is used to link to their profile from the byline.
-  Prefer GitHub.
+- `image` names a local image file in `author_images/`.
+- `imageUrl` accepts an external URL to use as a fallback to `image`.
+  Prefer a local `image` over setting `imageUrl`. Don't set both.
+- `link` is the destination linked from the byline. Prefer their GitHub profile.
 
 ## Author images
 
-Place local author images in `src/content/blog/authors/`.
-Name a local image after the exact author ID or image hash and
+Name a local image after the exact author ID and
 use its real lowercase `.jpg` or `.webp` extension,
 such as `author-id.webp`.
 Optimize it for a small square display and a centered circular crop.
