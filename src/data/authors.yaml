@@ -1,0 +1,145 @@
+# List of all blog authors, sorted alphabetically by ID.
+# Reference these stable IDs in post frontmatter.
+#
+# Each author entry can have the following fields:
+#  - name: The author's display name (required).
+#  - image: A local filename in src/content/blog/author_images/ (optional).
+#  - imageUrl: An external image URL, as an alternative to image (optional).
+#  - link: A GitHub, social profile, or personal website URL (optional).
+
+antfitch:
+  name: "Amanda Fitch"
+  image: "antfitch.webp"
+  link: "https://github.com/antfitch"
+asandholm:
+  name: "Anders Thorhauge Sandholm"
+  image: "asandholm.webp"
+  link: "https://github.com/asandholm"
+bkonyi:
+  name: "Ben Konyi"
+  image: "bkonyi.webp"
+  link: "https://github.com/bkonyi"
+BlackHC:
+  name: "Andreas Kirsch"
+  image: "BlackHC.webp"
+  link: "https://github.com/BlackHC"
+bp74:
+  name: "Bernhard Pichler"
+  image: "bp74.webp"
+  link: "https://github.com/bp74"
+bwilkerson:
+  name: "Brian Wilkerson"
+  image: "bwilkerson.webp"
+  link: "https://github.com/bwilkerson"
+chrisraygill:
+  name: "Chris Gill"
+  image: "chrisraygill.webp"
+  link: "https://github.com/chrisraygill"
+conooi:
+  name: "Connie Ooi"
+  image: "conooi.webp"
+  link: "https://github.com/conooi"
+davidmorgan:
+  name: "David Morgan"
+  image: "davidmorgan.webp"
+  link: "https://github.com/davidmorgan"
+dcharkes:
+  name: "Daco Harkes"
+  image: "dcharkes.webp"
+  link: "https://github.com/dcharkes"
+erikcorry:
+  name: "Erik Corry"
+  image: "erikcorry.webp"
+  link: "https://github.com/erikcorry"
+filiph:
+  name: "Filip Hracek"
+  image: "filiph.webp"
+  link: "https://github.com/filiph"
+isoos:
+  name: "István Soós"
+  image: "isoos.webp"
+  link: "https://github.com/isoos"
+jakemac53:
+  name: "Jake Macdonald"
+  image: "jakemac53.webp"
+  link: "https://github.com/jakemac53"
+johnpryan:
+  name: "John Ryan"
+  image: "johnpryan.webp"
+  link: "https://github.com/johnpryan"
+jonasfj:
+  name: "Jonas Finnemann Jensen"
+  image: "jonasfj.webp"
+  link: "https://github.com/jonasfj"
+JoseAlba:
+  name: "Jose Alba"
+  image: "JoseAlba.webp"
+  link: "https://github.com/JoseAlba"
+kallentu:
+  name: "Kallen Tu"
+  image: "kallentu.webp"
+  link: "https://github.com/kallentu"
+kevmoo:
+  name: "Kevin Moore"
+  image: "kevmoo.webp"
+  link: "https://github.com/kevmoo"
+kwalrath:
+  name: "Kathy Walrath"
+  image: "kwalrath.webp"
+  link: "https://github.com/kwalrath"
+leonsenft:
+  name: "Leon Senft"
+  image: "leonsenft.webp"
+  link: "https://github.com/leonsenft"
+lrhn:
+  name: "Lasse Reichstein Holst Nielsen"
+  image: "lrhn.webp"
+  link: "https://github.com/lrhn"
+matanlurey:
+  name: "Matan Lurey"
+  image: "matanlurey.webp"
+  link: "https://github.com/matanlurey"
+mbelanger:
+  name: "Marya Belanger"
+  image: "mbelanger.webp"
+  link: "https://github.com/MaryaBelanger"
+mfairhurst:
+  name: "Mike Fairhurst"
+  image: "mfairhurst.webp"
+  link: "https://github.com/mfairhurst"
+mit-mit:
+  name: "Michael Thomsen"
+  image: "mit-mit.webp"
+  link: "https://github.com/mit-mit"
+munificent:
+  name: "Bob Nystrom"
+  image: "munificent.webp"
+  link: "https://github.com/munificent"
+polina-c:
+  name: "Polina C"
+  image: "polina-c.webp"
+  link: "https://github.com/polina-c"
+sigmundch:
+  name: "Sigmund Cherem"
+  image: "sigmundch.webp"
+  link: "https://github.com/sigmundch"
+taodong:
+  name: "Tao Dong"
+  image: "taodong.webp"
+  link: "https://twitter.com/taodong"
+timsneath:
+  name: "Tim Sneath"
+  image: "timsneath.webp"
+  link: "https://github.com/timsneath"
+vijaysmenon:
+  name: "Vijay Menon"
+  image: "vijaysmenon.webp"
+  link: "https://github.com/vsmenon"
+wal33d:
+  name: "Waleed Arshad"
+  image: "wal33d.webp"
+  link: "https://twitter.com/wal_33d"
+zoeyfan:
+  name: "Zoey Fan"
+  image: "zoeyfan.webp"
+  link: "https://github.com/zoeyfan"

@@ -51,7 +51,7 @@ layout: blog
   Preserve it when editing an existing post unless a date change is requested.
 
 `author` (required)
-: One or more author IDs corresponding to `src/data/authors/<author-id>.yaml`.
+: One or more author IDs from `src/data/authors.yaml`.
   To set up authors, follow [Manage blog authors](authors.md).
 
 `category` (optional)
