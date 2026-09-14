@@ -673,10 +673,9 @@ The failure can also occur between fields in
 Define the getter in question so that `noSuchMethod` doesn't have
 to implicitly handle its implementation:
 
-<?code-excerpt "non_promotion/lib/non_promotion.dart (mock)" plaster="" replace="/late.*/[!$&!]/g; /MockingExample/Example/g; /f4/f/g;"?>
+<?code-excerpt "non_promotion/lib/non_promotion.dart (mock)" plaster="none" replace="/late.*/[!$&!]/g; /MockingExample/Example/g; /f4/f/g;"?>
 ```dart tag=good
 import 'package:mockito/mockito.dart';
-
 
 class Example {
   final int? _i;
