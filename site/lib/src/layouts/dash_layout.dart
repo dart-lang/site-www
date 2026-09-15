@@ -13,8 +13,8 @@ import '../components/layout/footer.dart';
 import '../components/layout/header.dart';
 import '../components/layout/sidenav.dart';
 import '../models/sidenav_model.dart';
-import '../style_hash.dart';
 import '../util.dart';
+import '../utils/cache_busted_build_asset_url.dart';
 
 /// The base Jaspr Content layout for wrapping site content.
 abstract class DashLayout extends PageLayoutBase {
@@ -170,9 +170,7 @@ abstract class DashLayout extends PageLayoutBase {
       ),
       link(
         rel: 'stylesheet',
-        href:
-            '/assets/css/main.css?'
-            'hash=${htmlEscape.convert(generatedStylesHash)}',
+        href: cacheBustedBuildAssetUrl('/assets/css/main.css'),
       ),
       // The upstream cookie script manages
       // regional visibility and dismissal persistence.

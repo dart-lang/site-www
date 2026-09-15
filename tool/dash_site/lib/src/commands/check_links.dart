@@ -30,8 +30,9 @@ final class CheckLinksCommand extends Command<int> {
   String get name => 'check-links';
 
   @override
-  Future<int> run() async =>
-      _checkLinks(checkExternal: argResults.get<bool>(_externalFlag, false));
+  Future<int> run() async => await _checkLinks(
+    checkExternal: argResults.get<bool>(_externalFlag, false),
+  );
 }
 
 /// The port that the firebase emulator runs on by default.

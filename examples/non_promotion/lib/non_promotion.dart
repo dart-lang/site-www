@@ -13,6 +13,7 @@ import 'dart:math';
 
 // #docregion mock
 import 'package:mockito/mockito.dart';
+
 // #enddocregion mock
 
 // #docregion suspension

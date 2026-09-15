@@ -314,7 +314,7 @@ linter:
   ];
 }
 
-final linterRulesToShow = readAndLoadLints()
+final List<LintDetails> linterRulesToShow = readAndLoadLints()
     .where(
       (lint) =>
           lint.sinceDartSdk != 'Unreleased' &&

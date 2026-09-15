@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:async';
-
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/components/file_tree.dart';
 import 'package:jaspr_content/components/post_break.dart';
@@ -45,13 +43,14 @@ import 'src/pages/robots_txt.dart';
 import 'src/templating/dash_template_engine.dart';
 import 'src/util.dart';
 
-final contentDirectory = path.join(siteSrcDirectoryPath, 'content');
+/// The root of the directory where site Markdown content is stored.
+final String _contentDirectory = path.join(siteSrcDirectoryPath, 'content');
 
-Future<void> main() async {
+void main() {
   Jaspr.initializeApp(options: defaultServerOptions);
 
   final assetManager = AssetManager(
-    directory: contentDirectory,
+    directory: _contentDirectory,
     outputPrefix: 'images',
     dataProperties: const {'page.image', 'page.socialImage'},
     filterPages: (page) => page.path.startsWith('blog/'),
@@ -63,7 +62,7 @@ Future<void> main() async {
     eagerlyLoadAllPages: true,
     loaders: [
       FilesystemLoader(
-        contentDirectory,
+        _contentDirectory,
         filterExtensions: const {'.md', '.html'},
       ),
       MemoryLoader(pages: allMemoryPages),

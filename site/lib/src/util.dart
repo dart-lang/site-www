@@ -6,10 +6,10 @@ import 'package:jaspr/jaspr.dart';
 import 'package:path/path.dart' as path;
 
 /// Whether this build of the site will be deployed to production.
-const productionBuild = bool.fromEnvironment('PRODUCTION');
+const bool productionBuild = .fromEnvironment('PRODUCTION');
 
 /// Path to the `/src` directory where site content is located.
-final siteSrcDirectoryPath = path.join('..', 'src');
+final String siteSrcDirectoryPath = path.join('..', 'src');
 
 /// Split the specific [sourceString] into a list of Jaspr [Component]
 /// by adding a `<wbr>`  element after each underscore.
