@@ -79,6 +79,9 @@
       explanation: >-
         The `lib/` directory is for library code
         that can be imported by other packages.
+        Note that while Flutter applications use `lib/main.dart`
+        as their entry point, standard Dart CLI applications
+        use the `bin/` directory.
     - text: >-
         In the `src/` directory, because that's the standard source folder.
       correct: false
