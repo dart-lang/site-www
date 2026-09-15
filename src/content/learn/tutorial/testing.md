@@ -28,7 +28,7 @@ items:
 
 Before you begin this chapter, ensure you:
 
--   Have completed Chapter 9 and have a
+-   Have completed Chapter 10 and have a
     working Dart development environment with the `dartpedia` project.
 -   Are familiar with basic programming concepts like
     variables, functions, and control flow.

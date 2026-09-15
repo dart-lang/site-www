@@ -28,8 +28,10 @@
   permalink: /learn/tutorial/async
 - title: Organize code with packages and libraries
   permalink: /learn/tutorial/packages-libs
-- title: Define relationships with classes
+- title: Define classes and objects
   permalink: /learn/tutorial/object-oriented
+- title: Structure apps with inheritance
+  permalink: /learn/tutorial/inheritance
 - title: Handle errors gracefully
   permalink: /learn/tutorial/error-handling
 - title: Extend your app with enums and extensions
