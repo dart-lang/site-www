@@ -8,14 +8,13 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../components/common/client/cookie_notice.dart';
 import '../components/layout/banner.dart';
 import '../components/layout/footer.dart';
 import '../components/layout/header.dart';
 import '../components/layout/sidenav.dart';
 import '../models/sidenav_model.dart';
-import '../style_hash.dart';
 import '../util.dart';
+import '../utils/cache_busted_build_asset_url.dart';
 
 /// The base Jaspr Content layout for wrapping site content.
 abstract class DashLayout extends PageLayoutBase {
@@ -162,11 +161,28 @@ abstract class DashLayout extends PageLayoutBase {
             '24,400,0..1,0',
       ),
 
-      link(
+      // Load the managed cookie banner styles before our theme overrides.
+      const link(
         rel: 'stylesheet',
         href:
-            '/assets/css/main.css?'
-            'hash=${htmlEscape.convert(generatedStylesHash)}',
+            'https://www.gstatic.com/glue/cookienotificationbar/'
+            'cookienotificationbar.min.css',
+      ),
+      link(
+        rel: 'stylesheet',
+        href: cacheBustedBuildAssetUrl('/assets/css/main.css'),
+      ),
+      // The upstream cookie script manages
+      // regional visibility and dismissal persistence.
+      const script(
+        src:
+            'https://www.gstatic.com/glue/cookienotificationbar/'
+            'cookienotificationbar.min.js',
+        attributes: {
+          'defer': '',
+          'data-glue-cookie-notification-bar-category': '2B',
+          'data-glue-cookie-notification-bar-site-id': 'dart.dev',
+        },
       ),
 
       if (pageData['js'] case final List<Object?> jsList)
@@ -268,7 +284,6 @@ if (storedTheme === 'auto-mode') {
           attributes: {'tabindex': '1'},
           [.text('Skip to main content')],
         ),
-        CookieNotice(alwaysDarkMode: name == 'homepage'),
         const DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [

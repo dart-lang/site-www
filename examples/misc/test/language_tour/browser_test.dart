@@ -4,6 +4,7 @@ library;
 
 // #docregion dart-js-interop-import
 import 'dart:js_interop';
+
 // #enddocregion dart-js-interop-import
 // #docregion package-import
 import 'package:test/test.dart';

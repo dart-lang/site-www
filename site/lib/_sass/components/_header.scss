@@ -166,8 +166,19 @@
   }
 
   #site-primary-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
     border-radius: 0.25rem;
     padding: 0;
+    gap: 0;
+
+    font-variant-ligatures: none;
+    font-size: 1.75rem;
+    line-height: 1.25em;
+    font-family: var(--site-ui-fontFamily);
+    user-select: none;
 
     &,
     & a {
@@ -175,14 +186,21 @@
       text-decoration: none;
     }
 
+    > a {
+      color: inherit;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
     img {
       width: 2.25rem;
       margin-right: 0;
     }
 
-
     .name {
       display: none;
+      margin-left: 0.5rem;
 
       @media (min-width: 200px) {
         display: unset;
@@ -190,13 +208,20 @@
     }
 
     .subtype {
+      padding: 0.05rem 0.3rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.3;
+      border-radius: 0.25rem;
+      color: var(--site-secondaryContainer-fgColor);
+      background-color: var(--site-secondaryContainer-bgColor);
+      letter-spacing: normal;
       margin-left: 0;
 
       @media (min-width: 420px) {
         margin-left: 0.4rem;
       }
     }
-
   }
 }
 

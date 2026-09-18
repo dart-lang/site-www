@@ -52,7 +52,7 @@ final class DashFooter extends StatelessComponent {
               target: Target.blank,
               attributes: {
                 'rel': 'noopener',
-                'title': 'Dart\'s Bluesky (Twitter) profile',
+                'title': 'Dart\'s Bluesky profile',
               },
               [
                 svg([
