@@ -46,6 +46,8 @@ might look like:
     - src/
       - beans.dart
       - queso.dart
+  - prebuilt/
+    - salsa.so
   - skills/
     - enchilada-cooking/
       - SKILL.md
@@ -552,6 +554,18 @@ These hooks have a predefined CLI, and will be invoked by the SDK tools if prese
 Because these hooks are invoked by the
 `dart` and `flutter` tools on runs and builds, the dependencies
 of these hooks must be normal dependencies and not `dev_dependencies`.
+
+<FileTree>
+
+- enchilada/
+  - prebuilt/
+    - salsa.so
+
+</FileTree>
+
+If your package includes pre-built binary libraries
+intended to be used or referenced by `hook/build.dart`,
+place them in a directory called `prebuilt`.
 
 To learn more about how to define hooks, refer to the [build hooks][] documentation.
 
