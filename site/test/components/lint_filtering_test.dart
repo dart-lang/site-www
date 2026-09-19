@@ -75,7 +75,7 @@ void main() {
       );
     }
 
-    testClient('shows all lints by default', (tester) async {
+    testClient('shows all lints by default', (tester) {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       final cards = web.document
@@ -129,7 +129,7 @@ void main() {
       expectCardVisible('fixable_lint', false);
     });
 
-    testClient('filters lints by search query', (tester) async {
+    testClient('filters lints by search query', (tester) {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
       expectVisibleLength(4);

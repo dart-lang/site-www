@@ -64,7 +64,7 @@ void main() {
       );
     }
 
-    testClient('shows all entries by default', (tester) async {
+    testClient('shows all entries by default', (tester) {
       tester.pumpComponent(GlossaryIndex(testGlossaryEntries));
 
       final cards = web.document

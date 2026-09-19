@@ -29,6 +29,8 @@ final class PageHeaderOptions extends StatefulComponent {
 
 final class _PageHeaderOptionsState extends State<PageHeaderOptions> {
   bool _isShareSupported = false;
+  bool _copied = false;
+  int _copyId = 0;
 
   @override
   void initState() {
@@ -46,6 +48,20 @@ final class _PageHeaderOptionsState extends State<PageHeaderOptions> {
       }
       setState(() {});
     }
+  }
+
+  void _copyLink() {
+    if (!kIsWeb) return;
+
+    web.window.navigator.clipboard.writeText(_currentBaseUrl).toDart.ignore();
+    setState(() => _copied = true);
+
+    final currentId = ++_copyId;
+    Future<void>.delayed(const Duration(milliseconds: 1500), () {
+      if (mounted && currentId == _copyId) {
+        setState(() => _copied = false);
+      }
+    });
   }
 
   String get _currentBaseUrl =>
@@ -87,14 +103,9 @@ final class _PageHeaderOptionsState extends State<PageHeaderOptions> {
                       )
                     else
                       Button(
-                        icon: 'copy',
-                        content: 'Copy link',
-                        onClick: () {
-                          web.window.navigator.clipboard
-                              .writeText(_currentBaseUrl)
-                              .toDart
-                              .ignore();
-                        },
+                        icon: _copied ? 'check' : 'content_copy',
+                        content: _copied ? 'Link copied!' : 'Copy link',
+                        onClick: _copyLink,
                       ),
                   ],
                 ),

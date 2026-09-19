@@ -2098,8 +2098,8 @@
   },
   {
     "id": "deprecated_member_use",
-    "description": "_'{0}' is deprecated and shouldn't be used._\n\n_'{0}' is deprecated and shouldn't be used. {1}_",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a deprecated library or class\nmember is used in a different package.\n\n## Example\n\nIf the method `m` in the class `C` is annotated with `@deprecated`, then\nthe following code produces this diagnostic:\n\n```dart\nvoid f(C c) {\n  c.[!m!]();\n}\n```\n\n## Common fixes\n\nThe documentation for declarations that are annotated with `@deprecated`\nshould indicate what code to use in place of the deprecated code.\n",
+    "description": "_'{0}' is deprecated and shouldn't be used._\n\n_'{0}' is deprecated and shouldn't be used. {1}_\n\n_The implicitly referenced type '{0}' is deprecated and shouldn't be used._\n\n_The implicitly referenced type '{0}' is deprecated and shouldn't be used. {1}_",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a deprecated library or class\nmember is used in a different package.\n\nA dot-shorthand expression can also implicitly reference a deprecated\ntype. In this case, the diagnostic identifies the implicitly referenced\ntype even though its name isn't written in the expression.\n\n## Example\n\nIf the method `m` in the class `C` is annotated with `@deprecated`, then\nthe following code produces this diagnostic:\n\n```dart\nvoid f(C c) {\n  c.[!m!]();\n}\n```\n\n## Common fixes\n\nThe documentation for declarations that are annotated with `@deprecated`\nshould indicate what code to use in place of the deprecated code.\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -2190,7 +2190,7 @@
   },
   {
     "id": "discarded_futures",
-    "description": "_'Future'-returning calls in a non-'async' function._",
+    "description": "_'Future'-returning calls in a non-'async' function._\n\n_'FutureOr'-returning calls in a non-'async' function._",
     "hasDocumentation": false,
     "fromLint": true,
     "previousNames": []
@@ -2641,7 +2641,8 @@
   {
     "id": "eol_at_end_of_file",
     "description": "_Missing a newline at the end of the file._\n\n_Too many newlines at the end of the file._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a non-empty Dart file\ndoesn't end with a single newline.\nThis occurs when a file has no trailing newline or\nwhen it has multiple trailing newlines.\n\nTrailing newlines aren't visible in rendered code blocks.\nTo make them clear, the examples below use comments to\nshow where each file ends.\n\n## Examples\n\nThe following code produces this diagnostic because\nthe file doesn't end with a newline:\n\n```dart\nclass C {} // The file ends here, without a newline.\n```\n\nThe following code produces this diagnostic because\nthe file ends with multiple newlines:\n\n```dart\nclass C {}\n\n// The file ends here, after two newlines.\n```\n\n## Common fixes\n\nAdd or remove newlines at the end of the file\nuntil it ends with exactly one newline:\n\n```dart\nclass C {}\n// The file ends here, after a single newline.\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -2700,9 +2701,16 @@
     "previousNames": []
   },
   {
+    "id": "exclude_invalid_glob",
+    "description": "_The exclude glob pattern '{0}' shouldn't start with a forward slash._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "exhaustive_cases",
     "description": "_Missing case clauses for some constants in '{0}'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a\n`switch` statement over an instance of an enum-like class is\nmissing a `case` clause for one or more of the class's constants and\ndoesn't have a `default` clause.\n\nEnum-like classes are non-abstract classes that have:\n\n- Only private, non-factory constructors.\n- Two or more `static const` fields whose type is the enclosing class.\n- No subclasses in the defining library.\n\n## Example\n\nThe following code produces this diagnostic because the\n`switch` statement is missing a `case` clause for the constant `C.c`:\n\n```dart\nclass const C._(final int i) {\n  static const C a = ._(1);\n  static const C b = ._(2);\n  static const C c = ._(3);\n}\n\nvoid f(C c) {\n  [!switch (c)!] {\n    case .a:\n      print('a');\n    case .b:\n      print('b');\n  }\n}\n```\n\n## Common fixes\n\nIf the missing constant needs to be handled separately,\nthen add a `case` clause for it:\n\n```dart\nclass const C._(final int i) {\n  static const C a = ._(1);\n  static const C b = ._(2);\n  static const C c = ._(3);\n}\n\nvoid f(C c) {\n  switch (c) {\n    case .a:\n      print('a');\n    case .b:\n      print('b');\n    case .c:\n      print('c');\n  }\n}\n```\n\nIf the missing constant doesn't need to be handled specially,\nthen add a `default` clause to cover it:\n\n```dart\nclass const C._(final int i) {\n  static const C a = ._(1);\n  static const C b = ._(2);\n  static const C c = ._(3);\n}\n\nvoid f(C c) {\n  switch (c) {\n    case .a:\n      print('a');\n    case .b:\n      print('b');\n    default:\n      print('other');\n  }\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a\n`switch` statement over an instance of an enum-like type is\nmissing a `case` clause for one or more of the type's constants and\ndoesn't have a `default` clause.\n\nEnum-like types are classes or extension types that have:\n\n- Only private, non-factory constructors.\n- Two or more `static const` fields whose type is the enclosing type.\n\nIn addition, an enum-like class must be non-abstract and have no\nsubclasses in the defining library.\n\n## Example\n\nThe following code produces this diagnostic because the\n`switch` statement is missing a `case` clause for the constant `C.c`:\n\n```dart\nclass const C._(final int i) {\n  static const C a = ._(1);\n  static const C b = ._(2);\n  static const C c = ._(3);\n}\n\nvoid f(C c) {\n  [!switch (c)!] {\n    case .a:\n      print('a');\n    case .b:\n      print('b');\n  }\n}\n```\n\nExtension types can also be enum-like. The following code produces this\ndiagnostic because the `switch` statement is missing a `case` clause for\nthe constant `E.b`:\n\n```dart\nextension type const E._(int value) {\n  static const E a = ._(1);\n  static const E b = ._(2);\n}\n\nvoid f(E e) {\n  [!switch (e)!] {\n    case .a:\n      print('a');\n  }\n}\n```\n\n## Common fixes\n\nIf the missing constant needs to be handled separately,\nthen add a `case` clause for it:\n\n```dart\nclass const C._(final int i) {\n  static const C a = ._(1);\n  static const C b = ._(2);\n  static const C c = ._(3);\n}\n\nvoid f(C c) {\n  switch (c) {\n    case .a:\n      print('a');\n    case .b:\n      print('b');\n    case .c:\n      print('c');\n  }\n}\n```\n\nIf the missing constant doesn't need to be handled specially,\nthen add a `default` clause to cover it:\n\n```dart\nclass const C._(final int i) {\n  static const C a = ._(1);\n  static const C b = ._(2);\n  static const C c = ._(3);\n}\n\nvoid f(C c) {\n  switch (c) {\n    case .a:\n      print('a');\n    case .b:\n      print('b');\n    default:\n      print('other');\n  }\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -5911,7 +5919,7 @@
   },
   {
     "id": "multiple_combinators",
-    "description": "_Using multiple 'hide' or 'show' combinators is never necessary and often produces surprising results._",
+    "description": "_At most one 'show' or 'hide' combinator can be used on an import or export directive._\n\n_Using multiple 'hide' or 'show' combinators is never necessary and often produces surprising results._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when an import or export directive\ncontains more than one combinator.\n\n## Examples\n\nThe following code produces this diagnostic because the second `show`\ncombinator hides `List` and `int`:\n\n```dart\nimport 'dart:core' [!show Future, List, int show Future!];\n\nvar x = Future.value(1);\n```\n\nThe following code produces this diagnostic because\nthe second `hide` combinator is redundant:\n\n```dart\nimport 'dart:math' [!hide Random, max, min hide min!];\n\nvar x = pi;\n```\n\nThe following codes produce this diagnostic because\nthe `hide` combinator is redundant:\n\n```dart\nimport 'dart:math' [!show Random, max hide min!];\n\nvar x = max(0, 1);\nvar r = Random();\n```\n\nThe following code produces this diagnostic because\nthe `show` combinator already hides `Random` and `max`,\nso the `hide` combinator is redundant:\n\n```dart\nimport 'dart:math' [!hide Random, max show min!];\n\nvar x = min(0, 1);\n```\n\n## Common fixes\n\nIf you prefer to list the names that should be visible,\nthen use a single `show` combinator:\n\n```dart\nimport 'dart:math' show min;\n\nvar x = min(0, 1);\n```\n\nIf you prefer to list the names that should be hidden,\nthen use a single `hide` combinator:\n\n```dart\nimport 'dart:math' hide Random, max, min;\n\nvar x = pi;\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -6385,7 +6393,7 @@
   },
   {
     "id": "non_const_call_to_literal_constructor",
-    "description": "_This instance creation must be 'const', because the {0} constructor is marked as '@literal'._",
+    "description": "_This instance creation must be 'const', because '{0}' is marked as '@literal'._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a constructor that has the\n[`literal`][meta-literal] annotation is invoked without using the `const`\nkeyword, but all of the arguments to the constructor are constants. The\nannotation indicates that the constructor should be used to create a\nconstant value whenever possible.\n\n## Example\n\nThe following code produces this diagnostic:\n\n```dart\nimport 'package:meta/meta.dart';\n\nclass C {\n  @literal\n  const C();\n}\n\nC f() => [!C()!];\n```\n\n## Common fixes\n\nAdd the keyword `const` before the constructor invocation:\n\n```dart\nimport 'package:meta/meta.dart';\n\nclass C {\n  @literal\n  const C();\n}\n\nvoid f() => const C();\n```\n\n[meta-literal]: https://pub.dev/documentation/meta/latest/meta/literal-constant.html\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -8695,8 +8703,8 @@
   },
   {
     "id": "unawaited_futures",
-    "description": "_Missing an 'await' for the 'Future' computed by this expression._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic on an expression with a `Future`\ntype, only in a few specific cases:\n\n* when the expression is itself a statement (like `f();`),\n* when the expression is part of a cascade (like `C()..f()`),\n* when the expression is a String interpolation (like `'${f()}'`).\n\nThe analyzer only produces this diagnostic on expressions inside an\n`async` or `async*` function.\n\nThe two common corrections are to 'await' the expression, or to wrap the\nexpression in a call to `unawaited()`.\n\n## Example\n\nThe following code produces this diagnostic because the function `g`\nreturns a future, but the future isn't awaited:\n\n```dart\nFuture<void> f() async {\n  [!g!]();\n}\n\nFuture<int> g() => Future.value(0);\n```\n\n## Common fixes\n\nIf the future needs to complete before the following code is executed,\nthen add an `await` before the invocation:\n\n```dart\nFuture<void> f() async {\n  await g();\n}\n\nFuture<int> g() => Future.value(0);\n```\n\nIf the future doesn't need to complete before the following code is\nexecuted, then wrap the `Future`-returning invocation in an invocation of\nthe `unawaited` function:\n\n```dart\nimport 'dart:async';\n\nFuture<void> f() async {\n  unawaited(g());\n}\n\nFuture<int> g() => Future.value(0);\n```\n",
+    "description": "_Missing an 'await' for the 'Future' computed by this expression._\n\n_Missing an 'await' for the 'FutureOr' computed by this expression._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic on an expression with a `Future`\nor `FutureOr` type, only in a few specific cases:\n\n* when the expression is itself a statement (like `f();`),\n* when the expression is part of a cascade (like `C()..f()`),\n* when the expression is a String interpolation (like `'${f()}'`).\n\nThe analyzer only produces this diagnostic on expressions inside an\n`async` or `async*` function.\n\nThe two common corrections are to 'await' the expression, or if it is\na `Future` (not `FutureOr`), to wrap the expression in a call to\n`unawaited()`.\n\n## Example\n\nThe following code produces this diagnostic because the function `g`\nreturns a future, but the future isn't awaited:\n\n```dart\nFuture<void> f() async {\n  [!g!]();\n}\n\nFuture<int> g() => Future.value(0);\n```\n\n## Common fixes\n\nIf the future needs to complete before the following code is executed,\nthen add an `await` before the invocation:\n\n```dart\nFuture<void> f() async {\n  await g();\n}\n\nFuture<int> g() => Future.value(0);\n```\n\nIf the `Future` doesn't need to complete before the following code is\nexecuted, then wrap the `Future`-returning invocation in an invocation of\nthe `unawaited` function:\n\n```dart\nimport 'dart:async';\n\nFuture<void> f() async {\n  unawaited(g());\n}\n\nFuture<int> g() => Future.value(0);\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -9048,7 +9056,7 @@
   {
     "id": "unnecessary_const_in_enum_constructor",
     "description": "_Unnecessary 'const' keyword in an enum constructor._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the keyword `const` is used in\na generative enum constructor. Generative enum constructors are implicitly\n`const`.\n\n## Examples\n\nThe following code produces this diagnostic because the keyword `const` in\nthe enum's primary constructor isn't needed:\n\n```dart\nenum [!const!] E(final int i) {\n  a(1),\n  b(2);\n}\n```\n\nThe following code produces this diagnostic because the keyword `const` in\nthe enum's in-body constructor isn't needed:\n\n```dart\nenum E {\n  a(1),\n  b(2);\n\n  [!const!] E(this.i);\n\n  final int i;\n}\n```\n\n## Common fixes\n\nRemove the unnecessary keyword:\n\n```dart\nenum E(final int i) {\n  a(1),\n  b(2);\n}\n```\n\n```dart\nenum E {\n  a(1),\n  b(2);\n\n  new(this.i);\n\n  final int i;\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the keyword `const` is used in\na generative enum constructor. Generative enum constructors are implicitly\n`const`.\n\n## Examples\n\nThe following code produces this diagnostic because the keyword `const` in\nthe enum's primary constructor isn't needed:\n\n```dart\nenum [!const!] E(final int i) {\n  a(1),\n  b(2),\n}\n```\n\nThe following code produces this diagnostic because the keyword `const` in\nthe enum's in-body constructor isn't needed:\n\n```dart\nenum E {\n  a(1),\n  b(2);\n\n  [!const!] E(this.i);\n\n  final int i;\n}\n```\n\n## Common fixes\n\nRemove the unnecessary keyword:\n\n```dart\nenum E(final int i) {\n  a(1),\n  b(2),\n}\n```\n\n```dart\nenum E {\n  a(1),\n  b(2);\n\n  new(this.i);\n\n  final int i;\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -9751,7 +9759,7 @@
     "id": "use_primary_constructors",
     "description": "_Use a primary constructor._",
     "hasDocumentation": false,
-    "fromLint": true,
+    "fromLint": false,
     "previousNames": []
   },
   {

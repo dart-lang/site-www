@@ -9,6 +9,14 @@ class User(String name);
 
 // #enddocregion declaring-parameters
 
+// #docregion declaring-parameters-error
+// Valid: Primary constructor declaring parameter.
+class PointFinal(final int x, final int y);
+
+// Compile-time error (extraneous_modifier):
+void printValue(int x) => print(x);
+// #enddocregion declaring-parameters-error
+
 // #docregion initializer-scope
 class DeltaPoint(final int x, int delta) {
   // Accesses 'x' and 'delta' parameters directly!
@@ -71,6 +79,6 @@ class const ConstPoint(final int x, final int y) {
 enum Color(final String hex) {
   red('#FF0000'),
   green('#00FF00'),
-  blue('#0000FF');
+  blue('#0000FF'),
 }
 // #enddocregion enums

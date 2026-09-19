@@ -98,8 +98,11 @@ ORANGES: 7
       const list = ['apples', 'bananas', 'oranges'];
       // #docregion anon-func
       var uppercaseList = list.map((item) => item.toUpperCase()).toList();
-      uppercaseList.forEach((item) => print('$item: ${item.length}'));
       // #enddocregion anon-func
+
+      for (var item in uppercaseList) {
+        print('$item: ${item.length}');
+      }
     }
 
     expect(testAnonymousFunction, prints(indexedFruit));

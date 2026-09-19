@@ -7,11 +7,15 @@ showToc: false
 ---
 
 Explore tools and frameworks to build AI-powered apps with Dart
-and enhance your development workflow with AI assistants.
+and enhance your development workflow with AI agents.
 
 <div class="card-grid">
+  <Card title="Package skills" link="/ai/package-skills">
+    Install, manage, and use AI agent skills provided by Dart and Flutter
+    packages.
+  </Card>
   <Card title="Dart and Flutter MCP server" link="{{site.flutter-docs}}/ai/mcp-server">
-    Connect AI coding assistants to your Dart and Flutter development
+    Connect AI coding agents to your Dart and Flutter development
     environment.
   </Card>
   <Card title="Genkit for Dart" link="https://genkit.dev/docs/dart/get-started/">

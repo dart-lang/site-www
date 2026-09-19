@@ -143,7 +143,7 @@ final _pullRequestTitleInListItemPattern = RegExp(
 );
 
 /// All replacements to run on a file content before finding invalid references.
-final _allReplacements = [
+final List<RegExp> _allReplacements = [
   _htmlCommentPattern,
   _codeBlockPattern,
   _pullRequestTitlePattern,
