@@ -9,11 +9,6 @@ or in one of the dependencies of the current package—from the command line.
 This command provides functionality that was previously in `pub run`
 and the Dart VM tool.
 
-To run an executable from a package published on pub.dev without installing it
-globally, use the `dart run <package>@[<descriptor>]` syntax.
-If you use a tool frequently, consider installing it with the
-[pub global](/tools/pub/cmd/pub-global) command.
-
 ```plaintext
 dart run [options] [<DART_FILE> | <PACKAGE_TARGET>] [args]
 ```
@@ -26,10 +21,14 @@ $ cd myapp
 $ dart run
 ```
 
-## Running an executable from pub.dev
+## Run an executable from a remote package
 
-You can run an executable directly from a package published on pub.dev
-without adding it to your current package or installing it globally.
+:::version-note
+Support for running remote package executables was introduced in Dart 3.12.
+:::
+
+To run an executable from a remote package without adding it as a dependency
+or installing it, specify the package name followed by an `@` symbol.
 
 For example:
 
@@ -37,12 +36,20 @@ For example:
 $ dart run dhttpd@
 ```
 
-This downloads the package if necessary, runs its default executable,
-and reuses the cached package on subsequent runs.
+Dart resolves the package from pub.dev, downloads it if necessary,
+and compiles and runs its default executable.
 
 Use this form for one-off tools and temporary utilities.
-If you use a tool regularly, consider installing it with
-[`dart pub global activate`](/tools/pub/cmd/pub-global).
+
+The complete syntax is:
+
+```plaintext
+dart run <PACKAGE>[:<EXECUTABLE>]@[<DESCRIPTOR>] [args]
+```
+
+The `:<EXECUTABLE>` part specifies the executable to run.
+The `@[<DESCRIPTOR>]` part specifies the package version or version constraint.
+Both parts are optional.
 
 {% render 'tools/dart-tool-note.md' %}
 
@@ -149,7 +156,7 @@ $ dart run foo arg1 arg2
 
 ## Debugging
 
-To enable debugging, 
+To enable debugging,
 add one or more of these common debugging options
 to your `dart run` command:
 
@@ -167,7 +174,7 @@ to your `dart run` command:
   ```console
   $ dart run --observe tool/debug.dart
   ```
-  
+
   To learn more about debugging with Dart DevTools,
   see [Using DevTools with a command-line app][].
 

@@ -85,8 +85,8 @@ you must load them with an HTTP server.
 To serve the files, use any HTTP server.
 Consider using [`package:dhttpd`][] from pub.dev.
 
-To use `package:dhttpd`, run it directly from pub.dev
-and specify the path of your generated docs.
+To serve the generated docs, run `package:dhttpd` directly from pub.dev
+and specify the path to your generated docs.
 The following command serves the API docs located at `doc/api`:
 
 ```console
