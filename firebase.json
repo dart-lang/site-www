@@ -31,6 +31,24 @@
           { "key": "X-Frame-Options", "value": "DENY"},
           { "key": "X-XSS-Protection", "value": "1;mode=block"}
         ]
+      },
+      {
+        "source": "404.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=0, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "**/main.client.dart.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=0, must-revalidate"
+          }
+        ]
       }
     ],
     "redirects": [
