@@ -9,20 +9,9 @@
     ],
     "headers": [
       {
-        "source": "**",
-        "headers": [
-          { "key": "Cache-Control", "value": "max-age=0, must-revalidate" },
-          { "key": "Content-Security-Policy-Report-Only", "value": "script-src 'self'"},
-          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
-          { "key": "X-Content-Type-Options", "value": "nosniff"},
-          { "key": "X-Frame-Options", "value": "DENY"},
-          { "key": "X-XSS-Protection", "value": "1;mode=block"}
-        ]
-      },
-      {
         "source": "**/*.@(avif|jpg|jpeg|gif|png|md|txt|json|webp|webm|svg|css|js)",
         "headers": [
-          { "key": "Cache-Control", "value": "max-age=28800" },
+          { "key": "Cache-Control", "value": "max-age=3600" },
           { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
       },
@@ -36,19 +25,17 @@
       {
         "source": "404.html",
         "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=0, must-revalidate"
-          }
+          { "key": "Cache-Control", "value": "max-age=0, must-revalidate" }
         ]
       },
       {
-        "source": "**/main.client.dart.js",
+        "source": "**",
         "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=0, must-revalidate"
-          }
+          { "key": "Content-Security-Policy-Report-Only", "value": "script-src 'self'"},
+          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+          { "key": "X-Content-Type-Options", "value": "nosniff"},
+          { "key": "X-Frame-Options", "value": "DENY"},
+          { "key": "X-XSS-Protection", "value": "1;mode=block"}
         ]
       }
     ],
