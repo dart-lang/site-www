@@ -9,6 +9,17 @@
     ],
     "headers": [
       {
+        "source": "**",
+        "headers": [
+          { "key": "Cache-Control", "value": "max-age=0, must-revalidate" },
+          { "key": "Content-Security-Policy-Report-Only", "value": "script-src 'self'"},
+          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+          { "key": "X-Content-Type-Options", "value": "nosniff"},
+          { "key": "X-Frame-Options", "value": "DENY"},
+          { "key": "X-XSS-Protection", "value": "1;mode=block"}
+        ]
+      },
+      {
         "source": "**/*.@(avif|jpg|jpeg|gif|png|md|txt|json|webp|webm|svg|css|js)",
         "headers": [
           { "key": "Cache-Control", "value": "max-age=28800" },
@@ -20,16 +31,6 @@
         "headers": [
           { "key": "Cache-Control", "value": "max-age=604800" },
           { "key": "Access-Control-Allow-Origin", "value": "*" }
-        ]
-      },
-      {
-        "source": "**",
-        "headers": [
-          { "key": "Content-Security-Policy-Report-Only", "value": "script-src 'self'"},
-          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
-          { "key": "X-Content-Type-Options", "value": "nosniff"},
-          { "key": "X-Frame-Options", "value": "DENY"},
-          { "key": "X-XSS-Protection", "value": "1;mode=block"}
         ]
       },
       {
