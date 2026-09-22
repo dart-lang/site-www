@@ -433,7 +433,7 @@ items:
   - title: Worked with Lists and variables
     icon: data_array
     details: >-
-      You learned to declare variables with `var`, `final`, and `const`, and
+      You learned to declare variables with `final` and `const`, and
       worked with lists using `.isEmpty`, `.first`, `.sublist()`, and `.join()`.
       You also used string interpolation (`$variable`) to
       embed values in string literals.
