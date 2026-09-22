@@ -4,155 +4,93 @@
 
 import 'dart:convert';
 
-import 'package:googleapis/storage/v1.dart' as storage;
+import 'package:google_cloud_protobuf/protobuf.dart' show TimestampExtension;
+import 'package:google_cloud_storage/google_cloud_storage.dart' as storage;
 import 'package:http/http.dart' as http;
-import 'package:path/path.dart' as p;
 
 import 'version_info.dart';
 
-/// The storage base URL.
+/// The host for SDK archive API requests and download links.
+const String storageHost = 'storage.googleapis.com';
+
+/// The Cloud Storage bucket containing published Dart SDK releases.
+const String _archiveBucket = 'dart-archive';
+
+/// A client for discovering and reading Dart SDK release information.
 ///
-/// Defined explicitly as some sites might override it.
-const String storageBaseUrl = 'https://storage.googleapis.com/';
+/// Uses the supplied HTTP client, or creates one if omitted.
+/// The client is owned by this instance and closed by [close].
+final class DartDownloads({http.Client? client}) {
+  final http.Client _client = client ?? http.Client();
 
-const String _dartChannel = 'dart-archive';
-const String _flavor = 'release';
+  /// The Cloud Storage client used to access the SDK archive.
+  late final storage.Storage _api = storage.Storage(
+    client: _client,
+    projectId: storage.Storage.noProject,
+    apiEndpoint: storageHost,
+  );
 
-String _revisionPath(
-  String channel,
-  String revision, [
-  List<String> extra = const [],
-]) => p.joinAll(['channels', channel, _flavor, revision, ...extra]);
-
-class DartDownloads {
-  final storage.StorageApi _api;
-  final http.Client _client;
-
-  /// If [client] is provided, it will be closed with the call to [close].
-  factory DartDownloads({http.Client? client}) =>
-      DartDownloads._(client ?? http.Client());
-
-  DartDownloads._(http.Client client)
-    : _client = client,
-      _api = storage.StorageApi(client, rootUrl: storageBaseUrl);
-
-  Future<Uri> createDownloadLink(
-    String channel,
-    String revision,
-    String path,
-  ) async {
-    final prefix = _revisionPath(channel, revision, [path]);
-    final results = await _api.objects.list(_dartChannel, prefix: prefix);
-    final items = results.items;
-
-    if (items == null || items.isEmpty) {
-      throw Exception('No items found for path $path.');
-    } else if (items.length > 1) {
-      throw Exception('Too many items for path $path.');
-    }
-
-    final mediaLink = items.single.mediaLink;
-
-    if (mediaLink == null) {
-      throw Exception('No media link present for path $path.');
-    } else {
-      return Uri.parse(mediaLink);
-    }
-  }
-
-  Future<List<VersionInfo>> fetchVersions(String channel) async {
-    final versions = await fetchVersionPaths(
-      channel,
-    ).where((event) => !event.contains('latest')).toList();
-
-    final versionMaps = <VersionInfo>[];
-
-    await Future.forEach<String>(versions, (path) async {
-      try {
-        final revisionString = p.basename(path);
-        final ver = await fetchVersion(channel, revisionString);
-
-        versionMaps.add(ver);
-      } catch (e) {
-        print('Error with $path - $e');
-      }
-    });
-
-    versionMaps.sort();
-
-    return versionMaps;
-  }
-
-  Stream<String> fetchVersionPaths(String channel) async* {
-    final prefix = '${p.join('channels', channel, _flavor)}/';
-
-    String? nextToken;
+  /// Returns the distinct release directory paths for [channel].
+  ///
+  /// Paths include the channel prefix and a trailing slash,
+  /// such as `channels/stable/release/3.13.0/`.
+  /// Includes `latest` if present.
+  Future<Iterable<String>> fetchVersionPaths(String channel) async {
+    // TODO: Use google_cloud_storage once it exposes the
+    // prefixes of delimited listings.
+    // Until then, call the API directly to list only the
+    // release directories rather than every object in them.
+    final versionPaths = <String>[];
+    String? pageToken;
 
     do {
-      final objects = await _api.objects.list(
-        _dartChannel,
-        prefix: prefix,
-        pageToken: nextToken,
-        delimiter: '/',
+      final response = await _client.get(
+        Uri.https(storageHost, 'storage/v1/b/$_archiveBucket/o', {
+          'prefix': 'channels/$channel/release/',
+          'delimiter': '/',
+          'fields': 'nextPageToken,prefixes',
+          'pageToken': ?pageToken,
+        }),
       );
-      nextToken = objects.nextPageToken;
 
-      final prefixes = objects.prefixes;
-
-      if (prefixes == null) {
-        continue;
+      if (response.statusCode != 200) {
+        throw http.ClientException(
+          'Listing $channel versions failed: ${response.statusCode}',
+          response.request?.url,
+        );
       }
 
-      for (final item in prefixes) {
-        yield item;
+      final page = jsonDecode(response.body) as Map<String, Object?>;
+      if (page['prefixes'] case final List<Object?> prefixes) {
+        versionPaths.addAll(prefixes.cast<String>());
       }
-    } while (nextToken != null);
+      pageToken = page['nextPageToken'] as String?;
+    } while (pageToken != null);
+
+    return versionPaths;
   }
 
+  /// Fetches release information for [revision] in [channel].
+  ///
+  /// The [revision] is a version number, a legacy SVN revision, or `latest`.
+  /// Includes the creation time of the `VERSION` object, if available.
   Future<VersionInfo> fetchVersion(String channel, String revision) async {
-    final media = await _fetchFile(channel, revision, 'VERSION');
-    final creationTime = (await _fetchMetadata(
-      channel,
-      revision,
-      'VERSION',
-    )).timeCreated;
-
-    final json = await _jsonAsciiDecoder
-        .bind(media.stream)
-        .cast<Map<String, Object?>>()
-        .first;
+    final path = 'channels/$channel/release/$revision/VERSION';
+    final contents = await _api.downloadObject(_archiveBucket, path);
+    final metadata = await _api.objectMetadata(_archiveBucket, path);
+    final versionJson =
+        jsonDecode(ascii.decode(contents)) as Map<String, Object?>;
 
     return VersionInfo.parse(
       channel,
       revision,
-      json,
-      creationTime: creationTime,
+      versionJson,
+      creationTime: metadata.timeCreated?.toDateTime(),
     );
   }
 
-  void close() => _client.close();
-
-  Future<storage.Media> _fetchFile(
-    String channel,
-    String revision,
-    String path,
-  ) async => await _api.objects.get(
-    _dartChannel,
-    _revisionPath(channel, revision, [path]),
-    downloadOptions: storage.DownloadOptions.fullMedia,
-  ) as storage.Media;
-
-  Future<storage.Object> _fetchMetadata(
-    String channel,
-    String revision,
-    String path,
-  ) async => await _api.objects.get(
-    _dartChannel,
-    _revisionPath(channel, revision, [path]),
-    downloadOptions: storage.DownloadOptions.metadata,
-  ) as storage.Object;
+  /// Closes the HTTP client, including one supplied at construction.
+  ///
+  /// Don't call other methods after closing this instance.
+  void close() => _api.close();
 }
-
-final Converter<List<int>, Object?> _jsonAsciiDecoder = json
-    .fuse(ascii)
-    .decoder;

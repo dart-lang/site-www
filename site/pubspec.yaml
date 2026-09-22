@@ -9,8 +9,10 @@ environment:
 dependencies:
   collection: ^1.19.1
   crypto: ^3.0.7
+  # Used for converting SDK archive timestamps.
+  google_cloud_protobuf: ^0.5.5
   # Used for accessing the SDK archive storage buckets.
-  googleapis: ^16.0.0
+  google_cloud_storage: ^0.6.4
   html: ^0.15.6
   http: ^1.6.0
   # Used for formatting dates in the SDK archive.
