@@ -74,7 +74,7 @@ PS C:\> choco upgrade dart-sdk
 To uninstall the Dart SDK using winget,
 perform the following steps.
 
-1. Use the following command:
+1. Use the following command.
 
    ```ps
    PS C:\> winget uninstall --id=Google.DartSDK -e
@@ -100,7 +100,7 @@ perform the following steps.
    PS C:\> choco uninstall dart-sdk
    ```
 
-3. Remove the Dart configuration files from your home directory.
+1. Remove the Dart configuration files from your home directory.
 
    ```ps
    PS C:\> Remove-Item -Recurse -Force `
