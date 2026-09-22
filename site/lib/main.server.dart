@@ -144,7 +144,7 @@ void main() {
       secondaryOutputs: [
         const AtomFeedOutput(),
         const RobotsTxtOutput(),
-        MarkdownOutput(
+        _DashMarkdownOutput(
           createHeader: (page) {
             final header = StringBuffer();
             if (page.data.page['title'] case final String title
@@ -166,4 +166,40 @@ void main() {
   );
 
   runApp(app);
+}
+
+final class _DashMarkdownOutput extends MarkdownOutput {
+  _DashMarkdownOutput({super.createHeader});
+
+  @override
+  Component build(Page page) {
+    if (!page.content.contains('<ChangelogIndex')) {
+      return super.build(page);
+    }
+
+    return Builder(
+      builder: (context) {
+        final pageContent = StringBuffer();
+        if (createHeader case final createHeader?) {
+          final headerForPage = createHeader(page);
+          pageContent.writeln(headerForPage);
+        }
+
+        final changesData = page.data['changelog'] as List<Object?>?;
+        final renderedChangelog = changesData != null
+            ? ChangelogIndex.renderMarkdown(changesData)
+            : '';
+        pageContent.writeln(
+          page.content.replaceFirst(
+            RegExp(r'<ChangelogIndex\s*/>'),
+            renderedChangelog,
+          ),
+        );
+
+        context.setHeader('Content-Type', 'text/markdown; charset=utf-8');
+        context.setStatusCode(200, responseBody: pageContent.toString());
+        return const Component.empty();
+      },
+    );
+  }
 }

@@ -1374,35 +1374,37 @@
 # --------------------------------------------------
 - version: 3.9.4
   releaseDate: 2025-09-30
-  area: SDK
-  subArea: Modular builds
+  area: Tools
+  subArea: Pub
+  description: |
+    `dart pub get --example` now resolves `example/` folders across the entire
+    workspace, not only in the root package. This fixes an issue where
+    `flutter pub get` could crash if examples had not been resolved before
+    resolving the workspace.
+  tags:
+    - fixed
+  link: https://github.com/dart-lang/pub/issues/4674
+# --------------------------------------------------
+- version: 3.9.3
+  releaseDate: 2025-09-09
+  area: Tools
+  subArea: Development JavaScript compiler (DDC)
   description: |
     This patch release fixes a performance regression in modular builds where
     static calls are deeply nested within a closure.
   tags:
-    - changed
-  link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#394
-# --------------------------------------------------
-- version: 3.9.3
-  releaseDate: 2025-09-09
-  area: SDK
-  subArea: Dart VM
-  description: |
-    This patch release fixes an issue in the Dart VM where an incorrect type
-    could be inferred for a loop variable.
-  tags:
-    - changed
+    - fixed
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#393
 # --------------------------------------------------
 - version: 3.9.2
   releaseDate: 2025-08-27
-  area: SDK
-  subArea: DDC
+  area: Tools
+  subArea: Development JavaScript compiler (DDC)
   description: |
     This patch release fixes an issue in DDC where static getters could be
     unintentionally invoked during a hot reload.
   tags:
-    - changed
+    - fixed
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#392
 # --------------------------------------------------
 - version: 3.9.1
@@ -2083,7 +2085,7 @@
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
-  area: Runtime
+  area: Dart Runtime
   subArea: Sound null safety only
   description: |
     The Dart VM no longer supports unsound null safety.
@@ -2096,7 +2098,7 @@
 # --------------------------------------------------
 - version: 3.5.0
   releaseDate: 2024-08-06
-  area: Runtime
+  area: Dart Runtime
   subArea: C API
   description: |
     The `Dart_DefaultCanonicalizeUrl` function has been removed from the C API.
@@ -2307,7 +2309,7 @@
 # --------------------------------------------------
 - version: 3.4.0
   releaseDate: 2024-05-14
-  area: Runtime
+  area: Dart Runtime
   subArea: Dart VM
   description: |
     The Dart VM no longer supports external strings. As a result, the

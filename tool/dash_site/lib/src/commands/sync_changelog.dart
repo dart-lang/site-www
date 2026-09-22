@@ -147,37 +147,51 @@ final class SyncChangelog extends Command<int> {
     String? currentArea;
     String? currentSubArea;
     var inTargetVersion = false;
+    var subAreaHasBullets = false;
     final bulletBuffer = StringBuffer();
+    final proseBuffer = StringBuffer();
     String? pendingLink;
+
+    void addEntry(String description) {
+      if (description.isEmpty) return;
+      var link = pendingLink;
+      if (link == null) {
+        // If no specific link was found, default to the SDK CHANGELOG
+        // section anchor. The anchor for version "3.11.0" is "#3110".
+        final anchor = targetVersion.replaceAll('.', '');
+        link =
+            'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#$anchor';
+      }
+
+      entries.add(
+        _ChangelogEntry(
+          version: targetVersion,
+          releaseDate: 'TBD',
+          area: _resolveArea(currentArea, currentSubArea),
+          subArea: currentSubArea,
+          description: description,
+          tags: _inferTags(description),
+          link: link,
+        ),
+      );
+      pendingLink = null;
+    }
 
     void flushBullet() {
       if (bulletBuffer.isEmpty) return;
-
-      final description = bulletBuffer.toString().trim();
-      if (description.isNotEmpty) {
-        var link = pendingLink;
-        if (link == null) {
-          // If no specific link was found, default to the SDK CHANGELOG
-          // section anchor. The anchor for version "3.11.0" is "#3110".
-          final anchor = targetVersion.replaceAll('.', '');
-          link =
-              'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#$anchor';
-        }
-
-        entries.add(
-          _ChangelogEntry(
-            version: targetVersion,
-            releaseDate: 'TBD',
-            area: currentArea ?? 'SDK',
-            subArea: currentSubArea,
-            description: description,
-            tags: _inferTags(description),
-            link: link,
-          ),
-        );
-      }
+      addEntry(bulletBuffer.toString().trim());
       bulletBuffer.clear();
-      pendingLink = null;
+    }
+
+    void flushSection() {
+      flushBullet();
+      if (!subAreaHasBullets &&
+          currentSubArea != null &&
+          proseBuffer.isNotEmpty) {
+        addEntry(proseBuffer.toString().trim());
+      }
+      proseBuffer.clear();
+      subAreaHasBullets = false;
     }
 
     for (final line in lines) {
@@ -192,7 +206,7 @@ final class SyncChangelog extends Command<int> {
           currentSubArea = null;
           continue;
         } else if (inTargetVersion) {
-          flushBullet();
+          flushSection();
           break;
         }
       }
@@ -201,23 +215,35 @@ final class SyncChangelog extends Command<int> {
 
       // Detect area ("### ") and sub-area ("#### ") headers.
       if (line.startsWith('### ')) {
-        flushBullet();
+        flushSection();
         currentArea = line.substring(4).trim();
         currentSubArea = null;
         continue;
       }
 
       if (line.startsWith('#### ')) {
-        flushBullet();
+        flushSection();
         currentSubArea = line.substring(5).trim();
         continue;
       }
 
       final trimmedLine = line.trim();
+      if (trimmedLine.startsWith('**Released on:**')) {
+        continue;
+      }
+      if (referenceLinkRegExp.hasMatch(trimmedLine)) {
+        pendingLink ??= extractLink(trimmedLine);
+        continue;
+      }
+
       if (trimmedLine.isEmpty) {
-        // Preserve blank lines within multi-line bullet points.
+        // Preserve blank lines within multi-line bullet points or prose blocks.
         if (bulletBuffer.isNotEmpty) {
           bulletBuffer.writeln();
+        } else if (!subAreaHasBullets &&
+            currentSubArea != null &&
+            proseBuffer.isNotEmpty) {
+          proseBuffer.writeln();
         }
         continue;
       }
@@ -225,17 +251,54 @@ final class SyncChangelog extends Command<int> {
       // Check for list items starting with "- ".
       if (trimmedLine.startsWith('- ')) {
         flushBullet();
+        subAreaHasBullets = true;
+        proseBuffer.clear();
         final content = trimmedLine.substring(2);
         bulletBuffer.write(content);
         pendingLink ??= extractLink(content);
       } else if (bulletBuffer.isNotEmpty) {
         bulletBuffer.write('\n$trimmedLine');
         pendingLink ??= extractLink(trimmedLine);
+      } else if (!subAreaHasBullets && currentSubArea != null) {
+        if (proseBuffer.isNotEmpty) {
+          proseBuffer.writeln();
+        }
+        proseBuffer.write(line);
+        pendingLink ??= extractLink(trimmedLine);
       }
     }
 
-    flushBullet();
+    flushSection();
     return entries;
+  }
+
+  /// Resolves the changelog area, inferring from [subArea] when an `### <Area>`
+  /// header was omitted in `CHANGELOG.md` (e.g. orphan `#### Pub` headers).
+  static String _resolveArea(String? area, String? subArea) {
+    if (area != null && area.isNotEmpty) return area;
+    if (subArea != null) {
+      final normalized = subArea.toLowerCase();
+      if (normalized.startsWith('`dart:') || normalized.startsWith('dart:')) {
+        return 'Libraries';
+      }
+      if (const {
+        'analyzer',
+        'linter',
+        'pub',
+        'dart format',
+        'devtools',
+        'development javascript compiler (ddc)',
+        'ddc',
+        'dart2js',
+        'dart2wasm',
+      }.contains(normalized)) {
+        return 'Tools';
+      }
+      if (const {'dart vm', 'dart wasm', 'build'}.contains(normalized)) {
+        return 'Dart Runtime';
+      }
+    }
+    return 'SDK';
   }
 
   /// Inserts [newYaml] after the first separator line in [content].
