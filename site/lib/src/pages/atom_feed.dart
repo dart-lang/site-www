@@ -81,7 +81,7 @@ final class AtomFeedOutput implements SecondaryOutput {
     builder.processing('xml', 'version="1.0" encoding="utf-8"');
     builder.element(
       'feed',
-      namespaces: const {_atomNamespace: ''},
+      namespaceUris: const {null: _atomNamespace},
       nest: () {
         builder
           ..writeTextElement('title', feedTitle)

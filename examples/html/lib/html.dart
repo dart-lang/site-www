@@ -2,6 +2,7 @@
 
 // #docregion import
 import 'dart:html';
+
 // #enddocregion import
 
 void miscDeclAnalyzedButNotTested() {

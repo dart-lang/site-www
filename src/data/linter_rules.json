@@ -1170,7 +1170,7 @@
   },
   {
     "name": "exhaustive_cases",
-    "description": "Define case clauses for all constants in enum-like classes.",
+    "description": "Define case clauses for all constants in enum-like types.",
     "categories": [
       "errorProne"
     ],
@@ -1181,7 +1181,7 @@
       "flutter"
     ],
     "fixStatus": "hasFix",
-    "details": "Switching on instances of enum-like classes should be exhaustive.\n\nEnum-like classes are defined as concrete (non-abstract) classes that have:\n  * only private non-factory constructors\n  * two or more static const fields whose type is the enclosing class and\n  * no subclasses of the class in the defining library\n\n**DO** define case clauses for all constants in enum-like classes.\n\n**BAD:**\n```dart\nclass EnumLike {\n  final int i;\n  const EnumLike._(this.i);\n\n  static const e = EnumLike._(1);\n  static const f = EnumLike._(2);\n  static const g = EnumLike._(3);\n}\n\nvoid bad(EnumLike e) {\n  // Missing case.\n  switch(e) { // LINT\n    case EnumLike.e :\n      print('e');\n      break;\n    case EnumLike.f :\n      print('f');\n      break;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass EnumLike {\n  final int i;\n  const EnumLike._(this.i);\n\n  static const e = EnumLike._(1);\n  static const f = EnumLike._(2);\n  static const g = EnumLike._(3);\n}\n\nvoid ok(EnumLike e) {\n  // All cases covered.\n  switch(e) { // OK\n    case EnumLike.e :\n      print('e');\n      break;\n    case EnumLike.f :\n      print('f');\n      break;\n    case EnumLike.g :\n      print('g');\n      break;\n  }\n}\n```",
+    "details": "Switching on instances of enum-like types should cover all known\nconstants.\n\nEnum-like types are classes or extension types that have:\n  * only private non-factory constructors\n  * two or more static const fields whose type is the enclosing type\n\nIn addition, enum-like classes are concrete (non-abstract) and have no\nsubclasses in the defining library.\n\n**DO** define case clauses for all constants in enum-like types.\n\nExtension types can also be enum-like:\n\n```dart\nextension type const E._(int value) {\n  static const E a = E._(1);\n  static const E b = E._(2);\n}\n\nvoid f(E e) {\n  switch (e) { // LINT\n    case E.a:\n      print('a');\n  }\n}\n```\n\n**BAD:**\n```dart\nclass EnumLike {\n  final int i;\n  const EnumLike._(this.i);\n\n  static const e = EnumLike._(1);\n  static const f = EnumLike._(2);\n  static const g = EnumLike._(3);\n}\n\nvoid bad(EnumLike e) {\n  // Missing case.\n  switch(e) { // LINT\n    case EnumLike.e :\n      print('e');\n      break;\n    case EnumLike.f :\n      print('f');\n      break;\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass EnumLike {\n  final int i;\n  const EnumLike._(this.i);\n\n  static const e = EnumLike._(1);\n  static const f = EnumLike._(2);\n  static const g = EnumLike._(3);\n}\n\nvoid ok(EnumLike e) {\n  // All cases covered.\n  switch(e) { // OK\n    case EnumLike.e :\n      print('e');\n      break;\n    case EnumLike.f :\n      print('f');\n      break;\n    case EnumLike.g :\n      print('g');\n      break;\n  }\n}\n```",
     "sinceDartSdk": "2.9"
   },
   {
@@ -1224,7 +1224,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** use `Future.syncValue` when the argument is synchronous.\n\n**BAD:**\n```dart\nFuture<int> f() => Future.value(1);\n```\n\n**GOOD:**\n```dart\nFuture<int> f() => Future.value(1);\n```",
+    "details": "**DO** use `Future.syncValue` when the argument is synchronous.\n\n**BAD:**\n```dart\nFuture<int> f() => Future.value(1);\n```\n\n**GOOD:**\n```dart\nFuture<int> f() => Future.syncValue(1);\n```",
     "sinceDartSdk": "3.14"
   },
   {
@@ -1500,7 +1500,7 @@
     "categories": [
       "flutter"
     ],
-    "state": "experimental",
+    "state": "stable",
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
@@ -2639,7 +2639,10 @@
     ],
     "state": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "fixStatus": "hasFix",
     "details": "**PREFER** simple directive paths.\n\nUsing simple directive paths (avoiding redundant `./` or backtracking `../`\nsegments) makes the code cleaner, more consistent, and easier to read. It\nalso reduces the risk of confusion when resolving paths relative to the\nsource file.\n\n**BAD:**\n```dart\nimport '../src/bar.dart';\n```\n\n**GOOD:**\n```dart\nimport 'bar.dart';\n```",
     "sinceDartSdk": "3.12"
@@ -2652,7 +2655,10 @@
     ],
     "state": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "fixStatus": "hasFix",
     "details": "**AVOID** redundant member names in variable patterns.\n\nWhen a variable pattern declares a variable with the same name as a member\nof the matched type, the member name is redundant and can be omitted.\n\n**BAD:**\n```dart\nvoid f(Object o) {\n  if (o case String([!length!]: var length)) {\n    print('string is $length characters long');\n  }\n}\n```\n\n**GOOD:**\n```dart\nvoid f(Object o) {\n  if (o case String(:var length)) {\n    print('string is $length characters long');\n  }\n}\n```",
     "sinceDartSdk": "3.11"
@@ -2826,7 +2832,11 @@
     ],
     "state": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "core",
+      "recommended",
+      "flutter"
+    ],
     "fixStatus": "noFix",
     "details": "**AVOID** using switch on `Type`.\n\nSwitching on `Type` is not type-safe and can lead to bugs if the\nclass hierarchy changes. Prefer to use pattern matching on the variable\ninstead.\n\n**BAD:**\n```dart\nvoid f(Object o) {\n  switch (o.runtimeType) {\n    case int:\n      print('int');\n    case String:\n      print('String');\n  }\n}\n```\n\n**GOOD:**\n```dart\nvoid f(Object o) {\n  switch(o) {\n    case int():\n      print('int');\n    case String _:\n      print('String');\n    default:\n      print('other');\n  }\n}\n```",
     "sinceDartSdk": "3.9"
@@ -2930,7 +2940,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** await functions that return a `Future` inside of an async function body.\n\nIt's easy to forget await in async methods as naming conventions usually don't\ntell us if a method is sync or async (except for some in `dart:io`).\n\nWhen you really _do_ want to start a fire-and-forget `Future`, the recommended\nway is to use `unawaited` from `dart:async`. The `// ignore` and\n`// ignore_for_file` comments also work.\n\n**BAD:**\n```dart\nvoid main() async {\n  doSomething(); // Likely a bug.\n}\n```\n\n**GOOD:**\n```dart\nFuture doSomething() => ...;\n\nvoid main() async {\n  await doSomething();\n\n  unawaited(doSomething()); // Explicitly-ignored fire-and-forget.\n}\n```",
+    "details": "**DO** await functions that return a `Future` or `FutureOr` inside of an async\nfunction body.\n\nIt's easy to forget `await` in `async` methods as naming conventions usually don't\ntell us if a method is sync or `async` (except for some in `dart:io`).\n\nWhen you really _do_ want to start a fire-and-forget `Future`, the recommended\nway is to use `unawaited` from `dart:async`. The `// ignore` and\n`// ignore_for_file` comments also work.\n\n**BAD:**\n```dart\nFuture doSomething() => ...;\n\nvoid main() async {\n  doSomething(); // Likely a bug.\n}\n```\n\n**GOOD:**\n```dart\nFuture doSomething() => ...;\n\nvoid main() async {\n  await doSomething();\n\n  unawaited(doSomething()); // Explicitly-ignored fire-and-forget.\n\n  // ignore: unawaited_futures\n  doSomething(); // Explicitly-ignored fire-and-forget.\n}\n```",
     "sinceDartSdk": "2.0"
   },
   {
@@ -2947,7 +2957,7 @@
       "flutter"
     ],
     "fixStatus": "needsFix",
-    "details": "**DON'T** use angle-bracketed text, `<…>`, in a doc comment unless you want to\nwrite an HTML tag or link.\n\nMarkdown allows HTML tags as part of the Markdown code, so you can write, for\nexample, `T<sub>1</sub>`. Markdown does not restrict the allowed tags, it just\nincludes the tags verbatim in the output.\n\nDartdoc only allows some known and valid HTML tags, and will omit any disallowed\nHTML tag from the output. See the list of allowed tags and directives below.\nYour doc comment should not contain any HTML tags that are not on this list.\n\nMarkdown also allows you to write an \"auto-link\" to an URL as for example\n`<https://example.com/page.html>`, delimited only by `<...>`. Such a link is\nallowed by Dartdoc as well.\nA `<...>` delimited text is an auto-link if it is a valid absolute URL, starting\nwith a scheme of at least two characters followed by a colon, like\n`<mailto:mr_example@example.com>`.\n\nAny other other occurrence of `<word...>` or `</word...>` is likely a mistake\nand this lint will warn about it.\nIf something looks like an HTML tag, meaning it starts with `<` or `</`\nand then a letter, and it has a later matching `>`, then it's considered an\ninvalid HTML tag unless it is an auto-link, or it starts with an *allowed*\nHTML tag.\n\nSuch a mistake can, for example, happen if writing Dart code with type arguments\noutside of a code span, for example `The type List<int> is ...`, where `<int>`\nlooks like an HTML tag. Missing the end quote of a code span can have the same\neffect: ``The type `List<int> is ...`` will also treat `<int>` as an HTML tag.\n\nAllows the following HTML directives: HTML comments, `<!-- text -->`, processing\ninstructions, `<?...?>`, CDATA-sections, and `<[CDATA...]>`.\nAllows DartDoc links like `[List<int>]` which are not after a `]` or before a\n`[` or `(`, and allows the following recognized HTML tags:\n`a`, `abbr`, `address`, `area`, `article`, `aside`, `audio`, `b`,\n`bdi`, `bdo`, `blockquote`, `br`, `button`, `canvas`, `caption`,\n`cite`, `code`, `col`, `colgroup`, `data`, `datalist`, `dd`, `del`,\n`dfn`, `div`, `dl`, `dt`, `em`, `fieldset`, `figcaption`, `figure`,\n`footer`, `form`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `header`, `hr`,\n`i`, `iframe`, `img`, `input`, `ins`, `kbd`, `keygen`, `label`,\n`legend`, `li`, `link`, `main`, `map`, `mark`, `meta`, `meter`, `nav`,\n`noscript`, `object`, `ol`, `optgroup`, `option`, `output`, `p`,\n`param`, `pre`, `progress`, `q`, `s`, `samp`, `script`, `section`,\n`select`, `small`, `source`, `span`, `strong`, `style`, `sub`, `sup`,\n`table`, `tbody`, `td`, `template`, `textarea`, `tfoot`, `th`, `thead`,\n`time`, `title`, `tr`, `track`, `u`, `ul`, `var`, `video` and `wbr`.\n\n**BAD:**\n```dart\n/// The type List<int>.\n/// <assignment> -> <variable> = <expression>\n```\n\n**GOOD:**\n```dart\n/// The type `List<int>`.\n/// The type [List<int>]\n/// `<assignment> -> <variable> = <expression>`\n/// \\<assignment\\> -> \\<variable\\> = \\<expression\\>`\n/// <https://example.com/example>\n```",
+    "details": "**DON'T** use angle-bracketed text, `<…>`, in a doc comment unless you want to\nwrite an HTML tag or link.\n\nMarkdown allows HTML tags as part of the Markdown code, so you can write, for\nexample, `T<sub>1</sub>`. Markdown does not restrict the allowed tags, it just\nincludes the tags verbatim in the output.\n\nDartdoc only allows some known and valid HTML tags, and will omit any disallowed\nHTML tag from the output. See the list of allowed tags and directives below.\nYour doc comment should not contain any HTML tags that are not on this list.\n\nMarkdown also allows you to write an \"auto-link\" to an URL as for example\n`<https://example.com/page.html>`, delimited only by `<...>`. Such a link is\nallowed by Dartdoc as well.\nA `<...>` delimited text is an auto-link if it is a valid absolute URL, starting\nwith a scheme of at least two characters followed by a colon, like\n`<mailto:mr_example@example.com>`.\n\nAny other other occurrence of `<word...>` or `</word...>` is likely a mistake\nand this lint will warn about it.\nIf something looks like an HTML tag, meaning it starts with `<` or `</`\nand then a letter, and it has a later matching `>`, then it's considered an\ninvalid HTML tag unless it is an auto-link, or it starts with an *allowed*\nHTML tag.\n\nSuch a mistake can, for example, happen if writing Dart code with type arguments\noutside of a code span, for example `The type List<int> is ...`, where `<int>`\nlooks like an HTML tag. Missing the end backtick of a code span can have the same\neffect: ``The type `List<int> is ...`` will also treat `<int>` as an HTML tag.\n\nWhen using indentation for code blocks, this can also be caused by not indenting\nenough. Code blocks should be indented by four spaces _in addition to_ the space\nthat separates the comment from the markers, although using triple backticks for\ncode blocks should be preferred over indentation.\n\nAllows the following HTML directives: HTML comments, `<!-- text -->`, processing\ninstructions, `<?...?>`, CDATA-sections, and `<[CDATA...]>`.\nAllows DartDoc links like `[List<int>]` which are not after a `]` or before a\n`[` or `(`, and allows the following recognized HTML tags:\n`a`, `abbr`, `address`, `area`, `article`, `aside`, `audio`, `b`,\n`bdi`, `bdo`, `blockquote`, `br`, `button`, `canvas`, `caption`,\n`cite`, `code`, `col`, `colgroup`, `data`, `datalist`, `dd`, `del`,\n`dfn`, `div`, `dl`, `dt`, `em`, `fieldset`, `figcaption`, `figure`,\n`footer`, `form`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `header`, `hr`,\n`i`, `iframe`, `img`, `input`, `ins`, `kbd`, `keygen`, `label`,\n`legend`, `li`, `link`, `main`, `map`, `mark`, `meta`, `meter`, `nav`,\n`noscript`, `object`, `ol`, `optgroup`, `option`, `output`, `p`,\n`param`, `pre`, `progress`, `q`, `s`, `samp`, `script`, `section`,\n`select`, `small`, `source`, `span`, `strong`, `style`, `sub`, `sup`,\n`table`, `tbody`, `td`, `template`, `textarea`, `tfoot`, `th`, `thead`,\n`time`, `title`, `tr`, `track`, `u`, `ul`, `var`, `video` and `wbr`.\n\n**BAD:**\n```dart\n/// The type List<int>.\n/// <assignment> -> <variable> = <expression>\n///\n///    List<int> func() => [];\n```\n\n**GOOD:**\n```dart\n/// The type `List<int>`.\n/// The type [List<int>]\n/// `<assignment> -> <variable> = <expression>`\n/// \\<assignment\\> -> \\<variable\\> = \\<expression\\>`\n/// <https://example.com/example>\n///\n///     List<int> func() => [];\n///\n/// ```\n/// List<int> func() => [];\n/// ```\n```",
     "sinceDartSdk": "3.5"
   },
   {
@@ -3393,7 +3403,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "needsEvaluation",
-    "details": "**DON'T** assign `this` to a local variable to perform type promotion.\n\n**BAD:**\n```dart\nclass C {\n  void m() {\n    var [!self!] = this;\n    if (self is D) {}\n  }\n}\nclass D extends C {}\n```\n\n**GOOD:**\n```dart\nclass C {\n  void m() {\n    if (this is D) {}\n  }\n}\nclass D extends C {}\n```",
+    "details": "**DON'T** assign `this` to a local variable to perform type promotion.\n\n**BAD:**\n```dart\n%experiments=this-promotion\nclass C {\n  void m() {\n    var [!self!] = this;\n    if (self is D) {}\n  }\n}\nclass D extends C {}\n```\n\n**GOOD:**\n```dart\n%experiments=this-promotion\nclass C {\n  void m() {\n    if (this is D) {}\n  }\n}\nclass D extends C {}\n```",
     "sinceDartSdk": "3.14"
   },
   {
@@ -3423,7 +3433,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "Don't include the type name in a constructor declaration. It isn't\nnecessary, and the code is shorter and cleaner without it.\n\n**BAD:**\n```dart\nclass C {\n  C();\n  C.name();\n}\n```\n\n**GOOD:**\n```dart\nclass C {\n  new ();\n  new name();\n}\n```",
+    "details": "Don't include the type name in a constructor declaration. It isn't\nnecessary, and the code is shorter and cleaner without it.\n\n**BAD:**\n```dart\nclass C {\n  C();\n  C.name();\n}\n```\n\n**GOOD:**\n```dart\nclass C {\n  new();\n  new name();\n}\n```",
     "sinceDartSdk": "3.13"
   },
   {
@@ -3436,7 +3446,10 @@
     ],
     "state": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "recommended",
+      "flutter"
+    ],
     "fixStatus": "hasFix",
     "details": "A call to a function, method, or operator, or a reference to a field,\ngetter, or top-level variable which is annotated with `@awaitNotRequired`\ndoes not need to be wrapped in a call to `unawaited()`.\n\n**BAD:**\n```dart\n@awaitNotRequired\nFuture<LogMessage> log(String message) { ... }\n\nvoid f() {\n  unawaited(log('Message.'));\n}\n```\n\n**GOOD:**\n```dart\n@awaitNotRequired\nFuture<LogMessage> log(String message) { ... }\n\nvoid f() {\n  log('Message.');\n}\n```",
     "sinceDartSdk": "3.9"

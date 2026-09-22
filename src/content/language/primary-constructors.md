@@ -310,7 +310,7 @@ declaring fields, parameters, and initializing them:
 enum Color(final String hex) {
   red('#FF0000'),
   green('#00FF00'),
-  blue('#0000FF');
+  blue('#0000FF'),
 }
 ```
 

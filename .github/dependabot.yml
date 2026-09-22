@@ -1,5 +1,5 @@
-# Set update schedule for GitHub Actions
-# See https://docs.github.com/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot
+# See Dependabot documentation for all configuration options:
+# https://docs.github.com/code-security/reference/supply-chain-security/dependabot-options-reference
 
 version: 2
 updates:
@@ -7,17 +7,21 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    labels:
-      - "auto.dependencies"
-      - "auto.github-action"
-      - "lang.yaml"
-  - package-ecosystem: "npm"
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "pub"
+    versioning-strategy: "increase-if-necessary"
     directory: "/"
     schedule:
-      interval: "daily"
-    allow:
-      - dependency-type: "direct"
-    labels:
-      - "auto.dependencies"
-      - "auto.npm"
-      - "lang.javascript"
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+    groups:
+      dart-dependencies:
+        patterns:
+          - "*"

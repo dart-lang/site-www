@@ -79,6 +79,6 @@ class const ConstPoint(final int x, final int y) {
 enum Color(final String hex) {
   red('#FF0000'),
   green('#00FF00'),
-  blue('#0000FF');
+  blue('#0000FF'),
 }
 // #enddocregion enums

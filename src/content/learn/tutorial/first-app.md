@@ -153,6 +153,13 @@ Next, modify the code that generated `Hello world: 42!`.
     Inside, you'll see the `main` function.
     Every Dart program starts executing from its `main` function.
 
+    :::note
+    If you're coming from Flutter or the VS Code Flutter extension,
+    you might be used to `lib/main.dart` as your entry point.
+    In standard Dart CLI apps,
+    executable entry points live in the `bin/` directory instead.
+    :::
+
 1.  Check to make sure that your `bin/cli.dart` looks like this:
 
     <?code-excerpt "fwe/dartpedia/bin/cli_ch1_step1.dart (step1)"?>

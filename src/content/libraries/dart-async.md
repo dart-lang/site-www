@@ -198,9 +198,9 @@ static method to manage multiple Futures and wait for them to complete:
 
 <?code-excerpt "misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
 ```dart
-Future<void> deleteLotsOfFiles() async =>  ...
-Future<void> copyLotsOfFiles() async =>  ...
-Future<void> checksumLotsOfOtherFiles() async =>  ...
+Future<void> deleteLotsOfFiles() async => /* ... */
+Future<void> copyLotsOfFiles() async => /* ... */
+Future<void> checksumLotsOfOtherFiles() async => /* ... */
 
 await Future.wait([
   deleteLotsOfFiles(),
