@@ -80,7 +80,7 @@ perform the following steps.
    PS C:\> winget uninstall --id=Google.DartSDK -e
    ```
 
-2. Remove the Dart configuration files from your home directory.
+1. Remove the Dart configuration files from your home directory.
 
    ```ps
    PS C:\> Remove-Item -Recurse -Force ^
