@@ -94,7 +94,7 @@ perform the following steps.
 
 1. Launch [PowerShell][] with elevated permissions.
 
-2. Use the following command.
+1. Use the following command.
 
    ```ps
    PS C:\> choco uninstall dart-sdk
