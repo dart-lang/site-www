@@ -66,6 +66,11 @@ transforms:
         newName: 'newMethod'
 ```
 
+* **`date`:** A `YYYY-MM-DD` date indicating
+  when the change was introduced.
+* **`uris`:** The library URI relative to `lib/`
+  where the API is exported (such as `'my_package.dart'`).
+
 :::tip Best practice: Add fixes upon deprecation
 Add transforms to `fix_data.yaml` when you first deprecate an API,
 before removing it in a later breaking release.
@@ -96,6 +101,24 @@ Create a `test_fixes/` directory in your package root:
 * `my_api.dart`: Code written against the old API.
 * `my_api.dart.expect`: The expected code after applying `dart fix`.
 
+For example, pair your test files as follows:
+
+```dart title="test_fixes/my_api.dart"
+import 'package:my_package/my_package.dart';
+
+void main() {
+  MyClass().oldMethod();
+}
+```
+
+```dart title="test_fixes/my_api.dart.expect"
+import 'package:my_package/my_package.dart';
+
+void main() {
+  MyClass().newMethod();
+}
+```
+
 ### 2. Run the tests
 
 Run `dart fix --compare-to-golden` to verify your transforms:
@@ -113,7 +136,7 @@ making it ideal for CI test suites.
 To learn more about all supported change kinds
 (such as parameter modifications and replaced declarations),
 conditions, and code templates,
-see the [Data-driven Fixes specification][wiki].
+see the [Data-driven Fixes specification][spec].
 
 [`dart fix`]: /tools/dart-fix
-[wiki]: https://github.com/flutter/flutter/wiki/Data-driven-Fixes
+[spec]: https://github.com/flutter/flutter/blob/master/docs/contributing/Data-driven-Fixes.md
