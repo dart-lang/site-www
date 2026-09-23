@@ -22,7 +22,6 @@ dependencies:
   markdown: ^7.3.1
   markdown_description_list: ^0.2.0
   meta: ^1.19.0
-  nanoid2: ^2.1.0
   # Used for syntax highlighting.
   opal: ^0.2.4
   path: ^1.9.1
