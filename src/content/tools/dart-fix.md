@@ -12,7 +12,11 @@ finds and fixes two types of issues:
   (sometimes called _quick-fixes_ or _code actions_).
 
 * Outdated API usages when updating to
-  newer releases of the Dart and Flutter SDKs.
+  newer releases of the Dart and Flutter SDKs,
+  or dependencies that provide data-driven fixes.
+  If you are a package owner,
+  you can author [Data-driven fixes][]
+  to help your users migrate across breaking changes.
 
 :::tip
 To learn about `dart fix` in a video format,
@@ -23,7 +27,6 @@ check out this [deep dive][] on **Decoding Flutter**:
 
 [deep dive]: {{site.yt.watch}}/OBIuSrg_Quo
 
-<a id="usage"></a>
 ## Apply fixes
 
 To preview proposed changes, use the `--dry-run` flag:
@@ -38,8 +41,56 @@ To apply the proposed changes, use the `--apply` flag:
 $ dart fix --apply
 ```
 
-<a id="customization"></a>
-## Customize behavior {:#customize}
+## Options for `dart fix`
+
+The following options can be used with the `dart fix` command.
+
+### `-h`, `--help`
+
+Print usage information for `dart fix`.
+
+```console
+$ dart fix --help
+```
+
+### `-n`, `--dry-run`
+
+Preview the proposed changes without modifying any files.
+
+```console
+$ dart fix --dry-run
+```
+
+```console
+$ dart fix -n
+```
+
+### `--apply`
+
+Apply the proposed changes directly to the source files.
+
+```console
+$ dart fix --apply
+```
+
+### `--code`
+
+Apply fixes only for one or more specific diagnostic codes.
+Specify multiple diagnostic codes as a comma-separated list.
+
+```console
+$ dart fix --apply --code=prefer_single_quotes,use_super_parameters
+```
+
+### `--compare-to-golden`
+
+Compare the result of applying fixes to a golden master file.
+
+```console
+$ dart fix --compare-to-golden
+```
+
+## Customize analysis-driven fixes {:#customize}
 
 The `dart fix` command only applies fixes
 when there is a "problem" identified by a diagnostic.
@@ -83,7 +134,7 @@ To enable `dart fix` to upgrade existing code to use this feature,
 and to ensure that the analyzer warns you when you later forget to use it,
 configure your `analysis_options.yaml` file as follows:
 
-```yaml
+```yaml title="analysis_options.yaml"
 linter:
   rules:
     - use_super_parameters
@@ -94,7 +145,7 @@ Super initializers were introduced in Dart 2.17,
 so update `pubspec.yaml` to have at least that
 in the lower SDK constraint:
 
-```yaml
+```yaml title="pubspec.yaml"
 environment:
   sdk: ">=2.17.0 <4.0.0"
 ```
@@ -114,14 +165,17 @@ lib/myapp.dart
 To learn more about customizing analysis results and behavior,
 see [Customizing static analysis](/tools/analysis).
 
-[`dart analyze`]: /tools/dart-analyze
-[language version]: /language/versioning
+## IDE support
 
-## VS Code support
+When you open a project in an editor with Dart support,
+the Dart analyzer scans the project for issues that `dart fix` can repair.
+If it finds issues for repair,
+the editor can display prompts and offer quick-fixes (code actions).
 
-When you open a project in VS Code,
-the Dart plugin scans the project for issues that `dart fix` can repair.
-If it finds issues for repair, VS Code displays a prompt to remind you.
+### VS Code
+
+In VS Code,
+the Dart extension displays a prompt when fixes are available:
 
 <img src="/assets/img/tools/vscode/dart_fix_notification.png" width="550" height="175" alt="VS Code notification about 'dart fix'">
 
@@ -131,3 +185,13 @@ add issues that `dart fix` can repair.
 
 Save all of your files before running `dart fix`.
 This ensures that Dart uses the latest versions of your files.
+
+### IntelliJ IDEA and Android Studio
+
+In [JetBrains IDEs](/tools/jetbrains-plugin),
+press **Alt+Enter** (Windows/Linux) or **Option+Return** (macOS)
+on any highlighted code diagnostic to view and apply available quick-fixes.
+
+[`dart analyze`]: /tools/dart-analyze
+[Data-driven fixes]: /tools/pub/data-driven-fixes
+[language version]: /language/versioning

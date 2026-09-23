@@ -40,6 +40,7 @@ might look like:
   - integration_test/
     - app_test.dart
   - lib/
+    - fix_data.yaml
     - enchilada.dart
     - tortilla.dart
     - guacamole.css
@@ -52,6 +53,9 @@ might look like:
   - test/
     - enchilada_test.dart
     - tortilla_test.dart
+  - test_fixes/
+    - enchilada_fix.dart
+    - enchilada_fix.dart.expect
   - tool/
     - generate_docs.dart
   - web/
@@ -274,6 +278,25 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 For more information on packages, see
 [Creating packages](/tools/pub/create-packages).
 
+### Data-driven fixes
+
+<FileTree>
+
+- enchilada/
+  - lib/
+    - fix_data.yaml
+
+</FileTree>
+
+If you update or deprecate APIs in your package,
+you can provide automated migrations for your users
+by placing a `fix_data.yaml` file in the `lib` directory.
+When users run [`dart fix`](/tools/dart-fix) or use IDE quick-fixes,
+the Dart analyzer uses this file to automatically upgrade their code.
+
+For details on writing and testing fixes, see
+[Data-driven fixes](/tools/pub/data-driven-fixes).
+
 ### Public tools
 
 Dart scripts placed inside of the `bin` directory are public. If you're
@@ -451,6 +474,21 @@ will not run these tests. You will have to explicitly run them with
 Packages that have performance-critical code might also include *benchmarks*.
 These test the API not for correctness but for speed (or memory use, or maybe
 other empirical metrics).
+
+<FileTree>
+
+- enchilada/
+  - test_fixes/
+    - enchilada_fix.dart
+    - enchilada_fix.dart.expect
+
+</FileTree>
+
+If your package provides [data-driven fixes](#data-driven-fixes),
+test them using paired Dart test files and golden master files
+in a `test_fixes` directory.
+Run `dart fix --compare-to-golden` to verify these tests.
+To learn more, see [Test your fixes](/tools/pub/data-driven-fixes#test-your-fixes).
 
 ## Documentation
 
