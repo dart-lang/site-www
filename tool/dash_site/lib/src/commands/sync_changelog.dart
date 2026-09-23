@@ -122,6 +122,10 @@ final class SyncChangelog extends Command<int> {
     }
   }
 
+  /// Parses [markdown] for [targetVersion] and returns generated YAML.
+  static String parseAndGenerateYaml(String markdown, String targetVersion) =>
+      _generateYamlString(_parseChangelog(markdown, targetVersion));
+
   /// Parses the SDK CHANGELOG.md [markdown] and
   /// extracts entries for the specified [targetVersion].
   static List<_ChangelogEntry> _parseChangelog(
@@ -134,14 +138,38 @@ final class SyncChangelog extends Command<int> {
     final lines = markdown.split('\n');
     final versionRegExp = RegExp(r'^##\s+(\d+\.\d+\.\d+)');
     final inlineLinkRegExp = RegExp(r'\[.*?\]\((.*?)\)');
-    final referenceLinkRegExp = RegExp(r'\[.*?\]:\s+(https?://\S+)');
+    final refDefRegExp = RegExp(r'^\s*\[([^\]]+)\]:\s*(\S+)');
+    final refUsageRegExp = RegExp(r'\[([^\]]+)\]\[([^\]]*)\]');
+
+    // Pre-collect reference link definitions in targetVersion.
+    final refLinks = <String, String>{};
+    var inTargetForRefs = false;
+    for (final line in lines) {
+      if (versionRegExp.firstMatch(line) case final match?) {
+        if (match.group(1) == targetVersion) {
+          inTargetForRefs = true;
+          continue;
+        } else if (inTargetForRefs) {
+          break;
+        }
+      }
+      if (!inTargetForRefs) continue;
+      if (refDefRegExp.firstMatch(line) case final m?) {
+        refLinks[m.group(1)!.toLowerCase()] = m.group(2)!;
+      }
+    }
+
+    String resolveRefs(String text) =>
+        text.replaceAllMapped(refUsageRegExp, (m) {
+          final label = m.group(1)!;
+          final key = (m.group(2)!.isEmpty ? label : m.group(2)!).toLowerCase();
+          final url = refLinks[key];
+          return url != null ? '[$label]($url)' : m.group(0)!;
+        });
 
     // Extracts the first markdown link URL from [text], or returns null.
     String? extractLink(String text) {
-      final match =
-          inlineLinkRegExp.firstMatch(text) ??
-          referenceLinkRegExp.firstMatch(text);
-      return match?.group(1);
+      return inlineLinkRegExp.firstMatch(text)?.group(1);
     }
 
     String? currentArea;
@@ -150,11 +178,11 @@ final class SyncChangelog extends Command<int> {
     var subAreaHasBullets = false;
     final bulletBuffer = StringBuffer();
     final proseBuffer = StringBuffer();
-    String? pendingLink;
 
-    void addEntry(String description) {
-      if (description.isEmpty) return;
-      var link = pendingLink;
+    void addEntry(String rawDescription) {
+      if (rawDescription.isEmpty) return;
+      final description = resolveRefs(rawDescription);
+      var link = extractLink(description);
       if (link == null) {
         // If no specific link was found, default to the SDK CHANGELOG
         // section anchor. The anchor for version "3.11.0" is "#3110".
@@ -174,7 +202,6 @@ final class SyncChangelog extends Command<int> {
           link: link,
         ),
       );
-      pendingLink = null;
     }
 
     void flushBullet() {
@@ -231,8 +258,7 @@ final class SyncChangelog extends Command<int> {
       if (trimmedLine.startsWith('**Released on:**')) {
         continue;
       }
-      if (referenceLinkRegExp.hasMatch(trimmedLine)) {
-        pendingLink ??= extractLink(trimmedLine);
+      if (refDefRegExp.hasMatch(trimmedLine)) {
         continue;
       }
 
@@ -248,23 +274,21 @@ final class SyncChangelog extends Command<int> {
         continue;
       }
 
-      // Check for list items starting with "- ".
-      if (trimmedLine.startsWith('- ')) {
+      // Check for top-level list items starting with "- " when not already
+      // inside a prose-first sub-area section.
+      if (trimmedLine.startsWith('- ') &&
+          (subAreaHasBullets || proseBuffer.isEmpty)) {
         flushBullet();
         subAreaHasBullets = true;
-        proseBuffer.clear();
         final content = trimmedLine.substring(2);
         bulletBuffer.write(content);
-        pendingLink ??= extractLink(content);
       } else if (bulletBuffer.isNotEmpty) {
         bulletBuffer.write('\n$trimmedLine');
-        pendingLink ??= extractLink(trimmedLine);
       } else if (!subAreaHasBullets && currentSubArea != null) {
         if (proseBuffer.isNotEmpty) {
           proseBuffer.writeln();
         }
         proseBuffer.write(line);
-        pendingLink ??= extractLink(trimmedLine);
       }
     }
 

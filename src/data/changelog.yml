@@ -1371,7 +1371,6 @@
     - changed
   link: "https://github.com/dart-lang/sdk/issues/54573"
 # --------------------------------------------------
-# --------------------------------------------------
 - version: 3.9.4
   releaseDate: 2025-09-30
   area: Tools

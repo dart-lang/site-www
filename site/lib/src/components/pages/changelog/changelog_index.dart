@@ -19,8 +19,8 @@ import 'changelog_filters_sidebar.dart';
 final class ChangelogIndex extends StatelessComponent {
   const ChangelogIndex({super.key});
 
-  /// Renders the changelog data as structured Markdown for `/changelog/index.html.md`.
-  static String renderMarkdown(List<Object?> changesData) {
+  static (List<Version>, Map<Version, List<ChangelogEntry>>)
+  _groupByMinorVersion(List<Object?> changesData) {
     final changelogEntries = <ChangelogEntry>[
       for (final change in changesData)
         if (change is Map)
@@ -29,12 +29,20 @@ final class ChangelogIndex extends StatelessComponent {
 
     final groupedEntries = <Version, List<ChangelogEntry>>{};
     for (final entry in changelogEntries) {
+      // Group by major.minor so 3.9.1 and 3.9.0 go under "3.9".
       final groupVersion = Version(entry.version.major, entry.version.minor, 0);
       (groupedEntries[groupVersion] ??= []).add(entry);
     }
 
     final sortedVersions = groupedEntries.keys.toList()
       ..sort((vA, vB) => vB.compareTo(vA));
+
+    return (sortedVersions, groupedEntries);
+  }
+
+  /// Renders the changelog data as structured Markdown for `/changelog/index.html.md`.
+  static String renderMarkdown(List<Object?> changesData) {
+    final (sortedVersions, groupedEntries) = _groupByMinorVersion(changesData);
 
     final buffer = StringBuffer();
     for (final version in sortedVersions) {
@@ -71,21 +79,7 @@ final class ChangelogIndex extends StatelessComponent {
       throw Exception('Changelog data is missing or invalid.');
     }
 
-    final changelogEntries = <ChangelogEntry>[
-      for (final change in changesData)
-        if (change is Map)
-          ChangelogEntry.fromMap(Map<String, Object?>.from(change)),
-    ];
-
-    final groupedEntries = <Version, List<ChangelogEntry>>{};
-    for (final entry in changelogEntries) {
-      // Group by major.minor so 3.9.1 and 3.9.0 go under "3.9".
-      final groupVersion = Version(entry.version.major, entry.version.minor, 0);
-      (groupedEntries[groupVersion] ??= []).add(entry);
-    }
-
-    final sortedVersions = groupedEntries.keys.toList()
-      ..sort((vA, vB) => vB.compareTo(vA));
+    final (sortedVersions, groupedEntries) = _groupByMinorVersion(changesData);
 
     final slugCounts = <String, int>{};
     String nextCardId(ChangelogEntry item) {
@@ -107,13 +101,27 @@ final class ChangelogIndex extends StatelessComponent {
         div(id: 'all-changelog-list', [
           for (final version in sortedVersions)
             div(classes: 'version-group', [
-              h2(
-                id: 'v${version.shortVersion.replaceAll('.', '-')}',
-                classes: 'version-header',
-                [
-                  span(classes: 'version-badge', [.text(version.shortVersion)]),
-                ],
-              ),
+              div(classes: 'header-wrapper', [
+                h2(
+                  id: 'v${version.shortVersion.replaceAll('.', '-')}',
+                  classes: 'version-header',
+                  [
+                    span(
+                      classes: 'version-badge',
+                      [.text(version.shortVersion)],
+                    ),
+                  ],
+                ),
+                a(
+                  classes: 'heading-link',
+                  href: '#v${version.shortVersion.replaceAll('.', '-')}',
+                  attributes: {
+                    'aria-label':
+                        "Link to 'Dart ${version.shortVersion}' section",
+                  },
+                  [const .text('#')],
+                ),
+              ]),
               div(classes: 'version-items', [
                 for (final item in groupedEntries[version]!)
                   _ChangelogEntryCard(item, cardId: nextCardId(item)),

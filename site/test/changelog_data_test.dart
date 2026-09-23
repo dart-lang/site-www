@@ -48,10 +48,30 @@ void main() {
         'Dart Runtime',
         'Docs',
       };
+      final refUsagePattern = RegExp(r'\[([^\]]+)\]\[([^\]]*)\]');
+      final refDefPattern = RegExp(r'^\s*\[([^\]]+)\]:\s*\S+', multiLine: true);
+
       for (final entry in entries) {
         expect(validAreas, contains(entry.area));
         expect(entry.tags, isNotEmpty);
         expect(entry.description.trim(), isNotEmpty);
+
+        final definedRefs = {
+          for (final match in refDefPattern.allMatches(entry.description))
+            match.group(1)!.toLowerCase(),
+        };
+        for (final match in refUsagePattern.allMatches(entry.description)) {
+          final label = match.group(1)!;
+          final refKey = (match.group(2)!.isEmpty ? label : match.group(2)!)
+              .toLowerCase();
+          expect(
+            definedRefs,
+            contains(refKey),
+            reason:
+                'Unresolved Markdown reference link "${match.group(0)}" in '
+                'version ${entry.version} (${entry.area} / ${entry.subArea}).',
+          );
+        }
       }
     });
 
