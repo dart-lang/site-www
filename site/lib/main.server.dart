@@ -169,11 +169,16 @@ void main() {
 }
 
 final class _DashMarkdownOutput extends MarkdownOutput {
+  static final _changelogTagPattern = RegExp(
+    r'<ChangelogIndex\s*(?:/>|>\s*</ChangelogIndex>)',
+    caseSensitive: false,
+  );
+
   _DashMarkdownOutput({super.createHeader});
 
   @override
   Component build(Page page) {
-    if (!page.content.contains('<ChangelogIndex')) {
+    if (!_changelogTagPattern.hasMatch(page.content)) {
       return super.build(page);
     }
 
@@ -190,10 +195,7 @@ final class _DashMarkdownOutput extends MarkdownOutput {
             ? ChangelogIndex.renderMarkdown(changesData)
             : '';
         pageContent.writeln(
-          page.content.replaceFirst(
-            RegExp(r'<ChangelogIndex\s*/>'),
-            renderedChangelog,
-          ),
+          page.content.replaceFirst(_changelogTagPattern, renderedChangelog),
         );
 
         context.setHeader('Content-Type', 'text/markdown; charset=utf-8');

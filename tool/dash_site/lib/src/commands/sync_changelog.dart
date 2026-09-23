@@ -278,23 +278,31 @@ final class SyncChangelog extends Command<int> {
     if (area != null && area.isNotEmpty) return area;
     if (subArea != null) {
       final normalized = subArea.toLowerCase();
-      if (normalized.startsWith('`dart:') || normalized.startsWith('dart:')) {
+      if (normalized.startsWith('`dart:') ||
+          normalized.startsWith('dart:') ||
+          normalized.startsWith('`package:') ||
+          normalized.startsWith('package:')) {
         return 'Libraries';
       }
-      if (const {
-        'analyzer',
-        'linter',
-        'pub',
-        'dart format',
-        'devtools',
-        'development javascript compiler (ddc)',
-        'ddc',
-        'dart2js',
-        'dart2wasm',
-      }.contains(normalized)) {
+      if (normalized.contains('analyzer') ||
+          normalized.contains('linter') ||
+          normalized.contains('pub') ||
+          normalized.contains('formatter') ||
+          normalized.contains('format') ||
+          normalized.contains('devtools') ||
+          normalized.contains('compiler') ||
+          normalized.contains('ddc') ||
+          normalized.contains('dart2js') ||
+          normalized.contains('dart2wasm') ||
+          normalized.contains('cli')) {
         return 'Tools';
       }
-      if (const {'dart vm', 'dart wasm', 'build'}.contains(normalized)) {
+      if (normalized.contains('vm') ||
+          normalized.contains('wasm') ||
+          normalized.contains('runtime') ||
+          normalized.contains('c api') ||
+          normalized.contains('embedder') ||
+          normalized == 'build') {
         return 'Dart Runtime';
       }
     }

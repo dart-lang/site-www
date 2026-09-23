@@ -23,7 +23,8 @@ final class ChangelogIndex extends StatelessComponent {
   static String renderMarkdown(List<Object?> changesData) {
     final changelogEntries = <ChangelogEntry>[
       for (final change in changesData)
-        ChangelogEntry.fromMap(change as Map<String, Object?>),
+        if (change is Map)
+          ChangelogEntry.fromMap(Map<String, Object?>.from(change)),
     ];
 
     final groupedEntries = <Version, List<ChangelogEntry>>{};
@@ -72,7 +73,8 @@ final class ChangelogIndex extends StatelessComponent {
 
     final changelogEntries = <ChangelogEntry>[
       for (final change in changesData)
-        ChangelogEntry.fromMap(change as Map<String, Object?>),
+        if (change is Map)
+          ChangelogEntry.fromMap(Map<String, Object?>.from(change)),
     ];
 
     final groupedEntries = <Version, List<ChangelogEntry>>{};
