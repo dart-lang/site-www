@@ -121,10 +121,10 @@ void main() {
 
 ### 2. Run the tests
 
-Run `dart fix --compare-to-golden` to verify your transforms:
+From your package root, run `dart fix` with `--compare-to-golden`:
 
 ```console
-$ dart fix --compare-to-golden
+$ dart fix test_fixes --compare-to-golden
 ```
 
 If the output matches your `.expect` file, the command exits with code `0`.
