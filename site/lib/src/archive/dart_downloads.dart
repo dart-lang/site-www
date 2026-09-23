@@ -76,8 +76,10 @@ final class DartDownloads({http.Client? client}) {
   /// Includes the creation time of the `VERSION` object, if available.
   Future<VersionInfo> fetchVersion(String channel, String revision) async {
     final path = 'channels/$channel/release/$revision/VERSION';
-    final contents = await _api.downloadObject(_archiveBucket, path);
-    final metadata = await _api.objectMetadata(_archiveBucket, path);
+    final (contents, metadata) = await (
+      _api.downloadObject(_archiveBucket, path),
+      _api.objectMetadata(_archiveBucket, path),
+    ).wait;
     final versionJson =
         jsonDecode(ascii.decode(contents)) as Map<String, Object?>;
 
