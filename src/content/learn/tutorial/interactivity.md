@@ -302,9 +302,11 @@ As you build this functionality, you'll work with
     provides APIs to deal with files, directories, sockets, and
     HTTP clients and servers, and more.
 
-    Now, update your `searchWikipedia` function.
+    Now, update your `searchWikipedia` function below `main`.
 
     ```dart
+    // ... (your existing main function)
+
     void searchWikipedia(List<String>? arguments) {
       final String articleTitle;
 
@@ -320,6 +322,8 @@ As you build this functionality, you'll work with
 
       print('Current article title: $articleTitle');
     }
+
+    // ... (your existing printUsage() function)
     ```
 
     This preceding code block introduces a few key concepts:
@@ -354,15 +358,34 @@ As you build this functionality, you'll work with
 
 1.  **Finish `searchWikipedia` to print mock search results:**
     Update `searchWikipedia` to display messages that
-    look like our program found something.
-    This helps us see what our finished program will do without
+    look like the program found something.
+    This helps you see what the finished program will do without
     actually building everything right now.
-    You'll only see these messages if you
-    include a search query when you run the program.
 
-    For example: `dart bin/cli.dart search Dart Programming`.
+    When you run the `search` command, `main` passes any arguments after
+    `search` to `searchWikipedia`, which then prints these messages using
+    either the command-line query or the prompted input.
 
-    ```dart
+    Your complete `cli/bin/cli.dart` file should now look like this:
+
+    ```dart title="cli/bin/cli.dart" highlightLines=31-33
+    import 'dart:io';
+
+    const version = '0.0.1';
+
+    void main(List<String> arguments) {
+      if (arguments.isEmpty || arguments.first == 'help') {
+        printUsage();
+      } else if (arguments.first == 'version') {
+        print('Dartpedia CLI version $version');
+      } else if (arguments.first == 'search') {
+        final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
+        searchWikipedia(inputArgs);
+      } else {
+        printUsage();
+      }
+    }
+
     void searchWikipedia(List<String>? arguments) {
       final String articleTitle;
 
@@ -379,6 +402,12 @@ As you build this functionality, you'll work with
       print('Looking up articles about "$articleTitle". Please wait.');
       print('Here ya go!');
       print('(Pretend this is an article about "$articleTitle")');
+    }
+
+    void printUsage() {
+      print(
+        "The following commands are valid: 'help', 'version', 'search <ARTICLE-TITLE>'",
+      );
     }
     ```
 
@@ -399,7 +428,8 @@ As you build this functionality, you'll work with
     (Pretend this is an article about "Dart Programming")
     ```
 
-    Run without arguments (type "Flutter Framework" when prompted):
+    Next, run the `search` command without extra arguments
+    (type "Flutter Framework" when prompted):
 
     ```bash
     dart bin/cli.dart search
@@ -408,6 +438,9 @@ As you build this functionality, you'll work with
     ```bash
     Please provide an article title.
     Flutter Framework
+    Looking up articles about "Flutter Framework". Please wait.
+    Here ya go!
+    (Pretend this is an article about "Flutter Framework")
     ```
 
     You have now successfully built the basic `search` command with
