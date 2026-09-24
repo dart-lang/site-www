@@ -1346,7 +1346,7 @@ exceptions][effective_dart_errors], as well as your documented API contract.
 When a library explicitly documents that a function or method throws a specific
 exception, such as `/// Throws [AuthException] on invalid credentials.`:
 
-#### MAJOR: Change or remove a documented exception type
+#### MAJOR: Change a documented exception type
 
 Changing the thrown exception, such as throwing `SecurityException` instead of
 `AuthException`, breaks downstream code with `try ... on AuthException catch
