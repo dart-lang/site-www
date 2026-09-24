@@ -7,16 +7,16 @@ description: >-
 ---
 
 When developing and publishing Dart packages, adhering to [Semantic
-Versioning][semver] helps creating a healthy and predictable package ecosystem.
+Versioning][semver] helps create a healthy and predictable package ecosystem.
 
-Any Dart package provides a set of features - but with that comes also a
+Any Dart package provides a set of features—and with that comes a
 contract that the user can rely on this set of features to continue working.
-Packages sometimes get changed, and there are two categories of changes: Adding
+Packages sometimes get changed, and there are two categories of changes: adding
 or removing functionality. Some changes do one or the other, some do both. While
 removing functionality may sometimes be necessary, doing so violates the
-contract with the user. To accomodate for this, Dart uses semantic versioning to
-help a user in recognizing whether a new version of a package adheres to the old
-or is presenting a new contract.
+contract with the user. To accommodate this, Dart uses semantic versioning to
+help users recognize whether a new version of a package adheres to the old
+contract or presents a new one.
 
 This guide provides a detailed reference on which changes to your Dart code
 affect the public API surface of your package and what version bump is required.
@@ -28,7 +28,7 @@ the [Package versioning](/tools/pub/versioning) guide.
 
 ## Semantic versioning and `package:pub_semver`
 
-Dart's package manager, pub, follows [Semantic Versioning 2.0.0][semver] as
+Dart's package manager, pub, follows [Semantic Versioning][semver] as
 implemented by [`package:pub_semver`][pub_semver].
 
 A standard version number is formatted as `MAJOR.MINOR.PATCH`, such as `1.2.3`:
@@ -39,16 +39,18 @@ A standard version number is formatted as `MAJOR.MINOR.PATCH`, such as `1.2.3`:
 
 ### Pre-1.0.0 versions
 
-While standard SemVer 2.0.0 allows any change before version `1.0.0`, pub and
+While standard SemVer allows any change before version `1.0.0`, pub and
 [`pub_semver`][pub_semver] enforce a stricter convention so that consumers can
 safely depend on pre-1.0.0 packages using [caret
 syntax](/tools/pub/dependencies#caret-syntax):
 
-* **`0.y.z` versions where $y > 0$, such as `0.2.0`:**
+* **`0.y.z` versions where `y > 0`, such as `0.2.0`:**
   * Bumping `y` from `0.2.0` to `0.3.0` is treated as a **breaking change**,
     which is equivalent to a major bump.
   * Bumping `z` from `0.2.0` to `0.2.1` is treated as a **backward-compatible
-    change**, which is equivalent to a minor or patch bump.
+    change**, combining both minor and patch changes (pre-1.0.0 versions do not
+    distinguish `MINOR` from `PATCH`, though [`+` build suffixes](/tools/pub/versioning)
+    are occasionally used for tiny fixes prior to `1.0.0`).
   * Caret syntax `^0.2.0` allows `>=0.2.0 <0.3.0`.
 * **`0.0.z` versions, such as `0.0.1`:**
   * Bumping `z` from `0.0.1` to `0.0.2` is treated as a **breaking change**.
@@ -56,15 +58,37 @@ syntax](/tools/pub/dependencies#caret-syntax):
 
 ## The public API boundary
 
-In Dart packages, the **public API** comprises all declarations accessible to
-consumers of your package:
+In Dart packages, the **public API** comprises all declarations that are part of
+your package's supported contract for external consumers:
 
-* **Public:** Any library directly inside `lib/`, such as `lib/my_package.dart`,
-  and any declarations re-exported through `export` directives.
+* **Public:** Any library inside `lib/` outside of `lib/src/`, including
+  subdirectories such as `lib/my_package.dart` or `lib/foo/bar.dart`, and any
+  declarations re-exported through `export` directives.
 * **Private and internal:** Any file inside `lib/src/` that is **not**
-  re-exported by a public library in `lib/`. Changes to unexported files in
-  `lib/src/` are considered internal and do not affect the public SemVer
-  contract.
+  re-exported by a public library in `lib/`, as well as declarations annotated
+  with `@internal` or `@visibleForTesting` from [`package:meta`]({{site.pub-pkg}}/meta).
+  Changes to internal declarations do not affect the public SemVer contract.
+
+### Guiding principles: Contracts and intended usage
+
+All specific rules in this guide follow from three general principles:
+
+1. **Require less, provide more:** A change is backward-compatible (`MINOR`)
+   when a declaration requires less from callers (such as widening a parameter
+   type or making a parameter optional) or provides more (such as narrowing a
+   return type or adding a method to a `final` class). A change is breaking
+   (`MAJOR`) when it requires more or provides less.
+2. **Documented contracts and intended usage:** If a declaration explicitly
+   documents restrictions on its use—for example, stating in doc comments that a
+   class must not be implemented externally, or that an enum may gain new values
+   in minor releases—then changes that only affect unsupported usage are
+   non-breaking (`MINOR` or `PATCH`).
+3. **Pragmatic ecosystem conventions:** In Dart, almost any addition can
+   theoretically cause a static error in rare consumer patterns, such as
+   unprefixed wildcard imports, local variable type inference (`var x = fn();`),
+   method tear-offs, or extension resolution ambiguity. By convention, Dart
+   package versioning treats these edge cases as non-breaking (`MINOR`) so that
+   packages can evolve without constant major version bumps.
 
 ---
 
@@ -87,9 +111,9 @@ void calculateTotal() {}
 void calculateTax() {} // Added: safe because existing callers are unaffected.
 ```
 
-*Note:* While introducing a new top-level name can theoretically create a naming
-conflict with a wildcard import like `import 'package:foo/foo.dart';` in
-downstream code, SemVer treats top-level additions as non-breaking.
+*Note:* While introducing a new top-level name can cause a naming conflict if a
+consumer imports multiple libraries without prefixes, Dart versioning convention
+treats top-level additions as non-breaking (`MINOR`).
 
 ### MAJOR: Remove a public top-level declaration
 
@@ -181,10 +205,13 @@ num threshold = 10.5;
 int threshold = 10; // Narrowed: callers assigning a double (e.g. `threshold = 1.5;`) fail to compile.
 ```
 
-### MAJOR: Change a top-level variable from `var` to `final`
+### MAJOR: Change a top-level variable from `var` to `final` or from `const` to `final`
 
-Making a mutable variable `final` breaks any consumer assigning values to that
-variable.
+* Changing a mutable `var` variable to `final` breaks any consumer assigning
+  values to that variable.
+* Changing a `const` variable to `final` breaks any consumer using that variable
+  in a `const` context, such as default parameter values, constant expressions,
+  or `switch` cases.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -240,7 +267,8 @@ class Formatter {} // Safe: allows direct instantiation without breaking existin
 #### MAJOR: Add the `base` modifier to an existing class
 
 Prevents external consumers from implementing the class using `implements
-MyClass`, breaking all existing external implementers.
+MyClass`, and requires any external subclass using `extends MyClass` to also be
+marked `base`, `final`, or `sealed`.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -250,7 +278,7 @@ class Worker {}
 class CustomWorker implements Worker {}
 
 // After (v2.0.0 - MAJOR):
-base class Worker {} // Breaks: downstream implementers (`implements Worker`) fail to compile.
+base class Worker {} // Breaks: downstream implementers (`implements Worker`) and unmarked subclasses (`class Sub extends Worker`) fail to compile.
 ```
 
 #### MAJOR: Add the `interface` modifier to an existing class
@@ -272,7 +300,8 @@ interface class Service {} // Breaks: downstream subclasses (`extends Service`) 
 #### MAJOR: Add the `final` or `sealed` modifier to an existing class
 
 Prevents external consumers from extending, implementing, or mixing in the
-class, breaking all existing external subtypes.
+class, breaking all existing external subtypes. In addition, `sealed` implicitly
+makes the class `abstract`, breaking direct construction (`MyClass()`).
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -288,7 +317,8 @@ final class Database {} // Breaks: downstream subclasses fail to compile.
 #### MAJOR: Remove the `mixin` modifier from a `mixin class`
 
 Prevents external consumers from using the class as a mixin using `with
-MyClass`.
+MyClass`. (Conversely, adding `mixin` to turn a `class` into a `mixin class` is
+**`MINOR`**.)
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -301,10 +331,18 @@ class Worker with TaskRunner {}
 class TaskRunner {} // Breaks: downstream mixin uses (`with TaskRunner`) fail to compile.
 ```
 
+#### MAJOR: Remove the `sealed` modifier from a class
+
+Removing `sealed` from a class breaks downstream exhaustive `switch` statements
+and expressions over its subtypes, because the compiler can no longer guarantee
+that the known subtypes are exhaustive.
+
 #### MINOR: Remove `base`, `interface`, or `final` from a class
 
 Loosens restrictions on consumers, granting new capabilities without
-invalidating existing code.
+invalidating existing code. Note that removing `final` or `base` is a one-way
+door: once external libraries can implement the class, adding new instance
+members in future releases becomes a `MAJOR` change.
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -324,9 +362,12 @@ An unmodified class in Dart allows external packages to construct, extend using
 #### MAJOR: Add an instance member to an unmodified class
 
 Adding any instance method, getter, setter, or field to an unmodified `class` or
-`abstract class` is a breaking change. Because external libraries are permitted
+`abstract class` is a breaking change unless the class explicitly documents that
+it must not be implemented externally. Because external libraries are permitted
 to write `class MyImpl implements Foo`, any new member in `Foo` breaks existing
-implementers due to missing overrides.
+implementers due to missing overrides. (To allow adding concrete members in
+`MINOR` releases with compiler enforcement, declare the class as `base` or
+`final`.)
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -513,15 +554,15 @@ Breaks both callers and extending subclasses.
 An `interface` class can be implemented outside the library, but cannot be
 extended using `extends`.
 
-#### MAJOR: Add any member to an interface class
+#### MAJOR: Add an instance member to an interface class
 
-External classes can implement an `interface class`. Adding any new method,
-getter, setter, or field requires implementers to provide the new member,
-breaking compilation.
+External classes can implement an `interface class`. Adding any new instance
+method, getter, setter, or field requires implementers to provide the new
+member, breaking compilation. (Adding a `static` member is `MINOR`.)
 
 ```dart tag=bad
 // Before (v1.0.0):
-interface class Repository {
+abstract interface class Repository {
   void fetch();
 }
 
@@ -532,7 +573,7 @@ class CustomRepository implements Repository {
 }
 
 // After (v2.0.0 - MAJOR):
-interface class Repository {
+abstract interface class Repository {
   void fetch();
   void save(); // Added: CustomRepository fails to compile due to missing `save()` implementation.
 }
@@ -598,8 +639,9 @@ sealed class Result {
 Classes using `with MyMixin` automatically receive the concrete implementation.
 
 *Note:* Adding a member is technically breaking if an external consumer used
-`implements MyMixin`, but the standard and intended usage of mixins is with the
-`with` keyword.
+`implements MyMixin`, or if a class mixing it in already inherited a member with
+an incompatible signature from its superclass, but the standard and intended
+usage of mixins is with the `with` keyword.
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -641,7 +683,7 @@ mixin Serializer {
 #### MAJOR: Tighten the `on` constraint on a mixin
 
 Restricting the superclass requirements, such as from `on Object` to `on
-Widget`, prevents existing classes that do not meet the new requirement from
+State`, prevents existing classes that do not meet the new requirement from
 mixing it in.
 
 ```dart tag=bad
@@ -707,10 +749,10 @@ typedef Callback = void Function(String message); // Changed type: downstream ca
 Replacing a type alias with a class, or a class with a type alias of the same
 name, is a breaking change:
 
-* **Function type alias $\rightarrow$ class:** In Dart, closure literals are
+* **Function type alias -> class:** In Dart, closure literals are
   function types, not class instances. Code assigning a closure like `Callback
   cb = (x) => ...;` will fail to compile against `class Callback`.
-* **Class type alias $\rightarrow$ subclass:** If `typedef A = B;` is replaced
+* **Class type alias -> subclass:** If `typedef A = B;` is replaced
   with `class A extends B {}`, `B` is no longer assignable to `A`, and
   bidirectional type identity is lost.
 
@@ -733,9 +775,16 @@ abstract class Callback {
 
 ### MINOR: Add a new public constructor or factory
 
-Adding named constructors, such as `MyClass.named()`, or factories to an
-instantiable class provides new construction options without affecting existing
-callers.
+Adding named constructors, such as `MyClass.named()`, or factories to a class
+that already declares an explicit constructor provides new construction options
+without affecting existing callers.
+
+*Note:* If the class previously had **no explicit constructors** (relying on
+Dart's implicit default constructor `MyClass()`), adding a named constructor
+removes the implicit unnamed constructor `MyClass()`, which is a **`MAJOR`**
+breaking change unless you also explicitly define `MyClass();`. Likewise,
+changing a generative constructor to a `factory` constructor on an extendable
+class is **`MAJOR`** because subclasses can no longer invoke it in `super(...)`.
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -746,7 +795,7 @@ class Request {
 // After (v1.1.0 - MINOR):
 class Request {
   Request(String url);
-  Request.json(String url); // Added: provides a new constructor without breaking existing callers.
+  Request.json(String url); // Added: provides a new constructor while preserving `Request(String)`.
 }
 ```
 
@@ -881,16 +930,22 @@ void logMessage(String message) {}
 void logMessage(String message, {required String level}) {} // Callers using `logMessage('data')` fail to compile.
 ```
 
-#### MINOR: Add an optional parameter
+#### Add an optional parameter
 
-Existing call sites can omit the new optional parameter without issue.
+* **MINOR** for top-level functions, constructors, `static` methods, and
+  methods on `final` or `sealed` classes, because existing call sites can omit
+  the new optional parameter without issue.
+* **MAJOR** for instance methods on classes or interfaces that external
+  consumers can `extend` or `implement`, because existing subclass overrides
+  (such as `@override void logMessage(String message)`) will fail to compile due
+  to an incompatible signature.
 
 ```dart tag=good
 // Before (v1.0.0):
 void logMessage(String message) {}
 
-// After (v1.1.0 - MINOR):
-void logMessage(String message, [String level = 'INFO']) {} // Safe: existing calls `logMessage('data')` continue to compile.
+// After (v1.1.0 - MINOR for top-level functions and final class methods):
+void logMessage(String message, [String level = 'INFO']) {} // Safe for callers: `logMessage('data')` continues to compile.
 ```
 
 :::note Tear-offs and optional parameters
@@ -898,8 +953,9 @@ In Dart, tearing off a method like `final fn = obj.myMethod;` produces a
 function whose static type reflects its exact signature. Adding an optional
 parameter changes the static type of the tear-off, which can cause a type
 mismatch if the consumer assigned it to a specific `typedef`. In practice,
-adding optional parameters is standard for `MINOR` releases unless a package's
-primary contract relies on exact function signatures.
+adding optional parameters to top-level functions and `final` class methods is
+standard for `MINOR` releases unless a package's primary contract relies on
+exact function signatures.
 :::
 
 #### MAJOR: Remove any parameter
@@ -917,7 +973,8 @@ void connect(String host) {} // Callers passing two arguments fail to compile.
 #### MAJOR: Rename a named parameter
 
 Call sites passing `func(paramName: value)` will fail to compile when
-`paramName` is changed.
+`paramName` is changed. (Renaming a positional parameter is non-breaking, as
+callers cannot pass positional arguments by name.)
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -979,17 +1036,22 @@ callbacks into an inferred variable (like `var callback = doStuff; callback =
 types on top-level functions is treated as non-breaking.
 :::
 
-#### MINOR: Change the default value of an optional parameter
+#### Change the default value of an optional parameter
 
-Does not break compilation or static type checks, but alters runtime behavior
-for callers omitting the argument.
+Changing a default parameter value does not break compilation or static type
+checks, but alters runtime behavior for callers omitting the argument:
+
+* **MINOR or PATCH** if the new default preserves the documented behavioral
+  contract (such as tuning a buffer size or default timeout).
+* **MAJOR** if the new default alters the observable behavioral contract in an
+  incompatible way for existing callers that omit the argument.
 
 ```dart tag=good
 // Before (v1.0.0):
 void connect([int timeoutSeconds = 10]) {}
 
-// After (v1.1.0 - MINOR):
-void connect([int timeoutSeconds = 30]) {} // Compiles without error; changes default runtime behavior.
+// After (v1.1.0 - MINOR if contract-compatible):
+void connect([int timeoutSeconds = 30]) {} // Compiles without error; changes default runtime value.
 ```
 
 ---
@@ -1095,10 +1157,20 @@ class NumericList<T extends int> {}
 class NumericList<T extends num> {} // Safe: existing `NumericList<int>` remains valid, and `NumericList<double>` is now supported.
 ```
 
-#### MAJOR: Add a type parameter without a default bound
+#### MAJOR: Add or remove a type parameter
 
-Call sites or type annotations lacking the type argument may fail to compile or
-change type inference behavior.
+Dart does not support default type arguments. While raw type references (such as
+`Store x`) use instantiation-to-bounds, adding or removing a type parameter
+breaks any consumer code that passes explicit type arguments (such as
+`Store<String>`).
+
+```dart tag=bad
+// Before (v1.0.0):
+class Store<T> {}
+
+// After (v2.0.0 - MAJOR):
+class Store<T, M> {} // Breaks explicit type argument usages like `Store<String>` due to wrong type argument count.
+```
 
 ---
 
@@ -1221,9 +1293,12 @@ extension StringUtils on String {
 }
 ```
 
-#### MAJOR: Remove or rename an extension method
+#### MAJOR: Remove or rename an extension or extension member
 
-Call sites invoking the extension member will fail to compile.
+Removing or renaming an extension member breaks call sites invoking that member.
+Renaming a public `extension` itself is also breaking because it breaks explicit
+extension invocations (such as `StringUtils(s).isBlank`) and `show`/`hide`
+import combinators.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -1278,8 +1353,8 @@ occasionally introduce static ambiguity if a downstream consumer already has
 another extension with the same member name in scope, because Dart's extension
 resolution rules may now rank them with equal specificity.
 
-In SemVer, potential naming collisions and resolution ambiguities in downstream
-wildcard scopes are treated as non-breaking (`MINOR`), because consumers can
+By convention, potential naming collisions and resolution ambiguities in
+downstream scopes are treated as non-breaking (`MINOR`), because consumers can
 disambiguate them using explicit extension invocation syntax (such as
 `NumberUtils(x).doubleValue()`) or `hide` directives.
 :::
@@ -1288,22 +1363,27 @@ disambiguate them using explicit extension invocation syntax (such as
 
 ### Extension types: `extension type`
 
-#### MAJOR: Change the underlying representation type
+#### MAJOR: Change or rename the underlying representation field
 
-Changes the underlying type contract and implicit constructors.
+Changing the representation type alters the underlying type contract and
+implicit constructors. Renaming the representation field (such as changing
+`Id(int value)` to `Id(int id)`) is also a `MAJOR` change because the
+representation field name defines a public getter (`id.value`) on the extension
+type.
 
 ```dart tag=bad
 // Before (v1.0.0):
 extension type Id(int value) {}
 
 // After (v2.0.0 - MAJOR):
-extension type Id(String value) {} // Breaks callers passing `int` to `Id(...)`.
+extension type Id(String value) {} // Breaks callers passing `int` to `Id(...)` or expecting `int` from `id.value`.
 ```
 
 #### MINOR: Add a member to an extension type
 
-Extension types cannot be implemented or extended with subtyping, so adding
-members is non-breaking.
+Extension type members are resolved statically, and other extension types that
+implement an extension type (`implements Id`) are allowed to redeclare members
+without virtual override conflicts, making member additions non-breaking.
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -1311,7 +1391,7 @@ extension type Id(int value) {}
 
 // After (v1.1.0 - MINOR):
 extension type Id(int value) {
-  bool get isValid => value > 0; // Added: safe because extension types cannot be subclassed or implemented.
+  bool get isValid => value > 0; // Added: safe for existing callers and implementing extension types.
 }
 ```
 
@@ -1391,8 +1471,11 @@ void authenticate(String token) {
 
 #### MAJOR: Throw an exception on previously succeeding inputs or states
 
-Throwing an exception in scenarios where the function previously succeeded
-alters control flow and breaks working consumer code.
+Throwing a documented or undocumented exception in scenarios where the function
+previously succeeded alters control flow and breaks working consumer code.
+Switching an asynchronous function between throwing synchronously and returning
+a failed `Future` is also `MAJOR`, as synchronous `try`/`catch` blocks without
+`await` will fail to catch the error.
 
 #### MINOR: Stop throwing an exception by succeeding instead
 
@@ -1437,20 +1520,31 @@ Increasing the SDK constraint, such as from `sdk: ^3.5.0` to `sdk: ^3.6.0`, is
 standard for minor releases to adopt new language features, provided consumers
 on supported SDKs can resolve it.
 
+*Note:* Bumping the minimum SDK constraint across a major Dart language version
+(such as from `<3.0.0` to `>=3.0.0`) changes your package's default language
+version, which can alter API semantics (for example, in Dart 3.0+, unmodified
+classes can no longer be used as mixins unless marked `mixin class`, which is a
+`MAJOR` break if downstream code mixed them in).
+
 ### MINOR: Export a new dependency
 
 Re-exporting another package's library using `export 'package:foo/foo.dart';`
-exposes new public API surface.
+exposes new public API surface. Note that re-exporting a dependency (or using
+its types in your public signatures) couples your package's public API to that
+dependency: upgrading to a new major version of that dependency requires a
+`MAJOR` version bump for your package as well.
 
 ### MAJOR: Remove an exported dependency
 
 Consumers relying on your package re-exporting those symbols will fail to
 compile.
 
-### PATCH: Update dependencies within existing constraint ranges
+### PATCH: Raise minimum dependency constraints or update internal dependencies
 
-Normal maintenance as long as your package's own public API surface is
-unchanged.
+Raising the lower bound of a dependency constraint in `pubspec.yaml` (within the
+existing major range) or updating dependencies used only internally does not
+require a major or minor bump as long as your package's own public API surface
+is unchanged.
 
 [effective_dart_errors]: /effective-dart/usage#error-handling
 [pub_semver]: {{site.pub-pkg}}/pub_semver
