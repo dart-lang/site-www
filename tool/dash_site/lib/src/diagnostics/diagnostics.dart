@@ -24,31 +24,29 @@ Map<String, String> get _linkDefinitions => {
   'constant context': '/resources/glossary#constant-context',
   'context type': '/resources/glossary#context-type',
   'core-deprecated-extend':
-      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.extend.html',
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.extend.html',
   'core-deprecated-implement':
-      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.implement.html',
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.implement.html',
   'core-deprecated-instantiate':
-      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.instantiate.html',
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.instantiate.html',
   'core-deprecated-mixin':
-      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.mixin.html',
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.mixin.html',
   'core-deprecated-new':
-      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.html',
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.html',
   'core-deprecated-optional':
-      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.optional.html',
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.optional.html',
   'core-deprecated-subclass':
-      'https://api.dart.dev/beta/latest/dart-core/Deprecated/Deprecated.subclass.html',
+      'https://api.dart.dev/dart-core/Deprecated/Deprecated.subclass.html',
   'definite assignment': '/resources/glossary#definite-assignment',
   'debugPrint': 'https://api.flutter.dev/flutter/foundation/debugPrint.html',
   'ffi': '/interop/c-interop',
   'irrefutable pattern': '/resources/glossary#irrefutable-pattern',
   'kDebugMode':
       'https://api.flutter.dev/flutter/foundation/kDebugMode-constant.html',
-  'meta-awaitNotRequired':
-      'https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html',
+  'meta-awaitNotRequired': 'https://pub.dev/documentation/meta/latest/meta/awaitNotRequired-constant.html',
   'meta-doNotStore':
       'https://pub.dev/documentation/meta/latest/meta/doNotStore-constant.html',
-  'meta-doNotSubmit':
-      'https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html',
+  'meta-doNotSubmit': 'https://pub.dev/documentation/meta/latest/meta/doNotSubmit-constant.html',
   'meta-factory':
       'https://pub.dev/documentation/meta/latest/meta/factory-constant.html',
   'meta-immutable':
@@ -57,22 +55,17 @@ Map<String, String> get _linkDefinitions => {
       'https://pub.dev/documentation/meta/latest/meta/internal-constant.html',
   'meta-literal':
       'https://pub.dev/documentation/meta/latest/meta/literal-constant.html',
-  'meta-mustBeConst':
-      'https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html',
-  'meta-mustCallSuper':
-      'https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html',
-  'meta-optionalTypeArgs':
-      'https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html',
+  'meta-mustBeConst': 'https://pub.dev/documentation/meta/latest/meta/mustBeConst-constant.html',
+  'meta-mustCallSuper': 'https://pub.dev/documentation/meta/latest/meta/mustCallSuper-constant.html',
+  'meta-optionalTypeArgs': 'https://pub.dev/documentation/meta/latest/meta/optionalTypeArgs-constant.html',
   'meta-sealed':
       'https://pub.dev/documentation/meta/latest/meta/sealed-constant.html',
   'meta-useResult':
       'https://pub.dev/documentation/meta/latest/meta/useResult-constant.html',
   'meta-UseResult':
       'https://pub.dev/documentation/meta/latest/meta/UseResult-class.html',
-  'meta-visibleForOverriding':
-      'https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html',
-  'meta-visibleForTesting':
-      'https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html',
+  'meta-visibleForOverriding': 'https://pub.dev/documentation/meta/latest/meta/visibleForOverriding-constant.html',
+  'meta-visibleForTesting': 'https://pub.dev/documentation/meta/latest/meta/visibleForTesting-constant.html',
   'mixin application': '/resources/glossary#mixin-application',
   'obviously typed': '/resources/glossary#obviously-typed',
   'obviously-typed': '/resources/glossary#obviously-typed',

@@ -159,7 +159,7 @@ var codeUnitList = 'Never odd or even'.codeUnits.toList();
 assert(codeUnitList[0] == 78);
 ```
 
-:::
+:::note
 In many cases, you want to work with
 Unicode grapheme clusters
 as opposed to pure code units.

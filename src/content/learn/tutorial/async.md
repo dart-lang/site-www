@@ -81,7 +81,7 @@ dependency to your project.
 Now that you've added the `http` package,
 you need to import it into your Dart file to use its functionalities.
 
-1.  Open the `dartpedia/bin/cli.dart` file.
+1.  Open the `cli/bin/cli.dart` file.
 1.  Add the following `import` statement at the top of the file,
     along with the existing `dart:io` import:
 

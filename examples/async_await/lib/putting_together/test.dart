@@ -58,8 +58,7 @@ void main() async {
           readableErrors: {
             typoMessage: typoMessage,
             'null': '$didNotImplement greetUser?',
-            'HelloJean':
-                'Looks like you forgot the space between \'Hello\' and \'Jean\'',
+            'HelloJean': 'Looks like you forgot the space between \'Hello\' and \'Jean\'',
             'Hello Instance of \'Future<String>\'':
                 'Looks like you forgot to use the \'await\' keyword!',
             'Hello Instance of \'_Future<String>\'':
@@ -81,10 +80,8 @@ void main() async {
             'null': '$didNotImplement sayGoodbye?',
             noCatch:
                 'Did you remember to call logoutUser within a try/catch block?',
-            'Instance of \'Future<String>\' Thanks, see you next time':
-                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-            'Instance of \'_Future<String>\' Thanks, see you next time':
-                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+            'Instance of \'Future<String>\' Thanks, see you next time': 'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+            'Instance of \'_Future<String>\' Thanks, see you next time': 'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
           },
         ),
       )
@@ -102,10 +99,8 @@ void main() async {
             'null': '$didNotImplement sayGoodbye?',
             noCatch:
                 'Did you remember to call logoutUser within a try/catch block?',
-            'Instance of \'Future<String>\' Thanks, see you next time':
-                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
-            'Instance of \'_Future<String>\' Thanks, see you next time':
-                'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+            'Instance of \'Future<String>\' Thanks, see you next time': 'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+            'Instance of \'_Future<String>\' Thanks, see you next time': 'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
             'Instance of \'_Exception\'':
                 'CAUGHT Did you remember to return a string?',
           },

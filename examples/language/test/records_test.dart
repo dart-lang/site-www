@@ -1,6 +1,6 @@
 // ignore_for_file: unrelated_type_equality_checks
+
 import 'package:test/test.dart';
-// import 'package:examples_util/print_matcher.dart' as m;
 
 void main() {
   test('record-syntax', () {

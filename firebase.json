@@ -11,7 +11,7 @@
       {
         "source": "**/*.@(avif|jpg|jpeg|gif|png|md|txt|json|webp|webm|svg|css|js)",
         "headers": [
-          { "key": "Cache-Control", "value": "max-age=28800" },
+          { "key": "Cache-Control", "value": "max-age=3600" },
           { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
       },
@@ -20,6 +20,12 @@
         "headers": [
           { "key": "Cache-Control", "value": "max-age=604800" },
           { "key": "Access-Control-Allow-Origin", "value": "*" }
+        ]
+      },
+      {
+        "source": "404.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "max-age=0, must-revalidate" }
         ]
       },
       {

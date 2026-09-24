@@ -34,11 +34,13 @@ class Stepper extends CustomComponent {
           if (child case final ElementNode heading
               when heading.tag == 'h$level') {
             steps.add((title: child, content: []));
-          } else if (child case ElementNode(
-            tag: 'div',
-            attributes: {'class': 'header-wrapper'},
-            children: [final ElementNode heading, ..._],
-          ) when heading.tag == 'h$level') {
+          } else if (child
+              case ElementNode(
+                tag: 'div',
+                attributes: {'class': 'header-wrapper'},
+                children: [final ElementNode heading, ..._],
+              )
+              when heading.tag == 'h$level') {
             steps.add((title: child, content: []));
           } else {
             if (steps.isEmpty) {

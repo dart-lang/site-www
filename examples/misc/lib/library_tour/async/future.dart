@@ -1,6 +1,8 @@
 // ignore_for_file: unused_element, strict_raw_type
+
 // #docregion import
 import 'dart:async';
+
 // #enddocregion import
 
 void miscDeclAnalyzedButNotTested() {

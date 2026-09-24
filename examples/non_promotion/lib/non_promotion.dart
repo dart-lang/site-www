@@ -3,17 +3,18 @@
 // ignore_for_file: prefer_if_null_operators
 // ignore_for_file: unnecessary_non_null_assertion
 
+// #docregion suspension
+import 'dart:async';
+// #enddocregion suspension
+
 // #docregion not-field, conflicting-getter
 import 'dart:math';
 // #enddocregion not-field, conflicting-getter
 
 // #docregion mock
 import 'package:mockito/mockito.dart';
-// #enddocregion mock
 
-// #docregion suspension
-import 'dart:async';
-// #enddocregion suspension
+// #enddocregion mock
 
 // #docregion suspension
 Future<void> example(String? extraInfo) async {

@@ -612,7 +612,7 @@ resemble the following:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.14.1
+  build_runner: ^2.15.1
   lints: ^6.1.0
   test: ^1.31.1
 ```

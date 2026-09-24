@@ -213,14 +213,15 @@ assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 
 ### Parameter modifiers
 
-In Dart 3.13 and later,
-you can't use modifiers like `final` or `var` for normal function parameters.
-These keywords are now reserved exclusively for
+The `final` and `var` parameter modifiers are reserved exclusively for
 [primary constructors][] to declare instance fields.
+Using them on formal parameters in any other declaration produces
+a compile-time error (`extraneous_modifier`).
+For code examples and migration steps, see
+[Parameter modifier restrictions][].
 
-If you wish to enforce immutability for function parameters,
-use lints like [`parameter_assignments`][] instead
-of the `final` keyword in the signature.
+To enforce non-reassignable parameters as a style choice,
+use the [`parameter_assignments`][] lint rule instead.
 
 ## The main() function {:#main}
 
@@ -330,13 +331,12 @@ The following code block contains the function's body:
 }
 ```
 
-The following example defines an anonymous function
-with an untyped parameter, `item`.
-The anonymous function passes it to the `map` function.
+The following example passes an anonymous function
+with an untyped parameter, `item`,
+to the `map` function.
 The `map` function, invoked for each item in the list,
 converts each string to uppercase.
-Then, the anonymous function passed to `forEach`,
-prints each converted string with its length.
+Then, a `for-in` loop prints each converted string with its length.
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
@@ -378,7 +378,6 @@ to verify that it is functionally equivalent.
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
 var uppercaseList = list.map((item) => item.toUpperCase()).toList();
-uppercaseList.forEach((item) => print('$item: ${item.length}'));
 ```
 
 ## Lexical scope
@@ -706,5 +705,6 @@ is not `final`) an external setter.
 [trailing commas]: /language/collections#lists
 [primary constructors]: /language/primary-constructors
 [`parameter_assignments`]: /tools/linter-rules/parameter_assignments
+[Parameter modifier restrictions]: /language/primary-constructors#parameter-modifier-restrictions
 
 

@@ -1,4 +1,17 @@
 
+You have two options to install the Dart SDK on Windows:
+
+* Use [winget](#install-using-winget).
+* Use [Chocolatey](#install-using-chocolatey).
+
+### Install using winget {:.no_toc}
+
+To install the Dart SDK, use [winget][]:
+
+```ps
+PS C:\> winget install --id=Google.DartSDK -e
+```
+
 ### Install using Chocolatey {:.no_toc}
 
 To install the Dart SDK, use [Chocolatey][Chocolatey].
@@ -12,7 +25,7 @@ Chocolatey requires [elevated permissions].
    PS C:\> choco install dart-sdk
    ```
 
-### Change default install path {:.no_toc}
+### Change default Chocolatey install path {:.no_toc}
 
 By default, Chocolatey installs the SDK at `C:\tools\dart-sdk`.
 To change that location, set the [`ChocolateyToolsLocation`][]
@@ -38,17 +51,46 @@ add the SDK location to your PATH:
 6. In each window that you just opened,
    click **Apply** or **OK** to dismiss it and apply the path change.
 
+### Upgrade using winget {:.no_toc}
+
+To upgrade the Dart SDK using winget,
+use the following command.
+
+```ps
+PS C:\> winget upgrade --id=Google.DartSDK -e
+```
+
 ### Upgrade using Chocolatey {:.no_toc}
 
-To upgrade the Dart SDK, use the following command.
+To upgrade the Dart SDK using Chocolatey,
+use the following command.
 
 ```ps
 PS C:\> choco upgrade dart-sdk
 ```
 
+### Uninstall using winget {:.no_toc}
+
+To uninstall the Dart SDK using winget,
+perform the following steps.
+
+1. Use the following command.
+
+   ```ps
+   PS C:\> winget uninstall --id=Google.DartSDK -e
+   ```
+
+1. Remove the Dart configuration files from your home directory.
+
+   ```ps
+   PS C:\> Remove-Item -Recurse -Force `
+        -Path $env:LOCALAPPDATA\.dartServer,$env:APPDATA\.dart,$env:APPDATA\.dart-tool
+   ```
+
 ### Uninstall using Chocolatey {:.no_toc}
 
-To uninstall the Dart SDK, perform the following steps.
+To uninstall the Dart SDK using Chocolatey,
+perform the following steps.
 
 1. Launch [PowerShell][] with elevated permissions.
 
@@ -61,7 +103,7 @@ To uninstall the Dart SDK, perform the following steps.
 1. Remove the Dart configuration files from your home directory.
 
    ```ps
-   PS C:\> Remove-Item -Recurse -Force ^
+   PS C:\> Remove-Item -Recurse -Force `
         -Path $env:LOCALAPPDATA\.dartServer,$env:APPDATA\.dart,$env:APPDATA\.dart-tool
    ```
 
@@ -69,3 +111,4 @@ To uninstall the Dart SDK, perform the following steps.
 [PowerShell]: https://www.thewindowsclub.com/how-to-open-an-elevated-powershell-prompt-in-windows-10
 [Chocolatey]: https://chocolatey.org
 [`ChocolateyToolsLocation`]: https://stackoverflow.com/questions/19752533/how-do-i-set-chocolatey-to-install-applications-onto-another-drive/68314437#68314437
+[winget]: https://learn.microsoft.com/windows/package-manager/winget/

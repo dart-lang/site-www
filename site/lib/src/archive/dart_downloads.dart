@@ -10,14 +10,13 @@ import 'package:path/path.dart' as p;
 
 import 'version_info.dart';
 
-/// Define the storage base URL explicitly.
+/// The storage base URL.
 ///
-/// This will help to modify the base easily
-/// if any site is using a different storage base.
-const storageBaseUrl = 'https://storage.googleapis.com/';
+/// Defined explicitly as some sites might override it.
+const String storageBaseUrl = 'https://storage.googleapis.com/';
 
-const _dartChannel = 'dart-archive';
-const _flavor = 'release';
+const String _dartChannel = 'dart-archive';
+const String _flavor = 'release';
 
 String _revisionPath(
   String channel,
@@ -137,25 +136,23 @@ class DartDownloads {
     String channel,
     String revision,
     String path,
-  ) async =>
-      await _api.objects.get(
-            _dartChannel,
-            _revisionPath(channel, revision, [path]),
-            downloadOptions: storage.DownloadOptions.fullMedia,
-          )
-          as storage.Media;
+  ) async => await _api.objects.get(
+    _dartChannel,
+    _revisionPath(channel, revision, [path]),
+    downloadOptions: storage.DownloadOptions.fullMedia,
+  ) as storage.Media;
 
   Future<storage.Object> _fetchMetadata(
     String channel,
     String revision,
     String path,
-  ) async =>
-      await _api.objects.get(
-            _dartChannel,
-            _revisionPath(channel, revision, [path]),
-            downloadOptions: storage.DownloadOptions.metadata,
-          )
-          as storage.Object;
+  ) async => await _api.objects.get(
+    _dartChannel,
+    _revisionPath(channel, revision, [path]),
+    downloadOptions: storage.DownloadOptions.metadata,
+  ) as storage.Object;
 }
 
-final _jsonAsciiDecoder = json.fuse(ascii).decoder;
+final Converter<List<int>, Object?> _jsonAsciiDecoder = json
+    .fuse(ascii)
+    .decoder;

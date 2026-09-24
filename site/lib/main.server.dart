@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:async';
-
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/components/file_tree.dart';
 import 'package:jaspr_content/components/post_break.dart';
@@ -45,15 +43,16 @@ import 'src/pages/robots_txt.dart';
 import 'src/templating/dash_template_engine.dart';
 import 'src/util.dart';
 
-final contentDirectory = path.join(siteSrcDirectoryPath, 'content');
+/// The root of the directory where site Markdown content is stored.
+final String _contentDirectory = path.join(siteSrcDirectoryPath, 'content');
 
-Future<void> main() async {
+void main() {
   Jaspr.initializeApp(options: defaultServerOptions);
 
   final assetManager = AssetManager(
-    directory: contentDirectory,
+    directory: _contentDirectory,
     outputPrefix: 'images',
-    dataProperties: const {'page.image'},
+    dataProperties: const {'page.image', 'page.socialImage'},
     filterPages: (page) => page.path.startsWith('blog/'),
   );
 
@@ -63,7 +62,7 @@ Future<void> main() async {
     eagerlyLoadAllPages: true,
     loaders: [
       FilesystemLoader(
-        contentDirectory,
+        _contentDirectory,
         filterExtensions: const {'.md', '.html'},
       ),
       MemoryLoader(pages: allMemoryPages),
@@ -145,7 +144,7 @@ Future<void> main() async {
       secondaryOutputs: [
         const AtomFeedOutput(),
         const RobotsTxtOutput(),
-        MarkdownOutput(
+        _DashMarkdownOutput(
           createHeader: (page) {
             final header = StringBuffer();
             if (page.data.page['title'] case final String title
@@ -167,4 +166,42 @@ Future<void> main() async {
   );
 
   runApp(app);
+}
+
+final class _DashMarkdownOutput extends MarkdownOutput {
+  static final _changelogTagPattern = RegExp(
+    r'<ChangelogIndex\s*(?:/>|>\s*</ChangelogIndex>)',
+    caseSensitive: false,
+  );
+
+  _DashMarkdownOutput({super.createHeader});
+
+  @override
+  Component build(Page page) {
+    if (!_changelogTagPattern.hasMatch(page.content)) {
+      return super.build(page);
+    }
+
+    return Builder(
+      builder: (context) {
+        final pageContent = StringBuffer();
+        if (createHeader case final createHeader?) {
+          final headerForPage = createHeader(page);
+          pageContent.writeln(headerForPage);
+        }
+
+        final changesData = page.data['changelog'] as List<Object?>?;
+        final renderedChangelog = changesData != null
+            ? ChangelogIndex.renderMarkdown(changesData)
+            : '';
+        pageContent.writeln(
+          page.content.replaceFirst(_changelogTagPattern, renderedChangelog),
+        );
+
+        context.setHeader('Content-Type', 'text/markdown; charset=utf-8');
+        context.setStatusCode(200, responseBody: pageContent.toString());
+        return const Component.empty();
+      },
+    );
+  }
 }

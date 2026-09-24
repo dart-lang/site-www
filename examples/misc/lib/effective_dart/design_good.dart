@@ -548,6 +548,14 @@ class C<Foo> {
   // #enddocregion avoid_return_types_on_setters
 }
 
+class Map2<K, V> {
+  // #docregion avoid_return_types_on_setters_bracket
+  operator []=(K key, V value) {
+    /* ... */
+  }
+  // #enddocregion avoid_return_types_on_setters_bracket
+}
+
 //----------------------------------------------------------------------------
 
 class String0 {

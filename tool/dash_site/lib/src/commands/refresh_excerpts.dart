@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:excerpter/excerpter.dart';
 import 'package:path/path.dart' as path;
+
 import '../utils.dart';
 
 final class RefreshExcerptsCommand extends Command<int> {
@@ -40,7 +41,7 @@ final class RefreshExcerptsCommand extends Command<int> {
   String get name => 'refresh-excerpts';
 
   @override
-  Future<int> run() async => _refreshExcerpts(
+  Future<int> run() async => await _refreshExcerpts(
     verboseLogging: argResults.get<bool>(_verboseFlag, false),
     dryRun: argResults.get<bool>(_dryRunFlag, false),
     failOnUpdate: argResults.get<bool>(_failOnUpdateFlag, false),

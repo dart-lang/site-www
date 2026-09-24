@@ -1,6 +1,8 @@
 // ignore_for_file: unused_element, unused_local_variable, deprecated_member_use
+
 // #docregion import
 import 'dart:html';
+
 // #enddocregion import
 
 void miscDeclAnalyzedButNotTested() {

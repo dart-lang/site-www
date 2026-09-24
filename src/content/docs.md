@@ -34,4 +34,14 @@ Here are some of this site's most visited pages:
   <Card title="Packages" link="/tools/pub/packages">
     Everything you need to know about the package ecosystem.
   </Card>
+  <Card title="Interoperability" link="/interop">
+    Learn how to interop with C, Swift, Objective-C, Java, and JavaScript.
+  </Card>
+  <Card title="Build with AI" link="/ai">
+    Tools and frameworks for AI-assisted development
+    and building AI-powered apps.
+  </Card>
+  <Card title="CLI & server apps" link="/server">
+    Tools and frameworks for developing command-line and backend apps.
+  </Card>
 </div>
