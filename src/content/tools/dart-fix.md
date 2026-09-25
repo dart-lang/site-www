@@ -140,7 +140,7 @@ linter:
     - use_super_parameters
 ```
 
-We also need to make sure the code enables the required [language version][].
+Make sure your code enables the required [language version][].
 Super initializers were introduced in Dart 2.17,
 so update `pubspec.yaml` to have at least that
 in the lower SDK constraint:
