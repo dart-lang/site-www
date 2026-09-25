@@ -12,7 +12,7 @@ finds and fixes two types of issues:
   (sometimes called _quick-fixes_ or _code actions_).
 
 * Outdated API usages when updating to
-  newer releases of the Dart and Flutter SDKs,
+  newer releases of the Dart and Flutter SDKs
   or dependencies that provide data-driven fixes.
   If you are a package owner,
   you can author [Data-driven fixes][]
