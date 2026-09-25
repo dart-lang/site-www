@@ -89,6 +89,10 @@ without modifying the source files.
 $ dart fix --compare-to-golden
 ```
 
+Package maintainers can use this option to verify their data-driven fixes.
+To learn how to configure and run these tests,
+see [Test your fixes][].
+
 <a id="customization"></a>
 ## Customize analysis-driven fixes {:#customize}
 
@@ -195,5 +199,6 @@ or <kbd>Option</kbd> + <kbd>Return</kbd> on macOS
 on any highlighted code diagnostic to view and apply available quick fixes.
 
 [`dart analyze`]: /tools/dart-analyze
-[Data-driven fixes]: /tools/pub/data-driven-fixes
+[data-driven fixes]: /tools/pub/data-driven-fixes
+[Test your fixes]: /tools/pub/data-driven-fixes#test-your-fixes
 [language version]: /language/versioning

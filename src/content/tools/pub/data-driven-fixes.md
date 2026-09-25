@@ -18,7 +18,7 @@ you can provide _data-driven fixes_.
 Data-driven fixes are declarative migration rules
 stored directly within your package.
 After users update to a newer version of your package,
-they can apply these migration with [`dart fix`][] or IDE quick fixes.
+they can apply these migrations with [`dart fix`][] or IDE quick fixes.
 
 ## Enable data-driven fixes in your package {:#add-fixes}
 

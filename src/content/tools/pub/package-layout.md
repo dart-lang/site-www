@@ -490,7 +490,10 @@ in a `test_fixes` directory.
 Golden files contain the expected code after applying fixes.
 To verify these tests,
 run `dart fix --compare-to-golden`.
-To learn more, see [Test your fixes](/tools/pub/data-driven-fixes#test-your-fixes).
+To learn how to configure and run the tests, see [Test your fixes][].
+
+[data-driven fixes]: #data-driven-fixes
+[Test your fixes]: /tools/pub/data-driven-fixes#test-your-fixes
 
 ## Documentation
 
