@@ -89,6 +89,7 @@ without modifying the source files.
 $ dart fix --compare-to-golden
 ```
 
+<a id="customization"></a>
 ## Customize analysis-driven fixes {:#customize}
 
 The `dart fix` command only applies fixes
