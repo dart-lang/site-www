@@ -190,7 +190,8 @@ This ensures that Dart uses the latest versions of your files.
 ### IntelliJ IDEA and Android Studio
 
 In [JetBrains IDEs](/tools/jetbrains-plugin),
-press **Alt+Enter** (Windows/Linux) or **Option+Return** (macOS)
+press <kbd>Alt</kbd> + <kbd>Enter</kbd> on Windows or Linux
+or <kbd>Option</kbd> + <kbd>Return</kbd> on macOS
 on any highlighted code diagnostic to view and apply available quick fixes.
 
 [`dart analyze`]: /tools/dart-analyze
