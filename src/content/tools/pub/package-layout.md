@@ -484,8 +484,8 @@ other empirical metrics).
 
 </FileTree>
 
-If your package provides [data-driven fixes](#data-driven-fixes),
-test them using paired Dart test files and golden master files
+If your package provides [data-driven fixes][],
+test them using paired Dart files and golden files
 in a `test_fixes` directory.
 Run `dart fix --compare-to-golden` to verify these tests.
 To learn more, see [Test your fixes](/tools/pub/data-driven-fixes#test-your-fixes).
