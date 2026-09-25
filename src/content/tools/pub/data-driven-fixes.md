@@ -45,7 +45,7 @@ you can split them across multiple files in a `lib/fix_data/` directory.
 ### 2. Define API transforms
 
 In `fix_data.yaml`, specify the format version (`version: 1`)
-and a list of `transforms`.
+and a `transforms` list.
 Each transform describes the API element that changed
 and the changes to apply.
 
