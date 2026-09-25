@@ -62,10 +62,6 @@ Preview the proposed changes without modifying any files.
 $ dart fix --dry-run
 ```
 
-```console
-$ dart fix -n
-```
-
 ### `--apply`
 
 Apply the proposed changes directly to the source files.
