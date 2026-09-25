@@ -14,9 +14,10 @@ finds and fixes two types of issues:
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs
   or dependencies that provide data-driven fixes.
-  If you are a package owner,
-  you can author [Data-driven fixes][]
-  to help your users migrate across breaking changes.
+
+  If you are a package maintainer,
+  to help your users migrate when you change your package's API,
+  you can author [data-driven fixes][].
 
 :::tip
 To learn about `dart fix` in a video format,
