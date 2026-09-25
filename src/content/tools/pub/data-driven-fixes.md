@@ -13,7 +13,7 @@ nextpage:
 As a [package](/tools/pub/packages) maintainer,
 modifying or deprecating public APIs can break existing code for your users.
 To help your users upgrade smoothly,
-you can provide **data-driven fixes**.
+you can provide _data-driven fixes_.
 
 Data-driven fixes are declarative migration rules
 stored directly within your package.
