@@ -81,7 +81,9 @@ $ dart fix --apply --code=prefer_single_quotes,use_super_parameters
 
 ### `--compare-to-golden`
 
-Compare the result of applying fixes to a golden master file.
+Compare the result of applying fixes with
+golden files that contain the expected resulting code,
+without modifying the source files.
 
 ```console
 $ dart fix --compare-to-golden
