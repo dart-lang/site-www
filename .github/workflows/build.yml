@@ -35,7 +35,16 @@ jobs:
       - name: Fetch Dart packages
         run: dart pub get
       - name: Install firebase-tools
-        run: curl -sL https://firebase.tools | bash
+        # Pinned because the hosting emulator fails to start with
+        # firebase-tools 15.31.0 (ERR_REQUIRE_ESM from stream-chain).
+        # Unpin once a fixed version is released.
+        env:
+          FIREBASE_TOOLS_VERSION: 15.30.2
+        run: |
+          sudo curl -sSfLo /usr/local/bin/firebase \
+            "https://firebase.tools/bin/linux/v${FIREBASE_TOOLS_VERSION}"
+          sudo chmod +rx /usr/local/bin/firebase
+          firebase --version
       - name: Build site
         run: dart run dash_site build
       - name: Check for broken Markdown links
