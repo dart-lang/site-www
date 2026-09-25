@@ -170,7 +170,7 @@ see [Customizing static analysis](/tools/analysis).
 When you open a project in an editor with Dart support,
 the Dart analyzer scans the project for issues that `dart fix` can repair.
 If it finds issues for repair,
-the editor can display prompts and offer quick-fixes (code actions).
+the editor can display prompts and offer quick fixes (code actions).
 
 <a id="vs-code-support"></a>
 ### VS Code
