@@ -291,7 +291,7 @@ For more information on packages, see
 If you update or deprecate APIs in your package,
 you can provide automated migrations for your users
 by placing a `fix_data.yaml` file in the `lib` directory.
-When users run [`dart fix`](/tools/dart-fix) or use IDE quick-fixes,
+When users run [`dart fix`](/tools/dart-fix) or use IDE quick fixes,
 the Dart analyzer uses this file to automatically upgrade their code.
 
 For details on writing and testing fixes, see
