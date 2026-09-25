@@ -67,8 +67,8 @@ transforms:
 
 * **`date`:** A `YYYY-MM-DD` date indicating
   when the change was introduced.
-* **`uris`:** The library URI relative to `lib/`
-  where the API is exported (such as `'my_package.dart'`).
+* **`uris`:** A list of library URIs that export the API,
+  relative to the `lib/` directory, such as `'my_package.dart'`.
 
 :::tip Best practice: Add fixes when you deprecate an API
 Add transforms to `fix_data.yaml` when you first deprecate an API,
