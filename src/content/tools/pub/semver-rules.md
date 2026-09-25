@@ -9,7 +9,7 @@ description: >-
 When developing and publishing Dart packages, adhering to [Semantic
 Versioning][semver] helps create a healthy and predictable package ecosystem.
 
-Any Dart package provides a set of features—and with that comes a
+Any Dart package provides a set of features, and with that comes a
 contract that the user can rely on this set of features to continue working.
 Packages sometimes get changed, and there are two categories of changes: adding
 or removing functionality. Some changes do one or the other, some do both. While
@@ -18,12 +18,13 @@ contract with the user. To accommodate this, Dart uses semantic versioning to
 help users recognize whether a new version of a package adheres to the old
 contract or presents a new one.
 
-This guide provides a detailed reference on which changes to your Dart code
-affect the public API surface of your package and what version bump is required.
+This guide provides an (incomplete) reference on which changes to your Dart
+code affect the public API surface of your package and what version bump is
+required.
 
 :::tip
-For a conceptual overview of pub's version solving algorithm and lockfiles, see
-the [Package versioning](/tools/pub/versioning) guide.
+For a conceptual overview of how Dart's package manager `pub` handles semantic
+versioning see the [Package versioning](/tools/pub/versioning) guide.
 :::
 
 ## Semantic versioning and `package:pub_semver`
@@ -31,43 +32,63 @@ the [Package versioning](/tools/pub/versioning) guide.
 Dart's package manager, pub, follows [Semantic Versioning][semver] as
 implemented by [`package:pub_semver`][pub_semver].
 
-A standard version number is formatted as `MAJOR.MINOR.PATCH`, such as `1.2.3`:
+A standard version number is formatted as `MAJOR.MINOR.PATCH`, such as `1.2.3`.
+The three numbers are hierarchical: `MINOR` versions are only comparable if they
+have the same `MAJOR` version, and `PATCH` versions are only comparable if they
+have the same `MAJOR` and `MINOR` versions. For example, `1.3.0` and `1.2.5`
+have comparable `MINOR` versions, but `1.3.0` and `2.1.0` don't.
+
+When comparing two versions, the first number that differs determines what kind
+of change separates them. The version with the larger number in that position
+contains:
 
 * **`MAJOR`**: Incompatible breaking changes to the public API.
 * **`MINOR`**: Backward-compatible new functionality or features.
 * **`PATCH`**: Backward-compatible bug fixes.
 
-### Pre-1.0.0 versions
-
-While standard SemVer allows any change before version `1.0.0`, pub and
-[`pub_semver`][pub_semver] enforce a stricter convention so that consumers can
-safely depend on pre-1.0.0 packages using [caret
-syntax](/tools/pub/dependencies#caret-syntax):
-
-* **`0.y.z` versions where `y > 0`, such as `0.2.0`:**
-  * Bumping `y` from `0.2.0` to `0.3.0` is treated as a **breaking change**,
-    which is equivalent to a major bump.
-  * Bumping `z` from `0.2.0` to `0.2.1` is treated as a **backward-compatible
-    change**, combining both minor and patch changes (pre-1.0.0 versions do not
-    distinguish `MINOR` from `PATCH`, though [`+` build suffixes](/tools/pub/versioning)
-    are occasionally used for tiny fixes prior to `1.0.0`).
-  * Caret syntax `^0.2.0` allows `>=0.2.0 <0.3.0`.
-* **`0.0.z` versions, such as `0.0.1`:**
-  * Bumping `z` from `0.0.1` to `0.0.2` is treated as a **breaking change**.
-  * Caret syntax `^0.0.1` allows only `>=0.0.1 <0.0.2`.
+Versions before `1.0.0`, which have a `MAJOR` version of `0`, are interpreted
+differently. For details, see [Pre-1.0.0 versions](#pre-1-0-0-versions).
 
 ## The public API boundary
 
-In Dart packages, the **public API** comprises all declarations that are part of
-your package's supported contract for external consumers:
+In short, the public API is everything that users of your package can import
+and use in the officially supported way, which excludes importing libraries
+from its `lib/src/` directory.
 
-* **Public:** Any library inside `lib/` outside of `lib/src/`, including
-  subdirectories such as `lib/my_package.dart` or `lib/foo/bar.dart`, and any
-  declarations re-exported through `export` directives.
-* **Private and internal:** Any file inside `lib/src/` that is **not**
-  re-exported by a public library in `lib/`, as well as declarations annotated
-  with `@internal` or `@visibleForTesting` from [`package:meta`]({{site.pub-pkg}}/meta).
-  Changes to internal declarations do not affect the public SemVer contract.
+More precisely, the **public API** of your package consists of the declarations
+that are exported by each of its **public libraries**, and that aren't
+explicitly marked as non-public:
+
+* A library is public if its file is in `lib/`, but not inside `lib/src/`,
+  such as `lib/my_package.dart` or `lib/foo/bar.dart`.
+* A declaration is marked as non-public if it's annotated with `@internal` or
+  `@visibleForTesting` from [`package:meta`]({{site.pub-pkg}}/meta), or if it's
+  explicitly documented as only for internal use.
+
+Anything else is private to the package and not intended for use by its
+clients.
+
+:::note
+Nothing prevents a user from importing a library from inside another package's
+`lib/src/` directory, such as `import 'package:example/src/secret.dart';`, or
+from using an otherwise visible declaration that's marked `@internal`. However,
+being non-public means that doing so is heavily discouraged. The package author
+has made **no promises** that using such declarations is safe or will keep
+working.
+:::
+
+### Declarations and capabilities
+
+There are two kinds of things you can remove from a public API, and removing
+either one is a breaking change:
+
+* **Declarations**, such as functions, classes, members, getters, and setters.
+  A declaration is either there or not, and it has a signature or interface,
+  such as a function's parameter and return types.
+* **Capabilities**, which are about *how* users can use a declaration. For
+  example, whether a variable or constructor can be used in constant
+  expressions, or whether a class can be used as a superclass, mixin, or
+  superinterface, as controlled by its class modifiers.
 
 ### Guiding principles: Contracts and intended usage
 
@@ -85,10 +106,38 @@ All specific rules in this guide follow from three general principles:
    non-breaking (`MINOR` or `PATCH`).
 3. **Pragmatic ecosystem conventions:** In Dart, almost any addition can
    theoretically cause a static error in rare consumer patterns, such as
-   unprefixed wildcard imports, local variable type inference (`var x = fn();`),
-   method tear-offs, or extension resolution ambiguity. By convention, Dart
-   package versioning treats these edge cases as non-breaking (`MINOR`) so that
-   packages can evolve without constant major version bumps.
+   imports without a prefix or `show` clause, local variable type inference
+   (`var x = fn();`), method tear-offs, or extension resolution ambiguity. By
+   convention, Dart package versioning treats these edge cases as non-breaking
+   (`MINOR`) so that packages can evolve without constant major version bumps.
+   Many of these cases come down to the same idea: a package's promises are
+   only about its own API, not about how that API integrates into another
+   program. For example, name conflicts with other packages are outside the
+   scope of SemVer guarantees.
+
+### Widening and narrowing types
+
+Most type-related rules in this guide follow from two general rules:
+
+* **Return types** can be narrowed to a subtype, such as from `num` to `int`.
+  Changing a return type to a type that isn't a subtype of the original, such
+  as widening it from `int` to `num`, is breaking, because callers might rely
+  on the original type. For details, see [Return types](#return-types).
+* **Parameter types** can be widened to a supertype, such as from `int` to
+  `num`. Changing a parameter type to a type that isn't a supertype of the
+  original, such as narrowing it from `num` to `int`, is breaking, because
+  callers might pass values of the original type. For details, see
+  [Parameters](#parameters).
+
+These rules also apply to getters and setters, including the implicit getter
+and setter of a variable. A getter's type is a return type, and a setter's type
+is a parameter type. That's why you can narrow the type of a `const` or `final`
+variable, which only has a getter, but can't change the type of a mutable
+variable, which has both, in either direction.
+
+If users can override a member, such as an instance method of a class that
+they can extend or implement, both directions are breaking, because existing
+overrides might no longer be valid.
 
 ---
 
@@ -142,11 +191,13 @@ void performTask() {}
 void executeTask() {} // Renamed: callers referencing `performTask` fail to compile.
 ```
 
-### MAJOR: Move a declaration to `lib/src/` without re-exporting
+### MAJOR: Stop exporting a declaration from a public library
 
-Moving a declaration from the public `lib/` root to `lib/src/`, without an
-`export` in a public library file, makes it inaccessible to external packages,
-breaking all existing consumers.
+Removing a declaration from the exports of a public library is a breaking
+change, no matter what happens to the declaration elsewhere. Code that imports
+the original library and refers to the declaration fails to compile. This is
+true even if you move the declaration to another public library, because
+existing imports still refer to the original library.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -155,14 +206,21 @@ export 'src/engine.dart';
 
 // After (v2.0.0 - MAJOR):
 // lib/my_package.dart
-// `src/engine.dart` is no longer exported: callers importing `package:my_package/my_package.dart` fail to access engine symbols.
+// `src/engine.dart` is no longer exported here.
+
+// lib/engine.dart
+export 'src/engine.dart'; // Moved: code importing `package:my_package/my_package.dart` can no longer access engine symbols.
 ```
 
-### MAJOR: Widen or change the type of a `const` or `final` variable
+### MAJOR: Widen or change the type of a variable
 
-Changing a `const` or `final` variable to a broader type, such as changing
-`const int maxRetries` to `const num maxRetries`, or to an incompatible type
-breaks callers expecting members of the more specific type.
+Changing a variable to a broader type, such as changing `const int maxRetries`
+to `const num maxRetries`, or to an unrelated type breaks callers expecting
+members of the original type. This applies to all variables, whether they're
+`const`, `final`, or mutable, because reading a variable calls its implicit
+getter, and changing the return type of any function, including a getter, to a
+type that isn't a subtype of the original is breaking. For more information,
+see [Widening and narrowing types](#widening-and-narrowing-types).
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -190,12 +248,14 @@ const int timeout = 30; // Narrowed: consumers only read the value, receiving a 
 
 ### MAJOR: Change the type of a mutable top-level variable
 
-For mutable `var` variables that can be both read from and written to, changing
-the static type in either direction is a breaking change:
-* Narrowing the type, such as `num` to `int`, breaks callers assigning a
-  `double` into the variable.
-* Widening the type, such as `int` to `num`, breaks callers expecting `int`
-  methods when reading the variable.
+For mutable variables that can be both read from and written to, changing the
+static type in either direction is a breaking change, because the variable has
+both a getter and a setter (see [Widening and narrowing
+types](#widening-and-narrowing-types)):
+* Narrowing the type, such as `num` to `int`, narrows the setter's parameter
+  type, which breaks callers assigning a `double` into the variable.
+* Widening the type, such as `int` to `num`, widens the getter's return type,
+  which breaks callers expecting `int` methods when reading the variable.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -205,13 +265,11 @@ num threshold = 10.5;
 int threshold = 10; // Narrowed: callers assigning a double (e.g. `threshold = 1.5;`) fail to compile.
 ```
 
-### MAJOR: Change a top-level variable from `var` to `final` or from `const` to `final`
+### MAJOR: Change a mutable variable to `final` or `const`
 
-* Changing a mutable `var` variable to `final` breaks any consumer assigning
-  values to that variable.
-* Changing a `const` variable to `final` breaks any consumer using that variable
-  in a `const` context, such as default parameter values, constant expressions,
-  or `switch` cases.
+A mutable variable has an implicit setter. Making the variable `final` or
+`const` removes that setter from your public API, and removing a declaration is
+a breaking change: users assigning values to the variable fail to compile.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -219,6 +277,30 @@ String globalConfig = 'default';
 
 // After (v2.0.0 - MAJOR):
 final String globalConfig = 'default'; // Callers assigning `globalConfig = 'custom';` fail to compile.
+```
+
+### MAJOR: Change a `const` variable to non-`const`
+
+Changing a `const` variable to `final` or to a mutable variable removes a
+capability instead of a declaration: if users can use a declaration in a
+constant expression, changing it so that they no longer can is a breaking
+change. For example, a variable that's no longer `const` can't be used in
+default parameter values, `const` collections, or `switch` cases. The same
+applies to changing a `const` constructor to non-`const` (see
+[Constructors](#constructors)).
+
+Declaring a variable or constructor `const` is a promise that it can be used in
+constant expressions, so only do so if you intend to keep that promise.
+
+```dart tag=bad
+// Before (v1.0.0):
+const defaultTimeout = Duration(seconds: 30);
+
+// Downstream package:
+void connect({Duration timeout = defaultTimeout}) {}
+
+// After (v2.0.0 - MAJOR):
+final defaultTimeout = Duration(seconds: 30); // Breaks: `defaultTimeout` is no longer a constant, so it can't be a default value.
 ```
 
 ---
@@ -235,10 +317,17 @@ these modifiers.
 Changing the modifier on an already-published class alters what external
 packages are permitted to do with it:
 
-#### MAJOR: Change a concrete class to an abstract class
+#### Change a concrete class to an abstract class
 
-Changing a concrete class to `abstract class` prevents external consumers from
-instantiating the class directly using `new MyClass()`, causing compile errors.
+Changing a concrete class to `abstract class` prevents users from creating
+instances by calling its generative constructors:
+
+* **MAJOR** if the class has a public generative constructor, including the
+  implicit default constructor, because calls such as `MyClass()` fail to
+  compile.
+* **PATCH** if the class has no public generative constructors. Any factory
+  constructors still work on an abstract class, so the public API doesn't
+  change.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -266,9 +355,9 @@ class Formatter {} // Safe: allows direct instantiation without breaking existin
 
 #### MAJOR: Add the `base` modifier to an existing class
 
-Prevents external consumers from implementing the class using `implements
-MyClass`, and requires any external subclass using `extends MyClass` to also be
-marked `base`, `final`, or `sealed`.
+Prevents users from implementing the class using `implements MyClass`, and
+requires any external subclass using `extends MyClass` to also be marked
+`base`, `final`, or `sealed`.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -354,20 +443,22 @@ class Database {} // Safe: loosens restrictions and allows consumers to extend o
 
 ---
 
-### Unmodified classes: `class` and `abstract class`
+### Changing members of unrestricted classes: `class` and `abstract class`
 
-An unmodified class in Dart allows external packages to construct, extend using
-`extends`, and implement using `implements`.
+Unrestricted classes are `class` declarations with no `interface`, `base`,
+`final`, or `sealed` modifier restricting their use. They can be `abstract` or
+not. Other packages can construct them (unless they're `abstract`), extend them
+using `extends`, and implement them using `implements`.
 
-#### MAJOR: Add an instance member to an unmodified class
+#### MAJOR: Add an instance member to an unrestricted class
 
-Adding any instance method, getter, setter, or field to an unmodified `class` or
-`abstract class` is a breaking change unless the class explicitly documents that
-it must not be implemented externally. Because external libraries are permitted
-to write `class MyImpl implements Foo`, any new member in `Foo` breaks existing
-implementers due to missing overrides. (To allow adding concrete members in
-`MINOR` releases with compiler enforcement, declare the class as `base` or
-`final`.)
+Adding any instance method, getter, setter, or field to an unrestricted `class`
+or `abstract class` is a breaking change unless the class explicitly documents
+that it must not be implemented externally. Because external libraries are
+permitted to write `class MyImpl implements Foo`, any new member in `Foo`
+breaks existing implementers due to missing overrides. (To allow adding
+concrete members in `MINOR` releases with compiler enforcement, declare the
+class as `base` or `final`.)
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -1522,9 +1613,9 @@ on supported SDKs can resolve it.
 
 *Note:* Bumping the minimum SDK constraint across a major Dart language version
 (such as from `<3.0.0` to `>=3.0.0`) changes your package's default language
-version, which can alter API semantics (for example, in Dart 3.0+, unmodified
-classes can no longer be used as mixins unless marked `mixin class`, which is a
-`MAJOR` break if downstream code mixed them in).
+version, which can alter API semantics (for example, in Dart 3.0+, classes can
+no longer be used as mixins unless marked `mixin class`, which is a `MAJOR`
+break if downstream code mixed them in).
 
 ### MINOR: Export a new dependency
 
@@ -1545,6 +1636,27 @@ Raising the lower bound of a dependency constraint in `pubspec.yaml` (within the
 existing major range) or updating dependencies used only internally does not
 require a major or minor bump as long as your package's own public API surface
 is unchanged.
+
+---
+
+## Pre-1.0.0 versions {:#pre-1-0-0-versions}
+
+While standard SemVer allows any change before version `1.0.0`, pub and
+[`pub_semver`][pub_semver] enforce a stricter convention so that consumers can
+safely depend on pre-1.0.0 packages using [caret
+syntax](/tools/pub/dependencies#caret-syntax):
+
+* **`0.y.z` versions where `y > 0`, such as `0.2.0`:**
+  * Bumping `y` from `0.2.0` to `0.3.0` is treated as a **breaking change**,
+    which is equivalent to a major bump.
+  * Bumping `z` from `0.2.0` to `0.2.1` is treated as a **backward-compatible
+    change**, combining both minor and patch changes (pre-1.0.0 versions do not
+    distinguish `MINOR` from `PATCH`, though [`+` build suffixes](/tools/pub/versioning)
+    are occasionally used for tiny fixes prior to `1.0.0`).
+  * Caret syntax `^0.2.0` allows `>=0.2.0 <0.3.0`.
+* **`0.0.z` versions, such as `0.0.1`:**
+  * Bumping `z` from `0.0.1` to `0.0.2` is treated as a **breaking change**.
+  * Caret syntax `^0.0.1` allows only `>=0.0.1 <0.0.2`.
 
 [effective_dart_errors]: /effective-dart/usage#error-handling
 [pub_semver]: {{site.pub-pkg}}/pub_semver
