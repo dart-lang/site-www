@@ -191,9 +191,7 @@ With the [Endive][endive] runtime for Java,
 you can instantiate and run the module like this:
 
 ```java title="DartEmbedderExample.java"
-import run.endive.runtime.*;
-import run.endive.wasm.*;
-import run.endive.wasm.types.FunctionImport;
+import module run.endive.runtime;
 
 void main() {
   var module = Parser.parse(new File("example.wasm"));
@@ -245,10 +243,10 @@ void main() {
 }
 ```
 
-With the appropriate classpath, the Dart application runs in a JVM:
+With the appropriate module path, the Dart application runs in a JVM:
 
 ```console
-$ java -cp "<endive jars>" DartEmbedderExample.java
+$ java -p "<endive jars>" --add-modules run.endive.runtime DartEmbedderExample.java
 Hello WebAssembly!
 ```
 
