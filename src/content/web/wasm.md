@@ -158,7 +158,7 @@ The `--standalone` flag enables an experimental alternative
 that uses a fixed set of Dart-specific imports instead,
 currently only documented [in SDK sources][standalone-embedder].
 If you provide compatible imports,
-you can run Dart applications on any WebAssembly 3 runtime.
+you can run Dart applications on any WebAssembly 3.0 runtime.
 To check which runtimes support the required features,
 see the [feature support table][wasm-runtimes] on webassembly.org.
 
@@ -258,7 +258,7 @@ that defines the host functions.
 
 ### Component model and WASI targets
 
-The `--standalone` flag lets Dart run on any WebAssembly 3 runtime,
+The `--standalone` flag lets Dart run on any WebAssembly 3.0 runtime,
 but the host must implement the Dart-specific imports.
 As a result, standalone modules don't run in general-purpose tools
 like `wasmtime run` (CLI programs) and `wasmtime serve` (HTTP servers).
