@@ -79,7 +79,8 @@ This allows users to migrate while their code still compiles.
 ## Test your fixes {:#test-your-fixes}
 
 To ensure your migration rules work as expected,
-set up paired test files and golden master files.
+set up paired test files and golden files that
+contain the expected code after applying the migrations.
 
 ### 1. Set up a `test_fixes` directory
 
