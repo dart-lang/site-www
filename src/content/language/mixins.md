@@ -179,8 +179,9 @@ main() {
 }
 ```
 
-In this example, only classes that extend or implement the `Musician` class
-can use the mixin `MusicalPerformer`. Because `SingerDancer` extends `Musician`,
+In this example, only classes that extend the `Musician` class
+can use the `MusicalPerformer` mixin.
+Because `SingerDancer` extends `Musician`,
 `SingerDancer` can mix in `MusicalPerformer`.
 
 ## `class`, `mixin`, or `mixin class`?
