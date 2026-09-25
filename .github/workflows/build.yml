@@ -37,7 +37,8 @@ jobs:
       - name: Install firebase-tools
         # Pinned because the hosting emulator fails to start with
         # firebase-tools 15.31.0 (ERR_REQUIRE_ESM from stream-chain).
-        # Unpin once a fixed version is released.
+        # Unpin once https://github.com/firebase/firebase-tools/issues/11168
+        # is fixed in a release.
         env:
           FIREBASE_TOOLS_VERSION: 15.30.2
         run: |
