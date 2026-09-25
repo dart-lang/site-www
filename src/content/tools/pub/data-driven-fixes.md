@@ -70,7 +70,7 @@ transforms:
 * **`uris`:** The library URI relative to `lib/`
   where the API is exported (such as `'my_package.dart'`).
 
-:::tip Best practice: Add fixes upon deprecation
+:::tip Best practice: Add fixes when you deprecate an API
 Add transforms to `fix_data.yaml` when you first deprecate an API,
 before removing it in a later breaking release.
 This allows users to migrate while their code still compiles.
