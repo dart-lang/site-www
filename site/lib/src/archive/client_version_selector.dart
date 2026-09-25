@@ -4,7 +4,6 @@
 
 import 'dart:async';
 
-import 'package:http/browser_client.dart' show BrowserClient;
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/intl_browser.dart';
@@ -17,11 +16,9 @@ import 'util.dart';
 import 'version_info.dart';
 import 'version_selector.dart' as server_version;
 
-const _storageBase = '${storageBaseUrl}dart-archive';
+const String _storageBase = 'https://$storageHost/dart-archive';
 
 final class VersionSelector extends server_version.VersionSelector {
-  static final DartDownloads _client = DartDownloads(client: BrowserClient());
-
   VersionSelector(super.channel) {
     if (OperatingSystem.current.isMac) {
       _selectedOs = 'macos';
@@ -73,11 +70,15 @@ final class VersionSelector extends server_version.VersionSelector {
   }
 
   Future<void> loadVersions() async {
-    final versions =
-        (await fetchSdkVersions(channel, _client)
-              ..sort())
-            .reversed;
+    final downloads = DartDownloads();
+    final List<Version> versions;
+    try {
+      versions = await fetchSdkVersions(channel, downloads);
+    } finally {
+      downloads.close();
+    }
 
+    versions.sort((a, b) => b.compareTo(a));
     _selectedVersion = versions.first.canonicalizedVersion;
     _versions = versions;
     notifyListeners();
@@ -128,10 +129,16 @@ final class VersionSelector extends server_version.VersionSelector {
     if (version == null) return;
 
     final svnRevision = svnRevisionForVersion(version);
-    final versionInfo = await _client.fetchVersion(
-      channel,
-      svnRevision ?? version,
-    );
+    final downloads = DartDownloads();
+    final VersionInfo versionInfo;
+    try {
+      versionInfo = await downloads.fetchVersion(
+        channel,
+        svnRevision ?? version,
+      );
+    } finally {
+      downloads.close();
+    }
 
     _versionInfo = versionInfo;
     notifyListeners();
@@ -249,7 +256,8 @@ final class VersionSelector extends server_version.VersionSelector {
             }
 
             final uri =
-                '$_storageBase/channels/$channel/release/${_versionString(versionInfo)}'
+                '$_storageBase/channels/$channel'
+                '/release/${_versionString(versionInfo)}'
                 '/${directoryMap[pa]}/$baseFileName${suffixMap[pa]}';
             final svnRevisionInfo = _svnRevision(versionInfo);
             final hasSha256 =
