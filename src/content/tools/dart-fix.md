@@ -9,7 +9,7 @@ finds and fixes two types of issues:
 
 * Analysis issues identified by [`dart analyze`][]
   that have associated automated fixes
-  (sometimes called _quick-fixes_ or _code actions_).
+  (sometimes called _quick fixes_ or _code actions_).
 
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs
