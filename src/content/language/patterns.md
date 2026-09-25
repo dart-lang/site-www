@@ -382,9 +382,7 @@ Without patterns, validation is verbose:
 
 <?code-excerpt "language/lib/patterns/json.dart (json-2)"?>
 ```dart
-if (data is Map<String, Object?> &&
-    data.length == 1 &&
-    data.containsKey('user')) {
+if (data is Map<String, Object?> && data.containsKey('user')) {
   var user = data['user'];
   if (user is List<Object> &&
       user.length == 2 &&
@@ -412,9 +410,10 @@ if (data case {'user': [String name, int age]}) {
 
 This case pattern simultaneously validates that:
 
-- `json` is a map, because it must first match the outer [map pattern][map] to proceed.
-  - And, since it's a map, it also confirms `json` is not null.
-- `json` contains a key `user`.
+- `data` is a map, because it must first match the outer
+  [map pattern][map] to proceed.
+  - And, since it's a map, it also confirms `data` is not null.
+- `data` contains a key `user`.
 - The key `user` pairs with a list of two values.
 - The types of the list values are `String` and `int`.
 - The new local variables to hold the values are `name` and `age`. 
