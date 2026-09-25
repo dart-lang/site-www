@@ -20,7 +20,7 @@ stored directly within your package.
 After users update to a newer version of your package,
 they can apply these migration with [`dart fix`][] or IDE quick fixes.
 
-## Enable data-driven fixes in your package
+## Enable data-driven fixes in your package {:#add-fixes}
 
 To provide automated migrations for your package,
 follow these steps.
