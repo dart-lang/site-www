@@ -488,7 +488,8 @@ If your package provides [data-driven fixes][],
 test them using paired Dart files and golden files
 in a `test_fixes` directory.
 Golden files contain the expected code after applying fixes.
-Run `dart fix --compare-to-golden` to verify these tests.
+To verify these tests,
+run `dart fix --compare-to-golden`.
 To learn more, see [Test your fixes](/tools/pub/data-driven-fixes#test-your-fixes).
 
 ## Documentation
