@@ -191,7 +191,7 @@ This ensures that Dart uses the latest versions of your files.
 
 In [JetBrains IDEs](/tools/jetbrains-plugin),
 press **Alt+Enter** (Windows/Linux) or **Option+Return** (macOS)
-on any highlighted code diagnostic to view and apply available quick-fixes.
+on any highlighted code diagnostic to view and apply available quick fixes.
 
 [`dart analyze`]: /tools/dart-analyze
 [Data-driven fixes]: /tools/pub/data-driven-fixes
