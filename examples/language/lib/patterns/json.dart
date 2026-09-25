@@ -10,9 +10,7 @@ void main() {
 
   {
     // #docregion json-2
-    if (data is Map<String, Object?> &&
-        data.length == 1 &&
-        data.containsKey('user')) {
+    if (data is Map<String, Object?> && data.containsKey('user')) {
       var user = data['user'];
       if (user is List<Object> &&
           user.length == 2 &&
