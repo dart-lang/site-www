@@ -95,3 +95,23 @@ extension ListToClasses on List<String> {
   /// that can be added to an HTML element.
   String get toClasses => join(' ');
 }
+
+/// Whether a lint with the given [name] and [description] matches [query].
+///
+/// Matching is case-insensitive and checks both the lint name and its
+/// description. Spaces in the query are treated as underscores when matching
+/// the name, so queries like `directives ordering` match `directives_ordering`.
+bool lintMatchesQuery({
+  required String name,
+  required String description,
+  required String query,
+}) {
+  final trimmedQuery = query.trim().toLowerCase();
+  if (trimmedQuery.isEmpty) return true;
+
+  final nameQuery = trimmedQuery.replaceAll(RegExp(r'\s+'), '_');
+  if (name.toLowerCase().contains(nameQuery)) return true;
+
+  return description.toLowerCase().contains(trimmedQuery);
+}
+

@@ -6,6 +6,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
+import '../../util.dart';
 import '../common/chip.dart';
 import '../common/search.dart';
 
@@ -22,6 +23,7 @@ enum RuleSetOption {
 class LintInfo {
   LintInfo({
     required this.name,
+    required this.description,
     required this.hasFix,
     required this.stable,
     required this.inCore,
@@ -30,6 +32,7 @@ class LintInfo {
   });
 
   final String name;
+  final String description;
   final bool hasFix;
   final bool stable;
   final bool inCore;
@@ -79,9 +82,13 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
           final lintName = card.id;
           if (lintName.isEmpty) return;
 
+          final description =
+              card.attributes.getNamedItem('data-description')?.value ?? '';
+
           lintsInfo.add(
             LintInfo(
               name: lintName,
+              description: description,
               hasFix: hasData(card, 'has-fix'),
               stable: hasData(card, 'stable'),
               inCore: hasData(card, 'in-core'),
@@ -116,7 +123,13 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
     for (final lint in lintsInfo) {
       final lintName = lint.name;
 
-      if (!lintName.contains(searchQuery.trim().toLowerCase())) continue;
+      if (!lintMatchesQuery(
+        name: lint.name,
+        description: lint.description,
+        query: searchQuery,
+      )) {
+        continue;
+      }
       if (onlyFixable && !lint.hasFix) continue;
       if (onlyStable && !lint.stable) continue;
       switch (selectedRuleSet) {
@@ -151,7 +164,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
         div(classes: 'search-row', [
           SearchBar(
             placeholder: 'Search rules...',
-            label: 'Search linter rules by their name.',
+            label: 'Search linter rules by name or description.',
             value: searchQuery,
             onInput: (value) {
               updateFilters(() {
