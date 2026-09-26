@@ -109,7 +109,7 @@ bool lintMatchesQuery({
   final trimmedQuery = query.trim().toLowerCase();
   if (trimmedQuery.isEmpty) return true;
 
-  final nameQuery = trimmedQuery.replaceAll(RegExp(r'\s+'), '_');
+  final nameQuery = trimmedQuery.replaceAll(_whitespacePattern, '_');
   if (name.toLowerCase().contains(nameQuery)) return true;
 
   return description.toLowerCase().contains(trimmedQuery);
