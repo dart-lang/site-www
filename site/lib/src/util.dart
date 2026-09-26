@@ -114,4 +114,3 @@ bool lintMatchesQuery({
 
   return description.toLowerCase().contains(trimmedQuery);
 }
-
