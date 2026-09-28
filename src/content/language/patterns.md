@@ -384,7 +384,7 @@ Without patterns, validation is verbose:
 ```dart
 if (data is Map<String, Object?> && data.containsKey('user')) {
   var user = data['user'];
-  if (user is List<Object> &&
+  if (user is List<Object?> &&
       user.length == 2 &&
       user[0] is String &&
       user[1] is int) {

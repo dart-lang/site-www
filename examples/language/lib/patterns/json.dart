@@ -1,18 +1,24 @@
-// ignore_for_file: unused_local_variable, unnecessary_type_check
+// ignore_for_file: unused_local_variable
 
 void main() {
-  // #docregion json-1
-  var data = {
-    'user': ['Lily', 13],
-  };
-  var {'user': [name, age]} = data;
-  // #enddocregion json-1
+  {
+    // #docregion json-1
+    var data = {
+      'user': ['Lily', 13],
+    };
+    var {'user': [name, age]} = data;
+    // #enddocregion json-1
+  }
 
   {
+    Object? data = {
+      'user': ['Lily', 13],
+    };
+
     // #docregion json-2
     if (data is Map<String, Object?> && data.containsKey('user')) {
       var user = data['user'];
-      if (user is List<Object> &&
+      if (user is List<Object?> &&
           user.length == 2 &&
           user[0] is String &&
           user[1] is int) {
@@ -23,7 +29,12 @@ void main() {
     }
     // #enddocregion json-2
   }
+
   {
+    Object? data = {
+      'user': ['Lily', 13],
+    };
+
     // #docregion json-3
     if (data case {'user': [String name, int age]}) {
       print('User $name is $age years old.');
