@@ -179,9 +179,12 @@ main() {
 }
 ```
 
-In this example, only classes that extend or implement the `Musician` class
-can use the mixin `MusicalPerformer`. Because `SingerDancer` extends `Musician`,
-`SingerDancer` can mix in `MusicalPerformer`.
+In this example, only classes that extend the `Musician` class
+A class can mix in `MusicalPerformer` only if
+its superclass is a [subtype](/resources/glossary#subtype) of `Musician` that
+provides a concrete implementation of `musicianMethod()`.
+Because `SingerDancer` extends `Musician`,
+it can mix in `MusicalPerformer`.
 
 ## `class`, `mixin`, or `mixin class`?
 
