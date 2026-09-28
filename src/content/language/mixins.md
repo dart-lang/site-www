@@ -180,7 +180,9 @@ main() {
 ```
 
 In this example, only classes that extend the `Musician` class
-can use the `MusicalPerformer` mixin.
+A class can mix in `MusicalPerformer` only if
+its superclass is a [subtype](/resources/glossary#subtype) of `Musician` that
+provides a concrete implementation of `musicianMethod()`.
 Because `SingerDancer` extends `Musician`,
 `SingerDancer` can mix in `MusicalPerformer`.
 
