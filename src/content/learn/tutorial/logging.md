@@ -51,7 +51,7 @@ and the `logging` package to your CLI project's dependencies.
 
 1.  Add the `wikipedia` and `logging` packages to your dependencies:
 
-    ```yaml
+    ```yaml title="cli/pubspec.yaml"
     dependencies:
       http: ^1.3.0
       command_runner:
@@ -97,7 +97,7 @@ creating a new file for the logger and setting up the necessary imports.
     create a `logs` directory if one doesn't exist, and
     create a unique log file.
 
-    ```dart
+    ```dart title="cli/lib/src/logger.dart"
     Logger initFileLogger(String name) {
       hierarchicalLoggingEnabled = true;
       final logger = Logger(name);
@@ -127,7 +127,7 @@ creating a new file for the logger and setting up the necessary imports.
 1.  Configure the logger's level and set up a listener to
     write log messages to the file.
 
-    ```dart
+    ```dart title="cli/lib/src/logger.dart"
     Logger initFileLogger(String name) {
       hierarchicalLoggingEnabled = true;
       final logger = Logger(name);
@@ -230,7 +230,7 @@ add the necessary code, including logging and error handling.
 
 1.  Implement the command logic to search Wikipedia and format the results.
 
-    ```dart
+    ```dart title="cli/lib/src/commands/search.dart"
     // ...
       @override
       FutureOr<String> run(ArgResults args) async {

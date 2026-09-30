@@ -52,13 +52,13 @@ then explore the Dart syntax for it.
     declare a `const` variable for the version.
     The value of a `const` variable can never be changed after it's been set:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     const version = '0.0.1'; // Add this line
     ```
 
     Next, modify your `main` function to check for the `version` argument:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     void main(List<String> arguments) {
       if (arguments.isEmpty) {
         print('Hello, Dart!');
@@ -91,7 +91,7 @@ then explore the Dart syntax for it.
     create a separate function to display usage information.
     Place this function outside and below your `main` function.
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     void printUsage() { // Add this new function
       print(
         "The following commands are valid: 'help', 'version', 'search <ARTICLE-TITLE>'"
@@ -107,7 +107,7 @@ then explore the Dart syntax for it.
 
     Modify your `main` function to look like this:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     void main(List<String> arguments) {
       if (arguments.isEmpty || arguments.first == 'help') {
         printUsage(); // Change this from 'Hello, Dart!'
@@ -160,7 +160,7 @@ As you build this functionality, you'll work with
     include an `else if` branch that handles the `search` command.
     For now, just print a placeholder message.
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     void main(List<String> arguments) {
       if (arguments.isEmpty || arguments.first == 'help') {
         printUsage();
@@ -195,7 +195,7 @@ As you build this functionality, you'll work with
     arguments passed into it with the `search` command.
     Place this new function below `main`.
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     // ... (your existing main function)
 
     void searchWikipedia(List<String>? arguments) { // Add this new function and add ? to arguments type
@@ -234,7 +234,7 @@ As you build this functionality, you'll work with
     starting from the second one. If no arguments are provided after `search`,
     pass `null` to `searchWikipedia`.
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     void main(List<String> arguments) {
       if (arguments.isEmpty || arguments.first == 'help') {
         printUsage();
@@ -294,7 +294,7 @@ As you build this functionality, you'll work with
 
     First, add the necessary import at the top of your `cli/bin/cli.dart` file:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     import 'dart:io'; // Add this line at the top
     ```
 
@@ -304,7 +304,7 @@ As you build this functionality, you'll work with
 
     Now, update your `searchWikipedia` function below `main`.
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     // ... (your existing main function)
 
     void searchWikipedia(List<String>? arguments) {
