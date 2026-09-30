@@ -399,7 +399,7 @@ about abstract classes and methods.
 
 To define a pure interface,
 combine the `abstract` and `interface` modifiers.
-Like an abstract class, an abstract interface class can't be instantiated.
+Like other abstract classes, an abstract interface class can't be instantiated.
 Other libraries can implement it, but can't extend it.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (abstract-interface)" replace="/abstract interface/[!$&!]/g"?>
