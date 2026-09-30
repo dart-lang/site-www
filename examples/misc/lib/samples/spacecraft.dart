@@ -87,6 +87,17 @@ abstract class Describable {
 }
 // #enddocregion abstract
 
+// #docregion abstract-interface
+abstract interface class Launchable {
+  void launch();
+}
+
+class Rocket implements Launchable {
+  @override
+  void launch() => print('Liftoff!');
+}
+// #enddocregion abstract-interface
+
 // #docregion simple-enum
 enum PlanetType { terrestrial, gas, ice }
 // #enddocregion simple-enum
