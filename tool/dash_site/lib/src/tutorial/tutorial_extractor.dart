@@ -236,7 +236,9 @@ final class TutorialExtractor {
           ),
           createdPackages: Set<String>.unmodifiable(state.packages),
           deletedFiles: Set<String>.unmodifiable(deletedInChapter),
-          hasTests: state.files.containsKey('wikipedia/test/model_test.dart'),
+          hasTests: state.files.keys.any(
+            (k) => path.split(k).contains('test') && k.endsWith('_test.dart'),
+          ),
           untaggedTaskSnippets: List<UntaggedTutorialSnippet>.unmodifiable(
             extracted.untaggedTaskSnippets,
           ),

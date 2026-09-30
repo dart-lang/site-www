@@ -286,21 +286,28 @@ final class CheckTutorialCodeCommand extends Command<int> {
     TutorialChapterSnapshot chapter, {
     required bool verbose,
   }) {
-    final wikipediaDir = path.join(workspacePath, 'wikipedia');
-    final result = Process.runSync(Platform.executable, const [
-      'test',
-    ], workingDirectory: wikipediaDir);
-    if (result.exitCode != 0) {
-      stderr.writeln(
-        '\nTests failed in Chapter ${chapter.index} (${chapter.id}) '
-        '[${chapter.markdownPath}]:',
-      );
-      stderr.write(result.stdout);
-      stderr.write(result.stderr);
-      return false;
-    }
-    if (verbose) {
-      print('  Ran `dart test` in wikipedia: OK');
+    final dirsToTest = <String>[
+      for (final pkg in chapter.createdPackages)
+        if (Directory(path.join(workspacePath, pkg, 'test')).existsSync())
+          path.join(workspacePath, pkg),
+    ];
+
+    for (final dir in dirsToTest) {
+      final result = Process.runSync(Platform.executable, const [
+        'test',
+      ], workingDirectory: dir);
+      if (result.exitCode != 0) {
+        stderr.writeln(
+          '\nTests failed in Chapter ${chapter.index} (${chapter.id}) '
+          '[${chapter.markdownPath}]:',
+        );
+        stderr.write(result.stdout);
+        stderr.write(result.stderr);
+        return false;
+      }
+      if (verbose) {
+        print('  Ran `dart test` in ${path.basename(dir)}: OK');
+      }
     }
     return true;
   }
@@ -323,15 +330,22 @@ final class CheckTutorialCodeCommand extends Command<int> {
     }
 
     final indexFile = File(path.join(outDir.path, 'index.json'));
-    indexFile.writeAsStringSync(
-      '${encoder.convert({
-        'tutorial': 'dartpedia',
-        'chapterCount': chapters.length,
-        'chapters': [
-          for (final c in chapters) {'index': c.index, 'id': c.id, 'title': c.title, 'markdownPath': c.markdownPath, 'snapshotFile': 'chapter_${c.index.toString().padLeft(2, '0')}_${c.id}.json'},
-        ],
-      })}\n',
-    );
+    final indexPayload = <String, Object?>{
+      'tutorial': 'dartpedia',
+      'chapterCount': chapters.length,
+      'chapters': [
+        for (final c in chapters)
+          <String, Object?>{
+            'index': c.index,
+            'id': c.id,
+            'title': c.title,
+            'markdownPath': c.markdownPath,
+            'snapshotFile':
+                'chapter_${c.index.toString().padLeft(2, '0')}_${c.id}.json',
+          },
+      ],
+    };
+    indexFile.writeAsStringSync('${encoder.convert(indexPayload)}\n');
 
     if (verbose) {
       print('Exported ${chapters.length} chapter snapshots to ${outDir.path}.');
