@@ -110,17 +110,37 @@ void main() {
       expect(runnerBaseCode, contains('String _removeDash(String input)'));
     });
 
-    test(
-      'produces serializable JSON snapshots for Phase 2 interactive mode',
-      () {
-        for (final chapter in chapters) {
-          final json = chapter.toJson();
-          expect(json['index'], chapter.index);
-          expect(json['id'], chapter.id);
-          expect(json['snippets'], isNotEmpty);
-          expect(json['workspaceFiles'], isA<Map<String, String>>());
+    test('verifies no untagged code blocks exist inside Tasks sections', () {
+      for (final chapter in chapters) {
+        expect(
+          chapter.untaggedTaskSnippets,
+          isEmpty,
+          reason:
+              'Chapter ${chapter.id} has untagged code block(s) in ## Tasks',
+        );
+      }
+    });
+
+    test('produces serializable JSON snapshots with per-step assembledFileContent', () {
+      for (final chapter in chapters) {
+        final json = chapter.toJson();
+        expect(json['index'], chapter.index);
+        expect(json['id'], chapter.id);
+        expect(json['snippets'], isNotEmpty);
+        expect(json['workspaceFiles'], isA<Map<String, String>>());
+        for (final snippet in chapter.snippets) {
+          expect(
+            snippet.assembledFileContent,
+            isNotNull,
+            reason:
+                'Snippet at ${chapter.id}:${snippet.lineNumber} missing assembledFileContent',
+          );
+          expect(
+            snippet.toJson()['assembledFileContent'],
+            equals(snippet.assembledFileContent),
+          );
         }
-      },
-    );
+      }
+    });
   });
 }

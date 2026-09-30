@@ -91,6 +91,22 @@ final class CheckTutorialCodeCommand extends Command<int> {
           );
         }
 
+        if (chapter.untaggedTaskSnippets.isNotEmpty) {
+          hasFailures = true;
+          if (!verbose) {
+            print('FAILED (untagged code blocks)');
+          }
+          for (final untagged in chapter.untaggedTaskSnippets) {
+            stderr.writeln(
+              '  ${chapter.markdownPath}:${untagged.lineNumber}: '
+              '```${untagged.language} block inside "## Tasks" is missing a '
+              'title="..." attribute (or skip="true"). '
+              'Preview: ${untagged.codePreview}',
+            );
+          }
+          continue;
+        }
+
         // Remove any files deleted in this chapter.
         for (final deletedRelPath in chapter.deletedFiles) {
           final deletedFile = File(

@@ -15,6 +15,7 @@ final class TutorialCodeSnippet {
     required this.code,
     required this.lineNumber,
     this.attributes = const {},
+    this.assembledFileContent,
   });
 
   final String language;
@@ -23,13 +24,43 @@ final class TutorialCodeSnippet {
   final int lineNumber;
   final Map<String, String> attributes;
 
+  /// The full merged content of [filePath] immediately after applying this
+  /// snippet, used by Phase 2 interactive / DartPad mode for step-by-step state.
+  final String? assembledFileContent;
+
+  TutorialCodeSnippet withAssembledContent(String? content) =>
+      TutorialCodeSnippet(
+        language: language,
+        filePath: filePath,
+        code: code,
+        lineNumber: lineNumber,
+        attributes: attributes,
+        assembledFileContent: content,
+      );
+
   Map<String, Object?> toJson() => {
     'language': language,
     'filePath': filePath,
     'lineNumber': lineNumber,
     if (attributes.isNotEmpty) 'attributes': attributes,
     'code': code,
+    if (assembledFileContent != null)
+      'assembledFileContent': assembledFileContent,
   };
+}
+
+/// Represents a code block inside a chapter's `## Tasks` section that is
+/// missing a `title="..."` attribute (and does not specify `skip="true"`).
+final class UntaggedTutorialSnippet {
+  UntaggedTutorialSnippet({
+    required this.language,
+    required this.lineNumber,
+    required this.codePreview,
+  });
+
+  final String language;
+  final int lineNumber;
+  final String codePreview;
 }
 
 /// Represents a parsed tutorial chapter and its cumulative workspace snapshot.
@@ -44,6 +75,7 @@ final class TutorialChapterSnapshot {
     required this.createdPackages,
     required this.deletedFiles,
     required this.hasTests,
+    this.untaggedTaskSnippets = const [],
   });
 
   /// 1-based chapter index (1 to 13).
@@ -75,6 +107,10 @@ final class TutorialChapterSnapshot {
 
   /// Whether this chapter includes runnable package tests.
   final bool hasTests;
+
+  /// Any `dart`, `yaml`, or `json` code blocks in the `## Tasks` section that
+  /// are missing a `title="..."` attribute.
+  final List<UntaggedTutorialSnippet> untaggedTaskSnippets;
 
   Map<String, Object?> toJson() => {
     'index': index,
@@ -168,9 +204,14 @@ final class TutorialExtractor {
         }
       }
 
-      // Apply each titled code snippet in order.
+      // Apply each titled code snippet in order and record the assembled
+      // file state after each step.
+      final assembledSnippets = <TutorialCodeSnippet>[];
       for (final snippet in extracted.titledSnippets) {
         state.applySnippet(chapterMeta.id, snippet);
+        assembledSnippets.add(
+          snippet.withAssembledContent(state.files[snippet.filePath]),
+        );
       }
 
       // In the testing chapter, cat_extract.json is referenced via an external
@@ -186,7 +227,7 @@ final class TutorialExtractor {
           id: chapterMeta.id,
           title: chapterMeta.title,
           markdownPath: chapterMeta.mdPath,
-          snippets: extracted.titledSnippets,
+          snippets: List<TutorialCodeSnippet>.unmodifiable(assembledSnippets),
           workspaceFiles: Map<String, String>.unmodifiable(
             Map<String, String>.fromEntries(
               state.files.entries.toList()
@@ -196,6 +237,9 @@ final class TutorialExtractor {
           createdPackages: Set<String>.unmodifiable(state.packages),
           deletedFiles: Set<String>.unmodifiable(deletedInChapter),
           hasTests: state.files.containsKey('wikipedia/test/model_test.dart'),
+          untaggedTaskSnippets: List<UntaggedTutorialSnippet>.unmodifiable(
+            extracted.untaggedTaskSnippets,
+          ),
         ),
       );
     }
@@ -203,15 +247,27 @@ final class TutorialExtractor {
     return snapshots;
   }
 
-  ({List<TutorialCodeSnippet> titledSnippets, List<String> bashBlocks})
+  ({
+    List<TutorialCodeSnippet> titledSnippets,
+    List<String> bashBlocks,
+    List<UntaggedTutorialSnippet> untaggedTaskSnippets,
+  })
   _extractBlocksFromMarkdown(String markdown) {
     final lines = markdown.split('\n');
     final titledSnippets = <TutorialCodeSnippet>[];
     final bashBlocks = <String>[];
+    final untaggedTaskSnippets = <UntaggedTutorialSnippet>[];
 
+    var inTasksSection = false;
     var i = 0;
     while (i < lines.length) {
       final line = lines[i];
+      final trimmedLine = line.trim();
+
+      if (trimmedLine.startsWith('## ')) {
+        inTasksSection = trimmedLine == '## Tasks';
+      }
+
       // Skip doc-comment code fences (`/// ```dart`).
       if (line.trimLeft().startsWith('///')) {
         i++;
@@ -273,12 +329,29 @@ final class TutorialExtractor {
             ),
           ),
         );
+      } else if (inTasksSection &&
+          (language == 'dart' || language == 'yaml') &&
+          attrs['skip'] != 'true') {
+        final firstNonEmpty = codeLines
+            .map((l) => l.trim())
+            .firstWhere((l) => l.isNotEmpty, orElse: () => '');
+        untaggedTaskSnippets.add(
+          UntaggedTutorialSnippet(
+            language: language,
+            lineNumber: startLine,
+            codePreview: firstNonEmpty,
+          ),
+        );
       }
 
       i++;
     }
 
-    return (titledSnippets: titledSnippets, bashBlocks: bashBlocks);
+    return (
+      titledSnippets: titledSnippets,
+      bashBlocks: bashBlocks,
+      untaggedTaskSnippets: untaggedTaskSnippets,
+    );
   }
 
   static String _normalizeFilePath(String rawPath) {

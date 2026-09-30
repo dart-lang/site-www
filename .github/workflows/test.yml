@@ -52,6 +52,9 @@ jobs:
       - name: Run Dart tests
         run: dart run dash_site test-dart
         continue-on-error: ${{ matrix.experimental }}
+      - name: Validate tutorial code snippets
+        run: dart run dash_site check-tutorial-code
+        continue-on-error: ${{ matrix.experimental }}
 
   markdown-check:
     name: Check Markdown content
