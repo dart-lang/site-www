@@ -393,7 +393,7 @@
     - title: Books
       permalink: /resources/books
     - title: Videos
-      permalink: /resources/videos
+      permalink: https://www.youtube.com/@flutterdev
 
 - title: Related sites
   expanded: true
