@@ -62,7 +62,7 @@ from the FFIgen README for more details.
 [an example]: {{page.example}}
 [`AVAudioPlayer`]: {{page.appledoc}}/avfaudio/avaudioplayer?language=objc
 [LLVM]: https://llvm.org/
-[Installing LLVM]: {{page.ffigen}}#installing-llvm
+[Installing LLVM]: {{page.ffigen}}#requirements
 
 ### Configure FFIgen for Objective-C
 
@@ -75,14 +75,13 @@ $ dart pub add dev:ffigen objective_c ffi
 
 Then, configure FFIgen to generate bindings for the
 Objective-C header containing the API.
-Configure FFIgen using YAML or Dart code; we recommend Dart for new projects.
-The YAML config will be deprecated in future versions of FFIgen.
-Start by creating a `generate_code.dart` script somewhere in your package.
-We recommend placing this file in `my_package/tool`.
+Start by creating a configuration script called `ffigen.dart`
+in your `/tool` directory.
+For example: `my_package/tool/ffigen.dart`.
 
-The `generate_code.dart` script should create an `FfiGenerator` object,
-which will contain all your configuration options,
-then call its `.generate()` method.
+In `ffigen.dart`, create an `FfiGenerator` object
+with your configuration options,
+then call its `.generate()` method:
 
 ```dart
 import 'package:ffigen/ffigen.dart';
@@ -90,12 +89,12 @@ import 'package:ffigen/ffigen.dart';
 final config = FfiGenerator(
 );
 
-void main() => config.generate();
+Future<void> main() async => await config.generate();
 ```
 
 First, you'll tell FFIgen where to find the API you're trying to
 generate bindings for.
-To do this, set the `headers.entryPoints` option.
+To do this, set the `input.entryPoints` option.
 
 For this example, you'll load `AVAudioPlayer.h`.
 This is part of the `AVFAudio` framework,
@@ -117,7 +116,7 @@ the right headers to pass to FFIgen.
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
-  headers: Headers(
+  input: Input(
     entryPoints: [
       Uri.file(
         '$macSdkPath/System/Library/Frameworks/AVFAudio.framework/Headers/AVAudioPlayer.h',
@@ -126,13 +125,13 @@ final config = FfiGenerator(
   ),
 );
 
-void main() => config.generate();
+Future<void> main() async => await config.generate();
 ```
 
 Next, you'll define the output file.
 The main output of FFIgen is a single Dart file
 containing bindings for the given inputs.
-This file's location is defined by the `output.dartFile` option.
+This file's location is defined by the `output.dart` option.
 
 FFIgen sometimes generates a `.m` file,
 containing Objective-C code required for interop with the API.
@@ -145,11 +144,11 @@ If FFIgen produces this file, you must compile it into your package,
 otherwise you might get runtime exceptions relating to missing symbols.
 For this example, FFIgen doesn't generate a `.m` file.
 
-```dart highlightLines=11-13
+```dart highlightLines=11-15
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
-  headers: Headers(
+  input: Input(
     entryPoints: [
       Uri.file(
         '$macSdkPath/System/Library/Frameworks/AVFAudio.framework/Headers/AVAudioPlayer.h',
@@ -157,48 +156,60 @@ final config = FfiGenerator(
     ],
   ),
   output: Output(
-    dartFile: Uri.file('avf_audio_bindings.dart'),
+    dart: DartOutput(
+      path: Uri.file('avf_audio_bindings.dart'),
+    ),
   ),
 );
 
-void main() => config.generate();
+Future<void> main() async => await config.generate();
 ```
 
 Finally, tell FFIgen which parts of the input API to generate bindings for.
-By default, FFIgen filters out all the bindings.
-In this case, to generate bindings for `AVAudioPlayer`,
-which is an Objective-C interface,
-you have to set the `objectiveC.interfaces` field.
-
 Setting the `objectiveC` field tells FFIgen
-to generate bindings for the Objective-C language.
-By default, FFIgen generates C bindings.
+to generate bindings for the Objective-C language
+(by default, FFIgen generates C bindings).
 
-```dart highlightLines=11-13
+By default, FFIgen filters out all top-level API elements.
+To generate bindings for `AVAudioPlayer`,
+which is an Objective-C interface,
+add a `Visitor` to the `visitors` field and set
+`node.isIncluded = true` in the `objCInterface` callback:
+
+```dart highlightLines=11-20
 import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
-  headers: Headers(
+  input: Input(
     entryPoints: [
       Uri.file(
         '$macSdkPath/System/Library/Frameworks/AVFAudio.framework/Headers/AVAudioPlayer.h',
       ),
     ],
   ),
-  objectiveC: ObjectiveC(
-    interfaces: Interfaces.includeSet({'AVAudioPlayer'}),
-  ),
+  objectiveC: const ObjectiveC(),
+  visitors: [
+    Visitor(
+      objCInterface: (node) {
+        if (node.name == 'AVAudioPlayer') {
+          node.isIncluded = true;
+        }
+      },
+    ),
+  ],
   output: Output(
-    dartFile: Uri.file('lib/avf_audio_bindings.dart'),
+    dart: DartOutput(
+      path: Uri.file('avf_audio_bindings.dart'),
+    ),
   ),
 );
 
-void main() => config.generate();
+Future<void> main() async => await config.generate();
 ```
 
-You can use `includeMember` to filter out specific methods from the class,
-and `rename` or `renameMember` to rename the included classes or methods.
-There are similar options for protocols and categories.
+You can also use `Visitor` callbacks (such as `objCMethod`, `objCProtocol`,
+and `objCCategory`) to filter or rename specific interfaces, protocols,
+categories, or methods by setting `node.isIncluded` or `node.name`.
 
 For a full list of configuration options,
 check out the [FFIgen API documentation][].
@@ -211,7 +222,7 @@ To generate the bindings,
 navigate to the `example` directory and run the script:
 
 ```console
-$ dart run tool/generate_code.dart
+$ dart run tool/ffigen.dart
 ```
 
 This should generate a large `avf_audio_bindings.dart` file,
@@ -223,9 +234,7 @@ with a comment indicating they are a stub.
 FFIgen generates stub bindings for all transitive dependencies
 of the directly included APIs.
 To generate full bindings for these stubs,
-add them to the includes in your config.
-This stubbing behavior can be changed
-with the `includeTransitive` options.
+set `node.isIncluded = true` for them in your visitor.
 
 [this one]: {{page.example}}/avf_audio_bindings.dart
 
@@ -536,50 +545,61 @@ make sure they're all annotated with `@objc` and `public`.
 
 ### Configuring FFIgen for Swift
 
-FFIgen only sees the Objective-C wrapper header, `swift_api.h`.
-So most of this config looks similar
-to the Objective-C example,
-including setting the language to `objc`.
+FFIgen parses the generated Objective-C wrapper header, `swift_api.h`.
+Create a configuration script at `tool/ffigen.dart` that configures
+`FfiGenerator` with `objectiveC: const ObjectiveC()`:
 
-```yaml
-ffigen:
-  name: SwiftLibrary
-  description: Bindings for swift_api.
-  language: objc
-  output: 'swift_api_bindings.dart'
-  exclude-all-by-default: true
-  objc-interfaces:
-    include:
-      - 'SwiftClass'
-    module:
-      'SwiftClass': 'swift_module'
-  headers:
-    entry-points:
-      - 'swift_api.h'
+```dart
+import 'dart:io';
+
+import 'package:ffigen/ffigen.dart';
+
+Future<void> main() async {
+  final packageRoot = Platform.script.resolve('../');
+  final generator = FfiGenerator(
+    output: Output(
+      dart: DartOutput(path: packageRoot.resolve('swift_api_bindings.dart')),
+    ),
+    objectiveC: const ObjectiveC(),
+    input: Input(
+      entryPoints: [packageRoot.resolve('swift_api.h')],
+    ),
+    visitors: [
+      Visitor(
+        objCInterface: (node) {
+          if (node.name == 'SwiftClass') {
+            node.isIncluded = true;
+            node.module = 'swift_module';
+          }
+        },
+      ),
+    ],
+  );
+  await generator.generate();
+}
 ```
 
-As before, set the language to `objc`,
-and the entry point to the header;
-exclude everything by default,
-and explicitly include the interface you are binding.
+This configuration enables Objective-C support with `ObjectiveC()`,
+sets the entry point to `swift_api.h`,
+and explicitly includes `SwiftClass`
+inside an `objCInterface` visitor.
 
-A key configuration difference for wrapped Swift APIs
-is the `objc-interfaces` -> `module` option.
+A key configuration requirement for wrapped Swift APIs
+is setting the `node.module` property on the `ObjCInterface` AST node.
 When `swiftc` compiles the library,
 it gives the Objective-C interface a module prefix.
 Internally, `SwiftClass` is registered as
 `swift_module.SwiftClass`.
-You need to tell `ffigen` about this prefix,
+You need to tell `ffigen` about this prefix
+using `node.module`,
 so it loads the correct class from the dylib.
 
 Not every class gets this prefix.
-For example, `NSString` and `NSObject` 
-won't get a module prefix, 
+For example, `NSString` and `NSObject`
+won't get a module prefix,
 because they're internal classes.
-This is why the `module` option maps
-from class name to module prefix.
-You can also use regular expressions to match
-multiple class names at once.
+In your `objCInterface` visitor,
+set `node.module` only on the classes from your Swift module.
 
 The module prefix is whatever you passed to
 `swiftc` in the `-module-name` flag.
@@ -609,28 +629,28 @@ This outputs `swift_module.SwiftClass`.
 
 ### Generating the Swift bindings
 
-As before, to generate the bindings,
-navigate to the example directory and run FFIgen:
+To generate the bindings,
+navigate to the example directory and run your configuration script:
 
 ```console
-$ dart run ffigen
+$ dart run tool/ffigen.dart
 ```
 
 This generates `swift_api_bindings.dart`.
 
 ### Using the Swift bindings
 
-Interacting with these bindings is exactly the same
-as for a normal Objective-C library:
+Load the dynamic library and call the generated Swift bindings from Dart:
 
 ```dart
 import 'dart:ffi';
+import 'package:objective_c/objective_c.dart';
 import 'swift_api_bindings.dart';
 
 void main() {
-  final lib = SwiftLibrary(DynamicLibrary.open('libswiftapi.dylib'));
-  final object = SwiftClass.new1(lib);
-  print(object.sayHello());
+  DynamicLibrary.open('libswiftapi.dylib');
+  final object = SwiftClass();
+  print(object.sayHello().toDartString());
   print('field = ${object.someField}');
   object.someField = 456;
   print('field = ${object.someField}');
