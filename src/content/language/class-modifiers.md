@@ -215,6 +215,41 @@ Like an `interface` class, other libraries can
 implement, but can't inherit, a pure interface.
 Like an `abstract` class, a pure interface can have abstract members.
 
+<?code-excerpt "language/lib/class_modifiers/ex6/a.dart"?>
+```dart title="a.dart"
+abstract interface class Vehicle {
+  void moveForward(int meters);
+}
+```
+
+<?code-excerpt "language/lib/class_modifiers/ex6/b.dart"?>
+```dart title="b.dart"
+import 'a.dart';
+
+// ERROR: `Vehicle` can't be instantiated because
+// it is marked as `abstract`.
+Vehicle myVehicle = Vehicle();
+
+// ERROR: `Vehicle` can't be extended in a different library because
+// it is marked with `interface`.
+class Car extends Vehicle {
+  int passengers = 4;
+
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
+}
+
+// Can be implemented.
+class MockVehicle implements Vehicle {
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
+}
+```
+
 ## `final` 
 
 To close the type hierarchy, use the `final` modifier.
