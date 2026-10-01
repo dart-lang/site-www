@@ -76,7 +76,7 @@ $ dart pub add dev:ffigen objective_c ffi
 Then, configure FFIgen to generate bindings for the
 Objective-C header containing the API.
 Start by creating a configuration script called `ffigen.dart`
-in your `/tool` directory.
+in your `tool/` directory.
 For example: `my_package/tool/ffigen.dart`.
 
 In `ffigen.dart`, create an `FfiGenerator` object
