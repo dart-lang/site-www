@@ -25,7 +25,12 @@ final class TutorialCodeSnippet {
   final Map<String, String> attributes;
 
   /// The full merged content of [filePath] immediately after applying this
-  /// snippet, used by Phase 2 interactive / DartPad mode for step-by-step state.
+  /// snippet.
+  ///
+  /// A single tutorial chapter often modifies the same file across multiple
+  /// tasks. Recording the merged file state after each individual snippet lets
+  /// Phase 2 interactive / DartPad mode show the exact compilable file state at
+  /// any step within a chapter, not just at the end of the chapter.
   final String? assembledFileContent;
 
   TutorialCodeSnippet withAssembledContent(String? content) =>
@@ -73,12 +78,12 @@ final class TutorialChapterSnapshot {
     required this.snippets,
     required this.workspaceFiles,
     required this.createdPackages,
-    required this.deletedFiles,
     required this.hasTests,
     this.untaggedTaskSnippets = const [],
   });
 
-  /// 1-based chapter index (1 to 13).
+  /// 1-based chapter number (1 to 13), matching the human-readable chapter
+  /// numbering in the tutorial UI and exported JSON filenames.
   final int index;
 
   /// Chapter slug ID (for example, `first-app` or `inheritance`).
@@ -102,14 +107,11 @@ final class TutorialChapterSnapshot {
   /// `wikipedia`).
   final Set<String> createdPackages;
 
-  /// Files explicitly deleted during this chapter.
-  final Set<String> deletedFiles;
-
   /// Whether this chapter includes runnable package tests.
   final bool hasTests;
 
-  /// Any `dart`, `yaml`, or `json` code blocks in the `## Tasks` section that
-  /// are missing a `title="..."` attribute.
+  /// Any `dart` or `yaml` code blocks in the `## Tasks` section that are
+  /// missing a `title="..."` attribute.
   final List<UntaggedTutorialSnippet> untaggedTaskSnippets;
 
   Map<String, Object?> toJson() => {
@@ -126,6 +128,15 @@ final class TutorialChapterSnapshot {
 
 /// Extracts code blocks from `src/content/learn/tutorial/*.md` and assembles
 /// cumulative project snapshots for each chapter in `src/data/tutorial.yml`.
+///
+/// To keep tutorial prose concise and readable, chapters frequently display
+/// *partial* snippets—for example, a class definition with `// ...` and only
+/// the newly added methods, a bare method without its enclosing class, or a
+/// `pubspec.yaml` excerpt showing only a new `dependencies:` entry. A reader
+/// following the tutorial merges these edits into the files they created in
+/// earlier chapters. [TutorialExtractor] and [_WorkspaceBuilder] replicate
+/// those incremental edits so each chapter produces a complete, compilable
+/// workspace snapshot.
 final class TutorialExtractor {
   TutorialExtractor({required this.repositoryRoot});
 
@@ -149,6 +160,8 @@ final class TutorialExtractor {
       throw StateError('Could not find tutorial data file: $tutorialYamlPath');
     }
 
+    // Read chapter order from `tutorial.yml` rather than sorting filenames so
+    // the workspace state evolves in the exact sequence a reader follows.
     final yamlDoc = loadYaml(tutorialYamlFile.readAsStringSync()) as YamlMap;
     final units = yamlDoc['units'] as YamlList;
     final chaptersList = <({String id, String title, String mdPath})>[];
@@ -185,9 +198,9 @@ final class TutorialExtractor {
 
       final markdownContent = mdFile.readAsStringSync();
       final extracted = _extractBlocksFromMarkdown(markdownContent);
-      final deletedInChapter = <String>{};
 
-      // Handle bash scaffolding commands in the chapter.
+      // Replay `dart create` commands from bash blocks so each package's
+      // baseline `pubspec.yaml` exists before subsequent tasks edit it.
       for (final bashBlock in extracted.bashBlocks) {
         if (bashBlock.contains('dart create cli')) {
           state.initCliPackage();
@@ -198,14 +211,8 @@ final class TutorialExtractor {
         if (bashBlock.contains('dart create wikipedia')) {
           state.initWikipediaPackage();
         }
-        if (bashBlock.contains('rm wikipedia_test.dart')) {
-          state.removeFile('wikipedia/test/wikipedia_test.dart');
-          deletedInChapter.add('wikipedia/test/wikipedia_test.dart');
-        }
       }
 
-      // Apply each titled code snippet in order and record the assembled
-      // file state after each step.
       final assembledSnippets = <TutorialCodeSnippet>[];
       for (final snippet in extracted.titledSnippets) {
         state.applySnippet(chapterMeta.id, snippet);
@@ -214,9 +221,10 @@ final class TutorialExtractor {
         );
       }
 
-      // In the testing chapter, cat_extract.json is referenced via an external
-      // GitHub link because of its size; provide a minimal valid fixture so
-      // `dart test` can run offline during validation.
+      // In `testing.md`, the tutorial instructs readers to download
+      // `cat_extract.json` from an external GitHub gist because the full
+      // Wikipedia API payload is too large to inline in Markdown. We synthesize
+      // a minimal valid fixture so `dart test` can run offline in CI.
       if (chapterMeta.id == 'testing') {
         state.ensureCatExtractJsonFixture();
       }
@@ -235,7 +243,6 @@ final class TutorialExtractor {
             ),
           ),
           createdPackages: Set<String>.unmodifiable(state.packages),
-          deletedFiles: Set<String>.unmodifiable(deletedInChapter),
           hasTests: state.files.keys.any(
             (k) => path.split(k).contains('test') && k.endsWith('_test.dart'),
           ),
@@ -260,6 +267,11 @@ final class TutorialExtractor {
     final bashBlocks = <String>[];
     final untaggedTaskSnippets = <UntaggedTutorialSnippet>[];
 
+    // Track whether the parser is inside `## Tasks`. Code blocks before
+    // `## Tasks` are conceptual illustrations (for example, explaining JSON
+    // decoding syntax) and intentionally omit `title="..."`, whereas code
+    // blocks inside `## Tasks` represent actual project edits that must
+    // specify a target file path.
     var inTasksSection = false;
     var i = 0;
     while (i < lines.length) {
@@ -270,7 +282,9 @@ final class TutorialExtractor {
         inTasksSection = trimmedLine == '## Tasks';
       }
 
-      // Skip doc-comment code fences (`/// ```dart`).
+      // Ignore `/// ```dart` fences inside Dart doc comments (such as in
+      // `error-handling.md`) so they aren't mistaken for top-level Markdown
+      // code blocks.
       if (line.trimLeft().startsWith('///')) {
         i++;
         continue;
@@ -299,6 +313,8 @@ final class TutorialExtractor {
       final closePrefix = '$indent```';
       while (i < lines.length) {
         final currentLine = lines[i];
+        // Don't treat a `/// ``` ` line inside a Dart doc comment as the
+        // closing fence of the surrounding Markdown code block.
         if (currentLine.trimRight() == closePrefix.trimRight() ||
             (currentLine.trim() == '```' &&
                 !currentLine.trimLeft().startsWith('///'))) {
@@ -356,6 +372,14 @@ final class TutorialExtractor {
     );
   }
 
+  /// Normalizes code block `title` paths so they are always relative to the
+  /// multi-package `dartpedia` workspace root.
+  ///
+  /// In Chapter 1 (`first-app.md`), the reader has only created the `cli`
+  /// package and is working inside `cli/`, so the code block title is written
+  /// as `bin/cli.dart`. From Chapter 2 onward, paths are written relative to
+  /// the parent directory (`cli/bin/cli.dart`). Prefixing bare `bin/` and
+  /// `example/` paths ensures edits across chapters target the same file entry.
   static String _normalizeFilePath(String rawPath) {
     final trimmed = rawPath.trim().replaceAll(RegExp(r'^/+'), '');
     if (trimmed.startsWith('bin/')) {
@@ -376,6 +400,12 @@ final class _WorkspaceBuilder {
   final Map<String, _PubspecModel> _pubspecs = {};
   final Map<String, _DartFileModel> _dartFiles = {};
 
+  /// Scaffolds the initial `cli` package when `dart create cli` is encountered
+  /// in Chapter 1.
+  ///
+  /// Chapter 1 first shows the default `dart create` starter code in
+  /// `bin/cli.dart` (which imports `package:cli/cli.dart`) before replacing it.
+  /// Seeding `cli/lib/cli.dart` ensures that initial snippet resolves cleanly.
   void initCliPackage() {
     packages.add('cli');
     final pubspec = _pubspecs.putIfAbsent(
@@ -402,6 +432,13 @@ final class _WorkspaceBuilder {
     );
   }
 
+  /// Scaffolds `command_runner/pubspec.yaml` when
+  /// `dart create -t package command_runner` is encountered.
+  ///
+  /// Default `dart create` template files under `lib/` and `test/` are omitted
+  /// because the tutorial immediately replaces `lib/command_runner.dart` and
+  /// `lib/src/command_runner_base.dart` with custom classes, which would break
+  /// the default `command_runner_test.dart` (`Awesome.isAwesome`).
   void initCommandRunnerPackage() {
     packages.add('command_runner');
     final pubspec = _pubspecs.putIfAbsent(
@@ -416,6 +453,16 @@ final class _WorkspaceBuilder {
     files['command_runner/pubspec.yaml'] = pubspec.render();
   }
 
+  /// Scaffolds `wikipedia/pubspec.yaml` when `dart create wikipedia` is
+  /// encountered.
+  ///
+  /// The default `test/wikipedia_test.dart` template file is omitted because
+  /// Chapter 10 (`data-and-json.md`) creates model files under `lib/src/model/`
+  /// without creating `lib/wikipedia.dart` until Chapter 12 (`fetch-data.md`),
+  /// and Chapter 11 (`testing.md`) instructs the reader to delete
+  /// `wikipedia_test.dart` (`rm wikipedia_test.dart`). Omitting the unused
+  /// template file avoids a broken import in Chapter 10 and avoids needing to
+  /// delete it in Chapter 11.
   void initWikipediaPackage() {
     packages.add('wikipedia');
     final pubspec = _pubspecs.putIfAbsent(
@@ -428,11 +475,6 @@ final class _WorkspaceBuilder {
       ),
     );
     files['wikipedia/pubspec.yaml'] = pubspec.render();
-  }
-
-  void removeFile(String filePath) {
-    files.remove(filePath);
-    _dartFiles.remove(filePath);
   }
 
   void ensureCatExtractJsonFixture() {
@@ -467,9 +509,16 @@ final class _WorkspaceBuilder {
     }
   }
 
+  /// Merges a partial or complete `pubspec.yaml` snippet into the package's
+  /// [_PubspecModel].
+  ///
+  /// Tutorial chapters show only the lines being added to `pubspec.yaml` (such
+  /// as `resolution: workspace` or a two-line `dependencies:` block with `# ...`
+  /// comments), which would not be a valid `pubspec.yaml` on its own.
   void _applyYamlSnippet(String targetPath, String code) {
     if (targetPath == 'pubspec.yaml') {
-      // Root workspace pubspec.
+      // Lower `sdk: ^3.8.1` to `sdk: ^3.8.0` so the root workspace pubspec
+      // resolves on any Dart 3.8+ SDK.
       files[targetPath] = '${code.replaceAll('sdk: ^3.8.1', 'sdk: ^3.8.0')}\n';
       return;
     }
@@ -487,7 +536,6 @@ final class _WorkspaceBuilder {
       model.workspaceResolution = true;
     }
 
-    // Parse dependencies or dev_dependencies blocks if present.
     final cleanedLines = code
         .split('\n')
         .where((line) => !line.trimLeft().startsWith('#'))
@@ -508,35 +556,49 @@ final class _WorkspaceBuilder {
         }
       }
     } catch (_) {
-      // Partial YAML snippet with ellipses; flags above already handled it.
+      // Some tutorial YAML snippets include literal `...` placeholders outside
+      // comments (for example, when adding `resolution: workspace`). Those
+      // flags are already captured by the string checks above.
     }
 
     files[targetPath] = model.render();
   }
 
+  /// Applies either a full-file replacement or an incremental declaration/member
+  /// update to [targetPath].
   void _applyDartSnippet(String chapterId, String targetPath, String rawCode) {
-    // Strip lines explicitly marked for deletion in Chapter 1.
+    // Chapter 1 first shows the starter `bin/cli.dart` with a comment
+    // `import 'package:cli/cli.dart' as cli; // Delete this entire line` to
+    // teach readers what to remove before showing the final file.
     final filteredLines = rawCode
         .split('\n')
         .where((l) => !l.contains('// Delete this entire line'))
         .toList();
     final code = filteredLines.join('\n').trim();
 
-    // Skip "recap" blocks that have inline placeholder bodies like
-    // `void searchWikipedia(...) { /* ... existing logic ... */ }`.
+    // Skip "context/recap" snippets where a function body is abbreviated with
+    // `/* ... existing logic ... */` so we don't overwrite the real body from
+    // the previous step with an empty comment.
     if (code.contains('/* ... existing logic ... */')) {
       return;
     }
 
-    // If the snippet is a pure library/export file, replace the file directly.
+    // Pure barrel files (`library;` + `export ...;`) don't contain declarations
+    // to merge and can be written directly.
     if (_isLibraryExportFile(code)) {
       _dartFiles.remove(targetPath);
       files[targetPath] = '$code\n';
       return;
     }
 
-    // In Chapters 1, 2, 4, 5, 6, 7, 9, 13, when a snippet for `cli/bin/cli.dart`
-    // is a complete entrypoint file (no ellipsis comments), replace `cli.dart`.
+    // Determine whether a `cli/bin/cli.dart` snippet is a complete file
+    // replacement (replacing earlier helper functions that moved into packages)
+    // versus an incremental update.
+    // The final snippet in `async.md` is excluded here because it includes
+    // `import` statements, `main`, and `printUsage`, but omits `searchWikipedia`
+    // (which was defined in the immediately preceding snippet) without a
+    // `// ...` comment; treating it as a full replacement would discard
+    // `searchWikipedia`.
     final isFullCliEntrypoint =
         targetPath == 'cli/bin/cli.dart' &&
         !_hasEllipsisComment(code) &&
@@ -551,9 +613,10 @@ final class _WorkspaceBuilder {
       return;
     }
 
-    // When a non-cli.dart file receives a complete file (has `import ` and
-    // defines a class/function without any `// ...` ellipsis comments), check
-    // whether it is a full replacement of the file.
+    // When a non-entrypoint file snippet includes top-level `import`s, defines
+    // a class or enum, and has no `// ...` ellipsis comments, it is a complete
+    // replacement of that file (for example, when `help_command.dart` or
+    // `command_runner_base.dart` is shown in full at the end of a task).
     if (targetPath != 'cli/bin/cli.dart' &&
         code.contains('import ') &&
         (code.contains('class ') || code.contains('enum ')) &&
@@ -580,6 +643,10 @@ final class _WorkspaceBuilder {
         lines.every((l) => l == 'library;' || l.startsWith('export '));
   }
 
+  /// Returns true if [code] contains an instructional ellipsis comment such as
+  /// `// ...` or `// ... rest of the class ...`, indicating that the snippet
+  /// is a partial diff that must be merged with existing declarations rather
+  /// than replacing the file.
   static bool _hasEllipsisComment(String code) {
     for (final line in code.split('\n')) {
       final trimmed = line.trim();
@@ -650,6 +717,14 @@ final class _PubspecModel {
 
 /// Incrementally merges Dart imports, top-level declarations, and class/enum
 /// members across tutorial steps.
+///
+/// Across the tutorial, a file like `command_runner_base.dart` or
+/// `arguments.dart` is built up over 3–6 separate code blocks. Later blocks
+/// often show `class CommandRunner { // ... Future<void> run(...) { ... } }`,
+/// or even just a bare method `String get usage { ... }` without the enclosing
+/// `class` header. Tracking declarations and class members by name allows later
+/// snippets to add new methods or overwrite updated methods while preserving
+/// fields and methods introduced in earlier steps.
 final class _DartFileModel {
   final Set<String> imports = {};
   final Map<String, _DartTopLevelDecl> declarations = {};
@@ -657,7 +732,8 @@ final class _DartFileModel {
   void mergeSnippet(String snippet) {
     final parsed = _parseDartUnits(snippet);
     for (final imp in parsed.imports) {
-      // Remove any trailing instructional comment on the import line.
+      // Strip trailing instructional comments (such as `// Add this import`)
+      // before deduplicating import directives in the [imports] set.
       final semiIdx = imp.indexOf(';');
       if (semiIdx != -1) {
         imports.add(imp.substring(0, semiIdx + 1).trim());
@@ -669,6 +745,9 @@ final class _DartFileModel {
     for (final unit in parsed.units) {
       if (unit.kind == _DeclKind.classOrEnum) {
         final existing = declarations[unit.name];
+        // When a class or enum snippet includes `// ...`, merge its new or
+        // updated members into the existing class rather than discarding
+        // previously defined fields and methods.
         if (existing != null &&
             existing.kind == _DeclKind.classOrEnum &&
             _WorkspaceBuilder._hasEllipsisComment(unit.code)) {
@@ -677,8 +756,11 @@ final class _DartFileModel {
           declarations[unit.name] = unit;
         }
       } else if (unit.kind == _DeclKind.functionOrMethod) {
-        // Check if this file has a class declaration and no top-level functions
-        // with this name, meaning this bare method snippet updates the class!
+        // Some tutorial tasks show a single updated method or getter (such as
+        // `String get usage { ... }`) without repeating the surrounding
+        // `class ... { ... }` wrapper. If the target file defines a single
+        // class and has no top-level function with that name, merge the method
+        // into that class.
         final singleClass = _singleClassDeclaration();
         if (singleClass != null && !declarations.containsKey(unit.name)) {
           singleClass.mergeSingleMethod(unit.name, unit.code);
@@ -786,7 +868,10 @@ final class _DartTopLevelDecl {
   void _parseBodyIntoMembers(String body, {required bool isInitial}) {
     var workingBody = body;
     if (!isClass && _header.contains('enum ')) {
-      // For enhanced enums, enum constants precede the first `;` at depth 0.
+      // Enhanced enums (such as `ConsoleColor` in `advanced-oop.md`) declare
+      // enum values first, terminated by a `;`, followed by fields,
+      // constructors, and methods. Splitting on that top-level `;` lets later
+      // snippets add methods to the enum without losing the enum values list.
       final semiIdx = _findTopLevelEnumSemicolon(workingBody);
       if (semiIdx != -1) {
         final enumPart = workingBody.substring(0, semiIdx + 1);
@@ -824,6 +909,9 @@ final class _DartTopLevelDecl {
     final buffer = StringBuffer();
     buffer.writeln(_header);
     if (_enumConstantsSection.isNotEmpty) {
+      // If an enum originally had only enum values (ending without `;`) and a
+      // later snippet adds fields or methods, Dart syntax requires a trailing
+      // `;` after the enum values list.
       final enumSection =
           _members.isNotEmpty &&
               !_enumConstantsSection.trimRight().endsWith(';')
@@ -862,8 +950,9 @@ int _findTopLevelEnumSemicolon(String body) {
       if (ch == '(') parenDepth++;
       if (ch == ')') parenDepth--;
       if (ch == ';' && braceDepth == 0 && parenDepth == 0) {
-        // Check if this semicolon belongs to the enum values list (preceded by
-        // `)` or an identifier, not `final ` or `const `).
+        // Distinguish the semicolon that terminates the enum values list from
+        // a semicolon at the end of a field or constructor declaration when a
+        // partial enum snippet omits the enum values with `// ...`.
         if (!trimmed.startsWith('const ') &&
             !trimmed.startsWith('final ') &&
             !trimmed.startsWith('String ') &&
@@ -955,6 +1044,8 @@ int _findTopLevelEnumSemicolon(String body) {
   return (imports: imports, units: units);
 }
 
+/// Splits Dart source into top-level or class-level declaration chunks by
+/// tracking `{}` and `()` nesting depth.
 List<String> _splitTopLevelChunks(String source) {
   final chunks = <String>[];
   final current = <String>[];
@@ -972,7 +1063,9 @@ List<String> _splitTopLevelChunks(String source) {
       continue;
     }
 
-    // Ignore standalone ellipsis placeholder comments at depth 0.
+    // Drop standalone placeholder comments like `// ...` or
+    // `// Add this code` at depth 0 so they don't get attached to the next
+    // declaration chunk or mistaken for an incomplete declaration.
     if (braceDepth == 0 &&
         parenDepth == 0 &&
         trimmed.startsWith('//') &&
@@ -1054,11 +1147,16 @@ String? _identifyFunctionOrMethodName(String clean) {
   return m?.group(1)?.replaceAll(RegExp(r'\s+'), ' ');
 }
 
+/// Identifies a stable key (`ctor:<name>` or `member:<name>`) for a class or
+/// enum member so that subsequent tutorial snippets that redefine the same
+/// constructor, getter, method, or field replace the earlier version in-place.
 String? _identifyMemberName(String chunk, {required String className}) {
   final clean = _stripInlineComments(_stripLeadingComments(chunk)).trim();
   if (clean.isEmpty) return null;
 
-  // Constructor (`ClassName(...)` or `const ClassName(...)` or `factory ClassName.foo(...)`)
+  // Match constructors (`ClassName(...)`, `const ClassName(...)`, or
+  // `factory ClassName.fromJson(...)`) before methods so named/factory
+  // constructors aren't misclassified as regular methods.
   final ctorMatch = RegExp(
     '^((?:const\\s+|factory\\s+)?$className(?:\\.\\w+)?)\\s*\\(',
   ).firstMatch(clean);
@@ -1066,7 +1164,6 @@ String? _identifyMemberName(String chunk, {required String className}) {
     return 'ctor:${ctorMatch.group(1)!.split(' ').last}';
   }
 
-  // Getter (`Type get foo`)
   final getterMatch = RegExp(
     r'^(?:static\s+)?[\w<>?,\s\(\)\{\}]+\s+get\s+(\w+)\b',
   ).firstMatch(clean);
@@ -1074,8 +1171,9 @@ String? _identifyMemberName(String chunk, {required String className}) {
     return 'member:${getterMatch.group(1)!}';
   }
 
-  // Field ending with `;` or having `=` before any method body `{` or `=>`
-  // (including function-typed fields like `FutureOr<void> Function(Object)? onError;`).
+  // Match function-typed fields (such as `FutureOr<void> Function(Object)? onError;`)
+  // before the method regex below, because the parentheses in `Function(...)`
+  // would otherwise match the method signature pattern.
   if (!clean.contains('{') && !clean.contains('=>')) {
     final semiFieldMatch = RegExp(r'(\w+)\s*(?:=[^;]*)?;$').firstMatch(clean);
     if (semiFieldMatch != null && !clean.trimRight().endsWith(');')) {
@@ -1083,14 +1181,12 @@ String? _identifyMemberName(String chunk, {required String className}) {
     }
   }
 
-  // Method (`ReturnType foo(`)
   final methodMatch = RegExp(r'^(?:static\s+)?[\w<>?,\s]+\s+(\w+)\s*\(')
       .firstMatch(clean);
   if (methodMatch != null) {
     return 'member:${methodMatch.group(1)!}';
   }
 
-  // Field (`final Type foo = ...;` or `Type foo;`)
   final fieldMatch = RegExp(
     r'^(?:late\s+)?(?:final\s+|const\s+|var\s+)?(?:[\w<>?,\s\(\)\{\}]+\s+)?(\w+)\s*(?:=|;)',
   ).firstMatch(clean);

@@ -11,6 +11,21 @@ import 'package:path/path.dart' as path;
 import '../tutorial/tutorial_extractor.dart';
 import '../utils.dart';
 
+/// Validates that all code snippets across the 13-chapter Dartpedia tutorial
+/// (`src/content/learn/tutorial/*.md`) assemble into valid, compilable Dart
+/// packages at every chapter boundary.
+///
+/// Unlike standalone code samples in `examples/` (which only test a single,
+/// final version of each file), the Dartpedia tutorial is a progressive build
+/// where readers start with `dart create cli` in Chapter 1 and iteratively
+/// modify the same files across 13 chapters. Validating each chapter in
+/// sequence catches broken imports, missing methods, or type errors that would
+/// otherwise be hidden by later chapters.
+///
+/// Chapters are materialized sequentially inside a single temporary directory
+/// (`Directory.systemTemp`) so `.dart_tool/` and resolved dependencies carry
+/// over between chapters and `dart pub get` only runs when a `pubspec.yaml`
+/// file changes.
 final class CheckTutorialCodeCommand extends Command<int> {
   static const String _verboseFlag = 'verbose';
   static const String _chapterOption = 'chapter';
@@ -26,7 +41,9 @@ final class CheckTutorialCodeCommand extends Command<int> {
     argParser.addOption(
       _chapterOption,
       abbr: 'c',
-      help: 'Validate a specific chapter by 1-based index or slug ID.',
+      // 1-based to match user-facing chapter numbers (Chapters 1–13) and
+      // exported snapshot filenames (`chapter_01_...` through `chapter_13_...`).
+      help: 'Validate a specific chapter by 1-based chapter number or slug ID.',
     );
     argParser.addOption(
       _exportJsonOption,
@@ -65,7 +82,7 @@ final class CheckTutorialCodeCommand extends Command<int> {
       return 1;
     }
 
-    print(
+    stdout.writeln(
       'Validating ${chaptersToValidate.length} tutorial '
       '${chaptersToValidate.length == 1 ? 'chapter' : 'chapters'}...',
     );
@@ -80,7 +97,7 @@ final class CheckTutorialCodeCommand extends Command<int> {
 
       for (final chapter in chaptersToValidate) {
         if (verbose) {
-          print(
+          stdout.writeln(
             '\n--- Chapter ${chapter.index}: ${chapter.id} '
             '(${chapter.title}) ---',
           );
@@ -91,10 +108,14 @@ final class CheckTutorialCodeCommand extends Command<int> {
           );
         }
 
+        // Fail if any Dart or YAML block inside `## Tasks` is missing a
+        // `title="..."` attribute. Without a title, the extractor cannot know
+        // which file the snippet belongs to and would silently skip it,
+        // allowing broken tutorial code to pass CI unnoticed.
         if (chapter.untaggedTaskSnippets.isNotEmpty) {
           hasFailures = true;
           if (!verbose) {
-            print('FAILED (untagged code blocks)');
+            stdout.writeln('FAILED (untagged code blocks)');
           }
           for (final untagged in chapter.untaggedTaskSnippets) {
             stderr.writeln(
@@ -107,17 +128,9 @@ final class CheckTutorialCodeCommand extends Command<int> {
           continue;
         }
 
-        // Remove any files deleted in this chapter.
-        for (final deletedRelPath in chapter.deletedFiles) {
-          final deletedFile = File(
-            path.join(tempWorkspace.path, deletedRelPath),
-          );
-          if (deletedFile.existsSync()) {
-            deletedFile.deleteSync();
-          }
-        }
-
-        // Materialize all files for this chapter snapshot.
+        // Write the chapter's cumulative files into the temporary workspace and
+        // track whether any `pubspec.yaml` changed since the previous chapter
+        // so we only run `dart pub get` when dependencies actually change.
         final changedPubspecDirs = <String>{};
         for (final entry in chapter.workspaceFiles.entries) {
           final relPath = entry.key;
@@ -136,7 +149,11 @@ final class CheckTutorialCodeCommand extends Command<int> {
           }
         }
 
-        // Run `dart pub get` when any pubspec.yaml has changed.
+        // Once Chapter 10 (`data-and-json`) introduces a root `pubspec.yaml`
+        // with `workspace: [cli, command_runner, wikipedia]`, a single
+        // `dart pub get` at the workspace root resolves all member packages.
+        // In earlier chapters (Chapters 1–9), packages are standalone and must
+        // be resolved in their individual directories.
         if (changedPubspecDirs.isNotEmpty) {
           final hasRootWorkspace = chapter.workspaceFiles.containsKey(
             'pubspec.yaml',
@@ -160,7 +177,6 @@ final class CheckTutorialCodeCommand extends Command<int> {
           }
         }
 
-        // Run `dart analyze` across the active workspace or packages.
         final analyzePassed = _analyzeChapter(
           tempWorkspace.path,
           chapter,
@@ -169,12 +185,11 @@ final class CheckTutorialCodeCommand extends Command<int> {
         if (!analyzePassed) {
           hasFailures = true;
           if (!verbose) {
-            print('FAILED (analysis)');
+            stdout.writeln('FAILED (analysis)');
           }
           continue;
         }
 
-        // Run `dart test` if the chapter has tests.
         if (chapter.hasTests) {
           final testPassed = _testChapter(
             tempWorkspace.path,
@@ -184,14 +199,14 @@ final class CheckTutorialCodeCommand extends Command<int> {
           if (!testPassed) {
             hasFailures = true;
             if (!verbose) {
-              print('FAILED (tests)');
+              stdout.writeln('FAILED (tests)');
             }
             continue;
           }
         }
 
         if (!verbose) {
-          print('OK (${chapter.snippets.length} snippets)');
+          stdout.writeln('OK (${chapter.snippets.length} snippets)');
         }
       }
 
@@ -200,7 +215,7 @@ final class CheckTutorialCodeCommand extends Command<int> {
         return 1;
       }
 
-      print('\nAll tutorial chapters compiled and passed validation!');
+      stdout.writeln('\nAll tutorial chapters compiled and passed validation!');
       return 0;
     } finally {
       try {
@@ -225,8 +240,11 @@ final class CheckTutorialCodeCommand extends Command<int> {
 
   bool _runPubGet(String workingDirectory, {required bool verbose}) {
     if (verbose) {
-      print('  Running `dart pub get` in $workingDirectory...');
+      stdout.writeln('  Running `dart pub get` in $workingDirectory...');
     }
+    // Try `--offline` first so local runs use the local pub cache without
+    // network latency (and succeed in sandboxed/offline environments). Fall
+    // back to online `dart pub get` when the cache is cold (such as in CI).
     var result = Process.runSync(Platform.executable, const [
       'pub',
       'get',
@@ -261,6 +279,11 @@ final class CheckTutorialCodeCommand extends Command<int> {
           ];
 
     for (final dir in dirsToAnalyze) {
+      // Pass `--no-fatal-warnings` because intermediate refactoring chapters
+      // (such as Chapter 4 `packages-libs.md`) intentionally leave `dart:io`
+      // and `package:http` imports in `cli/bin/cli.dart` that are not wired up
+      // again until later chapters. Compile errors still fail with a non-zero
+      // exit code, while transitional `unused_import` warnings are tolerated.
       final result = Process.runSync(Platform.executable, const [
         'analyze',
         '--no-fatal-warnings',
@@ -275,7 +298,7 @@ final class CheckTutorialCodeCommand extends Command<int> {
         return false;
       }
       if (verbose) {
-        print('  Analyzed ${path.basename(dir)}: OK');
+        stdout.writeln('  Analyzed ${path.basename(dir)}: OK');
       }
     }
     return true;
@@ -286,6 +309,9 @@ final class CheckTutorialCodeCommand extends Command<int> {
     TutorialChapterSnapshot chapter, {
     required bool verbose,
   }) {
+    // Run `dart test` in each individual package that has a `test/` directory
+    // rather than at the workspace root, because `dart test` fails if invoked
+    // on a workspace member package that has no `test/` directory.
     final dirsToTest = <String>[
       for (final pkg in chapter.createdPackages)
         if (Directory(path.join(workspacePath, pkg, 'test')).existsSync())
@@ -306,7 +332,7 @@ final class CheckTutorialCodeCommand extends Command<int> {
         return false;
       }
       if (verbose) {
-        print('  Ran `dart test` in ${path.basename(dir)}: OK');
+        stdout.writeln('  Ran `dart test` in ${path.basename(dir)}: OK');
       }
     }
     return true;
@@ -348,7 +374,9 @@ final class CheckTutorialCodeCommand extends Command<int> {
     indexFile.writeAsStringSync('${encoder.convert(indexPayload)}\n');
 
     if (verbose) {
-      print('Exported ${chapters.length} chapter snapshots to ${outDir.path}.');
+      stdout.writeln(
+        'Exported ${chapters.length} chapter snapshots to ${outDir.path}.',
+      );
     }
   }
 }
