@@ -121,6 +121,50 @@ void main() {
       }
     });
 
+    test('flags untagged dart/yaml blocks inside ## Tasks while ignoring intro and skip="true" blocks', () {
+      final extractor = TutorialExtractor(repositoryRoot: repositoryRoot);
+      const sampleMarkdown = '''
+# Sample Chapter
+
+```dart
+// Conceptual block before Tasks - should be ignored.
+final x = 1;
+```
+
+## Tasks
+
+```dart title="cli/bin/cli.dart"
+void main() {}
+```
+
+```dart
+// Untagged block inside Tasks - should be flagged!
+void forgottenTitle() {}
+```
+
+```dart skip="true"
+// Explicitly opted-out block - should be ignored.
+void skippedExample() {}
+```
+
+## Summary
+
+```dart
+// Block after Tasks - should be ignored.
+void summaryExample() {}
+```
+''';
+      final parsed = extractor.extractBlocksFromMarkdown(sampleMarkdown);
+      expect(parsed.titledSnippets, hasLength(1));
+      expect(parsed.titledSnippets.first.filePath, 'cli/bin/cli.dart');
+      expect(parsed.untaggedTaskSnippets, hasLength(1));
+      expect(parsed.untaggedTaskSnippets.first.language, 'dart');
+      expect(
+        parsed.untaggedTaskSnippets.first.codePreview,
+        '// Untagged block inside Tasks - should be flagged!',
+      );
+    });
+
     test('produces serializable JSON snapshots with per-step assembledFileContent', () {
       for (final chapter in chapters) {
         final json = chapter.toJson();

@@ -197,7 +197,7 @@ final class TutorialExtractor {
       }
 
       final markdownContent = mdFile.readAsStringSync();
-      final extracted = _extractBlocksFromMarkdown(markdownContent);
+      final extracted = extractBlocksFromMarkdown(markdownContent);
 
       // Replay `dart create` commands from bash blocks so each package's
       // baseline `pubspec.yaml` exists before subsequent tasks edit it.
@@ -215,7 +215,7 @@ final class TutorialExtractor {
 
       final assembledSnippets = <TutorialCodeSnippet>[];
       for (final snippet in extracted.titledSnippets) {
-        state.applySnippet(chapterMeta.id, snippet);
+        state.applySnippet(snippet);
         assembledSnippets.add(
           snippet.withAssembledContent(state.files[snippet.filePath]),
         );
@@ -256,12 +256,13 @@ final class TutorialExtractor {
     return snapshots;
   }
 
+  /// Parses fenced code blocks from a single chapter's [markdown] source.
   ({
     List<TutorialCodeSnippet> titledSnippets,
     List<String> bashBlocks,
     List<UntaggedTutorialSnippet> untaggedTaskSnippets,
   })
-  _extractBlocksFromMarkdown(String markdown) {
+  extractBlocksFromMarkdown(String markdown) {
     final lines = markdown.split('\n');
     final titledSnippets = <TutorialCodeSnippet>[];
     final bashBlocks = <String>[];
@@ -498,14 +499,14 @@ final class _WorkspaceBuilder {
     );
   }
 
-  void applySnippet(String chapterId, TutorialCodeSnippet snippet) {
+  void applySnippet(TutorialCodeSnippet snippet) {
     final targetPath = snippet.filePath;
     if (snippet.language == 'yaml') {
       _applyYamlSnippet(targetPath, snippet.code);
     } else if (snippet.language == 'json') {
       files[targetPath] = '${snippet.code}\n';
     } else if (snippet.language == 'dart') {
-      _applyDartSnippet(chapterId, targetPath, snippet.code);
+      _applyDartSnippet(targetPath, snippet.code);
     }
   }
 
@@ -566,14 +567,23 @@ final class _WorkspaceBuilder {
 
   /// Applies either a full-file replacement or an incremental declaration/member
   /// update to [targetPath].
-  void _applyDartSnippet(String chapterId, String targetPath, String rawCode) {
+  void _applyDartSnippet(String targetPath, String rawCode) {
     // Chapter 1 first shows the starter `bin/cli.dart` with a comment
     // `import 'package:cli/cli.dart' as cli; // Delete this entire line` to
-    // teach readers what to remove before showing the final file.
-    final filteredLines = rawCode
-        .split('\n')
-        .where((l) => !l.contains('// Delete this entire line'))
-        .toList();
+    // teach readers what to remove. Remove any such deleted imports from the
+    // existing file model as well as filtering them out of the new snippet.
+    final existingModel = _dartFiles[targetPath];
+    final filteredLines = <String>[];
+    for (final line in rawCode.split('\n')) {
+      if (line.contains('// Delete this entire line')) {
+        final semiIdx = line.indexOf(';');
+        if (semiIdx != -1 && existingModel != null) {
+          existingModel.imports.remove(line.substring(0, semiIdx + 1).trim());
+        }
+      } else {
+        filteredLines.add(line);
+      }
+    }
     final code = filteredLines.join('\n').trim();
 
     // Skip "context/recap" snippets where a function body is abbreviated with
@@ -591,36 +601,18 @@ final class _WorkspaceBuilder {
       return;
     }
 
-    // Determine whether a `cli/bin/cli.dart` snippet is a complete file
-    // replacement (replacing earlier helper functions that moved into packages)
-    // versus an incremental update.
-    // The final snippet in `async.md` is excluded here because it includes
-    // `import` statements, `main`, and `printUsage`, but omits `searchWikipedia`
-    // (which was defined in the immediately preceding snippet) without a
-    // `// ...` comment; treating it as a full replacement would discard
-    // `searchWikipedia`.
-    final isFullCliEntrypoint =
-        targetPath == 'cli/bin/cli.dart' &&
+    // A snippet that includes top-level `import`s, defines a top-level
+    // entrypoint (`void main`), `class`, or `enum`, and has no `// ...`
+    // ellipsis comments is a complete replacement of the file (for example,
+    // when `cli/bin/cli.dart` or `help_command.dart` is refactored and shown in
+    // full at the end of a task).
+    final isCompleteFileReplacement =
         !_hasEllipsisComment(code) &&
-        code.contains('void main') &&
-        (chapterId == 'first-app' ||
-            (chapterId != 'async' && code.contains('import ')));
-    if (isFullCliEntrypoint) {
-      final freshModel = _DartFileModel();
-      freshModel.mergeSnippet(code);
-      _dartFiles[targetPath] = freshModel;
-      files[targetPath] = freshModel.render();
-      return;
-    }
-
-    // When a non-entrypoint file snippet includes top-level `import`s, defines
-    // a class or enum, and has no `// ...` ellipsis comments, it is a complete
-    // replacement of that file (for example, when `help_command.dart` or
-    // `command_runner_base.dart` is shown in full at the end of a task).
-    if (targetPath != 'cli/bin/cli.dart' &&
         code.contains('import ') &&
-        (code.contains('class ') || code.contains('enum ')) &&
-        !_hasEllipsisComment(code)) {
+        (code.contains('void main') ||
+            code.contains('class ') ||
+            code.contains('enum '));
+    if (isCompleteFileReplacement) {
       final freshModel = _DartFileModel();
       freshModel.mergeSnippet(code);
       _dartFiles[targetPath] = freshModel;
