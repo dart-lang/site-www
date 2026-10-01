@@ -48,7 +48,7 @@ More info:
 [www]: https://dart.dev
 
 
-## Updating code samples
+## Update code samples
 
 If your PR changes Dart code within a page,
 you'll probably need to change the code in two places:
@@ -84,6 +84,28 @@ from the root directory of the repository to update the Markdown files.
 [GitHub Actions]: https://docs.github.com/actions/learn-github-actions/understanding-github-actions
 [`/src/content/language/variables.md`]: https://github.com/dart-lang/site-www/blob/main/src/content/language/variables.md
 [`/examples/misc/lib/language_tour/variables.dart`]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/language_tour/variables.dart
+
+### Update Dartpedia tutorial code
+
+Unlike standard documentation pages that pull excerpts from `/examples`,
+the multi-chapter [Dartpedia tutorial][] (`src/content/learn/tutorial/*.md`)
+progressively builds a workspace across 13 chapters.
+Code blocks that modify project files include a `title="<file_path>"`
+attribute in their info string
+(for example, ```` ```dart title="cli/bin/cli.dart" ````).
+Inside a chapter's `## Tasks` section,
+any illustrative `dart` or `yaml` block that isn't part of a project file
+must include `skip="true"`.
+
+After editing any tutorial chapter,
+validate that all 13 chapter snapshots assemble, analyze cleanly,
+and pass tests by running:
+
+```terminal
+dart run dash_site check-tutorial-code
+```
+
+[Dartpedia tutorial]: https://dart.dev/learn/tutorial
 
 ## A word about conduct
 
