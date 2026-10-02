@@ -270,6 +270,30 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion explicit
   }
 
+  (List<String> rules, String _serverAddress) {
+    // #docregion dot-shorthands
+    final validator = SchemaValidator(
+      validationContext: .new(rules),
+      missingFields: .ignore,
+    );
+
+    DatabaseConnection connectionFor(Environment environment) =>
+        switch (environment) {
+          .production => .remote(_serverAddress),
+          .test => .inMemory(),
+        };
+    // #enddocregion dot-shorthands
+  };
+
+  (List<String> rules) {
+    // #docregion dot-shorthands-context
+    final validator = SchemaValidator1(
+      ValidationContext(rules),
+      policy: MissingFieldPolicy.ignore,
+    );
+    // #enddocregion dot-shorthands-context
+  };
+
   {
     // #docregion incomplete-generic
     List<num> numbers = [1, 2, 3];
@@ -479,6 +503,27 @@ class Task {
 class Ingredient {}
 
 final List<List<Ingredient>> cookbook = [];
+
+enum Environment { production, test }
+
+class DatabaseConnection._(final String? host) {
+  new remote(String host) : this._(host);
+  new inMemory() : this._(null);
+}
+
+class ValidationContext(final List<String> rules);
+
+enum MissingFieldPolicy { ignore }
+
+class SchemaValidator({
+  final ValidationContext? validationContext,
+  final MissingFieldPolicy? missingFields,
+});
+
+class SchemaValidator1(
+  final ValidationContext validationContext, {
+  final MissingFieldPolicy? policy,
+});
 
 //----------------------------------------------------------------------------
 

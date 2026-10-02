@@ -233,6 +233,7 @@ dart run dash_site effective-dart
 * <a href='/effective-dart/design#dont-type-annotate-initializing-formals'>DON'T type annotate initializing formals.</a>
 * <a href='/effective-dart/design#do-write-type-arguments-on-generic-invocations-that-arent-inferred'>DO write type arguments on generic invocations that aren't inferred.</a>
 * <a href='/effective-dart/design#dont-write-type-arguments-on-generic-invocations-that-are-inferred'>DON'T write type arguments on generic invocations that are inferred.</a>
+* <a href='/effective-dart/design#prefer-using-dot-shorthands-when-the-surrounding-context-allows'>PREFER using dot shorthands when the surrounding context allows.</a>
 * <a href='/effective-dart/design#avoid-writing-incomplete-generic-types'>AVOID writing incomplete generic types.</a>
 * <a href='/effective-dart/design#do-annotate-with-dynamic-instead-of-letting-inference-fail'>DO annotate with <code>dynamic</code> instead of letting inference fail.</a>
 * <a href='/effective-dart/design#prefer-signatures-in-function-type-annotations'>PREFER signatures in function type annotations.</a>

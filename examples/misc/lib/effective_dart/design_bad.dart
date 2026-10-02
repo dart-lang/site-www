@@ -133,6 +133,31 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion explicit
   }
 
+  (List<String> rules, String _serverAddress) {
+    // #docregion dot-shorthands
+    final validator = SchemaValidator(
+      validationContext: ValidationContext(rules),
+      missingFields: MissingFieldPolicy.ignore,
+    );
+
+    DatabaseConnection connectionFor(Environment environment) =>
+        switch (environment) {
+          Environment.production =>
+            DatabaseConnection.remote(_serverAddress),
+          Environment.test => DatabaseConnection.inMemory(),
+        };
+    // #enddocregion dot-shorthands
+  };
+
+  (List<String> rules) {
+    // #docregion dot-shorthands-context
+    final validator = SchemaValidator1(
+      .new(rules),
+      policy: .ignore,
+    );
+    // #enddocregion dot-shorthands-context
+  };
+
   {
     // #docregion incomplete-generic
     List numbers = [1, 2, 3];

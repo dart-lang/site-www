@@ -1401,6 +1401,73 @@ Here, the types of the collection and instance can be inferred bottom-up from
 their elements and arguments.
 
 
+### PREFER using dot shorthands when the surrounding context allows
+
+Use [dot shorthands][] to omit explicit type names for
+enum values, static members, or constructors when
+the surrounding code makes the target type evident to the reader, such as when
+passing an argument to a named parameter that reflects the type, or
+returning from a function with an explicit return type.
+
+[dot shorthands]: /language/dot-shorthands
+
+<?code-excerpt "design_good.dart (dot-shorthands)"?>
+```dart tag=good
+final validator = SchemaValidator(
+  validationContext: .new(rules),
+  missingFields: .ignore,
+);
+
+DatabaseConnection connectionFor(Environment environment) =>
+    switch (environment) {
+      .production => .remote(_serverAddress),
+      .test => .inMemory(),
+    };
+```
+
+<?code-excerpt "design_bad.dart (dot-shorthands)"?>
+```dart tag=bad
+final validator = SchemaValidator(
+  validationContext: ValidationContext(rules),
+  missingFields: MissingFieldPolicy.ignore,
+);
+
+DatabaseConnection connectionFor(Environment environment) =>
+    switch (environment) {
+      Environment.production =>
+        DatabaseConnection.remote(_serverAddress),
+      Environment.test => DatabaseConnection.inMemory(),
+    };
+```
+
+However, the analyzer's ability to infer a type does not ensure that
+a reader can deduce it.
+Even when the analyzer can infer the [context type][] for a dot shorthand,
+the call site might not give the reader enough context to
+tell what type the argument represents.
+When parameter names are vague or generic, or when
+passing positional arguments whose types aren't evident from the invocation,
+write out the type name explicitly instead.
+
+[context type]: /resources/glossary#context-type
+
+<?code-excerpt "design_good.dart (dot-shorthands-context)"?>
+```dart tag=good
+final validator = SchemaValidator(
+  ValidationContext(rules),
+  policy: MissingFieldPolicy.ignore,
+);
+```
+
+<?code-excerpt "design_bad.dart (dot-shorthands-context)"?>
+```dart tag=bad
+final validator = SchemaValidator(
+  .new(rules),
+  policy: .ignore,
+);
+```
+
+
 ### AVOID writing incomplete generic types
 
 The goal of writing a type annotation or type argument is to pin down a complete
