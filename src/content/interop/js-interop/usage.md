@@ -543,5 +543,5 @@ might lead to violations, which is why it can be "unsafe".
 [`dartify`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/dartify.html
 [`jsify`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/jsify.html
 [`importModule`]: {{site.dart-api}}/dart-js_interop/importModule.html
-[`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`isA`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/isA.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
