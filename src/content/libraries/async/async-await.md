@@ -185,9 +185,11 @@ void main() {
 
 In the preceding example, 
 even though `fetchUserOrder()` executes before the `print()` call on line 8, 
-the console shows the output from line 8("Fetching user order...") 
+the console shows the output from line 8 ("Fetching user order...") 
 before the output from `fetchUserOrder()` ("Large Latte").
-This is because `fetchUserOrder()` delays before it prints "Large Latte".
+This is because `Future.delayed()` schedules its callback to run later,
+after `main()` finishes running its synchronous code.
+Even with a delay of zero, "Fetching user order..." prints first.
 
 ### Example: Completing with an error
 
