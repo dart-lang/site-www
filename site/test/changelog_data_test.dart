@@ -7,6 +7,7 @@ library;
 
 import 'dart:io';
 
+import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters_notifier.dart';
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_index.dart';
 import 'package:dart_dev_site/src/models/changelog_model.dart';
 import 'package:dart_dev_site/src/util.dart';
@@ -111,6 +112,87 @@ void main() {
       expect(markdown, contains('## Dart 3.13'));
       expect(markdown, contains('### [3.9.4] [Tools] — Pub (Fixed)'));
       expect(markdown, isNot(contains('<ChangelogIndex')));
+    });
+  });
+
+  group('ChangelogFiltersNotifier #fragment routing & serialization', () {
+    late ChangelogFiltersNotifier notifier;
+
+    setUp(() {
+      notifier = ChangelogFiltersNotifier()
+        ..availableAreas.addAll([
+          'SDK',
+          'Language',
+          'Libraries',
+          'Tools',
+          'Dart Runtime',
+          'Docs',
+        ])
+        ..availableVersions.addAll([
+          for (var minor = 0; minor <= 13; minor++) Version(3, minor, 0),
+          Version(2, 19, 0),
+        ]);
+    });
+
+    test('routes direct card and version anchors without hiding filters', () {
+      notifier.setTag(ChangelogTag.breaking, true);
+      final result = notifier.parseAndApplyUrlFragment(
+        '#v3-13-0-language-primary-constructors-0',
+      );
+
+      expect(result.isFilterHash, isFalse);
+      expect(result.searchQuery, isEmpty);
+      expect(result.targetId, 'v3-13-0-language-primary-constructors-0');
+      expect(notifier.selectedTags, isEmpty);
+      expect(notifier.selectedAreas, isEmpty);
+      expect(notifier.selectedVersions, isEmpty);
+    });
+
+    test('hydrates structured filter hash including from/to version range', () {
+      final result = notifier.parseAndApplyUrlFragment(
+        '#from=3.10&to=3.13&tags=breaking,versioned'
+        '&area=language,Dart+Runtime&q=macro&id=v3-13-0-language-0',
+      );
+
+      expect(result.isFilterHash, isTrue);
+      expect(result.searchQuery, 'macro');
+      expect(result.targetId, 'v3-13-0-language-0');
+      expect(
+        notifier.selectedTags,
+        unorderedEquals([
+          ChangelogTag.breaking,
+          ChangelogTag.languageVersioned,
+        ]),
+      );
+      expect(
+        notifier.selectedAreas,
+        unorderedEquals(['Language', 'Dart Runtime']),
+      );
+      expect(
+        notifier.selectedVersions,
+        unorderedEquals([
+          Version(3, 11, 0),
+          Version(3, 12, 0),
+          Version(3, 13, 0),
+        ]),
+      );
+    });
+
+    test('serializes active filters into canonical URL fragment', () {
+      notifier
+        ..setTag(ChangelogTag.breaking, true)
+        ..setTag(ChangelogTag.newTag, true)
+        ..setArea('Dart Runtime', true)
+        ..setArea('Language', true)
+        ..setVersion(Version(3, 12, 0), true)
+        ..setVersion(Version(3, 13, 0), true);
+
+      final fragment = notifier.toUrlFragment(searchQuery: 'primary');
+      expect(
+        fragment,
+        'tags=new,breaking&area=Language,Dart+Runtime'
+        '&versions=3.13,3.12&q=primary',
+      );
     });
   });
 }

@@ -4,6 +4,7 @@
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
 import '../../../models/changelog_model.dart';
@@ -29,24 +30,71 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
   final List<ChangelogEntry> entries = [];
   int filteredEntriesCount = 0;
 
+  bool _isApplyingHash = false;
+  JSFunction? _hashChangeListener;
+  JSFunction? _cardAnchorClickListener;
+
   @override
   void initState() {
     super.initState();
 
     if (kIsWeb) {
-      filters.addListener(setFilters);
+      filters.addListener(_onFiltersChanged);
+
+      _hashChangeListener = ((web.Event _) {
+        _applyUrlHash(web.window.location.hash);
+      }).toJS;
+      web.window.addEventListener('hashchange', _hashChangeListener);
 
       final listContainer = web.document.getElementById('all-changelog-list');
-      if (listContainer == null) {
-        return;
+      if (listContainer != null) {
+        _initializeFromDom(listContainer);
+      } else {
+        context.binding.addPostFrameCallback(() {
+          final deferredContainer = web.document.getElementById(
+            'all-changelog-list',
+          );
+          if (deferredContainer != null && mounted) {
+            _initializeFromDom(deferredContainer);
+          }
+        });
       }
+    }
+  }
 
-      final entryCards = listContainer.querySelectorAll('.changelog-card');
-      _recreateEntries(entryCards);
+  void _initializeFromDom(web.Element listContainer) {
+    final entryCards = listContainer.querySelectorAll('.changelog-card');
+    _recreateEntries(entryCards);
+
+    _isApplyingHash = true;
+    try {
+      filters.populateAvailableFiltersFromDOM();
+    } finally {
+      _isApplyingHash = false;
+    }
+
+    _cardAnchorClickListener = ((web.Event event) {
+      final target = event.target;
+      if (target != null && target.isA<web.Element>()) {
+        final anchor = (target as web.Element).closest('a.card-anchor');
+        final card = anchor?.closest('.changelog-card');
+        if (card != null && card.isA<web.HTMLElement>()) {
+          _clearHighlightedCards();
+          (card as web.HTMLElement).classList.add('highlighted-card');
+        }
+      }
+    }).toJS;
+    listContainer.addEventListener('click', _cardAnchorClickListener);
+
+    if (web.window.location.hash.isNotEmpty) {
+      _applyUrlHash(web.window.location.hash);
+    } else {
+      setState(() {});
     }
   }
 
   void _recreateEntries(web.NodeList entryCards) {
+    entries.clear();
     for (var i = 0; i < entryCards.length; i++) {
       final element = entryCards.item(i) as web.Element;
       final entry = ChangelogEntry.fromElement(element);
@@ -55,9 +103,59 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
     filteredEntriesCount = entries.length;
   }
 
+  void _onFiltersChanged() {
+    if (_isApplyingHash) {
+      setState(() {});
+      return;
+    }
+    setFilters();
+  }
+
+  void _applyUrlHash(String rawHash) {
+    _isApplyingHash = true;
+    try {
+      final result = filters.parseAndApplyUrlFragment(rawHash);
+      setState(() {
+        searchQuery = result.searchQuery;
+      });
+      _updateDomVisibility();
+      _clearHighlightedCards();
+
+      if (result.targetId case final targetId?) {
+        final target = web.document.getElementById(targetId);
+        if (target != null && target.isA<web.HTMLElement>()) {
+          final targetElement = target as web.HTMLElement;
+          targetElement.classList.remove('hidden');
+          targetElement.closest('.version-group')?.classList.remove('hidden');
+          if (targetElement.classList.contains('changelog-card')) {
+            targetElement.classList.add('highlighted-card');
+          }
+          targetElement.scrollIntoView();
+        }
+      }
+    } finally {
+      _isApplyingHash = false;
+    }
+  }
+
+  void _clearHighlightedCards() {
+    final highlighted = web.document.querySelectorAll(
+      '.changelog-card.highlighted-card',
+    );
+    for (var i = 0; i < highlighted.length; i++) {
+      (highlighted.item(i) as web.HTMLElement).classList.remove(
+        'highlighted-card',
+      );
+    }
+  }
+
   void setFilters([void Function()? callback]) {
     setState(callback ?? () {});
+    _updateDomVisibility();
+    _syncUrlHash();
+  }
 
+  void _updateDomVisibility() {
     final entriesToShow = filters.filterEntries(entries, searchQuery).toSet();
     filteredEntriesCount = entriesToShow.length;
 
@@ -93,10 +191,31 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
     }
   }
 
+  void _syncUrlHash() {
+    final fragment = filters.toUrlFragment(searchQuery: searchQuery);
+    if (fragment.isNotEmpty) {
+      web.window.history.replaceState(null, '', '#$fragment');
+    } else if (web.window.location.hash.isNotEmpty) {
+      web.window.history.replaceState(
+        null,
+        '',
+        '${web.window.location.pathname}${web.window.location.search}',
+      );
+    }
+  }
+
   @override
   void dispose() {
     if (kIsWeb) {
-      filters.removeListener(setFilters);
+      filters.removeListener(_onFiltersChanged);
+      if (_hashChangeListener != null) {
+        web.window.removeEventListener('hashchange', _hashChangeListener);
+      }
+      if (_cardAnchorClickListener != null) {
+        web.document
+            .getElementById('all-changelog-list')
+            ?.removeEventListener('click', _cardAnchorClickListener);
+      }
     }
     super.dispose();
   }
