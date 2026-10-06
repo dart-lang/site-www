@@ -445,11 +445,17 @@ body.dark-mode {
   gap: 1rem;
 
   .version-group {
-    .version-header {
+    .header-wrapper {
       margin-top: 0;
       margin-bottom: 1rem;
+    }
+
+    .version-header {
+      margin-top: 0;
+      margin-bottom: 0;
       font-size: 1.5rem;
       color: var(--site-base-fgColor);
+      scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
     }
 
     .version-items {
@@ -460,10 +466,21 @@ body.dark-mode {
   }
 
   .changelog-card {
-
     padding: 0; // Reset default card padding if any, we'll use inner elements
     display: flex;
     flex-direction: column;
+    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
+
+    &.highlighted-card {
+      border-color: var(--site-primary-color);
+      box-shadow: 0 0 0 3px rgba(2, 125, 253, 0.25);
+    }
+
+    &:hover {
+      .card-header .card-anchor {
+        opacity: 1;
+      }
+    }
 
     .card-header {
       padding: 0.75rem 1rem;
@@ -505,6 +522,30 @@ body.dark-mode {
         font-weight: var(--site-fontWeight-bold);
         font-size: 1rem;
         color: var(--site-base-fgColor);
+      }
+
+      .card-anchor {
+        border-radius: 0.125rem;
+        color: var(--site-base-fgColor-alt);
+        font-size: 1.1rem;
+        font-weight: var(--site-fontWeight-bold);
+        line-height: 1;
+        margin-left: 0.15rem;
+        opacity: 0;
+        text-decoration: none;
+        @include mixins.transition(.1s);
+
+        &:hover {
+          color: var(--site-link-fgColor);
+        }
+
+        &:focus {
+          opacity: 1;
+        }
+
+        &:active {
+          color: var(--site-link-fgColor-active);
+        }
       }
 
       .tags {
