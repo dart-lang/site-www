@@ -20,20 +20,27 @@ final class ChangelogEntry {
   factory ChangelogEntry.fromMap(Map<String, Object?> map) {
     final description = map['description'] as String;
     final link = map['link'] as String?;
+    final versionStr = map['version'].toString().trim();
+
+    final rawTags = (map['tags'] as List<Object?>?)?.cast<String>() ?? const [];
+    final tags = <ChangelogTag>{};
+    for (final rawTag in rawTags) {
+      final tag = ChangelogTag.fromId(rawTag);
+      if (tag == ChangelogTag.none) {
+        throw ArgumentError(
+          'Unknown changelog tag "$rawTag" in entry for version $versionStr.',
+        );
+      }
+      tags.add(tag);
+    }
 
     return ChangelogEntry(
       description: description,
-      version: _parseVersion(map['version'].toString().trim()),
+      version: _parseVersion(versionStr),
       releaseDate: map['releaseDate']?.toString(),
       area: map['area'] as String,
       subArea: map['subArea'] as String?,
-      tags:
-          (map['tags'] as List<Object?>?)
-              ?.cast<String>()
-              .map(ChangelogTag.fromId)
-              .where((tag) => tag != ChangelogTag.none)
-              .toSet() ??
-          {},
+      tags: tags,
       link: link,
     );
   }

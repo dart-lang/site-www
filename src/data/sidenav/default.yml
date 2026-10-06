@@ -157,6 +157,8 @@
       permalink: /tools/cli-distribution
     - title: Publishing packages
       permalink: /tools/pub/publishing
+    - title: Data-driven fixes
+      permalink: /tools/pub/data-driven-fixes
     - title: Writing package pages
       permalink: /tools/pub/writing-package-pages
     - title: Workspaces (monorepo support)
@@ -391,7 +393,7 @@
     - title: Books
       permalink: /resources/books
     - title: Videos
-      permalink: /resources/videos
+      permalink: https://www.youtube.com/@flutterdev
 
 - title: Related sites
   expanded: true

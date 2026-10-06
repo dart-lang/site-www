@@ -55,7 +55,7 @@ understand how to use your CLI application.
     You need these to use the color extensions and to
     throw an `ArgumentException`.
 
-    ```dart
+    ```dart title="command_runner/lib/src/help_command.dart"
     import 'dart:async';
 
     import 'package:command_runner/command_runner.dart';
@@ -68,7 +68,7 @@ understand how to use your CLI application.
     This new version uses a `StringBuffer` to efficiently
     build the help string and includes logic to handle verbose output.
 
-    ```dart
+    ```dart title="command_runner/lib/src/help_command.dart"
     @override
     FutureOr<String> run(ArgResults args) async {
       final buffer = StringBuffer();
@@ -115,7 +115,7 @@ understand how to use your CLI application.
     the `HelpCommand` class.
     This method formats the detailed output for a single command.
 
-    ```dart
+    ```dart title="command_runner/lib/src/help_command.dart"
     String _renderCommandVerbose(Command cmd) {
       final indent = ' ' * 10;
       final buffer = StringBuffer();
@@ -144,7 +144,7 @@ allow for flexible output handling.
 1.  Add the `onOutput` argument to the `CommandRunner` constructor, and
     add the corresponding `onOutput` member to the class.
 
-    ```dart
+    ```dart title="command_runner/lib/src/command_runner_base.dart"
     class CommandRunner {
       CommandRunner({this.onOutput, this.onError});
 
@@ -162,7 +162,7 @@ allow for flexible output handling.
 
 1.  Update the `run` method to use the `onOutput` argument.
 
-    ```dart
+    ```dart title="command_runner/lib/src/command_runner_base.dart"
       Future<void> run(List<String> input) async {
         try {
           final ArgResults results = parse(input);
@@ -199,7 +199,7 @@ Finally, update your main application to use the new `onOutput` feature.
     You will also need to add an import for `console.dart` to
     make the `write` function available.
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     import 'package:command_runner/command_runner.dart';
 
     const version = '0.0.1';

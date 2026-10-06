@@ -16,7 +16,7 @@ Check out the following Dart language resources:
   <Card title="Books" link="/resources/books">
     A collection of books about Dart.
   </Card>
-  <Card title="Videos" link="/resources/videos">
+  <Card title="Videos" link="https://www.youtube.com/@flutterdev">
     Videos aimed at Dart developers.
   </Card>
   <Card title="Code of conduct" link="/community/code-of-conduct">

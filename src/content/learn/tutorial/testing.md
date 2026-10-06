@@ -50,7 +50,7 @@ already a development dependency in your project.
 1.  Verify that `test: ^1.24.0` (or the latest stable version) is
     present under `dev_dependencies`.
 
-    ```yaml highlightLines=3
+    ```yaml title="wikipedia/pubspec.yaml" highlightLines=3
     dev_dependencies:
       lints: ^5.0.0
       test: ^1.24.0
@@ -83,7 +83,7 @@ add the necessary imports to it.
 1.  Open the `wikipedia/test/model_test.dart` file and
     add the following `import` statements at the top of the file:
 
-    ```dart
+    ```dart title="wikipedia/test/model_test.dart"
     import 'dart:convert';
     import 'dart:io';
 
@@ -116,7 +116,7 @@ populate it with three files.
     create a new file named `dart_lang_summary.json` and
     paste the following content into it:
 
-    ```json
+    ```json title="wikipedia/test/test_data/dart_lang_summary.json"
     {
       "type": "standard",
       "title": "Dart (programming language)",
@@ -165,7 +165,7 @@ populate it with three files.
 1.  Next, create a file named `open_search_response.json` and
     paste this content into it:
 
-    ```json
+    ```json title="wikipedia/test/test_data/open_search_response.json"
     [
         "dart",
         [
@@ -218,7 +218,7 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
 1.  Use the `group` function to group related tests together.
     Add the following to your `wikipedia/test/model_test.dart` file:
 
-    ```dart
+    ```dart title="wikipedia/test/model_test.dart"
     void main() {
       group('deserialize example JSON responses from wikipedia API', () {
         // Tests will go here
@@ -232,7 +232,7 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
 1.  Create a test for the `Summary` model.
     Add the following `test` function inside the `group` function:
 
-    ```dart
+    ```dart title="wikipedia/test/model_test.dart"
     void main() {
       group('deserialize example JSON responses from wikipedia API', () {
         test('deserialize Dart Programming Language page summary example data from '
@@ -267,7 +267,7 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     Add the following `test` function inside
     the `group` function, after the previous test:
 
-    ```dart
+    ```dart title="wikipedia/test/model_test.dart"
     void main() {
       group('deserialize example JSON responses from wikipedia API', () {
         test('deserialize Dart Programming Language page summary example data from '
@@ -305,7 +305,7 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     Add the following `test` function inside the `group` function,
     after the previous test:
 
-    ```dart
+    ```dart title="wikipedia/test/model_test.dart"
     void main() {
       group('deserialize example JSON responses from wikipedia API', () {
         test('deserialize Dart Programming Language page summary example data from '

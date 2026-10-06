@@ -32,3 +32,4 @@ dev_dependencies:
       url: https://github.com/flutter/website
       path: packages/analysis_defaults
       ref: 74b7c5c06ebe9bf8c3e007e120a71144af5eb175
+  test: ^1.31.1
