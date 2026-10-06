@@ -378,7 +378,7 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
         : null;
     if (fromVersion != null || toVersion != null) {
       for (final version in availableVersions) {
-        final afterFrom = fromVersion == null || version > fromVersion;
+        final afterFrom = fromVersion == null || version >= fromVersion;
         final upTo = toVersion == null || version <= toVersion;
         if (afterFrom && upTo) {
           selectedVersions.add(version);

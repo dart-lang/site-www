@@ -445,9 +445,14 @@ body.dark-mode {
   gap: 1rem;
 
   .version-group {
-    .version-header {
+    .header-wrapper {
       margin-top: 0;
       margin-bottom: 1rem;
+    }
+
+    .version-header {
+      margin-top: 0;
+      margin-bottom: 0;
       font-size: 1.5rem;
       color: var(--site-base-fgColor);
       scroll-margin-top: calc(var(--site-header-height) + 1.5rem);

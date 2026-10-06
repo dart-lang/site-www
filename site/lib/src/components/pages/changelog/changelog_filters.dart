@@ -73,6 +73,8 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
       _isApplyingHash = false;
     }
 
+    // global_scripts.dart intercepts a.heading-link clicks with replaceState
+    // (which does not fire hashchange), so highlight the card on click.
     _cardAnchorClickListener = ((web.Event event) {
       final target = event.target;
       if (target != null && target.isA<web.Element>()) {
@@ -130,7 +132,11 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
           if (targetElement.classList.contains('changelog-card')) {
             targetElement.classList.add('highlighted-card');
           }
-          targetElement.scrollIntoView();
+          Future<void>.delayed(Duration.zero, () {
+            if (mounted) {
+              targetElement.scrollIntoView();
+            }
+          });
         }
       }
     } finally {
@@ -192,7 +198,20 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
   }
 
   void _syncUrlHash() {
-    final fragment = filters.toUrlFragment(searchQuery: searchQuery);
+    final hasActiveFilters =
+        searchQuery.trim().isNotEmpty ||
+        filters.selectedTags.isNotEmpty ||
+        filters.selectedAreas.isNotEmpty ||
+        filters.selectedVersions.isNotEmpty;
+    final highlighted = hasActiveFilters
+        ? web.document.querySelector(
+            '.changelog-card.highlighted-card:not(.hidden)',
+          )
+        : null;
+    final fragment = filters.toUrlFragment(
+      searchQuery: searchQuery,
+      targetId: highlighted?.id,
+    );
     if (fragment.isNotEmpty) {
       web.window.history.replaceState(null, '', '#$fragment');
     } else if (web.window.location.hash.isNotEmpty) {
@@ -248,9 +267,11 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
           icon: 'filter_list',
           classes: ['show-filters-button'],
           onClick: () {
-            final toggle = web.document.getElementById(
-              'open-filter-toggle',
-            ) as web.HTMLInputElement?;
+            final toggle =
+                web.document.getElementById(
+                      'open-filter-toggle',
+                    )
+                    as web.HTMLInputElement?;
             if (toggle != null) {
               toggle.checked = !toggle.checked;
             }
@@ -272,6 +293,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
             // filters.reset() doesn't trigger a change,
             // such as if only search query was active.
             searchQuery = '';
+            _clearHighlightedCards();
             filters.reset();
             setFilters();
           },
