@@ -83,6 +83,9 @@ final class ChangelogIndex extends StatelessComponent {
 
     final slugCounts = <String, int>{};
     String nextCardId(ChangelogEntry item) {
+      if (item.id case final explicitId? when explicitId.isNotEmpty) {
+        return slugify(explicitId);
+      }
       final baseSlug = slugify(
         'v${item.version}-${item.area}'
         '${item.subArea != null ? '-${item.subArea}' : ''}',
@@ -163,6 +166,17 @@ class _ChangelogEntryCard extends StatelessComponent {
               span(classes: 'entry-title', [
                 DashMarkdown(content: subArea, inline: true),
               ]),
+            a(
+              classes: 'heading-link card-anchor',
+              href: '#$cardId',
+              attributes: {
+                'aria-label':
+                    "Link to '${entry.version} ${entry.subArea ?? entry.area}' "
+                    'changelog entry',
+                'title': 'Copy link to this changelog entry',
+              },
+              [const .text('#')],
+            ),
           ]),
           div(classes: 'tags', [
             for (final tag in entry.tags)
