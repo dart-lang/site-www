@@ -10,7 +10,7 @@ dependencies:
   collection: ^1.19.1
   crypto: ^3.0.7
   # Used for accessing the SDK archive storage buckets.
-  googleapis: ^16.0.0
+  googleapis: ^17.0.0
   html: ^0.15.6
   http: ^1.6.0
   # Used for formatting dates in the SDK archive.
