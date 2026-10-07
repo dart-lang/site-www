@@ -1,5 +1,5 @@
 ---
-title: Getting started with JavaScript interop
+title: Get started with JavaScript interop
 breadcrumb: Get started
 description: A basic example of using browser APIs and a bundled JS library.
 ---
@@ -124,6 +124,37 @@ Callbacks converted to JS with `.toJS` have the same
 type limitations as other interop APIs in that their parameters
 and return values must be interop types or compatible primitives.
 
+## Create a JavaScript object literal
+
+Many JavaScript APIs accept plain object literals (`{ key: 'value' }`)
+for configuration options.
+To create a JavaScript object literal in Dart,
+declare an `external` constructor with named parameters on an extension type,
+where each parameter name matches a JavaScript property name:
+
+```dart
+extension type RequestOptions._(JSObject _) implements JSObject {
+  external RequestOptions({String method, bool cache});
+}
+```
+
+Calling this constructor creates a JavaScript object containing
+only the arguments you pass,
+which you can pass directly to any interop API:
+
+```dart
+@JS()
+external JSPromise<JSObject> fetch(String resource, [RequestOptions options]);
+
+void main() {
+  // Creates the JS object `{method: 'POST'}` and passes it to `fetch()`.
+  var options = RequestOptions(method: 'POST');
+  fetch('data.json', options);
+}
+```
+
+To learn more, consult [Object literal constructors][] in the usage guide.
+
 ## Work with Promises and Arrays
 
 JavaScript interop provides helpers for other common types, like
@@ -191,14 +222,16 @@ JSArray jsArray2 = dartList.map((e) => e.toJS).toList().toJS;
 ## Learn more
 
 * For more information on type conversions, check out [Conversions][].
-* For more information on how to write interop APIs, see the [Usage guide][].
-* To access common utility functions, see:
+* For more information on how to write interop APIs,
+  consult the [Usage guide][].
+* To access common utility functions, consult:
   * The [`dart:js_interop`][] library, and
   * The [`dart:js_interop_unsafe`][] library.
 * The [`package:web`][] exposes many of the browser APIs
   (including those used in the above examples) through interop declarations.
 
 [extension types]: /language/extension-types
+[Object literal constructors]: /interop/js-interop/usage#object-literal-constructors
 [Conversions]: /interop/js-interop/js-types#conversions
 [Usage guide]: /interop/js-interop/usage
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/

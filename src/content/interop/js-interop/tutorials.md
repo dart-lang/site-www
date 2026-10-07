@@ -12,7 +12,7 @@ nextpage:
 
 ## Tutorials
 
-### [Getting started with Javascript interop][]
+### [Get started with JavaScript interop][]
 
 In this tutorial, you'll learn the basics of interacting with JavaScript 
 in Dart, using various JavaScript and browser APIs.
@@ -27,5 +27,5 @@ TODO: add a section on how to bundle a JS and Dart app for interop
 TODO: maybe add a section on conversions
 {% endcomment %}
 
-[Getting started with Javascript interop]: /interop/js-interop/start
+[Get started with JavaScript interop]: /interop/js-interop/start
 [How to mock JavaScript interop in Dart]: /interop/js-interop/mock
