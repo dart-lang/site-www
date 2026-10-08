@@ -1,8 +1,8 @@
 ---
-title: "Announcing Genkit Dart 1.0: Production-ready AI and agents in Dart"
+title: "Announcing Genkit Dart 1.0: Build production-ready agentic apps with Dart and Flutter"
 description: >-
   Announcing the stable 1.0 release of Genkit Dart, an open-source framework
-  for building AI-powered features and agentic workflows in Dart.
+  for building production-ready agentic apps and AI features in Dart.
 publishDate: 2026-10-08
 author: chrisraygill
 image: images/banner.webp
@@ -12,9 +12,13 @@ layout: blog
 
 <DashImage src="images/banner.webp" alt="Announcing Genkit Dart 1.0" />
 
+Dart and Flutter let you build high-quality apps for mobile, web, and desktop
+from a single codebase. With [Genkit Dart](https://genkit.dev/docs/dart/get-started/),
+you can bring that same productivity to full-stack, agentic apps.
+
 Today, we're announcing **Genkit Dart 1.0**, the first stable, production-ready
 release of Google's open-source framework for building AI-powered features and
-agentic workflows in Dart.
+agents in Dart.
 Since our [preview launch](/blog/announcing-genkit-dart-build-full-stack-ai-apps-with-dart-and-flutter)
 earlier this year, feedback from the Dart and Flutter community has helped us
 refine the core APIs and expand the toolkit for production workloads.
