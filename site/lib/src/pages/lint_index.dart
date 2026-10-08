@@ -64,6 +64,7 @@ class _LintRuleCard extends StatelessComponent {
       if (lint.lintSets.contains('core')) 'data-in-core': 'true',
       if (lint.lintSets.contains('recommended')) 'data-in-recommended': 'true',
       if (lint.lintSets.contains('flutter')) 'data-in-flutter': 'true',
+      if (lint.description.isNotEmpty) 'data-description': lint.description,
     };
 
     return Card(
@@ -78,7 +79,8 @@ class _LintRuleCard extends StatelessComponent {
         ),
       ],
       content: [
-        if (lint.description.isNotEmpty)
+        // DashMarkdown is async; only safe during server builds.
+        if (lint.description.isNotEmpty && !kIsWeb)
           DashMarkdown(content: lint.description),
       ],
       actions: CardActions(
