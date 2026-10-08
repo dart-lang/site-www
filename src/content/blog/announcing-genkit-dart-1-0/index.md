@@ -5,22 +5,22 @@ description: >-
   for building AI-powered features and agentic workflows in Dart.
 publishDate: 2026-10-08
 author: chrisraygill
-image: images/banner.png
+image: images/banner.webp
 category: announcements
 layout: blog
 ---
 
-<DashImage src="images/banner.png" alt="Announcing Genkit Dart 1.0" />
+<DashImage src="images/banner.webp" alt="Announcing Genkit Dart 1.0" />
 
 Today, we're announcing **Genkit Dart 1.0**, the first stable, production-ready
 release of Google's open-source framework for building AI-powered features and
-agentic workflows in Dart. Since our
-[preview launch](https://dart.dev/blog/announcing-genkit-dart-build-full-stack-ai-apps-with-dart-and-flutter)
+agentic workflows in Dart.
+Since our [preview launch](/blog/announcing-genkit-dart-build-full-stack-ai-apps-with-dart-and-flutter)
 earlier this year, feedback from the Dart and Flutter community has helped us
 refine the core APIs and expand the toolkit for production workloads.
 
-We've published the full walkthrough and code deep dives on the Flutter blog:
-**[Announcing Genkit Dart 1.0: Build production-ready agentic apps with Dart and Flutter](https://flutter.dev/blog/announcing-genkit-dart-1-0)**.
+We've published the [full walkthrough and code deep dives](https://flutter.dev/blog/announcing-genkit-dart-1-0)
+on the Flutter blog.
 
 To get started right away, add `genkit` to your Dart or Flutter project:
 
@@ -54,8 +54,8 @@ services, CLI tools, or full-stack Flutter apps:
   secure backend with `defineRemoteModel`.
 * **Human-in-the-loop tool interrupts:** Pause tool execution inside
   `defineTool` by returning `.interrupt(...)` when an action requires user
-  confirmation, then resume generation from where it left off.
-* **Composable generation middleware:** Attach pre-packaged middleware from
+  confirmation, and then resume generation from where it left off.
+* **Composable generation middleware:** Attach prepackaged middleware from
   [`genkit_middleware`](https://pub.dev/packages/genkit_middleware) (including
   automatic retries, dynamic `SKILL.md` loading, and tool approval rules) or
   write custom middleware with `defineGenerateMiddleware`.
@@ -102,7 +102,8 @@ await (GenkitRouter()..addAction(planTrip)).serve(port: 8080); // POST /planTrip
 For complete code examples covering multi-model generation, remote actions and
 models, tool interrupts, middleware, Dotprompt, OpenTelemetry, stateful agents,
 and generative UI with A2UI,
-**[read the full Genkit Dart 1.0 announcement on the Flutter blog](https://flutter.dev/blog/announcing-genkit-dart-1-0)**.
+read the **[full Genkit Dart 1.0 announcement](https://flutter.dev/blog/announcing-genkit-dart-1-0)**
+on the Flutter blog.
 
 * **Get started:** Follow the
   [quickstart guide](https://genkit.dev/docs/dart/get-started/) and check out
@@ -110,5 +111,5 @@ and generative UI with A2UI,
 * **Explore samples:** Browse the
   [sample apps on GitHub](https://github.com/genkit-ai/genkit-dart/tree/main/testapps).
 * **Join the community:** Chat with the team on
-  [Discord](https://discord.gg/qXt5zzQKpc) and open issues on
-  [GitHub](https://github.com/genkit-ai/genkit-dart).
+  [Discord](https://discord.gg/qXt5zzQKpc) and open issues in the
+  [`genkit-dart` GitHub repository](https://github.com/genkit-ai/genkit-dart).
