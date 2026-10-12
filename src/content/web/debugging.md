@@ -5,194 +5,102 @@ breadcrumb: Debugging
 description: Learn how to debug your Dart web app.
 ---
 
-You can use a [Dart IDE][IDE], [Dart DevTools][], and browser tools
-such as [Chrome DevTools][] to debug your Dart web apps.
+You can debug Dart web apps using your [Dart IDE][IDE], [Dart DevTools][],
+and browser tools such as [Chrome DevTools][].
 
-* To debug your app's logic,
-  use your IDE, Dart DevTools, or browser tools.
-  Dart DevTools has better support than browser tools
-  for inspecting and automatically reloading Dart code.
-* To debug your app's appearance (HTML/CSS) and performance,
-  use your IDE or browser tools such as Chrome DevTools.
+* **App logic and state:** Use your IDE's built-in debugger or Dart DevTools
+  to set breakpoints in `.dart` files, inspect variables, and evaluate Dart
+  expressions.
+* **DOM, CSS, and network activity:** Use browser developer tools such as
+  [Chrome DevTools][].
 
+## Debug in an IDE
 
-## Overview
+The fastest way to debug a Dart web app during development is from a
+[Dart-enabled IDE][IDE] (such as VS Code or IntelliJ IDEA): open your project,
+set breakpoints in the editor margin, and start a debug session.
+The editor compiles your app with `dartdevc`, launches Chrome, and attaches the
+debugger automatically.
 
-To serve your app, use `webdev serve`
-(either at the command line or through your IDE)
-to start up the Dart development compiler.
-To enable Dart DevTools, add the `--debug` or `--debug-extension` option
-(at the command line or through your IDE):
+To inspect source-mapped Dart files directly in Chrome DevTools at any time,
+press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
+(<kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on macOS).
+Chrome uses [source maps][] to display your original `.dart` source files
+instead of compiled JavaScript or WebAssembly.
+
+## Debug from the command line with Dart DevTools {:#using-dart-devtools}
+
+To debug from the command line using the latest [Dart SDK][] and
+[Google Chrome][Google Chrome], install the [`webdev`][webdev] CLI tool globally
+with [`dart install`][dart install]:
 
 ```console
-$ webdev serve --debug
+$ dart install webdev
 ```
 
-When running your app using the `--debug` flag of `webdev`,
-you can open Dart DevTools by pressing
-<kbd>Alt</kbd>+<kbd>D</kbd>
-(or <kbd>Option</kbd>+<kbd>D</kbd> on macOS).
-
-To open Chrome DevTools, press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
-(or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on macOS).
-If you want to debug your app using Chrome DevTools,
-you can use [source maps][] to display your Dart source files
-instead of the JavaScript or WebAssembly that the compiler produces.
-For more information on using Chrome DevTools,
-see the [Chrome DevTools documentation][Chrome DevTools].
-
-To use Dart DevTools or Chrome DevTools
-to debug a Dart web app, you need the following software:
-
-* [Google Chrome][Google Chrome].
-* The latest [Dart SDK][].
-* Either the [`webdev`][cl-tools] command-line tool
-  (Dart DevTools comes bundled with the Dart SDK)
-  or a [Dart IDE or editor][IDE] that supports web development.
-* A [Dart web app][] to debug.
-
-## Getting started with Dart DevTools {:#using-dart-devtools}
+:::note
+Whenever you update the Dart SDK, re-run `dart install webdev` so `webdev`
+matches your active SDK version.
+:::
 
 ![Dart DevTools debugger showing source code and breakpoints](/assets/img/dart-devtools-screenshot.png)
 
-This section leads you through the basics of
-using Dart DevTools to debug a web app.
-If you already have an app that's ready to debug,
-you can skip creating the test app (step 1),
-but you'll need to adjust the instructions to match your app.
-
-1. _Optional:_ Clone the [webdev repository][webdev repo],
-   so you can use its example app to play with Dart DevTools.
-
-1. _Optional:_ Install the [Dart Debug Extension][]
-   so that you can run your app and open Dart DevTools
-   in an already-running instance of Chrome.
-
-1. In your app's top directory, run `dart pub get` to get its dependencies.
+1. In your [Dart web app][] root directory, fetch package dependencies:
 
    ```console
-   $ cd example
    $ dart pub get
    ```
 
-1. Compile and serve the app in debug mode,
-   using either your IDE or `webdev` at the command line.
+1. Start the development server in debug mode (optionally pass `--auto restart`
+   to hot-restart on file changes):
 
-   :::note
-   The first compilation takes the longest,
-   because the entire app must be compiled.
-   After that, refreshes are much faster.
-   :::
-
-   If you're using `webdev` at the command line,
-   the command to use depends on whether you want to
-   run the app and debugger in an already-running instance of Chrome.
-
-   * If you have [Dart Debug Extension][] installed and want to use
-     an existing instance of Chrome to debug:
+   * **Launch a new debug instance of Chrome:**
 
      ```console
-     $ webdev serve --debug-extension
+     $ webdev serve --debug --auto restart
      ```
 
-   * Otherwise, use the following command,
-     which launches a new instance of Chrome
-     and runs the app:
+   * **Use an existing Chrome window** (requires the
+     [Dart Debug Extension][]):
 
      ```console
-     $ webdev serve --debug
+     $ webdev serve --debug-extension --auto restart
      ```
 
-1. If your app isn't already running, open it in a Chrome browser window.
+1. Open `http://localhost:8080` in Chrome if it isn't already open.
 
-   For example, if you use `webdev serve --debug-extension` with no arguments,
-   open `http://127.0.0.1:8080`.
+1. Open **Dart DevTools**:
 
-1. Open Dart DevTools to debug the app that's running in the current window.
-
-   * If Dart Debug Extension is installed and
-     you used the `--debug-extension` flag to `webdev`,
-     click the Dart logo
+   * With `--debug`, press <kbd>Alt</kbd>+<kbd>D</kbd>
+     (<kbd>Option</kbd>+<kbd>D</kbd> on macOS).
+   * With `--debug-extension`, click the Dart icon
      <img src="/assets/img/logo/dart-64.png" alt="Dart logo" class="align-baseline text-icon">
-     at the top right of the browser window.
+     in the Chrome toolbar.
 
-   * If you used the `--debug` flag to `webdev`,
-     press <kbd>Alt</kbd>+<kbd>D</kbd>
-     (or <kbd>Option</kbd>+<kbd>D</kbd> on macOS).
-
-   The Dart DevTools window opens
-   and displays the source code for your app's main file.
-
-1. Set a breakpoint inside a timer or event handler
-   by clicking to the left of one of its lines of code.
-
-   For example, click the line number for the first line inside
-   an event handler or timer callback.
-
-1. Trigger the event that causes the function call.
-   Execution stops at the breakpoint.
-
-1. In the **Variables** pane, inspect the values of variables.
-
-1. Resume script execution, and trigger the event again or press **Pause**.
-   Execution pauses again.
-
-1. Try stepping through code line-by-line using the
-   **Step In**, **Step Over**, and **Step Out** buttons.
+1. In the **Debugger** tab, click a line number in your `.dart` file to set a
+   breakpoint, then trigger that code path in your app.
+   When execution pauses, inspect variables in the **Variables** pane and step
+   through code using **Step In**, **Step Over**, and **Step Out**.
 
    :::note
-   Dart DevTools doesn't step into SDK code.
-   For example, if you press **Step In** at a call to `print()`,
-   you go to the next line, not into the SDK code that implements `print()`.
+   Dart DevTools skips stepping into SDK implementation code by default
+   (for example, stepping into `print()` advances to the next line in your app).
    :::
 
-1. Change your source code and reload the Chrome window that's running the app.
-   The app quickly rebuilds and reloads while preserving your breakpoints.
-
-1. Click the **Logging** button to see stdout, stderr, and system logs.
-
-
-## Getting command-line tool packages
-
-If you're using the command line instead of an IDE or Dart-enabled editor,
-install the [`webdev` tool][webdev] globally.
-Dart DevTools comes bundled with the Dart SDK.
-
-```console
-$ dart install webdev
-```
-
-Once installed on your `PATH`, you can run `webdev` at the command line:
-
-```console
-$ webdev --help
-A tool to develop Dart web projects.
-...
-```
-
-For details on managing global CLI tools and configuring `PATH`, see the
-[`dart install` documentation][dart install].
-
-Whenever you update the Dart SDK,
-update `webdev` by running the install command again:
-
-```console
-$ dart install webdev
-```
+1. Open the **Logging** view to inspect `stdout`, `stderr`, and system events.
 
 ## Running web tests and collecting coverage
 
-To run unit tests for your web app in a browser, pass the `-p` (`--platform`)
-flag to [`dart test`][dart test]:
+To run browser unit tests, pass `-p` (`--platform`) to
+[`dart test`][dart test]:
 
 ```console
 $ dart test -p chrome
 ```
 
-You can also target other browsers such as Firefox (`-p firefox`) or Safari
-(`-p safari`).
+You can also target Firefox (`-p firefox`) or Safari (`-p safari`).
 
-To pause test execution after loading so you can open browser DevTools and set
+To pause execution after loading so you can open browser DevTools and set
 breakpoints before your tests run, pass `--pause-after-load`:
 
 ```console
@@ -208,19 +116,17 @@ $ dart run coverage:test_with_coverage -p chrome
 
 ## Debugging production code {:#debugging}
 
-This section provides tips for debugging production-compiled Dart web apps in
-Chrome, Edge, Firefox, and Safari.
-All four browsers support source maps for both JavaScript (`.js.map`) and
-WebAssembly (`.wasm.map`) production builds.
+Chrome, Edge, Firefox, and Safari all support source maps for both JavaScript
+(`.js.map`) and WebAssembly (`.wasm.map`) production builds.
 
 :::tip
-Whenever possible, instead of debugging production code,
-debug your app using a development server such as [`webdev`][webdev].
+Whenever possible, debug development builds (`webdev serve --debug`) instead of
+production code—optimizations inline functions and minify symbols.
 :::
 
 When compiling to WebAssembly with [`dart compile wasm`][dart compile wasm],
-the compiler emits a `<name>.wasm.map` source map file alongside `<name>.wasm`
-by default.
+the compiler emits a `<name>.wasm.map` source map alongside `<name>.wasm` by
+default.
 At optimization level `-O2` and higher, the compiler strips the WebAssembly
 `name` custom section to reduce binary size.
 Pass `--no-strip-wasm` to preserve human-readable Dart function names in
@@ -239,62 +145,47 @@ enable pausing on all exceptions to surface caught errors.
 
 ### Chrome {:#dart2js-debugging-chrome}
 
-To debug in Chrome:
-
-1. Open the Developer Tools window, as described in the
-   [Chrome DevTools documentation][Chrome DevTools].
+1. Open [Chrome DevTools][].
 1. Confirm that source maps are enabled (on by default), as described in
    [Map preprocessed code to source code][source maps].
-1. Enable pausing on all exceptions or only on uncaught exceptions,
-   as described in [Pause your code with breakpoints][chrome-breakpoints].
+1. Enable pausing on all exceptions or uncaught exceptions, as described in
+   [Pause your code with breakpoints][chrome-breakpoints].
 1. Reload your app.
 
 ### Edge {:#dart2js-debugging-ie}
 
-To debug in Edge:
-
-1. Update to the latest version of Edge.
 1. Open [**Developer Tools**][edge-devtools] (<kbd>F12</kbd>).
-1. Reload your app. The **Debugger** tab shows source-mapped files.
-1. Toggle exception behavior with
-   <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>;
-   the default is **Break on unhandled exceptions**.
+1. Reload your app. The **Debugger** tab displays source-mapped `.dart` files.
+1. Toggle exception pausing with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>
+   (defaults to **Break on unhandled exceptions**).
 
 ### Firefox {:#dart2js-debugging-firefox}
 
-To debug in Firefox:
-
-1. Open the **Web Developer Tools** window, as described in the
-   [Firefox developer tools documentation][firefox-devtools].
-1. Enable **Pause on exceptions**, as shown in the following figure:
+1. Open the [**Firefox Web Developer Tools**][firefox-devtools].
+1. Enable **Pause on exceptions**:
 
    ![Enable Pause on exceptions in Firefox debugger](/assets/img/ff-debug.png)
 
-1. Reload your app. The **Debugger** tab shows source-mapped files.
+1. Reload your app to view source-mapped files in the **Debugger** tab.
 
 ### Safari {:#dart2js-debugging-safari}
 
-To debug in Safari:
-
-1. Turn on the **Develop** menu,
-   as described in [Enabling Web Inspector][safari-web-inspector].
-1. Enable breakpoints on all exceptions or only on uncaught exceptions.
-   See [Add a JavaScript breakpoint][safari-breakpoints] in
+1. Turn on the **Develop** menu, as described in
+   [Enabling Web Inspector][safari-web-inspector].
+1. Enable breakpoints on all exceptions or uncaught exceptions—see
+   [Add a JavaScript breakpoint][safari-breakpoints] in
    [Safari Developer Help][safari-dev-help].
 1. Reload your app.
 
 ## Resources
 
-To learn more, see the following:
-
-* Documentation for [your IDE][IDE]
+* [Dart IDEs and editors][IDE]
 * [Dart DevTools documentation][Dart DevTools]
-* [webdev tool documentation][webdev]
-* [webdev package documentation][webdev-pkg]
+* [`webdev` tool documentation][webdev]
+* [`webdev` package on pub.dev][webdev-pkg]
 
 [Chrome DevTools]: https://developer.chrome.com/docs/devtools/
 [chrome-breakpoints]: https://developer.chrome.com/docs/devtools/javascript/breakpoints/
-[cl-tools]: #getting-command-line-tool-packages
 [coverage-pkg]: {{site.pub-pkg}}/coverage
 [dart compile wasm]: /tools/dart-compile#wasm
 [Dart Debug Extension]: https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
@@ -312,5 +203,4 @@ To learn more, see the following:
 [safari-web-inspector]: https://webkit.org/web-inspector/enabling-web-inspector/
 [source maps]: https://developer.chrome.com/docs/devtools/javascript/source-maps/
 [webdev]: /tools/webdev
-[webdev repo]: {{site.repo.dart.org}}/webdev
 [webdev-pkg]: {{site.pub-pkg}}/webdev
