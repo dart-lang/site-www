@@ -1,20 +1,30 @@
 ## Debugging production code {:#debugging}
 
-This section gives tips for debugging production-compiled code
-in Chrome, Firefox, and Safari. You can only debug JavaScript code in
-browsers that support source maps such as Chrome.
+This section provides tips for debugging production-compiled Dart web apps in
+Chrome, Edge, Firefox, and Safari.
+All four browsers support source maps for both JavaScript (`.js.map`) and
+WebAssembly (`.wasm.map`) production builds.
 
 :::tip
 Whenever possible, instead of debugging production code,
-debug code using a development server such as provided by [`webdev`][].
+debug your app using a development server such as [`webdev`][].
 :::
 
 [`webdev`]: /tools/webdev
 
-Whichever browser you use, you should enable pausing on at least
-uncaught exceptions, and perhaps on all exceptions. 
-For frameworks such as `dart:async` that wrap user code in try-catch, 
-we recommend pausing on all exceptions.
+When compiling to WebAssembly with [`dart compile wasm`][dart compile wasm],
+the compiler emits a `<name>.wasm.map` source map file alongside `<name>.wasm`
+by default.
+At optimization level `-O2` and higher, the compiler strips the WebAssembly
+`name` custom section to reduce binary size.
+Pass `--no-strip-wasm` to preserve human-readable Dart function names in
+browser DevTools stack traces and flamecharts.
+
+[dart compile wasm]: /tools/dart-compile#wasm
+
+Whichever browser you use, enable pausing on at least uncaught exceptions.
+For frameworks such as `dart:async` that wrap user code in `try`-`catch` blocks,
+enable pausing on all exceptions to surface caught errors.
 
 [debugging web apps]: /web/debugging
 

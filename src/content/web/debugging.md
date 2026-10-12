@@ -37,7 +37,7 @@ To open Chrome DevTools, press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
 (or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on macOS).
 If you want to debug your app using Chrome DevTools,
 you can use [source maps][] to display your Dart source files
-instead of the JavaScript that the compiler produces.
+instead of the JavaScript or WebAssembly that the compiler produces.
 For more information on using Chrome DevTools,
 see the [Chrome DevTools documentation.][Chrome DevTools]
 
@@ -47,11 +47,10 @@ To use the Dart DevTools or Chrome DevTools
 to debug a Dart web app, you need the following software:
 
 * [Google Chrome.][Google Chrome]
-* [Dart SDK][], version 2.0.0 or higher.
+* The latest [Dart SDK][].
 * One of the following development environments:
-  * Command-line: [Dart command-line tool packages][cl-tools]
-    such as webdev (required for both Dart and Chrome DevTools) and
-    devtools (required for Dart DevTools).
+  * Command-line: The [`webdev`][cl-tools] command-line tool
+    (Dart DevTools comes bundled with the Dart SDK).
     <br>_or_
   * A [Dart IDE or editor][IDE] that supports web development.
 * A [Dart web app][] to debug.
@@ -113,7 +112,7 @@ but you'll need to adjust the instructions to match your app.
 1. If your app isn't already running, open it in a Chrome browser window.
    <br>
    For example, if you use `webdev serve --debug-extension` with no arguments,
-   open [http://127.0.0.1:8080](http://http://127.0.0.1:8080).
+   open `http://127.0.0.1:8080`.
 
 1. Open Dart DevTools to debug the app that's running in the current window.
 
@@ -164,15 +163,14 @@ but you'll need to adjust the instructions to match your app.
 ## Getting command-line tool packages
 
 If you're using the command line instead of an IDE or Dart-enabled editor,
-then you need the [webdev tool][webdev].
-Dart DevTools is provided by the SDK.
+install the [`webdev` tool][webdev] globally.
+Dart DevTools comes bundled with the Dart SDK.
 
 ```console
-$ dart pub global activate webdev
+$ dart install webdev
 ```
 
-If your PATH environment variable is set up correctly,
-you can now use these tools at the command line:
+Once installed on your `PATH`, you can run `webdev` at the command line:
 
 ```console
 $ webdev --help
@@ -180,14 +178,33 @@ A tool to develop Dart web projects.
 ...
 ```
 
-For information on setting PATH, see the
-[`dart pub global` documentation.][dart pub global documentation]
+For details on managing global CLI tools and configuring `PATH`, see the
+[`dart install` documentation][dart install].
 
 Whenever you update the Dart SDK,
-update the tools by activating them again:
+update `webdev` by running the install command again:
 
 ```console
-$ dart pub global activate webdev     # update webdev
+$ dart install webdev
+```
+
+## Running web tests and collecting coverage
+
+To run unit tests for your web app in a browser, pass the `-p` (`--platform`)
+flag to [`dart test`][dart test]:
+
+```console
+$ dart test -p chrome
+```
+
+You can also target other browsers such as Firefox (`-p firefox`) or Safari
+(`-p safari`).
+
+To collect code coverage for web tests in Chrome, pass `-p chrome` to
+`test_with_coverage` from [`package:coverage`][coverage-pkg]:
+
+```console
+$ dart run coverage:test_with_coverage -p chrome
 ```
 
 {% render 'tools/debug-prod-js-code.md', site: site %}
@@ -210,7 +227,9 @@ To learn more, see the following:
 [Google Chrome]: https://www.google.com/chrome
 [issue 1925]: https://github.com/flutter/devtools/issues/1925
 [JavaScript debugging reference]: https://developer.chrome.com/docs/devtools/javascript/reference/
-[dart pub global documentation]: /tools/pub/cmd/pub-global
+[dart install]: /tools/dart-install
+[dart test]: /tools/dart-test
+[coverage-pkg]: {{site.pub-pkg}}/coverage
 [webdev]: /tools/webdev
 [webdev repo,]: {{site.repo.dart.org}}/webdev
 [webdev-pkg]: {{site.pub-pkg}}/webdev
