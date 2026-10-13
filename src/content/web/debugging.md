@@ -17,8 +17,9 @@ and browser tools such as [Chrome DevTools][].
 ## Debug in an IDE
 
 The fastest way to debug a Dart web app during development is from a
-[Dart-enabled IDE][IDE] (such as VS Code or IntelliJ IDEA): open your project,
-set breakpoints in the editor margin, and start a debug session.
+[Dart-enabled IDE][IDE] such as VS Code or IntelliJ IDEA.
+Open your project, set breakpoints in the editor margin, and start a debug
+session.
 The editor compiles your app with `dartdevc`, launches Chrome, and attaches the
 debugger automatically.
 
@@ -31,16 +32,16 @@ instead of compiled JavaScript or WebAssembly.
 ## Debug from the command line with Dart DevTools {:#using-dart-devtools}
 
 To debug from the command line using the latest [Dart SDK][] and
-[Google Chrome][Google Chrome], install the [`webdev`][webdev] CLI tool globally
-with [`dart install`][dart install]:
+[Google Chrome][Google Chrome], activate the [`webdev`][webdev] CLI tool
+globally with [`dart pub global`][dart pub global]:
 
 ```console
-$ dart install webdev
+$ dart pub global activate webdev
 ```
 
 :::note
-Whenever you update the Dart SDK, re-run `dart install webdev` so `webdev`
-matches your active SDK version.
+Whenever you update the Dart SDK, re-run `dart pub global activate webdev` so
+`webdev` matches your active SDK version.
 :::
 
 ![Dart DevTools debugger showing source code and breakpoints](/assets/img/dart-devtools-screenshot.png)
@@ -107,12 +108,18 @@ breakpoints before your tests run, pass `--pause-after-load`:
 $ dart test -p chrome --pause-after-load
 ```
 
-To collect code coverage for web tests in Chrome, pass `-p chrome` to
-`test_with_coverage` from [`package:coverage`][coverage-pkg]:
+To collect code coverage for JavaScript (`dart2js`) web tests in Chrome, pass
+`-p chrome` to `test_with_coverage` (requires [`package:coverage`][coverage-pkg]
+1.16.0 or higher):
 
 ```console
 $ dart run coverage:test_with_coverage -p chrome
 ```
+
+:::note
+Chrome coverage uses V8 JavaScript coverage and does not support WebAssembly
+(`--compiler dart2wasm`) tests.
+:::
 
 ## Debugging production code {:#debugging}
 
@@ -191,7 +198,7 @@ enable pausing on all exceptions to surface caught errors.
 [dart compile wasm]: /tools/dart-compile#wasm
 [Dart Debug Extension]: https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
 [Dart DevTools]: /tools/dart-devtools
-[dart install]: /tools/dart-install
+[dart pub global]: /tools/pub/cmd/pub-global
 [Dart SDK]: /get-dart
 [dart test]: /tools/dart-test
 [Dart web app]: /web
