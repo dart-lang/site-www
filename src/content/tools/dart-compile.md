@@ -426,8 +426,6 @@ The `wasm` subcommand compiles Dart code to a WebAssembly/WasmGC module.
 By default, the compiler generates the `.wasm` module,
 a companion `.mjs` JavaScript runtime file,
 and a `.wasm.map` source map file.
-To disable source map generation for production builds,
-pass `--no-source-maps`.
 
 For example, to compile a Dart web application to optimized WebAssembly:
 

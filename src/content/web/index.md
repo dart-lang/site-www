@@ -15,9 +15,8 @@ For production builds, you can also compile Dart to
 
 In addition to compilers,
 the Dart web platform provides [core libraries][],
-access to the [DOM (Document Object Model)][DOM] through [`package:web`][],
-and [interoperability for calling JavaScript][interop] (`dart:js_interop`)
-from Dart.
+access to the [DOM (Document Object Model)][DOM],
+and [interoperability for calling JavaScript][interop] from Dart.
 
 You have the option of using Dart web with a higher-level framework.
 Many apps that support web plus mobile or desktop are built
@@ -46,7 +45,6 @@ and other web frameworks for Dart are powered by the Dart web platform.
 [wasm]: /web/wasm
 [core libraries]: /libraries#web-platform-libraries
 [DOM]: /web/get-started
-[`package:web`]: /interop/js-interop/package-web
 [Flutter]: {{site.flutter}}
 [Flutter web]: {{site.flutter}}/web
 [Jaspr]: https://jaspr.site

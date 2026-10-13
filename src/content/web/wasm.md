@@ -6,57 +6,47 @@ description: Learn how to compile your Dart web app to WebAssembly.
 You can compile Dart and [Flutter][] web applications to
 [WebAssembly][wasm-org] (`dart2wasm`) as an alternative to JavaScript
 for production builds.
-WebAssembly support for Dart web is available on the Dart
-*stable* [channel][release-channels].
 
-<a id="webassembly-support" aria-hidden="true"></a>
-
-## Requirements and considerations
+## WebAssembly support
 
 When compiling Dart to WebAssembly, keep the following requirements
 and platform behaviors in mind:
 
-1. In Dart 3.14, `dart2wasm` targets three standardized
-   WebAssembly proposals:
-
-   1. **WasmGC** ([Garbage Collection][WasmGC])
-   1. **JS String Builtins (`wasm:js-string`)**
-      (the `jsStringPolyfill` fallback was removed in Dart 3.14)
-   1. **Phase 4 Exception Handling (`try_table` and `exnref`)**
-
-   Running compiled modules in a browser requires the following
-   minimum browser versions that support all three proposals:
+1. `dart2wasm` targets three standardized WebAssembly proposals:
+   **WasmGC** (Garbage Collection),
+   **JS String Builtins** (`wasm:js-string`), and
+   **Phase 4 Exception Handling** (`try_table` and `exnref`).
+   Running compiled modules in a browser requires at least:
 
    * **Chrome or Edge 137+**
    * **Safari 26.2+** (macOS and iOS)
    * **Firefox 134+** (**Firefox 155+** recommended for
      [performance fixes][firefox-1996818])
-   * More browser compatibility details are available in the
-     [Flutter documentation][Flutter].
 
-1. By default, the compiled Wasm output targets JavaScript environments
+   For more browser compatibility details, see the
+   [Flutter Wasm documentation][Flutter].
+
+1. By default, compiled Wasm output targets JavaScript environments
    (such as browsers) and generates a companion `<name>.mjs` runtime file.
    To compile a standalone WASI-targeted WebAssembly module for non-web
    runtimes such as Wasmtime 39+
    (using `-W gc,exceptions,function-references=y`),
    pass `--standalone` to `dart compile wasm`.
-   When `--standalone` is set, `dart:js_interop` is disallowed.
-   For details, see [issue #53884][sdk-53884].
+   When `--standalone` is set, [`dart:js_interop`][] is disallowed.
 
 1. Only Dart's
    [next-gen JS interop mechanism][js-interop]
    is supported when compiling to Wasm.
 
-1. There is currently no support in the `webdev` tool for running
-   (`webdev serve`) or building (`webdev build`). The steps in
-   [Compiling your web app to Wasm](#compiling-to-wasm)
-   provide a workaround. For details, see
-   [webdev issue 2296][webdev-2296].
+1. The `webdev` tool doesn't currently support Wasm compilation
+   (`webdev serve` or `webdev build`).
+   Instead, follow the steps in
+   [Compiling your web app to Wasm](#compiling-to-wasm).
 
 ### Deferred loading
 
 By default, compiled applications do not use [deferred loading][].
-Deferred loading in Wasm is experimental (available starting in Dart 3.13).
+Deferred loading in Wasm is experimental.
 To enable it, pass the `--enable-deferred-loading` flag:
 
 ```console
@@ -160,8 +150,7 @@ To compile and run a Dart web app with Wasm, follow these steps:
     which is necessary to run Wasm.
     Make sure your web apps are [migrated][] from `dart:html` to `package:web`.
 
-1.  Compile the app to Wasm into a `site` output directory
-    (pass `-O2` to enable production optimizations and minification):
+1.  Compile the app to Wasm into a `site` output directory:
 
     ```console
     $ dart compile wasm -O2 web/main.dart -o site/main.wasm
@@ -185,14 +174,9 @@ To compile and run a Dart web app with Wasm, follow these steps:
     $ cp web/index.html web/styles.css site/
     ```
 
-1.  Load the generated `site/main.mjs` runtime to instantiate and invoke
+1.  Because `index.html` loads `main.dart.js`, create `site/main.dart.js`
+    to import the generated `site/main.mjs` runtime and instantiate
     `site/main.wasm`:
-
-    Because the template's `web/index.html` includes
-    `<script defer src="main.dart.js"></script>`,
-    create `site/main.dart.js` with the following bootstrap code
-    (or include it directly in `site/index.html` inside a
-    `<script type="module">` tag):
 
     ```js title="site/main.dart.js"
     (async function () {
@@ -203,28 +187,18 @@ To compile and run a Dart web app with Wasm, follow these steps:
     })();
     ```
 
-1.  Serve the `site` directory using an HTTP server such as [`dhttpd`][]:
+1.  Serve the `site` directory using [`dhttpd`][]:
 
     ```console
     $ dart pub global run dhttpd --path site
     ```
 
-    :::tip
-    When deploying to a production web server, ensure your server serves
-    `.wasm` files with the `application/wasm` MIME type so that
-    `compileStreaming` succeeds.
-    :::
-
 You can also try out this small [sandbox example][sandbox].
 
 [wasm-org]: https://webassembly.org/
-[release-channels]: /get-dart#release-channels
-[WasmGC]: https://developer.chrome.com/blog/wasmgc/
 [firefox-1996818]: https://bugzilla.mozilla.org/show_bug.cgi?id=1996818
 [Flutter]: {{site.flutter}}/wasm
-[sdk-53884]: {{site.repo.dart.sdk}}/issues/53884
 [js-interop]: /interop/js-interop/
-[webdev-2296]: {{site.repo.dart.org}}/webdev/issues/2296
 [past-js-interop]: /interop/js-interop/past-js-interop#next-generation-js-interop
 [`package:web`]: {{site.pub-pkg}}/web
 [`dart:js_interop`]: {{site.dart.api}}/{{site.dart.sdk.channel}}/dart-js_interop
