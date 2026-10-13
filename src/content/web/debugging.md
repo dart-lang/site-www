@@ -125,11 +125,10 @@ production code—optimizations inline functions and minify symbols.
 :::
 
 When compiling to WebAssembly with [`dart compile wasm`][dart compile wasm],
-the compiler emits a `<name>.wasm.map` source map alongside `<name>.wasm` by
-default.
-At optimization level `-O2` and higher, the compiler strips the WebAssembly
-`name` custom section to reduce binary size.
-Pass `--no-strip-wasm` to preserve human-readable Dart function names in
+the compiler emits a `<name>.wasm.map` source map alongside `<name>.wasm` and
+strips static symbol names from the `.wasm` binary by default (and minifies
+runtime type names at `-O2` and higher).
+Pass `--no-strip-wasm` to preserve human-readable static symbol names in
 browser DevTools stack traces and flamecharts:
 
 ```console
@@ -154,10 +153,12 @@ enable pausing on all exceptions to surface caught errors.
 
 ### Edge {:#dart2js-debugging-ie}
 
-1. Open [**Developer Tools**][edge-devtools] (<kbd>F12</kbd>).
-1. Reload your app. The **Debugger** tab displays source-mapped `.dart` files.
-1. Toggle exception pausing with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>
-   (defaults to **Break on unhandled exceptions**).
+1. Open [Microsoft Edge DevTools][edge-devtools] (<kbd>F12</kbd>).
+1. In the **Sources** tool, open the **Breakpoints** pane and enable
+   **Pause on uncaught exceptions** (or **Pause on caught exceptions**), as
+   described in [Pause your code with breakpoints][edge-breakpoints].
+1. Reload your app to inspect source-mapped `.dart` files in the **Sources**
+   tool.
 
 ### Firefox {:#dart2js-debugging-firefox}
 
@@ -194,6 +195,7 @@ enable pausing on all exceptions to surface caught errors.
 [Dart SDK]: /get-dart
 [dart test]: /tools/dart-test
 [Dart web app]: /web
+[edge-breakpoints]: https://learn.microsoft.com/en-us/microsoft-edge/devtools/javascript/breakpoints#exception-breakpoints
 [edge-devtools]: https://learn.microsoft.com/en-us/microsoft-edge/devtools/landing/
 [firefox-devtools]: https://firefox-source-docs.mozilla.org/devtools-user/index.html
 [Google Chrome]: https://www.google.com/chrome
