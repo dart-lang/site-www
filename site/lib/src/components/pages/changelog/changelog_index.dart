@@ -98,6 +98,20 @@ final class ChangelogIndex extends StatelessComponent {
       return '$baseSlug-$index';
     }
 
+    String? releaseDateForGroup(List<ChangelogEntry> items) {
+      for (final item in items) {
+        if (item.version.patch == 0 && item.releaseDate != null) {
+          return item.releaseDate;
+        }
+      }
+      for (final item in items) {
+        if (item.releaseDate != null) {
+          return item.releaseDate;
+        }
+      }
+      return null;
+    }
+
     return div(id: 'changelog-index-content', [
       div(classes: 'left-col', id: 'changelog-main-content', [
         const ChangelogFilters(),
@@ -124,6 +138,12 @@ final class ChangelogIndex extends StatelessComponent {
                   },
                   [const .text('#')],
                 ),
+                if (releaseDateForGroup(groupedEntries[version]!)
+                    case final groupDate?)
+                  span(
+                    classes: 'version-release-date',
+                    [.text('Released $groupDate')],
+                  ),
               ]),
               div(classes: 'version-items', [
                 for (final item in groupedEntries[version]!)
@@ -159,6 +179,10 @@ class _ChangelogEntryCard extends StatelessComponent {
       [
         div(classes: 'card-header', [
           div(classes: 'header-left', [
+            if (entry.version.patch != 0)
+              span(classes: 'patch-badge', [
+                .text(entry.version.toString()),
+              ]),
             span(classes: 'area-badge', [
               .text(entry.area),
             ]),
@@ -188,7 +212,7 @@ class _ChangelogEntryCard extends StatelessComponent {
           ]),
         ]),
         div(classes: 'card-content', [
-          if (entry.releaseDate != null)
+          if (entry.version.patch != 0 && entry.releaseDate != null)
             p(classes: 'release-date', [
               em([.text('Released: ${entry.releaseDate}')]),
             ]),
