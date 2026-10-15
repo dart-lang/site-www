@@ -81,7 +81,7 @@ such as `my_package/tool/ffigen.dart`.
 
 In `ffigen.dart`, create an `FfiGenerator` object
 with your configuration options,
-then call its `.generate()` method:
+then call its `generate()` method:
 
 ```dart
 import 'package:ffigen/ffigen.dart';
