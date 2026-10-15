@@ -174,6 +174,15 @@ By default, FFIgen filters out all top-level API elements.
 To generate bindings for `AVAudioPlayer`,
 which is an Objective-C interface,
 add a `Visitor` to the `visitors` field and set
+Finally, configure FFIgen to generate Objective-C bindings
+and specify which parts of the input API to include.
+By default, FFIgen generates C bindings
+and filters out all top-level API elements.
+
+To generate bindings for Objective-C instead of C,
+set the `objectiveC` field to `ObjectiveC()`.
+To include `AVAudioPlayer`, which is an Objective-C interface,
+add a `Visitor` to the `visitors` field and set
 `node.isIncluded = true` in the `objCInterface` callback:
 
 ```dart highlightLines=11-20
