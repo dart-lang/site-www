@@ -658,7 +658,9 @@ Load the dynamic library and call the generated Swift bindings from Dart:
 
 ```dart
 import 'dart:ffi';
+
 import 'package:objective_c/objective_c.dart';
+
 import 'swift_api_bindings.dart';
 
 void main() {
