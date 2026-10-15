@@ -556,7 +556,12 @@ make sure they're all annotated with `@objc` and `public`.
 
 FFIgen parses the generated Objective-C wrapper header, `swift_api.h`.
 Create a configuration script at `tool/ffigen.dart` that configures
-`FfiGenerator` with `objectiveC: const ObjectiveC()`:
+To generate bindings from the Objective-C wrapper header (`swift_api.h`),
+create a `tool/ffigen.dart` script that does the following:
+
+- Enables Objective-C support with `ObjectiveC()`.
+- Sets the entry point to `swift_api.h`.
+- Includes `SwiftClass` and sets its module name in an `objCInterface` visitor.
 
 ```dart
 import 'dart:io';
