@@ -305,6 +305,11 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     Add the following `test` function inside the `group` function,
     after the previous test:
 
+    The summary and article responses are JSON objects, so their decoded
+    values are maps. The OpenSearch response is different: its top-level JSON
+    value is an array. Decode it as a `List<Object?>` and pass that list to
+    `SearchResults.fromJson`.
+
     ```dart title="wikipedia/test/model_test.dart"
     void main() {
       group('deserialize example JSON responses from wikipedia API', () {
