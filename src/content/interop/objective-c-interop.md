@@ -131,7 +131,7 @@ Future<void> main() async => await config.generate();
 Next, you'll define the output file.
 The main output of FFIgen is a single Dart file
 containing bindings for the given inputs.
-This file's location is defined by the `output.dart` option.
+To set this file's location, use the `output.dart` option.
 
 FFIgen sometimes generates a `.m` file,
 containing Objective-C code required for interop with the API.
