@@ -343,7 +343,9 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
     This `test` function does the following:
 
     -   Reads the contents of the `open_search_response.json` file.
-    -   Decodes the JSON string into a `List<Object?>`.
+    -   Decodes the JSON string into a `List<Object?>` (unlike the summary and
+        article responses, which are JSON objects that decode to maps, the
+        top-level OpenSearch response is a JSON array).
     -   Creates a `SearchResults` object from the list using
         the `SearchResults.fromJson` constructor.
     -   Uses the `expect` function to assert that
