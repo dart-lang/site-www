@@ -20,8 +20,7 @@ and platform behaviors in mind:
 
    * **Chrome or Edge 137+**
    * **Safari 26.2+** (macOS and iOS)
-   * **Firefox 134+** (**Firefox 155+** recommended for
-     [performance fixes][firefox-1996818])
+   * **Firefox 134+** (or **147+** for Flutter web)
 
    For more browser compatibility details, see the
    [Flutter Wasm documentation][Flutter].
@@ -194,7 +193,6 @@ To compile and run a Dart web app with Wasm, follow these steps:
 You can also try out this small [sandbox example][sandbox].
 
 [wasm-org]: https://webassembly.org/
-[firefox-1996818]: https://bugzilla.mozilla.org/show_bug.cgi?id=1996818
 [Flutter]: {{site.flutter}}/wasm
 [js-interop]: /interop/js-interop/
 [past-js-interop]: /interop/js-interop/past-js-interop#next-generation-js-interop
