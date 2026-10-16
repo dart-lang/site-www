@@ -1,5 +1,10 @@
 [
   {
+    "cycle": "27",
+    "codename": "Golden Gate",
+    "link": "https://support.apple.com/127257"
+  },
+  {
     "cycle": "26",
     "codename": "Tahoe",
     "link": "https://support.apple.com/122868"
@@ -8,10 +13,5 @@
     "cycle": "15",
     "codename": "Sequoia",
     "link": "https://support.apple.com/120283"
-  },
-  {
-    "cycle": "14",
-    "codename": "Sonoma",
-    "link": "https://support.apple.com/109035"
   }
 ]
