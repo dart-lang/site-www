@@ -28,7 +28,7 @@ and platform behaviors in mind:
 
 1. By default, compiled Wasm output targets JavaScript environments
    (such as browsers) and generates a companion `<name>.mjs` runtime file.
-   To compile a standalone WASI-targeted WebAssembly module for non-web
+   To compile a standalone WebAssembly module for non-web
    runtimes such as Wasmtime 39+
    (using `-W gc,exceptions,function-references=y`),
    pass `--standalone` to `dart compile wasm`.
@@ -100,7 +100,7 @@ Use the `dart compile wasm` command in the `dart` CLI
 to invoke the Wasm compiler in Dart and [Flutter][]:
 
 ```console
-$ dart help compile wasm
+$ dart help compile wasm -v
 Compile Dart to a WebAssembly/WasmGC module.
 
 Usage: dart compile wasm [arguments] <dart entry point>
@@ -128,8 +128,6 @@ Usage: dart compile wasm [arguments] <dart entry point>
     --standalone                        Compile to a WebAssembly module without
                                         JavaScript interop. Dart-specific host
                                         imports are necessary to load these modules.
-    --[no-]deprecated-js-interop        Enable support for deprecated JS interop
-                                        libraries.
 -D, --define=<key=value>                Define an environment declaration. To specify
                                         multiple declarations, use multiple options
                                         or use commas to separate key-value pairs.
@@ -190,7 +188,7 @@ To compile and run a Dart web app with Wasm, follow these steps:
 1.  Serve the `site` directory using [`dhttpd`][]:
 
     ```console
-    $ dart pub global run dhttpd --path site
+    $ dart run dhttpd@ --path site
     ```
 
 You can also try out this small [sandbox example][sandbox].
@@ -201,7 +199,7 @@ You can also try out this small [sandbox example][sandbox].
 [js-interop]: /interop/js-interop/
 [past-js-interop]: /interop/js-interop/past-js-interop#next-generation-js-interop
 [`package:web`]: {{site.pub-pkg}}/web
-[`dart:js_interop`]: {{site.dart.api}}/{{site.dart.sdk.channel}}/dart-js_interop
+[`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/
 [migrated]: /interop/js-interop/package-web/
 [`dhttpd`]: {{site.pub-pkg}}/dhttpd
 [deferred loading]: /language/libraries#lazily-loading-a-library

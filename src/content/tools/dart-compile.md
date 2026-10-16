@@ -437,11 +437,10 @@ $ dart compile wasm -O2 -o site/main.wasm web/main.dart
 | :--- | :--- |
 | `-O<0\|1\|2\|3\|4>` | Controls compiler optimizations for code size and compilation speed (`-O1` default; `-O2` adds minification; `-O3` omits implicit type checks; `-O4` enables more aggressive unsafe optimizations). |
 | `--[no-]minify` | Minifies runtime names (such as class names). Takes precedence over the `-O` setting. |
-| `--[no-]strip-wasm` | Whether to strip the static symbol `"name"` section from the output `.wasm` binary (defaults to on at `-O2` and higher; pass `--no-strip-wasm` for readable production stack traces). |
+| `--[no-]strip-wasm` | Whether to strip the static symbol `"name"` section from the output `.wasm` binary (defaults to on; pass `--no-strip-wasm` for readable production stack traces). |
 | `--[no-]source-maps` | Generates a `.wasm.map` source map file alongside the `.wasm` output (defaults to on). |
-| `--enable-deferred-loading` | Splits `deferred as` imports into separate `.wasm` modules loaded on demand. |
-| `--standalone` | Emits a standalone WASI-targeted `.wasm` binary without JS runtime dependencies (disallows `dart:js_interop`). |
-| `--[no-]deprecated-js-interop` | Enables or disables support for deprecated legacy web libraries (`dart:html`, `dart:js`, `dart:js_util`, `package:js`). |
+| `--[no-]enable-deferred-loading` | Splits `deferred as` imports into separate `.wasm` modules loaded on demand. |
+| `--standalone` | Emits a standalone `.wasm` binary without JS runtime dependencies (disallows `dart:js_interop`). |
 | `-D<key>=<value>` | Defines compile-time environment declarations for `String.fromEnvironment`, `bool.fromEnvironment`, and `int.fromEnvironment`. |
 
 {:.table .table-striped}
