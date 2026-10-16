@@ -16,13 +16,20 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
   Set<String> selectedAreas = {};
   Set<Version> selectedVersions = {};
 
+  Version? fromVersion;
+  Version? toVersion;
+
   Set<String> availableAreas = {};
   Set<Version> availableVersions = {};
 
-  /// Populates [availableAreas] and [availableVersions] by inspecting the DOM.
+  Map<ChangelogTag, int> tagCounts = {};
+  Map<String, int> areaCounts = {};
+
+  /// Populates [availableAreas], [availableVersions], [tagCounts], and
+  /// [areaCounts] by inspecting the DOM.
   ///
   /// This expects the changelog list to be rendered in the DOM with
-  /// `data-area` and `data-version` attributes on entries.
+  /// `data-area`, `data-tags`, and `data-version` attributes on entries.
   void populateAvailableFiltersFromDOM() {
     final listContainer = web.document.getElementById('all-changelog-list');
     if (listContainer == null) return;
@@ -31,12 +38,25 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     // currently displayed for it (though usually there are).
     // This ensures the filter option is present.
     var changed = availableAreas.add('Docs');
+    final newTagCounts = <ChangelogTag, int>{};
+    final newAreaCounts = <String, int>{};
+
     final entryCards = listContainer.querySelectorAll('.changelog-card');
     for (var i = 0; i < entryCards.length; i++) {
       final element = entryCards.item(i) as web.Element;
       final area = element.getAttribute('data-area');
       if (area != null && area.isNotEmpty) {
         changed |= availableAreas.add(area);
+        newAreaCounts[area] = (newAreaCounts[area] ?? 0) + 1;
+      }
+      final rawTags = element.getAttribute('data-tags');
+      if (rawTags != null && rawTags.isNotEmpty) {
+        for (final token in rawTags.split(',')) {
+          final tag = ChangelogTag.fromId(token.trim());
+          if (tag != ChangelogTag.none) {
+            newTagCounts[tag] = (newTagCounts[tag] ?? 0) + 1;
+          }
+        }
       }
       final version = element.getAttribute('data-version');
       if (version != null && version.isNotEmpty) {
@@ -55,6 +75,12 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
         }
       }
     }
+    if (tagCounts.length != newTagCounts.length ||
+        areaCounts.length != newAreaCounts.length) {
+      changed = true;
+    }
+    tagCounts = newTagCounts;
+    areaCounts = newAreaCounts;
     if (changed) {
       notifyListeners();
     }
@@ -79,6 +105,8 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
   }
 
   void setVersion(Version version, bool isSelected) {
+    fromVersion = null;
+    toVersion = null;
     if (isSelected) {
       selectedVersions.add(version);
     } else {
@@ -87,7 +115,32 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setVersionRange({Version? from, Version? to}) {
+    final normalizedFrom = from;
+    var normalizedTo = to;
+    if (normalizedFrom != null &&
+        normalizedTo != null &&
+        normalizedFrom > normalizedTo) {
+      normalizedTo = normalizedFrom;
+    }
+    fromVersion = normalizedFrom;
+    toVersion = normalizedTo;
+    selectedVersions.clear();
+    if (normalizedFrom != null || normalizedTo != null) {
+      for (final version in availableVersions) {
+        final afterFrom = normalizedFrom == null || version >= normalizedFrom;
+        final upTo = normalizedTo == null || version <= normalizedTo;
+        if (afterFrom && upTo) {
+          selectedVersions.add(version);
+        }
+      }
+    }
+    notifyListeners();
+  }
+
   void toggleMajor(int major, bool isSelected) {
+    fromVersion = null;
+    toVersion = null;
     final versionsInMajor = availableVersions.where((v) => v.major == major);
     if (isSelected) {
       selectedVersions.addAll(versionsInMajor);
@@ -107,6 +160,8 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     selectedTags.clear();
     selectedAreas.clear();
     selectedVersions.clear();
+    fromVersion = null;
+    toVersion = null;
     notifyListeners();
   }
 
@@ -114,8 +169,12 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     selectedTags.clear();
     selectedAreas.clear();
     selectedVersions.clear();
+    fromVersion = null;
+    toVersion = null;
     availableAreas.clear();
     availableVersions.clear();
+    tagCounts.clear();
+    areaCounts.clear();
     if (notify) {
       notifyListeners();
     }
@@ -162,6 +221,9 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
 
     final entriesToShow = <ChangelogEntry>[];
     final normalizedQuery = searchQuery.trim().toLowerCase();
+    final queryTokens = normalizedQuery.isEmpty
+        ? const <String>[]
+        : normalizedQuery.split(RegExp(r'\s+'));
 
     for (final entry in entries) {
       final matchesTags =
@@ -179,14 +241,25 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
           );
       if (!matchesVersions) continue;
 
-      final matchesSearchQuery =
-          normalizedQuery.isEmpty ||
-          entry.description.toLowerCase().contains(normalizedQuery) ||
-          entry.area.toLowerCase().contains(normalizedQuery) ||
-          (entry.subArea?.toLowerCase().contains(normalizedQuery) ?? false) ||
-          entry.version.toString().contains(normalizedQuery);
-
-      if (!matchesSearchQuery) continue;
+      if (queryTokens.isNotEmpty) {
+        final descriptionLower = entry.description.toLowerCase();
+        final areaLower = entry.area.toLowerCase();
+        final subAreaLower = entry.subArea?.toLowerCase() ?? '';
+        final versionLower = entry.version.toString().toLowerCase();
+        final matchesAllTokens = queryTokens.every(
+          (token) =>
+              descriptionLower.contains(token) ||
+              areaLower.contains(token) ||
+              subAreaLower.contains(token) ||
+              versionLower.contains(token) ||
+              entry.tags.any(
+                (t) =>
+                    t.label.toLowerCase().contains(token) ||
+                    t.id.toLowerCase().contains(token),
+              ),
+        );
+        if (!matchesAllTokens) continue;
+      }
 
       entriesToShow.add(entry);
     }
@@ -235,7 +308,14 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
       );
     }
 
-    if (selectedVersions.isNotEmpty) {
+    if (fromVersion != null || toVersion != null) {
+      if (fromVersion != null) {
+        parts.add('from=${fromVersion!.shortVersion}');
+      }
+      if (toVersion != null) {
+        parts.add('to=${toVersion!.shortVersion}');
+      }
+    } else if (selectedVersions.isNotEmpty) {
       final orderedVersions = selectedVersions.toList()
         ..sort((a, b) => compareVersions(b, a));
       parts.add(
@@ -301,6 +381,8 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     selectedTags.clear();
     selectedAreas.clear();
     selectedVersions.clear();
+    fromVersion = null;
+    toVersion = null;
 
     if (fragment.isEmpty) {
       notifyListeners();
@@ -370,16 +452,20 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
       }
     }
 
-    final fromVersion = params['from'] != null
+    final parsedFrom = params['from'] != null
         ? tryParseShortVersion(params['from']!)
         : null;
-    final toVersion = params['to'] != null
+    final parsedTo = params['to'] != null
         ? tryParseShortVersion(params['to']!)
         : null;
-    if (fromVersion != null || toVersion != null) {
+    if (parsedFrom != null || parsedTo != null) {
+      if (rawVersions == null || rawVersions.isEmpty) {
+        fromVersion = parsedFrom;
+        toVersion = parsedTo;
+      }
       for (final version in availableVersions) {
-        final afterFrom = fromVersion == null || version >= fromVersion;
-        final upTo = toVersion == null || version <= toVersion;
+        final afterFrom = parsedFrom == null || version >= parsedFrom;
+        final upTo = parsedTo == null || version <= parsedTo;
         if (afterFrom && upTo) {
           selectedVersions.add(version);
         }

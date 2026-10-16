@@ -195,5 +195,75 @@ void main() {
         '&versions=3.13,3.12&q=primary',
       );
     });
+
+    test('setVersionRange selects range and serializes from/to fragment', () {
+      notifier.setVersionRange(
+        from: Version(3, 10, 0),
+        to: Version(3, 12, 0),
+      );
+
+      expect(notifier.fromVersion, Version(3, 10, 0));
+      expect(notifier.toVersion, Version(3, 12, 0));
+      expect(
+        notifier.selectedVersions,
+        unorderedEquals([
+          Version(3, 10, 0),
+          Version(3, 11, 0),
+          Version(3, 12, 0),
+        ]),
+      );
+      expect(notifier.toUrlFragment(), 'from=3.10&to=3.12');
+
+      // Toggling an individual version clears fromVersion/toVersion
+      // and falls back to discrete versions=... serialization.
+      notifier.setVersion(Version(3, 11, 0), false);
+      expect(notifier.fromVersion, isNull);
+      expect(notifier.toVersion, isNull);
+      expect(notifier.toUrlFragment(), 'versions=3.12,3.10');
+    });
+
+    test(
+      'filterEntries performs tokenized AND search across fields and tags',
+      () {
+        final sampleEntries = [
+          ChangelogEntry(
+            version: Version.parse('3.13.0'),
+            area: 'Language',
+            subArea: 'Primary constructors',
+            description: 'Introduce concise primary constructor syntax.',
+            tags: {ChangelogTag.newTag},
+          ),
+          ChangelogEntry(
+            version: Version.parse('3.9.4'),
+            area: 'Tools',
+            subArea: 'Pub',
+            description: 'Fix `dart pub get --example` resolution.',
+            tags: {ChangelogTag.fixed},
+          ),
+        ];
+
+        // Out-of-order multi-token query across description and subArea.
+        final constructorMatches = notifier.filterEntries(
+          sampleEntries,
+          'syntax primary',
+        );
+        expect(constructorMatches, [sampleEntries.first]);
+
+        // Multi-token query matching tag label ("fixed"), subArea ("pub"),
+        // and patch version ("3.9.4").
+        final pubMatches = notifier.filterEntries(
+          sampleEntries,
+          'fixed pub 3.9.4',
+        );
+        expect(pubMatches, [sampleEntries.last]);
+
+        // Multi-token query where one token does not match.
+        final noMatches = notifier.filterEntries(
+          sampleEntries,
+          'primary pub',
+        );
+        expect(noMatches, isEmpty);
+      },
+    );
   });
 }
