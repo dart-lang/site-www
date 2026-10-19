@@ -131,7 +131,7 @@
   {
     "id": "always_put_control_body_on_new_line",
     "description": "_Statement should be on a separate line._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the code being controlled by a\ncontrol flow statement (`if`, `for`, `while`, or `do`) is on the same line\nas the control flow statement.\n\n## Example\n\nThe following code produces this diagnostic because the `return` statement\nis on the same line as the `if` that controls whether the `return` will be\nexecuted:\n\n```dart\nvoid f(bool b) {\n  if (b) [!return!];\n}\n```\n\n## Common fixes\n\nPut the controlled statement onto a separate, indented, line:\n\n```dart\nvoid f(bool b) {\n  if (b) {\n    return;\n  }\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the code being controlled by a\ncontrol flow statement (`if`, `for`, `while`, or `do`) is on the same line\nas the control flow statement.\n\n## Example\n\nThe following code produces this diagnostic because the `return` statement\nis on the same line as the `if` that controls whether the `return` will be\nexecuted:\n\n```dart\nvoid f(bool b) {\n  if (b) [!return!];\n}\n```\n\n## Common fixes\n\nPut the controlled statement onto a separate, indented line:\n\n```dart\nvoid f(bool b) {\n  if (b) {\n    return;\n  }\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -168,6 +168,13 @@
     "previousNames": []
   },
   {
+    "id": "ambiguous_comment_reference",
+    "description": "_The name '{0}' is ambiguous because it is defined in the libraries {1}._\n\n_The prefix '{0}' can't be used to reference a library, because it's used to import more than one library: {1}._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "ambiguous_export",
     "description": "_The name '{0}' is defined in the libraries '{1}' and '{2}'._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when two or more export directives\ncause the same name to be exported from multiple libraries.\n\n## Example\n\nGiven a file `a.dart` containing\n\n```dart\nclass C {}\n```\n\nAnd a file `b.dart` containing\n\n```dart\nclass C {}\n```\n\nThe following code produces this diagnostic because the name `C` is being\nexported from both `a.dart` and `b.dart`:\n\n```dart\nexport 'a.dart';\nexport [!'b.dart'!];\n```\n\n## Common fixes\n\nIf none of the names in one of the libraries needs to be exported, then\nremove the unnecessary export directives:\n\n```dart\nexport 'a.dart';\n```\n\nIf all of the export directives are needed, then hide the name in all\nexcept one of the directives:\n\n```dart\nexport 'a.dart';\nexport 'b.dart' hide C;\n```\n",
@@ -185,7 +192,7 @@
   },
   {
     "id": "ambiguous_import",
-    "description": "_The name '{0}' is defined in the libraries {1}._",
+    "description": "_The {0} '{1}' is defined in the libraries {2}._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name is referenced that is\ndeclared in two or more imported libraries.\n\n## Example\n\nGiven a library (`a.dart`) that defines a class (`C` in this example):\n\n```dart\nclass A {}\nclass C {}\n```\n\nAnd a library (`b.dart`) that defines a different class with the same name:\n\n```dart\nclass B {}\nclass C {}\n```\n\nThe following code produces this diagnostic:\n\n```dart\nimport 'a.dart';\nimport 'b.dart';\n\nvoid f(A a, [!C!] c1, [!C!] c2) {}\n```\n\n## Common fixes\n\nIf any of the libraries aren't needed, then remove the import directives\nfor them:\n\n```dart\nimport 'a.dart';\n\nvoid f(A a, C c1, C c2) {}\n```\n\nIf the name is still defined by more than one library, then add a `hide`\nclause to the import directives for all except one library:\n\n```dart\nimport 'a.dart' hide C;\nimport 'b.dart';\n\nvoid f(A a, C c1, C c2) {}\n```\n\nIf you must be able to reference more than one of these types, then add a\nprefix to each of the import directives, and qualify the references with\nthe appropriate prefix:\n\n```dart\nimport 'a.dart' as a;\nimport 'b.dart' as b;\n\nvoid f(a.A a, a.C c1, b.C c2) {}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -274,6 +281,13 @@
   {
     "id": "analyzer_public_api_impl_in_public_api",
     "description": "_Declarations in the analyzer public API should not end in \"Impl\"._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "analyzer_v1_ast_use",
+    "description": "_'{0}' is part of the V1 AST API, and should be used only from other V1 AST API.{1}_",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -459,7 +473,7 @@
   {
     "id": "assignment_to_final",
     "description": "_'{0}' can't be used as a setter because it's final._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when it finds an invocation of a\nsetter, but there's no setter because the field with the same name was\ndeclared to be `final` or `const`.\n\n## Example\n\nThe following code produces this diagnostic because `v` is final:\n\n```dart\nclass C {\n  final v = 0;\n}\n\nvoid f(C c) {\n  c.[!v!] = 1;\n}\n```\n\n## Common fixes\n\nIf you need to be able to set the value of the field, then remove the\nmodifier `final` from the field:\n\n```dart\nclass C {\n  int v = 0;\n}\n\nvoid f(C c) {\n  c.v = 1;\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when it finds an invocation of a\nsetter, but there's no setter because the variable or field with the\nsame name was declared to be `final`.\n\n## Example\n\nThe following code produces this diagnostic because `v` is final:\n\n```dart\nfinal v = 0;\n\nvoid f() {\n  [!v!] = 1;\n}\n```\n\n## Common fixes\n\nIf you need to be able to set the value of the variable, then remove the\nmodifier `final` from the variable:\n\n```dart\nvar v = 0;\n\nvoid f() {\n  v = 1;\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -475,7 +489,7 @@
   {
     "id": "assignment_to_final_no_setter",
     "description": "_There isn't a setter named '{0}' in class '{1}'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a reference to a setter is\nfound; there is no setter defined for the type; but there is a getter\ndefined with the same name.\n\n## Example\n\nThe following code produces this diagnostic because there is no setter\nnamed `x` in `C`, but there is a getter named `x`:\n\n```dart\nclass C {\n  int get x => 0;\n  set y(int p) {}\n}\n\nvoid f(C c) {\n  c.[!x!] = 1;\n}\n```\n\n## Common fixes\n\nIf you want to invoke an existing setter, then correct the name:\n\n```dart\nclass C {\n  int get x => 0;\n  set y(int p) {}\n}\n\nvoid f(C c) {\n  c.y = 1;\n}\n```\n\nIf you want to invoke the setter but it just doesn't exist yet, then\ndeclare it:\n\n```dart\nclass C {\n  int get x => 0;\n  set x(int p) {}\n  set y(int p) {}\n}\n\nvoid f(C c) {\n  c.x = 1;\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a reference to a setter is\nfound; there is no setter defined for the type; but there is a getter\ndefined with the same name.\n\n## Example\n\nThe following code produces this diagnostic because there is no setter\nnamed `x` in `C`, but there is a getter named `x`:\n\n```dart\nclass C {\n  int get x => 0;\n  set y(int p) {}\n\n  void f() {\n    [!x!] = 1;\n  }\n}\n```\n\n## Common fixes\n\nIf you want to invoke an existing setter, then correct the name:\n\n```dart\nclass C {\n  int get x => 0;\n  set y(int p) {}\n\n  void f() {\n    y = 1;\n  }\n}\n```\n\nIf you want to invoke the setter but it just doesn't exist yet, then\ndeclare it:\n\n```dart\nclass C {\n  int get x => 0;\n  set x(int p) {}\n  set y(int p) {}\n\n  void f() {\n    x = 1;\n  }\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -827,7 +841,7 @@
   {
     "id": "avoid_js_rounded_ints",
     "description": "_Integer literal can't be represented exactly when compiled to JavaScript._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an `int` literal's value\ncan't be represented exactly as a JavaScript `Number`.\n\nWhen Dart code is compiled to JavaScript,\nintegers whose values fall outside the range `-(2^53 - 1)` to `2^53 - 1`\nmight be rounded to the nearest representable value.\nThis silently changes the literal's value on the web.\n\nTo learn more about how Dart represents numbers on different platforms,\nincluding when compiled to JavaScript, check out\n[Numbers in Dart](https://dart.dev/resources/language/number-representation).\n\n## Example\n\nThe following code produces this diagnostic because\nthe literal `9007199254740993` (2^53 + 1) can't be\nrepresented exactly as a JavaScript `Number` is rounded to\n`9007199254740992` at run time when compiled to JavaScript:\n\n```dart\nfinal i = [!9007199254740993!];\n```\n\n## Common fixes\n\nIf the value needs to be exact on all platforms,\nincluding when compiled to JavaScript,\nthen use a `BigInt` to represent it:\n\n```dart\nfinal i = BigInt.parse('9007199254740993');\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an `int` literal's value\ncan't be represented exactly as a JavaScript `Number`.\n\nWhen Dart code is compiled to JavaScript,\nintegers whose values fall outside the range `-(2^53 - 1)` to `2^53 - 1`\nmight be rounded to the nearest representable value.\nThis silently changes the literal's value on the web.\n\nTo learn more about how Dart represents numbers on different platforms,\nincluding when compiled to JavaScript, check out\n[Numbers in Dart](https://dart.dev/resources/language/number-representation).\n\n## Example\n\nThe following code produces this diagnostic because\nthe literal `9007199254740993` (2^53 + 1) can't be\nrepresented exactly as a JavaScript `Number` and is rounded to\n`9007199254740992` at run time when compiled to JavaScript:\n\n```dart\nfinal i = [!9007199254740993!];\n```\n\n## Common fixes\n\nIf the value needs to be exact on all platforms,\nincluding when compiled to JavaScript,\nthen use a `BigInt` to represent it:\n\n```dart\nfinal i = BigInt.parse('9007199254740993');\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -2005,7 +2019,7 @@
   {
     "id": "depend_on_referenced_packages",
     "description": "_The imported package '{0}' isn't a dependency of the importing package._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a package import refers to a\npackage that is not specified in the `pubspec.yaml` file.\n\nDepending explicitly on packages that you reference ensures they will\nalways exist and allows you to put a dependency constraint on them to\nguard against breaking changes.\n\n## Example\n\nGiven a `pubspec.yaml` file containing the following:\n\n```yaml\ndependencies:\n  meta: ^3.0.0\n```\n\nThe following code produces this diagnostic because there is no dependency\non the package `a`:\n\n```dart\nimport [!'package:a/a.dart'!];\n```\n\n## Common fixes\n\nWhether the dependency should be a regular dependency or dev dependency\ndepends on whether the package is referenced from a public library (one\nunder either `lib` or `bin`), or only private libraries, (such as one\nunder `test`).\n\nIf the package is referenced from at least one public library, then add a\nregular dependency on the package to the `pubspec.yaml` file under the\n`dependencies` field:\n\n```yaml\ndependencies:\n  a: ^1.0.0\n  meta: ^3.0.0\n```\n\nIf the package is referenced only from private libraries, then add a\ndev dependency on the package to the `pubspec.yaml` file under the\n`dev_dependencies` field:\n\n```yaml\ndependencies:\n  meta: ^3.0.0\ndev_dependencies:\n  a: ^1.0.0\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a package import refers to a\npackage that is not specified in the `pubspec.yaml` file.\n\nDepending explicitly on packages that you reference ensures they will\nalways exist and allows you to put a dependency constraint on them to\nguard against breaking changes.\n\n## Example\n\nGiven a `pubspec.yaml` file containing the following:\n\n```yaml\ndependencies:\n  meta: ^3.0.0\n```\n\nThe following code produces this diagnostic because there is no dependency\non the package `a`:\n\n```dart\nimport [!'package:a/a.dart'!];\n```\n\n## Common fixes\n\nWhether the dependency should be a regular dependency or a dev dependency\ndepends on whether the package is referenced from a\npublic library (one under either `lib` or `bin`) or only\nprivate libraries (such as one under `test`).\n\nIf the package is referenced from at least one public library, then add a\nregular dependency on the package to the `pubspec.yaml` file under the\n`dependencies` field:\n\n```yaml\ndependencies:\n  a: ^1.0.0\n  meta: ^3.0.0\n```\n\nIf the package is referenced only from private libraries, then add a\ndev dependency on the package to the `pubspec.yaml` file under the\n`dev_dependencies` field:\n\n```yaml\ndependencies:\n  meta: ^3.0.0\ndev_dependencies:\n  a: ^1.0.0\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -2098,8 +2112,8 @@
   },
   {
     "id": "deprecated_member_use",
-    "description": "_'{0}' is deprecated and shouldn't be used._\n\n_'{0}' is deprecated and shouldn't be used. {1}_\n\n_The implicitly referenced type '{0}' is deprecated and shouldn't be used._\n\n_The implicitly referenced type '{0}' is deprecated and shouldn't be used. {1}_",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a deprecated library or class\nmember is used in a different package.\n\nA dot-shorthand expression can also implicitly reference a deprecated\ntype. In this case, the diagnostic identifies the implicitly referenced\ntype even though its name isn't written in the expression.\n\n## Example\n\nIf the method `m` in the class `C` is annotated with `@deprecated`, then\nthe following code produces this diagnostic:\n\n```dart\nvoid f(C c) {\n  c.[!m!]();\n}\n```\n\n## Common fixes\n\nThe documentation for declarations that are annotated with `@deprecated`\nshould indicate what code to use in place of the deprecated code.\n",
+    "description": "_'{0}' is deprecated and shouldn't be used._\n\n_'{0}' is deprecated and shouldn't be used. {1}_\n\n_The implicitly invoked super constructor '{0}' is deprecated and shouldn't be used._\n\n_The implicitly invoked super constructor '{0}' is deprecated and shouldn't be used. {1}_\n\n_The implicitly referenced type '{0}' is deprecated and shouldn't be used._\n\n_The implicitly referenced type '{0}' is deprecated and shouldn't be used. {1}_",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a deprecated library or class\nmember is used in a different package.\n\nA dot-shorthand expression can implicitly reference a deprecated\ntype. In this case, the diagnostic identifies the implicitly referenced\ntype even though its name isn't written in the expression.\n\nA constructor can implicitly invoke a deprecated super constructor.\nIn this case, the diagnostic identifies the implicitly invoked super\nconstructor and is reported on the subclass constructor declaration.\n\n## Example\n\nIf the method `m` in the class `C` is annotated with `@deprecated`, then\nthe following code produces this diagnostic:\n\n```dart\nvoid f(C c) {\n  c.[!m!]();\n}\n```\n\n## Common fixes\n\nThe documentation for declarations that are annotated with `@deprecated`\nshould indicate what code to use in place of the deprecated code.\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -2154,7 +2168,7 @@
   {
     "id": "diagnostic_describe_all_properties",
     "description": "_The public property isn't described by either 'debugFillProperties' or 'debugDescribeChildren'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class that implements\n`Diagnosticable` has a public property that isn't added as a property in\neither a `debugFillProperties` or `debugDescribeChildren` method.\n\n## Example\n\nThe following code produces this diagnostic because the property `p2`\nisn't added in the `debugFillProperties` method:\n\n```dart\nimport 'package:flutter/material.dart';\n\nclass const C({super.key}) extends Widget {\n  bool get p1 => true;\n\n  bool get [!p2!] => false;\n\n  @override\n  void debugFillProperties(DiagnosticPropertiesBuilder properties) {\n    super.debugFillProperties(properties);\n    properties.add(DiagnosticsProperty<bool>('p1', p1));\n  }\n}\n```\n\n## Common fixes\n\nIf there isn't on override of either the `debugFillProperties` or\n`debugDescribeChildren` method, then add one.\n\nAdd a description of the property in the `debugFillProperties` or\n`debugDescribeChildren` method:\n\n```dart\nimport 'package:flutter/material.dart';\n\nclass const C({super.key}) extends Widget {\n  bool get p1 => true;\n\n  bool get p2 => false;\n\n  @override\n  void debugFillProperties(DiagnosticPropertiesBuilder properties) {\n    super.debugFillProperties(properties);\n    properties.add(DiagnosticsProperty<bool>('p1', p1));\n    properties.add(DiagnosticsProperty<bool>('p2', p2));\n  }\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class that implements\n`Diagnosticable` has a public property that isn't added as a property in\neither a `debugFillProperties` or `debugDescribeChildren` method.\n\n## Example\n\nThe following code produces this diagnostic because the property `p2`\nisn't added in the `debugFillProperties` method:\n\n```dart\nimport 'package:flutter/material.dart';\n\nclass const C({super.key}) extends Widget {\n  bool get p1 => true;\n\n  bool get [!p2!] => false;\n\n  @override\n  void debugFillProperties(DiagnosticPropertiesBuilder properties) {\n    super.debugFillProperties(properties);\n    properties.add(DiagnosticsProperty<bool>('p1', p1));\n  }\n}\n```\n\n## Common fixes\n\nIf there isn't an override of either the `debugFillProperties` or\n`debugDescribeChildren` method, then add one.\n\nAdd a description of the property in the `debugFillProperties` or\n`debugDescribeChildren` method:\n\n```dart\nimport 'package:flutter/material.dart';\n\nclass const C({super.key}) extends Widget {\n  bool get p1 => true;\n\n  bool get p2 => false;\n\n  @override\n  void debugFillProperties(DiagnosticPropertiesBuilder properties) {\n    super.debugFillProperties(properties);\n    properties.add(DiagnosticsProperty<bool>('p1', p1));\n    properties.add(DiagnosticsProperty<bool>('p2', p2));\n  }\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -2295,6 +2309,13 @@
     "description": "_Doc imports can't have prefixes._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a documentation import has a\nprefix.\n\nUsing prefixes isn't supported for documentation imports.\n\n## Example\n\nThe following code produces this diagnostic because the documentation\nimport declares a prefix:\n\n```dart\n/// @docImport 'package:meta/meta.dart' as [!a!];\nlibrary;\n```\n\n## Common fixes\n\nRemove the prefix:\n\n```dart\n/// @docImport 'package:meta/meta.dart';\nlibrary;\n```\n",
     "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "doc_import_in_part_file",
+    "description": "_Doc imports in part files require the 'enhanced-parts' language feature._",
+    "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
@@ -4239,7 +4260,7 @@
   {
     "id": "invalid_annotation",
     "description": "_Annotation must be either a const variable reference or const constructor invocation._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an annotation is found that is\nusing something that is neither a variable marked as `const` or the\ninvocation of a `const` constructor.\n\nGetters can't be used as annotations.\n\n## Examples\n\nThe following code produces this diagnostic because the variable `v` isn't\na `const` variable:\n\n```dart\nvar v = 0;\n\n[!@v!]\nvoid f() {}\n```\n\nThe following code produces this diagnostic because `f` isn't a variable:\n\n```dart\n[!@f!]\nvoid f() {}\n```\n\nThe following code produces this diagnostic because `f` isn't a\nconstructor:\n\n```dart\n[!@f()!]\nvoid f() {}\n```\n\nThe following code produces this diagnostic because `g` is a getter:\n\n```dart\n[!@g!]\nint get g => 0;\n```\n\n## Common fixes\n\nIf the annotation is referencing a variable that isn't a `const`\nconstructor, add the keyword `const` to the variable's declaration:\n\n```dart\nconst v = 0;\n\n@v\nvoid f() {}\n```\n\nIf the annotation isn't referencing a variable, then remove it:\n\n```dart\nint v = 0;\n\nvoid f() {}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an annotation without\narguments references something that is neither a variable marked as\n`const` nor a constructor. An annotation with arguments, such as `@f()`,\nis an invocation of a `const` constructor, so when `f` isn't a class it's\nreported like any other constant constructor invocation, as\n`creation_with_non_type`.\n\nGetters can't be used as annotations.\n\n## Examples\n\nThe following code produces this diagnostic because the variable `v` isn't\na `const` variable:\n\n```dart\nvar v = 0;\n\n[!@v!]\nvoid f() {}\n```\n\nThe following code produces this diagnostic because `f` isn't a variable:\n\n```dart\n[!@f!]\nvoid f() {}\n```\n\nThe following code produces this diagnostic because `g` is a getter:\n\n```dart\n[!@g!]\nint get g => 0;\n```\n\n## Common fixes\n\nIf the annotation is referencing a variable that isn't a `const`\nconstructor, add the keyword `const` to the variable's declaration:\n\n```dart\nconst v = 0;\n\n@v\nvoid f() {}\n```\n\nIf the annotation isn't referencing a variable, then remove it:\n\n```dart\nint v = 0;\n\nvoid f() {}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -4377,7 +4398,7 @@
   },
   {
     "id": "invalid_comment_reference",
-    "description": "_Comment references should contain a possibly prefixed identifier and can start with 'new', but shouldn't contain anything else._",
+    "description": "_Comment references should contain a possibly prefixed identifier, but shouldn't contain anything else._",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -5098,6 +5119,13 @@
     "previousNames": []
   },
   {
+    "id": "js_interop_extension_constructor_js_annotation_has_no_effect",
+    "description": "_The '@JS' annotation on an extension type constructor has no effect and is disallowed._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "label_in_outer_scope",
     "description": "_Can't reference label '{0}' declared in an outer method._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a `break` or `continue`\nstatement references a label that is declared in a method or function\ncontaining the function in which the `break` or `continue` statement\nappears. The `break` and `continue` statements can't be used to transfer\ncontrol outside the function that contains them.\n\n## Example\n\nThe following code produces this diagnostic because the label `loop` is\ndeclared outside the local function `g`:\n\n```dart\nvoid f() {\n  loop:\n  while (true) {\n    void g() {\n      break [!loop!];\n    }\n\n    g();\n  }\n}\n```\n\n## Common fixes\n\nTry rewriting the code so that it isn't necessary to transfer control\noutside the local function, possibly by inlining the local function:\n\n```dart\nvoid f() {\n  loop:\n  while (true) {\n    break loop;\n  }\n}\n```\n\nIf that isn't possible, then try rewriting the local function so that a\nvalue returned by the function can be used to determine whether control is\ntransferred:\n\n```dart\nvoid f() {\n  loop:\n  while (true) {\n    bool g() {\n      return true;\n    }\n\n    if (g()) {\n      break loop;\n    }\n  }\n}\n```\n",
@@ -5223,7 +5251,7 @@
   {
     "id": "literal_only_boolean_expressions",
     "description": "_The Boolean expression has a constant value._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the value of the condition in\nan `if` or loop statement is known to be either always `true` or always\n`false`. An exception is made for a `while` loop whose condition is the\nBoolean literal `true`.\n\n## Examples\n\nThe following code produces this diagnostic because the condition will\nalways evaluate to `true`:\n\n```dart\nvoid f() {\n  [!if (true) {!]\n    [!print('true');!]\n  [!}!]\n}\n```\n\nThe lint will evaluate a subset of expressions that are composed of\nconstants, so the following code will also produce this diagnostic because\nthe condition will always evaluate to `false`:\n\n```dart\nvoid g(int i) {\n  [!if (1 == 0 || 3 > 4) {!]\n    [!print('false');!]\n  [!}!]\n}\n```\n\n## Common fixes\n\nIf the condition is wrong, then correct the condition so that it's value\ncan't be known at compile time:\n\n```dart\nvoid g(int i) {\n  if (i == 0 || i > 4) {\n    print('false');\n  }\n}\n```\n\nIf the condition is correct, then simplify the code to not evaluate the\ncondition:\n\n```dart\nvoid f() {\n  print('true');\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the value of the condition in\nan `if` or loop statement is known to be either always `true` or always\n`false`. An exception is made for a `while` loop whose condition is the\nBoolean literal `true`.\n\n## Examples\n\nThe following code produces this diagnostic because the condition will\nalways evaluate to `true`:\n\n```dart\nvoid f() {\n  [!if (true) {!]\n    [!print('true');!]\n  [!}!]\n}\n```\n\nThe lint will evaluate a subset of expressions that are composed of\nconstants, so the following code will also produce this diagnostic because\nthe condition will always evaluate to `false`:\n\n```dart\nvoid g(int i) {\n  [!if (1 == 0 || 3 > 4) {!]\n    [!print('false');!]\n  [!}!]\n}\n```\n\n## Common fixes\n\nIf the condition is wrong, then correct the condition so that its value\ncan't be known at compile time:\n\n```dart\nvoid g(int i) {\n  if (i == 0 || i > 4) {\n    print('false');\n  }\n}\n```\n\nIf the condition is correct, then simplify the code to not evaluate the\ncondition:\n\n```dart\nvoid f() {\n  print('true');\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -5314,7 +5342,7 @@
   },
   {
     "id": "matching_super_parameters",
-    "description": "_The super parameter named '{0}'' does not share the same name as the corresponding parameter in the super constructor, '{1}'._",
+    "description": "_The super parameter named '{0}' does not share the same name as the corresponding parameter in the super constructor, '{1}'._",
     "hasDocumentation": false,
     "fromLint": true,
     "previousNames": []
@@ -6210,7 +6238,7 @@
   {
     "id": "no_annotation_constructor_arguments",
     "description": "_Annotation creation must have arguments._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an annotation consists of a\nsingle identifier, but that identifier is the name of a class rather than a\nvariable. To create an instance of the class, the identifier must be\nfollowed by an argument list.\n\n## Example\n\nThe following code produces this diagnostic because `C` is a class, and a\nclass can't be used as an annotation without invoking a `const` constructor\nfrom the class:\n\n```dart\nclass C {\n  const C();\n}\n\n[!@C!]\nvar x = 0;\n```\n\n## Common fixes\n\nAdd the missing argument list:\n\n```dart\nclass C {\n  const C();\n}\n\n@C()\nvar x = 0;\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an annotation is the name of a\nclass, such as `@C`, or of a constructor, such as `@C.named`, rather than\nthe name of a variable. To create an instance of the class, the name must\nbe followed by an argument list. This diagnostic is reported whether or\nnot the constructor is a `const` constructor.\n\n## Example\n\nThe following code produces this diagnostic because `C` is a class, and a\nclass can't be used as an annotation without invoking a `const` constructor\nfrom the class:\n\n```dart\nclass C {\n  const C();\n}\n\n[!@C!]\nvar x = 0;\n```\n\n## Common fixes\n\nAdd the missing argument list:\n\n```dart\nclass C {\n  const C();\n}\n\n@C()\nvar x = 0;\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -8520,7 +8548,7 @@
   },
   {
     "id": "throw_in_finally",
-    "description": "_Use of '{0}' in 'finally' block._",
+    "description": "_Use of '{0}' in a 'finally' block._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a `throw` statement is found\ninside a `finally` block.\n\n## Example\n\nThe following code produces this diagnostic because there is a `throw`\nstatement inside a `finally` block:\n\n```dart\nvoid f() {\n  try {\n    // ...\n  } catch (e) {\n    // ...\n  } finally {\n    [!throw 'error'!];\n  }\n}\n```\n\n## Common fixes\n\nRewrite the code so that the `throw` statement isn't inside a `finally`\nblock:\n\n```dart\nvoid f() {\n  try {\n    // ...\n  } catch (e) {\n    // ...\n  }\n  throw 'error';\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
@@ -8768,7 +8796,23 @@
   {
     "id": "undefined_extension_getter",
     "description": "_The getter '{0}' isn't defined for the extension '{1}'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an extension override is used to\ninvoke a getter, but the getter isn't defined by the specified extension.\nThe analyzer also produces this diagnostic when a static getter is\nreferenced but isn't defined by the specified extension.\n\n## Examples\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare an instance getter named `b`:\n\n```dart\nextension E on String {\n  String get a => 'a';\n}\n\nextension F on String {\n  String get b => 'b';\n}\n\nvoid f() {\n  E('c').[!b!];\n}\n```\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare a static getter named `a`:\n\n```dart\nextension E on String {}\n\nvar x = E.[!a!];\n```\n\n## Common fixes\n\nIf the name of the getter is incorrect, then change it to the name of an\nexisting getter:\n\n```dart\nextension E on String {\n  String get a => 'a';\n}\n\nextension F on String {\n  String get b => 'b';\n}\n\nvoid f() {\n  E('c').a;\n}\n```\n\nIf the name of the getter is correct but the name of the extension is\nwrong, then change the name of the extension to the correct name:\n\n```dart\nextension E on String {\n  String get a => 'a';\n}\n\nextension F on String {\n  String get b => 'b';\n}\n\nvoid f() {\n  F('c').b;\n}\n```\n\nIf the name of the getter and extension are both correct, but the getter\nisn't defined, then define the getter:\n\n```dart\nextension E on String {\n  String get a => 'a';\n  String get b => 'z';\n}\n\nextension F on String {\n  String get b => 'b';\n}\n\nvoid f() {\n  E('c').b;\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a static getter is\nreferenced, but isn't defined by the specified extension.\n\n## Example\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare a static getter named `a`:\n\n```dart\nextension E on String {}\n\nvar x = E.[!a!];\n```\n\n## Common fixes\n\nIf the name of the getter is incorrect, then change it to the name of an\nexisting static getter:\n\n```dart\nextension E on String {\n  static String get b => 'b';\n}\n\nvar x = E.b;\n```\n\nIf the getter isn't defined, then define it:\n\n```dart\nextension E on String {\n  static String get a => 'a';\n}\n\nvar x = E.a;\n```\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "undefined_extension_member_read",
+    "description": "_The extension '{0}' doesn't have an instance member named '{1}'._\n\n_The member '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_There's a setter '{0}' in the extension '{1}', but no getter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an extension override is used\nto read, invoke, or tear off a member, but the extension doesn't declare\nan instance method or getter with that name.\n\n## Examples\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare a member named `b`:\n\n```dart\nextension E on String {\n  String get a => 'a';\n}\n\nvoid f() {\n  E('c').[!b!]();\n}\n```\n\nThe following code produces this diagnostic because the extension `E`\ndeclares only a setter named `b`, which can't be read:\n\n```dart\nextension E on String {\n  set b(String _) {}\n}\n\nvoid f() {\n  E('c').[!b!];\n}\n```\n\n## Common fixes\n\nIf you intended to use a different member of the extension, then use\nits name:\n\n```dart\nextension E on String {\n  String get a => 'a';\n}\n\nvoid f() {\n  E('c').a;\n}\n```\n\nIf the member isn't declared, then declare it in the extension, or\nremove the reference.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "undefined_extension_member_write",
+    "description": "_The extension '{0}' doesn't have an instance setter named '{1}'._\n\n_The member '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The {0} '{1}' in the extension '{2}' can't be assigned to._\n\n_There's a getter '{0}' in the extension '{1}', but no setter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an extension override is used\nto assign to a member, but the extension doesn't declare an instance\nsetter with that name.\n\n## Examples\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare a setter named `b`:\n\n```dart\nextension E on String {\n  set a(String _) {}\n}\n\nvoid f() {\n  E('c').[!b!] = 'd';\n}\n```\n\nThe following code produces this diagnostic because the extension `E`\ndeclares only a getter named `a`:\n\n```dart\nextension E on String {\n  String get a => 'a';\n}\n\nvoid f() {\n  E('c').[!a!] = 'd';\n}\n```\n\n## Common fixes\n\nIf you intended to use a different setter of the extension, then use its\nname:\n\n```dart\nextension E on String {\n  set a(String _) {}\n}\n\nvoid f() {\n  E('c').a = 'd';\n}\n```\n\nIf the setter isn't declared, then declare it in the extension, or\nremove the assignment.\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -8776,7 +8820,7 @@
   {
     "id": "undefined_extension_method",
     "description": "_The method '{0}' isn't defined for the extension '{1}'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an extension override is used to\ninvoke a method, but the method isn't defined by the specified extension.\nThe analyzer also produces this diagnostic when a static method is\nreferenced but isn't defined by the specified extension.\n\n## Examples\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare an instance method named `b`:\n\n```dart\nextension E on String {\n  String a() => 'a';\n}\n\nextension F on String {\n  String b() => 'b';\n}\n\nvoid f() {\n  E('c').[!b!]();\n}\n```\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare a static method named `a`:\n\n```dart\nextension E on String {}\n\nvar x = E.[!a!]();\n```\n\n## Common fixes\n\nIf the name of the method is incorrect, then change it to the name of an\nexisting method:\n\n```dart\nextension E on String {\n  String a() => 'a';\n}\n\nextension F on String {\n  String b() => 'b';\n}\n\nvoid f() {\n  E('c').a();\n}\n```\n\nIf the name of the method is correct, but the name of the extension is\nwrong, then change the name of the extension to the correct name:\n\n```dart\nextension E on String {\n  String a() => 'a';\n}\n\nextension F on String {\n  String b() => 'b';\n}\n\nvoid f() {\n  F('c').b();\n}\n```\n\nIf the name of the method and extension are both correct, but the method\nisn't defined, then define the method:\n\n```dart\nextension E on String {\n  String a() => 'a';\n  String b() => 'z';\n}\n\nextension F on String {\n  String b() => 'b';\n}\n\nvoid f() {\n  E('c').b();\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a static method is\nreferenced, but isn't defined by the specified extension.\n\n## Example\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare a static method named `a`:\n\n```dart\nextension E on String {}\n\nvar x = E.[!a!]();\n```\n\n## Common fixes\n\nIf the name of the method is incorrect, then change it to the name of an\nexisting static method:\n\n```dart\nextension E on String {\n  static String b() => 'b';\n}\n\nvar x = E.b();\n```\n\nIf the method isn't defined, then define it:\n\n```dart\nextension E on String {\n  static String a() => 'a';\n}\n\nvar x = E.a();\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -8792,7 +8836,7 @@
   {
     "id": "undefined_extension_setter",
     "description": "_The setter '{0}' isn't defined for the extension '{1}'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an extension override is used to\ninvoke a setter, but the setter isn't defined by the specified extension.\nThe analyzer also produces this diagnostic when a static setter is\nreferenced but isn't defined by the specified extension.\n\n## Examples\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare an instance setter named `b`:\n\n```dart\nextension E on String {\n  set a(String v) {}\n}\n\nextension F on String {\n  set b(String v) {}\n}\n\nvoid f() {\n  E('c').[!b!] = 'd';\n}\n```\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare a static setter named `a`:\n\n```dart\nextension E on String {}\n\nvoid f() {\n  E.[!a!] = 3;\n}\n```\n\n## Common fixes\n\nIf the name of the setter is incorrect, then change it to the name of an\nexisting setter:\n\n```dart\nextension E on String {\n  set a(String v) {}\n}\n\nextension F on String {\n  set b(String v) {}\n}\n\nvoid f() {\n  E('c').a = 'd';\n}\n```\n\nIf the name of the setter is correct, but the name of the extension is\nwrong, then change the name of the extension to the correct name:\n\n```dart\nextension E on String {\n  set a(String v) {}\n}\n\nextension F on String {\n  set b(String v) {}\n}\n\nvoid f() {\n  F('c').b = 'd';\n}\n```\n\nIf the name of the setter and extension are both correct, but the setter\nisn't defined, then define the setter:\n\n```dart\nextension E on String {\n  set a(String v) {}\n  set b(String v) {}\n}\n\nextension F on String {\n  set b(String v) {}\n}\n\nvoid f() {\n  E('c').b = 'd';\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a static setter is\nreferenced, but isn't defined by the specified extension.\n\n## Example\n\nThe following code produces this diagnostic because the extension `E`\ndoesn't declare a static setter named `a`:\n\n```dart\nextension E on String {}\n\nvoid f() {\n  E.[!a!] = 3;\n}\n```\n\n## Common fixes\n\nIf the name of the setter is incorrect, then change it to the name of an\nexisting static setter:\n\n```dart\nextension E on String {\n  static set b(int _) {}\n}\n\nvoid f() {\n  E.b = 3;\n}\n```\n\nIf the setter isn't defined, then define it:\n\n```dart\nextension E on String {\n  static set a(int _) {}\n}\n\nvoid f() {\n  E.a = 3;\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -8838,6 +8882,22 @@
     "previousNames": []
   },
   {
+    "id": "undefined_instance_member_read",
+    "description": "_The member '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The member '{0}' isn't defined for the type '{1}'._\n\n_There's a setter '{0}' for the type '{1}', but no getter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an instance member is read,\ninvoked, or torn off, but neither the static type of the receiver nor any\napplicable extension has an accessible method, getter, or field with that\nname.\n\n## Examples\n\nThe following code produces this diagnostic because `String` doesn't\nhave a member named `len`:\n\n```dart\nint f(String s) => s.[!len!];\n```\n\nThe following code produces this diagnostic because `List<int>` doesn't\nhave a member named `middleIndex`:\n\n```dart\nint f(List<int> l) => l.[!middleIndex!]();\n```\n\nThe following code produces this diagnostic because `C` has only a\nsetter named `x`, which can't be read:\n\n```dart\nclass C {\n  set x(int _) {}\n}\n\nint f(C c) => c.[!x!];\n```\n\n## Common fixes\n\nIf the member you intend to use has a different name, then change the\nname to match:\n\n```dart\nint f(String s) => s.length;\n```\n\nIf the member is declared in an extension that isn't imported, then\nimport the library that declares the extension.\n\nIf the member isn't defined, then define it in the type of the receiver\nor in an extension that applies to that type:\n\n```dart\nextension on List<int> {\n  int middleIndex() => length ~/ 2;\n}\n\nint f(List<int> l) => l.middleIndex();\n```\n\nIf the type has only a setter, then add a getter with the same name:\n\n```dart\nclass C {\n  int get x => 0;\n\n  set x(int _) {}\n}\n\nint f(C c) => c.x;\n```\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "undefined_instance_member_write",
+    "description": "_The field '{0}' of the type '{1}' is final, so it can't be assigned to._\n\n_The member '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The setter '{0}' isn't defined for the type '{1}'._\n\n_The {0} '{1}' of the type '{2}' can't be assigned to._\n\n_There's a getter '{0}' for the type '{1}', but no setter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an instance member is\nassigned, but neither the static type of the receiver nor any applicable\nextension has an accessible setter or non-final field with that name.\n\n## Examples\n\nThe following code produces this diagnostic because `C` doesn't have a\nsetter named `z`:\n\n```dart\nclass C {\n  int x = 0;\n}\n\nvoid f(C c) {\n  c.[!z!] = 0;\n}\n```\n\nThe following code produces this diagnostic because `C` has only a\ngetter named `x`:\n\n```dart\nclass C {\n  int get x => 0;\n}\n\nvoid f(C c) {\n  c.[!x!] = 0;\n}\n```\n\nThe following code produces this diagnostic because the field `x` is\nfinal:\n\n```dart\nclass C {\n  final int x = 0;\n}\n\nvoid f(C c) {\n  c.[!x!] = 0;\n}\n```\n\n## Common fixes\n\nIf the setter you intend to use has a different name, then change the\nname to match:\n\n```dart\nclass C {\n  int x = 0;\n}\n\nvoid f(C c) {\n  c.x = 0;\n}\n```\n\nIf the setter is declared in an extension that isn't imported, then\nimport the library that declares the extension.\n\nIf the type has only a getter, then add a setter with the same name:\n\n```dart\nclass C {\n  int get x => 0;\n\n  set x(int _) {}\n}\n\nvoid f(C c) {\n  c.x = 0;\n}\n```\n\nIf the field is final, then make it non-final:\n\n```dart\nclass C {\n  int x = 0;\n}\n\nvoid f(C c) {\n  c.x = 0;\n}\n```\n\nOtherwise, remove the assignment.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "undefined_lint",
     "description": "_'{0}' isn't a recognized lint rule._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when an analysis options file\nattempts to enable a lint rule that is not defined.\n\n## Example\n\nThe following code produces this diagnostic because\n`implementation_import` isn't a known lint:\n\n```yaml\n// %uri=\"analysis_options.yaml\"\nlinter:\n  rules:\n    - annotate_overrides\n    - [!implementation_import!]\n```\n\n## Common fixes\n\nIf the name of the lint was mistyped, then correct the name.\n\n```yaml\n// %uri=\"analysis_options.yaml\"\nlinter:\n  rules:\n    - annotate_overrides\n    - implementation_imports\n```\n\nIf there is no lint corresponding to the flagged entry, then remove the\nundefined lint:\n\n```yaml\n// %uri=\"analysis_options.yaml\"\nlinter:\n  rules:\n    - annotate_overrides\n```\n",
@@ -8848,7 +8908,7 @@
   {
     "id": "undefined_method",
     "description": "_The method '{0}' isn't defined for the '{1}' function type._\n\n_The method '{0}' isn't defined for the type '{1}'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when it encounters an identifier that\nappears to be the name of a method but either isn't defined or isn't\nvisible in the scope in which it's being referenced.\n\n## Example\n\nThe following code produces this diagnostic because the identifier\n`removeMiddle` isn't defined:\n\n```dart\nint f(List<int> l) => l.[!removeMiddle!]();\n```\n\n## Common fixes\n\nIf the identifier isn't defined, then either define it or replace it with\nthe name of a method that is defined. The example above can be corrected by\nfixing the spelling of the method:\n\n```dart\nint f(List<int> l) => l.removeLast();\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name is invoked without a\nreceiver inside a class, enum, mixin, extension, or extension type, and\nit isn't defined by the enclosing declaration or in an enclosing scope.\nAn invocation with an instance receiver, such as `x.foo()`, reports\n`undefined_instance_member_read` instead.\n\n## Example\n\nThe following code produces this diagnostic because `C` doesn't have a\nmember named `removeMiddle`:\n\n```dart\nclass C {\n  void removeLast() {}\n\n  void f() {\n    [!removeMiddle!]();\n  }\n}\n```\n\n## Common fixes\n\nIf the identifier isn't defined, then either define it or replace it with\nthe name of a method that is defined. The example above can be corrected by\nfixing the spelling of the method:\n\n```dart\nclass C {\n  void removeLast() {}\n\n  void f() {\n    removeLast();\n  }\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -8878,6 +8938,22 @@
     "previousNames": []
   },
   {
+    "id": "undefined_prefixed_name_read",
+    "description": "_The name '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The name '{0}' isn't defined in the libraries imported with the prefix '{1}'._\n\n_There's a setter '{0}' in the libraries imported with the prefix '{1}', but no getter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name is read, invoked, or\ntorn off through an import prefix, but none of the libraries imported\nwith that prefix has a getter, function, variable, or type with that\nname that can be read.\n\n## Examples\n\nThe following code produces this diagnostic because `dart:core` doesn't\ndefine anything named `a`:\n\n```dart\nimport 'dart:core' as p;\n\nvoid f() {\n  p.[!a!];\n}\n```\n\nGiven a file `a.dart` that contains:\n\n```dart\nset x(int _) {}\n```\n\nThe following code produces this diagnostic because `a.dart` has only a\nsetter named `x`, which can't be read:\n\n```dart\nimport 'a.dart' as p;\n\nint f() => p.[!x!];\n```\n\n## Common fixes\n\nIf the library in which the name is declared isn't imported yet, then\nimport it with the prefix.\n\nIf the name is wrong, then change it to one of the names that's declared\nin the imported libraries.\n\nIf the library has only a setter, then add a getter with the same name\nto that library.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "undefined_prefixed_name_write",
+    "description": "_The constant '{0}' imported with the prefix '{1}' can't be assigned to._\n\n_The name '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The setter '{0}' isn't defined in the libraries imported with the prefix '{1}'._\n\n_The variable '{0}' imported with the prefix '{1}' is final, so it can't be assigned to._\n\n_The {0} '{1}' imported with the prefix '{2}' can't be assigned to._\n\n_There's a getter '{0}' in the libraries imported with the prefix '{1}', but no setter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name is assigned through an\nimport prefix, but none of the libraries imported with that prefix has a\nsetter or non-final variable with that name.\n\n## Examples\n\nThe following code produces this diagnostic because `dart:core` doesn't\ndefine anything named `a`:\n\n```dart\nimport 'dart:core' as p;\n\nvoid f() {\n  p.[!a!] = 0;\n}\n```\n\nGiven a file `a.dart` that contains:\n\n```dart\nint get x => 0;\n```\n\nThe following code produces this diagnostic because `a.dart` has only a\ngetter named `x`:\n\n```dart\nimport 'a.dart' as p;\n\nvoid f() {\n  p.[!x!] = 0;\n}\n```\n\nThe following code produces this diagnostic because `pi` is a constant:\n\n```dart\nimport 'dart:math' as p;\n\nvoid f() {\n  p.[!pi!] = 0;\n}\n```\n\n## Common fixes\n\nIf the library in which the setter is declared isn't imported yet, then\nimport it with the prefix.\n\nIf the name is wrong, then change it to the name of a setter or variable\nthat's declared in the imported libraries.\n\nIf the library has only a getter, then add a setter with the same name\nto that library. If the variable is final, then make it non-final.\n\nOtherwise, remove the assignment.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "undefined_referenced_parameter",
     "description": "_The parameter '{0}' isn't defined by '{1}'._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when an annotation of the form\n[`UseResult.unless(parameterDefined: parameterName)`][meta-UseResult]\nspecifies a parameter name that isn't defined by the annotated function.\n\n## Example\n\nThe following code produces this diagnostic because the function `f`\ndoesn't have a parameter named `b`:\n\n```dart\nimport 'package:meta/meta.dart';\n\n@UseResult.unless(parameterDefined: [!'b'!])\nint f([int? a]) => a ?? 0;\n```\n\n## Common fixes\n\nChange the argument named `parameterDefined` to match the name of one of\nthe parameters to the function:\n\n```dart\nimport 'package:meta/meta.dart';\n\n@UseResult.unless(parameterDefined: 'a')\nint f([int? a]) => a ?? 0;\n```\n\n[meta-UseResult]: https://pub.dev/documentation/meta/latest/meta/UseResult-class.html\n",
@@ -8902,14 +8978,70 @@
     "previousNames": []
   },
   {
+    "id": "undefined_static_member_read",
+    "description": "_The context type '{0}' doesn't have a {1} named '{2}'._\n\n_The context type '{0}' doesn't have static members or constructors._\n\n_The context type '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The function type '{0}' doesn't have a static member named '{1}'._\n\n_The member '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The {0} '{1}' doesn't have a {2} named '{3}'._\n\n_There's a static setter '{0}' in the {1} '{2}', but no getter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a static member of a class,\nenum, mixin, extension type, or extension is read, invoked, or torn\noff, but the declaration doesn't have an accessible static method,\ngetter, or field with that name. For an enum, static members include\nits enum values.\n\nFor a dot shorthand such as `.a`, the analyzer looks up the name in the\ndeclaration of its context type. It also produces this diagnostic when\nthe context type, such as a function type, doesn't have static members.\n\n## Examples\n\nThe following code produces this diagnostic because the class `C`\ndoesn't declare a static member named `b`:\n\n```dart\nclass C {\n  static int a = 0;\n}\n\nvar x = C.[!b!];\n```\n\nThe following code produces this diagnostic because the enum `E`\ndoesn't have a value named `c`:\n\n```dart\nenum E { a, b }\n\nvar e = E.[!c!];\n```\n\nThe following code produces this diagnostic because the enum `E`, which\nis the context type of the dot shorthand `.c`, doesn't have a value\nnamed `c`:\n\n```dart\nenum E { a, b }\n\nE e = .[!c!];\n```\n\n## Common fixes\n\nIf you intended to use a different static member, then use its name:\n\n```dart\nclass C {\n  static int a = 0;\n}\n\nvar x = C.a;\n```\n\nIf the member isn't declared, then declare it or remove the reference.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "undefined_static_member_write",
+    "description": "_The constant '{0}' in the {1} '{2}' can't be assigned to._\n\n_The function type '{0}' doesn't have a static setter named '{1}'._\n\n_The member '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The static field '{0}' in the {1} '{2}' is final, so it can't be assigned to._\n\n_The {0} '{1}' doesn't have a static setter named '{2}'._\n\n_The {0} '{1}' in the {2} '{3}' can't be assigned to._\n\n_There's a static getter '{0}' in the {1} '{2}', but no setter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a value is assigned to a\nstatic member of a class, enum, mixin, extension type, or extension,\nbut the declaration doesn't have an accessible static setter or\nnon-final static field with that name.\n\n## Examples\n\nThe following code produces this diagnostic because the class `C`\ndoesn't declare a static setter named `b`:\n\n```dart\nclass C {\n  static int a = 0;\n}\n\nvoid f() {\n  C.[!b!] = 1;\n}\n```\n\nThe following code produces this diagnostic because the static field\n`a` is final:\n\n```dart\nclass C {\n  static final int a = 0;\n}\n\nvoid f() {\n  C.[!a!] = 1;\n}\n```\n\n## Common fixes\n\nIf you intended to assign a different static member, then use its name:\n\n```dart\nclass C {\n  static int a = 0;\n}\n\nvoid f() {\n  C.a = 1;\n}\n```\n\nIf the setter isn't declared, then declare it or remove the assignment.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "undefined_super_member",
-    "description": "_The getter '{0}' isn't defined in a superclass of '{1}'._\n\n_The method '{0}' isn't defined in a superclass of '{1}'._\n\n_The operator '{0}' isn't defined in a superclass of '{1}'._\n\n_The setter '{0}' isn't defined in a superclass of '{1}'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an inherited member (method,\ngetter, setter, or operator) is referenced using `super`, but there's no\nmember with that name in the superclass chain.\n\n## Examples\n\nThe following code produces this diagnostic because `Object` doesn't define\na method named `n`:\n\n```dart\nclass C {\n  void m() {\n    super.[!n!]();\n  }\n}\n```\n\nThe following code produces this diagnostic because `Object` doesn't define\na getter named `g`:\n\n```dart\nclass C {\n  void m() {\n    super.[!g!];\n  }\n}\n```\n\n## Common fixes\n\nIf the inherited member you intend to invoke has a different name, then\nmake the name of the invoked member match the inherited member.\n\nIf the member you intend to invoke is defined in the same class, then\nremove the `super.`.\n\nIf the member isn't defined, then either add the member to one of the\nsuperclasses or remove the invocation.\n",
+    "description": "_The getter '{0}' isn't defined in a superclass of '{1}'._\n\n_The method '{0}' isn't defined in a superclass of '{1}'._\n\n_The setter '{0}' isn't defined in a superclass of '{1}'._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an inherited member (method,\ngetter, setter, or operator) is referenced using `super`, but there's no\nmember with that name in the superclass chain.\n\nDart 3.15 and later report this as `undefined_super_member_read`,\n`undefined_super_member_write`, or `undefined_super_operator`.\n\n## Examples\n\nThe following code produces this diagnostic because `Object` doesn't define\na method named `n`:\n\n```dart\nclass C {\n  void m() {\n    super.[!n!]();\n  }\n}\n```\n\nThe following code produces this diagnostic because `Object` doesn't define\na getter named `g`:\n\n```dart\nclass C {\n  void m() {\n    super.[!g!];\n  }\n}\n```\n\n## Common fixes\n\nIf the inherited member you intend to invoke has a different name, then\nmake the name of the invoked member match the inherited member.\n\nIf the member you intend to invoke is defined in the same class, then\nremove the `super.`.\n\nIf the member isn't defined, then either add the member to one of the\nsuperclasses or remove the invocation.\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": [
       "undefined_super_method"
     ]
+  },
+  {
+    "id": "undefined_super_member_read",
+    "description": "_The member '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The member '{0}' isn't defined in a superclass of '{1}'._\n\n_There's a setter '{0}' in a superclass of '{1}', but no getter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a member is read, invoked, or\ntorn off using `super`, but no superclass of the enclosing declaration\nhas a method, getter, or field with that name.\n\n## Examples\n\nThe following code produces this diagnostic because the superclass `A`\ndoesn't define a member named `bar`:\n\n```dart\nclass A {\n  void foo() {}\n}\n\nclass B extends A {\n  void m() {\n    super.[!bar!]();\n  }\n}\n```\n\nThe following code produces this diagnostic because the superclass `A`\ndefines only a setter named `foo`, which can't be read:\n\n```dart\nclass A {\n  set foo(int _) {}\n}\n\nclass B extends A {\n  int m() => super.[!foo!];\n}\n```\n\n## Common fixes\n\nIf the inherited member you intend to use has a different name, then\nmake the name match the inherited member:\n\n```dart\nclass A {\n  void foo() {}\n}\n\nclass B extends A {\n  void m() {\n    super.foo();\n  }\n}\n```\n\nIf the member isn't defined, then add it to a superclass:\n\n```dart\nclass A {\n  void foo() {}\n\n  void bar() {}\n}\n\nclass B extends A {\n  void m() {\n    super.bar();\n  }\n}\n```\n\nIf a superclass defines only a setter, then add a getter with the same\nname:\n\n```dart\nclass A {\n  int get foo => 0;\n\n  set foo(int _) {}\n}\n\nclass B extends A {\n  int m() => super.foo;\n}\n```\n\nOtherwise, remove the reference.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "undefined_super_member_write",
+    "description": "_The field '{0}' in a superclass of '{1}' is final, so it can't be assigned to._\n\n_The member '{0}' is declared in '{1}', but private names are visible only in their own library._\n\n_The setter '{0}' isn't defined in a superclass of '{1}'._\n\n_The {0} '{1}' in a superclass of '{2}' can't be assigned to._\n\n_There's a getter '{0}' in a superclass of '{1}', but no setter._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a member is assigned using\n`super`, but no superclass of the enclosing declaration has a setter or a\nnon-final field with that name.\n\n## Examples\n\nThe following code produces this diagnostic because the superclass `A`\ndoesn't define a setter named `bar`:\n\n```dart\nclass A {\n  set foo(int _) {}\n}\n\nclass B extends A {\n  void m() {\n    super.[!bar!] = 0;\n  }\n}\n```\n\nThe following code produces this diagnostic because the superclass `A`\ndefines only a getter named `foo`:\n\n```dart\nclass A {\n  int get foo => 0;\n}\n\nclass B extends A {\n  void m() {\n    super.[!foo!] = 0;\n  }\n}\n```\n\nThe following code produces this diagnostic because the field `foo` in\nthe superclass `A` is final:\n\n```dart\nclass A {\n  final int foo = 0;\n}\n\nclass B extends A {\n  void m() {\n    super.[!foo!] = 0;\n  }\n}\n```\n\n## Common fixes\n\nIf the inherited setter you intend to use has a different name, then\nmake the name match the inherited setter:\n\n```dart\nclass A {\n  set foo(int _) {}\n}\n\nclass B extends A {\n  void m() {\n    super.foo = 0;\n  }\n}\n```\n\nIf the setter isn't defined, then add it to a superclass:\n\n```dart\nclass A {\n  set foo(int _) {}\n\n  set bar(int _) {}\n}\n\nclass B extends A {\n  void m() {\n    super.bar = 0;\n  }\n}\n```\n\nIf a superclass defines only a getter, then add a setter with the same\nname:\n\n```dart\nclass A {\n  int get foo => 0;\n\n  set foo(int _) {}\n}\n\nclass B extends A {\n  void m() {\n    super.foo = 0;\n  }\n}\n```\n\nIf the field in the superclass is final, then make it non-final:\n\n```dart\nclass A {\n  int foo = 0;\n}\n\nclass B extends A {\n  void m() {\n    super.foo = 0;\n  }\n}\n```\n\nOtherwise, remove the assignment.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "undefined_super_operator",
+    "description": "_The operator '{0}' isn't defined in a superclass of '{1}'._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an operator is invoked on\n`super`, but no superclass of the enclosing declaration defines that\noperator.\n\n## Example\n\nThe following code produces this diagnostic because the superclass `A`\ndoesn't define the operator `+`:\n\n```dart\nclass A {}\n\nclass B extends A {\n  int m() => super [!+!] 0;\n}\n```\n\n## Common fixes\n\nIf the operator isn't defined, then add it to a superclass:\n\n```dart\nclass A {\n  int operator +(int other) => 0;\n}\n\nclass B extends A {\n  int m() => super + 0;\n}\n```\n\nOtherwise, remove the invocation.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "undefined_unqualified_name_read",
+    "description": "_There's a setter '{0}', but no getter._\n\n_Undefined name '{0}' used as an annotation._\n\n_Undefined name '{0}'._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name without a qualifier is\nread, invoked, or torn off, but there's no variable, getter, function,\nmethod, or type with that name in the scope in which it's used.\n\n## Examples\n\nThe following code produces this diagnostic because the name `rihgt`\nisn't defined:\n\n```dart\nint min(int left, int right) => left <= [!rihgt!] ? left : right;\n```\n\nThe following code produces this diagnostic because there's no function\nnamed `emty`:\n\n```dart\nList<int> empty() => [];\n\nvoid main() {\n  print([!emty!]());\n}\n```\n\nThe following code produces this diagnostic because `C` doesn't have a\nmember named `removeMiddle`:\n\n```dart\nclass C {\n  void removeLast() {}\n\n  void f() {\n    [!removeMiddle!]();\n  }\n}\n```\n\nThe following code produces this diagnostic because there's only a\nsetter named `x`, which can't be read:\n\n```dart\nset x(int _) {}\n\nint f() => [!x!];\n```\n\nThe following code produces this diagnostic because there's no\nconstant named `deprecatedApi` to use as an annotation:\n\n```dart\n@[!deprecatedApi!]\nvoid f() {}\n```\n\n## Common fixes\n\nIf the name is misspelled, then correct it:\n\n```dart\nint min(int left, int right) => left <= right ? left : right;\n```\n\nIf the name is declared in a library that isn't imported, then import\nthat library.\n\nIf the name isn't declared, then declare it. An annotation without\narguments, and a constant expression, can use only a constant:\n\n```dart\nconst deprecatedApi = 'Use g instead.';\n\n@deprecatedApi\nvoid f() {}\n```\n\nIf there's only a setter, then add a getter with the same name:\n\n```dart\nint get x => 0;\n\nset x(int _) {}\n\nint f() => x;\n```\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "undefined_unqualified_name_write",
+    "description": "_'{0}' is final, so it can't be assigned to._\n\n_The constant '{0}' can't be assigned to._\n\n_The {0} '{1}' can't be assigned to._\n\n_There's a getter '{0}', but no setter._\n\n_Undefined name '{0}'._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name without a qualifier is\nassigned, but there's no setter or variable that can be assigned with\nthat name in the scope in which it's used.\n\n## Examples\n\nThe following code produces this diagnostic because the name `cuont`\nisn't defined:\n\n```dart\nvar count = 0;\n\nvoid f() {\n  [!cuont!] = 1;\n}\n```\n\nThe following code produces this diagnostic because there's only a\ngetter named `x`:\n\n```dart\nint get x => 0;\n\nvoid f() {\n  [!x!] = 1;\n}\n```\n\nThe following code produces this diagnostic because `y` is final:\n\n```dart\nfinal y = 0;\n\nvoid f() {\n  [!y!] = 1;\n}\n```\n\nThe following code produces this diagnostic because `m` is a method:\n\n```dart\nclass C {\n  void m() {}\n\n  void f() {\n    [!m!] = () {};\n  }\n}\n```\n\n## Common fixes\n\nIf the name is misspelled, then correct it:\n\n```dart\nvar count = 0;\n\nvoid f() {\n  count = 1;\n}\n```\n\nIf there's only a getter, then add a setter with the same name:\n\n```dart\nint get x => 0;\n\nset x(int _) {}\n\nvoid f() {\n  x = 1;\n}\n```\n\nIf the variable is final, then make it non-final:\n\n```dart\nvar y = 0;\n\nvoid f() {\n  y = 1;\n}\n```\n\nOtherwise, remove the assignment, or assign to a variable instead.\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
   },
   {
     "id": "undefined_variable",
@@ -9088,7 +9220,7 @@
   {
     "id": "unnecessary_getters_setters",
     "description": "_Unnecessary use of getter and setter to wrap a field._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a getter and setter pair\nreturns and sets the value of a field without any additional processing.\n\n## Example\n\nThe following code produces this diagnostic because the getter/setter pair\nnamed `c` only expose the field named `_c`:\n\n```dart\nclass C {\n  int? _c;\n\n  int? get [!c!] => _c;\n\n  set c(int? v) => _c = v;\n}\n```\n\n## Common fixes\n\nMake the field public and remove the getter and setter:\n\n```dart\nclass C {\n  int? c;\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a getter and setter pair\nreturns and sets the value of a field without any additional processing.\n\n## Example\n\nThe following code produces this diagnostic because the\ngetter/setter pair named `c` only exposes the field named `_c`:\n\n```dart\nclass C {\n  int? _c;\n\n  int? get [!c!] => _c;\n\n  set c(int? v) => _c = v;\n}\n```\n\n## Common fixes\n\nMake the field public and remove the getter and setter:\n\n```dart\nclass C {\n  int? c;\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -9192,7 +9324,7 @@
   {
     "id": "unnecessary_null_aware_operator_on_extension_on_nullable",
     "description": "_Unnecessary use of a null-aware operator to invoke an extension method on a nullable type._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a null-aware operator is used\nto invoke an extension method on an extension whose type is nullable.\n\n## Example\n\nThe following code produces this diagnostic because the extension method\n`m` is invoked using `?.` when it doesn't need to be:\n\n```dart\nextension E on int? {\n  int m() => 1;\n}\n\nint? f(int? i) => i[!?.!]m();\n```\n\n## Common fixes\n\nIf it isn't a requirement not invoke the method when the receiver is\n`null`, then remove the question mark from the invocation:\n\n```dart\nextension E on int? {\n  int m() => 1;\n}\n\nint? f(int? i) => i.m();\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a null-aware operator is used\nto invoke an extension method on an extension whose type is nullable.\n\n## Example\n\nThe following code produces this diagnostic because the extension method\n`m` is invoked using `?.` when it doesn't need to be:\n\n```dart\nextension E on int? {\n  int m() => 1;\n}\n\nint? f(int? i) => i[!?.!]m();\n```\n\n## Common fixes\n\nIf it isn't a requirement not to invoke the method when the receiver is\n`null`, then remove the question mark from the invocation:\n\n```dart\nextension E on int? {\n  int m() => 1;\n}\n\nint? f(int? i) => i.m();\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -9439,7 +9571,7 @@
   {
     "id": "unsafe_variance",
     "description": "_This type is unsafe: a type parameter occurs in a non-covariant position._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an instance member has a result\ntype which is [contravariant or invariant](https://dart.dev/resources/glossary#variance)\nin a type parameter of the enclosing declaration. The result type of a\nvariable is its type, and the result type of a getter or method is its\nreturn type. This lint warns against such members because they are likely\nto cause a failing type check at run time, with no static warning or error\nat the call site.\n\n## Example\n\nThe following code produces this diagnostic because `X` occurs\nas a parameter type in the type of `f`, which is a\ncontravariant occurrence of this type parameter:\n\n```dart\nclass C<X> {\n  final bool Function([!X!]) f;\n  C(this.f);\n}\n```\n\nThis is unsafe: If `c` has static type `C<num>` and run-time type `C<int>`\nthen `c.f` will throw. Hence, every invocation `c.f(a)` will also throw,\neven in the case where `a` has a correct type as an argument to `c.f`.\n\n## Common fixes\n\nIf the linted member is or can be private then you may be able\nto enforce that it is never accessed on any other receiver than `this`.\nThis is sufficient to ensure that that the run-time type error does not\noccur. For example:\n\n```dart\nclass C<X> {\n  // NB: Ensure manually that `_f` is only accessed on `this`.\n  // ignore: unsafe_variance\n  final bool Function(X) _f;\n\n  C(this._f);\n\n  // We can write a forwarding method to allow clients to call `_f`.\n  bool f(X x) => _f(x);\n}\n```\n\nYou can eliminate the unsafe variance by using a more general type for\nthe linted member. In this case you may need to check the run-time type\nand perform a downcast at call sites.\n\n```dart\nclass C<X> {\n  final bool Function(Never) f;\n  C(this.f);\n}\n```\n\nIf `c` has static type `C<num>` then you may test the type. For example,\n`c.f is bool Function(num)`. You may safely call it with an argument of\ntype `num` if it has that type.\n\nYou can also eliminate the unsafe variance by using a much more general\ntype like `Function`, which is essentially the type `dynamic` for\nfunctions.\n\n```dart\nclass C<X> {\n  final Function f;\n  C(this.f);\n}\n```\n\nThis will make `c.f(a)` dynamically safe: It will throw if and only if the\nargument `a` does not have the type required by the function. This is\nbetter than the original version because it will not throw because of a\nmismatched static type. It only throws when it _must_ throw for soundness\nreasons.\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an instance member has a result\ntype which is [contravariant or invariant](https://dart.dev/resources/glossary#variance)\nin a type parameter of the enclosing declaration. The result type of a\nvariable is its type, and the result type of a getter or method is its\nreturn type. This lint warns against such members because they are likely\nto cause a failing type check at run time, with no static warning or error\nat the call site.\n\n## Example\n\nThe following code produces this diagnostic because `X` occurs\nas a parameter type in the type of `f`, which is a\ncontravariant occurrence of this type parameter:\n\n```dart\nclass C<X> {\n  final bool Function([!X!]) f;\n  C(this.f);\n}\n```\n\nThis is unsafe: If `c` has static type `C<num>` and run-time type `C<int>`\nthen `c.f` will throw. Hence, every invocation `c.f(a)` will also throw,\neven in the case where `a` has a correct type as an argument to `c.f`.\n\n## Common fixes\n\nIf the linted member is or can be private then you might be able\nto enforce that it is never accessed on any other receiver than `this`.\nThis is sufficient to ensure that the run-time type error doesn't occur.\nFor example:\n\n```dart\nclass C<X> {\n  // NB: Ensure manually that `_f` is only accessed on `this`.\n  // ignore: unsafe_variance\n  final bool Function(X) _f;\n\n  C(this._f);\n\n  // We can write a forwarding method to allow clients to call `_f`.\n  bool f(X x) => _f(x);\n}\n```\n\nYou can eliminate the unsafe variance by using a more general type for\nthe linted member. In this case you may need to check the run-time type\nand perform a downcast at call sites.\n\n```dart\nclass C<X> {\n  final bool Function(Never) f;\n  C(this.f);\n}\n```\n\nIf `c` has static type `C<num>` then you may test the type. For example,\n`c.f is bool Function(num)`. You may safely call it with an argument of\ntype `num` if it has that type.\n\nYou can also eliminate the unsafe variance by using a much more general\ntype like `Function`, which is essentially the type `dynamic` for\nfunctions.\n\n```dart\nclass C<X> {\n  final Function f;\n  C(this.f);\n}\n```\n\nThis will make `c.f(a)` dynamically safe: It will throw if and only if the\nargument `a` does not have the type required by the function. This is\nbetter than the original version because it will not throw because of a\nmismatched static type. It only throws when it _must_ throw for soundness\nreasons.\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
