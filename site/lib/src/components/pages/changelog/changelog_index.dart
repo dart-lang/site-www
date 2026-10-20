@@ -98,14 +98,12 @@ final class ChangelogIndex extends StatelessComponent {
       return '$baseSlug-$index';
     }
 
+    // The minor release date comes only from an `x.y.0` entry. Patch entries
+    // carry their own dates on the card, so don't fall back to them here or
+    // a `3.9.4` date could be shown as the `3.9` release date.
     String? releaseDateForGroup(List<ChangelogEntry> items) {
       for (final item in items) {
         if (item.version.patch == 0 && item.releaseDate != null) {
-          return item.releaseDate;
-        }
-      }
-      for (final item in items) {
-        if (item.releaseDate != null) {
           return item.releaseDate;
         }
       }

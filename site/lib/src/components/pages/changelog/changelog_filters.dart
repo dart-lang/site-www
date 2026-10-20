@@ -34,6 +34,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
   int filteredEntriesCount = 0;
 
   bool _isApplyingHash = false;
+  bool _isUpdatingFacetCounts = false;
   Timer? _searchDebounce;
   JSFunction? _hashChangeListener;
   JSFunction? _cardAnchorClickListener;
@@ -96,6 +97,8 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
       _applyUrlHash(web.window.location.hash);
     } else {
       setState(() {});
+      // Nothing is hidden yet, but this seeds the sidebar facet counts.
+      _updateDomVisibility();
     }
   }
 
@@ -110,7 +113,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
   }
 
   void _onFiltersChanged() {
-    if (_isApplyingHash) {
+    if (_isApplyingHash || _isUpdatingFacetCounts) {
       setState(() {});
       return;
     }
@@ -168,6 +171,16 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
   void _updateDomVisibility() {
     final entriesToShow = filters.filterEntries(entries, searchQuery).toSet();
     filteredEntriesCount = entriesToShow.length;
+
+    // Refresh sidebar facet counts. The notifier may notify listeners here,
+    // which would otherwise re-enter setFilters; the guard turns that into a
+    // plain rebuild instead.
+    _isUpdatingFacetCounts = true;
+    try {
+      filters.updateFacetCounts(entries, searchQuery);
+    } finally {
+      _isUpdatingFacetCounts = false;
+    }
 
     final listContainer = web.document.getElementById('all-changelog-list');
     if (listContainer == null) return;
@@ -296,7 +309,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
         searchQuery.trim().isNotEmpty ||
         filters.selectedTags.isNotEmpty ||
         filters.selectedAreas.isNotEmpty ||
-        filters.selectedVersions.isNotEmpty;
+        filters.hasVersionFilter;
     final highlighted = hasActiveFilters
         ? web.document.querySelector(
             '.changelog-card.highlighted-card:not(.hidden)',
@@ -340,16 +353,23 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
     final latestVersion = sortedVersions.isNotEmpty
         ? sortedVersions.first
         : null;
+    // Floor for the "Breaking changes since" preset: 3.0 when present,
+    // otherwise the oldest available 3.x release so the "From" select always
+    // has a matching option.
     final v30 = Version(3, 0, 0);
+    final breakingSince = sortedVersions.reversed.firstWhere(
+      (v) => v >= v30,
+      orElse: () => v30,
+    );
 
     final isLatestPresetActive =
         latestVersion != null &&
         filters.selectedVersions.length == 1 &&
         filters.selectedVersions.contains(latestVersion);
 
-    final isBreakingSince30Active =
+    final isBreakingSinceActive =
         filters.selectedTags.contains(ChangelogTag.breaking) &&
-        filters.fromVersion == v30 &&
+        filters.fromVersion == breakingSince &&
         filters.toVersion == null;
 
     final fromValue = filters.fromVersion?.shortVersion ?? '';
@@ -390,7 +410,11 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
             ],
           ),
         ]),
-        const span(classes: 'range-arrow', [.text('→')]),
+        const span(
+          classes: 'range-arrow',
+          attributes: {'aria-hidden': 'true'},
+          [.text('→')],
+        ),
         const label(
           attributes: {'for': 'changelog-to-version'},
           [.text('To')],
@@ -447,22 +471,22 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
           ),
         button(
           type: ButtonType.button,
-          classes: 'preset-chip${isBreakingSince30Active ? ' active' : ''}',
+          classes: 'preset-chip${isBreakingSinceActive ? ' active' : ''}',
           attributes: {
-            'aria-pressed': '$isBreakingSince30Active',
+            'aria-pressed': '$isBreakingSinceActive',
           },
           onClick: () {
-            if (isBreakingSince30Active) {
+            if (isBreakingSinceActive) {
               filters
                 ..selectedTags.remove(ChangelogTag.breaking)
                 ..setVersionRange();
             } else {
               filters
                 ..selectedTags.add(ChangelogTag.breaking)
-                ..setVersionRange(from: v30);
+                ..setVersionRange(from: breakingSince);
             }
           },
-          [const .text('Breaking changes since 3.0')],
+          [.text('Breaking changes since ${breakingSince.shortVersion}')],
         ),
       ]),
     ]);
@@ -473,7 +497,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
     final activeFilterCount =
         filters.selectedTags.length +
         filters.selectedAreas.length +
-        (filters.selectedVersions.isNotEmpty ? 1 : 0);
+        (filters.hasVersionFilter ? 1 : 0);
 
     return FilterToolbar(
       id: 'changelog-search-group',
@@ -528,7 +552,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
               searchQuery.isEmpty &&
               filters.selectedTags.isEmpty &&
               filters.selectedAreas.isEmpty &&
-              filters.selectedVersions.isEmpty,
+              !filters.hasVersionFilter,
           onClick: () {
             // Update search query and reset filters.
             // We call setFilters to ensure the UI updates even if

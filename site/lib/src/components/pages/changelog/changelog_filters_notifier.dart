@@ -22,14 +22,22 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
   Set<String> availableAreas = {};
   Set<Version> availableVersions = {};
 
-  Map<ChangelogTag, int> tagCounts = {};
-  Map<String, int> areaCounts = {};
+  /// Live facet counts for the sidebar, maintained by [updateFacetCounts].
+  ///
+  /// Each value is the number of entries that would match if that facet
+  /// value were selected, given the other currently active filters.
+  Map<ChangelogTag, int> tagCounts = const {};
+  Map<String, int> areaCounts = const {};
 
-  /// Populates [availableAreas], [availableVersions], [tagCounts], and
-  /// [areaCounts] by inspecting the DOM.
+  /// Whether any version filtering is in effect, either through discrete
+  /// [selectedVersions] or a [fromVersion]/[toVersion] range.
+  bool get hasVersionFilter =>
+      selectedVersions.isNotEmpty || fromVersion != null || toVersion != null;
+
+  /// Populates [availableAreas] and [availableVersions] by inspecting the DOM.
   ///
   /// This expects the changelog list to be rendered in the DOM with
-  /// `data-area`, `data-tags`, and `data-version` attributes on entries.
+  /// `data-area` and `data-version` attributes on entries.
   void populateAvailableFiltersFromDOM() {
     final listContainer = web.document.getElementById('all-changelog-list');
     if (listContainer == null) return;
@@ -38,8 +46,6 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     // currently displayed for it (though usually there are).
     // This ensures the filter option is present.
     var changed = availableAreas.add('Docs');
-    final newTagCounts = <ChangelogTag, int>{};
-    final newAreaCounts = <String, int>{};
 
     final entryCards = listContainer.querySelectorAll('.changelog-card');
     for (var i = 0; i < entryCards.length; i++) {
@@ -47,16 +53,6 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
       final area = element.getAttribute('data-area');
       if (area != null && area.isNotEmpty) {
         changed |= availableAreas.add(area);
-        newAreaCounts[area] = (newAreaCounts[area] ?? 0) + 1;
-      }
-      final rawTags = element.getAttribute('data-tags');
-      if (rawTags != null && rawTags.isNotEmpty) {
-        for (final token in rawTags.split(',')) {
-          final tag = ChangelogTag.fromId(token.trim());
-          if (tag != ChangelogTag.none) {
-            newTagCounts[tag] = (newTagCounts[tag] ?? 0) + 1;
-          }
-        }
       }
       final version = element.getAttribute('data-version');
       if (version != null && version.isNotEmpty) {
@@ -75,12 +71,6 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
         }
       }
     }
-    if (tagCounts.length != newTagCounts.length ||
-        areaCounts.length != newAreaCounts.length) {
-      changed = true;
-    }
-    tagCounts = newTagCounts;
-    areaCounts = newAreaCounts;
     if (changed) {
       notifyListeners();
     }
@@ -115,6 +105,12 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Selects every available version between [from] and [to] (inclusive).
+  ///
+  /// Either bound may be `null` to leave that end open. If [from] is greater
+  /// than [to], the range is clamped to the single version [from] rather than
+  /// producing an empty selection. Passing neither bound clears the range and
+  /// all selected versions.
   void setVersionRange({Version? from, Version? to}) {
     final normalizedFrom = from;
     var normalizedTo = to;
@@ -173,8 +169,8 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     toVersion = null;
     availableAreas.clear();
     availableVersions.clear();
-    tagCounts.clear();
-    areaCounts.clear();
+    tagCounts = const {};
+    areaCounts = const {};
     if (notify) {
       notifyListeners();
     }
@@ -219,52 +215,99 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
       return entries;
     }
 
-    final entriesToShow = <ChangelogEntry>[];
-    final normalizedQuery = searchQuery.trim().toLowerCase();
-    final queryTokens = normalizedQuery.isEmpty
-        ? const <String>[]
-        : normalizedQuery.split(RegExp(r'\s+'));
+    final queryTokens = _tokenizeQuery(searchQuery);
+    return [
+      for (final entry in entries)
+        if (_matchesTags(entry) &&
+            _matchesAreas(entry) &&
+            _matchesVersions(entry) &&
+            _matchesSearch(entry, queryTokens))
+          entry,
+    ];
+  }
+
+  /// Recomputes [tagCounts] and [areaCounts] from [entries].
+  ///
+  /// Each tag count ignores the tag facet itself but honors the area, version,
+  /// and search filters (and likewise for area counts), so the sidebar shows
+  /// how many results selecting that value would yield. Returns `true` and
+  /// notifies listeners if the counts changed.
+  bool updateFacetCounts(List<ChangelogEntry> entries, String searchQuery) {
+    final queryTokens = _tokenizeQuery(searchQuery);
+    final newTagCounts = <ChangelogTag, int>{};
+    final newAreaCounts = <String, int>{};
 
     for (final entry in entries) {
-      final matchesTags =
-          selectedTags.isEmpty || entry.tags.any(selectedTags.contains);
-      if (!matchesTags) continue;
+      final matchesVersions = _matchesVersions(entry);
+      final matchesSearch = _matchesSearch(entry, queryTokens);
+      if (!matchesVersions || !matchesSearch) continue;
 
-      final matchesAreas =
-          selectedAreas.isEmpty || selectedAreas.contains(entry.area);
-      if (!matchesAreas) continue;
-
-      final matchesVersions =
-          selectedVersions.isEmpty ||
-          selectedVersions.contains(
-            Version(entry.version.major, entry.version.minor, 0),
-          );
-      if (!matchesVersions) continue;
-
-      if (queryTokens.isNotEmpty) {
-        final descriptionLower = entry.description.toLowerCase();
-        final areaLower = entry.area.toLowerCase();
-        final subAreaLower = entry.subArea?.toLowerCase() ?? '';
-        final versionLower = entry.version.toString().toLowerCase();
-        final matchesAllTokens = queryTokens.every(
-          (token) =>
-              descriptionLower.contains(token) ||
-              areaLower.contains(token) ||
-              subAreaLower.contains(token) ||
-              versionLower.contains(token) ||
-              entry.tags.any(
-                (t) =>
-                    t.label.toLowerCase().contains(token) ||
-                    t.id.toLowerCase().contains(token),
-              ),
-        );
-        if (!matchesAllTokens) continue;
+      if (_matchesAreas(entry)) {
+        for (final tag in entry.tags) {
+          newTagCounts[tag] = (newTagCounts[tag] ?? 0) + 1;
+        }
       }
-
-      entriesToShow.add(entry);
+      if (_matchesTags(entry)) {
+        newAreaCounts[entry.area] = (newAreaCounts[entry.area] ?? 0) + 1;
+      }
     }
 
-    return entriesToShow;
+    if (_mapEquals(tagCounts, newTagCounts) &&
+        _mapEquals(areaCounts, newAreaCounts)) {
+      return false;
+    }
+    tagCounts = newTagCounts;
+    areaCounts = newAreaCounts;
+    notifyListeners();
+    return true;
+  }
+
+  static bool _mapEquals<K, V>(Map<K, V> a, Map<K, V> b) {
+    if (a.length != b.length) return false;
+    for (final MapEntry(:key, :value) in a.entries) {
+      if (!b.containsKey(key) || b[key] != value) return false;
+    }
+    return true;
+  }
+
+  static List<String> _tokenizeQuery(String searchQuery) {
+    final normalizedQuery = searchQuery.trim().toLowerCase();
+    if (normalizedQuery.isEmpty) return const [];
+    return normalizedQuery.split(RegExp(r'\s+'));
+  }
+
+  bool _matchesTags(ChangelogEntry entry) =>
+      selectedTags.isEmpty || entry.tags.any(selectedTags.contains);
+
+  bool _matchesAreas(ChangelogEntry entry) =>
+      selectedAreas.isEmpty || selectedAreas.contains(entry.area);
+
+  bool _matchesVersions(ChangelogEntry entry) =>
+      selectedVersions.isEmpty ||
+      selectedVersions.contains(
+        Version(entry.version.major, entry.version.minor, 0),
+      );
+
+  /// Whether every token in [queryTokens] appears in at least one of the
+  /// entry's description, area, sub-area, version, or tag label/ID.
+  bool _matchesSearch(ChangelogEntry entry, List<String> queryTokens) {
+    if (queryTokens.isEmpty) return true;
+    final descriptionLower = entry.description.toLowerCase();
+    final areaLower = entry.area.toLowerCase();
+    final subAreaLower = entry.subArea?.toLowerCase() ?? '';
+    final versionLower = entry.version.toString().toLowerCase();
+    return queryTokens.every(
+      (token) =>
+          descriptionLower.contains(token) ||
+          areaLower.contains(token) ||
+          subAreaLower.contains(token) ||
+          versionLower.contains(token) ||
+          entry.tags.any(
+            (t) =>
+                t.label.toLowerCase().contains(token) ||
+                t.id.toLowerCase().contains(token),
+          ),
+    );
   }
 
   /// Parses a version token such as `3.13`, `3.13.0`, `v3.13`, or `v3-13`
