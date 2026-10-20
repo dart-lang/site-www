@@ -291,7 +291,7 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
         }
         final mark = web.document.createElement('mark') as web.HTMLElement
           ..className = 'search-highlight'
-          ..textContent = match.group(0);
+          ..textContent = text.substring(match.start, match.end);
         fragment.appendChild(mark);
         lastIndex = match.end;
       }
@@ -354,12 +354,14 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
         ? sortedVersions.first
         : null;
     // Floor for the "Breaking changes since" preset: 3.0 when present,
-    // otherwise the oldest available 3.x release so the "From" select always
-    // has a matching option.
+    // otherwise the oldest available 3.x release, or failing that the oldest
+    // available version, so the "From" select always has a matching option.
+    // (`sortedVersions` is non-empty; this bar is only built when there are
+    // available versions.)
     final v30 = Version(3, 0, 0);
     final breakingSince = sortedVersions.reversed.firstWhere(
       (v) => v >= v30,
-      orElse: () => v30,
+      orElse: () => sortedVersions.last,
     );
 
     final isLatestPresetActive =
