@@ -37,11 +37,12 @@ While working on the site,
 you might need to run these commands:
 
 ```bash
-dart pub get                         # Install or update Dart dependencies.
-dart run dash_site serve             # Serve a dev server of the site locally.
-dart run dash_site build             # Build a production version of the site.
-dart run dash_site refresh-excerpts  # Sync code excerpts to Markdown files.
-dart run dash_site --help            # Learn what other commands are available.
+dart pub get                            # Install or update Dart dependencies.
+dart run dash_site serve                # Serve a dev server of the site locally.
+dart run dash_site build                # Build a production version of the site.
+dart run dash_site refresh-excerpts     # Sync code excerpts to Markdown files.
+dart run dash_site check-tutorial-code  # Validate Dartpedia tutorial code snippets.
+dart run dash_site --help               # Learn what other commands are available.
 ```
 
 ## Content guidelines

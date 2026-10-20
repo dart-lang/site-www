@@ -85,8 +85,21 @@ without requiring page reloads or server round-trips.
         +   The **Search Bar** updates the notifier when text is typed.
 
     +   **Rendering Updates**: When the notifier changes, `ChangelogFilters`
-        calculates which entries match the criteria and toggles the `hidden` CSS
-        class on the corresponding DOM elements.
+        calculates which entries match the criteria, toggles the `hidden` CSS
+        class on the corresponding DOM elements, and updates `window.location.hash`
+        via `history.replaceState`.
+
+    +   **URL `#fragment` Routing & State Sync**: `ChangelogFilters` supports
+        two `#fragment` modes on load and `hashchange`:
+
+        +   **Direct Anchor (`#v3-13` or `#<card-id>`)**: Ensures the target
+            section or card is visible, scrolls it into view, and applies the
+            `.highlighted-card` style to the card.
+
+        +   **Structured Filter Hash
+            (`#from=3.5&to=3.13&tags=breaking&area=Language&q=macro`)**:
+            Hydrates `ChangelogFiltersNotifier` and the search bar without
+            fragmenting static CDN cache keys.
 
 ## Data flow
 
@@ -153,6 +166,7 @@ Each entry is a YAML list item with the following fields:
 
 ```yaml
 - version: 3.10.0          # (Required) The SDK version number
+  id: null-safety-default  # (Optional) Explicit slug ID for card permalink
   releaseDate: 2025-11-12  # (Optional) YYYY-MM-DD or "TBD"
   area: Language           # (Required) Broad category: SDK, Language, Libraries, Tools
   subArea: Null safety     # (Optional) Specific feature or library name

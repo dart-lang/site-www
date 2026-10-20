@@ -53,7 +53,7 @@ add the `http` package as a dependency to the `wikipedia` package.
 
 1.  Add `http: ^1.3.0` (or the latest stable version) under `dependencies`.
 
-    ```yaml
+    ```yaml title="wikipedia/pubspec.yaml"
     dependencies:
       http: ^1.3.0
     ```
@@ -80,7 +80,7 @@ You'll create three files:
 
 1.  Add the following code to `wikipedia/lib/src/api/summary.dart`:
 
-    ```dart
+    ```dart title="wikipedia/lib/src/api/summary.dart"
     import 'dart:convert';
     import 'dart:io';
 
@@ -152,7 +152,7 @@ You'll create three files:
 
 1.  Add the following code to `wikipedia/lib/src/api/search.dart`:
 
-    ```dart
+    ```dart title="wikipedia/lib/src/api/search.dart"
 
     import 'dart:convert';
     import 'dart:io';
@@ -202,7 +202,7 @@ You'll create three files:
 
 1.  Add the following code to `wikipedia/lib/src/api/get_article.dart`:
 
-    ```dart
+    ```dart title="wikipedia/lib/src/api/get_article.dart"
     import 'dart:convert';
     import 'dart:io';
 
@@ -263,7 +263,7 @@ You'll also export the existing models.
 
 1.  Add the following `export` statements to the file:
 
-    ```dart
+    ```dart title="wikipedia/lib/wikipedia.dart"
     export 'src/api/get_article.dart';
     export 'src/api/search.dart';
     export 'src/api/summary.dart';

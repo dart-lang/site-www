@@ -22,7 +22,7 @@ use a specific JavaScript library, or interact with browser APIs, this is the
 place to start.
 
 Get started with JS interop:
-  * [Getting started with Javascript interop]
+  * [Get started with JavaScript interop]
   * [How to mock JavaScript interop objects]
 
 Review the reference guides:
@@ -36,7 +36,7 @@ Interact with the browser:
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
 [`package:web` and migration]: /interop/js-interop/package-web
-[Getting started with Javascript interop]: /interop/js-interop/start
+[Get started with JavaScript interop]: /interop/js-interop/start
 [How to mock JavaScript interop objects]: /interop/js-interop/mock
 
 <a id="next-generation-js-interop" aria-hidden="true"></a>

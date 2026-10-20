@@ -109,6 +109,21 @@ class CollapsibleFilterGroup<T> extends StatefulComponent {
 class _CollapsibleFilterGroupState<T> extends State<CollapsibleFilterGroup<T>> {
   bool _isOpen = false;
 
+  @override
+  void initState() {
+    super.initState();
+    _isOpen = component.selectedItems.isNotEmpty;
+  }
+
+  @override
+  void didUpdateComponent(CollapsibleFilterGroup<T> oldComponent) {
+    super.didUpdateComponent(oldComponent);
+    if (component.selectedItems.isNotEmpty &&
+        oldComponent.selectedItems.isEmpty) {
+      _isOpen = true;
+    }
+  }
+
   void _onToggle(web.Event event) {
     final target = event.target as web.HTMLDetailsElement;
     _isOpen = target.open;
