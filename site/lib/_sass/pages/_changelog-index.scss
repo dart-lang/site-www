@@ -449,12 +449,30 @@ body.dark-mode {
         margin: 0;
       }
 
+      .select-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+
+        &::after {
+          content: 'expand_more';
+          font-family: 'Material Symbols Outlined';
+          font-size: 1.15rem;
+          line-height: 1;
+          color: var(--site-base-fgColor-alt);
+          position: absolute;
+          right: 0.45rem;
+          pointer-events: none;
+        }
+      }
+
       select {
+        appearance: none;
         background-color: var(--site-base-bgColor);
         color: var(--site-base-fgColor);
         border: 1px solid var(--site-inset-borderColor);
         border-radius: 0.375rem;
-        padding: 0.25rem 0.5rem;
+        padding: 0.25rem 1.85rem 0.25rem 0.65rem;
         font-family: var(--site-ui-fontFamily);
         font-size: 0.85rem;
         cursor: pointer;

@@ -345,12 +345,9 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
     final isLatestPresetActive =
         latestVersion != null &&
         filters.selectedVersions.length == 1 &&
-        filters.selectedVersions.contains(latestVersion) &&
-        filters.selectedTags.isEmpty &&
-        filters.selectedAreas.isEmpty;
+        filters.selectedVersions.contains(latestVersion);
 
     final isBreakingSince30Active =
-        filters.selectedTags.length == 1 &&
         filters.selectedTags.contains(ChangelogTag.breaking) &&
         filters.fromVersion == v30 &&
         filters.toVersion == null;
@@ -364,65 +361,69 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
           attributes: {'for': 'changelog-from-version'},
           [.text('From')],
         ),
-        select(
-          id: 'changelog-from-version',
-          attributes: {'aria-label': 'From Dart version'},
-          value: fromValue,
-          events: {
-            'change': (event) {
-              final val = (event.target as web.HTMLSelectElement).value;
-              final parsed = val.isEmpty
-                  ? null
-                  : ChangelogFiltersNotifier.tryParseShortVersion(val);
-              filters.setVersionRange(from: parsed, to: filters.toVersion);
+        div(classes: 'select-wrapper', [
+          select(
+            id: 'changelog-from-version',
+            attributes: {'aria-label': 'From Dart version'},
+            value: fromValue,
+            events: {
+              'change': (event) {
+                final val = (event.target as web.HTMLSelectElement).value;
+                final parsed = val.isEmpty
+                    ? null
+                    : ChangelogFiltersNotifier.tryParseShortVersion(val);
+                filters.setVersionRange(from: parsed, to: filters.toVersion);
+              },
             },
-          },
-          [
-            option(
-              value: '',
-              selected: fromValue.isEmpty,
-              [const .text('All versions')],
-            ),
-            for (final v in sortedVersions)
+            [
               option(
-                value: v.shortVersion,
-                selected: fromValue == v.shortVersion,
-                [.text('Dart ${v.shortVersion}')],
+                value: '',
+                selected: fromValue.isEmpty,
+                [const .text('All versions')],
               ),
-          ],
-        ),
+              for (final v in sortedVersions)
+                option(
+                  value: v.shortVersion,
+                  selected: fromValue == v.shortVersion,
+                  [.text('Dart ${v.shortVersion}')],
+                ),
+            ],
+          ),
+        ]),
         const span(classes: 'range-arrow', [.text('→')]),
         const label(
           attributes: {'for': 'changelog-to-version'},
           [.text('To')],
         ),
-        select(
-          id: 'changelog-to-version',
-          attributes: {'aria-label': 'To Dart version'},
-          value: toValue,
-          events: {
-            'change': (event) {
-              final val = (event.target as web.HTMLSelectElement).value;
-              final parsed = val.isEmpty
-                  ? null
-                  : ChangelogFiltersNotifier.tryParseShortVersion(val);
-              filters.setVersionRange(from: filters.fromVersion, to: parsed);
+        div(classes: 'select-wrapper', [
+          select(
+            id: 'changelog-to-version',
+            attributes: {'aria-label': 'To Dart version'},
+            value: toValue,
+            events: {
+              'change': (event) {
+                final val = (event.target as web.HTMLSelectElement).value;
+                final parsed = val.isEmpty
+                    ? null
+                    : ChangelogFiltersNotifier.tryParseShortVersion(val);
+                filters.setVersionRange(from: filters.fromVersion, to: parsed);
+              },
             },
-          },
-          [
-            option(
-              value: '',
-              selected: toValue.isEmpty,
-              [const .text('Latest')],
-            ),
-            for (final v in sortedVersions)
+            [
               option(
-                value: v.shortVersion,
-                selected: toValue == v.shortVersion,
-                [.text('Dart ${v.shortVersion}')],
+                value: '',
+                selected: toValue.isEmpty,
+                [const .text('Latest')],
               ),
-          ],
-        ),
+              for (final v in sortedVersions)
+                option(
+                  value: v.shortVersion,
+                  selected: toValue == v.shortVersion,
+                  [.text('Dart ${v.shortVersion}')],
+                ),
+            ],
+          ),
+        ]),
       ]),
       div(classes: 'preset-chips', [
         if (latestVersion != null)
@@ -434,12 +435,12 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
             },
             onClick: () {
               if (isLatestPresetActive) {
-                filters.reset();
+                filters.setVersionRange();
               } else {
-                filters
-                  ..selectedTags.clear()
-                  ..selectedAreas.clear()
-                  ..setVersionRange(from: latestVersion, to: latestVersion);
+                filters.setVersionRange(
+                  from: latestVersion,
+                  to: latestVersion,
+                );
               }
             },
             [.text("What's new in ${latestVersion.shortVersion}")],
@@ -452,11 +453,11 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
           },
           onClick: () {
             if (isBreakingSince30Active) {
-              filters.reset();
+              filters
+                ..selectedTags.remove(ChangelogTag.breaking)
+                ..setVersionRange();
             } else {
               filters
-                ..selectedAreas.clear()
-                ..selectedTags.clear()
                 ..selectedTags.add(ChangelogTag.breaking)
                 ..setVersionRange(from: v30);
             }
