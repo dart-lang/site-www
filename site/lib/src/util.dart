@@ -53,7 +53,9 @@ final RegExp _slugifyCharsToCombine = RegExp(r'[\s-]+');
 final RegExp _slugifyHyphenTrim = RegExp(r'^-+|-+$');
 
 final RegExp _attributePattern = RegExp(r'(\w+)="([^"]*)"');
-final RegExp _whitespacePattern = RegExp(r'\s+');
+
+/// Matches one or more consecutive whitespace characters.
+final RegExp whitespacePattern = RegExp(r'\s+');
 
 Map<String, String> parseAttributes(String attributeString) {
   final attributes = <String, String>{};
@@ -71,7 +73,7 @@ Map<String, String> parseAttributes(String attributeString) {
   final remaining = attributeString.replaceAll(_attributePattern, '').trim();
 
   // Split remaining content by whitespace to find IDs and classes.
-  final parts = remaining.split(_whitespacePattern);
+  final parts = remaining.split(whitespacePattern);
 
   for (final part in parts) {
     if (part.isEmpty) continue;

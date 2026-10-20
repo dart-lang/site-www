@@ -2,6 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+@TestOn('vm')
+library;
+
 import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart';
 import 'package:test/test.dart';
 

@@ -6,6 +6,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
+import '../../util.dart';
 import '../common/chip.dart';
 import '../common/search.dart';
 
@@ -32,7 +33,8 @@ class LintInfo {
 
   final String name;
 
-  /// The lint's description as plain text, without any Markdown syntax.
+  /// The lint's description as plain text, without any Markdown syntax,
+  /// and with each run of whitespace collapsed into a single space.
   final String description;
 
   final bool hasFix;
@@ -48,6 +50,9 @@ class LintInfo {
 /// lint name and its description.
 /// Whitespace in the query is treated as underscores when matching the name,
 /// so `directives ordering` matches `directives_ordering`.
+///
+/// Expects each run of whitespace in [description] to
+/// already be collapsed into a single space, as in [LintInfo.description].
 bool lintMatchesQuery({
   required String name,
   required String description,
@@ -56,13 +61,11 @@ bool lintMatchesQuery({
   final trimmedQuery = query.trim().toLowerCase();
   if (trimmedQuery.isEmpty) return true;
 
-  final nameQuery = trimmedQuery.replaceAll(_whitespacePattern, '_');
-  final descriptionQuery = trimmedQuery.replaceAll(_whitespacePattern, ' ');
+  final nameQuery = trimmedQuery.replaceAll(whitespacePattern, '_');
+  final descriptionQuery = trimmedQuery.replaceAll(whitespacePattern, ' ');
   return name.toLowerCase().contains(nameQuery) ||
       description.toLowerCase().contains(descriptionQuery);
 }
-
-final RegExp _whitespacePattern = RegExp(r'\s+');
 
 @client
 class LintFilterSearchSection extends StatefulComponent {
@@ -111,7 +114,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
           // so queries match what's displayed (`as`, not `` `as` ``).
           final description =
               (card.querySelector('.card-content')?.textContent ?? '')
-                  .replaceAll(_whitespacePattern, ' ')
+                  .replaceAll(whitespacePattern, ' ')
                   .trim();
 
           lintsInfo.add(
