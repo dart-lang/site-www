@@ -217,9 +217,54 @@ use `dart run skills@ remove`:
 $ dart run skills@ remove -p <package_name>
 ```
 
+## Search official docs with the Developer Knowledge MCP server
+
+Package skills give your agent authoritative context
+about the packages your project depends on.
+To give your agent the same kind of authoritative context
+about the Dart language, core libraries, and tools,
+connect it to the [Developer Knowledge MCP server][dk-mcp].
+
+The Developer Knowledge MCP server is a remote MCP server
+that lets your agent search and retrieve official Google developer docs,
+including [dart.dev](/), [docs.flutter.dev]({{site.flutter-docs}}),
+and other Google developer sites.
+Instead of relying on potentially outdated training data,
+your agent can look up current guides, migration notes,
+and API references while it works.
+It complements the [Dart and Flutter MCP server][dart-mcp],
+which focuses on your local project, SDK, and running app.
+
+To help your agent decide when to search the docs
+and which search tool to use,
+also install the [`retrieving-developer-knowledge`][dk-skill] agent skill
+from the [google/skills](https://github.com/google/skills) repository:
+
+```console
+$ npx skills add google/skills --skill retrieving-developer-knowledge
+```
+
+With both the package skills and the Developer Knowledge MCP server
+available, your agent can combine package-specific guidance
+with official documentation lookups in a single task:
+
+```plaintext
+Look up the current dart.dev guidance on null safety and records,
+then refactor this `dio` error handler to return a record
+instead of throwing.
+```
+
+To connect the server to your coding agent and learn more,
+refer to [Connect to the Developer Knowledge MCP server][dk-mcp].
+
+[dk-mcp]: https://developers.google.com/knowledge/mcp
+[dk-skill]: https://github.com/google/skills/tree/main/skills/developers/retrieving-developer-knowledge
+[dart-mcp]: {{site.flutter-docs}}/ai/mcp-server
+
 ## Related links
 
 * [Ship skills with packages](/tools/pub/package-skills)
 * [`package:skills` on pub.dev]({{site.pub-pkg}}/skills)
 * [Agent Skills specification][agentskills]
 * [Dart and Flutter MCP server]({{site.flutter-docs}}/ai/mcp-server)
+* [Developer Knowledge MCP server](https://developers.google.com/knowledge/mcp)
