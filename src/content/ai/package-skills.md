@@ -259,4 +259,4 @@ instead of throwing.
 * [`package:skills` on pub.dev]({{site.pub-pkg}}/skills)
 * [Agent Skills specification][agentskills]
 * [Dart and Flutter MCP server]({{site.flutter-docs}}/ai/mcp-server)
-* [Developer Knowledge MCP server](https://developers.google.com/knowledge/mcp)
+* [Developer Knowledge MCP server][dk-mcp]
