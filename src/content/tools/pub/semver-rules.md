@@ -84,7 +84,12 @@ either one is a breaking change:
 
 * **Declarations**, such as functions, classes, members, getters, and setters.
   A declaration is either there or not, and it has a signature or interface,
-  such as a function's parameter and return types.
+  such as a function's parameter and return types. Across all declaration kinds:
+  * Adding a new name to a library's export scope or to the `static` scope of an
+    exported type is `MINOR`.
+  * Removing or renaming a name from an exported or `static` scope is `MAJOR`
+    (renaming a declaration or named parameter is equivalent to removing the
+    original name and adding a new one).
 * **Capabilities**, which are about *how* users can use a declaration. For
   example, whether a variable or constructor can be used in constant
   expressions, or whether a class can be used as a superclass, mixin, or
@@ -101,9 +106,9 @@ All specific rules in this guide follow from three general principles:
    (`MAJOR`) when it requires more or provides less.
 2. **Documented contracts and intended usage:** If a declaration explicitly
    documents restrictions on its use—for example, stating in doc comments that a
-   class must not be implemented externally, or that an enum may gain new values
-   in minor releases—then changes that only affect unsupported usage are
-   non-breaking (`MINOR` or `PATCH`).
+   class must not be implemented, or that an enum may gain new values in minor
+   releases—then changes that only affect unsupported usage are non-breaking
+   (`MINOR` or `PATCH`).
 3. **Pragmatic ecosystem conventions:** In Dart, almost any addition can
    theoretically cause a static error in rare consumer patterns, such as
    imports without a prefix or `show` clause, local variable type inference
@@ -119,10 +124,11 @@ All specific rules in this guide follow from three general principles:
 
 Most type-related rules in this guide follow from two general rules:
 
-* **Return types** can be narrowed to a subtype, such as from `num` to `int`.
-  Changing a return type to a type that isn't a subtype of the original, such
-  as widening it from `int` to `num`, is breaking, because callers might rely
-  on the original type. For details, see [Return types](#return-types).
+* **Return types** can be narrowed to a subtype, such as from `num` to `int`
+  (except when changing to `void` or away from `dynamic`). Changing a return
+  type to a type that isn't a subtype of the original, such as widening it from
+  `int` to `num`, is breaking, because callers might rely on the original type.
+  For details, see [Return types](#return-types).
 * **Parameter types** can be widened to a supertype, such as from `int` to
   `num`. Changing a parameter type to a type that isn't a supertype of the
   original, such as narrowing it from `num` to `int`, is breaking, because
@@ -135,9 +141,14 @@ is a parameter type. That's why you can narrow the type of a `const` or `final`
 variable, which only has a getter, but can't change the type of a mutable
 variable, which has both, in either direction.
 
-If users can override a member, such as an instance method of a class that
-they can extend or implement, both directions are breaking, because existing
-overrides might no longer be valid.
+These compatible signature changes (narrowing return types, widening parameter
+types, and adding optional parameters) apply to all **non-overridable**
+declarations: top-level functions, constructors, `static` members, `extension`
+and `extension type` members, `enum` members, and instance members of `final`
+classes. If users can override an instance member—such as on an unrestricted,
+`interface`, or `base` class or `mixin`—changing its signature in *either*
+direction is `MAJOR`, because the requirements for overriding a member are the
+opposite of those for calling it.
 
 ---
 
@@ -164,31 +175,19 @@ void calculateTax() {} // Added: safe because existing callers are unaffected.
 consumer imports multiple libraries without prefixes, Dart versioning convention
 treats top-level additions as non-breaking (`MINOR`).
 
-### MAJOR: Remove a public top-level declaration
+### MAJOR: Remove or rename a public top-level declaration
 
-Removing any public top-level declaration is a breaking change. Any downstream
-code referencing the removed symbol will fail to compile.
-
-```dart tag=bad
-// Before (v1.0.0):
-void calculateTax() {}
-
-// After (v2.0.0 - MAJOR):
-// `calculateTax` was removed. Existing callers fail to compile.
-```
-
-### MAJOR: Rename a public top-level declaration
-
+Removing or renaming any public top-level declaration is a breaking change.
 Renaming a public symbol is functionally equivalent to removing the original
-name and introducing a new one. Downstream code referencing the original name
-will break.
+name and introducing a new one; any downstream code referencing the original
+name will fail to compile.
 
 ```dart tag=bad
 // Before (v1.0.0):
 void performTask() {}
 
 // After (v2.0.0 - MAJOR):
-void executeTask() {} // Renamed: callers referencing `performTask` fail to compile.
+void executeTask() {} // Removed or renamed: callers referencing `performTask` fail to compile.
 ```
 
 ### MAJOR: Stop exporting a declaration from a public library
@@ -426,12 +425,14 @@ Removing `sealed` from a class breaks downstream exhaustive `switch` statements
 and expressions over its subtypes, because the compiler can no longer guarantee
 that the known subtypes are exhaustive.
 
-#### MINOR: Remove `base`, `interface`, or `final` from a class
+#### MINOR: Remove or loosen `base`, `interface`, or `final` on a class
 
-Loosens restrictions on consumers, granting new capabilities without
-invalidating existing code. Note that removing `final` or `base` is a one-way
-door: once external libraries can implement the class, adding new instance
-members in future releases becomes a `MAJOR` change.
+Removing `base`, `interface`, or `final`—or loosening `final` to `base` or
+`interface`—relaxes restrictions on consumers, granting new capabilities without
+invalidating existing code. Note that removing `final` or `base` (or changing
+`final` to `interface`) is a one-way door: once external libraries can implement
+the class, adding new instance members in future releases becomes a `MAJOR`
+change.
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -443,7 +444,7 @@ class Database {} // Safe: loosens restrictions and allows consumers to extend o
 
 ---
 
-### Changing members of unrestricted classes: `class` and `abstract class`
+### Changing instance members of unrestricted classes: `class` and `abstract class`
 
 Unrestricted classes are `class` declarations with no `interface`, `base`,
 `final`, or `sealed` modifier restricting their use. They can be `abstract` or
@@ -454,11 +455,11 @@ using `extends`, and implement them using `implements`.
 
 Adding any instance method, getter, setter, or field to an unrestricted `class`
 or `abstract class` is a breaking change unless the class explicitly documents
-that it must not be implemented externally. Because external libraries are
-permitted to write `class MyImpl implements Foo`, any new member in `Foo`
-breaks existing implementers due to missing overrides. (To allow adding
-concrete members in `MINOR` releases with compiler enforcement, declare the
-class as `base` or `final`.)
+that it must not be implemented. Because external libraries are permitted to
+write `class MyImpl implements Foo`, any new member in `Foo` breaks existing
+implementers due to missing overrides. (To allow adding concrete members in
+`MINOR` releases with compiler enforcement, declare the class as `base` or
+`final`.)
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -498,8 +499,10 @@ class Account {
 
 #### MINOR: Add a static member to a class
 
-Static members are namespaced to the class, such as `Class.member`, and do not
-affect subclasses or external implementations.
+Static members are namespaced to the declaring type, such as `Class.member`, and
+do not affect subclasses or external implementations (this applies to all
+classes regardless of modifiers, as well as mixins, enums, extensions, and
+extension types).
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -708,17 +711,29 @@ class Pending extends Result {} // Added: downstream `describe` switch is no lon
 
 #### MINOR: Add a member to a sealed class
 
-External code cannot implement or extend a `sealed` class, so adding instance or
-static members is non-breaking.
+External code cannot directly implement or extend a `sealed` class, so adding
+`static` members is always non-breaking.
+
+Adding an instance member to a `sealed` class also adds that member to all of
+its subtypes. Therefore, adding an instance member is `MINOR` only if the
+addition is also non-breaking for every public subtype (for example, when all
+public subtypes are `final`, or `base` and the added member has a concrete
+implementation). If a public subtype is unrestricted or `interface`, adding an
+instance member to the `sealed` superclass breaks external implementers of that
+subtype and requires a `MAJOR` bump.
 
 ```dart tag=good
 // Before (v1.0.0):
 sealed class Result {}
+final class Success extends Result {}
+final class Failure extends Result {}
 
 // After (v1.1.0 - MINOR):
 sealed class Result {
-  bool get isSuccess => this is Success; // Added: safe because consumers cannot implement or extend sealed classes.
+  bool get isSuccess => this is Success; // Added: safe because `Result` and its public subtypes cannot be implemented externally.
 }
+final class Success extends Result {}
+final class Failure extends Result {}
 ```
 
 ---
@@ -729,10 +744,15 @@ sealed class Result {
 
 Classes using `with MyMixin` automatically receive the concrete implementation.
 
-*Note:* Adding a member is technically breaking if an external consumer used
-`implements MyMixin`, or if a class mixing it in already inherited a member with
-an incompatible signature from its superclass, but the standard and intended
-usage of mixins is with the `with` keyword.
+*Note:* Adding an instance member to a mixin can conflict with a member of an
+incompatible signature in a consumer's superclass or change extension member
+resolution. As described in [Guiding
+principles](#guiding-principles-contracts-and-intended-usage), scope and
+declaration clashes in downstream hierarchies are outside the package's control
+and are not considered API breaks. However, if a mixin is not declared `base
+mixin`, external consumers *can* implement its interface with `implements
+MyMixin`; by convention, mixins are intended to be applied with `with` (use
+`base mixin` to enforce this in the compiler).
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -788,6 +808,36 @@ class Service with Lifecycle {}
 mixin Lifecycle on State {} // Breaks: Service does not extend State and fails to compile.
 ```
 
+#### MAJOR: Add a new super-invocation to a mixin member
+
+Adding a new `super` member invocation (such as `super.length`) inside a mixin
+member introduces a requirement that the superclass at every mixin application
+provide a concrete implementation of that member. If a consumer applied the
+mixin to an abstract superclass that left that member abstract, the mixin
+application fails to compile. (If the mixin already contained a
+super-invocation of the same member, no new restriction is introduced.)
+
+```dart tag=bad
+// Before (v1.0.0):
+mixin FixedLengthList<E> on List<E> {
+  @override
+  void clear() => throw UnsupportedError('Cannot clear a fixed-length list');
+}
+
+// Downstream package (`ListBase` leaves `length` abstract):
+abstract class CustomList<E> extends ListBase<E> with FixedLengthList<E> {}
+
+// After (v2.0.0 - MAJOR):
+mixin FixedLengthList<E> on List<E> {
+  @override
+  void clear() {
+    if (super.length > 0) { // Added `super.length`: `ListBase with FixedLengthList` fails to compile because `ListBase.length` is abstract.
+      throw UnsupportedError('Cannot clear a fixed-length list');
+    }
+  }
+}
+```
+
 ---
 
 ## Type aliases: `typedef`
@@ -820,32 +870,49 @@ typedef DataHandler = void Function(String);
 // `DataHandler` was removed. Downstream code referencing `DataHandler` fails to compile.
 ```
 
-### MAJOR: Change the aliased type in a type alias
+### MAJOR: Change a type alias to an incompatible type
 
-Changing the underlying type that a type alias references, such as changing
+Changing the underlying type that a type alias references—such as changing
 `typedef Callback = void Function(int);` to `typedef Callback = void
-Function(String);`, alters the expected type everywhere the alias is used,
-breaking consumers.
+Function(String);`, or `typedef Items = List<int>;` to `typedef Items =
+Set<int>;`—is a breaking change when the new type is incompatible with existing
+uses of the alias or alters its subtype relationships with other public types.
+
+(If the new aliased type has a backward-compatible API and preserves existing
+subtype relationships and capabilities, changing the target of a `typedef` can
+be `MINOR` or `PATCH`.)
 
 ```dart tag=bad
 // Before (v1.0.0):
 typedef Callback = void Function(int count);
 
 // After (v2.0.0 - MAJOR):
-typedef Callback = void Function(String message); // Changed type: downstream callbacks expecting `int` fail to compile.
+typedef Callback = void Function(String message); // Incompatible type: downstream callbacks expecting `int` fail to compile.
 ```
 
-### MAJOR: Replace a `typedef` with a class or vice versa
+### Replace a `typedef` with a class or vice versa
 
-Replacing a type alias with a class, or a class with a type alias of the same
-name, is a breaking change:
+Whether replacing a `typedef` with a class of the same name (or vice versa) is
+breaking depends on whether the replacement preserves all existing type
+relationships and capabilities:
 
-* **Function type alias -> class:** In Dart, closure literals are
-  function types, not class instances. Code assigning a closure like `Callback
-  cb = (x) => ...;` will fail to compile against `class Callback`.
-* **Class type alias -> subclass:** If `typedef A = B;` is replaced
-  with `class A extends B {}`, `B` is no longer assignable to `A`, and
-  bidirectional type identity is lost.
+* **MINOR or PATCH when the types and capabilities are equivalent:**
+  * **Promoting an alias of a private class to a public class:** Changing
+    `typedef C<T> = _C<T>;` to a public `class C<T>` with the same API removes a
+    layer of indirection without breaking existing uses.
+  * **Aliasing a renamed class:** Renaming `class OldName` to `class NewName`
+    while keeping `typedef OldName = NewName;` (typically annotated with
+    `@Deprecated(...)`) is a standard `MINOR` pattern, because `OldName` and
+    `NewName` refer to the exact same type.
+* **MAJOR when the replacement is not type-compatible:**
+  * **Function type alias -> callable class:** In Dart, function
+    literals (closures) are function values, not instances of a class that
+    defines a `call()` method. Replacing `typedef Callback = void Function();`
+    with `class Callback { void call(); }` breaks callers assigning closures
+    like `Callback cb = () => ...;`.
+  * **Class type alias -> subclass:** Replacing `typedef A = B;` with
+    `class A extends B {}` loses bidirectional assignability (`B` is no longer a
+    subtype of `A`).
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -857,12 +924,17 @@ Callback cb = () => print('done');
 // After (v2.0.0 - MAJOR):
 abstract class Callback {
   void call();
-} // Function literals are not instances of class Callback: downstream `cb = () => ...` fails to compile.
+} // Function values are not instances of class Callback: downstream `cb = () => ...` fails to compile.
 ```
 
 ---
 
 ## Constructors
+
+Constructor parameters follow the same compatibility rules as other
+non-overridable functions (see [Parameters](#parameters)): adding an optional
+parameter or widening a parameter type is `MINOR`, while adding a required
+parameter, removing a parameter, or narrowing a parameter type is `MAJOR`.
 
 ### MINOR: Add a new public constructor or factory
 
@@ -870,12 +942,9 @@ Adding named constructors, such as `MyClass.named()`, or factories to a class
 that already declares an explicit constructor provides new construction options
 without affecting existing callers.
 
-*Note:* If the class previously had **no explicit constructors** (relying on
-Dart's implicit default constructor `MyClass()`), adding a named constructor
-removes the implicit unnamed constructor `MyClass()`, which is a **`MAJOR`**
-breaking change unless you also explicitly define `MyClass();`. Likewise,
-changing a generative constructor to a `factory` constructor on an extendable
-class is **`MAJOR`** because subclasses can no longer invoke it in `super(...)`.
+*Note:* Changing an existing generative constructor to a `factory` constructor
+on an extendable class is **`MAJOR`**, because subclasses can no longer invoke
+it in `super(...)`.
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -892,104 +961,15 @@ class Request {
 
 ### MAJOR: Remove or rename a constructor
 
-Breaks call sites that invoked the removed constructor.
+Removing or renaming a public constructor breaks call sites that invoked it
+(and breaks subclasses that invoked it via `super(...)`).
 
-```dart tag=bad
-// Before (v1.0.0):
-class Request {
-  Request.named(String url);
-}
-
-// After (v2.0.0 - MAJOR):
-class Request {
-  // `Request.named` was removed: callers using `Request.named(...)` fail to compile.
-}
-```
-
-### MAJOR: Add a required parameter to a constructor
-
-Existing constructor invocations that omit the new parameter will fail to
-compile.
-
-```dart tag=bad
-// Before (v1.0.0):
-class User {
-  final String name;
-  User(this.name);
-}
-
-// After (v2.0.0 - MAJOR):
-class User {
-  final String name;
-  final String email;
-  User(this.name, {required this.email}); // Existing `User('Alice')` calls fail to compile.
-}
-```
-
-### MINOR: Add an optional parameter to a constructor
-
-Call sites can omit optional parameters, both positional and named.
-
-```dart tag=good
-// Before (v1.0.0):
-class User {
-  final String name;
-  User(this.name);
-}
-
-// After (v1.1.0 - MINOR):
-class User {
-  final String name;
-  final String? email;
-  User(this.name, {this.email}); // Safe: existing `User('Alice')` calls continue to compile.
-}
-```
-
-### MAJOR: Change a `const` constructor to non-`const`
-
-Breaks any call site using `const MyClass(...)`.
-
-```dart tag=bad
-// Before (v1.0.0):
-class Point {
-  final int x;
-  const Point(this.x);
-}
-
-// Downstream package:
-const origin = Point(0);
-
-// After (v2.0.0 - MAJOR):
-class Point {
-  final int x;
-  Point(this.x); // Removed `const`: `const Point(0)` fails to compile.
-}
-```
-
-### MINOR: Change a non-`const` constructor to `const`
-
-Adding `const` capability does not break existing non-const call sites using
-`MyClass(...)`.
-
-```dart tag=good
-// Before (v1.0.0):
-class Point {
-  final int x;
-  Point(this.x);
-}
-
-// After (v1.1.0 - MINOR):
-class Point {
-  final int x;
-  const Point(this.x); // Safe: non-const invocations `Point(0)` remain valid.
-}
-```
-
-### MAJOR: Add a private constructor to a class with only a default constructor
-
-If a class previously had the default implicit constructor `MyClass()`, adding
-`MyClass._()` removes the default public constructor and prevents external
-instantiation or subclassing.
+You can also inadvertently remove the implicit default constructor `MyClass()`
+by adding *any* explicit constructor declaration—even a named constructor, a
+private constructor like `MyClass._()`, or a `factory`—to a class that
+previously had no explicit constructors. Unless you also explicitly declare
+`MyClass();`, callers and subclasses relying on the default constructor will
+fail to compile.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -999,8 +979,36 @@ class AppUtils {
 
 // After (v2.0.0 - MAJOR):
 class AppUtils {
-  AppUtils._(); // Replaces public constructor: callers using `AppUtils()` fail to compile.
+  AppUtils._(); // Removes the implicit `AppUtils()` constructor: callers using `AppUtils()` fail to compile.
 }
+```
+
+### MAJOR: Change a `const` constructor to non-`const`
+
+Breaks any call site using `const MyClass(...)`.
+
+```dart tag=bad
+// Before (v1.0.0):
+class const Point(final int x);
+
+// Downstream package:
+const origin = Point(0);
+
+// After (v2.0.0 - MAJOR):
+class Point(final int x); // Removed `const`: `const Point(0)` fails to compile.
+```
+
+### MINOR: Change a non-`const` constructor to `const`
+
+Adding `const` capability does not break existing non-const call sites using
+`MyClass(...)`.
+
+```dart tag=good
+// Before (v1.0.0):
+class Point(final int x);
+
+// After (v1.1.0 - MINOR):
+class const Point(final int x); // Safe: non-const invocations `Point(0)` remain valid.
 ```
 
 ---
@@ -1023,19 +1031,21 @@ void logMessage(String message, {required String level}) {} // Callers using `lo
 
 #### Add an optional parameter
 
-* **MINOR** for top-level functions, constructors, `static` methods, and
-  methods on `final` or `sealed` classes, because existing call sites can omit
-  the new optional parameter without issue.
-* **MAJOR** for instance methods on classes or interfaces that external
-  consumers can `extend` or `implement`, because existing subclass overrides
-  (such as `@override void logMessage(String message)`) will fail to compile due
-  to an incompatible signature.
+* **MINOR** for non-overridable functions and methods—top-level functions,
+  constructors, `static` methods, `extension` and `extension type` methods,
+  `enum` methods, and instance methods on `final` classes (or `sealed` classes
+  whose public subtypes cannot be implemented externally)—because existing call
+  sites can omit the new optional parameter without issue.
+* **MAJOR** for instance methods on classes or mixins that external consumers
+  can `extend` or `implement`, because existing subclass overrides (such as
+  `@override void logMessage(String message)`) will fail to compile due to an
+  incompatible signature.
 
 ```dart tag=good
 // Before (v1.0.0):
 void logMessage(String message) {}
 
-// After (v1.1.0 - MINOR for top-level functions and final class methods):
+// After (v1.1.0 - MINOR for non-overridable functions and methods):
 void logMessage(String message, [String level = 'INFO']) {} // Safe for callers: `logMessage('data')` continues to compile.
 ```
 
@@ -1044,9 +1054,9 @@ In Dart, tearing off a method like `final fn = obj.myMethod;` produces a
 function whose static type reflects its exact signature. Adding an optional
 parameter changes the static type of the tear-off, which can cause a type
 mismatch if the consumer assigned it to a specific `typedef`. In practice,
-adding optional parameters to top-level functions and `final` class methods is
-standard for `MINOR` releases unless a package's primary contract relies on
-exact function signatures.
+adding optional parameters to non-overridable functions and methods is standard
+for `MINOR` releases unless a package's primary contract relies on exact
+function signatures.
 :::
 
 #### MAJOR: Remove any parameter
@@ -1063,9 +1073,10 @@ void connect(String host) {} // Callers passing two arguments fail to compile.
 
 #### MAJOR: Rename a named parameter
 
-Call sites passing `func(paramName: value)` will fail to compile when
-`paramName` is changed. (Renaming a positional parameter is non-breaking, as
-callers cannot pass positional arguments by name.)
+Renaming a named parameter is equivalent to removing the old parameter name and
+adding a new one: call sites passing `func(paramName: value)` will fail to
+compile when `paramName` is changed. (Renaming a positional parameter is
+non-breaking, as callers cannot pass positional arguments by name.)
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -1104,17 +1115,19 @@ void setPadding(int padding) {} // Callers passing a double (`setPadding(8.5)`) 
 
 #### Widen a parameter type
 
-* **MINOR** for top-level functions and `final` class methods, because callers
-  can pass a wider variety of inputs, such as widening a parameter from
-  `Future<T>` to `FutureOr<T>` or from `int` to `num`.
-* **MAJOR** for methods on an implementable class, because it changes the
-  signature required for external overrides.
+* **MINOR** for non-overridable functions and members (top-level functions,
+  constructors, `static` members, `extension` and `extension type` members,
+  `enum` members, and instance members of `final` classes), because callers can
+  pass a wider variety of inputs, such as widening a parameter from `Future<T>`
+  to `FutureOr<T>` or from `int` to `num`.
+* **MAJOR** for instance members on an extendable or implementable class or
+  mixin, because it changes the signature required for external overrides.
 
 ```dart tag=good
 // Before (v1.0.0):
 void setPadding(int padding) {}
 
-// After (v1.1.0 - MINOR for top-level functions and final class methods):
+// After (v1.1.0 - MINOR for non-overridable functions and members):
 void setPadding(num padding) {} // Safe: callers can now pass int or double without breaking existing callers.
 ```
 
@@ -1124,7 +1137,7 @@ function parameters are contravariant, tearing off a function with a widened
 parameter type (like `void Function(Object)`) can prevent assigning narrower
 callbacks into an inferred variable (like `var callback = doStuff; callback =
 (String s) {};`). In practice, such situations are rare, and widening parameter
-types on top-level functions is treated as non-breaking.
+types on non-overridable functions is treated as non-breaking.
 :::
 
 #### Change the default value of an optional parameter
@@ -1150,50 +1163,61 @@ void connect([int timeoutSeconds = 30]) {} // Compiles without error; changes de
 ### Return types
 
 Return types in Dart are **covariant**: callers expect a return value conforming
-to at least the declared type, while subclasses overriding a method must return
-a subtype of the superclass method's return type.
+to at least the declared type, while subclasses overriding a method or getter
+must return a subtype of the superclass member's return type.
 
 #### Narrow a return type
 
-Moving down the type lattice to a more specific subtype, such as `num` to `int`,
-`Object?` to `String`, `void` to a specific type, or any type to `Never`:
+Moving down the type lattice to a more specific subtype—such as `num` to `int`,
+`Object?` to `String`, or any type to `Never`—or changing a return type from
+`void` to a non-`void` type:
 
-* **MINOR for callers of top-level functions and `final` class methods:**
+* **MINOR for callers of non-overridable functions and members** (top-level
+  functions, `static` members, `extension` and `extension type` members, `enum`
+  members, and instance members of `final` classes):
   * **Direct invocations:** Callers receive a more specific type with additional
     available members and tighter type safety.
-  * **Top types:** Changing a return type from `void` to a specific type `T` is
-    a form of narrowing from the top type. Callers ignoring the return value
-    continue to work, and callbacks passed to `void Function(...)` continue to
-    compile because Dart treats `T Function(...)` as a subtype of `void
-    Function(...)` for any type `T`.
-  * **Bottom type:** For functions that unconditionally throw or exit, narrowing
-    the return type to `Never` is backward-compatible because `Never` is a
-    universal subtype of all Dart types.
-* **MAJOR if the method is overridden in external subclasses or implementers:**
+  * **From `void` to a non-`void` type:** Changing a return type from `void` to
+    any non-`void` type `T` (including `Object?`) is backward-compatible.
+    Callers ignoring the return value continue to work, and callbacks passed to
+    `void Function(...)` continue to compile because Dart treats `T
+    Function(...)` as a subtype of `void Function(...)` for any type `T`.
+  * **Bottom type (`Never`):** For functions that unconditionally throw or exit,
+    narrowing the return type to `Never` is backward-compatible because `Never`
+    is a universal subtype of all Dart types.
+* **MAJOR if the member can be overridden in external subclasses or implementers:**
   * External subclasses that declared the previous wider return type, such as
-    `@override num method()` or `@override void method()`, will fail to compile
+    `@override num get scale` or `@override void method()`, will fail to compile
     with an override error, because the subclass's wider return type is not a
     valid subtype of the new narrower return type.
+* **MAJOR when changing away from `dynamic` or changing to `void`:**
+  * Even though `Object?`, `dynamic`, and `void` are all top types (mutual
+    supertypes of all types), changing a return type **away from `dynamic`**
+    (such as `dynamic` to `Object?` or `String`) is `MAJOR`, because callers
+    relying on dynamic member access or implicit downcasts will fail to compile.
+  * Changing a return type **from any non-`void` type to `void`** (including
+    from `Object?` or `dynamic`) is `MAJOR`, because callers can no longer use
+    the returned value.
 
 ```dart tag=good
 // Before (v1.0.0):
 num getScale() => 1;
 
-// After (v1.1.0 - MINOR for top-level functions and final class methods):
+// After (v1.1.0 - MINOR for non-overridable functions and members):
 int getScale() => 1; // Safe: callers expecting `num` continue to work, while callers can access `int` methods.
 ```
 
-#### MAJOR: Widen a return type
+#### MAJOR: Widen a return type or change to `void`
 
-Moving up the type lattice to a broader supertype, such as `int` to `num`,
-`Future<T>` to `FutureOr<T>`, or a specific type `T` to `void`:
+Moving up the type lattice to a broader supertype—such as `int` to `num` or
+`Future<T>` to `FutureOr<T>`—or changing a non-`void` return type to `void`:
 
 * **MAJOR for callers:**
   * Callers expecting specific members on the returned object, like `int`
     methods or `.then()` on a `Future<T>`, will fail to compile.
-  * Changing a return type from a specific type `T` to `void` is a form of
-    widening to the top type, breaking any callers attempting to read or use the
-    returned value.
+  * Changing a return type from a non-`void` type to `void` (even from another
+    top type such as `Object?` or `dynamic`) breaks any callers attempting to
+    read or use the returned value.
 * Subclasses that already returned a narrower subtype remain valid overrides.
 
 ```dart tag=bad
@@ -1235,10 +1259,23 @@ class NumericList<T extends Object> {}
 class NumericList<T extends num> {} // Existing uses like `NumericList<String>` fail to compile.
 ```
 
-#### MINOR: Loosen or remove a type parameter bound
+#### Loosen or remove a type parameter bound
 
 Changing `<T extends int>` to `<T extends num>` or removing a bound permits more
-types while remaining compatible with existing valid usages.
+type arguments:
+
+* **MINOR** for generic type declarations (classes, mixins, typedefs, enums,
+  extensions, and extension types) and for direct calls to non-overridable
+  generic functions and methods.
+  * *Note:* In Dart's type system, generic function types are invariant in their
+    type parameter bounds (`void Function<T extends num>(T)` is not a subtype of
+    `void Function<T extends int>(T)`), so loosening a bound on a generic
+    function can break typed tear-offs. As with optional parameters, this edge
+    case is treated as `MINOR` unless the function is primarily intended to be
+    torn off at a fixed function type.
+* **MAJOR** for overridable generic instance methods (on unrestricted,
+  `interface`, or `base` classes and mixins), because Dart requires overriding
+  methods to declare equivalent type parameter bounds.
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -1251,9 +1288,15 @@ class NumericList<T extends num> {} // Safe: existing `NumericList<int>` remains
 #### MAJOR: Add or remove a type parameter
 
 Dart does not support default type arguments. While raw type references (such as
-`Store x`) use instantiation-to-bounds, adding or removing a type parameter
-breaks any consumer code that passes explicit type arguments (such as
-`Store<String>`).
+`Store x`) use instantiation-to-bounds, adding or removing a type parameter on a
+type or an already-generic function breaks any consumer code that passes
+explicit type arguments (such as `Store<String>`).
+
+*Note:* Adding a type parameter to a previously *non-generic*, non-overridable
+function (such as changing `T? firstOrNull(List<Object?> items)` or `void
+log(Object? value)` to `void log<T>(T value)`) does not break existing
+invocations because no existing call site could pass explicit type arguments, so
+type inference supplies them automatically.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -1338,10 +1381,11 @@ enum Priority {
 }
 ```
 
-### MINOR: Add a member to an enhanced enum
+### MINOR: Add a member to an enum
 
-Enums cannot be extended or implemented, so adding members to an enhanced enum
-is safe for consumers.
+Enums cannot be extended or implemented, and their constructors cannot be called
+externally, so adding members (or constructor parameters) to an `enum` is safe
+for consumers.
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -1351,11 +1395,9 @@ enum Status {
 }
 
 // After (v1.1.0 - MINOR):
-enum Status {
-  pending,
-  success;
-
-  bool get isDone => this == Status.success; // Safe: consumers only call existing members and cannot implement enums.
+enum Status(final bool isDone) {
+  pending(false),
+  success(true); // Safe: consumers only access existing enum values/members and cannot instantiate or implement enums.
 }
 ```
 
@@ -1365,21 +1407,21 @@ enum Status {
 
 ### Extension methods: `extension on`
 
-#### MINOR: Add an extension or extension method
+#### MINOR: Add an extension or extension member
 
-Adding extension methods is backward-compatible. Static ambiguity can
+Adding extension members is backward-compatible. Static ambiguity can
 occasionally occur if consumer code already has another extension in scope with
-the same method name.
+the same member name.
 
 ```dart tag=good
 // Before (v1.0.0):
 extension StringUtils on String {
-  bool get isBlank => trim().isEmpty;
+  bool get isBlank => trimRight().isEmpty;
 }
 
 // After (v1.1.0 - MINOR):
 extension StringUtils on String {
-  bool get isBlank => trim().isEmpty;
+  bool get isBlank => trimRight().isEmpty;
   bool get isNotBlank => !isBlank; // Added: backward-compatible new extension member.
 }
 ```
@@ -1394,7 +1436,7 @@ import combinators.
 ```dart tag=bad
 // Before (v1.0.0):
 extension StringUtils on String {
-  bool get isBlank => trim().isEmpty;
+  bool get isBlank => trimRight().isEmpty;
 }
 
 // After (v2.0.0 - MAJOR):
@@ -1403,11 +1445,13 @@ extension StringUtils on String {
 }
 ```
 
-#### MAJOR: Change the extended type: the `on` clause
+#### MAJOR: Narrow or change the extended type to a non-supertype
 
-Changing the target type of an extension, such as changing `extension Helpers on
-String` to `extension Helpers on int`, removes the extension members from
-instances of the original type, breaking all existing call sites.
+Changing the target (`on`) type of an extension to a type that is not a
+supertype of the original—such as narrowing `extension Helpers on num` to
+`extension Helpers on int`, or changing `on String` to `on StringBuffer`—removes
+the extension members from instances of the original type, breaking existing
+call sites.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -1454,13 +1498,24 @@ disambiguate them using explicit extension invocation syntax (such as
 
 ### Extension types: `extension type`
 
-#### MAJOR: Change or rename the underlying representation field
+#### Change or rename the representation field
 
-Changing the representation type alters the underlying type contract and
-implicit constructors. Renaming the representation field (such as changing
-`Id(int value)` to `Id(int id)`) is also a `MAJOR` change because the
-representation field name defines a public getter (`id.value`) on the extension
-type.
+An extension type's primary constructor declaration `extension type Id(int
+value)` defines both a representation getter (`int get value`, if the field is
+public) and a primary constructor (`Id(int value)`, if the constructor is
+public):
+
+* **MAJOR** if both the representation field and primary constructor are public
+  and you change the representation type in either direction (because widening
+  breaks callers of the getter `id.value`, while narrowing breaks callers of the
+  constructor `Id(...)`, just like a mutable variable).
+* **MAJOR** if you rename a public representation field (such as changing
+  `Id(int value)` to `Id(int id)`), because it removes the public getter
+  `id.value`.
+* **MINOR** if the representation field is private (such as `extension type
+  Id(int _value)`) and you widen the representation type (such as `int` to
+  `num`), provided it still satisfies any `implements` clauses, because it only
+  widens the constructor parameter type.
 
 ```dart tag=bad
 // Before (v1.0.0):
@@ -1474,7 +1529,13 @@ extension type Id(String value) {} // Breaks callers passing `int` to `Id(...)` 
 
 Extension type members are resolved statically, and other extension types that
 implement an extension type (`implements Id`) are allowed to redeclare members
-without virtual override conflicts, making member additions non-breaking.
+without virtual override conflicts, making new member additions non-breaking.
+
+*Note:* If the extension type implements superinterfaces (`implements ...`),
+adding a member that redeclares (shadows) an already-exposed superinterface
+member is only `MINOR` if the new member's signature is backward-compatible with
+the superinterface member it replaces; otherwise, it breaks existing calls and
+is `MAJOR`.
 
 ```dart tag=good
 // Before (v1.0.0):
@@ -1517,9 +1578,10 @@ exceptions][effective_dart_errors], as well as your documented API contract.
 When a library explicitly documents that a function or method throws a specific
 exception, such as `/// Throws [AuthException] on invalid credentials.`:
 
-#### MAJOR: Change a documented exception type
+#### MAJOR: Change a documented exception to a non-subtype
 
-Changing the thrown exception, such as throwing `SecurityException` instead of
+Changing the thrown exception to a type that is not a subtype of the originally
+documented exception, such as throwing `SecurityException` instead of
 `AuthException`, breaks downstream code with `try ... on AuthException catch
 (e)` handlers. The new exception will bypass the handler and crash at runtime.
 
@@ -1566,7 +1628,8 @@ Throwing a documented or undocumented exception in scenarios where the function
 previously succeeded alters control flow and breaks working consumer code.
 Switching an asynchronous function between throwing synchronously and returning
 a failed `Future` is also `MAJOR`, as synchronous `try`/`catch` blocks without
-`await` will fail to catch the error.
+`await` will fail to catch the error (in general, asynchronous functions should
+always emit runtime exceptions through the returned `Future`).
 
 #### MINOR: Stop throwing an exception by succeeding instead
 
@@ -1583,17 +1646,18 @@ Subclasses of `Error`, such as `ArgumentError`, `StateError`, `RangeError`, and
 violations or invalid arguments. Consumers should not catch `Error` types in
 application logic.
 
-#### MAJOR: Throw an `ArgumentError` or `StateError` on previously valid inputs
+#### MAJOR: Throw an `Error` on previously valid inputs or states
 
-Throwing an error for inputs or states that were previously valid and supported
-narrows the acceptable input domain, breaking existing callers.
+Throwing an `Error` for inputs or states that were previously valid and
+supported narrows the acceptable input domain, breaking existing callers.
 
 #### PATCH: Add or refine `Error` checks for invalid arguments
 
 Throwing a clear `ArgumentError` or `StateError` on invalid inputs that
 previously caused undefined behavior, corrupted state, or internal unhandled
-exceptions, such as `TypeError` or `NoSuchMethodError`, is a bug fix or
-hardening improvement.
+errors (such as `TypeError` or `NoSuchMethodError`), or changing which `Error`
+subclass is thrown for an invalid call, is a `PATCH` bug fix or hardening
+improvement.
 
 #### MINOR: Support previously invalid arguments without throwing an `Error`
 
