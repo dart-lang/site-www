@@ -231,7 +231,7 @@ official Google developer docs, including [dart.dev](/) and
 It complements the [Dart and Flutter MCP server][dart-mcp],
 which focuses on your local project, SDK, and running app.
 
-To add it to your coding agent, follow
+To add it to your coding agent, follow the instructions in
 [Configure your IDE or coding agent][dk-mcp-configure]
 and select your client.
 To help your agent decide when to search the docs
