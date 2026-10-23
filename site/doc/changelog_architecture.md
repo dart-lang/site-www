@@ -167,7 +167,7 @@ Each entry is a YAML list item with the following fields:
 ```yaml
 - version: 3.10.0          # (Required) The SDK version number
   id: null-safety-default  # (Optional) Explicit slug ID for card permalink
-  releaseDate: 2025-11-12  # (Optional) YYYY-MM-DD or "TBD"
+  releaseDate: 2025-11-12  # (Required) YYYY-MM-DD; shown in the version header
   area: Language           # (Required) Broad category: SDK, Language, Libraries, Tools
   subArea: Null safety     # (Optional) Specific feature or library name
   description: |           # (Required) Multiline description of the change.
