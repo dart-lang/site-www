@@ -178,7 +178,7 @@ final class SyncChangelog extends Command<int> {
 
   static final _releaseDateRegExp = RegExp(r'^\d{4}-\d{2}-\d{2}$');
   static final _releasedOnRegExp = RegExp(
-    r'^\*\*Released on:\*\*\s*(\d{4}-\d{2}-\d{2})',
+    r'^\s*\*\*Released on:\*\*\s*(\d{4}-\d{2}-\d{2})',
   );
 
   /// Parses the SDK CHANGELOG.md [markdown] and

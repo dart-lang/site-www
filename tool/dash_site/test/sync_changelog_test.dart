@@ -68,7 +68,7 @@ This is a patch release that:
       const markdown = '''
 ## 3.14.0
 
-**Released on:** 2026-11-04
+  **Released on:** 2026-11-04
 
 ### Language
 
