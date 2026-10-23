@@ -38,6 +38,14 @@ final class SyncChangelog extends Command<int> {
         help: 'The Dart SDK version to sync (such as "3.9.0").',
         mandatory: true,
       )
+      ..addOption(
+        'release-date',
+        abbr: 'r',
+        help:
+            'The release date to record, in YYYY-MM-DD format. '
+            'Defaults to the "Released on" date in the SDK changelog.',
+        valueHelp: 'YYYY-MM-DD',
+      )
       ..addFlag(
         'dry-run',
         abbr: 'd',
@@ -51,6 +59,7 @@ final class SyncChangelog extends Command<int> {
     final results = argResults!;
     final versionString = results.getOrThrow<String>('version');
     final dryRun = results.getOrThrow<bool>('dry-run');
+    final releaseDate = results['release-date'] as String?;
 
     final Version version;
     try {
@@ -65,6 +74,13 @@ final class SyncChangelog extends Command<int> {
       return 1;
     }
 
+    if (releaseDate != null && !_releaseDateRegExp.hasMatch(releaseDate)) {
+      stderr.writeln(
+        'Invalid release date: "$releaseDate". Use YYYY-MM-DD format.',
+      );
+      return 1;
+    }
+
     stdout.writeln('Syncing changelog for version $version...');
 
     try {
@@ -76,12 +92,31 @@ final class SyncChangelog extends Command<int> {
         return 1;
       }
 
-      final patches = _parseChangelog(response.body, version.toString());
+      final patches = _parseChangelog(
+        response.body,
+        version.toString(),
+        releaseDate: releaseDate,
+      );
       if (patches.isEmpty) {
         stdout.writeln(
           'No entries found for version $version in SDK changelog.',
         );
         return 0;
+      }
+
+      final resolvedReleaseDate = patches.first.releaseDate;
+      if (resolvedReleaseDate == unknownReleaseDate) {
+        stderr.writeln(
+          'WARNING: No "Released on" date found for $version in the SDK '
+          'changelog, so entries were written with '
+          '"releaseDate: $unknownReleaseDate".\n'
+          'The site shows this date in the version header, and the '
+          'changelog data test will fail until it is replaced.\n'
+          'Re-run with --release-date=YYYY-MM-DD or edit '
+          'src/data/changelog.yml before committing.',
+        );
+      } else {
+        stdout.writeln('Using release date $resolvedReleaseDate.');
       }
 
       final changelogPath = p.join(
@@ -123,15 +158,36 @@ final class SyncChangelog extends Command<int> {
   }
 
   /// Parses [markdown] for [targetVersion] and returns generated YAML.
-  static String parseAndGenerateYaml(String markdown, String targetVersion) =>
-      _generateYamlString(_parseChangelog(markdown, targetVersion));
+  ///
+  /// If [releaseDate] is provided it's used for every entry; otherwise the
+  /// date is read from the section's `**Released on:**` line, falling back to
+  /// [unknownReleaseDate] if that's absent (such as before a release ships).
+  static String parseAndGenerateYaml(
+    String markdown,
+    String targetVersion, {
+    String? releaseDate,
+  }) => _generateYamlString(
+    _parseChangelog(markdown, targetVersion, releaseDate: releaseDate),
+  );
+
+  /// Placeholder written when no release date could be determined.
+  ///
+  /// The site renders this verbatim in the version header, and the
+  /// `changelog_data_test` rejects it, so it must be replaced before merging.
+  static const unknownReleaseDate = 'TBD';
+
+  static final _releaseDateRegExp = RegExp(r'^\d{4}-\d{2}-\d{2}$');
+  static final _releasedOnRegExp = RegExp(
+    r'^\*\*Released on:\*\*\s*(\d{4}-\d{2}-\d{2})',
+  );
 
   /// Parses the SDK CHANGELOG.md [markdown] and
   /// extracts entries for the specified [targetVersion].
   static List<_ChangelogEntry> _parseChangelog(
     String markdown,
-    String targetVersion,
-  ) {
+    String targetVersion, {
+    String? releaseDate,
+  }) {
     // TODO: Use a proper Markdown parser instead of
     //  relying on regular expressions.
     final entries = <_ChangelogEntry>[];
@@ -141,8 +197,11 @@ final class SyncChangelog extends Command<int> {
     final refDefRegExp = RegExp(r'^\s*\[([^\]]+)\]:\s*(\S+)');
     final refUsageRegExp = RegExp(r'\[([^\]]+)\]\[([^\]]*)\]');
 
-    // Pre-collect reference link definitions in targetVersion.
+    // Pre-collect reference link definitions in targetVersion, and pick up
+    // the `**Released on:** YYYY-MM-DD` line the SDK changelog includes
+    // once a version has shipped.
     final refLinks = <String, String>{};
+    var parsedReleaseDate = releaseDate;
     var inTargetForRefs = false;
     for (final line in lines) {
       if (versionRegExp.firstMatch(line) case final match?) {
@@ -157,7 +216,13 @@ final class SyncChangelog extends Command<int> {
       if (refDefRegExp.firstMatch(line) case final m?) {
         refLinks[m.group(1)!.toLowerCase()] = m.group(2)!;
       }
+      if (parsedReleaseDate == null) {
+        if (_releasedOnRegExp.firstMatch(line) case final m?) {
+          parsedReleaseDate = m.group(1);
+        }
+      }
     }
+    final resolvedReleaseDate = parsedReleaseDate ?? unknownReleaseDate;
 
     String resolveRefs(String text) =>
         text.replaceAllMapped(refUsageRegExp, (m) {
@@ -194,7 +259,7 @@ final class SyncChangelog extends Command<int> {
       entries.add(
         _ChangelogEntry(
           version: targetVersion,
-          releaseDate: 'TBD',
+          releaseDate: resolvedReleaseDate,
           area: _resolveArea(currentArea, currentSubArea),
           subArea: currentSubArea,
           description: description,

@@ -76,6 +76,30 @@ void main() {
       }
     });
 
+    test('every entry has a concrete YYYY-MM-DD release date', () {
+      // The changelog page shows the `x.y.0` entry's date in the version
+      // header, so a leftover `TBD` placeholder from `sync-changelog`
+      // would be rendered verbatim as "Released TBD".
+      final isoDate = RegExp(r'^\d{4}-\d{2}-\d{2}$');
+      for (final entry in entries) {
+        expect(
+          entry.releaseDate,
+          isNotNull,
+          reason:
+              'Missing releaseDate for ${entry.version}: '
+              '${entry.description.split('\n').first}',
+        );
+        expect(
+          entry.releaseDate,
+          matches(isoDate),
+          reason:
+              'releaseDate "${entry.releaseDate}" for ${entry.version} '
+              'is not YYYY-MM-DD. Replace any "TBD" placeholders with the '
+              'actual release date.',
+        );
+      }
+    });
+
     test('throws ArgumentError on unknown tag IDs', () {
       expect(
         () => ChangelogEntry.fromMap({

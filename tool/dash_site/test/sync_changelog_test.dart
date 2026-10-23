@@ -64,6 +64,73 @@ This is a patch release that:
       expect(third['link'], 'https://github.com/dart-lang/pub/issues/4644');
     });
 
+    test('reads the release date from the "Released on" line', () {
+      const markdown = '''
+## 3.14.0
+
+**Released on:** 2026-11-04
+
+### Language
+
+- Adds a thing.
+
+## 3.13.0
+
+**Released on:** 2026-08-12
+
+### Language
+
+- Adds an older thing.
+''';
+
+      final entries = loadYaml(
+        SyncChangelog.parseAndGenerateYaml(markdown, '3.14.0'),
+      ) as YamlList;
+      expect(entries, hasLength(1));
+      expect((entries.single as YamlMap)['releaseDate'], '2026-11-04');
+    });
+
+    test('falls back to the TBD placeholder when unreleased', () {
+      const markdown = '''
+## 3.14.0
+
+**Released on:** Unreleased
+
+### Language
+
+- Adds a thing.
+''';
+
+      final entries = loadYaml(
+        SyncChangelog.parseAndGenerateYaml(markdown, '3.14.0'),
+      ) as YamlList;
+      expect(
+        (entries.single as YamlMap)['releaseDate'],
+        SyncChangelog.unknownReleaseDate,
+      );
+    });
+
+    test('an explicit release date overrides the changelog', () {
+      const markdown = '''
+## 3.14.0
+
+**Released on:** Unreleased
+
+### Language
+
+- Adds a thing.
+''';
+
+      final entries = loadYaml(
+        SyncChangelog.parseAndGenerateYaml(
+          markdown,
+          '3.14.0',
+          releaseDate: '2026-11-04',
+        ),
+      ) as YamlList;
+      expect((entries.single as YamlMap)['releaseDate'], '2026-11-04');
+    });
+
     test('preserves prose sub-area sections that contain bullet lists', () {
       const markdown = '''
 ## 3.13.0
