@@ -65,6 +65,10 @@ Beyond these conventions, you must follow these requirements:
   These restrictions ensure that dependencies of your packages
   can be found and accessed in the future.
 
+* Choose a version number that adheres to [Semantic Versioning (SemVer)][semver].
+  To understand what API changes require a major, minor, or patch bump,
+  consult the [SemVer compatibility rules][semver-rules] guide.
+
 * Own a [Google Account][]. Pub uses a Google account to manage package
   upload permissions. Your Google Account can be associated with
   a Gmail address or any other email address.
@@ -537,6 +541,7 @@ If you change your mind, you can remove the discontinued mark at any time.
 [`dart pub publish`]: /tools/pub/cmd/pub-lish
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
+[semver-rules]: /tools/pub/semver-rules
 [verified publisher]: /tools/pub/verified-publishers
 [git-ignore-format]: https://git-scm.com/docs/gitignore#_pattern_format
 [pubignore-when]: https://stackoverflow.com/a/69767697
