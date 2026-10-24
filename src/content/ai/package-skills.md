@@ -186,6 +186,15 @@ If a local modification is detected:
 * You are prompted to choose whether to **overwrite** your local changes
   with the upstream version or **keep** your local customizations.
 
+:::tip
+If you customize skills locally or author project-specific skills in
+`.agents/skills/`, you can use
+[`package:skills_lint`]({{site.pub-pkg}}/skills_lint) to verify that your
+`SKILL.md` YAML frontmatter, directory structure, and relative file paths
+remain valid. To set up and run the linter, refer to
+[Validate and lint skills](/tools/pub/package-skills#validate-and-lint-skills).
+:::
+
 ## Manage and remove skills
 
 ### List installed skills
@@ -257,6 +266,7 @@ instead of throwing.
 
 * [Ship skills with packages](/tools/pub/package-skills)
 * [`package:skills` on pub.dev]({{site.pub-pkg}}/skills)
+* [`package:skills_lint` on pub.dev]({{site.pub-pkg}}/skills_lint)
 * [Agent Skills specification][agentskills]
 * [Dart and Flutter MCP server]({{site.flutter-docs}}/ai/mcp-server)
 * [Developer Knowledge MCP server][dk-mcp]
