@@ -260,8 +260,13 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
       }
       if (node.nodeType == web.Node.ELEMENT_NODE) {
         final el = node as web.Element;
+        // Skip non-content: the read-more toggle, release dates, and icon
+        // ligatures (such as the copy button in code blocks), whose text
+        // would otherwise match and get wrapped in <mark>.
         if (el.classList.contains('read-more') ||
-            el.classList.contains('release-date')) {
+            el.classList.contains('release-date') ||
+            el.classList.contains('material-symbols') ||
+            el.getAttribute('aria-hidden') == 'true') {
           return;
         }
       }
@@ -412,11 +417,6 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
             ],
           ),
         ]),
-        const span(
-          classes: 'range-arrow',
-          attributes: {'aria-hidden': 'true'},
-          [.text('→')],
-        ),
         const label(
           attributes: {'for': 'changelog-to-version'},
           [.text('To')],
@@ -483,7 +483,11 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
                 ..selectedTags.remove(ChangelogTag.breaking)
                 ..setVersionRange();
             } else {
+              // Replace any other selected tags so the result is exactly
+              // the breaking changes, not "breaking OR whatever was
+              // already checked".
               filters
+                ..selectedTags.clear()
                 ..selectedTags.add(ChangelogTag.breaking)
                 ..setVersionRange(from: breakingSince);
             }
@@ -536,6 +540,13 @@ class _ChangelogFiltersState extends State<ChangelogFilters> {
           icon: 'filter_list',
           content: activeFilterCount > 0 ? '$activeFilterCount' : null,
           classes: ['show-filters-button'],
+          title: 'Show filters',
+          attributes: {
+            'aria-label': activeFilterCount > 0
+                ? 'Show filters ($activeFilterCount active)'
+                : 'Show filters',
+            'aria-controls': 'changelog-filter-group-wrapper',
+          },
           onClick: () {
             final toggle = web.document.getElementById(
               'open-filter-toggle',

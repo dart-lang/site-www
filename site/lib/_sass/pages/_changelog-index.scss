@@ -449,6 +449,12 @@ body.dark-mode {
         margin: 0;
       }
 
+      // A little extra breathing room between the "From" select and the
+      // "To" label now that there's no arrow between them.
+      .select-wrapper + label {
+        margin-left: 0.35rem;
+      }
+
       .select-wrapper {
         position: relative;
         display: inline-flex;
@@ -492,11 +498,6 @@ body.dark-mode {
           outline: 2px solid var(--site-primary-color);
           border-color: transparent;
         }
-      }
-
-      .range-arrow {
-        color: var(--site-base-fgColor-alt);
-        padding: 0 0.15rem;
       }
     }
 
