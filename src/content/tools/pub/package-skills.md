@@ -192,13 +192,9 @@ with `dart run skills@ get`. Then provide your AI coding agent the following
 prompt:
 
 ```text
-Use the skills-lint-setup skill to set up skills_lint in this package.
-Create a skills_lint.yaml at the package root that validates skills/
-with published-skill-name and check-relative-paths set to error.
-Then add a test under test/ that runs `dart run skills_lint` with that
-configuration and fails if it exits with a nonzero code, so `dart test`
-catches invalid skills. Finally, use the skills-lint-validation skill
-to run the linter and fix any failures.
+Use the skills-lint-setup skill to set up skills_lint in this package
+so that `dart test` fails when a skill in skills/ is invalid. Then use
+the skills-lint-validation skill to run the linter and fix any failures.
 ```
 
 To configure and run `skills_lint` manually instead, you can pass command-line
