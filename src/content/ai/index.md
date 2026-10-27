@@ -18,10 +18,6 @@ and enhance your development workflow with AI agents.
     Connect AI coding agents to your Dart and Flutter development
     environment.
   </Card>
-  <Card title="Developer Knowledge MCP server" link="https://developers.google.com/knowledge/mcp">
-    Give AI coding agents search access to official, up-to-date
-    documentation from dart.dev and other Google developer sites.
-  </Card>
   <Card title="Genkit for Dart" link="https://genkit.dev/docs/dart/get-started/">
     Build full-stack, AI-powered apps with a type-safe, open-source AI
     framework for Dart and Flutter.
