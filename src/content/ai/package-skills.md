@@ -186,6 +186,15 @@ If a local modification is detected:
 * You are prompted to choose whether to **overwrite** your local changes
   with the upstream version or **keep** your local customizations.
 
+:::tip
+If you customize skills locally or author project-specific skills in
+`.agents/skills/`, you can use
+[`package:skills_lint`]({{site.pub-pkg}}/skills_lint) to verify that your
+`SKILL.md` YAML frontmatter, directory structure, and relative file paths
+remain valid. To set up and run the linter, refer to
+[Validate and lint skills](/tools/pub/package-skills#validate-and-lint-skills).
+:::
+
 ## Manage and remove skills
 
 ### List installed skills
@@ -217,9 +226,47 @@ use `dart run skills@ remove`:
 $ dart run skills@ remove -p <package_name>
 ```
 
+## Search official docs with the Developer Knowledge MCP server
+
+Package skills give your agent authoritative context
+about the packages your project depends on.
+To give your agent the same kind of authoritative context
+about the Dart language, core libraries, and tools,
+connect it to the [Developer Knowledge MCP server][dk-mcp].
+This remote MCP server lets your agent search and retrieve
+official Google developer docs, including [dart.dev](/) and
+[docs.flutter.dev]({{site.flutter-docs}}), through its
+`search_documents`, `get_documents`, and `answer_query` tools.
+It complements the [Dart and Flutter MCP server][dart-mcp],
+which focuses on your local project, SDK, and running app.
+
+To add it to your coding agent, follow the instructions in
+[Configure your IDE or coding agent][dk-mcp-configure]
+and select your client.
+To help your agent decide when to search the docs
+and which tool to use, also install the
+[`retrieving-developer-knowledge`][dk-skill] agent skill.
+
+With both the package skills and the Developer Knowledge MCP server
+available, your agent can combine package-specific guidance
+with official documentation lookups in a single task:
+
+```plaintext
+Look up the current dart.dev guidance on null safety and records,
+then refactor this `dio` error handler to return a record
+instead of throwing.
+```
+
+[dk-mcp]: https://developers.google.com/knowledge/mcp
+[dk-mcp-configure]: https://developers.google.com/knowledge/mcp#configure-ide
+[dk-skill]: https://developers.google.com/knowledge/mcp#agent-skill
+[dart-mcp]: {{site.flutter-docs}}/ai/mcp-server
+
 ## Related links
 
 * [Ship skills with packages](/tools/pub/package-skills)
 * [`package:skills` on pub.dev]({{site.pub-pkg}}/skills)
+* [`package:skills_lint` on pub.dev]({{site.pub-pkg}}/skills_lint)
 * [Agent Skills specification][agentskills]
 * [Dart and Flutter MCP server]({{site.flutter-docs}}/ai/mcp-server)
+* [Developer Knowledge MCP server][dk-mcp]
