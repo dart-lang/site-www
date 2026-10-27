@@ -185,8 +185,24 @@ Add `skills_lint` to your package's `dev_dependencies`:
 $ dart pub add dev:skills_lint
 ```
 
-`skills_lint` runs as a command-line tool that you can configure
-either by passing command-line flags or by creating a `skills_lint.yaml` file.
+### Set up with an agent
+
+After you add `skills_lint` as a dev dependency, install its bundled skills
+with `dart run skills@ get`. Then give your AI coding agent the following
+prompt:
+
+```text
+Use the skills-lint-setup skill to set up skills_lint in this package.
+Create a skills_lint.yaml at the package root that validates skills/
+with published-skill-name and check-relative-paths set to error.
+Then add a test under test/ that runs `dart run skills_lint` with that
+config and fails if it exits with a nonzero code, so `dart test` catches
+invalid skills. Finally, use the skills-lint-validation skill to run the
+linter and fix any failures.
+```
+
+To configure and run `skills_lint` manually instead, you can pass command-line
+flags or create a `skills_lint.yaml` file.
 
 ### Run with command-line flags
 
@@ -199,34 +215,9 @@ $ dart run skills_lint --skills-directory <skills_directory>
 Replace `<skills_directory>` with the path to your skills directory,
 such as `skills/`.
 
-You can pass additional flags to customize validation:
-
-* **`--skills-directory` (`-d`)**:
-  Specifies a root directory containing skill subdirectories to validate.
-  If omitted, `skills_lint` checks the `.agents/skills/` and `.claude/skills/`
-  directories.
-* **`--skill` (`-s`)**:
-  Validates a single skill directory directly.
-* **`--config` (`-c`)**:
-  Specifies the path to a YAML configuration file
-  (defaults to `skills_lint.yaml` in the current directory).
-  Pass `--ignore-config` to ignore the configuration file for a run.
-* **`--ignore-file`**:
-  Specifies the path to a JSON file listing lint violations to ignore.
-* **`--published-skill-name`**:
-  Verifies that every skill directory name and `SKILL.md` frontmatter `name`
-  begins with `<package_name>-` (or the hyphenated package name,
-  such as `my-package-routing` for `my_package`).
-* **`--check-relative-paths`**:
-  Verifies that relative file paths linked in `SKILL.md` resolve to files
-  that exist on the filesystem.
-* **`--check-trailing-whitespace`**:
-  Checks for trailing whitespace in `SKILL.md` files.
-* **`--fix`**:
-  Applies automatic fixes to disk for fixable lint violations,
-  such as rewriting absolute file paths into portable relative paths
-  or removing trailing whitespace.
-  Combine with `--dry-run` to preview proposed diffs without modifying files.
+You can pass additional flags to customize validation. For all available flags
+and automatic fix options, run `dart run skills_lint --help` or consult the
+[`package:skills_lint` documentation]({{site.pub-pkg}}/skills_lint).
 
 For example, to validate your package's `skills/` directory with package
 naming and relative path checks enabled, run the following command:
@@ -240,8 +231,8 @@ $ dart run skills_lint --skills-directory skills/ --published-skill-name --check
 To enforce consistent rules across local runs and continuous integration (CI)
 without passing flags every time, create a `skills_lint.yaml` file at the root
 of your package.
-The following example configures global rules, skill directories,
-and an individual skill:
+Start from the following recommended configuration and adjust the paths
+for your package:
 
 ```yaml
 # skills_lint.yaml
@@ -253,13 +244,11 @@ skills_lint:
     - path: "skills/"
       rules:
         published-skill-name: error
-    - path: "~/.agents/skills"
-      ignore_file: "~/.agents/skills/ignore.json"
+    - path: ".agents/skills/"
   individual_skills:
     - path: "my_custom_standalone_skill"
       rules:
         check-trailing-whitespace: warning
-      ignore_file: "my_ignores.json"
 ```
 
 After you add the `skills_lint.yaml` file, run the linter with no arguments:
@@ -273,39 +262,15 @@ for details on [rule precedence]({{site.pub-pkg}}/skills_lint#rule-precedence),
 [built-in rules]({{site.pub-pkg}}/skills_lint#built-in-rules),
 and [custom rule authoring]({{site.pub-pkg}}/skills_lint#3-custom-rules).
 
-### Automate linting in CI
+### Automate linting with `dart test`
 
-To prevent skill regressions as your package evolves,
-add `skills_lint` to your CI workflow.
+To catch invalid skills automatically during local test runs and in your
+existing `dart test` CI workflow, add a test under `test/` that runs
+`skills_lint` against your `skills_lint.yaml` configuration and fails
+when the linter reports errors.
 
-Create a `.github/workflows/lint-skills.yml` file to install `skills_lint`
-and validate your skills on every push and pull request in GitHub Actions:
-
-```yaml
-# .github/workflows/lint-skills.yml
-name: Lint Agent Skills
-on:
-  push:
-    branches: [main]
-  pull_request:
-
-permissions: read-all
-
-jobs:
-  lint-skills:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dart-lang/setup-dart@v1
-      - run: dart install skills_lint
-      - run: skills_lint --skills-directory <skills_directory>
-```
-
-Replace `<skills_directory>` with the path to your skills directory,
-such as `skills/` or `.agents/skills/`.
-
-To run `skills_lint` in a Git pre-commit hook,
-consult [Recipes]({{site.pub-pkg}}/skills_lint#recipes)
+For standalone CI workflows or Git pre-commit hooks, consult
+[Recipes]({{site.pub-pkg}}/skills_lint#recipes)
 in the `package:skills_lint` documentation.
 
 ## Test skills locally before publishing
