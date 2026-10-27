@@ -170,6 +170,105 @@ and skills published for your package consumers:
 | `skills/` | Package consumers | Public skills bundled with your package and installed with `dart run skills@ get`. |
 | `.agents/skills/` | Package maintainers | Internal skills used while developing the repository. Not distributed to consumers. |
 
+## Validate and lint skills
+
+Before you publish your package,
+use [`package:skills_lint`]({{site.pub-pkg}}/skills_lint) to validate your
+skills against the [Agent Skills specification][agentskills].
+The linter checks `SKILL.md` YAML frontmatter, directory structure,
+package naming conventions, and relative file paths to keep your skill
+definitions valid and ready for AI assistants to use.
+
+Add `skills_lint` to your package's `dev_dependencies`:
+
+```console
+$ dart pub add dev:skills_lint
+```
+
+### Set up with an agent
+
+After you add `skills_lint` as a dev dependency, install its bundled skills
+with `dart run skills@ get`. Then provide your AI coding agent the following
+prompt:
+
+```text
+Use the skills-lint-setup skill to set up skills_lint in this package
+so that `dart test` fails when a skill in skills/ is invalid. Then use
+the skills-lint-validation skill to run the linter and fix any failures.
+```
+
+To configure and run `skills_lint` manually instead, you can pass command-line
+flags or create a `skills_lint.yaml` file.
+
+### Run with command-line flags
+
+To validate the skills in a directory, run the following command:
+
+```console
+$ dart run skills_lint --skills-directory <skills_directory>
+```
+
+Replace `<skills_directory>` with the path to your skills directory,
+such as `skills/`.
+
+You can pass additional flags to customize validation. For all available flags
+and automatic fix options, run `dart run skills_lint --help` or consult the
+[`package:skills_lint` documentation]({{site.pub-pkg}}/skills_lint).
+
+For example, to validate your package's `skills/` directory with package
+naming and relative path checks enabled, run the following command:
+
+```console
+$ dart run skills_lint --skills-directory skills/ --published-skill-name --check-relative-paths
+```
+
+### Configure with a YAML file
+
+To enforce consistent rules across local runs and continuous integration (CI)
+without passing flags every time, create a `skills_lint.yaml` file at the root
+of your package.
+Start from the following recommended configuration and adjust the paths
+for your package:
+
+```yaml
+# skills_lint.yaml
+skills_lint:
+  rules:
+    check-relative-paths: error
+    check-absolute-paths: error
+  directories:
+    - path: "skills/"
+      rules:
+        published-skill-name: error
+    - path: ".agents/skills/"
+  individual_skills:
+    - path: "my_custom_standalone_skill"
+      rules:
+        check-trailing-whitespace: warning
+```
+
+After you add the `skills_lint.yaml` file, run the linter with no arguments:
+
+```console
+$ dart run skills_lint
+```
+
+Consult the [`package:skills_lint` documentation]({{site.pub-pkg}}/skills_lint)
+for details on [rule precedence]({{site.pub-pkg}}/skills_lint#rule-precedence),
+[built-in rules]({{site.pub-pkg}}/skills_lint#built-in-rules),
+and [custom rule authoring]({{site.pub-pkg}}/skills_lint#3-custom-rules).
+
+### Automate linting with `dart test`
+
+To catch invalid skills automatically during local test runs and in your
+existing `dart test` CI workflow, add a test under `test/` that runs
+`skills_lint` against your `skills_lint.yaml` configuration and fails
+when the linter reports errors.
+
+For standalone CI workflows or Git pre-commit hooks, consult
+[Recipes]({{site.pub-pkg}}/skills_lint#recipes)
+in the `package:skills_lint` documentation.
+
 ## Test skills locally before publishing
 
 Before publishing your package to pub.dev,
@@ -216,4 +315,5 @@ by running `dart run skills@ get`.
 ## Related links
 
 * [`package:skills` on pub.dev]({{site.pub-pkg}}/skills)
+* [`package:skills_lint` on pub.dev]({{site.pub-pkg}}/skills_lint)
 * [Agent Skills specification][agentskills]
