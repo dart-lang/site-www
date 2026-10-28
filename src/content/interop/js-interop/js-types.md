@@ -11,16 +11,16 @@ nextpage:
 ---
 
 Dart values and JS values belong to separate language domains. When compiling to
-[Wasm][], they execute in separate *runtimes* as well. As such, you should treat JS
+[Wasm][], they execute in separate *runtimes* as well. Treat JS
 values as foreign types. To provide Dart types for JS values,
 [`dart:js_interop`] exposes a set of types prefixed with `JS` called "JS types".
 These types are used to distinguish between Dart values and JS values at
 compile-time.
 
 Importantly, these types are reified differently based on whether you compile to
-Wasm or JS. This means that their runtime type will differ, and therefore you
-[can't use `is` checks and `as` casts](#compatibility-type-checks-and-casts).
-In order to interact with and examine these JS values, you should use
+Wasm or JS. This means that their runtime types differ, so you
+[can't use `is` checks or `as` casts](#compatibility-type-checks-and-casts).
+To interact with and examine JS values, use
 [`external`] interop members or [conversions](#conversions).
 
 ## Type hierarchy
@@ -33,51 +33,24 @@ JS types form a natural type hierarchy:
     - `JSFunction`
       - `JSExportedDartFunction`, which represents a Dart callback that was
       converted to a JS function
-    - `JSArray`, which implements `JSIterable`
-    - `JSIterable` (and `JSIterableProtocol`),
-      which represents a JS object that implements the [JS iterable protocol][]
-      (such as `JSArray` and `JSString`)
-    - `JSIterator` (and `JSIteratorProtocol` / `JSIteratorResult`),
-      which represents a JS iterator
-    - `JSDisposableProtocol`,
-      which represents a JS object that implements the
-      explicit resource management (`Symbol.dispose`) protocol
+    - `JSArray`
+    - `JSIterable` and `JSIterator`
+    - `JSDisposableProtocol`
     - `JSPromise`
     - `JSDataView`
     - `JSTypedArray`
       - JS typed arrays like `JSUint8Array`
-    - `JSBoxedDartObject`, which allows users to box and pass Dart values
+    - `JSBoxedDartObject`, which boxes Dart values so you can pass them
       opaquely within the same Dart runtime
-      - From Dart 3.4 onwards, the type `ExternalDartReference` in
-      `dart:js_interop` also allows users to pass Dart values opaquely, but is
-      *not* a JS type. Learn more about the tradeoffs between each option
-      [here](#jsboxeddartobject-vs-externaldartreference).
+      - From Dart 3.4 onwards, `ExternalDartReference` in
+      `dart:js_interop` also passes Dart values opaquely, but is
+      *not* a JS type. To compare the two options, see
+      [`JSBoxedDartObject` vs `ExternalDartReference`](#jsboxeddartobject-vs-externaldartreference).
 
-You can find the definition of each type in the [`dart:js_interop` API docs].
-
-### Built-in type helpers
-
-Several built-in JS types expose static and instance members
-for common JavaScript operations:
-
-- **`JSPromise`**: Use `JSPromise.resolve(value)` and `JSPromise.reject(reason)`
-  to create resolved or rejected promises directly,
-  without constructing a Dart `Future` first.
-- **`JSArray`**: Use `JSArray.from(arrayLike)` to create a shallow-copied
-  `JSArray` from a JS iterable or array-like object,
-  and `JSArray.fromAsync(arrayLike)` to asynchronously create a
-  `JSPromise<JSArray<T>>` from an async iterable or an array-like object
-  that contains promises.
-- **`JSFunction`**: Use the `JSFunction.length` (`int`) and
-  `JSFunction.name` (`String`) getters
-  to inspect a JS function's declared parameter count and name.
-- **`JSSymbol`**: Construct unique symbols with `JSSymbol([description])`,
-  look up or register shared symbols in the global symbol registry with
-  `JSSymbol.forKey(key)`,
-  inspect `description` and `key`,
-  and access standard well-known symbols through static getters
-  such as `JSSymbol.iterator`, `JSSymbol.asyncIterator`,
-  `JSSymbol.toPrimitive`, and `JSSymbol.toStringTag`.
+You can find the definition of each type and its built-in helpers
+(such as `JSPromise.resolve` and `JSPromise.reject`, `JSArray.fromAsync`,
+`JSFunction.length` and `JSFunction.name`,
+and well-known `JSSymbol` constants) in the [`dart:js_interop` API docs].
 
 {% comment %}
 TODO (srujzs): Should we add a tree diagram instead for JS types?
@@ -85,8 +58,8 @@ TODO (srujzs): Should we add a tree diagram instead for JS types?
 
 ## Conversions
 
-To use a value from one domain to another, you will likely want to *convert* the
-value to the corresponding type of the other domain. For example, you might want
+To use a value from one domain in the other, *convert* it
+to the corresponding type. For example, you might want
 to convert a Dart `List<JSString>` into a JS array of strings, which is
 represented by the JS type `JSArray<JSString>`, so that you can pass the array
 to a JS interop API.
@@ -117,8 +90,7 @@ Generally, the conversion table looks like the following:
 | `JSExportedDartFunction`                                       | `Function`                                                             |
 | `JSArray<T extends JSAny?>`                                    | `List<T extends JSAny?>`                                               |
 | `JSArray<JSNumber>`, `JSArray<JSBoolean>`, `JSArray<JSString>` | `List<num>`, `List<int>`, `List<double>`, `List<bool>`, `List<String>` |
-| `JSIterable<T extends JSAny?>`                                 | `Iterable<T extends JSAny?>`                                           |
-| `JSIterator<T extends JSAny?>`                                 | `Iterator<T extends JSAny?>`                                           |
+| `JSIterable<T extends JSAny?>`, `JSIterator<T extends JSAny?>` | `Iterable<T extends JSAny?>`, `Iterator<T extends JSAny?>`             |
 | `JSPromise<T extends JSAny?>`                                  | `Future<T extends JSAny?>`                                             |
 | `JSAny?` (`JSPromise` or value)                                | `FutureOr<T extends JSAny?>`                                           |
 | Typed arrays like `JSUint8Array`                               | Typed lists from `dart:typed_data`                                     |
@@ -126,6 +98,28 @@ Generally, the conversion table looks like the following:
 | `ExternalDartReference`                                        | Opaque Dart value                                                      |
 
 {:.table .table-striped}
+
+While most conversions use `.toJS` and `.toDart`, some types provide
+more specific conversion members:
+
+- Convert a primitive `List` (`num`, `int`, `double`, `bool`, or `String`,
+  including nullable elements) to a `JSArray` with `.toJS`, and convert back
+  to a typed Dart list using `toDartDoubleList`, `toDartIntList`,
+  `toDartBoolList`, or `toDartStringList`.
+- Iterate lazily across the JS boundary without copying into a `List` or
+  `JSArray` using `toJSIterable`, `toDartIterable`, `toJSIterator`, and
+  `toDartIterator`.
+- Convert between `FutureOr<T>` and `JSAny?` (when a JS API accepts or
+  returns either a synchronous value or a `Promise`) using
+  `toJSPromiseOrValue` and `toDartFutureOr`. When a `Future` converted with
+  `.toJS` fails, `JSAny` errors reject the `JSPromise` directly, while other
+  Dart errors are wrapped in a JS `Error` with `error`
+  ([`JSBoxedDartObject`]) and `stack` properties.
+- Export Dart callbacks with [`Function.toJS`] or
+  [`Function.toJSCaptureThis`] (including `async` callbacks returning
+  `Future<T>`), or export variadic callbacks that take up to four fixed
+  parameters and a trailing `JSArray` rest parameter using `toJSVarArgs` or
+  `toJSCaptureThisVarArgs`.
 
 :::warning
 Compiling to JavaScript versus [Wasm][] can introduce inconsistencies in
@@ -142,123 +136,13 @@ the same. Typed array conversions have a similar limitation. Look up the
 specific conversion function for more details.
 :::
 
-### Primitive list and `JSArray` conversions
-
-In addition to converting between `List<T extends JSAny?>` and `JSArray<T>`
-with `.toJS` and `.toDart`,
-you can convert directly between primitive Dart lists and `JSArray`:
-
-- **Dart to JS**: Call `.toJS` on `List<num>`, `List<String>`, or `List<bool>`
-  (as well as lists with nullable elements:
-  `List<num?>`, `List<String?>`, and `List<bool?>`).
-- **JS to Dart**: Call `.toDartDoubleList` or `.toDartIntList` on
-  `JSArray<JSNumber>`,
-  `.toDartStringList` on `JSArray<JSString>`,
-  or `.toDartBoolList` on `JSArray<JSBoolean>`
-  (as well as arrays with nullable elements like `JSArray<JSNumber?>`).
-
-```dart
-final JSArray<JSNumber> jsNums = <int>[1, 2, 3].toJS;
-final List<int> dartInts = jsNums.toDartIntList;
-
-final JSArray<JSString?> jsStrings = <String?>['a', null, 'b'].toJS;
-final List<String?> dartStrings = jsStrings.toDartStringList;
-```
-
-When compiling to JavaScript,
-these conversions return a lazy cast-list view
-backed by the original list or array.
-When compiling to [Wasm][],
-they eagerly copy the elements into a new `JSArray` or `List`.
-
-### Iterable and iterator conversions
-
-To iterate lazily across the JS boundary
-without copying elements into a `List` or `JSArray`,
-convert between Dart and JS iterables and iterators:
-
-- Use `Iterable<T>.toJSIterable` and `JSIterable<T>.toDartIterable`
-  to convert between `Iterable<T>` and `JSIterable<T>`.
-- Use `Iterator<T>.toJSIterator` and `JSIterator<T>.toDartIterator`
-  to convert between `Iterator<T>` and `JSIterator<T>`.
-
-### `Future`, `JSPromise`, and `FutureOr` conversions
-
-Use `Future.toJS` and `JSPromise.toDart`
-to convert between Dart `Future`s and JS `Promise`s.
-
-When a `Future` converted with `.toJS` fails:
-
-- If the error is already a JS value (`JSAny`),
-  the resulting `JSPromise` rejects directly with that unwrapped JS value.
-- Otherwise, the `JSPromise` rejects with a JS `Error`
-  that wraps the Dart error.
-  The rejected `Error` exposes the original Dart error
-  as a [`JSBoxedDartObject`][] on its `error` property,
-  and the Dart stack trace as a `String` on its `stack` property.
-
-When working with JS APIs that accept or return
-either a synchronous value or a `Promise` (a `thenable`),
-use the `FutureOr` conversion helpers:
-
-- `FutureOr<T>.toJSPromiseOrValue` converts a `Future<T>` to a `JSPromise<T>`
-  using `.toJS`,
-  or returns a synchronous `T` value directly as `JSAny?`.
-- `JSAny?.toDartFutureOr` converts a `JSPromise` to a `Future<JSAny?>`
-  using `.toDart`,
-  or returns any other JS value synchronously.
-
-### Function conversions: async and variadic callbacks
-
-Use [`Function.toJS`][]
-(or [`Function.toJSCaptureThis`][] when you need to capture
-the JS `this` binding as the first parameter)
-to wrap a Dart function as a [`JSExportedDartFunction`][].
-
-#### Async callbacks
-
-As of Dart 3.14, `Function.toJS` and `Function.toJSCaptureThis`
-support Dart functions without optional positional parameters
-that return `Future<T>`,
-where `T` is `void` or a subtype of `JSAny?`.
-The exported JS function automatically converts
-the returned `Future` into a `JSPromise`:
-
-```dart
-Future<JSString> fetchGreeting(JSString name) async {
-  await Future<void>.delayed(const Duration(milliseconds: 10));
-  return 'Hello, ${name.toDart}!'.toJS;
-}
-
-// Produces a JS function `(name) => Promise<string>`.
-final JSExportedDartFunction jsFetchGreeting = fetchGreeting.toJS;
-```
-
-#### Variadic callbacks
-
-Standard `Function.toJS` supports functions with up to five fixed parameters.
-To export a Dart callback that accepts a variable number of arguments in JS,
-use `toJSVarArgs` (or `toJSCaptureThisVarArgs`).
-The Dart function can take up to four fixed leading parameters,
-followed by a trailing `JSArray<E>` parameter
-that receives all remaining arguments:
-
-```dart
-void logItems(JSString prefix, JSArray<JSAny?> rest) {
-  print('${prefix.toDart}: ${rest.toDart}');
-}
-
-// Produces a JS function `(prefix, ...rest) => logItems(prefix, rest)`.
-final JSExportedDartFunction jsLogItems = logItems.toJSVarArgs;
-```
-
 ## Requirements on `external` declarations and `Function.toJS`
 
-In order to ensure type safety and consistency, the compiler places requirements
-on what types can flow into and out of JS. Passing arbitrary Dart values into JS
-is not allowed. Instead, the compiler requires users to use a compatible interop
-type, `ExternalDartReference`, or a primitive, which is then implicitly
-converted by the compiler. For example, these declarations are allowed:
+To ensure type safety and consistency, the compiler restricts
+which types can flow into and out of JS. You can't pass arbitrary Dart values
+into JS; instead, use a compatible interop
+type, `ExternalDartReference`, or a primitive, which the compiler implicitly
+converts. For example, these declarations are allowed:
 
 ```dart tag=good
 @JS()
@@ -298,15 +182,15 @@ These same requirements exist when you use [`Function.toJS`],
 [`Function.toJSCaptureThis`], `toJSVarArgs`, or `toJSCaptureThisVarArgs`
 to make a Dart function callable in JS.
 The values that flow into and out of the callback
-must be a compatible interop type, `ExternalDartReference`, or a primitive
-(or, for `toJS` and `toJSCaptureThis` without optional positional parameters,
-a return type of `Future<T>` where `T` is `void` or a subtype of `JSAny?`).
+must meet the same requirements
+(additionally, functions converted with `toJS` or `toJSCaptureThis`
+without optional positional parameters can return `Future<T>`,
+where `T` is `void` or a subtype of `JSAny?`).
 
 If you use a Dart primitive like `String`, an implicit conversion happens in the
 compiler to convert that value from a JS value to a Dart value. If performance
-is critical and you don’t need to examine the contents of the string, then using
-`JSString` instead to avoid the conversion cost might make sense like in the
-second example.
+is critical and you don't need to examine the string's contents, use
+`JSString` instead (as in the second example) to avoid the conversion cost.
 
 ## Compatibility, type checks, and casts
 
@@ -361,17 +245,13 @@ a value is any interop type:
 ```dart tag=good
 void f(JSAny a) {
   if (a.isA<JSString>()) {} // `typeofEquals('string')`
-  if (a.isA<JSArray>()) {} // `Array.isArray(a)` or `instanceOfString('Array')`
+  if (a.isA<JSArray>()) {} // `Array.isArray(a)`
   if (a.isA<CustomInteropType>()) {} // `instanceOfString('CustomInteropType')`
 }
 ```
 
 Depending on the type parameter,
 the compiler transforms the call into the appropriate type-check for that type.
-For `JSArray`, `isA<JSArray>()` checks both `Array.isArray` and
-`instanceof Array`,
-so it also recognizes arrays created across different JS realms
-(such as an `iframe`).
 
 To avoid invalid type checks with JS interop types,
 enable the [`invalid_runtime_check_with_js_interop_types`][] lint rule.
@@ -381,9 +261,9 @@ enable the [`invalid_runtime_check_with_js_interop_types`][] lint rule.
 ## `null` vs `undefined`
 
 JS has both a `null` and an `undefined` value. This is in contrast with Dart,
-which only has `null`. In order to make JS values more ergonomic to use, if an
-interop member were to return either JS `null` or `undefined`, the compiler maps
-these values to Dart `null`. Therefore a member like `value` in the following
+which only has `null`. To make JS values more ergonomic to use, when an
+interop member returns either JS `null` or `undefined`, the compiler maps
+the value to Dart `null`. Therefore a member like `value` in the following
 example can be interpreted as returning a JS object, JS `null`, or `undefined`:
 
 ```dart
@@ -391,8 +271,8 @@ example can be interpreted as returning a JS object, JS `null`, or `undefined`:
 external JSObject? get value;
 ```
 
-If the return type was not declared as nullable, then the program will throw an
-error if the value returned was JS `null` or `undefined` to ensure soundness.
+To ensure soundness, if a non-nullable interop member returns JS `null` or
+`undefined`, the program throws an error.
 
 :::warning
 There is a subtle inconsistency with regards to `undefined` between compiling to
@@ -424,18 +304,16 @@ type.
 Use `JSBoxedDartObject` if you need a JS type or if you need extra checks to
 make sure Dart values don't get passed to another Dart runtime. For example, if
 the Dart object needs to be placed in a `JSArray` or passed to an API that
-accepts a `JSAny`, use `JSBoxedDartObject`. Use `ExternalDartReference`
-otherwise as it will be faster.
+accepts a `JSAny`, use `JSBoxedDartObject`. Otherwise, use
+`ExternalDartReference` because it's faster.
 
 See [`toExternalReference`] and [`toDartObject`] to convert to and from an
 `ExternalDartReference`.
 
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [`external`]: /language/functions#external
-[JS iterable protocol]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol
 [`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html
 [`Function.toJSCaptureThis`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJSCaptureThis.html
-[`JSExportedDartFunction`]: {{site.dart-api}}/dart-js_interop/JSExportedDartFunction-extension-type.html
 [`dart:js_interop` API docs]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html#extension-types
 [`typeofEquals`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
 [`instanceOfString`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html

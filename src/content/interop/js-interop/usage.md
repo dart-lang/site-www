@@ -59,11 +59,11 @@ extension type Array._(JSArray<JSAny?> _) implements JSArray<JSAny?> {
 }
 ```
 
-In most cases, you'll likely declare an interop type using
-`JSObject` as the [representation type][], because you're likely
-interacting with JS objects which don't have an interop type provided by Dart.
+In most cases, declare an interop type using
+`JSObject` as the [representation type][] when
+interacting with JS objects that don't have an interop type provided by Dart.
 
-Interop types should also generally [implement][] their representation type so
+Interop types should also [implement][] their representation type so
 that they can be used where the representation type is expected,
 like in many APIs provided by [`package:web`][].
 
@@ -78,9 +78,9 @@ like in many APIs provided by [`package:web`][].
 
 ## Interop members
 
-[`external`][] interop members provide an idiomatic syntax for JS members.
-They allow you to write a Dart type signature for its
-arguments and return value.
+[`external`][] interop members provide an idiomatic syntax for JS members,
+letting you write a Dart type signature for their
+arguments and return values.
 The types that can be written in the signature of
 these members have [restrictions][].
 The JS API the interop member corresponds to is determined by a combination of
@@ -114,8 +114,8 @@ external set name(String value);
 external bool isNameEmpty();
 ```
 
-Here, there exists a property `name` and a function `isNameEmpty` that
-are exposed in the global scope. 
+Here, the `name` property and `isNameEmpty` function
+are exposed in the global scope.
 To access them, you use top-level interop members.
 To get and set `name`, declare and use
 an interop getter and setter with the same name.
@@ -308,8 +308,8 @@ extension <T extends JSObject> on T {
 }
 ```
 
-The semantics of calling `push` are identical to what it would have been if
-it was in the definition of `Array` instead.
+Calling `push` behaves the same as if
+it were declared directly in `Array`.
 Similarly, calling `clone()` on any subtype of `JSObject`
 invokes the JS `clone` method
 and preserves the receiver's static type `T`.
@@ -317,7 +317,7 @@ Extensions can have `external` instance members and operators, but
 can't have `external` `static` members or constructors.
 Like with interop types, you can
 write any non-`external` members in the extension.
-These extensions are useful for when an interop type doesn't
+Extensions are useful when an interop type doesn't
 expose the `external` member you need, and you don't want to
 create a new interop type.
 
@@ -327,8 +327,8 @@ create a new interop type.
 
 `external` interop methods can only contain positional and optional arguments.
 This is because JS members only take positional arguments.
-The one exception is object literal constructors,
-where they can contain only named arguments.
+The only exception is object literal constructors,
+which accept only named arguments.
 
 Unlike with non-`external` methods, optional arguments don't get
 replaced with their default value, but are instead omitted.
@@ -340,8 +340,8 @@ external int push(JSAny? any, [JSAny? any2]);
 
 Calling `array.push(0.toJS)` in Dart results in
 a JS invocation of `array.push(0.toJS)` and *not* `array.push(0.toJS, null)`.
-This allows users to not have to write multiple interop members for
-the same JS API to avoid passing in `null`s.
+This avoids having to write multiple interop members for
+the same JS API just to omit `null` arguments.
 If you declare a parameter with an explicit default value, you
 get a warning that the value will be ignored.
 
@@ -362,7 +362,7 @@ a JS interop member or type, and optionally renames or namespaces it in JS:
 It's sometimes useful to refer to a JS property with
 a different name than the one written.
 For example, if you want to write two `external` APIs that
-point to the same JS property, you'd need to
+point to the same JS property, you need to
 write a different name for at least one of them.
 Similarly, if you want to define multiple interop types that
 refer to the same JS interface, you need to rename at least one of them.
@@ -394,15 +394,9 @@ extension type JSDate._(JSObject _) implements JSObject {
 
 Calling `JSDate()` results in a JS invocation of `new Date()`.
 Similarly, calling `JSDate.now()` results in a JS invocation of `Date.now()`.
-
-:::note
-You can't place a `@JS()` annotation
-on an `external` constructor or factory of an interop extension type.
 Because constructors always invoke the enclosing extension type's JS name,
-annotating a constructor directly produces a compile-time error
-([`js_interop_extension_constructor_js_annotation_has_no_effect`][]).
-Instead, place `@JS('...')` on the extension type declaration itself.
-:::
+you can't place a `@JS()` annotation on an `external` constructor or factory
+of an interop extension type—annotate the extension type declaration instead.
 
 ### Namespace a library
 
@@ -480,7 +474,6 @@ If there's no value provided to `@JS()` or the value is empty,
 no renaming occurs.
 
 [`@JS()`]: {{site.dart-api}}/dart-js_interop/JS-class.html
-[`js_interop_extension_constructor_js_annotation_has_no_effect`]: /tools/diagnostics/js_interop_extension_constructor_js_annotation_has_no_effect
 
 <a id="exporting-dart-functions-and-objects-to-js" aria-hidden="true"></a>
 ## Export Dart functions and objects to JS {:#export}
@@ -489,7 +482,8 @@ The preceding sections show how to call JS members from Dart.
 It's also useful to *export* Dart code so that it can be used in JS.
 To export a Dart function to JS, first convert it using [`Function.toJS`][]
 (or `toJSVarArgs` for variadic callbacks),
-which wraps the Dart function with a JS function.
+which wraps the Dart function with a JS function
+(and automatically converts any returned `Future` into a `JSPromise`).
 Then, pass the wrapped function to JS through an interop member.
 At that point, it's ready to be called by other JS code.
 
@@ -533,7 +527,7 @@ mock JS values, check out [How to mock JavaScript interop objects][].
 
 ## `dart:js_interop` and `dart:js_interop_unsafe`
 
-[`dart:js_interop`][] contains all the necessary members you need,
+[`dart:js_interop`][] contains the core members you need,
 including `@JS`, JS types, conversion functions, and various utility functions.
 Utility functions include:
 
@@ -549,12 +543,14 @@ Utility functions include:
   import modules dynamically as a `JSObject`.
 - [`isA`][], which allows you to check if a JS-interop value is
   an instance of the JS type specified by the type argument.
-- `jsIdentical(a, b)`, which checks whether two JS values are identical
-  using JavaScript's `Object.is` semantics across both JS and Wasm compilers.
-- `jsThrow(error)`, which throws an arbitrary `JSAny` value directly
-  in JavaScript (`throw error`).
+- `jsIdentical`, which checks whether two JS values are identical
+  using JavaScript's `Object.is` semantics.
+- `jsThrow`, which throws an arbitrary `JSAny` value in JavaScript.
 
 More utilities might be added to this library in the future.
+For additional standard ECMAScript built-in objects beyond the core types in
+`dart:js_interop`—such as `JSError`, `JSDate`, `JSMap`, `JSSet`, `JSRecord`,
+and `JSAsyncDisposableProtocol`—use [`package:js_interop`][].
 
 [`dart:js_interop_unsafe`][] contains members that allow
 you to look up properties dynamically. For example:
@@ -573,27 +569,6 @@ Avoid using `dart:js_interop_unsafe` if possible.
 It makes security compliance more difficult to guarantee and
 might lead to violations, which is why it can be "unsafe".
 :::
-
-### `package:js_interop`
-
-For additional standard ECMAScript built-in objects
-beyond the core types in `dart:js_interop`,
-use [`package:js_interop`][].
-It provides interop types and Dart conversion helpers
-for common JavaScript objects and protocols, including:
-
-- **`JSError` and error subclasses**: Interop types for JavaScript `Error`
-  objects and standard error types.
-- **`JSDate`**: Interop type for JavaScript `Date` objects,
-  with conversions to and from Dart `DateTime`.
-- **`JSMap` and `JSSet` (and `JSSetLike`)**: Interop types for JavaScript `Map`
-  and `Set` collections,
-  with view and copy conversions to and from Dart `Map` and `Set`.
-- **`JSRecord`, `JSSymbolicRecord`, and `JSPair`**: Typed wrappers for plain
-  JavaScript key-value objects and two-element tuple arrays.
-- **`JSAsyncDisposableProtocol`**: Interop type for JavaScript objects
-  that implement the asynchronous explicit resource management
-  (`Symbol.asyncDispose`) protocol.
 
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [`globalContext`]: {{site.dart-api}}/dart-js_interop/globalContext.html
