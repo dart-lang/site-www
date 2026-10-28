@@ -219,5 +219,174 @@ void main() {
         '&versions=3.13,3.12&q=primary',
       );
     });
+
+    test('setVersionRange selects range and serializes from/to fragment', () {
+      notifier.setVersionRange(
+        from: Version(3, 10, 0),
+        to: Version(3, 12, 0),
+      );
+
+      expect(notifier.fromVersion, Version(3, 10, 0));
+      expect(notifier.toVersion, Version(3, 12, 0));
+      expect(
+        notifier.selectedVersions,
+        unorderedEquals([
+          Version(3, 10, 0),
+          Version(3, 11, 0),
+          Version(3, 12, 0),
+        ]),
+      );
+      expect(notifier.toUrlFragment(), 'from=3.10&to=3.12');
+
+      // Toggling an individual version clears fromVersion/toVersion
+      // and falls back to discrete versions=... serialization.
+      notifier.setVersion(Version(3, 11, 0), false);
+      expect(notifier.fromVersion, isNull);
+      expect(notifier.toVersion, isNull);
+      expect(notifier.toUrlFragment(), 'versions=3.12,3.10');
+    });
+
+    test('setVersionRange clamps an inverted range to the from version', () {
+      notifier.setVersionRange(from: Version(3, 12, 0), to: Version(3, 10, 0));
+
+      expect(notifier.fromVersion, Version(3, 12, 0));
+      expect(notifier.toVersion, Version(3, 12, 0));
+      expect(notifier.selectedVersions, {Version(3, 12, 0)});
+    });
+
+    test('hasVersionFilter reflects both discrete and range selection', () {
+      expect(notifier.hasVersionFilter, isFalse);
+
+      notifier.setVersion(Version(3, 13, 0), true);
+      expect(notifier.hasVersionFilter, isTrue);
+
+      // A range with no matching available versions still counts as active
+      // so the UI can offer to clear it.
+      notifier.setVersionRange(from: Version(9, 0, 0));
+      expect(notifier.selectedVersions, isEmpty);
+      expect(notifier.hasVersionFilter, isTrue);
+
+      notifier.reset();
+      expect(notifier.hasVersionFilter, isFalse);
+    });
+
+    test('explicit versions= wins over from/to when both are present', () {
+      notifier.parseAndApplyUrlFragment('#versions=3.13&from=3.10&to=3.12');
+
+      // Both are applied to the selection, but the range isn't recorded so
+      // the fragment round-trips back to the discrete form.
+      expect(notifier.fromVersion, isNull);
+      expect(notifier.toVersion, isNull);
+      expect(
+        notifier.selectedVersions,
+        unorderedEquals([
+          Version(3, 10, 0),
+          Version(3, 11, 0),
+          Version(3, 12, 0),
+          Version(3, 13, 0),
+        ]),
+      );
+      expect(notifier.toUrlFragment(), 'versions=3.13,3.12,3.11,3.10');
+    });
+
+    test('updateFacetCounts ignores its own facet but honors the others', () {
+      final sampleEntries = [
+        ChangelogEntry(
+          version: Version.parse('3.13.0'),
+          area: 'Language',
+          description: 'Primary constructors.',
+          tags: {ChangelogTag.newTag},
+        ),
+        ChangelogEntry(
+          version: Version.parse('3.13.0'),
+          area: 'Tools',
+          description: 'Remove the legacy analyzer flag.',
+          tags: {ChangelogTag.breaking},
+        ),
+        ChangelogEntry(
+          version: Version.parse('3.12.0'),
+          area: 'Language',
+          description: 'Tighten a type promotion rule.',
+          tags: {ChangelogTag.breaking},
+        ),
+      ];
+
+      // No filters: plain totals.
+      expect(notifier.updateFacetCounts(sampleEntries, ''), isTrue);
+      expect(notifier.tagCounts, {
+        ChangelogTag.newTag: 1,
+        ChangelogTag.breaking: 2,
+      });
+      expect(notifier.areaCounts, {'Language': 2, 'Tools': 1});
+
+      // Same inputs again: no change, no notification.
+      var notifications = 0;
+      notifier.addListener(() => notifications++);
+      expect(notifier.updateFacetCounts(sampleEntries, ''), isFalse);
+      expect(notifications, 0);
+
+      // Selecting a tag narrows area counts but leaves tag counts intact
+      // so users can still see what switching tags would yield.
+      notifier.setTag(ChangelogTag.breaking, true);
+      notifier.updateFacetCounts(sampleEntries, '');
+      expect(notifier.tagCounts, {
+        ChangelogTag.newTag: 1,
+        ChangelogTag.breaking: 2,
+      });
+      expect(notifier.areaCounts, {'Language': 1, 'Tools': 1});
+
+      // A version filter narrows both.
+      notifier.setVersion(Version(3, 13, 0), true);
+      notifier.updateFacetCounts(sampleEntries, '');
+      expect(notifier.tagCounts, {
+        ChangelogTag.newTag: 1,
+        ChangelogTag.breaking: 1,
+      });
+      expect(notifier.areaCounts, {'Tools': 1});
+    });
+
+    test(
+      'filterEntries performs tokenized AND search across fields and tags',
+      () {
+        final sampleEntries = [
+          ChangelogEntry(
+            version: Version.parse('3.13.0'),
+            area: 'Language',
+            subArea: 'Primary constructors',
+            description: 'Introduce concise primary constructor syntax.',
+            tags: {ChangelogTag.newTag},
+          ),
+          ChangelogEntry(
+            version: Version.parse('3.9.4'),
+            area: 'Tools',
+            subArea: 'Pub',
+            description: 'Fix `dart pub get --example` resolution.',
+            tags: {ChangelogTag.fixed},
+          ),
+        ];
+
+        // Out-of-order multi-token query across description and subArea.
+        final constructorMatches = notifier.filterEntries(
+          sampleEntries,
+          'syntax primary',
+        );
+        expect(constructorMatches, [sampleEntries.first]);
+
+        // Multi-token query matching tag label ("fixed"), subArea ("pub"),
+        // and patch version ("3.9.4").
+        final pubMatches = notifier.filterEntries(
+          sampleEntries,
+          'fixed pub 3.9.4',
+        );
+        expect(pubMatches, [sampleEntries.last]);
+
+        // Multi-token query where one token does not match.
+        final noMatches = notifier.filterEntries(
+          sampleEntries,
+          'primary pub',
+        );
+        expect(noMatches, isEmpty);
+      },
+    );
   });
 }

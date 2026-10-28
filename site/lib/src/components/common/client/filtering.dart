@@ -19,6 +19,7 @@ class CheckboxFilterGroup<T> extends StatelessComponent {
     required this.labelProvider,
     required this.idProvider,
     this.isCheckedProvider,
+    this.countProvider,
     super.key,
   });
 
@@ -46,6 +47,9 @@ class CheckboxFilterGroup<T> extends StatelessComponent {
   /// Overrides [selectedItems] containment check if provided.
   final bool Function(T item)? isCheckedProvider;
 
+  /// Optional provider to display an item count next to the label.
+  final int Function(T item)? countProvider;
+
   @override
   Component build(BuildContext context) {
     return div([
@@ -57,6 +61,7 @@ class CheckboxFilterGroup<T> extends StatelessComponent {
         labelProvider: labelProvider,
         idProvider: idProvider,
         isCheckedProvider: isCheckedProvider,
+        countProvider: countProvider,
       ),
     ]);
   }
@@ -161,6 +166,7 @@ class _FilterCheckboxList<T> extends StatelessComponent {
     required this.labelProvider,
     required this.idProvider,
     this.isCheckedProvider,
+    this.countProvider,
   });
 
   final List<T> items;
@@ -169,12 +175,14 @@ class _FilterCheckboxList<T> extends StatelessComponent {
   final String Function(T item) labelProvider;
   final String Function(T item) idProvider;
   final bool Function(T item)? isCheckedProvider;
+  final int Function(T item)? countProvider;
 
   @override
   Component build(BuildContext context) {
     return ul([
       ...items.map((item) {
         final itemId = 'filter-${idProvider(item)}';
+        final count = countProvider?.call(item);
         return li([
           input(
             type: InputType.checkbox,
@@ -189,7 +197,13 @@ class _FilterCheckboxList<T> extends StatelessComponent {
           ),
           label(
             attributes: {'for': itemId},
-            [.text(labelProvider(item))],
+            [
+              .text(labelProvider(item)),
+              if (count != null) ...[
+                const .text(' '),
+                span(classes: 'filter-count', [.text('($count)')]),
+              ],
+            ],
           ),
         ]);
       }),
@@ -205,6 +219,7 @@ class FilterToolbar extends StatelessComponent {
     required this.searchBar,
     required this.resultCount,
     this.actions = const [],
+    this.middleRows = const [],
     this.trailingActions = const [],
     this.id,
     super.key,
@@ -219,6 +234,9 @@ class FilterToolbar extends StatelessComponent {
   /// List of action components to display in the top row.
   final List<Component> actions;
 
+  /// Additional rows displayed between the top row and the label row.
+  final List<Component> middleRows;
+
   /// List of action components to display in the bottom row.
   final List<Component> trailingActions;
 
@@ -232,6 +250,7 @@ class FilterToolbar extends StatelessComponent {
         searchBar,
         ...actions,
       ]),
+      ...middleRows,
       div(classes: 'label-row', [
         resultCount,
         ...trailingActions,
