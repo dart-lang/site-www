@@ -42,9 +42,8 @@ JS types form a natural type hierarchy:
       - JS typed arrays like `JSUint8Array`
     - `JSBoxedDartObject`, which boxes Dart values so you can pass them
       opaquely within the same Dart runtime
-      - From Dart 3.4 onwards, `ExternalDartReference` in
-      `dart:js_interop` also passes Dart values opaquely, but is
-      *not* a JS type. To compare the two options, see
+      - `ExternalDartReference` in `dart:js_interop` also passes Dart values
+      opaquely, but is *not* a JS type. To compare the two options, see
       [`JSBoxedDartObject` vs `ExternalDartReference`](#jsboxeddartobject-vs-externaldartreference).
 
 You can find the definition of each type and its built-in helpers
@@ -239,7 +238,7 @@ void f(JSAny a) {
 }
 ```
 
-From Dart 3.4 onwards, you can use the [`isA`] helper function to check whether
+You can also use the [`isA`] helper function to check whether
 a value is any interop type:
 
 ```dart tag=good
@@ -295,7 +294,7 @@ but this will likely change in the future. See [#54025] for more details.
 
 ## `JSBoxedDartObject` vs `ExternalDartReference`
 
-From Dart 3.4 onwards, both [`JSBoxedDartObject`] and [`ExternalDartReference`]
+Both [`JSBoxedDartObject`] and [`ExternalDartReference`]
 can be used to pass opaque references to Dart `Object`s through JavaScript.
 However, `JSBoxedDartObject` wraps the opaque reference in a JavaScript object,
 while `ExternalDartReference` is the reference itself and therefore is not a JS
