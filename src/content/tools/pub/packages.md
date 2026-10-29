@@ -91,8 +91,8 @@ If your app depends on a published package, pub downloads that package from the
 For a [Git dependency](/tools/pub/dependencies#git-packages),
 pub clones the Git repository.
 Transitive dependencies are included, too.
-For example, if the `js` package depends on the `test` package, `pub`
-grabs both the `js` package and the `test` package.
+For example, if the `web` package depends on the `test` package, `pub`
+grabs both the `web` package and the `test` package.
 
 Pub creates a
 `package_config.json` file (under the `.dart_tool/` directory)
@@ -102,11 +102,11 @@ to the corresponding package in the system cache.
 
 ## Importing libraries from packages
 
-To import libraries found in packages, 
+To import libraries found in packages,
 use the `package:` prefix:
 
 ```dart
-import 'package:js/js.dart' as js;
+import 'package:web/web.dart' as web;
 import 'package:intl/intl.dart';
 ```
 

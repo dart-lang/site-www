@@ -135,20 +135,20 @@ mypackage
 
 {% render 'linter-rule-mention.md', rules:'library_prefixes' %}
 
-<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g"?>
+<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:web\/web.dart/g; /as js/as web/g"?>
 ```dart tag=good
 import 'dart:math' as math;
 
 import 'package:angular_components/angular_components.dart' as angular_components;
-import 'package:js/js.dart' as js;
+import 'package:web/web.dart' as web;
 ```
 
-<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /as angular_components/as angularComponents/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g; / math/ Math/g;/as js/as JS/g"?>
+<?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /as angular_components/as angularComponents/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:web\/web.dart/g; / math/ Math/g;/as js/as Web/g"?>
 ```dart tag=bad
 import 'dart:math' as Math;
 
 import 'package:angular_components/angular_components.dart' as angularComponents;
-import 'package:js/js.dart' as JS;
+import 'package:web/web.dart' as Web;
 ```
 
 
