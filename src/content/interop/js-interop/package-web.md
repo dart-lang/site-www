@@ -240,8 +240,7 @@ runtime type test will result in different behavior between `dart:html` and
 
 To be able to perform type tests, migrate any `dart:html` code
 using `is` type tests to use [interop methods][] like `instanceOfString`
-or the more convenient and typed [`isA`][] helper
-(available from Dart 3.4 onward).
+or the more convenient and typed [`isA`][] helper.
 The [Compatibility, type checks, and casts][]
 section of the JS types page covers alternatives in detail.
 
@@ -252,6 +251,11 @@ obj.instanceOfString('Window'); // Add
 element is InputElement; // Remove
 element.isA<HTMLInputElement>(); // Add
 ```
+
+To catch invalid runtime type checks and casts with JS interop types
+at analysis time, enable the [`invalid_runtime_check_with_js_interop_types`][]
+lint rule (included in `package:lints/core.yaml`
+starting in [`package:lints`][] 7.0.0).
 
 ### Type signatures
 
@@ -330,6 +334,15 @@ export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
     if (dart.library.js_interop) 'src/hw_web.dart'; // package:web implementation
 ```
+
+:::version-note
+Starting in Dart 3.14, you can pass `--no-deprecated-js-interop`
+when compiling to JavaScript.
+This flag sets `dart.library.html` and the other legacy web library
+conditions to `false`, and disallows importing deprecated web libraries.
+For details, refer to
+[Disallow deprecated JS interop libraries][disallow-legacy].
+:::
 
 ### Virtual dispatch and mocking
 
@@ -452,8 +465,11 @@ Do we have any other package migrations to show off here?
 [stream helpers]: {{site.repo.dart.org}}/web/blob/main/web/lib/src/helpers/events/streams.dart
 [not possible]: /language/extension-types
 [`JSObject`]: {{site.dart-api}}/dart-js_interop/JSObject-extension-type.html
-[`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`isA`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/isA.html
 [restricts]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [#54507]: {{site.repo.dart.sdk}}/issues/54507
 [mocking tutorial]: /interop/js-interop/mock
 [Element MDN documentation]: https://developer.mozilla.org/en-US/docs/Web/API/Element
+[`invalid_runtime_check_with_js_interop_types`]: /tools/linter-rules/invalid_runtime_check_with_js_interop_types
+[`package:lints`]: {{site.pub-pkg}}/lints
+[disallow-legacy]: /interop/js-interop/past-js-interop#disallow-deprecated-js-interop
