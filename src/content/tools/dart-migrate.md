@@ -1,100 +1,53 @@
 ---
 title: dart migrate
 description: >-
-  Command-line tool for migrating Dart packages to newer SDK versions.
+  Command-line tool for migrating Dart projects to newer SDK versions.
 ---
 
 :::version-note
 Support for `dart migrate` was introduced in Dart 3.14.
 :::
 
-The `dart migrate` command updates the minimum Dart SDK version constraint
-in a project's `pubspec.yaml` file and
-applies automated code fixes required by that version change.
+Use the `dart migrate` command to upgrade your Dart project
+(app or package) to a newer [language version][].
+It updates the minimum Dart SDK version constraint (`environment.sdk`)
+in your `pubspec.yaml` file and
+applies any automated code fixes required by that version change.
 
-{% render 'tools/dart-tool-note.md' %}
-
-:::note
-`dart migrate` updates the `environment.sdk` constraint
-in your project's `pubspec.yaml` file and migrates your source code.
-It doesn't upgrade the Dart or Flutter SDK installed on your machine.
-To upgrade your installed SDK,
+`dart migrate` only updates your project's SDK constraint and source code—it
+doesn't upgrade the Dart or Flutter SDK installed on your machine.
+To upgrade your installed SDK first,
 refer to [Get the Dart SDK][] or [`flutter upgrade`][].
-:::
 
-## Migrate a package
+## Migrate a project
 
-To preview proposed migration changes without modifying any files,
-use the `--dry-run` flag:
+Run `dart migrate` from your project's root directory.
+Preview the proposed changes first with `--dry-run`,
+then apply them to `pubspec.yaml` and your source files with `--apply`:
 
 ```console
 $ dart migrate --dry-run
-```
-
-To apply the proposed changes to `pubspec.yaml` and your source files,
-use the `--apply` flag:
-
-```console
 $ dart migrate --apply
 ```
 
-:::tip
-`dart migrate` doesn't check for uncommitted changes in version control.
-Before running `dart migrate --apply`,
-save all open files and commit or stash any uncommitted changes
-so you can easily review or revert the migration diff.
-:::
+Because `dart migrate` doesn't check for uncommitted changes
+in version control, save all open files and commit or stash any
+uncommitted work before running `dart migrate --apply`.
 
-By default, `dart migrate` migrates the package
+### Migrate multiple projects
+
+By default, `dart migrate` migrates the project
 in the current working directory.
-To migrate one or more specific packages,
+To migrate multiple projects at once,
 pass their directory paths as arguments:
 
 ```console
-$ dart migrate --apply pkg_a pkg_b
+$ dart migrate --apply my_app packages/my_pkg
 ```
 
-:::note
-`dart migrate` doesn't automatically migrate all packages
-in a [Pub workspace][].
+`dart migrate` doesn't automatically expand [Pub workspaces][].
 To migrate packages in a workspace,
-pass each package directory path to the command.
-:::
-
-## How migration works
-
-When you run `dart migrate`,
-the tool automatically runs the migration lints and quick fixes
-for the target version—without requiring you to enable them
-in your [`analysis_options.yaml`][] file first.
-It performs the following tasks in order:
-
-1. **Checks package dependencies:**
-   Verifies that your project's dependencies in `pubspec.yaml`
-   are compatible with the target Dart SDK version.
-   If any dependencies are incompatible,
-   the tool stops and reports which packages need to be updated first.
-1. **Prepares code (`prepare`):**
-   Applies automated fixes for code that breaks or changes behavior
-   in the target [language version][].
-1. **Bumps the SDK constraint (`bump`):**
-   Raises the lower Dart SDK version constraint in `pubspec.yaml`
-   and re-analyzes your project under the new language version.
-   By default, `dart migrate` bumps the constraint by one minor version
-   (for example, from `^3.11.0` to `^3.12.0`).
-1. **Applies optional cleanups (`cleanup`):**
-   When requested with `--step=cleanup` or `--step=all`,
-   applies optional fixes that adopt new language features
-   introduced in the target version.
-   If you don't run the `cleanup` step,
-   `dart migrate` lists any available cleanups in its summary output.
-
-`dart migrate` computes all edits in memory
-and only writes changes to disk after the migration succeeds.
-If a step fails, the tool doesn't modify your source files
-or bump `pubspec.yaml`.
-Instead, it outputs a summary of the incompatible dependencies
-or files with errors so you can resolve them manually and re-run the command.
+pass each package's directory path to the command.
 
 ## Options for `dart migrate`
 
@@ -110,15 +63,15 @@ $ dart migrate --help
 
 ### `-n`, `--dry-run`
 
-Preview the proposed changes without modifying any files.
+Preview the proposed migration changes without modifying any files.
 
 ```console
-$ dart migrate --dry-run
+$ dart migrate -n
 ```
 
 ### `--apply`
 
-Apply the proposed changes directly to `pubspec.yaml` and the source files.
+Apply the proposed changes directly to `pubspec.yaml` and your source files.
 
 ```console
 $ dart migrate --apply
@@ -128,22 +81,15 @@ $ dart migrate --apply
 
 Specify the target Dart SDK version to migrate to.
 Without this option, `dart migrate` bumps the lower SDK constraint
-in `pubspec.yaml` by one minor version.
+in `pubspec.yaml` by one minor version
+(for example, from `^3.12.0` to `^3.13.0`).
 The target version can't be newer than the Dart SDK version
 currently installed on your machine.
 
 When you specify a `--target-sdk` version
 that is multiple minor versions ahead,
 `dart migrate` runs the migration incrementally,
-one minor version at a time, until it reaches the target version.
-
-Preview a multi-version migration first with `--dry-run`:
-
-```console
-$ dart migrate --dry-run --target-sdk=3.13.0
-```
-
-Then apply the migration:
+one minor version at a time, until it reaches the target version:
 
 ```console
 $ dart migrate --apply --target-sdk=3.13.0
@@ -151,39 +97,15 @@ $ dart migrate --apply --target-sdk=3.13.0
 
 ### `--step`
 
-Specify which migration steps to run.
+Specify which migration steps to run:
+`prepare`, `bump`, `cleanup`, or `all`
+(for details on each step, refer to [How migration works][]).
 You can pass a single step or a comma-separated list of steps.
 If omitted, `dart migrate` runs `prepare,bump` by default.
 
-The following step values are supported:
-
-| Step | Description |
-| :--- | :--- |
-| `prepare` | Apply fixes that make code ready for the new SDK version. |
-| `bump` | Raise the lower Dart SDK constraint in `pubspec.yaml`. |
-| `cleanup` | Apply optional fixes that adopt features of the new SDK version. |
-| `all` | Run every step (`prepare`, `bump`, and `cleanup`). |
-
-{:.table .table-striped}
-
-For example, to run only the pre-bump preparation fixes on a large codebase
-before bumping the SDK version:
-
-```console
-$ dart migrate --apply --step=prepare
-```
-
-To run the full migration including optional post-bump cleanups:
-
 ```console
 $ dart migrate --apply --step=all
-```
-
-To run only the post-bump cleanup step after you have already bumped
-your SDK version constraint:
-
-```console
-$ dart migrate --apply --step=cleanup
+$ dart migrate --apply --step=prepare
 ```
 
 :::note
@@ -191,9 +113,42 @@ You can't run the `prepare` and `cleanup` steps together
 (`--step=prepare,cleanup`) without also including `bump`.
 :::
 
-## Example
+## How migration works
 
-Suppose your package's `pubspec.yaml` has a minimum SDK constraint of `3.12.0`:
+When you run `dart migrate`,
+the tool automatically runs the relevant migration lints and quick fixes
+for the target version—even if those lints aren't enabled
+in your [`analysis_options.yaml`][] file.
+It performs the following stages in order:
+
+1. **Dependency check:**
+   Verifies that your project's dependencies in `pubspec.yaml`
+   support the target Dart SDK version.
+   If any dependencies are incompatible,
+   the tool stops and reports which packages need to be updated first.
+1. **`prepare` (pre-bump fixes):**
+   Applies automated fixes for code that breaks or changes behavior
+   in the target [language version][] before changing `pubspec.yaml`.
+1. **`bump` (SDK constraint update):**
+   Raises the lower `environment.sdk` constraint in `pubspec.yaml`
+   and re-analyzes your project under the new language version.
+1. **`cleanup` (optional post-bump fixes):**
+   Applies optional fixes that help your code adopt new language features
+   introduced in the target version.
+   By default, `dart migrate` doesn't apply `cleanup` fixes automatically;
+   instead, it lists available cleanups in its summary output
+   so you can choose whether to apply them
+   with `--step=cleanup` or `--step=all`.
+
+If any step fails, `dart migrate` leaves your source files
+and `pubspec.yaml` unchanged.
+Instead, it outputs a summary of the incompatible dependencies
+or files with errors so you can resolve them manually
+and run `dart migrate` again.
+
+### Example
+
+Suppose your project's `pubspec.yaml` has a minimum SDK constraint of `3.12.0`:
 
 ```yaml title="pubspec.yaml"
 environment:
@@ -240,20 +195,18 @@ $ dart migrate --apply
 While both tools apply automated fixes to your code,
 they serve different purposes:
 
-* **`dart migrate`** helps you move forward to a newer Dart SDK version.
-  It orchestrates the full version upgrade:
-  applying pre-bump fixes, raising the `sdk` constraint in `pubspec.yaml`,
-  re-analyzing your code under the new [language version][],
-  and allowing you to run each migration step individually.
+* **`dart migrate`** upgrades your project's minimum Dart SDK constraint
+  in `pubspec.yaml` and migrates your code to a newer [language version][].
 * **[`dart fix`][]** fixes analyzer diagnostics, lint warnings,
   and outdated package API usages ([data-driven fixes][])
   in your existing code without changing your project's SDK version constraint.
 
+[language version]: /language/versioning
 [Get the Dart SDK]: /get-dart
 [`flutter upgrade`]: {{site.flutter-docs}}/release/upgrade
-[Pub workspace]: /tools/pub/workspaces
+[Pub workspaces]: /tools/pub/workspaces
+[How migration works]: #how-migration-works
 [`analysis_options.yaml`]: /tools/analysis
-[language version]: /language/versioning
 [primary constructors]: /language/primary-constructors
 [`dart fix`]: /tools/dart-fix
 [data-driven fixes]: /tools/pub/data-driven-fixes
