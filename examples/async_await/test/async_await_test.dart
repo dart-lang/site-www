@@ -34,6 +34,20 @@ void main() {
     );
   });
 
+  test('futures_intro error', () {
+    final output = '''
+      Fetching user order...
+      Error: Exception: Logout failed: user ID is invalid
+    ''';
+    expect(
+      () => Future.wait([
+        Future.delayed(const Duration(seconds: 4)),
+        Future.sync(futures_intro.mainError),
+      ]),
+      m.printsLines(output),
+    );
+  });
+
   test('get_order_sync_bad', () {
     final output = '''
       Fetching user order...
