@@ -204,19 +204,21 @@ void main() {
 }
 ```
 
-When converting a generic type like a `List`, its elements
-must already be JS interop types. For example, to convert
-a `List<String>`, you must first convert each `String`
-into a `JSString`.
+You can convert a primitive `List` (`num`, `int`, `double`, `bool`, or
+`String`) directly to a `JSArray` by using `.toJS`, and convert back to a Dart
+list by using `toDartStringList` (or `toDartIntList`, `toDartDoubleList`, or
+`toDartBoolList`). For lists of other types, the elements must be JS interop
+types before you convert the list:
 
 ```dart
-// Option 1: Create the list with JS types initially.
-List<JSString> list = ['hello'.toJS, 'world'.toJS];
-JSArray jsArray1 = list.toJS;
-
-// Option 2: Map a Dart list to a list of JS types.
+// Primitive lists convert directly to and from JSArray.
 List<String> dartList = ['hello', 'world'];
-JSArray jsArray2 = dartList.map((e) => e.toJS).toList().toJS;
+JSArray<JSString> jsArray1 = dartList.toJS;
+List<String> roundTrip = jsArray1.toDartStringList;
+
+// Non-primitive lists require elements to be JS interop types.
+List<JSObject> jsObjects = [document, document.body];
+JSArray<JSObject> jsArray2 = jsObjects.toJS;
 ```
 
 ## Learn more
