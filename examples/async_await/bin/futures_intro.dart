@@ -13,11 +13,23 @@ Future<void> fetchUserOrderError() {
     () => throw Exception('Logout failed: user ID is invalid'),
   );
 }
+// #enddocregion error
 // #docregion no-error
 
 void main() {
   fetchUserOrder();
   print('Fetching user order...');
 }
+// #enddocregion no-error
 
-// #enddocregion no-error, error
+// #docregion error
+
+void mainError() {
+  // Print the error so that you can see it in the output.
+  // You'll learn the recommended way to handle errors later.
+  fetchUserOrderError().catchError((Object error) {
+    print('Error: $error');
+  });
+  print('Fetching user order...');
+}
+// #enddocregion error
