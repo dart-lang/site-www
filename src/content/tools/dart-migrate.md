@@ -16,8 +16,8 @@ in your `pubspec.yaml` file and
 applies any automated code fixes required by that version change.
 
 The `dart migrate` command only updates your project's SDK constraint
-and source code—it doesn't upgrade the Dart or Flutter SDK
-installed on your machine.
+and source code.
+It doesn't upgrade the Dart or Flutter SDK installed on your machine.
 To upgrade your installed SDK first,
 refer to [Get the Dart SDK][] or the [`flutter upgrade`][] command.
 
@@ -123,7 +123,7 @@ You can't run the `prepare` and `cleanup` steps together
 
 When you run the `dart migrate` command,
 the tool automatically runs the relevant migration lints and quick fixes
-for the target version—even if your [`analysis_options.yaml`][] file
+for the target version, even if your [`analysis_options.yaml`][] file
 doesn't enable those lints.
 It performs the following stages in order:
 
