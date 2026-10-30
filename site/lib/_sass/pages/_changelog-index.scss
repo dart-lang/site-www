@@ -121,6 +121,10 @@ body.dark-mode {
   }
 }
 
+.filter-backdrop {
+  display: none;
+}
+
 // Mobile screen customizations.
 @media (max-width: 839px) {
   .filter-header {
@@ -129,10 +133,11 @@ body.dark-mode {
 
   #changelog-filter-group-wrapper {
     position: fixed;
-    top: 11rem;
+    top: var(--site-header-height);
     bottom: 0;
     right: -$sidebar-width;
     width: $sidebar-width;
+    max-height: none;
     border-bottom: none;
     border-radius: 0;
     transition: right 0.3s ease-in-out;
@@ -145,6 +150,15 @@ body.dark-mode {
 
   #open-filter-toggle:checked+#changelog-filter-group-wrapper {
     right: 0;
+  }
+
+  #open-filter-toggle:checked ~ .filter-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 999;
+    cursor: pointer;
   }
 }
 
@@ -303,6 +317,11 @@ body.dark-mode {
         padding-left: .35rem;
         font-size: .875rem;
         line-height: 1.2;
+
+        .filter-count {
+          color: var(--site-base-fgColor-alt);
+          font-size: 0.78rem;
+        }
       }
     }
   }
@@ -404,6 +423,116 @@ body.dark-mode {
     }
   }
 
+  .upgrade-range-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-top: 0.65rem;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--site-inset-bgColor);
+    border: 1px solid var(--site-inset-borderColor);
+    border-radius: var(--site-radius);
+    font-family: var(--site-ui-fontFamily);
+    font-size: 0.875rem;
+
+    .range-selectors {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+
+      label {
+        color: var(--site-base-fgColor-alt);
+        font-weight: 500;
+        margin: 0;
+      }
+
+      // A little extra breathing room between the "From" select and the
+      // "To" label now that there's no arrow between them.
+      .select-wrapper + label {
+        margin-left: 0.35rem;
+      }
+
+      .select-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+
+        // Custom chevron, since `appearance: none` removes the native one.
+        // Drawn with borders rather than an icon-font ligature so it doesn't
+        // depend on the icon font having loaded.
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 0.75rem;
+          width: 0.4rem;
+          height: 0.4rem;
+          border-right: 2px solid var(--site-base-fgColor-alt);
+          border-bottom: 2px solid var(--site-base-fgColor-alt);
+          transform: translateY(-70%) rotate(45deg);
+          pointer-events: none;
+        }
+      }
+
+      select {
+        appearance: none;
+        // Override the global `input, select` sizing from _form.scss, which
+        // fixes height and line-height at 32px and misaligns the text once
+        // vertical padding is added.
+        height: auto;
+        line-height: 1.3;
+        margin: 0;
+        background-color: var(--site-base-bgColor);
+        color: var(--site-base-fgColor);
+        border: 1px solid var(--site-inset-borderColor);
+        border-radius: 0.375rem;
+        padding: 0.35rem 1.85rem 0.35rem 0.65rem;
+        font-family: var(--site-ui-fontFamily);
+        font-size: 0.85rem;
+        cursor: pointer;
+
+        &:focus-visible {
+          outline: 2px solid var(--site-primary-color);
+          border-color: transparent;
+        }
+      }
+    }
+
+    .preset-chips {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+
+      .preset-chip {
+        background-color: var(--site-base-bgColor);
+        color: var(--site-base-fgColor);
+        border: 1px solid var(--site-inset-borderColor);
+        border-radius: 1rem;
+        padding: 0.2rem 0.65rem;
+        font-family: var(--site-ui-fontFamily);
+        font-size: 0.8rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.15s ease;
+
+        &:hover {
+          border-color: var(--site-primary-color);
+          color: var(--site-primary-color);
+        }
+
+        &.active {
+          background-color: var(--site-primary-color);
+          border-color: var(--site-primary-color);
+          color: var(--site-onPrimary-color);
+        }
+      }
+    }
+  }
+
   .label-row {
     display: flex;
     justify-content: space-between;
@@ -446,8 +575,18 @@ body.dark-mode {
 
   .version-group {
     .header-wrapper {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
       margin-top: 0;
       margin-bottom: 1rem;
+
+      .version-release-date {
+        color: var(--site-base-fgColor-alt);
+        font-family: var(--site-ui-fontFamily);
+        font-size: 0.875rem;
+        margin-left: 0.35rem;
+      }
     }
 
     .version-header {
@@ -518,6 +657,17 @@ body.dark-mode {
         font-size: 0.9rem;
       }
 
+      .patch-badge {
+        background-color: var(--site-inset-bgColor);
+        color: var(--site-base-fgColor);
+        border: 1px solid var(--site-inset-borderColor);
+        padding: 0.2rem 0.45rem;
+        border-radius: 4px;
+        font-family: var(--site-code-fontFamily);
+        font-weight: var(--site-fontWeight-bold);
+        font-size: 0.8rem;
+      }
+
       .entry-title {
         font-weight: var(--site-fontWeight-bold);
         font-size: 1rem;
@@ -561,6 +711,13 @@ body.dark-mode {
     .card-content {
       padding: 1rem;
       overflow-wrap: anywhere;
+
+      mark.search-highlight {
+        background-color: rgba(255, 213, 79, 0.45);
+        color: inherit;
+        padding: 0 0.1rem;
+        border-radius: 2px;
+      }
 
       .release-date {
         margin-top: 0;
