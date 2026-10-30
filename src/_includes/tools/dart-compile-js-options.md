@@ -131,3 +131,20 @@ The following options control the analysis performed on Dart code.
   that contains information about the generated code.
   You can inspect the generated file with tools in
   [dart2js_info](/go/dart2js-info).
+
+`--[no-]deprecated-js-interop`
+: Enables or disables support for the deprecated `dart:*` JS interop
+  and web libraries (`dart:html`, `dart:indexed_db`,
+  `dart:js`, `dart:js_util`, `dart:svg`, `dart:web_audio`, and
+  `dart:web_gl`), as well as packages that import them
+  (such as `package:js`).
+  Enabled by default (`--deprecated-js-interop`).
+  When you pass `--no-deprecated-js-interop`,
+  importing any of these libraries results in a compile-time error
+  that reports the shortest import paths to the deprecated libraries.
+  In addition, their `dart.library.*` environment conditions
+  (such as `dart.library.html` and `dart.library.js_util`)
+  evaluate to `false` in conditional imports and [`bool.fromEnvironment`][].
+  For details, refer to [Past JS interop][past-js-interop].
+
+[past-js-interop]: /interop/js-interop/past-js-interop#disallow-deprecated-js-interop

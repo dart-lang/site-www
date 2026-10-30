@@ -154,6 +154,16 @@ production JavaScript compiler by default.
 $ webdev build --output web:build
 ```
 
+:::version-note
+Starting in Dart 3.14 (with `webdev` 4.1.0 and
+[`build_web_compilers`][build_web_compilers] 4.9.0),
+pass `--no-deprecated-js-interop` to `webdev serve` or `webdev build`
+(or set `deprecated-js-interop: false` in `build.yaml`)
+to disallow deprecated `dart:*` web libraries and packages that import them
+(such as `package:js`).
+For details, refer to [Past JS interop][past-js-interop].
+:::
+
 
 ### build_runner test {:#test}
 
@@ -209,3 +219,4 @@ Also see the following pages:
 [dev_dependencies]: /tools/pub/dependencies#dev-dependencies
 [test package]: {{site.pub-pkg}}/test
 [webdev]: {{site.pub-pkg}}/webdev
+[past-js-interop]: /interop/js-interop/past-js-interop#disallow-deprecated-js-interop
