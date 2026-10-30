@@ -34,8 +34,6 @@ JS types form a natural type hierarchy:
       - `JSExportedDartFunction`, which represents a Dart callback that was
       converted to a JS function
     - `JSArray`
-    - `JSIterable` and `JSIterator`
-    - `JSDisposableProtocol`
     - `JSPromise`
     - `JSDataView`
     - `JSTypedArray`
@@ -43,8 +41,9 @@ JS types form a natural type hierarchy:
     - `JSBoxedDartObject`, which boxes Dart values so you can pass them
       opaquely within the same Dart runtime
       - `ExternalDartReference` in `dart:js_interop` also passes Dart values
-      opaquely, but is *not* a JS type. To compare the two options, see
+      opaquely, but is *not* a JS type. To compare the two options, refer to
       [`JSBoxedDartObject` vs `ExternalDartReference`](#jsboxeddartobject-vs-externaldartreference).
+  - `JSIterable` and `JSIterator`
 
 You can find the definition of each type and its built-in helpers
 (such as `JSPromise.resolve` and `JSPromise.reject`, `JSArray.fromAsync`,
@@ -103,7 +102,7 @@ more specific conversion members:
 
 - Convert a primitive `List` (`num`, `int`, `double`, `bool`, or `String`,
   including nullable elements) to a `JSArray` with `.toJS`, and convert back
-  to a typed Dart list using `toDartDoubleList`, `toDartIntList`,
+  to a Dart list using `toDartDoubleList`, `toDartIntList`,
   `toDartBoolList`, or `toDartStringList`.
 - Iterate lazily across the JS boundary without copying into a `List` or
   `JSArray` using `toJSIterable`, `toDartIterable`, `toJSIterator`, and
@@ -116,9 +115,9 @@ more specific conversion members:
   ([`JSBoxedDartObject`]) and `stack` properties.
 - Export Dart callbacks with [`Function.toJS`] or
   [`Function.toJSCaptureThis`] (including `async` callbacks returning
-  `Future<T>`), or export variadic callbacks that take up to four fixed
-  parameters and a trailing `JSArray` rest parameter using `toJSVarArgs` or
-  `toJSCaptureThisVarArgs`.
+  `Future<T>`), or export variadic callbacks that receive all arguments in a
+  `JSArray` (plus a leading `this` parameter for `toJSCaptureThisVarArgs`)
+  using `toJSVarArgs` or `toJSCaptureThisVarArgs`.
 
 :::warning
 Compiling to JavaScript versus [Wasm][] can introduce inconsistencies in
@@ -316,7 +315,7 @@ See [`toExternalReference`] and [`toDartObject`] to convert to and from an
 [`dart:js_interop` API docs]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html#extension-types
 [`typeofEquals`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
 [`instanceOfString`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
-[`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`isA`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/isA.html
 [#54025]: {{site.repo.dart.sdk}}/issues/54025
 [`JSBoxedDartObject`]: {{site.dart-api}}/dart-js_interop/JSBoxedDartObject-extension-type.html
 [`ExternalDartReference`]: {{site.dart-api}}/dart-js_interop/ExternalDartReference-extension-type.html

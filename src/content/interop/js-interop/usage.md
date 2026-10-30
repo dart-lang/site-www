@@ -544,13 +544,9 @@ Utility functions include:
 - [`isA`][], which allows you to check if a JS-interop value is
   an instance of the JS type specified by the type argument.
 - `jsIdentical`, which checks whether two JS values are identical
-  using JavaScript's `Object.is` semantics.
-- `jsThrow`, which throws an arbitrary `JSAny` value in JavaScript.
+  using JavaScript's `===` strict equality semantics.
 
 More utilities might be added to this library in the future.
-For additional standard ECMAScript built-in objects beyond the core types in
-`dart:js_interop`—such as `JSError`, `JSDate`, `JSMap`, `JSSet`, `JSRecord`,
-and `JSAsyncDisposableProtocol`—use [`package:js_interop`][].
 
 [`dart:js_interop_unsafe`][] contains members that allow
 you to look up properties dynamically. For example:
@@ -578,4 +574,3 @@ might lead to violations, which is why it can be "unsafe".
 [`importModule`]: {{site.dart-api}}/dart-js_interop/importModule.html
 [`isA`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/isA.html
 [`dart:js_interop_unsafe`]: {{site.dart-api}}/dart-js_interop_unsafe/dart-js_interop_unsafe-library.html
-[`package:js_interop`]: {{site.pub-pkg}}/js_interop
