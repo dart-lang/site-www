@@ -16,8 +16,23 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
   Set<String> selectedAreas = {};
   Set<Version> selectedVersions = {};
 
+  Version? fromVersion;
+  Version? toVersion;
+
   Set<String> availableAreas = {};
   Set<Version> availableVersions = {};
+
+  /// Live facet counts for the sidebar, maintained by [updateFacetCounts].
+  ///
+  /// Each value is the number of entries that would match if that facet
+  /// value were selected, given the other currently active filters.
+  Map<ChangelogTag, int> tagCounts = const {};
+  Map<String, int> areaCounts = const {};
+
+  /// Whether any version filtering is in effect, either through discrete
+  /// [selectedVersions] or a [fromVersion]/[toVersion] range.
+  bool get hasVersionFilter =>
+      selectedVersions.isNotEmpty || fromVersion != null || toVersion != null;
 
   /// Populates [availableAreas] and [availableVersions] by inspecting the DOM.
   ///
@@ -31,6 +46,7 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     // currently displayed for it (though usually there are).
     // This ensures the filter option is present.
     var changed = availableAreas.add('Docs');
+
     final entryCards = listContainer.querySelectorAll('.changelog-card');
     for (var i = 0; i < entryCards.length; i++) {
       final element = entryCards.item(i) as web.Element;
@@ -79,6 +95,8 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
   }
 
   void setVersion(Version version, bool isSelected) {
+    fromVersion = null;
+    toVersion = null;
     if (isSelected) {
       selectedVersions.add(version);
     } else {
@@ -87,7 +105,38 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Selects every available version between [from] and [to] (inclusive).
+  ///
+  /// Either bound may be `null` to leave that end open. If [from] is greater
+  /// than [to], the range is clamped to the single version [from] rather than
+  /// producing an empty selection. Passing neither bound clears the range and
+  /// all selected versions.
+  void setVersionRange({Version? from, Version? to}) {
+    final normalizedFrom = from;
+    var normalizedTo = to;
+    if (normalizedFrom != null &&
+        normalizedTo != null &&
+        normalizedFrom > normalizedTo) {
+      normalizedTo = normalizedFrom;
+    }
+    fromVersion = normalizedFrom;
+    toVersion = normalizedTo;
+    selectedVersions.clear();
+    if (normalizedFrom != null || normalizedTo != null) {
+      for (final version in availableVersions) {
+        final afterFrom = normalizedFrom == null || version >= normalizedFrom;
+        final upTo = normalizedTo == null || version <= normalizedTo;
+        if (afterFrom && upTo) {
+          selectedVersions.add(version);
+        }
+      }
+    }
+    notifyListeners();
+  }
+
   void toggleMajor(int major, bool isSelected) {
+    fromVersion = null;
+    toVersion = null;
     final versionsInMajor = availableVersions.where((v) => v.major == major);
     if (isSelected) {
       selectedVersions.addAll(versionsInMajor);
@@ -107,6 +156,8 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     selectedTags.clear();
     selectedAreas.clear();
     selectedVersions.clear();
+    fromVersion = null;
+    toVersion = null;
     notifyListeners();
   }
 
@@ -114,8 +165,12 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     selectedTags.clear();
     selectedAreas.clear();
     selectedVersions.clear();
+    fromVersion = null;
+    toVersion = null;
     availableAreas.clear();
     availableVersions.clear();
+    tagCounts = const {};
+    areaCounts = const {};
     if (notify) {
       notifyListeners();
     }
@@ -160,38 +215,99 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
       return entries;
     }
 
-    final entriesToShow = <ChangelogEntry>[];
-    final normalizedQuery = searchQuery.trim().toLowerCase();
+    final queryTokens = _tokenizeQuery(searchQuery);
+    return [
+      for (final entry in entries)
+        if (_matchesTags(entry) &&
+            _matchesAreas(entry) &&
+            _matchesVersions(entry) &&
+            _matchesSearch(entry, queryTokens))
+          entry,
+    ];
+  }
+
+  /// Recomputes [tagCounts] and [areaCounts] from [entries].
+  ///
+  /// Each tag count ignores the tag facet itself but honors the area, version,
+  /// and search filters (and likewise for area counts), so the sidebar shows
+  /// how many results selecting that value would yield. Returns `true` and
+  /// notifies listeners if the counts changed.
+  bool updateFacetCounts(List<ChangelogEntry> entries, String searchQuery) {
+    final queryTokens = _tokenizeQuery(searchQuery);
+    final newTagCounts = <ChangelogTag, int>{};
+    final newAreaCounts = <String, int>{};
 
     for (final entry in entries) {
-      final matchesTags =
-          selectedTags.isEmpty || entry.tags.any(selectedTags.contains);
-      if (!matchesTags) continue;
+      final matchesVersions = _matchesVersions(entry);
+      final matchesSearch = _matchesSearch(entry, queryTokens);
+      if (!matchesVersions || !matchesSearch) continue;
 
-      final matchesAreas =
-          selectedAreas.isEmpty || selectedAreas.contains(entry.area);
-      if (!matchesAreas) continue;
-
-      final matchesVersions =
-          selectedVersions.isEmpty ||
-          selectedVersions.contains(
-            Version(entry.version.major, entry.version.minor, 0),
-          );
-      if (!matchesVersions) continue;
-
-      final matchesSearchQuery =
-          normalizedQuery.isEmpty ||
-          entry.description.toLowerCase().contains(normalizedQuery) ||
-          entry.area.toLowerCase().contains(normalizedQuery) ||
-          (entry.subArea?.toLowerCase().contains(normalizedQuery) ?? false) ||
-          entry.version.toString().contains(normalizedQuery);
-
-      if (!matchesSearchQuery) continue;
-
-      entriesToShow.add(entry);
+      if (_matchesAreas(entry)) {
+        for (final tag in entry.tags) {
+          newTagCounts[tag] = (newTagCounts[tag] ?? 0) + 1;
+        }
+      }
+      if (_matchesTags(entry)) {
+        newAreaCounts[entry.area] = (newAreaCounts[entry.area] ?? 0) + 1;
+      }
     }
 
-    return entriesToShow;
+    if (_mapEquals(tagCounts, newTagCounts) &&
+        _mapEquals(areaCounts, newAreaCounts)) {
+      return false;
+    }
+    tagCounts = newTagCounts;
+    areaCounts = newAreaCounts;
+    notifyListeners();
+    return true;
+  }
+
+  static bool _mapEquals<K, V>(Map<K, V> a, Map<K, V> b) {
+    if (a.length != b.length) return false;
+    for (final MapEntry(:key, :value) in a.entries) {
+      if (!b.containsKey(key) || b[key] != value) return false;
+    }
+    return true;
+  }
+
+  static List<String> _tokenizeQuery(String searchQuery) {
+    final normalizedQuery = searchQuery.trim().toLowerCase();
+    if (normalizedQuery.isEmpty) return const [];
+    return normalizedQuery.split(RegExp(r'\s+'));
+  }
+
+  bool _matchesTags(ChangelogEntry entry) =>
+      selectedTags.isEmpty || entry.tags.any(selectedTags.contains);
+
+  bool _matchesAreas(ChangelogEntry entry) =>
+      selectedAreas.isEmpty || selectedAreas.contains(entry.area);
+
+  bool _matchesVersions(ChangelogEntry entry) =>
+      selectedVersions.isEmpty ||
+      selectedVersions.contains(
+        Version(entry.version.major, entry.version.minor, 0),
+      );
+
+  /// Whether every token in [queryTokens] appears in at least one of the
+  /// entry's description, area, sub-area, version, or tag label/ID.
+  bool _matchesSearch(ChangelogEntry entry, List<String> queryTokens) {
+    if (queryTokens.isEmpty) return true;
+    final descriptionLower = entry.description.toLowerCase();
+    final areaLower = entry.area.toLowerCase();
+    final subAreaLower = entry.subArea?.toLowerCase() ?? '';
+    final versionLower = entry.version.toString().toLowerCase();
+    return queryTokens.every(
+      (token) =>
+          descriptionLower.contains(token) ||
+          areaLower.contains(token) ||
+          subAreaLower.contains(token) ||
+          versionLower.contains(token) ||
+          entry.tags.any(
+            (t) =>
+                t.label.toLowerCase().contains(token) ||
+                t.id.toLowerCase().contains(token),
+          ),
+    );
   }
 
   /// Parses a version token such as `3.13`, `3.13.0`, `v3.13`, or `v3-13`
@@ -235,7 +351,14 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
       );
     }
 
-    if (selectedVersions.isNotEmpty) {
+    if (fromVersion != null || toVersion != null) {
+      if (fromVersion != null) {
+        parts.add('from=${fromVersion!.shortVersion}');
+      }
+      if (toVersion != null) {
+        parts.add('to=${toVersion!.shortVersion}');
+      }
+    } else if (selectedVersions.isNotEmpty) {
       final orderedVersions = selectedVersions.toList()
         ..sort((a, b) => compareVersions(b, a));
       parts.add(
@@ -301,6 +424,8 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
     selectedTags.clear();
     selectedAreas.clear();
     selectedVersions.clear();
+    fromVersion = null;
+    toVersion = null;
 
     if (fragment.isEmpty) {
       notifyListeners();
@@ -370,16 +495,20 @@ class ChangelogFiltersNotifier extends ChangeNotifier {
       }
     }
 
-    final fromVersion = params['from'] != null
+    final parsedFrom = params['from'] != null
         ? tryParseShortVersion(params['from']!)
         : null;
-    final toVersion = params['to'] != null
+    final parsedTo = params['to'] != null
         ? tryParseShortVersion(params['to']!)
         : null;
-    if (fromVersion != null || toVersion != null) {
+    if (parsedFrom != null || parsedTo != null) {
+      if (rawVersions == null || rawVersions.isEmpty) {
+        fromVersion = parsedFrom;
+        toVersion = parsedTo;
+      }
       for (final version in availableVersions) {
-        final afterFrom = fromVersion == null || version >= fromVersion;
-        final upTo = toVersion == null || version <= toVersion;
+        final afterFrom = parsedFrom == null || version >= parsedFrom;
+        final upTo = parsedTo == null || version <= parsedTo;
         if (afterFrom && upTo) {
           selectedVersions.add(version);
         }
