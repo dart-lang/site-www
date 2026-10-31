@@ -26,6 +26,14 @@ To use this library, import dart:convert.
 import 'dart:convert';
 ```
 
+:::tip
+For a deeper look at the codec and converter framework,
+including streaming, composition with `fuse`, and character encodings,
+check out [Use converters and codecs][].
+
+To get started building your own codecs,
+check out [Build custom codecs and converters][].
+:::
 
 ## Decoding and encoding JSON
 
@@ -139,6 +147,17 @@ for (int i = 0; i < encoded.length; i++) {
 The dart:convert library also has converters for ASCII and ISO-8859-1
 (Latin1). For details, see the [API reference for the dart:convert library.][dart:convert]
 
+## Learn more
+
+To go beyond basic encoding and decoding, check out the following guides:
+
+- [Use converters and codecs][]: Learn about more of the built-in codecs,
+  how to compose them with `fuse`, and how to use them with streams.
+- [Build custom codecs and converters][]: Implement your own `Codec`
+  and `Converter` classes with support for streaming and composition.
+
 [JSON]: https://www.json.org/
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8
 [dart:convert]: {{site.dart-api}}/dart-convert/dart-convert-library.html
+[Use converters and codecs]: /libraries/convert/converters-and-codecs
+[Build custom codecs and converters]: /libraries/convert/build-custom-codecs
