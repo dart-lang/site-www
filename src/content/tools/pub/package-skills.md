@@ -216,13 +216,21 @@ and automatic fix options, run `dart run skills_lint --help` or consult the
 [`package:skills_lint` documentation]({{site.pub-pkg}}/skills_lint).
 
 For example, to validate your package's `skills/` directory with package
-naming and relative path checks enabled, run the following command:
+naming, relative path, and publish archive checks enabled,
+run the following command:
 
 ```console
-$ dart run skills_lint --skills-directory skills/ --published-skill-name --check-relative-paths --pub-archive-includes-skill --check-relative-paths-within-skill=true
+$ dart run skills_lint --skills-directory skills/ \
+  --published-skill-name \
+  --check-relative-paths \
+  --check-relative-paths-within-skill=true \
+  --pub-archive-includes-skill
 ```
 
-These additional flags verify that `dart pub publish` will include the skill and its linked files, and that all relative links stay inside the skill directory.
+The `--check-relative-paths-within-skill=true` flag checks that
+relative links stay inside the skill's directory.
+The `--pub-archive-includes-skill` flag checks that `dart pub publish`
+includes each skill and the files it links to.
 
 ### Configure with a YAML file
 
@@ -246,7 +254,8 @@ skills_lint:
         check-relative-paths:
           severity: error
           within-skill: true
-    - path: ".agents/skills/" # Remove if your package has no .agents/skills/ directory.
+    # Remove if your package has no .agents/skills/ directory.
+    - path: ".agents/skills/"
   individual_skills:
     - path: "my_custom_standalone_skill"
       rules:
@@ -270,6 +279,9 @@ To catch invalid skills automatically during local test runs and in your
 existing `dart test` CI workflow, add a test under `test/` that runs
 `skills_lint` against your `skills_lint.yaml` configuration and fails
 when the linter reports errors.
+Also check that the loaded configuration's `parsingErrors` list is empty,
+because `validateSkills` returns `true`
+even when `skills_lint.yaml` contains errors.
 
 For standalone CI workflows or Git pre-commit hooks, consult
 [Recipes]({{site.pub-pkg}}/skills_lint#recipes)
