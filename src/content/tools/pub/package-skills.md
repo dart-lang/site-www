@@ -216,21 +216,11 @@ and automatic fix options, run `dart run skills_lint --help` or consult the
 [`package:skills_lint` documentation]({{site.pub-pkg}}/skills_lint).
 
 For example, to validate your package's `skills/` directory with package
-naming, relative path, and publish archive checks enabled,
-run the following command:
+naming and relative path checks enabled, run the following command:
 
 ```console
-$ dart run skills_lint --skills-directory skills/ \
-  --published-skill-name \
-  --check-relative-paths \
-  --check-relative-paths-within-skill=true \
-  --pub-archive-includes-skill
+$ dart run skills_lint --skills-directory skills/ --published-skill-name --check-relative-paths
 ```
-
-The `--check-relative-paths-within-skill=true` flag checks that
-relative links stay inside the skill's directory.
-The `--pub-archive-includes-skill` flag checks that `dart pub publish`
-includes each skill and the files it links to.
 
 ### Configure with a YAML file
 
