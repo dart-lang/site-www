@@ -46,7 +46,7 @@ JS types form a natural type hierarchy:
 The `ExternalDartReference` type in the `dart:js_interop` library also passes
 Dart values opaquely, but it isn't a JS type.
 To compare the two options, refer to the
-[`JSBoxedDartObject` versus `ExternalDartReference`](#jsboxeddartobject-vs-externaldartreference)
+[`JSBoxedDartObject` versus `ExternalDartReference`][boxed-vs-external]
 section on this page.
 
 You can find the definition of each type and its built-in helpers in the
@@ -61,10 +61,11 @@ TODO (srujzs): Should we add a tree diagram instead for JS types?
 
 ## Conversions
 
-To use a value from one domain in the other, convert it
-to the corresponding type.
-For example, to pass a Dart `List<String>` to a JS interop API that expects a
-JS array of strings, convert the list to the `JSArray<JSString>` type.
+To use a value from one domain in the other,
+convert it to the corresponding type.
+For example, to pass a Dart `List<String>` to a JS interop API
+that expects a JS array of strings,
+convert the list to the `JSArray<JSString>` type.
 
 Members that convert values from Dart to JS usually start with `toJS`, and
 members that convert values from JS to Dart usually start with `toDart`:
@@ -78,7 +79,7 @@ JSArray<JSString> jsArr = ['a', 'b'].toJS;
 String dartStr = jsStr.toDart;
 List<String> dartList = jsArr.toDartStringList;
 JSAny? resolved = await jsPromise.toDart;
-for (final item in jsIterable.toDartIterable) { … }
+for (final item in jsIterable.toDartIterable) { /* ... */ }
 ```
 
 Not all JS types have a conversion, and not all Dart types have a conversion.
@@ -100,34 +101,39 @@ types and Dart types:
 
 {:.table .table-striped}
 
-When converting `Function` or `Future` values:
+When you convert `Function` or `Future` values,
+keep the following behaviors in mind:
 
-- Use [`Function.toJS`] for fixed-arity callbacks, or `toJSVarArgs` for variadic
-  callbacks that receive all arguments in a `JSArray`. Use
-  [`Function.toJSCaptureThis`] or `toJSCaptureThisVarArgs` to pass JavaScript's
-  `this` value as the callback's first parameter.
-- When a `Future` converted with `toJS` or `toJSPromiseOrValue` fails, `JSAny`
-  errors reject the `JSPromise` directly, while other Dart errors reject with a
-  JS `Error` containing `error` ([`JSBoxedDartObject`]) and `stack` properties.
+- Use the [`Function.toJS`] getter for fixed-arity callbacks,
+  or the `toJSVarArgs` getter for variadic callbacks
+  that receive all arguments in a `JSArray`.
+  Use the [`Function.toJSCaptureThis`] or `toJSCaptureThisVarArgs` getters
+  to pass JavaScript's `this` value as the callback's first parameter.
+- When a `Future` converted with the `toJS` or `toJSPromiseOrValue` getters
+  fails, `JSAny` errors reject the `JSPromise` directly,
+  while other Dart errors reject with a JS `Error`
+  containing `error` (of type [`JSBoxedDartObject`]) and `stack` properties.
 
 :::warning
-Conversion costs and semantics vary between JavaScript and [Wasm][] targets, so
-convert values only when necessary. Converting a mutable collection like a
-`List` or typed list might return a reference, a proxy, or a copy. Don't rely
-on mutations to one affecting the other.
+Conversion costs and semantics vary between JavaScript and [Wasm][] targets,
+so convert values only when necessary.
+Converting a mutable collection like a `List` or typed list
+might return a reference, a proxy, or a copy.
+Don't rely on mutations to one affecting the other.
 :::
 
 ## Requirements on `external` declarations and `Function.toJS`
 
-To ensure type safety, the compiler restricts which types can flow into and out
-of JS. Parameter and return types in `external` declarations must be one of the
-following:
+To ensure type safety, the compiler restricts
+which types can flow into and out of JS.
+Parameter and return types in `external` declarations
+must be one of the following:
 
 - A JS type from `dart:js_interop` (such as `JSString` or `JSArray`) or a
   custom interop extension type.
 - An `ExternalDartReference` value.
-- A Dart primitive (`bool`, `num`, `int`, `double`, `String`, or `void`), which
-  the compiler implicitly converts.
+- A Dart primitive (`bool`, `num`, `int`, `double`, `String`, or `void`),
+  which the compiler implicitly converts.
 
 ```dart tag=good
 extension type InteropType(JSObject _) implements JSObject {}
@@ -157,48 +163,55 @@ external set list(List value);
 ```
 
 The same type restrictions apply to parameters and return values of Dart
-callbacks converted with [`Function.toJS`], [`Function.toJSCaptureThis`],
-`toJSVarArgs`, or `toJSCaptureThisVarArgs`. Callbacks without optional
-positional parameters that you convert with `toJS` or `toJSCaptureThis` can
-also be `async` and return `Future<T>`, where `T` is `void` or a subtype of
-`JSAny?`.
+callbacks converted with the [`Function.toJS`] or [`Function.toJSCaptureThis`]
+getters.
+Callbacks without optional positional parameters
+that you convert with the `toJS` or `toJSCaptureThis` getters
+can also be `async` and return `Future<T>`,
+where `T` is `void` or a subtype of `JSAny?`.
+In contrast, the `toJSVarArgs` (`R Function(JSArray<E>)`)
+and `toJSCaptureThisVarArgs` (`R Function(T, JSArray<E>)`) getters
+require `R` and `E` to be subtypes of `JSAny?`
+and `T` to be a subtype of `JSObject`.
 
 :::tip
-Dart primitives like `String` incur an implicit conversion cost. If performance
-is critical and you don't need to inspect the string's contents in Dart, accept
-or return `JSString` instead.
+Dart primitives like `String` incur an implicit conversion cost.
+If performance is critical
+and you don't need to inspect the string's contents in Dart,
+accept or return the `JSString` type instead.
 :::
 
 ## Compatibility, type checks, and casts
 
-Because JS interop types are extension types that erase to a single runtime
-representation (`externref`) on WebAssembly, standard Dart `is` checks and `as`
-casts can't distinguish between JS types at runtime and might silently succeed
-on the wrong type.
+Because JS interop types are extension types
+that erase to a single runtime representation (`externref`) on WebAssembly,
+standard Dart `is` checks and `as` casts
+can't distinguish between JS types at runtime
+and might silently succeed on the wrong type.
 
 Avoid `is` checks and `as` casts involving interop types:
 
 ```dart tag=bad
 void f(JSAny a, JSString s) {
-  if (a is String) { … }
-  if (a is JSObject) { … }
+  if (a is String) { /* ... */ }
+  if (a is JSObject) { /* ... */ }
   var str = s as String;
 }
 ```
 
-Instead, use the [`isA`] helper to check whether a JS value matches a specific
-JS type or custom interop type:
+Instead, use the [`isA`] helper method to check whether a JS value
+matches a specific JS type or custom interop type:
 
 ```dart tag=good
 void f(JSAny a) {
   if (a.isA<JSString>()) {} // Checks `typeof a === 'string'`
-  if (a.isA<JSArray>()) {} // Checks `Array.isArray(a)`
+  if (a.isA<JSArray>()) {} // Checks `Array.isArray(a) || a instanceof Array`
   if (a.isA<CustomInteropType>()) {} // Checks `a instanceof CustomInteropType`
 }
 ```
 
-You can also inspect the underlying JS value with [`typeofEquals`] or
-[`instanceOfString`] before casting between interop types:
+You can also inspect the underlying JS value with the [`typeofEquals`] or
+[`instanceOfString`] methods before casting between interop types:
 
 ```dart tag=good
 void f(JSAny a) {
@@ -216,31 +229,33 @@ To catch invalid runtime checks at compile time, enable the
 ## `null` versus `undefined` {:#null-vs-undefined}
 
 JavaScript has both `null` and `undefined`, whereas Dart has only `null`.
-When an interop member returns either JS `null` or `undefined`, the compiler
-maps the result to Dart `null`:
+When an interop member returns either JS `null` or `undefined`,
+the compiler maps the result to Dart `null`:
 
 ```dart
 @JS()
 external JSObject? get value; // Can return a JSObject, JS null, or undefined.
 ```
 
-If a non-nullable interop member returns JS `null` or `undefined`, the program
-throws a runtime error.
+If a non-nullable interop member returns JS `null` or `undefined`,
+the program throws a runtime error.
 
 :::warning
 JavaScript and [Wasm][] targets handle `undefined` round-tripping differently.
-When compiling to JS, Dart treats `undefined` as `null` without changing the
-underlying value, so passing it back to JS preserves `undefined`. When
-compiling to Wasm, the compiler converts both JS `null` and `undefined` to Dart
-`null`, so passing it back to JS always produces `null`. Pass Dart `null`
-explicitly instead of relying on `undefined` round-tripping. For details, refer
-to issue [#54025].
+When compiling to JS, Dart treats `undefined` as `null`
+without changing the underlying value,
+so passing it back to JS preserves `undefined`.
+When compiling to Wasm,
+the compiler converts both JS `null` and `undefined` to Dart `null`,
+so passing it back to JS always produces `null`.
+Pass Dart `null` explicitly instead of relying on `undefined` round-tripping.
+For details, refer to issue [#54025].
 :::
 
 ## `JSBoxedDartObject` versus `ExternalDartReference` {:#jsboxeddartobject-vs-externaldartreference}
 
-Both [`JSBoxedDartObject`] and [`ExternalDartReference`] pass opaque references
-to Dart `Object` instances through JavaScript:
+Both the [`JSBoxedDartObject`] and [`ExternalDartReference`] types
+pass opaque references to Dart `Object` instances through JavaScript:
 
 | Type | Representation | When to use |
 | --- | --- | --- |
@@ -249,6 +264,7 @@ to Dart `Object` instances through JavaScript:
 
 {:.table .table-striped}
 
+[boxed-vs-external]: #jsboxeddartobject-vs-externaldartreference
 [`dart:js_interop`]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html
 [`external`]: /language/functions#external
 [`Function.toJS`]: {{site.dart-api}}/dart-js_interop/FunctionToJSExportedDartFunction/toJS.html

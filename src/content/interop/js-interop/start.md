@@ -175,7 +175,7 @@ extension type Response._(JSObject _) implements JSObject {
 }
 
 @JS()
-external Response fetch(String resource);
+external JSPromise<Response> fetch(String resource);
 
 void main() async {
   var response = await fetch('image.png').toDart;
@@ -205,10 +205,11 @@ void main() {
 ```
 
 You can convert a primitive `List` (`num`, `int`, `double`, `bool`, or
-`String`) directly to a `JSArray` by using `.toJS`, and convert back to a Dart
-list by using `toDartStringList` (or `toDartIntList`, `toDartDoubleList`, or
-`toDartBoolList`). For lists of other types, the elements must be JS interop
-types before you convert the list:
+`String`) directly to a `JSArray` instance by using the `toJS` getter
+and convert back to a Dart list by using the `toDartStringList`
+(or `toDartIntList`, `toDartDoubleList`, or `toDartBoolList`) getters.
+For lists of other types, the elements must be JS interop types
+before you convert the list:
 
 ```dart
 // Primitive lists convert directly to and from JSArray.

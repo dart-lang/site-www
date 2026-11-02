@@ -221,12 +221,14 @@ final partial = Options(a: 0); // Creates `{a: 0}`
 ```
 
 Only the arguments you pass are included as properties on the created JS
-object. You can then read or modify those properties through `external`
+object.
+You can then read or modify those properties through `external`
 instance members.
 
 :::note
-Unlike legacy `package:js`, object literal constructors in `dart:js_interop`
-don't require `@anonymous` or [`@JS`](#js) annotations.
+Unlike the legacy `package:js` package,
+object literal constructors in the `dart:js_interop` library
+don't require the `@anonymous` or [`@JS()`](#js) annotations.
 :::
 
 ### Static members
@@ -236,7 +238,8 @@ extension type's JS name:
 
 ```dart
 final dinner = Time.dinnerTime; // Gets `Time.dinnerTime`
-final diff = Time.getTimeDifference(t1, t2); // Calls `Time.getTimeDifference(t1, t2)`
+// Calls `Time.getTimeDifference(t1, t2)`
+final diff = Time.getTimeDifference(t1, t2);
 ```
 
 ### Instance members
@@ -335,22 +338,23 @@ the compiler warns you that it ignores the value.
 
 ## `@JS()`
 
-[`@JS()`][] tells the compiler that a declaration is
+The [`@JS()`][] annotation tells the compiler that a declaration is
 a JS interop member or type, and optionally renames or namespaces it in JS:
 
-- On top-level declarations, `@JS()` is required (with or without a string
-  value) to distinguish them from other `external` declarations like
-  `dart:ffi`.
-- On interop types and extension members, `@JS()` is optional when the Dart
-  name matches the JS name, because the compiler infers JS interop from the
-  representation type or `on` type.
+- On top-level declarations, the `@JS()` annotation is required (with or
+  without a string value) to distinguish them from other `external`
+  declarations like those in the `dart:ffi` library.
+- On interop types and extension members, the `@JS()` annotation is optional
+  when the Dart name matches the JS name, because the compiler infers JS
+  interop from the representation type or `on` type.
 
 ### Rename interop members and types
 
-Pass a constant string to the `@JS()` annotation when the Dart name needs to
-differ from the JS name. For example, you might overload a JS method with
-multiple Dart signatures, define multiple interop types for the same JS
-interface, or bind a JS identifier like `$a` that isn't a valid Dart name:
+Pass a constant string to the `@JS()` annotation
+when the Dart name needs to differ from the JS name.
+For example, you might overload a JS method with multiple Dart signatures,
+define multiple interop types for the same JS interface,
+or bind a JS identifier like `$a` that isn't a valid Dart name:
 
 ```dart
 extension type Array._(JSArray<JSAny?> _) implements JSArray<JSAny?> {
@@ -360,7 +364,7 @@ extension type Array._(JSArray<JSAny?> _) implements JSArray<JSAny?> {
 }
 ```
 
-Both `push` and `pushString` invoke `push` in JS.
+Both the `push` and `pushString` methods invoke `push` in JS.
 
 You can also rename an interop type:
 
@@ -374,13 +378,15 @@ extension type JSDate._(JSObject _) implements JSObject {
 
 Because constructors always invoke the enclosing extension type's JS name,
 you can't place a `@JS()` annotation on an `external` constructor or factory
-of an interop extension type. Annotate the extension type declaration instead.
+of an interop extension type.
+Annotate the extension type declaration instead.
 
 ### Namespace a library
 
-Place `@JS()` on a `library` directive to add a namespace prefix to all
-top-level interop members, interop types, and `static` interop members in that
-library. You can also use `.`-delimited namespaces on libraries, top-level
+Place the `@JS()` annotation on a `library` directive
+to add a namespace prefix to all top-level interop members, interop types,
+and `static` interop members in that library.
+You can also use `.`-delimited namespaces on libraries, top-level
 members, and interop types:
 
 ```dart
@@ -394,8 +400,10 @@ external void method(); // Calls `library1.library2.library3.method()`
 
 @JS('library3.JSType')
 extension type JSType._(JSObject _) implements JSObject {
-  external JSType(); // Calls `new library1.library2.library3.JSType()`
-  external static int get staticMember; // Gets `library1.library2.library3.JSType.staticMember`
+  // Calls `new library1.library2.library3.JSType()`
+  external JSType();
+  // Gets `library1.library2.library3.JSType.staticMember`
+  external static int get staticMember;
 }
 ```
 
@@ -416,7 +424,7 @@ Keep these namespacing rules in mind:
 The preceding sections show how to call JS members from Dart.
 It's also useful to export Dart code so that you can call it from JS.
 To export a Dart function to JS, first convert it by using the
-[`Function.toJS`][] getter, or by using the `toJSVarArgs` getter for variadic
+[`Function.toJS`][] getter or by using the `toJSVarArgs` getter for variadic
 callbacks.
 This conversion wraps the Dart function in a JS function and automatically
 converts any returned `Future` instance into a `JSPromise` object.
@@ -436,7 +444,7 @@ external set exportedFunction(JSFunction value);
 external set asyncFunction(JSFunction value);
 
 @JS()
-external set logAll(JSFunction value);
+external set joinAll(JSFunction value);
 
 void printString(JSString string) {
   print(string.toDart);
@@ -445,21 +453,20 @@ void printString(JSString string) {
 Future<JSString> fetchGreeting(JSString name) async =>
     'Hello, ${name.toDart}!'.toJS;
 
-void printArgs(JSArray<JSString> args) {
-  print(args.toDartStringList.join(', '));
-}
+JSString joinArgs(JSArray<JSString> args) =>
+    args.toDartStringList.join(', ').toJS;
 
 void main() {
   exportedFunction = printString.toJS;
   asyncFunction = fetchGreeting.toJS;
-  logAll = printArgs.toJSVarArgs;
+  joinAll = joinArgs.toJSVarArgs;
 }
 ```
 
 ```js
 globalThis.exportedFunction('hello world');
 await globalThis.asyncFunction('Dash');
-globalThis.logAll('a', 'b', 'c');
+globalThis.joinAll('a', 'b', 'c'); // 'a, b, c'
 ```
 
 Functions that you export this way have type [restrictions][] similar to
