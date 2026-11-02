@@ -338,8 +338,9 @@ export 'src/hw_none.dart' // Stub implementation
 :::version-note
 Starting in Dart 3.14, you can pass `--no-deprecated-js-interop`
 when compiling to JavaScript.
-This flag sets `dart.library.html` and the other legacy web library
-conditions to `false`, and disallows importing deprecated web libraries.
+This flag causes `dart.library.html` and the other legacy web library
+conditions to evaluate to `false`,
+and disallows importing deprecated web libraries.
 For details, refer to
 [Disallow deprecated JS interop libraries][disallow-legacy].
 :::
