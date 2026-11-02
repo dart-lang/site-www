@@ -584,7 +584,7 @@ context of the `flutter` executable, and the Flutter SDK's
 the package won't be selected.
 
 :::note
-Pub only enforces the upper bound of the flutter constraint for your workspace's
+Pub enforces the upper bound of the flutter constraint for your workspace's
 root packages with a language version of 3.9 or later.
 Otherwise, only the lower bound is enforced.
 :::
