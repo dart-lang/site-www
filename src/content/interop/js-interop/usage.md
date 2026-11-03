@@ -513,7 +513,7 @@ you to look up properties dynamically.
 For example, you can access the `log` property on `console` by using a string:
 
 ```dart
-JSFunction f = console['log'];
+JSFunction f = console['log'] as JSFunction;
 ```
 
 Instead of declaring an interop member named `log`,
