@@ -42,7 +42,7 @@ showBanner: true
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
 
-sdkVersion: 3.13.3
+sdkVersion: 3.13.7
 
 # Settings for Jaspr.
 
