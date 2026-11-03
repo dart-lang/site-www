@@ -88,14 +88,15 @@ To learn more about build configuration files, see the
 :::version-note
 Starting in Dart 3.14 (with `webdev` 4.1.0 and
 [`build_web_compilers`][build_web_compilers] 4.9.0),
-pass `--no-deprecated-js-interop` to `webdev` commands
+pass the `--no-deprecated-js-interop` flag to `webdev` commands
 such as `webdev serve` and `webdev build`
 to disallow deprecated `dart:*` web libraries and packages that import them
 (including `package:js`).
 To configure `build.yaml` directly instead,
 set `deprecated-js-interop: false` under `global_options`
 for all four `build_web_compilers` builders
-(`ddc`, `ddc_modules`, `dart2js_modules`, and `entrypoint`).
+(`build_web_compilers:ddc`, `build_web_compilers:ddc_modules`,
+`build_web_compilers:dart2js_modules`, and `build_web_compilers:entrypoint`).
 For details, refer to
 [Disallow deprecated JS interop libraries][disallow-legacy].
 :::

@@ -221,8 +221,10 @@ type-check for that type.
 
 
 
-To avoid invalid type checks with JS interop types,
+To catch invalid type checks and casts with JS interop types,
 enable the [`invalid_runtime_check_with_js_interop_types`][] lint rule.
+Starting in [`package:lints`][] 7.0.0,
+`package:lints/core.yaml` includes this rule.
 
 [`invalid_runtime_check_with_js_interop_types`]: /tools/linter-rules/invalid_runtime_check_with_js_interop_types
 
@@ -284,10 +286,11 @@ See [`toExternalReference`] and [`toDartObject`] to convert to and from an
 [`dart:js_interop` API docs]: {{site.dart-api}}/dart-js_interop/dart-js_interop-library.html#extension-types
 [`typeofEquals`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
 [`instanceOfString`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
-[`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`isA`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/isA.html
 [#54025]: {{site.repo.dart.sdk}}/issues/54025
 [`JSBoxedDartObject`]: {{site.dart-api}}/dart-js_interop/JSBoxedDartObject-extension-type.html
 [`ExternalDartReference`]: {{site.dart-api}}/dart-js_interop/ExternalDartReference-extension-type.html
 [`toExternalReference`]: {{site.dart-api}}/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html
 [`toDartObject`]: {{site.dart-api}}/dart-js_interop/ExternalDartReferenceToObject/toDartObject.html
 [Wasm]: /web/wasm
+[`package:lints`]: {{site.pub-pkg}}/lints

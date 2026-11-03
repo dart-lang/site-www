@@ -139,7 +139,7 @@ The following options control the analysis performed on Dart code.
   `dart:web_gl`), as well as packages that import them
   (such as `package:js`).
   Enabled by default (`--deprecated-js-interop`).
-  When you pass `--no-deprecated-js-interop`,
+  When you pass the `--no-deprecated-js-interop` flag,
   importing any of these libraries results in a compile-time error
   that reports the shortest import paths to the deprecated libraries.
   In addition, their `dart.library.*` environment conditions

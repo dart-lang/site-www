@@ -49,7 +49,7 @@ The `--[no-]deprecated-js-interop` compiler flag requires Dart 3.14 or later.
 
 To verify that your app and its dependencies don't import legacy web libraries
 when compiling to JavaScript,
-pass `--no-deprecated-js-interop` to [`dart compile js`][] (`dart2js`)
+pass the `--no-deprecated-js-interop` flag to [`dart compile js`][] (`dart2js`)
 or `dart compile js-dev` (`dartdevc`):
 
 ```console
@@ -58,32 +58,33 @@ $ dart compile js --no-deprecated-js-interop -o out/main.js web/main.dart
 
 If you build with [`webdev`][] 4.1.0 or later
 (with [`build_web_compilers`][] 4.9.0 or later),
-you can pass `--no-deprecated-js-interop` to `webdev` commands
+you can pass the `--no-deprecated-js-interop` flag to `webdev` commands
 such as `webdev serve` and `webdev build`.
 To configure `build.yaml` directly instead,
 set `deprecated-js-interop: false` under `global_options`
 for all four [`build_web_compilers`][] builders
-(`ddc`, `ddc_modules`, `dart2js_modules`, and `entrypoint`).
+(`build_web_compilers:ddc`, `build_web_compilers:ddc_modules`,
+`build_web_compilers:dart2js_modules`, and `build_web_compilers:entrypoint`).
 
-Passing `--no-deprecated-js-interop` enforces the following behavior:
+Passing the `--no-deprecated-js-interop` flag enforces the following behavior:
 
-- **Disallows legacy web imports.**
+- **Disallows legacy web imports**:
   Importing any of the deprecated `dart:*` web libraries
   (`dart:html`, `dart:indexed_db`, `dart:js`,
   `dart:js_util`, `dart:svg`, `dart:web_audio`, and `dart:web_gl`)—or
   packages that import them, such as `package:js`—results in a
   compile-time error.
   (`dart compile wasm` always disallows these libraries and doesn't accept
-  `--[no-]deprecated-js-interop`.)
-- **Evaluates legacy conditional imports to `false`.**
+  the `--[no-]deprecated-js-interop` flag.)
+- **Evaluates legacy conditional imports to `false`**:
   The environment conditions `dart.library.html`,
   `dart.library.indexed_db`, `dart.library.js`, `dart.library.js_util`,
   `dart.library.svg`, `dart.library.web_audio`, and `dart.library.web_gl`
   evaluate to `false` in [conditional imports][]
   (such as `if (dart.library.html)`) and [`bool.fromEnvironment`][].
-- **Reports shortest-path import chains.**
-  When a disallowed library is imported,
-  the compiler prints a deduplicated shortest-path import tree
+- **Reports shortest-path import chains**:
+  When an app or a dependency imports a disallowed library,
+  `dart compile js` (`dart2js`) prints a deduplicated shortest-path import tree
   that pinpoints which library or package introduced the deprecated import:
 
   ```plaintext
@@ -99,11 +100,13 @@ Passing `--no-deprecated-js-interop` enforces the following behavior:
 
 By default, JavaScript compilers allow deprecated JS interop libraries
 (`--deprecated-js-interop`).
-Pass `--no-deprecated-js-interop` in your continuous integration (CI) pipeline
-to catch legacy web dependencies early and prepare your code for the removal
+Pass the `--no-deprecated-js-interop` flag
+in your continuous integration (CI) pipeline
+to catch legacy web dependencies early
+and prepare your code for the removal
 of the deprecated `dart:*` web libraries from the Dart SDK.
 
-To catch invalid type checks with JS interop types,
+To catch invalid type checks and casts with JS interop types,
 enable the [`invalid_runtime_check_with_js_interop_types`][] lint rule.
 Starting in [`package:lints`][] 7.0.0,
 `package:lints/core.yaml` includes this rule.
