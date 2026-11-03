@@ -145,6 +145,7 @@ The following options control the analysis performed on Dart code.
   In addition, their `dart.library.*` environment conditions
   (such as `dart.library.html` and `dart.library.js_util`)
   evaluate to `false` in conditional imports and [`bool.fromEnvironment`][].
-  For details, refer to [Past JS interop][past-js-interop].
+  For details, refer to
+  [Disallow deprecated JS interop libraries][disallow-legacy].
 
-[past-js-interop]: /interop/js-interop/past-js-interop#disallow-deprecated-js-interop
+[disallow-legacy]: /interop/js-interop/past-js-interop#disallow-deprecated-js-interop

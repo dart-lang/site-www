@@ -56,10 +56,14 @@ or `dart compile js-dev` (`dartdevc`):
 $ dart compile js --no-deprecated-js-interop -o out/main.js web/main.dart
 ```
 
-If you build with [`webdev`][] (4.1.0 or later with [`build_web_compilers`][]
-4.9.0 or later), you can also pass `--no-deprecated-js-interop` to
-`webdev serve` and `webdev build`, or set `deprecated-js-interop: false`
-in `build.yaml`.
+If you build with [`webdev`][] 4.1.0 or later
+(with [`build_web_compilers`][] 4.9.0 or later),
+you can pass `--no-deprecated-js-interop` to `webdev` commands
+such as `webdev serve` and `webdev build`.
+To configure `build.yaml` directly instead,
+set `deprecated-js-interop: false` under `global_options`
+for all four [`build_web_compilers`][] builders
+(`ddc`, `ddc_modules`, `dart2js_modules`, and `entrypoint`).
 
 Passing `--no-deprecated-js-interop` enforces the following behavior:
 
