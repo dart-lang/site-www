@@ -71,7 +71,7 @@ $ dart migrate --help
 Preview the proposed migration changes without modifying any files.
 
 ```console
-$ dart migrate -n
+$ dart migrate --dry-run
 ```
 
 ### `--apply`
