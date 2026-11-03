@@ -411,8 +411,8 @@ Keep these namespacing rules in mind:
 
 - A Dart `library` name (such as `library interop_library;`) is never used as a
   JS namespace unless you provide a non-empty string in `@JS('...')`.
-- You can't use `.`-delimited names in `@JS()` annotations on interop type
-  members or extension members.
+- You can also use `.`-delimited names in `@JS()` annotations on interop type
+  members and extension members.
 - If you omit the value in `@JS()` or pass an empty string, the compiler uses
   the declaration's Dart name.
 
