@@ -14,6 +14,8 @@ use the `dart migrate` command.
 It updates the minimum Dart SDK version constraint (`environment.sdk`)
 in your `pubspec.yaml` file and
 applies any automated code fixes required by that version change.
+The `dart migrate` command supports projects whose minimum SDK constraint
+requires Dart 3.0 or later.
 
 The `dart migrate` command only updates your project's SDK constraint
 and source code.
@@ -109,14 +111,22 @@ You can pass a single step or a comma-separated list of steps.
 If you omit this option,
 the `dart migrate` command runs `prepare,bump` by default.
 
+Running specific steps is useful for larger codebases
+where you want to review fixes before or after bumping the SDK constraint:
+
 ```console
-$ dart migrate --apply --step=all
+# Run only preparatory fixes without bumping the constraint
 $ dart migrate --apply --step=prepare
+
+# After applying preparatory fixes, bump the constraint and apply cleanups
+$ dart migrate --apply --step=bump,cleanup
 ```
 
 :::note
-You can't run the `prepare` and `cleanup` steps together
-(`--step=prepare,cleanup`) without also including the `bump` step.
+All preparatory fixes for the target SDK version must be completed
+before running the `bump` step.
+If you run `--step=bump` while required `prepare` fixes remain unapplied,
+the `dart migrate` command stops without updating your `pubspec.yaml` file.
 :::
 
 ## How migration works
@@ -155,49 +165,101 @@ and run the `dart migrate` command again.
 
 ### Example
 
-Suppose your project's `pubspec.yaml` file has a minimum SDK constraint
-of `3.12.0`:
+Suppose your project (`my_pkg`) has a `pubspec.yaml` file
+with a minimum SDK constraint of `3.12.0`:
 
 ```yaml title="pubspec.yaml"
+name: my_pkg
 environment:
   sdk: ^3.12.0
 ```
 
-Suppose also that your `lib/greeter.dart` file uses the `final` keyword
-on a regular function parameter,
-which became a compile-time error
-when Dart 3.13 introduced [primary constructors][]:
+Suppose also that your `lib/greeter.dart` file defines an empty exception class
+and uses the `final` modifier on non-declaring function parameters
+(which became a compile-time error in Dart 3.13
+when [primary constructors][] reserved `final` and `var`
+for declaring parameters):
 
 ```dart title="lib/greeter.dart"
-void greet(final String name) {
-  print('Hello, $name!');
+class EmptyNameException implements Exception {}
+
+void greet(final String greeting, final String name) {
+  if (name.isEmpty) {
+    throw EmptyNameException();
+  }
+  print('$greeting, $name!');
 }
 ```
 
-Run the `dart migrate --apply` command:
+First, preview the migration by running `dart migrate --dry-run`:
 
 ```console
-$ dart migrate --apply
+$ dart migrate --dry-run
+```
+
+The `dart migrate` command outputs a summary of the proposed `prepare`
+and `bump` changes, along with any optional `cleanup` fixes available
+for the target version:
+
+```text
+my_pkg:
+  3.12.0 -> 3.13.0:
+    Preparatory changes:
+      2 changes would be made in 1 file.
+
+      my_pkg/lib/greeter.dart
+        avoid_final_parameters • 2 changes
+
+    SDK constraint:
+      Would bump ^3.12.0 -> ^3.13.0
+
+Optional cleanup fixes can modernize your code further:
+
+  my_pkg: 1 change in 1 file
+    empty_container_bodies • 1 change
+
+To preview them, apply this migration, run 'dart pub get', and then run 'dart migrate --dry-run --step=cleanup' on the same packages.
+
+To apply the proposed changes, run:
+  dart migrate --apply
+```
+
+Once you're satisfied with the preview, you can run `dart migrate --apply`
+(and include `--step=all` or `--step=prepare,bump,cleanup` if you also want
+to apply the optional `cleanup` fixes shown in the summary):
+
+```console
+$ dart migrate --apply --step=all
 ```
 
 The `dart migrate` command performs the following changes:
 
 1. It runs the `prepare` step,
-   which removes the `final` modifier from the parameter
-   in the `lib/greeter.dart` file:
-
-   ```dart title="lib/greeter.dart"
-   void greet(String name) {
-     print('Hello, $name!');
-   }
-   ```
-
+   which removes the `final` modifiers from the parameters
+   in the `lib/greeter.dart` file ([`avoid_final_parameters`][]).
 1. It runs the `bump` step,
    which updates the `pubspec.yaml` file to require Dart 3.13:
 
    ```yaml title="pubspec.yaml"
+   name: my_pkg
    environment:
      sdk: ^3.13.0
+   ```
+
+1. It runs the `cleanup` step,
+   which replaces the empty `{}` class body with `;`
+   ([`empty_container_bodies`][]), resulting in the updated
+   `lib/greeter.dart` file:
+
+   ```dart title="lib/greeter.dart"
+   class EmptyNameException implements Exception;
+
+   void greet(String greeting, String name) {
+     if (name.isEmpty) {
+       throw EmptyNameException();
+     }
+     print('$greeting, $name!');
+   }
    ```
 
 ## When to use `dart migrate` versus `dart fix`
@@ -208,9 +270,14 @@ they serve different purposes:
 * The **`dart migrate`** command upgrades your project's minimum
   Dart SDK constraint in the `pubspec.yaml` file and
   migrates your code to a newer [language version][].
+  It runs its own set of required and recommended migrations
+  for each SDK version, regardless of which lint rules are enabled
+  in your [`analysis_options.yaml`][] file.
 * The **[`dart fix`][]** command fixes analyzer diagnostics, lint warnings,
   and outdated package API usages ([data-driven fixes][])
   in your existing code without changing your project's SDK version constraint.
+  For lint rules, `dart fix` only applies fixes for lints that are
+  enabled in your project's [`analysis_options.yaml`][] file.
 
 [language version]: /language/versioning
 [Get the Dart SDK]: /get-dart
@@ -219,5 +286,7 @@ they serve different purposes:
 [How migration works]: #how-migration-works
 [`analysis_options.yaml`]: /tools/analysis
 [primary constructors]: /language/primary-constructors
+[`avoid_final_parameters`]: /tools/linter-rules/avoid_final_parameters
+[`empty_container_bodies`]: /tools/linter-rules/empty_container_bodies
 [`dart fix`]: /tools/dart-fix
 [data-driven fixes]: /tools/pub/data-driven-fixes
