@@ -330,7 +330,7 @@ external int push(JSAny? any, [JSAny? any2]);
 ```
 
 Calling `array.push(0.toJS)` in Dart results in
-a JS invocation of `array.push(0.toJS)` rather than `array.push(0.toJS, null)`.
+a JS invocation of `array.push(0)` rather than `array.push(0, null)`.
 This behavior avoids having to write multiple interop members for
 the same JS API to omit `null` arguments.
 If you declare a parameter with an explicit default value,
