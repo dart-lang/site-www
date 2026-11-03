@@ -53,7 +53,7 @@ You can find the definition of each type and its built-in helpers in the
 [`dart:js_interop` API documentation][`dart:js_interop` API docs].
 These helpers include `JSPromise.resolve`, `JSPromise.reject`,
 `JSArray.fromAsync`, `JSFunction.length`, `JSFunction.name`,
-and well-known `JSSymbol` constants.
+and static getters for well-known `JSSymbol` values.
 
 {% comment %}
 TODO (srujzs): Should we add a tree diagram instead for JS types?
