@@ -424,10 +424,9 @@ Keep these namespacing rules in mind:
 The preceding sections show how to call JS members from Dart.
 It's also useful to export Dart code so that you can call it from JS.
 To export a Dart function to JS, first convert it by using the
-[`Function.toJS`][] getter or by using the `toJSVarArgs` getter for variadic
+[`Function.toJS`][] getter (which also converts any returned `Future` into a
+`JSPromise`), or by using the `toJSVarArgs` getter for synchronous variadic
 callbacks.
-This conversion wraps the Dart function in a JS function and automatically
-converts any returned `Future` instance into a `JSPromise` object.
 Then, pass the wrapped function to JS through an interop member.
 At that point, JS code can call the function.
 
