@@ -583,11 +583,14 @@ context of the `flutter` executable, and the Flutter SDK's
 `version` file meets the version constraint. Otherwise,
 the package won't be selected.
 
-:::note
-Pub enforces the upper bound of the flutter constraint for your workspace's
-root packages with a language version of 3.9 or later.
-Otherwise, only the lower bound is enforced.
+:::version-note
+Pub enforces the upper bound of the Flutter constraint for your
+root packages, including each package in a [workspace][], that
+have a [language version][Language versioning] of at least 3.9.
+Otherwise, pub enforces only the lower bound.
 :::
+
+[workspace]: /tools/pub/workspaces
 
 To publish a package with a Flutter SDK constraint,
 you must specify a Dart SDK constraint with a minimum version of
