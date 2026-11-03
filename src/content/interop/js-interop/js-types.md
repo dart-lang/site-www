@@ -83,21 +83,32 @@ for (final item in jsIterable.toDartIterable) { /* ... */ }
 ```
 
 Not all JS types have a conversion, and not all Dart types have a conversion.
-The following table lists the supported conversions between `dart:js_interop`
-types and Dart types:
+The following tables list the supported conversions between `dart:js_interop`
+types and Dart types.
 
-| `dart:js_interop` type                                         | Dart type                                                                                     | Dart to JS                                                           | JS to Dart                                                                |
-| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `JSNumber`, `JSBoolean`, `JSString`                            | `num`, `int`, `double`, `bool`, `String`                                                      | `toJS`                                                               | `toDartDouble`, `toDartInt`, `toDart`                                     |
-| `JSExportedDartFunction`                                       | `Function`                                                                                    | `toJS`, `toJSCaptureThis`, `toJSVarArgs`, `toJSCaptureThisVarArgs`   | `toDart`                                                                  |
-| `JSArray<T extends JSAny?>`                                    | `List<T extends JSAny?>`                                                                      | `toJS`                                                               | `toDart`                                                                  |
-| `JSArray<JSNumber?>`, `JSArray<JSBoolean?>`, `JSArray<JSString?>` | `List<num?>`, `List<int?>`, `List<double?>`, `List<bool?>`, `List<String?>` (and non-nullable) | `toJS`                                                               | `toDartDoubleList`, `toDartIntList`, `toDartBoolList`, `toDartStringList` |
-| `JSIterable<T extends JSAny?>`, `JSIterator<T extends JSAny?>` | `Iterable<T extends JSAny?>`, `Iterator<T extends JSAny?>` (lazy, without copying)            | `toJSIterable`, `toJSIterator`                                       | `toDartIterable`, `toDartIterator`                                        |
-| `JSPromise<T extends JSAny?>`                                  | `Future<T extends JSAny?>`                                                                    | `toJS`                                                               | `toDart`                                                                  |
-| `JSAny?` (`JSPromise` or value)                                | `FutureOr<T extends JSAny?>` (`FutureOr<JSAny?>` from `toDartFutureOr`)                       | `toJSPromiseOrValue`                                                 | `toDartFutureOr`                                                          |
-| Typed arrays like `JSUint8Array`                               | Typed lists from `dart:typed_data`                                                            | `toJS`                                                               | `toDart`                                                                  |
-| `JSBoxedDartObject`                                            | Opaque Dart `Object`                                                                          | `toJSBox`                                                            | `toDart`                                                                  |
-| `ExternalDartReference`                                        | Opaque Dart `Object?`                                                                         | `toExternalReference`                                                | `toDartObject`                                                            |
+### Primitives, functions, futures, and references
+
+| `dart:js_interop` type | Dart type | Dart to JS | JS to Dart |
+| --- | --- | --- | --- |
+| `JSNumber` | `num`, `int`, `double` | `toJS` | `toDartDouble`, `toDartInt` |
+| `JSBoolean`, `JSString` | `bool`, `String` | `toJS` | `toDart` |
+| `JSExportedDartFunction` | `Function` | `toJS`, `toJSCaptureThis`, `toJSVarArgs`, `toJSCaptureThisVarArgs` | `toDart` |
+| `JSPromise<T extends JSAny?>` | `Future<T extends JSAny?>` | `toJS` | `toDart` |
+| `JSAny?` (`JSPromise` or value) | `FutureOr<T extends JSAny?>` (`FutureOr<JSAny?>` from `toDartFutureOr`) | `toJSPromiseOrValue` | `toDartFutureOr` |
+| `JSBoxedDartObject` | Opaque Dart `Object` | `toJSBox` | `toDart` |
+| `ExternalDartReference` | Opaque Dart `Object?` | `toExternalReference` | `toDartObject` |
+
+{:.table .table-striped}
+
+### Collections and typed data
+
+| `dart:js_interop` type | Dart type | Dart to JS | JS to Dart |
+| --- | --- | --- | --- |
+| `JSArray<T extends JSAny?>` | `List<T extends JSAny?>` | `toJS` | `toDart` |
+| `JSArray<JSNumber?>`, `JSArray<JSBoolean?>`, `JSArray<JSString?>` | `List` of `num?`, `int?`, `double?`, `bool?`, or `String?` (and non-nullable) | `toJS` | `toDartDoubleList`, `toDartIntList`, `toDartBoolList`, `toDartStringList` |
+| `JSIterable<T extends JSAny?>` | `Iterable<T extends JSAny?>` (lazy, without copying) | `toJSIterable` | `toDartIterable` |
+| `JSIterator<T extends JSAny?>` | `Iterator<T extends JSAny?>` (lazy, without copying) | `toJSIterator` | `toDartIterator` |
+| Typed arrays like `JSUint8Array` | Typed lists from `dart:typed_data` | `toJS` | `toDart` |
 
 {:.table .table-striped}
 
