@@ -228,7 +228,7 @@ instance members.
 :::note
 Unlike the legacy `package:js` package,
 object literal constructors in the `dart:js_interop` library
-don't require the `@anonymous` or [`@JS()`](#js) annotations.
+don't use the `@anonymous` or [`@JS()`](#js) annotations.
 :::
 
 ### Static members
