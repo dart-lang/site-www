@@ -59,7 +59,29 @@ and checking what h2 headers (`##`) are present.
     -   Ensure formatting is consistent and
         the new entries are prepended correctly.
 
-3.  **Filter and prune entries**
+3.  **Confirm the release date**
+
+    The tool reads the release date from the `**Released on:**` line
+    of the version's section in the SDK changelog.
+    If that line still says `Unreleased`
+    (common on release day, before the SDK changelog is updated),
+    the tool prints a warning and writes `releaseDate: TBD` instead.
+
+    The changelog page shows the `x.y.0` entry's date in the version
+    header as "Released YYYY-MM-DD", so a `TBD` placeholder is
+    visible to users and causes `changelog_data_test` to fail.
+
+    If you see the warning or any `releaseDate: TBD` in the diff,
+    re-run the tool with the actual release date:
+
+    ```bash
+    dart run dash_site sync-changelog --version 3.11.0 --release-date 2026-02-11
+    ```
+
+    Or replace every `releaseDate: TBD` in `src/data/changelog.yml`
+    for that version with the date in `YYYY-MM-DD` format.
+
+4.  **Filter and prune entries**
 
     Remove entries that don't represent concrete, user-facing changes to
     the Dart SDK, Dart language, or its surrounding tooling.
@@ -74,7 +96,7 @@ and checking what h2 headers (`##`) are present.
     -   **Redundant:**
         Entries that duplicate others for the same feature.
 
-4.  **Refine tags**
+5.  **Refine tags**
 
     Review the `description` of each new entry.
     The tool uses keywords to infer tags,
@@ -118,7 +140,7 @@ and checking what h2 headers (`##`) are present.
         - new  # Changed from 'changed' because it adds a new feature.
     ```
 
-5.  **Ensure the presence of links**
+6.  **Ensure the presence of links**
 
     Ensure every entry has a valid URL set as its `link` field.
     If no specific issue or PR link is available in the description,
@@ -136,7 +158,7 @@ and checking what h2 headers (`##`) are present.
       link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#3110
     ```
 
-6.  **Fix any formatting or typo issues**
+7.  **Fix any formatting or typo issues**
 
     Review the changelog entries for issues such as:
 
@@ -149,7 +171,19 @@ and checking what h2 headers (`##`) are present.
 
     If found, fix them before continuing on.
 
-7.  **Request user review**
+8.  **Validate the data**
+
+    Run the changelog data test from the `site` directory to catch
+    schema problems, unknown tags, missing or placeholder release
+    dates, and unresolved reference links before handing off:
+
+    ```bash
+    cd site && dart test test/changelog_data_test.dart
+    ```
+
+    Fix any failures it reports in `src/data/changelog.yml`.
+
+9.  **Request user review**
 
     Notify the user that the changelog has been updated and tags refined.
     Ask them to verify the changes before committing.

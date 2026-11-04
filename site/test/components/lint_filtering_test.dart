@@ -34,7 +34,7 @@ final testLinterRules = <LintDetails>[
   }),
   LintDetails({
     'name': 'core_lint',
-    'description': '',
+    'description': 'Adhere to Effective Dart Guide conventions.',
     'categories': [],
     'state': 'stable',
     'incompatible': [],
@@ -47,6 +47,17 @@ final testLinterRules = <LintDetails>[
     'description': '',
     'categories': [],
     'state': 'experimental',
+    'incompatible': [],
+    'sets': [],
+    'fixStatus': 'hasFix',
+    'sinceDartSdk': '2.0',
+  }),
+  LintDetails({
+    'name': 'directives_ordering',
+    'description':
+        'Adhere to Effective Dart Guide directives sorting conventions.',
+    'categories': [],
+    'state': 'stable',
     'incompatible': [],
     'sets': [],
     'fixStatus': 'hasFix',
@@ -82,18 +93,18 @@ void main() {
           .getElementById('lint-cards')
           ?.querySelectorAll('.card');
 
-      expect(cards?.length, equals(4));
-      expectVisibleLength(4);
+      expect(cards?.length, equals(5));
+      expectVisibleLength(5);
     });
 
     testClient('filters fixable lints', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
-      expectVisibleLength(4);
+      expectVisibleLength(5);
 
       await tester.click(find.componentWithText(FilterChip, 'Fix available'));
 
-      expectVisibleLength(3);
+      expectVisibleLength(4);
       expectCardVisible('fixable_lint', true);
       expectCardVisible('non_fixable_lint', false);
     });
@@ -101,11 +112,11 @@ void main() {
     testClient('filters stable lints', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
-      expectVisibleLength(4);
+      expectVisibleLength(5);
 
       await tester.click(find.componentWithText(FilterChip, 'Stable only'));
 
-      expectVisibleLength(3);
+      expectVisibleLength(4);
       expectCardVisible('core_lint', true);
       expectCardVisible('experimental_lint', false);
     });
@@ -113,7 +124,7 @@ void main() {
     testClient('filters core lints', (tester) async {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
-      expectVisibleLength(4);
+      expectVisibleLength(5);
 
       // Opens the menu
       await tester.click(
@@ -132,7 +143,7 @@ void main() {
     testClient('filters lints by search query', (tester) {
       tester.pumpComponent(LintRuleIndex(testLinterRules));
 
-      expectVisibleLength(4);
+      expectVisibleLength(5);
 
       final searchInput = tester.findNode<web.HTMLInputElement>(
         find.tag('input'),
@@ -144,6 +155,39 @@ void main() {
       expectCardVisible('fixable_lint', true);
       expectCardVisible('non_fixable_lint', true);
       expectCardVisible('core_lint', false);
+    });
+
+    testClient('treats spaces as underscores in search query', (tester) {
+      tester.pumpComponent(LintRuleIndex(testLinterRules));
+
+      expectVisibleLength(5);
+
+      final searchInput = tester.findNode<web.HTMLInputElement>(
+        find.tag('input'),
+      )!;
+      searchInput.value = 'directives or';
+      searchInput.dispatchEvent(web.InputEvent('input'));
+
+      expectVisibleLength(1);
+      expectCardVisible('directives_ordering', true);
+      expectCardVisible('fixable_lint', false);
+    });
+
+    testClient('filters lints by description text', (tester) {
+      tester.pumpComponent(LintRuleIndex(testLinterRules));
+
+      expectVisibleLength(5);
+
+      final searchInput = tester.findNode<web.HTMLInputElement>(
+        find.tag('input'),
+      )!;
+      searchInput.value = 'Effective Dart';
+      searchInput.dispatchEvent(web.InputEvent('input'));
+
+      expectVisibleLength(2);
+      expectCardVisible('core_lint', true);
+      expectCardVisible('directives_ordering', true);
+      expectCardVisible('fixable_lint', false);
     });
   });
 }

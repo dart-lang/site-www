@@ -164,6 +164,21 @@ check out the [excerpt updater package documentation][].
 
 [excerpt updater package documentation]: https://github.com/flutter/website/tree/main/packages/excerpter#readme
 
+### Validate tutorial code
+
+If you've modified code blocks in the Dartpedia tutorial chapters
+(`src/content/learn/tutorial/*.md`),
+run the following command to extract each chapter's progressive workspace
+snapshot and verify that every chapter analyzes cleanly and passes tests:
+
+```terminal
+dart run dash_site check-tutorial-code
+```
+
+To validate a specific chapter (by 1-based chapter number or slug ID)
+or see detailed output for each chapter,
+pass `--chapter <number_or_slug>` or `--verbose`.
+
 
 [Build Status SVG]: https://github.com/dart-lang/site-www/workflows/build/badge.svg
 [OpenSSF Scorecard SVG]: https://api.securityscorecards.dev/projects/github.com/dart-lang/site-www/badge

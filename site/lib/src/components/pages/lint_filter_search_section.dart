@@ -6,6 +6,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
+import '../../util.dart';
 import '../common/chip.dart';
 import '../common/search.dart';
 
@@ -22,6 +23,7 @@ enum RuleSetOption {
 class LintInfo {
   LintInfo({
     required this.name,
+    required this.description,
     required this.hasFix,
     required this.stable,
     required this.inCore,
@@ -30,11 +32,39 @@ class LintInfo {
   });
 
   final String name;
+
+  /// The lint's description as plain text, without any Markdown syntax,
+  /// and with each run of whitespace collapsed into a single space.
+  final String description;
+
   final bool hasFix;
   final bool stable;
   final bool inCore;
   final bool inRecommended;
   final bool inFlutter;
+}
+
+/// Whether a lint with the given [name] and [description] matches [query].
+///
+/// Matching is case-insensitive and checks both the
+/// lint name and its description.
+/// Whitespace in the query is treated as underscores when matching the name,
+/// so `directives ordering` matches `directives_ordering`.
+///
+/// Expects each run of whitespace in [description] to
+/// already be collapsed into a single space, as in [LintInfo.description].
+bool lintMatchesQuery({
+  required String name,
+  required String description,
+  required String query,
+}) {
+  final trimmedQuery = query.trim().toLowerCase();
+  if (trimmedQuery.isEmpty) return true;
+
+  final nameQuery = trimmedQuery.replaceAll(whitespacePattern, '_');
+  final descriptionQuery = trimmedQuery.replaceAll(whitespacePattern, ' ');
+  return name.toLowerCase().contains(nameQuery) ||
+      description.toLowerCase().contains(descriptionQuery);
 }
 
 @client
@@ -77,11 +107,20 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
           lintCards.add(card);
 
           final lintName = card.id;
-          if (lintName.isEmpty) return;
+          if (lintName.isEmpty) continue;
+
+          // Search the rendered description text
+          // rather than its Markdown source,
+          // so queries match what's displayed (`as`, not `` `as` ``).
+          final description =
+              (card.querySelector('.card-content')?.textContent ?? '')
+                  .replaceAll(whitespacePattern, ' ')
+                  .trim();
 
           lintsInfo.add(
             LintInfo(
               name: lintName,
+              description: description,
               hasFix: hasData(card, 'has-fix'),
               stable: hasData(card, 'stable'),
               inCore: hasData(card, 'in-core'),
@@ -114,9 +153,13 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
     final lintsToShow = <String>{};
 
     for (final lint in lintsInfo) {
-      final lintName = lint.name;
-
-      if (!lintName.contains(searchQuery.trim().toLowerCase())) continue;
+      if (!lintMatchesQuery(
+        name: lint.name,
+        description: lint.description,
+        query: searchQuery,
+      )) {
+        continue;
+      }
       if (onlyFixable && !lint.hasFix) continue;
       if (onlyStable && !lint.stable) continue;
       switch (selectedRuleSet) {
@@ -130,7 +173,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
           // No rule set filter applied.
           break;
       }
-      lintsToShow.add(lintName);
+      lintsToShow.add(lint.name);
     }
 
     for (final card in lintCards) {
@@ -151,7 +194,7 @@ class _LintFilterSearchSectionState extends State<LintFilterSearchSection> {
         div(classes: 'search-row', [
           SearchBar(
             placeholder: 'Search rules...',
-            label: 'Search linter rules by their name.',
+            label: 'Search linter rules by name or description.',
             value: searchQuery,
             onInput: (value) {
               updateFilters(() {

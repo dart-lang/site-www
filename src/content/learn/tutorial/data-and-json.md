@@ -128,7 +128,7 @@ it's a good time to configure your project to use a Dart workspace.
     Navigate to the root directory of your project (`/dartpedia`) and
     create a new file named `pubspec.yaml` with the following content:
 
-    ```yaml
+    ```yaml title="pubspec.yaml"
     name: _
     publish_to: none
 
@@ -149,7 +149,7 @@ it's a good time to configure your project to use a Dart workspace.
 
     -   For `cli/pubspec.yaml`:
 
-        ```yaml highlightLines=5
+        ```yaml title="cli/pubspec.yaml" highlightLines=5
         # ... (existing content) ...
         name: cli
         description: A sample command-line application.
@@ -160,7 +160,7 @@ it's a good time to configure your project to use a Dart workspace.
 
     -   For `command_runner/pubspec.yaml`:
 
-        ```yaml highlightLines=5
+        ```yaml title="command_runner/pubspec.yaml" highlightLines=5
         # ... (existing content) ...
         name: command_runner
         description: A starting point for Dart libraries or applications.
@@ -171,7 +171,7 @@ it's a good time to configure your project to use a Dart workspace.
 
     -   For `wikipedia/pubspec.yaml`:
 
-        ```yaml highlightLines=5
+        ```yaml title="wikipedia/pubspec.yaml" highlightLines=5
         # ... (existing content) ...
         name: wikipedia
         description: A sample command-line application.

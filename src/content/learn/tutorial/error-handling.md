@@ -141,7 +141,7 @@ throwing your new `ArgumentException` when the user provides bad input.
     add imports for `dart:async` (to use `FutureOr`) and
     your new `exceptions.dart` file.
 
-    ```dart
+    ```dart title="command_runner/lib/src/command_runner_base.dart"
     import 'dart:async'; // Add this line
     import 'dart:collection';
     import 'dart:io';
@@ -157,7 +157,7 @@ throwing your new `ArgumentException` when the user provides bad input.
     This allows users of your package to
     define their own error-handling logic.
 
-    ```dart
+    ```dart title="command_runner/lib/src/command_runner_base.dart"
     class CommandRunner {
       // Add a constructor that accepts the optional callback.
       CommandRunner({this.onError});
@@ -185,7 +185,7 @@ throwing your new `ArgumentException` when the user provides bad input.
     passes it to the `onError` callback or rethrows it if no callback is provided.
     `rethrow` preserves the original error and stack trace.
 
-    ```dart
+    ```dart title="command_runner/lib/src/command_runner_base.dart"
     Future<void> run(List<String> input) async {
       // [Step 6 update] try/catch added
       try {
@@ -218,7 +218,7 @@ throwing your new `ArgumentException` when the user provides bad input.
     It includes checks that throw your custom `ArgumentException`
     whenever it detects invalid user input.
 
-    ```dart
+    ```dart title="command_runner/lib/src/command_runner_base.dart"
     // [Step 6 update] This method is replaced entirely.
     ArgResults parse(List<String> input) {
       ArgResults results = ArgResults();

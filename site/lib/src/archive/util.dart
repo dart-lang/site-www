@@ -8,11 +8,16 @@ import 'package:pub_semver/pub_semver.dart';
 import 'dart_downloads.dart';
 import 'svn_versions.dart';
 
+/// Fetches available SDK versions for [channel] using [downloader].
+///
+/// Excludes `latest` and maps legacy SVN revisions to version numbers.
+/// The returned list isn't sorted.
+/// The caller is responsible for closing [downloader].
 Future<List<Version>> fetchSdkVersions(
   String channel,
   DartDownloads downloader,
 ) async {
-  final versionPaths = await downloader.fetchVersionPaths(channel).toList();
+  final versionPaths = await downloader.fetchVersionPaths(channel);
   final versions = <Version>[];
   for (final versionPath in versionPaths) {
     final basename = path.basename(versionPath);

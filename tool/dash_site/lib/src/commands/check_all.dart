@@ -25,6 +25,7 @@ final class CheckAllCommand extends Command<int> {
       ['refresh-excerpts', '--fail-on-update', '--dry-run'],
       ['verify-firebase-json'],
       ['check-markdown'],
+      ['check-tutorial-code'],
     ];
 
     var seenFailure = false;

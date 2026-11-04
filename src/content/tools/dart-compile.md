@@ -130,7 +130,8 @@ The following table shows the subcommands of `dart compile`.
   <tr>
     <td> <code>wasm</code> </td>
     <td> WebAssembly </td>
-    <td> A WebAssembly module (<code>.wasm</code>)
+    <td> A WebAssembly module (<code>.wasm</code>),
+      companion JavaScript runtime (<code>.mjs</code>),
       and source map (<code>.wasm.map</code>).
       <br><em><a href="#wasm">Learn more.</a></em>
     </td>
@@ -422,10 +423,27 @@ check out [Web deployment](/web/deployment).
 ### WebAssembly (wasm) {:#wasm}
 
 The `wasm` subcommand compiles Dart code to a WebAssembly/WasmGC module.
-By default, the compiler generates both the `.wasm` module
+By default, the compiler generates the `.wasm` module,
+a companion `.mjs` JavaScript runtime file,
 and a `.wasm.map` source map file.
-To disable source map generation for production builds,
-pass `--no-source-maps`.
+
+For example, to compile a Dart web application to optimized WebAssembly:
+
+```console
+$ dart compile wasm -O2 -o site/main.wasm web/main.dart
+```
+
+| Option | Description |
+| :--- | :--- |
+| `-O<0\|1\|2\|3\|4>` | Controls compiler optimizations for code size and compilation speed (`-O1` default; `-O2` adds minification; `-O3` omits implicit type checks; `-O4` enables more aggressive unsafe optimizations). |
+| `--[no-]minify` | Minifies runtime names (such as class names). Takes precedence over the `-O` setting. |
+| `--[no-]strip-wasm` | Whether to strip the static symbol `"name"` section from the output `.wasm` binary (defaults to on; pass `--no-strip-wasm` for readable production stack traces). |
+| `--[no-]source-maps` | Generates a `.wasm.map` source map file alongside the `.wasm` output (defaults to on). |
+| `--[no-]enable-deferred-loading` | Splits `deferred as` imports into separate `.wasm` modules loaded on demand. |
+| `--standalone` | Emits a standalone `.wasm` binary without JS runtime dependencies (disallows `dart:js_interop`). |
+| `-D<key>=<value>` | Defines compile-time environment declarations for `String.fromEnvironment`, `bool.fromEnvironment`, and `int.fromEnvironment`. |
+
+{:.table .table-striped}
 
 For details on compiling, serving, and deploying Wasm applications,
 see [Compiling to WebAssembly][wasm-compilation].

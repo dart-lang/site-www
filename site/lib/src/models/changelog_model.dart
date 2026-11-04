@@ -8,6 +8,7 @@ import 'package:universal_web/web.dart' as web;
 
 final class ChangelogEntry {
   ChangelogEntry({
+    this.id,
     required this.description,
     required this.version,
     this.releaseDate,
@@ -18,6 +19,7 @@ final class ChangelogEntry {
   });
 
   factory ChangelogEntry.fromMap(Map<String, Object?> map) {
+    final id = (map['id'] as String?)?.trim();
     final description = map['description'] as String;
     final link = map['link'] as String?;
     final versionStr = map['version'].toString().trim();
@@ -35,6 +37,7 @@ final class ChangelogEntry {
     }
 
     return ChangelogEntry(
+      id: (id != null && id.isNotEmpty) ? id : null,
       description: description,
       version: _parseVersion(versionStr),
       releaseDate: map['releaseDate']?.toString(),
@@ -50,8 +53,10 @@ final class ChangelogEntry {
     // Use textContent for description to avoid data-description bloat.
     final contentElement = element.querySelector('.card-content') ?? element;
     final description = contentElement.textContent ?? '';
+    final elementId = element.id.trim();
 
     return ChangelogEntry(
+      id: elementId.isNotEmpty ? elementId : null,
       description: description,
       version: _parseVersion(
         (element.getAttribute('data-version') ?? '').trim(),
@@ -72,6 +77,7 @@ final class ChangelogEntry {
     );
   }
 
+  final String? id;
   final String description;
   final Version version;
   final String? releaseDate;
@@ -91,6 +97,7 @@ final class ChangelogEntry {
 
   Map<String, Object?> toMap() {
     return {
+      'id': id,
       'description': description,
       'version': version,
       'releaseDate': releaseDate,

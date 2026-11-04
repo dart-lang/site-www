@@ -78,8 +78,13 @@ class _LintRuleCard extends StatelessComponent {
         ),
       ],
       content: [
+        // DashMarkdown can only render on the server, but this page is
+        // built on the client in tests, so fall back to the raw text there.
         if (lint.description.isNotEmpty)
-          DashMarkdown(content: lint.description),
+          if (kIsWeb)
+            .text(lint.description)
+          else
+            DashMarkdown(content: lint.description),
       ],
       actions: CardActions(
         leading: _statusIcons,

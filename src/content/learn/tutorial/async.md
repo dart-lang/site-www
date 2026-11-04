@@ -54,7 +54,7 @@ dependency to your project.
 1.  Add `http: ^1.4.0` (or the latest stable version) under `dependencies`.
     The `^` symbol allows compatible versions to be used.
 
-    ```yaml
+    ```yaml title="cli/pubspec.yaml"
     dependencies:
       http: ^1.4.0
     ```
@@ -85,7 +85,7 @@ you need to import it into your Dart file to use its functionalities.
 1.  Add the following `import` statement at the top of the file,
     along with the existing `dart:io` import:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     import 'dart:io';
     import 'package:http/http.dart' as http; // Add this line
     ```
@@ -107,7 +107,7 @@ network requests are asynchronous operations.
     Below your `main` function (and `printUsage` function),
     add the following function signature.
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     // ... (your existing printUsage() function)
 
     Future<String> getWikipediaArticle(String articleTitle) async {
@@ -131,7 +131,7 @@ network requests are asynchronous operations.
 
     Add these lines inside the `getWikipediaArticle` function:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     Future<String> getWikipediaArticle(String articleTitle) async {
       final url = Uri.https(
         'en.wikipedia.org', // Wikipedia API domain
@@ -155,7 +155,7 @@ network requests are asynchronous operations.
 
     Add these lines after the `Uri` construction within `getWikipediaArticle`:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     Future<String> getWikipediaArticle(String articleTitle) async {
       final url = Uri.https(
         'en.wikipedia.org',
@@ -184,7 +184,7 @@ This function will house the core logic for handling the `wikipedia` command.
 
     Your `searchWikipedia` function should now look like this:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     // ... (your existing main function)
 
     void searchWikipedia(List<String>? arguments) async { // Added 'async'
@@ -229,7 +229,7 @@ This function will house the core logic for handling the `wikipedia` command.
     Replace the `?? ''` fallback with a check that prints a message
     and exits the function when no valid input is given.
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     void searchWikipedia(List<String>? arguments) async {
       final String articleTitle;
 
@@ -257,7 +257,7 @@ This function will house the core logic for handling the `wikipedia` command.
     Replace the two placeholder `print` lines at the end of `searchWikipedia`
     with a call to `getWikipediaArticle` and a single `print` of the result.
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     void searchWikipedia(List<String>? arguments) async {
       final String articleTitle;
 
@@ -308,7 +308,7 @@ the `wikipedia` command is used.
 
     Your `main` function should now look like this:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     // ... (existing const version declaration and printUsage function)
 
     void main(List<String> arguments) {

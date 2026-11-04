@@ -157,6 +157,8 @@
       permalink: /tools/cli-distribution
     - title: Publishing packages
       permalink: /tools/pub/publishing
+    - title: Data-driven fixes
+      permalink: /tools/pub/data-driven-fixes
     - title: Writing package pages
       permalink: /tools/pub/writing-package-pages
     - title: Workspaces (monorepo support)
@@ -307,6 +309,8 @@
           permalink: /tools/dart-info
         - title: dart install
           permalink: /tools/dart-install
+        - title: dart migrate
+          permalink: /tools/dart-migrate
         - title: dart pub
           permalink: /tools/pub/cmd
         - title: dart run

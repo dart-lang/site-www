@@ -186,7 +186,7 @@ the new `CommandRunner` class.
 1.  Add the following import statement at the top of the file, alongside
     your other imports:
 
-    ```dart
+    ```dart title="cli/bin/cli.dart"
     import 'package:command_runner/command_runner.dart';
     ```
 

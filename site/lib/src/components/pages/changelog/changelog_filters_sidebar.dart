@@ -109,6 +109,8 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                       ChangelogFiltersSidebar.filters.setTag(tag, checked),
                   labelProvider: (tag) => tag.label,
                   idProvider: (tag) => tag.id,
+                  countProvider: (tag) =>
+                      ChangelogFiltersSidebar.filters.tagCounts[tag] ?? 0,
                 ),
                 CheckboxFilterGroup<String>(
                   title: 'Area',
@@ -120,6 +122,8 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
                       ChangelogFiltersSidebar.filters.setArea(area, checked),
                   labelProvider: (area) => area,
                   idProvider: (area) => 'area-${slugify(area)}',
+                  countProvider: (area) =>
+                      ChangelogFiltersSidebar.filters.areaCounts[area] ?? 0,
                 ),
                 div([
                   const h4([.text('Version')]),
@@ -180,6 +184,11 @@ class _ChangelogFiltersSidebarState extends State<ChangelogFiltersSidebar> {
           ),
         ]),
       ]),
+      const label(
+        classes: 'filter-backdrop',
+        attributes: {'for': 'open-filter-toggle', 'aria-hidden': 'true'},
+        [],
+      ),
       BreakingChangesLegend(
         visible: _showLegend,
         onClose: () => setState(() => _showLegend = false),
