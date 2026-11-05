@@ -161,7 +161,7 @@ The `trailing_commas` option requires at least 3.8.
 
 Use `// dart format off` to disable formatting and
 `// dart format on` to re-enable it.
-These comments only work in Dart files at language version 3.7 or later.
+These comments require a [language version][] of at least 3.7.
 
 Check out the [formatter configuration guide][]
 for more details.
