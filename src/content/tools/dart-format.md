@@ -157,6 +157,25 @@ a [language version][] of at least 3.7.
 The `trailing_commas` option requires at least 3.8.
 :::
 
+#### Disable formatting
+
+Use `// dart format off` to disable formatting and
+`// dart format on` to re-enable it.
+These comments require a [language version][] of at least 3.7.
+
+Check out the [formatter configuration guide][]
+for more details.
+
+<?code-excerpt "misc/lib/tools/dart_format.dart (disable-formatting)"?>
+```dart
+void main() {
+  // dart format off
+   print(   'Hello, World! with Formatting Disabled' );
+  // dart format on
+  print('Hello, World! with Formatting Enabled');
+}
+```
+
 ## Learn more
 
 To learn about additional command-line options,
@@ -175,3 +194,5 @@ Check out the [formatter FAQ][] for more context behind formatting decisions.
 [`analysis_options.yaml`]: /tools/analysis
 [language version]: /language/versioning
 [formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ
+[formatter configuration guide]:
+  {{site.repo.dart.org}}/dart_style/wiki/Configuration#disabling-formatting
