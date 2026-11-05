@@ -33,13 +33,83 @@ Previous iterations of JS interop for Dart are considered legacy and
 are deprecated as of Dart 3.7 (Feb 2025).
 Prefer using [`dart:js_interop`][] going forwards and
 migrate usages of old interop libraries when possible.
-Support for browser APIs, such as [`dart:html`][],
-are now supported by [`package:web`][].
+[`package:web`][] provides browser API support,
+replacing legacy libraries such as [`dart:html`][].
 
 
 :::warning
 None of the legacy interop libraries are supported when compiling to [Wasm][].
 :::
+
+### Disallow deprecated JS interop libraries {:#disallow-deprecated-js-interop}
+
+:::version-note
+The `--[no-]deprecated-js-interop` compiler flag requires Dart 3.14 or later.
+:::
+
+To verify that your app and its dependencies don't import legacy web libraries
+when compiling to JavaScript,
+pass the `--no-deprecated-js-interop` flag to [`dart compile js`][] (`dart2js`)
+or `dart compile js-dev` (`dartdevc`):
+
+```console
+$ dart compile js --no-deprecated-js-interop -o out/main.js web/main.dart
+```
+
+If you build with [`webdev`][] 4.1.0 or later
+(with [`build_web_compilers`][] 4.9.0 or later),
+you can pass the `--no-deprecated-js-interop` flag to `webdev` commands
+such as `webdev serve` and `webdev build`.
+To configure `build.yaml` directly instead,
+set `deprecated-js-interop: false` under `global_options`
+for all four [`build_web_compilers`][] builders
+(`build_web_compilers:ddc`, `build_web_compilers:ddc_modules`,
+`build_web_compilers:dart2js_modules`, and `build_web_compilers:entrypoint`).
+
+Passing the `--no-deprecated-js-interop` flag enforces the following behavior:
+
+- **Disallows legacy web imports**:
+  Importing any of the deprecated `dart:*` web libraries
+  (`dart:html`, `dart:indexed_db`, `dart:js`,
+  `dart:js_util`, `dart:svg`, `dart:web_audio`, and `dart:web_gl`)—or
+  packages that import them, such as `package:js`—results in a
+  compile-time error.
+  (`dart compile wasm` always disallows these libraries and doesn't accept
+  the `--[no-]deprecated-js-interop` flag.)
+- **Evaluates legacy conditional imports to `false`**:
+  The environment conditions `dart.library.html`,
+  `dart.library.indexed_db`, `dart.library.js`, `dart.library.js_util`,
+  `dart.library.svg`, `dart.library.web_audio`, and `dart.library.web_gl`
+  evaluate to `false` in [conditional imports][]
+  (such as `if (dart.library.html)`) and [`bool.fromEnvironment`][].
+- **Reports shortest-path import chains**:
+  When an app or a dependency imports a disallowed library,
+  `dart compile js` (`dart2js`) prints a deduplicated shortest-path import tree
+  that pinpoints which library or package introduced the deprecated import:
+
+  ```plaintext
+  Deprecated JS interop libraries are imported through:
+    main library
+    ├── package:foo
+    │   └── dart:html
+    └── web/src/app.dart
+        ├── package:foo (see above)
+        └── package:bar
+            └── dart:js_util
+  ```
+
+By default, JavaScript compilers allow deprecated JS interop libraries
+(`--deprecated-js-interop`).
+Pass the `--no-deprecated-js-interop` flag
+in your continuous integration (CI) pipeline
+to catch legacy web dependencies early
+and prepare your code for the removal
+of the deprecated `dart:*` web libraries from the Dart SDK.
+
+To catch invalid type checks and casts with JS interop types,
+enable the [`invalid_runtime_check_with_js_interop_types`][] lint rule.
+Starting in [`package:lints`][] 7.0.0,
+`package:lints/core.yaml` includes this rule.
 
 [Dart 3.3]: /blog/new-in-dart-3-3-extension-types-javascript-interop-and-more
 [`package:web`]: {{site.pub-pkg}}/web
@@ -52,6 +122,13 @@ None of the legacy interop libraries are supported when compiling to [Wasm][].
 [`dart:web_audio`]: {{site.dart-api}}/dart-web_audio/
 [`dart:web_gl`]: {{site.dart-api}}/dart-web_gl/
 [Wasm]: /web/wasm
+[`dart compile js`]: /tools/dart-compile#js
+[`webdev`]: /tools/webdev
+[`build_web_compilers`]: {{site.pub-pkg}}/build_web_compilers
+[conditional imports]: /interop/js-interop/package-web#conditional-imports
+[`bool.fromEnvironment`]: {{site.dart-api}}/dart-core/bool/bool.fromEnvironment.html
+[`invalid_runtime_check_with_js_interop_types`]: /tools/linter-rules/invalid_runtime_check_with_js_interop_types
+[`package:lints`]: {{site.pub-pkg}}/lints
 
 ## `dart:js`
 

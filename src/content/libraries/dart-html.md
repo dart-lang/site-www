@@ -8,7 +8,11 @@ prevpage:
 
 :::warning
 The `dart:html` library is deprecated.
+You can't use it in `dart compile wasm` builds or
+when compiling with the `--no-deprecated-js-interop` flag.
 Instead, use [`dart:js_interop`][] and [`package:web`][].
+To migrate existing code,
+see [Migrate to `package:web`][Migrate to package:web].
 :::
 
 Use the [dart:html][] library to program the browser, manipulate objects and
