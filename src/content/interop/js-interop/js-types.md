@@ -232,8 +232,10 @@ void f(JSAny a) {
 }
 ```
 
-To catch invalid runtime checks at compile time, enable the
-[`invalid_runtime_check_with_js_interop_types`][] lint rule.
+To catch invalid type checks and casts with JS interop types,
+enable the [`invalid_runtime_check_with_js_interop_types`][] lint rule.
+Starting in [`package:lints`][] 7.0.0,
+`package:lints/core.yaml` includes this rule.
 
 [`invalid_runtime_check_with_js_interop_types`]: /tools/linter-rules/invalid_runtime_check_with_js_interop_types
 
@@ -290,3 +292,4 @@ pass opaque references to Dart `Object` instances through JavaScript:
 [`toExternalReference`]: {{site.dart-api}}/dart-js_interop/ObjectToExternalDartReference/toExternalReference.html
 [`toDartObject`]: {{site.dart-api}}/dart-js_interop/ExternalDartReferenceToObject/toDartObject.html
 [Wasm]: /web/wasm
+[`package:lints`]: {{site.pub-pkg}}/lints

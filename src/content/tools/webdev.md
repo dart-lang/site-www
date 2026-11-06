@@ -85,6 +85,22 @@ You can customize your build using build configuration files.
 To learn more about build configuration files, see the 
 [build_web_compilers][] package.
 
+:::version-note
+Starting in Dart 3.14 (with `webdev` 4.1.0 and
+[`build_web_compilers`][build_web_compilers] 4.9.0),
+pass the `--no-deprecated-js-interop` flag to `webdev` commands
+such as `webdev serve` and `webdev build`
+to disallow deprecated `dart:*` web libraries and packages that import them
+(including `package:js`).
+To configure `build.yaml` directly instead,
+set `deprecated-js-interop: false` under `global_options`
+for all four `build_web_compilers` builders
+(`build_web_compilers:ddc`, `build_web_compilers:ddc_modules`,
+`build_web_compilers:dart2js_modules`, and `build_web_compilers:entrypoint`).
+For details, refer to
+[Disallow deprecated JS interop libraries][disallow-legacy].
+:::
+
 [amd-modules]: https://github.com/amdjs/amdjs-api/blob/master/AMD.md#amd
 
 ### webdev serve {:#serve}
@@ -209,3 +225,4 @@ Also see the following pages:
 [dev_dependencies]: /tools/pub/dependencies#dev-dependencies
 [test package]: {{site.pub-pkg}}/test
 [webdev]: {{site.pub-pkg}}/webdev
+[disallow-legacy]: /interop/js-interop/past-js-interop#disallow-deprecated-js-interop
