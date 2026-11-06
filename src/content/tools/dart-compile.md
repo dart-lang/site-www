@@ -422,9 +422,10 @@ check out [Web deployment](/web/deployment).
 
 ### WebAssembly (wasm) {:#wasm}
 
-The `wasm` subcommand compiles Dart code to a WebAssembly/WasmGC module.
+The `wasm` subcommand compiles Dart code ahead-of-time (AOT) to a
+WebAssembly/WasmGC module (`dart2wasm`).
 By default, the compiler generates the `.wasm` module,
-a companion `.mjs` JavaScript runtime file,
+a companion `.mjs` JavaScript runtime file,≠
 and a `.wasm.map` source map file.
 
 For example, to compile a Dart web application to optimized WebAssembly:
@@ -435,24 +436,26 @@ $ dart compile wasm -O2 -o site/main.wasm web/main.dart
 
 | Option | Description |
 | :--- | :--- |
-| `-O<0\|1\|2\|3\|4>` | Controls compiler optimizations for code size and compilation speed (`-O1` default; `-O2` adds minification; `-O3` omits implicit type checks; `-O4` enables more aggressive unsafe optimizations). |
-| `--[no-]minify` | Minifies runtime names (such as class names). Takes precedence over the `-O` setting. |
+| `-O<0\|1\|2\|3\|4>` | Controls compiler optimizations for code size and execution speed (`-O1` default; `-O2` adds minification; `-O3` omits implicit type checks; `-O4` omits explicit type and bounds checks). |
+| `--[no-]minify` | Explicitly enables or disables minification of runtime names (such as `<obj>.runtimeType.toString()`), overriding the `-O` setting. |
 | `--[no-]strip-wasm` | Whether to strip the static symbol `"name"` section from the output `.wasm` binary (defaults to on; pass `--no-strip-wasm` for readable production stack traces). |
 | `--[no-]source-maps` | Generates a `.wasm.map` source map file alongside the `.wasm` output (defaults to on). |
 | `--[no-]enable-deferred-loading` | Splits `deferred as` imports into separate `.wasm` modules loaded on demand. |
-| `--standalone` | Emits a standalone `.wasm` binary without JS runtime dependencies (disallows `dart:js_interop`). |
-| `-D<key>=<value>` | Defines compile-time environment declarations for `String.fromEnvironment`, `bool.fromEnvironment`, and `int.fromEnvironment`. |
+| `--standalone` | Emits a standalone `.wasm` binary without JS runtime dependencies (disallows `dart:js_interop` and `--enable-deferred-loading`). |
+| `-D<key>=<value>` or `--define=<key>=<value>` | Defines compile-time environment declarations for `String.fromEnvironment`, `bool.fromEnvironment`, and `int.fromEnvironment`. |
+| `-E<option>` or `--extra-compiler-option=<option>` | Passes an additional flag directly to the `dart2wasm` compiler. |
 
 {:.table .table-striped}
 
-For details on compiling, serving, and deploying Wasm applications,
-see [Compiling to WebAssembly][wasm-compilation].
-To learn about security considerations when deploying source maps,
-see [Web deployment][manage-source-maps].
+For details on compiling, optimizing, and loading Wasm applications,
+refer to [WebAssembly compilation][wasm-compilation].
+To learn about serving `.wasm` assets and managing source maps in production,
+refer to [Web deployment][web-deployment].
 
 [webdev]: /tools/webdev
 [`webdev build`]: /tools/webdev#build
 [`webdev serve`]: /tools/webdev#serve
 [Dart runtime]: /overview#runtime
 [wasm-compilation]: /web/wasm
+[web-deployment]: /web/deployment#serving-wasm-in-production
 [manage-source-maps]: /web/deployment#manage-source-maps-and-unneeded-build-files
