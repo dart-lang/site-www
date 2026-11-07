@@ -12,63 +12,6 @@ alternative to JavaScript (`dart2js`). Compiling to WebAssembly reduces initial
 page load times, eliminates main-thread JavaScript just-in-time (JIT)
 compilation pauses, and delivers consistent frame rendering in modern browsers.
 
-## WebAssembly support and requirements {:#webassembly-support}
-
-When compiling Dart to WebAssembly, keep the following browser, interop, and
-platform requirements in mind:
-
-1. **WebAssembly standards and browser compatibility**:
-   `dart2wasm` targets three standardized WebAssembly proposals: **WasmGC**
-   (Garbage Collection), **JS String Builtins** (`wasm:js-string`), and
-   **Phase 4 Exception Handling** (`try_table` and `exnref`). Running compiled
-   modules in a browser requires at least:
-
-   * **Chrome or Edge 137+**
-   * **Safari 26.2+** (macOS and iOS)
-   * **Firefox 134+** (or **147+** for Flutter web)
-
-   For additional browser compatibility details, refer to the
-   [Flutter Wasm documentation][Flutter].
-
-1. **Target environments and standalone mode**:
-   By default, compiled Wasm output targets JavaScript environments (such as
-   browsers) and generates a companion `<name>.mjs` runtime file. To compile a
-   standalone WebAssembly module for non-web runtimes such as Wasmtime 39+
-   (using `-W gc,exceptions,function-references=y`), pass `--standalone` to
-   `dart compile wasm`. When `--standalone` is set, [`dart:js_interop`][] and
-   `--enable-deferred-loading` are disallowed.
-
-1. **JavaScript interop**:
-   Only Dart's [next-generation JS interop mechanism][js-interop]
-   ([`dart:js_interop`][] and [`package:web`][]) is supported when compiling to
-   Wasm.
-
-1. **Build tooling**:
-   The `webdev` tool doesn't support Wasm compilation (`webdev serve` or
-   `webdev build`). Instead, follow the steps in
-   [Compile your web app to Wasm](#compiling-to-wasm).
-
-### Supported packages {:#supported-packages}
-
-To find Wasm-compatible packages, use the [`wasm-ready`][] filter on
-[pub.dev][].
-
-A package is "wasm-ready" when it doesn't import legacy web or interop
-libraries such as `dart:html`, `dart:js`, or `package:js`. Refer to the
-[past JS interop page][past-js-interop] for the full list of disallowed
-libraries.
-
-### Conditional imports and SIMD support {:#conditional-imports-and-simd-support}
-
-* **Conditional imports (`dart.library.isolate`)**:
-  When compiling with `dart2wasm`, `dart.library.isolate` evaluates to `false`
-  in conditional imports (`if (dart.library.isolate)`), matching the behavior
-  of `dart2js` and `ddc`.
-* **128-bit Wasm SIMD (`v128`)**:
-  In `dart2wasm`, `dart:typed_data` SIMD types (`Int32x4`, `Float32x4`,
-  `Float64x2`, `Int32x4List`, `Float32x4List`, and `Float64x2List`) are backed
-  by native WebAssembly 128-bit `v128` SIMD instructions.
-
 ## Compile your web app to Wasm {:#compiling-to-wasm}
 
 Use the [`dart compile wasm`][dart-compile-wasm] command to compile a Dart web
@@ -91,8 +34,8 @@ To compile and run a Dart web app with Wasm, follow these steps:
    $ cd mywebapp
    ```
 
-   The template creates a small web app using [`package:web`][], which is
-   required to run Wasm. Make sure your web apps are [migrated][] from
+   The template creates a small web app that uses [`package:web`][], which is
+   required to run Wasm. Existing web apps must [migrate][migrated] from
    `dart:html` to `package:web`.
 
 1. Compile the app to Wasm into a `site` output directory:
@@ -101,7 +44,7 @@ To compile and run a Dart web app with Wasm, follow these steps:
    $ dart compile wasm -O2 web/main.dart -o site/main.wasm
    ```
 
-   This produces `site/main.wasm`, the companion JavaScript runtime
+   This command produces `site/main.wasm`, the companion JavaScript runtime
    `site/main.mjs`, and `site/main.wasm.map`.
 
    :::note
@@ -119,13 +62,14 @@ To compile and run a Dart web app with Wasm, follow these steps:
    ```
 
 1. Because `index.html` loads `main.dart.js`, create `site/main.dart.js` to
-   import the generated `site/main.mjs` runtime and instantiate
-   `site/main.wasm`:
+   fetch `site/main.wasm` and import the generated `site/main.mjs` runtime in
+   parallel:
 
    ```js title="site/main.dart.js"
    (async function () {
+     const wasmPromise = fetch('main.wasm');
      const { compileStreaming } = await import('./main.mjs');
-     const app = await compileStreaming(fetch('main.wasm'));
+     const app = await compileStreaming(wasmPromise);
      const instantiatedApp = await app.instantiate({});
      instantiatedApp.invokeMain();
    })();
@@ -139,6 +83,63 @@ To compile and run a Dart web app with Wasm, follow these steps:
    ```
 
 You can also explore this small [sandbox example][sandbox].
+
+## WebAssembly support and requirements {:#webassembly-support}
+
+When compiling Dart to WebAssembly, keep the following browser, interop, and
+platform requirements in mind:
+
+* **WebAssembly standards and browser compatibility**:
+  `dart2wasm` targets three standardized WebAssembly proposals: **WasmGC**
+  (Garbage Collection), **JS String Builtins** (`wasm:js-string`), and
+  **Phase 4 Exception Handling** (`try_table` and `exnref`). Running compiled
+  modules in a browser requires at least:
+
+  * **Chrome or Edge 137+**
+  * **Safari 26.2+** (macOS and iOS)
+  * **Firefox 134+** (or **147+** for Flutter web)
+
+  For additional browser compatibility details, refer to the
+  [Flutter Wasm documentation][Flutter].
+
+* **Target environments and standalone mode**:
+  By default, compiled Wasm output targets JavaScript environments (such as
+  browsers) and generates a companion `<name>.mjs` runtime file. To compile a
+  standalone WebAssembly module for non-web runtimes such as Wasmtime 39+
+  (using `-W gc,exceptions,function-references=y`), pass `--standalone` to
+  `dart compile wasm`. When `--standalone` is set, [`dart:js_interop`][] and
+  `--enable-deferred-loading` are disallowed.
+
+* **JavaScript interop**:
+  Only Dart's [next-generation JS interop mechanism][js-interop]
+  ([`dart:js_interop`][] and [`package:web`][]) is supported when compiling to
+  Wasm.
+
+* **Build tooling**:
+  The `webdev` tool doesn't support Wasm compilation (`webdev serve` or
+  `webdev build`). Instead, follow the steps in
+  [Compile your web app to Wasm](#compiling-to-wasm).
+
+### Supported packages {:#supported-packages}
+
+To find Wasm-compatible packages, use the [`wasm-ready`][] filter on
+[pub.dev][].
+
+A package is "wasm-ready" when it doesn't import legacy web or interop
+libraries such as `dart:html`, `dart:js`, or `package:js`. Refer to the
+[past JS interop page][past-js-interop] for the full list of disallowed
+libraries.
+
+### Conditional imports and SIMD support {:#conditional-imports-and-simd-support}
+
+* **Conditional imports (`dart.library.isolate`)**:
+  When compiling with `dart2wasm`, `dart.library.isolate` evaluates to `false`
+  in conditional imports (`if (dart.library.isolate)`), matching the behavior
+  of `dart2js` and `ddc`.
+* **128-bit Wasm SIMD (`v128`)**:
+  In `dart2wasm`, `dart:typed_data` SIMD types (`Int32x4`, `Float32x4`,
+  `Float64x2`, `Int32x4List`, `Float32x4List`, and `Float64x2List`) are backed
+  by native WebAssembly 128-bit `v128` SIMD instructions.
 
 ## Compiler optimization levels and flags {:#optimization-levels-and-flags}
 
@@ -154,7 +155,7 @@ $ dart compile wasm -O2 web/main.dart -o site/main.wasm
 The `-O0` through `-O4` optimization levels enable progressively more
 aggressive compiler passes:
 
-| Flag | Binaryen (`wasm-opt`) | Function inlining | Minify runtime names (`--minify`) | Omit implicit type checks | Omit explicit type and bounds checks |
+| Flag | Binaryen (`wasm-opt`) | Function inlining | Minify runtime names and omit error details (`--minify`) | Omit implicit type checks | Omit index bounds checks |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **`-O0`** | Disabled | Disabled | Disabled | Disabled | Disabled |
 | **`-O1`** _(default)_ | Enabled | Enabled | Disabled | Disabled | Disabled |
@@ -164,17 +165,20 @@ aggressive compiler passes:
 
 {:.table .table-striped}
 
-For most production builds, use **`-O2`**. It enables full size and speed
-optimizations (including `wasm-opt`, function inlining, and minification) while
-preserving standard Dart runtime semantics and type checks.
+For most production builds, use **`-O2`**. This level enables full size and
+speed optimizations (including `wasm-opt`, function inlining, and minification)
+while preserving standard Dart runtime semantics, type checks, and bounds
+checks.
 
 :::warning
-`-O3` omits implicit type checks, and `-O4` additionally omits explicit type
-checks (such as `as` casts) and bounds checks. These omissions can cause your
-app to trap or behave unexpectedly if a runtime type error or out-of-bounds
-access occurs. Before deploying with `-O3` or `-O4`, test thoroughly with `-O2`
-to verify that your app never throws a subtype of `Error` (such as `TypeError`
-or `RangeError`).
+`-O3` omits implicit type checks (`--omit-implicit-checks`), and `-O4`
+additionally omits index bounds checks (`--omit-bounds-checks`). (Explicit `as`
+type checks are still enforced at `-O3` and `-O4` unless you pass
+`-E--omit-explicit-checks`.) Omitting runtime checks can cause your app to trap
+or behave unexpectedly if a runtime type error or out-of-bounds access occurs.
+Before deploying with `-O3` or `-O4`, test thoroughly with `-O2` to verify that
+your app never throws a subtype of `Error` (such as `TypeError` or
+`RangeError`).
 :::
 
 ### Additional production CLI flags {:#production-cli-flags}
@@ -190,8 +194,8 @@ configuration:
 | `--[no-]source-maps` | Enabled | Generates `<output>.wasm.map` to map Wasm instruction offsets back to Dart source files and line numbers. |
 | `--[no-]enable-deferred-loading` | Disabled | Splits `deferred as` imports into separate `<name>_module<id>.wasm` modules loaded on demand. |
 | `--standalone` | Disabled | Emits a standalone Wasm module without JavaScript interop for non-web runtimes such as Wasmtime (disallows [`dart:js_interop`][] and `--enable-deferred-loading`). |
-| `-D<key>=<value>` / `--define` | None | Defines compile-time environment declarations read by `String.fromEnvironment`, `int.fromEnvironment`, or `bool.fromEnvironment`. |
-| `-E<option>` / `--extra-compiler-option` | None | Passes an additional flag directly to the `dart2wasm` compiler. |
+| `-D<key>=<value>` or `--define` | None | Defines compile-time environment declarations read by `String.fromEnvironment`, `int.fromEnvironment`, or `bool.fromEnvironment`. |
+| `-E<option>` or `--extra-compiler-option` | None | Passes an additional flag directly to the `dart2wasm` compiler. |
 
 {:.table .table-striped}
 

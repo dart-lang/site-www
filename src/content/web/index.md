@@ -9,7 +9,7 @@ Dart supports the web as one of its core [platforms][].
 For development, the Dart development JavaScript compiler (`ddc`) provides a
 quick edit-refresh cycle.
 For production [deployment][], you can compile Dart to
-[WebAssembly][wasm] (`dart2wasm` / WasmGC) for fast startup and consistent frame
+[WebAssembly (WasmGC)][wasm] (`dart2wasm`) for fast startup and consistent frame
 execution in modern browsers, or to minified JavaScript (`dart2js`).
 
 In addition to compilers,

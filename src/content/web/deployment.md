@@ -9,7 +9,7 @@ You compile your Dart code to production WebAssembly (`dart compile wasm`) or
 JavaScript (`dart compile js` or `webdev build`), optimize the generated
 assets, and serve them from a web server or content delivery network (CDN).
 
-## Building your app {:#compiling-to-javascript}
+## Build your app {:#compiling-to-javascript}
 
 For production deployments, you can compile your Dart web app to either
 [WebAssembly (Wasm)][wasm] (`dart2wasm`), JavaScript (`dart2js`), or both (with
@@ -161,8 +161,12 @@ with high fetch priority, and pass the `fetch()` promise directly to
   <script type="module">
     import { compileStreaming } from './main.mjs';
 
-    // Start streaming compilation immediately while bytes download
-    const wasmResponsePromise = fetch('/main.wasm', { priority: 'high' });
+    // Match the preload credentials mode ('omit' for crossorigin="anonymous")
+    // so the browser reuses the preloaded response instead of fetching twice.
+    const wasmResponsePromise = fetch('/main.wasm', {
+      priority: 'high',
+      credentials: 'omit',
+    });
     const compiledApp = await compileStreaming(wasmResponsePromise);
     const instantiatedApp = await compiledApp.instantiate({});
     instantiatedApp.invokeMain();
@@ -173,7 +177,7 @@ with high fetch priority, and pass the `fetch()` promise directly to
 
 ### Enable Brotli and Gzip HTTP compression {:#http-compression}
 
-* Pre-compress `.wasm` and `.mjs` artifacts during your CI/CD build using
+* Pre-compress `.wasm` and `.mjs` artifacts during your release build using
   Brotli (`brotli -q 11`) and Gzip (`gzip -9`) as a fallback
   (`Content-Encoding: br` or `gzip`).
 * WasmGC binaries contain structured type sections and bytecode patterns that
@@ -217,8 +221,9 @@ Exception Handling:
    ```js
    async function bootApp() {
      try {
+       const wasmPromise = fetch('/main.wasm');
        const { compileStreaming } = await import('./main.mjs');
-       const compiledApp = await compileStreaming(fetch('/main.wasm'));
+       const compiledApp = await compileStreaming(wasmPromise);
        const instantiatedApp = await compiledApp.instantiate({});
        instantiatedApp.invokeMain();
      } catch (wasmError) {
