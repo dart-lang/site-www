@@ -70,7 +70,8 @@ void main() {
     );
 
     test('incrementally merges class and enum members across steps', () {
-      // Chapter 6 (`inheritance`): `Command` and `ArgResults` in arguments.dart.
+      // Chapter 6 (`inheritance`):
+      // `Command` and `ArgResults` in arguments.dart.
       final inheritance = chapters.firstWhere((c) => c.id == 'inheritance');
       final argumentsCode =
           inheritance.workspaceFiles['command_runner/lib/src/arguments.dart']!;
@@ -89,7 +90,8 @@ void main() {
       expect(argumentsCode, contains('Command? command;'));
       expect(argumentsCode, contains('bool flag(String name)'));
 
-      // Chapter 8 (`advanced-oop`): `ConsoleColor` enum and `TextRenderUtils` extension.
+      // Chapter 8 (`advanced-oop`):
+      // `ConsoleColor` enum and `TextRenderUtils` extension.
       final advancedOop = chapters.firstWhere((c) => c.id == 'advanced-oop');
       final consoleCode =
           advancedOop.workspaceFiles['command_runner/lib/src/console.dart']!;
@@ -98,7 +100,8 @@ void main() {
       expect(consoleCode, contains('String applyForeground(String text)'));
       expect(consoleCode, contains('extension TextRenderUtils on String'));
 
-      // Chapter 9 (`cli-polish`): `CommandRunner` has `onOutput`, `onError`, and `parse`.
+      // Chapter 9 (`cli-polish`):
+      // `CommandRunner` has `onOutput`, `onError`, and `parse`.
       final cliPolish = chapters.firstWhere((c) => c.id == 'cli-polish');
       final runnerBaseCode = cliPolish
           .workspaceFiles['command_runner/lib/src/command_runner_base.dart']!;
@@ -121,7 +124,8 @@ void main() {
       }
     });
 
-    test('flags untagged dart/yaml blocks inside ## Tasks while ignoring intro and skip="true" blocks', () {
+    test('flags untagged dart/yaml blocks inside ## Tasks while '
+        'ignoring intro and skip="true" blocks', () {
       final extractor = TutorialExtractor(repositoryRoot: repositoryRoot);
       const sampleMarkdown = '''
 # Sample Chapter
@@ -165,26 +169,30 @@ void summaryExample() {}
       );
     });
 
-    test('produces serializable JSON snapshots with per-step assembledFileContent', () {
-      for (final chapter in chapters) {
-        final json = chapter.toJson();
-        expect(json['index'], chapter.index);
-        expect(json['id'], chapter.id);
-        expect(json['snippets'], isNotEmpty);
-        expect(json['workspaceFiles'], isA<Map<String, String>>());
-        for (final snippet in chapter.snippets) {
-          expect(
-            snippet.assembledFileContent,
-            isNotNull,
-            reason:
-                'Snippet at ${chapter.id}:${snippet.lineNumber} missing assembledFileContent',
-          );
-          expect(
-            snippet.toJson()['assembledFileContent'],
-            equals(snippet.assembledFileContent),
-          );
+    test(
+      'produces serializable JSON snapshots with per-step assembledFileContent',
+      () {
+        for (final chapter in chapters) {
+          final json = chapter.toJson();
+          expect(json['index'], chapter.index);
+          expect(json['id'], chapter.id);
+          expect(json['snippets'], isNotEmpty);
+          expect(json['workspaceFiles'], isA<Map<String, String>>());
+          for (final snippet in chapter.snippets) {
+            expect(
+              snippet.assembledFileContent,
+              isNotNull,
+              reason:
+                  'Snippet at ${chapter.id}:${snippet.lineNumber} '
+                  'missing assembledFileContent',
+            );
+            expect(
+              snippet.toJson()['assembledFileContent'],
+              equals(snippet.assembledFileContent),
+            );
+          }
         }
-      }
-    });
+      },
+    );
   });
 }
