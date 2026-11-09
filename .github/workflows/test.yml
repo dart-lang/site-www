@@ -27,7 +27,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - sdk: beta
+          - sdk: 3.14.0-315.3.beta
             experimental: false
           - sdk: stable
             experimental: true
@@ -65,7 +65,7 @@ jobs:
           persist-credentials: false
       - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
         with:
-          sdk: beta
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check Markdown for any known issues
@@ -80,7 +80,7 @@ jobs:
           persist-credentials: false
       - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
         with:
-          sdk: beta
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if excerpts are up to date
@@ -95,7 +95,7 @@ jobs:
           persist-credentials: false
       - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
         with:
-          sdk: beta
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Check if text can be replaced with site variables
@@ -110,7 +110,7 @@ jobs:
           persist-credentials: false
       - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
         with:
-          sdk: beta
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Validate the firebase.json file

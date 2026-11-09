@@ -513,13 +513,14 @@ final class _WorkspaceBuilder {
   /// Merges a partial or complete `pubspec.yaml` snippet into the package's
   /// [_PubspecModel].
   ///
-  /// Tutorial chapters show only the lines being added to `pubspec.yaml` (such
-  /// as `resolution: workspace` or a two-line `dependencies:` block with `# ...`
-  /// comments), which would not be a valid `pubspec.yaml` on its own.
+  /// Tutorial chapters show only the lines being added to `pubspec.yaml`,
+  /// (such as `resolution: workspace` or a
+  /// two-line `dependencies:` block with `# ...` comments),
+  /// which wouldn't be a valid `pubspec.yaml` on its own.
   void _applyYamlSnippet(String targetPath, String code) {
     if (targetPath == 'pubspec.yaml') {
-      // Lower `sdk: ^3.8.1` to `sdk: ^3.8.0` so the root workspace pubspec
-      // resolves on any Dart 3.8+ SDK.
+      // Lower `sdk: ^3.8.1` to `sdk: ^3.8.0` so
+      // the root workspace pubspec resolves on any Dart 3.8+ SDK.
       files[targetPath] = '${code.replaceAll('sdk: ^3.8.1', 'sdk: ^3.8.0')}\n';
       return;
     }
@@ -565,8 +566,8 @@ final class _WorkspaceBuilder {
     files[targetPath] = model.render();
   }
 
-  /// Applies either a full-file replacement or an incremental declaration/member
-  /// update to [targetPath].
+  /// Applies either a full-file replacement or an incremental
+  /// declaration/member update to [targetPath].
   void _applyDartSnippet(String targetPath, String rawCode) {
     // Chapter 1 first shows the starter `bin/cli.dart` with a comment
     // `import 'package:cli/cli.dart' as cli; // Delete this entire line` to
@@ -1163,9 +1164,10 @@ String? _identifyMemberName(String chunk, {required String className}) {
     return 'member:${getterMatch.group(1)!}';
   }
 
-  // Match function-typed fields (such as `FutureOr<void> Function(Object)? onError;`)
-  // before the method regex below, because the parentheses in `Function(...)`
-  // would otherwise match the method signature pattern.
+  // Match function-typed fields
+  // (such as `FutureOr<void> Function(Object)? onError;`) before the method
+  // regex below, because the parentheses in `Function(...)` would otherwise
+  // match the method signature pattern.
   if (!clean.contains('{') && !clean.contains('=>')) {
     final semiFieldMatch = RegExp(r'(\w+)\s*(?:=[^;]*)?;$').firstMatch(clean);
     if (semiFieldMatch != null && !clean.trimRight().endsWith(');')) {
