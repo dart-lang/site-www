@@ -42,7 +42,8 @@ final class CheckTutorialCodeCommand extends Command<int> {
       _chapterOption,
       abbr: 'c',
       // 1-based to match user-facing chapter numbers (Chapters 1–13) and
-      // exported snapshot filenames (`chapter_01_...` through `chapter_13_...`).
+      // exported snapshot filenames, such as
+      // `chapter_01_...` through `chapter_13_...`.
       help: 'Validate a specific chapter by 1-based chapter number or slug ID.',
     );
     argParser.addOption(
@@ -55,7 +56,8 @@ final class CheckTutorialCodeCommand extends Command<int> {
 
   @override
   String get description =>
-      'Extract and validate code snippets across all Dartpedia tutorial chapters.';
+      'Extract and validate code snippets across all '
+      'Dartpedia tutorial chapters.';
 
   @override
   String get name => 'check-tutorial-code';
