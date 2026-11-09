@@ -162,12 +162,7 @@ with high fetch priority, and pass the `fetch()` promise directly to
   <script type="module">
     import { compileStreaming } from '/main.mjs';
 
-    // Match the preload credentials mode ('omit' for crossorigin="anonymous")
-    // so the browser reuses the preloaded response instead of fetching twice.
-    const wasmResponsePromise = fetch('/main.wasm', {
-      priority: 'high',
-      credentials: 'omit',
-    });
+    const wasmResponsePromise = fetch('/main.wasm', { priority: 'high' });
     const compiledApp = await compileStreaming(wasmResponsePromise);
     const instantiatedApp = await compiledApp.instantiate({});
     instantiatedApp.invokeMain();
@@ -221,19 +216,20 @@ Exception Handling, provide a JavaScript fallback:
 
    ```js
    async function bootApp() {
+     let instantiatedApp;
      try {
        const wasmPromise = fetch('/main.wasm');
        const { compileStreaming } = await import('/main.mjs');
        const compiledApp = await compileStreaming(wasmPromise);
-       const instantiatedApp = await compiledApp.instantiate({});
-       instantiatedApp.invokeMain();
+       instantiatedApp = await compiledApp.instantiate({});
      } catch (wasmError) {
        console.warn('Wasm initialization failed; falling back to JS:', wasmError);
        const fallbackScript = document.createElement('script');
        fallbackScript.src = '/main.dart.js';
-       fallbackScript.defer = true;
        document.head.appendChild(fallbackScript);
+       return;
      }
+     instantiatedApp.invokeMain();
    }
 
    bootApp();

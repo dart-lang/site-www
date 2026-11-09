@@ -38,8 +38,8 @@ When compiling your Dart web app to [WebAssembly][wasm] (`dart compile wasm`),
 keep these interoperability and performance practices in mind:
 
   * **Use `dart:js_interop` and `package:web`**:
-    Legacy web and interop libraries (`dart:html`, `dart:js`, and `package:js`)
-    are unsupported on Wasm targets.
+    Deprecated legacy web and interop libraries (`dart:html`, `dart:js`,
+    `dart:js_util`, and `package:js`) are unsupported on Wasm targets.
   * **Minimize high-frequency calls across the Wasm and JS boundary**:
     In performance-critical code or tight loops, keep computation in Dart or
     batch values rather than making repeated interop calls per iteration.

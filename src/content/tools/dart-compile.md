@@ -438,13 +438,12 @@ $ dart compile wasm -O2 -o site/main.wasm web/main.dart
 | Option | Description |
 | :--- | :--- |
 | `-O0` to `-O4` | Controls compiler optimizations for code size and execution speed (`-O1` is the default, `-O2` adds minification and omits error details, `-O3` omits implicit type checks, and `-O4` omits index bounds checks). |
-| `--[no-]minify` | Enables or disables minification of runtime names (such as `<obj>.runtimeType.toString()`), overriding the `-O` setting. |
+| `--minify` | Minifies runtime names (such as `<obj>.runtimeType.toString()`). Enabled by default at `-O2` and higher. |
 | `--[no-]strip-wasm` | Strips the static symbol `name` section from the output `.wasm` binary (enabled by default). Pass `--no-strip-wasm` for readable function names when profiling. |
 | `--[no-]source-maps` | Generates a `.wasm.map` source map file alongside the `.wasm` output (enabled by default). |
 | `--[no-]enable-deferred-loading` | Splits `deferred as` imports into separate `.wasm` modules loaded on demand. |
 | `--standalone` | Emits a standalone `.wasm` binary without JS runtime dependencies (disallows `dart:js_interop` and `--enable-deferred-loading`). |
 | `-D<key>=<value>` or `--define=<key>=<value>` | Defines compile-time environment declarations for `String.fromEnvironment`, `bool.fromEnvironment`, and `int.fromEnvironment`. |
-| `-E<option>` or `--extra-compiler-option=<option>` | Passes an additional flag directly to the `dart2wasm` compiler. |
 
 {:.table .table-striped}
 
