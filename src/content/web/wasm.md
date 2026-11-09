@@ -20,7 +20,7 @@ app to a WebAssembly module. For a full list of compiler flags, refer to
 `dart compile wasm --help`.
 
 :::note
-If you are building a **Flutter web app**, run `flutter build web --wasm`
+If you are building a Flutter web app, run `flutter build web --wasm`
 instead of invoking `dart compile wasm` directly. Refer to the
 [Flutter Wasm documentation][Flutter] for Flutter-specific build instructions.
 :::
@@ -75,11 +75,10 @@ To compile and run a Dart web app with Wasm, follow these steps:
    })();
    ```
 
-1. Serve the `site` directory using a local HTTP server such as [`dhttpd`][]:
+1. Serve the `site` directory by using a local HTTP server such as [`dhttpd`][]:
 
    ```console
-   $ dart pub global activate dhttpd
-   $ dhttpd --path site
+   $ dart run dhttpd@ --path site
    ```
 
 You can also explore this small [sandbox example][sandbox].
@@ -90,14 +89,15 @@ When compiling Dart to WebAssembly, keep the following browser, interop, and
 platform requirements in mind:
 
 * **WebAssembly standards and browser compatibility**:
-  `dart2wasm` targets three standardized WebAssembly proposals: **WasmGC**
-  (Garbage Collection), **JS String Builtins** (`wasm:js-string`), and
-  **Phase 4 Exception Handling** (`try_table` and `exnref`). Running compiled
-  modules in a browser requires at least:
+  The `dart2wasm` compiler targets three standardized WebAssembly proposals:
+  WebAssembly Garbage Collection (WasmGC), JS String Builtins
+  (`wasm:js-string`), and Phase 4 Exception Handling (the `try_table` and
+  `exnref` instructions). Running compiled modules in a browser requires one
+  of the following minimum browser versions:
 
-  * **Chrome or Edge 137+**
-  * **Safari 26.2+** (macOS and iOS)
-  * **Firefox 134+** (or **147+** for Flutter web)
+  * Chrome or Edge 137+
+  * Safari 26.2+ (macOS and iOS)
+  * Firefox 134+ (or 147+ for Flutter web)
 
   For additional browser compatibility details, refer to the
   [Flutter Wasm documentation][Flutter].
@@ -157,28 +157,28 @@ aggressive compiler passes:
 
 | Flag | Binaryen (`wasm-opt`) | Function inlining | Minify runtime names and omit error details (`--minify`) | Omit implicit type checks | Omit index bounds checks |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **`-O0`** | Disabled | Disabled | Disabled | Disabled | Disabled |
-| **`-O1`** _(default)_ | Enabled | Enabled | Disabled | Disabled | Disabled |
-| **`-O2`** | Enabled | Enabled | Enabled | Disabled | Disabled |
-| **`-O3`** | Enabled | Enabled | Enabled | Enabled | Disabled |
-| **`-O4`** | Enabled | Enabled | Enabled | Enabled | Enabled |
+| `-O0` | Disabled | Disabled | Disabled | Disabled | Disabled |
+| `-O1` (default) | Enabled | Enabled | Disabled | Disabled | Disabled |
+| `-O2` | Enabled | Enabled | Enabled | Disabled | Disabled |
+| `-O3` | Enabled | Enabled | Enabled | Enabled | Disabled |
+| `-O4` | Enabled | Enabled | Enabled | Enabled | Enabled |
 
 {:.table .table-striped}
 
-For most production builds, use **`-O2`**. This level enables full size and
-speed optimizations (including `wasm-opt`, function inlining, and minification)
-while preserving standard Dart runtime semantics, type checks, and bounds
-checks.
+For most production builds, use the `-O2` flag. This level enables full size
+and speed optimizations (including `wasm-opt`, function inlining, and
+minification) while preserving standard Dart runtime semantics, type checks,
+and bounds checks.
 
 :::warning
-`-O3` omits implicit type checks (`--omit-implicit-checks`), and `-O4`
-additionally omits index bounds checks (`--omit-bounds-checks`). (Explicit `as`
-type checks are still enforced at `-O3` and `-O4` unless you pass
-`-E--omit-explicit-checks`.) Omitting runtime checks can cause your app to trap
-or behave unexpectedly if a runtime type error or out-of-bounds access occurs.
-Before deploying with `-O3` or `-O4`, test thoroughly with `-O2` to verify that
-your app never throws a subtype of `Error` (such as `TypeError` or
-`RangeError`).
+The `-O3` level omits implicit type checks (`--omit-implicit-checks`), and
+the `-O4` level additionally omits index bounds checks
+(`--omit-bounds-checks`). (Explicit `as` type checks are still enforced at
+`-O3` and `-O4` unless you pass `-E--omit-explicit-checks`.) Omitting runtime
+checks can cause your app to trap or behave unexpectedly if a runtime type
+error or out-of-bounds access occurs. Before deploying with `-O3` or `-O4`,
+test thoroughly with the `-O2` flag to verify that your app never throws a
+subtype of `Error` (such as `TypeError` or `RangeError`).
 :::
 
 ### Additional production CLI flags {:#production-cli-flags}
@@ -190,7 +190,7 @@ configuration:
 | Flag | Default | Description |
 | :--- | :--- | :--- |
 | `--[no-]minify` | `-O` dependent | Overrides the `-O` level setting for minifying runtime names (such as `runtimeType.toString()`). Pass `-O2 --no-minify` if production code inspects `runtimeType.toString()`. |
-| `--[no-]strip-wasm` | Enabled | Strips static symbol names from the `.wasm` binary to reduce download size. Pass `--no-strip-wasm` when profiling function names in Chrome DevTools. |
+| `--[no-]strip-wasm` | Enabled | Strips static symbol names from the `.wasm` binary to reduce download size. Pass `--no-strip-wasm` when [profiling in Chrome DevTools](#profile-wasm). |
 | `--[no-]source-maps` | Enabled | Generates `<output>.wasm.map` to map Wasm instruction offsets back to Dart source files and line numbers. |
 | `--[no-]enable-deferred-loading` | Disabled | Splits `deferred as` imports into separate `<name>_module<id>.wasm` modules loaded on demand. |
 | `--standalone` | Disabled | Emits a standalone Wasm module without JavaScript interop for non-web runtimes such as Wasmtime (disallows [`dart:js_interop`][] and `--enable-deferred-loading`). |
@@ -219,7 +219,7 @@ files:
 $ dart compile wasm -O2 --enable-deferred-loading web/main.dart -o site/main.wasm
 ```
 
-When deferred loading is enabled, your application loader must provide a
+When you enable deferred loading, your application loader must provide a
 `loadDeferredModules` callback to `app.instantiate()` that fetches and loads
 the deferred module bytes:
 
@@ -255,27 +255,27 @@ sequential phases:
    Performs closed-world whole-program analysis, tree-shaking unreachable code,
    devirtualizing method calls, and inferring concrete types and unboxing
    opportunities.
-1. **`codegen` (Wasm Code Generation)**:
+1. **`codegen` (Wasm code generation)**:
    Translates the optimized Dart kernel into WebAssembly instructions and
    WasmGC struct and array type definitions, emitting `<name>.wasm`, the
    `<name>.mjs` JavaScript runtime loader, and `<name>.wasm.map`.
-1. **`opt` (Binaryen Optimization)**:
+1. **`opt` (Binaryen optimization)**:
    Runs `wasm-opt` (at `-O1` and higher) to optimize Wasm instruction sequences
    and shrink binary size.
 
 ### WebAssembly standards used by Dart {:#wasm-standards}
 
-`dart2wasm` targets standardized WebAssembly proposals to minimize binary size
-and runtime overhead:
+The `dart2wasm` compiler targets standardized WebAssembly proposals to
+minimize binary size and runtime overhead:
 
-* **WasmGC (WebAssembly Garbage Collection)**:
+* **WebAssembly Garbage Collection (WasmGC)**:
   Maps Dart objects, classes, and collections directly to native
   garbage-collected heap structures managed by the browser engine (such as V8
   in Chrome). Because `dart2wasm` doesn't ship a custom linear-memory allocator
   or duplicate garbage collector alongside the browser's garbage collector,
   modules are smaller and avoid cross-heap memory cycles.
 * **JS String Builtins (`wasm:js-string`)**:
-  Allows Wasm modules to use native JavaScript string operations and pass
+  Lets Wasm modules use native JavaScript string operations and pass
   strings across the JavaScript and Wasm boundary without expensive UTF-8 or
   UTF-16 transcoding copies.
 * **Exception Handling (Phase 4)**:
@@ -299,13 +299,101 @@ compared to compiling to JavaScript (`dart2js`):
   execution times without waiting for JIT warm-up or suffering deoptimization
   bailouts.
 
+## Profile Wasm performance and footprint {:#profile-wasm}
+
+Before deploying,
+profile your compiled app in [Chrome DevTools][]
+to verify [Core Web Vitals][]
+and inspect your `.wasm` download and memory footprint.
+
+### Measure Core Web Vitals (LCP, INP, and CLS) {:#measure-core-web-vitals}
+
+By default, `dart compile wasm` strips the WebAssembly `name` custom section,
+so functions appear as numeric indices in CPU traces.
+To keep readable Dart function and class names
+without disabling production optimizations,
+compile with the `-O2` and `--no-strip-wasm` flags:
+
+```console
+$ dart compile wasm -O2 --no-strip-wasm web/main.dart -o site/main.wasm
+```
+
+:::note
+Use `--no-strip-wasm` only for local or staging profiling builds.
+Retaining symbol names increases `.wasm` file size,
+so omit `--no-strip-wasm` for your final release build
+and when measuring network transfer size.
+:::
+
+To profile Core Web Vitals in Chrome:
+
+1. Open your app in a Chrome **Incognito** or **Guest** window
+   so browser extensions don't skew main-thread or network timings.
+1. Open Chrome DevTools and select the **Performance** panel
+   to view real-time local scores in **Live Metrics**.
+1. Configure CPU and network throttling in **Capture settings**,
+   then click **Record and reload page** (for startup traces)
+   or **Record** (for interaction traces).
+
+Evaluate each metric in **Live Metrics** and the recorded trace:
+
+* **Largest Contentful Paint (LCP, target ≤ 2.5 s)**:
+  Measures perceived load speed.
+  In the trace's **Network** track,
+  confirm that `main.mjs` and `main.wasm` fetch in parallel
+  without a sequential waterfall
+  and compile off the main thread.
+* **Interaction to Next Paint (INP, target ≤ 200 ms)**:
+  Measures responsiveness across clicks, taps, and key presses.
+  Expand **Interactions** in **Live Metrics** to inspect latency phases,
+  then check the **Main** thread flame chart for long Wasm tasks,
+  frequent Wasm-to-JS interop calls,
+  or **Minor GC** and **Major GC** pauses.
+* **Cumulative Layout Shift (CLS, target ≤ 0.1)**:
+  Measures visual stability.
+  Inspect the **Layout shifts** log (or the **Experience** track)
+  to spot unsized containers or late-rendered DOM elements
+  that shift layout after Wasm initialization.
+
+### Inspect Wasm module size and memory {:#inspect-wasm-footprint}
+
+Use the **Network** and **Memory** panels in Chrome DevTools
+to check both wire size and runtime heap usage:
+
+* **Network transfer and binary size**:
+  Compile a stripped production build (`dart compile wasm -O2`
+  without `--no-strip-wasm`).
+  In the **Network** panel, select **Disable cache**,
+  filter by **Wasm**, and reload the page.
+  Hover over the `.wasm` entry's **Size** cell
+  (or select **Big request rows** in **Network settings**)
+  to compare compressed transfer size (`br` or `gzip`)
+  against uncompressed resource size,
+  and confirm the `Content-Type: application/wasm` response header.
+  If initial `.wasm` download size delays LCP,
+  split non-critical routes with the `--enable-deferred-loading` flag
+  (refer to [Deferred loading](#deferred-loading)).
+* **Runtime WasmGC heap footprint**:
+  Because `dart2wasm` compiles Dart objects to native WasmGC structs and arrays
+  managed by V8's garbage collector
+  (rather than an opaque linear-memory `ArrayBuffer`),
+  live Dart instances appear directly in JS heap profiles.
+  Run a build compiled with the `--no-strip-wasm` flag
+  so WasmGC type and field names stay readable,
+  open the **Memory** panel, select **Heap snapshot**,
+  and click **Take snapshot**.
+  To find retained-object leaks, take a baseline snapshot,
+  complete and close a UI flow, click **Collect garbage**,
+  take a second snapshot, and switch from **Summary** to **Comparison**
+  to inspect retained WasmGC objects and their **Retainers** chains.
+
 ## Deploy Wasm in production {:#production-deployment}
 
 To get the full startup and runtime benefits of WebAssembly in production,
 configure your web server and release pipeline to stream, compress, and cache
 `.wasm` modules and provide a JavaScript fallback for older browsers. Refer to
-[Serving WebAssembly in production][serving-wasm] in the web deployment guide
-for complete instructions on:
+[Serve WebAssembly in production][serving-wasm] in the web deployment guide
+for complete instructions on the following tasks:
 
 * Serving `.wasm` files with the `Content-Type: application/wasm` header.
 * Preloading `.mjs` and `.wasm` assets in parallel for streaming compilation.
@@ -329,3 +417,5 @@ for complete instructions on:
 [serving-wasm]: /web/deployment#serving-wasm-in-production
 [manage-source-maps]: /web/deployment#manage-source-maps-and-unneeded-build-files
 [sandbox]: https://github.com/mit-mit/sandbox
+[Chrome DevTools]: https://developer.chrome.com/docs/devtools/
+[Core Web Vitals]: https://web.dev/articles/vitals

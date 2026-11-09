@@ -11,7 +11,7 @@ assets, and serve them from a web server or content delivery network (CDN).
 
 ## Build your app {:#compiling-to-javascript}
 
-For production deployments, you can compile your Dart web app to either
+For production deployments, you can compile your Dart web app to
 [WebAssembly (Wasm)][wasm] (`dart2wasm`), JavaScript (`dart2js`), or both (with
 JavaScript as a fallback for older browsers):
 
@@ -27,8 +27,8 @@ With a few additional steps, you can make your deployable app
 
 ### Compile to WebAssembly {:#compile-to-wasm}
 
-Use [`dart compile wasm`][dart-compile-wasm] with `-O2` (or higher) to build
-optimized WebAssembly output:
+Use the [`dart compile wasm`][dart-compile-wasm] command with the `-O2` flag
+(or higher) to build optimized WebAssembly output:
 
 ```console
 $ dart compile wasm -O2 web/main.dart -o build/web/main.wasm
@@ -37,10 +37,10 @@ $ dart compile wasm -O2 web/main.dart -o build/web/main.wasm
 This command generates `build/web/main.wasm`, the companion JavaScript runtime
 `build/web/main.mjs`, and the source map `build/web/main.wasm.map`. Refer to
 [WebAssembly compilation][wasm] for compiler optimization flags and setup
-steps, and [Serving WebAssembly in production](#serving-wasm-in-production) for
+steps, and [Serve WebAssembly in production](#serving-wasm-in-production) for
 server configuration.
 
-### Compile to JavaScript using webdev {:#compile-using-webdev}
+### Compile to JavaScript with webdev {:#compile-using-webdev}
 
 [Use the `webdev build` command][build] (or run
 [`dart compile js`][dart-compile-js] directly) to create a deployable
@@ -72,6 +72,7 @@ When compiling to WebAssembly, pass `--enable-deferred-loading` and configure a
 
 General web performance practices apply to Dart web apps:
 
+* [Profile Wasm performance and footprint][profile-wasm]
 * [Fast load times][fast-load-times]
 * [Web Fundamentals][web-fundamentals]
   (especially [Optimizing Content Efficiency][content-efficiency])
@@ -87,7 +88,7 @@ While source maps are useful for debugging and symbolicating production stack
 traces, serving them on public web servers can expose internal details:
 
 * **Unminified symbols and structure**:
-  Source maps allow browser DevTools to reconstruct original class names,
+  Source maps let browser DevTools reconstruct original class names,
   function names, and source logic.
 * **Developer file paths**:
   Source maps can include file system URIs (such as `file:///Users/...`) from
@@ -121,13 +122,13 @@ Depending on your deployment strategy, handle source maps in one of two ways:
   $ find build -type f \( -name "*.js.map" -o -name "*.wasm.map" \) -exec rm {} +
   ```
 
-## Serving WebAssembly in production {:#serving-wasm-in-production}
+## Serve WebAssembly in production {:#serving-wasm-in-production}
 
 When deploying a Dart application compiled with `dart compile wasm`, configure
 your web server, CDN, and HTML bootstrap loader to maximize streaming
 compilation speed and caching efficiency.
 
-### Configure `Content-Type: application/wasm` {:#wasm-mime-type}
+### Configure the `Content-Type: application/wasm` header {:#wasm-mime-type}
 
 Web servers, CDNs, and object storage buckets must serve `.wasm` files with the
 `application/wasm` MIME type (and `.mjs` files with `text/javascript` or
@@ -159,7 +160,7 @@ with high fetch priority, and pass the `fetch()` promise directly to
 <body>
   <div id="app"></div>
   <script type="module">
-    import { compileStreaming } from './main.mjs';
+    import { compileStreaming } from '/main.mjs';
 
     // Match the preload credentials mode ('omit' for crossorigin="anonymous")
     // so the browser reuses the preloaded response instead of fetching twice.
@@ -177,12 +178,12 @@ with high fetch priority, and pass the `fetch()` promise directly to
 
 ### Enable Brotli and Gzip HTTP compression {:#http-compression}
 
-* Pre-compress `.wasm` and `.mjs` artifacts during your release build using
+* Pre-compress `.wasm` and `.mjs` artifacts during your release build by using
   Brotli (`brotli -q 11`) and Gzip (`gzip -9`) as a fallback
   (`Content-Encoding: br` or `gzip`).
 * WasmGC binaries contain structured type sections and bytecode patterns that
-  compress by **35–50% with Brotli**, substantially reducing Time to First Byte
-  (TTFB) and download time during initial page load.
+  compress by 35–50% with Brotli, substantially reducing payload transfer and
+  download time during initial page load.
 
 ### Configure caching and atomic deployments {:#wasm-caching}
 
@@ -193,10 +194,10 @@ with high fetch priority, and pass the `fetch()` promise directly to
   `Cache-Control: no-cache`.
 * **Atomic deployment**:
   Always deploy `main.mjs`, `main.wasm`, and any deferred
-  `<name>_module<id>.wasm` chunks from the same build together. The generated
-  `.mjs` file contains numeric import and export indices bound to that specific
-  `.wasm` build; mixing a cached `.mjs` file with a newly deployed `.wasm`
-  binary causes instantiation errors.
+  `<name>_module<id>.wasm` chunks from the same build together.
+  The generated `.mjs` file contains numeric import and export indices bound
+  to that specific `.wasm` build. Mixing a cached `.mjs` file with a newly
+  deployed `.wasm` binary causes instantiation errors.
 * **V8 Wasm code caching**:
   When Chrome streams a `.wasm` resource over HTTPS with valid HTTP caching
   headers, V8 automatically caches the compiled native machine code on disk.
@@ -205,7 +206,7 @@ with high fetch priority, and pass the `fetch()` promise directly to
 ### Provide a JavaScript fallback (`dart2js`) {:#js-fallback}
 
 To support older browsers that lack WasmGC, JS String Builtins, or Phase 4
-Exception Handling:
+Exception Handling, provide a JavaScript fallback:
 
 1. Build both targets in your release pipeline:
 
@@ -222,7 +223,7 @@ Exception Handling:
    async function bootApp() {
      try {
        const wasmPromise = fetch('/main.wasm');
-       const { compileStreaming } = await import('./main.mjs');
+       const { compileStreaming } = await import('/main.mjs');
        const compiledApp = await compileStreaming(wasmPromise);
        const instantiatedApp = await compiledApp.instantiate({});
        instantiatedApp.invokeMain();
@@ -238,23 +239,23 @@ Exception Handling:
    bootApp();
    ```
 
-## Serving your app {:#serving-your-app}
+## Serve your app {:#serving-your-app}
 
 You can host your compiled Dart web app on any static web host or CDN, such as
 GitHub Pages or Firebase Hosting.
 
 ### GitHub Pages
 
-If your app doesn't use server-side routing, you can serve the app using
+If your app doesn't use server-side routing, you can serve the app by using
 [GitHub Pages][gh-pages].
 The [peanut][] package automatically produces a `gh-pages` branch for any Dart
 web app.
 
 The [startup_namer example][startup-namer]
-is hosted using GitHub Pages.
-Its files are in the **gh-pages** branch of the
+is hosted on GitHub Pages.
+Its files are in the `gh-pages` branch of the
 [filiph/startup_namer repo][startup-namer-repo]
-and were built using [peanut][].
+and were built with [peanut][].
 
 ### Firebase
 
@@ -272,6 +273,7 @@ To learn more about deploying with Firebase, refer to the following resources:
   redirects, and rewrites.
 
 [wasm]: /web/wasm
+[profile-wasm]: /web/wasm#profile-wasm
 [wasm-deferred-loading]: /web/wasm#deferred-loading
 [dart-compile-wasm]: /tools/dart-compile#wasm
 [dart-compile-js]: /tools/dart-compile#prod-compile-options

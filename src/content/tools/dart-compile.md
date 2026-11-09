@@ -428,7 +428,8 @@ By default, the compiler generates the `.wasm` module,
 a companion `.mjs` JavaScript runtime file,
 and a `.wasm.map` source map file.
 
-For example, to compile a Dart web application to optimized WebAssembly:
+For example, run the following command to compile a Dart web application to
+optimized WebAssembly:
 
 ```console
 $ dart compile wasm -O2 -o site/main.wasm web/main.dart
@@ -436,9 +437,9 @@ $ dart compile wasm -O2 -o site/main.wasm web/main.dart
 
 | Option | Description |
 | :--- | :--- |
-| `-O0` to `-O4` | Controls compiler optimizations for code size and execution speed (`-O1` default; `-O2` adds minification and omits error details; `-O3` omits implicit type checks; `-O4` omits index bounds checks). |
+| `-O0` to `-O4` | Controls compiler optimizations for code size and execution speed (`-O1` is the default, `-O2` adds minification and omits error details, `-O3` omits implicit type checks, and `-O4` omits index bounds checks). |
 | `--[no-]minify` | Enables or disables minification of runtime names (such as `<obj>.runtimeType.toString()`), overriding the `-O` setting. |
-| `--[no-]strip-wasm` | Strips the static symbol `"name"` section from the output `.wasm` binary (enabled by default; pass `--no-strip-wasm` for readable production stack traces). |
+| `--[no-]strip-wasm` | Strips the static symbol `name` section from the output `.wasm` binary (enabled by default). Pass `--no-strip-wasm` for readable function names when profiling. |
 | `--[no-]source-maps` | Generates a `.wasm.map` source map file alongside the `.wasm` output (enabled by default). |
 | `--[no-]enable-deferred-loading` | Splits `deferred as` imports into separate `.wasm` modules loaded on demand. |
 | `--standalone` | Emits a standalone `.wasm` binary without JS runtime dependencies (disallows `dart:js_interop` and `--enable-deferred-loading`). |
@@ -458,4 +459,3 @@ refer to [Web deployment][web-deployment].
 [Dart runtime]: /overview#runtime
 [wasm-compilation]: /web/wasm
 [web-deployment]: /web/deployment#serving-wasm-in-production
-[manage-source-maps]: /web/deployment#manage-source-maps-and-unneeded-build-files
