@@ -17,9 +17,9 @@ JavaScript ecosystem without leaving your Dart code.
 
 This page provides a central hub for learning about JavaScript interoperability
 in Dart. You'll find resources to get you started, detailed usage guides, and
-information on the latest `dart:js_interop` library. Whether you're looking to
-use a specific JavaScript library, or interact with browser APIs, this is the
-place to start.
+information on the `dart:js_interop` library. Whether you're looking to
+use a specific JavaScript library, interact with browser APIs, or compile your
+web app to [WebAssembly (Wasm)][wasm], this is the place to start.
 
 Get started with JS interop:
   * [Get started with JavaScript interop]
@@ -32,7 +32,25 @@ Review the reference guides:
 Interact with the browser:
   * [`package:web` and migration]
 
+## WebAssembly (`dart2wasm`) support {: #wasm-support }
+
+When compiling your Dart web app to [WebAssembly][wasm] (`dart compile wasm`),
+keep these interoperability and performance practices in mind:
+
+  * **Use `dart:js_interop` and `package:web`**:
+    Deprecated legacy web and interop libraries (`dart:html`, `dart:js`,
+    `dart:js_util`, and `package:js`) are unsupported on Wasm targets.
+  * **Minimize high-frequency calls across the Wasm and JS boundary**:
+    In performance-critical code or tight loops, keep computation in Dart or
+    batch values rather than making repeated interop calls per iteration.
+  * **Find Wasm-compatible packages**:
+    Use the [`wasm-ready`][] filter on [pub.dev][] to verify that packages use
+    `dart:js_interop` and `package:web`.
+
 [Dart web platform]: /web
+[wasm]: /web/wasm
+[`wasm-ready`]: {{site.pub-pkg}}?q=is%3Awasm-ready
+[pub.dev]: {{site.pub}}
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
 [`package:web` and migration]: /interop/js-interop/package-web
