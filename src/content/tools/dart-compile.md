@@ -9,37 +9,51 @@ to compile a Dart program to a target platform.
 ## Overview
 
 :::note
-If your package or any of its dependencies has [build hooks](/tools/hooks),
-you must use the [`dart build`](/tools/dart-build) command.
+If your package or any of its dependencies has [build hooks][],
+you must use the [`dart build`][] command.
 The `dart compile exe` and `dart compile aot-snapshot` commands don't
-run build hooks, and will fail if hooks are present.
+run build hooks and fail if hooks are present.
 :::
 
 Use the `dart compile` command to compile
-a Dart program to a [target platform](/overview#platform).
-The output—which you specify using a subcommand—can 
+a Dart program to a [target platform][].
+The output—which you specify with a subcommand—can
 either include a [Dart runtime][] or be a _module_
 (also known as a _snapshot_).
 
 {% render 'tools/dart-tool-note.md' %}
 
-Here's an example of using the `exe` subcommand
+The following example uses the `exe` subcommand
 to produce a self-contained executable file (`myapp.exe`):
 
 ```console
 $ dart compile exe bin/myapp.dart
+```
+
+The output is similar to the following:
+
+```console
 Generated: /Users/me/myapp/bin/myapp.exe
 ```
 
 The next example uses the `aot-snapshot` subcommand to
-produce an ahead-of-time (AOT) compiled module (`myapp.aot`).
-It then uses the [`dartaotruntime` command](/tools/dartaotruntime)
+produce an ahead-of-time (AOT) compiled module (`myapp.aot`):
+
+```console
+$ dart compile aot-snapshot bin/myapp.dart
+```
+
+The output is similar to the following:
+
+```console
+Generated: /Users/me/myapp/bin/myapp.aot
+```
+
+Use the [`dartaotruntime` command][dartaotruntime]
 (which provides a [Dart runtime][])
 to run the AOT module:
 
 ```console
-$ dart compile aot-snapshot bin/myapp.dart
-Generated: /Users/me/myapp/bin/myapp.aot
 $ dartaotruntime bin/myapp.aot
 ```
 
@@ -51,7 +65,8 @@ $ dart compile exe bin/myapp.dart -o bin/runme
 ```
 
 For more options and usage information,
-run `dart compile [<subcommand>] --help`:
+run `dart compile SUBCOMMAND --help`,
+replacing `SUBCOMMAND` with a subcommand such as `exe` or `wasm`:
 
 ```console
 $ dart compile exe --help
@@ -60,16 +75,20 @@ $ dart compile exe --help
 :::note
 You don't need to compile Dart programs before running them.
 Instead, you can use the [`dart run` command][dart-run],
-which uses the Dart VM's JIT (just-in-time) compiler—a 
+which uses the Dart VM's just-in-time (JIT) compiler—a
 feature that's especially useful during development.
 For more information on AOT and JIT compilation,
-see the [platforms discussion](/overview#platform).
+refer to the [platforms discussion][target platform].
 :::
 
 Refer to the [native_app][] sample for a simple example of using `dart compile`
-to compile a native app, 
+to compile a native app,
 followed by examples of running the app.
 
+[build hooks]: /tools/hooks
+[`dart build`]: /tools/dart-build
+[target platform]: /overview#platform
+[dartaotruntime]: /tools/dartaotruntime
 [native_app]: {{site.repo.dart.samples}}/tree/main/native_app
 [dart-run]: /tools/dart-run
 
@@ -79,26 +98,24 @@ The following table shows the subcommands of `dart compile`.
 
 <table class="table table-striped nowrap">
   <tr>
-    <th> Subcommand </th> <th> Output </th> <th> More information </th>
+    <th> Subcommand </th> <th> Output </th> <th> Description </th>
   </tr>
   <tr>
-    <td> <code>exe</code> </td>
+    <td> <a href="#exe"><code>exe</code></a> </td>
     <td> <span style="white-space: nowrap">Self-contained</span> executable </td>
     <td> A standalone, architecture-specific executable file containing the source code
       compiled to machine code and a small <a href="/overview#runtime">Dart runtime</a>.
-      <br><em><a href="#exe">Learn more.</a></em>
     </td>
   </tr>
   <tr>
-    <td style="white-space: nowrap"> <code>aot-snapshot</code> </td>
+    <td style="white-space: nowrap"> <a href="#aot-snapshot"><code>aot-snapshot</code></a> </td>
     <td style="white-space: nowrap"> AOT module </td>
     <td> An architecture-specific file containing the source code
-      compiled to machine code, but <b>no Dart runtime</b>.
-      <br><em><a href="#aot-snapshot">Learn more.</a></em>
+      compiled to machine code, without a Dart runtime.
     </td>
   </tr>
   <tr>
-    <td> <code>jit-snapshot</code> </td>
+    <td> <a href="#jit-snapshot"><code>jit-snapshot</code></a> </td>
     <td> JIT module </td>
     <td> An architecture-specific file with
       an intermediate representation of all source code,
@@ -106,34 +123,30 @@ The following table shows the subcommands of `dart compile`.
       that executed during a training run of the program.
       JIT-compiled code can have faster peak performance than AOT code
       if the training data is good.
-      <br><em><a href="#jit-snapshot">Learn more.</a></em>
     </td>
   </tr>
   <tr>
-    <td> <code>kernel</code> </td>
+    <td> <a href="#kernel"><code>kernel</code></a> </td>
     <td> Kernel module </td>
     <td> A portable,
       <a href="{{site.repo.dart.sdk}}/blob/main/pkg/kernel/binary.md">intermediate representation</a>
       of the source code.
-      <br><em><a href="#kernel">Learn more.</a></em>
     </td>
   </tr>
   <tr>
-    <td> <code>js</code> </td>
+    <td> <a href="#js"><code>js</code></a> </td>
     <td> JavaScript </td>
     <td> A deployable JavaScript file (<code>.js</code>)
-      and source map (<code>.js.map</code>), 
+      and source map (<code>.js.map</code>),
       compiled from the source code.
-      <br><em><a href="#js">Learn more.</a></em>
     </td>
   </tr>
   <tr>
-    <td> <code>wasm</code> </td>
+    <td> <a href="#wasm"><code>wasm</code></a> </td>
     <td> WebAssembly </td>
     <td> A WebAssembly module (<code>.wasm</code>),
       companion JavaScript runtime (<code>.mjs</code>),
       and source map (<code>.wasm.map</code>).
-      <br><em><a href="#wasm">Learn more.</a></em>
     </td>
   </tr>
 </table>
@@ -145,11 +158,11 @@ The following sections have details about each type of output
 that `dart compile` can produce.
 
 
-### Self-contained executables (exe) {:#exe}
+### Self-contained executables (`exe`) {:#exe}
 
 The `exe` subcommand produces a standalone executable for
 Windows, macOS, or Linux.
-A **standalone executable** is native machine code that's compiled from
+A _standalone executable_ is native machine code that's compiled from
 the specified Dart file and its dependencies,
 plus a small [Dart runtime][] that handles
 type checking and garbage collection.
@@ -169,10 +182,10 @@ When successful, this command outputs the following:
 Generated: /tmp/myapp
 ```
 
-Run your compiled app from the `/tmp` directory:
+Run your compiled executable:
 
 ```console
-$ ./tmp/myapp
+$ /tmp/myapp
 ```
 
 <a id="cross-compilation" aria-hidden="true"></a>
@@ -202,11 +215,11 @@ To use cross-compilation, include the following flags:
 
 `--target-os=linux`
 : The target operating system for the compiled executable.
-  Only the Linux operating system is supported at this time.
+  Cross-compilation supports only Linux as a target operating system.
 
 `--target-arch=value`
 : The target architecture for the compiled executable.
-  The value for this flag can be:
+  The value for this flag can be one of the following architectures:
 
   - `arm`: 32-bit ARM processor
   - `arm64`: 64-bit ARM processor
@@ -217,7 +230,7 @@ The following command demonstrates how to cross-compile a
 standalone executable for a 64-bit Linux system:
 
 ```console
-dart compile exe \
+$ dart compile exe \
   --target-os=linux \
   --target-arch=x64 \
   hello.dart
@@ -247,7 +260,7 @@ Executables created with `dart compile exe`
 support signing on macOS and Windows.
 
 To learn more about platform-specific code signing,
-see the platform documentation for those operating systems:
+refer to the platform documentation for those operating systems:
 
 * Windows [`SignTool.exe` documentation][]
 * [Apple Code Signing guide][]
@@ -261,16 +274,16 @@ The `exe` subcommand has the following known limitations:
 
 * No support for `dart:mirrors` and `dart:developer`.
   For a complete list of the core libraries you can use,
-  reference the [Multi-platform][] and [Native platform][] library tables.
+  refer to the [Multi-platform][] and [Native platform][] library tables.
 
 * Cross-compilation is supported, but the target OS is limited to Linux.
-  To learn more, check out [Cross-compilation][].
+  To learn more, refer to [Cross-compilation][].
 
 [Multi-platform]: /libraries#multi-platform-libraries
 [Native platform]: /libraries#native-platform-libraries
 [Cross-compilation]: #cross-compilation-exe
 
-### AOT modules (aot-snapshot) {:#aot-snapshot}
+### AOT modules (`aot-snapshot`) {:#aot-snapshot}
 
 Use AOT modules to reduce disk space requirements when distributing
 multiple command-line apps. The `aot-snapshot` subcommand produces an
@@ -293,14 +306,14 @@ When successful, this command outputs the following:
 Generated: /Users/me/myapp/bin/myapp.aot
 ```
 
-Run your compiled app from the `/bin` directory:
+Run your compiled app from your project root directory:
 
 ```console
 $ dartaotruntime bin/myapp.aot
 ```
 
-To learn more, see the
-[`dartaotruntime` documentation](/tools/dartaotruntime).
+To learn more, refer to the
+[`dartaotruntime` documentation][dartaotruntime].
 
 {% comment %}
   TODO: Get info from https://github.com/dart-lang/sdk/wiki/Snapshots
@@ -310,72 +323,100 @@ To learn more, see the
 
 Cross-compilation support for the `aot-snapshot` subcommand
 is the same as what's available for the `exe` subcommand.
-For more information, see
-[Self-contained executables (exe)][cross-compile-exe].
+For more information, refer to
+[Self-contained executables (`exe`)][cross-compile-exe].
 
 [cross-compile-exe]: #cross-compilation-exe
 
 #### Known limitations {: #known-limitations-aot }
 
 The `aot-snapshot` subcommand has the same limitations
-as the `exe` subcommand. For more information, see
-[Self-contained executables (exe)][known-limitations-exe]
+as the `exe` subcommand. For more information, refer to
+[Self-contained executables (`exe`)][known-limitations-exe].
 
 [known-limitations-exe]: #known-limitations
 
-### JIT modules (jit-snapshot) {:#jit-snapshot}
+### JIT modules (`jit-snapshot`) {:#jit-snapshot}
 
 JIT modules include all the parsed classes and compiled code that's
 generated during a training run of a program.
 
+Compile a JIT module from a training run:
+
 ```console
 $ dart compile jit-snapshot bin/myapp.dart
+```
+
+The output is similar to the following:
+
+```console
 Compiling bin/myapp.dart to jit-snapshot file bin/myapp.jit.
 Hello world!
+```
+
+Run the compiled JIT module:
+
+```console
 $ dart run bin/myapp.jit
+```
+
+The output is similar to the following:
+
+```console
 Hello world!
 ```
 
 When running from an application module,
 the Dart VM doesn't need to parse or compile classes and functions that
 were already used during the training run,
-so the VM starts running user code sooner.
+so the VM starts running your code sooner.
 
-These modules are architecture specific,
-unlike modules produced using the
-[`kernel` subcommand](#kernel).
+These modules are architecture-specific,
+unlike modules produced by using the
+[`kernel` subcommand][kernel-subcommand].
 
 
-### Portable modules (kernel) {:#kernel}
+### Portable modules (`kernel`) {:#kernel}
 
-Use the `kernel` subcommand to package up an app into a
+Use the `kernel` subcommand to package an app into a
 single, portable file that
-can be run on all operating systems and CPU architectures.
+runs on all operating systems and CPU architectures.
 A kernel module contains a binary form of the abstract syntax tree
 ([Kernel AST][]) for a Dart program.
 
-Here's an example of creating and running a kernel module:
+Create a kernel module:
 
 ```console
 $ dart compile kernel bin/myapp.dart
+```
+
+The output is similar to the following:
+
+```console
 Compiling bin/myapp.dart to kernel file bin/myapp.dill.
+```
+
+Run the compiled kernel module:
+
+```console
 $ dart run bin/myapp.dill
 ```
 
 Although kernel modules have reduced startup time compared to Dart code,
 they can have much slower startup than architecture-specific AOT output formats.
 
+[kernel-subcommand]: #kernel
 [Kernel AST]: {{site.repo.dart.sdk}}/blob/main/pkg/kernel/README.md
 
 
-### JavaScript (js) {:#js}
+### JavaScript (`js`) {:#js}
 
 The `js` subcommand compiles Dart code to deployable JavaScript.
 By default, the compiler outputs both the JavaScript file (`.js`)
 and a source map file (`.js.map`).
 
 :::note
-Use the [`webdev` tool][webdev] rather than running the 
+Use the [`webdev` tool][webdev] rather than running the
 Dart-to-JavaScript compiler directly.
 
 * The [`webdev build`][] command, by default,
@@ -387,7 +428,7 @@ Dart-to-JavaScript compiler directly.
 
 {% render 'tools/dart-compile-js-options.md', site: site %}
 
-#### Compiling web app example
+#### Compile a web app
 
 For example, to compile a Dart application to optimized JavaScript, run
 the following command:
@@ -397,7 +438,7 @@ $ dart compile js -O2 -o out/main.js web/main.dart
 ```
 
 
-#### Improving production web compilation {:#helping-generate-efficient-code}
+#### Improve production web compilation {:#helping-generate-efficient-code}
 
 Follow these practices to improve type inference, reduce file size, and
 improve JavaScript performance:
@@ -411,16 +452,18 @@ improve JavaScript performance:
 :::tip
 Don't worry about the size of your app's included libraries.
 The production compiler performs tree shaking to omit
-unused classes, functions, methods, and so on.
+unused classes, functions, and methods.
 Import the libraries you think you'll need,
 and let the compiler get rid of what it doesn't need.
 :::
 
 To learn more about building and deploying JavaScript applications,
-check out [Web deployment](/web/deployment).
+refer to [Web deployment][].
+
+[Web deployment]: /web/deployment
 
 
-### WebAssembly (wasm) {:#wasm}
+### WebAssembly (`wasm`) {:#wasm}
 
 The `wasm` subcommand compiles Dart code to a WebAssembly/WasmGC module.
 By default, the compiler generates the `.wasm` module,

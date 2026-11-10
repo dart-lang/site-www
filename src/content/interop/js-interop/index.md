@@ -7,19 +7,18 @@ nextpage:
   title: Usage
 ---
 
-Seamlessly integrate JavaScript libraries and APIs into your Dart web app.
+Integrate JavaScript libraries and APIs into your Dart web app.
 
 ## Overview {: #overview }
 
-The [Dart web platform][] provides powerful tools to
-call JavaScript from Dart and vice-versa and allows you to leverage the vast
-JavaScript ecosystem without leaving your Dart code.
+The [Dart web platform][] provides tools to call JavaScript from Dart and Dart
+from JavaScript, and lets you use the JavaScript ecosystem without leaving
+your Dart code.
 
-This page provides a central hub for learning about JavaScript interoperability
-in Dart. You'll find resources to get you started, detailed usage guides, and
-information on the latest `dart:js_interop` library. Whether you're looking to
-use a specific JavaScript library, or interact with browser APIs, this is the
-place to start.
+This page links to getting-started resources, usage guides, and
+`dart:js_interop` library documentation for calling JavaScript libraries,
+interacting with browser APIs, and compiling your web app to
+[WebAssembly (Wasm)][wasm].
 
 Get started with JS interop:
   * [Get started with JavaScript interop]
@@ -33,6 +32,7 @@ Interact with the browser:
   * [`package:web` and migration]
 
 [Dart web platform]: /web
+[wasm]: /web/wasm
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
 [`package:web` and migration]: /interop/js-interop/package-web
@@ -44,10 +44,10 @@ Interact with the browser:
 
 ## Additional resources {: #additional-resources }
 
-Previous JavaScript interop libraries:
+Explore previous JavaScript interop libraries:
   * [Past JS interop]
 
-Additional documentation on JavaScript interop:
+Explore the API reference documentation:
   * [`dart:js_interop` API reference]
   * [`dart:js_interop_unsafe` API reference]
 
