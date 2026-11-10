@@ -64,8 +64,8 @@ You can use Dart's support for deferred loading to split rarely used features
 into separate modules loaded on demand.
 For language syntax details, refer to the libraries guide on
 [deferred loading][].
-When compiling to WebAssembly, pass `--enable-deferred-loading` and configure a
-`loadDeferredModules` loader callback as shown in
+When compiling to WebAssembly, pass the `--enable-deferred-loading` flag and
+configure a `loadDeferredModules` loader callback as shown in
 [Wasm deferred loading][wasm-deferred-loading].
 
 #### Follow best practices for web apps
@@ -288,8 +288,4 @@ To learn more about deploying with Firebase, refer to the following resources:
 [firebase-hosting]: https://firebase.google.com/docs/hosting/
 [firebase-config]: https://firebase.google.com/docs/hosting/full-config
 [build]: /tools/webdev#build
-[build_runner]: /tools/build_runner
-[build_web_compilers]: {{site.pub-pkg}}/build_web_compilers
-[config]: /tools/build_runner#config
 [peanut]: {{site.pub-pkg}}/peanut
-[webdev]: /tools/webdev

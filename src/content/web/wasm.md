@@ -106,14 +106,14 @@ platform requirements in mind:
   By default, compiled Wasm output targets JavaScript environments (such as
   browsers) and generates a companion `<name>.mjs` runtime file. To compile a
   standalone WebAssembly module for non-web runtimes such as Wasmtime 39+
-  (using `-W gc,exceptions,function-references=y`), pass `--standalone` to
-  `dart compile wasm`. When `--standalone` is set, [`dart:js_interop`][] and
-  `--enable-deferred-loading` are disallowed.
+  (with the `-W gc,exceptions,function-references=y` flag), pass the
+  `--standalone` flag to `dart compile wasm`. Standalone mode disallows the
+  [`dart:js_interop`][] library and the `--enable-deferred-loading` flag.
 
 * **JavaScript interop**:
-  Only Dart's [next-generation JS interop mechanism][js-interop]
-  ([`dart:js_interop`][] and [`package:web`][]) is supported when compiling to
-  Wasm.
+  Compiling to Wasm supports only Dart's
+  [next-generation JS interop mechanism][js-interop]
+  ([`dart:js_interop`][] and [`package:web`][]).
 
 * **Build tooling**:
   The `webdev` tool doesn't support Wasm compilation (`webdev serve` or
@@ -125,7 +125,7 @@ platform requirements in mind:
 To find Wasm-compatible packages, use the [`wasm-ready`][] filter on
 [pub.dev][].
 
-A package is "wasm-ready" when it doesn't import legacy web or interop
+A package is *wasm-ready* when it doesn't import legacy web or interop
 libraries such as `dart:html`, `dart:js`, or `package:js`. Refer to the
 [past JS interop page][past-js-interop] for the full list of disallowed
 libraries.
@@ -332,19 +332,23 @@ interop calls. For general browser debugging setup, refer to
 
 ### Inspect Wasm module size and memory {:#inspect-wasm-footprint}
 
+Use the Chrome DevTools **Network** and **Memory** panels to check wire size
+and runtime heap usage:
+
 * **Network transfer size**:
-  Compile a stripped production build (`dart compile wasm -O2`, without
-  `--no-strip-wasm`) and use the [Chrome DevTools Network panel][]
+  Compile a stripped production build (`dart compile wasm -O2`, without the
+  `--no-strip-wasm` flag) and use the [Chrome DevTools Network panel][]
   to compare compressed transfer size (`br` or `gzip`) against uncompressed
-  size and confirm `Content-Type: application/wasm`. If initial `.wasm` size
-  delays load, split routes with `--enable-deferred-loading` (refer to
+  size and confirm the `Content-Type: application/wasm` response header. If
+  initial `.wasm` size delays load, split routes with the
+  `--enable-deferred-loading` flag (refer to
   [Deferred loading](#deferred-loading)).
 * **Runtime WasmGC heap**:
   Because `dart2wasm` compiles Dart objects to native WasmGC structs and
   arrays managed by V8's garbage collector (rather than an opaque
   linear-memory `ArrayBuffer`), live Dart instances appear directly in
-  JavaScript heap profiles. Compile with `--no-strip-wasm` so WasmGC type and
-  field names remain readable when [recording heap snapshots][].
+  JavaScript heap profiles. Compile with the `--no-strip-wasm` flag so WasmGC
+  type and field names remain readable when [recording heap snapshots][].
 
 ## Deploy Wasm in production {:#production-deployment}
 
