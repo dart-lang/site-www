@@ -15,3 +15,7 @@ void hasDebug() {
   }
   // #enddocregion has-debug
 }
+
+// #docregion wasm-check
+const bool isRunningAsWasm = bool.fromEnvironment('dart.tool.dart2wasm');
+// #enddocregion wasm-check

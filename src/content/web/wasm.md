@@ -202,6 +202,7 @@ configuration:
 When compiling with `dart2wasm`, the compiler automatically defines
 `dart.tool.dart2wasm` as `true` in the compile-time environment:
 
+<?code-excerpt "misc/lib/development/environment_declarations.dart (wasm-check)"?>
 ```dart
 const bool isRunningAsWasm = bool.fromEnvironment('dart.tool.dart2wasm');
 ```
