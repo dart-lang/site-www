@@ -29,8 +29,25 @@ Review the reference guides:
 Interact with the browser:
   * [`package:web` and migration]
 
+## WebAssembly (`dart2wasm`) support {: #wasm-support }
+
+When compiling Dart web apps to [WebAssembly][wasm] (`dart compile wasm`),
+keep these interoperability and performance practices in mind:
+
+  * **Use `dart:js_interop` and `package:web`**:
+    Deprecated legacy web and interop libraries (`dart:html`, `dart:js`,
+    `dart:js_util`, and `package:js`) are unsupported on Wasm targets.
+  * **Minimize high-frequency calls across the Wasm and JS boundary**:
+    In performance-critical code or tight loops, keep computation in Dart or
+    batch values rather than making repeated interop calls per iteration.
+  * **Find Wasm-compatible packages**:
+    Use the [`wasm-ready`][] filter on [pub.dev][] to verify that packages use
+    `dart:js_interop` and `package:web`.
+
 [Dart web platform]: /web
 [wasm]: /web/wasm
+[`wasm-ready`]: {{site.pub-pkg}}?q=is%3Awasm-ready
+[pub.dev]: {{site.pub}}
 [Usage reference]: /interop/js-interop/usage
 [JS types reference]: /interop/js-interop/js-types
 [`package:web` and migration]: /interop/js-interop/package-web

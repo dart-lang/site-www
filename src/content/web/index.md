@@ -6,16 +6,15 @@ showToc: false
 ---
 
 Dart supports the web as one of its core [platforms][].
-Dart-to-JavaScript compilers are available for both development
-(with a quick edit-refresh cycle)
-and production
-(with a focus on code size and speed).
-For production builds, you can also compile Dart to
-[WebAssembly][wasm] (`dart compile wasm`).
+For development, the Dart development JavaScript compiler (`ddc`) provides a
+quick edit-refresh cycle.
+For production [deployment][], you can compile Dart to
+[WebAssembly (Wasm)][wasm] (`dart2wasm`) for fast startup and consistent frame
+execution in modern browsers, or to minified JavaScript (`dart2js`).
 
 In addition to compilers,
 the Dart web platform provides [core libraries][],
-access to the [Document Object Model (DOM)][DOM],
+access to the [Document Object Model (DOM)][DOM] through [`package:web`][],
 and [interoperability for calling JavaScript][interop] from Dart.
 
 You can also pair Dart web with a higher-level framework.
@@ -42,9 +41,11 @@ and other Dart web frameworks.
 </div>
 
 [platforms]: /overview#platform
+[deployment]: /web/deployment
 [wasm]: /web/wasm
 [core libraries]: /libraries#web-platform-libraries
 [DOM]: /web/get-started
+[`package:web`]: /interop/js-interop/package-web
 [Flutter]: {{site.flutter}}
 [Flutter web]: {{site.flutter}}/web
 [Jaspr]: https://jaspr.site
