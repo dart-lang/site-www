@@ -3,7 +3,7 @@ title: Breaking changes and deprecations
 breadcrumb: Legacy
 description: A list of breaking changes by release in Dart.
 maxTocDepth: 2
-lastVerified: 2026-05-19
+lastVerified: 2026-11-09
 ---
 
 {% assign versioned = '<span class="tag-label language-versioned-tag">Language versioned</span>' %}
@@ -71,19 +71,375 @@ To be notified about future breaking changes, join the [Dart announce][] group.
 Create a new section from these headers for each release.
 If no changes exist in a section (such as Language, `dart:async`, etc.),
 don't include the section header.
+Heading text repeats across releases,
+so give each subheading an ID prefixed with the release version.
+Keep the Tentative note until the release is stable, then remove it.
 
 ## x.x.x
 
-### Language
+:::note Tentative
+Dart x.x hasn't been released yet.
+The following list is preliminary and might change before release.
+:::
 
-### Libraries
+### Language {:#x-x-x-language}
 
-#### (`dart:core`, `package:js`, etc)
+### Libraries {:#x-x-x-libraries}
 
-### Tools
+#### (`dart:core`, `package:js`, etc) {:#x-x-x-dart-core}
 
-#### (Dart VM, Pub, Linter, `dart2js`, etc)
+### Tools {:#x-x-x-tools}
+
+#### (Dart VM, Pub, Linter, `dart2js`, etc) {:#x-x-x-pub}
+
+### Runtime {:#x-x-x-runtime}
+
+#### (Embedder API, etc) {:#x-x-x-embedder-api}
 {% endcomment %}
+
+## 3.15.0
+
+:::note Tentative
+Dart 3.15 hasn't been released yet.
+The following list is preliminary and might change before release.
+:::
+
+### Language {:#3-15-0-language}
+
+- {{versioned}}
+  An `import` or `export` directive with
+  [more than one `show` or `hide` clause][single-combinator]
+  is now a compile-time error.
+  Multiple clauses were previously deprecated.
+  For example, rewrite `show A, B hide B` as `show A`.
+- {{versioned}}
+  A type test or null check can now [promote `this`][promote-this].
+  Member access through an explicit or implicit `this` uses the promoted type.
+  For example, if a subtype narrows a method's parameter from `num` to `int`,
+  passing a `double` after the type test is now an error.
+- {{versioned}}
+  When control flow branches rejoin,
+  Dart [preserves type promotions common to both branches][promotion-join],
+  even if the branches reached that type through different intermediate types.
+  A field can also [lose an earlier promotion][64799] if
+  promoting its receiver gives the field an unrelated type on one branch.
+  If you need the earlier type after the branches rejoin,
+  check the field's type again.
+
+[single-combinator]: {{site.repo.dart.lang}}/issues/2824
+[promote-this]: {{site.repo.dart.lang}}/issues/1397
+[promotion-join]: {{site.repo.dart.lang}}/issues/4757
+[64799]: {{site.repo.dart.sdk}}/issues/64799
+
+### Libraries {:#3-15-0-libraries}
+
+#### `dart:async` {:#3-15-0-dart-async}
+
+- An `async` function that returns a non-future value now
+  [completes its future without scheduling an extra microtask][async-complete].
+  An uncaught error completes the future in a microtask if
+  the function hasn't suspended yet, or directly if it has.
+  This can change the order in which callbacks run.
+- An uncaught error in an `async` function now goes through the
+  [zone's `errorCallback`][async-zone-errors] across all backends.
+  If the callback replaces the error, the caller receives the replacement.
+
+[async-complete]: {{site.repo.dart.sdk}}/commit/b6344c6bacc2ca0b9bc8b26bdb917b957175ae3a
+[async-zone-errors]: {{site.repo.dart.sdk}}/commit/9c6858e8366f9ccc9bf627f9269b329cade1c35a
+
+#### `dart:core` {:#3-15-0-dart-core}
+
+- [`List.setAll`][list-ranges] now checks the index
+  even when the input is empty.
+  `List.setRange` now throws a `StateError` when
+  the source has too few elements,
+  and an `ArgumentError` for a negative `skipCount` when
+  the destination range is non-empty.
+- [`UriData.fromBytes`][uri-bytes] now throws an `ArgumentError` when
+  percent-encoding an integer outside 0-255.
+
+[list-ranges]: {{site.repo.dart.sdk}}/commit/6478280b2a75821930cabb9ae611caf0ad0ee810
+[uri-bytes]: {{site.repo.dart.sdk}}/commit/7b3dd7bb6671cbd95b0af83abb5aae8ee9bb2dfb
+
+#### `dart:io` {:#3-15-0-dart-io}
+
+- [`HttpClient` now matches the URI scheme][http-credentials] when
+  applying credentials registered with `addCredentials`.
+  Credentials registered for HTTPS no longer apply to HTTP requests
+  to the same host and port.
+- When you set `request.contentLength = -1` on a `GET` or `HEAD` request
+  without explicitly enabling chunked transfer encoding,
+  `HttpClient` now [waits for the first nonempty chunk][60333]
+  before enabling it.
+  If the stream is empty, it omits the `Transfer-Encoding` header.
+- Setting `HttpHeaders.host` or `HttpHeaders.contentType`
+  [now throws a `FormatException`][header-values]
+  if the value contains an invalid header character,
+  such as a carriage return, a line feed, or a non-ASCII character.
+- [Malformed HTTP input now produces more specific exceptions][http-errors].
+  For example, an invalid redirect `Location` throws a `RedirectException`,
+  and an invalid WebSocket upgrade response can throw a `WebSocketException`.
+  `HttpDate.parse` throws an `HttpException` for truncated asctime dates.
+
+[http-credentials]: {{site.repo.dart.sdk}}/pull/64526
+[60333]: {{site.repo.dart.sdk}}/issues/60333
+[header-values]: {{site.repo.dart.sdk}}/pull/64514
+[http-errors]: {{site.repo.dart.sdk}}/commit/ea1c8940495a742b2737cf9307a72a19cfc6592e
+
+#### `dart:typed_data` {:#3-15-0-dart-typed-data}
+
+- [`Float32x4.clamp` and `Float64x2.clamp`][40426] now propagate
+  `NaN` if the value or either bound is `NaN` in that lane.
+  They also order `-0.0` below `+0.0` when clamping to a zero bound.
+
+[40426]: {{site.repo.dart.sdk}}/issues/40426
+
+### Tools {:#3-15-0-tools}
+
+#### Analyzer {:#3-15-0-analyzer}
+
+- {{deprecated}}
+  The analyzer now [warns about conditional imports and exports][61875]
+  that test for a deprecated web library, such as `dart.library.html`.
+  To select a web implementation that uses `dart:js_interop`,
+  check for `dart.library.js_interop` instead.
+- The analyzer now
+  [uses new diagnostic codes for failed name lookups][64411].
+  For example, `undefined_super_member` is now `undefined_super_member_read`,
+  `undefined_super_member_write`, or `undefined_super_operator`.
+  Update ignore comments or severity overrides that use the old codes.
+- The analyzer now reports [`argument_type_not_assignable`][64561]
+  for an incompatible value assigned through `operator []=`.
+  Update any ignores for `invalid_assignment`
+  that applied to the value in `a[i] = value`.
+- With the [`strict-inference`][strict-inference] mode enabled,
+  the analyzer now [reports inference failures for `f.call()`][64625] when
+  `f` has a generic function type.
+
+[61875]: {{site.repo.dart.sdk}}/issues/61875
+[64411]: {{site.repo.dart.sdk}}/issues/64411
+[64561]: {{site.repo.dart.sdk}}/issues/64561
+[strict-inference]: /tools/analysis#enabling-additional-type-checks
+[64625]: {{site.repo.dart.sdk}}/issues/64625
+
+#### Pub {:#3-15-0-pub}
+
+- On Windows, Pub now [requires `git.exe` on `PATH`][pub-git-refs]
+  for Git operations.
+  If you use a `git.cmd` or `git.bat` wrapper,
+  add the directory containing `git.exe` to `PATH`.
+- Pub now [rejects Git dependency refs][pub-git-refs] that are empty,
+  start with `-`, or contain whitespace or control characters.
+  A `resolved-ref` in `pubspec.lock` must be a full hexadecimal commit ID.
+- [`dart pub publish` now creates reproducible archives][pub-archives].
+  Archive entries have a consistent order and timestamps set to the Unix epoch,
+  so tools reading a package archive can
+  no longer recover the original file timestamps.
+
+[pub-git-refs]: {{site.repo.dart.org}}/pub/pull/4941
+[pub-archives]: {{site.repo.dart.org}}/pub/pull/4885
+
+### Runtime {:#3-15-0-runtime}
+
+#### Embedder API {:#3-15-0-embedder-api}
+
+- {{removed}}
+  The VM [replaced `Dart_SetEnvironmentCallback` and
+  `Dart_EnvironmentCallback`][embedder-environment] in `dart_api.h`.
+  Call `Dart_SetEnvironment` with a `NULL`-terminated array of alternating
+  UTF-8 keys and values to set the environment for the current isolate.
+
+[embedder-environment]: {{site.repo.dart.sdk}}/commit/f54481dd92ccd119ee20dd6311c8b603055d9838
+
+## 3.14.0
+
+:::note Tentative
+Dart 3.14 hasn't been released yet.
+The following list is preliminary and might change before release.
+:::
+
+### Language {:#3-14-0-language}
+
+- A subpattern in a list, map, or record pattern [no longer
+  promotes the entire matched property to the subpattern's type][64269].
+  For example, when `c._items` is a private final field of type `Object?`,
+  `if (c._items case [int item])` lets you use `item.isEven`.
+  Dart now rejects `c._items.isEven` inside that `if`.
+
+[64269]: {{site.repo.dart.sdk}}/issues/64269
+
+### Libraries {:#3-14-0-libraries}
+
+#### `dart:ffi` {:#3-14-0-dart-ffi}
+
+- {{experimental}}
+  Calling [`NativeCallable.isolateGroupBound`][64285]
+  now requires the `--experimental-shared-data` VM flag.
+
+#### `dart:io` {:#3-14-0-dart-io}
+
+- On macOS, `Process.start`, `Process.run`, and `Process.runSync` now
+  [search the parent process's `PATH`][mac-process] for the executable.
+  If you previously set `PATH` in the child's `environment` to
+  select an executable, pass its absolute path instead.
+
+[mac-process]: {{site.repo.dart.sdk}}/commit/0171629a54781f3672629b1f85afa74e9d4022ca
+
+#### `dart:isolate` {:#3-14-0-dart-isolate}
+
+- {{experimental}} {{removed}}
+  Dart 3.13 exposed experimental APIs for
+  running isolates synchronously and controlling their event loops.
+  `Isolate` [no longer exposes][64285]
+  `create`, `runSync`, `shutdownSync`, `pinToCurrentThread`,
+  `isPinnedToCurrentThread`, `runEventLoopSync`, `onEvent`, or `handleEvent`.
+
+[64285]: {{site.repo.dart.sdk}}/issues/64285
+
+#### `dart:js_interop` {:#3-14-0-dart-js-interop}
+
+- [`isA<JSArray>()`][62699] now also recognizes arrays created in
+  another JavaScript realm, such as an iframe.
+- If a `Future` completes with a JavaScript error value,
+  [`toJS` now rejects the resulting promise with that value directly][61353].
+  Code that handles the rejection can no longer assume every reason
+  is a wrapper with `error` and `stack` properties.
+- Annotating an `external` constructor or factory
+  of a JS interop extension type with `@JS`
+  is [now a compile-time error][61274].
+  To specify the name of the JavaScript constructor,
+  move the annotation to the extension type declaration.
+
+[62699]: {{site.repo.dart.sdk}}/issues/62699
+[61353]: {{site.repo.dart.sdk}}/issues/61353
+[61274]: {{site.repo.dart.sdk}}/issues/61274
+
+#### `dart:mirrors` {:#3-14-0-dart-mirrors}
+
+- {{deprecated}}
+  The [`dart:mirrors` library is deprecated][44489]
+  and will be removed in a future release.
+- When you use a `LibraryMirror` to invoke a top-level function or
+  access a field, [use the library that declares the member][re-exports].
+  The VM no longer looks up members through re-exports.
+
+[44489]: {{site.repo.dart.sdk}}/issues/44489
+[re-exports]: {{site.repo.dart.sdk}}/commit/0fb613f63806a22f469b47e60911674542fc08c6
+
+#### `dart:typed_data` {:#3-14-0-dart-typed-data}
+
+- [`toString()` on `Float32x4`, `Int32x4`, and `Float64x2`][63847]
+  now returns `'V128'`.
+  To display lane values, read the lane getters.
+  On the VM, the debugger and `Error.safeToString` also display `V128`.
+- On `Float32x4` and `Float64x2`, [`min` and `max`][63962] now return
+  `NaN` in any lane where either input is `NaN`.
+  When comparing `-0.0` and `+0.0`,
+  `min` returns `-0.0` and `max` returns `+0.0`.
+
+[63847]: {{site.repo.dart.sdk}}/issues/63847
+[63962]: {{site.repo.dart.sdk}}/issues/63962
+
+### Tools {:#3-14-0-tools}
+
+#### Dart command line {:#3-14-0-dart-cli}
+
+- When `dart run <package>:<command>` or `dart test` runs a
+  [cached executable][executable-cache],
+  `Platform.script` now points to the Dart source file.
+  The snapshot cache moved from `.dart_tool/pub/bin/`
+  to `.dart_tool/dartdev/bin/`.
+
+[executable-cache]: {{site.repo.dart.sdk}}/commit/ed26759eab93df8ec649bdc49551ee16c341bda0
+
+#### Pub {:#3-14-0-pub}
+
+- {{deprecated}}
+  The [`--precompile` and `--no-precompile` flags][pub-precompile] now
+  have no effect on `dart pub get`, `upgrade`, `add`, or `remove`.
+  You can remove these flags from scripts.
+- Pub now [rejects Git dependencies][pub-symlinks] that contain
+  absolute symbolic links,
+  links that lead outside the repository,
+  or link cycles.
+  Use relative links that resolve inside the repository.
+- Pub now [rejects Git dependency URLs][pub-git-urls] that
+  start with `-` or use Git's `ext` protocol.
+
+[pub-precompile]: {{site.repo.dart.org}}/pub/pull/4910
+[pub-symlinks]: {{site.repo.dart.org}}/pub/pull/4894
+[pub-git-urls]: {{site.repo.dart.org}}/pub/pull/4895
+
+#### Wasm compiler (dart2wasm) {:#3-14-0-dart2wasm}
+
+- WebAssembly modules compiled for the web now require native support for
+  [`wasm:js-string` built-ins][63543].
+  The compiler also emits
+  [standard WebAssembly exception handling instructions][54394]
+  (`try_table`) by default.
+  Runtimes that only support the legacy exception handling instructions
+  can't load modules that use `try_table`.
+- [`dart.library.isolate` now evaluates to `false`][64328]
+  when compiling to WebAssembly.
+  Conditional imports and exports now skip the
+  `if (dart.library.isolate)` branch.
+- {{experimental}}
+  `dart compile wasm --standalone` no longer supports `dart:js_interop`.
+
+[63543]: {{site.repo.dart.sdk}}/issues/63543
+[54394]: {{site.repo.dart.sdk}}/issues/54394
+[64328]: {{site.repo.dart.sdk}}/issues/64328
+
+### Runtime {:#3-14-0-runtime}
+
+#### Embedder API {:#3-14-0-embedder-api}
+
+- When you pass a library to `Dart_Invoke`, `Dart_GetField`, or `Dart_SetField`,
+  the VM now [looks up members in that library only][re-exports].
+- {{removed}}
+  The [`NativeAssetsApi` struct][native-assets-api] in `dart_api.h`
+  replaces `dlopen_v2` with two callbacks.
+  If you used `dlopen_v2`,
+  provide `contains_asset` to check whether an asset ID is registered
+  and `dlopen_asset` to load it.
+
+[native-assets-api]: {{site.repo.dart.sdk}}/commit/eb5d7983230621e9f09ea54500008ff4259fd50a
+
+## 3.13.7
+
+### Libraries {:#3-13-7-libraries}
+
+#### `dart:io` {:#3-13-7-dart-io}
+
+- On Android, Windows, and Linux, TLS connections now reject chains that
+  use [compromised eMudhra intermediate certificates][emudhra].
+  On Android 14 and later, Dart also honors root certificate changes
+  delivered through Google Play system updates.
+
+[emudhra]: {{site.repo.dart.sdk}}/security/advisories/GHSA-frr6-h895-5pxp
+
+## 3.13.2
+
+### Tools {:#3-13-2-tools}
+
+#### Analyzer {:#3-13-2-analyzer}
+
+- {{deprecated}}
+  The analyzer now [warns when you configure legacy plugins][62164]
+  in the `analyzer` section of `analysis_options.yaml`.
+  Enable plugins that support the [new plugin system][analyzer plugins]
+  in the top-level `plugins` section.
+
+[62164]: {{site.repo.dart.sdk}}/issues/62164
+[analyzer plugins]: /tools/analyzer-plugins
+
+#### Formatter (`dart format`) {:#3-13-2-formatter}
+
+- When an enum with a primary constructor has its values on separate lines,
+  the formatter now [adds a missing trailing comma][enum-comma]
+  after the last value unless a semicolon follows it.
+
+[enum-comma]: {{site.repo.dart.org}}/dart_style/issues/1888
 
 ## 3.13.0
 
@@ -114,8 +470,13 @@ don't include the section header.
   must update the return type.
 - `InternetAddress.lookup` no longer accepts invalid IPv4 addresses
   that are traditionally accepted by `inet_aton`.
+- File access and modification timestamps now
+  [preserve microsecond precision][42444] where the file system supports it.
+  Code that compares these timestamps at millisecond precision
+  can use `millisecondsSinceEpoch`.
 
 [63216]: {{site.repo.dart.sdk}}/issues/63216
+[42444]: {{site.repo.dart.sdk}}/issues/42444
 
 #### `dart:js_interop`
 
@@ -130,7 +491,7 @@ don't include the section header.
 
 ### Tools
 
-### Analyzer
+#### Analyzer
 
 - {{deprecated}}
   The [`avoid_private_typedef_functions`][] lint rule
@@ -165,6 +526,16 @@ don't include the section header.
   Imports are now separated into sections.
 - {{versioned}}
   Trailing commas are now added to split extension type representation clauses.
+- {{versioned}}
+  The formatter now prefers to split a method call chain
+  when its target has a single argument or element.
+  It also changes how it splits chains with large collection arguments.
+- {{versioned}}
+  When an `if`-case pattern splits across lines,
+  the formatter can now put the `when` guard on its own line.
+- {{versioned}}
+  When no layout fits the page width, the formatter now prefers to let
+  a trailing string literal or comment extend past it.
 
 [trailing-commas]: /tools/analysis#trailing_commas
 
