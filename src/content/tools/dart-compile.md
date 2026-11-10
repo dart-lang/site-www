@@ -10,7 +10,7 @@ to compile a Dart program to a target platform.
 
 :::note
 If your package or any of its dependencies has [build hooks][],
-you must use the [`dart build`][] command.
+you must use the [dart build cli][] command.
 The `dart compile exe` and `dart compile aot-snapshot` commands don't
 run build hooks and fail if hooks are present.
 :::
