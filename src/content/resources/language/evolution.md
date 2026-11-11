@@ -148,6 +148,7 @@ see the [Dart 3.15 changelog][].
 
 ### Dart 3.14
 _Released 11 November 2026_
+| [Dart 3.14 announcement](/blog/announcing-dart-3-14)
 
 While Dart 3.14 introduces no new language features,
 the release includes a non-language-versioned soundness fix to flow analysis
