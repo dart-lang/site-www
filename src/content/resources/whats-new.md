@@ -1,7 +1,7 @@
 ---
 title: What's new
 description: A list of what's new on dart.dev and related sites.
-lastVerified: 2026-08-12
+lastVerified: 2026-11-11
 ---
 
 This page describes what's new on the Dart website and blog.
@@ -18,6 +18,151 @@ and follow the [Dart blog][].
 [dart-changelog]: /changelog
 [dart-announce]: https://groups.google.com/a/dartlang.org/d/forum/announce
 [Dart blog]: /blog
+
+## 3.14 release
+
+_Released on: November 11, 2026_
+
+This section lists notable changes made from August 13, 2026,
+through November 11, 2026 to [dart.dev](https://dart.dev/docs).
+For details about the 3.14 release of Dart,
+check out the [3.14 announcement][] and the
+[3.14 SDK changelog][3-14-changelog].
+
+[3.14 announcement]: /blog/announcing-dart-3-14
+[3-14-changelog]: {{site.repo.dart.sdk}}/blob/main/CHANGELOG.md#3140
+
+### Documentation updates {:.no_toc}
+
+* Added a guide for the new [`dart migrate`][3-14-dart-migrate]
+  command-line tool to automate SDK version upgrades.
+* Added guides on installing and managing
+  [AI agent package skills][3-14-ai-skills],
+  authoring and validating skills with [`package:skills_lint`][3-14-pub-skills],
+  and searching official documentation with the
+  [Developer Knowledge MCP server][3-14-dev-knowledge].
+* Added a [data-driven fixes][3-14-data-driven-fixes] guide
+  to help package maintainers author automated [`dart fix`][3-14-dart-fix]
+  migrations for breaking API changes.
+* Expanded the [WebAssembly compilation][3-14-wasm] and
+  [web deployment][3-14-web-deployment] documentation to cover `dart2wasm`
+  optimization levels, standalone builds for non-web runtimes,
+  production serving, and source map security.
+* Refreshed the [web debugging][3-14-web-debugging] guide
+  for modern Dart 3 browser testing and WebAssembly workflows.
+* Updated the [JavaScript interop][3-14-js-types] documentation
+  with recent `dart:js_interop` additions,
+  including the `JSIterable` and `JSIterator` types,
+  primitive list conversions, asynchronous and variadic callbacks, and
+  [object literal constructors][3-14-js-literals].
+* Documented the [`--no-deprecated-js-interop`][3-14-no-deprecated-js]
+  compiler flag and legacy web library deprecations.
+* Added DOM event listener and stream helper migration examples
+  to the [`package:web` migration guide][3-14-package-web].
+  (Thank you, [Manar Elhabbal][Manar-Elhabbal7].)
+* Updated the [Objective-C and Swift interop][3-14-objc-interop] guide
+  to configure `package:ffigen` in Dart instead of YAML.
+* Expanded the [server-side Dart][3-14-server] documentation
+  for Cloud Functions for Firebase and the Firebase Admin SDK
+  and added references to [Genkit Dart][3-14-genkit].
+* Split the object-oriented programming tutorial into
+  [classes and objects][3-14-oop] and
+  [inheritance and abstract classes][3-14-inheritance] lessons
+  and refined the [data and JSON][3-14-json],
+  [error handling][3-14-error-handling], [logging][3-14-logging],
+  and [testing][3-14-testing] lessons.
+  (Thank you, [Manuel Santos Souza][manuelzzz] and [Ananya Kaul][ananya-kaul].)
+* Documented [including multiple analysis options files][3-14-analysis-include]
+  in `analysis_options.yaml`.
+* Added guidance on reliable
+  [SDK discovery in AOT-compiled CLI tools][3-14-cli-aot]
+  by using `package:cli_util`.
+* Documented running remote package executables directly from pub.dev
+  by using the [`dart run <package>@[<descriptor>]`][3-14-dart-run] command.
+  (Thank you, [Harsh Yadav][harshyadavDeveloper].)
+* Added `winget` installation instructions for Windows
+  to the [Get the Dart SDK][3-14-get-dart] page.
+  (Thank you, [Sanath Kumar U][sanathusk].)
+* Added [`abstract interface` class][3-14-abstract-interface] examples
+  to the class modifiers documentation and clarified
+  the [`Future.delayed` execution order][3-14-async-await].
+  (Thank you, [Khanak Khandelwal][khanak0509].)
+* Clarified return type guidance for the `[]=` index assignment operator
+  in [Effective Dart][3-14-setter-return].
+  (Thank you, [enlorik][].)
+* Highlighted that the `final` and `var` parameter modifiers
+  are now reserved for declaring parameters in
+  [primary constructors][3-14-primary-constructors]
+  and marked the `dart:mirrors` library as deprecated on the
+  [core libraries][3-14-libraries] page.
+* Retired the standalone videos page in favor of linking directly
+  to the [Flutter YouTube channel][3-14-youtube].
+
+### Site improvements {:.no_toc}
+
+* Enhanced the [Dart changelog][3-14-changelog-page]
+  with version range filtering, preset filter chips,
+  multi-keyword search with match highlighting,
+  and shareable filter and entry permalinks.
+* Improved the [linter rules search][3-14-linter-search]
+  to match rule descriptions and treat spaces and underscores interchangeably.
+  (Thank you, [Khanak Khandelwal][khanak0509].)
+
+### Articles added to the Dart blog {:.no_toc}
+
+* [Bringing Primary Constructors to Dart][blog-08-20-26]
+* [Skills CLI 1.0: Bundle and distribute AI agent skills
+  for your packages][blog-09-08-26]
+* [Google Summer of Code 2026 results][blog-09-15-26]
+* [Announcing Genkit Dart 1.0: Build production-ready agentic apps
+  with Dart and Flutter][blog-10-08-26]
+
+[3-14-dart-migrate]: /tools/dart-migrate
+[3-14-ai-skills]: /ai/package-skills
+[3-14-pub-skills]: /tools/pub/package-skills#validate-and-lint-skills
+[3-14-dev-knowledge]: /ai/package-skills#search-official-docs-with-the-developer-knowledge-mcp-server
+[3-14-data-driven-fixes]: /tools/pub/data-driven-fixes
+[3-14-dart-fix]: /tools/dart-fix
+[3-14-wasm]: /web/wasm
+[3-14-web-deployment]: /web/deployment
+[3-14-web-debugging]: /web/debugging
+[3-14-js-types]: /interop/js-interop/js-types
+[3-14-js-literals]: /interop/js-interop/usage#object-literal-constructors
+[3-14-no-deprecated-js]: /interop/js-interop/past-js-interop#disallow-deprecated-js-interop
+[3-14-package-web]: /interop/js-interop/package-web
+[3-14-objc-interop]: /interop/objective-c-interop
+[3-14-server]: /server
+[3-14-genkit]: /resources/google-apis#genkit
+[3-14-oop]: /learn/tutorial/object-oriented
+[3-14-inheritance]: /learn/tutorial/inheritance
+[3-14-json]: /learn/tutorial/data-and-json
+[3-14-error-handling]: /learn/tutorial/error-handling
+[3-14-logging]: /learn/tutorial/logging
+[3-14-testing]: /learn/tutorial/testing
+[3-14-analysis-include]: /tools/analysis#including-shared-options
+[3-14-cli-aot]: /tools/cli-distribution#access-the-dart-sdk-and-spawn-subprocesses
+[3-14-dart-run]: /tools/dart-run#run-an-executable-from-a-remote-package
+[3-14-get-dart]: /get-dart
+[3-14-abstract-interface]: /language/class-modifiers#abstract-interface
+[3-14-async-await]: /libraries/async/async-await
+[3-14-setter-return]: /effective-dart/design#dont-specify-a-return-type-for-a-setter
+[3-14-primary-constructors]: /language/primary-constructors#parameter-modifier-restrictions
+[3-14-libraries]: /libraries
+[3-14-youtube]: https://www.youtube.com/@flutterdev
+[3-14-changelog-page]: /changelog
+[3-14-linter-search]: /tools/linter-rules#rules
+[blog-08-20-26]: /blog/bringing-primary-constructors-to-dart
+[blog-09-08-26]: /blog/skills-cli-1-0-bundle-and-distribute-ai-agent-skills-for-your-packages
+[blog-09-15-26]: /blog/google-summer-of-code-2026-results
+[blog-10-08-26]: /blog/announcing-genkit-dart-1-0
+
+[Manar-Elhabbal7]: https://github.com/Manar-Elhabbal7
+[manuelzzz]: https://github.com/manuelzzz
+[ananya-kaul]: https://github.com/ananya-kaul
+[harshyadavDeveloper]: https://github.com/harshyadavDeveloper
+[sanathusk]: https://github.com/sanathusk
+[khanak0509]: https://github.com/khanak0509
+[enlorik]: https://github.com/enlorik
 
 ## 3.13 release
 
