@@ -343,7 +343,7 @@ and [JNIgen](https://pub.dev/packages/jnigen) are **stable**!
 Instead of writing manual platform channel boilerplate,
 you can use FFIgen and JNIgen to automatically generate
 idiomatic, type-safe Dart bindings and call
-Objective-C, Swift, Java, and Kotlin APIs directly from Dart.
+Objective-C, Java, and Kotlin APIs directly from Dart.
 Reaching stability is the result of years of design, iteration, and feedback
 focused on reducing the friction of building Dart packages and Flutter plugins,
 and we'll share a deeper dive into choosing the right interop approach
