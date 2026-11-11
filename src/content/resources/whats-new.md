@@ -44,16 +44,16 @@ check out the [3.14 announcement][] and the
 * Added a [data-driven fixes][3-14-data-driven-fixes] guide
   to help package maintainers author automated [`dart fix`][3-14-dart-fix]
   migrations for breaking API changes.
-* Expanded [WebAssembly compilation][3-14-wasm] and
+* Expanded the [WebAssembly compilation][3-14-wasm] and
   [web deployment][3-14-web-deployment] documentation to cover `dart2wasm`
   optimization levels, standalone WASI builds, production serving,
   and source map security.
 * Refreshed the [web debugging][3-14-web-debugging] guide
   for modern Dart 3 browser testing and WebAssembly workflows.
-* Updated [JavaScript interop][3-14-js-types] documentation
+* Updated the [JavaScript interop][3-14-js-types] documentation
   with Dart 3.14 `dart:js_interop` additions,
-  including `JSIterable` and `JSIterator`, primitive list conversions,
-  async and variadic callbacks, and
+  including the `JSIterable` and `JSIterator` types,
+  primitive list conversions, asynchronous and variadic callbacks, and
   [object literal constructors][3-14-js-literals].
 * Documented the [`--no-deprecated-js-interop`][3-14-no-deprecated-js]
   compiler flag and legacy web library deprecations.
@@ -62,12 +62,12 @@ check out the [3.14 announcement][] and the
   (Thank you, [Manar Elhabbal][Manar-Elhabbal7].)
 * Updated the [Objective-C and Swift interop][3-14-objc-interop] guide
   to configure `package:ffigen` in Dart instead of YAML.
-* Expanded [server-side Dart][3-14-server] documentation
-  for Cloud Functions for Firebase and the Firebase Admin SDK,
+* Expanded the [server-side Dart][3-14-server] documentation
+  for Cloud Functions for Firebase and the Firebase Admin SDK
   and added references to [Genkit Dart][3-14-genkit].
 * Split the object-oriented programming tutorial into
-  [Classes and objects][3-14-oop] and
-  [Inheritance and abstract classes][3-14-inheritance],
+  [classes and objects][3-14-oop] and
+  [inheritance and abstract classes][3-14-inheritance] lessons
   and refined the [data and JSON][3-14-json],
   [error handling][3-14-error-handling], [logging][3-14-logging],
   and [testing][3-14-testing] lessons.
@@ -76,24 +76,24 @@ check out the [3.14 announcement][] and the
   in `analysis_options.yaml`.
 * Added guidance on reliable
   [SDK discovery in AOT-compiled CLI tools][3-14-cli-aot]
-  using `package:cli_util`.
+  by using `package:cli_util`.
 * Documented running remote package executables directly from pub.dev
-  using [`dart run <package>@[<descriptor>]`][3-14-dart-run].
+  by using the [`dart run <package>@[<descriptor>]`][3-14-dart-run] command.
   (Thank you, [Harsh Yadav][harshyadavDeveloper].)
 * Added `winget` installation instructions for Windows
-  to [Get the Dart SDK][3-14-get-dart].
+  to the [Get the Dart SDK][3-14-get-dart] page.
   (Thank you, [Sanath Kumar U][sanathusk].)
 * Added [`abstract interface` class][3-14-abstract-interface] examples
   to the class modifiers documentation and clarified
-  [`Future.delayed` execution order][3-14-async-await].
+  the [`Future.delayed` execution order][3-14-async-await].
   (Thank you, [Khanak Khandelwal][khanak0509].)
 * Clarified return type guidance for the `[]=` index assignment operator
   in [Effective Dart][3-14-setter-return].
   (Thank you, [enlorik][].)
-* Highlighted that `final` and `var` are no longer supported
+* Highlighted that the `final` and `var` keywords are no longer supported
   on non-declaring parameters in
-  [Primary constructors][3-14-primary-constructors],
-  and marked `dart:mirrors` as deprecated on the
+  [primary constructors][3-14-primary-constructors]
+  and marked the `dart:mirrors` library as deprecated on the
   [core libraries][3-14-libraries] page.
 * Retired the standalone videos page in favor of linking directly
   to the [Flutter YouTube channel][3-14-youtube].
@@ -104,7 +104,7 @@ check out the [3.14 announcement][] and the
   with version range filtering, preset filter chips,
   multi-keyword search with match highlighting,
   and shareable filter and entry permalinks.
-* Improved [linter rules search][3-14-linter-search]
+* Improved the [linter rules search][3-14-linter-search]
   to match rule descriptions and treat spaces and underscores interchangeably.
   (Thank you, [Khanak Khandelwal][khanak0509].)
 
