@@ -46,12 +46,12 @@ check out the [3.14 announcement][] and the
   migrations for breaking API changes.
 * Expanded the [WebAssembly compilation][3-14-wasm] and
   [web deployment][3-14-web-deployment] documentation to cover `dart2wasm`
-  optimization levels, standalone WASI builds, production serving,
-  and source map security.
+  optimization levels, standalone builds for non-web runtimes,
+  production serving, and source map security.
 * Refreshed the [web debugging][3-14-web-debugging] guide
   for modern Dart 3 browser testing and WebAssembly workflows.
 * Updated the [JavaScript interop][3-14-js-types] documentation
-  with Dart 3.14 `dart:js_interop` additions,
+  with recent `dart:js_interop` additions,
   including the `JSIterable` and `JSIterator` types,
   primitive list conversions, asynchronous and variadic callbacks, and
   [object literal constructors][3-14-js-literals].
@@ -90,8 +90,8 @@ check out the [3.14 announcement][] and the
 * Clarified return type guidance for the `[]=` index assignment operator
   in [Effective Dart][3-14-setter-return].
   (Thank you, [enlorik][].)
-* Highlighted that the `final` and `var` keywords are no longer supported
-  on non-declaring parameters in
+* Highlighted that the `final` and `var` parameter modifiers
+  are now reserved for declaring parameters in
   [primary constructors][3-14-primary-constructors]
   and marked the `dart:mirrors` library as deprecated on the
   [core libraries][3-14-libraries] page.
@@ -146,11 +146,11 @@ check out the [3.14 announcement][] and the
 [3-14-abstract-interface]: /language/class-modifiers#abstract-interface
 [3-14-async-await]: /libraries/async/async-await
 [3-14-setter-return]: /effective-dart/design#dont-specify-a-return-type-for-a-setter
-[3-14-primary-constructors]: /language/primary-constructors
+[3-14-primary-constructors]: /language/primary-constructors#parameter-modifier-restrictions
 [3-14-libraries]: /libraries
 [3-14-youtube]: https://www.youtube.com/@flutterdev
 [3-14-changelog-page]: /changelog
-[3-14-linter-search]: /tools/linter-rules/all
+[3-14-linter-search]: /tools/linter-rules#rules
 [blog-08-20-26]: /blog/bringing-primary-constructors-to-dart
 [blog-09-08-26]: /blog/skills-cli-1-0-bundle-and-distribute-ai-agent-skills-for-your-packages
 [blog-09-15-26]: /blog/google-summer-of-code-2026-results
