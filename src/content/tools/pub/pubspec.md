@@ -580,15 +580,17 @@ environment:
 
 A Flutter SDK constraint is satisfied only if pub is running in the
 context of the `flutter` executable, and the Flutter SDK's
-`version` file meets the version constraint's lower bound. Otherwise,
+`version` file meets the version constraint. Otherwise,
 the package won't be selected.
 
-:::note
-The Flutter SDK only enforces the lower bound of the flutter constraint.
-To learn more, check out
-[issue #95472](https://github.com/flutter/flutter/issues/95472)
-in the `flutter/flutter` repository.
+:::version-note
+Pub enforces the upper bound of the Flutter constraint for your
+root packages, including each package in a [workspace][], that
+have a [language version][Language versioning] of at least 3.9.
+Otherwise, pub enforces only the lower bound.
 :::
+
+[workspace]: /tools/pub/workspaces
 
 To publish a package with a Flutter SDK constraint,
 you must specify a Dart SDK constraint with a minimum version of
