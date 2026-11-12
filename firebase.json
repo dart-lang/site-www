@@ -16,6 +16,12 @@
         ]
       },
       {
+        "source": "**/*.md",
+        "headers": [
+          { "key": "X-Robots-Tag", "value": "noindex" }
+        ]
+      },
+      {
         "source": "/assets/img/*.@(jpg|jpeg|png|webp|avif)",
         "headers": [
           { "key": "Cache-Control", "value": "max-age=604800" },

@@ -131,7 +131,7 @@ void main() {
       expect(v393.tags, contains(ChangelogTag.fixed));
     });
 
-    test('renders clean Markdown for /changelog/index.html.md', () {
+    test('renders clean Markdown for /changelog.md', () {
       final markdown = ChangelogIndex.renderMarkdown(rawEntries);
       expect(markdown, contains('## Dart 3.13'));
       expect(markdown, contains('### [3.9.4] [Tools] — Pub (Fixed)'));

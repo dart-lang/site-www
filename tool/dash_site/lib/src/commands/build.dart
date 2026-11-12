@@ -42,7 +42,7 @@ final class BuildSiteCommand extends Command<int> {
         '--no-managed-build-options',
         '--sitemap-domain=https://dart.dev',
         // Exclude secondary Markdown output files from sitemap.
-        r'--sitemap-exclude=\.html\.md$',
+        r'--sitemap-exclude=\.md$',
         '--dart-define=PRODUCTION=$productionRelease',
       ],
       workingDirectory: 'site',
