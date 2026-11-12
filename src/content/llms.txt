@@ -1,0 +1,147 @@
+# Dart documentation
+
+> Dart is Google's open-source, client-optimized programming language for building fast multiplatform apps across mobile, web, desktop, command-line, and server environments.
+
+This file provides a curated list of official documentation resources to help Large Language Models and developers understand the Dart language, core libraries, package ecosystem, interoperability tools, and SDK workflows. Dart features sound null safety, a strong static type system with type inference, ahead-of-time native and WebAssembly compilation alongside fast JIT development, and first-class integration with Flutter.
+
+## Getting started
+
+- [Dart documentation](https://dart.dev/docs): Main entry point for official Dart guides, tutorials, and reference documentation.
+- [Dart overview](https://dart.dev/overview): High-level overview of the Dart platform, runtime compilers, and core capabilities.
+- [Get the Dart SDK](https://dart.dev/get-dart): Install and update the standalone Dart SDK on Windows, macOS, and Linux.
+- [Learn Dart](https://dart.dev/learn): Guided entry points for learning Dart from scratch or coming from another language.
+- [Dart tutorial](https://dart.dev/learn/tutorial): Step-by-step hands-on tutorial covering CLI apps, async code, packages, classes, error handling, JSON, testing, HTTP requests, and logging.
+- [Dart cheatsheet](https://dart.dev/resources/dart-cheatsheet): Quick interactive reference for Dart syntax, null-aware operators, string interpolation, cascades, and initializers.
+
+## Latest release
+
+- [Announcing Dart 3.14](https://dart.dev/blog/announcing-dart-3-14): Official announcement for Dart 3.14 covering `dart migrate`, WebAssembly SIMD and exceptions, re-engineered DartPad, and stable native interop generators.
+- [Dart changelog](https://dart.dev/changelog): Filterable release-by-release summary of new features, fixes, deprecations, and breaking changes across the Dart SDK.
+- [What's new in the docs](https://dart.dev/resources/whats-new): Recent additions and updates across `dart.dev` documentation and guides.
+- [Breaking changes](https://dart.dev/resources/breaking-changes): Breaking changes and migration guidance across Dart SDK releases.
+- [What's new in Flutter 3.50](https://flutter.dev/blog/whats-new-in-flutter-3-50): Companion release announcement for the paired Flutter 3.50 SDK release.
+
+## Language tour and modern Dart
+
+- [Introduction to Dart](https://dart.dev/language): Tour of core Dart syntax, concepts, and program structure.
+- [Variables](https://dart.dev/language/variables): Variable declarations, null safety defaults, `late`, `final`, and `const`.
+- [Built-in types](https://dart.dev/language/built-in-types): Numbers, strings, booleans, runes, and symbols in Dart.
+- [Records](https://dart.dev/language/records): Anonymous, immutable aggregate types for bundling multiple values and returning multiple results.
+- [Collections](https://dart.dev/language/collections): Lists, sets, maps, collection `if` and `for` control-flow elements, and null-aware elements.
+- [Generics](https://dart.dev/language/generics): Parameterized types, bounded type parameters, and reified generic runtime behavior.
+- [The Dart type system](https://dart.dev/language/type-system): Sound static type checking, type inference, and runtime guarantees.
+- [Patterns](https://dart.dev/language/patterns): Destructuring values and matching shapes in variable declarations, `switch` expressions, and control flow.
+- [Pattern types](https://dart.dev/language/pattern-types): Reference for every pattern kind, precedence rule, and matching behavior in Dart.
+- [Branches](https://dart.dev/language/branches): Conditional control flow with `if`, `if-case`, and exhaustive `switch` statements and expressions.
+- [Loops](https://dart.dev/language/loops): Iteration with `for`, `for-in`, `while`, `do-while`, `break`, and `continue`.
+- [Functions](https://dart.dev/language/functions): Positional and named parameters, first-class functions, closures, tear-offs, and generators.
+- [Error handling](https://dart.dev/language/error-handling): Throwing, catching, and rethrowing exceptions, `try`/`on`/`catch`/`finally`, and `assert`.
+- [Classes](https://dart.dev/language/classes): Class declarations, instance variables, implicit interfaces, and abstract classes.
+- [Constructors](https://dart.dev/language/constructors): Generative, named, redirecting, `const`, and `factory` constructors.
+- [Primary constructors](https://dart.dev/language/primary-constructors): Concise class header syntax for declaring constructors and initializing fields together.
+- [Enums](https://dart.dev/language/enums): Simple and enhanced enumerations implementing fields, getters, constructors, and interfaces.
+- [Dot shorthands](https://dart.dev/language/dot-shorthands): Concise `.member` syntax for static members, constructors, and enum values when context provides the type.
+- [Extension methods](https://dart.dev/language/extension-methods): Adding helper methods, getters, and operators to existing types without wrapper classes.
+- [Extension types](https://dart.dev/language/extension-types): Zero-cost compile-time wrappers for static interfaces and foreign-language interop bindings.
+- [Mixins](https://dart.dev/language/mixins): Reusing member implementations across multiple class hierarchies with `mixin` and `on` constraints.
+- [Class modifiers](https://dart.dev/language/class-modifiers): Controlling subtyping and exhaustiveness across library boundaries with `abstract`, `base`, `interface`, `final`, `sealed`, and `mixin`.
+- [Sound null safety](https://dart.dev/null-safety): Non-nullable types by default, flow analysis, type promotion, and null-aware operators.
+
+## Core libraries
+
+- [Core libraries overview](https://dart.dev/libraries): Guide to the foundational libraries shipped with the Dart SDK.
+- [dart:core](https://dart.dev/libraries/dart-core): Numbers, collections, strings, `Uri`, `DateTime`, `RegExp`, and core object APIs.
+- [dart:async](https://dart.dev/libraries/dart-async): `Future` and `Stream` APIs for asynchronous programming.
+- [dart:convert](https://dart.dev/libraries/dart-convert): Encoders and decoders for JSON, UTF-8, and custom data formats.
+- [dart:io](https://dart.dev/libraries/dart-io): Files, directories, sockets, HTTP clients and servers, and processes for native and server runtimes.
+- [dart:math](https://dart.dev/libraries/dart-math): Mathematical constants, trigonometry, logarithms, and random number generators.
+- [Iterable collections](https://dart.dev/libraries/collections/iterables): Lazy iteration, filtering, mapping, and folding over `Iterable` sequences.
+- [Using JSON](https://dart.dev/libraries/serialization/json): Manual `dart:convert` decoding and code-generated JSON serialization with `json_serializable`.
+- [Dart API reference](https://api.dart.dev/): Complete API documentation for every library, class, and function in the Dart SDK.
+
+## Asynchronous programming and concurrency
+
+- [Concurrency in Dart](https://dart.dev/language/concurrency): Overview of the Dart event loop, `async`/`await`, and parallel execution with isolates.
+- [Asynchronous programming: futures, async, await](https://dart.dev/libraries/async/async-await): Practical tutorial on writing non-blocking Dart code with `Future`, `async`, and `await`.
+- [Futures and error handling](https://dart.dev/libraries/async/futures-error-handling): Handling asynchronous errors cleanly with `try`/`catch` and `Future` callbacks.
+- [Using streams](https://dart.dev/libraries/async/using-streams): Processing sequences of asynchronous events with `await for` and `Stream` combinators.
+- [Creating streams](https://dart.dev/libraries/async/creating-streams): Producing streams with `async*` generator functions and `StreamController`.
+- [Isolates](https://dart.dev/language/isolates): Running CPU-intensive work in parallel across isolated memory heaps with `Isolate.run` and ports.
+
+## Native and JavaScript interoperability
+
+- [Interoperability overview](https://dart.dev/interop): Guide to calling C, Objective-C, Swift, Java, Kotlin, and JavaScript code from Dart.
+- [C interop using dart:ffi](https://dart.dev/interop/c-interop): Calling native C APIs directly with `dart:ffi` and generating bindings with `package:ffigen`.
+- [Objective-C and Swift interop](https://dart.dev/interop/objective-c-interop): Generating Dart bindings for Apple Objective-C and `@objc` Swift APIs using `package:ffigen`.
+- [Java and Kotlin interop](https://dart.dev/interop/java-interop): Generating Dart bindings for Java and Kotlin libraries on Android and JVM platforms using `package:jnigen`.
+- [Hooks](https://dart.dev/tools/hooks): Compiling and bundling native code assets automatically during package builds with `hook/build.dart`.
+- [JavaScript interop overview](https://dart.dev/interop/js-interop): Static, Wasm-compatible interoperability with browser and JavaScript APIs using `dart:js_interop`.
+- [How to use JavaScript interop](https://dart.dev/interop/js-interop/usage): Declaring `external` extension types, `@JS()` annotations, object literals, and Dart/JS callbacks.
+- [JS types](https://dart.dev/interop/js-interop/js-types): Reference for `JSAny`, `JSObject`, `JSArray`, `JSPromise`, `JSIterable`, primitive conversions, and runtime type checks.
+- [Web interop with package:web](https://dart.dev/interop/js-interop/package-web): Accessing browser DOM and Web APIs with `package:web` across JavaScript and WebAssembly targets.
+
+## Packages, pub, and workspaces
+
+- [How to use packages](https://dart.dev/tools/pub/packages): Adding, importing, and upgrading dependencies from `pub.dev` in Dart projects.
+- [Creating packages](https://dart.dev/tools/pub/create-packages): Structuring, documenting, and designing reusable Dart library packages.
+- [The pubspec file](https://dart.dev/tools/pub/pubspec): Reference for `pubspec.yaml` fields, SDK constraints, dependencies, platforms, and topics.
+- [Package dependencies](https://dart.dev/tools/pub/dependencies): Hosted, Git, path, and SDK dependency syntax, version constraints, and overrides.
+- [Pub workspaces](https://dart.dev/tools/pub/workspaces): Managing monorepos with shared dependency resolution and a single `pubspec.lock`.
+- [Publishing packages](https://dart.dev/tools/pub/publishing): Preparing, validating, and publishing packages to `pub.dev`, including automated GitHub Actions publishing.
+- [Data-driven fixes](https://dart.dev/tools/pub/data-driven-fixes): Authoring `fix_data.yaml` rules so consumers can migrate across breaking package API changes with `dart fix`.
+- [Distributing CLI tools](https://dart.dev/tools/cli-distribution): Packaging and distributing Dart command-line executables for developers and end users.
+- [pub.dev package repository](https://pub.dev/): Official package repository for Dart and Flutter libraries and tools.
+
+## Build with AI
+
+- [Build with AI overview](https://dart.dev/ai): Hub for AI-powered app frameworks and AI coding agent integrations in the Dart ecosystem.
+- [Package skills](https://dart.dev/ai/package-skills): Discovering, installing, and managing AI coding agent skills distributed by Dart and Flutter packages.
+- [package:skills CLI](https://dart.dev/tools/package-skills): Command-line reference for running `dart run skills@` to install and maintain agent skills.
+- [Ship skills with packages](https://dart.dev/tools/pub/package-skills): Authoring, structuring, linting with `package:skills_lint`, and publishing agent skills inside `pub.dev` packages.
+- [Dart and Flutter MCP server](https://docs.flutter.dev/ai/tools#dart-and-flutter-mcp-server): Connecting AI coding assistants to live analyzer diagnostics, pub search, formatting, fixes, and test execution.
+- [Developer Knowledge MCP server](https://developers.google.com/knowledge/mcp): Giving AI coding agents live search access to official `dart.dev`, `docs.flutter.dev`, and Google developer documentation.
+- [Genkit for Dart](https://genkit.dev/docs/dart/get-started/): Building type-safe, observable AI workflows, tool calls, and server flows in Dart.
+
+## Static analysis, testing, and SDK tools
+
+- [Dart tools overview](https://dart.dev/tools): Overview of IDE plugins, SDK CLI commands, static analysis, and debugging tools.
+- [Customizing static analysis](https://dart.dev/tools/analysis): Configuring `analysis_options.yaml`, enabling lint sets, excluding files, and adjusting diagnostic severities.
+- [Diagnostic messages](https://dart.dev/tools/diagnostics): Reference catalog of Dart compiler and analyzer error, warning, and hint codes with fixes.
+- [Linter rules](https://dart.dev/tools/linter-rules): Searchable catalog of Dart analyzer lint rules organized by rule set and status.
+- [All linter rules](https://dart.dev/tools/linter-rules/all): Auto-generated `analysis_options.yaml` snippet listing all released stable Dart lint rules.
+- [Fixing type promotion failures](https://dart.dev/tools/non-promotion-reasons): Understanding why nullable fields or variables fail to promote and how to refactor them cleanly.
+- [dart command-line tool](https://dart.dev/tools/dart-tool): Unified CLI entry point for creating, analyzing, formatting, running, testing, migrating, and compiling Dart code.
+- [dart analyze](https://dart.dev/tools/dart-analyze): Running static analysis from the command line and CI pipelines.
+- [dart fix](https://dart.dev/tools/dart-fix): Applying automated lint cleanups and package API migrations across a Dart project.
+- [dart format](https://dart.dev/tools/dart-format): Formatting Dart source code idiomatically with configurable style options.
+- [dart migrate](https://dart.dev/tools/dart-migrate): Automating Dart SDK version constraint upgrades, lint adoption, and code migrations.
+- [dart compile](https://dart.dev/tools/dart-compile): Compiling Dart programs to self-contained native executables, AOT snapshots, JavaScript, and WebAssembly.
+- [dart build](https://dart.dev/tools/dart-build): Building CLI applications and bundling native code assets configured by build hooks.
+- [Testing Dart apps](https://dart.dev/tools/testing): Writing and running unit, asynchronous, and platform-targeted tests with `package:test` and `dart test`.
+- [build_runner](https://dart.dev/tools/build_runner): Running code generation for serialization, mocks, database schemas, and web builds.
+- [Dart DevTools](https://dart.dev/tools/dart-devtools): Profiling CPU, memory, network activity, and performance in Dart and Flutter applications.
+- [DartPad](https://dart.dev/tools/dartpad): Running and sharing interactive Dart and Flutter snippets in the browser with `pub.dev` package support.
+
+## Command-line, server, and web apps
+
+- [Command-line and server apps](https://dart.dev/server): Building CLI utilities, HTTP servers, and backend services with Dart.
+- [Server libraries and packages](https://dart.dev/server/libraries): Recommended packages for routing (`shelf`), gRPC, databases, and backend workflows.
+- [Google Cloud with Dart](https://dart.dev/server/google-cloud): Running containerized Dart servers on Cloud Run and integrating Google Cloud services.
+- [Web apps overview](https://dart.dev/web): Building browser applications with Dart compiled to WebAssembly (`dart2wasm`) and JavaScript (`dart2js`).
+- [WebAssembly compilation](https://dart.dev/web/wasm): Compiling Dart web apps and standalone modules to WebAssembly, including WasmGC, SIMD, and browser requirements.
+- [Web deployment](https://dart.dev/web/deployment): Optimizing, serving, and securing production Dart web builds.
+- [Debugging web apps](https://dart.dev/web/debugging): Testing and debugging Dart web applications across modern browsers.
+- [Multiplatform apps](https://dart.dev/multiplatform-apps): Building native mobile, desktop, and web user interfaces in Dart with Flutter.
+
+## Effective Dart and resources
+
+- [Effective Dart](https://dart.dev/effective-dart): Official Dart guidelines for consistent, idiomatic, maintainable code.
+- [Effective Dart: Style](https://dart.dev/effective-dart/style): Naming conventions, import ordering, and formatting rules.
+- [Effective Dart: Documentation](https://dart.dev/effective-dart/documentation): Writing clear `///` doc comments, prose summaries, and Markdown code references.
+- [Effective Dart: Usage](https://dart.dev/effective-dart/usage): Idiomatic usage of collections, null safety, async APIs, and members.
+- [Effective Dart: Design](https://dart.dev/effective-dart/design): Designing clean, evolvable Dart APIs, classes, parameters, and types.
+- [Dart language evolution](https://dart.dev/resources/language/evolution): Version-by-version history of language features added across Dart releases.
+- [Dart language specification](https://dart.dev/resources/language/spec): Formal specification and feature specifications for the Dart language.
+- [Glossary](https://dart.dev/resources/glossary): Definitions of core Dart language, runtime, and tooling terms.
+- [Security](https://dart.dev/security): Reporting vulnerabilities, reviewing security advisories, and following Dart security practices.
+- [Dart blog](https://dart.dev/blog): Release announcements, engineering deep dives, and ecosystem updates from the Dart team.

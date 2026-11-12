@@ -58,12 +58,15 @@ void main() {
 
   ServerApp.addMiddleware(assetManager.middleware);
 
+  final passThroughPattern = RegExp(r'.*\.(txt|json)$');
+
   final app = ContentApp.custom(
     eagerlyLoadAllPages: true,
     loaders: [
       FilesystemLoader(
         _contentDirectory,
-        filterExtensions: const {'.md', '.html'},
+        filterExtensions: const {'.md', '.html', '.txt'},
+        keepSuffixPattern: passThroughPattern,
       ),
       MemoryLoader(pages: allMemoryPages),
     ],
@@ -82,7 +85,7 @@ void main() {
         DashMarkdownParser(),
         HtmlParser(),
       ],
-      rawOutputPattern: RegExp(r'.*\.(txt|json)$'),
+      rawOutputPattern: passThroughPattern,
       extensions: [
         const AttributeProcessor(),
         const HeaderExtractorExtension(),
