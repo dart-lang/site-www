@@ -42,6 +42,8 @@
     "redirects": [
       { "regex": "(.*)\\.html$", "destination": ":1", "type": 301 },
       { "regex": "(.*)\\.$", "destination": ":1", "type": 301 },
+      { "source": "/llms-full.txt", "destination": "/llms.txt", "type": 302 },
+      { "regex": "^/.+/llms\\.txt$", "destination": "/llms.txt", "type": 301 },
 
       { "source": "/+", "destination": "/community", "type": 301 },
       { "source": "/+dart2js", "destination": "/tools/dart-compile#js", "type": 301 },
