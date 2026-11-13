@@ -6,6 +6,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../../pages/markdown.dart';
 import '../../util.dart';
 import '../../utils/page_source_info.dart';
 import 'breadcrumbs.dart';
@@ -29,7 +30,8 @@ class PageHeader extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final sourceInfo = context.page.sourceInfo;
+    final page = context.page;
+    final sourceInfo = page.sourceInfo;
 
     return header(
       id: 'site-content-title',
@@ -51,6 +53,7 @@ class PageHeader extends StatelessComponent {
           ),
         PageHeaderOptions(
           title: title,
+          markdownUrl: canonicalMarkdownOutput.routeForPage(page),
           sourceUrl: sourceInfo.sourceUrl,
           issueUrl: sourceInfo.issueUrl,
         ),

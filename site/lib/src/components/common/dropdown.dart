@@ -27,9 +27,10 @@ final class DropdownState extends State<Dropdown> {
   bool _expanded = false;
 
   void toggle({bool? to}) {
-    setState(() {
-      _expanded = to ?? !_expanded;
-    });
+    final expanded = to ?? !_expanded;
+    if (expanded == _expanded) return;
+
+    setState(() => _expanded = expanded);
   }
 
   @override
@@ -131,4 +132,16 @@ final class _DropdownRoot extends InheritedComponent {
 
   static _DropdownRoot of(BuildContext context) =>
       context.dependOnInheritedComponentOfExactType<_DropdownRoot>()!;
+}
+
+/// A separator between groups of dropdown menu items.
+final class DropdownDivider extends StatelessComponent {
+  const DropdownDivider({super.key});
+
+  @override
+  Component build(BuildContext _) => const Component.element(
+    tag: 'li',
+    classes: 'dropdown-divider',
+    attributes: {'aria-hidden': 'true', 'role': 'separator'},
+  );
 }
