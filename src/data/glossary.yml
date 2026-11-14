@@ -1032,8 +1032,9 @@
     Instead of locking memory that threads would share, isolates send
     messages to each other through a `ReceivePort` and `SendPort` pair,
     which avoids a large class of concurrency bugs.
-    A spawned isolate gets its own copy of any global mutable variable, so
-    mutating that variable there leaves the main isolate untouched.
+    A spawned isolate has its own separate global variables rather than a
+    copy of the spawning isolate's, so mutating a global variable there
+    leaves the main isolate untouched.
 
     [`Isolate.run()`][] runs a function on a new isolate and returns its
     result, while [`Isolate.spawn()`][] starts a long-lived isolate that you
