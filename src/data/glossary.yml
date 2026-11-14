@@ -844,6 +844,34 @@
     - "language"
     - "methods"
 
+- term: "Heap"
+  short_description: |-
+    The memory where a Dart isolate keeps the objects it allocates at runtime.
+  long_description: |-
+    The _heap_ is the area of memory where a [Dart isolate](#isolate)
+    keeps the objects it creates while a program runs.
+    Each isolate has its own isolated access to objects and state,
+    preventing it from directly accessing objects owned by another isolate.
+
+    Because objects aren't shared, sending a large value such as a parsed
+    JSON graph to another isolate normally copies it.
+    Isolates in the same [isolate group](#isolate-group) are the exception:
+    members of a group share the heap implementation, so
+    `Isolate.exit()` can hand the memory of a result to the receiving
+    isolate without copying it.
+  related_links:
+    - text: "Concurrency in Dart"
+      link: "/language/concurrency"
+      type: "doc"
+    - text: "Performance and isolate groups"
+      link: "/language/concurrency#performance-and-isolate-groups"
+      type: "doc"
+  labels:
+    - "concurrency"
+    - "runtime"
+  alternate:
+    - "Heaps"
+
 - term: "Immediate dependency"
   short_description: |-
     A dependency that a Dart package directly uses.
@@ -989,6 +1017,85 @@
   alternate:
     - "irrefutable context"
 
+- term: "Isolate"
+  short_description: |-
+    An independent unit of execution with its own memory and event loop.
+  long_description: |-
+    All Dart code runs inside an _isolate_, starting with the main isolate
+    that runs `main()`.
+    An isolate has its own global fields and its own isolated access to
+    the objects in the [heap](#heap), and it runs on a single thread with
+    an [event loop](/language/concurrency#event-loop).
+
+    Isolates don't share mutable state.
+    Instead of locking memory that threads would share, isolates send
+    messages to each other through a `ReceivePort` and `SendPort` pair,
+    which avoids a large class of concurrency bugs.
+    A spawned isolate has its own separate global variables rather than a
+    copy of the spawning isolate's, so mutating a global variable there
+    leaves the main isolate untouched.
+
+    [`Isolate.run()`][] runs a function on a new isolate and returns its
+    result, while [`Isolate.spawn()`][] starts a long-lived isolate that you
+    communicate with over ports.
+
+    Only the [Dart Native platform](/overview#platform) implements isolates.
+    On the web, use [web workers][] for background work instead.
+
+    [`Isolate.run()`]: /language/isolates
+    [`Isolate.spawn()`]: /language/concurrency#isolates
+    [web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers
+  related_links:
+    - text: "Concurrency in Dart"
+      link: "/language/concurrency"
+      type: "doc"
+    - text: "Isolates"
+      link: "/language/isolates"
+      type: "doc"
+    - text: "Isolate class"
+      link: "https://api.dart.dev/dart-isolate/Isolate-class.html"
+      type: "api"
+  labels:
+    - "concurrency"
+    - "language"
+  alternate:
+    - "Isolates"
+
+- term: "Isolate group"
+  short_description: |-
+    A set of isolates that share the same code and can transfer memory
+    between each other.
+  long_description: |-
+    When an isolate calls `Isolate.spawn()`, the spawning isolate and the
+    new isolate have the same executable code and belong to the same
+    _isolate group_.
+    A group enables optimizations such as sharing code, so a new isolate
+    starts quickly and uses less memory than it would in a group of its own.
+
+    `Isolate.exit()` only works between isolates in the same group.
+    Because a group is implemented with a shared [heap](#heap), it can pass
+    the memory that holds a result to the receiving isolate without copying
+    it.
+
+    `Isolate.spawnUri()` creates an isolate that is _not_ in its spawner's
+    group. It's much slower to start, and message passing between isolates
+    in different groups is slower too.
+  related_links:
+    - text: "Performance and isolate groups"
+      link: "/language/concurrency#performance-and-isolate-groups"
+      type: "doc"
+    - text: "Isolates"
+      link: "/language/isolates"
+      type: "doc"
+    - text: "Isolate class"
+      link: "https://api.dart.dev/dart-isolate/Isolate-class.html"
+      type: "api"
+  labels:
+    - "concurrency"
+    - "optimization"
+  alternate:
+    - "Isolate groups"
+
 - term: "Just-in-Time compilation (JIT)"
   short_description: |-
     Just-in-Time compilation (JIT) is a compilation mode that compiles 
@@ -1008,6 +1115,55 @@
   labels: 
     - "compilation"
     - "devtools"
+
+- term: "Microtask"
+  short_description: |-
+    A short piece of work that runs before the event loop handles
+    the next event.
+  long_description: |-
+    A _microtask_ is a unit of work that's queued on the
+    [event loop](/language/concurrency#event-loop) and runs to completion
+    before the loop takes the next event from the event queue.
+    All queued microtasks are drained before the next event runs, which
+    keeps short follow-up work, such as completing a future, from waiting
+    behind I/O or UI events.
+
+    Schedule a microtask with `scheduleMicrotask()` from `dart:async`, or
+    with `Future.microtask()`, which returns a future for the microtask's
+    result.
+    When a future completes, the callbacks registered for it with `then()`
+    run as microtasks.
+
+    Because a [zone](#zone) can intercept microtask scheduling,
+    tools such as the debugger and error trackers can observe or replace it.
+
+    Example:
+    ```dart
+    import 'dart:async';
+
+    void main() {
+      scheduleMicrotask(() => print('microtask'));
+      print('sync');
+    }
+    // Prints:
+    // sync
+    // microtask
+    ```
+  related_links:
+    - text: "Concurrency in Dart"
+      link: "/language/concurrency"
+      type: "doc"
+    - text: "Zones"
+      link: "/libraries/async/zones"
+      type: "doc"
+    - text: "scheduleMicrotask function"
+      link: "https://api.dart.dev/dart-async/scheduleMicrotask.html"
+      type: "api"
+  labels:
+    - "asynchronous"
+    - "event-loop"
+  alternate:
+    - "Microtasks"
 
 - term: "Mixin application"
   short_description: |-
