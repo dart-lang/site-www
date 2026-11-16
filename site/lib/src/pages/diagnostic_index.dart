@@ -8,7 +8,6 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../components/common/button.dart';
 import '../components/common/card.dart';
-import '../components/common/client/copy_button.dart';
 import '../components/common/fragment_target.dart';
 import '../components/common/material_icon.dart';
 import '../markdown/markdown_parser.dart';
@@ -51,7 +50,15 @@ class _DiagnosticCard extends StatelessComponent {
         header(
           id: diagnosticId,
           classes: 'card-title',
-          splitByUnderscore(diagnosticId),
+          [
+            if (diagnostic.hasDocumentation)
+              a(
+                href: '/tools/diagnostics/$diagnosticId',
+                splitByUnderscore(diagnosticId),
+              )
+            else
+              ...splitByUnderscore(diagnosticId),
+          ],
         ),
       ],
       content: [
@@ -73,7 +80,16 @@ class _DiagnosticCard extends StatelessComponent {
               title: 'Learn more about this diagnostic and how to resolve it.',
               content: 'Learn more',
             ),
-          CopyButton(toCopy: diagnosticId, buttonText: 'Copy name'),
+          Button(
+            style: ButtonStyle.filled,
+            classes: const ['copy-button'],
+            title: 'Copy $diagnosticId to your clipboard.',
+            content: 'Copy name',
+            attributes: {
+              'type': 'button',
+              'data-copy': diagnosticId,
+            },
+          ),
         ],
       ),
     );

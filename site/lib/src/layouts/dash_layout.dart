@@ -57,8 +57,20 @@ abstract class DashLayout extends PageLayoutBase {
         ? '$pageTitle | $titleBase'
         : pageTitle;
 
-    final canonicalUrl = pageData['canonical'] as String?;
-    final socialPageUrl = _absoluteUrl(siteBaseUrl, canonicalUrl ?? page.url);
+    final noIndex = switch (pageData['noindex']) {
+      true || 'true' => true,
+      _ => false,
+    };
+    final canonicalUrl = switch (pageData['canonical']) {
+      false || 'false' => null,
+      final String url when url.trim().isNotEmpty => _absoluteUrl(
+        siteBaseUrl,
+        url.trim(),
+      ),
+      _ when !noIndex => _absoluteUrl(siteBaseUrl, page.url),
+      _ => null,
+    };
+    final socialPageUrl = canonicalUrl ?? _absoluteUrl(siteBaseUrl, page.url);
     final socialImageUrl = _absoluteUrl(
       siteBaseUrl,
       socialImage ?? '/assets/img/logo/dart-logo-for-shares.png',
@@ -68,9 +80,7 @@ abstract class DashLayout extends PageLayoutBase {
       Component.element(tag: 'title', children: [Component.text(windowTitle)]),
       meta(name: 'description', content: pageDescription),
 
-      if (pageData['noindex'] case final noIndex?
-          when noIndex == true || noIndex == 'true')
-        const meta(name: 'robots', content: 'noindex'),
+      if (noIndex) const meta(name: 'robots', content: 'noindex'),
       if (canonicalUrl case final canonicalUrl?)
         link(rel: 'canonical', href: canonicalUrl),
       if (pageData['redirectTo'] case final String redirectTo

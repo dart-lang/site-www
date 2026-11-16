@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -15,6 +16,7 @@ import 'package:universal_web/web.dart' as web;
 /// relevant Jaspr components.
 void setUpSite() {
   _setUpHeadingLinkCopy();
+  _setUpCopyButtons();
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpTabs();
@@ -75,6 +77,48 @@ void _setUpHeadingLinkCopy() {
       }).toJS,
     );
   }
+}
+
+void _setUpCopyButtons() {
+  final resetTimers = <web.HTMLElement, Timer>{};
+
+  web.document.addEventListener(
+    'click',
+    ((web.Event event) {
+      final target = event.target;
+      if (!target.isA<web.Element>()) return;
+
+      final button = (target as web.Element).closest('button[data-copy]');
+      if (!button.isA<web.HTMLElement>()) return;
+
+      final htmlButton = button as web.HTMLElement;
+      final toCopy = htmlButton.getAttribute('data-copy');
+      if (toCopy == null || toCopy.isEmpty) return;
+
+      event.preventDefault();
+      _copyToClipboard(htmlButton, toCopy, resetTimers);
+    }).toJS,
+  );
+}
+
+@awaitNotRequired
+Future<void> _copyToClipboard(
+  web.HTMLElement button,
+  String text,
+  Map<web.HTMLElement, Timer> resetTimers,
+) async {
+  try {
+    await web.window.navigator.clipboard.writeText(text).toDart;
+    button.textContent = 'Copied!';
+  } catch (_) {
+    button.textContent = 'Failed to copy';
+  }
+
+  resetTimers.remove(button)?.cancel();
+  resetTimers[button] = Timer(const Duration(seconds: 2), () {
+    resetTimers.remove(button);
+    button.textContent = 'Copy name';
+  });
 }
 
 void _setUpSidenav() {

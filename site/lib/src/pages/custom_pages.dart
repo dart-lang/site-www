@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:convert';
+import 'dart:io' show File, Process;
 
 import 'package:collection/collection.dart';
 import 'package:jaspr/dom.dart';
@@ -14,6 +15,7 @@ import '../components/common/tags.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/diagnostic_model.dart';
 import '../models/lints.dart';
+import '../util.dart';
 import '../utils/server_only_utils.dart';
 import 'glossary.dart';
 
@@ -46,9 +48,46 @@ MemoryPage get _glossaryPage => MemoryPage.builder(
   },
 );
 
-/// The date the diagnostic and lint docs were last extracted from the SDK.
+final RegExp _isoDatePattern = RegExp(r'^\d{4}-\d{2}-\d{2}$');
+
+String _gitLastUpdated(String dataFileName, {required String fallback}) {
+  var filePath = path.join(siteSrcDirectoryPath, 'data', dataFileName);
+  if (!File(filePath).existsSync()) {
+    filePath = path.join('src', 'data', dataFileName);
+  }
+  try {
+    final result = Process.runSync('git', [
+      'log',
+      '-1',
+      '--format=%cs',
+      '--',
+      filePath,
+    ]);
+    if (result.exitCode == 0) {
+      final date = (result.stdout as String).trim();
+      if (_isoDatePattern.hasMatch(date)) {
+        return date;
+      }
+    }
+  } on Object {
+    // Fall back to the static date if git history is unavailable.
+  }
+  return fallback;
+}
+
+/// The date `src/data/diagnostics.json` was last updated in git history.
 /// Should be in `yyyy-mm-dd` format.
-const String _diagnosticsLastUpdated = '2025-12-07';
+final String _diagnosticsLastUpdated = _gitLastUpdated(
+  'diagnostics.json',
+  fallback: '2026-11-09',
+);
+
+/// The date `src/data/linter_rules.json` was last updated in git history.
+/// Should be in `yyyy-mm-dd` format.
+final String _lintsLastUpdated = _gitLastUpdated(
+  'linter_rules.json',
+  fallback: '2026-11-02',
+);
 
 /// The individual diagnostic message pages,
 /// rendered at `/tools/diagnostics/<name>`.
@@ -66,6 +105,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
         initialData: {
           'page': <String, Object?>{
             'title': diagnostic.id,
+            'titleBase': 'Dart diagnostic',
             'underscore_breaker_titles': true,
             'description':
                 'Details about the \'${diagnostic.id}\' diagnostic '
@@ -121,7 +161,6 @@ List<MemoryPage> get _diagnosticMemoryPages {
               'canonical':
                   'https://dart.dev/tools/diagnostics/${diagnostic.id}',
               'redirectTo': '/tools/diagnostics/${diagnostic.id}',
-              'noindex': true,
               'sitemap': false,
             },
           },
@@ -154,19 +193,20 @@ List<MemoryPage> get _lintMemoryPages {
           initialData: {
             'page': <String, Object?>{
               'title': lint.name,
+              'titleBase': 'Dart linter',
               'underscore_breaker_titles': true,
               'description': 'Learn about the ${lint.name} linter rule.',
               'bodyClass': 'highlight-diagnostics',
               // If this lint has a version not fully lower case,
               // specify that version as the canonical destination.
-              if (lintId != lint.id)
+              if (lintId != lint.id && lint.state != 'removed')
                 'canonical': 'https://dart.dev/tools/linter-rules/${lint.id}',
-              if (lint.state == 'removed') ...const {
-                'noindex': true,
-                'sitemap': false,
-              } else
+              if (lint.state == 'removed') 'noindex': true,
+              if (lint.state == 'removed' || lintId != lint.id)
+                'sitemap': false
+              else
                 'sitemap': {
-                  'lastmod': _diagnosticsLastUpdated,
+                  'lastmod': _lintsLastUpdated,
                 },
             },
           },
@@ -335,13 +375,13 @@ MemoryPage get _allLinterRulesPage {
 
   return MemoryPage(
     path: 'tools/linter-rules/all.md',
-    initialData: const {
+    initialData: {
       'page': <String, Object?>{
         'title': 'All linter rules',
         'description':
             'Auto-generated configuration enabling all linter rules.',
         'sitemap': {
-          'lastmod': _diagnosticsLastUpdated,
+          'lastmod': _lintsLastUpdated,
         },
       },
     },
