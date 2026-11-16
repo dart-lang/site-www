@@ -87,25 +87,33 @@ class _DartPadInjectorState extends State<DartPadInjector> {
 
   @override
   Component build(BuildContext context) {
+    final rawHeight = component.height?.trim();
+    final resolvedHeight = switch (rawHeight) {
+      final h? when h.isNotEmpty => int.tryParse(h) != null ? '${h}px' : h,
+      _ => '400px',
+    };
+
     if (!kIsWeb) {
       // During pre-rendering, get the content from the nearest DartPadWrapper.
       final content = context
           .findAncestorStateOfType<_DartPadWrapperState>()
           ?.component
           .content;
-      return pre([
-        code(
-          attributes: {'title': component.title},
-          [.text(content ?? '')],
-        ),
-      ]);
+      return pre(
+        classes: 'dartpad-placeholder',
+        styles: Styles(raw: {'height': resolvedHeight}),
+        [
+          code(
+            attributes: {'title': component.title},
+            [.text(content ?? '')],
+          ),
+        ],
+      );
     }
 
     return Component.wrapElement(
-      attributes: {
-        'height': ?component.height,
-        'title': component.title,
-      },
+      styles: Styles(raw: {'height': resolvedHeight}),
+      attributes: {'title': component.title},
       child: EmbeddedDartPad.create(
         iframeId: _frameId,
         theme: switch (component.theme) {

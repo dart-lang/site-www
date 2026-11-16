@@ -127,6 +127,9 @@
       content: 'search';
       color: var(--header-fg-alt);
       font: 28px/1 var(--site-icon-fontFamily);
+      width: 1em;
+      height: 1em;
+      overflow: hidden;
       pointer-events: none;
       position: absolute;
       left: 1rem;

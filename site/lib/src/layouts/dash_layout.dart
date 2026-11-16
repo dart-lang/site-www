@@ -35,6 +35,10 @@ abstract class DashLayout extends PageLayoutBase {
   ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) =>
       const (prerender: {}, prefetch: {});
 
+  /// Returns layout-specific font stylesheet links to include in `<head>`
+  /// before site styles.
+  Iterable<Component> buildExtraFontLinks(Page page) => const [];
+
   @override
   @mustCallSuper
   // ignore: must_call_super
@@ -135,6 +139,7 @@ abstract class DashLayout extends PageLayoutBase {
         href: 'https://fonts.gstatic.com',
         attributes: {'crossorigin': ''},
       ),
+      const link(rel: 'preconnect', href: 'https://www.gstatic.com'),
 
       // Set up site fonts and icons.
       const link(
@@ -145,20 +150,14 @@ abstract class DashLayout extends PageLayoutBase {
             '&family=Google+Sans+Code:ital,wght@0,400..700;1,400..700'
             '&display=swap',
       ),
-      const link(
-        rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.com/css2?'
-            'family=Roboto+Serif:ital,opsz,wght@'
-            '0,8..72,400..700;1,8..72,400..700'
-            '&display=swap',
-      ),
+      ...buildExtraFontLinks(page),
       const link(
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.com/css2?'
             'family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@'
-            '24,400,0..1,0',
+            '24,400,0..1,0'
+            '&display=block',
       ),
 
       // Load the managed cookie banner styles before our theme overrides.

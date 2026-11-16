@@ -29,6 +29,18 @@ class BlogLayout extends DashLayout {
   String get defaultSidenav => 'blog';
 
   @override
+  Iterable<Component> buildExtraFontLinks(Page page) => const [
+    link(
+      rel: 'stylesheet',
+      href:
+          'https://fonts.googleapis.com/css2?'
+          'family=Roboto+Serif:ital,opsz,wght@'
+          '0,8..72,400..700;1,8..72,400..700'
+          '&display=swap',
+    ),
+  ];
+
+  @override
   Iterable<Component> buildHead(Page page) {
     final isPost = page.url.startsWith('/blog/');
     if (isPost && page.data.page['titleBase'] == null) {

@@ -57,7 +57,7 @@ all works fine as long as none of those dependencies _overlap_.
 
 Consider the following example:
 
-<img src="/assets/img/tools/pub/PubConstraintsDiagram.png" alt="dependency graph">
+<img src="/assets/img/tools/pub/PubConstraintsDiagram.png" width="292" height="265" alt="dependency graph">
 
 So your app uses `widgets` and `templates`, and _both_ of those use
 `collection`. This is called a **shared dependency**. Now what happens when
@@ -282,7 +282,7 @@ the entire dependency graph of the containing app.
 Package authors must define package constraints with care.
 Consider the following scenario:
 
-<img src="/assets/img/tools/pub/PubExportedConstraints.png" alt="dependency graph" class="diagram-wrap">
+<img src="/assets/img/tools/pub/PubExportedConstraints.png" width="130" height="265" alt="dependency graph" class="diagram-wrap">
 
 The `bookshelf` package depends on `widgets`.
 The `widgets` package, currently at 1.2.0, exports
