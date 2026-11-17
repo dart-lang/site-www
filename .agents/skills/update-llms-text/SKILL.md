@@ -37,11 +37,7 @@ When asked to add new links to an existing section:
     1.  Choose the [link destination](#choose-a-link-destination).
         Read the page to identify its title and write a concise description.
     1.  Append the link to the specified section,
-        matching the existing Markdown format:
-
-        ```markdown
-        - [Title](URL): Description.
-        ```
+        following the [formatting rules](#formatting-rules).
 
 ### Correct information
 
@@ -76,6 +72,11 @@ or if the export omits the content, such as the generated diagnostic index.
 
 ## Formatting rules
 
--   Format each link entry as `- [Title](URL): Description.`
+-   Format each entry like this example:
+
+    ```markdown
+    - [Variables](https://dart.dev/language/variables.md): Declare variables.
+    ```
+
 -   Separate sections with a single blank line.
 -   Keep descriptions concise, specific, and free of trailing whitespace.
