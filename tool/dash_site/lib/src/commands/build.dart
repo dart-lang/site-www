@@ -41,8 +41,8 @@ final class BuildSiteCommand extends Command<int> {
         // those specified by jaspr_cli.
         '--no-managed-build-options',
         '--sitemap-domain=https://dart.dev',
-        // Exclude secondary Markdown output files from sitemap.
-        r'--sitemap-exclude=\.md$',
+        // Exclude Markdown exports and plain-text files such as llms.txt.
+        r'--sitemap-exclude=\.(md|txt)$',
         '--dart-define=PRODUCTION=$productionRelease',
       ],
       workingDirectory: 'site',
