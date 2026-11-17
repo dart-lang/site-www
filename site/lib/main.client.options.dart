@@ -24,6 +24,8 @@ import 'package:dart_dev_site/src/components/common/client/on_this_page_button.d
     deferred as _on_this_page_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     deferred as _page_header_options;
+import 'package:dart_dev_site/src/components/common/client/simple_tooltip.dart'
+    deferred as _simple_tooltip;
 import 'package:dart_dev_site/src/components/common/client/tabs.dart'
     deferred as _tabs;
 import 'package:dart_dev_site/src/components/common/client/trigger.dart'
@@ -122,6 +124,13 @@ ClientOptions get defaultClientOptions => ClientOptions(
         issueUrl: p.get<String?>('issueUrl'),
       ),
       loader: _page_header_options.loadLibrary,
+    ),
+    'simple_tooltip': ClientLoader(
+      (p) => _simple_tooltip.SimpleTooltip(
+        target: p.mount(p.get<String>('target')),
+        content: p.mount(p.get<String>('content')),
+      ),
+      loader: _simple_tooltip.loadLibrary,
     ),
     'tabs': ClientLoader(
       (p) => _tabs.InteractiveDashTabs(

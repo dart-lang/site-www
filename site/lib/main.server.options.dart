@@ -22,6 +22,8 @@ import 'package:dart_dev_site/src/components/common/client/on_this_page_button.d
     as _on_this_page_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     as _page_header_options;
+import 'package:dart_dev_site/src/components/common/client/simple_tooltip.dart'
+    as _simple_tooltip;
 import 'package:dart_dev_site/src/components/common/client/tabs.dart' as _tabs;
 import 'package:dart_dev_site/src/components/common/client/trigger.dart'
     as _trigger;
@@ -103,6 +105,10 @@ ServerOptions get defaultServerOptions => ServerOptions(
           'page_header_options',
           params: __page_header_optionsPageHeaderOptions,
         ),
+    _simple_tooltip.SimpleTooltip: ClientTarget<_simple_tooltip.SimpleTooltip>(
+      'simple_tooltip',
+      params: __simple_tooltipSimpleTooltip,
+    ),
     _tabs.InteractiveDashTabs: ClientTarget<_tabs.InteractiveDashTabs>(
       'tabs',
       params: __tabsInteractiveDashTabs,
@@ -181,6 +187,9 @@ Map<String, Object?> __feedbackFeedbackComponent(
 Map<String, Object?> __page_header_optionsPageHeaderOptions(
   _page_header_options.PageHeaderOptions c,
 ) => {'title': c.title, 'sourceUrl': c.sourceUrl, 'issueUrl': c.issueUrl};
+Map<String, Object?> __simple_tooltipSimpleTooltip(
+  _simple_tooltip.SimpleTooltip c,
+) => {'target': c.target, 'content': c.content};
 Map<String, Object?> __tabsInteractiveDashTabs(_tabs.InteractiveDashTabs c) => {
   'id': c.id,
   'tabs': c.tabs.map((i) => i.encode()).toList(),
