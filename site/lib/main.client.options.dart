@@ -46,6 +46,8 @@ import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.da
     deferred as _lint_filter_search_section;
 import 'package:dart_dev_site/src/components/tutorial/client/quiz.dart'
     deferred as _quiz;
+import 'package:dart_dev_site/src/components/tutorial/client/stepper.dart'
+    deferred as _stepper;
 import 'package:dart_dev_site/src/models/quiz_model.dart' as _quiz_model;
 
 /// Default [ClientOptions] for use with your Jaspr project.
@@ -185,6 +187,19 @@ ClientOptions get defaultClientOptions => ClientOptions(
             .toList(),
       ),
       loader: _quiz.loadLibrary,
+    ),
+    'stepper': ClientLoader(
+      (p) => _stepper.InteractiveStepper(
+        steps: p
+            .get<List<Object?>>('steps')
+            .cast<Map<String, Object?>>()
+            .map((i) => _stepper.Step.decode(i, p.mount))
+            .toList(),
+        collapsible: p.get<bool>('collapsible'),
+        showActions: p.get<bool>('showActions'),
+        showFinish: p.get<bool>('showFinish'),
+      ),
+      loader: _stepper.loadLibrary,
     ),
   },
 );

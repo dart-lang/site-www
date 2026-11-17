@@ -43,6 +43,8 @@ import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.da
     as _lint_filter_search_section;
 import 'package:dart_dev_site/src/components/tutorial/client/quiz.dart'
     as _quiz;
+import 'package:dart_dev_site/src/components/tutorial/client/stepper.dart'
+    as _stepper;
 import 'package:jaspr_content/components/file_tree.dart' as _file_tree;
 import 'package:jaspr_content/components/post_break.dart' as _post_break;
 
@@ -141,6 +143,10 @@ ServerOptions get defaultServerOptions => ServerOptions(
       'quiz',
       params: __quizInteractiveQuiz,
     ),
+    _stepper.InteractiveStepper: ClientTarget<_stepper.InteractiveStepper>(
+      'stepper',
+      params: __stepperInteractiveStepper,
+    ),
   },
   styles: () => [
     ..._file_tree.FileTree.styles,
@@ -193,4 +199,12 @@ Map<String, Object?> __dartpad_injectorDartPadInjector(
 Map<String, Object?> __quizInteractiveQuiz(_quiz.InteractiveQuiz c) => {
   'title': c.title,
   'questions': c.questions.map((i) => i.toJson()).toList(),
+};
+Map<String, Object?> __stepperInteractiveStepper(
+  _stepper.InteractiveStepper c,
+) => {
+  'steps': c.steps.map((i) => i.encode()).toList(),
+  'collapsible': c.collapsible,
+  'showActions': c.showActions,
+  'showFinish': c.showFinish,
 };
