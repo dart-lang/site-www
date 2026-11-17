@@ -63,7 +63,7 @@
   }
 
   &[data-expanded="true"] {
-    .dropdown-content {
+    > .dropdown-content {
       display: block;
     }
   }
