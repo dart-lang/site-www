@@ -5,6 +5,7 @@
 @TestOn('vm')
 library;
 
+import 'package:dart_dev_site/src/pages/custom_pages.dart';
 import 'package:dart_dev_site/src/pages/markdown.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:test/test.dart';
@@ -61,19 +62,13 @@ void main() {
         ),
         '/tools/linter-rules/all.md',
       );
+    });
 
-      // `MemoryPage.builder` pages have empty Markdown content.
-      expect(
-        canonicalMarkdownOutput.routeForPage(
-          _page(
-            path: 'tools/diagnostics/unused_import.md',
-            url: '/tools/diagnostics/unused_import',
-            content: '',
-            loader: _memoryLoader,
-          ),
-        ),
-        isNull,
-      );
+    test('component-built pages do not register Markdown exports', () {
+      final pattern = canonicalMarkdownOutput.pattern;
+      for (final page in allMemoryPages.where((page) => page.builder != null)) {
+        expect(pattern.matchAsPrefix(page.path), isNull, reason: page.path);
+      }
     });
 
     test('expands ChangelogIndex tags when rendering Markdown', () {

@@ -29,7 +29,7 @@ List<MemoryPage> get allMemoryPages => [
 
 /// The `/resources/glossary` page which hosts the [GlossaryIndex].
 MemoryPage get _glossaryPage => MemoryPage.builder(
-  path: 'resources/glossary.md',
+  path: 'resources/glossary.html',
   initialData: {
     'page': <String, Object?>{
       'title': 'Glossary',
@@ -61,7 +61,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
         path: path.posix.join(
           'tools',
           'diagnostics',
-          '${diagnostic.id}.md',
+          '${diagnostic.id}.html',
         ),
         initialData: {
           'page': <String, Object?>{
@@ -109,7 +109,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
           path: path.posix.join(
             'tools',
             'diagnostics',
-            '$previousDiagnosticName.md',
+            '$previousDiagnosticName.html',
           ),
           initialData: {
             'page': <String, Object?>{
@@ -149,7 +149,7 @@ List<MemoryPage> get _lintMemoryPages {
           path: path.posix.join(
             'tools',
             'linter-rules',
-            '$lintId.md',
+            '$lintId.html',
           ),
           initialData: {
             'page': <String, Object?>{

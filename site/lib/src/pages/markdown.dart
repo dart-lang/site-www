@@ -25,9 +25,6 @@ final class CanonicalMarkdownOutput extends MarkdownOutput {
   /// Returns the secondary Markdown route for [page], if one is generated.
   String? routeForPage(Page page) {
     if (pattern.matchAsPrefix(page.path) == null) return null;
-    // `MemoryPage.builder` pages render Jaspr components directly and don't
-    // have Markdown source content for `MarkdownOutput` to emit.
-    if (page.loader is MemoryLoader && page.content.isEmpty) return null;
     return createRoute(page.url);
   }
 
