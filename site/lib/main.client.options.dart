@@ -22,6 +22,8 @@ import 'package:dart_dev_site/src/components/common/client/on_this_page_button.d
     deferred as _on_this_page_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     deferred as _page_header_options;
+import 'package:dart_dev_site/src/components/common/client/tabs.dart'
+    deferred as _tabs;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
     deferred as _dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
@@ -61,7 +63,7 @@ import 'package:dart_dev_site/src/models/quiz_model.dart' as _quiz_model;
 ClientOptions get defaultClientOptions => ClientOptions(
   clients: {
     'archive_table': ClientLoader(
-      (p) => _archive_table.ArchiveTable(channel: p['channel'] as String),
+      (p) => _archive_table.ArchiveTable(channel: p.get<String>('channel')),
       loader: _archive_table.loadLibrary,
     ),
     'blog_categories': ClientLoader(
@@ -70,29 +72,29 @@ ClientOptions get defaultClientOptions => ClientOptions(
     ),
     'share_button': ClientLoader(
       (p) => _share_button.ShareButton(
-        url: p['url'] as String,
-        title: p['title'] as String,
+        url: p.get<String>('url'),
+        title: p.get<String>('title'),
       ),
       loader: _share_button.loadLibrary,
     ),
     'collapse_button': ClientLoader(
       (p) => _collapse_button.CollapseButton(
-        classes: (p['classes'] as List<Object?>).cast<String>(),
-        title: p['title'] as String?,
+        classes: p.get<List<Object?>>('classes').cast<String>(),
+        title: p.get<String?>('title'),
       ),
       loader: _collapse_button.loadLibrary,
     ),
     'copy_button': ClientLoader(
       (p) => _copy_button.CopyButton(
-        buttonText: p['buttonText'] as String?,
-        toCopy: p['toCopy'] as String?,
-        classes: (p['classes'] as List<Object?>).cast<String>(),
-        title: p['title'] as String?,
+        buttonText: p.get<String?>('buttonText'),
+        toCopy: p.get<String?>('toCopy'),
+        classes: p.get<List<Object?>>('classes').cast<String>(),
+        title: p.get<String?>('title'),
       ),
       loader: _copy_button.loadLibrary,
     ),
     'feedback': ClientLoader(
-      (p) => _feedback.FeedbackComponent(issueUrl: p['issueUrl'] as String),
+      (p) => _feedback.FeedbackComponent(issueUrl: p.get<String>('issueUrl')),
       loader: _feedback.loadLibrary,
     ),
     'on_this_page_button': ClientLoader(
@@ -101,18 +103,31 @@ ClientOptions get defaultClientOptions => ClientOptions(
     ),
     'page_header_options': ClientLoader(
       (p) => _page_header_options.PageHeaderOptions(
-        title: p['title'] as String,
-        sourceUrl: p['sourceUrl'] as String?,
-        issueUrl: p['issueUrl'] as String?,
+        title: p.get<String>('title'),
+        sourceUrl: p.get<String?>('sourceUrl'),
+        issueUrl: p.get<String?>('issueUrl'),
       ),
       loader: _page_header_options.loadLibrary,
     ),
+    'tabs': ClientLoader(
+      (p) => _tabs.InteractiveDashTabs(
+        id: p.get<String>('id'),
+        tabs: p
+            .get<List<Object?>>('tabs')
+            .cast<Map<String, Object?>>()
+            .map((i) => _tabs.DashTab.decode(i, p.mount))
+            .toList(),
+        saveKey: p.get<String?>('saveKey'),
+        wrapped: p.get<bool>('wrapped'),
+      ),
+      loader: _tabs.loadLibrary,
+    ),
     'dartpad_injector': ClientLoader(
       (p) => _dartpad_injector.DartPadInjector(
-        title: p['title'] as String,
-        theme: p['theme'] as String?,
-        height: p['height'] as String?,
-        runAutomatically: p['runAutomatically'] as bool,
+        title: p.get<String>('title'),
+        theme: p.get<String?>('theme'),
+        height: p.get<String?>('height'),
+        runAutomatically: p.get<bool>('runAutomatically'),
       ),
       loader: _dartpad_injector.loadLibrary,
     ),
@@ -146,9 +161,11 @@ ClientOptions get defaultClientOptions => ClientOptions(
     ),
     'quiz': ClientLoader(
       (p) => _quiz.InteractiveQuiz(
-        title: p['title'] as String?,
-        questions: (p['questions'] as List<Object?>)
-            .map((i) => _quiz_model.Question.fromMap(i as Map<String, Object?>))
+        title: p.get<String?>('title'),
+        questions: p
+            .get<List<Object?>>('questions')
+            .cast<Map<String, Object?>>()
+            .map((i) => _quiz_model.Question.fromMap(i))
             .toList(),
       ),
       loader: _quiz.loadLibrary,

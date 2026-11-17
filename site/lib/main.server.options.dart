@@ -20,6 +20,7 @@ import 'package:dart_dev_site/src/components/common/client/on_this_page_button.d
     as _on_this_page_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     as _page_header_options;
+import 'package:dart_dev_site/src/components/common/client/tabs.dart' as _tabs;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
     as _dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
@@ -92,6 +93,10 @@ ServerOptions get defaultServerOptions => ServerOptions(
           'page_header_options',
           params: __page_header_optionsPageHeaderOptions,
         ),
+    _tabs.InteractiveDashTabs: ClientTarget<_tabs.InteractiveDashTabs>(
+      'tabs',
+      params: __tabsInteractiveDashTabs,
+    ),
     _dartpad_injector.DartPadInjector:
         ClientTarget<_dartpad_injector.DartPadInjector>(
           'dartpad_injector',
@@ -153,6 +158,12 @@ Map<String, Object?> __feedbackFeedbackComponent(
 Map<String, Object?> __page_header_optionsPageHeaderOptions(
   _page_header_options.PageHeaderOptions c,
 ) => {'title': c.title, 'sourceUrl': c.sourceUrl, 'issueUrl': c.issueUrl};
+Map<String, Object?> __tabsInteractiveDashTabs(_tabs.InteractiveDashTabs c) => {
+  'id': c.id,
+  'tabs': c.tabs.map((i) => i.encode()).toList(),
+  'saveKey': c.saveKey,
+  'wrapped': c.wrapped,
+};
 Map<String, Object?> __dartpad_injectorDartPadInjector(
   _dartpad_injector.DartPadInjector c,
 ) => {
