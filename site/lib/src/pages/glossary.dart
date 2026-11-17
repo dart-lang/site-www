@@ -8,6 +8,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../components/common/button.dart';
 import '../components/common/card.dart';
+import '../components/common/client/trigger.dart';
 import '../components/pages/glossary_search_section.dart';
 import '../markdown/markdown_parser.dart';
 import '../util.dart';
@@ -211,6 +212,7 @@ final class GlossaryCard extends StatelessComponent {
         'data-partial-matches': partialMatches,
         'data-full-matches': fullMatches,
       },
+      initiallyExpanded: false,
       header: [
         h2(classes: 'card-title', [.text(entry.term)]),
         div(classes: 'card-header-buttons', [
@@ -224,16 +226,17 @@ final class GlossaryCard extends StatelessComponent {
               'aria-label': 'Link to ${entry.term} card',
             },
           ),
-          Button(
-            icon: 'keyboard_arrow_up',
-            style: ButtonStyle.text,
-            classes: const ['expand-button'],
-            title: 'Expand or collapse card',
-            attributes: {
-              'aria-expanded': 'true',
-              'aria-controls': contentId,
-              'aria-label': 'Expand or collapse ${entry.term} card',
-            },
+          Trigger(
+            child: Button(
+              icon: 'keyboard_arrow_up',
+              style: ButtonStyle.text,
+              classes: const ['expand-button'],
+              title: 'Expand or collapse card',
+              attributes: {
+                'aria-controls': contentId,
+                'aria-label': 'Expand or collapse ${entry.term} card',
+              },
+            ),
           ),
         ]),
       ],

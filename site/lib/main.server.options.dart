@@ -14,6 +14,8 @@ import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     as _collapse_button;
 import 'package:dart_dev_site/src/components/common/client/copy_button.dart'
     as _copy_button;
+import 'package:dart_dev_site/src/components/common/client/expandable.dart'
+    as _expandable;
 import 'package:dart_dev_site/src/components/common/client/feedback.dart'
     as _feedback;
 import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
@@ -21,6 +23,8 @@ import 'package:dart_dev_site/src/components/common/client/on_this_page_button.d
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     as _page_header_options;
 import 'package:dart_dev_site/src/components/common/client/tabs.dart' as _tabs;
+import 'package:dart_dev_site/src/components/common/client/trigger.dart'
+    as _trigger;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
     as _dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
@@ -80,6 +84,10 @@ ServerOptions get defaultServerOptions => ServerOptions(
       'copy_button',
       params: __copy_buttonCopyButton,
     ),
+    _expandable.Expandable: ClientTarget<_expandable.Expandable>(
+      'expandable',
+      params: __expandableExpandable,
+    ),
     _feedback.FeedbackComponent: ClientTarget<_feedback.FeedbackComponent>(
       'feedback',
       params: __feedbackFeedbackComponent,
@@ -96,6 +104,10 @@ ServerOptions get defaultServerOptions => ServerOptions(
     _tabs.InteractiveDashTabs: ClientTarget<_tabs.InteractiveDashTabs>(
       'tabs',
       params: __tabsInteractiveDashTabs,
+    ),
+    _trigger.Trigger: ClientTarget<_trigger.Trigger>(
+      'trigger',
+      params: __triggerTrigger,
     ),
     _dartpad_injector.DartPadInjector:
         ClientTarget<_dartpad_injector.DartPadInjector>(
@@ -152,6 +164,11 @@ Map<String, Object?> __copy_buttonCopyButton(_copy_button.CopyButton c) => {
   'classes': c.classes,
   'title': c.title,
 };
+Map<String, Object?> __expandableExpandable(_expandable.Expandable c) => {
+  'id': c.id,
+  'initiallyExpanded': c.initiallyExpanded,
+  'child': c.child,
+};
 Map<String, Object?> __feedbackFeedbackComponent(
   _feedback.FeedbackComponent c,
 ) => {'issueUrl': c.issueUrl};
@@ -164,6 +181,7 @@ Map<String, Object?> __tabsInteractiveDashTabs(_tabs.InteractiveDashTabs c) => {
   'saveKey': c.saveKey,
   'wrapped': c.wrapped,
 };
+Map<String, Object?> __triggerTrigger(_trigger.Trigger c) => {'child': c.child};
 Map<String, Object?> __dartpad_injectorDartPadInjector(
   _dartpad_injector.DartPadInjector c,
 ) => {

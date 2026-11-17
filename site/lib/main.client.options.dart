@@ -16,6 +16,8 @@ import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     deferred as _collapse_button;
 import 'package:dart_dev_site/src/components/common/client/copy_button.dart'
     deferred as _copy_button;
+import 'package:dart_dev_site/src/components/common/client/expandable.dart'
+    deferred as _expandable;
 import 'package:dart_dev_site/src/components/common/client/feedback.dart'
     deferred as _feedback;
 import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
@@ -24,6 +26,8 @@ import 'package:dart_dev_site/src/components/common/client/page_header_options.d
     deferred as _page_header_options;
 import 'package:dart_dev_site/src/components/common/client/tabs.dart'
     deferred as _tabs;
+import 'package:dart_dev_site/src/components/common/client/trigger.dart'
+    deferred as _trigger;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
     deferred as _dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
@@ -93,6 +97,14 @@ ClientOptions get defaultClientOptions => ClientOptions(
       ),
       loader: _copy_button.loadLibrary,
     ),
+    'expandable': ClientLoader(
+      (p) => _expandable.Expandable(
+        id: p.get<String?>('id'),
+        initiallyExpanded: p.get<bool>('initiallyExpanded'),
+        child: p.mount(p.get<String>('child')),
+      ),
+      loader: _expandable.loadLibrary,
+    ),
     'feedback': ClientLoader(
       (p) => _feedback.FeedbackComponent(issueUrl: p.get<String>('issueUrl')),
       loader: _feedback.loadLibrary,
@@ -121,6 +133,10 @@ ClientOptions get defaultClientOptions => ClientOptions(
         wrapped: p.get<bool>('wrapped'),
       ),
       loader: _tabs.loadLibrary,
+    ),
+    'trigger': ClientLoader(
+      (p) => _trigger.Trigger(child: p.mount(p.get<String>('child'))),
+      loader: _trigger.loadLibrary,
     ),
     'dartpad_injector': ClientLoader(
       (p) => _dartpad_injector.DartPadInjector(

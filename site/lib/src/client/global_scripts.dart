@@ -20,7 +20,6 @@ void setUpSite() {
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpGallery();
-  _setUpExpandableCards();
   _setUpPlatformKeys();
   _setUpTableOfContents();
   _setUpReleaseTags();
@@ -94,19 +93,6 @@ void _setUpSidenav() {
         ),
       );
     }
-  }
-
-  // Set up collapse and expand for sidenav buttons.
-  final toggles = web.document.querySelectorAll('.nav-link.collapsible');
-  for (var i = 0; i < toggles.length; i++) {
-    final toggle = toggles.item(i) as web.HTMLElement;
-    toggle.addEventListener(
-      'click',
-      (web.Event e) {
-        toggle.classList.toggle('collapsed');
-        e.preventDefault();
-      }.toJS,
-    );
   }
 }
 
@@ -212,48 +198,6 @@ void _setUpGallery() {
         }).toJS,
       );
     }
-  }
-}
-
-void _setUpExpandableCards() {
-  var currentFragment = web.window.location.hash.trim().toLowerCase();
-  if (currentFragment.startsWith('#')) {
-    // Remove the leading '#' from the fragment.
-    currentFragment = currentFragment.substring(1);
-  }
-  final expandableCards = web.document.querySelectorAll('.expandable-card');
-  web.Element? targetCard;
-
-  for (var i = 0; i < expandableCards.length; i++) {
-    final card = expandableCards.item(i) as web.Element;
-    final expandButton = card.querySelector('.expand-button');
-    if (expandButton == null) continue;
-
-    expandButton.addEventListener(
-      'click',
-      ((web.Event e) {
-        if (card.classList.contains('collapsed')) {
-          card.classList.remove('collapsed');
-          expandButton.ariaExpanded = 'true';
-        } else {
-          card.classList.add('collapsed');
-          expandButton.ariaExpanded = 'false';
-        }
-        e.preventDefault();
-      }).toJS,
-    );
-
-    if (card.id != currentFragment) {
-      card.classList.add('collapsed');
-      expandButton.ariaExpanded = 'false';
-    } else {
-      targetCard = card;
-    }
-  }
-
-  if (targetCard != null) {
-    // Scroll the expanded card into view.
-    targetCard.scrollIntoView();
   }
 }
 
