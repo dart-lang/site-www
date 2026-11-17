@@ -124,8 +124,18 @@ void main() {
             ),
             DartPadWrapper(
               content: 'void main() {}',
+              title: 'Decimal height',
+              height: '400.5',
+            ),
+            DartPadWrapper(
+              content: 'void main() {}',
               title: 'Unit height',
               height: '32rem',
+            ),
+            DartPadWrapper(
+              content: 'void main() {}',
+              title: 'Non-finite height',
+              height: 'NaN',
             ),
           ]),
         ),
@@ -137,10 +147,12 @@ void main() {
       final placeholders = response.document!.body!.querySelectorAll(
         'pre.dartpad-placeholder',
       );
-      expect(placeholders, hasLength(3));
+      expect(placeholders, hasLength(5));
       expect(placeholders[0].attributes['style'], contains('height: 400px'));
       expect(placeholders[1].attributes['style'], contains('height: 520px'));
-      expect(placeholders[2].attributes['style'], contains('height: 32rem'));
+      expect(placeholders[2].attributes['style'], contains('height: 400.5px'));
+      expect(placeholders[3].attributes['style'], contains('height: 32rem'));
+      expect(placeholders[4].attributes['style'], isNot(contains('NaNpx')));
     },
   );
 }

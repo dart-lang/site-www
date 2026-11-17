@@ -89,7 +89,8 @@ class _DartPadInjectorState extends State<DartPadInjector> {
   Component build(BuildContext context) {
     final rawHeight = component.height?.trim();
     final resolvedHeight = switch (rawHeight) {
-      final h? when h.isNotEmpty => int.tryParse(h) != null ? '${h}px' : h,
+      final h? when h.isNotEmpty =>
+        (double.tryParse(h)?.isFinite ?? false) ? '${h}px' : h,
       _ => '400px',
     };
 
