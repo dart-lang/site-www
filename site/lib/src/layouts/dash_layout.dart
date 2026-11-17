@@ -13,6 +13,7 @@ import '../components/layout/footer.dart';
 import '../components/layout/header.dart';
 import '../components/layout/sidenav.dart';
 import '../models/sidenav_model.dart';
+import '../pages/markdown.dart';
 import '../util.dart';
 import '../utils/cache_busted_build_asset_url.dart';
 
@@ -83,6 +84,13 @@ abstract class DashLayout extends PageLayoutBase {
       if (noIndex) const meta(name: 'robots', content: 'noindex'),
       if (canonicalUrl case final canonicalUrl?)
         link(rel: 'canonical', href: canonicalUrl),
+      if (canonicalMarkdownOutput.routeForPage(page) case final markdownRoute?)
+        link(
+          rel: 'alternate',
+          type: 'text/markdown',
+          href: markdownRoute,
+          attributes: const {'title': 'Markdown'},
+        ),
       if (pageData['redirectTo'] case final String redirectTo
           when redirectTo.isNotEmpty)
         RawText('<script>window.location.replace("$redirectTo");</script>'),
@@ -109,6 +117,11 @@ abstract class DashLayout extends PageLayoutBase {
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-ipad-retina.png',
         attributes: {'sizes': '167x167'},
+      ),
+      const link(
+        rel: 'describedby',
+        type: 'text/plain',
+        href: '/llms.txt',
       ),
 
       meta(

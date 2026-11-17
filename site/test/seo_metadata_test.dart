@@ -214,7 +214,7 @@ void main() {
           final title = data['title'] as String;
           final slug = page.path
               .substring('tools/linter-rules/'.length)
-              .replaceFirst(RegExp(r'\.md$'), '');
+              .replaceFirst(RegExp(r'\.html$'), '');
           final isAlias = slug != title.trim();
           final isRemoved = data['noindex'] == true;
 
