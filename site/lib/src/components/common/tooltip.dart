@@ -66,6 +66,7 @@ class _TooltipState extends State<Tooltip> {
   /// Adjust the tooltip position to ensure it is fully inside the
   /// ancestor .content element.
   void ensureVisible() {
+    if (!mounted) return;
     final target = _targetKey.currentNode;
     final tooltip = _tooltipKey.currentNode;
     if (tooltip == null || target == null) return;

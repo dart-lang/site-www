@@ -148,6 +148,7 @@ class InteractiveDashTabsState extends State<InteractiveDashTabs> {
   }
 
   void _activateTabWithSaveId(String saveId) {
+    if (!mounted) return;
     final index = component.tabs.indexWhere((tab) => tab.tabSaveId == saveId);
     if (index != -1) {
       setState(() => activeTabIndex = index);
