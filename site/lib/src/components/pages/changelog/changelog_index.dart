@@ -40,7 +40,7 @@ final class ChangelogIndex extends StatelessComponent {
     return (sortedVersions, groupedEntries);
   }
 
-  /// Renders the changelog data as structured Markdown for `/changelog/index.html.md`.
+  /// Renders the changelog data as structured Markdown for `/changelog.md`.
   static String renderMarkdown(List<Object?> changesData) {
     final (sortedVersions, groupedEntries) = _groupByMinorVersion(changesData);
 

@@ -152,7 +152,12 @@ Map<String, Object?> __feedbackFeedbackComponent(
 ) => {'issueUrl': c.issueUrl};
 Map<String, Object?> __page_header_optionsPageHeaderOptions(
   _page_header_options.PageHeaderOptions c,
-) => {'title': c.title, 'sourceUrl': c.sourceUrl, 'issueUrl': c.issueUrl};
+) => {
+  'title': c.title,
+  'markdownUrl': c.markdownUrl,
+  'sourceUrl': c.sourceUrl,
+  'issueUrl': c.issueUrl,
+};
 Map<String, Object?> __dartpad_injectorDartPadInjector(
   _dartpad_injector.DartPadInjector c,
 ) => {
