@@ -100,6 +100,11 @@ abstract class DashLayout extends PageLayoutBase {
         href: '/assets/img/touch-icon-ipad-retina.png',
         attributes: {'sizes': '167x167'},
       ),
+      const link(
+        rel: 'describedby',
+        type: 'text/plain',
+        href: '/llms.txt',
+      ),
 
       meta(
         name: 'twitter:card',
