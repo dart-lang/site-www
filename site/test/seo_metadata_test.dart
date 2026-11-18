@@ -5,6 +5,7 @@
 @TestOn('vm')
 library;
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dart_dev_site/main.server.options.dart';
@@ -94,12 +95,12 @@ void main() {
       tester,
     ) async {
       final overridePage = _page(
-        path: 'tools/linter-rules/prefer_iterable_wheretype.md',
-        url: '/tools/linter-rules/prefer_iterable_wheretype',
+        path: 'tools/linter-rules/prefer_iterable_whereType.html',
+        url: '/tools/linter-rules/prefer_iterable_whereType',
         pageData: {
           'title': 'prefer_iterable_whereType',
           'titleBase': 'Dart linter',
-          'canonical': '/tools/linter-rules/prefer_iterable_whereType',
+          'canonical': '/tools/linter-rules/prefer_iterable_wheretype',
         },
       );
       tester.pumpComponent(
@@ -114,7 +115,7 @@ void main() {
         overrideDoc.head!
             .querySelector('link[rel="canonical"]')
             ?.attributes['href'],
-        'https://dart.dev/tools/linter-rules/prefer_iterable_whereType',
+        'https://dart.dev/tools/linter-rules/prefer_iterable_wheretype',
       );
       expect(
         overrideDoc.head!.querySelector('title')?.text,
@@ -146,6 +147,7 @@ void main() {
 
   group('Diagnostic and linter MemoryPage SEO invariants', () {
     late List<MemoryPage> memoryPages;
+    late List<Object?> redirects;
 
     setUpAll(() {
       final originalDir = Directory.current;
@@ -155,6 +157,11 @@ void main() {
       }
       try {
         memoryPages = allMemoryPages;
+        final firebase = jsonDecode(
+          File('../firebase.json').readAsStringSync(),
+        ) as Map<String, Object?>;
+        final hosting = firebase['hosting'] as Map<String, Object?>;
+        redirects = hosting['redirects'] as List<Object?>;
       } finally {
         Directory.current = originalDir;
       }
@@ -192,7 +199,7 @@ void main() {
     });
 
     test(
-      'lint pages exclude lowercase aliases and removed rules from sitemap',
+      'lint URLs are lowercase and removed rules stay out of the sitemap',
       () {
         final lintPages = memoryPages
             .where(
@@ -204,38 +211,45 @@ void main() {
             .toList();
         expect(lintPages, isNotEmpty);
 
-        var sawAlias = false;
+        var sawMixedCaseRule = false;
         var sawRemoved = false;
 
         for (final page in lintPages) {
           final data = _pageMap(page);
           expect(data['titleBase'], 'Dart linter');
 
-          final title = data['title'] as String;
+          final ruleName = (data['title'] as String).trim();
           final slug = page.path
               .substring('tools/linter-rules/'.length)
               .replaceFirst(RegExp(r'\.html$'), '');
-          final isAlias = slug != title.trim();
+          expect(slug, ruleName.toLowerCase());
+          if (slug != ruleName) {
+            sawMixedCaseRule = true;
+            final route = '/tools/linter-rules/$slug';
+            expect(
+              redirects,
+              contains(
+                equals({
+                  'source': '/tools/linter-rules/$ruleName',
+                  'destination': route,
+                  'type': 301,
+                }),
+              ),
+            );
+          }
           final isRemoved = data['noindex'] == true;
 
           if (isRemoved) {
             sawRemoved = true;
             expect(data['sitemap'], isFalse);
             expect(data.containsKey('canonical'), isFalse);
-          } else if (isAlias) {
-            sawAlias = true;
-            expect(
-              data['canonical'],
-              'https://dart.dev/tools/linter-rules/${title.trim()}',
-            );
-            expect(data['sitemap'], isFalse);
           } else {
             final sitemap = data['sitemap'] as Map<String, Object?>;
             expect(sitemap['lastmod'], matches(_isoDatePattern));
           }
         }
 
-        expect(sawAlias, isTrue);
+        expect(sawMixedCaseRule, isTrue);
         expect(sawRemoved, isTrue);
       },
     );
@@ -300,7 +314,7 @@ void main() {
     );
 
     testServer(
-      'LintRuleIndex preserves camelCase lint.name in links and data-copy',
+      'LintRuleIndex links to lowercase URLs and copies the original rule name',
       (
         tester,
       ) async {
@@ -340,9 +354,13 @@ void main() {
         );
         expect(
           headerLink?.attributes['href'],
-          '/tools/linter-rules/prefer_iterable_whereType',
+          '/tools/linter-rules/prefer_iterable_wheretype',
         );
         expect(headerLink?.text, 'prefer_iterable_whereType');
+        expect(
+          doc.querySelector('.card-actions a')?.attributes['href'],
+          '/tools/linter-rules/prefer_iterable_wheretype',
+        );
 
         final copyButton = doc.querySelector('button.copy-button');
         expect(copyButton?.attributes['type'], 'button');

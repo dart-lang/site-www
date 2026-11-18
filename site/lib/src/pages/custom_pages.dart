@@ -59,6 +59,8 @@ String _gitLastUpdated(String dataFileName, {required String fallback}) {
     final result = Process.runSync('git', [
       'log',
       '-1',
+      // A shallow boundary has no visible parent to compare the file against.
+      '--min-parents=1',
       '--format=%cs',
       '--',
       filePath,
@@ -181,14 +183,13 @@ List<MemoryPage> get _diagnosticMemoryPages {
 List<MemoryPage> get _lintMemoryPages {
   final lintRules = readAndLoadLints();
 
-  return [
-    for (final lint in lintRules)
-      for (final lintId in {lint.id, lint.id.toLowerCase()})
-        MemoryPage.builder(
+  return lintRules
+      .map(
+        (lint) => MemoryPage.builder(
           path: path.posix.join(
             'tools',
             'linter-rules',
-            '$lintId.html',
+            '${lint.id.toLowerCase()}.html',
           ),
           initialData: {
             'page': <String, Object?>{
@@ -197,14 +198,10 @@ List<MemoryPage> get _lintMemoryPages {
               'underscore_breaker_titles': true,
               'description': 'Learn about the ${lint.name} linter rule.',
               'bodyClass': 'highlight-diagnostics',
-              // If this lint has a version not fully lower case,
-              // specify that version as the canonical destination.
-              if (lintId != lint.id && lint.state != 'removed')
-                'canonical': 'https://dart.dev/tools/linter-rules/${lint.id}',
-              if (lint.state == 'removed') 'noindex': true,
-              if (lint.state == 'removed' || lintId != lint.id)
-                'sitemap': false
-              else
+              if (lint.state == 'removed') ...{
+                'noindex': true,
+                'sitemap': false,
+              } else
                 'sitemap': {
                   'lastmod': _lintsLastUpdated,
                 },
@@ -221,7 +218,8 @@ List<MemoryPage> get _lintMemoryPages {
               incompatibleLintsText.writeln();
               for (final incompatibleLint in lint.incompatibleLints) {
                 incompatibleLintsText.writeln(
-                  '- [`$incompatibleLint`](/tools/linter-rules/$incompatibleLint)',
+                  '- [`$incompatibleLint`]'
+                  '(/tools/linter-rules/${incompatibleLint.toLowerCase()})',
                 );
               }
             }
@@ -351,7 +349,8 @@ linter:
             );
           },
         ),
-  ];
+      )
+      .toList(growable: false);
 }
 
 final List<LintDetails> linterRulesToShow = readAndLoadLints()

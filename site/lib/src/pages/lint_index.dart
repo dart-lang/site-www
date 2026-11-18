@@ -54,7 +54,7 @@ class _LintRuleCard extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final lintId = lint.name.toLowerCase();
+    final lintId = lint.id.toLowerCase();
 
     final attributes = <String, String>{
       if (lint.state == 'stable' && !lint.sinceDartSdk.contains('wip'))
@@ -75,7 +75,7 @@ class _LintRuleCard extends StatelessComponent {
           classes: 'card-title',
           [
             a(
-              href: '/tools/linter-rules/${lint.name}',
+              href: '/tools/linter-rules/$lintId',
               splitByUnderscore(lint.name),
             ),
           ],
@@ -94,7 +94,7 @@ class _LintRuleCard extends StatelessComponent {
         leading: _statusIcons,
         trailing: [
           Button(
-            href: '/tools/linter-rules/${lint.name}',
+            href: '/tools/linter-rules/$lintId',
             style: ButtonStyle.outlined,
             title: 'Learn more about this lint and when to enable it.',
             content: 'Learn more',

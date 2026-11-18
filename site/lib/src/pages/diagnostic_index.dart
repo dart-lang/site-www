@@ -24,7 +24,6 @@ class DiagnosticIndex extends StatelessComponent {
         .map(DiagnosticInfo.fromJson)
         .toList(growable: false);
     return div(
-      id: 'diagnostic-index',
       classes: 'card-list',
       [
         for (final diagnostic in diagnostics) _DiagnosticCard(diagnostic),

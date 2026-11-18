@@ -471,6 +471,8 @@
       { "source": "/tools/eclipse-plugin", "destination": "/tools#editors", "type": 301 },
       { "source": "/tools/editor{,/**}", "destination": "/tools", "type": 301 },
       { "source": "/tools/faq", "destination": "/tools", "type": 301 },
+      { "source": "/tools/linter-rules/prefer_for_elements_to_map_fromIterable", "destination": "/tools/linter-rules/prefer_for_elements_to_map_fromiterable", "type": 301 },
+      { "source": "/tools/linter-rules/prefer_iterable_whereType", "destination": "/tools/linter-rules/prefer_iterable_wheretype", "type": 301 },
       { "source": "/tools/mcp-server", "destination": "https://docs.flutter.dev/ai/mcp-server", "type": 301 },
       { "source": "/tools/observatory{,/**}", "destination": "/tools/dart-devtools", "type": 301 },
       { "source": "/tools/private-files", "destination": "/tools/pub/private-files", "type": 301 },
