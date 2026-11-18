@@ -1281,9 +1281,9 @@ when running `dart format` with a Dart 3.6 SDK or later:
 * {{versioned}} [Private final field promotion][2020] might cause the following
   analyzer warnings to trigger on existing code that previously passed analysis:
   
-  * [`unnecessary_non_null_assertion`](/tools/diagnostic-messages#unnecessary_non_null_assertion)
-  * [`invalid_null_aware_operator`](/tools/diagnostic-messages#invalid_null_aware_operator)
-  * [`unnecessary_cast`](/tools/diagnostic-messages#unnecessary_cast)
+  * [`unnecessary_non_null_assertion`](/tools/diagnostics/unnecessary_non_null_assertion)
+  * [`invalid_null_aware_operator`](/tools/diagnostics/invalid_null_aware_operator)
+  * [`unnecessary_cast`](/tools/diagnostics/unnecessary_cast)
 
   ```dart
   class C {

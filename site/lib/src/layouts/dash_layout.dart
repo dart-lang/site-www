@@ -58,8 +58,18 @@ abstract class DashLayout extends PageLayoutBase {
         ? '$pageTitle | $titleBase'
         : pageTitle;
 
-    final canonicalUrl = pageData['canonical'] as String?;
-    final socialPageUrl = _absoluteUrl(siteBaseUrl, canonicalUrl ?? page.url);
+    final noIndexValue = pageData['noindex'];
+    final noIndex = noIndexValue == true || noIndexValue == 'true';
+    final pageUrl = _absoluteUrl(siteBaseUrl, page.url);
+    final canonicalUrl = switch (pageData['canonical']) {
+      false || 'false' => null,
+      final String url when url.trim().isNotEmpty => _absoluteUrl(
+        siteBaseUrl,
+        url.trim(),
+      ),
+      _ => noIndex ? null : pageUrl,
+    };
+    final socialPageUrl = canonicalUrl ?? pageUrl;
     final socialImageUrl = _absoluteUrl(
       siteBaseUrl,
       socialImage ?? '/assets/img/logo/dart-logo-for-shares.png',
@@ -69,9 +79,7 @@ abstract class DashLayout extends PageLayoutBase {
       Component.element(tag: 'title', children: [Component.text(windowTitle)]),
       meta(name: 'description', content: pageDescription),
 
-      if (pageData['noindex'] case final noIndex?
-          when noIndex == true || noIndex == 'true')
-        const meta(name: 'robots', content: 'noindex'),
+      if (noIndex) const meta(name: 'robots', content: 'noindex'),
       if (canonicalUrl case final canonicalUrl?)
         link(rel: 'canonical', href: canonicalUrl),
       if (canonicalMarkdownOutput.routeForPage(page) case final markdownRoute?)

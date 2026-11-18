@@ -14,6 +14,7 @@ import '../components/common/tags.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/diagnostic_model.dart';
 import '../models/lints.dart';
+import '../utils/last_modified.dart';
 import '../utils/server_only_utils.dart';
 import 'glossary.dart';
 
@@ -46,9 +47,17 @@ MemoryPage get _glossaryPage => MemoryPage.builder(
   },
 );
 
-/// The date the diagnostic and lint docs were last extracted from the SDK.
-/// Should be in `yyyy-mm-dd` format.
-const String _diagnosticsLastUpdated = '2025-12-07';
+/// The date `src/data/diagnostics.json` was last updated in git history,
+/// in `yyyy-mm-dd` format.
+final String? _diagnosticsLastUpdated = lastModifiedDateForPath(
+  'src/data/diagnostics.json',
+);
+
+/// The date `src/data/linter_rules.json` was last updated in git history,
+/// in `yyyy-mm-dd` format.
+final String? _lintsLastUpdated = lastModifiedDateForPath(
+  'src/data/linter_rules.json',
+);
 
 /// The individual diagnostic message pages,
 /// rendered at `/tools/diagnostics/<name>`.
@@ -66,6 +75,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
         initialData: {
           'page': <String, Object?>{
             'title': diagnostic.id,
+            'titleBase': 'Dart diagnostic',
             'underscore_breaker_titles': true,
             'description':
                 'Details about the \'${diagnostic.id}\' diagnostic '
@@ -87,7 +97,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
                     title:
                         'Learn about the lint rule that '
                         'enables this diagnostic.',
-                    link: '/tools/linter-rules/${diagnostic.id}',
+                    link: lintRuleUrl(diagnostic.id),
                   ),
                 ]),
               DashMarkdown(
@@ -121,7 +131,6 @@ List<MemoryPage> get _diagnosticMemoryPages {
               'canonical':
                   'https://dart.dev/tools/diagnostics/${diagnostic.id}',
               'redirectTo': '/tools/diagnostics/${diagnostic.id}',
-              'noindex': true,
               'sitemap': false,
             },
           },
@@ -142,31 +151,27 @@ List<MemoryPage> get _diagnosticMemoryPages {
 List<MemoryPage> get _lintMemoryPages {
   final lintRules = readAndLoadLints();
 
-  return [
-    for (final lint in lintRules)
-      for (final lintId in {lint.id, lint.id.toLowerCase()})
-        MemoryPage.builder(
+  return lintRules
+      .map(
+        (lint) => MemoryPage.builder(
           path: path.posix.join(
             'tools',
             'linter-rules',
-            '$lintId.html',
+            '${lint.id.toLowerCase()}.html',
           ),
           initialData: {
             'page': <String, Object?>{
               'title': lint.name,
+              'titleBase': 'Dart linter',
               'underscore_breaker_titles': true,
               'description': 'Learn about the ${lint.name} linter rule.',
               'bodyClass': 'highlight-diagnostics',
-              // If this lint has a version not fully lower case,
-              // specify that version as the canonical destination.
-              if (lintId != lint.id)
-                'canonical': 'https://dart.dev/tools/linter-rules/${lint.id}',
               if (lint.state == 'removed') ...const {
                 'noindex': true,
                 'sitemap': false,
               } else
                 'sitemap': {
-                  'lastmod': _diagnosticsLastUpdated,
+                  'lastmod': _lintsLastUpdated,
                 },
             },
           },
@@ -181,7 +186,7 @@ List<MemoryPage> get _lintMemoryPages {
               incompatibleLintsText.writeln();
               for (final incompatibleLint in lint.incompatibleLints) {
                 incompatibleLintsText.writeln(
-                  '- [`$incompatibleLint`](/tools/linter-rules/$incompatibleLint)',
+                  '- [`$incompatibleLint`](${lintRuleUrl(incompatibleLint)})',
                 );
               }
             }
@@ -311,7 +316,8 @@ linter:
             );
           },
         ),
-  ];
+      )
+      .toList(growable: false);
 }
 
 final List<LintDetails> linterRulesToShow = readAndLoadLints()
@@ -335,13 +341,13 @@ MemoryPage get _allLinterRulesPage {
 
   return MemoryPage(
     path: 'tools/linter-rules/all.md',
-    initialData: const {
+    initialData: {
       'page': <String, Object?>{
         'title': 'All linter rules',
         'description':
             'Auto-generated configuration enabling all linter rules.',
         'sitemap': {
-          'lastmod': _diagnosticsLastUpdated,
+          'lastmod': _lintsLastUpdated,
         },
       },
     },
