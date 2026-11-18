@@ -13,6 +13,10 @@ description: Learn how to write a good package page.
     width: 90%;
   }
 
+  .screenshot.diagram-wrap {
+    box-sizing: border-box;
+  }
+
   .screenshot-narrow {
     max-width: 400px;
   }

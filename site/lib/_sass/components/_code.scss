@@ -217,22 +217,23 @@ pre {
   }
 }
 
-// Border and resizability for dartpad
+// Reserve the same space before and after DartPad hydration.
+pre.dartpad-placeholder,
 iframe[src^="https://dartpad"]:not(#try-dart-pad) {
   display: block;
   box-sizing: border-box;
   border: 1px solid var(--site-inset-borderColor);
   margin: 0 0 1rem;
   min-height: 400px;
+}
+
+iframe[src^="https://dartpad"]:not(#try-dart-pad) {
   resize: vertical;
   width: 100%;
 }
 
 pre.dartpad-placeholder {
-  border: 1px solid var(--site-inset-borderColor);
-  margin: 0 0 1rem;
   overflow: auto;
-  box-sizing: border-box;
 }
 
 .file-tree {
