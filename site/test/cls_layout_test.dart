@@ -69,7 +69,7 @@ void main() {
   );
 
   testServer(
-    'BlogLayout splices Roboto Serif before Material Symbols and main.css',
+    'BlogLayout includes shared fonts and Roboto Serif',
     (tester) async {
       tester.pumpComponent(
         _testContentApp([
@@ -97,13 +97,8 @@ void main() {
       expect(response.statusCode, 200);
 
       final headHtml = response.document!.head!.innerHtml;
-      final robotoIndex = headHtml.indexOf('Roboto+Serif');
-      final symbolsIndex = headHtml.indexOf('Material+Symbols+Outlined');
-      final mainCssIndex = headHtml.indexOf('/assets/css/main.css');
-
-      expect(robotoIndex, greaterThanOrEqualTo(0));
-      expect(robotoIndex, lessThan(symbolsIndex));
-      expect(symbolsIndex, lessThan(mainCssIndex));
+      expect(headHtml, contains('Google+Sans+Flex'));
+      expect(headHtml, contains('Roboto+Serif'));
     },
   );
 

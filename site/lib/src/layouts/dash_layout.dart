@@ -28,6 +28,9 @@ abstract class DashLayout extends PageLayoutBase {
 
   String get defaultSidenav => 'default';
 
+  /// Font stylesheets this layout needs in addition to the shared site fonts.
+  List<String> get additionalFontStylesheetUrls => const [];
+
   /// Returns page-specific URLs to eagerly speculate on, in addition to
   /// the document-level rules that match all internal links.
   ///
@@ -35,10 +38,6 @@ abstract class DashLayout extends PageLayoutBase {
   /// eager prerendering and prefetching.
   ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) =>
       const (prerender: {}, prefetch: {});
-
-  /// Returns layout-specific font stylesheet links to include in `<head>`
-  /// before site styles.
-  Iterable<Component> buildExtraFontLinks(Page page) => const [];
 
   @override
   @mustCallSuper
@@ -171,7 +170,8 @@ abstract class DashLayout extends PageLayoutBase {
             '&family=Google+Sans+Code:ital,wght@0,400..700;1,400..700'
             '&display=swap',
       ),
-      ...buildExtraFontLinks(page),
+      for (final url in additionalFontStylesheetUrls)
+        link(rel: 'stylesheet', href: url),
       const link(
         rel: 'stylesheet',
         href:
