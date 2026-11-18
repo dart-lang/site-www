@@ -275,6 +275,9 @@ body.dark-mode {
           letter-spacing: normal;
           text-transform: none;
           display: inline-block;
+          width: 1em;
+          height: 1em;
+          overflow: hidden;
           white-space: nowrap;
           word-wrap: normal;
           direction: ltr;

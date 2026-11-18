@@ -114,10 +114,12 @@ img {
   height: auto;
 
   &.diagram-wrap {
+    $diagram-wrap-padding: 1rem;
+
     box-sizing: content-box;
-    max-width: calc(100% - 2rem);
+    max-width: calc(100% - #{2 * $diagram-wrap-padding});
     background-color: var(--site-diagram-wrap-bgColor);
-    padding: 1rem;
+    padding: $diagram-wrap-padding;
     border-radius: 1rem;
   }
 }

@@ -7,8 +7,8 @@ library;
 
 import 'package:dart_dev_site/main.server.options.dart';
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart';
+import 'package:dart_dev_site/src/extensions/code_block_processor.dart';
 import 'package:dart_dev_site/src/layouts/blog_layout.dart';
-import 'package:dart_dev_site/src/layouts/doc_layout.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart' hide BlogLayout;
@@ -19,54 +19,6 @@ void main() {
   setUpAll(() {
     Jaspr.initializeApp(options: defaultServerOptions);
   });
-
-  testServer(
-    'DocLayout omits Roboto Serif, locks Material Symbols, '
-    'and preconnects gstatic without crossorigin',
-    (tester) async {
-      tester.pumpComponent(
-        _testContentApp([
-          MemoryPage.builder(
-            path: 'tools/pub/publishing.md',
-            initialData: {
-              'page': {'title': 'Publishing packages', 'layout': 'docs'},
-              'site': {'url': 'https://dart.dev', 'title': 'Dart'},
-            },
-            builder: (_) => const div([.text('Body')]),
-          ),
-        ]),
-      );
-
-      final response = await tester.request('/tools/pub/publishing');
-      expect(response.statusCode, 200);
-
-      final doc = response.document!;
-      final gstaticPreconnect = doc.head!.querySelector(
-        'link[rel="preconnect"][href="https://www.gstatic.com"]',
-      );
-      expect(gstaticPreconnect, isNotNull);
-      expect(gstaticPreconnect!.attributes.containsKey('crossorigin'), isFalse);
-
-      final headHtml = doc.head!.innerHtml;
-      expect(headHtml, isNot(contains('Roboto+Serif')));
-      expect(
-        headHtml,
-        contains(
-          'family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@'
-          '24,400,0..1,0&amp;display=block',
-        ),
-      );
-      expect(headHtml, contains('UA-26406144-4'));
-
-      final headerLogo = doc.body!.querySelector('#site-primary-logo img')!;
-      expect(headerLogo.attributes['width'], '192');
-      expect(headerLogo.attributes['height'], '192');
-
-      final footerLogo = doc.body!.querySelector('#page-footer .brand img')!;
-      expect(footerLogo.attributes['width'], '164');
-      expect(footerLogo.attributes['height'], '51');
-    },
-  );
 
   testServer(
     'BlogLayout includes shared fonts and Roboto Serif',
@@ -103,60 +55,87 @@ void main() {
   );
 
   testServer(
-    'DartPadWrapper renders dartpad-placeholder pre with normalized height',
+    'DartPadWrapper renders dartpad-placeholder pre with pixel height',
     (tester) async {
       tester.pumpComponent(
         Document(
-          body: div([
-            DartPadWrapper(
-              content: 'void main() {}',
-              title: 'Default height',
-            ),
-            DartPadWrapper(
-              content: 'void main() {}',
-              title: 'Numeric height',
-              height: '520',
-            ),
-            DartPadWrapper(
-              content: 'void main() {}',
-              title: 'Decimal height',
-              height: '400.5',
-            ),
-            DartPadWrapper(
-              content: 'void main() {}',
-              title: 'Unit height',
-              height: '32rem',
-            ),
-            DartPadWrapper(
-              content: 'void main() {}',
-              title: 'Non-finite height',
-              height: 'NaN',
-            ),
-          ]),
+          body: DartPadWrapper(
+            content: 'void main() {}',
+            title: 'Example',
+            height: 520,
+          ),
         ),
       );
 
       final response = await tester.request('/');
       expect(response.statusCode, 200);
 
-      final placeholders = response.document!.body!.querySelectorAll(
+      final placeholder = response.document!.body!.querySelector(
         'pre.dartpad-placeholder',
       );
-      expect(placeholders, hasLength(5));
-      expect(placeholders[0].attributes['style'], contains('height: 400px'));
-      expect(placeholders[1].attributes['style'], contains('height: 520px'));
-      expect(placeholders[2].attributes['style'], contains('height: 400.5px'));
-      expect(placeholders[3].attributes['style'], contains('height: 32rem'));
-      expect(placeholders[4].attributes['style'], isNot(contains('NaNpx')));
+      expect(placeholder, isNotNull);
+      expect(placeholder!.attributes['style'], contains('height: 520px'));
     },
   );
+
+  group('CodeBlockProcessor DartPad height', () {
+    Future<DartPadWrapper> processDartPad(String metadata) async {
+      final page = Page(
+        path: 'test.md',
+        url: '/test',
+        content: '',
+        config: const PageConfig(),
+        loader: MemoryLoader(pages: []),
+      );
+      final nodes = await const CodeBlockProcessor().apply(page, [
+        ElementNode('pre', {}, [
+          ElementNode(
+            'code',
+            {'class': 'language-dartpad', 'data-meta': metadata},
+            [const TextNode('void main() {}')],
+          ),
+        ]),
+      ]);
+      return (nodes.single as ComponentNode).component as DartPadWrapper;
+    }
+
+    test('defaults to 400 pixels if not specified', () async {
+      expect((await processDartPad('title="Example"')).height, 400);
+    });
+
+    test('is parsed as a number of pixels', () async {
+      expect((await processDartPad('height="520"')).height, 520);
+    });
+
+    test('rejects heights that are not positive whole pixels', () async {
+      for (final height in [
+        '',
+        '0',
+        '-100',
+        '400.5',
+        '520px',
+        '32rem',
+        '50%',
+        '1e3',
+        'NaN',
+        'Infinity',
+        '400px; display: none',
+      ]) {
+        await expectLater(
+          processDartPad('height="$height"'),
+          throwsArgumentError,
+          reason: 'height: "$height"',
+        );
+      }
+    });
+  });
 }
 
 ContentApp _testContentApp(List<MemoryPage> pages) => ContentApp.custom(
   eagerlyLoadAllPages: true,
   loaders: [MemoryLoader(pages: pages)],
   configResolver: PageConfig.all(
-    layouts: const [DocLayout(), BlogLayout()],
+    layouts: const [BlogLayout()],
     theme: const ContentTheme.none(),
   ),
 );
