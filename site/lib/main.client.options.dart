@@ -109,7 +109,7 @@ ClientOptions get defaultClientOptions => ClientOptions(
       (p) => _dartpad_injector.DartPadInjector(
         title: p['title'] as String,
         theme: p['theme'] as String?,
-        height: p['height'] as String?,
+        height: p['height'] as String,
         runAutomatically: p['runAutomatically'] as bool,
       ),
       loader: _dartpad_injector.loadLibrary,

@@ -42,7 +42,8 @@ class DashHeader extends StatelessComponent {
               img(
                 src: '/assets/img/logo/dart-192.svg',
                 alt: 'Dart logo',
-                attributes: {'width': '192'},
+                width: 192,
+                height: 192,
               ),
               span(
                 classes: 'name',
