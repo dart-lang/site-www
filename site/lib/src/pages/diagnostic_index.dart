@@ -10,6 +10,7 @@ import '../components/common/button.dart';
 import '../components/common/card.dart';
 import '../components/common/fragment_target.dart';
 import '../components/common/material_icon.dart';
+import '../components/common/static_copy_button.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/diagnostic_model.dart';
 import '../util.dart';
@@ -79,16 +80,7 @@ class _DiagnosticCard extends StatelessComponent {
               title: 'Learn more about this diagnostic and how to resolve it.',
               content: 'Learn more',
             ),
-          Button(
-            style: ButtonStyle.filled,
-            classes: const ['copy-button'],
-            title: 'Copy $diagnosticId to your clipboard.',
-            content: 'Copy name',
-            attributes: {
-              'type': 'button',
-              'data-copy': diagnosticId,
-            },
-          ),
+          StaticCopyButton(toCopy: diagnosticId, buttonText: 'Copy name'),
         ],
       ),
     );

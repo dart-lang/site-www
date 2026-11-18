@@ -10,10 +10,10 @@ import 'package:dart_dev_site/src/components/blog/client/blog_categories.dart'
     as _blog_categories;
 import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     as _share_button;
+import 'package:dart_dev_site/src/components/common/client/code_block_copy_button.dart'
+    as _code_block_copy_button;
 import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     as _collapse_button;
-import 'package:dart_dev_site/src/components/common/client/copy_button.dart'
-    as _copy_button;
 import 'package:dart_dev_site/src/components/common/client/feedback.dart'
     as _feedback;
 import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
@@ -70,15 +70,16 @@ ServerOptions get defaultServerOptions => ServerOptions(
       'share_button',
       params: __share_buttonShareButton,
     ),
+    _code_block_copy_button.CodeBlockCopyButton:
+        ClientTarget<_code_block_copy_button.CodeBlockCopyButton>(
+          'code_block_copy_button',
+          params: __code_block_copy_buttonCodeBlockCopyButton,
+        ),
     _collapse_button.CollapseButton:
         ClientTarget<_collapse_button.CollapseButton>(
           'collapse_button',
           params: __collapse_buttonCollapseButton,
         ),
-    _copy_button.CopyButton: ClientTarget<_copy_button.CopyButton>(
-      'copy_button',
-      params: __copy_buttonCopyButton,
-    ),
     _feedback.FeedbackComponent: ClientTarget<_feedback.FeedbackComponent>(
       'feedback',
       params: __feedbackFeedbackComponent,
@@ -138,15 +139,12 @@ Map<String, Object?> __share_buttonShareButton(_share_button.ShareButton c) => {
   'url': c.url,
   'title': c.title,
 };
+Map<String, Object?> __code_block_copy_buttonCodeBlockCopyButton(
+  _code_block_copy_button.CodeBlockCopyButton c,
+) => {'title': c.title};
 Map<String, Object?> __collapse_buttonCollapseButton(
   _collapse_button.CollapseButton c,
 ) => {'classes': c.classes, 'title': c.title};
-Map<String, Object?> __copy_buttonCopyButton(_copy_button.CopyButton c) => {
-  'buttonText': c.buttonText,
-  'toCopy': c.toCopy,
-  'classes': c.classes,
-  'title': c.title,
-};
 Map<String, Object?> __feedbackFeedbackComponent(
   _feedback.FeedbackComponent c,
 ) => {'issueUrl': c.issueUrl};

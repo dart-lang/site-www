@@ -9,6 +9,7 @@ import 'package:jaspr/server.dart';
 import '../components/common/button.dart';
 import '../components/common/card.dart';
 import '../components/common/material_icon.dart';
+import '../components/common/static_copy_button.dart';
 import '../components/pages/lint_filter_search_section.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/lints.dart';
@@ -71,11 +72,10 @@ class _LintRuleCard extends StatelessComponent {
       attributes: attributes,
       header: [
         header(
-          id: lintId,
           classes: 'card-title',
           [
             a(
-              href: '/tools/linter-rules/$lintId',
+              href: lintRuleUrl(lint.id),
               splitByUnderscore(lint.name),
             ),
           ],
@@ -94,21 +94,12 @@ class _LintRuleCard extends StatelessComponent {
         leading: _statusIcons,
         trailing: [
           Button(
-            href: '/tools/linter-rules/$lintId',
+            href: lintRuleUrl(lint.id),
             style: ButtonStyle.outlined,
             title: 'Learn more about this lint and when to enable it.',
             content: 'Learn more',
           ),
-          Button(
-            style: ButtonStyle.filled,
-            classes: const ['copy-button'],
-            title: 'Copy ${lint.name} to your clipboard.',
-            content: 'Copy name',
-            attributes: {
-              'type': 'button',
-              'data-copy': lint.name,
-            },
-          ),
+          StaticCopyButton(toCopy: lint.name, buttonText: 'Copy name'),
         ],
       ),
     );

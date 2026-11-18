@@ -3,7 +3,6 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:convert';
-import 'dart:io' show File, Process;
 
 import 'package:collection/collection.dart';
 import 'package:jaspr/dom.dart';
@@ -15,7 +14,7 @@ import '../components/common/tags.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/diagnostic_model.dart';
 import '../models/lints.dart';
-import '../util.dart';
+import '../utils/last_modified.dart';
 import '../utils/server_only_utils.dart';
 import 'glossary.dart';
 
@@ -48,47 +47,16 @@ MemoryPage get _glossaryPage => MemoryPage.builder(
   },
 );
 
-final RegExp _isoDatePattern = RegExp(r'^\d{4}-\d{2}-\d{2}$');
-
-String _gitLastUpdated(String dataFileName, {required String fallback}) {
-  var filePath = path.join(siteSrcDirectoryPath, 'data', dataFileName);
-  if (!File(filePath).existsSync()) {
-    filePath = path.join('src', 'data', dataFileName);
-  }
-  try {
-    final result = Process.runSync('git', [
-      'log',
-      '-1',
-      // A shallow boundary has no visible parent to compare the file against.
-      '--min-parents=1',
-      '--format=%cs',
-      '--',
-      filePath,
-    ]);
-    if (result.exitCode == 0) {
-      final date = (result.stdout as String).trim();
-      if (_isoDatePattern.hasMatch(date)) {
-        return date;
-      }
-    }
-  } on Object {
-    // Fall back to the static date if git history is unavailable.
-  }
-  return fallback;
-}
-
-/// The date `src/data/diagnostics.json` was last updated in git history.
-/// Should be in `yyyy-mm-dd` format.
-final String _diagnosticsLastUpdated = _gitLastUpdated(
-  'diagnostics.json',
-  fallback: '2026-11-09',
+/// The date `src/data/diagnostics.json` was last updated in git history,
+/// in `yyyy-mm-dd` format.
+final String? _diagnosticsLastUpdated = lastModifiedDateForPath(
+  'src/data/diagnostics.json',
 );
 
-/// The date `src/data/linter_rules.json` was last updated in git history.
-/// Should be in `yyyy-mm-dd` format.
-final String _lintsLastUpdated = _gitLastUpdated(
-  'linter_rules.json',
-  fallback: '2026-11-02',
+/// The date `src/data/linter_rules.json` was last updated in git history,
+/// in `yyyy-mm-dd` format.
+final String? _lintsLastUpdated = lastModifiedDateForPath(
+  'src/data/linter_rules.json',
 );
 
 /// The individual diagnostic message pages,
@@ -129,7 +97,7 @@ List<MemoryPage> get _diagnosticMemoryPages {
                     title:
                         'Learn about the lint rule that '
                         'enables this diagnostic.',
-                    link: '/tools/linter-rules/${diagnostic.id}',
+                    link: lintRuleUrl(diagnostic.id),
                   ),
                 ]),
               DashMarkdown(
@@ -198,7 +166,7 @@ List<MemoryPage> get _lintMemoryPages {
               'underscore_breaker_titles': true,
               'description': 'Learn about the ${lint.name} linter rule.',
               'bodyClass': 'highlight-diagnostics',
-              if (lint.state == 'removed') ...{
+              if (lint.state == 'removed') ...const {
                 'noindex': true,
                 'sitemap': false,
               } else
@@ -218,8 +186,7 @@ List<MemoryPage> get _lintMemoryPages {
               incompatibleLintsText.writeln();
               for (final incompatibleLint in lint.incompatibleLints) {
                 incompatibleLintsText.writeln(
-                  '- [`$incompatibleLint`]'
-                  '(/tools/linter-rules/${incompatibleLint.toLowerCase()})',
+                  '- [`$incompatibleLint`](${lintRuleUrl(incompatibleLint)})',
                 );
               }
             }

@@ -79,8 +79,32 @@ void _setUpHeadingLinkCopy() {
   }
 }
 
+/// Sets up the buttons rendered by `StaticCopyButton`,
+/// which copy the value of their `data-copy` attribute when clicked.
 void _setUpCopyButtons() {
-  final resetTimers = <web.HTMLElement, Timer>{};
+  // Buttons currently showing copy feedback,
+  // along with their original label and the timer that restores it.
+  final pendingResets = <web.Element, ({String label, Timer timer})>{};
+
+  @awaitNotRequired
+  Future<void> copyToClipboard(web.Element button, String text) async {
+    final label = pendingResets[button]?.label ?? button.textContent ?? '';
+    try {
+      await web.window.navigator.clipboard.writeText(text).toDart;
+      button.textContent = 'Copied!';
+    } catch (_) {
+      button.textContent = 'Failed to copy';
+    }
+
+    pendingResets.remove(button)?.timer.cancel();
+    pendingResets[button] = (
+      label: label,
+      timer: Timer(const Duration(seconds: 2), () {
+        pendingResets.remove(button);
+        button.textContent = label;
+      }),
+    );
+  }
 
   web.document.addEventListener(
     'click',
@@ -89,36 +113,14 @@ void _setUpCopyButtons() {
       if (!target.isA<web.Element>()) return;
 
       final button = (target as web.Element).closest('button[data-copy]');
-      if (!button.isA<web.HTMLElement>()) return;
+      if (button == null) return;
 
-      final htmlButton = button as web.HTMLElement;
-      final toCopy = htmlButton.getAttribute('data-copy');
+      final toCopy = button.getAttribute('data-copy');
       if (toCopy == null || toCopy.isEmpty) return;
 
-      event.preventDefault();
-      _copyToClipboard(htmlButton, toCopy, resetTimers);
+      copyToClipboard(button, toCopy);
     }).toJS,
   );
-}
-
-@awaitNotRequired
-Future<void> _copyToClipboard(
-  web.HTMLElement button,
-  String text,
-  Map<web.HTMLElement, Timer> resetTimers,
-) async {
-  try {
-    await web.window.navigator.clipboard.writeText(text).toDart;
-    button.textContent = 'Copied!';
-  } catch (_) {
-    button.textContent = 'Failed to copy';
-  }
-
-  resetTimers.remove(button)?.cancel();
-  resetTimers[button] = Timer(const Duration(seconds: 2), () {
-    resetTimers.remove(button);
-    button.textContent = 'Copy name';
-  });
 }
 
 void _setUpSidenav() {

@@ -58,20 +58,18 @@ abstract class DashLayout extends PageLayoutBase {
         ? '$pageTitle | $titleBase'
         : pageTitle;
 
-    final noIndex = switch (pageData['noindex']) {
-      true || 'true' => true,
-      _ => false,
-    };
+    final noIndexValue = pageData['noindex'];
+    final noIndex = noIndexValue == true || noIndexValue == 'true';
+    final pageUrl = _absoluteUrl(siteBaseUrl, page.url);
     final canonicalUrl = switch (pageData['canonical']) {
       false || 'false' => null,
       final String url when url.trim().isNotEmpty => _absoluteUrl(
         siteBaseUrl,
         url.trim(),
       ),
-      _ when !noIndex => _absoluteUrl(siteBaseUrl, page.url),
-      _ => null,
+      _ => noIndex ? null : pageUrl,
     };
-    final socialPageUrl = canonicalUrl ?? _absoluteUrl(siteBaseUrl, page.url);
+    final socialPageUrl = canonicalUrl ?? pageUrl;
     final socialImageUrl = _absoluteUrl(
       siteBaseUrl,
       socialImage ?? '/assets/img/logo/dart-logo-for-shares.png',

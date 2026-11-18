@@ -15,12 +15,12 @@ import 'package:dart_dev_site/src/pages/custom_pages.dart';
 import 'package:dart_dev_site/src/pages/diagnostic_index.dart';
 import 'package:dart_dev_site/src/pages/lint_index.dart';
 import 'package:dart_dev_site/src/util.dart';
+import 'package:html/dom.dart' as html;
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_test/server_test.dart';
 
 final MemoryLoader _loader = MemoryLoader(pages: const []);
-final RegExp _isoDatePattern = RegExp(r'^\d{4}-\d{2}-\d{2}$');
 
 void main() {
   setUpAll(() {
@@ -31,29 +31,17 @@ void main() {
 
   group('DashLayout.buildHead SEO tags', () {
     testServer('emits self-referencing canonical by default', (tester) async {
-      final page = _page(
-        path: 'overview.md',
-        url: '/overview',
-        pageData: {'title': 'Dart overview'},
-      );
-      tester.pumpComponent(
-        Document(
-          head: const DocLayout().buildHead(page).toList(),
-          body: const Component.empty(),
+      final head = await _renderHead(
+        tester,
+        _page(
+          path: 'overview.md',
+          url: '/overview',
+          pageData: {'title': 'Dart overview'},
         ),
       );
 
-      final response = await tester.request('/overview');
-      final head = response.document!.head!;
-
-      expect(
-        head.querySelector('link[rel="canonical"]')?.attributes['href'],
-        'https://dart.dev/overview',
-      );
-      expect(
-        head.querySelector('meta[property="og:url"]')?.attributes['content'],
-        'https://dart.dev/overview',
-      );
+      expect(_canonicalHref(head), 'https://dart.dev/overview');
+      expect(_ogUrl(head), 'https://dart.dev/overview');
       expect(head.querySelector('meta[name="robots"]'), isNull);
     });
 
@@ -61,87 +49,63 @@ void main() {
       tester,
     ) async {
       for (final noIndexValue in <Object>[true, 'true']) {
-        final page = _page(
-          path: 'search.html',
-          url: '/search',
-          pageData: {
-            'title': 'Search dart.dev',
-            'noindex': noIndexValue,
-          },
-        );
-        tester.pumpComponent(
-          Document(
-            head: const DocLayout().buildHead(page).toList(),
-            body: const Component.empty(),
+        final head = await _renderHead(
+          tester,
+          _page(
+            path: 'search.html',
+            url: '/search',
+            pageData: {
+              'title': 'Search dart.dev',
+              'noindex': noIndexValue,
+            },
           ),
         );
-
-        final response = await tester.request('/search');
-        final head = response.document!.head!;
 
         expect(
           head.querySelector('meta[name="robots"]')?.attributes['content'],
           'noindex',
         );
-        expect(head.querySelector('link[rel="canonical"]'), isNull);
-        expect(
-          head.querySelector('meta[property="og:url"]')?.attributes['content'],
-          'https://dart.dev/search',
-        );
+        expect(_canonicalHref(head), isNull);
+        expect(_ogUrl(head), 'https://dart.dev/search');
       }
     });
 
     testServer('honors explicit canonical override and false suppression', (
       tester,
     ) async {
-      final overridePage = _page(
-        path: 'tools/linter-rules/prefer_iterable_whereType.html',
-        url: '/tools/linter-rules/prefer_iterable_whereType',
-        pageData: {
-          'title': 'prefer_iterable_whereType',
-          'titleBase': 'Dart linter',
-          'canonical': '/tools/linter-rules/prefer_iterable_wheretype',
-        },
-      );
-      tester.pumpComponent(
-        Document(
-          head: const DocLayout().buildHead(overridePage).toList(),
-          body: const Component.empty(),
+      final overrideHead = await _renderHead(
+        tester,
+        _page(
+          path: 'tools/linter-rules/prefer_iterable_whereType.html',
+          url: '/tools/linter-rules/prefer_iterable_whereType',
+          pageData: {
+            'title': 'prefer_iterable_whereType',
+            'titleBase': 'Dart linter',
+            'canonical': '/tools/linter-rules/prefer_iterable_wheretype',
+          },
         ),
       );
-
-      final overrideDoc = (await tester.request('/')).document!;
       expect(
-        overrideDoc.head!
-            .querySelector('link[rel="canonical"]')
-            ?.attributes['href'],
+        _canonicalHref(overrideHead),
         'https://dart.dev/tools/linter-rules/prefer_iterable_wheretype',
       );
       expect(
-        overrideDoc.head!.querySelector('title')?.text,
+        overrideHead.querySelector('title')?.text,
         'prefer_iterable_whereType | Dart linter',
       );
 
-      final suppressedPage = _page(
-        path: 'custom.md',
-        url: '/custom',
-        pageData: {
-          'title': 'Custom',
-          'canonical': false,
-        },
-      );
-      tester.pumpComponent(
-        Document(
-          head: const DocLayout().buildHead(suppressedPage).toList(),
-          body: const Component.empty(),
+      final suppressedHead = await _renderHead(
+        tester,
+        _page(
+          path: 'custom.md',
+          url: '/custom',
+          pageData: {
+            'title': 'Custom',
+            'canonical': false,
+          },
         ),
       );
-
-      final suppressedDoc = (await tester.request('/custom')).document!;
-      expect(
-        suppressedDoc.head!.querySelector('link[rel="canonical"]'),
-        isNull,
-      );
+      expect(_canonicalHref(suppressedHead), isNull);
     });
   });
 
@@ -186,8 +150,7 @@ void main() {
       for (final page in primaryPages) {
         final data = _pageMap(page);
         expect(data['titleBase'], 'Dart diagnostic');
-        final sitemap = data['sitemap'] as Map<String, Object?>;
-        expect(sitemap['lastmod'], matches(_isoDatePattern));
+        expect(data['sitemap'], isNot(false));
       }
 
       for (final stub in redirectStubs) {
@@ -205,8 +168,7 @@ void main() {
             .where(
               (p) =>
                   p.path.startsWith('tools/linter-rules/') &&
-                  p.path != 'tools/linter-rules/all.md' &&
-                  p.path != 'tools/linter-rules/all.json',
+                  p.path.endsWith('.html'),
             )
             .toList();
         expect(lintPages, isNotEmpty);
@@ -219,19 +181,16 @@ void main() {
           expect(data['titleBase'], 'Dart linter');
 
           final ruleName = (data['title'] as String).trim();
-          final slug = page.path
-              .substring('tools/linter-rules/'.length)
-              .replaceFirst(RegExp(r'\.html$'), '');
-          expect(slug, ruleName.toLowerCase());
+          final slug = ruleName.toLowerCase();
+          expect(page.path, 'tools/linter-rules/$slug.html');
           if (slug != ruleName) {
             sawMixedCaseRule = true;
-            final route = '/tools/linter-rules/$slug';
             expect(
               redirects,
               contains(
                 equals({
                   'source': '/tools/linter-rules/$ruleName',
-                  'destination': route,
+                  'destination': '/tools/linter-rules/$slug',
                   'type': 301,
                 }),
               ),
@@ -244,8 +203,7 @@ void main() {
             expect(data['sitemap'], isFalse);
             expect(data.containsKey('canonical'), isFalse);
           } else {
-            final sitemap = data['sitemap'] as Map<String, Object?>;
-            expect(sitemap['lastmod'], matches(_isoDatePattern));
+            expect(data['sitemap'], isNot(false));
           }
         }
 
@@ -257,17 +215,15 @@ void main() {
 
   group('Static index card links and copy buttons', () {
     testServer(
-      'DiagnosticIndex links documented headers without client islands',
+      'DiagnosticIndex links documented headers and copies diagnostic names',
       (
         tester,
       ) async {
-        final page = Page(
+        final page = _page(
           path: 'tools/diagnostics/index.md',
           url: '/tools/diagnostics',
-          content: '',
-          initialData: {
-            'page': {'title': 'Diagnostics'},
-            'site': {'url': 'https://dart.dev', 'title': 'Dart'},
+          pageData: {'title': 'Diagnostics'},
+          data: {
             'diagnostics': [
               {
                 'id': 'ambiguous_import',
@@ -285,8 +241,6 @@ void main() {
               },
             ],
           },
-          config: const PageConfig(),
-          loader: _loader,
         );
 
         tester.pumpComponent(
@@ -294,7 +248,6 @@ void main() {
         );
 
         final response = await tester.request('/tools/diagnostics');
-        expect(response.body, isNot(contains('<!--@copy_button')));
 
         final doc = response.document!;
         final documentedLink = doc.querySelector('#ambiguous_import > a');
@@ -346,7 +299,6 @@ void main() {
         );
 
         final response = await tester.request('/tools/linter-rules');
-        expect(response.body, isNot(contains('<!--@copy_button')));
 
         final doc = response.document!;
         final headerLink = doc.querySelector(
@@ -374,19 +326,26 @@ void main() {
   });
 }
 
+/// Returns the `page` data that the memory [page] was created with.
 Map<String, Object?> _pageMap(MemoryPage page) =>
     page.initialData['page'] as Map<String, Object?>;
 
+/// Creates a [Page] at [path] and [url] with [pageData] as its `page` data.
+///
+/// Any top-level [data], such as data files a component reads,
+/// is included alongside a minimal `site` configuration.
 Page _page({
   required String path,
   required String url,
   required Map<String, Object?> pageData,
+  Map<String, Object?> data = const {},
 }) {
   return Page(
     path: path,
     url: url,
     content: '',
     initialData: {
+      ...data,
       'page': pageData,
       'site': const {'url': 'https://dart.dev', 'title': 'Dart'},
     },
@@ -394,3 +353,25 @@ Page _page({
     loader: _loader,
   );
 }
+
+/// Renders the `<head>` that [DocLayout] builds for [page]
+/// with [tester] and returns the parsed element.
+Future<html.Element> _renderHead(ServerTester tester, Page page) async {
+  tester.pumpComponent(
+    Document(
+      head: const DocLayout().buildHead(page).toList(),
+      body: const Component.empty(),
+    ),
+  );
+  return (await tester.request('/')).document!.head!;
+}
+
+/// Returns the URL of the canonical link in [head],
+/// or `null` if it doesn't have one.
+String? _canonicalHref(html.Element head) =>
+    head.querySelector('link[rel="canonical"]')?.attributes['href'];
+
+/// Returns the URL of the `og:url` meta tag in [head],
+/// or `null` if it doesn't have one.
+String? _ogUrl(html.Element head) =>
+    head.querySelector('meta[property="og:url"]')?.attributes['content'];
