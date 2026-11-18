@@ -9,85 +9,63 @@ import 'package:dart_dev_site/main.server.options.dart';
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart';
 import 'package:dart_dev_site/src/extensions/code_block_processor.dart';
 import 'package:dart_dev_site/src/layouts/blog_layout.dart';
-import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart' hide BlogLayout;
-import 'package:jaspr_content/theme.dart';
 import 'package:jaspr_test/server_test.dart';
 
 void main() {
   setUpAll(() {
-    Jaspr.initializeApp(options: defaultServerOptions);
+    if (!Jaspr.isInitialized) {
+      Jaspr.initializeApp(options: defaultServerOptions);
+    }
   });
 
-  testServer(
-    'BlogLayout includes shared fonts and Roboto Serif',
-    (tester) async {
-      tester.pumpComponent(
-        _testContentApp([
-          MemoryPage.builder(
-            path: 'blog/hello/index.md',
-            initialData: {
-              'page': {
-                'title': 'Hello Dart',
-                'layout': 'blog',
-                'publishDate': '2026-04-01',
-                'description': 'Summary',
-                'author': 'author-a',
-              },
-              'authors': {
-                'author-a': {'name': 'Author One'},
-              },
-              'site': {'url': 'https://dart.dev', 'title': 'Dart'},
-            },
-            builder: (_) => const div([.text('Post body')]),
-          ),
-        ]),
-      );
+  testServer('BlogLayout includes shared fonts and Roboto Serif', (
+    tester,
+  ) async {
+    tester.pumpComponent(
+      Document(
+        head: const BlogLayout()
+            .buildHead(_page('/blog/hello', pageData: {'title': 'Hello Dart'}))
+            .toList(),
+        body: const Component.empty(),
+      ),
+    );
 
-      final response = await tester.request('/blog/hello');
-      expect(response.statusCode, 200);
+    final response = await tester.request('/');
+    expect(response.statusCode, 200);
 
-      final headHtml = response.document!.head!.innerHtml;
-      expect(headHtml, contains('Google+Sans+Flex'));
-      expect(headHtml, contains('Roboto+Serif'));
-    },
-  );
+    final headHtml = response.document!.head!.innerHtml;
+    expect(headHtml, contains('Google+Sans+Flex'));
+    expect(headHtml, contains('Roboto+Serif'));
+  });
 
-  testServer(
-    'DartPadWrapper renders dartpad-placeholder pre with pixel height',
-    (tester) async {
-      tester.pumpComponent(
-        Document(
-          body: DartPadWrapper(
-            content: 'void main() {}',
-            title: 'Example',
-            height: 520,
-          ),
+  testServer('DartPadWrapper renders placeholder pre with pixel height', (
+    tester,
+  ) async {
+    tester.pumpComponent(
+      Document(
+        body: DartPadWrapper(
+          content: 'void main() {}',
+          title: 'Example',
+          height: 520,
         ),
-      );
+      ),
+    );
 
-      final response = await tester.request('/');
-      expect(response.statusCode, 200);
+    final response = await tester.request('/');
+    expect(response.statusCode, 200);
 
-      final placeholder = response.document!.body!.querySelector(
-        'pre.dartpad-placeholder',
-      );
-      expect(placeholder, isNotNull);
-      expect(placeholder!.attributes['style'], contains('height: 520px'));
-    },
-  );
+    final placeholder = response.document!.body!.querySelector(
+      'pre.embedded-dartpad',
+    );
+    expect(placeholder, isNotNull);
+    expect(placeholder!.attributes['style'], contains('height: 520px'));
+  });
 
   group('CodeBlockProcessor DartPad height', () {
     Future<DartPadWrapper> processDartPad(String metadata) async {
-      final page = Page(
-        path: 'test.md',
-        url: '/test',
-        content: '',
-        config: const PageConfig(),
-        loader: MemoryLoader(pages: []),
-      );
-      final nodes = await const CodeBlockProcessor().apply(page, [
+      final nodes = await const CodeBlockProcessor().apply(_page('/test'), [
         ElementNode('pre', {}, [
           ElementNode(
             'code',
@@ -131,11 +109,15 @@ void main() {
   });
 }
 
-ContentApp _testContentApp(List<MemoryPage> pages) => ContentApp.custom(
-  eagerlyLoadAllPages: true,
-  loaders: [MemoryLoader(pages: pages)],
-  configResolver: PageConfig.all(
-    layouts: const [BlogLayout()],
-    theme: const ContentTheme.none(),
-  ),
+/// Creates a minimal [Page] at [url] with [pageData] as its `page` data.
+Page _page(String url, {Map<String, Object?> pageData = const {}}) => Page(
+  path: '${url.substring(1)}.md',
+  url: url,
+  content: '',
+  initialData: {
+    'page': pageData,
+    'site': const {'url': 'https://dart.dev', 'title': 'Dart'},
+  },
+  config: const PageConfig(),
+  loader: MemoryLoader(pages: []),
 );

@@ -353,7 +353,8 @@ body.homepage {
 
       iframe {
         border: 1px solid $dash-dartpad-border;
-        margin: 0;
+        width: 100%;
+        min-height: 400px;
         resize: none;
       }
     }

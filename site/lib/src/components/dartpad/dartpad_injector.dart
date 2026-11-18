@@ -94,6 +94,11 @@ class _DartPadInjectorState extends State<DartPadInjector> {
 
   @override
   Component build(BuildContext context) {
+    // Give the pre-rendered placeholder and the hydrated iframe
+    // the same class and height so they reserve the same space.
+    const classes = 'embedded-dartpad';
+    final styles = Styles(raw: {'height': component.height});
+
     if (!kIsWeb) {
       // During pre-rendering, get the content from the nearest DartPadWrapper.
       final content = context
@@ -101,8 +106,8 @@ class _DartPadInjectorState extends State<DartPadInjector> {
           ?.component
           .content;
       return pre(
-        classes: 'dartpad-placeholder',
-        styles: Styles(raw: {'height': component.height}),
+        classes: classes,
+        styles: styles,
         [
           code(
             attributes: {'title': component.title},
@@ -113,7 +118,8 @@ class _DartPadInjectorState extends State<DartPadInjector> {
     }
 
     return Component.wrapElement(
-      styles: Styles(raw: {'height': component.height}),
+      classes: classes,
+      styles: styles,
       attributes: {'title': component.title},
       child: EmbeddedDartPad.create(
         iframeId: _frameId,

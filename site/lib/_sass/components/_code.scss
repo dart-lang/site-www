@@ -218,21 +218,19 @@ pre {
 }
 
 // Reserve the same space before and after DartPad hydration.
-pre.dartpad-placeholder,
-iframe[src^="https://dartpad"]:not(#try-dart-pad) {
+.embedded-dartpad {
   display: block;
-  box-sizing: border-box;
   border: 1px solid var(--site-inset-borderColor);
   margin: 0 0 1rem;
   min-height: 400px;
 }
 
-iframe[src^="https://dartpad"]:not(#try-dart-pad) {
+iframe.embedded-dartpad {
   resize: vertical;
   width: 100%;
 }
 
-pre.dartpad-placeholder {
+pre.embedded-dartpad {
   overflow: auto;
 }
 
