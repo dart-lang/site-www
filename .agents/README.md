@@ -25,6 +25,11 @@ as a `SKILL.md` file with YAML frontmatter and Markdown instructions:
 
   Sync the changelog from the Dart SDK repo to update `src/data/changelog.yml`.
 
+- [`update-llms-text`](skills/update-llms-text/SKILL.md)
+
+  Update and maintain the curated LLM documentation index at
+  `src/content/llms.txt`.
+
 - [`update-whats-new`](skills/update-whats-new/SKILL.md)
 
   Update the "What's new" page at `src/content/resources/whats-new.md` with

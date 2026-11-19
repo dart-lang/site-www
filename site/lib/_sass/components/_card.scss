@@ -57,6 +57,10 @@
       overflow: hidden;
       font-family: var(--site-ui-fontFamily);
       color: var(--card-title-color, var(--site-base-fgColor));
+
+      a {
+        font-weight: inherit;
+      }
     }
   }
 

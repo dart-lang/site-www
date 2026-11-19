@@ -32,6 +32,13 @@ List<LintDetails> readAndLoadLints() {
 /// A cache of the loaded and parsed lint rule info.
 List<LintDetails>? _loadedLints;
 
+/// The URL of the documentation page for the linter rule named [name].
+///
+/// Linter rule pages are served from lowercase URLs,
+/// even for rules with mixed-case names like `prefer_iterable_whereType`.
+String lintRuleUrl(String name) =>
+    '/tools/linter-rules/${name.trim().toLowerCase()}';
+
 /// Information about the Dart lint rule named [name].
 // TODO(https://github.com/dart-lang/site-www/issues/4499):
 //  Once replacing rules.json, get rid of this structure.
