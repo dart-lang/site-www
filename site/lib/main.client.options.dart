@@ -16,20 +16,12 @@ import 'package:dart_dev_site/src/components/common/client/code_block_copy_butto
     deferred as _code_block_copy_button;
 import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     deferred as _collapse_button;
-import 'package:dart_dev_site/src/components/common/client/expandable.dart'
-    deferred as _expandable;
 import 'package:dart_dev_site/src/components/common/client/feedback.dart'
     deferred as _feedback;
 import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
     deferred as _on_this_page_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     deferred as _page_header_options;
-import 'package:dart_dev_site/src/components/common/client/simple_tooltip.dart'
-    deferred as _simple_tooltip;
-import 'package:dart_dev_site/src/components/common/client/tabs.dart'
-    deferred as _tabs;
-import 'package:dart_dev_site/src/components/common/client/trigger.dart'
-    deferred as _trigger;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
     deferred as _dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
@@ -48,8 +40,6 @@ import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.da
     deferred as _lint_filter_search_section;
 import 'package:dart_dev_site/src/components/tutorial/client/quiz.dart'
     deferred as _quiz;
-import 'package:dart_dev_site/src/components/tutorial/client/stepper.dart'
-    deferred as _stepper;
 import 'package:dart_dev_site/src/models/quiz_model.dart' as _quiz_model;
 
 /// Default [ClientOptions] for use with your Jaspr project.
@@ -71,7 +61,7 @@ import 'package:dart_dev_site/src/models/quiz_model.dart' as _quiz_model;
 ClientOptions get defaultClientOptions => ClientOptions(
   clients: {
     'archive_table': ClientLoader(
-      (p) => _archive_table.ArchiveTable(channel: p.get<String>('channel')),
+      (p) => _archive_table.ArchiveTable(channel: p['channel'] as String),
       loader: _archive_table.loadLibrary,
     ),
     'blog_categories': ClientLoader(
@@ -80,34 +70,26 @@ ClientOptions get defaultClientOptions => ClientOptions(
     ),
     'share_button': ClientLoader(
       (p) => _share_button.ShareButton(
-        url: p.get<String>('url'),
-        title: p.get<String>('title'),
+        url: p['url'] as String,
+        title: p['title'] as String,
       ),
       loader: _share_button.loadLibrary,
     ),
     'code_block_copy_button': ClientLoader(
       (p) => _code_block_copy_button.CodeBlockCopyButton(
-        title: p.get<String>('title'),
+        title: p['title'] as String,
       ),
       loader: _code_block_copy_button.loadLibrary,
     ),
     'collapse_button': ClientLoader(
       (p) => _collapse_button.CollapseButton(
-        classes: p.get<List<Object?>>('classes').cast<String>(),
-        title: p.get<String?>('title'),
+        classes: (p['classes'] as List<Object?>).cast<String>(),
+        title: p['title'] as String?,
       ),
       loader: _collapse_button.loadLibrary,
     ),
-    'expandable': ClientLoader(
-      (p) => _expandable.Expandable(
-        id: p.get<String?>('id'),
-        initiallyExpanded: p.get<bool>('initiallyExpanded'),
-        child: p.mount(p.get<String>('child')),
-      ),
-      loader: _expandable.loadLibrary,
-    ),
     'feedback': ClientLoader(
-      (p) => _feedback.FeedbackComponent(issueUrl: p.get<String>('issueUrl')),
+      (p) => _feedback.FeedbackComponent(issueUrl: p['issueUrl'] as String),
       loader: _feedback.loadLibrary,
     ),
     'on_this_page_button': ClientLoader(
@@ -116,43 +98,19 @@ ClientOptions get defaultClientOptions => ClientOptions(
     ),
     'page_header_options': ClientLoader(
       (p) => _page_header_options.PageHeaderOptions(
-        title: p.get<String>('title'),
-        markdownUrl: p.get<String?>('markdownUrl'),
-        sourceUrl: p.get<String?>('sourceUrl'),
-        issueUrl: p.get<String?>('issueUrl'),
+        title: p['title'] as String,
+        markdownUrl: p['markdownUrl'] as String?,
+        sourceUrl: p['sourceUrl'] as String?,
+        issueUrl: p['issueUrl'] as String?,
       ),
       loader: _page_header_options.loadLibrary,
     ),
-    'simple_tooltip': ClientLoader(
-      (p) => _simple_tooltip.SimpleTooltip(
-        target: p.mount(p.get<String>('target')),
-        content: p.mount(p.get<String>('content')),
-      ),
-      loader: _simple_tooltip.loadLibrary,
-    ),
-    'tabs': ClientLoader(
-      (p) => _tabs.InteractiveDashTabs(
-        id: p.get<String>('id'),
-        tabs: p
-            .get<List<Object?>>('tabs')
-            .cast<Map<String, Object?>>()
-            .map((i) => _tabs.DashTab.decode(i, p.mount))
-            .toList(),
-        saveKey: p.get<String?>('saveKey'),
-        wrapped: p.get<bool>('wrapped'),
-      ),
-      loader: _tabs.loadLibrary,
-    ),
-    'trigger': ClientLoader(
-      (p) => _trigger.Trigger(child: p.mount(p.get<String>('child'))),
-      loader: _trigger.loadLibrary,
-    ),
     'dartpad_injector': ClientLoader(
       (p) => _dartpad_injector.DartPadInjector(
-        title: p.get<String>('title'),
-        height: p.get<String>('height'),
-        theme: p.get<String?>('theme'),
-        runAutomatically: p.get<bool>('runAutomatically'),
+        title: p['title'] as String,
+        height: p['height'] as String,
+        theme: p['theme'] as String?,
+        runAutomatically: p['runAutomatically'] as bool,
       ),
       loader: _dartpad_injector.loadLibrary,
     ),
@@ -186,27 +144,12 @@ ClientOptions get defaultClientOptions => ClientOptions(
     ),
     'quiz': ClientLoader(
       (p) => _quiz.InteractiveQuiz(
-        title: p.get<String?>('title'),
-        questions: p
-            .get<List<Object?>>('questions')
-            .cast<Map<String, Object?>>()
-            .map((i) => _quiz_model.Question.fromMap(i))
+        title: p['title'] as String?,
+        questions: (p['questions'] as List<Object?>)
+            .map((i) => _quiz_model.Question.fromMap(i as Map<String, Object?>))
             .toList(),
       ),
       loader: _quiz.loadLibrary,
-    ),
-    'stepper': ClientLoader(
-      (p) => _stepper.InteractiveStepper(
-        steps: p
-            .get<List<Object?>>('steps')
-            .cast<Map<String, Object?>>()
-            .map((i) => _stepper.Step.decode(i, p.mount))
-            .toList(),
-        collapsible: p.get<bool>('collapsible'),
-        showActions: p.get<bool>('showActions'),
-        showFinish: p.get<bool>('showFinish'),
-      ),
-      loader: _stepper.loadLibrary,
     ),
   },
 );
