@@ -533,7 +533,7 @@ Use new sub-commands available in the `dart` tool:
 | `dartdevc`      | [`webdev`](/tools/webdev)                     | [2.17]({{site.repo.dart.sdk}}/commit/5173fd2d224f669fd8d0a1d21adbfd6187d10f53)         | [2.18]({{site.repo.dart.sdk}}/commit/69249df50bcc7a0489176efd3fd79fff018f1b91)             |
 | `dartanalyzer`  | [`dart analyze`](/tools/dart-analyze)         | [2.16]({{site.repo.dart.sdk}}/commit/f7af5c5256ee6f3a167f380722b96e8af4360b46)         | [2.18]({{site.repo.dart.sdk}}/issues/48457)             |
 | `dartdoc`       | [`dart doc`](/tools/dart-doc)                 | [2.16]({{site.repo.dart.sdk}}/issues/44610)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/228647)             |
-| `pub`           | [`dart pub`](/tools/dart-pub)                 | [2.15]({{site.repo.dart.org}}/pub/issues/2736)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/234283)             |
+| `pub`           | [`dart pub`](/tools/pub/cmd)                  | [2.15]({{site.repo.dart.org}}/pub/issues/2736)         | [2.17](https://dart-review.googlesource.com/c/sdk/+/234283)             |
 
 {:.table .table-striped .nowrap}
 

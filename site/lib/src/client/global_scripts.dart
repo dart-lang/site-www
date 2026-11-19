@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -17,6 +18,7 @@ import '../utils/client_operating_system.dart';
 /// relevant Jaspr components.
 void setUpSite() {
   _setUpHeadingLinkCopy();
+  _setUpCopyButtons();
   _setUpSidenav();
   _setUpSearchKeybindings();
   _setUpGallery();
@@ -73,6 +75,50 @@ void _setUpHeadingLinkCopy() {
       }).toJS,
     );
   }
+}
+
+/// Sets up the buttons rendered by `StaticCopyButton`,
+/// which copy the value of their `data-copy` attribute when clicked.
+void _setUpCopyButtons() {
+  // Buttons currently showing copy feedback,
+  // along with their original label and the timer that restores it.
+  final pendingResets = <web.Element, ({String label, Timer timer})>{};
+
+  @awaitNotRequired
+  Future<void> copyToClipboard(web.Element button, String text) async {
+    final label = pendingResets[button]?.label ?? button.textContent ?? '';
+    try {
+      await web.window.navigator.clipboard.writeText(text).toDart;
+      button.textContent = 'Copied!';
+    } catch (_) {
+      button.textContent = 'Failed to copy';
+    }
+
+    pendingResets.remove(button)?.timer.cancel();
+    pendingResets[button] = (
+      label: label,
+      timer: Timer(const Duration(seconds: 2), () {
+        pendingResets.remove(button);
+        button.textContent = label;
+      }),
+    );
+  }
+
+  web.document.addEventListener(
+    'click',
+    ((web.Event event) {
+      final target = event.target;
+      if (!target.isA<web.Element>()) return;
+
+      final button = (target as web.Element).closest('button[data-copy]');
+      if (button == null) return;
+
+      final toCopy = button.getAttribute('data-copy');
+      if (toCopy == null || toCopy.isEmpty) return;
+
+      copyToClipboard(button, toCopy);
+    }).toJS,
+  );
 }
 
 void _setUpSidenav() {

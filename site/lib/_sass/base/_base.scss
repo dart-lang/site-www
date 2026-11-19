@@ -58,19 +58,9 @@ h6, .h6 {
 }
 
 .material-symbols {
-  font-family: var(--site-icon-fontFamily);
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
+  @include material-symbol;
+  box-sizing: content-box;
+  vertical-align: middle;
   user-select: none;
 }
 
@@ -109,8 +99,12 @@ img {
   height: auto;
 
   &.diagram-wrap {
+    $diagram-wrap-padding: 1rem;
+
+    box-sizing: content-box;
+    max-width: calc(100% - #{2 * $diagram-wrap-padding});
     background-color: var(--site-diagram-wrap-bgColor);
-    padding: 1rem;
+    padding: $diagram-wrap-padding;
     border-radius: 1rem;
   }
 }

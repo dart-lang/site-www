@@ -10,10 +10,10 @@ import 'package:dart_dev_site/src/components/blog/client/blog_categories.dart'
     as _blog_categories;
 import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     as _share_button;
+import 'package:dart_dev_site/src/components/common/client/code_block_copy_button.dart'
+    as _code_block_copy_button;
 import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     as _collapse_button;
-import 'package:dart_dev_site/src/components/common/client/copy_button.dart'
-    as _copy_button;
 import 'package:dart_dev_site/src/components/common/client/expandable.dart'
     as _expandable;
 import 'package:dart_dev_site/src/components/common/client/feedback.dart'
@@ -79,15 +79,16 @@ ServerOptions get defaultServerOptions => ServerOptions(
       'share_button',
       params: __share_buttonShareButton,
     ),
+    _code_block_copy_button.CodeBlockCopyButton:
+        ClientTarget<_code_block_copy_button.CodeBlockCopyButton>(
+          'code_block_copy_button',
+          params: __code_block_copy_buttonCodeBlockCopyButton,
+        ),
     _collapse_button.CollapseButton:
         ClientTarget<_collapse_button.CollapseButton>(
           'collapse_button',
           params: __collapse_buttonCollapseButton,
         ),
-    _copy_button.CopyButton: ClientTarget<_copy_button.CopyButton>(
-      'copy_button',
-      params: __copy_buttonCopyButton,
-    ),
     _expandable.Expandable: ClientTarget<_expandable.Expandable>(
       'expandable',
       params: __expandableExpandable,
@@ -167,15 +168,12 @@ Map<String, Object?> __share_buttonShareButton(_share_button.ShareButton c) => {
   'url': c.url,
   'title': c.title,
 };
+Map<String, Object?> __code_block_copy_buttonCodeBlockCopyButton(
+  _code_block_copy_button.CodeBlockCopyButton c,
+) => {'title': c.title};
 Map<String, Object?> __collapse_buttonCollapseButton(
   _collapse_button.CollapseButton c,
 ) => {'classes': c.classes, 'title': c.title};
-Map<String, Object?> __copy_buttonCopyButton(_copy_button.CopyButton c) => {
-  'buttonText': c.buttonText,
-  'toCopy': c.toCopy,
-  'classes': c.classes,
-  'title': c.title,
-};
 Map<String, Object?> __expandableExpandable(_expandable.Expandable c) => {
   'id': c.id,
   'initiallyExpanded': c.initiallyExpanded,
@@ -186,7 +184,12 @@ Map<String, Object?> __feedbackFeedbackComponent(
 ) => {'issueUrl': c.issueUrl};
 Map<String, Object?> __page_header_optionsPageHeaderOptions(
   _page_header_options.PageHeaderOptions c,
-) => {'title': c.title, 'sourceUrl': c.sourceUrl, 'issueUrl': c.issueUrl};
+) => {
+  'title': c.title,
+  'markdownUrl': c.markdownUrl,
+  'sourceUrl': c.sourceUrl,
+  'issueUrl': c.issueUrl,
+};
 Map<String, Object?> __simple_tooltipSimpleTooltip(
   _simple_tooltip.SimpleTooltip c,
 ) => {'target': c.target, 'content': c.content};
@@ -201,8 +204,8 @@ Map<String, Object?> __dartpad_injectorDartPadInjector(
   _dartpad_injector.DartPadInjector c,
 ) => {
   'title': c.title,
-  'theme': c.theme,
   'height': c.height,
+  'theme': c.theme,
   'runAutomatically': c.runAutomatically,
 };
 Map<String, Object?> __quizInteractiveQuiz(_quiz.InteractiveQuiz c) => {

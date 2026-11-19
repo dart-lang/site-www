@@ -39,6 +39,8 @@ and there are two concrete, user-visible numeric types:
 
 <img 
   src="/assets/img/number-class-hierarchy.svg" 
+  width="283"
+  height="224"
   alt="Object is the parent of num, which is the parent of int and double">
 
 Depending on the platform,
@@ -102,6 +104,8 @@ both `int` and `double`.
 
 <img 
   src="/assets/img/number-platform-specific.svg" 
+  width="644"
+  height="324"
   alt="Implementation classes vary by platform; for JavaScript, the class that implements int also implements double">
 
 

@@ -12,10 +12,10 @@ import 'package:dart_dev_site/src/components/blog/client/blog_categories.dart'
     deferred as _blog_categories;
 import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     deferred as _share_button;
+import 'package:dart_dev_site/src/components/common/client/code_block_copy_button.dart'
+    deferred as _code_block_copy_button;
 import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
     deferred as _collapse_button;
-import 'package:dart_dev_site/src/components/common/client/copy_button.dart'
-    deferred as _copy_button;
 import 'package:dart_dev_site/src/components/common/client/expandable.dart'
     deferred as _expandable;
 import 'package:dart_dev_site/src/components/common/client/feedback.dart'
@@ -85,21 +85,18 @@ ClientOptions get defaultClientOptions => ClientOptions(
       ),
       loader: _share_button.loadLibrary,
     ),
+    'code_block_copy_button': ClientLoader(
+      (p) => _code_block_copy_button.CodeBlockCopyButton(
+        title: p.get<String>('title'),
+      ),
+      loader: _code_block_copy_button.loadLibrary,
+    ),
     'collapse_button': ClientLoader(
       (p) => _collapse_button.CollapseButton(
         classes: p.get<List<Object?>>('classes').cast<String>(),
         title: p.get<String?>('title'),
       ),
       loader: _collapse_button.loadLibrary,
-    ),
-    'copy_button': ClientLoader(
-      (p) => _copy_button.CopyButton(
-        buttonText: p.get<String?>('buttonText'),
-        toCopy: p.get<String?>('toCopy'),
-        classes: p.get<List<Object?>>('classes').cast<String>(),
-        title: p.get<String?>('title'),
-      ),
-      loader: _copy_button.loadLibrary,
     ),
     'expandable': ClientLoader(
       (p) => _expandable.Expandable(
@@ -120,6 +117,7 @@ ClientOptions get defaultClientOptions => ClientOptions(
     'page_header_options': ClientLoader(
       (p) => _page_header_options.PageHeaderOptions(
         title: p.get<String>('title'),
+        markdownUrl: p.get<String?>('markdownUrl'),
         sourceUrl: p.get<String?>('sourceUrl'),
         issueUrl: p.get<String?>('issueUrl'),
       ),
@@ -152,8 +150,8 @@ ClientOptions get defaultClientOptions => ClientOptions(
     'dartpad_injector': ClientLoader(
       (p) => _dartpad_injector.DartPadInjector(
         title: p.get<String>('title'),
+        height: p.get<String>('height'),
         theme: p.get<String?>('theme'),
-        height: p.get<String?>('height'),
         runAutomatically: p.get<bool>('runAutomatically'),
       ),
       loader: _dartpad_injector.loadLibrary,

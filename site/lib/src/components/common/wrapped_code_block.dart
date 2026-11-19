@@ -6,8 +6,8 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../util.dart';
+import 'client/code_block_copy_button.dart';
 import 'client/collapse_button.dart';
-import 'client/copy_button.dart';
 import 'material_icon.dart';
 
 /// A rendered code block with support for syntax highlighting,
@@ -150,10 +150,7 @@ final class WrappedCodeBlock extends StatelessComponent {
                 ]),
               ],
             ),
-            if (showCopyButton)
-              const CopyButton(
-                title: 'Copy code to clipboard',
-              ),
+            if (showCopyButton) const CodeBlockCopyButton(),
           ],
         ),
       ],

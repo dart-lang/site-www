@@ -448,7 +448,7 @@
     the extension type declaration itself.
     For details, refer to SDK issue [#54366][].
 
-    [`js_interop_extension_constructor_js_annotation_has_no_effect`]: /tools/diagnostic-messages#js_interop_extension_constructor_js_annotation_has_no_effect
+    [`js_interop_extension_constructor_js_annotation_has_no_effect`]: /tools/diagnostics#js_interop_extension_constructor_js_annotation_has_no_effect
     [#54366]: https://github.com/dart-lang/sdk/issues/54366
   tags:
     - breaking
@@ -3647,9 +3647,9 @@
   description: |
     Private final field promotion might cause the following analyzer warnings to
     trigger on existing code that previously passed analysis:
-    * [`unnecessary_non_null_assertion`](/tools/diagnostic-messages#unnecessary_non_null_assertion)
-    * [`invalid_null_aware_operator`](/tools/diagnostic-messages#invalid_null_aware_operator)
-    * [`unnecessary_cast`](/tools/diagnostic-messages#unnecessary_cast)
+    * [`unnecessary_non_null_assertion`](/tools/diagnostics/unnecessary_non_null_assertion)
+    * [`invalid_null_aware_operator`](/tools/diagnostics/invalid_null_aware_operator)
+    * [`unnecessary_cast`](/tools/diagnostics/unnecessary_cast)
 
     ```dart
     class C {
