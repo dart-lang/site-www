@@ -20,6 +20,7 @@ import 'src/components/common/tabs.dart';
 import 'src/components/common/youtube_embed.dart';
 import 'src/components/pages/changelog/changelog_index.dart';
 import 'src/components/tutorial/quiz.dart';
+import 'src/components/tutorial/stepper.dart';
 import 'src/components/tutorial/summary_card.dart';
 import 'src/components/tutorial/tutorial_outline.dart';
 import 'src/extensions/attribute_processor.dart';
@@ -99,6 +100,7 @@ void main() {
       ],
       components: [
         const DashTabs(),
+        const Stepper(),
         const YoutubeEmbed(),
         const FileTree(),
         const Quiz(),

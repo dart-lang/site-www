@@ -89,7 +89,7 @@ final class DropdownToggle extends StatelessComponent {
   Component build(BuildContext context) {
     final root = _DropdownRoot.of(context);
 
-    return Component.wrapElement(
+    return .apply(
       child: child,
       classes: 'dropdown-button',
       events: {

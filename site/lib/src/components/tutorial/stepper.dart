@@ -2,14 +2,15 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../common/button.dart';
-import '../common/material_icon.dart';
+import 'client/stepper.dart';
 
+/// A custom Markdown component that creates an [InteractiveStepper] from
+/// headings and content within a `<Stepper>` tag.
 class Stepper extends CustomComponent {
+  /// Creates a [Stepper] component processor.
   const Stepper() : super.base();
 
   @override
@@ -21,6 +22,11 @@ class Stepper extends CustomComponent {
     )) {
       final levelStr = attributes['level'] ?? '1';
       final level = int.tryParse(levelStr) ?? 1;
+      final collapsible = attributes['collapsible']?.toLowerCase() != 'false';
+      final showActions = attributes['actions']?.toLowerCase() != 'none';
+      final showFinish =
+          showActions &&
+          attributes['actions']?.toLowerCase() != 'continue-only';
 
       assert(
         level >= 1 && level <= 6,
@@ -41,7 +47,7 @@ class Stepper extends CustomComponent {
                 children: [final ElementNode heading, ..._],
               )
               when heading.tag == 'h$level') {
-            steps.add((title: child, content: []));
+            steps.add((title: heading, content: []));
           } else {
             if (steps.isEmpty) {
               throw Exception(
@@ -54,34 +60,18 @@ class Stepper extends CustomComponent {
         }
       }
 
-      assert(steps.isNotEmpty, 'Stepper must have at least one step.');
-
-      return div(classes: 'stepper', [
-        for (final (index, step) in steps.indexed)
-          details(open: index == 0, [
-            summary([
-              span(
-                classes: 'step-number',
-                attributes: {'aria-label': 'Step ${index + 1}'},
-                [.text('${index + 1}')],
-              ),
-              div(classes: 'step-title', [
-                builder.build([step.title]),
-              ]),
-              const MaterialIcon('keyboard_arrow_up'),
-            ]),
-            div(classes: 'step-content', [
-              builder.build(step.content),
-            ]),
-            div(classes: 'step-actions', [
-              Button(
-                classes: ['next-step-button'],
-                style: ButtonStyle.filled,
-                content: index == steps.length - 1 ? 'Finish' : 'Continue',
-              ),
-            ]),
-          ]),
-      ]);
+      return InteractiveStepper(
+        steps: [
+          for (final step in steps)
+            Step(
+              title: builder.build([step.title]),
+              content: builder.build(step.content),
+            ),
+        ],
+        collapsible: collapsible,
+        showActions: showActions,
+        showFinish: showFinish,
+      );
     }
 
     return null;

@@ -144,22 +144,24 @@ $sidenav-wide-layout: 1024px;
           @include mixins.interaction-style(5%);
         }
 
-        &:not(.collapsed) {
-          .expander {
-            transform: rotate(180deg);
-          }
-
-          +ul {
-            display: block;
-          }
-        }
-
         &.active {
           background-color: rgb(var(--site-interaction-base-values) / 4%);
 
           &:not(.collapsible) {
             color: var(--site-link-fgColor);
           }
+        }
+      }
+    }
+
+    &.nav-item.expanded {
+      > button.nav-link {
+        .expander {
+          transform: rotate(180deg);
+        }
+
+        +ul {
+          display: block;
         }
       }
     }
