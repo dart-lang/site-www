@@ -1,12 +1,13 @@
-// Copyright (c) 2026, the Dart project authors. Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
 // #docregion disable-formatting
 void main() {
   // dart format off
-   print(   'Hello, World! with Formatting Disabled' );
+  const matrix = [
+    [ 1,  0,  0],
+    [ 0, -1,  0],
+    [-3,  4, 12],
+  ];
   // dart format on
-  print('Hello, World! with Formatting Enabled');
+
+  print(matrix);
 }
 // #enddocregion disable-formatting
