@@ -361,6 +361,11 @@ class Chunk {
 
 ### CONSIDER including code samples in doc comments
 
+Humans generalize well from examples,
+so even a single code sample makes an API easier to learn.
+For short, one-line expressions,
+you can include an inline fenced code block directly in the doc comment:
+
 <?code-excerpt "docs_good.dart (code-sample)"?>
 ````dart tag=good
 /// The lesser of two numbers.
@@ -371,8 +376,54 @@ class Chunk {
 num min(num a, num b) => ...
 ````
 
-Humans are great at generalizing from examples, so even a single code sample
-makes an API easier to learn.
+For longer or runnable usage examples,
+prefer keeping the code in your package's [`example` directory][]
+so that you can analyze and test it.
+Then embed the snippet on its own line in your doc comment
+using the `{@example}` directive:
+
+<?code-excerpt "docs_good.dart (example-file)"?>
+```dart title="example/hello_world.dart" tag=good
+void main() {
+  // #region main
+  final message = greet('Dash');
+  print(message); // Hello, Dash!
+  assert(message == 'Hello, Dash!'); // #hide
+  // #endregion
+}
+```
+
+<?code-excerpt "docs_good.dart (example-directive)"?>
+```dart title="lib/greeter.dart" tag=good
+/// A greeting message for [name].
+///
+/// {@example /example/hello_world.dart#main}
+String greet(String name) => 'Hello, $name!';
+```
+
+When `dart doc` generates your API documentation,
+it replaces the `{@example}` line with a fenced code block:
+
+* A leading `/` resolves the file path relative to the package root;
+  without a leading `/`,
+  the path resolves relative to the file containing the directive.
+* Adding `#<region>` extracts only the lines between
+  `#region <region>` and `#endregion`
+  and strips common leading indentation.
+  If you omit `#<region>`, `dart doc` includes the entire file.
+* Inside an extracted region,
+  `dart doc` omits any line containing `#hide`
+  (such as test assertions or setup code).
+
+For the full syntax, including language and indentation options,
+refer to the [`{@example}` directive documentation][example-directive].
+
+[`example` directory]: /tools/pub/package-layout#examples
+[example-directive]: {{site.repo.dart.org}}/dartdoc/blob/main/doc/directives.md#example
+
+:::version-note
+Dart 3.13 introduced support for the `{@example}` directive.
+:::
 
 ### DO use square brackets in doc comments to refer to in-scope identifiers
 
