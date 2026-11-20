@@ -239,7 +239,12 @@ skills_lint:
   directories:
     - path: "skills/"
       rules:
+        pub-archive-includes-skill: error
         published-skill-name: error
+        check-relative-paths:
+          severity: error
+          within-skill: true
+    # Remove if your package has no .agents/skills/ directory.
     - path: ".agents/skills/"
   individual_skills:
     - path: "my_custom_standalone_skill"
@@ -264,6 +269,9 @@ To catch invalid skills automatically during local test runs and in your
 existing `dart test` CI workflow, add a test under `test/` that runs
 `skills_lint` against your `skills_lint.yaml` configuration and fails
 when the linter reports errors.
+Also check that the loaded configuration's `parsingErrors` list is empty,
+because `validateSkills` returns `true`
+even when `skills_lint.yaml` contains errors.
 
 For standalone CI workflows or Git pre-commit hooks, consult
 [Recipes]({{site.pub-pkg}}/skills_lint#recipes)

@@ -49,6 +49,7 @@ The following table shows which commands you can use with the `dart` tool.
 | `fix`      | <code>dart fix <DIRECTORY&#124;DART_FILE></code>       | Applies automated fixes to Dart source code.<br>[Learn more.][fix]                                       |
 | `format`   | <code>dart format <DIRECTORY&#124;DART_FILE></code>    | Formats Dart source code.<br>[Learn more.][format]                                                       |
 | `info`     | `dart info`                                            | Outputs Dart tooling diagnostic information.<br>[Learn more.][info]                                      |
+| `migrate`  | `dart migrate [<DIRECTORY...>]`                        | Migrates Dart packages to newer SDK versions.<br>[Learn more.][migrate]                                  |
 | `pub`      | `dart pub <PUB_COMMAND>`                               | Works with packages.<br>Replaces `pub`.<br>[Learn more.][pub]                                            |
 | `run`      | `dart run <DART_FILE>`                                 | Runs a Dart program.<br>[Learn more.][run]                                                               |
 | `test`     | <code>dart test <DIRECTORY&#124;DART_FILE></code>      | Runs tests in this package.<br>[Learn more.][test]                                                       |
@@ -67,6 +68,7 @@ The following table shows which commands you can use with the `dart` tool.
 [fix]: /tools/dart-fix
 [format]: /tools/dart-format
 [info]: /tools/dart-info
+[migrate]: /tools/dart-migrate
 [pub]: /tools/pub/cmd
 [run]: /tools/dart-run
 [test]: /tools/dart-test

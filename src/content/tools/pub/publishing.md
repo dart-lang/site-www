@@ -103,7 +103,7 @@ Using a verified publisher has the following advantages:
 * You can avoid having pub.dev display your personal email address.
   Instead, pub.dev displays the publisher domain and contact address.
 * The pub.dev site displays a verified publisher badge
-  <img src="/assets/img/verified-publisher.svg" class="text-icon" alt="pub.dev verified publisher logo">
+  <img src="/assets/img/verified-publisher.svg" class="text-icon" width="20" height="20" alt="pub.dev verified publisher logo">
   next to your package name on search pages and individual package pages.
 
 ### Create a verified publisher {:#create-verified-publisher}
@@ -329,7 +329,7 @@ When you publish this package to pub.dev, it's tagged as a preview version.
 The following screenshot illustrates this.
 It lists the stable version as `1.6.0` and the preview version as `2.0.0`.
 
-![Illustration of a preview version](/assets/img/tools/pub/preview-version.png){:width="600px"}
+![Illustration of a preview version](/assets/img/tools/pub/preview-version.png){:width="600" height="178"}
 
 When Dart releases the stable version of `3.0.0`,
 pub.dev updates the package listing to display

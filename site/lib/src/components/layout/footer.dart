@@ -25,6 +25,7 @@ final class DashFooter extends StatelessComponent {
                 src: '/assets/img/logo/logo-white-text.svg',
                 alt: 'Dart',
                 width: 164,
+                height: 51,
               ),
             ],
           ),
