@@ -42,7 +42,7 @@ Before you begin this chapter, ensure you:
 You will polish the `command_runner` package to
 make it more robust and user-friendly.
 
-### Task 1 Improve the `HelpCommand` output
+### Task 1: Improve the `HelpCommand` output
 
 Enhance the `HelpCommand` to provide more detailed usage information,
 including options and their descriptions.
@@ -51,15 +51,15 @@ understand how to use your CLI application.
 
 1.  Open the `command_runner/lib/src/help_command.dart` file.
 
-1.  Add imports for `console.dart` and `exceptions.dart` at the top of the file.
+1.  Add imports for `console.dart` and `exceptions.dart` at the top of the file
+    alongside your existing `arguments.dart` import.
     You need these to use the color extensions and to
     throw an `ArgumentException`.
 
     ```dart title="command_runner/lib/src/help_command.dart"
     import 'dart:async';
 
-    import 'package:command_runner/command_runner.dart';
-
+    import 'arguments.dart';
     import 'console.dart';
     import 'exceptions.dart';
     ```
@@ -134,7 +134,7 @@ understand how to use your CLI application.
     }
     ```
 
-### Task 2 Add an `onOutput` callback
+### Task 2: Add an `onOutput` callback
 
 Next, add an `onOutput` argument to the `CommandRunner` to
 allow for flexible output handling.
@@ -188,7 +188,7 @@ allow for flexible output handling.
     use the `onOutput` function if it is provided, otherwise it
     defaults to printing to the console.
 
-### Task 3 Use the `onOutput` callback
+### Task 3: Use the `onOutput` callback
 
 Finally, update your main application to use the new `onOutput` feature.
 
@@ -196,8 +196,9 @@ Finally, update your main application to use the new `onOutput` feature.
 
 1.  Update the `main` function to
     pass the `onOutput` function to the `CommandRunner`.
-    You will also need to add an import for `console.dart` to
-    make the `write` function available.
+    Because `command_runner` already exports `console.dart`,
+    the `write` function is available through your existing
+    `package:command_runner/command_runner.dart` import:
 
     ```dart title="cli/bin/cli.dart"
     import 'package:command_runner/command_runner.dart';
@@ -222,7 +223,7 @@ Finally, update your main application to use the new `onOutput` feature.
     }
     ```
 
-### Task 4 Test the changes
+### Task 4: Test the changes
 
 Test the improved `HelpCommand` and the `onOutput` callback.
 

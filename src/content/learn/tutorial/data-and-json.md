@@ -115,6 +115,13 @@ First, create a new Dart package to house the data models.
     You should now see a new folder `wikipedia` in your project root,
     alongside `cli` and `command_runner`.
 
+1.  Remove the generated `wikipedia/bin` directory by running
+    `rm -r wikipedia/bin` (on macOS or Linux) or
+    `rmdir /s /q wikipedia\bin` (on Windows).
+    Because `cli` serves as your application's executable entry point,
+    `wikipedia` is used strictly as a library package and doesn't need its own
+    `bin/` folder.
+
 ### Task 2: Configure a Dart workspace
 
 Dart workspaces allow you to

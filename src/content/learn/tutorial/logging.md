@@ -452,6 +452,13 @@ create the complete CLI application.
     exporting `initFileLogger`, `SearchCommand`, and `GetArticleCommand`
     so that `cli/bin/cli.dart` can import them from `package:cli/cli.dart`.
 
+1.  Remove the generated `cli/test/cli_test.dart` file by running
+    `rm cli/test/cli_test.dart` (on macOS or Linux) or
+    `del cli\test\cli_test.dart` (on Windows) from the root `/dartpedia`
+    directory (or `rm test/cli_test.dart` from `/dartpedia/cli`).
+    `dart create` generated this file to test the placeholder code you just
+    replaced in `cli/lib/cli.dart`.
+
 1.  Open the `cli/bin/cli.dart` file.
 
 1.  Add the imports for `cli` and `command_runner`:
@@ -521,6 +528,12 @@ Make sure you run these commands from your `cli` directory
 
     ```bash
     dart run bin/cli.dart search "Dart" --im-feeling-lucky
+    ```
+
+1.  Fetch an article summary extract using the `article` command:
+
+    ```bash
+    dart run bin/cli.dart article "Dart_(programming_language)"
     ```
 
 1.  Run the application without the required search argument to test

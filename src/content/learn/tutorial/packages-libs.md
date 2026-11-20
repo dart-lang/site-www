@@ -127,6 +127,26 @@ handle the command-line argument parsing logic.
       this method might perform asynchronous operations,
       but doesn't return a value.
 
+1.  Update the generated `command_runner/example/command_runner_example.dart`
+    file to use `CommandRunner` instead of the starter `Awesome` class you
+    just removed:
+
+    ```dart title="command_runner/example/command_runner_example.dart"
+    import 'package:command_runner/command_runner.dart';
+
+    void main(List<String> arguments) {
+      var runner = CommandRunner();
+      runner.run(arguments);
+    }
+    ```
+
+1.  Remove the generated `command_runner/test/command_runner_test.dart` file
+    by running `rm command_runner/test/command_runner_test.dart`
+    (on macOS or Linux) or `del command_runner\test\command_runner_test.dart`
+    (on Windows).
+    `dart create` generated this file to test the placeholder `Awesome` class,
+    so your project no longer needs it.
+
 ### Task 3: Add `command_runner` as a dependency
 
 Now that you've created the `command_runner` package and
@@ -228,16 +248,15 @@ the new `CommandRunner` class.
     ```
 
     **Now, replace the entire contents of `cli/bin/cli.dart`
-    (except for the `http` import) with the following updated version:**
+    with the following updated version:**
 
     ```dart title="cli/bin/cli.dart"
-    import 'dart:io';
-    import 'package:http/http.dart' as http;
     import 'package:command_runner/command_runner.dart';
 
-    void main(List<String> arguments) async { // main is now async and awaits the runner
-      var runner = CommandRunner(); // Create an instance of your new CommandRunner
-      await runner.run(arguments); // Call its run method, awaiting its Future<void>
+    void main(List<String> arguments) async {
+      // Create an instance of your new CommandRunner and await its execution
+      var runner = CommandRunner();
+      await runner.run(arguments);
     }
     ```
 
