@@ -27,32 +27,39 @@
         CLI creation uses packages like `args` or custom code.
         The `logging` package helps with a different aspect of applications.
 - question: >-
-    What does the `hierarchicalLoggingEnabled = true;` line do?
+    After creating a `Logger` instance,
+    how do you actually write its log messages to a file or the console?
   options:
     - text: >-
-        It enables a logger to capture events from child loggers.
+        Subscribe to `logger.onRecord.listen(...)` and handle each `LogRecord`
+        inside the callback.
       correct: true
       explanation: >-
-        With hierarchical logging enabled,
-        parent loggers can receive and process events from their child loggers.
+        A `Logger` emits `LogRecord` events on its `onRecord` stream
+        rather than writing output directly.
+        Listening to `onRecord` lets you format and send logs wherever
+        you need, such as a file or the terminal.
     - text: >-
-        It enables logging to a hierarchical file system.
+        Pass a file path directly to the `Logger('errors', path: ...)`
+        constructor.
       correct: false
       explanation: >-
-        This setting doesn't affect file systems or where logs are stored.
-        "Hierarchical" refers to something else entirely.
+        The `Logger` constructor only takes a logger name.
+        Output destinations are configured separately by listening
+        to log events.
     - text: >-
-        It disables logging to the console.
+        Set `logger.level = Level.ALL;` to automatically print all records.
       correct: false
       explanation: >-
-        Console output is controlled by listeners, not this setting.
-        This setting affects how loggers interact with each other.
+        Setting `level` controls which severity levels are recorded,
+        not where log messages are written.
+        Without a listener, recorded messages aren't output anywhere.
     - text: >-
-        It enables logging of HTTP requests.
+        Nothing extra is needed; `Logger` writes to a `logs/` folder by default.
       correct: false
       explanation: >-
-        HTTP logging requires specific configuration in your HTTP code.
-        This setting affects the logging system's internal structure.
+        `package:logging` doesn't create files or print output automatically.
+        You have to attach a listener to handle incoming `LogRecord` events.
 - question: >-
     This lesson uses `logger.severe()`, `logger.warning()`, and `logger.info()`.
     Why use different log levels instead of just `print()`?

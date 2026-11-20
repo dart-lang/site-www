@@ -32,6 +32,21 @@ items:
 
 [Application Programming Interfaces]: https://www.postman.com/what-is-an-api/
 
+## How asynchronous code works in Dart
+
+Dart executes your code on a single-threaded **event loop**.
+If your program waited synchronously for a slow network response,
+the entire application would freeze until the server replied.
+
+Instead, asynchronous operations return a `Future`—an object representing a
+value that will be available later.
+When an `async` function reaches an `await` expression,
+Dart pauses *only* that function without starting a new thread or
+blocking the program.
+While waiting for the response, Dart's event loop remains free to process
+other asynchronous operations and event handlers,
+resuming your function once the `Future` completes.
+
 ## Tasks
 
 In this chapter, you will
