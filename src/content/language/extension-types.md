@@ -65,7 +65,7 @@ whose static type is that extension type.
 They are distinct from the interface of their underlying type by default.
 :::
 
-[static JS interop]: /go/next-gen-js-interop
+[static JS interop]: /interop/js-interop
 [ext]: /language/extension-methods
 
 ## Syntax

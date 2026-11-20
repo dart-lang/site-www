@@ -1,3 +1,4 @@
 text: >-
-  **Security update:** Dart 3.13.7 now blocks compromised eMudhra CA keys.<br>
-  Read the [security advisory](https://github.com/dart-lang/sdk/security/advisories/GHSA-frr6-h895-5pxp){:target="_blank"}.
+  Dart 3.14 brings your workflow full circle with automated SDK migrations
+  (dart migrate), a re-engineered DartPad, and faster WebAssembly.
+  [Learn more](https://dart.dev/blog/announcing-dart-3-14)

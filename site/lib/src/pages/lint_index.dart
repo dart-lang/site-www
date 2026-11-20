@@ -8,8 +8,8 @@ import 'package:jaspr/server.dart';
 
 import '../components/common/button.dart';
 import '../components/common/card.dart';
-import '../components/common/client/copy_button.dart';
 import '../components/common/material_icon.dart';
+import '../components/common/static_copy_button.dart';
 import '../components/pages/lint_filter_search_section.dart';
 import '../markdown/markdown_parser.dart';
 import '../models/lints.dart';
@@ -55,7 +55,7 @@ class _LintRuleCard extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final lintId = lint.name.toLowerCase();
+    final lintId = lint.id.toLowerCase();
 
     final attributes = <String, String>{
       if (lint.state == 'stable' && !lint.sinceDartSdk.contains('wip'))
@@ -72,9 +72,13 @@ class _LintRuleCard extends StatelessComponent {
       attributes: attributes,
       header: [
         header(
-          id: lintId,
           classes: 'card-title',
-          splitByUnderscore(lintId),
+          [
+            a(
+              href: lintRuleUrl(lint.id),
+              splitByUnderscore(lint.name),
+            ),
+          ],
         ),
       ],
       content: [
@@ -90,12 +94,12 @@ class _LintRuleCard extends StatelessComponent {
         leading: _statusIcons,
         trailing: [
           Button(
-            href: '/tools/linter-rules/${lint.name}',
+            href: lintRuleUrl(lint.id),
             style: ButtonStyle.outlined,
             title: 'Learn more about this lint and when to enable it.',
             content: 'Learn more',
           ),
-          CopyButton(toCopy: lint.name, buttonText: 'Copy name'),
+          StaticCopyButton(toCopy: lint.name, buttonText: 'Copy name'),
         ],
       ),
     );

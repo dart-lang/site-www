@@ -24,6 +24,11 @@ void main() {
       final config = await ConfigParser.loadConfig(
         path: _configFilePath,
       );
+      expect(
+        config.parsingErrors,
+        isEmpty,
+        reason: 'Parsing errors found in skills_lint.yaml',
+      );
       final isValid = await validateSkills(config: config);
       expect(
         isValid,

@@ -13,6 +13,7 @@ String extractContent(Element element) {
   final r = element.parentRenderObjectElement?.renderObject as DomRenderObject?;
   if (r == null) return '';
 
+  // ignore: invalid_use_of_internal_member
   final code = r.retakeNode((node) {
     return node.instanceOfString('Element') &&
         (node as web.Element).tagName.toLowerCase() == 'pre';

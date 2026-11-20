@@ -8,7 +8,7 @@ showBreadcrumbs: false
 
 <ul>
 {% for document in pages %}
-  {% if document.url != null and document.sitemap != "false" and document.title != null %}
+  {% if document.url != null and document.sitemap != false and document.sitemap != "false" and document.noindex != true and document.noindex != "true" and document.title != null %}
   <li>
     <a href="{{document.url}}">{{ document.title }}</a><br>
     <small>{{document.url}}</small>
