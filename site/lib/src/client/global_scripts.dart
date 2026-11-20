@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -9,22 +10,21 @@ import 'package:meta/meta.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
+import '../utils/client_operating_system.dart';
+
 /// Global scripts converted from JS.
 ///
 /// These are temporary until they can be integrated with their
 /// relevant Jaspr components.
 void setUpSite() {
   _setUpHeadingLinkCopy();
+  _setUpCopyButtons();
   _setUpSidenav();
   _setUpSearchKeybindings();
-  _setUpTabs();
   _setUpGallery();
-  _setUpExpandableCards();
   _setUpPlatformKeys();
   _setUpTableOfContents();
   _setUpReleaseTags();
-  _setUpTooltips();
-  _setUpSteppers();
 }
 
 void _setUpHeadingLinkCopy() {
@@ -77,6 +77,50 @@ void _setUpHeadingLinkCopy() {
   }
 }
 
+/// Sets up the buttons rendered by `StaticCopyButton`,
+/// which copy the value of their `data-copy` attribute when clicked.
+void _setUpCopyButtons() {
+  // Buttons currently showing copy feedback,
+  // along with their original label and the timer that restores it.
+  final pendingResets = <web.Element, ({String label, Timer timer})>{};
+
+  @awaitNotRequired
+  Future<void> copyToClipboard(web.Element button, String text) async {
+    final label = pendingResets[button]?.label ?? button.textContent ?? '';
+    try {
+      await web.window.navigator.clipboard.writeText(text).toDart;
+      button.textContent = 'Copied!';
+    } catch (_) {
+      button.textContent = 'Failed to copy';
+    }
+
+    pendingResets.remove(button)?.timer.cancel();
+    pendingResets[button] = (
+      label: label,
+      timer: Timer(const Duration(seconds: 2), () {
+        pendingResets.remove(button);
+        button.textContent = label;
+      }),
+    );
+  }
+
+  web.document.addEventListener(
+    'click',
+    ((web.Event event) {
+      final target = event.target;
+      if (!target.isA<web.Element>()) return;
+
+      final button = (target as web.Element).closest('button[data-copy]');
+      if (button == null) return;
+
+      final toCopy = button.getAttribute('data-copy');
+      if (toCopy == null || toCopy.isEmpty) return;
+
+      copyToClipboard(button, toCopy);
+    }).toJS,
+  );
+}
+
 void _setUpSidenav() {
   final sidenav = web.document.getElementById('sidenav');
   if (sidenav == null) return;
@@ -93,19 +137,6 @@ void _setUpSidenav() {
         ),
       );
     }
-  }
-
-  // Set up collapse and expand for sidenav buttons.
-  final toggles = web.document.querySelectorAll('.nav-link.collapsible');
-  for (var i = 0; i < toggles.length; i++) {
-    final toggle = toggles.item(i) as web.HTMLElement;
-    toggle.addEventListener(
-      'click',
-      (web.Event e) {
-        toggle.classList.toggle('collapsed');
-        e.preventDefault();
-      }.toJS,
-    );
   }
 }
 
@@ -148,177 +179,8 @@ void _handleSearchShortcut(web.Event event) {
   }
 }
 
-// TODO(parlough): Migrate interactivity of tabs to the Jaspr components.
-/// Set up interactivity of tabs created with
-/// the `<Tabs>` and `<Tab>` custom components.
-void _setUpTabs() {
-  _updateTabsFromQueryParameters();
-
-  final tabsWrappers = web.document.querySelectorAll('.tabs-wrapper');
-
-  for (
-    var wrapperIndex = 0;
-    wrapperIndex < tabsWrappers.length;
-    wrapperIndex++
-  ) {
-    final element = tabsWrappers.item(wrapperIndex) as web.HTMLElement;
-    final saveKey = element.dataset['tabSaveKey'];
-    final localStorageKey = saveKey.isNotEmpty ? 'tab-save-$saveKey' : null;
-    final tabs = element.querySelectorAll(':scope > .nav-tabs a.nav-link');
-    web.HTMLElement? tabToChangeTo;
-
-    for (var tabIndex = 0; tabIndex < tabs.length; tabIndex++) {
-      final tabElement = tabs.item(tabIndex) as web.HTMLElement;
-      final saveId = tabElement.dataset['tabSaveId'];
-
-      void handleClick(web.Event event) {
-        event.preventDefault();
-        final currentSaveKey = element.dataset['tabSaveKey'];
-        final currentSaveId = tabElement.dataset['tabSaveId'];
-        if (currentSaveKey.isNotEmpty && currentSaveId.isNotEmpty) {
-          // If the tab wrapper and this tab have a save key and ID defined,
-          // switch other tabs to the tab with the same ID.
-          _findAndActivateTabsWithSaveId(currentSaveKey, currentSaveId);
-          web.window.localStorage.setItem(
-            'tab-save-$currentSaveKey',
-            currentSaveId,
-          );
-        } else {
-          _clearActiveTabs(tabs);
-          _setActiveTab(tabElement);
-        }
-      }
-
-      tabElement.addEventListener('click', handleClick.toJS);
-
-      // If a tab was previously specified as selected in local storage,
-      // save a reference to it that can be switched to later.
-      if (saveId.isNotEmpty &&
-          localStorageKey != null &&
-          web.window.localStorage.getItem(localStorageKey) == saveId) {
-        tabToChangeTo = tabElement;
-      }
-    }
-
-    if (tabToChangeTo != null) {
-      tabToChangeTo.click();
-    } else if (saveKey == 'dev-os') {
-      // If this tab wrapper is for the archive page,
-      // and no tab was retrieved from local storage,
-      // switch to the tab for the current OS.
-      final currentOperatingSystem = _ClientOperatingSystem.fromUserAgent();
-
-      _activateTabWithSaveId(element, currentOperatingSystem.name);
-    }
-  }
-}
-
-/// Apply force overrides from query parameters to saved tabs.
-void _updateTabsFromQueryParameters() {
-  final currentUrl = Uri.parse(web.window.location.href);
-  final originalQueryParameters = currentUrl.queryParameters;
-  final updatedQueryParameters = {...originalQueryParameters};
-
-  for (final MapEntry(:key, :value) in originalQueryParameters.entries) {
-    if (key.startsWith('tab-save-')) {
-      web.window.localStorage.setItem(key, value);
-      updatedQueryParameters.remove(key);
-    }
-  }
-
-  if (originalQueryParameters.length != updatedQueryParameters.length) {
-    // If the query parameters were updated, update the user's URL.
-    web.window.history.replaceState(
-      null,
-      '',
-      currentUrl.replace(queryParameters: updatedQueryParameters).toString(),
-    );
-  }
-}
-
-void _clearActiveTabs(web.NodeList tabs) {
-  for (var tabIndex = 0; tabIndex < tabs.length; tabIndex++) {
-    final tabElement = tabs.item(tabIndex) as web.HTMLElement;
-    tabElement.classList.remove('active');
-    tabElement.ariaSelected = 'false';
-    final panelId = '${tabElement.id}-panel';
-    final panel = web.document.getElementById(panelId);
-    panel?.classList.remove('active');
-  }
-}
-
-void _setActiveTab(web.HTMLElement tab) {
-  tab.classList.add('active');
-  tab.ariaSelected = 'true';
-  final panelId = '${tab.id}-panel';
-  final panel = web.document.getElementById(panelId);
-  panel?.classList.add('active');
-}
-
-void _findAndActivateTabsWithSaveId(String saveKey, String saveId) {
-  final tabsWrappers = web.document.querySelectorAll(
-    '.tabs-wrapper[data-tab-save-key="$saveKey"]',
-  );
-
-  for (
-    var wrapperIndex = 0;
-    wrapperIndex < tabsWrappers.length;
-    wrapperIndex++
-  ) {
-    final wrapper = tabsWrappers.item(wrapperIndex) as web.HTMLElement;
-
-    _activateTabWithSaveId(wrapper, saveId);
-  }
-}
-
-void _activateTabWithSaveId(web.HTMLElement tabWrapper, String saveId) {
-  final tabsNav = tabWrapper.querySelector(':scope > .nav-tabs');
-  if (tabsNav == null) return;
-
-  if (tabsNav.querySelector('a.nav-link[data-tab-save-id="$saveId"]')
-      case final web.HTMLElement tabToActivate) {
-    final tabs = tabsNav.querySelectorAll('a.nav-link');
-    _clearActiveTabs(tabs);
-    _setActiveTab(tabToActivate);
-  }
-}
-
-enum _ClientOperatingSystem {
-  macos,
-  windows,
-  linux;
-
-  static _ClientOperatingSystem fromUserAgent({
-    _ClientOperatingSystem fallback = _ClientOperatingSystem.windows,
-  }) {
-    final userAgent = web.window.navigator.userAgent;
-    if (userAgent.contains('Mac')) {
-      // macOS, iOS, or iPadOS.
-      return _ClientOperatingSystem.macos;
-    }
-
-    if (userAgent.contains('Win')) {
-      // Windows.
-      return _ClientOperatingSystem.windows;
-    }
-
-    if ((userAgent.contains('Linux') || userAgent.contains('X11')) &&
-        !userAgent.contains('Android')) {
-      // Linux, but not Android.
-      return _ClientOperatingSystem.linux;
-    }
-
-    if (userAgent.contains('CrOS')) {
-      // ChromeOS, but fall back to Linux.
-      return _ClientOperatingSystem.linux;
-    }
-
-    return fallback;
-  }
-}
-
 void _setUpPlatformKeys() {
-  final specialKey = switch (_ClientOperatingSystem.fromUserAgent()) {
+  final specialKey = switch (ClientOperatingSystem.fromUserAgent()) {
     .macos => 'Command',
     _ => 'Control',
   };
@@ -380,48 +242,6 @@ void _setUpGallery() {
         }).toJS,
       );
     }
-  }
-}
-
-void _setUpExpandableCards() {
-  var currentFragment = web.window.location.hash.trim().toLowerCase();
-  if (currentFragment.startsWith('#')) {
-    // Remove the leading '#' from the fragment.
-    currentFragment = currentFragment.substring(1);
-  }
-  final expandableCards = web.document.querySelectorAll('.expandable-card');
-  web.Element? targetCard;
-
-  for (var i = 0; i < expandableCards.length; i++) {
-    final card = expandableCards.item(i) as web.Element;
-    final expandButton = card.querySelector('.expand-button');
-    if (expandButton == null) continue;
-
-    expandButton.addEventListener(
-      'click',
-      ((web.Event e) {
-        if (card.classList.contains('collapsed')) {
-          card.classList.remove('collapsed');
-          expandButton.ariaExpanded = 'true';
-        } else {
-          card.classList.add('collapsed');
-          expandButton.ariaExpanded = 'false';
-        }
-        e.preventDefault();
-      }).toJS,
-    );
-
-    if (card.id != currentFragment) {
-      card.classList.add('collapsed');
-      expandButton.ariaExpanded = 'false';
-    } else {
-      targetCard = card;
-    }
-  }
-
-  if (targetCard != null) {
-    // Scroll the expanded card into view.
-    targetCard.scrollIntoView();
   }
 }
 
@@ -591,156 +411,4 @@ void _setUpReleaseTags() {
   fetchVersion('stable');
   fetchVersion('beta');
   fetchVersion('dev');
-}
-
-void _setUpTooltips() {
-  final tooltipWrappers = web.document.querySelectorAll('.tooltip-wrapper');
-
-  final isTouchscreen = web.window.matchMedia('(pointer: coarse)').matches;
-
-  void setup({required bool setUpClickListener}) {
-    for (var i = 0; i < tooltipWrappers.length; i++) {
-      final linkWrapper = tooltipWrappers.item(i) as web.HTMLElement;
-      final target = linkWrapper.querySelector('.tooltip-target');
-      final tooltip = linkWrapper.querySelector('.tooltip') as web.HTMLElement?;
-
-      if (target == null || tooltip == null) {
-        continue;
-      }
-      _ensureVisible(tooltip);
-
-      if (setUpClickListener && isTouchscreen) {
-        // On touchscreen devices, toggle tooltip visibility on tap.
-        target.addEventListener(
-          'click',
-          ((web.Event e) {
-            final isVisible = tooltip.classList.contains('visible');
-            if (isVisible) {
-              tooltip.classList.remove('visible');
-            } else {
-              tooltip.classList.add('visible');
-            }
-            e.preventDefault();
-          }).toJS,
-        );
-      }
-    }
-  }
-
-  void closeAll() {
-    final visibleTooltips = web.document.querySelectorAll(
-      '.tooltip.visible',
-    );
-    for (var i = 0; i < visibleTooltips.length; i++) {
-      final tooltip = visibleTooltips.item(i) as web.HTMLElement;
-      tooltip.classList.remove('visible');
-    }
-  }
-
-  setup(setUpClickListener: true);
-
-  // Reposition tooltips on window resize.
-  web.EventStreamProviders.resizeEvent.forTarget(web.window).listen((_) {
-    setup(setUpClickListener: false);
-  });
-
-  // Close tooltips when clicking outside of any tooltip wrapper.
-  web.EventStreamProviders.clickEvent.forTarget(web.document).listen((e) {
-    if ((e.target as web.Element).closest('.tooltip-wrapper') == null) {
-      closeAll();
-    }
-  });
-
-  // On touchscreen devices, close tooltips when scrolling.
-  if (isTouchscreen) {
-    web.EventStreamProviders.scrollEvent.forTarget(web.window).listen((_) {
-      closeAll();
-    });
-  }
-}
-
-/// Adjust the tooltip position to ensure it is fully inside the
-/// ancestor .content element.
-void _ensureVisible(web.HTMLElement tooltip) {
-  final containerRect = tooltip.closest('.content')!.getBoundingClientRect();
-  final tooltipRect = tooltip.getBoundingClientRect();
-  final offset = double.parse(tooltip.getAttribute('data-adjusted') ?? '0');
-
-  final tooltipLeft = tooltipRect.left - offset;
-  final tooltipRight = tooltipRect.right - offset;
-
-  if (tooltipLeft < containerRect.left) {
-    final offset = containerRect.left - tooltipLeft;
-    tooltip.style.left = 'calc(50% + ${offset}px)';
-    tooltip.dataset['adjusted'] = offset.toString();
-  } else if (tooltipRight > containerRect.right) {
-    final offset = tooltipRight - containerRect.right;
-    tooltip.style.left = 'calc(50% - ${offset}px)';
-    tooltip.dataset['adjusted'] = (-offset).toString();
-  } else {
-    tooltip.style.left = '50%';
-    tooltip.dataset['adjusted'] = '0';
-  }
-}
-
-void _setUpSteppers() {
-  final steppers = web.document.querySelectorAll('.stepper');
-
-  for (var i = 0; i < steppers.length; i++) {
-    final stepper = steppers.item(i) as web.HTMLElement;
-    final steps = stepper.querySelectorAll('details');
-
-    for (var j = 0; j < steps.length; j++) {
-      final step = steps.item(j) as web.HTMLDetailsElement;
-
-      step.addEventListener(
-        'toggle',
-        ((web.Event e) {
-          // Close all other steps when one is opened.
-          if (step.open) {
-            for (var k = 0; k < steps.length; k++) {
-              final otherStep = steps.item(k) as web.HTMLDetailsElement;
-              if (otherStep != step) {
-                otherStep.open = false;
-              }
-            }
-          }
-        }).toJS,
-      );
-
-      final nextButton = step.querySelector('.next-step-button');
-      if (nextButton != null) {
-        nextButton.addEventListener(
-          'click',
-          ((web.Event e) {
-            e.preventDefault();
-            step.open = false;
-            _scrollTo(step, smooth: false);
-            if (j + 1 < steps.length) {
-              final nextStep = steps.item(j + 1) as web.HTMLDetailsElement;
-              nextStep.open = true;
-              _scrollTo(nextStep, smooth: true);
-            }
-          }).toJS,
-        );
-      }
-    }
-  }
-}
-
-void _scrollTo(web.Element element, {required bool smooth}) {
-  // Scroll the next step into view, accounting for the fixed header and toc.
-  final headerOffset =
-      web.document.getElementById('site-header')?.clientHeight ?? 0;
-  final tocOffset = web.document.getElementById('toc-top')?.clientHeight ?? 0;
-  final elementPosition = element.getBoundingClientRect().top;
-  final offsetPosition =
-      elementPosition + web.window.scrollY - headerOffset - tocOffset;
-
-  web.window.scrollTo(
-    web.ScrollToOptions(
-      top: offsetPosition,
-      behavior: smooth ? 'smooth' : 'auto',
-    ),
-  );
 }

@@ -1,3 +1,5 @@
+@use '../base/mixins';
+
 #site-header {
   --header-bg: var(--site-chrome-bgColor);
   --header-fg: var(--site-chrome-fgColor);
@@ -124,9 +126,9 @@
     }
 
     &::before {
+      @include mixins.material-symbol(28px);
       content: 'search';
       color: var(--header-fg-alt);
-      font: 28px/1 var(--site-icon-fontFamily);
       pointer-events: none;
       position: absolute;
       left: 1rem;

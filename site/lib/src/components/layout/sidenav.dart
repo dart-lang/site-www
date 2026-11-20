@@ -9,6 +9,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 import '../../models/sidenav_model.dart';
 import '../../util.dart';
 import '../../utils/active_nav.dart';
+import '../common/client/expandable.dart';
 import '../common/material_icon.dart';
 
 /// The site-wide side navigation menu,
@@ -245,41 +246,38 @@ class _SideNavCollapsibleSection extends StatelessComponent {
     }
 
     final expanded = isInActivePath || section.expanded;
-    return li(classes: 'nav-item', [
-      button(
-        classes: [
-          'nav-link',
-          if (isInActivePath) 'active',
-          'collapsible',
-          if (!expanded) 'collapsed',
-        ].toClasses,
-        attributes: {
-          'data-toggle': 'collapse',
-          'data-target': '#$id',
-          'role': 'button',
-          'aria-expanded': expanded.toString(),
-          'aria-controls': id,
-        },
-        [
-          span([.text(section.title)]),
-          const MaterialIcon('expand_more', classes: ['expander']),
-        ],
-      ),
-      _SideNavLevel(
-        entries: section.children,
-        parentId: id,
-        currentLevel: currentLevel + 1,
-        possiblyActive: isInActivePath,
-        currentPageUrl: currentPageUrl,
-        activePath: activePath,
-        classes: [
-          'nav',
-          'collapse',
-          if (expanded) 'show',
-        ].toClasses,
-        id: id,
-      ),
-    ]);
+    return Expandable(
+      initiallyExpanded: expanded,
+      child: li(classes: 'nav-item', [
+        Trigger(
+          child: button(
+            classes: [
+              'nav-link',
+              if (isInActivePath) 'active',
+              'collapsible',
+            ].toClasses,
+            attributes: {
+              'role': 'button',
+              'aria-controls': id,
+            },
+            [
+              span([.text(section.title)]),
+              const MaterialIcon('expand_more', classes: ['expander']),
+            ],
+          ),
+        ),
+        _SideNavLevel(
+          entries: section.children,
+          parentId: id,
+          currentLevel: currentLevel + 1,
+          possiblyActive: isInActivePath,
+          currentPageUrl: currentPageUrl,
+          activePath: activePath,
+          classes: 'nav',
+          id: id,
+        ),
+      ]),
+    );
   }
 
   /// Determines whether children should be shown for this section.

@@ -212,37 +212,37 @@ your own custom package repository:
 <ul class="logo-link-grids">
 <li>
   <a href="https://help.cloudsmith.io/docs/dart-repository">
-    <img src="/assets/img/tools/cloudsmith.svg" alt="Cloudsmith logo">
+    <img src="/assets/img/tools/cloudsmith.svg" width="500" height="500" alt="Cloudsmith logo">
     <span>Cloudsmith</span>
   </a>
 </li>
 <li>
   <a href="https://docs.inedo.com/docs/proget/feeds/pub">
-    <img src="/assets/img/tools/proget.svg" alt="Inedo ProGet logo">
+    <img src="/assets/img/tools/proget.svg" width="48" height="48" alt="Inedo ProGet logo">
     <span>Inedo ProGet</span>
   </a>
 </li>
 <li>
   <a href="https://www.jfrog.com/confluence/display/JFROG/Pub+Repositories">
-    <img src="/assets/img/tools/jfrog.svg" alt="JFrog logo">
+    <img src="/assets/img/tools/jfrog.svg" width="68" height="66" alt="JFrog logo">
     <span>JFrog Artifactory</span>
   </a>
 </li>
 <li>
   <a href="https://onepub.dev">
-    <img src="/assets/img/tools/onepub.svg" alt="OnePub logo">
+    <img src="/assets/img/tools/onepub.svg" width="300" height="200" alt="OnePub logo">
     <span>OnePub Dart Repository</span>
   </a>
 </li>
 <li>
   <a href="https://publy.dev/docs/getting-started">
-    <img src="/assets/img/tools/publy.svg" alt="Publy logo">
+    <img src="/assets/img/tools/publy.svg" width="28" height="28" alt="Publy logo">
     <span>Publy</span>
   </a>
 </li>
 <li>
   <a href="https://glpub.dev/">
-    <img src="/assets/img/tools/glpub.png" alt="GLPub logo">
+    <img src="/assets/img/tools/glpub.png" width="348" height="327" alt="GLPub logo">
     <span>GLPub.dev</span>
   </a>
 </li>

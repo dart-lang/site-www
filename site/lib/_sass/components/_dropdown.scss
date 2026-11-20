@@ -20,6 +20,10 @@
       padding: 0 !important;
     }
 
+    .copy-markdown-status {
+      @include mixins.visually-hidden;
+    }
+
     .dropdown-menu {
       padding: 0.2rem;
 
@@ -59,7 +63,7 @@
   }
 
   &[data-expanded="true"] {
-    .dropdown-content {
+    > .dropdown-content {
       display: block;
     }
   }

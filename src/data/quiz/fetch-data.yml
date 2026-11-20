@@ -27,7 +27,7 @@
         `Uri` objects are immutable and don't have an `addQueryParam` method.
         Query parameters must be specified differently.
 - question: >-
-    After calling `client.get(url)`,
+    After calling `http.get(url)`,
     how should you check if the request was successful?
   options:
     - text: >-
@@ -56,32 +56,44 @@
         There's no `isSuccess` property on `Response`.
         You need to examine a different property of the response object.
 - question: >-
-    The lesson's API functions use a `finally` block to call `client.close()`.
-    Why is this important?
+    When the Wikipedia API returns a non-200 status code,
+    the lesson's API functions throw an `HttpException`
+    instead of returning an error message string.
+    Why is this a better practice for an API package?
   options:
     - text: >-
-        To ensure network resources are released even if an exception occurs.
+        It separates failure handling from valid data,
+        letting functions return typed models (like `Summary`)
+        while callers handle errors with `try`/`catch`.
       correct: true
       explanation: >-
-        `finally` runs whether the try block succeeds or throws.
-        This ensures the client's connections are properly closed,
-        preventing resource leaks.
+        Returning an error string doesn't fit a return type like
+        `Future<Summary>` and risks treating error text as article data.
+        Throwing an `HttpException` signals failure explicitly so
+        calling code can catch and handle it.
     - text: >-
-        To save the response data to disk before the function returns.
+        Because `http.get` crashes the Dart runtime
+        if you don't throw an exception on non-200 status codes.
       correct: false
       explanation: >-
-        `close()` doesn't save data anywhere.
-        Saving data would require explicit file operations.
+        `http.get` completes normally with a `Response` object
+        even for 404 or 500 status codes.
+        Throwing `HttpException` is a deliberate design choice,
+        not a runtime requirement.
     - text: >-
-        To send a 'connection closed' message to the server.
+        Throwing `HttpException` automatically retries
+        the failed network request up to three times.
       correct: false
       explanation: >-
-        While closing affects the connection,
-        the main purpose is client-side cleanup,
-        not communicating with the server.
+        Throwing an exception stops execution of the function
+        and propagates the failure to the caller;
+        it doesn't retry the request.
     - text: >-
-        To clear the response from memory and trigger garbage collection.
+        Functions marked `async` aren't allowed to return
+        error strings when a network request fails.
       correct: false
       explanation: >-
-        Dart's garbage collector handles memory automatically.
-        `close()` releases a different kind of resource.
+        An `async` function can return any declared type
+        (such as `Future<String>`, as in Chapter 3).
+        Throwing an exception is preferred for type safety
+        and structured error handling, not syntax rules.

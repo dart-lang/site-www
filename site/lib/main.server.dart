@@ -20,6 +20,7 @@ import 'src/components/common/tabs.dart';
 import 'src/components/common/youtube_embed.dart';
 import 'src/components/pages/changelog/changelog_index.dart';
 import 'src/components/tutorial/quiz.dart';
+import 'src/components/tutorial/stepper.dart';
 import 'src/components/tutorial/summary_card.dart';
 import 'src/components/tutorial/tutorial_outline.dart';
 import 'src/extensions/attribute_processor.dart';
@@ -39,6 +40,7 @@ import 'src/pages/atom_feed.dart';
 import 'src/pages/custom_pages.dart';
 import 'src/pages/diagnostic_index.dart';
 import 'src/pages/lint_index.dart';
+import 'src/pages/markdown.dart';
 import 'src/pages/robots_txt.dart';
 import 'src/templating/dash_template_engine.dart';
 import 'src/util.dart';
@@ -58,12 +60,15 @@ void main() {
 
   ServerApp.addMiddleware(assetManager.middleware);
 
+  final passThroughPattern = RegExp(r'.*\.(txt|json)$');
+
   final app = ContentApp.custom(
     eagerlyLoadAllPages: true,
     loaders: [
       FilesystemLoader(
         _contentDirectory,
-        filterExtensions: const {'.md', '.html'},
+        filterExtensions: const {'.md', '.html', '.txt'},
+        keepSuffixPattern: passThroughPattern,
       ),
       MemoryLoader(pages: allMemoryPages),
     ],
@@ -82,7 +87,7 @@ void main() {
         DashMarkdownParser(),
         HtmlParser(),
       ],
-      rawOutputPattern: RegExp(r'.*\.(txt|json)$'),
+      rawOutputPattern: passThroughPattern,
       extensions: [
         const AttributeProcessor(),
         const HeaderExtractorExtension(),
@@ -95,6 +100,7 @@ void main() {
       ],
       components: [
         const DashTabs(),
+        const Stepper(),
         const YoutubeEmbed(),
         const FileTree(),
         const Quiz(),
@@ -144,64 +150,10 @@ void main() {
       secondaryOutputs: [
         const AtomFeedOutput(),
         const RobotsTxtOutput(),
-        _DashMarkdownOutput(
-          createHeader: (page) {
-            final header = StringBuffer();
-            if (page.data.page['title'] case final String title
-                when title.isNotEmpty) {
-              header.writeln('# $title');
-
-              if (page.data.page['description'] case final String description
-                  when description.isNotEmpty) {
-                header.writeln();
-                header.writeln('> $description');
-              }
-            }
-
-            return header.toString();
-          },
-        ),
+        canonicalMarkdownOutput,
       ],
     ),
   );
 
   runApp(app);
-}
-
-final class _DashMarkdownOutput extends MarkdownOutput {
-  static final _changelogTagPattern = RegExp(
-    r'<ChangelogIndex\s*(?:/>|>\s*</ChangelogIndex>)',
-    caseSensitive: false,
-  );
-
-  _DashMarkdownOutput({super.createHeader});
-
-  @override
-  Component build(Page page) {
-    if (!_changelogTagPattern.hasMatch(page.content)) {
-      return super.build(page);
-    }
-
-    return Builder(
-      builder: (context) {
-        final pageContent = StringBuffer();
-        if (createHeader case final createHeader?) {
-          final headerForPage = createHeader(page);
-          pageContent.writeln(headerForPage);
-        }
-
-        final changesData = page.data['changelog'] as List<Object?>?;
-        final renderedChangelog = changesData != null
-            ? ChangelogIndex.renderMarkdown(changesData)
-            : '';
-        pageContent.writeln(
-          page.content.replaceFirst(_changelogTagPattern, renderedChangelog),
-        );
-
-        context.setHeader('Content-Type', 'text/markdown; charset=utf-8');
-        context.setStatusCode(200, responseBody: pageContent.toString());
-        return const Component.empty();
-      },
-    );
-  }
 }
