@@ -110,8 +110,8 @@ methods for applying colors to text.
     `ConsoleColor` is an **enhanced enum**.
     Unlike basic enums that only list fixed values (like `OptionType` in
     Chapter 5), enhanced enums can declare `final` properties (`r`, `g`, `b`),
-    a `const` constructor (`const ConsoleColor(...)`), and methods or getters—
-    combining the fixed value set of an enum with capabilities of a class.
+    a `const` constructor (`const ConsoleColor(...)`), and methods or getters.
+    They combine the fixed value set of an enum with capabilities of a class.
     Each color entry is a constant instance initialized with its RGB values.
 
 1.  Add methods to the `ConsoleColor` enum for applying colors to text:
@@ -212,10 +212,12 @@ add utility methods for applying console colors and formatting text.
     especially useful for core Dart types like `String` that can't be
     subclassed.
 
-    Inside the extension, `this` refers to the `String` instance being called:
-    it adds three getters for applying console colors (`errorText`,
-    `instructionText`, and `titleText`) and a `splitLinesByLength` method that
-    you can call directly on any string (such as `'Warning'.errorText`).
+    Inside an extension, `this` refers to the string that the getter or
+    method is called on.
+    `TextRenderUtils` adds three getters for applying console colors
+    (`errorText`, `instructionText`, and `titleText`) and a
+    `splitLinesByLength` method, all of which you can call directly on any
+    string (such as `'Warning'.errorText`).
 
 ### Task 3: Update command_runner package
 

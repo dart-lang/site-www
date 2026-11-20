@@ -117,7 +117,7 @@ First, create a new Dart package to house the data models.
 
 1.  Remove the generated `wikipedia/bin` directory by running
     `rm -r wikipedia/bin` (on macOS or Linux) or
-    `rmdir /s /q wikipedia\bin` (on Windows).
+    `Remove-Item -Recurse wikipedia\bin` (on Windows).
     Because `cli` serves as your application's executable entry point,
     `wikipedia` is used strictly as a library package and doesn't need its own
     `bin/` folder.

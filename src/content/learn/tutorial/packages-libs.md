@@ -134,9 +134,9 @@ handle the command-line argument parsing logic.
     ```dart title="command_runner/example/command_runner_example.dart"
     import 'package:command_runner/command_runner.dart';
 
-    void main(List<String> arguments) {
+    void main(List<String> arguments) async {
       var runner = CommandRunner();
-      runner.run(arguments);
+      await runner.run(arguments);
     }
     ```
 
