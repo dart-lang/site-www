@@ -16,7 +16,7 @@ follow these steps to properly stage the repository.
 
 Update the formatting of the site's Dart code and examples
 to stay compliant with standard formatting rules.
-This must be done before syncing excerpts
+Format Dart code before syncing excerpts
 so the generated code matches the source format:
 
 ```bash
@@ -32,19 +32,27 @@ are synced correctly into the corresponding Markdown files:
 dart run dash_site refresh-excerpts
 ```
 
-## 3. Build the site
+## 3. Lint Markdown and site variables
 
-For the link checker to validate local URLs,
-the site must be built first.
-Run the build command:
+Scan changed Markdown files for known formatting issues
+and hardcoded URLs that can use site variables:
+
+```bash
+dart run dash_site check-markdown
+dart run dash_site check-site-variable
+```
+
+## 4. Build the site
+
+Build the site before running the link checks:
 
 ```bash
 dart run dash_site build
 ```
 
-## 4. Check for broken links
+## 5. Check for broken links
 
-Verify that all internal pages, URLs, and markdown link references are intact.
+Verify that all internal pages, URLs, and Markdown link references are intact.
 
 First, check for broken Markdown link references:
 
@@ -61,7 +69,7 @@ dart run dash_site check-links
 If you detect any broken links,
 attempt to patch them or alert the user about the issues.
 
-## 5. Stage the site locally
+## 6. Stage the site locally
 
 Finally, serve a local development environment
 to preview the changes in your browser:

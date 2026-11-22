@@ -15,7 +15,7 @@ First person, contractions, anecdotes, humor, enthusiasm,
 and future-facing announcements can all be appropriate.
 Don't rewrite them merely to match documentation conventions.
 
-Apply `proofread-markdown` selectively for clarity,
+Apply `write-technical-docs` and `format-markdown` selectively for clarity,
 accuracy, accessibility, links, code formatting, and sound structure.
 Their documentation-specific preferences aren't blanket blog requirements:
 semantic line breaks and an 80-character limit aren't required,
