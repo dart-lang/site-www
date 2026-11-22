@@ -261,13 +261,16 @@ executables:
   fvm:
 ```
 
-Once the package is activated using `dart pub global activate`,
-typing `slidy` executes `bin/main.dart`.
-Typing `fvm` executes `bin/fvm.dart`.
+Once the package is installed globally using
+[`dart install`](/tools/dart-install),
+typing `slidy` executes `bin/main.dart` and
+typing `fvm` executes `bin/fvm.dart`.
+Users can also run declared executables directly without installing the package
+using [`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package).
 If you don't specify the value, it is inferred from the key.
 
 For more information, see
-[pub global](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
+[Packaging and distributing Dart CLI tools](/tools/cli-distribution).
 
 
 ### Platforms

@@ -48,12 +48,15 @@ The following table shows which commands you can use with the `dart` tool.
 | `doc`      | `dart doc <DIRECTORY>`                                 | Generates API reference documentation.<br>[Learn more.][doc]                                             |
 | `fix`      | <code>dart fix <DIRECTORY&#124;DART_FILE></code>       | Applies automated fixes to Dart source code.<br>[Learn more.][fix]                                       |
 | `format`   | <code>dart format <DIRECTORY&#124;DART_FILE></code>    | Formats Dart source code.<br>[Learn more.][format]                                                       |
-| `info`     | `dart info`                                            | Outputs Dart tooling diagnostic information.<br>[Learn more.][info]                                      |
-| `migrate`  | `dart migrate [<DIRECTORY...>]`                        | Migrates Dart packages to newer SDK versions.<br>[Learn more.][migrate]                                  |
-| `pub`      | `dart pub <PUB_COMMAND>`                               | Works with packages.<br>Replaces `pub`.<br>[Learn more.][pub]                                            |
-| `run`      | `dart run <DART_FILE>`                                 | Runs a Dart program.<br>[Learn more.][run]                                                               |
-| `test`     | <code>dart test <DIRECTORY&#124;DART_FILE></code>      | Runs tests in this package.<br>[Learn more.][test]                                                       |
-| _(none)_   | `dart <DART_FILE>`                                     | Runs a Dart program.<br>Prefer [`dart run`][run].                                                        |
+| `info`      | `dart info`                                            | Outputs Dart tooling diagnostic information.<br>[Learn more.][info]                                      |
+| `install`   | `dart install <PACKAGE>[@<DESCRIPTOR>]`                | Installs or upgrades a Dart CLI tool for global use.<br>[Learn more.][install]                           |
+| `installed` | `dart installed`                                       | Lists globally installed Dart CLI tools.<br>[Learn more.][installed]                                     |
+| `migrate`   | `dart migrate [<DIRECTORY...>]`                        | Migrates Dart packages to newer SDK versions.<br>[Learn more.][migrate]                                  |
+| `pub`       | `dart pub <PUB_COMMAND>`                               | Works with packages.<br>Replaces `pub`.<br>[Learn more.][pub]                                            |
+| `run`       | <code>dart run [<DART_FILE>&#124;<PACKAGE_TARGET>]</code> | Runs a Dart program from a file, or from a local or remote package.<br>[Learn more.][run]             |
+| `test`      | <code>dart test <DIRECTORY&#124;DART_FILE></code>      | Runs tests in this package.<br>[Learn more.][test]                                                       |
+| `uninstall` | `dart uninstall <PACKAGE>`                             | Removes a globally installed Dart CLI tool.<br>[Learn more.][uninstall]                                  |
+| _(none)_    | `dart <DART_FILE>`                                     | Runs a Dart program.<br>Prefer [`dart run`][run].                                                        |
 
 {:.table .table-striped .nowrap}
 
@@ -68,10 +71,13 @@ The following table shows which commands you can use with the `dart` tool.
 [fix]: /tools/dart-fix
 [format]: /tools/dart-format
 [info]: /tools/dart-info
+[install]: /tools/dart-install
+[installed]: /tools/dart-install#dart-installed
 [migrate]: /tools/dart-migrate
 [pub]: /tools/pub/cmd
 [run]: /tools/dart-run
 [test]: /tools/dart-test
+[uninstall]: /tools/dart-install#dart-uninstall
 
 ## Learn more
 

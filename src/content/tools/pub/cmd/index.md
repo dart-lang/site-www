@@ -103,13 +103,14 @@ or any modification of the pubspec.
 
 ### Running command-line apps
 
-The [`global`](/tools/pub/cmd/pub-global) subcommand lets you 
-make a package globally available, 
-so you can run scripts from that package's `bin` directory.
-To run globally available scripts, you must
-[add the system cache `bin` directory to your path][add-path].
+The legacy [`global`](/tools/pub/cmd/pub-global) subcommand makes a package
+globally available so you can run scripts from that package's `bin` directory.
 
-[add-path]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
+For modern workflows, prefer [`dart install`](/tools/dart-install) to install
+command-line tools globally as standalone native executables,
+or [`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package)
+(`dart run <package>@`) to run remote package executables without installing
+them.
 
 ### Deploying packages and apps
 
@@ -127,11 +128,14 @@ see [Uploaders](/tools/pub/publishing#uploaders).
 
 #### Command-line apps
 
-For any package that contains scripts (anything under the `bin/`
-directory), consider adding the `executables` tag to the pubspec file.
-When a script is listed under `executables`, users can run
-[`dart pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
-to make it directly available from the command line.
+For any package that defines command-line tools under the `bin/` directory,
+add an [`executables`](/tools/pub/pubspec#executables) section to
+`pubspec.yaml`.
+When a script is listed under `executables`, users can install it globally with
+[`dart install`](/tools/dart-install) or run it directly with
+[`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package).
+For details, see
+[Packaging and distributing Dart CLI tools](/tools/cli-distribution).
 
 
 ## Global options

@@ -3,9 +3,9 @@ title: dart run
 description: Command-line tool for running a Dart program.
 ---
 
-The `dart run` command supports running
-a Dart program—located in a file, in the current package,
-or in one of the dependencies of the current package—from the command line.
+The `dart run` command supports running a Dart program—located in a file,
+in the current package, in one of the dependencies of the current package,
+or in a remote package—from the command line.
 This command provides functionality that was previously in `pub run`
 and the Dart VM tool.
 
@@ -28,18 +28,20 @@ Support for running remote package executables was introduced in Dart 3.12.
 :::
 
 To run an executable from a remote package without adding it as a dependency
-or installing it, specify the package name followed by an `@` symbol.
+or installing it globally, specify the package name followed by an `@` symbol.
 
-For example:
+For example, the following command resolves [`package:dhttpd`][] from
+[pub.dev]({{site.pub}}), selects the latest stable version compatible with your
+active Dart SDK, and compiles and runs the package's default executable:
 
 ```console
 $ dart run dhttpd@
 ```
 
-Dart resolves the package from pub.dev, downloads it if necessary,
-and compiles and runs its default executable.
-
+Dart caches the compiled native executable for subsequent runs.
 Use this form for one-off tools and temporary utilities.
+For a tool you use regularly,
+install it globally with [`dart install`][] instead.
 
 The complete syntax is:
 
@@ -47,9 +49,34 @@ The complete syntax is:
 dart run <PACKAGE>[:<EXECUTABLE>]@[<DESCRIPTOR>] [args]
 ```
 
-The `:<EXECUTABLE>` part specifies the executable to run.
-The `@[<DESCRIPTOR>]` part specifies the package version or version constraint.
-Both parts are optional.
+The `@` symbol is required to indicate a remote package,
+while `:<EXECUTABLE>` and `<DESCRIPTOR>` are optional:
+
+* `:<EXECUTABLE>` selects an executable declared in the package's
+  [`executables`][] pubspec section.
+  If omitted, `dart run` executes the entry matching `<PACKAGE>`.
+* `<DESCRIPTOR>` specifies a [package descriptor][],
+  such as a version constraint or a flow-style YAML dependency source
+  (for example, a Git repository, local path, or custom package server).
+  Quote YAML descriptors so your shell passes them as a single argument.
+
+```console
+$ dart run dhttpd@^4.0.0 --path doc/api
+$ dart run coverage:test_with_coverage@
+$ dart run 'pubviz@{git: https://github.com/kevmoo/pubviz.git}'
+```
+
+:::note
+Remote package executables are compiled ahead-of-time (AOT) into standalone
+native binaries.
+Dart VM options and [debugging flags](#debugging) (such as `--observe` and
+`--enable-asserts`) aren't supported when running a remote package.
+:::
+
+[`package:dhttpd`]: {{site.pub-pkg}}/dhttpd
+[`dart install`]: /tools/dart-install
+[`executables`]: /tools/pub/pubspec#executables
+[package descriptor]: /tools/pub/dependencies#package-descriptors
 
 {% render 'tools/dart-tool-note.md' %}
 

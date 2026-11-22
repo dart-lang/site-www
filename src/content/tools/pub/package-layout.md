@@ -299,16 +299,14 @@ For details on writing and testing fixes, see
 
 ### Public tools
 
-Dart scripts placed inside of the `bin` directory are public. If you're
-inside the directory of a package, you can use
-[`dart run`](/tools/dart-run) to run scripts from the `bin`
-directories of any other package the package depends on. From _any_
-directory, you can [run scripts][]
-from packages that you have activated using
-[`dart pub global activate`][activate].
-
-[run scripts]: /tools/pub/cmd/pub-global#running-a-script
-[activate]: /tools/pub/cmd/pub-global#activating-a-package
+Dart scripts placed inside of the `bin` directory are public.
+If you're inside the directory of a package,
+you can use [`dart run`](/tools/dart-run) to run scripts from the `bin`
+directories of any other package the package depends on.
+From _any_ directory, you can run executables declared in a package's
+[`executables`](/tools/pub/pubspec#executables) section directly with
+[`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package)
+or install them globally with [`dart install`](/tools/dart-install).
 
 If you intend for your package to be depended on,
 and you want your scripts to be private to your package, place them
@@ -424,10 +422,14 @@ Some packages define programs that can be run directly from the command
 line. These can be shell scripts or any other scripting language,
 including Dart.
 
-If your package defines code like this, put it in a directory named `bin`.
-You can run that script from anywhere on the command line, if you set it up
-using
-[`dart pub global`](/tools/pub/cmd/pub-global#running-a-script-from-your-path).
+If your package defines Dart executables like this,
+put them in a directory named `bin` and declare them in the
+[`executables`](/tools/pub/pubspec#executables) section of `pubspec.yaml`.
+Users can then install them globally with [`dart install`](/tools/dart-install)
+or run them directly with
+[`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package).
+For details, see
+[Packaging and distributing Dart CLI tools](/tools/cli-distribution).
 
 ## Tests and benchmarks
 

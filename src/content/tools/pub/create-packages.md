@@ -239,13 +239,15 @@ placing the test code in the `test` directory at the
 top of the package.
 
 If you create any command-line tools intended for public consumption,
-place those in the `bin` directory, which is public.
-Enable running a tool from the command line, using
-[`dart pub global activate`](/tools/pub/cmd/pub-global#activating-a-package).
-Listing the tool in the
-[`executables` section](/tools/pub/pubspec#executables)
-of the pubspec allows a user to run it directly without calling
-[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-dart-pub-global-run).
+place those in the `bin` directory, which is public,
+and list them in the [`executables` section](/tools/pub/pubspec#executables)
+of `pubspec.yaml`.
+Users can then install a tool globally using
+[`dart install`](/tools/dart-install)
+or run it directly without installing it using
+[`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package).
+For details, see
+[Packaging and distributing Dart CLI tools](/tools/cli-distribution).
 
 It's helpful if you include an example of how to use your library.
 This goes into the `example` directory at the top of the package.
