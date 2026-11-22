@@ -261,16 +261,19 @@ executables:
   fvm:
 ```
 
-Once the package is installed globally using
-[`dart install`](/tools/dart-install),
+After you install the package globally using [`dart install`][],
 typing `slidy` executes `bin/main.dart` and
 typing `fvm` executes `bin/fvm.dart`.
-Users can also run declared executables directly without installing the package
-using [`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package).
+You can also run declared executables directly
+without installing the package using [`dart run <package>@`][remote-run].
 If you don't specify the value, it is inferred from the key.
 
-For more information, see
-[Packaging and distributing Dart CLI tools](/tools/cli-distribution).
+For more information, refer to
+[Packaging and distributing Dart CLI tools][].
+
+[`dart install`]: /tools/dart-install
+[remote-run]: /tools/dart-run#run-an-executable-from-a-remote-package
+[Packaging and distributing Dart CLI tools]: /tools/cli-distribution
 
 
 ### Platforms

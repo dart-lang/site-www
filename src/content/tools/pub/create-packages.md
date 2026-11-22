@@ -239,15 +239,11 @@ placing the test code in the `test` directory at the
 top of the package.
 
 If you create any command-line tools intended for public consumption,
-place those in the `bin` directory, which is public,
-and list them in the [`executables` section](/tools/pub/pubspec#executables)
-of `pubspec.yaml`.
-Users can then install a tool globally using
-[`dart install`](/tools/dart-install)
-or run it directly without installing it using
-[`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package).
-For details, see
-[Packaging and distributing Dart CLI tools](/tools/cli-distribution).
+place them in the `bin` directory, which is public,
+and list them in the [`executables` section][] of the `pubspec.yaml` file.
+Users can then install a tool globally using [`dart install`][],
+or run it directly without installing it using [`dart run`][remote-run].
+For details, refer to [Packaging and distributing Dart CLI tools][].
 
 It's helpful if you include an example of how to use your library.
 This goes into the `example` directory at the top of the package.
@@ -260,6 +256,11 @@ Other files that are required if you publish your library to the
 described in [Publishing a package](/tools/pub/publishing).
 For more information on how to organize a package directory,
 see the [pub package layout conventions](/tools/pub/package-layout).
+
+[`executables` section]: /tools/pub/pubspec#executables
+[`dart install`]: /tools/dart-install
+[remote-run]: /tools/dart-run#run-an-executable-from-a-remote-package
+[Packaging and distributing Dart CLI tools]: /tools/cli-distribution
 
 ## Documenting a library
 

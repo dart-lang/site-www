@@ -299,14 +299,14 @@ For details on writing and testing fixes, see
 
 ### Public tools
 
-Dart scripts placed inside of the `bin` directory are public.
+Dart scripts placed inside the `bin` directory are public.
 If you're inside the directory of a package,
-you can use [`dart run`](/tools/dart-run) to run scripts from the `bin`
+you can use [`dart run`][] to run scripts from the `bin`
 directories of any other package the package depends on.
-From _any_ directory, you can run executables declared in a package's
-[`executables`](/tools/pub/pubspec#executables) section directly with
-[`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package)
-or install them globally with [`dart install`](/tools/dart-install).
+From _any_ directory, you can run executables declared in the
+[`executables`][] section of a package's `pubspec.yaml` file directly with
+[`dart run <package>@`][remote-run]
+or install them globally with [`dart install`][].
 
 If you intend for your package to be depended on,
 and you want your scripts to be private to your package, place them
@@ -424,12 +424,10 @@ including Dart.
 
 If your package defines Dart executables like this,
 put them in a directory named `bin` and declare them in the
-[`executables`](/tools/pub/pubspec#executables) section of `pubspec.yaml`.
-Users can then install them globally with [`dart install`](/tools/dart-install)
-or run them directly with
-[`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package).
-For details, see
-[Packaging and distributing Dart CLI tools](/tools/cli-distribution).
+[`executables`][] section of the `pubspec.yaml` file.
+Users can then install them globally with [`dart install`][]
+or run them directly with [`dart run <package>@`][remote-run].
+For details, refer to [Packaging and distributing Dart CLI tools][].
 
 ## Tests and benchmarks
 
@@ -687,3 +685,8 @@ ensure the following:
 
 
 [Markdown]: {{site.pub-pkg}}/markdown
+[`dart run`]: /tools/dart-run
+[remote-run]: /tools/dart-run#run-an-executable-from-a-remote-package
+[`executables`]: /tools/pub/pubspec#executables
+[`dart install`]: /tools/dart-install
+[Packaging and distributing Dart CLI tools]: /tools/cli-distribution

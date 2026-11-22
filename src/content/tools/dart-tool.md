@@ -53,7 +53,7 @@ The following table shows which commands you can use with the `dart` tool.
 | `installed` | `dart installed`                                       | Lists globally installed Dart CLI tools.<br>[Learn more.][installed]                                     |
 | `migrate`   | `dart migrate [<DIRECTORY...>]`                        | Migrates Dart packages to newer SDK versions.<br>[Learn more.][migrate]                                  |
 | `pub`       | `dart pub <PUB_COMMAND>`                               | Works with packages.<br>Replaces `pub`.<br>[Learn more.][pub]                                            |
-| `run`       | <code>dart run [<DART_FILE>&#124;<PACKAGE_TARGET>]</code> | Runs a Dart program from a file, or from a local or remote package.<br>[Learn more.][run]             |
+| `run`       | <code>dart run [&lt;DART_FILE&gt;&#124;&lt;PACKAGE_TARGET&gt;]</code> | Runs a Dart program from a file or from a local or remote package.<br>[Learn more.][run] |
 | `test`      | <code>dart test <DIRECTORY&#124;DART_FILE></code>      | Runs tests in this package.<br>[Learn more.][test]                                                       |
 | `uninstall` | `dart uninstall <PACKAGE>`                             | Removes a globally installed Dart CLI tool.<br>[Learn more.][uninstall]                                  |
 | _(none)_    | `dart <DART_FILE>`                                     | Runs a Dart program.<br>Prefer [`dart run`][run].                                                        |

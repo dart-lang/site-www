@@ -103,14 +103,13 @@ or any modification of the pubspec.
 
 ### Running command-line apps
 
-The legacy [`global`](/tools/pub/cmd/pub-global) subcommand makes a package
+The legacy [`global`][] subcommand makes a package
 globally available so you can run scripts from that package's `bin` directory.
 
-For modern workflows, prefer [`dart install`](/tools/dart-install) to install
-command-line tools globally as standalone native executables,
-or [`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package)
-(`dart run <package>@`) to run remote package executables without installing
-them.
+Instead, use [`dart install`][] to install command-line tools globally
+as standalone native executables,
+or [`dart run`][remote-run] (`dart run <package>@`) to run
+remote package executables without installing them.
 
 ### Deploying packages and apps
 
@@ -129,13 +128,11 @@ see [Uploaders](/tools/pub/publishing#uploaders).
 #### Command-line apps
 
 For any package that defines command-line tools under the `bin/` directory,
-add an [`executables`](/tools/pub/pubspec#executables) section to
-`pubspec.yaml`.
-When a script is listed under `executables`, users can install it globally with
-[`dart install`](/tools/dart-install) or run it directly with
-[`dart run`](/tools/dart-run#run-an-executable-from-a-remote-package).
-For details, see
-[Packaging and distributing Dart CLI tools](/tools/cli-distribution).
+add an [`executables`][] section to the `pubspec.yaml` file.
+When you list a script under `executables`,
+users can install it globally using [`dart install`][]
+or run it directly using [`dart run`][remote-run].
+For details, refer to [Packaging and distributing Dart CLI tools][].
 
 
 ## Global options
@@ -166,4 +163,10 @@ The default depends on whether you're using this command at a terminal.
 At a terminal, `--color` is the default,
 otherwise, `--no-color` is the default.
 Use `--no-color` to disable color in all environments.
+
+[`global`]: /tools/pub/cmd/pub-global
+[`dart install`]: /tools/dart-install
+[remote-run]: /tools/dart-run#run-an-executable-from-a-remote-package
+[`executables`]: /tools/pub/pubspec#executables
+[Packaging and distributing Dart CLI tools]: /tools/cli-distribution
 

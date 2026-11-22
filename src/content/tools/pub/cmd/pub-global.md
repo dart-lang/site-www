@@ -5,8 +5,9 @@ description: Use dart pub global to run Dart scripts hosted on the pub.dev site 
 
 :::version-note
 **Legacy command:** Support for `dart pub global` is legacy.
+
 * To install CLI tools globally as standalone, AOT-compiled binaries
-  with build hook (`hook/build.dart`) support,
+  with native build hook (`hook/build.dart`) support,
   use [`dart install`][] (introduced in Dart 3.10),
   along with `dart installed` and `dart uninstall`.
 * To run an executable from a remote package without installing it,
@@ -42,7 +43,7 @@ If this doesn't work, you might need to
 
 To run a Dart script from within a package,
 from a package that your package depends on,
-or from a remote package, see [`dart run`](/tools/dart-run).
+or from a remote package, refer to [`dart run`][].
 
 ## Activating a package
 
@@ -190,7 +191,7 @@ $ dart pub global run <package>:<executable> [args...]
 
 :::note
 [`dart run <package>[:<executable>]@`][remote-run] is a newer alternative
-to `dart pub global run` for executables declared in `pubspec.yaml`.
+to `dart pub global run` for executables declared in the `pubspec.yaml` file.
 :::
 
 Even if a script is not configured to be run from the command line,
@@ -304,6 +305,7 @@ the preexisting executable will not be replaced.
 {% render 'pub-problems.md' %}
 
 [`dart install`]: /tools/dart-install
+[`dart run`]: /tools/dart-run
 [remote-run]: /tools/dart-run#run-an-executable-from-a-remote-package
 [system cache]: /resources/glossary#pub-system-cache
 [webdev]: /tools/webdev

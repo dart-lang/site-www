@@ -30,9 +30,10 @@ Support for running remote package executables was introduced in Dart 3.12.
 To run an executable from a remote package without adding it as a dependency
 or installing it globally, specify the package name followed by an `@` symbol.
 
-For example, the following command resolves [`package:dhttpd`][] from
-[pub.dev]({{site.pub}}), selects the latest stable version compatible with your
-active Dart SDK, and compiles and runs the package's default executable:
+For example, the following command
+resolves [`package:dhttpd`][] from [pub.dev][],
+selects the latest stable version compatible with your active Dart SDK,
+and compiles and runs the package's default executable:
 
 ```console
 $ dart run dhttpd@
@@ -52,10 +53,11 @@ dart run <PACKAGE>[:<EXECUTABLE>]@[<DESCRIPTOR>] [args]
 The `@` symbol is required to indicate a remote package,
 while `:<EXECUTABLE>` and `<DESCRIPTOR>` are optional:
 
-* `:<EXECUTABLE>` selects an executable declared in the package's
-  [`executables`][] pubspec section.
-  If omitted, `dart run` executes the entry matching `<PACKAGE>`.
-* `<DESCRIPTOR>` specifies a [package descriptor][],
+- `:<EXECUTABLE>` selects an executable declared in the
+  [`executables`][] section of the `pubspec.yaml` file.
+  If you omit `:<EXECUTABLE>`, `dart run` executes the entry
+  matching `<PACKAGE>`.
+- `<DESCRIPTOR>` specifies a [package descriptor][],
   such as a version constraint or a flow-style YAML dependency source
   (for example, a Git repository, local path, or custom package server).
   Quote YAML descriptors so your shell passes them as a single argument.
@@ -67,16 +69,19 @@ $ dart run 'pubviz@{git: https://github.com/kevmoo/pubviz.git}'
 ```
 
 :::note
-Remote package executables are compiled ahead-of-time (AOT) into standalone
-native binaries.
-Dart VM options and [debugging flags](#debugging) (such as `--observe` and
-`--enable-asserts`) aren't supported when running a remote package.
+Dart compiles remote package executables ahead-of-time (AOT)
+into standalone native binaries.
+When running a remote package,
+`dart run` doesn't support Dart VM options or [debugging flags][]
+(such as `--observe` and `--enable-asserts`).
 :::
 
 [`package:dhttpd`]: {{site.pub-pkg}}/dhttpd
+[pub.dev]: {{site.pub}}
 [`dart install`]: /tools/dart-install
 [`executables`]: /tools/pub/pubspec#executables
 [package descriptor]: /tools/pub/dependencies#package-descriptors
+[debugging flags]: #debugging
 
 {% render 'tools/dart-tool-note.md' %}
 
