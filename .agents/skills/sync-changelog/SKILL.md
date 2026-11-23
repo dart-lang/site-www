@@ -50,6 +50,10 @@ and checking what h2 headers (`##`) are present.
     > ```bash
     > dart run dash_site sync-changelog --version 3.11.0 --dry-run
     > ```
+    >
+    > Re-running `sync-changelog` for the same version is idempotent: entries
+    > already present in `src/data/changelog.yml` (matched by GitHub issue/PR
+    > URL or normalized description) are skipped automatically.
 
 2.  **Verify changes**
 
@@ -171,17 +175,20 @@ and checking what h2 headers (`##`) are present.
 
     If found, fix them before continuing on.
 
-8.  **Validate the data**
+8.  **Validate the data and check SDK coverage**
 
-    Run the changelog data test from the `site` directory to catch
-    schema problems, unknown tags, missing or placeholder release
-    dates, and unresolved reference links before handing off:
+    Run the `check-changelog` CLI check and the changelog data test to catch
+    schema problems, unknown tags, non-monotonic versions, conflicting or
+    placeholder release dates, duplicates, and unresolved reference links:
 
     ```bash
+    dart run dash_site check-changelog
+    dart run dash_site sync-changelog --check --version <VERSION>
     cd site && dart test test/changelog_data_test.dart
     ```
 
-    Fix any failures it reports in `src/data/changelog.yml`.
+    Fix any failures or missing SDK coverage reported in
+    `src/data/changelog.yml`.
 
 9.  **Request user review**
 
