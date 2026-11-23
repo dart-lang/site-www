@@ -51,9 +51,13 @@ and checking what h2 headers (`##`) are present.
     > dart run dash_site sync-changelog --version 3.11.0 --dry-run
     > ```
     >
-    > Re-running `sync-changelog` for the same version is idempotent: entries
-    > already present in `src/data/changelog.yml` (matched by GitHub issue/PR
-    > URL or normalized description) are skipped automatically.
+    > Re-running `sync-changelog` for a version that's already in
+    > `src/data/changelog.yml` skips SDK entries that match an existing entry
+    > by GitHub issue/PR URL or identical description. Entries that were
+    > reworded or intentionally left out can't be matched, so the tool only
+    > prints the remaining entries and doesn't write them. Review that list,
+    > then re-run with `--add-unmatched` to insert the entries and delete any
+    > that duplicate existing ones.
 
 2.  **Verify changes**
 

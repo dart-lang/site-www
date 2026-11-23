@@ -226,7 +226,7 @@ class Point<T>(var T x, var T y);
     });
   });
 
-  group('SyncChangelog.syncIntoYaml (idempotent sync)', () {
+  group('SyncChangelog.syncIntoYaml', () {
     const sdkMarkdown = '''
 ## 3.14.0
 
@@ -269,13 +269,27 @@ class Point<T>(var T x, var T y);
 # --------------------------------------------------
 ''';
 
-      final firstSync = SyncChangelog.syncIntoYaml(
+      // By default, entries that can't be matched in a version that already
+      // has entries are reported but not written.
+      final reviewOnly = SyncChangelog.syncIntoYaml(
         sdkMarkdown: sdkMarkdown,
         existingYaml: existingYaml,
         targetVersion: '3.14.0',
       );
+      expect(reviewOnly.skippedCount, 1);
+      expect(reviewOnly.addedCount, 0);
+      expect(reviewOnly.unmatchedCount, 1);
+      expect(reviewOnly.updatedYaml, existingYaml);
+
+      final firstSync = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sdkMarkdown,
+        existingYaml: existingYaml,
+        targetVersion: '3.14.0',
+        addUnmatched: true,
+      );
       expect(firstSync.skippedCount, 1);
       expect(firstSync.addedCount, 1);
+      expect(firstSync.unmatchedCount, 0);
       final parsed = loadYaml(firstSync.updatedYaml) as YamlList;
       expect(parsed, hasLength(2));
 
@@ -287,7 +301,111 @@ class Point<T>(var T x, var T y);
       );
       expect(secondSync.addedCount, 0);
       expect(secondSync.skippedCount, 2);
+      expect(secondSync.unmatchedCount, 0);
       expect(secondSync.updatedYaml, firstSync.updatedYaml);
+    });
+
+    test('adds every entry for a version that has no entries yet', () {
+      final synced = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sdkMarkdown,
+        existingYaml: '',
+        targetVersion: '3.14.0',
+      );
+      expect(synced.addedCount, 2);
+      expect(synced.skippedCount, 0);
+      expect(synced.unmatchedCount, 0);
+      expect(loadYaml(synced.updatedYaml) as YamlList, hasLength(2));
+    });
+
+    test('does not write reworded entries that have no issue URL', () {
+      const existingYaml = '''
+# --------------------------------------------------
+- version: 3.13.1
+  releaseDate: 2026-09-01
+  area: Tools
+  subArea: Pub
+  description: Resolved a bug that corrupted the lockfile.
+  tags:
+    - fixed
+  link: /tools/pub/cmd/pub-get
+# --------------------------------------------------
+''';
+
+      final synced = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sdkMarkdown,
+        existingYaml: existingYaml,
+        targetVersion: '3.13.1',
+      );
+      expect(synced.addedCount, 0);
+      expect(synced.skippedCount, 0);
+      expect(synced.unmatchedCount, 1);
+      expect(synced.updatedYaml, existingYaml);
+    });
+
+    test('keeps distinct SDK entries that cite the same issue', () {
+      const sharedIssueMarkdown = '''
+## 3.14.0
+
+**Released on:** 2026-11-11
+
+### Tools
+
+#### Pub
+
+- Added the `--first` flag ([#5001][]).
+- Added the unrelated `--second` flag ([#5001][]).
+- Added the `--third` flag.
+
+[#5001]: https://github.com/dart-lang/pub/issues/5001
+''';
+
+      final fresh = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sharedIssueMarkdown,
+        existingYaml: '',
+        targetVersion: '3.14.0',
+      );
+      expect(fresh.addedCount, 3);
+
+      // Re-running against the unedited output is a no-op.
+      final rerun = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sharedIssueMarkdown,
+        existingYaml: fresh.updatedYaml,
+        targetVersion: '3.14.0',
+        addUnmatched: true,
+      );
+      expect(rerun.addedCount, 0);
+      expect(rerun.skippedCount, 3);
+      expect(rerun.updatedYaml, fresh.updatedYaml);
+
+      // One existing citation of the issue accounts for one SDK entry, so the
+      // second entry that cites it is still added.
+      const existingYaml = '''
+# --------------------------------------------------
+- version: 3.14.0
+  releaseDate: 2026-11-11
+  area: Tools
+  subArea: Pub
+  description: Reworded entry for the `--first` flag.
+  tags:
+    - new
+  link: https://github.com/dart-lang/pub/issues/5001
+# --------------------------------------------------
+''';
+      final partial = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sharedIssueMarkdown,
+        existingYaml: existingYaml,
+        targetVersion: '3.14.0',
+        addUnmatched: true,
+      );
+      expect(partial.skippedCount, 1);
+      expect(partial.addedCount, 2);
+      final descriptions = [
+        for (final entry in loadYaml(partial.updatedYaml) as YamlList)
+          (entry as YamlMap)['description'].toString(),
+      ];
+      expect(descriptions, hasLength(3));
+      expect(descriptions, contains(contains('`--second`')));
+      expect(descriptions, contains(contains('`--third`')));
     });
 
     test('inserts patch versions in monotonic descending SemVer order', () {

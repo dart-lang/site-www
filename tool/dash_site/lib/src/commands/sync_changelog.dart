@@ -107,6 +107,15 @@ final class SyncChangelog extends Command<int> {
         defaultsTo: false,
       )
       ..addFlag(
+        'add-unmatched',
+        help:
+            'When --version already has entries in changelog.yml, also '
+            'insert the SDK entries that could not be matched to an existing '
+            'entry. Without this flag, those entries are only printed for '
+            'review.',
+        defaultsTo: false,
+      )
+      ..addFlag(
         'check',
         abbr: 'c',
         help:
@@ -128,6 +137,7 @@ final class SyncChangelog extends Command<int> {
     final results = argResults!;
     final versionString = results.getOrThrow<String>('version');
     final dryRun = results.getOrThrow<bool>('dry-run');
+    final addUnmatched = results.getOrThrow<bool>('add-unmatched');
     final checkOnly = results.getOrThrow<bool>('check');
     final releaseDate = results['release-date'] as String?;
     final sdkChangelogPath = results['sdk-changelog'] as String?;
@@ -262,13 +272,10 @@ final class SyncChangelog extends Command<int> {
         stdout.writeln('Using release date $resolvedReleaseDate.');
       }
 
-      final (:addedEntries, :skippedCount) = _filterNewEntries(
-        parsedEntries,
-        currentContent,
-        version.toString(),
-      );
+      final (:unmatchedEntries, :skippedCount, :versionExists) =
+          _filterNewEntries(parsedEntries, currentContent, version.toString());
 
-      if (addedEntries.isEmpty) {
+      if (unmatchedEntries.isEmpty) {
         stdout.writeln(
           'All ${parsedEntries.length} entries for version $version are '
           'already present in $changelogPath (skipped $skippedCount).',
@@ -276,14 +283,34 @@ final class SyncChangelog extends Command<int> {
         return 0;
       }
 
-      final newYaml = _generateYamlString(addedEntries);
+      final newYaml = _generateYamlString(unmatchedEntries);
       if (dryRun) {
         stdout.writeln(
           'Dry run successful. '
-          'Found ${addedEntries.length} new entries for version $version '
-          '(skipped $skippedCount existing):',
+          'Found ${unmatchedEntries.length} entries for version $version '
+          'with no match in changelog.yml (skipped $skippedCount existing):',
         );
         stdout.write(newYaml);
+        return 0;
+      }
+
+      if (versionExists && !addUnmatched) {
+        // Entries are only matched by GitHub issue/PR URL or identical text,
+        // so an entry that was reworded or intentionally left out of
+        // changelog.yml looks new. Don't write those without a review.
+        stdout.writeln(
+          'Version $version already has entries in $changelogPath. '
+          'Skipped $skippedCount matching entries, but '
+          '${unmatchedEntries.length} SDK entries have no match by GitHub '
+          'issue/PR URL or identical text:',
+        );
+        stdout.write(newYaml);
+        stdout.writeln(
+          'No changes written. Entries that were reworded or intentionally '
+          "left out of changelog.yml can't be detected automatically.\n"
+          'Review the entries above, then re-run with --add-unmatched to '
+          'insert them.',
+        );
         return 0;
       }
 
@@ -291,7 +318,7 @@ final class SyncChangelog extends Command<int> {
       await changelogFile.writeAsString(newContent);
 
       stdout.writeln(
-        'Successfully added ${addedEntries.length} new entries for '
+        'Successfully added ${unmatchedEntries.length} new entries for '
         'version $version in $changelogPath (skipped $skippedCount existing).',
       );
       return 0;
@@ -314,15 +341,30 @@ final class SyncChangelog extends Command<int> {
     _parseChangelog(markdown, targetVersion, releaseDate: releaseDate),
   );
 
-  /// Idempotently syncs entries for [targetVersion] from [sdkMarkdown] into
-  /// [existingYaml], skipping entries already represented by issue URL or
-  /// `(area, subArea, normalizedDescription)` fingerprint and inserting new
-  /// entries in monotonic descending SemVer order.
-  static ({String updatedYaml, int addedCount, int skippedCount}) syncIntoYaml({
+  /// Syncs entries for [targetVersion] from [sdkMarkdown] into [existingYaml],
+  /// inserting new entries in monotonic descending SemVer order.
+  ///
+  /// SDK entries already represented in [existingYaml] by a GitHub issue/PR
+  /// URL or an identical `(area, subArea, normalizedDescription)` fingerprint
+  /// are skipped, so re-running a sync whose output wasn't edited is a no-op.
+  ///
+  /// An existing entry that was reworded and doesn't cite an issue can't be
+  /// matched, so if [targetVersion] already has entries, the remaining SDK
+  /// entries are only inserted when [addUnmatched] is `true`. Otherwise
+  /// they're reported through `unmatchedCount` and [existingYaml] is
+  /// returned unchanged.
+  static ({
+    String updatedYaml,
+    int addedCount,
+    int skippedCount,
+    int unmatchedCount,
+  })
+  syncIntoYaml({
     required String sdkMarkdown,
     required String existingYaml,
     required String targetVersion,
     String? releaseDate,
+    bool addUnmatched = false,
   }) {
     final parsedEntries = _parseChangelog(
       sdkMarkdown,
@@ -330,23 +372,26 @@ final class SyncChangelog extends Command<int> {
       releaseDate: releaseDate,
     );
     if (parsedEntries.isEmpty) {
-      return (updatedYaml: existingYaml, addedCount: 0, skippedCount: 0);
+      return (
+        updatedYaml: existingYaml,
+        addedCount: 0,
+        skippedCount: 0,
+        unmatchedCount: 0,
+      );
     }
 
-    final (:addedEntries, :skippedCount) = _filterNewEntries(
-      parsedEntries,
-      existingYaml,
-      targetVersion,
-    );
-    if (addedEntries.isEmpty) {
+    final (:unmatchedEntries, :skippedCount, :versionExists) =
+        _filterNewEntries(parsedEntries, existingYaml, targetVersion);
+    if (unmatchedEntries.isEmpty || (versionExists && !addUnmatched)) {
       return (
         updatedYaml: existingYaml,
         addedCount: 0,
         skippedCount: skippedCount,
+        unmatchedCount: unmatchedEntries.length,
       );
     }
 
-    final newYaml = _generateYamlString(addedEntries);
+    final newYaml = _generateYamlString(unmatchedEntries);
     final updated = _applyPatches(
       existingYaml,
       newYaml,
@@ -354,8 +399,9 @@ final class SyncChangelog extends Command<int> {
     );
     return (
       updatedYaml: updated,
-      addedCount: addedEntries.length,
+      addedCount: unmatchedEntries.length,
       skippedCount: skippedCount,
+      unmatchedCount: 0,
     );
   }
 
@@ -742,10 +788,19 @@ final class SyncChangelog extends Command<int> {
     return _htmlUnescape.convert(node.textContent);
   }
 
-  /// Filters out entries from [incoming] that already appear in [existingYaml]
-  /// for [targetVersion] (by shared GitHub issue/PR URL or normalized
-  /// `(area, subArea, description)` fingerprint).
-  static ({List<_ChangelogEntry> addedEntries, int skippedCount})
+  /// Splits [incoming] into entries that already appear in [existingYaml] for
+  /// [targetVersion] and entries that have no match there.
+  ///
+  /// An incoming entry matches when an existing entry has the same normalized
+  /// `(area, subArea, description)` fingerprint or cites one of the same
+  /// GitHub issue/PR URLs. Each existing citation of a URL accounts for only
+  /// one incoming entry, so distinct SDK entries that share an issue aren't
+  /// collapsed into one.
+  static ({
+    List<_ChangelogEntry> unmatchedEntries,
+    int skippedCount,
+    bool versionExists,
+  })
   _filterNewEntries(
     List<_ChangelogEntry> incoming,
     String existingYaml,
@@ -753,36 +808,54 @@ final class SyncChangelog extends Command<int> {
   ) {
     final existing = _loadSiteEntriesForVersion(existingYaml, targetVersion);
     if (existing.isEmpty) {
-      return (addedEntries: incoming, skippedCount: 0);
+      return (
+        unmatchedEntries: incoming,
+        skippedCount: 0,
+        versionExists: false,
+      );
     }
 
-    final existingIssueUrls = <String>{
-      for (final entry in existing) ...entry.issueUrls,
-    };
+    // How many existing entries cite each issue URL and aren't yet paired
+    // with an incoming entry.
+    final unclaimedIssueCitations = <String, int>{};
+    for (final entry in existing) {
+      for (final issueUrl in entry.issueUrls) {
+        unclaimedIssueCitations.update(
+          issueUrl,
+          (count) => count + 1,
+          ifAbsent: () => 1,
+        );
+      }
+    }
     final existingFingerprints = <String>{
       for (final entry in existing) entry.fingerprint,
     };
 
-    final addedEntries = <_ChangelogEntry>[];
+    final unmatchedEntries = <_ChangelogEntry>[];
     var skippedCount = 0;
 
     for (final entry in incoming) {
-      final matchesIssue =
-          entry.issueUrls.isNotEmpty &&
-          entry.issueUrls.any(existingIssueUrls.contains);
-      final matchesFingerprint = existingFingerprints.contains(
-        entry.fingerprint,
-      );
-      if (matchesIssue || matchesFingerprint) {
-        skippedCount++;
-        continue;
+      final claimedIssueUrls = [
+        for (final issueUrl in entry.issueUrls)
+          if ((unclaimedIssueCitations[issueUrl] ?? 0) > 0) issueUrl,
+      ];
+      for (final issueUrl in claimedIssueUrls) {
+        unclaimedIssueCitations.update(issueUrl, (count) => count - 1);
       }
-      addedEntries.add(entry);
-      existingIssueUrls.addAll(entry.issueUrls);
-      existingFingerprints.add(entry.fingerprint);
+
+      if (claimedIssueUrls.isNotEmpty ||
+          existingFingerprints.contains(entry.fingerprint)) {
+        skippedCount++;
+      } else {
+        unmatchedEntries.add(entry);
+      }
     }
 
-    return (addedEntries: addedEntries, skippedCount: skippedCount);
+    return (
+      unmatchedEntries: unmatchedEntries,
+      skippedCount: skippedCount,
+      versionExists: true,
+    );
   }
 
   static List<_SiteEntrySummary> _loadSiteEntriesForVersion(
