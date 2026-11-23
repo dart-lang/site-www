@@ -5,11 +5,13 @@
 @TestOn('vm')
 library;
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters_notifier.dart';
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_index.dart';
 import 'package:dart_dev_site/src/models/changelog_model.dart';
+import 'package:dart_dev_site/src/pages/changelog_slices.dart';
 import 'package:dart_dev_site/src/util.dart';
 import 'package:path/path.dart' as path;
 import 'package:pub_semver/pub_semver.dart';
@@ -133,9 +135,120 @@ void main() {
 
     test('renders clean Markdown for /changelog.md', () {
       final markdown = ChangelogIndex.renderMarkdown(rawEntries);
+      expect(markdown, contains('## Pre-sliced endpoints'));
+      expect(markdown, contains('/changelog/index.json'));
+      expect(markdown, contains('/changelog/tags/breaking.md'));
       expect(markdown, contains('## Dart 3.13'));
       expect(markdown, contains('### [3.9.4] [Tools] — Pub (Fixed)'));
       expect(markdown, isNot(contains('<ChangelogIndex')));
+    });
+
+    test('emits static index.json, version, tag, and area slices', () {
+      final slicePages = buildChangelogSlicePages(entries);
+      final pagesByPath = {
+        for (final page in slicePages) page.path: page,
+      };
+
+      expect(pagesByPath.length, slicePages.length);
+      for (final page in slicePages) {
+        expect(
+          changelogSlicePathPattern.hasMatch(page.path),
+          isTrue,
+          reason: 'Unexpected slice path: ${page.path}',
+        );
+        expect(page.keepSuffix, isTrue, reason: page.path);
+        final pageData = page.initialData['page'] as Map<String, Object?>;
+        expect(pageData['sitemap'], isFalse, reason: page.path);
+        expect(page.content, isNotNull);
+        expect(page.content!.trim(), isNotEmpty, reason: page.path);
+      }
+
+      // Root manifest: /changelog/index.json
+      final indexPage = pagesByPath['changelog/index.json'];
+      expect(indexPage, isNotNull);
+      final manifest = jsonDecode(indexPage!.content!) as Map<String, Object?>;
+      expect(manifest['totalEntries'], entries.length);
+      expect(manifest['htmlUrl'], '/changelog');
+      expect(manifest['markdownUrl'], '/changelog.md');
+
+      final releases = (manifest['releases'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(releases, isNotEmpty);
+      expect(manifest['totalReleases'], releases.length);
+
+      // Every linked release slice in index.json exists in emitted pages.
+      for (final release in releases) {
+        final mdPath = (release['markdownUrl'] as String).substring(1);
+        final jsonPath = (release['jsonUrl'] as String).substring(1);
+        expect(pagesByPath, contains(mdPath));
+        expect(pagesByPath, contains(jsonPath));
+      }
+
+      // Spot-check a minor version slice containing patch releases (3.9).
+      final v39Json = jsonDecode(
+        pagesByPath['changelog/versions/3.9.json']!.content!,
+      ) as Map<String, Object?>;
+      final v39Entries = (v39Json['entries'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(
+        v39Entries.any(
+          (e) =>
+              e['version'] == '3.9.4' &&
+              e['id'] == 'v3-9-4-tools-pub-0' &&
+              e['url'] == '/changelog#v3-9-4-tools-pub-0',
+        ),
+        isTrue,
+      );
+      expect(
+        pagesByPath['changelog/versions/3.9.md']!.content,
+        contains('# Dart 3.9 changelog'),
+      );
+
+      // Cross-version breaking changes slice contains only breaking entries.
+      final breakingJson = jsonDecode(
+        pagesByPath['changelog/tags/breaking.json']!.content!,
+      ) as Map<String, Object?>;
+      final breakingEntries = (breakingJson['entries'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(breakingEntries, isNotEmpty);
+      for (final entry in breakingEntries) {
+        final tags = (entry['tags'] as List<Object?>).cast<String>();
+        expect(tags, contains('breaking'));
+      }
+      expect(
+        pagesByPath['changelog/tags/breaking.md']!.content,
+        contains('# Dart SDK changelog: Breaking changes'),
+      );
+
+      // Cross-version deprecated/removed slice.
+      final deprecatedJson = jsonDecode(
+        pagesByPath['changelog/tags/deprecated-removed.json']!.content!,
+      ) as Map<String, Object?>;
+      final deprecatedEntries = (deprecatedJson['entries'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(deprecatedEntries, isNotEmpty);
+      for (final entry in deprecatedEntries) {
+        final tags = (entry['tags'] as List<Object?>).cast<String>();
+        expect(
+          tags.contains('deprecated') || tags.contains('removed'),
+          isTrue,
+        );
+      }
+
+      // Cross-version Language area slice contains only Language entries.
+      final languageJson = jsonDecode(
+        pagesByPath['changelog/areas/language.json']!.content!,
+      ) as Map<String, Object?>;
+      final languageEntries = (languageJson['entries'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(languageEntries, isNotEmpty);
+      for (final entry in languageEntries) {
+        expect(entry['area'], 'Language');
+      }
+      expect(
+        pagesByPath['changelog/areas/language.md']!.content,
+        contains('# Dart SDK changelog: Language changes'),
+      );
     });
   });
 

@@ -107,6 +107,42 @@ void main() {
       );
       expect(_canonicalHref(suppressedHead), isNull);
     });
+
+    testServer('emits alternate JSON link when alternateJson is configured', (
+      tester,
+    ) async {
+      final withJsonHead = await _renderHead(
+        tester,
+        _page(
+          path: 'changelog.md',
+          url: '/changelog',
+          pageData: {
+            'title': 'Dart changelog',
+            'alternateJson': '/changelog/index.json',
+          },
+        ),
+      );
+      final jsonLink = withJsonHead.querySelector(
+        'link[rel="alternate"][type="application/json"]',
+      );
+      expect(jsonLink?.attributes['href'], '/changelog/index.json');
+      expect(jsonLink?.attributes['title'], 'JSON');
+
+      final withoutJsonHead = await _renderHead(
+        tester,
+        _page(
+          path: 'overview.md',
+          url: '/overview',
+          pageData: {'title': 'Dart overview'},
+        ),
+      );
+      expect(
+        withoutJsonHead.querySelector(
+          'link[rel="alternate"][type="application/json"]',
+        ),
+        isNull,
+      );
+    });
   });
 
   group('Diagnostic and linter MemoryPage SEO invariants', () {

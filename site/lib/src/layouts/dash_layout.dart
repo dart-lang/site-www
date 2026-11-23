@@ -92,6 +92,14 @@ abstract class DashLayout extends PageLayoutBase {
           href: markdownRoute,
           attributes: const {'title': 'Markdown'},
         ),
+      if (pageData['alternateJson'] case final String alternateJson
+          when alternateJson.trim().isNotEmpty)
+        link(
+          rel: 'alternate',
+          type: 'application/json',
+          href: alternateJson.trim(),
+          attributes: const {'title': 'JSON'},
+        ),
       if (pageData['redirectTo'] case final String redirectTo
           when redirectTo.isNotEmpty)
         RawText('<script>window.location.replace("$redirectTo");</script>'),
