@@ -21,7 +21,9 @@ class TrailingContent extends StatelessComponent {
     final siteData = page.data.site;
     final pageDate = pageData['date'] as String?;
 
-    final currentSdkVersion = siteData['sdkVersion'] as String? ?? '';
+    final documentedDartVersion = _parseDocumentedDartVersion(
+      siteData['documentedDartVersion'],
+    );
 
     final sourceInfo = page.sourceInfo;
     final issueUrl = sourceInfo.issueUrl;
@@ -37,7 +39,7 @@ class TrailingContent extends StatelessComponent {
           span([
             .text(
               'Unless stated otherwise, the documentation on '
-              'this site reflects Dart $currentSdkVersion. ',
+              'this site reflects Dart $documentedDartVersion. ',
             ),
             if (pageDate != null)
               .text(
@@ -65,5 +67,20 @@ class TrailingContent extends StatelessComponent {
         ]),
       ],
     );
+  }
+
+  static final _documentedDartVersionPattern = RegExp(
+    r'^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$',
+  );
+
+  static String _parseDocumentedDartVersion(Object? value) {
+    if (value is! String || !_documentedDartVersionPattern.hasMatch(value)) {
+      throw FormatException(
+        'documentedDartVersion in src/data/site.yaml must be a quoted string '
+        'in "major.minor" format, such as "3.14". '
+        'Received: $value (${value.runtimeType}).',
+      );
+    }
+    return value;
   }
 }
