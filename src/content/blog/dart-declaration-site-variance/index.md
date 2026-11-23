@@ -30,7 +30,7 @@ main() {
 }
 ```
 
-From this, an `Iterable` of integers can be substituted as an `Iterable` of `Object`s because an integer *is* an `Object` and can be used in an `Iterable` in every place an `Object` would be. The language allows this by saying that two instantiations of the same generic type (like `Iterable&lt;int&gt;` and `Iterable&lt;Object&gt;` here) are considered subtypes if their type arguments (`int` and `Object`) are. This subtyping relation is considered **covariance**.
+From this, an `Iterable` of integers can be substituted as an `Iterable` of `Object`s because an integer *is* an `Object` and can be used in an `Iterable` in every place an `Object` would be. The language allows this by saying that two instantiations of the same generic type (like `Iterable<int>` and `Iterable<Object>` here) are considered subtypes if their type arguments (`int` and `Object`) are. This subtyping relation is considered **covariance**.
 
 This is convenient and logical. It makes sense, that is, until you take a look at the variance of the parameters of a method. Say you want to make a `objectWriter` in Dart:
 
@@ -189,7 +189,7 @@ class ReaderWriter<inout T> {
 
 The errors the compiler reports for misusing type parameters help the generic class author **write** correct code. The other half is the set of errors that help others **use** the class correctly. One of the changes that come with sound variance modifiers is the subtyping change that we can see through assignment.
 
-If a generic type parameter is covariant, then you can assign it when its type argument is a subtype of the expected type’s type argument. For example, you can assign a `Reader&lt;int&gt;` to something that expects a `Reader&lt;Object&gt;`.
+If a generic type parameter is covariant, then you can assign it when its type argument is a subtype of the expected type’s type argument. For example, you can assign a `Reader<int>` to something that expects a `Reader<Object>`.
 
 ```dart
 class Reader<out T> { /* ... */ }
@@ -198,7 +198,7 @@ main() {
 }
 ```
 
-Likewise, if a generic type parameter is contravariant, assignment is allowed when its type argument is a supertype of the expected type’s type argument. You can assign a `Writer&lt;Object&gt;` to something that expects a `Writer&lt;int&gt;`, as such:
+Likewise, if a generic type parameter is contravariant, assignment is allowed when its type argument is a supertype of the expected type’s type argument. You can assign a `Writer<Object>` to something that expects a `Writer<int>`, as such:
 
 ```dart
 class Writer<in T> { /* ... */ }
