@@ -16,7 +16,7 @@
         ]
       },
       {
-        "source": "**/*.@(md|txt)",
+        "source": "**/*.@(md|txt|json)",
         "headers": [
           { "key": "X-Robots-Tag", "value": "noindex" }
         ]

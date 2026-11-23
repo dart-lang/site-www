@@ -37,6 +37,7 @@ import 'src/layouts/learn_layout.dart';
 import 'src/loaders/data_processor.dart';
 import 'src/markdown/markdown_parser.dart';
 import 'src/pages/atom_feed.dart';
+import 'src/pages/changelog_slices.dart';
 import 'src/pages/custom_pages.dart';
 import 'src/pages/diagnostic_index.dart';
 import 'src/pages/lint_index.dart';
@@ -62,6 +63,95 @@ void main() {
 
   final passThroughPattern = RegExp(r'.*\.(txt|json)$');
 
+  final defaultPageConfig = PageConfig(
+    dataLoaders: [
+      FilesystemDataLoader(path.join(siteSrcDirectoryPath, 'data')),
+      DataProcessor(),
+      assetManager.dataLoader,
+    ],
+    templateEngine: DashTemplateEngine(
+      partialDirectoryPath: path.canonicalize(
+        path.join(siteSrcDirectoryPath, '_includes'),
+      ),
+    ),
+    parsers: const [
+      DashMarkdownParser(),
+      HtmlParser(),
+    ],
+    rawOutputPattern: passThroughPattern,
+    extensions: [
+      const AttributeProcessor(),
+      const HeaderExtractorExtension(),
+      const HeaderWrapperExtension(),
+      const TableWrapperExtension(),
+      const CodeBlockProcessor(),
+      const GlossaryLinkProcessor(),
+      const TutorialNavigationExtension(),
+      assetManager.pageExtension,
+    ],
+    components: [
+      const DashTabs(),
+      const Stepper(),
+      const YoutubeEmbed(),
+      const FileTree(),
+      const Quiz(),
+      const SummaryCard(),
+      const TutorialOutline(),
+      const PostBreak(),
+      CustomComponent(
+        pattern: RegExp('ArchiveTable'),
+        builder: (_, attrs, _) => ArchiveTable.fromAttributes(attrs),
+      ),
+      CustomComponent(
+        pattern: RegExp('LintRuleIndex', caseSensitive: false),
+        builder: (_, _, _) => const LintRuleIndex(),
+      ),
+      CustomComponent(
+        pattern: RegExp('DiagnosticIndex', caseSensitive: false),
+        builder: (_, _, _) => const DiagnosticIndex(),
+      ),
+      CustomComponent(
+        pattern: RegExp('Card', caseSensitive: false),
+        builder: (_, attrs, child) => Card.fromAttributes(attrs, child),
+      ),
+      CustomComponent(
+        pattern: RegExp('ChangelogIndex', caseSensitive: false),
+        builder: (_, _, _) => const ChangelogIndex(),
+      ),
+      CustomComponent(
+        pattern: RegExp('BlogIndex', caseSensitive: false),
+        builder: (_, _, _) => const BlogIndex(),
+      ),
+      CustomComponent(
+        pattern: RegExp('DashImage', caseSensitive: false),
+        builder: (_, attrs, _) => DashImage.fromAttributes(attrs),
+      ),
+      CustomComponent(
+        pattern: RegExp('GitHubEmbed', caseSensitive: false),
+        builder: (_, attrs, _) => GitHubEmbed.fromAttributes(attrs),
+      ),
+    ],
+    layouts: const [
+      DocLayout(),
+      HomepageLayout(),
+      LearnLayout(),
+      BlogLayout(),
+    ],
+    theme: const ContentTheme.none(),
+    secondaryOutputs: [
+      const AtomFeedOutput(),
+      const RobotsTxtOutput(),
+      canonicalMarkdownOutput,
+    ],
+  );
+
+  // Static changelog slices emit pre-rendered Markdown and JSON directly,
+  // bypassing Liquid templating, HTML layout wrapping, and secondary outputs.
+  final changelogSlicePageConfig = PageConfig(
+    enableFrontmatter: false,
+    rawOutputPattern: changelogSlicePathPattern,
+  );
+
   final app = ContentApp.custom(
     eagerlyLoadAllPages: true,
     loaders: [
@@ -72,87 +162,9 @@ void main() {
       ),
       MemoryLoader(pages: allMemoryPages),
     ],
-    configResolver: PageConfig.all(
-      dataLoaders: [
-        FilesystemDataLoader(path.join(siteSrcDirectoryPath, 'data')),
-        DataProcessor(),
-        assetManager.dataLoader,
-      ],
-      templateEngine: DashTemplateEngine(
-        partialDirectoryPath: path.canonicalize(
-          path.join(siteSrcDirectoryPath, '_includes'),
-        ),
-      ),
-      parsers: const [
-        DashMarkdownParser(),
-        HtmlParser(),
-      ],
-      rawOutputPattern: passThroughPattern,
-      extensions: [
-        const AttributeProcessor(),
-        const HeaderExtractorExtension(),
-        const HeaderWrapperExtension(),
-        const TableWrapperExtension(),
-        const CodeBlockProcessor(),
-        const GlossaryLinkProcessor(),
-        const TutorialNavigationExtension(),
-        assetManager.pageExtension,
-      ],
-      components: [
-        const DashTabs(),
-        const Stepper(),
-        const YoutubeEmbed(),
-        const FileTree(),
-        const Quiz(),
-        const SummaryCard(),
-        const TutorialOutline(),
-        const PostBreak(),
-        CustomComponent(
-          pattern: RegExp('ArchiveTable'),
-          builder: (_, attrs, _) => ArchiveTable.fromAttributes(attrs),
-        ),
-        CustomComponent(
-          pattern: RegExp('LintRuleIndex', caseSensitive: false),
-          builder: (_, _, _) => const LintRuleIndex(),
-        ),
-        CustomComponent(
-          pattern: RegExp('DiagnosticIndex', caseSensitive: false),
-          builder: (_, _, _) => const DiagnosticIndex(),
-        ),
-        CustomComponent(
-          pattern: RegExp('Card', caseSensitive: false),
-          builder: (_, attrs, child) => Card.fromAttributes(attrs, child),
-        ),
-        CustomComponent(
-          pattern: RegExp('ChangelogIndex', caseSensitive: false),
-          builder: (_, _, _) => const ChangelogIndex(),
-        ),
-        CustomComponent(
-          pattern: RegExp('BlogIndex', caseSensitive: false),
-          builder: (_, _, _) => const BlogIndex(),
-        ),
-        CustomComponent(
-          pattern: RegExp('DashImage', caseSensitive: false),
-          builder: (_, attrs, _) => DashImage.fromAttributes(attrs),
-        ),
-        CustomComponent(
-          pattern: RegExp('GitHubEmbed', caseSensitive: false),
-          builder: (_, attrs, _) => GitHubEmbed.fromAttributes(attrs),
-        ),
-      ],
-      layouts: const [
-        DocLayout(),
-        HomepageLayout(),
-        LearnLayout(),
-        BlogLayout(),
-      ],
-      theme: const ContentTheme.none(),
-      secondaryOutputs: [
-        const AtomFeedOutput(),
-        const RobotsTxtOutput(),
-        canonicalMarkdownOutput,
-      ],
-    ),
+    configResolver: (source) => changelogSlicePathPattern.hasMatch(source.path)
+        ? changelogSlicePageConfig
+        : defaultPageConfig,
   );
 
   runApp(app);

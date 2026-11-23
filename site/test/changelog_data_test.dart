@@ -5,16 +5,14 @@
 @TestOn('vm')
 library;
 
-import 'dart:io';
+import 'dart:convert';
 
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters_notifier.dart';
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_index.dart';
 import 'package:dart_dev_site/src/models/changelog_model.dart';
-import 'package:dart_dev_site/src/util.dart';
-import 'package:path/path.dart' as path;
+import 'package:dart_dev_site/src/pages/changelog_slices.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:test/test.dart';
-import 'package:yaml/yaml.dart';
 
 void main() {
   group('changelog.yml data integrity', () {
@@ -22,20 +20,7 @@ void main() {
     late List<ChangelogEntry> entries;
 
     setUpAll(() {
-      var changelogFile = File(
-        path.join(siteSrcDirectoryPath, 'data', 'changelog.yml'),
-      );
-      if (!changelogFile.existsSync()) {
-        changelogFile = File(path.join('src', 'data', 'changelog.yml'));
-      }
-      final yamlList = loadYaml(changelogFile.readAsStringSync()) as YamlList;
-      rawEntries = [
-        for (final item in yamlList)
-          <String, Object?>{
-            for (final MapEntry(:key, :value) in (item as YamlMap).entries)
-              key.toString(): value is YamlList ? value.toList() : value,
-          },
-      ];
+      rawEntries = readRawChangelogEntries();
       entries = [for (final map in rawEntries) ChangelogEntry.fromMap(map)];
     });
 
@@ -133,9 +118,181 @@ void main() {
 
     test('renders clean Markdown for /changelog.md', () {
       final markdown = ChangelogIndex.renderMarkdown(rawEntries);
+      expect(markdown, contains('## Pre-sliced endpoints'));
+      expect(markdown, contains('/changelog/index.json'));
+      expect(markdown, contains('/changelog/tags/breaking.md'));
       expect(markdown, contains('## Dart 3.13'));
+      expect(
+        '_Released: '.allMatches(markdown).length,
+        lessThan(entries.length),
+      );
       expect(markdown, contains('### [3.9.4] [Tools] — Pub (Fixed)'));
       expect(markdown, isNot(contains('<ChangelogIndex')));
+    });
+
+    test('emits static index.json, version, tag, and area slices', () {
+      final slicePages = buildChangelogSlicePages(entries);
+      final pagesByPath = {
+        for (final page in slicePages) page.path: page,
+      };
+
+      expect(pagesByPath.length, slicePages.length);
+      for (final page in slicePages) {
+        expect(
+          changelogSlicePathPattern.hasMatch(page.path),
+          isTrue,
+          reason: 'Unexpected slice path: ${page.path}',
+        );
+        expect(page.keepSuffix, isTrue, reason: page.path);
+        final pageData = page.initialData['page'] as Map<String, Object?>;
+        expect(pageData['sitemap'], isFalse, reason: page.path);
+        expect(page.content, isNotNull);
+        expect(page.content!.trim(), isNotEmpty, reason: page.path);
+      }
+
+      // Root manifest: /changelog/index.json
+      final indexPage = pagesByPath['changelog/index.json'];
+      expect(indexPage, isNotNull);
+      final manifest = jsonDecode(indexPage!.content!) as Map<String, Object?>;
+      expect(manifest['totalEntries'], entries.length);
+      expect(manifest['htmlUrl'], '/changelog');
+      expect(manifest['markdownUrl'], '/changelog.md');
+
+      final releases = (manifest['releases'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(releases, isNotEmpty);
+      expect(manifest['totalReleases'], releases.length);
+
+      // Every linked release slice in index.json exists in emitted pages.
+      for (final release in releases) {
+        final mdPath = (release['markdownUrl'] as String).substring(1);
+        final jsonPath = (release['jsonUrl'] as String).substring(1);
+        expect(pagesByPath, contains(mdPath));
+        expect(pagesByPath, contains(jsonPath));
+      }
+
+      // Every tag and area slice in index.json exists in emitted pages and
+      // reports the same number of entries as its JSON slice.
+      final slices = manifest['slices'] as Map<String, Object?>;
+      expect(slices.keys, unorderedEquals(['tags', 'areas']));
+      for (final slice in slices.values.expand(
+        (group) => (group as List<Object?>).cast<Map<String, Object?>>(),
+      )) {
+        final mdPath = (slice['markdownUrl'] as String).substring(1);
+        final jsonPath = (slice['jsonUrl'] as String).substring(1);
+        expect(pagesByPath, contains(mdPath));
+        expect(pagesByPath, contains(jsonPath));
+        final sliceJson =
+            jsonDecode(pagesByPath[jsonPath]!.content!) as Map<String, Object?>;
+        expect(
+          slice['entryCount'],
+          (sliceJson['entries'] as List<Object?>).length,
+          reason: jsonPath,
+        );
+        expect(slice['entryCount'], sliceJson['entryCount'], reason: jsonPath);
+      }
+
+      // Highlights come from the x.y.0 release before its patch releases
+      // and aren't all taken from one area.
+      final v39Release = releases.singleWhere((r) => r['version'] == '3.9');
+      final v39Highlights = (v39Release['highlights'] as List<Object?>)
+          .cast<String>();
+      final v39MinorLabels = {
+        for (final entry in entries)
+          if (entry.version == Version(3, 9, 0) && entry.subArea != null)
+            '${entry.subArea!.trim()} (${entry.area})',
+      };
+      expect(v39MinorLabels, contains(v39Highlights.first));
+      for (final release in releases) {
+        final highlights =
+            (release['highlights'] as List<Object?>?)?.cast<String>() ??
+            const <String>[];
+        expect(highlights.length, lessThanOrEqualTo(5));
+        expect(highlights.toSet().length, highlights.length);
+      }
+      final v314Release = releases.singleWhere((r) => r['version'] == '3.14');
+      final v314Areas = {
+        for (final highlight
+            in (v314Release['highlights'] as List<Object?>).cast<String>())
+          highlight.substring(highlight.lastIndexOf('(')),
+      };
+      expect(v314Areas.length, greaterThan(1));
+
+      // Spot-check a minor version slice containing patch releases (3.9).
+      final v39Json = jsonDecode(
+        pagesByPath['changelog/versions/3.9.json']!.content!,
+      ) as Map<String, Object?>;
+      final v39Entries = (v39Json['entries'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(
+        v39Entries.any(
+          (e) =>
+              e['version'] == '3.9.4' &&
+              e['id'] == 'v3-9-4-tools-pub-0' &&
+              e['url'] == '/changelog#v3-9-4-tools-pub-0',
+        ),
+        isTrue,
+      );
+      final v39Markdown = pagesByPath['changelog/versions/3.9.md']!.content!;
+      expect(v39Markdown, contains('# Dart 3.9 changelog'));
+
+      // The x.y.0 release date is written once, and patch entries keep
+      // their own dates.
+      final v39ReleaseDate = v39Release['releaseDate'] as String;
+      expect(
+        '_Released: ${v39ReleaseDate}_'.allMatches(v39Markdown),
+        hasLength(1),
+      );
+      final v394Entry = entries.firstWhere(
+        (entry) => entry.version == Version(3, 9, 4),
+      );
+      expect(v39Markdown, contains('_Released: ${v394Entry.releaseDate}_'));
+
+      // Cross-version breaking changes slice contains only breaking entries.
+      final breakingJson = jsonDecode(
+        pagesByPath['changelog/tags/breaking.json']!.content!,
+      ) as Map<String, Object?>;
+      final breakingEntries = (breakingJson['entries'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(breakingEntries, isNotEmpty);
+      for (final entry in breakingEntries) {
+        final tags = (entry['tags'] as List<Object?>).cast<String>();
+        expect(tags, contains('breaking'));
+      }
+      expect(
+        pagesByPath['changelog/tags/breaking.md']!.content,
+        contains('# Dart SDK changelog: Breaking changes'),
+      );
+
+      // Cross-version deprecated/removed slice.
+      final deprecatedJson = jsonDecode(
+        pagesByPath['changelog/tags/deprecated-removed.json']!.content!,
+      ) as Map<String, Object?>;
+      final deprecatedEntries = (deprecatedJson['entries'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(deprecatedEntries, isNotEmpty);
+      for (final entry in deprecatedEntries) {
+        final tags = (entry['tags'] as List<Object?>).cast<String>();
+        expect(
+          tags.contains('deprecated') || tags.contains('removed'),
+          isTrue,
+        );
+      }
+
+      // Cross-version Language area slice contains only Language entries.
+      final languageJson = jsonDecode(
+        pagesByPath['changelog/areas/language.json']!.content!,
+      ) as Map<String, Object?>;
+      final languageEntries = (languageJson['entries'] as List<Object?>)
+          .cast<Map<String, Object?>>();
+      expect(languageEntries, isNotEmpty);
+      for (final entry in languageEntries) {
+        expect(entry['area'], 'Language');
+      }
+      expect(
+        pagesByPath['changelog/areas/language.md']!.content,
+        contains('# Dart SDK changelog: Language changes'),
+      );
     });
   });
 
