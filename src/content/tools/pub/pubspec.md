@@ -584,7 +584,7 @@ context of the `flutter` executable, and the Flutter SDK's
 the package won't be selected.
 
 :::version-note
-Pub enforces the upper bound of the Flutter constraint for your
+Pub also enforces the upper bound of the Flutter constraint for your
 root packages, including each package in a [workspace][], that
 have a [language version][Language versioning] of at least 3.9.
 Otherwise, pub enforces only the lower bound.
