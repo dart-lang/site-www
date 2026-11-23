@@ -80,6 +80,10 @@ final class ChangelogIndex extends StatelessComponent {
   }
 
   /// Writes a single [item] as structured Markdown to [buffer].
+  ///
+  /// Only patch entries include their own release date. The date of an
+  /// `x.y.0` entry is written once for its minor version by
+  /// [writeReleaseDateMarkdown], matching the cards on the HTML page.
   static void writeEntryMarkdown(StringBuffer buffer, ChangelogEntry item) {
     final subAreaSuffix = item.subArea != null ? ' — ${item.subArea}' : '';
     final tagsSuffix = item.tags.isNotEmpty
@@ -89,7 +93,7 @@ final class ChangelogIndex extends StatelessComponent {
     buffer.writeln(
       '### $patchPrefix[${item.area}]$subAreaSuffix$tagsSuffix',
     );
-    if (item.releaseDate != null) {
+    if (item.version.patch != 0 && item.releaseDate != null) {
       buffer.writeln('_Released: ${item.releaseDate}_');
     }
     buffer.writeln();
@@ -98,6 +102,17 @@ final class ChangelogIndex extends StatelessComponent {
       buffer.writeln();
       buffer.writeln('Read more: $link');
     }
+    buffer.writeln();
+  }
+
+  /// Writes the release date of a minor version to [buffer],
+  /// or nothing if [releaseDate] is `null`.
+  static void writeReleaseDateMarkdown(
+    StringBuffer buffer,
+    String? releaseDate,
+  ) {
+    if (releaseDate == null) return;
+    buffer.writeln('_Released: ${releaseDate}_');
     buffer.writeln();
   }
 
@@ -136,9 +151,11 @@ final class ChangelogIndex extends StatelessComponent {
     }
 
     for (final version in sortedVersions) {
+      final items = groupedEntries[version]!;
       buffer.writeln('## Dart ${version.shortVersion}');
       buffer.writeln();
-      for (final item in groupedEntries[version]!) {
+      writeReleaseDateMarkdown(buffer, releaseDateForGroup(items));
+      for (final item in items) {
         writeEntryMarkdown(buffer, item);
       }
     }

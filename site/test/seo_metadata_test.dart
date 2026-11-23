@@ -148,6 +148,8 @@ void main() {
   group('Diagnostic and linter MemoryPage SEO invariants', () {
     late List<MemoryPage> memoryPages;
     late List<Object?> redirects;
+    late List<Object?> headers;
+    late String changelogSource;
 
     setUpAll(() {
       final originalDir = Directory.current;
@@ -162,9 +164,40 @@ void main() {
         ) as Map<String, Object?>;
         final hosting = firebase['hosting'] as Map<String, Object?>;
         redirects = hosting['redirects'] as List<Object?>;
+        headers = hosting['headers'] as List<Object?>;
+        changelogSource = File(
+          '../src/content/changelog.md',
+        ).readAsStringSync();
       } finally {
         Directory.current = originalDir;
       }
+    });
+
+    test('raw Markdown, text, and JSON outputs are served as noindex', () {
+      final noIndexSources = [
+        for (final rule in headers.cast<Map<String, Object?>>())
+          if ((rule['headers'] as List<Object?>)
+              .cast<Map<String, Object?>>()
+              .any(
+                (header) =>
+                    header['key'] == 'X-Robots-Tag' &&
+                    header['value'] == 'noindex',
+              ))
+            rule['source'] as String,
+      ];
+      expect(noIndexSources, contains('**/*.@(md|txt|json)'));
+    });
+
+    test('changelog alternateJson points at an emitted memory page', () {
+      final alternateJson = RegExp(
+        r'^alternateJson:\s*(\S+)$',
+        multiLine: true,
+      ).firstMatch(changelogSource)?.group(1);
+      expect(alternateJson, '/changelog/index.json');
+      expect(
+        memoryPages.map((page) => '/${page.path}'),
+        contains(alternateJson),
+      );
     });
 
     test('diagnostic pages distinguish titleBase and clean redirect stubs', () {
