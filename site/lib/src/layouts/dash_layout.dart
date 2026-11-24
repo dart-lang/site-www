@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
+import 'package:site_shared/server_util.dart';
 
 import '../components/layout/banner.dart';
 import '../components/layout/footer.dart';
@@ -15,7 +16,6 @@ import '../components/layout/sidenav.dart';
 import '../models/sidenav_model.dart';
 import '../pages/markdown.dart';
 import '../util.dart';
-import '../utils/cache_busted_build_asset_url.dart';
 
 /// The base Jaspr Content layout for wrapping site content.
 abstract class DashLayout extends PageLayoutBase {

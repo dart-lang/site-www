@@ -11,8 +11,6 @@ import 'package:site_shared/web_util.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
-import '../utils/client_operating_system.dart';
-
 /// Global scripts converted from JS.
 ///
 /// These are temporary until they can be integrated with their
@@ -182,8 +180,8 @@ void _handleSearchShortcut(web.Event event) {
 }
 
 void _setUpPlatformKeys() {
-  final specialKey = switch (ClientOperatingSystem.fromUserAgent()) {
-    .macos => 'Command',
+  final specialKey = switch (browserOperatingSystem) {
+    .macOS => 'Command',
     _ => 'Control',
   };
   final keys = web.document.querySelectorAll('kbd.special-key');
