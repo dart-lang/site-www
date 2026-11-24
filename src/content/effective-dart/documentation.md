@@ -361,6 +361,11 @@ class Chunk {
 
 ### CONSIDER including code samples in doc comments
 
+Humans generalize well from examples,
+so even a single code sample makes an API easier to learn.
+For short, self-contained snippets,
+include a fenced code block directly in the doc comment:
+
 <?code-excerpt "docs_good.dart (code-sample)"?>
 ````dart tag=good
 /// The lesser of two numbers.
@@ -371,8 +376,50 @@ class Chunk {
 num min(num a, num b) => ...
 ````
 
-Humans are great at generalizing from examples, so even a single code sample
-makes an API easier to learn.
+For longer, runnable examples in a package,
+consider keeping the code in your [`example` directory][]
+so that you can analyze and test it.
+Mark a snippet region in the example file:
+
+<?code-excerpt "../../example/hello_world.dart" replace="/examples\/effective_dart\///g"?>
+```dart title="example/hello_world.dart"
+import 'package:greeter/greeter.dart';
+
+void main() {
+  // #region main
+  final message = greet('Dash');
+  print(message); // Hello, Dash!
+  assert(message == 'Hello, Dash!'); // #hide
+  // #endregion
+}
+```
+
+Then embed that snippet on its own line in your doc comment
+by using the `{@example}` directive:
+
+<?code-excerpt "greeter/greeter.dart"?>
+```dart title="lib/greeter.dart" tag=good
+/// A greeting message for [name].
+///
+/// {@example /example/hello_world.dart#main}
+String greet(String name) => 'Hello, $name!';
+```
+
+When `dart doc` generates your API documentation,
+it replaces `{@example}` with a fenced code block.
+A leading `/` resolves the path from the package root,
+and `#<region>` extracts only the lines between
+`#region <region>` and `#endregion`
+(stripping common indentation and any `#hide` lines).
+For the full syntax,
+refer to the [`{@example}` directive documentation][example-directive].
+
+:::version-note
+[`dart doc`][] supports the `{@example}` directive starting in Dart 3.13.
+:::
+
+[`example` directory]: /tools/pub/package-layout#examples
+[example-directive]: {{site.repo.dart.org}}/dartdoc/blob/main/doc/directives.md#example
 
 ### DO use square brackets in doc comments to refer to in-scope identifiers
 

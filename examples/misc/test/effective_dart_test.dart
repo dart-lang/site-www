@@ -1,5 +1,7 @@
 import 'package:test/test.dart';
 
+import '../example/hello_world.dart' as hello_world;
+
 void main() {
   test('sublist', () {
     // #docregion param-range
@@ -64,5 +66,9 @@ void main() {
     // #enddocregion where-type
     expect(ints, TypeMatcher<Iterable<int>>());
     expect(ints, [1, 2, 3]);
+  });
+
+  test('greeter example runs and prints greeting', () {
+    expect(hello_world.main, prints('Hello, Dash!\n'));
   });
 }
