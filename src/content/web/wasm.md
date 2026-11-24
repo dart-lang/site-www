@@ -105,10 +105,9 @@ platform requirements in mind:
 * **Target environments and standalone mode**:
   By default, compiled Wasm output targets JavaScript environments (such as
   browsers) and generates a companion `<name>.mjs` runtime file. To compile a
-  standalone WebAssembly module for non-web runtimes such as Wasmtime 39+
-  (with the `-W gc,exceptions,function-references=y` flag), pass the
-  `--standalone` flag to `dart compile wasm`. Standalone mode disallows the
-  [`dart:js_interop`][] library and the `--enable-deferred-loading` flag.
+  standalone WebAssembly module for non-web runtimes such as Wasmtime,
+  pass the `--standalone` flag to `dart compile wasm`.
+  The standalone mode requires [additional setup](#non-web-targets).
 
 * **JavaScript interop**:
   Compiling to Wasm supports only Dart's
@@ -365,6 +364,65 @@ for complete instructions on the following tasks:
   deployments, and V8 Wasm code caching.
 * Providing a `dart2js` fallback pathway for older browsers.
 
+## Non-web targets {:#non-web-targets}
+
+:::note
+**Support for non-web targets is experimental.**
+
+The standalone WebAssembly target requires additional
+tooling or setup outside the Dart SDK.
+For details, see [issue #53884]({{site.repo.dart.sdk}}/issues/53884).
+:::
+
+By default, `dart compile wasm` generates a JavaScript helper file
+that provides imports for core SDK features,
+including strings, the event loop, math, and `dart:js_interop`.
+You need this file to instantiate Dart Wasm modules,
+so they can only run in environments with a JavaScript engine.
+
+The `--standalone` flag enables an experimental alternative
+that uses a fixed set of Dart-specific imports instead,
+which is only documented in the [SDK source][standalone-embedder].
+If you provide compatible imports when instantiating the WebAssembly module,
+you can run Dart applications on any WebAssembly 3.0 runtime.
+To check which runtimes support the required features,
+see the [feature support table][wasm-runtimes] on webassembly.org.
+
+Because the `--standalone` flag is designed for non-JavaScript targets,
+it disallows the [`dart:js_interop`][] library
+and the `--enable-deferred-loading` flag.
+
+To load standalone modules,
+you can either provide the required imports yourself
+or rely on the Component Model.
+
+### Component Model {:#component-model}
+
+The WebAssembly Component Model lets modules declare
+at a high level which imports they need and which exports they provide.
+[WASI][] builds on it to define interfaces
+for common CLI and server applications.
+
+Dart doesn't target the Component Model directly,
+but third-party tools can turn Dart applications into WebAssembly components
+and provide WASI definitions.
+With [`package:wasm_tools`][], you can define any component in Dart,
+and [`package:wasi`][] lets you target
+the `wasi:cli/command` and `wasi:http/service` worlds directly.
+
+For an overview of how to create components from Dart,
+see the [Dart guide][dart-components] in the Component Model documentation.
+
+### Custom embedders {:#custom-embedders}
+
+Instead of using Component Model tooling,
+you can also load standalone Dart modules directly.
+When loading a module, you need to provide definitions
+for the imported functions that the Dart SDK uses.
+How you provide imports depends on the WebAssembly runtime.
+For an example that uses Wasmtime,
+see the [`dart2wasmtime`][dart2wasmtime] Rust crate.
+
 [wasm-org]: https://webassembly.org/
 [Flutter]: {{site.flutter}}/wasm
 [js-interop]: /interop/js-interop/
@@ -386,3 +444,10 @@ for complete instructions on the following tasks:
 [recording heap snapshots]: https://developer.chrome.com/docs/devtools/memory-problems/heap-snapshots
 [Debugging Dart web apps]: /web/debugging
 [Core Web Vitals]: https://web.dev/articles/vitals
+[standalone-embedder]: {{site.repo.dart.sdk}}/blob/main/sdk/lib/_internal/wasm/standalone/embedder.dart
+[WASI]: https://wasi.dev/
+[`package:wasm_tools`]: {{site.pub-pkg}}/wasm_tools
+[`package:wasi`]: {{site.pub-pkg}}/wasi
+[wasm-runtimes]: https://webassembly.org/features/
+[dart-components]: https://component-model.bytecodealliance.org/language-support/building-a-simple-component/dart.html
+[dart2wasmtime]: https://github.com/simolus3/standalone-embedders/tree/main/dart2wasmtime
