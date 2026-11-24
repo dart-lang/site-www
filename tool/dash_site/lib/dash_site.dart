@@ -23,6 +23,7 @@ import 'src/commands/serve.dart';
 import 'src/commands/sync_changelog.dart';
 import 'src/commands/test_dart.dart';
 import 'src/commands/verify_firebase_json.dart';
+import 'src/commands/visual_diff.dart';
 
 /// The root command runner of the Dart documentation website tooling.
 ///
@@ -53,5 +54,6 @@ final class DashSiteCommandRunner extends CommandRunner<int> {
     addCommand(BuildSiteCommand());
     addCommand(ServeSiteCommand());
     addCommand(SyncChangelog());
+    addCommand(VisualDiffCommand());
   }
 }

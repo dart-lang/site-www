@@ -1,3 +1,7 @@
+// Copyright (c) 2024, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -24,64 +28,93 @@ final class BuildSiteCommand extends Command<int> {
   String get name => 'build';
 
   @override
-  Future<int> run() async {
-    installJasprCliIfNecessary();
+  Future<int> run() =>
+      buildSite(productionRelease: argResults.get<bool>(_releaseFlag, false));
+}
 
-    final productionRelease = argResults.get<bool>(_releaseFlag, false);
+/// Starts the Jaspr site build process.
+Future<Process> startSiteBuildProcess({
+  bool productionRelease = false,
+  String? rootDirectory,
+}) async {
+  installJasprCliIfNecessary();
 
-    final process = await Process.start(
-      Platform.resolvedExecutable,
-      [
-        'pub',
-        'global',
-        'run',
-        'jaspr_cli:jaspr',
-        'build',
-        // Use build_web_compiler options specified in build.yaml instead of
-        // those specified by jaspr_cli.
-        '--no-managed-build-options',
-        '--sitemap-domain=https://dart.dev',
-        // Exclude secondary Markdown, plain-text, XML, and JSON outputs.
-        r'--sitemap-exclude=\.(md|txt|xml|json)$',
-        '--dart-define=PRODUCTION=$productionRelease',
-      ],
-      workingDirectory: 'site',
-      mode: ProcessStartMode.inheritStdio,
-    );
+  final baseDirectory = rootDirectory ?? repositoryRoot;
+  final siteDirectory = path.join(baseDirectory, 'site');
 
-    final processExitCode = await process.exitCode;
-
-    final originalOutputDirectoryPath = path.join(
-      repositoryRoot,
-      'site',
+  return await Process.start(
+    Platform.resolvedExecutable,
+    [
+      'pub',
+      'global',
+      'run',
+      'jaspr_cli:jaspr',
       'build',
-      'jaspr',
+      // Use build_web_compiler options specified in build.yaml instead of
+      // those specified by jaspr_cli.
+      '--no-managed-build-options',
+      '--sitemap-domain=https://dart.dev',
+      // Exclude secondary Markdown, plain-text, XML, and JSON outputs.
+      r'--sitemap-exclude=\.(md|txt|xml|json)$',
+      '--dart-define=PRODUCTION=$productionRelease',
+    ],
+    workingDirectory: siteDirectory,
+    mode: ProcessStartMode.inheritStdio,
+  );
+}
+
+Future<int> buildSite({
+  bool productionRelease = false,
+  String? rootDirectory,
+}) async {
+  final Process process;
+  try {
+    process = await startSiteBuildProcess(
+      productionRelease: productionRelease,
+      rootDirectory: rootDirectory,
     );
-    if (!Directory(originalOutputDirectoryPath).existsSync()) {
-      stderr.writeln(
-        'Error: Jaspr output directory not found at: '
-        '$originalOutputDirectoryPath',
-      );
-      return 1;
-    }
+  } on ProcessException catch (e) {
+    return e.errorCode;
+  }
 
-    // Copy the entire site output to the _site directory.
-    io.copyPathSync(originalOutputDirectoryPath, siteOutputDirectoryPath);
-
-    _move404File();
-
+  final baseDirectory = rootDirectory ?? repositoryRoot;
+  final processExitCode = await process.exitCode;
+  if (processExitCode != 0) {
     return processExitCode;
   }
+
+  final originalOutputDirectoryPath = path.join(
+    baseDirectory,
+    'site',
+    'build',
+    'jaspr',
+  );
+  if (!Directory(originalOutputDirectoryPath).existsSync()) {
+    stderr.writeln(
+      'Error: Jaspr output directory not found at: '
+      '$originalOutputDirectoryPath',
+    );
+    return 1;
+  }
+
+  // Copy the entire site output to the _site directory.
+  final siteOut = path.join(baseDirectory, '_site');
+  io.copyPathSync(originalOutputDirectoryPath, siteOut);
+
+  _move404File(siteOut);
+
+  return processExitCode;
 }
 
 /// Moves the 404 file to the location expected by Firebase hosting.
-void _move404File() {
-  final initial404Directory = path.join(siteOutputDirectoryPath, '404');
+void _move404File([String? targetDirectory]) {
+  final siteOut = targetDirectory ?? siteOutputDirectoryPath;
+  final initial404Directory = path.join(siteOut, '404');
   final original404File = File(path.join(initial404Directory, 'index.html'));
   if (original404File.existsSync()) {
     // If the 404 is in its own directory,
     // copy the 404.html file to the root of the output directory.
-    original404File.copySync(path.join(siteOutputDirectoryPath, '404.html'));
+    original404File.copySync(path.join(siteOut, '404.html'));
     Directory(initial404Directory).deleteSync(recursive: true);
   }
 }

@@ -23,6 +23,11 @@ dependencies:
   markdown: ^7.3.1
   path: ^1.9.1
   pub_semver: ^2.2.0
+  visual_diff:
+    git:
+      url: https://github.com/flutter/website
+      path: packages/visual_diff
+      ref: feat/visual-diff
   yaml: ^3.1.4
   yaml_variable_scanner: ^0.1.0
 
