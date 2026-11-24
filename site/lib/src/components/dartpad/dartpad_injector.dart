@@ -117,10 +117,13 @@ class _DartPadInjectorState extends State<DartPadInjector> {
       );
     }
 
-    return Component.wrapElement(
+    return .apply(
       classes: classes,
       styles: styles,
-      attributes: {'title': component.title},
+      attributes: {
+        'height': component.height,
+        'title': component.title,
+      },
       child: EmbeddedDartPad.create(
         iframeId: _frameId,
         theme: switch (component.theme) {

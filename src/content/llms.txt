@@ -19,6 +19,8 @@ This index provides a curated list of official documentation and resources cover
 
 - [Announcing Dart 3.14](https://dart.dev/blog/announcing-dart-3-14.md): Official announcement for Dart 3.14 covering `dart migrate`, WebAssembly SIMD and exceptions, re-engineered DartPad, and stable native interop generators.
 - [Dart changelog](https://dart.dev/changelog.md): Release-by-release summary of new features, fixes, deprecations, and breaking changes across the Dart SDK.
+- [Dart changelog index (JSON)](https://dart.dev/changelog/index.json): Machine-readable index of Dart SDK releases with links to compact per-version (`/changelog/versions/<major.minor>.md`) and cross-version (`/changelog/tags/breaking.md`, `/changelog/tags/deprecated-removed.md`, `/changelog/areas/language.md`) slices.
+- [Dart breaking changes changelog](https://dart.dev/changelog/tags/breaking.md): All breaking changes across Dart SDK releases in a single compact Markdown slice.
 - [What's new in the docs](https://dart.dev/resources/whats-new.md): Recent additions and updates across `dart.dev` documentation and guides.
 - [Breaking changes](https://dart.dev/resources/breaking-changes.md): Breaking changes and migration guidance across Dart SDK releases.
 - [What's new in Flutter 3.50](https://flutter.dev/blog/whats-new-in-flutter-3-50): Companion release announcement for the paired Flutter 3.50 SDK release.

@@ -8,11 +8,18 @@ import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
 final class GlobalEventListener extends StatefulComponent {
-  const GlobalEventListener(this.child, {this.onClick, this.onKeyDown});
+  const GlobalEventListener(
+    this.child, {
+    this.onClick,
+    this.onKeyDown,
+    this.onScroll,
+    super.key,
+  });
 
   final Component child;
   final void Function(web.MouseEvent)? onClick;
   final void Function(web.KeyboardEvent)? onKeyDown;
+  final void Function(web.Event)? onScroll;
 
   @override
   State<GlobalEventListener> createState() => _GlobalEventListenerState();
@@ -21,6 +28,7 @@ final class GlobalEventListener extends StatefulComponent {
 class _GlobalEventListenerState extends State<GlobalEventListener> {
   StreamSubscription<web.MouseEvent>? _clickSubscription;
   StreamSubscription<web.KeyboardEvent>? _keyDownSubscription;
+  StreamSubscription<web.Event>? _scrollSubscription;
 
   @override
   void initState() {
@@ -38,6 +46,12 @@ class _GlobalEventListenerState extends State<GlobalEventListener> {
         null,
         null,
         web.EventStreamProviders.keyDownEvent,
+      );
+      _scrollSubscription = _updateListener(
+        component.onScroll,
+        null,
+        null,
+        web.EventStreamProviders.scrollEvent,
       );
     }
   }
@@ -57,6 +71,12 @@ class _GlobalEventListenerState extends State<GlobalEventListener> {
         oldComponent.onKeyDown,
         _keyDownSubscription,
         web.EventStreamProviders.keyDownEvent,
+      );
+      _scrollSubscription = _updateListener(
+        component.onScroll,
+        oldComponent.onScroll,
+        _scrollSubscription,
+        web.EventStreamProviders.scrollEvent,
       );
     }
   }
@@ -81,6 +101,7 @@ class _GlobalEventListenerState extends State<GlobalEventListener> {
   void dispose() {
     unawaited(_clickSubscription?.cancel());
     unawaited(_keyDownSubscription?.cancel());
+    unawaited(_scrollSubscription?.cancel());
     super.dispose();
   }
 

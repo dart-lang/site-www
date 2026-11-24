@@ -61,7 +61,7 @@
       correct: false
       explanation: >-
         Dart doesn't require an `init` function.
-        Variables can be defined and intialized in any function.
+        Variables can be defined and initialized in any function.
 - question: >-
     In a Dart CLI project,
     where should you place the file containing your `main` function?

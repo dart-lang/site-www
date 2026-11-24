@@ -42,7 +42,8 @@ showBanner: true
 # in the `firebase.json` redirect rule.)
 og_image_vers: "?2"
 
-sdkVersion: 3.14.0
+# The Dart version reflected by the docs, as a quoted 'major.minor' string.
+documentedDartVersion: '3.14'
 
 # Settings for Jaspr.
 

@@ -16,6 +16,7 @@ import '../models/diagnostic_model.dart';
 import '../models/lints.dart';
 import '../utils/last_modified.dart';
 import '../utils/server_only_utils.dart';
+import 'changelog_slices.dart';
 import 'glossary.dart';
 
 /// All pages that should be loaded from memory rather than
@@ -26,6 +27,7 @@ List<MemoryPage> get allMemoryPages => [
   _allLinterRulesJson,
   ..._lintMemoryPages,
   ..._diagnosticMemoryPages,
+  ...changelogSliceMemoryPages,
 ];
 
 /// The `/resources/glossary` page which hosts the [GlossaryIndex].
@@ -354,7 +356,7 @@ MemoryPage get _allLinterRulesPage {
     content:
         '''
 The following is an auto-generated list of all linter rules
-available in the Dart SDK as of version `{{site.sdkVersion}}`.
+available in the Dart SDK as of version `{{site.documentedDartVersion}}`.
 Add them to your
 [`analysis_options.yaml`](/tools/analysis) file
 and adjust as you see fit.

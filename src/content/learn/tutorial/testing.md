@@ -250,6 +250,9 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
 
     This `test` function does the following:
 
+    -   Marks the test callback as `async` (`() async { ... }`) so it can
+        `await` the asynchronous file read; the test runner automatically
+        waits for the returned `Future` to complete.
     -   Reads the contents of the `dart_lang_summary.json` file.
     -   Decodes the JSON string into a `Map<String, Object?>`.
     -   Creates a `Summary` object from the map using
@@ -348,8 +351,8 @@ You'll use the `group`, `test`, and `expect` functions from the `test` package.
         top-level OpenSearch response is a JSON array).
     -   Creates a `SearchResults` object from the list using
         the `SearchResults.fromJson` constructor.
-    -   Uses the `expect` function to assert that
-        the `results` list has a length greater than `1`.
+    -   Uses `expect` with the `greaterThan(1)` matcher to assert that
+        the `results` list contains more than `1` item.
 
 ### Task 5: Run the tests
 

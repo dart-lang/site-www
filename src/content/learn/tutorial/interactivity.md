@@ -253,7 +253,9 @@ As you build this functionality, you'll work with
     Highlights from the preceding code:
 
     - `final` variables can only be set once and are used when
-      you never intend to change the variable again in the code.
+      you never intend to reassign the variable—even when its value is
+      determined at runtime (such as command-line input), unlike `const`
+      which requires a compile-time constant.
     - `arguments.sublist(1)` creates a new list containing all elements of
       the `arguments` list _after_ the first element (which was `search`).
     - `arguments.length > 1 ? ... : null;` is a conditional (ternary) operator.

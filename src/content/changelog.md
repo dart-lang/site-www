@@ -3,6 +3,7 @@ title: Dart changelog
 description: A complete changelog for Dart.
 bodyClass: changelog-page
 showBreadcrumbs: false
+alternateJson: /changelog/index.json
 ---
 
 This page lists the full history of changes to

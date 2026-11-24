@@ -21,7 +21,7 @@ yaml_variable_scanner:
     - ^site\.url$
     - ^site\.branch$
     - ^site\.showBanner$
-    - ^site\.sdkVersion$
+    - ^site\.documentedDartVersion$
     - ^site\.og_image_vers$
     - ^site\.base$
 
