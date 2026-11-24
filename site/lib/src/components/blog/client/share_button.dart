@@ -53,62 +53,75 @@ class ShareButton extends StatelessComponent {
           ]),
         ]),
         const div(classes: 'dropdown-divider', []),
-        ul([
-          li([
-            a(
-              href:
-                  'https://twitter.com/intent/tweet?text=${Uri.encodeComponent(title)}&url=${Uri.encodeComponent(fullUrl)}',
-              target: Target.blank,
-              [
-                const svg([
-                  Component.element(
-                    tag: 'use',
-                    attributes: {
-                      'href': '/assets/img/social/x.svg#x',
-                    },
-                  ),
-                ]),
-                const .text('Share on X'),
-              ],
-            ),
-          ]),
-          li([
-            a(
-              href:
-                  'https://bsky.app/intent/compose?text=${Uri.encodeComponent("$title $fullUrl")}',
-              target: Target.blank,
-              [
-                const svg([
-                  Component.element(
-                    tag: 'use',
-                    attributes: {
-                      'href': '/assets/img/social/bluesky.svg#bluesky',
-                    },
-                  ),
-                ]),
-                const .text('Share on Bluesky'),
-              ],
-            ),
-          ]),
-          li([
-            a(
-              href:
+        Builder(
+          builder: (context) {
+            void closeDropdown() {
+              context
+                  .findAncestorStateOfType<DropdownState>()
+                  ?.toggle(to: false);
+            }
+
+            return ul([
+              li([
+                a(
+                  href:
+                      'https://twitter.com/intent/tweet?text=${Uri.encodeComponent(title)}&url=${Uri.encodeComponent(fullUrl)}',
+                  target: Target.blank,
+                  onClick: closeDropdown,
+                  [
+                    const svg([
+                      Component.element(
+                        tag: 'use',
+                        attributes: {
+                          'href': '/assets/img/social/x.svg#x',
+                        },
+                      ),
+                    ]),
+                    const .text('Share on X'),
+                  ],
+                ),
+              ]),
+              li([
+                a(
+                  href:
+                      'https://bsky.app/intent/compose?text=${Uri.encodeComponent("$title $fullUrl")}',
+                  target: Target.blank,
+                  onClick: closeDropdown,
+                  [
+                    const svg([
+                      Component.element(
+                        tag: 'use',
+                        attributes: {
+                          'href': '/assets/img/social/bluesky.svg#bluesky',
+                        },
+                      ),
+                    ]),
+                    const .text('Share on Bluesky'),
+                  ],
+                ),
+              ]),
+              li([
+                a(
+                  href:
                   'https://www.linkedin.com/sharing/share-offsite/?url=${Uri.encodeComponent(fullUrl)}',
-              target: Target.blank,
-              [
-                const svg([
-                  Component.element(
-                    tag: 'use',
-                    attributes: {
-                      'href': '/assets/img/social/linkedin.svg#linkedin',
-                    },
-                  ),
-                ]),
-                const .text('Share on LinkedIn'),
-              ],
-            ),
-          ]),
-        ]),
+                  target: Target.blank,
+                  onClick: closeDropdown,
+                  [
+                    const svg([
+                      Component.element(
+                        tag: 'use',
+                        attributes: {
+                          'href': '/assets/img/social/linkedin.svg#linkedin',
+                        },
+                      ),
+                    ]),
+                    const .text('Share on LinkedIn'),
+                  ],
+                ),
+              ]),
+            ]);
+          },
+        ),
       ]),
     );
   }
