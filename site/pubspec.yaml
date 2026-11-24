@@ -57,8 +57,12 @@ dev_dependencies:
   test: ^1.31.1
 
 dependency_overrides:
+  # Can be removed once the `feat/shared-dart-migration` branch is merged into main.
   site_shared:
-    path: /Users/kilian/Documents/Work/flutter/website-shared-dart-migration/packages/site_shared
+    git:
+      url: https://github.com/flutter/website
+      path: packages/site_shared
+      ref: feat/shared-dart-migration
 
 jaspr:
   mode: static
