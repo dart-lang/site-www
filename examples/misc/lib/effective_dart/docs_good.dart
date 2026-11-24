@@ -86,25 +86,6 @@ void miscDeclAnalyzedButNotTested() {
   num min(num a, num b) => ellipsis();
   // #enddocregion code-sample
 
-  {
-    // #docregion example-directive
-    /// A greeting message for [name].
-    ///
-    /// {@example /example/hello_world.dart#main}
-    String greet(String name) => 'Hello, $name!';
-    // #enddocregion example-directive
-
-    // #docregion example-file
-    void main() {
-      // #region main
-      final message = greet('Dash');
-      print(message); // Hello, Dash!
-      assert(message == 'Hello, Dash!'); // #hide
-      // #endregion
-    }
-    // #enddocregion example-file
-  }
-
   () {
     void anotherMethod() {}
 
