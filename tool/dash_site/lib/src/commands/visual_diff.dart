@@ -355,7 +355,9 @@ final class VisualDiffCommand extends Command<int> {
         shouldBuild: shouldBuild,
         capturedRoutes: capturedRoutes,
       );
-      if (res != 0) return res;
+      if (res.exitCode != 0) return res.exitCode;
+      buildElapsed = res.buildElapsed;
+      snapshotElapsed = res.snapshotElapsed;
     } else {
       final currentBuildDir = Directory(
         path.join(repositoryRoot, 'site', 'build', 'jaspr'),
@@ -687,7 +689,7 @@ final class VisualDiffCommand extends Command<int> {
     }
   }
 
-  Future<int> _createCurrentFromBranch({
+  Future<_BranchCaptureResult> _createCurrentFromBranch({
     required String toBranch,
     required Directory currentDir,
     required Directory baselineDir,
@@ -709,6 +711,9 @@ final class VisualDiffCommand extends Command<int> {
       baseRef: toBranch,
     );
 
+    Duration? buildElapsed;
+    Duration? snapshotElapsed;
+
     try {
       if (shouldBuild) {
         print('📦 Installing dependencies in branch worktree...');
@@ -721,21 +726,23 @@ final class VisualDiffCommand extends Command<int> {
             'Error: Failed to get dependencies in branch worktree: '
             '${pubGetResult.stderr}',
           );
-          return pubGetResult.exitCode;
+          return _BranchCaptureResult(pubGetResult.exitCode);
         }
 
         print('🔨 Building site in branch worktree...');
+        final buildStopwatch = Stopwatch()..start();
         final buildResult = await Process.run('dart', [
           'run',
           'dash_site',
           'build',
         ], workingDirectory: worktree.directory.path);
+        buildElapsed = buildStopwatch.elapsed;
         if (buildResult.exitCode != 0) {
           stderr.writeln(
             'Error: Failed to build site in branch worktree: '
             '${buildResult.stderr}',
           );
-          return buildResult.exitCode;
+          return _BranchCaptureResult(buildResult.exitCode);
         }
       }
 
@@ -747,7 +754,7 @@ final class VisualDiffCommand extends Command<int> {
           'Error: Branch build output directory not found at: '
           '${branchBuildDir.path}',
         );
-        return 1;
+        return const _BranchCaptureResult(1);
       }
 
       final branchRoutes = discoverRoutes(
@@ -762,11 +769,12 @@ final class VisualDiffCommand extends Command<int> {
           'Error: No routes discovered in branch build directory: '
           '${branchBuildDir.path}',
         );
-        return 1;
+        return const _BranchCaptureResult(1);
       }
 
       print('⚡ Starting static server for snapshotting...');
       final server = await SnapshotServer.start(branchBuildDir);
+      final snapshotStopwatch = Stopwatch()..start();
       try {
         await runner.captureSnapshots(
           server: server,
@@ -783,8 +791,13 @@ final class VisualDiffCommand extends Command<int> {
       } finally {
         await server.close();
       }
+      snapshotElapsed = snapshotStopwatch.elapsed;
 
-      return 0;
+      return _BranchCaptureResult(
+        0,
+        buildElapsed: buildElapsed,
+        snapshotElapsed: snapshotElapsed,
+      );
     } finally {
       await worktree.cleanup(repositoryRoot: repositoryRoot);
     }
@@ -1065,4 +1078,16 @@ final class VisualDiffCommand extends Command<int> {
     }
     return '${(d.inMilliseconds / 1000).toStringAsFixed(1)}s';
   }
+}
+
+final class _BranchCaptureResult {
+  final int exitCode;
+  final Duration? buildElapsed;
+  final Duration? snapshotElapsed;
+
+  const _BranchCaptureResult(
+    this.exitCode, {
+    this.buildElapsed,
+    this.snapshotElapsed,
+  });
 }
