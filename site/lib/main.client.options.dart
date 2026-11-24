@@ -14,30 +14,12 @@ import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     deferred as _share_button;
 import 'package:dart_dev_site/src/components/common/client/code_block_copy_button.dart'
     deferred as _code_block_copy_button;
-import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
-    deferred as _collapse_button;
-import 'package:dart_dev_site/src/components/common/client/expandable.dart'
-    deferred as _expandable;
-import 'package:dart_dev_site/src/components/common/client/feedback.dart'
-    deferred as _feedback;
-import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
-    deferred as _on_this_page_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     deferred as _page_header_options;
-import 'package:dart_dev_site/src/components/common/client/simple_tooltip.dart'
-    deferred as _simple_tooltip;
-import 'package:dart_dev_site/src/components/common/client/tabs.dart'
-    deferred as _tabs;
-import 'package:dart_dev_site/src/components/common/client/trigger.dart'
-    deferred as _trigger;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
-    deferred as _dartpad_injector;
-import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
-    deferred as _menu_toggle;
+    deferred as _dartpad_dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
-    deferred as _site_switcher;
-import 'package:dart_dev_site/src/components/layout/theme_switcher.dart'
-    deferred as _theme_switcher;
+    deferred as _layout_site_switcher;
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters.dart'
     deferred as _changelog_filters;
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters_sidebar.dart'
@@ -46,11 +28,34 @@ import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
     deferred as _glossary_search_section;
 import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
     deferred as _lint_filter_search_section;
-import 'package:dart_dev_site/src/components/tutorial/client/quiz.dart'
+import 'package:site_shared/components/common/client/collapse_button.dart'
+    deferred as _collapse_button;
+import 'package:site_shared/components/common/client/expandable.dart'
+    deferred as _expandable;
+import 'package:site_shared/components/common/client/feedback.dart'
+    deferred as _feedback;
+import 'package:site_shared/components/common/client/on_this_page_button.dart'
+    deferred as _on_this_page_button;
+import 'package:site_shared/components/common/client/simple_tooltip.dart'
+    deferred as _simple_tooltip;
+import 'package:site_shared/components/common/client/tabs.dart'
+    deferred as _tabs;
+import 'package:site_shared/components/common/client/trigger.dart'
+    deferred as _trigger;
+import 'package:site_shared/components/dartpad/dartpad_injector.dart'
+    deferred as _dartpad_injector;
+import 'package:site_shared/components/layout/menu_toggle.dart'
+    deferred as _menu_toggle;
+import 'package:site_shared/components/layout/site_switcher.dart'
+    deferred as _site_switcher;
+import 'package:site_shared/components/layout/theme_switcher.dart'
+    deferred as _theme_switcher;
+import 'package:site_shared/components/tutorial/client/quiz.dart'
     deferred as _quiz;
-import 'package:dart_dev_site/src/components/tutorial/client/stepper.dart'
+import 'package:site_shared/components/tutorial/client/stepper.dart'
     deferred as _stepper;
-import 'package:dart_dev_site/src/models/quiz_model.dart' as _quiz_model;
+import 'package:site_shared/components/tutorial/models/quiz_model.dart'
+    as _quiz_model;
 
 /// Default [ClientOptions] for use with your Jaspr project.
 ///
@@ -91,29 +96,6 @@ ClientOptions get defaultClientOptions => ClientOptions(
       ),
       loader: _code_block_copy_button.loadLibrary,
     ),
-    'collapse_button': ClientLoader(
-      (p) => _collapse_button.CollapseButton(
-        classes: p.get<List<Object?>>('classes').cast<String>(),
-        title: p.get<String?>('title'),
-      ),
-      loader: _collapse_button.loadLibrary,
-    ),
-    'expandable': ClientLoader(
-      (p) => _expandable.Expandable(
-        id: p.get<String?>('id'),
-        initiallyExpanded: p.get<bool>('initiallyExpanded'),
-        child: p.mount(p.get<String>('child')),
-      ),
-      loader: _expandable.loadLibrary,
-    ),
-    'feedback': ClientLoader(
-      (p) => _feedback.FeedbackComponent(issueUrl: p.get<String>('issueUrl')),
-      loader: _feedback.loadLibrary,
-    ),
-    'on_this_page_button': ClientLoader(
-      (p) => _on_this_page_button.OnThisPageButton(),
-      loader: _on_this_page_button.loadLibrary,
-    ),
     'page_header_options': ClientLoader(
       (p) => _page_header_options.PageHeaderOptions(
         title: p.get<String>('title'),
@@ -123,50 +105,18 @@ ClientOptions get defaultClientOptions => ClientOptions(
       ),
       loader: _page_header_options.loadLibrary,
     ),
-    'simple_tooltip': ClientLoader(
-      (p) => _simple_tooltip.SimpleTooltip(
-        target: p.mount(p.get<String>('target')),
-        content: p.mount(p.get<String>('content')),
-      ),
-      loader: _simple_tooltip.loadLibrary,
-    ),
-    'tabs': ClientLoader(
-      (p) => _tabs.InteractiveDashTabs(
-        id: p.get<String>('id'),
-        tabs: p
-            .get<List<Object?>>('tabs')
-            .cast<Map<String, Object?>>()
-            .map((i) => _tabs.DashTab.decode(i, p.mount))
-            .toList(),
-        saveKey: p.get<String?>('saveKey'),
-        wrapped: p.get<bool>('wrapped'),
-      ),
-      loader: _tabs.loadLibrary,
-    ),
-    'trigger': ClientLoader(
-      (p) => _trigger.Trigger(child: p.mount(p.get<String>('child'))),
-      loader: _trigger.loadLibrary,
-    ),
-    'dartpad_injector': ClientLoader(
-      (p) => _dartpad_injector.DartPadInjector(
+    'dartpad/dartpad_injector': ClientLoader(
+      (p) => _dartpad_dartpad_injector.DartPadInjector(
         title: p.get<String>('title'),
         height: p.get<String>('height'),
         theme: p.get<String?>('theme'),
         runAutomatically: p.get<bool>('runAutomatically'),
       ),
-      loader: _dartpad_injector.loadLibrary,
+      loader: _dartpad_dartpad_injector.loadLibrary,
     ),
-    'menu_toggle': ClientLoader(
-      (p) => _menu_toggle.MenuToggle(),
-      loader: _menu_toggle.loadLibrary,
-    ),
-    'site_switcher': ClientLoader(
-      (p) => _site_switcher.SiteSwitcher(),
-      loader: _site_switcher.loadLibrary,
-    ),
-    'theme_switcher': ClientLoader(
-      (p) => _theme_switcher.ThemeSwitcher(),
-      loader: _theme_switcher.loadLibrary,
+    'layout/site_switcher': ClientLoader(
+      (p) => _layout_site_switcher.SiteSwitcher(),
+      loader: _layout_site_switcher.loadLibrary,
     ),
     'changelog_filters': ClientLoader(
       (p) => _changelog_filters.ChangelogFilters(),
@@ -184,18 +134,86 @@ ClientOptions get defaultClientOptions => ClientOptions(
       (p) => _lint_filter_search_section.LintFilterSearchSection(),
       loader: _lint_filter_search_section.loadLibrary,
     ),
-    'quiz': ClientLoader(
+    'site_shared:collapse_button': ClientLoader(
+      (p) => _collapse_button.CollapseButton(
+        classes: p.get<List<Object?>>('classes').cast<String>(),
+        title: p.get<String?>('title'),
+      ),
+      loader: _collapse_button.loadLibrary,
+    ),
+    'site_shared:expandable': ClientLoader(
+      (p) => _expandable.Expandable(
+        id: p.get<String?>('id'),
+        initiallyExpanded: p.get<bool>('initiallyExpanded'),
+        child: p.mount(p.get<String>('child')),
+      ),
+      loader: _expandable.loadLibrary,
+    ),
+    'site_shared:feedback': ClientLoader(
+      (p) => _feedback.FeedbackComponent(issueUrl: p.get<String>('issueUrl')),
+      loader: _feedback.loadLibrary,
+    ),
+    'site_shared:on_this_page_button': ClientLoader(
+      (p) => _on_this_page_button.OnThisPageButton(),
+      loader: _on_this_page_button.loadLibrary,
+    ),
+    'site_shared:simple_tooltip': ClientLoader(
+      (p) => _simple_tooltip.SimpleTooltip(
+        target: p.mount(p.get<String>('target')),
+        content: p.mount(p.get<String>('content')),
+      ),
+      loader: _simple_tooltip.loadLibrary,
+    ),
+    'site_shared:tabs': ClientLoader(
+      (p) => _tabs.InteractiveDashTabs(
+        id: p.get<String>('id'),
+        tabs: p
+            .get<List<Object?>>('tabs')
+            .cast<Map<String, Object?>>()
+            .map((i) => _tabs.DashTab.decode(i, p.mount))
+            .toList(),
+        saveKey: p.get<String?>('saveKey'),
+        wrapped: p.get<bool>('wrapped'),
+      ),
+      loader: _tabs.loadLibrary,
+    ),
+    'site_shared:trigger': ClientLoader(
+      (p) => _trigger.Trigger(child: p.mount(p.get<String>('child'))),
+      loader: _trigger.loadLibrary,
+    ),
+    'site_shared:dartpad_injector': ClientLoader(
+      (p) => _dartpad_injector.DartPadInjector(
+        title: p.get<String>('title'),
+        theme: p.get<String?>('theme'),
+        height: p.get<String?>('height'),
+        runAutomatically: p.get<bool>('runAutomatically'),
+      ),
+      loader: _dartpad_injector.loadLibrary,
+    ),
+    'site_shared:menu_toggle': ClientLoader(
+      (p) => _menu_toggle.MenuToggle(),
+      loader: _menu_toggle.loadLibrary,
+    ),
+    'site_shared:site_switcher': ClientLoader(
+      (p) => _site_switcher.SiteSwitcher(isFlutter: p.get<bool>('isFlutter')),
+      loader: _site_switcher.loadLibrary,
+    ),
+    'site_shared:theme_switcher': ClientLoader(
+      (p) => _theme_switcher.ThemeSwitcher(),
+      loader: _theme_switcher.loadLibrary,
+    ),
+    'site_shared:quiz': ClientLoader(
       (p) => _quiz.InteractiveQuiz(
         title: p.get<String?>('title'),
         questions: p
             .get<List<Object?>>('questions')
-            .cast<Map<String, Object?>>()
+            .cast<Map<Object?, Object?>>()
             .map((i) => _quiz_model.Question.fromMap(i))
             .toList(),
       ),
       loader: _quiz.loadLibrary,
     ),
-    'stepper': ClientLoader(
+    'site_shared:stepper': ClientLoader(
       (p) => _stepper.InteractiveStepper(
         steps: p
             .get<List<Object?>>('steps')

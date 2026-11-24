@@ -353,7 +353,7 @@ void main() {
               body: LintRuleIndex([
                 LintDetails(const {
                   'name': 'prefer_iterable_whereType',
-                  'description': 'Prefer iterable.whereType<T>().',
+                  'description': 'Prefer `iterable.whereType<T>()`.',
                   'categories': <String>[],
                   'state': 'stable',
                   'incompatible': <String>[],

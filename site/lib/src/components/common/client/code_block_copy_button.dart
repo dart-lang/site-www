@@ -3,10 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaspr/jaspr.dart';
-
+import 'package:site_shared/components/common/button.dart';
 import 'package:universal_web/web.dart' as web;
-
-import '../button.dart';
 
 /// An icon button that copies the code of
 /// the code block it's placed in to the user's clipboard.

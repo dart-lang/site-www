@@ -29,6 +29,11 @@ dependencies:
   path: ^1.9.1
   # Used in the SDK archive.
   pub_semver: ^2.2.0
+  site_shared:
+    git:
+      url: https://github.com/flutter/website
+      path: packages/site_shared
+      ref: c1acb419c3c2b43be543d7c2eb0de0a6ba0e153b
   universal_web: ^1.1.1+1
   # Used to build the Atom feed for the blog.
   xml: ^7.0.1

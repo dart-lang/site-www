@@ -6,9 +6,10 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../components/common/button.dart';
-import '../components/common/card.dart';
-import '../components/common/client/trigger.dart';
+import 'package:site_shared/components/common/button.dart';
+import 'package:site_shared/components/common/card.dart';
+import 'package:site_shared/components/common/client/trigger.dart';
+
 import '../components/pages/glossary_search_section.dart';
 import '../markdown/markdown_parser.dart';
 import '../util.dart';

@@ -5,12 +5,11 @@
 import 'package:collection/collection.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
-
 import 'package:pub_semver/pub_semver.dart';
+import 'package:site_shared/components/common/button.dart';
 
 import '../../../models/changelog_model.dart';
 import '../../../util.dart';
-import '../../common/button.dart';
 import '../../common/client/filtering.dart';
 import '../../common/material_icon.dart';
 import 'breaking_changes_legend.dart';

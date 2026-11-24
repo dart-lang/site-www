@@ -1,19 +1,19 @@
+// ignore_for_file: implementation_imports
+
 import 'dart:collection';
 
 import 'package:html/parser.dart' as html;
-// ignore: implementation_imports
 import 'package:html/src/token.dart' as html;
-// ignore: implementation_imports
 import 'package:html/src/tokenizer.dart' as html;
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:markdown_description_list/markdown_description_list.dart';
 
-import 'alert_syntax.dart';
-import 'attribute_syntax.dart';
-import 'fenced_code_block_syntax.dart';
-import 'header_syntax.dart';
+import 'package:site_shared/src/markdown/alert_syntax.dart';
+import 'package:site_shared/src/markdown/attribute_syntax.dart';
+import 'package:site_shared/src/markdown/fenced_code_block_syntax.dart';
+import 'package:site_shared/src/markdown/header_syntax.dart';
 
 /// The `package:markdown` block syntaxes to apply when parsing Markdown.
 const List<md.BlockSyntax> _blockSyntaxes = [

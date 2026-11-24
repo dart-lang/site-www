@@ -4,11 +4,11 @@
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:site_shared/components/common/button.dart';
 import 'package:universal_web/web.dart' as web;
 
 import '../../util.dart';
 import '../util/global_event_listener.dart';
-import 'button.dart';
 
 /// A modal dialog component with a standard layout.
 ///

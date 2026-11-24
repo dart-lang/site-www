@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// ignore_for_file: implementation_imports
+
 import 'dart:convert' show LineSplitter;
 
 import 'package:collection/collection.dart';
@@ -10,12 +12,12 @@ import 'package:jaspr/jaspr.dart' as jaspr;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:meta/meta.dart';
 import 'package:opal/opal.dart' as opal;
+import 'package:site_shared/src/highlight/theme/dark.dart';
+import 'package:site_shared/src/highlight/theme/light.dart';
+import 'package:site_shared/src/highlight/token_renderer.dart' as highlighter;
 
 import '../components/common/wrapped_code_block.dart';
 import '../components/dartpad/dartpad_injector.dart';
-import '../highlight/theme/dark.dart';
-import '../highlight/theme/light.dart';
-import '../highlight/token_renderer.dart' as highlighter;
 
 final class CodeBlockProcessor implements PageExtension {
   static final opal.LanguageRegistry _languageRegistry =

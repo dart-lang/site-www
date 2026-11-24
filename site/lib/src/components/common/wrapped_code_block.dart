@@ -4,10 +4,10 @@
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:site_shared/components/common/client/collapse_button.dart';
 
 import '../../util.dart';
 import 'client/code_block_copy_button.dart';
-import 'client/collapse_button.dart';
 import 'material_icon.dart';
 
 /// A rendered code block with support for syntax highlighting,

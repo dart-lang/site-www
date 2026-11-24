@@ -4,7 +4,7 @@
 
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../extensions/header_extractor.dart';
+import 'package:site_shared/page_extensions.dart' show ContentHeader;
 
 class OnThisPageData {
   final List<OnThisPageEntry> topLevelEntries;

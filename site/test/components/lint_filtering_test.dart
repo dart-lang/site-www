@@ -5,10 +5,10 @@
 @TestOn('browser')
 library;
 
-import 'package:dart_dev_site/src/components/common/chip.dart';
 import 'package:dart_dev_site/src/models/lints.dart';
 import 'package:dart_dev_site/src/pages/lint_index.dart';
 import 'package:jaspr_test/client_test.dart';
+import 'package:site_shared/components/common/chip.dart';
 import 'package:universal_web/web.dart' as web;
 
 final testLinterRules = <LintDetails>[

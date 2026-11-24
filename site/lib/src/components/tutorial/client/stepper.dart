@@ -4,9 +4,9 @@
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:site_shared/components/common/button.dart';
 import 'package:universal_web/web.dart' as web;
 
-import '../../common/button.dart';
 import '../../common/material_icon.dart';
 
 /// An interactive stepper component that displays a sequence of steps with
