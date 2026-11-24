@@ -4266,7 +4266,7 @@
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2190
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Language
   subArea: Unnamed libraries
   description: |
@@ -4284,7 +4284,7 @@
   link: /effective-dart/style#dont-explicitly-name-libraries
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Language
   subArea: Flow analysis
   description: |
@@ -4293,7 +4293,7 @@
     - changed
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Language
   subArea: Flow analysis
   description: |
@@ -4303,7 +4303,7 @@
   link: "https://github.com/dart-lang/sdk/issues/49635"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Language
   subArea: Private names
   description: |
@@ -4313,7 +4313,7 @@
   link: "https://github.com/dart-lang/sdk/issues/49687"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Language
   subArea: Type inference
   description: |
@@ -4324,7 +4324,7 @@
   link: "https://github.com/dart-lang/sdk/issues/50383"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`dart:convert`"
   description: |
@@ -4336,7 +4336,7 @@
   link: "https://github.com/dart-lang/sdk/issues/34233"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`dart:developer`"
   description: |
@@ -4349,7 +4349,7 @@
   link: "https://github.com/dart-lang/sdk/issues/34233"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`dart:ffi`"
   description: |
@@ -4361,7 +4361,7 @@
   link: "https://github.com/dart-lang/sdk/issues/49935"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`dart:io`"
   description: |
@@ -4371,7 +4371,7 @@
   link: "https://github.com/dart-lang/sdk/issues/49305"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`dart:io`"
   description: |
@@ -4383,7 +4383,7 @@
   link: "https://github.com/dart-lang/sdk/issues/49647"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`dart:io`"
   description: |
@@ -4395,7 +4395,7 @@
   link: "https://github.com/dart-lang/sdk/issues/49878"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`dart:isolate`"
   description: |
@@ -4405,7 +4405,7 @@
     - changed
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`dart:mirrors`"
   description: |
@@ -4416,7 +4416,7 @@
   link: "https://github.com/dart-lang/sdk/issues/34233"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`package:js`"
   description: |
@@ -4436,7 +4436,7 @@
   link: "https://github.com/dart-lang/sdk/issues/49350"
 # --------------------------------------------------
 - version: 2.19.0
-  releaseDate: 2023-01-25
+  releaseDate: 2023-01-24
   area: Libraries
   subArea: "`dart2js`"
   description: |
@@ -5052,7 +5052,7 @@
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2140
 # --------------------------------------------------
 - version: 2.14.0
-  releaseDate: 2021-09-08
+  releaseDate: 2021-09-09
   area: Language
   subArea: Operators
   description: |
@@ -5063,7 +5063,7 @@
   link: /language/operators#bitwise-and-shift-operators
 # --------------------------------------------------
 - version: 2.14.0
-  releaseDate: 2021-09-08
+  releaseDate: 2021-09-09
   area: Language
   subArea: Annotations
   description: |
@@ -5081,7 +5081,7 @@
     - changed
 # --------------------------------------------------
 - version: 2.14.0
-  releaseDate: 2021-09-08
+  releaseDate: 2021-09-09
   area: Libraries
   subArea: "`dart:io`"
   description: |
@@ -5092,7 +5092,7 @@
     - changed
 # --------------------------------------------------
 - version: 2.14.0
-  releaseDate: 2021-09-08
+  releaseDate: 2021-09-09
   area: Libraries
   subArea: "`dart:typed_data`"
   description: |
@@ -5103,7 +5103,7 @@
   link: "https://github.com/dart-lang/sdk/issues/45115"
 # --------------------------------------------------
 - version: 2.14.0
-  releaseDate: 2021-09-08
+  releaseDate: 2021-09-09
   area: Tools
   subArea: Dart VM
   description: |
@@ -5115,7 +5115,7 @@
   link: "https://github.com/dart-lang/sdk/issues/45071"
 # --------------------------------------------------
 - version: 2.14.0
-  releaseDate: 2021-09-08
+  releaseDate: 2021-09-09
   area: Tools
   subArea: Dart command line
   description: |
@@ -5125,7 +5125,7 @@
   link: "https://github.com/dart-lang/sdk/issues/46100"
 # --------------------------------------------------
 - version: 2.14.0
-  releaseDate: 2021-09-08
+  releaseDate: 2021-09-09
   area: Tools
   subArea: Dart command line
   description: |
@@ -5134,7 +5134,7 @@
     - deprecated
 # --------------------------------------------------
 - version: 2.14.0
-  releaseDate: 2021-09-08
+  releaseDate: 2021-09-09
   area: Tools
   subArea: "`dart2js`"
   description: |
@@ -5145,7 +5145,7 @@
   link: "https://github.com/dart-lang/sdk/issues/46545"
 # --------------------------------------------------
 - version: 2.14.0
-  releaseDate: 2021-09-08
+  releaseDate: 2021-09-09
   area: Tools
   subArea: Dart dev compiler
   description: |
@@ -5200,7 +5200,7 @@
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2130
 # --------------------------------------------------
 - version: 2.13.0
-  releaseDate: 2021-05-19
+  releaseDate: 2021-05-18
   area: Language
   subArea: Type aliases
   description: |
@@ -5213,7 +5213,7 @@
   link: /language/typedefs
 # --------------------------------------------------
 - version: 2.13.0
-  releaseDate: 2021-05-19
+  releaseDate: 2021-05-18
   area: Libraries
   subArea: "`dart:ffi`"
   description: |
@@ -5222,7 +5222,7 @@
     - new
 # --------------------------------------------------
 - version: 2.13.0
-  releaseDate: 2021-05-19
+  releaseDate: 2021-05-18
   area: Libraries
   subArea: "`package:js`"
   description: |
@@ -5453,7 +5453,7 @@
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#2100
 # --------------------------------------------------
 - version: 2.10.0
-  releaseDate: 2020-10-01
+  releaseDate: 2020-09-28
   area: Tools
   subArea: Dart VM
   description: |
@@ -6487,7 +6487,7 @@
   link: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#200
 # --------------------------------------------------
 - version: 2.0.0
-  releaseDate: 2018-02-22
+  releaseDate: 2018-08-07
   area: Language
   subArea: Type system
   description: |
@@ -6497,7 +6497,7 @@
     - changed
 # --------------------------------------------------
 - version: 2.0.0
-  releaseDate: 2018-02-22
+  releaseDate: 2018-08-07
   area: Language
   subArea: Async functions
   description: |
@@ -6508,7 +6508,7 @@
   link: "https://github.com/dart-lang/sdk/issues/30345"
 # --------------------------------------------------
 - version: 2.0.0
-  releaseDate: 2018-02-22
+  releaseDate: 2018-08-07
   area: Libraries
   subArea: Constants
   description: |
@@ -6518,7 +6518,7 @@
     - changed
 # --------------------------------------------------
 - version: 2.0.0
-  releaseDate: 2018-02-22
+  releaseDate: 2018-08-07
   area: Libraries
   subArea: Type system
   description: |
@@ -6533,7 +6533,7 @@
   link: /language/type-system
 # --------------------------------------------------
 - version: 2.0.0
-  releaseDate: 2018-02-22
+  releaseDate: 2018-08-07
   area: Libraries
   subArea: Web
   description: |
@@ -6544,7 +6544,7 @@
     - breaking
 # --------------------------------------------------
 - version: 2.0.0
-  releaseDate: 2018-02-22
+  releaseDate: 2018-08-07
   area: Tools
   subArea: Pub
   description: |

@@ -70,6 +70,8 @@ jobs:
         run: dart pub get
       - name: Check Markdown for any known issues
         run: dart run dash_site check-markdown
+      - name: Validate changelog data
+        run: dart run dash_site check-changelog
 
   excerpts:
     name: Check if code excerpts are up to date

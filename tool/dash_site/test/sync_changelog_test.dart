@@ -174,5 +174,360 @@ See the [feature specification][primary-constructor-spec].
         'https://github.com/dart-lang/language/blob/main/accepted/3.13/primary-constructors/feature-specification.md',
       );
     });
+
+    test('handles fenced code blocks and orphan H4 headers via AST', () {
+      const markdown = '''
+## 3.9.4 - 2025-09-30
+
+#### Pub
+
+- `dart pub get --example` now resolves `example/` folders (issue [dart-lang/pub#4674][]).
+
+[dart-lang/pub#4674]: https://github.com/dart-lang/pub/issues/4674
+
+## 3.13.0
+
+**Released on:** 2026-08-12
+
+### Language
+
+#### Primary constructors
+
+Declare classes concisely with generic types like `List<int>`:
+
+```dart
+## not a version header
+- not a bullet item
+class Point<T>(var T x, var T y);
+```
+''';
+
+      final v394 = loadYaml(
+        SyncChangelog.parseAndGenerateYaml(markdown, '3.9.4'),
+      ) as YamlList;
+      expect(v394, hasLength(1));
+      final pubEntry = v394.single as YamlMap;
+      expect(pubEntry['releaseDate'], '2025-09-30');
+      expect(pubEntry['area'], 'Tools');
+      expect(pubEntry['subArea'], 'Pub');
+      expect(pubEntry['link'], 'https://github.com/dart-lang/pub/issues/4674');
+
+      final v313 = loadYaml(
+        SyncChangelog.parseAndGenerateYaml(markdown, '3.13.0'),
+      ) as YamlList;
+      expect(v313, hasLength(1));
+      final pcEntry = v313.single as YamlMap;
+      expect(pcEntry['description'], contains('`List<int>`'));
+      expect(pcEntry['description'], contains('```dart'));
+      expect(
+        pcEntry['description'],
+        contains('class Point<T>(var T x, var T y);'),
+      );
+    });
+  });
+
+  group('SyncChangelog.syncIntoYaml', () {
+    const sdkMarkdown = '''
+## 3.14.0
+
+**Released on:** 2026-11-11
+
+### Libraries
+
+#### `dart:ffi`
+
+- Added `NativeFinalizer.callback` ([#63811][]).
+- Added `Abi.iosArm64e` ([#63420][]).
+
+[#63811]: https://github.com/dart-lang/sdk/issues/63811
+[#63420]: https://github.com/dart-lang/sdk/issues/63420
+
+## 3.13.1
+
+**Released on:** 2026-09-01
+
+#### Pub
+
+- Fixed lockfile bug ([dart-lang/pub#5000][]).
+
+[dart-lang/pub#5000]: https://github.com/dart-lang/pub/issues/5000
+''';
+
+    test('skips entries already present by issue URL or fingerprint', () {
+      const existingYaml = '''
+# --------------------------------------------------
+- version: 3.14.0
+  releaseDate: 2026-11-11
+  area: Libraries
+  subArea: '`dart:ffi`'
+  description: |
+    Hand-edited docs prose for NativeFinalizer.callback
+    ([#63811](https://github.com/dart-lang/sdk/issues/63811)).
+  tags:
+    - new
+  link: /interop/c-interop
+# --------------------------------------------------
+''';
+
+      // By default, entries that can't be matched in a version that already
+      // has entries are reported but not written.
+      final reviewOnly = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sdkMarkdown,
+        existingYaml: existingYaml,
+        targetVersion: '3.14.0',
+      );
+      expect(reviewOnly.skippedCount, 1);
+      expect(reviewOnly.addedCount, 0);
+      expect(reviewOnly.unmatchedCount, 1);
+      expect(reviewOnly.updatedYaml, existingYaml);
+
+      final firstSync = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sdkMarkdown,
+        existingYaml: existingYaml,
+        targetVersion: '3.14.0',
+        addUnmatched: true,
+      );
+      expect(firstSync.skippedCount, 1);
+      expect(firstSync.addedCount, 1);
+      expect(firstSync.unmatchedCount, 0);
+      final parsed = loadYaml(firstSync.updatedYaml) as YamlList;
+      expect(parsed, hasLength(2));
+
+      // Re-running a second time is a complete no-op.
+      final secondSync = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sdkMarkdown,
+        existingYaml: firstSync.updatedYaml,
+        targetVersion: '3.14.0',
+      );
+      expect(secondSync.addedCount, 0);
+      expect(secondSync.skippedCount, 2);
+      expect(secondSync.unmatchedCount, 0);
+      expect(secondSync.updatedYaml, firstSync.updatedYaml);
+    });
+
+    test('adds every entry for a version that has no entries yet', () {
+      final synced = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sdkMarkdown,
+        existingYaml: '',
+        targetVersion: '3.14.0',
+      );
+      expect(synced.addedCount, 2);
+      expect(synced.skippedCount, 0);
+      expect(synced.unmatchedCount, 0);
+      expect(loadYaml(synced.updatedYaml) as YamlList, hasLength(2));
+    });
+
+    test('does not write reworded entries that have no issue URL', () {
+      const existingYaml = '''
+# --------------------------------------------------
+- version: 3.13.1
+  releaseDate: 2026-09-01
+  area: Tools
+  subArea: Pub
+  description: Resolved a bug that corrupted the lockfile.
+  tags:
+    - fixed
+  link: /tools/pub/cmd/pub-get
+# --------------------------------------------------
+''';
+
+      final synced = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sdkMarkdown,
+        existingYaml: existingYaml,
+        targetVersion: '3.13.1',
+      );
+      expect(synced.addedCount, 0);
+      expect(synced.skippedCount, 0);
+      expect(synced.unmatchedCount, 1);
+      expect(synced.updatedYaml, existingYaml);
+    });
+
+    test('keeps distinct SDK entries that cite the same issue', () {
+      const sharedIssueMarkdown = '''
+## 3.14.0
+
+**Released on:** 2026-11-11
+
+### Tools
+
+#### Pub
+
+- Added the `--first` flag ([#5001][]).
+- Added the unrelated `--second` flag ([#5001][]).
+- Added the `--third` flag.
+
+[#5001]: https://github.com/dart-lang/pub/issues/5001
+''';
+
+      final fresh = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sharedIssueMarkdown,
+        existingYaml: '',
+        targetVersion: '3.14.0',
+      );
+      expect(fresh.addedCount, 3);
+
+      // Re-running against the unedited output is a no-op.
+      final rerun = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sharedIssueMarkdown,
+        existingYaml: fresh.updatedYaml,
+        targetVersion: '3.14.0',
+        addUnmatched: true,
+      );
+      expect(rerun.addedCount, 0);
+      expect(rerun.skippedCount, 3);
+      expect(rerun.updatedYaml, fresh.updatedYaml);
+
+      // One existing citation of the issue accounts for one SDK entry, so the
+      // second entry that cites it is still added.
+      const existingYaml = '''
+# --------------------------------------------------
+- version: 3.14.0
+  releaseDate: 2026-11-11
+  area: Tools
+  subArea: Pub
+  description: Reworded entry for the `--first` flag.
+  tags:
+    - new
+  link: https://github.com/dart-lang/pub/issues/5001
+# --------------------------------------------------
+''';
+      final partial = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sharedIssueMarkdown,
+        existingYaml: existingYaml,
+        targetVersion: '3.14.0',
+        addUnmatched: true,
+      );
+      expect(partial.skippedCount, 1);
+      expect(partial.addedCount, 2);
+      final descriptions = [
+        for (final entry in loadYaml(partial.updatedYaml) as YamlList)
+          (entry as YamlMap)['description'].toString(),
+      ];
+      expect(descriptions, hasLength(3));
+      expect(descriptions, contains(contains('`--second`')));
+      expect(descriptions, contains(contains('`--third`')));
+    });
+
+    test('inserts patch versions in monotonic descending SemVer order', () {
+      const existingYaml = '''
+# --------------------------------------------------
+- version: 3.14.0
+  releaseDate: 2026-11-11
+  area: Language
+  description: Feature in 3.14.
+  tags:
+    - new
+# --------------------------------------------------
+- version: 3.13.0
+  releaseDate: 2026-08-12
+  area: Language
+  description: Feature in 3.13.
+  tags:
+    - new
+# --------------------------------------------------
+''';
+
+      final synced = SyncChangelog.syncIntoYaml(
+        sdkMarkdown: sdkMarkdown,
+        existingYaml: existingYaml,
+        targetVersion: '3.13.1',
+      );
+      expect(synced.addedCount, 1);
+      final parsed = loadYaml(synced.updatedYaml) as YamlList;
+      final versions = [
+        for (final entry in parsed) (entry as YamlMap)['version'].toString(),
+      ];
+      expect(versions, ['3.14.0', '3.13.1', '3.13.0']);
+    });
+  });
+
+  group('SyncChangelog.checkDrift', () {
+    const sdkMarkdown = '''
+## 3.14.0
+
+**Released on:** 2026-11-11
+
+### Libraries
+
+#### `dart:ffi`
+
+- Added `NativeFinalizer.callback` ([#63811][]).
+
+[#63811]: https://github.com/dart-lang/sdk/issues/63811
+
+### Tools
+
+#### Pub
+
+- Fixed workspace resolution ([dart-lang/pub#4674][]).
+
+[dart-lang/pub#4674]: https://github.com/dart-lang/pub/issues/4674
+''';
+
+    test(
+      'passes when site rewrites prose while covering issues and sections',
+      () {
+        const siteYaml = '''
+- version: 3.14.0
+  releaseDate: 2026-11-11
+  area: Libraries
+  subArea: '`dart:ffi`'
+  description: |
+    Added `NativeFinalizer.callback` for inspecting finalizers
+    ([#63811](https://github.com/dart-lang/sdk/issues/63811)).
+  tags:
+    - new
+  link: /interop/c-interop
+- version: 3.14.0
+  releaseDate: 2026-11-11
+  area: Tools
+  subArea: Pub
+  description: |
+    Fixed `dart pub get --example` resolution across workspaces.
+  tags:
+    - fixed
+  link: https://github.com/dart-lang/pub/issues/4674
+''';
+
+        final report = SyncChangelog.checkDrift(
+          sdkMarkdown: sdkMarkdown,
+          siteYaml: siteYaml,
+          targetVersion: '3.14.0',
+        );
+        expect(report.hasDrift, isFalse);
+        expect(report.versionMissing, isFalse);
+        expect(report.missingIssueUrls, isEmpty);
+        expect(report.missingSections, isEmpty);
+      },
+    );
+
+    test('detects missing sections and unreferenced SDK issue URLs', () {
+      const siteYaml = '''
+- version: 3.14.0
+  releaseDate: 2026-11-11
+  area: Libraries
+  subArea: '`dart:ffi`'
+  description: Added `NativeFinalizer.callback`.
+  tags:
+    - new
+  link: /interop/c-interop
+''';
+
+      final report = SyncChangelog.checkDrift(
+        sdkMarkdown: sdkMarkdown,
+        siteYaml: siteYaml,
+        targetVersion: '3.14.0',
+      );
+      expect(report.hasDrift, isTrue);
+      expect(report.versionMissing, isFalse);
+      expect(
+        report.missingIssueUrls,
+        unorderedEquals([
+          'https://github.com/dart-lang/sdk/issues/63811',
+          'https://github.com/dart-lang/pub/issues/4674',
+        ]),
+      );
+      expect(report.missingSections, ['Tools / Pub']);
+    });
   });
 }

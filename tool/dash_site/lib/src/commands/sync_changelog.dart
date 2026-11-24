@@ -5,9 +5,12 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:html_unescape/html_unescape.dart';
 import 'package:http/http.dart' as http;
+import 'package:markdown/markdown.dart' as md;
 import 'package:path/path.dart' as p;
 import 'package:pub_semver/pub_semver.dart';
+import 'package:yaml/yaml.dart';
 
 import '../utils.dart';
 
@@ -17,15 +20,66 @@ final Uri _sdkChangelogUrl = Uri.https(
   'dart-lang/sdk/main/CHANGELOG.md',
 );
 
+/// Result of comparing a release section in `dart-lang/sdk/CHANGELOG.md`
+/// against `src/data/changelog.yml` for semantic and issue coverage.
+final class ChangelogDriftReport {
+  const ChangelogDriftReport({
+    required this.targetVersion,
+    required this.sdkEntryCount,
+    required this.siteEntryCount,
+    required this.versionMissing,
+    required this.missingIssueUrls,
+    required this.missingSections,
+  });
+
+  final String targetVersion;
+  final int sdkEntryCount;
+  final int siteEntryCount;
+  final bool versionMissing;
+  final List<String> missingIssueUrls;
+  final List<String> missingSections;
+
+  bool get hasDrift =>
+      versionMissing ||
+      missingIssueUrls.isNotEmpty ||
+      missingSections.isNotEmpty;
+}
+
 /// Syncs changelog entries from the Dart SDK repo to the site's changelog file.
 final class SyncChangelog extends Command<int> {
   /// Separator used in the changelog YAML file.
   static const String _changelogSeparator =
       '# --------------------------------------------------';
 
+  static final HtmlUnescape _htmlUnescape = HtmlUnescape();
+
+  static final RegExp _versionHeaderRegExp = RegExp(
+    r'^##\s+(\d+\.\d+\.\d+)(?:\s*-\s*(\d{4}-\d{2}-\d{2}))?',
+  );
+  static final RegExp _fenceRegExp = RegExp(r'^\s*(`{3,}|~{3,})');
+  static final RegExp _releaseDateRegExp = RegExp(r'^\d{4}-\d{2}-\d{2}$');
+  static final RegExp _releasedOnTextRegExp = RegExp(
+    r'^Released on:\s*(\d{4}-\d{2}-\d{2})',
+    caseSensitive: false,
+  );
+  static final RegExp _githubIssueUrlRegExp = RegExp(
+    r'https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/(?:issues|pull)/\d+',
+    caseSensitive: false,
+  );
+  static final RegExp _whitespaceRegExp = RegExp(r'\s+');
+  static final RegExp _entryStartRegExp = RegExp(r'^- version:\s*(\S+)');
+
+  /// Placeholder written when no release date could be determined.
+  ///
+  /// The site renders this verbatim in the version header, and
+  /// `check-changelog` / `changelog_data_test` reject it, so it must be
+  /// replaced before merging.
+  static const unknownReleaseDate = 'TBD';
+
   @override
   String get description =>
-      'Sync the changelog from the SDK repo to the site repo.';
+      'Sync or verify changelog entries from the Dart SDK repo against '
+      'src/data/changelog.yml.';
 
   @override
   String get name => 'sync-changelog';
@@ -35,7 +89,7 @@ final class SyncChangelog extends Command<int> {
       ..addOption(
         'version',
         abbr: 'v',
-        help: 'The Dart SDK version to sync (such as "3.9.0").',
+        help: 'The Dart SDK version to sync or check (such as "3.9.0").',
         mandatory: true,
       )
       ..addOption(
@@ -49,8 +103,32 @@ final class SyncChangelog extends Command<int> {
       ..addFlag(
         'dry-run',
         abbr: 'd',
-        help: 'If true, returns the generated content without writing to file.',
+        help: 'Print the generated YAML without modifying changelog.yml.',
         defaultsTo: false,
+      )
+      ..addFlag(
+        'add-unmatched',
+        help:
+            'When --version already has entries in changelog.yml, also '
+            'insert the SDK entries that could not be matched to an existing '
+            'entry. Without this flag, those entries are only printed for '
+            'review.',
+        defaultsTo: false,
+      )
+      ..addFlag(
+        'check',
+        abbr: 'c',
+        help:
+            'Verify that all SDK issues and (area, subArea) sections for '
+            '--version are represented in src/data/changelog.yml.',
+        defaultsTo: false,
+      )
+      ..addOption(
+        'sdk-changelog',
+        help:
+            'Optional path to a local SDK CHANGELOG.md file instead of '
+            'fetching from GitHub.',
+        valueHelp: 'PATH',
       );
   }
 
@@ -59,7 +137,10 @@ final class SyncChangelog extends Command<int> {
     final results = argResults!;
     final versionString = results.getOrThrow<String>('version');
     final dryRun = results.getOrThrow<bool>('dry-run');
+    final addUnmatched = results.getOrThrow<bool>('add-unmatched');
+    final checkOnly = results.getOrThrow<bool>('check');
     final releaseDate = results['release-date'] as String?;
+    final sdkChangelogPath = results['sdk-changelog'] as String?;
 
     final Version version;
     try {
@@ -81,37 +162,109 @@ final class SyncChangelog extends Command<int> {
       return 1;
     }
 
-    stdout.writeln('Syncing changelog for version $version...');
+    final changelogPath = p.join(
+      repositoryRoot,
+      'src',
+      'data',
+      'changelog.yml',
+    );
+    final changelogFile = File(changelogPath);
+    if (!await changelogFile.exists()) {
+      stderr.writeln('File not found: $changelogPath');
+      return 1;
+    }
 
     try {
-      final response = await http.get(_sdkChangelogUrl);
-      if (response.statusCode != 200) {
-        stderr.writeln(
-          'Failed to fetch SDK changelog: ${response.statusCode}.',
+      final String sdkMarkdown;
+      if (sdkChangelogPath != null) {
+        final localFile = File(sdkChangelogPath);
+        if (!await localFile.exists()) {
+          stderr.writeln('SDK changelog file not found: $sdkChangelogPath');
+          return 1;
+        }
+        sdkMarkdown = await localFile.readAsString();
+      } else {
+        final response = await http.get(_sdkChangelogUrl);
+        if (response.statusCode != 200) {
+          stderr.writeln(
+            'Failed to fetch SDK changelog: ${response.statusCode}.',
+          );
+          return 1;
+        }
+        sdkMarkdown = response.body;
+      }
+
+      final currentContent = await changelogFile.readAsString();
+
+      if (checkOnly) {
+        stdout.writeln(
+          'Checking semantic and issue coverage for Dart $version...',
         );
+        final report = checkDrift(
+          sdkMarkdown: sdkMarkdown,
+          siteYaml: currentContent,
+          targetVersion: version.toString(),
+        );
+        if (report.sdkEntryCount == 0) {
+          stderr.writeln(
+            'No entries found for version $version in SDK CHANGELOG.md.',
+          );
+          return 1;
+        }
+        if (!report.hasDrift) {
+          stdout.writeln(
+            'Dart $version coverage check passed '
+            '(${report.siteEntryCount} site entries covering '
+            '${report.sdkEntryCount} SDK entries).',
+          );
+          return 0;
+        }
+
+        stderr.writeln('Drift detected for Dart $version:');
+        if (report.versionMissing) {
+          stderr.writeln(
+            ' - Version $version has ${report.sdkEntryCount} SDK entries but '
+            'is completely missing from src/data/changelog.yml.',
+          );
+        }
+        if (report.missingSections.isNotEmpty) {
+          stderr.writeln(' - Missing (area / subArea) sections:');
+          for (final section in report.missingSections) {
+            stderr.writeln('     * $section');
+          }
+        }
+        if (report.missingIssueUrls.isNotEmpty) {
+          stderr.writeln(' - Unreferenced SDK GitHub issue/PR URLs:');
+          for (final issueUrl in report.missingIssueUrls) {
+            stderr.writeln('     * $issueUrl');
+          }
+        }
         return 1;
       }
 
-      final patches = _parseChangelog(
-        response.body,
+      stdout.writeln('Syncing changelog for version $version...');
+
+      final parsedEntries = _parseChangelog(
+        sdkMarkdown,
         version.toString(),
         releaseDate: releaseDate,
       );
-      if (patches.isEmpty) {
+      if (parsedEntries.isEmpty) {
         stdout.writeln(
           'No entries found for version $version in SDK changelog.',
         );
         return 0;
       }
 
-      final resolvedReleaseDate = patches.first.releaseDate;
+      final resolvedReleaseDate = parsedEntries.first.releaseDate;
       if (resolvedReleaseDate == unknownReleaseDate) {
         stderr.writeln(
           'WARNING: No "Released on" date found for $version in the SDK '
           'changelog, so entries were written with '
           '"releaseDate: $unknownReleaseDate".\n'
-          'The site shows this date in the version header, and the '
-          'changelog data test will fail until it is replaced.\n'
+          'The site shows this date in the version header, and '
+          'check-changelog / changelog_data_test will fail until it is '
+          'replaced.\n'
           'Re-run with --release-date=YYYY-MM-DD or edit '
           'src/data/changelog.yml before committing.',
         );
@@ -119,36 +272,54 @@ final class SyncChangelog extends Command<int> {
         stdout.writeln('Using release date $resolvedReleaseDate.');
       }
 
-      final changelogPath = p.join(
-        repositoryRoot,
-        'src',
-        'data',
-        'changelog.yml',
-      );
-      final changelogFile = File(changelogPath);
-      if (!await changelogFile.exists()) {
-        stderr.writeln('File not found: $changelogPath');
-        return 1;
+      final (:unmatchedEntries, :skippedCount, :versionExists) =
+          _filterNewEntries(parsedEntries, currentContent, version.toString());
+
+      if (unmatchedEntries.isEmpty) {
+        stdout.writeln(
+          'All ${parsedEntries.length} entries for version $version are '
+          'already present in $changelogPath (skipped $skippedCount).',
+        );
+        return 0;
       }
 
-      final newYaml = _generateYamlString(patches);
+      final newYaml = _generateYamlString(unmatchedEntries);
       if (dryRun) {
         stdout.writeln(
           'Dry run successful. '
-          'Found ${patches.length} entries for version $version:',
+          'Found ${unmatchedEntries.length} entries for version $version '
+          'with no match in changelog.yml (skipped $skippedCount existing):',
         );
         stdout.write(newYaml);
         return 0;
       }
 
-      final currentContent = await changelogFile.readAsString();
-      final newContent = _applyPatches(currentContent, newYaml);
+      if (versionExists && !addUnmatched) {
+        // Entries are only matched by GitHub issue/PR URL or identical text,
+        // so an entry that was reworded or intentionally left out of
+        // changelog.yml looks new. Don't write those without a review.
+        stdout.writeln(
+          'Version $version already has entries in $changelogPath. '
+          'Skipped $skippedCount matching entries, but '
+          '${unmatchedEntries.length} SDK entries have no match by GitHub '
+          'issue/PR URL or identical text:',
+        );
+        stdout.write(newYaml);
+        stdout.writeln(
+          'No changes written. Entries that were reworded or intentionally '
+          "left out of changelog.yml can't be detected automatically.\n"
+          'Review the entries above, then re-run with --add-unmatched to '
+          'insert them.',
+        );
+        return 0;
+      }
 
+      final newContent = _applyPatches(currentContent, newYaml, version);
       await changelogFile.writeAsString(newContent);
 
       stdout.writeln(
-        'Successfully added ${patches.length} entries for '
-        'version $version in $changelogPath.',
+        'Successfully added ${unmatchedEntries.length} new entries for '
+        'version $version in $changelogPath (skipped $skippedCount existing).',
       );
       return 0;
     } catch (e, st) {
@@ -160,8 +331,8 @@ final class SyncChangelog extends Command<int> {
   /// Parses [markdown] for [targetVersion] and returns generated YAML.
   ///
   /// If [releaseDate] is provided it's used for every entry; otherwise the
-  /// date is read from the section's `**Released on:**` line, falling back to
-  /// [unknownReleaseDate] if that's absent (such as before a release ships).
+  /// date is read from the section's `**Released on:**` line (or `## X.Y.Z -
+  /// YYYY-MM-DD` heading), falling back to [unknownReleaseDate] if absent.
   static String parseAndGenerateYaml(
     String markdown,
     String targetVersion, {
@@ -170,195 +341,596 @@ final class SyncChangelog extends Command<int> {
     _parseChangelog(markdown, targetVersion, releaseDate: releaseDate),
   );
 
-  /// Placeholder written when no release date could be determined.
+  /// Syncs entries for [targetVersion] from [sdkMarkdown] into [existingYaml],
+  /// inserting new entries in monotonic descending SemVer order.
   ///
-  /// The site renders this verbatim in the version header, and the
-  /// `changelog_data_test` rejects it, so it must be replaced before merging.
-  static const unknownReleaseDate = 'TBD';
+  /// SDK entries already represented in [existingYaml] by a GitHub issue/PR
+  /// URL or an identical `(area, subArea, normalizedDescription)` fingerprint
+  /// are skipped, so re-running a sync whose output wasn't edited is a no-op.
+  ///
+  /// An existing entry that was reworded and doesn't cite an issue can't be
+  /// matched, so if [targetVersion] already has entries, the remaining SDK
+  /// entries are only inserted when [addUnmatched] is `true`. Otherwise
+  /// they're reported through `unmatchedCount` and [existingYaml] is
+  /// returned unchanged.
+  static ({
+    String updatedYaml,
+    int addedCount,
+    int skippedCount,
+    int unmatchedCount,
+  })
+  syncIntoYaml({
+    required String sdkMarkdown,
+    required String existingYaml,
+    required String targetVersion,
+    String? releaseDate,
+    bool addUnmatched = false,
+  }) {
+    final parsedEntries = _parseChangelog(
+      sdkMarkdown,
+      targetVersion,
+      releaseDate: releaseDate,
+    );
+    if (parsedEntries.isEmpty) {
+      return (
+        updatedYaml: existingYaml,
+        addedCount: 0,
+        skippedCount: 0,
+        unmatchedCount: 0,
+      );
+    }
 
-  static final _releaseDateRegExp = RegExp(r'^\d{4}-\d{2}-\d{2}$');
-  static final _releasedOnRegExp = RegExp(
-    r'^\s*\*\*Released on:\*\*\s*(\d{4}-\d{2}-\d{2})',
-  );
+    final (:unmatchedEntries, :skippedCount, :versionExists) =
+        _filterNewEntries(parsedEntries, existingYaml, targetVersion);
+    if (unmatchedEntries.isEmpty || (versionExists && !addUnmatched)) {
+      return (
+        updatedYaml: existingYaml,
+        addedCount: 0,
+        skippedCount: skippedCount,
+        unmatchedCount: unmatchedEntries.length,
+      );
+    }
 
-  /// Parses the SDK CHANGELOG.md [markdown] and
+    final newYaml = _generateYamlString(unmatchedEntries);
+    final updated = _applyPatches(
+      existingYaml,
+      newYaml,
+      Version.parse(targetVersion),
+    );
+    return (
+      updatedYaml: updated,
+      addedCount: unmatchedEntries.length,
+      skippedCount: skippedCount,
+      unmatchedCount: 0,
+    );
+  }
+
+  /// Checks semantic and issue coverage for [targetVersion] between
+  /// [sdkMarkdown] and [siteYaml] without requiring identical prose.
+  static ChangelogDriftReport checkDrift({
+    required String sdkMarkdown,
+    required String siteYaml,
+    required String targetVersion,
+  }) {
+    final sdkEntries = _parseChangelog(sdkMarkdown, targetVersion);
+    final existingSiteEntries = _loadSiteEntriesForVersion(
+      siteYaml,
+      targetVersion,
+    );
+
+    if (sdkEntries.isEmpty) {
+      return ChangelogDriftReport(
+        targetVersion: targetVersion,
+        sdkEntryCount: 0,
+        siteEntryCount: existingSiteEntries.length,
+        versionMissing: false,
+        missingIssueUrls: const [],
+        missingSections: const [],
+      );
+    }
+
+    final siteIssueUrls = <String>{
+      for (final entry in existingSiteEntries) ...entry.issueUrls,
+    };
+    final siteSections = <String>{
+      for (final entry in existingSiteEntries)
+        if (entry.subArea != null)
+          _normalizedSectionKey(entry.area, entry.subArea!),
+    };
+
+    final missingIssueUrls = <String>[];
+    final seenMissingIssues = <String>{};
+    final missingSections = <String>[];
+    final seenMissingSections = <String>{};
+
+    for (final sdkEntry in sdkEntries) {
+      for (final issueUrl in sdkEntry.issueUrls) {
+        if (!siteIssueUrls.contains(issueUrl) &&
+            seenMissingIssues.add(issueUrl)) {
+          missingIssueUrls.add(issueUrl);
+        }
+      }
+      if (sdkEntry.subArea case final subArea?) {
+        final key = _normalizedSectionKey(sdkEntry.area, subArea);
+        if (!siteSections.contains(key) && seenMissingSections.add(key)) {
+          missingSections.add('${sdkEntry.area} / $subArea');
+        }
+      }
+    }
+
+    return ChangelogDriftReport(
+      targetVersion: targetVersion,
+      sdkEntryCount: sdkEntries.length,
+      siteEntryCount: existingSiteEntries.length,
+      versionMissing: existingSiteEntries.isEmpty,
+      missingIssueUrls: missingIssueUrls,
+      missingSections: missingSections,
+    );
+  }
+
+  /// Extracts the raw lines belonging to the `## <targetVersion>` section
+  /// (ignoring `##` headings inside fenced code blocks) plus any release date
+  /// embedded on the `##` heading itself.
+  static ({List<String> lines, String? headerReleaseDate})
+  _extractVersionSection(String markdown, String targetVersion) {
+    final lines = markdown.split('\n');
+    final sectionLines = <String>[];
+    String? headerReleaseDate;
+    var inTargetVersion = false;
+    String? activeFence;
+
+    for (final line in lines) {
+      final fenceMatch = _fenceRegExp.firstMatch(line);
+      if (fenceMatch != null) {
+        final marker = fenceMatch.group(1)!;
+        if (activeFence == null) {
+          activeFence = marker[0];
+        } else if (marker[0] == activeFence) {
+          activeFence = null;
+        }
+      }
+
+      if (activeFence == null) {
+        final versionMatch = _versionHeaderRegExp.firstMatch(line);
+        if (versionMatch != null) {
+          final version = versionMatch.group(1)!;
+          if (version == targetVersion) {
+            inTargetVersion = true;
+            headerReleaseDate = versionMatch.group(2);
+            continue;
+          } else if (inTargetVersion) {
+            break;
+          }
+        }
+      }
+
+      if (inTargetVersion) {
+        sectionLines.add(line);
+      }
+    }
+
+    return (lines: sectionLines, headerReleaseDate: headerReleaseDate);
+  }
+
+  /// Parses the SDK CHANGELOG.md [markdown] using `package:markdown` AST and
   /// extracts entries for the specified [targetVersion].
   static List<_ChangelogEntry> _parseChangelog(
     String markdown,
     String targetVersion, {
     String? releaseDate,
   }) {
-    // TODO: Use a proper Markdown parser instead of
-    //  relying on regular expressions.
+    final (:lines, :headerReleaseDate) = _extractVersionSection(
+      markdown,
+      targetVersion,
+    );
+    if (lines.isEmpty) return const [];
+
+    final document = md.Document(
+      extensionSet: md.ExtensionSet.gitHubFlavored,
+      encodeHtml: false,
+    );
+    final nodes = document.parseLines(lines);
+
+    var resolvedReleaseDate = releaseDate ?? headerReleaseDate;
+    if (resolvedReleaseDate == null) {
+      for (final node in nodes) {
+        if (node is md.Element && node.tag == 'p') {
+          final match = _releasedOnTextRegExp.firstMatch(
+            node.textContent.trim(),
+          );
+          if (match != null) {
+            resolvedReleaseDate = match.group(1);
+            break;
+          }
+        }
+      }
+    }
+    final finalReleaseDate = resolvedReleaseDate ?? unknownReleaseDate;
+
     final entries = <_ChangelogEntry>[];
-    final lines = markdown.split('\n');
-    final versionRegExp = RegExp(r'^##\s+(\d+\.\d+\.\d+)');
-    final inlineLinkRegExp = RegExp(r'\[.*?\]\((.*?)\)');
-    final refDefRegExp = RegExp(r'^\s*\[([^\]]+)\]:\s*(\S+)');
-    final refUsageRegExp = RegExp(r'\[([^\]]+)\]\[([^\]]*)\]');
-
-    // Pre-collect reference link definitions in targetVersion, and pick up
-    // the `**Released on:** YYYY-MM-DD` line the SDK changelog includes
-    // once a version has shipped.
-    final refLinks = <String, String>{};
-    var parsedReleaseDate = releaseDate;
-    var inTargetForRefs = false;
-    for (final line in lines) {
-      if (versionRegExp.firstMatch(line) case final match?) {
-        if (match.group(1) == targetVersion) {
-          inTargetForRefs = true;
-          continue;
-        } else if (inTargetForRefs) {
-          break;
-        }
-      }
-      if (!inTargetForRefs) continue;
-      if (refDefRegExp.firstMatch(line) case final m?) {
-        refLinks[m.group(1)!.toLowerCase()] = m.group(2)!;
-      }
-      if (parsedReleaseDate == null) {
-        if (_releasedOnRegExp.firstMatch(line) case final m?) {
-          parsedReleaseDate = m.group(1);
-        }
-      }
-    }
-    final resolvedReleaseDate = parsedReleaseDate ?? unknownReleaseDate;
-
-    String resolveRefs(String text) =>
-        text.replaceAllMapped(refUsageRegExp, (m) {
-          final label = m.group(1)!;
-          final key = (m.group(2)!.isEmpty ? label : m.group(2)!).toLowerCase();
-          final url = refLinks[key];
-          return url != null ? '[$label]($url)' : m.group(0)!;
-        });
-
-    // Extracts the first markdown link URL from [text], or returns null.
-    String? extractLink(String text) {
-      return inlineLinkRegExp.firstMatch(text)?.group(1);
-    }
-
     String? currentArea;
     String? currentSubArea;
-    var inTargetVersion = false;
-    var subAreaHasBullets = false;
-    final bulletBuffer = StringBuffer();
-    final proseBuffer = StringBuffer();
+    var subAreaHasTopLevelList = false;
+    final proseNodes = <md.Node>[];
 
-    void addEntry(String rawDescription) {
-      if (rawDescription.isEmpty) return;
-      final description = resolveRefs(rawDescription);
-      var link = extractLink(description);
-      if (link == null) {
-        // If no specific link was found, default to the SDK CHANGELOG
-        // section anchor. The anchor for version "3.11.0" is "#3110".
-        final anchor = targetVersion.replaceAll('.', '');
-        link =
-            'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#$anchor';
-      }
+    void addEntryFromNodes(List<md.Node> entryNodes) {
+      final description = _serializeBlocks(entryNodes).trim();
+      if (description.isEmpty) return;
+
+      final firstLink = _extractFirstLink(entryNodes);
+      final anchor = targetVersion.replaceAll('.', '');
+      final link =
+          firstLink ??
+          'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#$anchor';
+
+      final issueUrls = {
+        ..._extractIssueUrls(description),
+        ..._extractIssueUrls(link),
+      };
 
       entries.add(
         _ChangelogEntry(
           version: targetVersion,
-          releaseDate: resolvedReleaseDate,
+          releaseDate: finalReleaseDate,
           area: _resolveArea(currentArea, currentSubArea),
           subArea: currentSubArea,
           description: description,
           tags: _inferTags(description),
           link: link,
+          issueUrls: issueUrls,
         ),
       );
     }
 
-    void flushBullet() {
-      if (bulletBuffer.isEmpty) return;
-      addEntry(bulletBuffer.toString().trim());
-      bulletBuffer.clear();
-    }
-
-    void flushSection() {
-      flushBullet();
-      if (!subAreaHasBullets &&
+    void flushProseSection() {
+      if (!subAreaHasTopLevelList &&
           currentSubArea != null &&
-          proseBuffer.isNotEmpty) {
-        addEntry(proseBuffer.toString().trim());
+          proseNodes.isNotEmpty) {
+        addEntryFromNodes(proseNodes);
       }
-      proseBuffer.clear();
-      subAreaHasBullets = false;
+      proseNodes.clear();
+      subAreaHasTopLevelList = false;
     }
 
-    for (final line in lines) {
-      // Check for a version header to determine if
-      // we are in the target version section.
-      final versionMatch = versionRegExp.firstMatch(line);
-      if (versionMatch != null) {
-        final version = versionMatch.group(1)!;
-        if (version == targetVersion) {
-          inTargetVersion = true;
-          currentArea = null;
+    for (final node in nodes) {
+      if (node is md.Element) {
+        if (node.tag == 'h3') {
+          flushProseSection();
+          currentArea = _serializeInlineNodes(node.children).trim();
           currentSubArea = null;
           continue;
-        } else if (inTargetVersion) {
-          flushSection();
-          break;
+        }
+        if (node.tag == 'h4') {
+          flushProseSection();
+          currentSubArea = _serializeInlineNodes(node.children).trim();
+          continue;
+        }
+        if (node.tag == 'p' &&
+            node.textContent.trim().toLowerCase().startsWith('released on:')) {
+          continue;
+        }
+        if ((node.tag == 'ul' || node.tag == 'ol') && proseNodes.isEmpty) {
+          subAreaHasTopLevelList = true;
+          for (final child in node.children ?? const <md.Node>[]) {
+            if (child is md.Element && child.tag == 'li') {
+              addEntryFromNodes(child.children ?? const []);
+            }
+          }
+          continue;
         }
       }
 
-      if (!inTargetVersion) continue;
-
-      // Detect area ("### ") and sub-area ("#### ") headers.
-      if (line.startsWith('### ')) {
-        flushSection();
-        currentArea = line.substring(4).trim();
-        currentSubArea = null;
-        continue;
-      }
-
-      if (line.startsWith('#### ')) {
-        flushSection();
-        currentSubArea = line.substring(5).trim();
-        continue;
-      }
-
-      final trimmedLine = line.trim();
-      if (trimmedLine.startsWith('**Released on:**')) {
-        continue;
-      }
-      if (refDefRegExp.hasMatch(trimmedLine)) {
-        continue;
-      }
-
-      if (trimmedLine.isEmpty) {
-        // Preserve blank lines within multi-line bullet points or prose blocks.
-        if (bulletBuffer.isNotEmpty) {
-          bulletBuffer.writeln();
-        } else if (!subAreaHasBullets &&
-            currentSubArea != null &&
-            proseBuffer.isNotEmpty) {
-          proseBuffer.writeln();
-        }
-        continue;
-      }
-
-      // Check for top-level list items starting with "- " when not already
-      // inside a prose-first sub-area section.
-      if (trimmedLine.startsWith('- ') &&
-          (subAreaHasBullets || proseBuffer.isEmpty)) {
-        flushBullet();
-        subAreaHasBullets = true;
-        final content = trimmedLine.substring(2);
-        bulletBuffer.write(content);
-      } else if (bulletBuffer.isNotEmpty) {
-        bulletBuffer.write('\n$trimmedLine');
-      } else if (!subAreaHasBullets && currentSubArea != null) {
-        if (proseBuffer.isNotEmpty) {
-          proseBuffer.writeln();
-        }
-        proseBuffer.write(line);
+      if (!subAreaHasTopLevelList && currentSubArea != null) {
+        proseNodes.add(node);
       }
     }
 
-    flushSection();
+    flushProseSection();
     return entries;
+  }
+
+  /// Extracts the first hyperlink `href` from [nodes], ignoring code blocks.
+  static String? _extractFirstLink(List<md.Node> nodes) {
+    for (final node in nodes) {
+      if (node is md.Element) {
+        if (node.tag == 'pre' || node.tag == 'code') continue;
+        if (node.tag == 'a') {
+          final href = node.attributes['href']?.trim();
+          if (href != null && href.isNotEmpty) {
+            return _htmlUnescape.convert(href);
+          }
+        }
+        if (node.children case final children?) {
+          final nested = _extractFirstLink(children);
+          if (nested != null) return nested;
+        }
+      }
+    }
+    return null;
+  }
+
+  /// Serializes a list of block/inline AST [nodes] back into clean Markdown
+  /// with all reference links inlined.
+  static String _serializeBlocks(List<md.Node> nodes) {
+    final blocks = <String>[];
+    final inlineBuffer = StringBuffer();
+
+    void flushInline() {
+      final text = inlineBuffer.toString().trim();
+      if (text.isNotEmpty) {
+        blocks.add(text);
+      }
+      inlineBuffer.clear();
+    }
+
+    for (final node in nodes) {
+      if (node is md.Element && _isBlockTag(node.tag)) {
+        flushInline();
+        final serialized = _serializeBlockElement(node).trimRight();
+        if (serialized.isNotEmpty) {
+          blocks.add(serialized);
+        }
+      } else {
+        inlineBuffer.write(_serializeInlineNode(node));
+      }
+    }
+    flushInline();
+
+    return blocks.join('\n\n');
+  }
+
+  static bool _isBlockTag(String tag) => const {
+    'p',
+    'ul',
+    'ol',
+    'pre',
+    'blockquote',
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'hr',
+  }.contains(tag);
+
+  static String _serializeBlockElement(md.Element element) {
+    switch (element.tag) {
+      case 'p':
+        return _serializeInlineNodes(element.children).trim();
+      case 'pre':
+        final codeElement = element.children
+            ?.whereType<md.Element>()
+            .firstWhere((e) => e.tag == 'code', orElse: () => element);
+        final langClass = codeElement?.attributes['class'] ?? '';
+        final lang = langClass.startsWith('language-')
+            ? langClass.substring('language-'.length)
+            : '';
+        final rawCode = _htmlUnescape.convert(
+          codeElement?.textContent ?? element.textContent,
+        );
+        final trimmedCode = rawCode.endsWith('\n')
+            ? rawCode.substring(0, rawCode.length - 1)
+            : rawCode;
+        return '```$lang\n$trimmedCode\n```';
+      case 'ul':
+      case 'ol':
+        final isOrdered = element.tag == 'ol';
+        final lines = <String>[];
+        var index = 1;
+        for (final child in element.children ?? const <md.Node>[]) {
+          if (child is! md.Element || child.tag != 'li') continue;
+          final prefix = isOrdered ? '${index++}. ' : '- ';
+          final indent = ' ' * prefix.length;
+          final body = _serializeBlocks(child.children ?? const []);
+          final bodyLines = body.split('\n');
+          if (bodyLines.isEmpty) continue;
+          lines.add('$prefix${bodyLines.first}');
+          for (final continuation in bodyLines.skip(1)) {
+            lines.add(continuation.isEmpty ? '' : '$indent$continuation');
+          }
+        }
+        return lines.join('\n');
+      case 'blockquote':
+        final inner = _serializeBlocks(element.children ?? const []);
+        return inner
+            .split('\n')
+            .map((line) => line.isEmpty ? '>' : '> $line')
+            .join('\n');
+      case 'h5':
+        return '##### ${_serializeInlineNodes(element.children).trim()}';
+      case 'h6':
+        return '###### ${_serializeInlineNodes(element.children).trim()}';
+      case 'hr':
+        return '---';
+      default:
+        return _serializeInlineNodes(element.children).trim();
+    }
+  }
+
+  static String _serializeInlineNodes(List<md.Node>? nodes) {
+    if (nodes == null || nodes.isEmpty) return '';
+    final buffer = StringBuffer();
+    for (final node in nodes) {
+      buffer.write(_serializeInlineNode(node));
+    }
+    return buffer.toString();
+  }
+
+  static String _serializeInlineNode(md.Node node) {
+    if (node is md.Text) {
+      return _htmlUnescape.convert(node.text);
+    }
+    if (node is md.Element) {
+      switch (node.tag) {
+        case 'code':
+          final text = _htmlUnescape.convert(node.textContent);
+          if (text.contains('`')) {
+            return '`` $text ``';
+          }
+          return '`$text`';
+        case 'strong':
+          return '**${_serializeInlineNodes(node.children)}**';
+        case 'em':
+          return '*${_serializeInlineNodes(node.children)}*';
+        case 'del':
+          return '~~${_serializeInlineNodes(node.children)}~~';
+        case 'a':
+          final label = _serializeInlineNodes(node.children);
+          final href = _htmlUnescape.convert(node.attributes['href'] ?? '');
+          return href.isNotEmpty ? '[$label]($href)' : label;
+        case 'br':
+          return '\n';
+        default:
+          return _serializeInlineNodes(node.children);
+      }
+    }
+    return _htmlUnescape.convert(node.textContent);
+  }
+
+  /// Splits [incoming] into entries that already appear in [existingYaml] for
+  /// [targetVersion] and entries that have no match there.
+  ///
+  /// An incoming entry matches when an existing entry has the same normalized
+  /// `(area, subArea, description)` fingerprint or cites one of the same
+  /// GitHub issue/PR URLs. Each existing citation of a URL accounts for only
+  /// one incoming entry, so distinct SDK entries that share an issue aren't
+  /// collapsed into one.
+  static ({
+    List<_ChangelogEntry> unmatchedEntries,
+    int skippedCount,
+    bool versionExists,
+  })
+  _filterNewEntries(
+    List<_ChangelogEntry> incoming,
+    String existingYaml,
+    String targetVersion,
+  ) {
+    final existing = _loadSiteEntriesForVersion(existingYaml, targetVersion);
+    if (existing.isEmpty) {
+      return (
+        unmatchedEntries: incoming,
+        skippedCount: 0,
+        versionExists: false,
+      );
+    }
+
+    // How many existing entries cite each issue URL and aren't yet paired
+    // with an incoming entry.
+    final unclaimedIssueCitations = <String, int>{};
+    for (final entry in existing) {
+      for (final issueUrl in entry.issueUrls) {
+        unclaimedIssueCitations.update(
+          issueUrl,
+          (count) => count + 1,
+          ifAbsent: () => 1,
+        );
+      }
+    }
+    final existingFingerprints = <String>{
+      for (final entry in existing) entry.fingerprint,
+    };
+
+    final unmatchedEntries = <_ChangelogEntry>[];
+    var skippedCount = 0;
+
+    for (final entry in incoming) {
+      final claimedIssueUrls = [
+        for (final issueUrl in entry.issueUrls)
+          if ((unclaimedIssueCitations[issueUrl] ?? 0) > 0) issueUrl,
+      ];
+      for (final issueUrl in claimedIssueUrls) {
+        unclaimedIssueCitations.update(issueUrl, (count) => count - 1);
+      }
+
+      if (claimedIssueUrls.isNotEmpty ||
+          existingFingerprints.contains(entry.fingerprint)) {
+        skippedCount++;
+      } else {
+        unmatchedEntries.add(entry);
+      }
+    }
+
+    return (
+      unmatchedEntries: unmatchedEntries,
+      skippedCount: skippedCount,
+      versionExists: true,
+    );
+  }
+
+  static List<_SiteEntrySummary> _loadSiteEntriesForVersion(
+    String yamlContent,
+    String targetVersion,
+  ) {
+    if (yamlContent.trim().isEmpty) return const [];
+    final parsed = loadYaml(yamlContent);
+    if (parsed is! YamlList) return const [];
+
+    final targetSemVer = Version.parse(targetVersion);
+    final result = <_SiteEntrySummary>[];
+
+    for (final item in parsed) {
+      if (item is! YamlMap) continue;
+      final versionStr = item['version']?.toString().trim() ?? '';
+      if (versionStr.isEmpty) continue;
+      final Version entryVersion;
+      try {
+        entryVersion = Version.parse(
+          RegExp(r'^\d+\.\d+$').hasMatch(versionStr)
+              ? '$versionStr.0'
+              : versionStr,
+        );
+      } on FormatException {
+        continue;
+      }
+      if (entryVersion != targetSemVer) continue;
+
+      final area = item['area']?.toString().trim() ?? '';
+      final subArea = item['subArea']?.toString().trim();
+      final description = item['description']?.toString() ?? '';
+      final link = item['link']?.toString() ?? '';
+      final issueUrls = {
+        ..._extractIssueUrls(description),
+        ..._extractIssueUrls(link),
+      };
+
+      result.add(
+        _SiteEntrySummary(
+          area: area,
+          subArea: (subArea != null && subArea.isNotEmpty) ? subArea : null,
+          issueUrls: issueUrls,
+          fingerprint: _entryFingerprint(area, subArea, description),
+        ),
+      );
+    }
+
+    return result;
+  }
+
+  static Set<String> _extractIssueUrls(String text) => {
+    for (final match in _githubIssueUrlRegExp.allMatches(text))
+      match.group(0)!.toLowerCase(),
+  };
+
+  static String _normalizedSectionKey(String area, String subArea) {
+    final cleanSub = subArea.trim().replaceAll('`', '').toLowerCase();
+    return '${area.trim().toLowerCase()}|$cleanSub';
+  }
+
+  static String _entryFingerprint(
+    String area,
+    String? subArea,
+    String description,
+  ) {
+    final normalizedDesc = description.trim().toLowerCase().replaceAll(
+      _whitespaceRegExp,
+      ' ',
+    );
+    final normalizedSub = (subArea ?? '')
+        .trim()
+        .replaceAll('`', '')
+        .toLowerCase();
+    return '${area.trim().toLowerCase()}|$normalizedSub|$normalizedDesc';
   }
 
   /// Resolves the changelog area, inferring from [subArea] when an `### <Area>`
@@ -398,24 +970,42 @@ final class SyncChangelog extends Command<int> {
     return 'SDK';
   }
 
-  /// Inserts [newYaml] after the first separator line in [content].
-  static String _applyPatches(String content, String newYaml) {
-    if (content.startsWith(_changelogSeparator)) {
-      final lines = content.split('\n');
-      final buffer = StringBuffer()
-        ..writeln(lines.first)
-        ..write(newYaml)
-        ..write(lines.skip(1).join('\n'));
-      return buffer.toString();
+  /// Inserts [newYaml] at the monotonic descending SemVer position for
+  /// [targetVersion] in [content].
+  static String _applyPatches(
+    String content,
+    String newYaml,
+    Version targetVersion,
+  ) {
+    final lines = content.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+      final match = _entryStartRegExp.firstMatch(lines[i]);
+      if (match == null) continue;
+      final raw = match.group(1)!;
+      final Version existingVersion;
+      try {
+        existingVersion = Version.parse(
+          RegExp(r'^\d+\.\d+$').hasMatch(raw) ? '$raw.0' : raw,
+        );
+      } on FormatException {
+        continue;
+      }
+      if (existingVersion <= targetVersion) {
+        final before = lines.sublist(0, i).join('\n');
+        final after = lines.sublist(i).join('\n');
+        if (before.isEmpty) {
+          return '$newYaml$after';
+        }
+        return '$before\n$newYaml$after';
+      }
     }
 
-    return newYaml + content;
+    if (content.isEmpty) return newYaml;
+    return content.endsWith('\n') ? '$content$newYaml' : '$content\n$newYaml';
   }
 
   /// Generates a YAML string from the given changelog [entries].
   static String _generateYamlString(List<_ChangelogEntry> entries) {
-    // TODO: Investigate using `package:yaml_edit` as a
-    //  more robust editing solution.
     final newYaml = StringBuffer();
 
     // Returns [value] as a plain scalar if it only contains simple characters,
@@ -437,7 +1027,7 @@ final class SyncChangelog extends Command<int> {
       }
       newYaml.writeln('  description: |');
       for (final line in entry.description.split('\n')) {
-        newYaml.writeln('    $line');
+        newYaml.writeln(line.isEmpty ? '' : '    $line');
       }
       if (entry.tags.isNotEmpty) {
         newYaml.writeln('  tags:');
@@ -519,7 +1109,7 @@ enum _ChangelogTag {
 }
 
 /// A single entry from the Dart SDK changelog.
-class _ChangelogEntry {
+final class _ChangelogEntry {
   final String version;
   final String releaseDate;
   final String area;
@@ -527,6 +1117,7 @@ class _ChangelogEntry {
   final String description;
   final Set<_ChangelogTag> tags;
   final String? link;
+  final Set<String> issueUrls;
 
   _ChangelogEntry({
     required this.version,
@@ -536,5 +1127,23 @@ class _ChangelogEntry {
     required this.description,
     required this.tags,
     this.link,
+    required this.issueUrls,
   });
+
+  String get fingerprint =>
+      SyncChangelog._entryFingerprint(area, subArea, description);
+}
+
+final class _SiteEntrySummary {
+  const _SiteEntrySummary({
+    required this.area,
+    required this.subArea,
+    required this.issueUrls,
+    required this.fingerprint,
+  });
+
+  final String area;
+  final String? subArea;
+  final Set<String> issueUrls;
+  final String fingerprint;
 }
