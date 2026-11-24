@@ -31,35 +31,39 @@
         Global state is error-prone and easy to forget.
         This approach doesn't force callers to handle the error.
 - question: >-
-    What's the difference between `throw` and `rethrow` in a catch block?
+    In this lesson, why did you create a custom `ArgumentException` class
+    that extends `FormatException` instead of just throwing a plain `String`?
   options:
     - text: >-
-        `throw` always creates a new stack trace;
-        `rethrow` preserves the original stack trace.
+        It lets callers catch specific failure types with `on` clauses and
+        attach structured context like `command` and `argumentName`.
       correct: true
       explanation: >-
-        Use `rethrow` when you want to log or partially handle
-        an exception but still let it propagate
-        with its original stack trace intact for debugging.
+        Custom exception classes integrate with type-based `on` clauses
+        (such as `on ArgumentException` or `on FormatException`) and bundle
+        helpful fields alongside the error message.
     - text: >-
-        `throw` creates a new exception; `rethrow` just prints the current one.
+        Dart's `throw` keyword only accepts subclasses of `FormatException`
+        and can't throw strings or built-in exceptions.
       correct: false
       explanation: >-
-        Neither one prints anything.
-        `rethrow` propagates the exception, it doesn't just display it.
+        Technically, Dart allows throwing any non-null object,
+        though Effective Dart recommends throwing `Exception` types
+        for recoverable failures.
     - text: >-
-        `throw` works inside catch blocks, while
-        `rethrow` only works outside them.
+        Custom exception classes are automatically caught and printed by Dart
+        without needing a `try`/`catch` block.
       correct: false
       explanation: >-
-        It's closer to the opposite. `rethrow` only works inside catch blocks.
-        `throw` works anywhere.
+        Custom exceptions behave like built-in exceptions—if uncaught,
+        they still propagate up and terminate the program.
     - text: >-
-        `throw` is for errors; `rethrow` is for exceptions.
+        Extending `FormatException` turns runtime failures into compile-time
+        errors so invalid user input is caught before the app runs.
       correct: false
       explanation: >-
-        Both work with any throwable object.
-        The difference isn't about the type of object being thrown.
+        User command-line input isn't known until runtime,
+        so invalid input is still handled at runtime with `try`/`catch`.
 - question: >-
     Consider this code:
     `try { riskyOperation(); } on FormatException catch (e) { print(e); }`.

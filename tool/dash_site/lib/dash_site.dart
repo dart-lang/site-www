@@ -7,6 +7,7 @@ import 'package:args/command_runner.dart';
 import 'src/commands/analyze_dart.dart';
 import 'src/commands/build.dart';
 import 'src/commands/check_all.dart';
+import 'src/commands/check_changelog.dart';
 import 'src/commands/check_link_references.dart';
 import 'src/commands/check_links.dart';
 import 'src/commands/check_markdown.dart';
@@ -36,6 +37,7 @@ final class DashSiteCommandRunner extends CommandRunner<int> {
       ) {
     addCommand(CheckLinksCommand());
     addCommand(CheckLinkReferencesCommand());
+    addCommand(CheckChangelogCommand());
     addCommand(CheckMarkdownCommand());
     addCommand(CheckSiteVariableCommand());
     addCommand(CheckTutorialCodeCommand());

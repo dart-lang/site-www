@@ -151,6 +151,26 @@ without requiring page reloads or server round-trips.
     the server just renders HTML, and the client treats that HTML as its source
     of truth.
 
+## Static Markdown and JSON slices
+
+For AI coding assistants, MCP tools, and automated scripts that need smaller
+payloads than the full `/changelog` HTML page or `/changelog.md`, build-time
+`MemoryPage` slices are emitted from `src/data/changelog.yml` by
+`site/lib/src/pages/changelog_slices.dart`:
+
++   **Root JSON index**: `/changelog/index.json` lists total counts, release
+    summaries (dates, tag counts, highlights), and links to every static slice.
+    `/changelog` advertises it via `<link rel="alternate"
+    type="application/json" href="/changelog/index.json">`.
++   **Per-version slices**: `/changelog/versions/<major.minor>.md` and `.json`
+    contain all entries for a single minor release (including patch releases).
++   **Cross-version tag slices**: `/changelog/tags/breaking.{md,json}` and
+    `/changelog/tags/deprecated-removed.{md,json}` aggregate upgrade-critical
+    entries across all SDK versions.
++   **Cross-version area slices**: `/changelog/areas/<area-slug>.{md,json}`
+    (such as `/changelog/areas/language.md`) group all entries for a given
+    area across releases.
+
 ## Managing changelog entries
 
 All changelog data is stored in a single YAML file. To add, edit, or remove

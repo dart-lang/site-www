@@ -204,12 +204,20 @@ throwing your new `ArgumentException` when the user provides bad input.
     }
     ```
 
-    Notice the use of `on Exception catch (exception)`.
-    In Dart, a bare `catch (e)` intercepts all thrown objects,
-    including `Error` instances.
-    Specifying `on Exception` ensures that your code catches only
-    recoverable exceptions,
-    allowing bugs to propagate uncaught so you can fix them.
+    Notice two key details in this error-handling block:
+
+    - **`on Exception catch (exception)`:**
+      In Dart, a bare `catch (e)` intercepts all thrown objects,
+      including `Error` instances.
+      Adding an `on` clause filters by type—for example, `on Exception`
+      catches only `Exception` subtypes while letting `Error` instances
+      propagate uncaught (and a narrower filter like `on FormatException`
+      lets unrelated exceptions like `HttpException` propagate up as well).
+    - **`rethrow` versus `throw`:**
+      Using `rethrow` propagates the caught exception while keeping its
+      original stack trace intact for debugging, whereas calling
+      `throw exception;` inside a `catch` block creates a new stack trace
+      starting from that line.
 
 1.  Add validation to the `parse` method.
 

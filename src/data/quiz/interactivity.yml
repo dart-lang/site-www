@@ -25,7 +25,7 @@
       correct: false
       explanation: >-
         `static` is used for class-level members, not for declaring constants.
-        However, class-level constants, must also be `static`.
+        However, class-level constants must also be `static`.
 - question: >-
     What is the primary purpose of `stdin.readLineSync()` in a CLI application?
   options:

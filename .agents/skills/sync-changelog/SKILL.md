@@ -50,6 +50,14 @@ and checking what h2 headers (`##`) are present.
     > ```bash
     > dart run dash_site sync-changelog --version 3.11.0 --dry-run
     > ```
+    >
+    > Re-running `sync-changelog` for a version that's already in
+    > `src/data/changelog.yml` skips SDK entries that match an existing entry
+    > by GitHub issue/PR URL or identical description. Entries that were
+    > reworded or intentionally left out can't be matched, so the tool only
+    > prints the remaining entries and doesn't write them. Review that list,
+    > then re-run with `--add-unmatched` to insert the entries and delete any
+    > that duplicate existing ones.
 
 2.  **Verify changes**
 
@@ -57,7 +65,8 @@ and checking what h2 headers (`##`) are present.
 
     -   Review the diff: `git diff src/data/changelog.yml`
     -   Ensure formatting is consistent and
-        the new entries are prepended correctly.
+        the new entries are grouped with their version,
+        with versions in descending order.
 
 3.  **Confirm the release date**
 
@@ -69,17 +78,21 @@ and checking what h2 headers (`##`) are present.
 
     The changelog page shows the `x.y.0` entry's date in the version
     header as "Released YYYY-MM-DD", so a `TBD` placeholder is
-    visible to users and causes `changelog_data_test` to fail.
+    visible to users and causes `check-changelog` and
+    `changelog_data_test` to fail.
 
     If you see the warning or any `releaseDate: TBD` in the diff,
-    re-run the tool with the actual release date:
+    replace every `releaseDate: TBD` in `src/data/changelog.yml`
+    for that version with the date in `YYYY-MM-DD` format.
+    Re-running the tool doesn't update the date of
+    entries that are already in the file.
+
+    If you know the release date before you sync,
+    pass it on the first run instead:
 
     ```bash
     dart run dash_site sync-changelog --version 3.11.0 --release-date 2026-02-11
     ```
-
-    Or replace every `releaseDate: TBD` in `src/data/changelog.yml`
-    for that version with the date in `YYYY-MM-DD` format.
 
 4.  **Filter and prune entries**
 
@@ -173,17 +186,33 @@ and checking what h2 headers (`##`) are present.
 
 8.  **Validate the data**
 
-    Run the changelog data test from the `site` directory to catch
-    schema problems, unknown tags, missing or placeholder release
-    dates, and unresolved reference links before handing off:
+    Run the `check-changelog` CLI check and the changelog data test to catch
+    schema problems, unknown tags, non-monotonic versions, conflicting or
+    placeholder release dates, duplicates, and unresolved reference links:
 
     ```bash
+    dart run dash_site check-changelog
     cd site && dart test test/changelog_data_test.dart
     ```
 
-    Fix any failures it reports in `src/data/changelog.yml`.
+    Fix any failures they report in `src/data/changelog.yml`.
 
-9.  **Request user review**
+9.  **Review SDK coverage**
+
+    List the SDK issue and PR links and the sub-areas for the version
+    that have no counterpart in `src/data/changelog.yml`:
+
+    ```bash
+    dart run dash_site sync-changelog --check --version <VERSION>
+    ```
+
+    Treat the output as a list to review, not as failures to fix.
+    The command exits with a non-zero code whenever it lists anything,
+    and it lists the entries you removed in step 4 and
+    any sub-areas you renamed.
+    Only add an entry back if it was left out by mistake.
+
+10. **Request user review**
 
     Notify the user that the changelog has been updated and tags refined.
     Ask them to verify the changes before committing.

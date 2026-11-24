@@ -113,7 +113,7 @@ To learn more about a specific rule,
 click the **Learn more** button on its card.
 
 For an auto-generated list containing all linter rules
-in Dart `{{site.sdkVersion}}`,
+in Dart `{{site.documentedDartVersion}}`,
 check out [All linter rules](/tools/linter-rules/all).
 
 ---
