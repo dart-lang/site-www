@@ -1029,20 +1029,23 @@
     On the web, use [web workers][] for background work instead.
 
     An isolate has its own global fields and its own isolated access to
-    the objects in the [heap](#heap), and it runs on a single thread with
-    an [event loop](/language/concurrency#event-loop).
+    the objects in the [heap](#heap), and it runs on a single thread at a
+    time with an [event loop](/language/concurrency#event-loop).
 
-    Isolates don't share mutable state.
-    Instead of locking memory that threads would share, isolates send
-    messages to each other through a `ReceivePort` and `SendPort` pair,
-    which avoids a large class of concurrency bugs.
+    Isolates don't share mutable state, so they communicate by sending
+    messages through a `SendPort` to its corresponding `ReceivePort`.
+    Sending a value _copies_ it from the sender's heap into the receiver's
+    heap.
     A spawned isolate has its own separate global variables rather than a
-    copy of the spawning isolate's, so mutating a global variable there
-    leaves the main isolate untouched.
+    copy of the spawning isolate's, so mutating a global variable in the
+    spawned isolate leaves the main isolate untouched.
 
-    [`Isolate.run()`][] runs a function on a new isolate and returns its
-    result, while [`Isolate.spawn()`][] starts a long-lived isolate that you
-    communicate with over ports.
+    [`Isolate.spawn()`][] creates a new isolate and runs a single
+    user-supplied function in it.
+    It gives the creator full control over the use and life-time of the
+    isolate.
+    [`Isolate.run()`][] creates a new isolate, runs a function in that
+    isolate, and ends the isolate when it returns the function's result.
 
     [`Isolate.run()`]: /language/isolates
     [`Isolate.spawn()`]: /language/concurrency#isolates
@@ -1069,12 +1072,12 @@
     between each other.
   long_description: |-
     When an isolate calls `Isolate.spawn()`, the spawning isolate and the
-    new isolate have the same executable code and belong to the same
+    new isolate have the same Dart code and belong to the same
     _isolate group_.
     A group enables optimizations such as sharing code, so a new isolate
     starts quickly and uses less memory than it would in a group of its own.
 
-    `Isolate.exit()` only works between isolates in the same group.
+    [`Isolate.exit()`][] only works between isolates in the same group.
     Because a group is implemented with a shared [heap](#heap), it can pass
     the memory that holds a result to the receiving isolate without copying
     it.
@@ -1082,6 +1085,8 @@
     `Isolate.spawnUri()` creates an isolate that is _not_ in its spawner's
     group. It's much slower to start, and message passing between isolates
     in different groups is slower, and limited to JSON-like structures.
+
+    [`Isolate.exit()`]: https://api.dart.dev/dart-isolate/Isolate/exit.html
   related_links:
     - text: "Performance and isolate groups"
       link: "/language/concurrency#performance-and-isolate-groups"
@@ -1132,16 +1137,13 @@
     That keeps short follow-up work, such as completing a future, from
     waiting behind I/O or UI events.
 
-    Schedule a microtask with `scheduleMicrotask()` from `dart:async`, or
-    with `Future.microtask()`, which returns a future for the microtask's
-    result.
-    When a future completes, the callbacks registered for it with `then()`
-    _may_ run as microtasks.
-    In many cases a completing future runs its listeners directly and
-    completes their future, with no extra microtasks involved.
+    Schedule a microtask with [`scheduleMicrotask()`][] from `dart:async`,
+    or with [`Future.microtask()`][], which returns a future for the
+    microtask's result.
 
     Because a [zone](#zone) can intercept microtask scheduling,
-    tools such as the debugger and error trackers can observe or replace it.
+    tools such as the debugger and error trackers can observe or replace
+    microtask scheduling.
 
     Example:
     ```dart
@@ -1155,6 +1157,9 @@
     // sync
     // microtask
     ```
+
+    [`Future.microtask()`]: https://api.dart.dev/dart-async/Future/Future.microtask.html
+    [`scheduleMicrotask()`]: https://api.dart.dev/dart-async/scheduleMicrotask.html
   related_links:
     - text: "Concurrency in Dart"
       link: "/language/concurrency"
