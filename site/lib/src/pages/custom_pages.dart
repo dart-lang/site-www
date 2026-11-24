@@ -9,9 +9,9 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart' show Component;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as path;
+import 'package:site_shared/markdown.dart';
 
 import '../components/common/tags.dart';
-import '../markdown/markdown_parser.dart';
 import '../models/diagnostic_model.dart';
 import '../models/lints.dart';
 import '../utils/last_modified.dart';

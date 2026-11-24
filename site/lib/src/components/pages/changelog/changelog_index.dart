@@ -7,8 +7,8 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:site_shared/components/common/button.dart';
+import 'package:site_shared/markdown.dart';
 
-import '../../../markdown/markdown_parser.dart';
 import '../../../models/changelog_model.dart';
 import '../../../util.dart';
 import 'changelog_filters.dart';

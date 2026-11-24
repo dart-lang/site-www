@@ -9,9 +9,9 @@ import 'package:jaspr_content/jaspr_content.dart';
 import 'package:site_shared/components/common/button.dart';
 import 'package:site_shared/components/common/card.dart';
 import 'package:site_shared/components/common/client/trigger.dart';
+import 'package:site_shared/markdown.dart';
 
 import '../components/pages/glossary_search_section.dart';
-import '../markdown/markdown_parser.dart';
 import '../util.dart';
 
 /// Different types of resources that glossary terms might link to.

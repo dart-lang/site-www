@@ -8,11 +8,11 @@ import 'package:jaspr/server.dart';
 
 import 'package:site_shared/components/common/button.dart';
 import 'package:site_shared/components/common/card.dart';
+import 'package:site_shared/markdown.dart';
 
 import '../components/common/material_icon.dart';
 import '../components/common/static_copy_button.dart';
 import '../components/pages/lint_filter_search_section.dart';
-import '../markdown/markdown_parser.dart';
 import '../models/lints.dart';
 import '../util.dart';
 

@@ -15,6 +15,7 @@ import 'package:site_shared/components/tutorial/quiz.dart';
 import 'package:site_shared/components/tutorial/stepper.dart';
 import 'package:site_shared/components/tutorial/summary_card.dart';
 import 'package:site_shared/components/tutorial/tutorial_outline.dart';
+import 'package:site_shared/markdown.dart';
 import 'package:site_shared/page_extensions.dart' hide CodeBlockProcessor;
 
 import 'main.server.options.dart'; // Generated. Do not remove or edit.
@@ -31,7 +32,6 @@ import 'src/layouts/doc_layout.dart';
 import 'src/layouts/homepage_layout.dart';
 import 'src/layouts/learn_layout.dart';
 import 'src/loaders/data_processor.dart';
-import 'src/markdown/markdown_parser.dart';
 import 'src/pages/atom_feed.dart';
 import 'src/pages/changelog_slices.dart';
 import 'src/pages/custom_pages.dart';

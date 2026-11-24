@@ -8,11 +8,7 @@ category: deep-dive
 layout: blog
 ---
 
-<DashImage
-  src="images/dash-primary-constructors.webp"
-  alt="Illustration of Dash with blueprint drawing of primary constructor syntax."
-  caption="Bringing primary constructors to Dart"
-/>
+<DashImage src="images/dash-primary-constructors.webp" alt="Illustration of Dash with blueprint drawing of primary constructor syntax." caption="Bringing primary constructors to Dart" />
 
 (AI disclosure: I wrote every sentence of this myself—including the em
 dashes.)

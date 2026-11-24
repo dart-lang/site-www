@@ -818,7 +818,7 @@
   },
   {
     "id": "avoid_futureor_void",
-    "description": "_Don't use the type 'FutureOr<void>'._",
+    "description": "_Don't use the type `'FutureOr<void>'`._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when the type `FutureOr<void>`\nis used as the type of a result (to be precise: it is used in a\nposition that isn't contravariant). The type `FutureOr<void>` is\nproblematic because it may appear to encode that a result is either a\n`Future<void>`, or the result should be discarded (when it is\n`void`).  However, there is no safe way to detect whether we have one\nor the other case because an expression of type `void` can evaluate\nto any object whatsoever, including a future of any type.\n\nIt is also conceptually unsound to have a type whose meaning is\nsomething like \"ignore this object; also, take a look because it\nmight be a future\".\n\nAn exception is made for contravariant occurrences of the type\n`FutureOr<void>` (e.g., for the type of a formal parameter), and no\nwarning is emitted for these occurrences. The reason for this\nexception is that the type does not describe a result, it describes a\nconstraint on a value provided by others. Similarly, an exception is\nmade for type alias declarations, because they may well be used in a\ncontravariant position (e.g., as the type of a formal\nparameter). Hence, in type alias declarations, only the type\nparameter bounds are checked.\n\n## Example\n\n```dart\nimport 'dart:async';\n\n[!FutureOr<void>!] m() => null;\n```\n\n## Common fixes\n\nA replacement for the type `FutureOr<void>` which is often useful is\n`Future<void>?`. This type encodes that a result is either a\n`Future<void>` or it is null, and there is no ambiguity at run time\nsince no object can have both types.\n\nIt may not always be possible to use the type `Future<void>?` as a\nreplacement for the type `FutureOr<void>`, because the latter is a\nsupertype of all types, and the former is not. In this case it may be a\nuseful remedy to replace `FutureOr<void>` by the type `void`.\n",
     "hasDocumentation": true,
     "fromLint": true,
@@ -3767,7 +3767,7 @@
   },
   {
     "id": "illegal_async_generator_return_type",
-    "description": "_Functions marked 'async*' must have a return type that is a supertype of 'Stream<T>' for some type 'T'._",
+    "description": "_Functions marked `'async*'` must have a return type that is a supertype of `'Stream<T>'` for some type `'T'`._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when the body of a function has the\n`async*` modifier even though the return type of the function isn't either\n`Stream` or a supertype of `Stream`.\n\n## Example\n\nThe following code produces this diagnostic because the body of the\nfunction `f` has the 'async*' modifier even though the return type `int`\nisn't a supertype of `Stream`:\n\n```dart\n[!int!] f() async* {}\n```\n\n## Common fixes\n\nIf the function should be asynchronous, then change the return type to be\neither `Stream` or a supertype of `Stream`:\n\n```dart\nStream<int> f() async* {}\n```\n\nIf the function should be synchronous, then remove the `async*` modifier:\n\n```dart\nint f() => 0;\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -3834,7 +3834,7 @@
   },
   {
     "id": "illegal_sync_generator_return_type",
-    "description": "_Functions marked 'sync*' must have a return type that is a supertype of 'Iterable<T>' for some type 'T'._",
+    "description": "_Functions marked `'sync*'` must have a return type that is a supertype of `'Iterable<T>'` for some type `'T'`._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when the body of a function has the\n`sync*` modifier even though the return type of the function isn't either\n`Iterable` or a supertype of `Iterable`.\n\n## Example\n\nThe following code produces this diagnostic because the body of the\nfunction `f` has the 'sync*' modifier even though the return type `int`\nisn't a supertype of `Iterable`:\n\n```dart\n[!int!] f() sync* {}\n```\n\n## Common fixes\n\nIf the function should return an iterable, then change the return type to\nbe either `Iterable` or a supertype of `Iterable`:\n\n```dart\nIterable<int> f() sync* {}\n```\n\nIf the function should return a single value, then remove the `sync*`\nmodifier:\n\n```dart\nint f() => 0;\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -5296,7 +5296,7 @@
   },
   {
     "id": "main_first_positional_parameter_type",
-    "description": "_The type of the first positional parameter of the 'main' function must be a supertype of 'List<String>'._",
+    "description": "_The type of the first positional parameter of the `'main'` function must be a supertype of `'List<String>'`._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when the first positional parameter\nof a function named `main` isn't a supertype of `List<String>`.\n\n## Example\n\nThe following code produces this diagnostic because `List<int>` isn't a\nsupertype of `List<String>`:\n\n```dart\nvoid main([!List<int>!] args) {}\n```\n\n## Common fixes\n\nIf the function is an entry point, then change the type of the first\npositional parameter to be a supertype of `List<String>`:\n\n```dart\nvoid main(List<String> args) {}\n```\n\nIf the function isn't an entry point, then change the name of the function:\n\n```dart\nvoid f(List<int> args) {}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,

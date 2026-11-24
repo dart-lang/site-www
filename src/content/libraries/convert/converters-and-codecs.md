@@ -174,7 +174,7 @@ converts Strings to Strings, and asynchronously converts chunks of Strings to
 chunks of Strings (String→String). The
 [LineSplitter]({{site.dart-api}}/dart-convert/LineSplitter-class.html)
 converter synchronously
-converts Strings to List<String> (the individual lines). Despite the difference
+converts Strings to `List<String>` (the individual lines). Despite the difference
 in the synchronous signature, the chunked version of the LineSplitter converter
 has the same signature as
 HtmlEscape: String→String. In this case each individual output chunk

@@ -4,8 +4,7 @@
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
-
-import '../../markdown/markdown_parser.dart';
+import 'package:site_shared/markdown.dart';
 
 /// The information to display in the site banner,
 /// as configured in the `src/data/banner.yml` file.
