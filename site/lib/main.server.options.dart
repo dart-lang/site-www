@@ -10,8 +10,6 @@ import 'package:dart_dev_site/src/components/blog/client/blog_categories.dart'
     as _blog_categories;
 import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     as _share_button;
-import 'package:dart_dev_site/src/components/common/client/code_block_copy_button.dart'
-    as _code_block_copy_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     as _page_header_options;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
@@ -80,11 +78,6 @@ ServerOptions get defaultServerOptions => ServerOptions(
       'share_button',
       params: __share_buttonShareButton,
     ),
-    _code_block_copy_button.CodeBlockCopyButton:
-        ClientTarget<_code_block_copy_button.CodeBlockCopyButton>(
-          'code_block_copy_button',
-          params: __code_block_copy_buttonCodeBlockCopyButton,
-        ),
     _page_header_options.PageHeaderOptions:
         ClientTarget<_page_header_options.PageHeaderOptions>(
           'page_header_options',
@@ -179,9 +172,6 @@ Map<String, Object?> __share_buttonShareButton(_share_button.ShareButton c) => {
   'url': c.url,
   'title': c.title,
 };
-Map<String, Object?> __code_block_copy_buttonCodeBlockCopyButton(
-  _code_block_copy_button.CodeBlockCopyButton c,
-) => {'title': c.title};
 Map<String, Object?> __page_header_optionsPageHeaderOptions(
   _page_header_options.PageHeaderOptions c,
 ) => {

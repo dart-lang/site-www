@@ -12,8 +12,6 @@ import 'package:dart_dev_site/src/components/blog/client/blog_categories.dart'
     deferred as _blog_categories;
 import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     deferred as _share_button;
-import 'package:dart_dev_site/src/components/common/client/code_block_copy_button.dart'
-    deferred as _code_block_copy_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     deferred as _page_header_options;
 import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
@@ -89,12 +87,6 @@ ClientOptions get defaultClientOptions => ClientOptions(
         title: p.get<String>('title'),
       ),
       loader: _share_button.loadLibrary,
-    ),
-    'code_block_copy_button': ClientLoader(
-      (p) => _code_block_copy_button.CodeBlockCopyButton(
-        title: p.get<String>('title'),
-      ),
-      loader: _code_block_copy_button.loadLibrary,
     ),
     'page_header_options': ClientLoader(
       (p) => _page_header_options.PageHeaderOptions(

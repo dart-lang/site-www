@@ -6,11 +6,11 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:path/path.dart' as path;
 import 'package:site_shared/components/common/client/download_button.dart';
+import 'package:site_shared/components/common/code_block_copy_button.dart';
+import 'package:site_shared/components/common/wrapped_code_block.dart';
 
 import '../../extensions/code_block_processor.dart';
 import '../../util.dart';
-import '../common/client/code_block_copy_button.dart';
-import '../common/wrapped_code_block.dart';
 
 class DownloadableSnippet extends CustomComponentBase {
   const DownloadableSnippet();

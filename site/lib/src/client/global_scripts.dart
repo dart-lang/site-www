@@ -7,6 +7,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
+import 'package:site_shared/web_util.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -17,6 +18,7 @@ import '../utils/client_operating_system.dart';
 /// These are temporary until they can be integrated with their
 /// relevant Jaspr components.
 void setUpSite() {
+  setUpCodeBlockCopyButtons();
   _setUpHeadingLinkCopy();
   _setUpCopyButtons();
   _setUpSidenav();
