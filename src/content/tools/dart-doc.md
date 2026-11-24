@@ -10,12 +10,14 @@ for Dart source code.
 ## Write documentation {:#write}
 
 To add reference text and examples to the generated documentation,
-use [documentation comments][] with [Markdown][] formatting.
-For guidance on writing doc comments,
-check out the [Effective Dart: Documentation][] guide.
+use [documentation comments][] with [Markdown][] formatting
+and [`dart doc` directives][] such as `{@example}`.
+For guidance on writing doc comments and embedding code samples,
+refer to the [Effective Dart: Documentation][] guide.
 
 [documentation comments]: /language/comments#documentation-comments
 [Markdown]: {{site.pub-pkg}}/markdown
+[`dart doc` directives]: {{site.repo.dart.org}}/dartdoc/blob/main/doc/directives.md
 [Effective Dart: Documentation]: /effective-dart/documentation
 
 ## Generate API docs {:#generate}

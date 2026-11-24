@@ -408,9 +408,9 @@ String greet(String name) => 'Hello, $name!';
 When `dart doc` generates your API documentation,
 it replaces `{@example}` with a fenced code block.
 A leading `/` resolves the path from the package root,
-`#<region>` extracts only the lines between `#region` and `#endregion`
-(stripping common indentation),
-and `#hide` omits a line from the generated output.
+and `#<region>` extracts only the lines between
+`#region <region>` and `#endregion`
+(stripping common indentation and any `#hide` lines).
 For the full syntax,
 refer to the [`{@example}` directive documentation][example-directive].
 
