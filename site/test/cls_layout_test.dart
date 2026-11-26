@@ -6,12 +6,12 @@
 library;
 
 import 'package:dart_dev_site/main.server.options.dart';
-import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart';
 import 'package:dart_dev_site/src/extensions/code_block_processor.dart';
 import 'package:dart_dev_site/src/layouts/blog_layout.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart' hide BlogLayout;
 import 'package:jaspr_test/server_test.dart';
+import 'package:site_shared/components/dartpad/dartpad_injector.dart';
 
 void main() {
   setUpAll(() {

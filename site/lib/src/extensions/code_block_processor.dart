@@ -11,10 +11,9 @@ import 'package:jaspr_content/jaspr_content.dart';
 import 'package:meta/meta.dart';
 import 'package:opal/opal.dart' as opal;
 import 'package:site_shared/components/common/wrapped_code_block.dart';
+import 'package:site_shared/components/dartpad/dartpad_injector.dart';
 import 'package:site_shared/highlight.dart';
 import 'package:site_shared/highlight.dart' as highlighter;
-
-import '../components/dartpad/dartpad_injector.dart';
 
 final class CodeBlockProcessor implements PageExtension {
   static final opal.LanguageRegistry _languageRegistry =

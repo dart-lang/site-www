@@ -12,8 +12,6 @@ import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     as _share_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     as _page_header_options;
-import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
-    as _dartpad_dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
     as _layout_site_switcher;
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters.dart'
@@ -82,11 +80,6 @@ ServerOptions get defaultServerOptions => ServerOptions(
         ClientTarget<_page_header_options.PageHeaderOptions>(
           'page_header_options',
           params: __page_header_optionsPageHeaderOptions,
-        ),
-    _dartpad_dartpad_injector.DartPadInjector:
-        ClientTarget<_dartpad_dartpad_injector.DartPadInjector>(
-          'dartpad/dartpad_injector',
-          params: __dartpad_dartpad_injectorDartPadInjector,
         ),
     _layout_site_switcher.SiteSwitcher:
         ClientTarget<_layout_site_switcher.SiteSwitcher>(
@@ -179,14 +172,6 @@ Map<String, Object?> __page_header_optionsPageHeaderOptions(
   'markdownUrl': c.markdownUrl,
   'sourceUrl': c.sourceUrl,
   'issueUrl': c.issueUrl,
-};
-Map<String, Object?> __dartpad_dartpad_injectorDartPadInjector(
-  _dartpad_dartpad_injector.DartPadInjector c,
-) => {
-  'title': c.title,
-  'height': c.height,
-  'theme': c.theme,
-  'runAutomatically': c.runAutomatically,
 };
 Map<String, Object?> __collapse_buttonCollapseButton(
   _collapse_button.CollapseButton c,

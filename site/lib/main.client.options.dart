@@ -14,8 +14,6 @@ import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     deferred as _share_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     deferred as _page_header_options;
-import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
-    deferred as _dartpad_dartpad_injector;
 import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
     deferred as _layout_site_switcher;
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters.dart'
@@ -96,15 +94,6 @@ ClientOptions get defaultClientOptions => ClientOptions(
         issueUrl: p.get<String?>('issueUrl'),
       ),
       loader: _page_header_options.loadLibrary,
-    ),
-    'dartpad/dartpad_injector': ClientLoader(
-      (p) => _dartpad_dartpad_injector.DartPadInjector(
-        title: p.get<String>('title'),
-        height: p.get<String>('height'),
-        theme: p.get<String?>('theme'),
-        runAutomatically: p.get<bool>('runAutomatically'),
-      ),
-      loader: _dartpad_dartpad_injector.loadLibrary,
     ),
     'layout/site_switcher': ClientLoader(
       (p) => _layout_site_switcher.SiteSwitcher(),
