@@ -1,0 +1,23 @@
+# Configuration for visual regression diffing.
+# Controls route sampling and exclusions to improve test performance.
+
+routes:
+  # Sample the latest 10 blog posts.
+  - pattern: "/blog/**"
+    limit: 10
+    sort: desc
+
+  # Sample the top 5 diagnostic pages.
+  - pattern: "/tools/diagnostics/**"
+    limit: 5
+    sort: asc
+
+  # Sample the top 5 linter rules.
+  - pattern: "/tools/linter-rules/**"
+    limit: 5
+    sort: asc
+
+  # Sample the latest 5 breaking changes.
+  - pattern: "/resources/breaking-changes/**"
+    limit: 5
+    sort: desc
