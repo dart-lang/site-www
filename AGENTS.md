@@ -42,8 +42,57 @@ dart run dash_site serve                # Serve a dev server of the site locally
 dart run dash_site build                # Build a production version of the site.
 dart run dash_site refresh-excerpts     # Sync code excerpts to Markdown files.
 dart run dash_site check-tutorial-code  # Validate Dartpedia tutorial code snippets.
+dart run dash_site visual-diff          # Run local visual regression testing against main.
 dart run dash_site --help               # Learn what other commands are available.
 ```
+
+### Visual regression testing
+
+To run local visual regression diffing between your current changes
+and `main`:
+
+```bash
+dart run dash_site visual-diff
+```
+
+By default, the command uses Chrome to capture full-page snapshots
+and opens an interactive visual diff review server in your browser.
+
+#### Renderers
+
+- **Chrome** (default):
+  Uses your installed Google Chrome or Chromium.
+  Requires no extra setup if Chrome is installed.
+- **Obscura**:
+  A lightweight headless browser backend that renders via CPU software
+  rasterization.
+  To use Obscura, pass `--renderer=obscura`:
+
+  ```bash
+  dart run dash_site visual-diff --renderer=obscura
+  ```
+
+  To install Obscura on macOS:
+
+  ```bash
+  brew install obscura
+  ```
+
+  On Linux, download pre-built release binaries from
+  <https://github.com/h4ckf0r0day/obscura/releases>
+  and place both `obscura` and `obscura-worker` on your `PATH`.
+  If Obscura is installed in a custom location,
+  pass `--renderer-path=<path>`.
+
+#### Useful options
+
+- `--current`: Snapshot the current working tree as baseline
+  instead of checking out git `main`.
+- `--update-baseline`: Update baseline snapshots from current results.
+- `--route=<path>`: Snapshot specific route(s),
+  for example `--route=/get-started`.
+- `--all-routes`: Bypass pruning in `visual_diff.yaml`
+  and snapshot every route.
 
 ## Content guidelines
 
