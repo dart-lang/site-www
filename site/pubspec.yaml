@@ -33,7 +33,7 @@ dependencies:
     git:
       url: https://github.com/flutter/website
       path: packages/site_shared
-      ref: c1acb419c3c2b43be543d7c2eb0de0a6ba0e153b
+      ref: a0b75bedb9557c5b71c81d8482a3073c05a0b7f3
   universal_web: ^1.1.1+1
   # Used to build the Atom feed for the blog.
   xml: ^7.0.1
@@ -55,14 +55,6 @@ dev_dependencies:
   sass_builder: ^2.4.0+1
   skills_lint: ^0.5.3
   test: ^1.31.1
-
-dependency_overrides:
-  # Can be removed once the `feat/shared-dart-migration` branch is merged into main.
-  site_shared:
-    git:
-      url: https://github.com/flutter/website
-      path: packages/site_shared
-      ref: feat/shared-dart-migration
 
 jaspr:
   mode: static
