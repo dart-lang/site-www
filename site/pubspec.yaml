@@ -33,7 +33,7 @@ dependencies:
     git:
       url: https://github.com/flutter/website
       path: packages/site_shared
-      ref: a0b75bedb9557c5b71c81d8482a3073c05a0b7f3
+      ref: 7c32e59eb1a26ff5f1e510230dea96c33b5f168a
   universal_web: ^1.1.1+1
   # Used to build the Atom feed for the blog.
   xml: ^7.0.1

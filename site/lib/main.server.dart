@@ -46,6 +46,7 @@ import 'src/util.dart';
 final String _contentDirectory = path.join(siteSrcDirectoryPath, 'content');
 
 void main() {
+  preserveUnderscoresInSlugify = true;
   Jaspr.initializeApp(options: defaultServerOptions);
 
   final assetManager = AssetManager(
