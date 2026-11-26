@@ -14,6 +14,35 @@ import '../utils.dart';
 String get _outputPath =>
     path.join(repositoryRoot, 'src', 'data', 'linter_rules.json');
 
+/// Canonical mixed-case names for linter rules whose names were converted
+/// to lowercase in newer SDK machine rules outputs.
+const Map<String, String> _canonicalRuleNames = {
+  'prefer_for_elements_to_map_fromiterable':
+      'prefer_for_elements_to_map_fromIterable',
+  'prefer_iterable_wheretype': 'prefer_iterable_whereType',
+};
+
+/// Sanitizes Markdown content in linter descriptions and details to prevent
+/// unclosed HTML tag errors during site generation.
+String _sanitizeLintMarkdown(String text) {
+  var sanitized = text;
+
+  // Wrap unbackticked `<Type>.toString()` in a code span.
+  sanitized = sanitized.replaceAll(
+    RegExp(r'(?<!`)<Type>\.toString\(\)(?!`)'),
+    r'`<Type>.toString()`',
+  );
+
+  // Wrap single-quoted types with generic brackets like `'FutureOr<void>'`
+  // in code spans.
+  sanitized = sanitized.replaceAllMapped(
+    RegExp(r"(?<!`)'([^'\n]*<[^'\n]+>)'(?!`)"),
+    (match) => "`'${match.group(1)}'`",
+  );
+
+  return sanitized;
+}
+
 final Future<List<Map<String, Object?>>> _lintDocs = () async {
   final rawRulesInfoUri = Uri.parse(
     'https://raw.githubusercontent.com/dart-lang/sdk/refs/heads/main/pkg/linter/tool/machine/rules.json',
@@ -33,11 +62,25 @@ final Future<List<Map<String, Object?>>> _lintDocs = () async {
   );
 
   for (final rule in rulesInfo) {
-    final ruleName = rule['name'] as String;
+    final rawName = rule['name'] as String;
+    final ruleName = _canonicalRuleNames[rawName] ?? rawName;
+    rule['name'] = ruleName;
+
+    if (rule['description'] case final String description) {
+      rule['description'] = _sanitizeLintMarkdown(description);
+    }
+    if (rule['details'] case final String details) {
+      rule['details'] = _sanitizeLintMarkdown(details);
+    }
+
     rule['sets'] = {
-      if (coreRules.contains(ruleName)) ...['core', 'recommended', 'flutter'],
-      if (recommendedRules.contains(ruleName)) ...['recommended', 'flutter'],
-      if (flutterRules.contains(ruleName)) 'flutter',
+      if (coreRules.contains(ruleName) || coreRules.contains(rawName))
+        ...['core', 'recommended', 'flutter'],
+      if (recommendedRules.contains(ruleName) ||
+          recommendedRules.contains(rawName))
+        ...['recommended', 'flutter'],
+      if (flutterRules.contains(ruleName) || flutterRules.contains(rawName))
+        'flutter',
     }.toList(growable: false);
   }
 

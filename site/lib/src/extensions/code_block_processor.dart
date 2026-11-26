@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// ignore_for_file: implementation_imports
-
 import 'dart:convert' show LineSplitter;
 
 import 'package:collection/collection.dart';
