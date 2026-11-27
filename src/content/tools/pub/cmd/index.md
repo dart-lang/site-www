@@ -103,13 +103,13 @@ or any modification of the pubspec.
 
 ### Running command-line apps
 
-The [`global`](/tools/pub/cmd/pub-global) subcommand lets you 
-make a package globally available, 
-so you can run scripts from that package's `bin` directory.
-To run globally available scripts, you must
-[add the system cache `bin` directory to your path][add-path].
+The legacy [`global`][] subcommand makes a package
+globally available so you can run scripts from that package's `bin` directory.
 
-[add-path]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
+Instead, use [`dart install`][] to install command-line tools globally
+as standalone native executables,
+or [`dart run`][remote-run] (`dart run <package>@`) to run
+remote package executables without installing them.
 
 ### Deploying packages and apps
 
@@ -127,11 +127,12 @@ see [Uploaders](/tools/pub/publishing#uploaders).
 
 #### Command-line apps
 
-For any package that contains scripts (anything under the `bin/`
-directory), consider adding the `executables` tag to the pubspec file.
-When a script is listed under `executables`, users can run
-[`dart pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
-to make it directly available from the command line.
+For any package that defines command-line tools under the `bin/` directory,
+add an [`executables`][] section to the `pubspec.yaml` file.
+When you list a script under `executables`,
+users can install it globally using [`dart install`][]
+or run it directly using [`dart run`][remote-run].
+For details, refer to [Packaging and distributing Dart CLI tools][].
 
 
 ## Global options
@@ -162,4 +163,10 @@ The default depends on whether you're using this command at a terminal.
 At a terminal, `--color` is the default,
 otherwise, `--no-color` is the default.
 Use `--no-color` to disable color in all environments.
+
+[`global`]: /tools/pub/cmd/pub-global
+[`dart install`]: /tools/dart-install
+[remote-run]: /tools/dart-run#run-an-executable-from-a-remote-package
+[`executables`]: /tools/pub/pubspec#executables
+[Packaging and distributing Dart CLI tools]: /tools/cli-distribution
 

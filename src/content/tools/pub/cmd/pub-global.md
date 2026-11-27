@@ -5,16 +5,19 @@ description: Use dart pub global to run Dart scripts hosted on the pub.dev site 
 
 :::version-note
 **Legacy command:** Support for `dart pub global` is legacy.
-[`dart install`][] is the recommended, AOT-compiled alternative
-that produces self-contained binaries,
-supports native build hooks (`hook/build.dart`),
-and launches faster.
-Note that `dart install` requires **Dart 3.10 or later**.
+
+* To install CLI tools globally as standalone, AOT-compiled binaries
+  with native build hook (`hook/build.dart`) support,
+  use [`dart install`][] (introduced in Dart 3.10),
+  along with `dart installed` and `dart uninstall`.
+* To run an executable from a remote package without installing it,
+  use [`dart run <package>@`][remote-run] (introduced in Dart 3.12).
 
 **Migration note:** `dart install` places binaries
 in `$DART_DATA_HOME/install/bin/` (instead of `~/.pub-cache/bin/`).
 Ensure your `PATH` is updated appropriately.
-Additionally, because `dart install` creates native executables,
+Additionally, because `dart install` and `dart run <package>@`
+create native executables,
 you can no longer pass Dart VM options at runtime.
 :::
 
@@ -38,8 +41,9 @@ $ webdev serve
 If this doesn't work, you might need to
 [set up your path](#running-a-script-from-your-path).
 
-To run a Dart script from within a package, or from a
-package that your package depends on, see [dart run](/tools/dart-run).
+To run a Dart script from within a package,
+from a package that your package depends on,
+or from a remote package, refer to [`dart run`][].
 
 ## Activating a package
 
@@ -185,6 +189,11 @@ this feature. You can still run the script using `dart pub global run`.
 $ dart pub global run <package>:<executable> [args...]
 ```
 
+:::note
+[`dart run <package>[:<executable>]@`][remote-run] is a newer alternative
+to `dart pub global run` for executables declared in the `pubspec.yaml` file.
+:::
+
 Even if a script is not configured to be run from the command line,
 you can still use `dart pub global run`.
 The following command runs the `bin/bar.dart` script from the
@@ -296,5 +305,7 @@ the preexisting executable will not be replaced.
 {% render 'pub-problems.md' %}
 
 [`dart install`]: /tools/dart-install
+[`dart run`]: /tools/dart-run
+[remote-run]: /tools/dart-run#run-an-executable-from-a-remote-package
 [system cache]: /resources/glossary#pub-system-cache
 [webdev]: /tools/webdev
