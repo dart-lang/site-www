@@ -1,0 +1,10 @@
+name: libraries
+description: Analyzed source of code snippets covering Dart libraries.
+publish_to: none
+
+resolution: workspace
+environment:
+  sdk: ^3.11.0
+
+dev_dependencies:
+  test: ^1.28.0
