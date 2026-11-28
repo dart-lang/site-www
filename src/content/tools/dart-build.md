@@ -31,6 +31,16 @@ The resulting app bundle is structured as follows:
 
 </FileTree>
 
+Deploy the entire `bundle/` directory and preserve its directory structure.
+Executables in `bin/` aren't guaranteed to run without the other files in
+the bundle, even for applications without native dependencies.
+Copying individual executables out of the bundle isn't supported.
+The internal layout can differ between platforms and SDK versions.
+
+Starting with Dart 3.14, Linux builds can place the application's compiled
+Dart code in `lib/libdartaot<name>.so` and a runtime launcher in `bin/<name>`.
+The launcher needs the compiled code in `lib/` to run the application.
+
 ## Options for `dart build cli`
 
 The following options can be used for the `dart build cli` command. 
