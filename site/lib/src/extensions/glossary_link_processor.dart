@@ -6,7 +6,8 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../components/common/client/simple_tooltip.dart';
+import 'package:site_shared/components/common/client/simple_tooltip.dart';
+
 import '../pages/glossary.dart';
 
 /// A node-processing, page extension for Jaspr Content that looks for links to

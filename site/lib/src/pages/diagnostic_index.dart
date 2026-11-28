@@ -6,12 +6,13 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../components/common/button.dart';
-import '../components/common/card.dart';
+import 'package:site_shared/components/common/button.dart';
+import 'package:site_shared/components/common/card.dart';
+import 'package:site_shared/markdown.dart';
+
 import '../components/common/fragment_target.dart';
 import '../components/common/material_icon.dart';
 import '../components/common/static_copy_button.dart';
-import '../markdown/markdown_parser.dart';
 import '../models/diagnostic_model.dart';
 import '../util.dart';
 

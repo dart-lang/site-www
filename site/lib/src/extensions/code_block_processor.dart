@@ -10,12 +10,10 @@ import 'package:jaspr/jaspr.dart' as jaspr;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:meta/meta.dart';
 import 'package:opal/opal.dart' as opal;
-
-import '../components/common/wrapped_code_block.dart';
-import '../components/dartpad/dartpad_injector.dart';
-import '../highlight/theme/dark.dart';
-import '../highlight/theme/light.dart';
-import '../highlight/token_renderer.dart' as highlighter;
+import 'package:site_shared/components/common/wrapped_code_block.dart';
+import 'package:site_shared/components/dartpad/dartpad_injector.dart';
+import 'package:site_shared/highlight.dart';
+import 'package:site_shared/highlight.dart' as highlighter;
 
 final class CodeBlockProcessor implements PageExtension {
   static final opal.LanguageRegistry _languageRegistry =

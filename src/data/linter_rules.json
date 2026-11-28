@@ -324,7 +324,7 @@
   },
   {
     "name": "avoid_futureor_void",
-    "description": "Avoid using 'FutureOr<void>' as the type of a result.",
+    "description": "Avoid using `'FutureOr<void>'` as the type of a result.",
     "categories": [
       "errorProne",
       "unintentional"
@@ -627,7 +627,7 @@
   },
   {
     "name": "avoid_type_to_string",
-    "description": "Avoid <Type>.toString() in production code since results may be minified.",
+    "description": "Avoid `<Type>.toString()` in production code since results may be minified.",
     "categories": [
       "unintentional"
     ],
@@ -635,7 +635,7 @@
     "incompatible": [],
     "sets": [],
     "fixStatus": "noFix",
-    "details": "**DO** avoid calls to <Type>.toString() in production code, since it does not\ncontractually return the user-defined name of the Type (or underlying class).\nDevelopment-mode compilers where code size is not a concern use the full name,\nbut release-mode compilers often choose to minify these symbols.\n\n**BAD:**\n```dart\nvoid bar(Object other) {\n  if (other.runtimeType.toString() == 'Bar') {\n    doThing();\n  }\n}\n\nObject baz(Thing myThing) {\n  return getThingFromDatabase(key: myThing.runtimeType.toString());\n}\n```\n\n**GOOD:**\n```dart\nvoid bar(Object other) {\n  if (other is Bar) {\n    doThing();\n  }\n}\n\nclass Thing {\n  String get thingTypeKey => ...\n}\n\nObject baz(Thing myThing) {\n  return getThingFromDatabase(key: myThing.thingTypeKey);\n}\n```",
+    "details": "**DO** avoid calls to `<Type>.toString()` in production code, since it does not\ncontractually return the user-defined name of the Type (or underlying class).\nDevelopment-mode compilers where code size is not a concern use the full name,\nbut release-mode compilers often choose to minify these symbols.\n\n**BAD:**\n```dart\nvoid bar(Object other) {\n  if (other.runtimeType.toString() == 'Bar') {\n    doThing();\n  }\n}\n\nObject baz(Thing myThing) {\n  return getThingFromDatabase(key: myThing.runtimeType.toString());\n}\n```\n\n**GOOD:**\n```dart\nvoid bar(Object other) {\n  if (other is Bar) {\n    doThing();\n  }\n}\n\nclass Thing {\n  String get thingTypeKey => ...\n}\n\nObject baz(Thing myThing) {\n  return getThingFromDatabase(key: myThing.thingTypeKey);\n}\n```",
     "sinceDartSdk": "2.12"
   },
   {

@@ -7,13 +7,13 @@ import 'dart:async';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:pub_semver/pub_semver.dart';
+import 'package:site_shared/components/common/button.dart';
+import 'package:site_shared/components/common/search.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
 
 import '../../../models/changelog_model.dart';
-import '../../common/button.dart';
 import '../../common/client/filtering.dart';
-import '../../common/search.dart';
 import 'changelog_filters_notifier.dart';
 import 'changelog_filters_sidebar.dart';
 

@@ -9,11 +9,7 @@ category: releases
 layout: blog
 ---
 
-<DashImage
-  src="images/dart3-13.webp"
-  alt="Dart 3.13 release banner animation with the Dart logo."
-  caption="Announcing Dart 3.13"
-/>
+<DashImage src="images/dart3-13.webp" alt="Dart 3.13 release banner animation with the Dart logo." caption="Announcing Dart 3.13" />
 
 We're thrilled to announce Dart 3.13!
 
@@ -288,22 +284,14 @@ void foo() {}
 pub.dev renders the specified code region directly
 in the generated documentation.
 
-<DashImage
-  src="images/pub-doc-callout-example.webp"
-  alt="The cupertino_ui documentation on pub.dev displaying a 'callout-box' element with a blue border alongside an embedded '{@example}' code block."
-  caption="The cupertino_ui documentation on pub.dev displaying a `<callout-box>` with a blue border alongside an embedded `{@example}` code block."
-/>
+<DashImage src="images/pub-doc-callout-example.webp" alt="The cupertino_ui documentation on pub.dev displaying a 'callout-box' element with a blue border alongside an embedded '{@example}' code block." caption="The cupertino_ui documentation on pub.dev displaying a `<callout-box>` with a blue border alongside an embedded `{@example}` code block." />
 
 Behind the scenes, pub.dev also deployed a
 two-level hash index for dartdoc file lookups.
 This update drastically speeds up documentation rendering for
 large packages containing 100k+ generated files.
 
-<DashImage
-  src="images/pub-latency-blob-index.webp"
-  alt="Chart showing Docs Request Latency drop after deploying the new blob index."
-  caption="Docs Request Latency drop after deploying the new blob index."
-/>
+<DashImage src="images/pub-latency-blob-index.webp" alt="Chart showing Docs Request Latency drop after deploying the new blob index." caption="Docs Request Latency drop after deploying the new blob index." />
 
 **Learn more:** [`CupertinoActivityIndicator` class documentation](https://pub.dev/documentation/cupertino_ui/latest/cupertino_ui/CupertinoActivityIndicator-class.html)
 

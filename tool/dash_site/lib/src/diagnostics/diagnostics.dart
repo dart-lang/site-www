@@ -167,10 +167,21 @@ class DiagnosticInformation {
     return buffer.toString();
   }
 
+  static final RegExp _quotedCodePattern = RegExp(
+    r"(?<!\w)'([^'\n]+)'(?!\w)",
+  );
+
   /// Return a version of the [text] in which characters that have special
   /// meaning in markdown have been escaped.
   static String _escape(String text) {
-    return text.replaceAll('_', '\\_');
+    var escaped = text.replaceAll('_', r'\_');
+    if (escaped.contains('<') && !escaped.contains('`')) {
+      escaped = escaped.replaceAllMapped(
+        _quotedCodePattern,
+        (match) => "`'${match.group(1)}'`",
+      );
+    }
+    return escaped;
   }
 }
 

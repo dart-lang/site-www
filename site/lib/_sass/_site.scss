@@ -13,36 +13,38 @@
 @use 'base/layout';
 @use 'base/utils';
 
-@use 'components/alert';
+// Shared styles from site_shared package, alphabetically ordered.
+@use 'package:site_shared/_sass/components/alert';
+@use 'package:site_shared/_sass/components/breadcrumbs';
+@use 'package:site_shared/_sass/components/cookie-notice';
+@use 'package:site_shared/_sass/components/dropdown';
+@use 'package:site_shared/_sass/components/quiz';
+@use 'package:site_shared/_sass/components/summary-card';
+@use 'package:site_shared/_sass/components/tabs';
+@use 'package:site_shared/_sass/components/tooltip';
+
 @use 'components/banner';
-@use 'components/breadcrumbs';
-@use 'components/buttons';
 @use 'components/blog';
+@use 'components/buttons';
 @use 'components/card';
 @use 'components/code';
-@use 'components/github-embed';
 @use 'components/content';
-@use 'components/cookie-notice';
 @use 'components/diagnostics';
-@use 'components/dropdown';
 @use 'components/filter-search';
 @use 'components/footer';
 @use 'components/form';
+@use 'components/github-embed';
 @use 'components/glossary';
 @use 'components/header';
 @use 'components/misc';
 @use 'components/next-prev-nav';
-@use 'components/quiz';
 @use 'components/search';
 @use 'components/side-menu';
 @use 'components/sidenav';
 @use 'components/site-switcher';
-@use 'components/summary-card';
-@use 'components/tabs';
 @use 'components/tags';
 @use 'components/theming';
 @use 'components/toc';
-@use 'components/tooltip';
 @use 'components/trailing';
 
 @use 'pages/changelog-index';

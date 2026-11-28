@@ -4,11 +4,11 @@
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:site_shared/components/common/chip.dart';
+import 'package:site_shared/components/common/search.dart';
 import 'package:universal_web/web.dart' as web;
 
 import '../../util.dart';
-import '../common/chip.dart';
-import '../common/search.dart';
 
 enum RuleSetOption {
   inFlutter('Flutter'),

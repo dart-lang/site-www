@@ -4,7 +4,7 @@
 
 import 'package:jaspr/jaspr.dart';
 
-import 'button.dart';
+import 'package:site_shared/components/common/button.dart';
 
 /// A button that copies [toCopy] to the user's clipboard when clicked.
 ///

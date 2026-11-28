@@ -8,11 +8,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:site_shared/components/common/button.dart';
+import 'package:site_shared/components/common/dropdown.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
-
-import '../button.dart';
-import '../dropdown.dart';
 
 @client
 final class PageHeaderOptions extends StatefulComponent {
@@ -154,94 +153,88 @@ final class _PageHeaderOptionsState extends State<PageHeaderOptions> {
   @override
   Component build(BuildContext _) => Dropdown(
     id: _optionsId,
-    children: [
-      const DropdownToggle(
-        Button(icon: 'more_vert', title: 'View page options.'),
-      ),
-      DropdownContent(
-        nav(
-          classes: 'dropdown-menu',
-          attributes: const {'role': 'menu'},
-          [
-            ul([
-              li([
-                if (_isShareSupported)
-                  Button(
-                    icon: 'share',
-                    content: 'Share page',
-                    onClick: () {
-                      web.window.navigator.share(_shareData).toDart.ignore();
-                    },
-                  )
-                else
-                  Button(
-                    icon: _copied ? 'check' : 'link',
-                    content: _copied ? 'Link copied!' : 'Copy link',
-                    onClick: _copyLink,
-                  ),
-              ]),
-              if (component.markdownUrl case final markdownUrl?) ...[
-                li([
-                  Button(
-                    icon: _markdownCopyState.icon,
-                    content: 'Copy as Markdown',
-                    title: 'Copy this page as Markdown to your clipboard.',
-                    attributes: {
-                      'aria-describedby': _copyStatusId,
-                      // Native `disabled` drops focus and closes the
-                      // dropdown.
-                      if (_markdownCopyState.isBusy) ...{
-                        'aria-busy': 'true',
-                        'aria-disabled': 'true',
-                      },
-                    },
-                    onClick: () => _copyMarkdown(markdownUrl),
-                  ),
-                  span(
-                    id: _copyStatusId,
-                    classes: 'copy-markdown-status',
-                    attributes: const {
-                      'role': 'status',
-                      'aria-live': 'polite',
-                      'aria-atomic': 'true',
-                    },
-                    [.text(_markdownCopyState.announcement)],
-                  ),
-                ]),
-                li([
-                  Button(
-                    icon: 'markdown',
-                    content: 'View as Markdown',
-                    href: markdownUrl,
-                    attributes: const {'target': '_blank', 'rel': 'noopener'},
-                  ),
-                ]),
-                if (component.sourceUrl != null || component.issueUrl != null)
-                  const DropdownDivider(),
-              ],
-              if (component.sourceUrl case final sourceUrl?)
-                li([
-                  Button(
-                    icon: 'docs',
-                    content: 'Open on GitHub',
-                    href: sourceUrl,
-                    attributes: const {'target': '_blank', 'rel': 'noopener'},
-                  ),
-                ]),
-              if (component.issueUrl case final issueUrl?)
-                li([
-                  Button(
-                    icon: 'bug_report',
-                    content: 'Report an issue',
-                    href: issueUrl,
-                    attributes: const {'target': '_blank', 'rel': 'noopener'},
-                  ),
-                ]),
+    toggle: const Button(icon: 'more_vert', title: 'View page options.'),
+    content: nav(
+      classes: 'dropdown-menu',
+      attributes: const {'role': 'menu'},
+      [
+        ul([
+          li([
+            if (_isShareSupported)
+              Button(
+                icon: 'share',
+                content: 'Share page',
+                onClick: () {
+                  web.window.navigator.share(_shareData).toDart.ignore();
+                },
+              )
+            else
+              Button(
+                icon: _copied ? 'check' : 'link',
+                content: _copied ? 'Link copied!' : 'Copy link',
+                onClick: _copyLink,
+              ),
+          ]),
+          if (component.markdownUrl case final markdownUrl?) ...[
+            li([
+              Button(
+                icon: _markdownCopyState.icon,
+                content: 'Copy as Markdown',
+                title: 'Copy this page as Markdown to your clipboard.',
+                attributes: {
+                  'aria-describedby': _copyStatusId,
+                  // Native `disabled` drops focus and closes the
+                  // dropdown.
+                  if (_markdownCopyState.isBusy) ...{
+                    'aria-busy': 'true',
+                    'aria-disabled': 'true',
+                  },
+                },
+                onClick: () => _copyMarkdown(markdownUrl),
+              ),
+              span(
+                id: _copyStatusId,
+                classes: 'copy-markdown-status',
+                attributes: const {
+                  'role': 'status',
+                  'aria-live': 'polite',
+                  'aria-atomic': 'true',
+                },
+                [.text(_markdownCopyState.announcement)],
+              ),
             ]),
+            li([
+              Button(
+                icon: 'markdown',
+                content: 'View as Markdown',
+                href: markdownUrl,
+                attributes: const {'target': '_blank', 'rel': 'noopener'},
+              ),
+            ]),
+            if (component.sourceUrl != null || component.issueUrl != null)
+              const DropdownDivider(),
           ],
-        ),
-      ),
-    ],
+          if (component.sourceUrl case final sourceUrl?)
+            li([
+              Button(
+                icon: 'docs',
+                content: 'Open on GitHub',
+                href: sourceUrl,
+                attributes: const {'target': '_blank', 'rel': 'noopener'},
+              ),
+            ]),
+          if (component.issueUrl case final issueUrl?)
+            li([
+              Button(
+                icon: 'bug_report',
+                content: 'Report an issue',
+                href: issueUrl,
+                attributes: const {'target': '_blank', 'rel': 'noopener'},
+              ),
+            ]),
+        ]),
+      ],
+    ),
   );
 }
 

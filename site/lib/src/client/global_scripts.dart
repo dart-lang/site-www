@@ -7,74 +7,24 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
+import 'package:site_shared/web_util.dart';
 import 'package:universal_web/js_interop.dart';
 import 'package:universal_web/web.dart' as web;
-
-import '../utils/client_operating_system.dart';
 
 /// Global scripts converted from JS.
 ///
 /// These are temporary until they can be integrated with their
 /// relevant Jaspr components.
 void setUpSite() {
-  _setUpHeadingLinkCopy();
+  setUpCodeBlockCopyButtons();
+  setUpHeadingLinkCopy();
   _setUpCopyButtons();
   _setUpSidenav();
-  _setUpSearchKeybindings();
+  setUpSearchKeybindings();
   _setUpGallery();
-  _setUpPlatformKeys();
+  setUpPlatformKeys();
   _setUpTableOfContents();
   _setUpReleaseTags();
-}
-
-void _setUpHeadingLinkCopy() {
-  final anchors = web.document.querySelectorAll(
-    'a.heading-link[href]',
-  );
-
-  for (var i = 0; i < anchors.length; i++) {
-    final anchor = anchors.item(i) as web.HTMLAnchorElement;
-
-    // Store the original text before any click handlers modify it.
-    final originalText = anchor.textContent;
-
-    @awaitNotRequired
-    Future<void> copyAnchorToClipboard(String url) async {
-      try {
-        await web.window.navigator.clipboard.writeText(url).toDart;
-        // TODO: Replace this with a tooltip of some sort.
-        anchor.textContent = 'Link copied!';
-
-        Future<void>.delayed(const Duration(milliseconds: 1200), () {
-          anchor.textContent = originalText;
-        });
-      } catch (_) {
-        anchor.textContent = 'Failed to copy';
-      }
-    }
-
-    anchor.addEventListener(
-      'click',
-      ((web.Event event) {
-        event.preventDefault();
-
-        final fragment = anchor.hash;
-        if (!fragment.startsWith('#')) return;
-
-        final headingId = fragment.substring(1);
-        if (headingId.isEmpty) return;
-
-        final url = Uri.parse(
-          web.window.location.href,
-        ).replace(fragment: headingId).toString();
-
-        // Update the URL hash without triggering a scroll jump.
-        web.window.history.replaceState(null, '', '#$headingId');
-
-        copyAnchorToClipboard(url);
-      }).toJS,
-    );
-  }
 }
 
 /// Sets up the buttons rendered by `StaticCopyButton`,
@@ -137,57 +87,6 @@ void _setUpSidenav() {
         ),
       );
     }
-  }
-}
-
-void _setUpSearchKeybindings() {
-  web.document.addEventListener('keydown', _handleSearchShortcut.toJS);
-}
-
-void _handleSearchShortcut(web.Event event) {
-  final keyboardEvent = event as web.KeyboardEvent;
-  final activeElement = web.document.activeElement;
-
-  // Don't intercept if typing in an input field or not pressing slash key.
-  if (activeElement.isA<web.HTMLInputElement>() ||
-      activeElement.isA<web.HTMLTextAreaElement>() ||
-      keyboardEvent.code != 'Slash') {
-    return;
-  }
-
-  final web.Element? parentElement;
-  // If the sidebar is open, focus its search field.
-  if (web.document.body!.classList.contains('open_menu')) {
-    parentElement = web.document.getElementById('sidenav');
-  } else {
-    // If the page has a search field in the body, focus that.
-    if (web.document.getElementById('in-content-search')
-        case final bodySearch?) {
-      parentElement = bodySearch;
-    } else {
-      // Otherwise, fallback to the top navbar search field.
-      parentElement = web.document.getElementById('header-search');
-    }
-  }
-
-  // If we found any search field, focus it.
-  if (parentElement?.querySelector('.search-field')
-      case final web.HTMLElement searchField) {
-    searchField.focus();
-    // Prevent the initial slash from showing up in the search field.
-    event.preventDefault();
-  }
-}
-
-void _setUpPlatformKeys() {
-  final specialKey = switch (ClientOperatingSystem.fromUserAgent()) {
-    .macos => 'Command',
-    _ => 'Control',
-  };
-  final keys = web.document.querySelectorAll('kbd.special-key');
-  for (var i = 0; i < keys.length; i += 1) {
-    final element = keys.item(i) as web.Element;
-    element.textContent = specialKey;
   }
 }
 

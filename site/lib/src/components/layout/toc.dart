@@ -4,9 +4,9 @@
 
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:site_shared/components/common/client/on_this_page_button.dart';
 
 import '../../models/on_this_page_model.dart';
-import '../common/client/on_this_page_button.dart';
 import '../common/material_icon.dart';
 
 final class WideTableOfContents extends StatelessComponent {

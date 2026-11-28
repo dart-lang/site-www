@@ -10,31 +10,10 @@ import 'package:dart_dev_site/src/components/blog/client/blog_categories.dart'
     as _blog_categories;
 import 'package:dart_dev_site/src/components/blog/client/share_button.dart'
     as _share_button;
-import 'package:dart_dev_site/src/components/common/client/code_block_copy_button.dart'
-    as _code_block_copy_button;
-import 'package:dart_dev_site/src/components/common/client/collapse_button.dart'
-    as _collapse_button;
-import 'package:dart_dev_site/src/components/common/client/expandable.dart'
-    as _expandable;
-import 'package:dart_dev_site/src/components/common/client/feedback.dart'
-    as _feedback;
-import 'package:dart_dev_site/src/components/common/client/on_this_page_button.dart'
-    as _on_this_page_button;
 import 'package:dart_dev_site/src/components/common/client/page_header_options.dart'
     as _page_header_options;
-import 'package:dart_dev_site/src/components/common/client/simple_tooltip.dart'
-    as _simple_tooltip;
-import 'package:dart_dev_site/src/components/common/client/tabs.dart' as _tabs;
-import 'package:dart_dev_site/src/components/common/client/trigger.dart'
-    as _trigger;
-import 'package:dart_dev_site/src/components/dartpad/dartpad_injector.dart'
-    as _dartpad_injector;
-import 'package:dart_dev_site/src/components/layout/menu_toggle.dart'
-    as _menu_toggle;
 import 'package:dart_dev_site/src/components/layout/site_switcher.dart'
-    as _site_switcher;
-import 'package:dart_dev_site/src/components/layout/theme_switcher.dart'
-    as _theme_switcher;
+    as _layout_site_switcher;
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters.dart'
     as _changelog_filters;
 import 'package:dart_dev_site/src/components/pages/changelog/changelog_filters_sidebar.dart'
@@ -43,12 +22,30 @@ import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
     as _glossary_search_section;
 import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
     as _lint_filter_search_section;
-import 'package:dart_dev_site/src/components/tutorial/client/quiz.dart'
-    as _quiz;
-import 'package:dart_dev_site/src/components/tutorial/client/stepper.dart'
-    as _stepper;
 import 'package:jaspr_content/components/file_tree.dart' as _file_tree;
 import 'package:jaspr_content/components/post_break.dart' as _post_break;
+import 'package:site_shared/components/common/client/collapse_button.dart'
+    as _collapse_button;
+import 'package:site_shared/components/common/client/expandable.dart'
+    as _expandable;
+import 'package:site_shared/components/common/client/feedback.dart'
+    as _feedback;
+import 'package:site_shared/components/common/client/on_this_page_button.dart'
+    as _on_this_page_button;
+import 'package:site_shared/components/common/client/simple_tooltip.dart'
+    as _simple_tooltip;
+import 'package:site_shared/components/common/client/tabs.dart' as _tabs;
+import 'package:site_shared/components/common/client/trigger.dart' as _trigger;
+import 'package:site_shared/components/dartpad/dartpad_injector.dart'
+    as _dartpad_injector;
+import 'package:site_shared/components/layout/menu_toggle.dart' as _menu_toggle;
+import 'package:site_shared/components/layout/site_switcher.dart'
+    as _site_switcher;
+import 'package:site_shared/components/layout/theme_switcher.dart'
+    as _theme_switcher;
+import 'package:site_shared/components/tutorial/client/quiz.dart' as _quiz;
+import 'package:site_shared/components/tutorial/client/stepper.dart'
+    as _stepper;
 
 /// Default [ServerOptions] for use with your Jaspr project.
 ///
@@ -79,59 +76,15 @@ ServerOptions get defaultServerOptions => ServerOptions(
       'share_button',
       params: __share_buttonShareButton,
     ),
-    _code_block_copy_button.CodeBlockCopyButton:
-        ClientTarget<_code_block_copy_button.CodeBlockCopyButton>(
-          'code_block_copy_button',
-          params: __code_block_copy_buttonCodeBlockCopyButton,
-        ),
-    _collapse_button.CollapseButton:
-        ClientTarget<_collapse_button.CollapseButton>(
-          'collapse_button',
-          params: __collapse_buttonCollapseButton,
-        ),
-    _expandable.Expandable: ClientTarget<_expandable.Expandable>(
-      'expandable',
-      params: __expandableExpandable,
-    ),
-    _feedback.FeedbackComponent: ClientTarget<_feedback.FeedbackComponent>(
-      'feedback',
-      params: __feedbackFeedbackComponent,
-    ),
-    _on_this_page_button.OnThisPageButton:
-        ClientTarget<_on_this_page_button.OnThisPageButton>(
-          'on_this_page_button',
-        ),
     _page_header_options.PageHeaderOptions:
         ClientTarget<_page_header_options.PageHeaderOptions>(
           'page_header_options',
           params: __page_header_optionsPageHeaderOptions,
         ),
-    _simple_tooltip.SimpleTooltip: ClientTarget<_simple_tooltip.SimpleTooltip>(
-      'simple_tooltip',
-      params: __simple_tooltipSimpleTooltip,
-    ),
-    _tabs.InteractiveDashTabs: ClientTarget<_tabs.InteractiveDashTabs>(
-      'tabs',
-      params: __tabsInteractiveDashTabs,
-    ),
-    _trigger.Trigger: ClientTarget<_trigger.Trigger>(
-      'trigger',
-      params: __triggerTrigger,
-    ),
-    _dartpad_injector.DartPadInjector:
-        ClientTarget<_dartpad_injector.DartPadInjector>(
-          'dartpad_injector',
-          params: __dartpad_injectorDartPadInjector,
+    _layout_site_switcher.SiteSwitcher:
+        ClientTarget<_layout_site_switcher.SiteSwitcher>(
+          'layout/site_switcher',
         ),
-    _menu_toggle.MenuToggle: ClientTarget<_menu_toggle.MenuToggle>(
-      'menu_toggle',
-    ),
-    _site_switcher.SiteSwitcher: ClientTarget<_site_switcher.SiteSwitcher>(
-      'site_switcher',
-    ),
-    _theme_switcher.ThemeSwitcher: ClientTarget<_theme_switcher.ThemeSwitcher>(
-      'theme_switcher',
-    ),
     _changelog_filters.ChangelogFilters:
         ClientTarget<_changelog_filters.ChangelogFilters>('changelog_filters'),
     _changelog_filters_sidebar.ChangelogFiltersSidebar:
@@ -146,12 +99,56 @@ ServerOptions get defaultServerOptions => ServerOptions(
         ClientTarget<_lint_filter_search_section.LintFilterSearchSection>(
           'lint_filter_search_section',
         ),
+    _collapse_button.CollapseButton:
+        ClientTarget<_collapse_button.CollapseButton>(
+          'site_shared:collapse_button',
+          params: __collapse_buttonCollapseButton,
+        ),
+    _expandable.Expandable: ClientTarget<_expandable.Expandable>(
+      'site_shared:expandable',
+      params: __expandableExpandable,
+    ),
+    _feedback.FeedbackComponent: ClientTarget<_feedback.FeedbackComponent>(
+      'site_shared:feedback',
+      params: __feedbackFeedbackComponent,
+    ),
+    _on_this_page_button.OnThisPageButton:
+        ClientTarget<_on_this_page_button.OnThisPageButton>(
+          'site_shared:on_this_page_button',
+        ),
+    _simple_tooltip.SimpleTooltip: ClientTarget<_simple_tooltip.SimpleTooltip>(
+      'site_shared:simple_tooltip',
+      params: __simple_tooltipSimpleTooltip,
+    ),
+    _tabs.InteractiveDashTabs: ClientTarget<_tabs.InteractiveDashTabs>(
+      'site_shared:tabs',
+      params: __tabsInteractiveDashTabs,
+    ),
+    _trigger.Trigger: ClientTarget<_trigger.Trigger>(
+      'site_shared:trigger',
+      params: __triggerTrigger,
+    ),
+    _dartpad_injector.DartPadInjector:
+        ClientTarget<_dartpad_injector.DartPadInjector>(
+          'site_shared:dartpad_injector',
+          params: __dartpad_injectorDartPadInjector,
+        ),
+    _menu_toggle.MenuToggle: ClientTarget<_menu_toggle.MenuToggle>(
+      'site_shared:menu_toggle',
+    ),
+    _site_switcher.SiteSwitcher: ClientTarget<_site_switcher.SiteSwitcher>(
+      'site_shared:site_switcher',
+      params: __site_switcherSiteSwitcher,
+    ),
+    _theme_switcher.ThemeSwitcher: ClientTarget<_theme_switcher.ThemeSwitcher>(
+      'site_shared:theme_switcher',
+    ),
     _quiz.InteractiveQuiz: ClientTarget<_quiz.InteractiveQuiz>(
-      'quiz',
+      'site_shared:quiz',
       params: __quizInteractiveQuiz,
     ),
     _stepper.InteractiveStepper: ClientTarget<_stepper.InteractiveStepper>(
-      'stepper',
+      'site_shared:stepper',
       params: __stepperInteractiveStepper,
     ),
   },
@@ -168,9 +165,14 @@ Map<String, Object?> __share_buttonShareButton(_share_button.ShareButton c) => {
   'url': c.url,
   'title': c.title,
 };
-Map<String, Object?> __code_block_copy_buttonCodeBlockCopyButton(
-  _code_block_copy_button.CodeBlockCopyButton c,
-) => {'title': c.title};
+Map<String, Object?> __page_header_optionsPageHeaderOptions(
+  _page_header_options.PageHeaderOptions c,
+) => {
+  'title': c.title,
+  'markdownUrl': c.markdownUrl,
+  'sourceUrl': c.sourceUrl,
+  'issueUrl': c.issueUrl,
+};
 Map<String, Object?> __collapse_buttonCollapseButton(
   _collapse_button.CollapseButton c,
 ) => {'classes': c.classes, 'title': c.title};
@@ -182,14 +184,6 @@ Map<String, Object?> __expandableExpandable(_expandable.Expandable c) => {
 Map<String, Object?> __feedbackFeedbackComponent(
   _feedback.FeedbackComponent c,
 ) => {'issueUrl': c.issueUrl};
-Map<String, Object?> __page_header_optionsPageHeaderOptions(
-  _page_header_options.PageHeaderOptions c,
-) => {
-  'title': c.title,
-  'markdownUrl': c.markdownUrl,
-  'sourceUrl': c.sourceUrl,
-  'issueUrl': c.issueUrl,
-};
 Map<String, Object?> __simple_tooltipSimpleTooltip(
   _simple_tooltip.SimpleTooltip c,
 ) => {'target': c.target, 'content': c.content};
@@ -204,10 +198,13 @@ Map<String, Object?> __dartpad_injectorDartPadInjector(
   _dartpad_injector.DartPadInjector c,
 ) => {
   'title': c.title,
-  'height': c.height,
   'theme': c.theme,
+  'height': c.height,
   'runAutomatically': c.runAutomatically,
 };
+Map<String, Object?> __site_switcherSiteSwitcher(
+  _site_switcher.SiteSwitcher c,
+) => {'isFlutter': c.isFlutter};
 Map<String, Object?> __quizInteractiveQuiz(_quiz.InteractiveQuiz c) => {
   'title': c.title,
   'questions': c.questions.map((i) => i.toJson()).toList(),

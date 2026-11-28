@@ -6,36 +6,32 @@ import 'package:jaspr/server.dart';
 import 'package:jaspr_content/components/file_tree.dart';
 import 'package:jaspr_content/components/post_break.dart';
 import 'package:jaspr_content/jaspr_content.dart' hide BlogLayout;
-
 import 'package:jaspr_content/theme.dart';
 import 'package:path/path.dart' as path;
+import 'package:site_shared/components/common/card.dart';
+import 'package:site_shared/components/common/tabs.dart';
+import 'package:site_shared/components/common/youtube_embed.dart';
+import 'package:site_shared/components/tutorial/quiz.dart';
+import 'package:site_shared/components/tutorial/stepper.dart';
+import 'package:site_shared/components/tutorial/summary_card.dart';
+import 'package:site_shared/components/tutorial/tutorial_outline.dart';
+import 'package:site_shared/markdown.dart';
+import 'package:site_shared/page_extensions.dart' hide CodeBlockProcessor;
 
 import 'main.server.options.dart'; // Generated. Do not remove or edit.
 import 'src/archive/archive_table.dart';
 import 'src/components/blog/blog_index.dart';
-import 'src/components/common/card.dart';
 import 'src/components/common/dash_image.dart';
 import 'src/components/common/github_embed.dart';
-import 'src/components/common/tabs.dart';
-import 'src/components/common/youtube_embed.dart';
 import 'src/components/pages/changelog/changelog_index.dart';
-import 'src/components/tutorial/quiz.dart';
-import 'src/components/tutorial/stepper.dart';
-import 'src/components/tutorial/summary_card.dart';
-import 'src/components/tutorial/tutorial_outline.dart';
-import 'src/extensions/attribute_processor.dart';
 import 'src/extensions/code_block_processor.dart';
 import 'src/extensions/glossary_link_processor.dart';
-import 'src/extensions/header_extractor.dart';
-import 'src/extensions/header_processor.dart';
-import 'src/extensions/table_processor.dart';
 import 'src/extensions/tutorial_navigation.dart';
 import 'src/layouts/blog_layout.dart';
 import 'src/layouts/doc_layout.dart';
 import 'src/layouts/homepage_layout.dart';
 import 'src/layouts/learn_layout.dart';
 import 'src/loaders/data_processor.dart';
-import 'src/markdown/markdown_parser.dart';
 import 'src/pages/atom_feed.dart';
 import 'src/pages/changelog_slices.dart';
 import 'src/pages/custom_pages.dart';
@@ -50,6 +46,7 @@ import 'src/util.dart';
 final String _contentDirectory = path.join(siteSrcDirectoryPath, 'content');
 
 void main() {
+  preserveUnderscoresInSlugify = true;
   Jaspr.initializeApp(options: defaultServerOptions);
 
   final assetManager = AssetManager(
@@ -96,7 +93,7 @@ void main() {
       const FileTree(),
       const Quiz(),
       const SummaryCard(),
-      const TutorialOutline(),
+      const TutorialOutline(showUnitTitle: false),
       const PostBreak(),
       CustomComponent(
         pattern: RegExp('ArchiveTable'),
